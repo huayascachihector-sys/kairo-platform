@@ -67,7 +67,7 @@
 
 | Archivo | Tamaño | Uso |
 |---------|--------|-----|
-| `src/lib/courseData.ts` | 174 KB | Curriculum "Studymind" con lecciones markdown + ejercicios |
+| `src/lib/courseData.ts` | 174 KB | Curriculum "Kairo" con lecciones markdown + ejercicios |
 | `src/lib/store.ts` | 54 KB | Estado global (progreso, XP, quests, notificaciones) |
 | `src/lib/aiEngine.ts` | 55 KB | Motor de tutoring IA (diagnostic, hints, scoring) |
 | `src/lib/admisionData.ts` | 16 KB | Banco preguntas UNI actualizado a 2024 |
