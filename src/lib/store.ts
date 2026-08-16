@@ -164,7 +164,7 @@ export interface ErrorEntry {
   resolved?: boolean;
 }
 
-export type ExamId = "sat" | "toefl";
+export type ExamId = "sat" | "toefl" | "uni" | "unmsm";
 
 export interface VocationalResult {
   scores: Record<string, number>;

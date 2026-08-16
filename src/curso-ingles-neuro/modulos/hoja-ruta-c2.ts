@@ -1,0 +1,108 @@
+export const HOJA_DE_RUTA_C2 = {
+  duracionTotalMeses: 36,
+  etapas: [
+    {
+      nombre: 'Fase 1: Cimientos (Mes 0-5) - A1/A2',
+      niveles: ['A1', 'A2'],
+      enfoque: 'Adquisición natural de vocabulario básico y comunicación funcional',
+      humor: 'Chistes simples, rimas, onomatopeyas',
+      metodologia: 'Juegos, shadowing, roleplay con personajes animados',
+      hitoClave: 'Conversación fluida sobre intereses personales',
+    },
+    {
+      nombre: 'Fase 2: Expansión (Mes 6-12) - A2/B1',
+      niveles: ['A2', 'B1'],
+      enfoque: 'Narración de historias y expresión de opiniones',
+      humor: 'Chistes de palabras simples, dobles sentidos evidentes',
+      metodologia: 'Storytelling, debates guiados, creación de contenido',
+      hitoClave: 'Puede contar chistes y entender humor básico anglosajón',
+    },
+    {
+      nombre: 'Fase 3: Afianamiento (Mes 13-20) - B1/B2',
+      niveles: ['B1', 'B2'],
+      enfoque: 'Discusión abstracta y argumentación',
+      humor: 'Sarcasmo leve, ironía contextual, referencias culturales',
+      metodologia: 'Debates estructurados, análisis de medios, escritura creativa',
+      hitoClave: 'Entiende sarcasmo y puede usarlo ocasionalmente',
+    },
+    {
+      nombre: 'Fase 4: Dominio (Mes 21-30) - B2/C1',
+      niveles: ['B2', 'C1'],
+      enfoque: 'Creatividad y fluidez natural',
+      humor: 'Humor negro suave, referencias culturales complejas, metáforas',
+      metodologia: 'Roleplay avanzado, escritura literaria, análisis cultural',
+      hitoClave: 'Puede contar chistes originales y entender comedia nativa',
+    },
+    {
+      nombre: 'Fase 5: Maestría (Mes 31-36) - C1/C2',
+      niveles: ['C1', 'C2'],
+      enfoque: 'Comprensión cultural total y expresividad avanzada',
+      humor: 'Humor absurdo, sátira, dobles sentidos lingüísticos',
+      metodologia: 'Análisis de comedia stand-up, creación de contenido original',
+      hitoClave: 'Entiende y usa el humor como herramienta de conexión cultural',
+    },
+  ],
+  progresoMotivacional: {
+    sistemaInsignias: {
+      'first-word': 'Primera palabra en inglés',
+      'sentence-master': 'Primera oración completa',
+      'joke-cracking': 'Cuenta tu primer chiste en inglés',
+      'native-laugh': 'Entiendes un chiste anglosajón',
+      'sass-master': 'Usas sarcasmo por primera vez',
+      'storyteller': 'Cuentas una historia sin notar que estás en inglés',
+      'comedy-writer': 'Escribes tu propio chiste en inglés',
+      'cultural-bridge': 'Ayudas a otro niño a entender el humor en inglés',
+    },
+    recompensasSociales: [
+      'Compartir logros con amigos',
+      'Publicar micro-chistes',
+      'Participar en "Open Mic" virtual',
+      'Crear challenges semanales con IA',
+    ],
+  },
+};
+
+export const NIVELES_DETALLADOS = {
+  A1: {
+    mesObjetivo: 3,
+    palabrasObjetivo: 500,
+    expresionesClave: ['Hello!', 'My name is...', 'I like...', 'How are you?'],
+    habilidades: ['Saludos básicos', 'Descripción personal', 'Pedidos simples'],
+    errorCelebrado: '¡Ese error mejoró tu pronunciación!',
+  },
+  A2: {
+    mesObjetivo: 6,
+    palabrasObjetivo: 1200,
+    expresionesClave: ['Yesterday I...', 'I want to go to...', 'Can we...'],
+    habilidades: ['Contar rutinas', 'Expresar preferencias', 'Preguntar información'],
+    errorCelebrado: '¡Ese error demuestra que estás aprendiendo!',
+  },
+  B1: {
+    mesObjetivo: 10,
+    palabrasObjetivo: 2500,
+    expresionesClave: ['I think that...', 'In my opinion...', 'Actually... wait...'],
+    habilidades: ['Narrar experiencias', 'Expresar emociones', 'Participar debates simples'],
+    errorCelebrado: '¡Tu error está lleno de creatividad! ¡Amplia tu razonamiento!',
+  },
+  B2: {
+    mesObjetivo: 16,
+    palabrasObjetivo: 5000,
+    expresionesClave: ['Well... actually...', 'That reminds me of...', 'On the other hand...'],
+    habilidades: ['Argumentar posiciones', 'Contar chistes', 'Debatir temas sociales'],
+    errorCelebrado: '¡Ese error es un descubrimiento lingüístico!',
+  },
+  C1: {
+    mesObjetivo: 24,
+    palabrasObjetivo: 10000,
+    expresionesClave: ['Ironically...', 'From a cultural standpoint...', 'The irony is...'],
+    habilidades: ['Usar sarcasmo', 'Entender dobles sentidos', 'Participar debates complejos'],
+    errorCelebrado: '¡Tu error es una contribución artística!',
+  },
+  C2: {
+    mesObjetivo: 36,
+    palabrasObjetivo: 20000,
+    expresionesClave: ['I could care less...', 'Oh, sure...', 'Not exactly...'],
+    habilidades: ['Humor cultural total', 'Comprensión de matices', 'Creatividad expresiva'],
+    errorCelebrado: '¡Ese error es más interesante que la corrección!',
+  },
+};

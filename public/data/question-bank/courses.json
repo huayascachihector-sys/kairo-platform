@@ -1,0 +1,98 @@
+[
+  {
+    "id": "matematicas",
+    "label": "Matem\u00e1ticas",
+    "icon": "\u222b",
+    "color": "from-primary-500 to-primary-700",
+    "primariaCount": 600,
+    "secundariaCount": 494
+  },
+  {
+    "id": "espanol",
+    "label": "Espa\u00f1ol",
+    "icon": "\ud83d\udcda",
+    "color": "from-violet-500 to-violet-700",
+    "primariaCount": 80,
+    "secundariaCount": 80
+  },
+  {
+    "id": "ciencias-naturales",
+    "label": "Ciencias Naturales",
+    "icon": "\ud83d\udd2c",
+    "color": "from-emerald-500 to-emerald-700",
+    "primariaCount": 80,
+    "secundariaCount": 0
+  },
+  {
+    "id": "biologia",
+    "label": "Biolog\u00eda",
+    "icon": "\ud83e\uddeb",
+    "color": "from-green-600 to-green-800",
+    "primariaCount": 0,
+    "secundariaCount": 80
+  },
+  {
+    "id": "fisica",
+    "label": "F\u00edsica",
+    "icon": "\u26a1",
+    "color": "from-cyan-500 to-cyan-700",
+    "primariaCount": 70,
+    "secundariaCount": 160
+  },
+  {
+    "id": "quimica",
+    "label": "Qu\u00edmica",
+    "icon": "\u2697\ufe0f",
+    "color": "from-emerald-500 to-emerald-700",
+    "primariaCount": 40,
+    "secundariaCount": 85
+  },
+  {
+    "id": "geografia",
+    "label": "Geograf\u00eda",
+    "icon": "\ud83c\udf0d",
+    "color": "from-sky-500 to-sky-700",
+    "primariaCount": 60,
+    "secundariaCount": 60
+  },
+  {
+    "id": "historia",
+    "label": "Historia",
+    "icon": "\ud83c\udfdb\ufe0f",
+    "color": "from-amber-500 to-amber-700",
+    "primariaCount": 80,
+    "secundariaCount": 0
+  },
+  {
+    "id": "historia-mexico",
+    "label": "Historia de M\u00e9xico",
+    "icon": "\ud83c\uddf2\ud83c\uddfd",
+    "color": "from-green-700 to-red-700",
+    "primariaCount": 0,
+    "secundariaCount": 60
+  },
+  {
+    "id": "historia-universal",
+    "label": "Historia Universal",
+    "icon": "\ud83c\udf0d",
+    "color": "from-amber-600 to-amber-800",
+    "primariaCount": 0,
+    "secundariaCount": 60
+  },
+  {
+    "id": "formacion-civica",
+    "label": "Formaci\u00f3n C\u00edvica",
+    "icon": "\ud83e\uddcd",
+    "color": "from-blue-500 to-blue-700",
+    "primariaCount": 60,
+    "secundariaCount": 60
+  },
+  {
+    "id": "ingles",
+    "label": "Ingl\u00e9s",
+    "icon": "\ud83c\uddec\ud83c\udde7",
+    "color": "from-rose-500 to-rose-700",
+    "primariaCount": 60,
+    "secundariaCount": 60
+  }
+]
