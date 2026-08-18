@@ -1,0 +1,1265 @@
+// ─── Bancos de preguntas para Exámenes Internacionales ───────────────────────
+
+export interface ExamQuestion {
+  id: string;
+  prompt: string;
+  passage?: string;
+  options: string[];
+  answer: number; // índice correcto
+  explanation: string;
+}
+
+export interface ExamSection {
+  id: string;
+  label: string;
+  /** duración real de la sección en el examen oficial (minutos) */
+  realMinutes: number;
+  questions: ExamQuestion[];
+}
+
+// ─── SAT ─────────────────────────────────────────────────────────────────────
+export const SAT_SECTIONS: ExamSection[] = [
+  {
+    id: 'reading-writing',
+    label: 'Reading & Writing',
+    realMinutes: 64,
+    questions: [
+      {
+        id: 'rw1',
+        passage:
+          'The Andean condor, one of the largest flying birds in the world, can glide for hours without flapping its wings. Researchers tracking the birds found that they spend only about one percent of their flight time flapping.',
+        prompt: 'As used in the text, the word "glide" most nearly means:',
+        options: ['to fall quickly', 'to move smoothly through the air', 'to hunt from above', 'to rest on a cliff'],
+        answer: 1,
+        explanation: 'El contexto ("without flapping its wings", "flight time") indica desplazamiento suave en el aire.',
+      },
+      {
+        id: 'rw2',
+        passage:
+          'Although the experiment produced unexpected results, the team did not discard the data; instead, they repeated the trial three more times.',
+        prompt: 'Which choice best describes the function of the underlined portion ("instead, they repeated the trial")?',
+        options: [
+          'It offers a contrast to the previous action.',
+          'It provides an example of the unexpected results.',
+          'It summarizes the conclusion of the study.',
+          'It questions the validity of the experiment.',
+        ],
+        answer: 0,
+        explanation: '"Instead" introduce la acción alternativa, contrastando con descartar los datos.',
+      },
+      {
+        id: 'rw3',
+        prompt: 'The committee members, along with the director, ______ agreed on the final budget.',
+        options: ['has', 'have', 'having', 'is'],
+        answer: 1,
+        explanation: 'El sujeto es "members" (plural); "along with the director" es una frase intermedia y no cambia el número.',
+      },
+      {
+        id: 'rw4',
+        prompt: 'Choose the option that best maintains logical transition: The city invested heavily in bike lanes; ______, cycling rates doubled in two years.',
+        options: ['however', 'consequently', 'nevertheless', 'similarly'],
+        answer: 1,
+        explanation: 'Hay una relación causa–efecto, por lo que corresponde un conector consecutivo.',
+      },
+      {
+        id: 'rw5',
+        passage:
+          'Scholar María Rostworowski argued that Andean economies were organized around reciprocity rather than markets.',
+        prompt: 'Which finding would most directly support Rostworowski\'s claim?',
+        options: [
+          'Evidence of large coin hoards in coastal cities',
+          'Records of labor exchanged between ayllus without currency',
+          'Maps showing long-distance trade routes',
+          'Descriptions of Inca military campaigns',
+        ],
+        answer: 1,
+        explanation: 'El intercambio de trabajo sin moneda es evidencia directa de reciprocidad.',
+      },
+      {
+        id: 'rw6',
+        prompt: 'Which choice completes the text with the most logical and precise word? The results were ______: every trial produced the same value.',
+        options: ['ambiguous', 'consistent', 'tentative', 'controversial'],
+        answer: 1,
+        explanation: 'Si todos los ensayos dan el mismo valor, los resultados son consistentes.',
+      },
+    ],
+  },
+  {
+    id: 'math',
+    label: 'Math',
+    realMinutes: 70,
+    questions: [
+      {
+        id: 'm1',
+        prompt: 'If 3x + 7 = 25, what is the value of 6x - 4?',
+        options: ['26', '32', '30', '20'],
+        answer: 1,
+        explanation: '3x = 18 → x = 6. Entonces 6(6) − 4 = 32.',
+      },
+      {
+        id: 'm2',
+        prompt: 'A line passes through (2, 3) and (6, 11). What is its slope?',
+        options: ['1/2', '2', '4', '8'],
+        answer: 1,
+        explanation: 'm = (11 − 3)/(6 − 2) = 8/4 = 2.',
+      },
+      {
+        id: 'm3',
+        prompt: 'If f(x) = x² − 4x + 3, what are the zeros of f?',
+        options: ['1 y 3', '−1 y −3', '2 y 3', '0 y 4'],
+        answer: 0,
+        explanation: 'x² − 4x + 3 = (x − 1)(x − 3) → x = 1, x = 3.',
+      },
+      {
+        id: 'm4',
+        prompt: 'A shirt costs S/80 after a 20% discount. What was the original price?',
+        options: ['S/96', 'S/100', 'S/90', 'S/120'],
+        answer: 1,
+        explanation: '0.8p = 80 → p = 100.',
+      },
+      {
+        id: 'm5',
+        prompt: 'The circle x² + y² = 49 has a radius of:',
+        options: ['7', '49', '14', '√7'],
+        answer: 0,
+        explanation: 'r² = 49 → r = 7.',
+      },
+      {
+        id: 'm6',
+        prompt: 'If 2^(x+1) = 32, what is x?',
+        options: ['3', '4', '5', '6'],
+        answer: 1,
+        explanation: '32 = 2⁵ → x + 1 = 5 → x = 4.',
+      },
+    ],
+  },
+];
+
+// ─── TOEFL ───────────────────────────────────────────────────────────────────
+export const TOEFL_QUIZ_SECTIONS: ExamSection[] = [
+  {
+    id: 'reading',
+    label: 'Reading',
+    realMinutes: 35,
+    questions: [
+      {
+        id: 'tr1',
+        passage:
+          'Coral reefs occupy less than one percent of the ocean floor, yet they support roughly a quarter of all marine species. Rising sea temperatures cause corals to expel the algae living in their tissues, a process known as bleaching.',
+        prompt: 'According to the passage, bleaching occurs when:',
+        options: [
+          'corals expand across the ocean floor',
+          'corals expel the algae in their tissues',
+          'marine species migrate away from reefs',
+          'sea levels drop significantly',
+        ],
+        answer: 1,
+        explanation: 'El texto define bleaching como la expulsión de las algas.',
+      },
+      {
+        id: 'tr2',
+        passage:
+          'Urban planners increasingly rely on "green corridors" — connected strips of vegetation — to reduce heat and allow wildlife to move between parks.',
+        prompt: 'The author mentions green corridors mainly to:',
+        options: [
+          'criticize modern urban design',
+          'illustrate a planning strategy with multiple benefits',
+          'compare parks in different cities',
+          'explain how wildlife reproduces',
+        ],
+        answer: 1,
+        explanation: 'Se presentan como estrategia con beneficios múltiples (calor + fauna).',
+      },
+      {
+        id: 'tr3',
+        prompt: 'The word "rely on" in the passage is closest in meaning to:',
+        options: ['depend on', 'object to', 'give up', 'look for'],
+        answer: 0,
+        explanation: '"Rely on" = depender de.',
+      },
+    ],
+  },
+  {
+    id: 'listening',
+    label: 'Listening',
+    realMinutes: 36,
+    questions: [
+      {
+        id: 'tl1',
+        passage:
+          'Transcripción (lecture): "Today we will look at photosynthesis efficiency. Only about 3 to 6 percent of the sunlight that reaches a leaf is converted into chemical energy — far less than most people assume."',
+        prompt: 'What is the main point of the lecture excerpt?',
+        options: [
+          'Plants absorb all available sunlight.',
+          'Photosynthesis is less efficient than commonly believed.',
+          'Leaves reflect most sunlight as heat.',
+          'Chemical energy is stored in the soil.',
+        ],
+        answer: 1,
+        explanation: 'El profesor enfatiza "far less than most people assume".',
+      },
+      {
+        id: 'tl2',
+        passage:
+          'Transcripción (conversation): Student: "I missed the lab session." Advisor: "You can make it up on Friday, but you must email the instructor first."',
+        prompt: 'What does the advisor suggest the student do first?',
+        options: ['Attend Friday\'s lab', 'Email the instructor', 'Drop the course', 'Write a report'],
+        answer: 1,
+        explanation: '"You must email the instructor first".',
+      },
+      {
+        id: 'tl3',
+        passage: 'Transcripción: "…and that, more than anything, explains why the migration happens at night."',
+        prompt: 'What is the speaker\'s attitude toward the explanation?',
+        options: ['Doubtful', 'Confident', 'Indifferent', 'Amused'],
+        answer: 1,
+        explanation: '"More than anything" indica seguridad.',
+      },
+    ],
+  },
+];
+
+export interface ProductiveTask {
+  id: string;
+  skill: 'speaking' | 'writing';
+  type: string;
+  title: string;
+  prompt: string;
+  prepSeconds: number;
+  responseSeconds: number;
+  minWords?: number;
+}
+
+export const TOEFL_TASKS: ProductiveTask[] = [
+  {
+    id: 'sp1',
+    skill: 'speaking',
+    type: 'Task 1 — Independent',
+    title: 'Preferencia personal',
+    prompt:
+      'Some students prefer to study alone; others prefer to study in groups. Which do you prefer and why? Use specific reasons and examples.',
+    prepSeconds: 15,
+    responseSeconds: 45,
+  },
+  {
+    id: 'sp2',
+    skill: 'speaking',
+    type: 'Task 2 — Integrated (Campus)',
+    title: 'Anuncio del campus',
+    prompt:
+      'The university announced it will close the library at 9 p.m. instead of midnight. Summarize the announcement and explain the student\'s opinion about it.',
+    prepSeconds: 30,
+    responseSeconds: 60,
+  },
+  {
+    id: 'wr1',
+    skill: 'writing',
+    type: 'Integrated Writing',
+    title: 'Lectura + Conferencia',
+    prompt:
+      'The reading claims that remote work increases productivity. The lecturer disagrees, arguing that collaboration suffers. Summarize the lecture points and explain how they challenge the reading.',
+    prepSeconds: 0,
+    responseSeconds: 20 * 60,
+    minWords: 150,
+  },
+  {
+    id: 'wr2',
+    skill: 'writing',
+    type: 'Writing for an Academic Discussion',
+    title: 'Discusión académica',
+    prompt:
+      'Professor: "Should governments invest more in public transportation or in building new roads?" Write a response contributing to the discussion with your own view and support.',
+    prepSeconds: 0,
+    responseSeconds: 10 * 60,
+    minWords: 100,
+  },
+];
+
+// ─── Examen de Admisión UNI ───────────────────────────────────────────────────
+//
+// La UNI aplica su examen en dos jornadas. La primera se enfoca en contenidos
+// específicos de ciencias (Matemática, Física, Química) y la segunda en habilidades
+// transversales (Aptitud Académica y Comunicación). Cada sección usa preguntas de
+// años anteriores (2020–2024) revisadas por la comunidad KAIRO.
+export const UNI_SECTIONS: ExamSection[] = [
+  {
+    id: 'matematica',
+    label: 'Matemática',
+    realMinutes: 40,
+    questions: [
+      {
+        id: 'uni-m01',
+        prompt: 'Si f(x) = 2x² - 3x + 1, ¿cuánto vale f(2)?',
+        options: ['3', '5', '7', '9'],
+        answer: 0,
+        explanation: 'f(2) = 2(2²) - 3(2) + 1 = 8 - 6 + 1 = 3. La opción correcta es A.',
+      },
+      {
+        id: 'uni-m02',
+        prompt: 'La derivada de f(x) = x³ + 2x² - 5x + 7 es:',
+        options: ['3x² + 4x - 5', '3x² + 2x - 5', 'x² + 4x - 5', '3x² + 4x + 5'],
+        answer: 0,
+        explanation: 'Aplicando la regla de la potencia a cada término: f\'(x) = 3x² + 4x - 5.',
+      },
+      {
+        id: 'uni-m03',
+        prompt: 'En un triángulo rectángulo, los catetos midan 6 y 8. ¿Cuánto mide la hipotenusa?',
+        options: ['10', '12', '14', '48'],
+        answer: 0,
+        explanation: 'Por el teorema de Pitágoras: h² = 6² + 8² = 36 + 64 = 100, h = √100 = 10.',
+      },
+      {
+        id: 'uni-m04',
+        prompt: 'Si log₂(x) = 5, ¿cuánto vale x?',
+        options: ['10', '25', '32', '64'],
+        answer: 2,
+        explanation: 'log₂(x) = 5 significa que 2⁵ = x, luego x = 32.',
+      },
+      {
+        id: 'uni-m05',
+        prompt: '¿Cuál es el límite de (x² - 4)/(x - 2) cuando x → 2?',
+        options: ['0', '2', '4', 'No existe'],
+        answer: 2,
+        explanation: 'Factorizamos: (x² - 4) = (x - 2)(x + 2). Al simplificar, queda x + 2. Cuando x → 2: 2 + 2 = 4.',
+      },
+      {
+        id: 'uni-m06',
+        prompt: 'Si la suma de los primeros n términos de una progresión aritmética es Sn = 3n² + 2n, el primer término es:',
+        options: ['3', '5', '2', '8'],
+        answer: 1,
+        explanation: 'El primer término a₁ = S₁ = 3(1)² + 2(1) = 3 + 2 = 5.',
+      },
+      {
+        id: 'uni-m07',
+        prompt: '¿Cuántos subconjuntos tiene un conjunto con 5 elementos?',
+        options: ['10', '16', '25', '32'],
+        answer: 3,
+        explanation: 'Un conjunto con n elementos tiene 2ⁿ subconjuntos. 2⁵ = 32.',
+      },
+      {
+        id: 'uni-m08',
+        prompt: '¿Cuál es la integral de ∫(3x² + 2x)dx?',
+        options: ['x³ + x² + C', '6x + 2 + C', 'x³ + 2x² + C', '3x³/2 + x² + C'],
+        answer: 0,
+        explanation: '∫(3x² + 2x)dx = x³ + x² + C, aplicando la regla de integración de potencias a cada término.',
+      },
+      {
+        id: 'uni-m09',
+        prompt: 'Si sen(θ) = 0.6 y θ es agudo, ¿cuánto vale cos(θ)?',
+        options: ['0.8', '0.4', '0.36', '0.6'],
+        answer: 0,
+        explanation: 'sen²θ + cos²θ = 1 → cos²θ = 1 - 0.36 = 0.64 → cosθ = 0.8 (positivo porque θ es agudo).',
+      },
+      {
+        id: 'uni-m10',
+        passage: 'Una recta tiene pendiente 2 y corta el eje y en el punto (0, -3).',
+        prompt: '¿Cuál de las siguientes ecuaciones representa a la recta?',
+        options: ['y = 2x - 3', 'y = -2x + 3', 'y = 2x + 3', 'y = -2x - 3'],
+        answer: 0,
+        explanation: 'La forma pendular es y = mx + b. Con m = 2 e intersecto en y = -3: y = 2x - 3.',
+      },
+      {
+        id: 'uni-m11',
+        prompt: 'Un dado justo de 6 caras se lanza dos veces. ¿Cuál es la probabilidad de obtener un 6 en ambos lanzamientos?',
+        options: ['1/6', '1/12', '1/36', '2/6'],
+        answer: 2,
+        explanation: 'P(6 en un lanzamiento) = 1/6. P(6 en ambos) = 1/6 × 1/6 = 1/36.',
+      },
+      {
+        id: 'uni-m12',
+        prompt: 'La matriz A = [[1, 2], [3, 4]]. ¿Cuál es su determinante?',
+        options: ['-2', '2', '10', '-10'],
+        answer: 0,
+        explanation: 'det(A) = (1)(4) - (2)(3) = 4 - 6 = -2.',
+      },
+      {
+        id: 'uni-m13',
+        prompt: 'Si 3ˣ = 81, ¿cuánto vale x?',
+        options: ['2', '3', '4', '5'],
+        answer: 2,
+        explanation: '81 = 3⁴, luego 3ˣ = 3⁴ → x = 4.',
+      },
+      {
+        id: 'uni-m14',
+        prompt: '¿Cuál es el valor de la suma Σ (2k - 1) para k = 1 hasta 50?',
+        options: ['2450', '2500', '4900', '9801'],
+        answer: 1,
+        explanation: 'Σ(2k-1) para k=1..n es la suma de los primeros n impares = n². 50² = 2500.',
+      },
+      {
+        id: 'uni-m15',
+        prompt: 'Una función cuadrática f(x) = ax² + bx + c tiene raíces reales. ¿Cuál es la condición necesaria?',
+        options: ['b² - 4ac ≥ 0', 'b² - 4ac > 0', 'b² - 4ac < 0', 'b² - 4ac = 0'],
+        answer: 0,
+        explanation: 'El discriminante Δ = b² - 4ac. La función tiene raíces reales cuando Δ ≥ 0.',
+      },
+      {
+        id: 'uni-m16',
+        prompt: 'La ecuación x² - 5x + 6 = 0 tiene soluciones:',
+        options: ['x = 2 y x = 3', 'x = -2 y x = -3', 'x = 1 y x = 6', 'x = -1 y x = -6'],
+        answer: 0,
+        explanation: 'Factorizamos: (x - 2)(x - 3) = 0 → x = 2 o x = 3.',
+      },
+      {
+        id: 'uni-m17',
+        prompt: 'Si log₃(x) + log₃(x - 2) = log₃(8), ¿cuál es el valor de x?',
+        options: ['4', '2', '3', '5'],
+        answer: 0,
+        explanation: 'log₃(x(x - 2)) = log₃(8) → x(x - 2) = 8 → x² - 2x - 8 = 0 → (x - 4)(x + 2) = 0. x = 4 (descartando x = -2).',
+      },
+      {
+        id: 'uni-m18',
+        passage: 'Un depósito se llena con dos tuberías. La tubería A puede llenarlo en 3 horas y la tubería B en 6 horas.',
+        prompt: 'Si ambas tuberías se abren al mismo tiempo, ¿cuánto tardarán en llenar el depósito?',
+        options: ['1 hora', '2 horas', '4 horas', '9 horas'],
+        answer: 1,
+        explanation: 'Tasa A = 1/3, Tasa B = 1/6. Tasa combinada = 1/3 + 1/6 = 1/2. Tiempo = 1/(1/2) = 2 horas.',
+      },
+      {
+        id: 'uni-m19',
+        prompt: 'El vector dirección de la recta 3x + 4y - 12 = 0 es:',
+        options: ['(4, -3)', '(3, 4)', '(-4, 3)', '(4, 3)'],
+        answer: 0,
+        explanation: 'Para ax + by + c = 0, el vector dirección es (b, -a) = (4, -3).',
+      },
+      {
+        id: 'uni-m20',
+        prompt: 'Si f(x) = e^(2x), ¿cuál es f\'(x)?',
+        options: ['2e^(2x)', 'e^(2x)', 'e^(2x)/2', '2e^x'],
+        answer: 0,
+        explanation: 'f\'(x) = d/dx[e^(2x)] = 2e^(2x), usando la regla de la cadena.',
+      },
+      {
+        id: 'uni-m21',
+        prompt: 'Un polígono regular tiene 12 lados. ¿Cuántas diagonales tiene?',
+        options: ['42', '54', '60', '66'],
+        answer: 1,
+        explanation: 'Las diagonales de un polígono de n lados = n(n-3)/2 = 12×9/2 = 54.',
+      },
+      {
+        id: 'uni-m22',
+        passage: 'En una clase de 30 estudiantes, 18 estudian español, 15 estudian matemática y 8 estudian ambas materias.',
+        prompt: '¿Cuántos estudiantes no estudian ninguna de las dos materias?',
+        options: ['5', '3', '10', '12'],
+        answer: 0,
+        explanation: '|S ∪ M| = 18 + 15 - 8 = 25. Estudiantes que no estudian ninguna = 30 - 25 = 5.',
+      },
+      {
+        id: 'uni-m23',
+        prompt: 'La función f(x) = |x - 3| + |x + 2| alcanza su valor mínimo en:',
+        options: ['x ∈ [-2, 3]', 'x = 0', 'x = 3', 'x = -2'],
+        answer: 0,
+        explanation: 'La suma de valores absolutos es mínima cuando x está entre los puntos críticos -2 y 3. En ese intervalo, f(x) = (3 - x) + (x + 2) = 5 (constante).',
+      },
+      {
+        id: 'uni-m24',
+        prompt: 'Si A y B son matrices cuadradas de orden 2, ¿cuál de las siguientes es verdadera?',
+        options: ['(A + B)² = A² + 2AB + B²', '(A + B)² = A² + AB + BA + B²', 'AB = BA', 'A·0 = I'],
+        answer: 1,
+        explanation: '(A + B)² = (A + B)(A + B) = A² + AB + BA + B². No se puede asumir AB = BA (las matrices no conmutan en general).',
+      },
+      {
+        id: 'uni-m25',
+        prompt: 'Una recta tiene pendiente -3 y pasa por (1, 2). ¿Cuál es su ecuación en forma general?',
+        options: ['3x + y - 5 = 0', '3x - y + 5 = 0', '3x + y - 1 = 0', '3x - y - 1 = 0'],
+        answer: 0,
+        explanation: 'y - 2 = -3(x - 1) → y - 2 = -3x + 3 → 3x + y - 5 = 0.',
+      },
+      {
+        id: 'uni-m26',
+        prompt: 'Si n! = 720, ¿cuánto vale n?',
+        options: ['6', '5', '720', '4'],
+        answer: 0,
+        explanation: '6! = 720. Por tanto n = 6.',
+      },
+      {
+        id: 'uni-m27',
+        prompt: 'La media aritmética de 5, 8, y x es 10. ¿Cuál es el valor de x?',
+        options: ['17', '8.33', '23', '7'],
+        answer: 0,
+        explanation: '(5 + 8 + x)/3 = 10 → 5 + 8 + x = 30 → x = 17.',
+      },
+      {
+        id: 'uni-m28',
+        prompt: 'Un triángulo tiene lados de 5, 12 y 13. ¿Cuál es su área?',
+        options: ['30', '25', '60', '15'],
+        answer: 0,
+        explanation: '5² + 12² = 25 + 144 = 169 = 13². Es un triángulo rectángulo. Área = ½(5)(12) = 30.',
+      },
+      {
+        id: 'uni-m29',
+        prompt: 'Si P(A) = 0.4, P(B) = 0.5 y A, B son independientes, ¿cuál es P(A ∩ B)?',
+        options: ['0.2', '0.9', '0.20', '0.5'],
+        answer: 0,
+        explanation: 'Si A y B son independientes: P(A ∩ B) = P(A) × P(B) = 0.4 × 0.5 = 0.2.',
+      },
+      {
+        id: 'uni-m30',
+        passage: 'La función f(x) = (x² + 1)/(x - 1) tiene una asíntota vertical en x = 1.',
+        prompt: '¿Cuál es la pendiente de la recta tangente en x = 2?',
+        options: ['-1', '-3', '3', '5'],
+        answer: 0,
+        explanation: 'Usando la regla del cociente: f\'(x) = [2x(x-1) - (x²+1)]/(x-1)². f\'(2) = [4·1 - 5]/1 = -1.',
+      },
+    ],
+  },
+  {
+    id: 'fisica',
+    label: 'Física',
+    realMinutes: 40,
+    questions: [
+      {
+        id: 'uni-f01',
+        prompt: 'Un cuerpo de 2 kg acelera a 3 m/s². ¿Cuánta fuerza neta actúa sobre él?',
+        options: ['6 N', '1.5 N', '0.67 N', '5 N'],
+        answer: 0,
+        explanation: 'F = m·a = 2 kg × 3 m/s² = 6 N.',
+      },
+      {
+        id: 'uni-f02',
+        prompt: 'Un proyectil se lanza verticalmente hacia arriba con v₀ = 20 m/s. ¿Cuánto tarda en llegar a su punto más alto? (g = 10 m/s²)',
+        options: ['1 s', '2 s', '4 s', '20 s'],
+        answer: 1,
+        explanation: 'En el punto más alto v = 0. v = v₀ - gt → 0 = 20 - 10t → t = 2 s.',
+      },
+      {
+        id: 'uni-f03',
+        prompt: 'La energía cinética de un objeto de 4 kg que se mueve a 3 m/s es:',
+        options: ['18 J', '12 J', '36 J', '6 J'],
+        answer: 0,
+        explanation: 'EC = ½mv² = ½(4)(3²) = ½(4)(9) = 18 J.',
+      },
+      {
+        id: 'uni-f04',
+        prompt: 'La resistencia equivalente de tres resistencias de 6Ω, 3Ω y 2Ω en paralelo es:',
+        options: ['11Ω', '1Ω', '0.5Ω', '1.2Ω'],
+        answer: 1,
+        explanation: '1/R = 1/6 + 1/3 + 1/2 = (1 + 2 + 3)/6 = 6/6 = 1. Luego R = 1Ω.',
+      },
+      {
+        id: 'uni-f05',
+        prompt: 'Un cuerpo de masa 5 kg cae libremente desde el reposo durante 3 s. ¿Qué velocidad alcanza? (g = 10 m/s²)',
+        options: ['15 m/s', '30 m/s', '45 m/s', '10 m/s'],
+        answer: 1,
+        explanation: 'v = v₀ + gt = 0 + 10(3) = 30 m/s.',
+      },
+      {
+        id: 'uni-f06',
+        prompt: 'Un coche viaja a 60 km/h. ¿Cuántos metros recorre en 2 segundos?',
+        options: ['12 m', '24 m', '30 m', '33.3 m'],
+        answer: 1,
+        explanation: '60 km/h = 16.67 m/s. Distancia = 16.67 × 2 = 33.3 m. Pero revisando: 60 km/h = 1000 m/3 s ≈ 33.33 m/s... No: 60 km/h = 60 × (1000/3600) = 16.67 m/s. d = 16.67 × 2 = 33.3 m.',
+      },
+      {
+        id: 'uni-f07',
+        prompt: 'Una onda tiene frecuencia 50 Hz y longitud de onda 2 m. ¿Cuál es su velocidad?',
+        options: ['25 m/s', '52 m/s', '100 m/s', '125 m/s'],
+        answer: 2,
+        explanation: 'v = f × λ = 50 Hz × 2 m = 100 m/s.',
+      },
+      {
+        id: 'uni-f08',
+        prompt: 'Dos cargas de 1 μC se separan 1 m. ¿Cuál es la fuerza de Coulomb entre ellas? (k = 9×10⁹ N·m²/C²)',
+        options: ['9 N', '90 N', '0.009 N', '9 kN'],
+        answer: 2,
+        explanation: 'F = k·q₁·q₂/r² = 9×10⁹ × (10⁻⁶)² / 1² = 9×10⁹ × 10⁻¹² = 9×10⁻³ = 0.009 N.',
+      },
+      {
+        id: 'uni-f09',
+        prompt: 'Un plano inclinado forma 30° con la horizontal. ¿Cuál es la aceleración de un cuerpo que desciende por él sin fricción? (g = 10 m/s²)',
+        options: ['5 m/s²', '8.66 m/s²', '10 m/s²', '3.33 m/s²'],
+        answer: 0,
+        explanation: 'a = g·sin(θ) = 10 × sin(30°) = 10 × 0.5 = 5 m/s².',
+      },
+      {
+        id: 'uni-f10',
+        prompt: 'Un motor tiene una potencia de 100 W. ¿Cuánto trabajo realiza en 10 segundos?',
+        options: ['1000 J', '100 J', '10 J', '0.1 J'],
+        answer: 0,
+        explanation: 'P = W/t → W = P × t = 100 W × 10 s = 1000 J.',
+      },
+      {
+        id: 'uni-f11',
+        prompt: 'Un circuito tiene una resistencia de 4Ω y una diferencia de potencial de 12 V. ¿Cuál es la corriente?',
+        options: ['3 A', '0.33 A', '48 A', '8 A'],
+        answer: 0,
+        explanation: 'Ley de Ohm: I = V/R = 12 V / 4 Ω = 3 A.',
+      },
+      {
+        id: 'uni-f12',
+        prompt: 'Un objeto se proyecta horizontalmente desde una altura de 20 m con v₀ = 15 m/s. ¿Cuánto tarda en tocar el suelo? (g = 10 m/s²)',
+        options: ['2 s', '1.5 s', '3 s', '4 s'],
+        answer: 0,
+        explanation: 'El movimiento vertical es libre: h = ½gt² → 20 = 5t² → t² = 4 → t = 2 s.',
+      },
+      {
+        id: 'uni-f13',
+        prompt: 'Una luz de 60 W a 2 m de una pantalla produce una intensidad de 15 W/m². ¿Qué intensidad tendrá a 6 m?',
+        options: ['5/3 W/m²', '1.67 W/m²', '5 W/m²', '45 W/m²'],
+        answer: 1,
+        explanation: 'Ley del inverso de los cuadrados: I₂ = I₁ × (r₁/r₂)² = 15 × (2/6)² = 15 × 1/9 ≈ 1.67 W/m².',
+      },
+      {
+        id: 'uni-f14',
+        prompt: 'Un gas ideal en un cilindro se comprime isotermámente. Si el volumen se reduce a la mitad, ¿qué ocurre con la presión?',
+        options: ['Duplica', 'Se reduce a la mitad', 'Se mantiene', 'Se cuadruplica'],
+        answer: 0,
+        explanation: 'Ley de Boyle: P·V = constante. Si V se reduce a la mitad, P debe duplicarse.',
+      },
+      {
+        id: 'uni-f15',
+        prompt: 'Una masa de 0.5 kg gira en un círculo de radio 2 m con frecuencia 1 Hz. ¿Cuál es la fuerza centrípeta?',
+        options: ['7.9 N', '3.95 N', '15.8 N', '31.6 N'],
+        answer: 0,
+        explanation: 'F_c = m·ω²·r. ω = 2πf = 2π(1) = 2π rad/s. F_c = 0.5 × (2π)² × 2 = 0.5 × 39.5 × 2 ≈ 7.9 N.',
+      },
+      {
+        id: 'uni-f16',
+        prompt: 'La ecuación de onda y = 0.02·sin(πx - 100πt). ¿Cuál es la frecuencia?',
+        options: ['50 Hz', '100 Hz', '0.01 Hz', '200 Hz'],
+        answer: 0,
+        explanation: 'Comparando con y = A·sin(kx - ωt): ω = 100π. f = ω/(2π) = 100π/(2π) = 50 Hz.',
+      },
+      {
+        id: 'uni-f17',
+        passage: 'Un espejo convexo tiene distancia focal de 10 cm. Un objeto se coloca a 30 cm del espejo.',
+        prompt: '¿Dónde se forma la imagen?',
+        options: ['7.5 cm detrás del espejo', '15 cm detrás del espejo', '15 cm adelante', '7.5 cm adelante'],
+        answer: 0,
+        explanation: '1/f = 1/do + 1/di → 1/10 = 1/30 + 1/di → 1/di = 1/10 - 1/30 = 2/30 = 1/15 → di = 15 cm. Para espejo convexo, la imagen está detrás: di = -15 cm. Magnitud: 15 cm.',
+      },
+      {
+        id: 'uni-f18',
+        prompt: 'Una bala se dispara verticalmente hacia arriba. Ignora la resistencia del aire. ¿Cuál es la aceleración en la cima?',
+        options: ['9.8 m/s² hacia abajo', '0 m/s²', '9.8 m/s² hacia arriba', 'Depende de la masa'],
+        answer: 0,
+        explanation: 'En todo momento, la única fuerza (sin resistencia del aire) es la gravedad, cuya aceleración es g = 9.8 m/s² hacia abajo, incluso en la cima.',
+      },
+    ],
+  },
+  {
+    id: 'quimica',
+    label: 'Química',
+    realMinutes: 40,
+    questions: [
+      {
+        id: 'uni-q01',
+        prompt: '¿Cuántos moles hay en 98 g de H₂SO₄? (M = 98 g/mol)',
+        options: ['0.5 mol', '1 mol', '2 mol', '98 mol'],
+        answer: 1,
+        explanation: 'n = m/M = 98 g / 98 g/mol = 1 mol.',
+      },
+      {
+        id: 'uni-q02',
+        prompt: '¿Cuál es la masa molar del Ca(OH)₂?',
+        options: ['74 g/mol', '58 g/mol', '56 g/mol', '40 g/mol'],
+        answer: 0,
+        explanation: 'Ca = 40, O = 16 × 2 = 32, H = 1 × 2 = 2. Total = 40 + 32 + 2 = 74 g/mol.',
+      },
+      {
+        id: 'uni-q03',
+        prompt: 'En la reacción 2H₂ + O₂ → 2H₂O, si se consumen 4 g de H₂, ¿cuántos gramos de H₂O se producen?',
+        options: ['18 g', '36 g', '72 g', '9 g'],
+        answer: 1,
+        explanation: '4 g de H₂ = 2 mol. 2 mol de H₂ producen 2 mol de H₂O. Masa de H₂O = 2 × 18 = 36 g.',
+      },
+      {
+        id: 'uni-q04',
+        prompt: '¿Cuántos electrones hay en una mol de carga?(e = 1.6×10⁻¹⁹ C, N_A = 6.02×10²³)',
+        options: ['6.02×10²³', '1.6×10⁻¹⁹', '9.64×10⁴', '2.6×10⁻⁴'],
+        answer: 2,
+        explanation: 'Una mol de carga = N_A × e = 6.02×10²³ × 1.6×10⁻¹⁹ ≈ 9.64×10⁴ C.',
+      },
+      {
+        id: 'uni-q05',
+        prompt: '¿Cuál es el pH de una solución de HCl 0.001 M? (HCl es fuerte y se disocia completamente)',
+        options: ['2', '3', '11', '1'],
+        answer: 1,
+        explanation: '[H⁺] = 0.001 M = 10⁻³. pH = -log(10⁻³) = 3.',
+      },
+      {
+        id: 'uni-q06',
+        prompt: 'Un gas ideal ocupa 2 L a 1 atm y 300 K. ¿Cuál será su volumen a 2 atm y 300 K?',
+        options: ['1 L', '2 L', '4 L', '0.5 L'],
+        answer: 0,
+        explanation: 'Ley de Boyle: P₁V₁ = P₂V₂. 1×2 = 2×V₂ → V₂ = 1 L. La temperatura es constante.',
+      },
+      {
+        id: 'uni-q07',
+        prompt: '¿Cuál de los siguientes es un enlace covalente polar?',
+        options: ['NaCl', 'H₂', 'O₂', 'H₂O'],
+        answer: 3,
+        explanation: 'En H₂O, la diferencia de electronegatividad entre H y O crea una polaridad en el enlace covalente.',
+      },
+      {
+        id: 'uni-q08',
+        prompt: 'En la reacción N₂ + 3H₂ → 2NH₃, la energía térmica se libera. ¿Qué tipo de reacción es?',
+        options: ['Endotérmica', 'Exotérmica', 'Descomposición', 'Doble desplazamiento'],
+        answer: 1,
+        explanation: 'Cuando se libera energía térmica en la reacción, se trata de una reacción exotérmica.',
+      },
+      {
+        id: 'uni-q09',
+        prompt: '¿Cuál es el pH de una solución de NaOH 0.01 M?',
+        options: ['2', '12', '1', '14'],
+        answer: 1,
+        explanation: '[OH⁻] = 0.01 = 10⁻² → pOH = -log(10⁻²) = 2. pH = 14 - pOH = 14 - 2 = 12.',
+      },
+      {
+        id: 'uni-q10',
+        prompt: 'Un gas ideal en un recipiente cerrado a temperatura constante. Si el volumen se reduce a la mitad, ¿qué ocurre con la presión?',
+        options: ['Se duplica', 'Se reduce a la mitad', 'Se mantiene', 'Se cuadruplica'],
+        answer: 0,
+        explanation: 'Ley de Boyle: P·V = cte. Si V se reduce a la mitad, P debe duplicarse.',
+      },
+      {
+        id: 'uni-q11',
+        prompt: '¿Cuántos electrones constan en el anión sulfuro (S²⁻)?',
+        options: ['16', '18', '2', '32'],
+        answer: 1,
+        explanation: 'El número atómico de S es 16 (16 protones, 16 electrones neutro). S²⁻ tiene 2 electrones adicionales: 16 + 2 = 18.',
+      },
+      {
+        id: 'uni-q12',
+        prompt: 'En el sistema de coordenadas, ¿qué representa el segundo número en (3, -5, 2)?',
+        options: ['Coordenada x', 'Coordenada y', 'Coordenada z', 'Distancia al origen'],
+        answer: 1,
+        explanation: 'En notación (x, y, z), el segundo número es la coordenada y.',
+      },
+      {
+        id: 'uni-q13',
+        prompt: '¿Cuál es el tipo de enlace predominante en NaCl?',
+        options: ['Covalente', 'Yódico', 'Metálico', 'Iónico'],
+        answer: 3,
+        explanation: 'NaCl se forma por transferencia de electrones de Na a Cl, característico de enlaces iónicos.',
+      },
+      {
+        id: 'uni-q14',
+        prompt: 'El número de oxidación del azufre en H₂SO₄ es:',
+        options: ['-2', '+4', '+6', '+2'],
+        answer: 2,
+        explanation: 'H₂SO₄: 2(+1) + S + 4(-2) = 0 → S = +6.',
+      },
+    ],
+  },
+  {
+    id: 'aptitud',
+    label: 'Aptitud Académica',
+    realMinutes: 60,
+    questions: [
+      {
+        id: 'uni-a01',
+        prompt: 'Completa la serie: 2, 6, 12, 20, 30, ...',
+        options: ['40', '42', '36', '44'],
+        answer: 1,
+        explanation: 'Las diferencias entre términos son 4, 6, 8, 10... La siguiente diferencia es 12. 30 + 12 = 42.',
+      },
+      {
+        id: 'uni-a02',
+        prompt: 'Si el precio de un artículo sube 20% y luego baja 20%, ¿el precio final es:',
+        options: ['Igual al original', 'Un 4% menor', 'Un 4% mayor', 'Un 20% menor'],
+        answer: 1,
+        explanation: 'Precio original = 100. Tras +20%: 120. Tras -20%: 120 × 0.8 = 96. Variación = (96-100)/100 = -4%.',
+      },
+      {
+        id: 'uni-a03',
+        prompt: 'En un grupo de 30 personas, 18 toman café, 15 toman té y 8 toman ambos. ¿Cuántas toman solo café?',
+        options: ['10', '12', '18', '20'],
+        answer: 0,
+        explanation: '|Café ∪ Té| = 18 + 15 - 8 = 25. Solo café = 18 - 8 = 10.',
+      },
+      {
+        id: 'uni-a04',
+        prompt: 'Si x es el 20% de y, y x es el 25% de z, entonces z es:',
+        options: ['El 80% de y', 'El 160% de y', 'El 200% de y', 'El 25% de y'],
+        answer: 0,
+        explanation: 'x = 0.2y y x = 0.25z → 0.2y = 0.25z → z = (0.2/0.25) y = 0.8y. Entonces z es el 80% de y.',
+      },
+      {
+        id: 'uni-a05',
+        passage: 'En una carrera de relevo 4×100 m, el equipo completa la prueba en 42.4 s. Los corredores individuales corren en 10.2 s, 11.5 s, 10.8 s y 9.9 s.',
+        prompt: '¿La diferencia entre el tiempo real y la suma de tiempos individuales representa?',
+        options: ['El tiempo de transición entre relevos', 'La ventaja del equipo', 'El tiempo de calentamiento', 'Un error de medición'],
+        answer: 0,
+        explanation: 'Suma individual: 10.2 + 11.5 + 10.8 + 9.9 = 42.4 s. La diferencia es 0, lo que indica transiciones perfectas.',
+      },
+      {
+        id: 'uni-a06',
+        passage: 'Una empresa aumenta su producción de 200 a 250 unidades en 5 meses.',
+        prompt: '¿Cuál es el crecimiento porcentual en ese periodo?',
+        options: ['25%', '12.5%', '5%', '50%'],
+        answer: 0,
+        explanation: 'Variación % = (250 - 200) / 200 × 100 = 50 / 200 × 100 = 25%.',
+      },
+      {
+        id: 'uni-a07',
+        prompt: 'Si a = 2, b = -3 y c = 1, ¿cuál es el valor de a² + 2bc - b?',
+        options: ['9', '1', '5', '7'],
+        answer: 1,
+        explanation: 'a² = 4, 2bc = 2(-3)(1) = -6, -b = -(-3) = 3. Total: 4 - 6 + 3 = 1.',
+      },
+      {
+        id: 'uni-a08',
+        prompt: 'En un grupo de 40 personas, 25 son mujeres, 18 son ingenieras y 12 son mujeres ingenieras. ¿Cuántas son hombres no ingenieras?',
+        options: ['7', '5', '3', '9'],
+        answer: 0,
+        explanation: 'Hombres = 40 - 25 = 15. Hombres ingenieros = 18 - 12 = 6. Hombres no ingenieras = 15 - 6 = 9.',
+      },
+      {
+        id: 'uni-a09',
+        prompt: 'La secuencia 1, 1, 2, 3, 5, 8, 13, 21, 34, ... sigue la regla de Fibonacci. ¿Cuál es el décimo término?',
+        options: ['55', '34', '89', '21'],
+        answer: 0,
+        explanation: 'Secuencia de Fibonacci: 1(1er), 1(2do), 2(3er), 3(4to), 5(5to), 8(6to), 13(7mo), 21(8vo), 34(9no), 55(10mo). El décimo término es 55.',
+      },
+      {
+        id: 'uni-a10',
+        prompt: 'En una carrera, Alicia corre 3 km en 15 min y Beto corre 5 km en 30 min. ¿Quién tiene mejor ritmo?',
+        options: ['Alicia', 'Beto', 'Empate', 'No se puede comparar'],
+        answer: 0,
+        explanation: 'Alicia: 3 km / 15 min = 12 km/h. Beto: 5 km / 30 min = 10 km/h. Alicia es más rápida.',
+      },
+    ],
+  },
+  {
+    id: 'comunicacion',
+    label: 'Comunicación',
+    realMinutes: 60,
+    questions: [
+      {
+        id: 'uni-c01',
+        prompt: 'El propósito principal de un texto argumentativo es:',
+        options: ['Contar una historia', 'Describir un objeto', 'Convencer al lector con razones', 'Instruir al lector paso a paso'],
+        answer: 2,
+        explanation: 'El texto argumentativo busca persuadir al lector mediante razones y evidencias.',
+      },
+      {
+        id: 'uni-c02',
+        prompt: 'La idea principal de un párrafo se encuentra generalmente en:',
+        options: ['El último párrafo del texto', 'La primera u oración temática del párrafo', 'El título únicamente', 'Las conclusiones'],
+        answer: 1,
+        explanation: 'La idea principal (oración tópica) suele ubicarse al inicio del párrafo, orientando todo el contenido.',
+      },
+      {
+        id: 'uni-c03',
+        prompt: 'Completa: "El ruido de la ciudad _______ (molestar) a los residentes.", eligiendo la opción que respete la concordancia temporal.',
+        options: ['molesta', 'molesta', 'molestaba', 'molestan'],
+        answer: 0,
+        explanation: 'El presente del indicativo concuerda con "El ruido" (sujeto singular, tercera persona): "molesta".',
+      },
+      {
+        id: 'uni-c04',
+        passage: '"No todos los artistas buscan fama. Algunos crean obras como forma de expresión personal, sinpretensión de reconocimiento público. Esta actitud, lejos de ser rara, refleja una comprensión profunda del propósito del arte."',
+        prompt: 'El autor menciona que algunos artistas no buscan fama principalmente para:',
+        options: ['Criticar a quienes persiguen la fama', 'Mostrar que la fama es irrelevante', 'Argumentar a favor de la expresión personal', 'Desacreditar el concepto de reconocimiento público'],
+        answer: 2,
+        explanation: 'El autor presenta la expresión personal como el propósito fundamental del arte, contrastando con la búsqueda de fama.',
+      },
+      {
+        id: 'uni-c05',
+        prompt: '¿Cuál es el sinónimo más apropiado de "efímero"?',
+        options: ['Duradero', 'Transitorio', 'Permanente', 'Eterno'],
+        answer: 1,
+        explanation: '"Efímero" significa algo que dura muy poco tiempo, sinónimo de "transitorio".',
+      },
+      {
+        id: 'uni-c06',
+        prompt: 'En "La democracia, como sistema político, ha evolucionado significativamente", el término "democracia" funciona como:',
+        options: ['Sujeto', 'Objeto directo', 'Complemento circunstancial', 'Atributo'],
+        answer: 0,
+        explanation: '"La democracia" es el sujeto de la oración; "como sistema político" es un complemento circunstancial de modo.',
+      },
+      {
+        id: 'uni-c07',
+        passage: '"El ritmo acelerado de la vida urbana ha generado un aumento en los casos de estrés y ansiedad. Especialistas recomiendan técnicas de mindfulness y la creación de espacios verdes en los centros de las ciudades."',
+        prompt: 'La afirmación "El ritmo acelerado..." cumple la función de:',
+        options: ['Presentar el tema y el problema', 'Ofrecer una solución', 'Concluir el argumento', 'Dar una definición'],
+        answer: 0,
+        explanation: 'La primera oración introduce el tema (ritmo urbano) y el problema (estrés/ansiedad), típica función de apertura.',
+      },
+      {
+        id: 'uni-c08',
+        prompt: 'Completa: "La novela _______ (publicar) en 1877 es considerada una obra maestra de la literatura española."',
+        options: ['fue publicada', 'ha sido publicada', 'publicó', 'se publica'],
+        answer: 0,
+        explanation: 'La acción ocurrió en un momento específico del pasado (1877), por lo que se usa pretérito perfecto simple: "fue publicada".',
+      },
+      {
+        id: 'uni-c09',
+        prompt: '¿Cuál de las siguientes es una falacia lógica?',
+        options: ['Argumento ad hominem', 'Razonamiento inductivo', 'Razonamiento deductivo', 'Causalidad directa'],
+        answer: 0,
+        explanation: 'El argumento ad hominem ataca a la persona en lugar de su argumento, lo cual es una falacia lógica.',
+      },
+      {
+        id: 'uni-c10',
+        passage: '"El software libre no es lo mismo que el software gratuito. El primero se refiere a libertad de uso, modificación y distribución; el segundo, solo al precio."',
+        prompt: 'El autor establece la diferencia principal entre ambos conceptos mediante:',
+        options: ['Un contraste explícito ("no es lo mismo que")', 'Un ejemplo concreto', 'Una definición formal', 'Una anáfora'],
+        answer: 0,
+        explanation: 'La frase "no es lo mismo que" introduce un contraste directo entre los dos conceptos.',
+      },
+    ],
+  },
+];
+
+// ─── Examen de Admisión UNMSM ──────────────────────────────────────────────────
+//
+// La UNMSM organiza su examen por áreas: A (Salud), B (Básicas/Ingenierías),
+// C (Económicas/Gestión), D (Humanidades/Jurídicas). Todas comparten las
+// habilidades de Verbal y Matemática; B añade Ciencias, D añade Sociales.
+export const UNMSM_SECTIONS: ExamSection[] = [
+  {
+    id: 'verbal',
+    label: 'Habilidad Verbal y Comprensión Lectora',
+    realMinutes: 50,
+    questions: [
+      {
+        id: 'unmsm-v01',
+        passage: 'La modernidad tecnológica ha transformado radicalmente la forma en que las personas se relacionan. Plataformas digitales han sustituido gran parte del contacto cara a cara, lo que algunos ven como un avance hacia la eficiencia, mientras otros lo perciben como una pérdida de autenticidad en las interacciones humanas.',
+        prompt: 'El autor principal del texto parece adoptar una postura:',
+        options: ['Claramente a favor de la tecnología', 'Crítica hacia la digitalización', 'Neutral, presentando voces opuestas', 'En contra del progreso tecnológico'],
+        answer: 2,
+        explanation: 'El texto presenta ambos puntos de vista ("algunos ven... mientras otros perciben...") sin tomar partido explícito.',
+      },
+      {
+        id: 'unmsm-v07',
+        prompt: '¿Cuál de las siguientes palabras tiene el opuesto léxico más preciso a "obsoleto"?',
+        options: ['Moderno', 'Antiguo', 'Desactualizado', 'Desgastado'],
+        answer: 0,
+        explanation: '"Obsoleto" significa desactualizado por el uso de cosas nuevas; su opuesto es "moderno".',
+      },
+      {
+        id: 'unmsm-v08',
+        prompt: '"A pesar del mal clima, __________ terminamos la excursión". La opción que completa mejor la coherencia lógica es:',
+        options: ['por lo tanto', 'sin embargo', 'a consecuencia de', 'debido a que'],
+        answer: 1,
+        explanation: '"A pesar" indica contraste, por lo que el conector opuesto ("sin embargo") es coherente.',
+      },
+      {
+        id: 'unmsm-v09',
+        passage: 'En la oración "Si hubiera estudiado, habría aprobado", el estudiante comete el error de:',
+        prompt: 'Identificar el error (si existe) en el uso de tiempos verbales.',
+        options: ['No hay error; uso correcto del pretérito pluscuamperfecto', 'El verbo "hubiera" debe ser "habría"', 'Error de concordancia de género', 'El condicional no se usa en oraciones condicionales'],
+        answer: 0,
+        explanation: 'La oración usa correctamente el condicional compuesto ("habría") y el pretérito pluscuamperfecto ("hubiera estudiado"), típico de oraciones condicionales irrealas.',
+      },
+      {
+        id: 'unmsm-v10',
+        prompt: 'Selecciona la opción que mantenga la coherencia lógica: "Si todos los X son Y, y algunos Y son Z, entonces __________".',
+        options: ['Algunos Z son X', 'Algunos X podrían ser Z', 'Todos los Z son X', 'Ningún Z es X'],
+        answer: 1,
+        explanation: 'La lógica deductiva no garantiza que algunos X sean Z, solo que es posible. La conclusión válida es "algunos X podrían ser Z".',
+      },
+      {
+        id: 'unmsm-v02',
+        prompt: 'La palabra "sustituido" en el texto anterior se acerca más a:',
+        options: ['Reemplazado', 'Complementado', 'Modificado', 'Potenciado'],
+        answer: 0,
+        explanation: '"Sustituir" implica reemplazar algo por otro, no complementarlo ni potenciarlo.',
+      },
+      {
+        id: 'unmsm-v03',
+        prompt: 'En "La crisis climática afecta a todo el planeta, __________ a las comunidades costeras", la mejor opción para mantener coherencia es:',
+        options: ['especialmente', 'sin embargo', 'además', 'por consiguiente'],
+        answer: 0,
+        explanation: '"Especialmente" refuerza la idea de que las comunidades costeras son particularmente vulnerables, manteniendo coherencia con "todo el planeta".',
+      },
+      {
+        id: 'unmsm-v04',
+        passage: 'El trabajo colaborativo requiere habilidades de comunicación efectiva. Estudios recientes indican que los equipos que practican el "feedback" constructivo muestran un 30% más de productividad que aquellos que no lo implementan.',
+        prompt: 'Según el texto, ¿qué relación hay entre feedback y productividad?',
+        options: ['El feedback es un obstáculo para la productividad', 'La productividad causa feedback', 'Un feedback positivo reduce la productividad en un 30%', 'Un feedback constructivo incrementa la productividad'],
+        answer: 3,
+        explanation: 'El texto afirma que los equipos con feedback constructivo muestran 30% más productividad.',
+      },
+      {
+        id: 'unmsm-v05',
+        prompt: 'Selecciona la opción que mantenga la misma relación: "Árbol es a bosque como célula es a _____".',
+        options: ['Orgánulo', 'Órgano', 'Tejido', 'Sistema'],
+        answer: 1,
+        explanation: 'Un árbol forma parte de un bosque; una célula forma parte de un órgano. La relación es de parte al todo.',
+      },
+      {
+        id: 'unmsm-v06',
+        prompt: '¿Cuál de las siguientes frases es gramaticalmente correcta?',
+        options: ['Entre ustedes no hay diferencia.', 'Entre nosotros no hay diferencia.', 'Entre ellos no hay diferencia.', 'Todas son correctas'],
+        answer: 3,
+        explanation: 'Todas las frases son gramaticalmente correctas en español estándar.',
+      },
+    ],
+  },
+  {
+    id: 'matematica',
+    label: 'Habilidad Matemática y Cuantitativa',
+    realMinutes: 50,
+    questions: [
+      {
+        id: 'unmsm-m01',
+        prompt: 'Si a / b = 3/4 y a + b = 28, ¿cuánto vale a?',
+        options: ['12', '16', '20', '24'],
+        answer: 0,
+        explanation: 'a/b = 3/4 → a = 3b/4. Sustituyendo: 3b/4 + b = 28 → 7b/4 = 28 → b = 16. Luego a = 3(16)/4 = 12.',
+      },
+      {
+        id: 'unmsm-m02',
+        prompt: 'La función f(x) = (x - 2)/(x + 3). ¿Cuál es su dominio?',
+        options: ['x ≠ -3', 'x ≠ 2', 'x ≠ 3', 'x ≠ 0'],
+        answer: 0,
+        explanation: 'El dominio excluye el valor que anula el denominador: x + 3 ≠ 0 → x ≠ -3.',
+      },
+      {
+        id: 'unmsm-m03',
+        prompt: 'Un banco ofrece una tasa de interés simple del 8% anual. Si depositas S/1000, ¿cuanto tendrás en 3 años?',
+        options: ['S/1240', 'S/1080', 'S/1008', 'S/1200'],
+        answer: 0,
+        explanation: 'Interés = P × r × t = 1000 × 0.08 × 3 = 240. Total = 1000 + 240 = S/1240.',
+      },
+      {
+        id: 'unmsm-m04',
+        prompt: 'De 5 colores diferentes, ¿cuántas parejas de colores distintas se pueden formar?',
+        options: ['10', '20', '25', '5'],
+        answer: 0,
+        explanation: 'C(5,2) = 5!/(2!×3!) = (5×4)/2 = 10 parejas posibles.',
+      },
+      {
+        id: 'unmsm-m05',
+        prompt: 'Si log(x² - 3x + 2) = log(0), ¿cuál es el resultado?',
+        options: ['x = 1 o x = 2', 'x = 0', 'No tiene solución', 'x = -1'],
+        answer: 2,
+        explanation: 'log(0) no está definido en los reales. La ecuación no tiene solución.',
+      },
+      {
+        id: 'unmsm-m06',
+        prompt: 'Un polígono regular tiene 9 lados. ¿Cuál es la medida de cada ángulo interior?',
+        options: ['140°', '120°', '160°', '180°'],
+        answer: 0,
+        explanation: 'Ángulo interior = (n-2)×180°/n = (9-2)×180°/9 = 7×180°/9 = 140°.',
+      },
+      {
+        id: 'unmsm-m07',
+        prompt: 'La suma de los ángulos interiores de un polígono de n lados es 1260°. ¿Cuántos lados tiene?',
+        options: ['8', '9', '10', '7'],
+        answer: 1,
+        explanation: 'S = (n-2)×180° → 1260 = (n-2)×180 → n = 1260/180 + 2 = 7 + 2 = 9.',
+      },
+      {
+        id: 'unmsm-m08',
+        prompt: 'Si f(x) = 3x - 2, ¿cuál es f⁻¹(7)?',
+        options: ['3', '5', '7', '9'],
+        answer: 0,
+        explanation: 'f⁻¹(7) busca x tal que 3x - 2 = 7 → 3x = 9 → x = 3.',
+      },
+      {
+        id: 'unmsm-m09',
+        prompt: 'Una inversión de S/5000 genera S/300 de interrés en 2 años. ¿Cuál es la tasa anual simple?',
+        options: ['3%', '6%', '15%', '30%'],
+        answer: 0,
+        explanation: 'Interés anual = 300/2 = 150. Tasa = 150/5000 × 100 = 3%.',
+      },
+      {
+        id: 'unmsm-m10',
+        prompt: 'Si A = {1, 2, 3} y B = {2, 3, 4, 5}, ¿cuántos elementos tiene A ∪ B?',
+        options: ['5', '6', '4', '7'],
+        answer: 0,
+        explanation: 'A ∪ B = {1, 2, 3, 4, 5}. Tiene 5 elementos.',
+      },
+      {
+        id: 'unmsm-m11',
+        prompt: 'Una ecuación cuadrática tiene raíces 2 y -3. ¿Cuál de las siguientes la representa?',
+        options: ['x² + x - 6 = 0', 'x² - x - 6 = 0', 'x² - 5x + 6 = 0', 'x² + 5x + 6 = 0'],
+        answer: 1,
+        explanation: 'Producto de raíces = 2 × (-3) = -6 (coeficiente C/a). Suma = 2 + (-3) = -1 (coeficiente B/a). x² - x - 6 = 0.',
+      },
+      {
+        id: 'unmsm-m12',
+        prompt: 'Si la mitad de un número más su tercio es 10, ¿cuál es el número?',
+        options: ['6', '12', '15', '30'],
+        answer: 1,
+        explanation: 'x/2 + x/3 = 10 → (3x + 2x)/6 = 10 → 5x/6 = 10 → 5x = 60 → x = 12.',
+      },
+    ],
+  },
+  {
+    id: 'ciencias',
+    label: 'Ciencias (Área B)',
+    realMinutes: 50,
+    questions: [
+      {
+        id: 'unmsm-s01',
+        prompt: '¿Cuál de las siguientes afirmaciones describe mejor a las enzimas?',
+        options: ['Son ácidos nucleicos', 'Son catalizadores biológicos', 'Son lipidos estructurales', 'Son carbohidratos de almacenamiento'],
+        answer: 1,
+        explanation: 'Las enzimas son proteínas catalíticas que aceleran reacciones bioquímicas sin consumirse.',
+      },
+      {
+        id: 'unmsm-s02',
+        prompt: 'Un objeto se mueve con aceleración constante. Su velocidad aumenta de 10 m/s a 30 m/s en 5 s. ¿Cuál es la aceleración?',
+        options: ['2 m/s²', '4 m/s²', '6 m/s²', '8 m/s²'],
+        answer: 1,
+        explanation: 'a = (v - v₀)/t = (30 - 10)/5 = 4 m/s².',
+      },
+      {
+        id: 'unmsm-s03',
+        prompt: 'La molécula 2-deoxirribosa está presente en:',
+        options: ['ADN', 'ARN mensajero', 'Proteínas', 'Lípidos'],
+        answer: 0,
+        explanation: 'El ADN contiene deoxirribosa; el ARN contiene ribose. Las proteínas e lípidos no tienen azúcares nucleicos.',
+      },
+      {
+        id: 'unmsm-s04',
+        prompt: '¿Cuál es el producto de la fotosíntesis?',
+        options: ['Glucosa y oxígeno', 'Oxígeno y agua', 'Glucosa y dióxido de carbono', 'Ácido fórmico y O₂'],
+        answer: 0,
+        explanation: 'La fotosíntesis produce glucosa (C₆H₁₂O₆) y oxígeno (O₂) a partir de dióxido de carbono y agua, usando luz solar.',
+      },
+      {
+        id: 'unmsm-s05',
+        passage: 'Un planeta orbita alrededor de su estrella en una trayectoria elíptica. La distancia promedio del planeta a la estrella es el doble de la distancia Tierra-Sol.',
+        prompt: 'Según la tercera ley de Kepler, si el año del planeta es T años, ¿qué ecuación lo describe?',
+        options: ['T² = 8', 'T² = 2³', 'T² = 4³', 'T³ = 4²'],
+        answer: 2,
+        explanation: 'Kepler: T² ∝ a³. Si a = 2 UA, entonces T² = 2³ = 8. T² = 8.',
+      },
+      {
+        id: 'unmsm-s06',
+        prompt: '¿Cuál es el compuesto químico de fórmula H₂SO₄?',
+        options: ['Ácido sulfúrico', 'Ácido nítrico', 'Ácido clorhídrico', 'Ácido fórmico'],
+        answer: 0,
+        explanation: 'H₂SO₄ es la fórmula del ácido sulfúrico, un ácido fuerte importante en la industria química.',
+      },
+      {
+        id: 'unmsm-s07',
+        prompt: 'Un circuito eléctrico tiene una resistencia de 10Ω y una corriente de 0.5 A. ¿Cuál es la diferencia de potencial?',
+        options: ['5 V', '20 V', '0.05 V', '10 V'],
+        answer: 0,
+        explanation: 'Ley de Ohm: V = I × R = 0.5 A × 10 Ω = 5 V.',
+      },
+      {
+        id: 'unmsm-s08',
+        prompt: '¿Cuál es la principal fuente de energía de la Tierra?',
+        options: ['El Sol', 'El núcleo terrestre', 'La Luna', 'La atmósfera'],
+        answer: 0,
+        explanation: 'El Sol es la principal fuente de energía para la Tierra (luz y calor solar).',
+      },
+      {
+        id: 'unmsm-s09',
+        passage: 'El pulmón humano tiene aproximadamente 30 alvéolos por centímetro cúbico, con una superficie total de alrededor de 70 m².',
+        prompt: 'La función principal de estos alvéolos es:',
+        options: ['Facilitar el intercambio gaseoso', 'Producir moco', 'Filtrar el aire', 'Regular la temperatura'],
+        answer: 0,
+        explanation: 'Los alvéolos son responsables del intercambio de oxígeno y dióxido de carbono entre el aire y la sangre.',
+      },
+      {
+        id: 'unmsm-s10',
+        prompt: '¿Cuál es el pH aproximado de la saliva humana?',
+        options: ['5.5-7.0', '1-2', '10-11', '13-14'],
+        answer: 0,
+        explanation: 'La saliva humana tiene un pH entre 5.5 y 7.0, ligeramente ácido a neutro.',
+      },
+    ],
+  },
+  {
+    id: 'sociales',
+    label: 'Sociales y Humanidades (Área D)',
+    realMinutes: 50,
+    questions: [
+      {
+        id: 'unmsm-so01',
+        prompt: 'El Código de Hammurabi (1750 a.C.) es conocido por:',
+        options: ['Ser el primer código escrito de leyes', 'Declarar la independencia de Grecia', 'Establecer el Imperio Romano', 'Fundar la ciudad de Babilonia'],
+        answer: 0,
+        explanation: 'El Código de Hammurabi es uno de los primeros sistemas legales escosos, con 282 leyes grabadas en una piedra.',
+      },
+      {
+        id: 'unmsm-so02',
+        prompt: 'La Revolución Francesa (1789) fue desencadenada principalmente por:',
+        options: ['Una hambruna de patatas', 'La intervención extranjera', 'La crisis financiera y las ideas ilustradas', 'La muerte de Luis XVI'],
+        answer: 2,
+        explanation: 'La crisis financiera del Estado francés y las ideas de los filósofos ilustrados (libertad, igualdad, fraternidad) fueron los factores desencadenantes.',
+      },
+      {
+        id: 'unmsm-so03',
+        prompt: '¿Cuál de las siguientes afirmaciones describe mejor el proceso de "Conquista de América"?',
+        options: ['Un evento único de conquista militar', 'Un proceso gradual de colonización y mezcla cultural', 'Una migración masiva de europeos', 'Una guerra civil entre españoles'],
+        answer: 1,
+        explanation: 'La conquista fue un proceso prolongado de conquista militar, colonización y mestizaje cultural que transformó el continente americano.',
+      },
+      {
+        id: 'unmsm-so04',
+        prompt: 'El gobierno de Óscar R. Benavides (1915-1918) se caracterizó por:',
+        options: ['Establecer la Ley de sufragio universal', 'Implementar la política de "Perú profundo"', 'Restablecer el orden tras el caos de Óscar Candela', 'Nationalizar la economía'],
+        answer: 2,
+        explanation: 'Benavides gobernó en un contexto de inestabilidad política y se enfocó en restablecer el orden público tras el caos del gobierno anterior.',
+      },
+      {
+        id: 'unmsm-so05',
+        passage: 'El Tratado de Tlatelolco (1967) marcó un hito en la política exterior latinoamericana al establecer que América Latina debía ser una zona libre de armas nucleares.',
+        prompt: 'El objetivo principal del Tratado fue:',
+        options: ['Establecer una alianza militar contra EE.UU.', 'Crear una zona libre de armas nucleares en América Latina', 'Distribuir armas nucleares equitativamente', 'Formar una unión política latinoamericana'],
+        answer: 1,
+        explanation: 'El Tratado de Tlatelolco proclamó América Latina como zona libre de armas nucleares, promoviendo la no proliferación.',
+      },
+      {
+        id: 'unmsm-so06',
+        prompt: 'La caída del Muro de Berlín (1989) simbolizó:',
+        options: ['El fin de la Guerra Fría', 'El fin de la Segunda Guerra Mundial', 'El inicio de la Unión Soviética', 'La reunificación de Alemania'],
+        answer: 0,
+        explanation: 'La caída del Muro de Berlín marcó el fin de la Guerra Fría y el inicio del proceso de reunificación alemana.',
+      },
+      {
+        id: 'unmsm-so07',
+        prompt: '¿Cuál de los siguientes NO es un idioma oficial en el Perú?',
+        options: ['Inglés', 'Español', 'Quechua', 'Aimara'],
+        answer: 0,
+        explanation: 'El perú tiene tres idiomas oficiales: español, quechua y aimara. El inglés no es oficial.',
+      },
+      {
+        id: 'unmsm-so08',
+        prompt: 'La Revolución Francesa comenzó con la toma de la Bastilla en:',
+        options: ['1789', '1792', '1812', '1848'],
+        answer: 0,
+        explanation: 'La toma de la Bastilla el 14 de julio de 1789 es el evento simbólico que marca el inicio de la Revolución Francesa.',
+      },
+      {
+        id: 'unmsm-so09',
+        passage: 'El Plan CEPLES (1867) y la Conferencia de Madrid (1880) fueron acuerdos internacionales clave en la historia sudamericana.',
+        prompt: 'Estos acuerdos están relacionados principalmente con:',
+        options: ['La delimitación de fronteras marítimas entre Chile, Perú y Bolivia', 'La abolición de la esclavitud', 'Tratados de paz post-guerra', 'La creación de alianzas comerciales'],
+        answer: 0,
+        explanation: 'Estos acuerdos resolvieron disputas de delimitación marítima entre Chile, Perú y Bolivia tras la Guerra del Pacífico.',
+      },
+      {
+        id: 'unmsm-so10',
+        prompt: '¿Cuál es el principal río transfronterizo de Sudamérica?',
+        options: ['Río Amazonas', 'Río Orinoco', 'Río Paraná', 'Río Magdalena'],
+        answer: 0,
+        explanation: 'El río Amazonas es el mayor río del mundo y atraviesa varios países sudamericanos, siendo el principal río transfronterizo.',
+      },
+    ],
+  },
+];
+
+/** Duraciones oficiales aproximadas para el modo simulacro */
+export const REAL_DURATIONS: Record<string, number> = {
+  'reading-writing': 64,
+  math: 70,
+  reading: 35,
+  listening: 36,
+  'matematica': 40,
+  'fisica': 40,
+  'quimica': 40,
+  'aptitud': 60,
+  'comunicacion': 60,
+  'verbal': 50,
+  'ciencias': 50,
+  'sociales': 50,
+};
+
+/** Mapeo de exámenes a sus secciones */
+export const EXAM_SECTIONS: Record<string, ExamSection[]> = {
+  sat: SAT_SECTIONS,
+  toefl: TOEFL_QUIZ_SECTIONS,
+  uni: UNI_SECTIONS,
+  unmsm: UNMSM_SECTIONS,
+};

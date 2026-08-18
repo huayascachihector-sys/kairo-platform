@@ -1,0 +1,22 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="kGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="50%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#6366F1" />
+    </linearGradient>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F8FAFC" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="110" fill="url(#bgGradient)" />
+  <!-- Book base wave -->
+  <path d="M140 375 C190 350, 240 380, 256 390 C272 380, 322 350, 372 375 C372 375, 340 345, 256 360 C172 345, 140 375, 140 375 Z" fill="url(#kGradient)" />
+  <!-- Vertical pillar of K -->
+  <rect x="180" y="120" width="38" height="230" rx="19" fill="url(#kGradient)" />
+  <!-- Upper leg of K -->
+  <path d="M210 240 L335 120 C345 110, 360 125, 350 135 L245 255 Z" fill="url(#kGradient)" />
+  <!-- Lower leg of K -->
+  <path d="M225 230 L350 340 C360 350, 345 365, 335 355 L210 250 Z" fill="url(#kGradient)" />
+</svg>

@@ -1,0 +1,942 @@
+{
+  "primaria": [
+    {"question":"¿Qué es una mezcla?","options":["Una sustancia pura","La unión de dos o más sustancias que se pueden separar","Un nuevo elemento","Agua con sal que no se puede separar"],"correct":1,"explanation":"Una mezcla combina dos o más sustancias que conservan sus propiedades y se pueden separar por métodos físicos."},{"question":"¿Cuál es la fórmula química del agua?","options":["HO","H₂O","OH₂","H₂O₂"],"correct":1,"explanation":"El agua está formada por 2 átomos de Hidrógeno (H₂) y 1 átomo de Oxígeno (O): H₂O"},{"question":"¿Cómo se llama el proceso por el que el agua pasa de líquido a gas?","options":["Condensación","Fusión","Evaporación","Solidificación"],"correct":2,"explanation":"La evaporación (vaporización) es el cambio de estado del agua de líquido a gas (vapor de agua)."},{"question":"¿Cuál de estas es una sustancia pura?","options":["Aire","Agua de mar","Leche","Agua destilada"],"correct":3,"explanation":"El agua destilada (H₂O pura) es una sustancia pura. El aire, el agua de mar y la leche son mezclas."},{"question":"¿Qué símbolo representa al Oxígeno en la tabla periódica?","options":["Ox","O","Og","On"],"correct":1,"explanation":"El Oxígeno se representa con la letra O. Número atómico 8, es esencial para la respiración."},{"question":"¿Qué le pasa al azúcar cuando la disuelves en agua?","options":["Desaparece para siempre","Se separa fácilmente","Se disuelve formando una solución","Se convierte en sal"],"correct":2,"explanation":"El azúcar se disuelve en el agua formando una solución (mezcla homogénea). El azúcar sigue ahí, pero no se ve."},{"question":"¿Qué es un átomo?","options":["La partícula más pequeña de la materia que conserva las propiedades de un elemento","Una molécula de agua","Un tipo de metal","Una sustancia líquida"],"correct":0,"explanation":"El átomo es la unidad básica de la materia. Cada elemento (como el Hierro, el Oxígeno) está formado por sus propios átomos."},{"question":"¿Cuál es el gas que los humanos necesitamos para respirar?","options":["Dióxido de carbono (CO₂)","Nitrógeno (N₂)","Oxígeno (O₂)","Hidrógeno (H₂)"],"correct":2,"explanation":"Respiramos Oxígeno (O₂) para que nuestras células produzcan energía. Exhalamos Dióxido de Carbono (CO₂)."},{"question":"Si mezclas vinagre (ácido) y bicarbonato de sodio (base), ¿qué observas?","options":["Nada","Se forma hielo","Burbujas de gas (reacción química)","Se vuelve más salado"],"correct":2,"explanation":"Es una reacción ácido-base que produce CO₂ (burbujas), agua y acetato de sodio. Es una reacción química."},{"question":"¿Cuántos átomos de hidrógeno tiene una molécula de agua (H₂O)?","options":["1","2","3","4"],"correct":1,"explanation":"En H₂O, el subíndice 2 indica que hay 2 átomos de Hidrógeno y 1 átomo de Oxígeno."},{"question":"¿Qué es la materia?","options":["Todo lo que tiene masa y ocupa espacio","Todo lo que se puede ver","Todo lo que existe","Todo lo que es sólido"],"correct":0,"explanation":"La materia es todo aquello que tiene masa y ocupa un lugar en el espacio."},{"question":"¿Cuáles son los estados de la materia?","options":["Grande, mediano, pequeño","Sólido, líquido, gaseoso","Frío, tibio, caliente","Vivo, muerto, inerte"],"correct":1,"explanation":"Los tres estados de la materia son: sólido (forma fija), líquido (forma variable, volumen fijo) y gaseoso (forma y volumen variables)."},{"question":"¿Qué nombre recibe el cambio de sólido a líquido?","options":["Solidificación","Fusión","Evaporación","Condensación"],"correct":1,"explanation":"La fusión es el cambio de estado sólido a líquido. Ocurre cuando se calienta un sólido hasta su punto de fusión."},{"question":"¿Qué nombre recibe el cambio de líquido a sólido?","options":["Solidificación o congelación","Fusión","Evaporación","Sublimación"],"correct":0,"explanation":"La solidificación (o congelación) es el cambio de líquido a sólido al disminuir la temperatura."},{"question":"¿Cuál es el metal más abundante en la corteza terrestre?","options":["Hierro","Aluminio","Cobre","Oro"],"correct":1,"explanation":"El aluminio es el metal más abundante en la corteza terrestre, aunque no se encuentra en estado puro."},{"question":"¿Qué gas se produce en la combustión?","options":["Oxígeno","Dióxido de carbono (CO₂)","Hidrógeno","Nitrógeno"],"correct":1,"explanation":"La combustión (quemar) produce dióxido de carbono (CO₂) y agua, además de energía en forma de calor y luz."},{"question":"¿Qué significa pH?","options":["Potencial de Hidrógeno, mide qué tan ácida o básica es una sustancia","Peso químico","Pureza del agua","Partículas de hidrógeno"],"correct":0,"explanation":"El pH mide la concentración de iones de hidrógeno. pH < 7 = ácido, pH = 7 = neutro, pH > 7 = básico."},{"question":"¿Cuál es el metal líquido a temperatura ambiente?","options":["Plata","Mercurio","Oro","Cobre"],"correct":1,"explanation":"El mercurio (Hg) es el único metal líquido a temperatura ambiente. Se usa en termómetros."},{"question":"¿Cómo se llama la tabla que organiza los elementos químicos?","options":["Tabla de multiplicar","Tabla periódica","Tabla de calorías","Tabla de medidas"],"correct":1,"explanation":"La tabla periódica organiza los 118 elementos químicos conocidos por su número atómico y propiedades."},{"question":"¿Qué es el hidrógeno?","options":["El elemento más ligero y abundante del universo","Un metal pesado","Un gas venenoso","Un líquido inflamable"],"correct":0,"explanation":"El hidrógeno (H) es el elemento más simple, ligero y abundante del universo. Es el principal componente de las estrellas."},{"question":"¿Qué es el punto de ebullición del agua?","options":["0°C","100°C","50°C","-10°C"],"correct":1,"explanation":"El agua hierve (ebullición) a 100°C (212°F) al nivel del mar, pasando de líquido a gas."},{"question":"¿Qué es el punto de congelación del agua?","options":["0°C","100°C","-10°C","50°C"],"correct":0,"explanation":"El agua se congela (solidifica) a 0°C (32°F), pasando de líquido a sólido (hielo)."},{"question":"¿Qué diferencia hay entre un elemento y un compuesto?","options":["Un elemento tiene un solo tipo de átomo; un compuesto tiene dos o más tipos","Un elemento es artificial; un compuesto es natural","Son lo mismo","Un compuesto tiene un solo átomo"],"correct":0,"explanation":"Un elemento (como O₂, Fe) está formado por un solo tipo de átomo. Un compuesto (como H₂O, CO₂) combina diferentes elementos."},{"question":"¿Qué son los plásticos?","options":["Materiales sintéticos derivados del petróleo","Materiales naturales","Minerales","Metales"],"correct":0,"explanation":"Los plásticos son materiales sintéticos (polímeros) derivados del petróleo o gas natural. Son maleables y duraderos."},{"question":"¿Qué causa la corrosión del hierro?","options":["El agua y el oxígeno (oxidación)","El calor","El frío","La luz"],"correct":0,"explanation":"La corrosión del hierro (oxidación) ocurre cuando el hierro reacciona con el oxígeno y la humedad, formando óxido de hierro (herrumbre)."},{"question":"¿Qué es una solución?","options":["Una mezcla homogénea de dos o más sustancias","Un elemento puro","Un sólido","Un gas"],"correct":0,"explanation":"Una solución es una mezcla homogénea donde el soluto se disuelve en el solvente. Ej: sal disuelta en agua."},{"question":"¿Qué es el dióxido de carbono?","options":["Un gas necesario para la fotosíntesis y producto de la respiración","Un metal","Un líquido","Una roca"],"correct":0,"explanation":"El CO₂ es un gas que las plantas usan en la fotosíntesis y los animales producen al respirar."},{"question":"¿Qué significa 'reciclar' en química?","options":["Convertir residuos en nuevos materiales","Crear nueva basura","Mezclar químicos","Destruir moléculas"],"correct":0,"explanation":"Reciclar es transformar materiales usados en nuevos productos, reduciendo el consumo de recursos naturales y energía."},{"question":"¿Qué es la fermentación?","options":["Un proceso químico donde microorganismos convierten azúcares en alcohol o ácidos","La ebullición de un líquido","La congelación de una sustancia","La evaporación del agua"],"correct":0,"explanation":"La fermentación es un proceso anaeróbico donde microorganismos (levaduras, bacterias) transforman azúcares en alcohol, CO₂ o ácidos."},{"question":"¿Qué elemento representa el símbolo 'Fe'?","options":["Flúor","Hierro","Fósforo","Francio"],"correct":1,"explanation":"Fe = Hierro (del latín 'ferrum'). Es un metal esencial para la vida y la industria."},{"question":"¿Qué elemento representa el símbolo 'Au'?","options":["Plata","Oro","Aluminio","Argón"],"correct":1,"explanation":"Au = Oro (del latín 'aurum'). Es un metal precioso y uno de los menos reactivos."},{"question":"¿Qué elemento representa 'Na'?","options":["Nitrógeno","Sodio","Neón","Níquel"],"correct":1,"explanation":"Na = Sodio (del latín 'natrium'). Es un metal alcalino altamente reactivo."},{"question":"¿Qué es un catalizador?","options":["Una sustancia que acelera una reacción química sin consumirse","Un tipo de combustible","Un material de construcción","Un ácido"],"correct":0,"explanation":"Un catalizador acelera la velocidad de una reacción química sin consumirse en el proceso."},{"question":"¿Qué ocurre cuando se quema madera?","options":["Una reacción química de combustión","Un cambio físico","Una disolución","Una congelación"],"correct":0,"explanation":"Quemar madera es una reacción química de combustión: la madera reacciona con oxígeno produciendo CO₂, agua, cenizas y calor."},{"question":"¿Qué es la destilación?","options":["Un método para separar mezclas por diferencias en puntos de ebullición","Un tipo de evaporación","Una reacción química","Una filtración"],"correct":0,"explanation":"La destilación separa componentes de una mezcla líquida calentándola y condensando los vapores por separado."},{"question":"¿Qué es la filtración?","options":["Un método para separar sólidos de líquidos usando un filtro","Un tipo de combustión","Una reacción química","Una técnica de medición"],"correct":0,"explanation":"La filtración separa sólidos insolubles de un líquido pasando la mezcla por un medio poroso (papel filtro, tela)."},{"question":"¿Cómo se llama un átomo con carga eléctrica?","options":["Molécula","Ión","Isótopo","Protón"],"correct":1,"explanation":"Un ión es un átomo o molécula con carga eléctrica neta por haber ganado o perdido electrones."},{"question":"¿Qué son los electrones?","options":["Partículas subatómicas con carga negativa que orbitan el núcleo","Partículas con carga positiva en el núcleo","Partículas sin carga en el núcleo","Átomos completos"],"correct":0,"explanation":"Los electrones son partículas subatómicas con carga negativa que se encuentran en orbitales alrededor del núcleo."},{"question":"¿Qué son los protones?","options":["Partículas con carga positiva en el núcleo del átomo","Electrones que orbitan","Neutrones sin carga","Átomos de hidrógeno"],"correct":0,"explanation":"Los protones son partículas subatómicas con carga positiva, ubicadas en el núcleo del átomo."},{"question":"¿Qué son los neutrones?","options":["Partículas sin carga en el núcleo atómico","Partículas con carga positiva","Electrones rápidos","Átomos neutros"],"correct":0,"explanation":"Los neutrones son partículas subatómicas sin carga eléctrica, ubicadas en el núcleo junto con los protones."}
+  ],
+  "secundaria": [
+    {
+      "question": "¿Cuántos moles hay en 44 g de CO₂? (M = 44 g/mol)",
+      "options": [
+        "1",
+        "4.4",
+        "2",
+        "1"
+      ],
+      "correct": 0,
+      "explanation": "n = m/M = 44 / 44 = 1 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 175.5 g de NaCl? (M = 58.5 g/mol)",
+      "options": [
+        "3",
+        "17.6",
+        "0.3",
+        "4"
+      ],
+      "correct": 0,
+      "explanation": "n = m/M = 175.5 / 58.5 = 3 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 18 g de H₂O? (M = 18 g/mol)",
+      "options": [
+        "1.8",
+        "1",
+        "2",
+        "1"
+      ],
+      "correct": 1,
+      "explanation": "n = m/M = 18 / 18 = 1 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 148 g de Ca(OH)₂? (M = 74 g/mol)",
+      "options": [
+        "0.5",
+        "3",
+        "2",
+        "14.8"
+      ],
+      "correct": 2,
+      "explanation": "n = m/M = 148 / 74 = 2 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 90 g de H₂O? (M = 18 g/mol)",
+      "options": [
+        "5",
+        "0.2",
+        "6",
+        "9"
+      ],
+      "correct": 0,
+      "explanation": "n = m/M = 90 / 18 = 5 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 58.5 g de NaCl? (M = 58.5 g/mol)",
+      "options": [
+        "5.9",
+        "1",
+        "1",
+        "2"
+      ],
+      "correct": 1,
+      "explanation": "n = m/M = 58.5 / 58.5 = 1 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 196 g de H₂SO₄? (M = 98 g/mol)",
+      "options": [
+        "19.6",
+        "0.5",
+        "3",
+        "2"
+      ],
+      "correct": 3,
+      "explanation": "n = m/M = 196 / 98 = 2 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 16 g de O₂? (M = 32 g/mol)",
+      "options": [
+        "1.6",
+        "2",
+        "0.5",
+        "1.5"
+      ],
+      "correct": 2,
+      "explanation": "n = m/M = 16 / 32 = 0.5 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 53 g de Na₂CO₃? (M = 106 g/mol)",
+      "options": [
+        "0.5",
+        "5.3",
+        "1.5",
+        "2"
+      ],
+      "correct": 0,
+      "explanation": "n = m/M = 53 / 106 = 0.5 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 200 g de NaOH? (M = 40 g/mol)",
+      "options": [
+        "5",
+        "6",
+        "0.2",
+        "20"
+      ],
+      "correct": 0,
+      "explanation": "n = m/M = 200 / 40 = 5 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 530 g de Na₂CO₃? (M = 106 g/mol)",
+      "options": [
+        "53",
+        "0.2",
+        "6",
+        "5"
+      ],
+      "correct": 3,
+      "explanation": "n = m/M = 530 / 106 = 5 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 292.5 g de NaCl? (M = 58.5 g/mol)",
+      "options": [
+        "29.3",
+        "0.2",
+        "5",
+        "6"
+      ],
+      "correct": 2,
+      "explanation": "n = m/M = 292.5 / 58.5 = 5 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 84 g de N₂? (M = 28 g/mol)",
+      "options": [
+        "0.3",
+        "3",
+        "4",
+        "8.4"
+      ],
+      "correct": 1,
+      "explanation": "n = m/M = 84 / 28 = 3 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 49 g de H₂SO₄? (M = 98 g/mol)",
+      "options": [
+        "0.5",
+        "2",
+        "1.5",
+        "4.9"
+      ],
+      "correct": 0,
+      "explanation": "n = m/M = 49 / 98 = 0.5 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 22 g de CO₂? (M = 44 g/mol)",
+      "options": [
+        "1.5",
+        "2.2",
+        "2",
+        "0.5"
+      ],
+      "correct": 3,
+      "explanation": "n = m/M = 22 / 44 = 0.5 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 96 g de O₂? (M = 32 g/mol)",
+      "options": [
+        "0.3",
+        "9.6",
+        "4",
+        "3"
+      ],
+      "correct": 3,
+      "explanation": "n = m/M = 96 / 32 = 3 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 318 g de Na₂CO₃? (M = 106 g/mol)",
+      "options": [
+        "31.8",
+        "3",
+        "0.3",
+        "4"
+      ],
+      "correct": 1,
+      "explanation": "n = m/M = 318 / 106 = 3 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 28 g de N₂? (M = 28 g/mol)",
+      "options": [
+        "2.8",
+        "1",
+        "1",
+        "2"
+      ],
+      "correct": 1,
+      "explanation": "n = m/M = 28 / 28 = 1 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 392 g de H₂SO₄? (M = 98 g/mol)",
+      "options": [
+        "39.2",
+        "5",
+        "4",
+        "0.3"
+      ],
+      "correct": 2,
+      "explanation": "n = m/M = 392 / 98 = 4 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 29.3 g de NaCl? (M = 58.5 g/mol)",
+      "options": [
+        "0.5",
+        "2",
+        "1.5",
+        "2.9"
+      ],
+      "correct": 0,
+      "explanation": "n = m/M = 29.3 / 58.5 = 0.5 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 182.5 g de HCl? (M = 36.5 g/mol)",
+      "options": [
+        "18.3",
+        "5",
+        "6",
+        "0.2"
+      ],
+      "correct": 1,
+      "explanation": "n = m/M = 182.5 / 36.5 = 5 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 296 g de Ca(OH)₂? (M = 74 g/mol)",
+      "options": [
+        "4",
+        "29.6",
+        "5",
+        "0.3"
+      ],
+      "correct": 0,
+      "explanation": "n = m/M = 296 / 74 = 4 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 106 g de Na₂CO₃? (M = 106 g/mol)",
+      "options": [
+        "10.6",
+        "2",
+        "1",
+        "1"
+      ],
+      "correct": 2,
+      "explanation": "n = m/M = 106 / 106 = 1 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 146 g de HCl? (M = 36.5 g/mol)",
+      "options": [
+        "5",
+        "4",
+        "0.3",
+        "14.6"
+      ],
+      "correct": 1,
+      "explanation": "n = m/M = 146 / 36.5 = 4 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 64 g de O₂? (M = 32 g/mol)",
+      "options": [
+        "2",
+        "6.4",
+        "3",
+        "0.5"
+      ],
+      "correct": 0,
+      "explanation": "n = m/M = 64 / 32 = 2 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 80 g de NaOH? (M = 40 g/mol)",
+      "options": [
+        "2",
+        "0.5",
+        "3",
+        "8"
+      ],
+      "correct": 0,
+      "explanation": "n = m/M = 80 / 40 = 2 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 54 g de H₂O? (M = 18 g/mol)",
+      "options": [
+        "3",
+        "5.4",
+        "4",
+        "0.3"
+      ],
+      "correct": 0,
+      "explanation": "n = m/M = 54 / 18 = 3 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 73 g de HCl? (M = 36.5 g/mol)",
+      "options": [
+        "3",
+        "7.3",
+        "0.5",
+        "2"
+      ],
+      "correct": 3,
+      "explanation": "n = m/M = 73 / 36.5 = 2 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 140 g de N₂? (M = 28 g/mol)",
+      "options": [
+        "0.2",
+        "5",
+        "6",
+        "14"
+      ],
+      "correct": 1,
+      "explanation": "n = m/M = 140 / 28 = 5 mol."
+    },
+    {
+      "question": "¿Cuántos moles hay en 112 g de N₂? (M = 28 g/mol)",
+      "options": [
+        "5",
+        "11.2",
+        "4",
+        "0.3"
+      ],
+      "correct": 2,
+      "explanation": "n = m/M = 112 / 28 = 4 mol."
+    },
+    {
+      "question": "Balancea: CH₄ + O₂ → CO₂ + H₂O",
+      "options": [
+        "2CH₄ + 2O₂ → 2CO₂ + 2H₂O",
+        "CH₄ + O₂ → CO₂ + H₂O",
+        "CH₄ + 3O₂ → CO₂ + 2H₂O",
+        "CH₄ + 2O₂ → CO₂ + 2H₂O"
+      ],
+      "correct": 3,
+      "explanation": "La ecuación balanceada es: CH₄ + 2O₂ → CO₂ + 2H₂O."
+    },
+    {
+      "question": "Balancea: H₂ + O₂ → H₂O",
+      "options": [
+        "H₂ + O₂ → H₂O",
+        "H₂ + O₂ → 2H₂O",
+        "2H₂ + O₂ → 2H₂O",
+        "2H₂ + 2O₂ → 2H₂O"
+      ],
+      "correct": 2,
+      "explanation": "La ecuación balanceada es: 2H₂ + O₂ → 2H₂O."
+    },
+    {
+      "question": "Balancea: Mg + O₂ → MgO",
+      "options": [
+        "Mg + O₂ → 2MgO",
+        "2Mg + O₂ → 2MgO",
+        "Mg + O₂ → MgO",
+        "2Mg + 2O₂ → 2MgO"
+      ],
+      "correct": 1,
+      "explanation": "La ecuación balanceada es: 2Mg + O₂ → 2MgO."
+    },
+    {
+      "question": "Balancea: N₂ + H₂ → NH₃",
+      "options": [
+        "N₂ + 2H₂ → NH₃",
+        "N₂ + H₂ → NH₃",
+        "N₂ + 3H₂ → 2NH₃",
+        "2N₂ + 3H₂ → 2NH₃"
+      ],
+      "correct": 2,
+      "explanation": "La ecuación balanceada es: N₂ + 3H₂ → 2NH₃."
+    },
+    {
+      "question": "Balancea: Na + Cl₂ → NaCl",
+      "options": [
+        "2Na + 2Cl₂ → 2NaCl",
+        "2Na + Cl₂ → 2NaCl",
+        "Na + Cl₂ → NaCl",
+        "Na + Cl₂ → 2NaCl"
+      ],
+      "correct": 1,
+      "explanation": "La ecuación balanceada es: 2Na + Cl₂ → 2NaCl."
+    },
+    {
+      "question": "Balancea: Fe + O₂ → Fe₂O₃",
+      "options": [
+        "4Fe + 2O₂ → 2Fe₂O₃",
+        "Fe + O₂ → Fe₂O₃",
+        "4Fe + 3O₂ → 2Fe₂O₃",
+        "2Fe + O₂ → Fe₂O₃"
+      ],
+      "correct": 2,
+      "explanation": "La ecuación balanceada es: 4Fe + 3O₂ → 2Fe₂O₃."
+    },
+    {
+      "question": "¿Cuál es la configuración electrónica del Oxígeno (O) (Z = 8)?",
+      "options": [
+        "1s² 2s² 2p⁵",
+        "1s² 2s² 2p³",
+        "1s² 2s² 2p⁶",
+        "1s² 2s² 2p⁴"
+      ],
+      "correct": 3,
+      "explanation": "La configuración del Oxígeno (O) es: 1s² 2s² 2p⁴."
+    },
+    {
+      "question": "¿Cuál es la configuración electrónica del Nitrógeno (N) (Z = 7)?",
+      "options": [
+        "1s² 2s² 2p³",
+        "1s² 2s² 2p²",
+        "1s² 2s² 2p⁴",
+        "1s² 2s² 2p⁵"
+      ],
+      "correct": 0,
+      "explanation": "La configuración del Nitrógeno (N) es: 1s² 2s² 2p³."
+    },
+    {
+      "question": "¿Cuál es la configuración electrónica del Cloro (Cl) (Z = 17)?",
+      "options": [
+        "1s² 2s² 2p⁶ 3s² 3p⁶",
+        "1s² 2s² 2p⁶ 3s¹ 3p⁶",
+        "1s² 2s² 2p⁶ 3s² 3p⁵",
+        "1s² 2s² 2p⁶ 3s² 3p⁴"
+      ],
+      "correct": 2,
+      "explanation": "La configuración del Cloro (Cl) es: 1s² 2s² 2p⁶ 3s² 3p⁵."
+    },
+    {
+      "question": "¿Cuál es la configuración electrónica del Calcio (Ca) (Z = 20)?",
+      "options": [
+        "1s² 2s² 2p⁶ 3s² 3p⁶ 4p²",
+        "1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹",
+        "1s² 2s² 2p⁶ 3s² 3p⁶ 3d²",
+        "1s² 2s² 2p⁶ 3s² 3p⁶ 4s²"
+      ],
+      "correct": 3,
+      "explanation": "La configuración del Calcio (Ca) es: 1s² 2s² 2p⁶ 3s² 3p⁶ 4s²."
+    },
+    {
+      "question": "¿Cuál es la configuración electrónica del Sodio (Na) (Z = 11)?",
+      "options": [
+        "1s² 2s² 2p⁶ 3s²",
+        "1s² 2s² 2p⁶ 3s¹",
+        "1s² 2s² 2p⁶ 3p¹",
+        "1s² 2s² 2p⁵ 3s²"
+      ],
+      "correct": 1,
+      "explanation": "La configuración del Sodio (Na) es: 1s² 2s² 2p⁶ 3s¹."
+    },
+    {
+      "question": "¿Cuál es la configuración electrónica del Azufre (S) (Z = 16)?",
+      "options": [
+        "1s² 2s² 2p⁶ 3s² 3p⁶",
+        "1s² 2s² 2p⁶ 3s² 3p³",
+        "1s² 2s² 2p⁶ 3s² 3p⁴",
+        "1s² 2s² 2p⁶ 3s¹ 3p⁵"
+      ],
+      "correct": 2,
+      "explanation": "La configuración del Azufre (S) es: 1s² 2s² 2p⁶ 3s² 3p⁴."
+    },
+    {
+      "question": "El Jugo de limón tiene un pH aproximadamente de:",
+      "options": [
+        "1",
+        "9",
+        "6",
+        "2"
+      ],
+      "correct": 3,
+      "explanation": "El Jugo de limón es ácido con pH ≈ 2. pH < 7 = ácido, pH = 7 = neutro, pH > 7 = básico."
+    },
+    {
+      "question": "El Vinagre tiene un pH aproximadamente de:",
+      "options": [
+        "10",
+        "3",
+        "0",
+        "7"
+      ],
+      "correct": 1,
+      "explanation": "El Vinagre es ácido con pH ≈ 3. pH < 7 = ácido, pH = 7 = neutro, pH > 7 = básico."
+    },
+    {
+      "question": "El Ácido de batería tiene un pH aproximadamente de:",
+      "options": [
+        "1",
+        "5",
+        "2",
+        "8"
+      ],
+      "correct": 0,
+      "explanation": "El Ácido de batería es ácido con pH ≈ 1. pH < 7 = ácido, pH = 7 = neutro, pH > 7 = básico."
+    },
+    {
+      "question": "El Lluvia ácida tiene un pH aproximadamente de:",
+      "options": [
+        "8",
+        "4",
+        "11",
+        "1"
+      ],
+      "correct": 1,
+      "explanation": "El Lluvia ácida es ácido con pH ≈ 4. pH < 7 = ácido, pH = 7 = neutro, pH > 7 = básico."
+    },
+    {
+      "question": "El Agua de mar tiene un pH aproximadamente de:",
+      "options": [
+        "12",
+        "14",
+        "5",
+        "8"
+      ],
+      "correct": 3,
+      "explanation": "El Agua de mar es básico con pH ≈ 8. pH < 7 = ácido, pH = 7 = neutro, pH > 7 = básico."
+    },
+    {
+      "question": "El Leche de magnesia tiene un pH aproximadamente de:",
+      "options": [
+        "7",
+        "10",
+        "14",
+        "14"
+      ],
+      "correct": 1,
+      "explanation": "El Leche de magnesia es básico con pH ≈ 10. pH < 7 = ácido, pH = 7 = neutro, pH > 7 = básico."
+    },
+    {
+      "question": "El Café tiene un pH aproximadamente de:",
+      "options": [
+        "5",
+        "2",
+        "9",
+        "12"
+      ],
+      "correct": 0,
+      "explanation": "El Café es ácido con pH ≈ 5. pH < 7 = ácido, pH = 7 = neutro, pH > 7 = básico."
+    },
+    {
+      "question": "El Amoníaco tiene un pH aproximadamente de:",
+      "options": [
+        "8",
+        "14",
+        "11",
+        "14"
+      ],
+      "correct": 2,
+      "explanation": "El Amoníaco es básico con pH ≈ 11. pH < 7 = ácido, pH = 7 = neutro, pH > 7 = básico."
+    },
+    {
+      "question": "El Agua pura tiene un pH aproximadamente de:",
+      "options": [
+        "11",
+        "14",
+        "4",
+        "7"
+      ],
+      "correct": 3,
+      "explanation": "El Agua pura es neutro con pH ≈ 7. pH < 7 = ácido, pH = 7 = neutro, pH > 7 = básico."
+    },
+    {
+      "question": "El Jabón tiene un pH aproximadamente de:",
+      "options": [
+        "14",
+        "9",
+        "6",
+        "13"
+      ],
+      "correct": 1,
+      "explanation": "El Jabón es básico con pH ≈ 9. pH < 7 = ácido, pH = 7 = neutro, pH > 7 = básico."
+    },
+    {
+      "question": "En la reacción 2H₂ + O₂ → 2H₂O, ¿cuántos moles de O₂ se necesitan para reaccionar con 2 mol(es) de H₂?",
+      "options": [
+        "2",
+        "1",
+        "2",
+        "1"
+      ],
+      "correct": 1,
+      "explanation": "Relación: 2 H₂ : 1 O₂. Para 2 mol: (2 × 1) / 2 = 1 mol."
+    },
+    {
+      "question": "En la reacción CH₄ + 2O₂ → CO₂ + 2H₂O, ¿cuántos moles de O₂ se necesitan para reaccionar con 5 mol(es) de CH₄?",
+      "options": [
+        "11",
+        "2",
+        "5",
+        "10"
+      ],
+      "correct": 3,
+      "explanation": "Relación: 1 CH₄ : 2 O₂. Para 5 mol: (5 × 2) / 1 = 10 mol."
+    },
+    {
+      "question": "En la reacción 2H₂ + O₂ → 2H₂O, ¿cuántos moles de O₂ se necesitan para reaccionar con 1 mol(es) de H₂?",
+      "options": [
+        "1.5",
+        "1",
+        "1",
+        "0.5"
+      ],
+      "correct": 3,
+      "explanation": "Relación: 2 H₂ : 1 O₂. Para 1 mol: (1 × 1) / 2 = 0.5 mol."
+    },
+    {
+      "question": "En la reacción 2H₂ + O₂ → 2H₂O, ¿cuántos moles de O₂ se necesitan para reaccionar con 3 mol(es) de H₂?",
+      "options": [
+        "1",
+        "1.5",
+        "2.5",
+        "3"
+      ],
+      "correct": 1,
+      "explanation": "Relación: 2 H₂ : 1 O₂. Para 3 mol: (3 × 1) / 2 = 1.5 mol."
+    },
+    {
+      "question": "En la reacción N₂ + 3H₂ → 2NH₃, ¿cuántos moles de H₂ se necesitan para reaccionar con 3 mol(es) de N₂?",
+      "options": [
+        "3",
+        "3",
+        "9",
+        "10"
+      ],
+      "correct": 2,
+      "explanation": "Relación: 1 N₂ : 3 H₂. Para 3 mol: (3 × 3) / 1 = 9 mol."
+    },
+    {
+      "question": "En la reacción CH₄ + 2O₂ → CO₂ + 2H₂O, ¿cuántos moles de O₂ se necesitan para reaccionar con 2 mol(es) de CH₄?",
+      "options": [
+        "2",
+        "2",
+        "5",
+        "4"
+      ],
+      "correct": 3,
+      "explanation": "Relación: 1 CH₄ : 2 O₂. Para 2 mol: (2 × 2) / 1 = 4 mol."
+    },
+    {
+      "question": "En la reacción 2Na + Cl₂ → 2NaCl, ¿cuántos moles de Cl₂ se necesitan para reaccionar con 3 mol(es) de Na?",
+      "options": [
+        "1",
+        "2.5",
+        "1.5",
+        "3"
+      ],
+      "correct": 2,
+      "explanation": "Relación: 2 Na : 1 Cl₂. Para 3 mol: (3 × 1) / 2 = 1.5 mol."
+    },
+    {
+      "question": "En la reacción CH₄ + 2O₂ → CO₂ + 2H₂O, ¿cuántos moles de O₂ se necesitan para reaccionar con 1 mol(es) de CH₄?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "2"
+      ],
+      "correct": 1,
+      "explanation": "Relación: 1 CH₄ : 2 O₂. Para 1 mol: (1 × 2) / 1 = 2 mol."
+    },
+    {
+      "question": "En la reacción 2Na + Cl₂ → 2NaCl, ¿cuántos moles de Cl₂ se necesitan para reaccionar con 4 mol(es) de Na?",
+      "options": [
+        "3",
+        "4",
+        "1",
+        "2"
+      ],
+      "correct": 3,
+      "explanation": "Relación: 2 Na : 1 Cl₂. Para 4 mol: (4 × 1) / 2 = 2 mol."
+    },
+    {
+      "question": "En la reacción CH₄ + 2O₂ → CO₂ + 2H₂O, ¿cuántos moles de O₂ se necesitan para reaccionar con 3 mol(es) de CH₄?",
+      "options": [
+        "6",
+        "2",
+        "7",
+        "3"
+      ],
+      "correct": 0,
+      "explanation": "Relación: 1 CH₄ : 2 O₂. Para 3 mol: (3 × 2) / 1 = 6 mol."
+    },
+    {
+      "question": "En la reacción 2Na + Cl₂ → 2NaCl, ¿cuántos moles de Cl₂ se necesitan para reaccionar con 1 mol(es) de Na?",
+      "options": [
+        "1.5",
+        "0.5",
+        "1",
+        "1"
+      ],
+      "correct": 1,
+      "explanation": "Relación: 2 Na : 1 Cl₂. Para 1 mol: (1 × 1) / 2 = 0.5 mol."
+    },
+    {
+      "question": "En la reacción N₂ + 3H₂ → 2NH₃, ¿cuántos moles de H₂ se necesitan para reaccionar con 5 mol(es) de N₂?",
+      "options": [
+        "3",
+        "5",
+        "15",
+        "16"
+      ],
+      "correct": 2,
+      "explanation": "Relación: 1 N₂ : 3 H₂. Para 5 mol: (5 × 3) / 1 = 15 mol."
+    },
+    {
+      "question": "En la reacción 2Na + Cl₂ → 2NaCl, ¿cuántos moles de Cl₂ se necesitan para reaccionar con 5 mol(es) de Na?",
+      "options": [
+        "5",
+        "3.5",
+        "2.5",
+        "1"
+      ],
+      "correct": 2,
+      "explanation": "Relación: 2 Na : 1 Cl₂. Para 5 mol: (5 × 1) / 2 = 2.5 mol."
+    },
+    {
+      "question": "En la reacción CH₄ + 2O₂ → CO₂ + 2H₂O, ¿cuántos moles de O₂ se necesitan para reaccionar con 4 mol(es) de CH₄?",
+      "options": [
+        "8",
+        "9",
+        "4",
+        "2"
+      ],
+      "correct": 0,
+      "explanation": "Relación: 1 CH₄ : 2 O₂. Para 4 mol: (4 × 2) / 1 = 8 mol."
+    },
+    {
+      "question": "En la reacción N₂ + 3H₂ → 2NH₃, ¿cuántos moles de H₂ se necesitan para reaccionar con 2 mol(es) de N₂?",
+      "options": [
+        "2",
+        "3",
+        "6",
+        "7"
+      ],
+      "correct": 2,
+      "explanation": "Relación: 1 N₂ : 3 H₂. Para 2 mol: (2 × 3) / 1 = 6 mol."
+    },
+    {
+      "question": "En la reacción 2H₂ + O₂ → 2H₂O, ¿cuántos moles de O₂ se necesitan para reaccionar con 4 mol(es) de H₂?",
+      "options": [
+        "2",
+        "1",
+        "4",
+        "3"
+      ],
+      "correct": 0,
+      "explanation": "Relación: 2 H₂ : 1 O₂. Para 4 mol: (4 × 1) / 2 = 2 mol."
+    },
+    {
+      "question": "En la reacción N₂ + 3H₂ → 2NH₃, ¿cuántos moles de H₂ se necesitan para reaccionar con 1 mol(es) de N₂?",
+      "options": [
+        "4",
+        "1",
+        "3",
+        "3"
+      ],
+      "correct": 2,
+      "explanation": "Relación: 1 N₂ : 3 H₂. Para 1 mol: (1 × 3) / 1 = 3 mol."
+    },
+    {
+      "question": "En la reacción 2H₂ + O₂ → 2H₂O, ¿cuántos moles de O₂ se necesitan para reaccionar con 5 mol(es) de H₂?",
+      "options": [
+        "5",
+        "3.5",
+        "2.5",
+        "1"
+      ],
+      "correct": 2,
+      "explanation": "Relación: 2 H₂ : 1 O₂. Para 5 mol: (5 × 1) / 2 = 2.5 mol."
+    },
+    {
+      "question": "En la reacción N₂ + 3H₂ → 2NH₃, ¿cuántos moles de H₂ se necesitan para reaccionar con 4 mol(es) de N₂?",
+      "options": [
+        "4",
+        "13",
+        "3",
+        "12"
+      ],
+      "correct": 3,
+      "explanation": "Relación: 1 N₂ : 3 H₂. Para 4 mol: (4 × 3) / 1 = 12 mol."
+    },
+    {
+      "question": "En la reacción 2Na + Cl₂ → 2NaCl, ¿cuántos moles de Cl₂ se necesitan para reaccionar con 2 mol(es) de Na?",
+      "options": [
+        "1",
+        "1",
+        "2",
+        "2"
+      ],
+      "correct": 0,
+      "explanation": "Relación: 2 Na : 1 Cl₂. Para 2 mol: (2 × 1) / 2 = 1 mol."
+    },
+    {
+      "question": "¿Qué tipo de enlace forman H y H (en H₂)?",
+      "options": [
+        "Covalente apolar",
+        "Covalente polar",
+        "Iónico",
+        "Metálico"
+      ],
+      "correct": 0,
+      "explanation": "H y H (en H₂) forman enlace Covalente apolar. Metal + no metal → iónico. No metal + no metal → covalente. Metal + metal → metálico."
+    },
+    {
+      "question": "¿Qué tipo de enlace forman H y O (en H₂O)?",
+      "options": [
+        "Iónico",
+        "Metálico",
+        "Covalente polar",
+        "Covalente apolar"
+      ],
+      "correct": 2,
+      "explanation": "H y O (en H₂O) forman enlace Covalente polar. Metal + no metal → iónico. No metal + no metal → covalente. Metal + metal → metálico."
+    },
+    {
+      "question": "¿Qué tipo de enlace forman Na y Cl?",
+      "options": [
+        "Covalente apolar",
+        "Covalente polar",
+        "Iónico",
+        "Metálico"
+      ],
+      "correct": 2,
+      "explanation": "Na y Cl forman enlace Iónico. Metal + no metal → iónico. No metal + no metal → covalente. Metal + metal → metálico."
+    },
+    {
+      "question": "¿Qué tipo de enlace forman Fe (hierro metálico)?",
+      "options": [
+        "Covalente apolar",
+        "Covalente polar",
+        "Metálico",
+        "Iónico"
+      ],
+      "correct": 2,
+      "explanation": "Fe (hierro metálico) forman enlace Metálico. Metal + no metal → iónico. No metal + no metal → covalente. Metal + metal → metálico."
+    },
+    {
+      "question": "¿Qué tipo de enlace forman N y N (en N₂)?",
+      "options": [
+        "Iónico",
+        "Covalente polar",
+        "Metálico",
+        "Covalente apolar"
+      ],
+      "correct": 3,
+      "explanation": "N y N (en N₂) forman enlace Covalente apolar. Metal + no metal → iónico. No metal + no metal → covalente. Metal + metal → metálico."
+    },
+    {
+      "question": "¿Qué tipo de enlace forman K y F?",
+      "options": [
+        "Metálico",
+        "Covalente apolar",
+        "Iónico",
+        "Covalente polar"
+      ],
+      "correct": 2,
+      "explanation": "K y F forman enlace Iónico. Metal + no metal → iónico. No metal + no metal → covalente. Metal + metal → metálico."
+    },
+    {
+      "question": "¿Qué tipo de enlace forman Ca y O?",
+      "options": [
+        "Metálico",
+        "Iónico",
+        "Covalente apolar",
+        "Covalente polar"
+      ],
+      "correct": 1,
+      "explanation": "Ca y O forman enlace Iónico. Metal + no metal → iónico. No metal + no metal → covalente. Metal + metal → metálico."
+    },
+    {
+      "question": "¿Qué tipo de enlace forman C y O (en CO₂)?",
+      "options": [
+        "Metálico",
+        "Covalente apolar",
+        "Iónico",
+        "Covalente polar"
+      ],
+      "correct": 3,
+      "explanation": "C y O (en CO₂) forman enlace Covalente polar. Metal + no metal → iónico. No metal + no metal → covalente. Metal + metal → metálico."
+    },
+    {
+      "question": "Según Lavoisier, si reaccionan 24 g de Mg + 16 g de O₂, ¿cuántos gramos de MgO se producen?",
+      "options": [
+        "40",
+        "50",
+        "36",
+        "20"
+      ],
+      "correct": 0,
+      "explanation": "Ley de conservación de la masa: la masa total se conserva. 24 g de Mg + 16 g de O₂ → 40 g de MgO."
+    },
+    {
+      "question": "Según Lavoisier, si reaccionan 46 g de Na + 35.5 g de Cl₂, ¿cuántos gramos de NaCl se producen?",
+      "options": [
+        "81.5",
+        "41",
+        "77.5",
+        "91.5"
+      ],
+      "correct": 0,
+      "explanation": "Ley de conservación de la masa: la masa total se conserva. 46 g de Na + 35.5 g de Cl₂ → 81.5 g de NaCl."
+    },
+    {
+      "question": "Según Lavoisier, si reaccionan 4 g de H₂ + 32 g de O₂, ¿cuántos gramos de H₂O se producen?",
+      "options": [
+        "18",
+        "46",
+        "32",
+        "36"
+      ],
+      "correct": 3,
+      "explanation": "Ley de conservación de la masa: la masa total se conserva. 4 g de H₂ + 32 g de O₂ → 36 g de H₂O."
+    },
+    {
+      "question": "Según Lavoisier, si reaccionan 40 g de Ca + 32 g de O₂, ¿cuántos gramos de CaO se producen?",
+      "options": [
+        "36",
+        "68",
+        "82",
+        "72"
+      ],
+      "correct": 3,
+      "explanation": "Ley de conservación de la masa: la masa total se conserva. 40 g de Ca + 32 g de O₂ → 72 g de CaO."
+    },
+    {
+      "question": "Según Lavoisier, si reaccionan 12 g de C + 32 g de O₂, ¿cuántos gramos de CO₂ se producen?",
+      "options": [
+        "40",
+        "54",
+        "22",
+        "44"
+      ],
+      "correct": 3,
+      "explanation": "Ley de conservación de la masa: la masa total se conserva. 12 g de C + 32 g de O₂ → 44 g de CO₂."
+    }
+  ]
+}

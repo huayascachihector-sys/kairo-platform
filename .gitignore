@@ -1,0 +1,51 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+.output
+.vinxi
+.tanstack/**
+.nitro
+*.local
+*.dev.vars
+
+# Wrangler / Cloudflare
+.wrangler/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.nblproj
+*.sln
+*.sw?
+
+# Secrets
+.env
+
+# Large generated/vendored data - excluded from repo, use CDN in production
+public/data/ib-questions/
+public/videos/
+public/avatars/
+
+# Vendored repos (reference only, not part of source)
+herramientas/
+agentedevideos/
+generador_videos/
+
+# OS artifacts
+Thumbs.db
+ehthumbs.db
+Desktop.ini
