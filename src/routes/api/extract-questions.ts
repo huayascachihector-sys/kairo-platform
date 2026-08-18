@@ -55,6 +55,8 @@ Ejemplo de formato:
 
 Si el contenido del curso no contiene preguntas de opción múltiple reconocibles, responde con un array vacío [].`;
 
+const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "deepseek/deepseek-chat-v3-0324:free";
+
 export const Route = createFileRoute("/api/extract-questions")({
   server: {
     handlers: {
@@ -95,7 +97,7 @@ export const Route = createFileRoute("/api/extract-questions")({
               "X-Title": "KAIRO Question Extractor",
             },
             body: JSON.stringify({
-              model: "openrouter/free",
+              model: OPENROUTER_MODEL,
               messages: [
                 { role: "system", content: prompt },
                 {

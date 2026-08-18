@@ -2,6 +2,9 @@
 
 import type { StoreState } from "./store";
 
+const SAFETY_BOILERPLATE =
+  /user safety|response safety|unable to comply|pol[íi]tica de seguridad|fuera del ámbito/i;
+
 export interface FileAttachment {
   name: string;
   type: string;
@@ -91,7 +94,9 @@ export async function getAIResponse(
 
     if (res.ok) {
       const data = (await res.json()) as { text?: string };
-      if (data.text && data.text.trim()) return data.text;
+      if (data.text && data.text.trim() && !SAFETY_BOILERPLATE.test(data.text)) {
+        return data.text;
+      }
     }
 
     return generateLocalResponse(userMessage, files, sessionContext);
