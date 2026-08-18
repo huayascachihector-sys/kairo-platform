@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageSquare, Mic, Video, Clock, CheckCircle2, AlertCircle, RefreshCw, Star, ArrowLeft, ClipboardList, HelpCircle, AlertTriangle } from 'lucide-react';
+import { MessageSquare, Mic, Video, Clock, CheckCircle2, AlertCircle, RefreshCw, Star, ArrowLeft, ClipboardList, HelpCircle, AlertTriangle, Send } from 'lucide-react';
+
+interface EntrevistaProps {
+  onNavigate: (view: string) => void;
+}
 
 const INTERVIEW_TIPS = [
   {
@@ -58,7 +62,7 @@ const INTERVIEW_TIPS = [
   },
 ];
 
-const MOCK_QUESTIONS = [
+const BASE_QUESTIONS = [
   {
     question: '¿Por qué quieres estudiar esta carrera?',
     model: 'Mi interés nace de [experiencia específica]. He explorado [tema] y quiero profundizar. La facultad de [universidad] ofrece [elemento específico del programa] que se alinea con mis metas.',
@@ -81,15 +85,44 @@ const MOCK_QUESTIONS = [
   },
 ];
 
-export default function Entrevista() {
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function aiFeedback(answer: string): string {
+  const words = answer.trim().split(/\s+/).length;
+  if (words < 10) {
+    return 'Tu respuesta es muy corta. Los entrevistadores esperan al menos 2-3 oraciones desarrolladas. Intenta incluir un ejemplo concreto.';
+  }
+  if (answer.toLowerCase().includes('no sé') || answer.toLowerCase().includes('no se')) {
+    return 'Evita decir "no sé" directamente. En su lugar, di "No tengo esa información todavía, pero me gustaría aprender sobre...".';
+  }
+  if (words < 30) {
+    return 'Buen inicio. Puedes expandir tu respuesta con ejemplos concretos de tu experiencia: los entrevistadores valoran historias reales.';
+  }
+  return 'Excelente respuesta. Incluiste elementos clave y mostraste pensamiento claro. Para destacar más, menciona algo específico de la universidad o carrera.';
+}
+
+export default function Entrevista({ onNavigate }: EntrevistaProps) {
   const [activeTip, setActiveTip] = useState<number | null>(0);
+  const [questions, setQuestions] = useState(BASE_QUESTIONS);
   const [questionIdx, setQuestionIdx] = useState(0);
   const [userAnswer, setUserAnswer] = useState('');
   const [feedback, setFeedback] = useState('');
   const [showFeedback, setShowFeedback] = useState(false);
 
+  const [aiInput, setAiInput] = useState('');
+  const [aiStarted, setAiStarted] = useState(false);
+  const [aiMsgs, setAiMsgs] = useState<{ role: 'ai' | 'user'; text: string }[]>([]);
+  const [aiStep, setAiStep] = useState(0);
+
   const nextQuestion = () => {
-    setQuestionIdx((prev) => (prev + 1) % MOCK_QUESTIONS.length);
+    setQuestionIdx((prev) => (prev + 1) % questions.length);
     setUserAnswer('');
     setFeedback('');
     setShowFeedback(false);
@@ -97,22 +130,39 @@ export default function Entrevista() {
 
   const checkAnswer = () => {
     setShowFeedback(true);
-    const model = MOCK_QUESTIONS[questionIdx];
-    const words = userAnswer.trim().split(/\s+/).length;
-    if (words < 10) {
-      setFeedback('Tu respuesta es muy corta. Los entrevistadores esperan al menos 2-3 oraciones desarroladas. Intenta incluir un ejemplo concreto.');
-    } else if (userAnswer.toLowerCase().includes('no sé') || userAnswer.toLowerCase().includes('no se')) {
-      setFeedback('Evita decir "no sé" directamente. En su lugar, di "No tengo esa información todavía, pero me gustaría aprender sobre..."');
-    } else if (words < 30) {
-      setFeedback('Buen inicio! Puedes expandir tu respuesta con ejemplos concretos de tu experiencia. Los entrevistadores valoran historias reales.');
-    } else {
-      setFeedback('Excelente respuesta! Incluiste elementos clave y mostraste pensamiento claro. Para destacar aún más, menciona algo específico de la universidad o carrera.');
-    }
+    setFeedback(aiFeedback(userAnswer));
+  };
+
+  const newQuestions = () => {
+    setQuestions(shuffle(BASE_QUESTIONS));
+    setQuestionIdx(0);
+    setUserAnswer('');
+    setFeedback('');
+    setShowFeedback(false);
+  };
+
+  const startAiTutor = () => {
+    if (!aiInput.trim().toLowerCase().includes('si')) return;
+    setAiStarted(true);
+    setAiStep(1);
+    setAiMsgs([
+      { role: 'ai', text: '¡Hola! Soy tu tutor de entrevistas. Te haré 3 preguntas, respóndelas como si fuera la entrevista real. Empecemos:' },
+      { role: 'ai', text: questions[0].question },
+    ]);
+  };
+
+  const sendAiMessage = (text: string) => {
+    const reply =
+      aiStep % 2 === 1
+        ? aiFeedback(text)
+        : questions[(aiStep / 2) % questions.length]?.question;
+    setAiMsgs((prev) => [...prev, { role: 'user', text }, { role: 'ai', text: reply }]);
+    setAiStep((s) => s + 1);
   };
 
   return (
     <div className="space-y-6 max-w-4xl">
-      <button onClick={() => window.history.back()}
+      <button onClick={() => onNavigate('dashboard')}
         className="inline-flex items-center gap-2 text-sm text-surface-500 hover:text-surface-800 dark:hover:text-surface-200">
         <ArrowLeft className="w-4 h-4" /> Volver
       </button>
@@ -144,7 +194,7 @@ export default function Entrevista() {
             }`}>
             <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-2 flex items-center gap-2">
               <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${tip.gradient} flex items-center justify-center`}>
-                <tip.icon className={`w-4 h-4 text-white`} />
+                <tip.icon className="w-4 h-4 text-white" />
               </div> {tip.title}
             </h3>
             <div className={`space-y-1.5 ${activeTip === i ? '' : 'hidden'}`}>
@@ -164,12 +214,12 @@ export default function Entrevista() {
           <Mic className="w-5 h-5 text-white/80" />
           <h2 className="text-lg font-bold">Simulacro de Entrevista</h2>
           <span className="ml-auto bg-white/15 text-[10px] font-semibold px-2 py-0.5 rounded-full">
-            Pregunta {questionIdx + 1} de {MOCK_QUESTIONS.length}
+            Pregunta {questionIdx + 1} de {questions.length}
           </span>
         </div>
 
         <div className="bg-white/10 rounded-xl p-5 mb-4">
-          <p className="text-sm leading-relaxed">{MOCK_QUESTIONS[questionIdx].question}</p>
+          <p className="text-sm leading-relaxed">{questions[questionIdx].question}</p>
         </div>
 
         <textarea
@@ -199,10 +249,11 @@ export default function Entrevista() {
         )}
 
         <div className="mt-6 flex items-center gap-4">
-          <button className="flex items-center gap-2 text-xs bg-white/15 hover:bg-white/25 px-3 py-2 rounded-lg transition-colors text-white">
-            <Video className="w-3.5 h-3.5" /> Simular por video
+          <button disabled title="Próximamente: requiere cámara e IA de visión"
+            className="flex items-center gap-2 text-xs bg-white/15 px-3 py-2 rounded-lg transition-colors text-white opacity-50 cursor-not-allowed">
+            <Video className="w-3.5 h-3.5" /> Simular por video (próximamente)
           </button>
-          <button className="flex items-center gap-2 text-xs bg-white/15 hover:bg-white/25 px-3 py-2 rounded-lg transition-colors text-white">
+          <button onClick={newQuestions} className="flex items-center gap-2 text-xs bg-white/15 hover:bg-white/25 px-3 py-2 rounded-lg transition-colors text-white">
             <RefreshCw className="w-3.5 h-3.5" /> Nuevas preguntas
           </button>
         </div>
@@ -216,15 +267,63 @@ export default function Entrevista() {
         <p className="text-xs text-surface-500 mb-4">
           El tutor de IA te hace preguntas de entrevista, evalúa tus respuestas y da feedback personalizado.
         </p>
-        <div className="flex gap-2">
-          <input
-            placeholder="¿Quieres practicar una entrevista virtual? Escribe 'si'"
-            className="flex-1 px-4 py-3 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-800 dark:text-white placeholder-surface-400 text-sm outline-none focus:border-primary-400"
-          />
-          <button className="bg-primary-600 text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-primary-700">
-            Iniciar
-          </button>
-        </div>
+
+        {!aiStarted ? (
+          <div className="flex gap-2">
+            <input
+              value={aiInput}
+              onChange={(e) => setAiInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && startAiTutor()}
+              placeholder="¿Quieres practicar una entrevista virtual? Escribe 'si'"
+              className="flex-1 px-4 py-3 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-800 dark:text-white placeholder-surface-400 text-sm outline-none focus:border-primary-400"
+            />
+            <button onClick={startAiTutor}
+              className="bg-primary-600 text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-primary-700 transition-colors">
+              Iniciar
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <div className="space-y-2 max-h-72 overflow-y-auto pr-1">
+              {aiMsgs.map((m, i) => (
+                <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`max-w-[85%] text-sm px-4 py-2.5 rounded-2xl ${
+                    m.role === 'user'
+                      ? 'bg-primary-600 text-white rounded-br-sm'
+                      : 'bg-surface-100 dark:bg-surface-800 text-surface-800 dark:text-white rounded-bl-sm'
+                  }`}>
+                    {m.text}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (!aiInput.trim()) return;
+                sendAiMessage(aiInput.trim());
+                setAiInput('');
+              }}
+              className="flex gap-2"
+            >
+              <input
+                value={aiInput}
+                onChange={(e) => setAiInput(e.target.value)}
+                placeholder={aiStep % 2 === 1 ? 'Tu respuesta...' : '¿Alguna duda? Continúa...'}
+                className="flex-1 px-4 py-3 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-800 dark:text-white placeholder-surface-400 text-sm outline-none focus:border-primary-400"
+              />
+              <button type="submit" className="bg-primary-600 text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-primary-700 transition-colors flex items-center gap-2">
+                <Send className="w-4 h-4" /> Enviar
+              </button>
+            </form>
+            {aiStep >= 6 && (
+              <p className="text-xs text-surface-400 flex items-center gap-1.5">
+                <AlertCircle className="w-3.5 h-3.5 text-emerald-500" />
+                Sesión completada. Pulsa "Nuevas preguntas" para volver a practicar con otras preguntas.
+              </p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

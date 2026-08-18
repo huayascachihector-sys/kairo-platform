@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { User, Mail, School, GraduationCap, MapPin, Target, Camera, Save, Lock, Check, Flame, Brain, Rocket, Star, Sparkles, Zap, BookOpen, Microscope, Ruler, Palette, Code2 } from 'lucide-react';
-import { loadState, updateUser } from '../../lib/store';
+import { loadState, updateUser, changePassword, hasPassword } from '../../lib/store';
 
 interface Props {
  onStateChange: () => void;
@@ -47,10 +47,12 @@ export default function Perfil({ onStateChange }: Props) {
   setTimeout(() => setSaved(false), 2000);
  };
 
- const changePwd = () => {
-  if (pwd.next.length < 6) return setPwdMsg('Mínimo 6 caracteres');
+const changePwd = () => {
+  if (pwd.next.length < 8) return setPwdMsg('La nueva contraseña debe tener al menos 8 caracteres');
   if (pwd.next !== pwd.confirm) return setPwdMsg('Las contraseñas no coinciden');
-  setPwdMsg('Contraseña actualizada (demo local)');
+  const ok = changePassword(pwd.current, pwd.next);
+  if (!ok) return setPwdMsg('Contraseña actual incorrecta');
+  setPwdMsg('Contraseña actualizada correctamente');
   setPwd({ current: '', next: '', confirm: '' });
   setTimeout(() => { setShowPwd(false); setPwdMsg(''); }, 1500);
  };
@@ -160,7 +162,7 @@ export default function Perfil({ onStateChange }: Props) {
       {showPwd && (
        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}
         className="border-t border-surface-100 dark:border-white/10 pt-5 space-y-3">
-        <input type="password" placeholder="Contraseña actual" value={pwd.current}
+        <input type="password" placeholder={hasPassword(state.user?.email || '') ? 'Contraseña actual' : 'Aún no tienes contraseña (déjalo vacío)'} value={pwd.current}
          onChange={(e) => setPwd({ ...pwd, current: e.target.value })}
          className="w-full bg-surface-50 dark:bg-white/5 border border-surface-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-primary-400 transition-all" />
         <input type="password" placeholder="Nueva contraseña" value={pwd.next}

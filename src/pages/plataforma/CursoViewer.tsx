@@ -1,6 +1,6 @@
-﻿import { useState, useMemo, useCallback } from "react";
+﻿import { useState, useMemo, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, Zap, BookOpen, Lock, Sparkles } from "lucide-react";
+import { ChevronLeft, Zap, BookOpen, Lock, Sparkles, CheckCircle2 } from "lucide-react";
 import {
   getCourse,
   getTotalLessons,
@@ -57,6 +57,8 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
   const [celebrationLevelUp, setCelebrationLevelUp] = useState(false);
   const [celebrationGems, setCelebrationGems] = useState(0);
   const [leccionIdx, setLeccionIdx] = useState(0);
+  const [watchedLessons, setWatchedLessons] = useState<number[]>([]);
+  const teoriaCompletedRef = useRef(false);
 
   const isPremium = lastState.plan === "premium";
   const modules = useMemo(() => (course ? getModules(course) : []), [course]);
@@ -93,6 +95,9 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
     setNoHearts(false);
     setXpEarned(0);
     setShowCelebration(false);
+    setLeccionIdx(0);
+    setWatchedLessons([]);
+    teoriaCompletedRef.current = false;
     setView("phase");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -311,6 +316,11 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
                   </p>
                   <h3 className="font-bold text-white">{leccion.title}</h3>
                 </div>
+                {watchedLessons.includes(leccionIdx) && (
+                  <span className="text-[10px] text-emerald-400 px-2 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center gap-1">
+                    <CheckCircle2 size={10} /> Lección vista
+                  </span>
+                )}
                 {videoUrl && (
                   <span className="text-[10px] text-surface-500 px-2 py-1 rounded-full bg-white/5 border border-white/10">
                     {leccion.duration}
@@ -318,7 +328,22 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
                 )}
               </div>
 
-              {videoUrl && <VideoPlayer videoUrl={videoUrl} onComplete={() => {}} />}
+              {videoUrl && (
+                <VideoPlayer
+                  videoUrl={videoUrl}
+                  onComplete={() => {
+                    setWatchedLessons((w) => (w.includes(leccionIdx) ? w : [...w, leccionIdx]));
+                    if (esUltima && !teoriaCompletedRef.current) {
+                      setTimeout(() => {
+                        completePhase("teoria", 20);
+                        teoriaCompletedRef.current = true;
+                        setLeccionIdx(0);
+                        advance("practica");
+                      }, 800);
+                    }
+                  }}
+                />
+              )}
 
               {leccionMark.trim().length > 0 && (
                 <div className="prose prose-invert max-w-none mt-4">
@@ -348,7 +373,9 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
             {esUltima || !leccion ? (
               <button
                 onClick={() => {
+                  if (teoriaCompletedRef.current) return;
                   completePhase("teoria", 20);
+                  teoriaCompletedRef.current = true;
                   setLeccionIdx(0);
                   advance("practica");
                 }}

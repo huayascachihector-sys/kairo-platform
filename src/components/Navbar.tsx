@@ -100,7 +100,9 @@ export default function Navbar() {
                       onMouseEnter={() => setDropdownOpen(true)}
                       onMouseLeave={() => setDropdownOpen(false)}
                     >
-                      <button className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-cyan-400 rounded-lg hover:bg-cyan-500/10 transition-all duration-300 flex items-center gap-1">
+                      <button
+                        onClick={() => setDropdownOpen((o) => !o)}
+                        className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-cyan-400 rounded-lg hover:bg-cyan-500/10 transition-all duration-300 flex items-center gap-1">
                         {link.label}
                         <ChevronDown className={`w-3.5 h-3.5 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
                       </button>

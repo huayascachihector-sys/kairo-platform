@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail, Lock, User, Sparkles, CheckCircle2, ShieldCheck, LogOut, UserCheck } from 'lucide-react';
-import { loadState, saveUser, loginUser, logoutUser, getRegisteredAccounts, type UserAccount, type StoreState } from '../lib/store';
+import { loadState, saveUser, loginUser, logoutUser, getRegisteredAccounts, hasPassword, type UserAccount, type StoreState } from '../lib/store';
 
 const benefits = [
   'Acceso a +200 cursos universitarios',
@@ -12,10 +12,12 @@ const benefits = [
 
 export default function Registro() {
   const [state, setState] = useState<StoreState>(loadState);
-  const [step, setStep] = useState<'email' | 'name'>('email');
+  const [step, setStep] = useState<'email' | 'name' | 'password'>('email');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
   const [registeredAccounts, setRegisteredAccounts] = useState<UserAccount[]>([]);
 
@@ -37,6 +39,12 @@ export default function Registro() {
     // Check if user already exists in local database
     const existing = loginUser(email);
     if (existing && existing.user) {
+      if (hasPassword(email)) {
+        setPassword('');
+        setPasswordError('');
+        setStep('password');
+        return;
+      }
       setLoading(true);
       setTimeout(() => {
         window.location.hash = '#/plataforma';
@@ -56,9 +64,30 @@ export default function Registro() {
     }, 400);
   };
 
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!password) {
+      setPasswordError('Ingresa tu contraseña');
+      return;
+    }
+    const ok = loginUser(email, password);
+    if (!ok) {
+      setPasswordError('Contraseña incorrecta');
+      return;
+    }
+    setLoading(true);
+    setTimeout(() => {
+      window.location.hash = '#/plataforma';
+    }, 500);
+  };
+
   const handleNameSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) return;
+    if (password.length < 8) {
+      setPasswordError('La contraseña debe tener al menos 8 caracteres');
+      return;
+    }
     setLoading(true);
     const existing = loginUser(email);
     const isNew = !existing;
@@ -68,7 +97,7 @@ export default function Registro() {
       }, 400);
       return;
     }
-    saveUser(name.trim(), email.trim());
+    saveUser(name.trim(), email.trim(), password);
     setTimeout(() => {
       window.location.hash = '#/onboarding';
     }, 600);
@@ -183,7 +212,7 @@ export default function Registro() {
                   <div className={`flex-1 h-0.5 rounded-full transition-all ${step === 'name' ? 'bg-primary-400' : 'bg-surface-100 dark:bg-surface-800'}`} />
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${step === 'name' ? 'bg-primary-600 text-white' : 'bg-surface-100 dark:bg-surface-800 text-surface-400 dark:text-surface-500'}`}>2</div>
                   <div className="flex-1 h-0.5 rounded-full bg-surface-100 dark:bg-surface-800" />
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-surface-100 dark:bg-surface-800 text-surface-400 dark:text-surface-500">3</div>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${step === 'password' ? 'bg-primary-600 text-white' : 'bg-surface-100 dark:bg-surface-800 text-surface-400 dark:text-surface-500'}`}>3</div>
                 </div>
 
                 {step === 'email' && (
@@ -197,11 +226,11 @@ export default function Registro() {
                     <p className="text-surface-500 dark:text-surface-400 mb-6">Tu sesión quedará guardada en este equipo</p>
 
                     {/* Saved Accounts on this device */}
-                    {registeredAccounts.length > 0 && (
+                    {registeredAccounts.filter((acc) => !acc.password).length > 0 && (
                       <div className="mb-6 p-4 bg-surface-50 dark:bg-surface-800 rounded-2xl border border-surface-200 dark:border-surface-700">
                         <p className="text-xs font-bold text-surface-500 dark:text-surface-400 uppercase tracking-wider mb-3">Cuentas en este dispositivo</p>
                         <div className="space-y-2">
-                          {registeredAccounts.map((acc) => (
+                          {registeredAccounts.filter((acc) => !acc.password).map((acc) => (
                             <button
                               key={acc.email}
                               onClick={() => handleQuickLogin(acc.email)}
@@ -289,10 +318,19 @@ export default function Registro() {
                           <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-400" />
                           <input
                             type="password"
+                            value={password}
+                            onChange={(e) => { setPassword(e.target.value); setPasswordError(''); }}
                             placeholder="Mínimo 8 caracteres"
-                            className="w-full pl-11 pr-4 py-3.5 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-900 dark:text-white placeholder-surface-400 outline-none transition-all text-sm font-medium focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white dark:focus:bg-surface-800"
+                            className={`w-full pl-11 pr-4 py-3.5 rounded-xl border text-surface-900 dark:text-white placeholder-surface-400 outline-none transition-all text-sm font-medium ${
+                              passwordError
+                                ? 'border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-900/20 focus:border-red-400 focus:ring-2 focus:ring-red-100'
+                                : 'border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white dark:focus:bg-surface-800'
+                            }`}
                           />
                         </div>
+                        {passwordError && (
+                          <p className="text-red-500 text-xs mt-1.5 font-medium">{passwordError}</p>
+                        )}
                       </div>
 
                       <button
@@ -315,6 +353,56 @@ export default function Registro() {
                               <ArrowRight className="w-4 h-4" />
                             </>
                           )}
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setStep('email')}
+                        className="w-full text-center text-sm text-surface-400 hover:text-surface-600 dark:hover:text-surface-200 transition-colors py-1"
+                      >
+                        ← Cambiar correo
+                      </button>
+                    </form>
+                  </motion.div>
+                )}
+
+                {step === 'password' && (
+                  <motion.div key="password" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+                    <h1 className="text-2xl font-bold text-surface-900 dark:text-white mb-2">Ingresa tu contraseña</h1>
+                    <p className="text-surface-500 dark:text-surface-400 mb-8">
+                      Cuenta: <span className="text-primary-600 dark:text-primary-400 font-semibold">{email}</span>
+                    </p>
+
+                    <form onSubmit={handlePasswordSubmit} className="space-y-5">
+                      <div>
+                        <label className="block text-sm font-semibold text-surface-700 dark:text-surface-200 mb-2">
+                          Contraseña
+                        </label>
+                        <div className="relative">
+                          <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-400" />
+                          <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => { setPassword(e.target.value); setPasswordError(''); }}
+                            placeholder="Tu contraseña"
+                            autoFocus
+                            className={`w-full pl-11 pr-4 py-3.5 rounded-xl border text-surface-900 dark:text-white placeholder-surface-400 outline-none transition-all text-sm font-medium ${
+                              passwordError
+                                ? 'border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-900/20 focus:border-red-400 focus:ring-2 focus:ring-red-100'
+                                : 'border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white dark:focus:bg-surface-800'
+                            }`}
+                          />
+                        </div>
+                        {passwordError && (
+                          <p className="text-red-500 text-xs mt-1.5 font-medium">{passwordError}</p>
+                        )}
+                      </div>
+
+                      <button type="submit" disabled={loading} className="btn-primary w-full justify-center text-sm !py-3.5">
+                        <span className="flex items-center justify-center gap-2">
+                          {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
+                          <ArrowRight className="w-4 h-4" />
                         </span>
                       </button>
 

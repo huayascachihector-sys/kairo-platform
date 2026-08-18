@@ -94,7 +94,7 @@ export default function Blog() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="mb-12 group cursor-pointer"
+            className="mb-12 group"
           >
             <div className={`bg-gradient-to-r ${featured.gradient} rounded-3xl p-8 md:p-12 text-white relative overflow-hidden`}>
               <div className="absolute inset-0 bg-black/10" />
@@ -130,7 +130,7 @@ export default function Blog() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 + i * 0.05 }}
-              className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 overflow-hidden card-hover group cursor-pointer"
+              className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 overflow-hidden card-hover group"
             >
               <div className={`h-2 bg-gradient-to-r ${post.gradient}`} />
               <div className="p-6">

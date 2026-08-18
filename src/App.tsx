@@ -9,6 +9,7 @@ const Cursos = lazy(() => import('./pages/Cursos'));
 const Blog = lazy(() => import('./pages/Blog'));
 const About = lazy(() => import('./pages/About'));
 const Registro = lazy(() => import('./pages/Registro'));
+const Pago = lazy(() => import('./pages/Pago'));
 const Plataforma = lazy(() => import('./pages/Plataforma'));
 const OnboardingIA = lazy(() => import('./pages/OnboardingIA'));
 const Robot = lazy(() => import('./pages/Robot'));
@@ -26,7 +27,7 @@ function initDarkMode(): boolean {
   try { return localStorage.getItem('sm_darkmode') === '1'; } catch { return false; }
 }
 
-type Route = 'home' | 'matematicas' | 'recursos' | 'cursos' | 'blog' | 'about' | 'registro' | 'onboarding' | 'plataforma' | 'robot';
+type Route = 'home' | 'matematicas' | 'recursos' | 'cursos' | 'blog' | 'about' | 'registro' | 'pago' | 'onboarding' | 'plataforma' | 'robot';
 
 function getRoute(): Route {
   const hash = window.location.hash;
@@ -36,13 +37,14 @@ function getRoute(): Route {
   if (hash.startsWith('#/blog')) return 'blog';
   if (hash.startsWith('#/about')) return 'about';
   if (hash.startsWith('#/registro')) return 'registro';
+  if (hash.startsWith('#/pago')) return 'pago';
   if (hash.startsWith('#/onboarding')) return 'onboarding';
   if (hash.startsWith('#/plataforma')) return 'plataforma';
   if (hash.startsWith('#/robot')) return 'robot';
   return 'home';
 }
 
-const STANDALONE_ROUTES: Route[] = ['registro', 'onboarding', 'plataforma'];
+const STANDALONE_ROUTES: Route[] = ['registro', 'pago', 'onboarding', 'plataforma'];
 
 function LoadingFallback() {
   return (
@@ -78,6 +80,7 @@ export default function App() {
       case 'blog':        return <Blog />;
       case 'about':       return <About />;
       case 'registro':    return <Registro />;
+      case 'pago':        return <Pago />;
       case 'onboarding':  return <OnboardingIA />;
       case 'plataforma':  return <Plataforma />;
       case 'robot':       return <Robot />;

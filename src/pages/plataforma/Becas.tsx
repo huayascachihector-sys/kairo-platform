@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Star, ExternalLink, GraduationCap, DollarSign, Globe, Filter, BookOpen, Sparkles } from 'lucide-react';
 
+interface BecasProps {
+  onNavigate: (view: string) => void;
+}
+
 interface Scholarship {
   id: string;
   title: string;
@@ -129,7 +133,7 @@ const cardCls = "relative bg-white dark:bg-white/5 rounded-2xl border border-sur
 const dotBg = { backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '24px 24px' };
 const hv = { y: -4, boxShadow: '0 12px 40px rgba(99,102,241,0.15)' };
 
-export default function Becas() {
+export default function Becas({ onNavigate }: BecasProps) {
   const [search, setSearch] = useState('');
   const [levelFilter, setLevelFilter] = useState('Todos');
 
@@ -255,9 +259,9 @@ export default function Becas() {
           <p className="text-primary-100 max-w-lg mx-auto mb-6">
             KAIRO te prepara para escribir ensayos de admisión, practicar entrevistas y cumplir con los requisitos de cada beca.
           </p>
-          <a href="#/plataforma" className="inline-flex items-center gap-2 bg-white text-primary-700 font-bold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors">
+          <button onClick={() => onNavigate("plan")} className="inline-flex items-center gap-2 bg-white text-primary-700 font-bold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors">
             <BookOpen className="w-4 h-4" /> Ir al Plan de Estudio
-          </a>
+          </button>
          </div>
        </div>
     </div>

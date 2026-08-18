@@ -80,13 +80,29 @@ export default function Pago() {
   const [tab, setTab] = useState<"plan" | "pago">("plan");
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardExpiry, setCardExpiry] = useState("");
+  const [cardCvv, setCardCvv] = useState("");
+  const [cardName, setCardName] = useState("");
+  const [cardTouched, setCardTouched] = useState(false);
   const email = getParam("email") || "tucorreo@ejemplo.com";
   const name = getParam("name") || "Estudiante";
 
   const selectedPlan = plans.find((p) => p.id === selected)!;
 
+  const cardNumberDigits = cardNumber.replace(/\D/g, "");
+  const cardValid =
+    cardNumberDigits.length === 16 &&
+    /^(0[1-9]|1[0-2])\/\d{2}$/.test(cardExpiry) &&
+    /^\d{3,4}$/.test(cardCvv) &&
+    cardName.trim().length >= 3;
+
   const handlePay = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!cardValid) {
+      setCardTouched(true);
+      return;
+    }
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -115,7 +131,7 @@ export default function Pago() {
             está activa. Revisa tu correo en <span className="text-primary-600 dark:text-primary-400">{email}</span> para
             acceder.
           </p>
-          <a href="#" className="btn-primary w-full justify-center text-base">
+          <a href="#/plataforma" className="btn-primary w-full justify-center text-base">
             <span className="flex items-center justify-center gap-2">
               <Sparkles className="w-4 h-4" />
               Ir a mi plataforma
@@ -294,15 +310,23 @@ export default function Pago() {
                         type="text"
                         placeholder="1234 5678 9012 3456"
                         maxLength={19}
+                        value={cardNumber}
+                        onChange={(e) =>
+                          setCardNumber(
+                            e.target.value
+                              .replace(/\D/g, "")
+                              .replace(/(.{4})/g, "$1 ")
+                              .trim()
+                              .slice(0, 19)
+                          )
+                        }
                         className="w-full px-4 py-3.5 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-900 dark:text-white placeholder-surface-400 outline-none text-sm font-medium focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white dark:focus:bg-surface-800 transition-all"
-                        onInput={(e) => {
-                          const t = e.currentTarget;
-                          t.value = t.value
-                            .replace(/\D/g, "")
-                            .replace(/(.{4})/g, "$1 ")
-                            .trim();
-                        }}
                       />
+                      {cardTouched && cardNumberDigits.length > 0 && cardNumberDigits.length < 16 && (
+                        <p className="text-xs text-red-500 mt-1.5">
+                          El número de tarjeta debe tener 16 dígitos.
+                        </p>
+                      )}
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
@@ -314,6 +338,11 @@ export default function Pago() {
                           type="text"
                           placeholder="MM/AA"
                           maxLength={5}
+                          value={cardExpiry}
+                          onChange={(e) => {
+                            const digits = e.target.value.replace(/\D/g, "").slice(0, 4);
+                            setCardExpiry(digits.length > 2 ? `${digits.slice(0, 2)}/${digits.slice(2)}` : digits);
+                          }}
                           className="w-full px-4 py-3.5 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-900 dark:text-white placeholder-surface-400 outline-none text-sm font-medium focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white dark:focus:bg-surface-800 transition-all"
                         />
                       </div>
@@ -322,9 +351,11 @@ export default function Pago() {
                           CVV
                         </label>
                         <input
-                          type="text"
+                          type="password"
                           placeholder="123"
-                          maxLength={3}
+                          maxLength={4}
+                          value={cardCvv}
+                          onChange={(e) => setCardCvv(e.target.value.replace(/\D/g, "").slice(0, 4))}
                           className="w-full px-4 py-3.5 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-900 dark:text-white placeholder-surface-400 outline-none text-sm font-medium focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white dark:focus:bg-surface-800 transition-all"
                         />
                       </div>
@@ -336,10 +367,16 @@ export default function Pago() {
                       </label>
                       <input
                         type="text"
-                        defaultValue={name}
+                        value={cardName}
+                        onChange={(e) => setCardName(e.target.value)}
                         placeholder="Nombre completo"
                         className="w-full px-4 py-3.5 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-900 dark:text-white placeholder-surface-400 outline-none text-sm font-medium focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white dark:focus:bg-surface-800 transition-all"
                       />
+                      {cardTouched && !cardValid && (
+                        <p className="text-xs text-red-500 mt-1.5">
+                          Revisa los datos: 16 dígitos de tarjeta, vencimiento MM/AA y el nombre completo.
+                        </p>
+                      )}
                     </div>
 
                     <button

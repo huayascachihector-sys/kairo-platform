@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Gem, Heart, Shield, Zap, Pill, Check, Sparkles, Crown } from "lucide-react";
-import { loadState, buyShopItem, buyMascotOutfit, setMascotOutfit, addGems } from "../../lib/store";
+import { loadState, buyShopItem, buyMascotOutfit, setMascotOutfit } from "../../lib/store";
 import {
   SHOP_ITEMS,
   MASCOT_OUTFITS,
@@ -171,19 +171,6 @@ export default function Tienda() {
           <div />
         </PremiumGate>
       )}
-
-      {/* Debug: demo gems (se eliminará en producción) */}
-      <div className="text-center">
-        <button
-          onClick={() => {
-            addGems(500);
-            refresh();
-          }}
-          className="text-xs text-surface-500 dark:text-surface-400 hover:text-primary-400 underline"
-        >
-          +500 gemas de demostración
-        </button>
-      </div>
     </div>
   );
 }

@@ -16,8 +16,10 @@ interface BancoImportadosProps {
   dragOver: boolean;
   importError: string;
   onDrop: (e: React.DragEvent) => void;
+  onDragOver?: () => void;
   onFileSelect: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onStartQuiz: () => void;
+  onRemoved?: () => void;
   onSetBank: (b: ImportedQuestionBank) => void;
 }
 
@@ -31,7 +33,7 @@ function TrashIcon() {
 
 export default function BancoImportados({
   state, processing, processingStatus, dragOver, importError,
-  onDrop, onFileSelect, onStartQuiz, onSetBank,
+  onDrop, onDragOver, onFileSelect, onStartQuiz, onRemoved, onSetBank,
 }: BancoImportadosProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   return (
@@ -43,8 +45,8 @@ export default function BancoImportados({
           <p className="text-sm text-surface-500 dark:text-surface-400">{processingStatus}</p>
         </div>
       ) : (
-        <div onDragOver={(e) => { e.preventDefault(); onDrop(e as any); }}
-          onDragLeave={() => {/* handled by parent */}} onDrop={onDrop}
+        <div onDragOver={(e) => { e.preventDefault(); onDragOver?.(); }}
+          onDragLeave={() => {}} onDrop={onDrop}
           className={`border-2 border-dashed rounded-2xl p-8 md:p-12 text-center transition-all ${dragOver ? 'border-primary-400 bg-primary-50 dark:bg-primary-900/30' : 'border-surface-200 dark:border-surface-700 bg-white dark:cyber-card-dark'}`}>
           <Archive className={`w-12 h-12 mx-auto mb-4 ${dragOver ? 'text-primary-600' : 'text-surface-300 dark:text-surface-600'}`} />
           <h3 className="text-lg font-bold text-surface-900 dark:text-white mb-2">Importar banco de preguntas</h3>
@@ -81,7 +83,7 @@ export default function BancoImportados({
               <div className="flex items-center gap-2">
                 <button onClick={() => { onSetBank(b); onStartQuiz(); }}
                   className="text-xs font-semibold bg-primary-600 text-white px-4 py-2 rounded-xl hover:bg-primary-700 transition-all">Practicar</button>
-                <button onClick={() => { removeImportedBank(b.id); }}
+                <button onClick={() => { removeImportedBank(b.id); onRemoved?.(); }}
                   className="text-xs text-red-500 hover:text-red-700 p-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/30 transition-all"><TrashIcon /></button>
               </div>
             </div>

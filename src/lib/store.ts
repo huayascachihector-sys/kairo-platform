@@ -283,6 +283,7 @@ export interface UserAccount {
   joinedAt: string;
   lastLoginAt: string;
   avatar?: string;
+  password?: string;
   colegio?: string;
   grado?: string;
   pais?: string;
@@ -488,7 +489,7 @@ export function saveState(state: StoreState): void {
   }
 }
 
-export function saveUser(name: string, email: string): StoreState {
+export function saveUser(name: string, email: string, password?: string): StoreState {
   const emailKey = email.trim().toLowerCase();
   const db = loadDB();
   const now = new Date().toISOString();
@@ -537,6 +538,7 @@ export function saveUser(name: string, email: string): StoreState {
     joinedAt: existing?.joinedAt || now,
     lastLoginAt: now,
     avatar: userState.user.avatar,
+    password: password || existing?.password,
     colegio: userState.user.colegio,
     grado: userState.user.grado,
     pais: userState.user.pais,
@@ -550,16 +552,34 @@ export function saveUser(name: string, email: string): StoreState {
   return userState;
 }
 
-export function loginUser(email: string): StoreState | null {
+export function loginUser(email: string, password?: string): StoreState | null {
   const emailKey = email.trim().toLowerCase();
   const db = loadDB();
-  if (db.users[emailKey]) {
+  const acc = db.users[emailKey];
+  if (acc) {
+    if (acc.password && password !== acc.password) return null;
     db.activeEmail = emailKey;
     db.users[emailKey].lastLoginAt = new Date().toISOString();
     saveDB(db);
     return loadState();
   }
   return null;
+}
+
+export function hasPassword(email: string): boolean {
+  const acc = loadDB().users[email.trim().toLowerCase()];
+  return !!acc && !!acc.password;
+}
+
+export function changePassword(current: string, next: string): boolean {
+  const db = loadDB();
+  const acc = db.activeEmail ? db.users[db.activeEmail] : null;
+  if (!acc) return false;
+  if (acc.password && acc.password !== current) return false;
+  if (next.length < 8) return false;
+  acc.password = next;
+  saveDB(db);
+  return true;
 }
 
 export function logoutUser(): void {

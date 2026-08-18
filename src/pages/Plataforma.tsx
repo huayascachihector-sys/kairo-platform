@@ -26,6 +26,7 @@ import {
   Trophy,
   Store,
   Flashlight,
+  Clapperboard,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { loadState, saveUser, logoutUser, ensureGameState, type StoreState } from "../lib/store";
@@ -54,6 +55,7 @@ import Tienda from "./plataforma/Tienda";
 import Ligas from "./plataforma/Ligas";
 import Flashcards from "./plataforma/Flashcards";
 import RepasoExpress from "./plataforma/RepasoExpress";
+import GeneradorVideos from "./plataforma/GeneradorVideos";
 import { GameBar } from "../components/plataforma/GameBar";
 
 type View =
@@ -81,7 +83,8 @@ type View =
   | "tienda"
   | "ligas"
   | "repaso-express"
-  | "flashcards";
+  | "flashcards"
+  | "generador-videos";
 
 const NAV_MAIN: { id: View; label: string; icon: any }[] = [
   { id: "dashboard", label: "Mi Progreso", icon: BarChart3 },
@@ -103,6 +106,7 @@ const NAV_MAIN: { id: View; label: string; icon: any }[] = [
   { id: "horario", label: "Horario", icon: Calendar },
   { id: "mis-documentos", label: "Mis Documentos", icon: FolderOpen },
   { id: "ligas", label: "Ligas", icon: Trophy },
+  { id: "generador-videos", label: "Generador de Videos", icon: Clapperboard },
   { id: "tienda", label: "Tienda", icon: Store },
   { id: "logros", label: "Logros", icon: Award },
 ];
@@ -191,14 +195,14 @@ export default function Plataforma() {
 
   const Sidebar = ({ mobile = false }: { mobile?: boolean }) => (
     <div className="flex flex-col h-full pt-6 pb-8 px-4">
-      <a href="#" className="flex items-center gap-2.5 px-2 mb-8">
+      <button onClick={() => navigate("dashboard")} className="flex items-center gap-2.5 px-2 mb-8 text-left">
         <img src="/logo-light.png" alt="KAIRO Logo" className="h-10 w-auto object-contain" />
         {mobile && (
           <button onClick={() => setMobileOpen(false)} className="ml-auto p-1">
             <X className="w-5 h-5 text-surface-400" />
           </button>
         )}
-      </a>
+      </button>
 
       <nav className="flex-1 space-y-1 overflow-y-auto">
         {NAV_MAIN.map(({ id, label, icon: Icon }) => {
@@ -281,6 +285,8 @@ export default function Plataforma() {
     switch (view) {
       case "repaso-express":
         return <RepasoExpress onNavigate={navigate} />;
+      case "generador-videos":
+        return <GeneradorVideos />;
       case "flashcards":
         return <Flashcards onNavigate={navigate} />;
       case "dashboard":
@@ -335,11 +341,11 @@ case "ligas":
           />
         );
       case "becas":
-        return <Becas />;
+        return <Becas onNavigate={navigate} />;
       case "ensayo":
         return <Ensayo />;
       case "entrevista":
-        return <Entrevista />;
+        return <Entrevista onNavigate={navigate} />;
       case "mis-documentos":
         return <MiDocumentos />;
       default:

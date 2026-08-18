@@ -71,25 +71,7 @@ function LeccionDetalle({ curso }: LeccionDetalleProps) {
           <div>
             <h3 className="font-semibold text-lg mb-2">Quiz Active Recall</h3>
             {leccion.quizActiveRecall.map((q, i) => (
-              <Card key={i} className="mt-3">
-                <CardContent className="pt-4">
-                  <p className="font-medium mb-2">{q.pregunta}</p>
-                  {q.opciones && (
-                    <div className="space-y-1 mb-2">
-                      {q.opciones.map((opt, j) => (
-                        <Button key={j} variant="outline" className="block w-full text-left" size="sm">
-                          {opt}
-                        </Button>
-                      ))}
-                    </div>
-                  )}
-                  <details className="text-sm text-gray-600">
-                    <summary className="cursor-pointer">Ver respuesta y explicación</summary>
-                    <p className="mt-2">Respuesta: {q.respuestaCorrecta}</p>
-                    <p>{q.explicacion}</p>
-                  </details>
-                </CardContent>
-              </Card>
+              <QuizPregunta key={i} q={q} />
             ))}
           </div>
         </CardContent>
@@ -125,6 +107,57 @@ function LeccionDetalle({ curso }: LeccionDetalleProps) {
         </Button>
       </div>
     </div>
+  );
+}
+
+function QuizPregunta({ q }: { q: { pregunta: string; opciones?: string[]; respuestaCorrecta: string; explicacion: string } }) {
+  const [selected, setSelected] = useState<string | null>(null);
+  const answered = selected !== null;
+  const isCorrect = selected === q.respuestaCorrecta;
+
+  return (
+    <Card className="mt-3">
+      <CardContent className="pt-4">
+        <p className="font-medium mb-2">{q.pregunta}</p>
+        {q.opciones && (
+          <div className="space-y-1 mb-2">
+            {q.opciones.map((opt) => {
+              const isThis = selected === opt;
+              const isAnswer = opt === q.respuestaCorrecta;
+              const cls = !answered
+                ? 'border-gray-300 hover:border-blue-500 hover:bg-blue-50 cursor-pointer'
+                : isAnswer
+                  ? 'border-emerald-500 bg-emerald-50 text-emerald-800'
+                  : isThis
+                    ? 'border-red-500 bg-red-50 text-red-800'
+                    : 'border-gray-200 text-gray-400';
+              return (
+                <Button
+                  key={opt}
+                  variant="outline"
+                  size="sm"
+                  disabled={answered}
+                  onClick={() => setSelected(opt)}
+                  className={`block w-full text-left ${cls}`}
+                >
+                  {opt}
+                </Button>
+              );
+            })}
+          </div>
+        )}
+        <details className="text-sm text-gray-600">
+          <summary className="cursor-pointer">
+            {answered
+              ? isCorrect
+                ? 'Respuesta correcta, ¡bien hecho!'
+                : `Incorrecto. La respuesta correcta es: ${q.respuestaCorrecta}`
+              : 'Ver respuesta y explicación'}
+          </summary>
+          <p className="mt-2">{q.explicacion}</p>
+        </details>
+      </CardContent>
+    </Card>
   );
 }
 

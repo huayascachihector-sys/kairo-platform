@@ -144,7 +144,7 @@ export default function FAQ() {
         >
           <p className="text-slate-400 mb-4">¿No encuentras tu respuesta?</p>
           <a
-            href="#"
+            href="#/plataforma"
             className="inline-flex items-center gap-2 text-cyan-400 font-semibold hover:text-cyan-300 transition-colors"
           >
             <MessageCircle className="w-5 h-5" />

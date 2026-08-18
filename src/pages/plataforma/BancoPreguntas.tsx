@@ -597,8 +597,10 @@ export default function BancoPreguntas() {
           dragOver={dragOver}
           importError={importError}
           onDrop={handleDrop}
+          onDragOver={() => setDragOver(true)}
           onFileSelect={handleFileSelect}
           onStartQuiz={() => startQuiz()}
+          onRemoved={() => setState(loadState())}
           onSetBank={(b) => { setImportedBank(b); setImportedQuestions(b.questions); }}
         />
       )}

@@ -308,12 +308,12 @@ export default function Cursos() {
                 )}
 
                 {/* CTA */}
-                <button className="w-full btn-primary text-sm !py-3 flex items-center justify-center gap-2">
+                <a href="#/registro" className="w-full btn-primary text-sm !py-3 flex items-center justify-center gap-2">
                   <span className="flex items-center gap-2">
                     Inscribirme Gratis
                     <ArrowRight className="w-4 h-4" />
                   </span>
-                </button>
+                </a>
               </div>
             </div>
             </motion.div>

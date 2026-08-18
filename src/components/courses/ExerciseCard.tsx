@@ -38,7 +38,11 @@ export function ExerciseCard({ exercise, variant, index, total, onNext }: Exerci
 
   const handleChoiceSubmit = () => {
     if (submitted || selected === null) return;
+    const correct = selected === exercise.correct;
     setSubmitted(true);
+    setTimeout(() => {
+      onNext(correct);
+    }, correct ? 600 : 1500);
   };
 
   const handleAnswer = (correct: boolean) => {
