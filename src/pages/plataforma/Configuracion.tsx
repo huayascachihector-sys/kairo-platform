@@ -198,7 +198,7 @@ export default function Configuracion({ darkMode, onDarkModeChange, onStateChang
 function Section({ title, icon: Icon, children }: { title: string; icon: any; children: React.ReactNode }) {
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6 space-y-3">
+      className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6 space-y-3">
       <h3 className="text-sm font-bold text-surface-900 dark:text-white flex items-center gap-2 mb-2">
         <Icon className="w-4 h-4 text-primary-600" /> {title}
       </h3>

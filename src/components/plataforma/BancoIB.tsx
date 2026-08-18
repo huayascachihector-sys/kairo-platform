@@ -54,7 +54,7 @@ export default function BancoIB({
 
       {ibImportStage === 'confirm' && ibDetected.length > 0 && (
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-          className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6">
+          className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6">
           <h3 className="text-lg font-bold text-surface-900 dark:text-white mb-2">Cursos detectados</h3>
           <p className="text-sm text-surface-500 dark:text-surface-400 mb-4">
             Se encontraron {ibDetected.length} carpetas de cursos en el archivo .zip.
@@ -76,7 +76,7 @@ export default function BancoIB({
           {!ibProcessing && (
             <div className="flex gap-3">
               <button onClick={onCancelImport}
-                className="flex-1 text-sm font-semibold bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-300 rounded-xl py-3 hover:border-red-300 transition-all">
+                className="flex-1 text-sm font-semibold bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-300 rounded-xl py-3 hover:border-red-300 transition-all">
                 Cancelar
               </button>
               <button onClick={onConfirmExtract}
@@ -119,7 +119,7 @@ export default function BancoIB({
       {ibImportStage === 'idle' && (
         <div onDragOver={(e) => { e.preventDefault(); onDrop(e as any); }}
           onDragLeave={() => {/* parent */}} onDrop={onDrop}
-          className={`border-2 border-dashed rounded-2xl p-8 md:p-12 text-center transition-all ${dragOver ? 'border-primary-400 bg-primary-50 dark:bg-primary-900/30' : 'border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-900'}`}>
+          className={`border-2 border-dashed rounded-2xl p-8 md:p-12 text-center transition-all ${dragOver ? 'border-primary-400 bg-primary-50 dark:bg-primary-900/30' : 'border-surface-200 dark:border-surface-700 bg-white dark:cyber-card-dark'}`}>
           <Globe className={`w-12 h-12 mx-auto mb-4 ${dragOver ? 'text-primary-600' : 'text-surface-300 dark:text-surface-600'}`} />
           <h3 className="text-lg font-bold text-surface-900 dark:text-white mb-2">Importar banco IB</h3>
           <p className="text-sm text-surface-500 dark:text-surface-400 mb-2">
@@ -162,7 +162,7 @@ export default function BancoIB({
                 return (
                   <button key={c.slug} onClick={() => onLoadCourse(c.slug, c.name)}
                     disabled={ibFlashcardLoading}
-                    className="flex items-center gap-3 p-4 rounded-2xl border-2 transition-all text-left group border-surface-100 dark:border-surface-800 bg-white dark:bg-surface-900 hover:border-primary-200 dark:hover:border-primary-800 hover:shadow-md">
+                    className="flex items-center gap-3 p-4 rounded-2xl border-2 transition-all text-left group border-surface-100 bg-white dark:cyber-card-dark hover:border-primary-200 dark:hover:border-primary-800 hover:shadow-md">
                     <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${courseDef?.color || 'from-primary-500 to-accent-600'} flex items-center justify-center text-lg shadow-sm group-hover:scale-110 transition-transform`}>
                       {courseDef?.icon || '📚'}
                     </div>
@@ -208,7 +208,7 @@ export default function BancoIB({
                     onStartIbQuiz(allQs as ImportedQuestion[]);
                   }
                 }}
-                  className="flex items-center gap-3 p-4 rounded-2xl border-2 transition-all text-left group border-surface-100 dark:border-surface-800 bg-white dark:bg-surface-900 hover:border-primary-200 dark:hover:border-primary-800 hover:shadow-md">
+                  className="flex items-center gap-3 p-4 rounded-2xl border-2 transition-all text-left group border-surface-100 bg-white dark:cyber-card-dark hover:border-primary-200 dark:hover:border-primary-800 hover:shadow-md">
                   <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${entry.color} flex items-center justify-center text-lg shadow-sm group-hover:scale-110 transition-transform`}>
                     {entry.icon}
                   </div>
@@ -225,7 +225,7 @@ export default function BancoIB({
       })()}
 
       {state.ibBanks.length > 0 && (
-        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4">
+        <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4">
           <div className="flex items-center justify-between mb-3">
             <p className="text-sm font-bold text-surface-900 dark:text-white">Bancos IB importados</p>
             <span className="text-[10px] text-surface-400">{state.ibBanks.length} bancos</span>

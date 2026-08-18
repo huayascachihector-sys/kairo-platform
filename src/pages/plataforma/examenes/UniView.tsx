@@ -41,7 +41,7 @@ export default function UniView({ state, onBack, onStateChange }: Props) {
             <p className="text-surface-500 text-sm">Examen de Admisión UNI — Dos jornadas con preguntas reales 2020–2024</p>
           </div>
         </div>
-        <div className="px-5 py-3 rounded-2xl bg-white dark:bg-surface-900 border border-surface-100 dark:border-surface-800 text-center">
+        <div className="px-5 py-3 rounded-2xl bg-white dark:cyber-card-dark border border-surface-100 text-center">
           <p className="text-[11px] text-surface-400 font-semibold uppercase tracking-wide">Puntaje compuesto est.</p>
           <p className="text-2xl font-bold text-surface-900 dark:text-white">{composite ?? '—'}<span className="text-sm text-surface-400"> /500</span></p>
         </div>
@@ -51,7 +51,7 @@ export default function UniView({ state, onBack, onStateChange }: Props) {
         {UNI_SECTIONS.map((s) => (
           <button key={s.id} onClick={() => { setTab(s.id); setRunning(null); }}
             className={`flex-1 sm:flex-none px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${
-              tab === s.id ? 'bg-white dark:bg-surface-900 text-primary-700 dark:text-primary-300 shadow-sm'
+              tab === s.id ? 'bg-white dark:cyber-card-dark text-primary-700 dark:text-primary-300 shadow-sm'
                            : 'text-surface-500 hover:text-surface-700 dark:hover:text-surface-300'}`}>
             {s.label}
           </button>
@@ -77,7 +77,7 @@ export default function UniView({ state, onBack, onStateChange }: Props) {
       ) : (
         <div className="grid lg:grid-cols-3 gap-5">
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-            className="lg:col-span-2 bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6">
+            className="lg:col-span-2 bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6">
             <h2 className="text-base font-bold text-surface-900 dark:text-white flex items-center gap-2">
               <BarChart3 className="w-4 h-4 text-primary-500" /> Progreso de puntaje — {section.label}
             </h2>
@@ -88,7 +88,7 @@ export default function UniView({ state, onBack, onStateChange }: Props) {
 
           <div className="space-y-5">
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-               className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6">
+               className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6">
               <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-1 flex items-center gap-2">
                 <Target className="w-4 h-4 text-primary-500" /> Banco de preguntas
               </h3>
@@ -102,7 +102,7 @@ export default function UniView({ state, onBack, onStateChange }: Props) {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
-               className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6">
+               className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6">
               <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-1 flex items-center gap-2">
                 <Timer className="w-4 h-4 text-amber-500" /> Simulacro cronometrado
               </h3>

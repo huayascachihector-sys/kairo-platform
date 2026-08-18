@@ -317,7 +317,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
         {(phase === 'complete' || state.studyPlans.length > 0) && (
           <div className="flex items-center gap-2">
             <button onClick={() => setShowExistingPlans(!showExistingPlans)}
-              className="text-xs bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-400 px-3 py-2 rounded-xl hover:border-primary-300 transition-all flex items-center gap-1.5">
+              className="text-xs bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-400 px-3 py-2 rounded-xl hover:border-primary-300 transition-all flex items-center gap-1.5">
               <ListChecks className="w-3.5 h-3.5" /> Mis planes ({state.studyPlans.length})
             </button>
             <button onClick={() => { setPhase('idle'); startConversation(); }}
@@ -354,7 +354,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
       <AnimatePresence>
         {showExistingPlans && state.studyPlans.length > 0 && (
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
-            className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4">
+            className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4">
             <div className="flex flex-wrap gap-2">
               {state.studyPlans.map((p) => (
                 <button key={p.id} onClick={() => { setActivePlanId(p.id); setActiveTab('plan'); setPhase('complete'); setShowExistingPlans(false); }}
@@ -404,7 +404,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
             className="grid md:grid-cols-4 gap-6">
             {/* Step indicator */}
             <div className="md:col-span-1 order-2 md:order-1">
-              <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4 sticky top-4">
+              <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4 sticky top-4">
                 <h3 className="text-xs font-bold text-surface-500 dark:text-surface-400 uppercase tracking-wider mb-3">Progreso</h3>
                 <div className="space-y-2.5">
                   {CONVERSATION_STEPS.map((step, i) => {
@@ -433,7 +433,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
 
             {/* Chat area */}
             <div className="md:col-span-3 order-1 md:order-2 flex flex-col">
-              <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm flex flex-col h-[500px] md:h-[550px]">
+              <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm flex flex-col h-[500px] md:h-[550px]">
                 {/* Messages */}
                 <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4">
                   {CONVERSATION_STEPS.slice(0, conversationStep + 1).map((step, i) => (
@@ -508,7 +508,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
         {/* ─── GENERATING STATE ─── */}
         {phase === 'generating' && (
           <motion.div key="generating" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-12 text-center">
+            className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-12 text-center">
             <div className="w-16 h-16 rounded-2xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mx-auto mb-5">
               <Brain className="w-8 h-8 text-primary-600 animate-pulse" />
             </div>
@@ -571,7 +571,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
             </div>
 
             {/* Tab navigation */}
-            <div className="flex gap-1 bg-white dark:bg-surface-900 rounded-xl border border-surface-100 dark:border-surface-800 p-1 mb-6">
+            <div className="flex gap-1 bg-white dark:cyber-card-dark rounded-xl border border-surface-100 p-1 mb-6">
               {([
                 { id: 'plan' as const, icon: Calendar, label: 'Plan de estudio' },
                 { id: 'recursos' as const, icon: Library, label: 'Recursos' },
@@ -596,7 +596,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
                   className="grid lg:grid-cols-3 gap-6">
                   {/* Overview sidebar */}
                   <div className="space-y-4">
-                    <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-5">
+                    <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-5">
                       <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-3 flex items-center gap-2">
                         <Target className="w-4 h-4 text-primary-600" /> Prioridades
                       </h3>
@@ -611,7 +611,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
                         ))}
                       </ul>
                     </div>
-                    <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-5">
+                    <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-5">
                       <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-3 flex items-center gap-2">
                         <TrendingUp className="w-4 h-4 text-primary-600" /> Estadísticas
                       </h3>
@@ -641,7 +641,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
                   </div>
 
                   {/* Schedule */}
-                  <div className="lg:col-span-2 bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-5">
+                  <div className="lg:col-span-2 bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-5">
                     <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-4 flex items-center gap-2">
                       <Calendar className="w-4 h-4 text-primary-600" /> Horario detallado
                     </h3>
@@ -691,7 +691,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
                         return (
                           <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.05 }}
-                            className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-5 hover:shadow-md hover:border-primary-200 dark:hover:border-primary-800 transition-all group">
+                            className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-5 hover:shadow-md hover:border-primary-200 dark:hover:border-primary-800 transition-all group">
                             <div className="flex items-start gap-4">
                               <div className="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-xl flex-shrink-0">
                                 {rec.icon || '📚'}
@@ -722,7 +722,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
                       })}
                     </div>
                   ) : (
-                    <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-8 text-center">
+                    <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-8 text-center">
                       <Library className="w-10 h-10 text-surface-300 dark:text-surface-600 mx-auto mb-3" />
                       <p className="text-sm text-surface-500 dark:text-surface-400">No hay recomendaciones disponibles para este plan.</p>
                       <p className="text-xs text-surface-400 dark:text-surface-500 mt-1">Explora las secciones de la plataforma para encontrar material de estudio.</p>
@@ -735,7 +735,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
                 <motion.div key="tab-progreso" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
                   className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {/* Overall progress */}
-                  <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-5">
+                  <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-5">
                     <h3 className="text-xs font-bold text-surface-500 dark:text-surface-400 uppercase tracking-wider mb-3">Avance general</h3>
                     <div className="relative w-24 h-24 mx-auto mb-3">
                       <svg className="w-24 h-24 -rotate-90" viewBox="0 0 100 100">
@@ -756,7 +756,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
 
                   {/* Subjects progress */}
                   {activePlan.subjects && activePlan.subjects.length > 0 && (
-                    <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-5">
+                    <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-5">
                       <h3 className="text-xs font-bold text-surface-500 dark:text-surface-400 uppercase tracking-wider mb-3">Materias</h3>
                       <div className="space-y-3">
                         {activePlan.subjects.map((s, i) => (
@@ -777,7 +777,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
                   )}
 
                   {/* Study stats */}
-                  <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-5">
+                  <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-5">
                     <h3 className="text-xs font-bold text-surface-500 dark:text-surface-400 uppercase tracking-wider mb-3">Rendimiento</h3>
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">

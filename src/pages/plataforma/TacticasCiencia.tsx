@@ -355,7 +355,7 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
           {Object.entries(CATEGORY_META).map(([key, m]) => {
             const Icon = m.icon;
             return (
-              <div key={key} className="flex items-center gap-3 bg-white dark:bg-surface-900 rounded-2xl p-4 border border-surface-100 dark:border-surface-800 shadow-sm">
+              <div key={key} className="flex items-center gap-3 bg-white dark:cyber-card-dark rounded-2xl p-4 border border-surface-100 shadow-sm">
                 <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${m.color} flex items-center justify-center`}>
                   <Icon className="w-5 h-5 text-white" />
                 </div>
@@ -369,7 +369,7 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
         </div>
 
         {/* Rules */}
-        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-5 shadow-sm space-y-3">
+        <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-5 shadow-sm space-y-3">
           <h3 className="font-semibold text-surface-900 dark:text-white">¿Cómo funciona?</h3>
           <div className="space-y-2">
             {[
@@ -401,7 +401,7 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
     const perfect = correctCount === puzzles.length;
     return (
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="max-w-lg mx-auto">
-        <div className="bg-white dark:bg-surface-900 rounded-3xl border border-surface-100 dark:border-surface-800 shadow-xl overflow-hidden">
+        <div className="bg-white dark:cyber-card-dark rounded-3xl border border-surface-100 shadow-xl overflow-hidden">
           <div className={`p-8 text-center bg-gradient-to-br ${perfect ? 'from-yellow-400 to-orange-500' : 'from-indigo-500 to-violet-600'}`}>
             <div className="mb-3 flex justify-center">
               {perfect ? <Trophy className="w-16 h-16 text-white" /> : correctCount >= 3 ? <Target className="w-16 h-16 text-white" /> : <Star className="w-16 h-16 text-white" />}
@@ -478,7 +478,7 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
       </div>
 
       {/* Main puzzle card */}
-      <div className="bg-white dark:bg-surface-900 rounded-3xl border border-surface-100 dark:border-surface-800 shadow-lg overflow-hidden">
+      <div className="bg-white dark:cyber-card-dark rounded-3xl border border-surface-100 shadow-lg overflow-hidden">
 
         {/* Category + difficulty strip */}
         <div className={`bg-gradient-to-r ${meta.color} px-6 py-4`}>
@@ -528,7 +528,7 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
               if (selected !== null) {
                 if (i === puzzle.correct) style = 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-200';
                 else if (i === selected && i !== puzzle.correct) style = 'border-red-300 bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300';
-                else style = 'border-surface-100 dark:border-surface-700 bg-white dark:bg-surface-900 text-surface-400 dark:text-surface-500';
+                else style = 'border-surface-100 dark:border-surface-700 bg-white dark:cyber-card-dark text-surface-400 dark:text-surface-500';
               }
               return (
                 <motion.button

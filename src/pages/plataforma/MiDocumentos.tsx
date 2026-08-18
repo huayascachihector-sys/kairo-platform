@@ -90,7 +90,7 @@ export default function MiDocumentos() {
       <AnimatePresence mode="wait">
         {viewMode === 'editor' ? (
           <motion.div key="editor" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-            className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6 space-y-4">
+            className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6 space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-bold text-surface-900 dark:text-white">
                 {editingDoc ? 'Editar documento' : 'Nuevo documento'}
@@ -157,7 +157,7 @@ export default function MiDocumentos() {
                   className={`text-xs font-semibold px-3 py-1.5 rounded-full transition-all ${
                     selectedSubject === (s === 'Todas' ? 'Todos' : s)
                       ? 'bg-primary-600 text-white shadow-md'
-                      : 'bg-white dark:bg-surface-900 text-surface-600 dark:text-surface-300 border border-surface-200 dark:border-surface-700 hover:border-primary-300'
+                      : 'bg-white dark:cyber-card-dark text-surface-600 dark:text-surface-300 border border-surface-200 dark:border-surface-700 hover:border-primary-300'
                   }`}>
                   {s}
                 </button>
@@ -165,7 +165,7 @@ export default function MiDocumentos() {
             </div>
 
             {filtered.length === 0 ? (
-              <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-12 text-center">
+              <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-12 text-center">
                 <FileText className="w-12 h-12 text-surface-300 dark:text-surface-600 mx-auto mb-4" />
                 <p className="text-surface-500 dark:text-surface-400 mb-2">
                   {selectedSubject === 'Todos' ? 'No tienes documentos aún' : `Sin documentos en ${selectedSubject}`}
@@ -179,7 +179,7 @@ export default function MiDocumentos() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-5 hover:shadow-md transition-all group">
+                    className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-5 hover:shadow-md transition-all group">
                     <div className="flex items-start justify-between mb-2">
                       <h3 className="font-bold text-surface-900 dark:text-white text-sm flex items-center gap-2 truncate">
                         <FileText className="w-4 h-4 text-primary-500 flex-shrink-0" />

@@ -512,7 +512,7 @@ export default function BancoPreguntas() {
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2 bg-white dark:bg-surface-900 rounded-xl border border-surface-100 dark:border-surface-800 p-0.5">
+        <div className="flex items-center gap-2 bg-white dark:cyber-card-dark rounded-xl border border-surface-100 p-0.5">
           {(['banco', 'repaso', 'importados', 'ib', 'progreso'] as const).map(t => (
             <button key={t} onClick={() => { setTab(t); setImportedBank(null); setIbSelectedCourse(null); }}
               className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg transition-all relative ${

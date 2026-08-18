@@ -36,7 +36,7 @@ export default function DocumentSelector({ open, onClose, onSelect }: Props) {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[600px] md:max-h-[80vh] bg-white dark:bg-surface-900 rounded-2xl shadow-xl z-50 flex flex-col overflow-hidden">
+            className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[600px] md:max-h-[80vh] bg-white dark:cyber-card-dark rounded-2xl shadow-xl z-50 flex flex-col overflow-hidden">
             <div className="flex items-center justify-between p-4 border-b border-surface-100 dark:border-surface-800">
               <h2 className="text-lg font-bold text-surface-900 dark:text-white flex items-center gap-2">
                 <FileText className="w-5 h-5 text-primary-600" />

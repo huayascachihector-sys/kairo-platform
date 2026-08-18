@@ -181,7 +181,7 @@ export function QuizRunner({
     const pct = Math.round((correct / total) * 100);
     return (
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-        className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-8 text-center">
+        className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-8 text-center">
         <div className="text-5xl mb-3">{pct >= 80 ? '🏆' : pct >= 50 ? '💪' : '📚'}</div>
         <h3 className="text-xl font-bold text-surface-900 dark:text-white">
           {correct}/{total} correctas · {pct}%
@@ -204,7 +204,7 @@ export function QuizRunner({
   }
 
   return (
-    <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6">
+    <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6">
       <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-surface-500">Pregunta {idx + 1} de {total}</span>

@@ -68,7 +68,7 @@ export default function Notificaciones({ onStateChange }: Props) {
       className={`text-xs font-semibold px-3 py-1.5 rounded-full border transition-all ${
        filter === f.id
         ? 'bg-primary-600 text-white border-primary-600'
-        : 'bg-white dark:bg-surface-900 text-surface-600 dark:text-surface-300 border-surface-200 dark:border-surface-700 hover:border-primary-300'
+        : 'bg-white dark:cyber-card-dark text-surface-600 dark:text-surface-300 border-surface-200 dark:border-surface-700 hover:border-primary-300'
       }`}>
       {f.label}
      </button>
@@ -79,7 +79,7 @@ export default function Notificaciones({ onStateChange }: Props) {
     <AnimatePresence>
      {items.length === 0 ? (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-       className="bg-white dark:bg-surface-900 rounded-2xl border border-dashed border-surface-200 dark:border-surface-700 p-12 text-center">
+       className="bg-white dark:cyber-card-dark rounded-2xl border border-dashed border-surface-200 dark:border-surface-700 p-12 text-center">
        <Bell className="w-10 h-10 text-surface-300 dark:text-surface-600 mx-auto mb-3" />
        <p className="text-sm text-surface-500 dark:text-surface-400">No hay notificaciones aquí.</p>
       </motion.div>
@@ -90,7 +90,7 @@ export default function Notificaciones({ onStateChange }: Props) {
        return (
         <motion.button key={n.id} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
          onClick={() => { markNotificationRead(n.id); refresh(); }}
-         className={`w-full text-left bg-white dark:bg-surface-900 rounded-2xl border p-4 flex gap-3 hover:border-primary-200 transition-all ${
+         className={`w-full text-left bg-white dark:cyber-card-dark rounded-2xl border p-4 flex gap-3 hover:border-primary-200 transition-all ${
           n.read ? 'border-surface-100 dark:border-surface-800' : 'border-primary-200 shadow-sm'
          }`}>
          <div className={`w-10 h-10 rounded-xl ${meta.color} flex items-center justify-center flex-shrink-0`}>

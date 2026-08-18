@@ -30,7 +30,7 @@ export default function Caminos({ state, onStateChange, onOpenChange }: Props) {
           <ArrowLeft className="w-4 h-4" /> Volver a Caminos
         </button>
 
-        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6 md:p-8">
+        <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6 md:p-8">
           <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${uni.color} flex items-center justify-center text-3xl mb-4 shadow-md`}>
             {uni.icon}
           </div>
@@ -49,7 +49,7 @@ export default function Caminos({ state, onStateChange, onOpenChange }: Props) {
         </div>
 
         <div className="grid md:grid-cols-2 gap-5">
-          <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6">
+          <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6">
             <h3 className="text-sm font-bold text-surface-900 dark:text-white flex items-center gap-2 mb-3">
               <FileText className="w-4 h-4 text-primary-500" /> Requisitos de admisión
             </h3>
@@ -62,7 +62,7 @@ export default function Caminos({ state, onStateChange, onOpenChange }: Props) {
             </ul>
           </div>
 
-          <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6">
+          <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6">
             <h3 className="text-sm font-bold text-surface-900 dark:text-white flex items-center gap-2 mb-3">
               <ClipboardList className="w-4 h-4 text-accent-500" /> Exámenes que exige
             </h3>
@@ -76,7 +76,7 @@ export default function Caminos({ state, onStateChange, onOpenChange }: Props) {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6">
+          <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6">
             <h3 className="text-sm font-bold text-surface-900 dark:text-white flex items-center gap-2 mb-3">
               <CalendarDays className="w-4 h-4 text-primary-500" /> Fechas límite de postulación
             </h3>
@@ -93,7 +93,7 @@ export default function Caminos({ state, onStateChange, onOpenChange }: Props) {
             </p>
           </div>
 
-          <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6">
+          <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6">
             <h3 className="text-sm font-bold text-surface-900 dark:text-white flex items-center gap-2 mb-3">
               <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Tu checklist para {uni.short}
             </h3>
@@ -141,7 +141,7 @@ export default function Caminos({ state, onStateChange, onOpenChange }: Props) {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}
               whileHover={{ y: -4, boxShadow: '0 12px 30px rgba(0,0,0,0.08)' }}
               onClick={() => setOpenPath(u.id)}
-              className="text-left bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6 transition-all">
+              className="text-left bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6 transition-all">
               <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${u.color} flex items-center justify-center text-2xl mb-4 shadow-md`}>
                 {u.icon}
               </div>

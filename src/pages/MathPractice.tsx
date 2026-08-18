@@ -114,7 +114,7 @@ export default function MathPractice() {
   // ── Categories view ─────────────────
   if (view === 'categories') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-surface-950 via-white dark:bg-surface-900 to-accent-50/30 dark:to-surface-900 pt-24 pb-16">
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-transparent via-white dark:via-transparent to-accent-50/30 dark:to-transparent pt-24 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <motion.div
@@ -177,7 +177,7 @@ export default function MathPractice() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 + i * 0.05 }}
                 onClick={() => handleSelectCategory(cat.id)}
-                className="group text-left p-5 rounded-2xl bg-white dark:bg-surface-900 border border-surface-100 dark:border-surface-800 hover:border-primary-200 dark:hover:border-primary-600 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                className="group text-left p-5 rounded-2xl bg-white dark:cyber-card-dark border border-surface-100 hover:border-primary-200 dark:hover:border-primary-600 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
               >
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${cat.color} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform`}>
                   {cat.icon}
@@ -215,12 +215,12 @@ export default function MathPractice() {
     const msg = getMessage();
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-surface-950 via-white dark:bg-surface-900 to-accent-50/30 dark:to-surface-900 pt-24 pb-16">
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-transparent via-white dark:via-transparent to-accent-50/30 dark:to-transparent pt-24 pb-16">
         <div className="max-w-2xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white dark:bg-surface-900 rounded-3xl shadow-xl border border-surface-100 dark:border-surface-800 p-8 md:p-12 text-center"
+            className="bg-white dark:cyber-card-dark rounded-3xl shadow-xl border border-surface-100 p-8 md:p-12 text-center"
           >
             <div className="mb-4 flex justify-center">
               {msg.emoji === 'trophy' ? <Trophy className="w-16 h-16 text-emerald-500" /> :
@@ -294,9 +294,9 @@ export default function MathPractice() {
   // ── Quiz view ───────────────────────
   if (filteredQuestions.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-surface-950 via-white dark:bg-surface-900 to-accent-50/30 dark:to-surface-900 pt-24 pb-16">
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-transparent via-white dark:via-transparent to-accent-50/30 dark:to-transparent pt-24 pb-16">
         <div className="max-w-2xl mx-auto px-4 text-center">
-          <div className="bg-white dark:bg-surface-900 rounded-3xl shadow-xl border border-surface-100 dark:border-surface-800 p-12">
+          <div className="bg-white dark:cyber-card-dark rounded-3xl shadow-xl border border-surface-100 p-12">
             <div className="mb-4 flex justify-center"><div className="w-16 h-16 rounded-2xl bg-surface-100 dark:bg-surface-800 flex items-center justify-center"><Search className="w-8 h-8 text-surface-400" /></div></div>
             <h2 className="text-2xl font-bold text-surface-900 dark:text-white mb-2">No hay preguntas</h2>
             <p className="text-surface-500 dark:text-surface-400 mb-6">No se encontraron preguntas con los filtros seleccionados.</p>
@@ -313,7 +313,7 @@ export default function MathPractice() {
   const catInfo = selectedCategory ? mathCategories.find(c => c.id === selectedCategory) : null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-surface-950 via-white dark:bg-surface-900 to-accent-50/30 dark:to-surface-900 pt-24 pb-16">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-transparent via-white dark:via-transparent to-accent-50/30 dark:to-transparent pt-24 pb-16">
       <div className="max-w-3xl mx-auto px-4">
         {/* Top bar */}
         <div className="flex items-center justify-between mb-6">
@@ -329,7 +329,7 @@ export default function MathPractice() {
             <div className="relative">
               <button
                 onClick={() => setShowDiffFilter(!showDiffFilter)}
-                className="flex items-center gap-1.5 text-sm font-medium text-surface-600 dark:text-surface-300 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-lg px-3 py-1.5 hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
+                className="flex items-center gap-1.5 text-sm font-medium text-surface-600 dark:text-surface-300 bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 rounded-lg px-3 py-1.5 hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
               >
                 <Filter className="w-3.5 h-3.5" />
                 {difficulty}
@@ -341,7 +341,7 @@ export default function MathPractice() {
                     initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
-                    className="absolute right-0 top-full mt-1 bg-white dark:bg-surface-900 rounded-xl shadow-xl border border-surface-100 dark:border-surface-800 py-1 z-20 min-w-[140px]"
+                    className="absolute right-0 top-full mt-1 bg-white dark:cyber-card-dark rounded-xl shadow-xl border border-surface-100 py-1 z-20 min-w-[140px]"
                   >
                     {(['Todos', 'Básico', 'Intermedio', 'Avanzado'] as Difficulty[]).map(d => (
                       <button
@@ -399,7 +399,7 @@ export default function MathPractice() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -30 }}
             transition={{ duration: 0.3 }}
-            className="bg-white dark:bg-surface-900 rounded-3xl shadow-lg border border-surface-100 dark:border-surface-800 overflow-hidden"
+            className="bg-white dark:cyber-card-dark rounded-3xl shadow-lg border border-surface-100 overflow-hidden"
           >
             {/* Header */}
             <div className="px-6 py-4 border-b border-surface-100 dark:border-surface-800 flex items-center justify-between flex-wrap gap-2">

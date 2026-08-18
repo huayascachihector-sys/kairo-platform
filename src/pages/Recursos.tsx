@@ -438,7 +438,7 @@ export default function Recursos() {
   });
 
 return (
-    <div className="min-h-screen bg-gradient-to-br from-surface-50 dark:from-surface-950 via-white dark:bg-surface-900 to-primary-50/30 dark:to-surface-900 pt-24 pb-16">
+    <div className="min-h-screen bg-gradient-to-br from-surface-50 dark:from-transparent via-white dark:via-transparent to-primary-50/30 dark:to-transparent pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -472,7 +472,7 @@ return (
               placeholder="Buscar recursos..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 focus:border-primary-400 focus:ring-2 focus:ring-primary-100 dark:focus:ring-primary-900/30 outline-none transition-all text-sm text-surface-900 dark:text-white placeholder-surface-400 dark:placeholder-surface-600"
+              className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 focus:border-primary-400 focus:ring-2 focus:ring-primary-100 dark:focus:ring-primary-900/30 outline-none transition-all text-sm text-surface-900 dark:text-white placeholder-surface-400 dark:placeholder-surface-600"
             />
           </div>
         </motion.div>
@@ -491,7 +491,7 @@ return (
               className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 activeCategory === cat.id
                   ? 'bg-primary-600 text-white shadow-md shadow-primary-500/20'
-                  : 'bg-white dark:bg-surface-900 text-surface-600 dark:text-surface-300 border border-surface-200 dark:border-surface-700 hover:border-primary-300 dark:hover:border-primary-600 hover:text-primary-600 dark:hover:text-primary-400'
+                  : 'bg-white dark:cyber-card-dark text-surface-600 dark:text-surface-300 border border-surface-200 dark:border-surface-700 hover:border-primary-300 dark:hover:border-primary-600 hover:text-primary-600 dark:hover:text-primary-400'
               }`}
             >
               <cat.icon className="w-4 h-4" />
@@ -516,7 +516,7 @@ return (
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 * Math.min(i, 12) }}
-              className={`group relative bg-white dark:bg-surface-900 rounded-2xl p-6 border card-hover ${
+              className={`group relative bg-white dark:cyber-card-dark rounded-2xl p-6 border card-hover ${
                 res.highlight ? 'border-primary-200 dark:border-primary-700/50 shadow-md shadow-primary-500/5 dark:shadow-primary-900/20' : 'border-surface-100 dark:border-surface-800'
               }`}
             >
@@ -573,7 +573,7 @@ return (
         </div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-16 bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800">
+          <div className="text-center py-16 bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 ">
             <div className="mb-4 flex justify-center"><div className="w-16 h-16 rounded-2xl bg-surface-100 dark:bg-surface-800 flex items-center justify-center"><Search className="w-8 h-8 text-surface-400" /></div></div>
             <h3 className="text-xl font-bold text-surface-900 dark:text-white mb-2">No se encontraron recursos</h3>
             <p className="text-surface-500 dark:text-surface-400">Prueba con otra búsqueda o categoría.</p>

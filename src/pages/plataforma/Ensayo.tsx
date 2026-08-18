@@ -105,7 +105,7 @@ export default function Ensayo() {
       </div>
 
       {/* Editor */}
-      <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm overflow-hidden">
+      <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm overflow-hidden">
         <div className="flex items-center justify-between px-6 py-3 border-b border-surface-100 dark:border-surface-800">
           <div className="flex items-center gap-2">
             <FileText className="w-4 h-4 text-primary-500" />
@@ -141,7 +141,7 @@ export default function Ensayo() {
       {/* Feedback */}
       {submitted && feedback && (
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-          className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6 shadow-sm">
+          className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6 shadow-sm">
           <div className="flex items-center gap-2 mb-4">
             <Wand2 className="w-5 h-5 text-primary-500" />
             <h3 className="text-base font-bold text-surface-900 dark:text-white">Feedback de IA</h3>
@@ -157,7 +157,7 @@ export default function Ensayo() {
       )}
 
       {/* Essay tips */}
-      <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6 shadow-sm">
+      <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6 shadow-sm">
         <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-4 flex items-center gap-2"><PenTool className="w-4 h-4 text-primary-500" /> Estructura de un buen ensayo de admisión</h3>
         <div className="grid md:grid-cols-3 gap-4">
           <div className="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-4">

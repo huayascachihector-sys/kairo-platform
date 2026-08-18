@@ -139,7 +139,7 @@ export default function Entrevista() {
             key={tip.title}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}
             onClick={() => setActiveTip(activeTip === i ? null : i)}
-            className={`text-left bg-white dark:bg-surface-900 rounded-2xl border p-5 transition-all ${
+            className={`text-left bg-white dark:cyber-card-dark rounded-2xl border p-5 transition-all ${
               activeTip === i ? 'border-primary-300 shadow-md shadow-primary-100' : 'border-surface-100 dark:border-surface-800 hover:border-primary-200'
             }`}>
             <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-2 flex items-center gap-2">
@@ -209,7 +209,7 @@ export default function Entrevista() {
       </motion.div>
 
       {/* Mock interview with AI */}
-      <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6 shadow-sm">
+      <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6 shadow-sm">
         <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-4 flex items-center gap-2">
           <MessageSquare className="w-4 h-4 text-primary-500" /> Práctica con tutor de IA
         </h3>

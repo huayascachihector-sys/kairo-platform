@@ -97,7 +97,7 @@ export default function ExamenesInternacionales({ state, onStateChange }: Props)
               transition={{ delay: i * 0.06 }}
               whileHover={{ y: -4, boxShadow: '0 12px 30px rgba(0,0,0,0.08)' }}
               onClick={() => setOpen(exam.id)}
-              className="text-left bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6 transition-all"
+              className="text-left bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6 transition-all"
             >
               <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${exam.color} flex items-center justify-center text-2xl mb-4 shadow-md`}>
                 {exam.icon}
@@ -144,7 +144,7 @@ export default function ExamenesInternacionales({ state, onStateChange }: Props)
 
       <Caminos state={state} onStateChange={onStateChange} onOpenChange={setPathOpen} />
 
-      {!pathOpen && <div className="rounded-2xl border border-surface-100 dark:border-surface-800 bg-white dark:bg-surface-900 p-6">
+      {!pathOpen && <div className="rounded-2xl border border-surface-100 bg-white dark:cyber-card-dark p-6">
         <h2 className="text-sm font-bold text-surface-900 dark:text-white flex items-center gap-2 mb-2">
           <Sparkles className="w-4 h-4 text-accent-500" /> Cómo se registra tu progreso
         </h2>

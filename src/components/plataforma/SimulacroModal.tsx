@@ -102,7 +102,7 @@ export default function SimulacroModal({ open, banks, level, onClose }: Simulacr
   if (step === 'config') {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm" onClick={handleClose}>
-        <div className="bg-white dark:bg-surface-900 rounded-3xl border border-surface-100 dark:border-surface-800 shadow-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+        <div className="bg-white dark:cyber-card-dark rounded-3xl border border-surface-100 shadow-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-lg font-bold text-surface-900 dark:text-white">Simulacro</h2>
             <button onClick={handleClose} className="text-surface-400 hover:text-surface-600 transition-colors"><XCircle className="w-5 h-5" /></button>
@@ -160,7 +160,7 @@ export default function SimulacroModal({ open, banks, level, onClose }: Simulacr
     const pct = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0;
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm" onClick={handleClose}>
-        <div className="bg-white dark:bg-surface-900 rounded-3xl border border-surface-100 dark:border-surface-800 shadow-2xl p-6 w-full max-w-md" onClick={e => e.stopPropagation()}>
+        <div className="bg-white dark:cyber-card-dark rounded-3xl border border-surface-100 shadow-2xl p-6 w-full max-w-md" onClick={e => e.stopPropagation()}>
           <div className="text-center py-4">
             <Trophy className="w-16 h-16 mx-auto mb-4 text-amber-500" />
             <h2 className="text-2xl font-bold text-surface-900 dark:text-white mb-1">
@@ -202,7 +202,7 @@ export default function SimulacroModal({ open, banks, level, onClose }: Simulacr
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
-      <div className="bg-white dark:bg-surface-900 rounded-3xl border border-surface-100 dark:border-surface-800 shadow-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+      <div className="bg-white dark:cyber-card-dark rounded-3xl border border-surface-100 shadow-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <span className="text-sm font-bold text-surface-900 dark:text-white">Pregunta {currentQ + 1} de {questions.length}</span>
@@ -223,7 +223,7 @@ export default function SimulacroModal({ open, banks, level, onClose }: Simulacr
         <p className="text-base md:text-lg font-bold text-surface-900 dark:text-white leading-relaxed mb-5">{q.question}</p>
         <div className="space-y-2.5 mb-5">
           {q.options.map((opt, idx) => {
-            let style = 'border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-900 hover:border-primary-300';
+            let style = 'border-surface-200 dark:border-surface-700 bg-white dark:cyber-card-dark hover:border-primary-300';
             if (selectedAnswer !== null) {
               if (idx === q.correct) style = 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/30';
               else if (idx === selectedAnswer && !isCorrect) style = 'border-red-400 bg-red-50 dark:bg-red-900/30';

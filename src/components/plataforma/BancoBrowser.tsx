@@ -63,7 +63,7 @@ export default function BancoBrowser({
             className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl border-2 font-bold text-sm transition-all ${
               level === l.key
                 ? 'border-primary-400 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 shadow-md'
-                : 'border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-900 text-surface-500 dark:text-surface-400 hover:border-primary-200 dark:hover:border-primary-800'
+                : 'border-surface-200 dark:border-surface-700 bg-white dark:cyber-card-dark text-surface-500 dark:text-surface-400 hover:border-primary-200 dark:hover:border-primary-800'
             }`}>
             {l.icon} {l.label}
           </button>
@@ -111,7 +111,7 @@ export default function BancoBrowser({
             <Search className="w-3.5 h-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-surface-400" />
             <input
               type="text" placeholder="Buscar materia..." value={search} onChange={e => setSearch(e.target.value)}
-              className="w-40 pl-8 pr-3 py-1.5 text-xs rounded-xl border border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-900 text-surface-700 dark:text-surface-200 placeholder:text-surface-400 focus:outline-none focus:ring-2 focus:ring-primary-400"
+              className="w-40 pl-8 pr-3 py-1.5 text-xs rounded-xl border border-surface-200 dark:border-surface-700 bg-white dark:cyber-card-dark text-surface-700 dark:text-surface-200 placeholder:text-surface-400 focus:outline-none focus:ring-2 focus:ring-primary-400"
             />
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function BancoBrowser({
             const questCount = (b as any)[level]?.length || 0;
             return (
               <button key={b.id} onClick={() => onSetSubject(b.id)}
-                className={`flex items-center gap-3 p-4 rounded-2xl border-2 transition-all text-left group ${subject === b.id ? 'border-primary-400 dark:border-primary-600 bg-primary-50 dark:bg-primary-900/30 shadow-md' : 'border-surface-100 dark:border-surface-800 bg-white dark:bg-surface-900 hover:border-primary-200 dark:hover:border-primary-800 hover:bg-primary-50/30 dark:hover:bg-primary-900/10'}`}>
+                className={`flex items-center gap-3 p-4 rounded-2xl border-2 transition-all text-left group ${subject === b.id ? 'border-primary-400 dark:border-primary-600 bg-primary-50 dark:bg-primary-900/30 shadow-md' : 'border-surface-100 bg-white dark:cyber-card-dark hover:border-primary-200 dark:hover:border-primary-800 hover:bg-primary-50/30 dark:hover:bg-primary-900/10'}`}>
                 <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${b.color} flex items-center justify-center text-lg shadow-sm group-hover:scale-110 transition-transform`}>{b.icon}</div>
                 <div className="flex-1 min-w-0">
                   <span className={`text-sm font-bold block ${subject === b.id ? 'text-primary-700 dark:text-primary-300' : 'text-surface-700 dark:text-surface-200'}`}>{b.label}</span>
@@ -138,7 +138,7 @@ export default function BancoBrowser({
         </div>
       </div>
 
-      <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <p className="font-bold text-surface-900 dark:text-white">{bank.label} · {level === 'primaria' ? 'Primaria' : 'Secundaria'}</p>
           <p className="text-sm text-surface-500 dark:text-surface-400 mt-0.5">{questions.length} preguntas · Con explicaciones{progress.total > 0 && ` · ${progress.pct}% aciertos`}</p>

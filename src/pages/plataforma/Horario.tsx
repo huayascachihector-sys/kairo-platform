@@ -133,7 +133,7 @@ export default function Horario() {
       </div>
 
       {/* Today's schedule */}
-      <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6">
+      <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6">
         <h2 className="font-bold text-surface-900 dark:text-white mb-4 flex items-center gap-2">
           <Calendar className="w-5 h-5 text-primary-600" /> Hoy — {DAYS[todayIdx]}
         </h2>
@@ -175,7 +175,7 @@ export default function Horario() {
       </div>
 
       {/* Weekly grid */}
-      <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6">
+      <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-bold text-surface-900 dark:text-white">Vista Semanal</h2>
           {schedule.length > 0 && (
@@ -268,7 +268,7 @@ export default function Horario() {
 
       {/* Subject hours summary */}
       {Object.keys(subjectHours).length > 0 && (
-        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6">
+        <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6">
           <h2 className="font-bold text-surface-900 dark:text-white mb-4 flex items-center gap-2">
             <Clock className="w-5 h-5 text-primary-600" /> Horas por materia (esta semana)
           </h2>
@@ -293,7 +293,7 @@ export default function Horario() {
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white dark:bg-surface-900 rounded-2xl shadow-2xl p-6 w-full max-w-md border border-surface-100 dark:border-surface-800"
+              className="bg-white dark:cyber-card-dark rounded-2xl shadow-2xl p-6 w-full max-w-md border border-surface-100 "
             >
               <div className="flex items-center justify-between mb-5">
                 <h3 className="font-bold text-surface-900 dark:text-white text-lg">Agregar clase</h3>

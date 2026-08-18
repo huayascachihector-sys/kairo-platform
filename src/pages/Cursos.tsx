@@ -150,7 +150,7 @@ const courses = [
 
 const categoryFilters = ['Todos', 'Matemáticas', 'Física', 'Química', 'Programación', 'Idiomas'];
 
-const cardCls = "relative bg-white dark:bg-white/5 rounded-2xl border border-surface-100 dark:border-white/10 overflow-hidden group transition-all duration-300";
+const cardCls = "relative bg-white dark:bg-white/5 rounded-2xl border border-surface-100 dark:border-white/10 dark:hover:border-cyan-400/50 overflow-hidden group transition-all duration-300";
 const dotBg = { backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '24px 24px' };
 const hv = { y: -4, boxShadow: '0 12px 40px rgba(99,102,241,0.15)' };
 
@@ -163,7 +163,7 @@ export default function Cursos() {
     : courses.filter(c => c.category === activeFilter);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-surface-50 dark:from-surface-950 via-white dark:bg-surface-900 to-accent-50/30 dark:to-surface-900 pt-24 pb-16">
+    <div className="min-h-screen bg-gradient-to-br from-surface-50 dark:from-transparent via-white dark:via-transparent to-accent-50/30 dark:to-transparent pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -246,7 +246,7 @@ export default function Cursos() {
 
               {/* Body */}
               <div className="p-6">
-                <p className="text-sm text-surface-600 leading-relaxed mb-4">
+                <p className="text-sm text-surface-600 dark:text-surface-300 leading-relaxed mb-4">
                   {course.description}
                 </p>
 
@@ -254,19 +254,19 @@ export default function Cursos() {
                 <div className="grid grid-cols-4 gap-3 mb-4">
                   <div className="text-center">
                     <Clock className="w-4 h-4 text-surface-400 mx-auto mb-1" />
-                    <span className="text-xs text-surface-600 font-medium">{course.duration}</span>
+                    <span className="text-xs text-surface-600 dark:text-surface-300 font-medium">{course.duration}</span>
                   </div>
                   <div className="text-center">
                     <Play className="w-4 h-4 text-surface-400 mx-auto mb-1" />
-                    <span className="text-xs text-surface-600 font-medium">{course.lessons} lecciones</span>
+                    <span className="text-xs text-surface-600 dark:text-surface-300 font-medium">{course.lessons} lecciones</span>
                   </div>
                   <div className="text-center">
                     <Users className="w-4 h-4 text-surface-400 mx-auto mb-1" />
-                    <span className="text-xs text-surface-600 font-medium">{course.students.toLocaleString()}</span>
+                    <span className="text-xs text-surface-600 dark:text-surface-300 font-medium">{course.students.toLocaleString()}</span>
                   </div>
                   <div className="text-center">
                     <BarChart3 className="w-4 h-4 text-surface-400 mx-auto mb-1" />
-                    <span className="text-xs text-surface-600 font-medium">{course.level}</span>
+                    <span className="text-xs text-surface-600 dark:text-surface-300 font-medium">{course.level}</span>
                   </div>
                 </div>
 
@@ -275,11 +275,11 @@ export default function Cursos() {
                   <div className="flex gap-0.5">
                     {Array.from({ length: 5 }).map((_, si) => (
                       <Star key={si} className={`w-3.5 h-3.5 ${
-                        si < Math.floor(course.rating) ? 'text-amber-400 fill-amber-400' : 'text-surface-200'
+                        si < Math.floor(course.rating) ? 'text-amber-400 fill-amber-400' : 'text-surface-200 dark:text-surface-700'
                       }`} />
                     ))}
                   </div>
-                  <span className="text-sm font-bold text-surface-700">{course.rating}</span>
+                  <span className="text-sm font-bold text-surface-700 dark:text-white">{course.rating}</span>
                   <span className="text-xs text-surface-400">({course.reviews.toLocaleString()} reseñas)</span>
                 </div>
 
@@ -299,7 +299,7 @@ export default function Cursos() {
                     className="mb-4 space-y-1.5"
                   >
                     {course.topics.map(topic => (
-                      <div key={topic} className="flex items-center gap-2 text-sm text-surface-600">
+                      <div key={topic} className="flex items-center gap-2 text-sm text-surface-600 dark:text-surface-300">
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
                         {topic}
                       </div>

@@ -45,7 +45,7 @@ export default function BancoImportados({
       ) : (
         <div onDragOver={(e) => { e.preventDefault(); onDrop(e as any); }}
           onDragLeave={() => {/* handled by parent */}} onDrop={onDrop}
-          className={`border-2 border-dashed rounded-2xl p-8 md:p-12 text-center transition-all ${dragOver ? 'border-primary-400 bg-primary-50 dark:bg-primary-900/30' : 'border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-900'}`}>
+          className={`border-2 border-dashed rounded-2xl p-8 md:p-12 text-center transition-all ${dragOver ? 'border-primary-400 bg-primary-50 dark:bg-primary-900/30' : 'border-surface-200 dark:border-surface-700 bg-white dark:cyber-card-dark'}`}>
           <Archive className={`w-12 h-12 mx-auto mb-4 ${dragOver ? 'text-primary-600' : 'text-surface-300 dark:text-surface-600'}`} />
           <h3 className="text-lg font-bold text-surface-900 dark:text-white mb-2">Importar banco de preguntas</h3>
           <p className="text-sm text-surface-500 dark:text-surface-400 mb-2">Sube un archivo <strong>.zip</strong> con preguntas</p>
@@ -66,7 +66,7 @@ export default function BancoImportados({
         <div className="space-y-3">
           <h3 className="text-sm font-semibold text-surface-500 dark:text-surface-400">Bancos importados ({state.importedBanks.length})</h3>
           {state.importedBanks.map(b => (
-            <div key={b.id} className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4 flex items-center gap-4">
+            <div key={b.id} className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4 flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-lg">
                 <FileText className="w-5 h-5 text-primary-600" />
               </div>

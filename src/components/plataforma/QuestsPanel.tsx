@@ -40,7 +40,7 @@ export function QuestsPanel({ compact = false, onClaimed }: QuestsPanelProps) {
   const done = quests.filter((q) => q.completed).length;
 
   return (
-    <div className="rounded-2xl border border-surface-100 dark:border-surface-800 bg-white dark:bg-surface-900 shadow-sm overflow-hidden">
+    <div className="rounded-2xl border border-surface-100 bg-white dark:cyber-card-dark shadow-sm overflow-hidden">
       <div className="flex items-center justify-between px-4 py-3 border-b border-surface-100 dark:border-surface-800">
         <div className="flex items-center gap-2">
           <Target className="w-4 h-4 text-rose-500" />

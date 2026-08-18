@@ -97,12 +97,12 @@ export default function Pago() {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-surface-950 via-white dark:bg-surface-950 to-emerald-50 dark:to-surface-950 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-transparent via-white dark:via-transparent to-emerald-50 dark:to-transparent flex items-center justify-center px-4">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", duration: 0.6 }}
-          className="bg-white dark:bg-surface-900 rounded-3xl shadow-2xl border border-surface-100 dark:border-surface-800 p-12 max-w-md w-full text-center"
+          className="bg-white dark:cyber-card-dark rounded-3xl shadow-2xl border border-surface-100 p-12 max-w-md w-full text-center"
         >
           <div className="w-20 h-20 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mx-auto mb-6">
             <Check className="w-10 h-10 text-emerald-600 dark:text-emerald-400" />
@@ -127,7 +127,7 @@ export default function Pago() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-surface-950 via-white dark:bg-surface-950 to-accent-50/30 dark:to-surface-950 py-24 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-transparent via-white dark:via-transparent to-accent-50/30 dark:to-transparent py-24 px-4">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -148,13 +148,13 @@ export default function Pago() {
           <div className="inline-flex bg-surface-100 dark:bg-surface-800 rounded-2xl p-1 gap-1">
             <button
               onClick={() => setTab("plan")}
-              className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-all ${tab === "plan" ? "bg-white dark:bg-surface-900 text-primary-600 dark:text-primary-400 shadow-sm" : "text-surface-500 dark:text-surface-400 hover:text-surface-700 dark:hover:text-surface-200"}`}
+              className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-all ${tab === "plan" ? "bg-white dark:cyber-card-dark text-primary-600 dark:text-primary-400 shadow-sm" : "text-surface-500 dark:text-surface-400 hover:text-surface-700 dark:hover:text-surface-200"}`}
             >
               1. Elegir plan
             </button>
             <button
               onClick={() => selected && setTab("pago")}
-              className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-all ${tab === "pago" ? "bg-white dark:bg-surface-900 text-primary-600 dark:text-primary-400 shadow-sm" : "text-surface-500 dark:text-surface-400 hover:text-surface-700 dark:hover:text-surface-200"}`}
+              className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-all ${tab === "pago" ? "bg-white dark:cyber-card-dark text-primary-600 dark:text-primary-400 shadow-sm" : "text-surface-500 dark:text-surface-400 hover:text-surface-700 dark:hover:text-surface-200"}`}
             >
               2. Datos de pago
             </button>
@@ -181,7 +181,7 @@ export default function Pago() {
                         ? plan.id === "anual"
                           ? "border-amber-400 bg-amber-50/40 dark:bg-amber-900/20 shadow-lg shadow-amber-100 dark:shadow-black/30"
                           : "border-primary-500 bg-primary-50/40 dark:bg-primary-900/20 shadow-lg shadow-primary-100 dark:shadow-black/30"
-                        : "border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-900 hover:border-surface-300 dark:hover:border-surface-600"
+                        : "border-surface-200 dark:border-surface-700 bg-white dark:cyber-card-dark hover:border-surface-300 dark:hover:border-surface-600"
                     }`}
                   >
                     {plan.badge && (
@@ -252,7 +252,7 @@ export default function Pago() {
             >
               <div className="max-w-lg mx-auto">
                 {/* Order summary */}
-                <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6 mb-6">
+                <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6 mb-6">
                   <h3 className="font-bold text-surface-900 dark:text-white mb-4">Resumen de tu pedido</h3>
                   <div className="flex items-center justify-between text-sm mb-3">
                     <span className="text-surface-600 dark:text-surface-300">Plan {selectedPlan.name}</span>
@@ -276,7 +276,7 @@ export default function Pago() {
                 </div>
 
                 {/* Payment form */}
-                <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6">
+                <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6">
                   <div className="flex items-center gap-2 mb-6">
                     <CreditCard className="w-5 h-5 text-surface-500" />
                     <h3 className="font-bold text-surface-900 dark:text-white">Datos de pago</h3>

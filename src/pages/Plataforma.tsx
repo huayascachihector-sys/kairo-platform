@@ -349,7 +349,7 @@ case "ligas":
 
   return (
     <div className="min-h-screen bg-surface-50 dark:bg-surface-950 flex transition-colors duration-300">
-      <aside className="hidden lg:flex flex-col w-64 bg-white dark:bg-surface-900 border-r border-surface-100 dark:border-surface-800 fixed top-0 left-0 h-full z-30 transition-colors duration-300">
+      <aside className="hidden lg:flex flex-col w-64 bg-white dark:cyber-card-dark border-r border-surface-100 fixed top-0 left-0 h-full z-30 transition-colors duration-300">
         <Sidebar />
       </aside>
 
@@ -368,7 +368,7 @@ case "ligas":
               animate={{ x: 0 }}
               exit={{ x: -288 }}
               transition={{ type: "spring", damping: 25, stiffness: 250 }}
-              className="absolute left-0 top-0 h-full w-72 bg-white dark:bg-surface-900 shadow-2xl"
+              className="absolute left-0 top-0 h-full w-72 bg-white dark:cyber-card-dark shadow-2xl"
             >
               <Sidebar mobile />
             </motion.div>
@@ -377,7 +377,7 @@ case "ligas":
       </AnimatePresence>
 
       <div className="flex-1 lg:ml-64">
-        <div className="lg:hidden flex items-center justify-between px-4 py-4 bg-white dark:bg-surface-900 border-b border-surface-100 dark:border-surface-800 sticky top-0 z-20 transition-colors duration-300">
+        <div className="lg:hidden flex items-center justify-between px-4 py-4 bg-white dark:cyber-card-dark border-b border-surface-100 sticky top-0 z-20 transition-colors duration-300">
           <button
             onClick={() => setMobileOpen(true)}
             className="p-2 rounded-xl hover:bg-surface-100 dark:hover:bg-surface-800"

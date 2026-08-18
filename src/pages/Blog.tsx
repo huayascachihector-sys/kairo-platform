@@ -130,7 +130,7 @@ export default function Blog() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 + i * 0.05 }}
-              className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 overflow-hidden card-hover group cursor-pointer"
+              className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 overflow-hidden card-hover group cursor-pointer"
             >
               <div className={`h-2 bg-gradient-to-r ${post.gradient}`} />
               <div className="p-6">

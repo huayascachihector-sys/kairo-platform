@@ -322,7 +322,7 @@ export default function EnglishTutor() {
                 className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   level === l
                     ? "bg-rose-600 text-white shadow-md"
-                    : "bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-300 hover:border-rose-300"
+                    : "bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-300 hover:border-rose-300"
                 }`}
               >
                 {l}
@@ -337,7 +337,7 @@ export default function EnglishTutor() {
           <select
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
-            className="mt-1.5 w-full bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-xl px-3 py-2 text-sm text-surface-900 dark:text-white outline-none focus:border-rose-400"
+            className="mt-1.5 w-full bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 rounded-xl px-3 py-2 text-sm text-surface-900 dark:text-white outline-none focus:border-rose-400"
           >
             {TOPICS.map((t) => (
               <option key={t.label} value={t.id}>
@@ -404,7 +404,7 @@ export default function EnglishTutor() {
                 className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                   msg.role === "user"
                     ? "bg-rose-600 text-white rounded-br-sm"
-                    : "bg-white dark:bg-surface-900 border border-surface-100 dark:border-surface-800 shadow-sm text-surface-800 dark:text-surface-200 rounded-bl-sm"
+                    : "bg-white dark:cyber-card-dark border border-surface-100 shadow-sm text-surface-800 dark:text-surface-200 rounded-bl-sm"
                 }`}
               >
                 {msg.role === "tutor" ? (
@@ -487,7 +487,7 @@ export default function EnglishTutor() {
             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-rose-500 to-red-500 flex items-center justify-center mr-2 flex-shrink-0">
               <Sparkles className="w-4 h-4 text-white" />
             </div>
-            <div className="bg-white dark:bg-surface-900 border border-surface-100 dark:border-surface-800 shadow-sm rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1.5 items-center">
+            <div className="bg-white dark:cyber-card-dark border border-surface-100 shadow-sm rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1.5 items-center">
               {[0, 0.15, 0.3].map((d, i) => (
                 <motion.div
                   key={i}
@@ -512,7 +512,7 @@ export default function EnglishTutor() {
               <button
                 key={s}
                 onClick={() => send(s)}
-                className="text-xs bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 hover:border-rose-300 hover:bg-rose-50 dark:hover:bg-rose-900/20 text-surface-600 dark:text-surface-300 hover:text-rose-700 px-3 py-1.5 rounded-full transition-all"
+                className="text-xs bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 hover:border-rose-300 hover:bg-rose-50 dark:hover:bg-rose-900/20 text-surface-600 dark:text-surface-300 hover:text-rose-700 px-3 py-1.5 rounded-full transition-all"
               >
                 {s}
               </button>
@@ -542,7 +542,7 @@ export default function EnglishTutor() {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Escribe en inglés... Try saying something! (Tu idea en español también sirve)"
             disabled={typing}
-            className="w-full bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-2xl px-5 py-3.5 pr-24 text-sm text-surface-900 dark:text-white placeholder-surface-400 outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-100 transition-all disabled:opacity-60"
+            className="w-full bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 rounded-2xl px-5 py-3.5 pr-24 text-sm text-surface-900 dark:text-white placeholder-surface-400 outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-100 transition-all disabled:opacity-60"
           />
           <button
             type="button"
@@ -569,17 +569,17 @@ export default function EnglishTutor() {
   const renderBank = () => (
     <div className="space-y-5">
       <div className="grid grid-cols-3 gap-3">
-        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4 text-center">
+        <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4 text-center">
           <p className="text-2xl font-bold text-surface-900 dark:text-white">{stats.total}</p>
           <p className="text-[10px] text-surface-400 font-medium mt-0.5">Errores registrados</p>
         </div>
-        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4 text-center">
+        <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4 text-center">
           <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
             {stats.resolved}
           </p>
           <p className="text-[10px] text-surface-400 font-medium mt-0.5">Dominados</p>
         </div>
-        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4 text-center">
+        <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4 text-center">
           <p className="text-2xl font-bold text-amber-600 dark:text-amber-400">
             {stats.byType[stats.mostFrequent || "grammar"] || 0}
           </p>
@@ -593,7 +593,7 @@ export default function EnglishTutor() {
           className={`text-xs px-3 py-1.5 rounded-full font-semibold transition-all ${
             filter === "all"
               ? "bg-rose-600 text-white"
-              : "bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-300"
+              : "bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-300"
           }`}
         >
           Todos ({bank.length})
@@ -605,7 +605,7 @@ export default function EnglishTutor() {
             className={`text-xs px-3 py-1.5 rounded-full font-semibold transition-all ${
               filter === t
                 ? "bg-rose-600 text-white"
-                : "bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-300"
+                : "bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-300"
             }`}
           >
             {ERROR_LABELS[t]} ({stats.byType[t]})
@@ -627,7 +627,7 @@ export default function EnglishTutor() {
           {visibleErrors.map((e) => (
             <div
               key={e.id}
-              className={`bg-white dark:bg-surface-900 rounded-xl border border-surface-100 dark:border-surface-800 shadow-sm p-3 flex items-start gap-3 ${
+              className={`bg-white dark:cyber-card-dark rounded-xl border border-surface-100 shadow-sm p-3 flex items-start gap-3 ${
                 e.resolved ? "opacity-60" : ""
               }`}
             >
@@ -692,7 +692,7 @@ export default function EnglishTutor() {
 
   const renderReview = () => (
     <div className="space-y-5">
-      <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4">
+      <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4">
         <h3 className="text-sm font-semibold text-surface-900 dark:text-white flex items-center gap-2">
           <Brain className="w-4 h-4 text-rose-500" /> Repaso espaciado de tus errores
         </h3>
@@ -717,7 +717,7 @@ export default function EnglishTutor() {
           {dueErrorCards.map(({ card, entry }) => (
             <div
               key={card.cardId}
-              className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4"
+              className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4"
             >
               <div className="flex items-start gap-3">
                 <div
@@ -766,7 +766,7 @@ export default function EnglishTutor() {
 
     return (
       <div className="space-y-6">
-        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4">
+        <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-surface-900 dark:text-white flex items-center gap-2">
             <BookOpen className="w-4 h-4 text-rose-500" /> Las expresiones que más se usan
           </h3>
@@ -794,7 +794,7 @@ export default function EnglishTutor() {
               {group.expressions.map((e) => (
                 <div
                   key={e.expression}
-                  className="bg-white dark:bg-surface-900 rounded-xl border border-surface-100 dark:border-surface-800 shadow-sm p-3"
+                  className="bg-white dark:cyber-card-dark rounded-xl border border-surface-100 shadow-sm p-3"
                 >
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-sm font-bold text-surface-900 dark:text-white">

@@ -83,7 +83,7 @@ export default function Registro() {
   const currentUser = state.user;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-surface-950 via-white dark:bg-surface-950 to-accent-50/30 dark:to-surface-950 flex items-center justify-center px-4 py-24">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-transparent via-white dark:via-transparent to-accent-50/30 dark:to-transparent flex items-center justify-center px-4 py-24">
       <div className="w-full max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
 
         {/* Left: Benefits panel */}
@@ -122,7 +122,7 @@ export default function Registro() {
             ))}
           </ul>
 
-          <div className="mt-12 p-5 rounded-2xl bg-white dark:bg-surface-900 border border-surface-100 dark:border-surface-800 shadow-sm">
+          <div className="mt-12 p-5 rounded-2xl bg-white dark:cyber-card-dark border border-surface-100 shadow-sm">
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-400 to-accent-500 flex-shrink-0" />
               <div>
@@ -142,7 +142,7 @@ export default function Registro() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="w-full"
         >
-          <div className="bg-white dark:bg-surface-900 rounded-3xl shadow-2xl shadow-primary-100/50 dark:shadow-black/40 border border-surface-100 dark:border-surface-800 p-8 md:p-10">
+          <div className="bg-white dark:cyber-card-dark rounded-3xl shadow-2xl shadow-primary-100/50 dark:shadow-black/40 border border-surface-100 p-8 md:p-10">
 
             {/* Logo mobile */}
             <a href="#" className="flex items-center gap-2.5 mb-8 lg:hidden">
@@ -205,7 +205,7 @@ export default function Registro() {
                             <button
                               key={acc.email}
                               onClick={() => handleQuickLogin(acc.email)}
-                              className="w-full flex items-center justify-between p-3 rounded-xl bg-white dark:bg-surface-900 hover:bg-primary-50 dark:hover:bg-primary-900/20 border border-surface-200 dark:border-surface-700 hover:border-primary-300 transition-all text-left group"
+                              className="w-full flex items-center justify-between p-3 rounded-xl bg-white dark:cyber-card-dark hover:bg-primary-50 dark:hover:bg-primary-900/20 border border-surface-200 dark:border-surface-700 hover:border-primary-300 transition-all text-left group"
                             >
                               <div className="flex items-center gap-3">
                                 <div className="w-9 h-9 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300 font-bold flex items-center justify-center">

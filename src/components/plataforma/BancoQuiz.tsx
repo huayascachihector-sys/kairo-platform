@@ -51,7 +51,7 @@ export default function BancoQuiz({
         <div className="max-w-2xl mx-auto space-y-4">
           {wrong.map(i => (
             <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.03 }}
-              className="bg-white dark:bg-surface-900 rounded-2xl border border-red-200 dark:border-red-900/50 p-4">
+              className="bg-white dark:cyber-card-dark rounded-2xl border border-red-200 dark:border-red-900/50 p-4">
               <div className="flex items-start gap-3">
                 <XCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
                 <div>
@@ -90,7 +90,7 @@ export default function BancoQuiz({
             <h2 className="text-3xl font-bold text-surface-900 dark:text-white mb-1">
               {pct >= 80 ? '¡Excelente! 🎉' : pct >= 60 ? '¡Buen trabajo! 👍' : pct >= 40 ? 'Sigue practicando 💪' : 'Ánimo, tú puedes 🚀'}
             </h2>
-            <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6 mb-6 mt-6">
+            <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6 mb-6 mt-6">
               <div className="relative w-32 h-32 mx-auto mb-4">
                 <svg className="w-32 h-32 -rotate-90" viewBox="0 0 100 100">
                   <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" strokeWidth="8"
@@ -119,7 +119,7 @@ export default function BancoQuiz({
             )}
             <div className="flex gap-3">
               <button onClick={onClose}
-                className="flex-1 flex items-center justify-center gap-2 text-sm font-semibold bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-300 hover:border-primary-300 rounded-xl py-3 transition-all">
+                className="flex-1 flex items-center justify-center gap-2 text-sm font-semibold bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-300 hover:border-primary-300 rounded-xl py-3 transition-all">
                 <RotateCcw className="w-4 h-4" /> Cambiar
               </button>
               <button onClick={onRestart}
@@ -167,11 +167,11 @@ export default function BancoQuiz({
         <AnimatePresence mode="wait">
           <motion.div key={currentQ}
             initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }}
-            className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6 md:p-8">
+            className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6 md:p-8">
             <p className="text-base md:text-lg font-bold text-surface-900 dark:text-white leading-relaxed mb-5">{q.question}</p>
             <div className="space-y-2.5 mb-5">
               {q.options.map((opt: string, idx: number) => {
-                let style = 'border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-900 hover:border-primary-300 dark:hover:border-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900/20';
+                let style = 'border-surface-200 dark:border-surface-700 bg-white dark:cyber-card-dark hover:border-primary-300 dark:hover:border-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900/20';
                 if (selectedAnswer !== null) {
                   if (idx === q.correct) style = 'border-emerald-400 dark:border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30';
                   else if (idx === selectedAnswer && !isCorrect) style = 'border-red-400 dark:border-red-600 bg-red-50 dark:bg-red-900/30';

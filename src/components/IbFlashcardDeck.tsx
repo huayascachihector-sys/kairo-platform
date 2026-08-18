@@ -101,7 +101,7 @@ export default function IbFlashcardDeck({ questions, courseName, onClose, onProg
         <div className="space-y-3 max-h-[60vh] overflow-y-auto">
           {wrongCards.map((c, i) => (
             <motion.div key={c.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.02 }}
-              className="bg-white dark:bg-surface-900 rounded-xl border border-red-200 dark:border-red-900/50 p-4">
+              className="bg-white dark:cyber-card-dark rounded-xl border border-red-200 dark:border-red-900/50 p-4">
               <div className="flex items-start gap-2 mb-2">
                 <XCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
                 <MathContent html={c.questionHtml.slice(0, 300)} className="text-sm text-surface-900 dark:text-white prose prose-sm dark:prose-invert max-w-none" />
@@ -162,7 +162,7 @@ export default function IbFlashcardDeck({ questions, courseName, onClose, onProg
           )}
           <div className="flex gap-3">
             <button onClick={onClose}
-              className="flex-1 text-sm font-semibold bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 text-surface-600 rounded-xl py-3 hover:border-primary-300 transition-all">
+              className="flex-1 text-sm font-semibold bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 text-surface-600 rounded-xl py-3 hover:border-primary-300 transition-all">
               Cerrar
             </button>
             <button onClick={reset}
@@ -203,7 +203,7 @@ export default function IbFlashcardDeck({ questions, courseName, onClose, onProg
       <AnimatePresence mode="wait">
         <motion.div key={card.id}
           initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }}
-          className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-5 md:p-7">
+          className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-5 md:p-7">
           <div className="flex items-center gap-2 mb-3 flex-wrap">
             {card.examCode && (
               <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-surface-100 dark:bg-surface-800 text-surface-500">
@@ -244,7 +244,7 @@ export default function IbFlashcardDeck({ questions, courseName, onClose, onProg
               </div>
               <div className="flex gap-3">
                 <button onClick={() => mark(false)}
-                  className="flex-1 flex items-center justify-center gap-2 text-sm font-semibold bg-white dark:bg-surface-900 border-2 border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 rounded-xl py-3 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all">
+                  className="flex-1 flex items-center justify-center gap-2 text-sm font-semibold bg-white dark:cyber-card-dark border-2 border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 rounded-xl py-3 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all">
                   <XCircle className="w-4 h-4" /> No lo sabía
                 </button>
                 <button onClick={() => mark(true)}

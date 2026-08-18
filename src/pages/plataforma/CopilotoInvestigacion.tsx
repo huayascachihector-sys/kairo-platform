@@ -177,7 +177,7 @@ export default function CopilotoInvestigacion() {
       </div>
 
       {/* Config panel */}
-      <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6 space-y-5">
+      <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6 space-y-5">
         {/* Work type selector */}
         <div>
           <label className="text-sm font-semibold text-surface-700 dark:text-surface-300 mb-3 block">Tipo de trabajo</label>
@@ -262,7 +262,7 @@ export default function CopilotoInvestigacion() {
         {loading && (
           <motion.div
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-            className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-8 text-center"
+            className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-8 text-center"
           >
             <div className="flex items-center justify-center gap-3 mb-3">
               <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-violet-500 to-primary-600 flex items-center justify-center animate-pulse">
@@ -295,7 +295,7 @@ export default function CopilotoInvestigacion() {
 
       {/* Raw fallback (couldn't parse JSON) */}
       {rawFallback && !loading && (
-        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6">
+        <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-6">
           <div className="flex items-center gap-2 mb-4">
             <BookMarked className="w-5 h-5 text-primary-600" />
             <h2 className="font-bold text-surface-900 dark:text-white">Retroalimentación de la IA</h2>
@@ -323,7 +323,7 @@ export default function CopilotoInvestigacion() {
             </div>
 
             {/* Criterion tabs */}
-            <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm overflow-hidden">
+            <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm overflow-hidden">
               <div className="flex border-b border-surface-100 dark:border-surface-800 overflow-x-auto">
                 {CRITERIA.map((c) => {
                   const meta = CRITERIA_META[c];
@@ -390,7 +390,7 @@ export default function CopilotoInvestigacion() {
           {QUICK_GUIDES.map((g) => (
             <div
               key={g.title}
-              className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-5 hover:shadow-md transition-shadow"
+              className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-5 hover:shadow-md transition-shadow"
             >
               <div className="flex items-start gap-3">
                 <span className="text-2xl">{g.icon}</span>

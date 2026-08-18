@@ -87,7 +87,7 @@ export default function App() {
 
   const isStandalone = STANDALONE_ROUTES.includes(route);
 
-  const wrapperCls = 'min-h-screen bg-white dark:bg-surface-950 text-surface-900 dark:text-surface-100';
+  const wrapperCls = 'min-h-screen bg-white dark:bg-gradient-hero text-surface-900 dark:text-surface-100';
 
   return (
     <Suspense fallback={<LoadingFallback />}>

@@ -308,7 +308,7 @@ export default function AsistenteIA() {
             <button key={action}
               onClick={() => handleDocAction(action)}
               disabled={sendingDocAction !== null}
-              className="text-xs bg-white dark:bg-surface-900 border border-primary-200 dark:border-primary-800 hover:bg-primary-50 dark:hover:bg-primary-900/30 text-primary-700 dark:text-primary-300 px-3 py-1.5 rounded-full transition-all font-medium disabled:opacity-50">
+              className="text-xs bg-white dark:cyber-card-dark border border-primary-200 dark:border-primary-800 hover:bg-primary-50 dark:hover:bg-primary-900/30 text-primary-700 dark:text-primary-300 px-3 py-1.5 rounded-full transition-all font-medium disabled:opacity-50">
               {sendingDocAction === action ? (
                 <span className="flex items-center gap-1.5"><Loader2 className="w-3 h-3 animate-spin" /> Procesando...</span>
               ) : getDocActionLabel(action)}
@@ -333,7 +333,7 @@ export default function AsistenteIA() {
               <div className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed prose prose-sm dark:prose-invert max-w-none ${
                 msg.role === 'user'
                   ? 'bg-primary-600 text-white rounded-br-sm prose-p:text-white prose-strong:text-white prose-code:text-white/90'
-                  : 'bg-white dark:bg-surface-900 border border-surface-100 dark:border-surface-800 shadow-sm text-surface-800 dark:text-surface-200 rounded-bl-sm'
+                  : 'bg-white dark:cyber-card-dark border border-surface-100 shadow-sm text-surface-800 dark:text-surface-200 rounded-bl-sm'
               }`}>
                 {msg.role === 'ai' ? (
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
@@ -369,7 +369,7 @@ export default function AsistenteIA() {
             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center mr-2 flex-shrink-0">
               <Sparkles className="w-4 h-4 text-white" />
             </div>
-            <div className="bg-white dark:bg-surface-900 border border-surface-100 dark:border-surface-800 shadow-sm rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1.5 items-center">
+            <div className="bg-white dark:cyber-card-dark border border-surface-100 shadow-sm rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1.5 items-center">
               {[0, 0.15, 0.3].map((d, i) => (
                 <motion.div key={i} className="w-2 h-2 bg-primary-400 rounded-full"
                   animate={{ y: [0, -6, 0] }}
@@ -387,7 +387,7 @@ export default function AsistenteIA() {
           <div className="flex flex-wrap gap-2">
             {SUGGESTED.map((s) => (
               <button key={s} onClick={() => send(s)}
-                className="text-xs bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 hover:border-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/30 text-surface-600 dark:text-surface-300 hover:text-primary-700 dark:hover:text-primary-300 px-3 py-1.5 rounded-full transition-all">
+                className="text-xs bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 hover:border-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/30 text-surface-600 dark:text-surface-300 hover:text-primary-700 dark:hover:text-primary-300 px-3 py-1.5 rounded-full transition-all">
                 {s}
               </button>
             ))}
@@ -397,7 +397,7 @@ export default function AsistenteIA() {
 
       <form onSubmit={handleSubmit} className="flex gap-3 flex-shrink-0">
         {listening && (
-          <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 bg-surface-900/95 dark:bg-surface-900 text-white rounded-2xl px-4 py-3 shadow-xl ring-1 ring-red-400/40">
+          <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 bg-surface-900/95 dark:cyber-card-dark text-white rounded-2xl px-4 py-3 shadow-xl ring-1 ring-red-400/40">
             <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 1, repeat: Infinity }}
               className="w-3 h-3 rounded-full bg-red-500" />
             <div className="text-sm">
@@ -416,7 +416,7 @@ export default function AsistenteIA() {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Escribe tu pregunta o adjunta un archivo..."
             disabled={typing}
-            className="w-full bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-2xl px-5 py-3.5 pr-32 text-sm text-surface-900 dark:text-white placeholder-surface-400 outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-100 transition-all disabled:opacity-60"
+            className="w-full bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 rounded-2xl px-5 py-3.5 pr-32 text-sm text-surface-900 dark:text-white placeholder-surface-400 outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-100 transition-all disabled:opacity-60"
           />
           <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-0.5">
             <input

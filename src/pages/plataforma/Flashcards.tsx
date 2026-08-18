@@ -147,7 +147,7 @@ export default function Flashcards({ onNavigate }: Props) {
             <button
               key={c.id}
               onClick={() => generateForCourse(c.id)}
-              className="inline-flex items-center gap-1.5 text-xs bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 hover:border-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/30 text-surface-600 dark:text-surface-300 hover:text-primary-700 dark:hover:text-primary-300 px-3 py-1.5 rounded-full transition-all"
+              className="inline-flex items-center gap-1.5 text-xs bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 hover:border-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/30 text-surface-600 dark:text-surface-300 hover:text-primary-700 dark:hover:text-primary-300 px-3 py-1.5 rounded-full transition-all"
             >
               <Sparkles className="w-3 h-3" />
               Generar {c.title} ({count})
@@ -252,7 +252,7 @@ export default function Flashcards({ onNavigate }: Props) {
       <div className="flex gap-3">
         <button
           onClick={() => setShowForm(!showForm)}
-          className="inline-flex items-center gap-2 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 hover:border-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/30 text-surface-600 dark:text-surface-300 hover:text-primary-700 dark:hover:text-primary-300 px-4 py-2.5 rounded-xl transition-all text-sm font-semibold"
+          className="inline-flex items-center gap-2 bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 hover:border-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/30 text-surface-600 dark:text-surface-300 hover:text-primary-700 dark:hover:text-primary-300 px-4 py-2.5 rounded-xl transition-all text-sm font-semibold"
         >
           <Plus className="w-4 h-4" />
           Agregar tarjeta manual
@@ -270,7 +270,7 @@ export default function Flashcards({ onNavigate }: Props) {
             <select
               value={newCourseId}
               onChange={(e) => setNewCourseId(e.target.value)}
-              className="w-full bg-surface-50 dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-xl px-4 py-3 text-sm text-surface-900 dark:text-white outline-none focus:border-primary-400"
+              className="w-full bg-surface-50 dark:cyber-card-dark border border-surface-200 dark:border-surface-700 rounded-xl px-4 py-3 text-sm text-surface-900 dark:text-white outline-none focus:border-primary-400"
             >
               <option value="">Seleccionar curso...</option>
               {ALL_COURSES.map((c) => (
@@ -281,13 +281,13 @@ export default function Flashcards({ onNavigate }: Props) {
               value={newQuestion}
               onChange={(e) => setNewQuestion(e.target.value)}
               placeholder="Pregunta..."
-              className="w-full bg-surface-50 dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-xl px-4 py-3 text-sm text-surface-900 dark:text-white outline-none focus:border-primary-400"
+              className="w-full bg-surface-50 dark:cyber-card-dark border border-surface-200 dark:border-surface-700 rounded-xl px-4 py-3 text-sm text-surface-900 dark:text-white outline-none focus:border-primary-400"
             />
             <input
               value={newAnswer}
               onChange={(e) => setNewAnswer(e.target.value)}
               placeholder="Respuesta..."
-              className="w-full bg-surface-50 dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-xl px-4 py-3 text-sm text-surface-900 dark:text-white outline-none focus:border-primary-400"
+              className="w-full bg-surface-50 dark:cyber-card-dark border border-surface-200 dark:border-surface-700 rounded-xl px-4 py-3 text-sm text-surface-900 dark:text-white outline-none focus:border-primary-400"
             />
             <div className="flex gap-2">
               <button

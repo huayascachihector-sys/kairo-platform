@@ -114,7 +114,7 @@ export default function GeneradorVideos() {
       </div>
 
       {/* Form */}
-      <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm overflow-hidden">
+      <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm overflow-hidden">
         <div className="px-6 py-4 border-b border-surface-100 dark:border-surface-800">
           <h3 className="text-sm font-bold text-surface-900 dark:text-white flex items-center gap-2">
             <Clapperboard className="w-4 h-4 text-primary-500" /> Nuevo video educativo
@@ -223,7 +223,7 @@ export default function GeneradorVideos() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6 shadow-sm"
+            className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6 shadow-sm"
           >
             <div className="flex items-center gap-3 mb-4">
               <Loader2 className="w-5 h-5 text-primary-500 animate-spin" />
@@ -255,7 +255,7 @@ export default function GeneradorVideos() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6 shadow-sm"
+            className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6 shadow-sm"
           >
             <div className="flex items-center gap-2 mb-4">
               <CheckCircle2 className="w-5 h-5 text-emerald-500" />
@@ -293,7 +293,7 @@ export default function GeneradorVideos() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="bg-white dark:bg-surface-900 rounded-2xl border border-red-200 dark:border-red-900/40 p-6 shadow-sm"
+            className="bg-white dark:cyber-card-dark rounded-2xl border border-red-200 dark:border-red-900/40 p-6 shadow-sm"
           >
             <div className="flex items-start gap-3">
               <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
@@ -321,7 +321,7 @@ export default function GeneradorVideos() {
       </AnimatePresence>
 
       {/* Info */}
-      <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6 shadow-sm">
+      <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6 shadow-sm">
         <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-4 flex items-center gap-2">
           <Info className="w-4 h-4 text-primary-500" /> ¿Cómo funciona?
         </h3>

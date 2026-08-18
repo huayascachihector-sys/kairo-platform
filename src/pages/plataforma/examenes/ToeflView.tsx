@@ -49,7 +49,7 @@ export default function ToeflView({ state, onBack, onStateChange }: Props) {
             <p className="text-surface-500 text-sm">Reading · Listening · Speaking · Writing</p>
           </div>
         </div>
-        <div className="px-5 py-3 rounded-2xl bg-white dark:bg-surface-900 border border-surface-100 dark:border-surface-800 text-center">
+        <div className="px-5 py-3 rounded-2xl bg-white dark:cyber-card-dark border border-surface-100 text-center">
           <p className="text-[11px] text-surface-400 font-semibold uppercase tracking-wide">Puntaje estimado</p>
           <p className="text-2xl font-bold text-surface-900 dark:text-white">{totalEst || '—'}<span className="text-sm text-surface-400"> /120</span></p>
         </div>
@@ -59,7 +59,7 @@ export default function ToeflView({ state, onBack, onStateChange }: Props) {
         {TABS.map((t) => (
           <button key={t.id} onClick={() => { setTab(t.id); setRunning(null); }}
             className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${
-              tab === t.id ? 'bg-white dark:bg-surface-900 text-primary-700 dark:text-primary-300 shadow-sm'
+              tab === t.id ? 'bg-white dark:cyber-card-dark text-primary-700 dark:text-primary-300 shadow-sm'
                            : 'text-surface-500 hover:text-surface-700 dark:hover:text-surface-300'}`}>
             {t.label}
           </button>
@@ -85,7 +85,7 @@ export default function ToeflView({ state, onBack, onStateChange }: Props) {
           />
         ) : (
           <div className="grid lg:grid-cols-3 gap-5">
-            <div className="lg:col-span-2 bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6">
+            <div className="lg:col-span-2 bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6">
               <h2 className="text-base font-bold text-surface-900 dark:text-white flex items-center gap-2">
                 <BarChart3 className="w-4 h-4 text-primary-500" /> Progreso — {quizSection.label}
               </h2>
@@ -94,7 +94,7 @@ export default function ToeflView({ state, onBack, onStateChange }: Props) {
               </div>
             </div>
             <div className="space-y-5">
-              <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6">
+              <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6">
                 <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-1">Banco de preguntas</h3>
                 <p className="text-xs text-surface-500 mb-4">{quizSection.questions.length} preguntas con explicación.</p>
                 <button onClick={() => setRunning('practica')}
@@ -102,7 +102,7 @@ export default function ToeflView({ state, onBack, onStateChange }: Props) {
                   <PlayCircle className="w-4 h-4" /> Practicar
                 </button>
               </div>
-              <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6">
+              <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6">
                 <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-1 flex items-center gap-2">
                   <Timer className="w-4 h-4 text-amber-500" /> Simulacro cronometrado
                 </h3>
@@ -197,7 +197,7 @@ Termina con "3 acciones para subir de puntaje" en lista numerada.`;
     <div className="grid lg:grid-cols-3 gap-5">
       <div className="lg:col-span-2 space-y-5">
         {/* Selector de tarea */}
-        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6">
+        <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6">
           <div className="flex items-center gap-2 mb-4">
             {skill === 'speaking' ? <Mic className="w-4 h-4 text-primary-500" /> : <PenLine className="w-4 h-4 text-primary-500" />}
             <h2 className="text-base font-bold text-surface-900 dark:text-white">
@@ -281,7 +281,7 @@ Termina con "3 acciones para subir de puntaje" en lista numerada.`;
 
         {feedback && (
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-            className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6">
+            className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6">
             <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-3 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-accent-500" /> Feedback con criterios TOEFL iBT
             </h3>
@@ -292,7 +292,7 @@ Termina con "3 acciones para subir de puntaje" en lista numerada.`;
         )}
       </div>
 
-      <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6 h-fit">
+      <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6 h-fit">
         <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-3 flex items-center gap-2">
           <BarChart3 className="w-4 h-4 text-primary-500" /> Tu progreso
         </h3>

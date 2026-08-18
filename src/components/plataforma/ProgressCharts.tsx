@@ -10,24 +10,24 @@ export default function ProgressCharts() {
   return (
     <div className="space-y-5">
       <div className="grid grid-cols-3 gap-3">
-        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4 text-center">
+        <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4 text-center">
           <Flame className="w-5 h-5 text-orange-500 mx-auto mb-1" />
           <p className="text-xl font-bold text-surface-900 dark:text-white">{stats.currentStreak}</p>
           <p className="text-[10px] text-surface-400 font-medium">Días seguidos</p>
         </div>
-        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4 text-center">
+        <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4 text-center">
           <TrendingUp className="w-5 h-5 text-primary-500 mx-auto mb-1" />
           <p className="text-xl font-bold text-surface-900 dark:text-white">{stats.accuracy}%</p>
           <p className="text-[10px] text-surface-400 font-medium">Precisión total</p>
         </div>
-        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4 text-center">
+        <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4 text-center">
           <Zap className="w-5 h-5 text-amber-500 mx-auto mb-1" />
           <p className="text-xl font-bold text-surface-900 dark:text-white">{stats.totalAnswered}</p>
           <p className="text-[10px] text-surface-400 font-medium">Respondidas</p>
         </div>
       </div>
 
-      <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4">
+      <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4">
         <h4 className="text-xs font-semibold text-surface-500 dark:text-surface-400 mb-3">Actividad esta semana</h4>
         {weeklyData.every(d => d.answered === 0) ? (
           <div className="text-center py-6 text-sm text-surface-400">
@@ -53,7 +53,7 @@ export default function ProgressCharts() {
         )}
       </div>
 
-      <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-4">
+      <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 shadow-sm p-4">
         <h4 className="text-xs font-semibold text-surface-500 dark:text-surface-400 mb-2">
           Repaso espaciado
         </h4>

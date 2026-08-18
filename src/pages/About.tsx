@@ -112,7 +112,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={valuesVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.1 + i * 0.08 }}
-                className="bg-white dark:bg-surface-900 rounded-2xl p-6 border border-surface-100 dark:border-surface-800 card-hover text-center"
+                className="bg-white dark:cyber-card-dark rounded-2xl p-6 border border-surface-100 card-hover text-center"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center mx-auto mb-4">
                   <v.icon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
@@ -152,7 +152,7 @@ export default function About() {
                 }`}
               >
                 <div className={`hidden md:block flex-1 ${i % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                  <div className="bg-white dark:bg-surface-900 rounded-xl p-4 border border-surface-100 dark:border-surface-800 shadow-sm inline-block">
+                  <div className="bg-white dark:cyber-card-dark rounded-xl p-4 border border-surface-100 shadow-sm inline-block">
                     <p className="text-xs font-bold text-primary-600 dark:text-primary-400 mb-1">{m.year}</p>
                     <p className="text-sm text-surface-700 dark:text-surface-200">{m.event}</p>
                   </div>
@@ -161,7 +161,7 @@ export default function About() {
                   {React.createElement(lucideIcons[MILE_ICONS[m.icon]], { className: 'w-5 h-5 text-white' })}
                 </div>
                 <div className={`flex-1 md:hidden`}>
-                  <div className="bg-white dark:bg-surface-900 rounded-xl p-4 border border-surface-100 dark:border-surface-800 shadow-sm">
+                  <div className="bg-white dark:cyber-card-dark rounded-xl p-4 border border-surface-100 shadow-sm">
                     <p className="text-xs font-bold text-primary-600 dark:text-primary-400 mb-1">{m.year}</p>
                     <p className="text-sm text-surface-700 dark:text-surface-200">{m.event}</p>
                   </div>
@@ -195,7 +195,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={teamVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.1 + i * 0.06 }}
-                className="bg-white dark:bg-surface-900 rounded-2xl p-6 border border-surface-100 dark:border-surface-800 card-hover text-center"
+                className="bg-white dark:cyber-card-dark rounded-2xl p-6 border border-surface-100 card-hover text-center"
               >
                 <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${member.bg} flex items-center justify-center text-white text-xl font-bold mx-auto mb-4`}>
                   {member.initials}

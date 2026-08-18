@@ -162,7 +162,7 @@ export default function Robot() {
                   <div className="mt-3 w-48 h-24 bg-gradient-to-br from-primary-50 dark:from-primary-900/30 to-white dark:to-surface-800 rounded-[1.5rem] border-2 border-surface-200 dark:border-surface-700 shadow-md flex items-center justify-center">
                     <div className="flex gap-2">
                       {[Wifi, Battery, Cpu].map((Icon, i) => (
-                        <div key={i} className="w-8 h-8 rounded-lg bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 flex items-center justify-center">
+                        <div key={i} className="w-8 h-8 rounded-lg bg-white dark:cyber-card-dark border border-surface-200 dark:border-surface-700 flex items-center justify-center">
                           <Icon className="w-4 h-4 text-primary-500 dark:text-primary-400" />
                         </div>
                       ))}
@@ -174,7 +174,7 @@ export default function Robot() {
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute -left-4 top-16 bg-white dark:bg-surface-900 rounded-xl shadow-lg border border-surface-100 dark:border-surface-800 px-3 py-2 flex items-center gap-2"
+                  className="absolute -left-4 top-16 bg-white dark:cyber-card-dark rounded-xl shadow-lg border border-surface-100 px-3 py-2 flex items-center gap-2"
                 >
                   <MapPin className="w-4 h-4 text-rose-500" />
                   <span className="text-xs font-semibold text-surface-700 dark:text-surface-200">Cusco rural</span>
@@ -182,7 +182,7 @@ export default function Robot() {
                 <motion.div
                   animate={{ y: [0, 8, 0] }}
                   transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-                  className="absolute -right-4 bottom-20 bg-white dark:bg-surface-900 rounded-xl shadow-lg border border-surface-100 dark:border-surface-800 px-3 py-2 flex items-center gap-2"
+                  className="absolute -right-4 bottom-20 bg-white dark:cyber-card-dark rounded-xl shadow-lg border border-surface-100 px-3 py-2 flex items-center gap-2"
                 >
                   <Zap className="w-4 h-4 text-amber-500" />
                   <span className="text-xs font-semibold text-surface-700 dark:text-surface-200">Solar · 12h</span>
@@ -217,7 +217,7 @@ export default function Robot() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={specsVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.1 + i * 0.06 }}
-                className="bg-white dark:bg-surface-900 rounded-2xl p-6 border border-surface-100 dark:border-surface-800 card-hover"
+                className="bg-white dark:cyber-card-dark rounded-2xl p-6 border border-surface-100 card-hover"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center mb-4">
                   <s.icon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
