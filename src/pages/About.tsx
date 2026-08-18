@@ -47,21 +47,21 @@ export default function About() {
   const { ref: teamRef, isVisible: teamVisible } = useScrollReveal();
 
   return (
-    <div className="min-h-screen bg-white pt-24 pb-16">
+    <div className="min-h-screen bg-white dark:bg-surface-950 pt-24 pb-16">
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="absolute inset-0 grid-pattern opacity-30" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <a href="#" className="inline-flex items-center gap-2 text-sm text-primary-600 hover:text-primary-700 mb-6 font-medium">
+            <a href="#" className="inline-flex items-center gap-2 text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 mb-6 font-medium">
               <ArrowLeft className="w-4 h-4" /> Volver al inicio
             </a>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-surface-900 tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-surface-900 dark:text-white tracking-tight leading-tight">
               Nuestra misión:{' '}
               <span className="text-gradient-hero">democratizar la educación</span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-surface-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-6 text-lg md:text-xl text-surface-600 dark:text-surface-300 max-w-3xl mx-auto leading-relaxed">
               Creemos que cada estudiante peruano merece acceso a la misma calidad educativa
               que disfrutan los estudiantes en las mejores universidades del mundo.
               Kairo existe para hacer eso una realidad.
@@ -82,8 +82,8 @@ export default function About() {
             ].map((stat) => (
               <div key={stat.label} className="glass-card rounded-2xl p-5">
                 <stat.icon className="w-5 h-5 text-primary-500 mx-auto mb-2" />
-                <div className="text-2xl font-extrabold text-surface-900">{stat.value}</div>
-                <div className="text-sm text-surface-500">{stat.label}</div>
+                <div className="text-2xl font-extrabold text-surface-900 dark:text-white">{stat.value}</div>
+                <div className="text-sm text-surface-500 dark:text-surface-400">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -91,17 +91,17 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section ref={valuesRef} className="py-20 md:py-28 bg-surface-50">
+      <section ref={valuesRef} className="py-20 md:py-28 bg-surface-50 dark:bg-surface-900/40">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={valuesVisible ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900 dark:text-white">
               Nuestros <span className="text-gradient">Valores</span>
             </h2>
-            <p className="mt-3 text-surface-500 max-w-xl mx-auto">
+            <p className="mt-3 text-surface-500 dark:text-surface-400 max-w-xl mx-auto">
               Los principios que guían cada decisión que tomamos.
             </p>
           </motion.div>
@@ -112,13 +112,13 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={valuesVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.1 + i * 0.08 }}
-                className="bg-white rounded-2xl p-6 border border-surface-100 card-hover text-center"
+                className="bg-white dark:bg-surface-900 rounded-2xl p-6 border border-surface-100 dark:border-surface-800 card-hover text-center"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center mx-auto mb-4">
-                  <v.icon className="w-6 h-6 text-primary-600" />
+                <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center mx-auto mb-4">
+                  <v.icon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
                 </div>
-                <h3 className="font-bold text-surface-900 mb-2">{v.title}</h3>
-                <p className="text-sm text-surface-500 leading-relaxed">{v.desc}</p>
+                <h3 className="font-bold text-surface-900 dark:text-white mb-2">{v.title}</h3>
+                <p className="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">{v.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -126,7 +126,7 @@ export default function About() {
       </section>
 
       {/* Timeline */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-white dark:bg-surface-950">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -134,12 +134,12 @@ export default function About() {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900 dark:text-white">
               Nuestra <span className="text-gradient">Historia</span>
             </h2>
           </motion.div>
           <div className="relative">
-            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-200 via-accent-200 to-emerald-200" />
+            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-200 dark:from-primary-800 via-accent-200 dark:via-accent-800 to-emerald-200 dark:to-emerald-800" />
             {milestones.map((m, i) => (
               <motion.div
                 key={i}
@@ -152,18 +152,18 @@ export default function About() {
                 }`}
               >
                 <div className={`hidden md:block flex-1 ${i % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                  <div className="bg-white rounded-xl p-4 border border-surface-100 shadow-sm inline-block">
-                    <p className="text-xs font-bold text-primary-600 mb-1">{m.year}</p>
-                    <p className="text-sm text-surface-700">{m.event}</p>
+                  <div className="bg-white dark:bg-surface-900 rounded-xl p-4 border border-surface-100 dark:border-surface-800 shadow-sm inline-block">
+                    <p className="text-xs font-bold text-primary-600 dark:text-primary-400 mb-1">{m.year}</p>
+                    <p className="text-sm text-surface-700 dark:text-surface-200">{m.event}</p>
                   </div>
                 </div>
                 <div className="relative z-10 w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center flex-shrink-0 shadow-sm">
                   {React.createElement(lucideIcons[MILE_ICONS[m.icon]], { className: 'w-5 h-5 text-white' })}
                 </div>
                 <div className={`flex-1 md:hidden`}>
-                  <div className="bg-white rounded-xl p-4 border border-surface-100 shadow-sm">
-                    <p className="text-xs font-bold text-primary-600 mb-1">{m.year}</p>
-                    <p className="text-sm text-surface-700">{m.event}</p>
+                  <div className="bg-white dark:bg-surface-900 rounded-xl p-4 border border-surface-100 dark:border-surface-800 shadow-sm">
+                    <p className="text-xs font-bold text-primary-600 dark:text-primary-400 mb-1">{m.year}</p>
+                    <p className="text-sm text-surface-700 dark:text-surface-200">{m.event}</p>
                   </div>
                 </div>
                 <div className={`hidden md:block flex-1 ${i % 2 === 1 ? 'text-right pr-8' : 'text-left pl-8'}`} />
@@ -174,17 +174,17 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section ref={teamRef} className="py-20 md:py-28 bg-surface-50">
+      <section ref={teamRef} className="py-20 md:py-28 bg-surface-50 dark:bg-surface-900/40">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={teamVisible ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900 dark:text-white">
               Nuestro <span className="text-gradient">Equipo</span>
             </h2>
-            <p className="mt-3 text-surface-500 max-w-xl mx-auto">
+            <p className="mt-3 text-surface-500 dark:text-surface-400 max-w-xl mx-auto">
               Estudiantes apasionados por generar un cambio en la educación 
             </p>
           </motion.div>
@@ -195,14 +195,14 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={teamVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.1 + i * 0.06 }}
-                className="bg-white rounded-2xl p-6 border border-surface-100 card-hover text-center"
+                className="bg-white dark:bg-surface-900 rounded-2xl p-6 border border-surface-100 dark:border-surface-800 card-hover text-center"
               >
                 <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${member.bg} flex items-center justify-center text-white text-xl font-bold mx-auto mb-4`}>
                   {member.initials}
                 </div>
-                <h3 className="font-bold text-surface-900">{member.name}</h3>
-                <p className="text-sm text-primary-600 font-medium mb-2">{member.role}</p>
-                <p className="text-sm text-surface-500 leading-relaxed">{member.bio}</p>
+                <h3 className="font-bold text-surface-900 dark:text-white">{member.name}</h3>
+                <p className="text-sm text-primary-600 dark:text-primary-400 font-medium mb-2">{member.role}</p>
+                <p className="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">{member.bio}</p>
               </motion.div>
             ))}
           </div>
@@ -210,13 +210,13 @@ export default function About() {
       </section>
 
       {/* Contact / Locations */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-white dark:bg-surface-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900 dark:text-white mb-4">
               ¿Quieres ser parte del <span className="text-gradient">cambio</span>?
             </h2>
-            <p className="text-surface-500 max-w-xl mx-auto mb-8">
+            <p className="text-surface-500 dark:text-surface-400 max-w-xl mx-auto mb-8">
               Estamos buscando personas talentosas y apasionadas por la educación. 
               Únete a nuestro equipo y ayúdanos a transformar el futuro de millones de estudiantes.
             </p>
@@ -231,7 +231,7 @@ export default function About() {
                 Contactar
               </a>
             </div>
-            <div className="flex items-center justify-center gap-6 text-sm text-surface-500">
+            <div className="flex items-center justify-center gap-6 text-sm text-surface-500 dark:text-surface-400">
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-4 h-4 text-primary-500" />
                 Lima, Perú

@@ -182,7 +182,7 @@ export default function MathPractice() {
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${cat.color} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform`}>
                   {cat.icon}
                 </div>
-                <h3 className="font-bold text-surface-900 mb-1">{cat.name}</h3>
+                <h3 className="font-bold text-surface-900 dark:text-white mb-1">{cat.name}</h3>
                 <p className="text-sm text-surface-500">{cat.count} preguntas</p>
                 <div className="mt-3 flex gap-1.5">
                   {['Básico', 'Intermedio', 'Avanzado'].map(d => {
@@ -228,7 +228,7 @@ export default function MathPractice() {
                msg.emoji === 'zap' ? <Zap className="w-16 h-16 text-amber-500" /> :
                <BookOpen className="w-16 h-16 text-rose-500" />}
             </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-surface-900 mb-2">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-surface-900 dark:text-white mb-2">
               ¡Resultados!
             </h2>
             <p className={`text-lg font-semibold ${msg.color} mb-8`}>{msg.text}</p>
@@ -254,7 +254,7 @@ export default function MathPractice() {
                 </defs>
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-4xl font-extrabold text-surface-900">{percentage}%</span>
+                <span className="text-4xl font-extrabold text-surface-900 dark:text-white">{percentage}%</span>
                 <span className="text-sm text-surface-500">{score.correct}/{score.total}</span>
               </div>
             </div>
@@ -381,7 +381,7 @@ export default function MathPractice() {
             <span>Pregunta {currentIndex + 1} de {filteredQuestions.length}</span>
             <span>{Math.round(progress)}%</span>
           </div>
-          <div className="h-2 bg-surface-100 rounded-full overflow-hidden">
+          <div className="h-2 bg-surface-100 dark:bg-surface-800 rounded-full overflow-hidden">
             <motion.div
               className="h-full bg-gradient-to-r from-primary-500 to-accent-500 rounded-full"
               initial={{ width: 0 }}
@@ -402,10 +402,10 @@ export default function MathPractice() {
             className="bg-white dark:bg-surface-900 rounded-3xl shadow-lg border border-surface-100 dark:border-surface-800 overflow-hidden"
           >
             {/* Header */}
-            <div className="px-6 py-4 border-b border-surface-100 flex items-center justify-between flex-wrap gap-2">
+            <div className="px-6 py-4 border-b border-surface-100 dark:border-surface-800 flex items-center justify-between flex-wrap gap-2">
               <div className="flex items-center gap-2">
                 {catInfo && <span className="text-lg">{catInfo.icon}</span>}
-                <span className="text-sm font-semibold text-surface-700">
+                <span className="text-sm font-semibold text-surface-700 dark:text-surface-200">
                   {catInfo?.name || 'Todas las categorías'}
                 </span>
                 <span className="text-surface-300">·</span>
@@ -420,7 +420,7 @@ export default function MathPractice() {
 
             {/* Question body */}
             <div className="p-6 md:p-8">
-              <h2 className="text-lg md:text-xl font-bold text-surface-900 leading-relaxed mb-6">
+              <h2 className="text-lg md:text-xl font-bold text-surface-900 dark:text-white leading-relaxed mb-6">
                 {currentQuestion?.question}
               </h2>
 
@@ -431,14 +431,14 @@ export default function MathPractice() {
                   const isCorrect = idx === currentQuestion.correctIndex;
                   const isAnswered = selectedAnswer !== null;
 
-                  let optionClass = 'border-surface-200 hover:border-primary-300 hover:bg-primary-50/30';
+                  let optionClass = 'border-surface-200 dark:border-surface-700 hover:border-primary-300 dark:hover:border-primary-600 hover:bg-primary-50/30 dark:hover:bg-primary-900/20';
                   if (isAnswered) {
                     if (isCorrect) {
-                      optionClass = 'border-emerald-400 bg-emerald-50';
+                      optionClass = 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/30';
                     } else if (isSelected && !isCorrect) {
-                      optionClass = 'border-rose-400 bg-rose-50';
+                      optionClass = 'border-rose-400 bg-rose-50 dark:bg-rose-900/30';
                     } else {
-                      optionClass = 'border-surface-100 opacity-60';
+                      optionClass = 'border-surface-100 dark:border-surface-700 opacity-60';
                     }
                   }
 
@@ -456,7 +456,7 @@ className={`w-full text-left flex items-center gap-4 p-4 rounded-xl border-2 tra
                           ? 'bg-emerald-500 text-white'
                           : isAnswered && isSelected && !isCorrect
                           ? 'bg-rose-500 text-white'
-                          : 'bg-surface-100 text-surface-600'
+                          : 'bg-surface-100 dark:bg-surface-800 text-surface-600 dark:text-surface-300'
                       }`}>
                         {isAnswered && isCorrect ? (
                           <Check className="w-4 h-4" />
@@ -467,7 +467,7 @@ className={`w-full text-left flex items-center gap-4 p-4 rounded-xl border-2 tra
                         )}
                       </div>
                       <span className={`text-sm md:text-base ${
-                        isAnswered && isCorrect ? 'text-emerald-800 font-semibold' : 'text-surface-700'
+                        isAnswered && isCorrect ? 'text-emerald-800 font-semibold' : 'text-surface-700 dark:text-surface-200'
                       }`}>
                         {option}
                       </span>
@@ -545,7 +545,7 @@ className={`w-full text-left flex items-center gap-4 p-4 rounded-xl border-2 tra
             </div>
 
             {/* Footer navigation */}
-            <div className="px-6 py-4 border-t border-surface-100 flex items-center justify-between">
+            <div className="px-6 py-4 border-t border-surface-100 dark:border-surface-800 flex items-center justify-between">
               <button
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
@@ -592,7 +592,7 @@ className={`w-full text-left flex items-center gap-4 p-4 rounded-xl border-2 tra
                     ? 'bg-emerald-100 text-emerald-700'
                     : ans && !ans.correct
                     ? 'bg-rose-100 text-rose-700'
-                    : 'bg-surface-100 text-surface-500 hover:bg-surface-200'
+                    : 'bg-surface-100 dark:bg-surface-800 text-surface-500 dark:text-surface-400 hover:bg-surface-200 dark:hover:bg-surface-700'
                 }`}
               >
                 {i + 1}

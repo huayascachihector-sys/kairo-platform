@@ -45,32 +45,32 @@ export default function Robot() {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-24 pb-16">
+    <div className="min-h-screen bg-white dark:bg-surface-950 pt-24 pb-16">
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="absolute inset-0 grid-pattern opacity-30" />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <a href="#" className="inline-flex items-center gap-2 text-sm text-primary-600 hover:text-primary-700 mb-6 font-medium">
+          <a href="#" className="inline-flex items-center gap-2 text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 mb-6 font-medium">
             <ArrowLeft className="w-4 h-4" /> Volver al inicio
           </a>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold mb-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 dark:bg-primary-900/30 border border-primary-100 dark:border-primary-800 text-primary-700 dark:text-primary-300 text-xs font-semibold mb-5">
                 <Sparkles className="w-3.5 h-3.5" />
                 Iniciativa estudiantil · COAR Lima
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-surface-900 tracking-tight leading-[1.05]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-surface-900 dark:text-white tracking-tight leading-[1.05]">
                 Kipu:{' '}
                 <span className="text-gradient-hero">un tutor con IA</span>{' '}
                 para cada rincón del Perú
               </h1>
-              <p className="mt-6 text-lg text-surface-600 leading-relaxed">
+              <p className="mt-6 text-lg text-surface-600 dark:text-surface-300 leading-relaxed">
                 Imagina un robot pequeño, resistente y solar que llega a comunidades donde no hay
                 internet, ni docentes, ni libros. Habla quechua, aymara o español, entiende al niño
                 y le da una educación totalmente personalizada. Diseñado por estudiantes del{' '}
-                <span className="font-semibold text-surface-900">COAR Lima</span>.
+                <span className="font-semibold text-surface-900 dark:text-white">COAR Lima</span>.
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -104,14 +104,14 @@ export default function Robot() {
                 </a>
               </div>
 
-              <div className="mt-6 flex items-center gap-4 text-sm text-surface-500">
+              <div className="mt-6 flex items-center gap-4 text-sm text-surface-500 dark:text-surface-400">
                 <div className="flex -space-x-2">
                   {['bg-primary-400', 'bg-accent-400', 'bg-emerald-400', 'bg-amber-400'].map((c) => (
-                    <div key={c} className={`w-8 h-8 rounded-full ${c} border-2 border-white`} />
+                    <div key={c} className={`w-8 h-8 rounded-full ${c} border-2 border-white dark:border-surface-900`} />
                   ))}
                 </div>
                 <span>
-                  <span className="font-bold text-surface-900">{supporters.toLocaleString()}</span> peruanos ya apoyan Kipu
+                  <span className="font-bold text-surface-900 dark:text-white">{supporters.toLocaleString()}</span> peruanos ya apoyan Kipu
                 </span>
               </div>
             </motion.div>
@@ -127,7 +127,7 @@ export default function Robot() {
                 {/* glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-400/30 via-accent-400/20 to-emerald-400/30 rounded-[3rem] blur-3xl" />
                 {/* body */}
-                <div className="relative h-full bg-gradient-to-br from-white to-surface-50 rounded-[3rem] border border-surface-200 shadow-2xl shadow-primary-500/10 p-8 flex flex-col items-center justify-center">
+                <div className="relative h-full bg-gradient-to-br from-white dark:from-surface-900 to-surface-50 dark:to-surface-800 rounded-[3rem] border border-surface-200 dark:border-surface-700 shadow-2xl shadow-primary-500/10 p-8 flex flex-col items-center justify-center">
                   {/* solar panel */}
                   <div className="w-32 h-4 bg-gradient-to-r from-slate-700 to-slate-800 rounded-t-lg grid grid-cols-6 gap-px p-0.5 mb-2">
                     {Array.from({ length: 6 }).map((_, i) => (
@@ -135,7 +135,7 @@ export default function Robot() {
                     ))}
                   </div>
                   {/* head */}
-                  <div className="relative w-44 h-40 bg-white rounded-[2rem] border-2 border-surface-200 shadow-lg flex items-center justify-center">
+                  <div className="relative w-44 h-40 bg-white dark:bg-surface-800 rounded-[2rem] border-2 border-surface-200 dark:border-surface-700 shadow-lg flex items-center justify-center">
                     {/* screen face */}
                     <div className="w-36 h-32 bg-gradient-to-br from-slate-900 to-primary-900 rounded-2xl flex items-center justify-center relative overflow-hidden">
                       <motion.div
@@ -159,11 +159,11 @@ export default function Robot() {
                     </motion.div>
                   </div>
                   {/* body/base */}
-                  <div className="mt-3 w-48 h-24 bg-gradient-to-br from-primary-50 to-white rounded-[1.5rem] border-2 border-surface-200 shadow-md flex items-center justify-center">
+                  <div className="mt-3 w-48 h-24 bg-gradient-to-br from-primary-50 dark:from-primary-900/30 to-white dark:to-surface-800 rounded-[1.5rem] border-2 border-surface-200 dark:border-surface-700 shadow-md flex items-center justify-center">
                     <div className="flex gap-2">
                       {[Wifi, Battery, Cpu].map((Icon, i) => (
-                        <div key={i} className="w-8 h-8 rounded-lg bg-white border border-surface-200 flex items-center justify-center">
-                          <Icon className="w-4 h-4 text-primary-500" />
+                        <div key={i} className="w-8 h-8 rounded-lg bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 flex items-center justify-center">
+                          <Icon className="w-4 h-4 text-primary-500 dark:text-primary-400" />
                         </div>
                       ))}
                     </div>
@@ -174,18 +174,18 @@ export default function Robot() {
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute -left-4 top-16 bg-white rounded-xl shadow-lg border border-surface-100 px-3 py-2 flex items-center gap-2"
+                  className="absolute -left-4 top-16 bg-white dark:bg-surface-900 rounded-xl shadow-lg border border-surface-100 dark:border-surface-800 px-3 py-2 flex items-center gap-2"
                 >
                   <MapPin className="w-4 h-4 text-rose-500" />
-                  <span className="text-xs font-semibold text-surface-700">Cusco rural</span>
+                  <span className="text-xs font-semibold text-surface-700 dark:text-surface-200">Cusco rural</span>
                 </motion.div>
                 <motion.div
                   animate={{ y: [0, 8, 0] }}
                   transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-                  className="absolute -right-4 bottom-20 bg-white rounded-xl shadow-lg border border-surface-100 px-3 py-2 flex items-center gap-2"
+                  className="absolute -right-4 bottom-20 bg-white dark:bg-surface-900 rounded-xl shadow-lg border border-surface-100 dark:border-surface-800 px-3 py-2 flex items-center gap-2"
                 >
                   <Zap className="w-4 h-4 text-amber-500" />
-                  <span className="text-xs font-semibold text-surface-700">Solar · 12h</span>
+                  <span className="text-xs font-semibold text-surface-700 dark:text-surface-200">Solar · 12h</span>
                 </motion.div>
               </div>
             </motion.div>
@@ -194,17 +194,17 @@ export default function Robot() {
       </section>
 
       {/* Specs */}
-      <section ref={specsRef} className="py-20 md:py-28 bg-surface-50">
+      <section ref={specsRef} className="py-20 md:py-28 bg-surface-50 dark:bg-surface-900/40">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={specsVisible ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900 dark:text-white">
               Diseño <span className="text-gradient">calidad-precio</span>, simple de usar
             </h2>
-            <p className="mt-3 text-surface-500 max-w-2xl mx-auto">
+            <p className="mt-3 text-surface-500 dark:text-surface-400 max-w-2xl mx-auto">
               Un robot pensado para que cualquier niño, padre o abuelo pueda usarlo sin instrucciones.
               Sin cables complicados, sin apps confusas.
             </p>
@@ -217,13 +217,13 @@ export default function Robot() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={specsVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.1 + i * 0.06 }}
-                className="bg-white rounded-2xl p-6 border border-surface-100 card-hover"
+                className="bg-white dark:bg-surface-900 rounded-2xl p-6 border border-surface-100 dark:border-surface-800 card-hover"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center mb-4">
-                  <s.icon className="w-6 h-6 text-primary-600" />
+                <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center mb-4">
+                  <s.icon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
                 </div>
-                <h3 className="font-bold text-surface-900 mb-2">{s.title}</h3>
-                <p className="text-sm text-surface-500 leading-relaxed">{s.desc}</p>
+                <h3 className="font-bold text-surface-900 dark:text-white mb-2">{s.title}</h3>
+                <p className="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">{s.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -231,17 +231,17 @@ export default function Robot() {
       </section>
 
       {/* How it works */}
-      <section id="como-funciona" ref={howRef} className="py-20 md:py-28 bg-white">
+      <section id="como-funciona" ref={howRef} className="py-20 md:py-28 bg-white dark:bg-surface-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={howVisible ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900 dark:text-white">
               ¿Cómo <span className="text-gradient">funciona</span> Kipu?
             </h2>
-            <p className="mt-3 text-surface-500 max-w-2xl mx-auto">
+            <p className="mt-3 text-surface-500 dark:text-surface-400 max-w-2xl mx-auto">
               Cuatro pasos simples desde que el robot llega a la comunidad.
             </p>
           </motion.div>
@@ -253,11 +253,11 @@ export default function Robot() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={howVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.1 + i * 0.08 }}
-                className="relative bg-gradient-to-br from-white to-surface-50 rounded-2xl p-6 border border-surface-100"
+                className="relative bg-gradient-to-br from-white dark:from-surface-900 to-surface-50 dark:to-surface-800 rounded-2xl p-6 border border-surface-100 dark:border-surface-800"
               >
                 <div className="text-5xl font-extrabold text-gradient opacity-40 mb-2">{step.n}</div>
-                <h3 className="font-bold text-surface-900 mb-2">{step.title}</h3>
-                <p className="text-sm text-surface-500 leading-relaxed">{step.desc}</p>
+                <h3 className="font-bold text-surface-900 dark:text-white mb-2">{step.title}</h3>
+                <p className="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -265,24 +265,24 @@ export default function Robot() {
       </section>
 
       {/* Pros */}
-      <section className="py-20 md:py-28 bg-surface-50">
+      <section className="py-20 md:py-28 bg-surface-50 dark:bg-surface-900/40">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-surface-900 dark:text-white">
                 ¿Por qué esto <span className="text-gradient">importa</span>?
               </h2>
-              <p className="mt-4 text-surface-500 leading-relaxed">
+              <p className="mt-4 text-surface-500 dark:text-surface-400 leading-relaxed">
                 Más de 3 millones de niños peruanos viven en zonas donde llegar a una escuela toma
                 horas de caminata. Kipu no reemplaza al docente: llega donde el sistema aún no puede.
               </p>
               <div className="mt-8 space-y-3">
                 {pros.map((p) => (
                   <div key={p} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    <div className="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                     </div>
-                    <p className="text-surface-700 leading-relaxed">{p}</p>
+                    <p className="text-surface-700 dark:text-surface-200 leading-relaxed">{p}</p>
                   </div>
                 ))}
               </div>
@@ -332,7 +332,7 @@ export default function Robot() {
       </section>
 
       {/* Team + Support CTA */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-white dark:bg-surface-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

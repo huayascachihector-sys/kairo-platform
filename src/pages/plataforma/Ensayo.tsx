@@ -73,7 +73,7 @@ export default function Ensayo() {
     <div className="space-y-6 max-w-5xl">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-surface-900 flex items-center gap-2">
+          <h1 className="text-2xl md:text-3xl font-bold text-surface-900 dark:text-white flex items-center gap-2">
             <FileText className="w-7 h-7 text-primary-600" /> Práctica de Ensayos
           </h1>
           <p className="text-surface-500 text-sm mt-1">
@@ -93,20 +93,20 @@ export default function Ensayo() {
             className={`text-left rounded-xl border p-4 transition-all ${
               selectedPrompt.id === p.id
                 ? 'border-primary-400 ring-2 ring-primary-100'
-                : 'border-surface-200 hover:border-primary-300'
+                : 'border-surface-200 dark:border-surface-700 hover:border-primary-300 dark:hover:border-primary-600'
             }`}>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-primary-50 text-primary-700">{p.type}</span>
+              <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300">{p.type}</span>
               <span className="text-[11px] text-surface-400">{p.time}</span>
             </div>
-            <p className="text-sm text-surface-700 leading-relaxed">{p.prompt}</p>
+            <p className="text-sm text-surface-700 dark:text-surface-200 leading-relaxed">{p.prompt}</p>
           </motion.button>
         ))}
       </div>
 
       {/* Editor */}
       <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm overflow-hidden">
-        <div className="flex items-center justify-between px-6 py-3 border-b border-surface-100">
+        <div className="flex items-center justify-between px-6 py-3 border-b border-surface-100 dark:border-surface-800">
           <div className="flex items-center gap-2">
             <FileText className="w-4 h-4 text-primary-500" />
             <span className="text-xs font-semibold text-surface-500">{selectedPrompt.type}</span>
@@ -144,7 +144,7 @@ export default function Ensayo() {
           className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6 shadow-sm">
           <div className="flex items-center gap-2 mb-4">
             <Wand2 className="w-5 h-5 text-primary-500" />
-            <h3 className="text-base font-bold text-surface-900">Feedback de IA</h3>
+            <h3 className="text-base font-bold text-surface-900 dark:text-white">Feedback de IA</h3>
           </div>
           <div className="prose prose-sm max-w-none text-surface-700 dark:text-surface-300 whitespace-pre-line">
             {feedback}
@@ -158,19 +158,19 @@ export default function Ensayo() {
 
       {/* Essay tips */}
       <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6 shadow-sm">
-        <h3 className="text-sm font-bold text-surface-900 mb-4 flex items-center gap-2"><PenTool className="w-4 h-4 text-primary-500" /> Estructura de un buen ensayo de admisión</h3>
+        <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-4 flex items-center gap-2"><PenTool className="w-4 h-4 text-primary-500" /> Estructura de un buen ensayo de admisión</h3>
         <div className="grid md:grid-cols-3 gap-4">
-          <div className="bg-primary-50 rounded-xl p-4">
-            <h4 className="text-xs font-bold text-primary-700 mb-2">1. Introducción (20%)</h4>
-            <p className="text-xs text-surface-600 leading-relaxed">Engancha al lector con una historia o cita personal. Presenta tu postura claramente.</p>
+          <div className="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-4">
+            <h4 className="text-xs font-bold text-primary-700 dark:text-primary-300 mb-2">1. Introducción (20%)</h4>
+            <p className="text-xs text-surface-600 dark:text-surface-300 leading-relaxed">Engancha al lector con una historia o cita personal. Presenta tu postura claramente.</p>
           </div>
-          <div className="bg-accent-50 rounded-xl p-4">
-            <h4 className="text-xs font-bold text-accent-700 mb-2">2. Desarrollo (60%)</h4>
-            <p className="text-xs text-surface-600 leading-relaxed">3-4 párrafos. Cada uno con UNA idea. Usa ejemplos concretos y conectores lógicos.</p>
+          <div className="bg-accent-50 dark:bg-accent-900/20 rounded-xl p-4">
+            <h4 className="text-xs font-bold text-accent-700 dark:text-accent-300 mb-2">2. Desarrollo (60%)</h4>
+            <p className="text-xs text-surface-600 dark:text-surface-300 leading-relaxed">3-4 párrafos. Cada uno con UNA idea. Usa ejemplos concretos y conectores lógicos.</p>
           </div>
-          <div className="bg-emerald-50 rounded-xl p-4">
-            <h4 className="text-xs font-bold text-emerald-700 mb-2">3. Conclusión (20%)</h4>
-            <p className="text-xs text-surface-600 leading-relaxed">Resume tu postura y conecta con tu futuro. Cierra con una visión clara.</p>
+          <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-4">
+            <h4 className="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2">3. Conclusión (20%)</h4>
+            <p className="text-xs text-surface-600 dark:text-surface-300 leading-relaxed">Resume tu postura y conecta con tu futuro. Cierra con una visión clara.</p>
           </div>
         </div>
       </div>

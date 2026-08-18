@@ -119,7 +119,7 @@ export default function Entrevista() {
 
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-surface-900 flex items-center gap-2">
+          <h1 className="text-2xl md:text-3xl font-bold text-surface-900 dark:text-white flex items-center gap-2">
             <MessageSquare className="w-7 h-7 text-primary-600" /> Preparación para Entrevistas
           </h1>
           <p className="text-surface-500 text-sm mt-1">
@@ -219,7 +219,7 @@ export default function Entrevista() {
         <div className="flex gap-2">
           <input
             placeholder="¿Quieres practicar una entrevista virtual? Escribe 'si'"
-            className="flex-1 px-4 py-3 rounded-xl border border-surface-200 bg-surface-50 text-sm outline-none focus:border-primary-400"
+            className="flex-1 px-4 py-3 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-800 dark:text-white placeholder-surface-400 text-sm outline-none focus:border-primary-400"
           />
           <button className="bg-primary-600 text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-primary-700">
             Iniciar

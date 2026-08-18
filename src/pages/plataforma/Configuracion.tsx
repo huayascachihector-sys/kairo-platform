@@ -40,7 +40,7 @@ export default function Configuracion({ darkMode, onDarkModeChange, onStateChang
   return (
     <div className="space-y-6 max-w-3xl">
       <div>
-        <h1 className="text-2xl md:text-3xl font-bold text-surface-900 flex items-center gap-2">
+        <h1 className="text-2xl md:text-3xl font-bold text-surface-900 dark:text-white flex items-center gap-2">
           <SettingsIcon className="w-7 h-7 text-primary-600" /> Configuración
         </h1>
         <p className="text-surface-500 text-sm mt-1">Personaliza tu experiencia en Kairo</p>
@@ -121,7 +121,7 @@ export default function Configuracion({ darkMode, onDarkModeChange, onStateChang
             { value: 'en', label: 'English' },
           ]}
         />
-        <div className="p-4 rounded-xl bg-surface-50 flex flex-col gap-3">
+        <div className="p-4 rounded-xl bg-surface-50 dark:bg-surface-800/60 flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <div className="flex items-start gap-3">
               <Volume2 className="w-4 h-4 text-primary-600 mt-0.5" />
@@ -158,9 +158,9 @@ export default function Configuracion({ darkMode, onDarkModeChange, onStateChang
           value={s.publicProfile}
           onChange={(v) => patch({ publicProfile: v })}
         />
-        <div className="p-4 rounded-xl bg-surface-50 flex items-start gap-3">
+        <div className="p-4 rounded-xl bg-surface-50 dark:bg-surface-800/60 flex items-start gap-3">
           <Lock className="w-4 h-4 text-primary-600 mt-0.5" />
-          <div className="text-xs text-surface-600">
+          <div className="text-xs text-surface-600 dark:text-surface-300">
             Tus datos se guardan de forma local en tu navegador. No los compartimos con terceros.
           </div>
         </div>
@@ -169,11 +169,11 @@ export default function Configuracion({ darkMode, onDarkModeChange, onStateChang
       {/* Datos */}
       <Section title="Mis datos" icon={Download}>
         <button onClick={exportJSON}
-          className="w-full flex items-center justify-between p-4 rounded-xl bg-surface-50 hover:bg-primary-50 transition-all group">
+          className="w-full flex items-center justify-between p-4 rounded-xl bg-surface-50 dark:bg-surface-800/60 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all group">
           <div className="flex items-center gap-3">
             <Download className="w-4 h-4 text-primary-600" />
             <div className="text-left">
-              <p className="text-sm font-semibold text-surface-900">Exportar mis datos</p>
+              <p className="text-sm font-semibold text-surface-900 dark:text-white">Exportar mis datos</p>
               <p className="text-xs text-surface-500">Descarga tu progreso en formato JSON</p>
             </div>
           </div>

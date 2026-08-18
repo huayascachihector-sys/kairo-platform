@@ -69,7 +69,7 @@ export default function Blog() {
   const regular = posts.filter(p => !p.featured);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-surface-50 via-white to-primary-50/20 pt-24 pb-16">
+    <div className="min-h-screen bg-gradient-to-br from-surface-50 dark:from-surface-950 via-white dark:via-surface-950 to-primary-50/20 dark:to-surface-950 pt-24 pb-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -77,13 +77,13 @@ export default function Blog() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <a href="#" className="inline-flex items-center gap-2 text-sm text-primary-600 hover:text-primary-700 mb-6 font-medium">
+          <a href="#" className="inline-flex items-center gap-2 text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 mb-6 font-medium">
             <ArrowLeft className="w-4 h-4" /> Volver al inicio
           </a>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-surface-900 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-surface-900 dark:text-white tracking-tight">
             Blog <span className="text-gradient">Kairo</span>
           </h1>
-          <p className="mt-4 text-lg text-surface-500 max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-surface-500 dark:text-surface-400 max-w-2xl mx-auto">
             Artículos, guías y recursos para potenciar tu aprendizaje y abrir nuevas oportunidades.
           </p>
         </motion.div>
@@ -130,29 +130,29 @@ export default function Blog() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 + i * 0.05 }}
-              className="bg-white rounded-2xl border border-surface-100 overflow-hidden card-hover group cursor-pointer"
+              className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 overflow-hidden card-hover group cursor-pointer"
             >
               <div className={`h-2 bg-gradient-to-r ${post.gradient}`} />
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xs font-bold text-primary-600 bg-primary-50 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                  <span className="text-xs font-bold text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
                     <Tag className="w-3 h-3" /> {post.category}
                   </span>
-                  <span className="text-xs text-surface-400 flex items-center gap-1">
+                  <span className="text-xs text-surface-400 dark:text-surface-500 flex items-center gap-1">
                     <Clock className="w-3 h-3" /> {post.readTime}
                   </span>
                 </div>
-                <h3 className="text-lg font-bold text-surface-900 leading-snug group-hover:text-primary-600 transition-colors mb-2 flex items-start gap-1">
+                <h3 className="text-lg font-bold text-surface-900 dark:text-white leading-snug group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2 flex items-start gap-1">
                   {post.title}
                   <ArrowUpRight className="w-4 h-4 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity mt-1" />
                 </h3>
-                <p className="text-sm text-surface-500 leading-relaxed mb-4">
+                <p className="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-4">
                   {post.excerpt}
                 </p>
-                <div className="flex items-center gap-2 text-xs text-surface-400 pt-4 border-t border-surface-100">
+                <div className="flex items-center gap-2 text-xs text-surface-400 dark:text-surface-500 pt-4 border-t border-surface-100 dark:border-surface-800">
                   <User className="w-3 h-3" />
                   <span>{post.author}</span>
-                  <span className="text-surface-200">·</span>
+                  <span className="text-surface-200 dark:text-surface-700">·</span>
                   <span>{post.date}</span>
                 </div>
               </div>

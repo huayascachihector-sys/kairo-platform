@@ -145,7 +145,7 @@ export default function Becas() {
   return (
     <div className="space-y-6 max-w-6xl">
       <div>
-        <h1 className="text-2xl md:text-3xl font-bold text-surface-900 flex items-center gap-2">
+        <h1 className="text-2xl md:text-3xl font-bold text-surface-900 dark:text-white flex items-center gap-2">
           <GraduationCap className="w-7 h-7 text-primary-600" /> Becas y Financiamiento
         </h1>
         <p className="text-surface-500 text-sm mt-1">
@@ -162,7 +162,7 @@ export default function Becas() {
             placeholder="Buscar beca por nombre, universidad o país..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-11 pr-4 py-3 rounded-xl border border-surface-200 bg-surface-50 focus:border-primary-400 focus:ring-2 focus:ring-primary-100 outline-none text-sm"
+            className="w-full pl-11 pr-4 py-3 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-900 dark:text-white placeholder-surface-400 focus:border-primary-400 focus:ring-2 focus:ring-primary-100 outline-none text-sm"
           />
         </div>
         <div className="flex gap-2 flex-wrap">

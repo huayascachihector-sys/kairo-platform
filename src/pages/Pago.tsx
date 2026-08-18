@@ -97,22 +97,22 @@ export default function Pago() {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-emerald-50 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-surface-950 via-white dark:bg-surface-950 to-emerald-50 dark:to-surface-950 flex items-center justify-center px-4">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", duration: 0.6 }}
-          className="bg-white rounded-3xl shadow-2xl border border-surface-100 p-12 max-w-md w-full text-center"
+          className="bg-white dark:bg-surface-900 rounded-3xl shadow-2xl border border-surface-100 dark:border-surface-800 p-12 max-w-md w-full text-center"
         >
-          <div className="w-20 h-20 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-6">
-            <Check className="w-10 h-10 text-emerald-600" />
+          <div className="w-20 h-20 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mx-auto mb-6">
+            <Check className="w-10 h-10 text-emerald-600 dark:text-emerald-400" />
           </div>
-          <h2 className="text-3xl font-bold text-surface-900 mb-3">
+          <h2 className="text-3xl font-bold text-surface-900 dark:text-white mb-3">
             ¡Bienvenido, {name.split(" ")[0]}!
           </h2>
-          <p className="text-surface-500 mb-8">
-            Tu suscripción al plan <strong className="text-primary-600">{selectedPlan.name}</strong>{" "}
-            está activa. Revisa tu correo en <span className="text-primary-600">{email}</span> para
+          <p className="text-surface-500 dark:text-surface-400 mb-8">
+            Tu suscripción al plan <strong className="text-primary-600 dark:text-primary-400">{selectedPlan.name}</strong>{" "}
+            está activa. Revisa tu correo en <span className="text-primary-600 dark:text-primary-400">{email}</span> para
             acceder.
           </p>
           <a href="#" className="btn-primary w-full justify-center text-base">
@@ -127,34 +127,34 @@ export default function Pago() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50/30 py-24 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 dark:from-surface-950 via-white dark:bg-surface-950 to-accent-50/30 dark:to-surface-950 py-24 px-4">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <a href="#" className="inline-flex items-center gap-2.5 mb-8">
             <img src="/logo-light.png" alt="KAIRO Logo" className="h-11 w-auto object-contain" />
           </a>
-          <h1 className="text-3xl md:text-4xl font-bold text-surface-900 mb-3">
+          <h1 className="text-3xl md:text-4xl font-bold text-surface-900 dark:text-white mb-3">
             Elige tu plan, {name.split(" ")[0]}
           </h1>
-          <p className="text-surface-500">
-            Registrado como <span className="text-primary-600 font-semibold">{email}</span> · 14
+          <p className="text-surface-500 dark:text-surface-400">
+            Registrado como <span className="text-primary-600 dark:text-primary-400 font-semibold">{email}</span> · 14
             días gratis incluidos
           </p>
         </div>
 
         {/* Tabs */}
         <div className="flex justify-center mb-10">
-          <div className="inline-flex bg-surface-100 rounded-2xl p-1 gap-1">
+          <div className="inline-flex bg-surface-100 dark:bg-surface-800 rounded-2xl p-1 gap-1">
             <button
               onClick={() => setTab("plan")}
-              className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-all ${tab === "plan" ? "bg-white text-primary-600 shadow-sm" : "text-surface-500 hover:text-surface-700"}`}
+              className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-all ${tab === "plan" ? "bg-white dark:bg-surface-900 text-primary-600 dark:text-primary-400 shadow-sm" : "text-surface-500 dark:text-surface-400 hover:text-surface-700 dark:hover:text-surface-200"}`}
             >
               1. Elegir plan
             </button>
             <button
               onClick={() => selected && setTab("pago")}
-              className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-all ${tab === "pago" ? "bg-white text-primary-600 shadow-sm" : "text-surface-500 hover:text-surface-700"}`}
+              className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-all ${tab === "pago" ? "bg-white dark:bg-surface-900 text-primary-600 dark:text-primary-400 shadow-sm" : "text-surface-500 dark:text-surface-400 hover:text-surface-700 dark:hover:text-surface-200"}`}
             >
               2. Datos de pago
             </button>
@@ -179,9 +179,9 @@ export default function Pago() {
                     className={`relative text-left rounded-2xl border-2 p-6 transition-all ${
                       selected === plan.id
                         ? plan.id === "anual"
-                          ? "border-amber-400 bg-amber-50/40 shadow-lg shadow-amber-100"
-                          : "border-primary-500 bg-primary-50/40 shadow-lg shadow-primary-100"
-                        : "border-surface-200 bg-white hover:border-surface-300"
+                          ? "border-amber-400 bg-amber-50/40 dark:bg-amber-900/20 shadow-lg shadow-amber-100 dark:shadow-black/30"
+                          : "border-primary-500 bg-primary-50/40 dark:bg-primary-900/20 shadow-lg shadow-primary-100 dark:shadow-black/30"
+                        : "border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-900 hover:border-surface-300 dark:hover:border-surface-600"
                     }`}
                   >
                     {plan.badge && (
@@ -200,23 +200,23 @@ export default function Pago() {
                       className={`w-5 h-5 rounded-full border-2 mb-4 flex items-center justify-center flex-shrink-0 ${
                         selected === plan.id
                           ? "border-primary-500 bg-primary-500"
-                          : "border-surface-300"
+                          : "border-surface-300 dark:border-surface-600"
                       }`}
                     >
                       {selected === plan.id && <Check className="w-3 h-3 text-white" />}
                     </div>
 
-                    <p className="text-surface-500 text-sm font-semibold mb-1">{plan.name}</p>
+                    <p className="text-surface-500 dark:text-surface-400 text-sm font-semibold mb-1">{plan.name}</p>
                     <div className="flex items-end gap-1 mb-1">
-                      <span className="text-3xl font-bold text-surface-900">{plan.price}</span>
+                      <span className="text-3xl font-bold text-surface-900 dark:text-white">{plan.price}</span>
                       <span className="text-surface-400 text-sm mb-1">{plan.period}</span>
                     </div>
-                    {plan.note && <p className="text-xs text-surface-400 mb-4">{plan.note}</p>}
+                    {plan.note && <p className="text-xs text-surface-400 dark:text-surface-500 mb-4">{plan.note}</p>}
                     {!plan.note && <div className="mb-4" />}
 
                     <ul className="space-y-2.5">
                       {plan.features.map((f, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-surface-600">
+                        <li key={i} className="flex items-start gap-2 text-sm text-surface-600 dark:text-surface-300">
                           <Check className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
                           {f}
                         </li>
@@ -236,7 +236,7 @@ export default function Pago() {
                     <ArrowRight className="w-4 h-4" />
                   </span>
                 </button>
-                <p className="text-surface-400 text-sm mt-4">
+                <p className="text-surface-400 dark:text-surface-500 text-sm mt-4">
                   Sin compromiso · Cancela en cualquier momento
                 </p>
               </div>
@@ -252,49 +252,49 @@ export default function Pago() {
             >
               <div className="max-w-lg mx-auto">
                 {/* Order summary */}
-                <div className="bg-white rounded-2xl border border-surface-100 shadow-sm p-6 mb-6">
-                  <h3 className="font-bold text-surface-900 mb-4">Resumen de tu pedido</h3>
+                <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6 mb-6">
+                  <h3 className="font-bold text-surface-900 dark:text-white mb-4">Resumen de tu pedido</h3>
                   <div className="flex items-center justify-between text-sm mb-3">
-                    <span className="text-surface-600">Plan {selectedPlan.name}</span>
-                    <span className="font-semibold text-surface-900">
+                    <span className="text-surface-600 dark:text-surface-300">Plan {selectedPlan.name}</span>
+                    <span className="font-semibold text-surface-900 dark:text-white">
                       {selectedPlan.price}
                       {selectedPlan.period}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm mb-3">
-                    <span className="text-surface-600">Prueba gratis</span>
-                    <span className="font-semibold text-emerald-600">14 días · S/ 0</span>
+                    <span className="text-surface-600 dark:text-surface-300">Prueba gratis</span>
+                    <span className="font-semibold text-emerald-600 dark:text-emerald-400">14 días · S/ 0</span>
                   </div>
-                  <div className="border-t border-surface-100 pt-3 flex items-center justify-between">
-                    <span className="font-bold text-surface-900">Hoy pagas</span>
-                    <span className="font-bold text-2xl text-primary-600">S/ 0.00</span>
+                  <div className="border-t border-surface-100 dark:border-surface-800 pt-3 flex items-center justify-between">
+                    <span className="font-bold text-surface-900 dark:text-white">Hoy pagas</span>
+                    <span className="font-bold text-2xl text-primary-600 dark:text-primary-400">S/ 0.00</span>
                   </div>
-                  <p className="text-xs text-surface-400 mt-2">
+                  <p className="text-xs text-surface-400 dark:text-surface-500 mt-2">
                     Después del período de prueba se cobra {selectedPlan.price}
                     {selectedPlan.period}
                   </p>
                 </div>
 
                 {/* Payment form */}
-                <div className="bg-white rounded-2xl border border-surface-100 shadow-sm p-6">
+                <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm p-6">
                   <div className="flex items-center gap-2 mb-6">
                     <CreditCard className="w-5 h-5 text-surface-500" />
-                    <h3 className="font-bold text-surface-900">Datos de pago</h3>
-                    <span className="ml-auto text-xs text-surface-400 flex items-center gap-1">
+                    <h3 className="font-bold text-surface-900 dark:text-white">Datos de pago</h3>
+                    <span className="ml-auto text-xs text-surface-400 dark:text-surface-500 flex items-center gap-1">
                       <Lock className="w-3 h-3" /> Pago seguro
                     </span>
                   </div>
 
                   <form onSubmit={handlePay} className="space-y-4">
                     <div>
-                      <label className="block text-sm font-semibold text-surface-700 mb-2">
+                      <label className="block text-sm font-semibold text-surface-700 dark:text-surface-200 mb-2">
                         Número de tarjeta
                       </label>
                       <input
                         type="text"
                         placeholder="1234 5678 9012 3456"
                         maxLength={19}
-                        className="w-full px-4 py-3.5 rounded-xl border border-surface-200 bg-surface-50 text-surface-900 placeholder-surface-400 outline-none text-sm font-medium focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white transition-all"
+                        className="w-full px-4 py-3.5 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-900 dark:text-white placeholder-surface-400 outline-none text-sm font-medium focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white dark:focus:bg-surface-800 transition-all"
                         onInput={(e) => {
                           const t = e.currentTarget;
                           t.value = t.value
@@ -307,38 +307,38 @@ export default function Pago() {
 
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-surface-700 mb-2">
+                        <label className="block text-sm font-semibold text-surface-700 dark:text-surface-200 mb-2">
                           Vencimiento
                         </label>
                         <input
                           type="text"
                           placeholder="MM/AA"
                           maxLength={5}
-                          className="w-full px-4 py-3.5 rounded-xl border border-surface-200 bg-surface-50 text-surface-900 placeholder-surface-400 outline-none text-sm font-medium focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white transition-all"
+                          className="w-full px-4 py-3.5 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-900 dark:text-white placeholder-surface-400 outline-none text-sm font-medium focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white dark:focus:bg-surface-800 transition-all"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-surface-700 mb-2">
+                        <label className="block text-sm font-semibold text-surface-700 dark:text-surface-200 mb-2">
                           CVV
                         </label>
                         <input
                           type="text"
                           placeholder="123"
                           maxLength={3}
-                          className="w-full px-4 py-3.5 rounded-xl border border-surface-200 bg-surface-50 text-surface-900 placeholder-surface-400 outline-none text-sm font-medium focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white transition-all"
+                          className="w-full px-4 py-3.5 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-900 dark:text-white placeholder-surface-400 outline-none text-sm font-medium focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white dark:focus:bg-surface-800 transition-all"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-surface-700 mb-2">
+                      <label className="block text-sm font-semibold text-surface-700 dark:text-surface-200 mb-2">
                         Nombre en la tarjeta
                       </label>
                       <input
                         type="text"
                         defaultValue={name}
                         placeholder="Nombre completo"
-                        className="w-full px-4 py-3.5 rounded-xl border border-surface-200 bg-surface-50 text-surface-900 placeholder-surface-400 outline-none text-sm font-medium focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white transition-all"
+                        className="w-full px-4 py-3.5 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-900 dark:text-white placeholder-surface-400 outline-none text-sm font-medium focus:border-primary-400 focus:ring-2 focus:ring-primary-100 focus:bg-white dark:focus:bg-surface-800 transition-all"
                       />
                     </div>
 
@@ -377,7 +377,7 @@ export default function Pago() {
                     </button>
                   </form>
 
-                  <div className="mt-5 flex items-center justify-center gap-4 text-surface-400">
+                  <div className="mt-5 flex items-center justify-center gap-4 text-surface-400 dark:text-surface-500">
                     <div className="flex items-center gap-1 text-xs">
                       <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> Pago seguro SSL
                     </div>
@@ -394,7 +394,7 @@ export default function Pago() {
 
                 <button
                   onClick={() => setTab("plan")}
-                  className="w-full text-center text-sm text-surface-400 hover:text-surface-600 transition-colors py-4"
+                  className="w-full text-center text-sm text-surface-400 dark:text-surface-500 hover:text-surface-600 dark:hover:text-surface-200 transition-colors py-4"
                 >
                   ← Cambiar plan
                 </button>

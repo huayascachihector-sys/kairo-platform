@@ -355,13 +355,13 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
           {Object.entries(CATEGORY_META).map(([key, m]) => {
             const Icon = m.icon;
             return (
-              <div key={key} className="flex items-center gap-3 bg-white rounded-2xl p-4 border border-surface-100 shadow-sm">
+              <div key={key} className="flex items-center gap-3 bg-white dark:bg-surface-900 rounded-2xl p-4 border border-surface-100 dark:border-surface-800 shadow-sm">
                 <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${m.color} flex items-center justify-center`}>
                   <Icon className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="font-semibold text-surface-900 text-sm">{m.label}</p>
-                  <p className="text-xs text-surface-400">{PUZZLES.filter((p) => p.category === key).length} puzzles</p>
+                  <p className="font-semibold text-surface-900 dark:text-white text-sm">{m.label}</p>
+                  <p className="text-xs text-surface-400 dark:text-surface-500">{PUZZLES.filter((p) => p.category === key).length} puzzles</p>
                 </div>
               </div>
             );
@@ -369,8 +369,8 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
         </div>
 
         {/* Rules */}
-        <div className="bg-white rounded-2xl border border-surface-100 p-5 shadow-sm space-y-3">
-          <h3 className="font-semibold text-surface-900">¿Cómo funciona?</h3>
+        <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-5 shadow-sm space-y-3">
+          <h3 className="font-semibold text-surface-900 dark:text-white">¿Cómo funciona?</h3>
           <div className="space-y-2">
             {[
               { icon: Timer, color: 'text-cyan-500', text: '60 segundos por puzzle — ¡la rapidez suma!' },
@@ -378,7 +378,7 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
               { icon: Zap, color: 'text-amber-500', text: 'Respuesta correcta → +15–25 XP directos a tu cuenta' },
               { icon: BookOpen, color: 'text-indigo-500', text: 'Al fallar, verás la explicación didáctica antes de continuar' },
             ].map((r, i) => (
-              <div key={i} className="flex items-start gap-3 text-sm text-surface-600">
+              <div key={i} className="flex items-start gap-3 text-sm text-surface-600 dark:text-surface-300">
                 <r.icon className={`w-5 h-5 ${r.color} flex-shrink-0 mt-0.5`} />
                 <span>{r.text}</span>
               </div>
@@ -401,7 +401,7 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
     const perfect = correctCount === puzzles.length;
     return (
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="max-w-lg mx-auto">
-        <div className="bg-white rounded-3xl border border-surface-100 shadow-xl overflow-hidden">
+        <div className="bg-white dark:bg-surface-900 rounded-3xl border border-surface-100 dark:border-surface-800 shadow-xl overflow-hidden">
           <div className={`p-8 text-center bg-gradient-to-br ${perfect ? 'from-yellow-400 to-orange-500' : 'from-indigo-500 to-violet-600'}`}>
             <div className="mb-3 flex justify-center">
               {perfect ? <Trophy className="w-16 h-16 text-white" /> : correctCount >= 3 ? <Target className="w-16 h-16 text-white" /> : <Star className="w-16 h-16 text-white" />}
@@ -413,15 +413,15 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
           </div>
           <div className="p-8 space-y-6">
             <div className="grid grid-cols-3 gap-4 text-center">
-              <div className="bg-surface-50 rounded-2xl p-4">
+              <div className="bg-surface-50 dark:bg-surface-800/60 rounded-2xl p-4">
                 <p className="text-2xl font-bold text-indigo-600">+{totalXP}</p>
                 <p className="text-xs text-surface-500 mt-1">XP ganados</p>
               </div>
-              <div className="bg-surface-50 rounded-2xl p-4">
+              <div className="bg-surface-50 dark:bg-surface-800/60 rounded-2xl p-4">
                 <p className="text-2xl font-bold text-emerald-600">{correctCount}/{puzzles.length}</p>
                 <p className="text-xs text-surface-500 mt-1">Correctas</p>
               </div>
-              <div className="bg-surface-50 rounded-2xl p-4">
+              <div className="bg-surface-50 dark:bg-surface-800/60 rounded-2xl p-4">
                 <p className="text-2xl font-bold text-orange-500">{lives}</p>
                 <p className="text-xs text-surface-500 mt-1">Vidas restantes</p>
               </div>
@@ -465,7 +465,7 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
             <div
               key={i}
               className={`h-2 rounded-full transition-all duration-300 ${
-                i < idx ? 'bg-indigo-500 w-6' : i === idx ? 'bg-indigo-400 w-6' : 'bg-surface-200 w-4'
+                i < idx ? 'bg-indigo-500 w-6' : i === idx ? 'bg-indigo-400 w-6' : 'bg-surface-200 dark:bg-surface-700 w-4'
               }`}
             />
           ))}
@@ -478,7 +478,7 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
       </div>
 
       {/* Main puzzle card */}
-      <div className="bg-white rounded-3xl border border-surface-100 shadow-lg overflow-hidden">
+      <div className="bg-white dark:bg-surface-900 rounded-3xl border border-surface-100 dark:border-surface-800 shadow-lg overflow-hidden">
 
         {/* Category + difficulty strip */}
         <div className={`bg-gradient-to-r ${meta.color} px-6 py-4`}>
@@ -494,7 +494,7 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
         </div>
 
         {/* Timer bar */}
-        <div className="h-1.5 bg-surface-100">
+        <div className="h-1.5 bg-surface-100 dark:bg-surface-800">
           <motion.div
             className="h-full rounded-full transition-all"
             style={{ width: `${timerPct}%`, backgroundColor: timerColor }}
@@ -508,14 +508,14 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
             <span className="text-xs font-medium text-surface-400 uppercase tracking-wide">
               Puzzle {idx + 1} de {puzzles.length}
             </span>
-            <div className={`flex items-center gap-1.5 text-sm font-bold ${timeLeft <= 15 ? 'text-red-500' : 'text-surface-600'}`}>
+            <div className={`flex items-center gap-1.5 text-sm font-bold ${timeLeft <= 15 ? 'text-red-500' : 'text-surface-600 dark:text-surface-300'}`}>
               <Timer className="w-4 h-4" /> {timeLeft}s
             </div>
           </div>
 
           {/* Question */}
           <div>
-            <p className="text-surface-900 font-semibold text-lg leading-relaxed whitespace-pre-line">
+            <p className="text-surface-900 dark:text-white font-semibold text-lg leading-relaxed whitespace-pre-line">
               {puzzle.question}
             </p>
             <p className="mt-2 text-sm text-surface-400 italic flex items-center gap-1.5"><Lightbulb className="w-4 h-4 text-amber-400" /> Pista: {puzzle.hint}</p>
@@ -524,11 +524,11 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
           {/* Options */}
           <div className="grid grid-cols-1 gap-3">
             {puzzle.options.map((opt, i) => {
-              let style = 'border-surface-200 bg-surface-50 text-surface-800 hover:border-indigo-300 hover:bg-indigo-50';
+              let style = 'border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-800 dark:text-surface-200 hover:border-indigo-300 dark:hover:border-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/20';
               if (selected !== null) {
-                if (i === puzzle.correct) style = 'border-emerald-400 bg-emerald-50 text-emerald-800';
-                else if (i === selected && i !== puzzle.correct) style = 'border-red-300 bg-red-50 text-red-700';
-                else style = 'border-surface-100 bg-white text-surface-400';
+                if (i === puzzle.correct) style = 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-200';
+                else if (i === selected && i !== puzzle.correct) style = 'border-red-300 bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300';
+                else style = 'border-surface-100 dark:border-surface-700 bg-white dark:bg-surface-900 text-surface-400 dark:text-surface-500';
               }
               return (
                 <motion.button
@@ -540,7 +540,7 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
                   className={`w-full text-left px-5 py-3.5 rounded-2xl border-2 font-medium text-sm transition-all ${style}`}
                 >
                   <span className="inline-flex items-center gap-3">
-                    <span className="w-6 h-6 rounded-lg bg-white/70 border border-current/20 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                    <span className="w-6 h-6 rounded-lg bg-white/70 dark:bg-white/10 border border-current/20 flex items-center justify-center text-xs font-bold flex-shrink-0">
                       {String.fromCharCode(65 + i)}
                     </span>
                     {opt}
@@ -556,16 +556,16 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="rounded-2xl bg-emerald-50 border border-emerald-200 p-5 space-y-3"
+                className="rounded-2xl bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 p-5 space-y-3"
               >
-                <div className="flex items-center gap-2 text-emerald-700 font-bold">
+                <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-300 font-bold">
                   <PartyPopper className="w-6 h-6 text-emerald-500" />
                   <span>¡Correcto! +{puzzle.xp} XP</span>
                 </div>
-                <p className="text-sm text-emerald-800 leading-relaxed">{puzzle.explanation}</p>
+                <p className="text-sm text-emerald-800 dark:text-emerald-200 leading-relaxed">{puzzle.explanation}</p>
                 <button
                   onClick={nextPuzzle}
-                  className="flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:text-emerald-900 transition-colors"
+                  className="flex items-center gap-2 text-sm font-semibold text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 dark:hover:text-emerald-100 transition-colors"
                 >
                   {idx + 1 < puzzles.length ? 'Siguiente puzzle' : 'Ver resultados'}
                   <ChevronRight className="w-4 h-4" />
@@ -577,15 +577,15 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="rounded-2xl bg-red-50 border border-red-200 p-5 space-y-3"
+                className="rounded-2xl bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-900 p-5 space-y-3"
               >
-                <div className="flex items-center gap-2 text-red-700 font-bold">
+                <div className="flex items-center gap-2 text-red-700 dark:text-red-300 font-bold">
                   {timedOut ? <Timer className="w-6 h-6 text-red-500" /> : <X className="w-6 h-6 text-red-500" />}
                   <span>{timedOut ? 'Se acabó el tiempo' : 'Incorrecto'} — {lives} vida{lives !== 1 ? 's' : ''} restante{lives !== 1 ? 's' : ''}</span>
                 </div>
-                <div className="bg-white rounded-xl p-4 border border-red-100">
-                  <p className="text-xs font-semibold text-surface-500 mb-1.5 uppercase tracking-wide">Explicación</p>
-                  <p className="text-sm text-surface-700 leading-relaxed">{puzzle.explanation}</p>
+                <div className="bg-white dark:bg-surface-800 rounded-xl p-4 border border-red-100 dark:border-red-900/50">
+                  <p className="text-xs font-semibold text-surface-500 dark:text-surface-400 mb-1.5 uppercase tracking-wide">Explicación</p>
+                  <p className="text-sm text-surface-700 dark:text-surface-200 leading-relaxed">{puzzle.explanation}</p>
                 </div>
                 <div className="flex gap-3">
                   {lives > 0 && (
@@ -598,7 +598,7 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
                   )}
                   <button
                     onClick={nextPuzzle}
-                    className="flex items-center gap-1.5 text-sm font-semibold text-surface-500 hover:text-surface-700 transition-colors ml-auto"
+                    className="flex items-center gap-1.5 text-sm font-semibold text-surface-500 dark:text-surface-400 hover:text-surface-700 dark:hover:text-surface-200 transition-colors ml-auto"
                   >
                     {idx + 1 < puzzles.length ? 'Siguiente' : 'Ver resultados'}
                     <ChevronRight className="w-4 h-4" />
@@ -615,10 +615,10 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="flex items-center gap-2 bg-indigo-50 border border-indigo-100 rounded-2xl px-5 py-3"
+          className="flex items-center gap-2 bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-100 dark:border-indigo-800 rounded-2xl px-5 py-3"
         >
           <Trophy className="w-4 h-4 text-indigo-500" />
-          <span className="text-sm text-indigo-700 font-medium">
+          <span className="text-sm text-indigo-700 dark:text-indigo-300 font-medium">
             Llevas <strong>+{totalXP} XP</strong> en esta sesión — ¡sigue así!
           </span>
         </motion.div>

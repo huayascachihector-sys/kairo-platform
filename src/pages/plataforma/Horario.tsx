@@ -276,7 +276,7 @@ export default function Horario() {
             {Object.entries(subjectHours).map(([sub, hrs]) => {
               const subData = SUBJECTS.find((s) => s.label === sub);
               return (
-                <div key={sub} className={`p-4 rounded-xl border ${subData?.light || 'bg-surface-50 text-surface-600 border-surface-200'}`}>
+                <div key={sub} className={`p-4 rounded-xl border ${subData ? subData.light : 'bg-surface-50 text-surface-600 border-surface-200'} ${subData?.dark || 'dark:bg-surface-800/60 dark:text-surface-300 dark:border-surface-700'}`}>
                   <p className="font-bold text-sm">{sub}</p>
                   <p className="text-2xl font-bold mt-1">{hrs}h</p>
                   <p className="text-xs opacity-70">por semana</p>

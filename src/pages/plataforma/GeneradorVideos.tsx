@@ -101,7 +101,7 @@ export default function GeneradorVideos() {
     <div className="space-y-6 max-w-5xl">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-surface-900 flex items-center gap-2">
+          <h1 className="text-2xl md:text-3xl font-bold text-surface-900 dark:text-white flex items-center gap-2">
             <Clapperboard className="w-7 h-7 text-primary-600" /> Generador de Videos
           </h1>
           <p className="text-surface-500 text-sm mt-1">
@@ -116,7 +116,7 @@ export default function GeneradorVideos() {
       {/* Form */}
       <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 shadow-sm overflow-hidden">
         <div className="px-6 py-4 border-b border-surface-100 dark:border-surface-800">
-          <h3 className="text-sm font-bold text-surface-900 flex items-center gap-2">
+          <h3 className="text-sm font-bold text-surface-900 dark:text-white flex items-center gap-2">
             <Clapperboard className="w-4 h-4 text-primary-500" /> Nuevo video educativo
           </h3>
         </div>
@@ -152,7 +152,7 @@ export default function GeneradorVideos() {
                     onClick={() => setNivel(key)}
                     className={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl border text-sm font-semibold transition-all ${
                       nivel === key
-                        ? "border-primary-400 ring-2 ring-primary-100 bg-primary-50 text-primary-700"
+                        ? "border-primary-400 ring-2 ring-primary-100 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300"
                         : "border-surface-200 dark:border-surface-700 text-surface-500 hover:border-primary-300"
                     }`}
                   >
@@ -196,7 +196,7 @@ export default function GeneradorVideos() {
                   onClick={() => setEstilo(key)}
                   className={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl border text-sm font-semibold transition-all ${
                     estilo === key
-                      ? "border-primary-400 ring-2 ring-primary-100 bg-primary-50 text-primary-700"
+                      ? "border-primary-400 ring-2 ring-primary-100 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300"
                       : "border-surface-200 dark:border-surface-700 text-surface-500 hover:border-primary-300"
                   }`}
                 >
@@ -228,7 +228,7 @@ export default function GeneradorVideos() {
             <div className="flex items-center gap-3 mb-4">
               <Loader2 className="w-5 h-5 text-primary-500 animate-spin" />
               <div>
-                <h3 className="text-sm font-bold text-surface-900">{stageLabel}</h3>
+                <h3 className="text-sm font-bold text-surface-900 dark:text-white">{stageLabel}</h3>
                 <p className="text-xs text-surface-400 mt-0.5">Video: «{job.tema || tema}»</p>
               </div>
               <span className="ml-auto text-xs font-bold text-primary-600">{progress}%</span>
@@ -259,7 +259,7 @@ export default function GeneradorVideos() {
           >
             <div className="flex items-center gap-2 mb-4">
               <CheckCircle2 className="w-5 h-5 text-emerald-500" />
-              <h3 className="text-sm font-bold text-surface-900">¡Tu video está listo!</h3>
+              <h3 className="text-sm font-bold text-surface-900 dark:text-white">¡Tu video está listo!</h3>
             </div>
             <video
               controls
@@ -298,7 +298,7 @@ export default function GeneradorVideos() {
             <div className="flex items-start gap-3">
               <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
               <div>
-                <h3 className="text-sm font-bold text-surface-900">No se pudo generar el video</h3>
+                <h3 className="text-sm font-bold text-surface-900 dark:text-white">No se pudo generar el video</h3>
                 <p className="text-sm text-surface-600 dark:text-surface-300 mt-1">{errorMsg}</p>
                 <p className="text-xs text-surface-400 mt-3">
                   Este generador funciona con un servicio local en tu computadora. Asegúrate de que
@@ -322,7 +322,7 @@ export default function GeneradorVideos() {
 
       {/* Info */}
       <div className="bg-white dark:bg-surface-900 rounded-2xl border border-surface-100 dark:border-surface-800 p-6 shadow-sm">
-        <h3 className="text-sm font-bold text-surface-900 mb-4 flex items-center gap-2">
+        <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-4 flex items-center gap-2">
           <Info className="w-4 h-4 text-primary-500" /> ¿Cómo funciona?
         </h3>
         <div className="grid sm:grid-cols-3 gap-4 text-sm">
