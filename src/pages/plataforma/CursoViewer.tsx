@@ -5,7 +5,7 @@ import {
   getCourse,
   getTotalLessons,
   getModules,
-  getLessonVideoUrl,
+  getLessonVideoUrl, getLessonRepasoVideos,
   getPracticaExercises,
   FASES,
   type Module,
@@ -342,6 +342,26 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
                     }
                   }}
                 />
+              )}
+
+              {leccion && getLessonRepasoVideos(leccion) && (
+                <div className="bg-white/5 rounded-b-xl border-t border-white/10 mt-2 p-4">
+                  <p className="text-xs text-surface-500 mb-2">Videos de repaso</p>
+                  <ul className="text-xs text-surface-400 space-y-1">
+                    {getLessonRepasoVideos(leccion).map((v, i) => (
+                      <li key={i}>
+                        <a
+                          href={`https://www.youtube.com/watch?v=${v.videoId}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline text-primary-400 hover:text-primary-300"
+                        >
+                          {v.channel} — {v.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               )}
 
               {leccionMark.trim().length > 0 && (

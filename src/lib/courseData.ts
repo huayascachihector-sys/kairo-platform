@@ -214,6 +214,10 @@ export function getLessonVideoUrl(courseId: string, lesson: Lesson): string | un
   return `/videos/${idLimpio}/${lecLimpio}.mp4`;
 }
 
+export function getLessonRepasoVideos(lesson: Lesson): CuratedVideo[] | undefined {
+  return VIDEO_LIBRARY[lesson.id]?.repaso;
+}
+
 export function getPracticaExercises(modulo: Module): Exercise[] {
   const fromLessons = modulo.lessons.flatMap((l) => l.exercises || []);
   return fromLessons;
