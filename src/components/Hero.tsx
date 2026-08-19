@@ -65,7 +65,7 @@ export default function Hero() {
             <span className="text-gradient-hero">Clase Mundial</span>
             <br />
             <span className="text-white">Impulsada por </span>
-            <span className="text-gradient-cyan">Inteligencia Artificial</span>
+            <span className="text-gradient-cyan">Hectorstian</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -133,7 +133,7 @@ export default function Hero() {
                   <span>kairo-neural-engine://v3.6-active</span>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-3 text-xs font-mono">
                 <div className="flex items-center gap-1.5 text-emerald-400 bg-emerald-950/40 px-2.5 py-1 rounded-md border border-emerald-500/30">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
@@ -147,17 +147,16 @@ export default function Hero() {
             <div className="flex border-b border-slate-800 bg-slate-900/50">
               {[
                 { id: 'prompt', label: 'Asistente Neuronal IA', icon: Brain },
-                { id: 'sim',    label: 'Simulaciones & Mates', icon: Calculator },
-                { id: 'plan',   label: 'Plan Inteligente', icon: Zap },
+                { id: 'sim', label: 'Simulaciones & Mates', icon: Calculator },
+                { id: 'plan', label: 'Plan Inteligente', icon: Zap },
               ].map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`flex-1 py-3 px-4 text-xs sm:text-sm font-semibold transition-all border-b-2 flex items-center justify-center gap-2 ${
-                    activeTab === tab.id
+                  className={`flex-1 py-3 px-4 text-xs sm:text-sm font-semibold transition-all border-b-2 flex items-center justify-center gap-2 ${activeTab === tab.id
                       ? 'border-cyan-400 text-cyan-300 bg-cyan-950/20'
                       : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/40'
-                  }`}
+                    }`}
                 >
                   <tab.icon className="w-4 h-4" />
                   {tab.label}
