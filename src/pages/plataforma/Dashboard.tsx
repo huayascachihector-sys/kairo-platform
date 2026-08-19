@@ -355,7 +355,7 @@ export default function Dashboard({ state, onNavigate }: Props) {
         <div className="space-y-6">
           {/* Weakness Analysis */}
 {(() => {
-             const scoresByTopic = getScoresByTopic(state);
+             const scoresByTopic = buildScoresByTopic(state);
              const topics = Object.keys(scoresByTopic);
              if (topics.length === 0) return null;
              const diagnostics: DiagnosticResult[] = diagnosePerformance(scoresByTopic);
