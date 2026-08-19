@@ -10,7 +10,41 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "parse-ib": "set NODE_OPTIONS=--max-old-space-size=8192 && npx tsx scripts/parse-ib-zip.ts"
+    "parse-ib": "set NODE_OPTIONS=--max-old-space-size=8192 && npx tsx scripts/parse-ib-zip.ts",
+    "build:exe": "npm run build && electron-builder --win nsis --publish never"
+  },
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "com.studymind.kairo",
+    "productName": "KAIRO",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "public/app-icon.ico",
+      "artifactName": "KAIRO-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "KAIRO",
+      "uninstallDisplayName": "KAIRO - Plataforma Educativa"
+    }
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -83,6 +117,8 @@
     "@types/react-dom": "^19.2.0",
     "@types/yauzl": "^3.4.0",
     "@vitejs/plugin-react": "^5.2.0",
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3",
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.6",

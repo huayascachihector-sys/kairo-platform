@@ -259,3 +259,32 @@ git push
    - `OPENROUTER_API_KEY` = tu clave (o déjalo vacío)
    - `VIDEO_API_URL` = `http://localhost:8000` (opcional)
 4. Haz clic en "Deploy" → obtienes una URL pública automática
+
+---
+
+## 13. App instalable (APK Android + EXE Windows)
+
+La web es PWA instalable (manifest + service worker). Además se ofrece el botón
+"Descargar App" (componente `src/components/InstallApp.tsx`) en Navbar, Landing y
+Footer, que enlaza los binarios de `public/downloads/`.
+
+### Generar el APK (Android)
+1. Publica la web en HTTPS (Vercel).
+2. Entra a **pwabuilder.com** → pega la URL → "Package for Android".
+3. Configura `com.studymind.kairo` e ícono (`icon-maskable-512.png`).
+4. Descarga el APK firmado → cópialo a `public/downloads/kairo.apk`.
+
+### Generar el EXE (Windows)
+Requiere Node.js ≥ 18 (en cualquier máquina):
+```bash
+npm install
+npm run build:exe        # genera release/KAIRO-Setup-1.0.0.exe
+```
+Copia el instalador a `public/downloads/KAIRO-Setup.exe`.
+
+### Actualizar metadatos
+Edita `public/downloads/version.json` (versión, tamaño, fecha) — el modal de
+descarga lo lee automáticamente.
+
+> Los binarios no se suben a git (`.gitignore` los excluye); generar y copiar
+> localmente antes del `git push`, o usar GitHub Releases.

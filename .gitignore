@@ -40,6 +40,11 @@ public/data/ib-questions/
 public/videos/
 public/avatars/
 
+# Builds de la app de escritorio / binarios de descarga
+release/
+public/downloads/kairo.apk
+public/downloads/KAIRO-Setup.exe
+
 # Vendored repos (reference only, not part of source)
 herramientas/
 agentedevideos/

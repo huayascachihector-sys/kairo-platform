@@ -1,4 +1,4 @@
-import { BookOpen, Heart, ArrowUpRight, Home, Calculator, Library, Newspaper, Info, MapPin, Flame, Globe } from 'lucide-react';
+import { BookOpen, Heart, ArrowUpRight, Home, Calculator, Library, Newspaper, Info, MapPin, Flame, Globe, Download } from 'lucide-react';
 
 const footerLinks = {
   Plataforma: [
@@ -7,6 +7,7 @@ const footerLinks = {
     { label: 'Recursos', href: '#/recursos' },
     { label: 'Precios', href: '#precios' },
     { label: 'Blog', href: '#/blog' },
+    { label: 'Descargar App', href: '#descargar-app', icon: Download },
   ],
   'Recursos Externos': [
     { label: 'Khan Academy', href: 'https://es.khanacademy.org/', external: true },
@@ -54,6 +55,7 @@ export default function Footer() {
               { label: 'Matemáticas', href: '#/matematicas', icon: Calculator },
               { label: 'Recursos', href: '#/recursos', icon: Library },
               { label: 'Blog', href: '#/blog', icon: Newspaper },
+              { label: 'Descargar App', href: '#descargar-app', icon: Download },
               { label: 'Nosotros', href: '#/about', icon: Info },
             ].map(link => (
               <a
@@ -111,6 +113,7 @@ export default function Footer() {
                       {...('external' in link && link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                       className="text-sm text-surface-400 hover:text-white transition-colors flex items-center gap-1.5 group"
                     >
+                      {'icon' in link && link.icon && <link.icon className="w-3.5 h-3.5 text-cyan-400" />}
                       {link.label}
                       {'badge' in link && link.badge && (
                         <span className="text-[10px] font-bold bg-primary-500/20 text-primary-300 px-1.5 py-0.5 rounded-full inline-flex items-center gap-1">

@@ -2,6 +2,7 @@ import Hero from '../components/Hero';
 import SocialProof from '../components/SocialProof';
 import Features from '../components/Features';
 import ProductShowcase from '../components/ProductShowcase';
+import AppDownload from '../components/AppDownload';
 import Benefits from '../components/Benefits';
 import Testimonials from '../components/Testimonials';
 import Pricing from '../components/Pricing';
@@ -15,6 +16,7 @@ export default function Landing() {
       <SocialProof />
       <Features />
       <ProductShowcase />
+      <AppDownload />
       <Benefits />
       <Testimonials />
       <Pricing />

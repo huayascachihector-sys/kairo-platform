@@ -129,9 +129,9 @@ function getParam(key: string) {
 
 function loadDarkMode(): boolean {
   try {
-    return localStorage.getItem("sm_darkmode") === "1";
+    return localStorage.getItem("sm_darkmode") !== "0";
   } catch {
-    return false;
+    return true;
   }
 }
 function saveDarkMode(v: boolean) {

@@ -24,7 +24,7 @@ if (typeof window !== 'undefined' && 'serviceWorker' in navigator && !import.met
 }
 
 function initDarkMode(): boolean {
-  try { return localStorage.getItem('sm_darkmode') === '1'; } catch { return false; }
+  try { return localStorage.getItem('sm_darkmode') !== '0'; } catch { return true; }
 }
 
 type Route = 'home' | 'matematicas' | 'recursos' | 'cursos' | 'blog' | 'about' | 'registro' | 'pago' | 'onboarding' | 'plataforma' | 'robot';

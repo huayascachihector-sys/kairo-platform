@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "apk": {
+    "size": "~3 MB",
+    "url": "/downloads/kairo.apk",
+    "date": "2026-08-19"
+  },
+  "exe": {
+    "size": "~110 MB",
+    "url": "/downloads/KAIRO-Setup.exe",
+    "date": "2026-08-19"
+  }
+}

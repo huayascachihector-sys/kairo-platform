@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sparkles, Calculator, Library, Newspaper, Info, ChevronDown, UserCheck, Sun, Moon, Home, BookOpen, Cpu } from 'lucide-react';
 import { loadState } from '../lib/store';
+import InstallApp from './InstallApp';
 
 const navLinks = [
   {
@@ -29,7 +30,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(() => {
-    try { return localStorage.getItem('sm_darkmode') === '1'; } catch { return false; }
+    try { return localStorage.getItem('sm_darkmode') !== '0'; } catch { return true; }
   });
   const [user, setUser] = useState(() => loadState().user);
 
@@ -146,6 +147,7 @@ export default function Navbar() {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
+              <InstallApp iconOnly />
               <button onClick={() => {
                 const next = !darkMode;
                 setDarkMode(next);
@@ -269,6 +271,7 @@ export default function Navbar() {
                 </div>
 
                  <div className="space-y-3">
+                   <InstallApp className="w-full !py-3 justify-center" label="Instalar App (APK / EXE)" />
                    <button onClick={() => {
                      const next = !darkMode;
                      setDarkMode(next);
