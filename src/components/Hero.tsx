@@ -65,7 +65,7 @@ export default function Hero() {
             <span className="text-gradient-hero">Clase Mundial</span>
             <br />
             <span className="text-white">Impulsada por </span>
-            <span className="text-gradient-cyan">Hectorstian</span>
+            <span className="text-gradient-cyan">Inteligencia Artificial</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -154,8 +154,8 @@ export default function Hero() {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`flex-1 py-3 px-4 text-xs sm:text-sm font-semibold transition-all border-b-2 flex items-center justify-center gap-2 ${activeTab === tab.id
-                      ? 'border-cyan-400 text-cyan-300 bg-cyan-950/20'
-                      : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/40'
+                    ? 'border-cyan-400 text-cyan-300 bg-cyan-950/20'
+                    : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/40'
                     }`}
                 >
                   <tab.icon className="w-4 h-4" />
