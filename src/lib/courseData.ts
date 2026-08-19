@@ -1,5 +1,5 @@
 // ─── Kairo Course Data ────────────────────────────────────────────────────
-import { VIDEO_LIBRARY } from "../../data/videoLibrary";
+import { VIDEO_LIBRARY, type CuratedVideo } from "../data/videoLibrary";
 
 export interface Exercise {
   question: string;

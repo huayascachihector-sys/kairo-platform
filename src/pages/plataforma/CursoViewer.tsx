@@ -356,7 +356,7 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
                           rel="noopener noreferrer"
                           className="underline text-primary-400 hover:text-primary-300"
                         >
-                          {v.channel} — {v.title}
+                          {v.channel ?? ""} — {v.title}
                         </a>
                       </li>
                     ))}

@@ -1,6 +1,6 @@
 export interface CuratedVideo {
   videoId: string;
-  channel: string;
+  channel?: string;
   title: string;
   duration?: string;
   repaso?: CuratedVideo[];
