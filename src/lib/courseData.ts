@@ -1,4 +1,5 @@
 // ─── Kairo Course Data ────────────────────────────────────────────────────
+import { VIDEO_LIBRARY } from "../../data/videoLibrary";
 
 export interface Exercise {
   question: string;
@@ -200,10 +201,14 @@ export function getModuloVideo(courseId: string, modulo: Module): string | undef
 }
 
 export function getLessonVideoUrl(courseId: string, lesson: Lesson): string | undefined {
-  // Video por lección: usa lesson.videoUrl si está poblado; si no, deriva
-  // /videos/<curso>/<lessonId>.mp4 (MP4 generado localmente y servido estático).
+  // 1. Consultar biblioteca curada de YouTube (videolibrary.ts)
+  const curated = VIDEO_LIBRARY[lesson.id];
+  if (curated?.videoId) return `https://www.youtube.com/watch?v=${curated.videoId}`;
+
+  // 2. Fallback: deriva la ruta al MP4 local (/videos/<curso>/<lección>.mp4)
   const explicito = lesson.videoUrl;
   if (explicito && explicito.trim().length > 0) return explicito;
+
   const idLimpio = courseId.replace(/[^a-zA-Z0-9-]/g, "") || "curso";
   const lecLimpio = lesson.id.replace(/[^a-zA-Z0-9-]/g, "");
   return `/videos/${idLimpio}/${lecLimpio}.mp4`;
