@@ -65,7 +65,7 @@ export default function Hero() {
             <span className="text-gradient-hero">Clase Mundial</span>
             <br />
             <span className="text-white">Impulsada por </span>
-            <span className="text-gradient-cyan">Inteligencia Artificial</span>
+            <span className="text-gradient-cyan">Hertorstian</span>
           </motion.h1>
 
           {/* Subtitle */}
