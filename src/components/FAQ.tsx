@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: '¿Realmente puedo acceder a la misma educación que en Europa?',
-    a: 'Sí. Nuestro contenido está desarrollado en colaboración con profesores de universidades como Oxford, la Sorbonne y TU München. Seguimos los mismos estándares pedagógicos y metodológicos que las mejores instituciones europeas, adaptados al contexto peruano.',
+    a: 'Kairo es la única plataforma diseñada específicamente para estudiantes peruanos que combina IA personalizada, contenido adaptado al currículo local con estándares internacionales y funciona en cualquier dispositivo.',
   },
   {
     q: '¿Funciona en zonas con internet limitado?',
@@ -21,20 +21,20 @@ const faqs = [
     a: 'Sí, nuestros certificados son reconocidos por empresas e instituciones educativas tanto en Perú como internacionalmente. Además, contamos con alianzas con universidades para que tus créditos puedan ser validados en ciertos programas.',
   },
   {
-    q: '¿Puedo cancelar en cualquier momento?',
-    a: 'Por supuesto. No hay contratos ni compromisos a largo plazo. Puedes cancelar tu suscripción en cualquier momento desde tu perfil y seguirás teniendo acceso hasta el final de tu período de facturación.',
+    q: '¿Cuánto cuesta KAIRO?',
+    a: 'Nada. KAIRO es 100% gratuito para todos los estudiantes: cursos completos, IA personalizada, banco de preguntas, exámenes de admisión y gamificación. No pedimos tarjeta ni hay suscripciones.',
   },
   {
     q: '¿Cómo funciona la IA personalizada?',
     a: 'Nuestro motor de IA analiza tu rendimiento en ejercicios, tu velocidad de aprendizaje, patrones de error y preferencias de estudio para crear un plan completamente personalizado. Identifica tus áreas débiles y prioriza el contenido que más necesitas.',
   },
   {
-    q: '¿Qué métodos de pago aceptan?',
-    a: 'Aceptamos tarjetas de crédito/débito (Visa, Mastercard, American Express), Yape, Plin, transferencias bancarias y PagoEfectivo. También puedes pagar en cuotas sin intereses con tarjetas de crédito de bancos peruanos.',
+    q: '¿Por qué es gratis?',
+    a: 'Porque creemos que la educación de calidad no debería depender del presupuesto. KAIRO existe para que cualquier estudiante peruano, esté donde esté, acceda a las mejores herramientas de aprendizaje sin barreras.',
   },
   {
-    q: '¿Hay descuentos para estudiantes de universidades públicas?',
-    a: 'Sí, ofrecemos descuentos especiales del 40% para estudiantes de universidades públicas peruanas. Solo necesitas verificar tu matrícula vigente. También tenemos un programa de becas completas para estudiantes con alto rendimiento de zonas rurales.',
+    q: '¿Habrá planes pagos en el futuro?',
+    a: 'Por ahora no. Todo el contenido es y seguirá siendo gratuito. Si algún día lanzamos funciones adicionales, los primeros estudiantes serán los primeros en enterarse y siempre tendrás acceso a lo esencial sin costo.',
   },
 ];
 

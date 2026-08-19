@@ -4,9 +4,9 @@ import { ArrowRight, Mail, Lock, User, Sparkles, CheckCircle2, ShieldCheck, LogO
 import { loadState, saveUser, loginUser, logoutUser, getRegisteredAccounts, hasPassword, type UserAccount, type StoreState } from '../lib/store';
 
 const benefits = [
-  'Acceso a +200 cursos universitarios',
+  'Acceso a todos los cursos: Matemática, Física, Química, Historia, Comunicación e Inglés',
   'IA que se adapta a tu nivel',
-  'Tutores expertos disponibles 24/7',
+  'Banco de preguntas y exámenes de admisión UNI / UNMSM',
   'Sesión persistente en este dispositivo',
 ];
 
@@ -36,19 +36,22 @@ export default function Registro() {
     }
     setEmailError('');
 
-    // Check if user already exists in local database
-    const existing = loginUser(email);
-    if (existing && existing.user) {
-      if (hasPassword(email)) {
+    const emailKey = email.trim().toLowerCase();
+    const accExists = registeredAccounts.some(
+      (acc) => acc.email.toLowerCase() === emailKey,
+    );
+
+    if (accExists) {
+      if (hasPassword(emailKey)) {
         setPassword('');
         setPasswordError('');
         setStep('password');
-        return;
+      } else {
+        setLoading(true);
+        setTimeout(() => {
+          window.location.hash = '#/plataforma';
+        }, 500);
       }
-      setLoading(true);
-      setTimeout(() => {
-        window.location.hash = '#/plataforma';
-      }, 500);
       return;
     }
 
@@ -89,9 +92,10 @@ export default function Registro() {
       return;
     }
     setLoading(true);
-    const existing = loginUser(email);
-    const isNew = !existing;
-    if (existing) {
+    const accExists = registeredAccounts.some(
+      (acc) => acc.email.toLowerCase() === email.trim().toLowerCase(),
+    );
+    if (accExists) {
       setTimeout(() => {
         window.location.hash = '#/plataforma';
       }, 400);
@@ -131,7 +135,7 @@ export default function Registro() {
             <span className="text-gradient">como los mejores</span>
           </h2>
           <p className="text-surface-500 dark:text-surface-400 text-lg mb-10">
-            Únete a más de 45,000 estudiantes que ya mejoraron sus notas con Kairo. Tu sesión se mantendrá iniciada automáticamente.
+            Únete a los estudiantes que ya mejoraron sus notas con Kairo. Tu sesión se mantendrá iniciada automáticamente.
           </p>
 
           <ul className="space-y-4">
@@ -222,7 +226,7 @@ export default function Registro() {
                         <Sparkles className="w-3 h-3" /> Sesión persistente · Sin reingresar correo
                       </span>
                     </div>
-                    <h1 className="text-2xl font-bold text-surface-900 dark:text-white mb-2">Ingresa o Registrate</h1>
+                    <h1 className="text-2xl font-bold text-surface-900 dark:text-white mb-2">Ingresa o Regístrate</h1>
                     <p className="text-surface-500 dark:text-surface-400 mb-6">Tu sesión quedará guardada en este equipo</p>
 
                     {/* Saved Accounts on this device */}

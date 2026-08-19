@@ -32,8 +32,8 @@ const features = [
   },
   {
     icon: BookOpenCheck,
-    title: 'Contenido Premium',
-    description: 'Miles de lecciones interactivas, ejercicios prácticos y materiales actualizados siguiendo los estándares educativos europeos.',
+    title: 'Contenido Completo',
+    description: 'Lecciones interactivas, ejercicios prácticos y materiales actualizados para todos los niveles, siguiendo los estándares educativos más exigentes.',
     glowColor: 'from-emerald-500/20 to-emerald-700/10',
     iconColor: 'text-emerald-400',
     iconBg: 'bg-emerald-500/10 border border-emerald-500/30',

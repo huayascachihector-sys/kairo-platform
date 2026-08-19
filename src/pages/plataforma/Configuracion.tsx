@@ -26,7 +26,7 @@ export default function Configuracion({ darkMode, onDarkModeChange, onStateChang
     const blob = new Blob([exportData()], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = 'studymind-data.json'; a.click();
+    a.href = url; a.download = 'kairo-data.json'; a.click();
     URL.revokeObjectURL(url);
   };
 

@@ -93,7 +93,7 @@ export const Route = createFileRoute("/api/extract-questions")({
             headers: {
               "Content-Type": "application/json",
               "Authorization": `Bearer ${apiKey}`,
-              "HTTP-Referer": "https://kairo-platform.studymind.pe",
+              "HTTP-Referer": "https://kairoedu.vercel.app",
               "X-Title": "KAIRO Question Extractor",
             },
             body: JSON.stringify({

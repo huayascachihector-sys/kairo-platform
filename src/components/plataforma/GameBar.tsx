@@ -2,14 +2,12 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Flame, Gem, Zap, Heart, Shield } from "lucide-react";
 import { loadState, ensureGameState, getDailyQuests } from "../../lib/store";
-import {
-  getEffectiveHearts,
+import { getEffectiveHearts,
   getHeartRefillMs,
   getLevelFromXp,
   getDailyQuestsDone,
   DAILY_XP_GOAL,
 } from "../../lib/gamification";
-import { PremiumBadge } from "../../lib/premium";
 
 interface GameBarProps {
   onNavigate: (view: string) => void;
@@ -24,15 +22,11 @@ function fmtCountdown(ms: number): string {
 }
 
 export function GameBar({ onNavigate }: GameBarProps) {
-  const [tick, setTick] = useState(0);
   const [, force] = useState(0);
 
   useEffect(() => {
     ensureGameState();
-    const id = setInterval(() => {
-      setTick((t) => t + 1);
-      force((x) => x + 1);
-    }, 15000);
+    const id = setInterval(() => force((x) => x + 1), 15000);
     return () => clearInterval(id);
   }, []);
 
@@ -44,7 +38,6 @@ export function GameBar({ onNavigate }: GameBarProps) {
   const dailyPct = Math.min(100, (dailyXp / DAILY_XP_GOAL) * 100);
   const questsDone = getDailyQuestsDone(state.dailyQuests);
   const questsTotal = state.dailyQuests.length;
-  const isPremium = state.plan === "premium";
 
   const chip =
     "flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors";
@@ -70,21 +63,19 @@ export function GameBar({ onNavigate }: GameBarProps) {
       <button
         onClick={() => onNavigate("tienda")}
         title={
-          isPremium
-            ? "Corazones ilimitados (Pro)"
-            : refillMs
-              ? `Siguiente corazón en ${fmtCountdown(refillMs)}`
-              : "Corazones llenos"
+          refillMs
+            ? `Siguiente corazón en ${fmtCountdown(refillMs)}`
+            : "Corazones llenos"
         }
         className={`${chip} ${
-          hearts === 0 && !isPremium
+          hearts === 0
             ? "bg-red-50 dark:bg-red-900/30 border-red-200 dark:border-red-800 text-red-600 dark:text-red-300 animate-pulse"
             : "bg-surface-50 dark:bg-white/5 border-surface-100 dark:border-surface-700 text-surface-600 dark:text-surface-300"
         }`}
       >
         <Heart className="w-4 h-4 text-red-500" />
-        {isPremium ? "∞" : hearts}
-        {!isPremium && refillMs && (
+        {hearts}
+        {refillMs && (
           <span className="text-[10px] font-semibold text-surface-400 dark:text-surface-500">
             {fmtCountdown(refillMs)}
           </span>
@@ -135,8 +126,6 @@ export function GameBar({ onNavigate }: GameBarProps) {
       >
         🎯 {questsDone}/{questsTotal}
       </button>
-
-      {isPremium && <PremiumBadge />}
     </div>
   );
 }

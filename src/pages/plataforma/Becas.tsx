@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Star, ExternalLink, GraduationCap, DollarSign, Globe, Filter, BookOpen, Sparkles } from 'lucide-react';
+import { markFlag } from '../../lib/store';
 
 interface BecasProps {
   onNavigate: (view: string) => void;
@@ -136,6 +137,10 @@ const hv = { y: -4, boxShadow: '0 12px 40px rgba(99,102,241,0.15)' };
 export default function Becas({ onNavigate }: BecasProps) {
   const [search, setSearch] = useState('');
   const [levelFilter, setLevelFilter] = useState('Todos');
+
+  useEffect(() => {
+    markFlag("becas_explored");
+  }, []);
 
   const filtered = scholarships.filter((s) => {
     const matchesSearch = search === '' ||

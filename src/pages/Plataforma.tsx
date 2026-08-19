@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import {
   BookOpen,
   ChartBar as BarChart3,
@@ -25,38 +25,41 @@ import {
   Target,
   Trophy,
   Store,
-  Flashlight,
   Clapperboard,
+  Layers,
+  Languages,
+  Microscope,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { loadState, saveUser, logoutUser, ensureGameState, type StoreState } from "../lib/store";
-import Dashboard from "./plataforma/Dashboard";
-import MisCursos from "./plataforma/MisCursos";
-import CursoViewer from "./plataforma/CursoViewer";
-import AsistenteIA from "./plataforma/AsistenteIA";
-import Horario from "./plataforma/Horario";
-import Logros from "./plataforma/Logros";
-import BancoPreguntas from "./plataforma/BancoPreguntas";
-import TacticasCiencia from "./plataforma/TacticasCiencia";
-import CopilotoInvestigacion from "./plataforma/CopilotoInvestigacion";
-import ExamenesInternacionales from "./plataforma/ExamenesInternacionales";
-import PlanEstudio from "./plataforma/PlanEstudio";
-import Perfil from "./plataforma/Perfil";
-import Configuracion from "./plataforma/Configuracion";
-import Notificaciones from "./plataforma/Notificaciones";
-import Carreras from "./plataforma/Carreras";
-import Becas from "./plataforma/Becas";
-import Entrevista from "./plataforma/Entrevista";
-import Ensayo from "./plataforma/Ensayo";
-import MiDocumentos from "./plataforma/MiDocumentos";
-import EnglishTutor from "./plataforma/EnglishTutor";
-import PracticeHub from "./plataforma/PracticeHub";
-import Tienda from "./plataforma/Tienda";
-import Ligas from "./plataforma/Ligas";
-import Flashcards from "./plataforma/Flashcards";
-import RepasoExpress from "./plataforma/RepasoExpress";
-import GeneradorVideos from "./plataforma/GeneradorVideos";
 import { GameBar } from "../components/plataforma/GameBar";
+
+const Dashboard = lazy(() => import("./plataforma/Dashboard"));
+const MisCursos = lazy(() => import("./plataforma/MisCursos"));
+const CursoViewer = lazy(() => import("./plataforma/CursoViewer"));
+const AsistenteIA = lazy(() => import("./plataforma/AsistenteIA"));
+const Horario = lazy(() => import("./plataforma/Horario"));
+const Logros = lazy(() => import("./plataforma/Logros"));
+const BancoPreguntas = lazy(() => import("./plataforma/BancoPreguntas"));
+const TacticasCiencia = lazy(() => import("./plataforma/TacticasCiencia"));
+const CopilotoInvestigacion = lazy(() => import("./plataforma/CopilotoInvestigacion"));
+const ExamenesInternacionales = lazy(() => import("./plataforma/ExamenesInternacionales"));
+const PlanEstudio = lazy(() => import("./plataforma/PlanEstudio"));
+const Perfil = lazy(() => import("./plataforma/Perfil"));
+const Configuracion = lazy(() => import("./plataforma/Configuracion"));
+const Notificaciones = lazy(() => import("./plataforma/Notificaciones"));
+const Carreras = lazy(() => import("./plataforma/Carreras"));
+const Becas = lazy(() => import("./plataforma/Becas"));
+const Entrevista = lazy(() => import("./plataforma/Entrevista"));
+const Ensayo = lazy(() => import("./plataforma/Ensayo"));
+const MiDocumentos = lazy(() => import("./plataforma/MiDocumentos"));
+const EnglishTutor = lazy(() => import("./plataforma/EnglishTutor"));
+const PracticeHub = lazy(() => import("./plataforma/PracticeHub"));
+const Tienda = lazy(() => import("./plataforma/Tienda"));
+const Ligas = lazy(() => import("./plataforma/Ligas"));
+const Flashcards = lazy(() => import("./plataforma/Flashcards"));
+const RepasoExpress = lazy(() => import("./plataforma/RepasoExpress"));
+const GeneradorVideos = lazy(() => import("./plataforma/GeneradorVideos"));
 
 type View =
   | "dashboard"
@@ -86,36 +89,72 @@ type View =
   | "flashcards"
   | "generador-videos";
 
-const NAV_MAIN: { id: View; label: string; icon: any }[] = [
-  { id: "dashboard", label: "Mi Progreso", icon: BarChart3 },
-  { id: "repaso-express", label: "Repaso Express", icon: Zap },
-  { id: "flashcards", label: "Flashcards", icon: Sparkles },
-  { id: "practice-hub", label: "Centro de Práctica", icon: Target },
-  { id: "plan", label: "Plan Inteligente", icon: Wand2 },
-  { id: "cursos", label: "Mis Cursos", icon: BookOpen },
-  { id: "banco", label: "Banco de Preguntas", icon: LibraryBig },
-  { id: "tacticas", label: "Tácticas de Ciencia", icon: FlaskConical },
-  { id: "copiloto", label: "Copiloto IB", icon: FlaskConical },
-  { id: "examenes", label: "Exámenes de Admisión", icon: Globe },
-  { id: "carreras", label: "Carreras", icon: Compass },
-  { id: "becas", label: "Becas", icon: Star },
-  { id: "ensayo", label: "Ensayos", icon: FileText },
-  { id: "entrevista", label: "Entrevistas", icon: MessageSquare },
-  { id: "asistente", label: "Asistente IA", icon: Sparkles },
-  { id: "english-tutor", label: "English Tutor", icon: Globe },
-  { id: "horario", label: "Horario", icon: Calendar },
-  { id: "mis-documentos", label: "Mis Documentos", icon: FolderOpen },
-  { id: "ligas", label: "Ligas", icon: Trophy },
-  { id: "generador-videos", label: "Generador de Videos", icon: Clapperboard },
-  { id: "tienda", label: "Tienda", icon: Store },
-  { id: "logros", label: "Logros", icon: Award },
+interface NavItem {
+  id: View;
+  label: string;
+  icon: any;
+}
+
+const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
+  {
+    title: "Inicio",
+    items: [{ id: "dashboard", label: "Mi Progreso", icon: BarChart3 }],
+  },
+  {
+    title: "Estudiar",
+    items: [
+      { id: "cursos", label: "Mis Cursos", icon: BookOpen },
+      { id: "plan", label: "Plan Inteligente", icon: Wand2 },
+      { id: "repaso-express", label: "Repaso Express", icon: Zap },
+      { id: "flashcards", label: "Flashcards", icon: Layers },
+      { id: "horario", label: "Horario", icon: Calendar },
+    ],
+  },
+  {
+    title: "Practicar",
+    items: [
+      { id: "practice-hub", label: "Centro de Práctica", icon: Target },
+      { id: "banco", label: "Banco de Preguntas", icon: LibraryBig },
+      { id: "tacticas", label: "Tácticas de Ciencia", icon: FlaskConical },
+      { id: "examenes", label: "Exámenes de Admisión", icon: Globe },
+      { id: "english-tutor", label: "English Tutor", icon: Languages },
+      { id: "asistente", label: "Asistente IA", icon: Sparkles },
+      { id: "copiloto", label: "Copiloto IB", icon: Microscope },
+      { id: "generador-videos", label: "Generador de Videos", icon: Clapperboard },
+    ],
+  },
+  {
+    title: "Preparación",
+    items: [
+      { id: "carreras", label: "Carreras", icon: Compass },
+      { id: "becas", label: "Becas", icon: Star },
+      { id: "ensayo", label: "Ensayos", icon: FileText },
+      { id: "entrevista", label: "Entrevistas", icon: MessageSquare },
+    ],
+  },
+  {
+    title: "Comunidad",
+    items: [
+      { id: "ligas", label: "Ligas", icon: Trophy },
+      { id: "logros", label: "Logros", icon: Award },
+      { id: "tienda", label: "Tienda", icon: Store },
+    ],
+  },
 ];
 
-const NAV_SECONDARY: { id: View; label: string; icon: any }[] = [
+const NAV_SECONDARY: NavItem[] = [
+  { id: "mis-documentos", label: "Mis Documentos", icon: FolderOpen },
   { id: "notif", label: "Notificaciones", icon: Bell },
   { id: "perfil", label: "Mi Perfil", icon: User },
   { id: "config", label: "Configuración", icon: Settings },
 ];
+
+const ALL_NAV: NavItem[] = [
+  ...NAV_GROUPS.flatMap((g) => g.items),
+  ...NAV_SECONDARY,
+];
+
+const VIEW_IDS = new Set<View>(ALL_NAV.map((n) => n.id));
 
 function getParam(key: string) {
   try {
@@ -140,7 +179,13 @@ function saveDarkMode(v: boolean) {
   } catch {}
 }
 
-const ALL_NAV = [...NAV_MAIN, ...NAV_SECONDARY];
+function isStandaloneApp(): boolean {
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    (navigator as any).standalone === true ||
+    /wv|electron/i.test(navigator.userAgent)
+  );
+}
 
 export default function Plataforma() {
   const [view, setView] = useState<View>("dashboard");
@@ -155,14 +200,30 @@ export default function Plataforma() {
   }, [darkMode]);
 
   useEffect(() => {
+    ensureGameState();
     const urlName = getParam("name");
     const urlEmail = getParam("email");
     const current = loadState();
-    if (urlName && !current.user) {
+
+    const deepMatch = window.location.hash.match(
+      /^#\/plataforma\/([a-z0-9-]+)(?:\/(.+))?$/i,
+    );
+
+    if (!current.user && urlName && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(urlEmail)) {
       saveUser(urlName, urlEmail);
       setState(loadState());
     } else {
       setState(current);
+    }
+
+    if (deepMatch) {
+      const v = deepMatch[1] as View;
+      if (v === "curso-detail" && deepMatch[2]) {
+        setActiveCourse(decodeURIComponent(deepMatch[2]));
+        setView("curso-detail");
+      } else if (VIEW_IDS.has(v)) {
+        setView(v);
+      }
     }
   }, []);
 
@@ -172,9 +233,16 @@ export default function Plataforma() {
     if (v === "cursos" && extra) {
       setActiveCourse(extra);
       setView("curso-detail");
+      window.history.replaceState(
+        null,
+        "",
+        `#/plataforma/curso-detail/${encodeURIComponent(extra)}`,
+      );
     } else {
       setView(v as View);
       if (v !== "curso-detail") setActiveCourse("");
+      const target = v === "dashboard" ? "#/plataforma" : `#/plataforma/${v}`;
+      window.history.replaceState(null, "", target);
     }
     setMobileOpen(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -195,58 +263,82 @@ export default function Plataforma() {
 
   const Sidebar = ({ mobile = false }: { mobile?: boolean }) => (
     <div className="flex flex-col h-full pt-6 pb-8 px-4">
-      <button onClick={() => navigate("dashboard")} className="flex items-center gap-2.5 px-2 mb-8 text-left">
-        <img src="/logo-light.png" alt="KAIRO Logo" className="h-10 w-auto object-contain" />
+      <div className="flex items-center gap-2.5 px-2 mb-8">
+        <button
+          onClick={() => navigate("dashboard")}
+          className="flex items-center gap-2.5 text-left flex-1 min-w-0"
+          aria-label="Ir al inicio del panel"
+        >
+          <img src="/logo-light.png" alt="KAIRO Logo" className="h-10 w-auto object-contain" />
+        </button>
         {mobile && (
-          <button onClick={() => setMobileOpen(false)} className="ml-auto p-1">
+          <button
+            onClick={() => setMobileOpen(false)}
+            className="ml-auto p-1.5 rounded-lg hover:bg-surface-100 dark:hover:bg-surface-800"
+            aria-label="Cerrar menú"
+          >
             <X className="w-5 h-5 text-surface-400" />
           </button>
         )}
-      </button>
+      </div>
 
-      <nav className="flex-1 space-y-1 overflow-y-auto">
-        {NAV_MAIN.map(({ id, label, icon: Icon }) => {
-          const isActive = view === id || (id === "cursos" && view === "curso-detail");
-          return (
-            <button
-              key={id}
-              onClick={() => navigate(id)}
-              className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                isActive
-                  ? "bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 shadow-sm"
-                  : "text-surface-500 dark:text-surface-400 hover:text-surface-800 dark:hover:text-surface-200 hover:bg-surface-50 dark:hover:bg-surface-800"
-              }`}
-            >
-              <Icon className="w-[18px] h-[18px] flex-shrink-0" />
-              {label}
-              {isActive && <ChevronRight className="w-4 h-4 ml-auto text-primary-400" />}
-            </button>
-          );
-        })}
+      <nav className="flex-1 space-y-4 overflow-y-auto">
+        {NAV_GROUPS.map((group) => (
+          <div key={group.title}>
+            <p className="px-4 mb-1.5 text-[10px] font-bold uppercase tracking-widest text-surface-400 dark:text-surface-500">
+              {group.title}
+            </p>
+            <div className="space-y-1">
+              {group.items.map(({ id, label, icon: Icon }) => {
+                const isActive = view === id || (id === "cursos" && view === "curso-detail");
+                return (
+                  <button
+                    key={id}
+                    onClick={() => navigate(id)}
+                    className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                      isActive
+                        ? "bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 shadow-sm"
+                        : "text-surface-500 dark:text-surface-400 hover:text-surface-800 dark:hover:text-surface-200 hover:bg-surface-50 dark:hover:bg-surface-800"
+                    }`}
+                  >
+                    <Icon className="w-[18px] h-[18px] flex-shrink-0" />
+                    <span className="truncate">{label}</span>
+                    {isActive && <ChevronRight className="w-4 h-4 ml-auto text-primary-400 flex-shrink-0" />}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
 
-        <div className="pt-4 mt-4 border-t border-surface-100 dark:border-surface-800 space-y-1">
-          {NAV_SECONDARY.map(({ id, label, icon: Icon }) => {
-            const isActive = view === id;
-            return (
-              <button
-                key={id}
-                onClick={() => navigate(id)}
-                className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                  isActive
-                    ? "bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 shadow-sm"
-                    : "text-surface-500 dark:text-surface-400 hover:text-surface-800 dark:hover:text-surface-200 hover:bg-surface-50 dark:hover:bg-surface-800"
-                }`}
-              >
-                <Icon className="w-[18px] h-[18px] flex-shrink-0" />
-                {label}
-                {id === "notif" && unreadCount > 0 && (
-                  <span className="ml-auto bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">
-                    {unreadCount}
-                  </span>
-                )}
-              </button>
-            );
-          })}
+        <div className="pt-4 mt-4 border-t border-surface-100 dark:border-surface-800">
+          <p className="px-4 mb-1.5 text-[10px] font-bold uppercase tracking-widest text-surface-400 dark:text-surface-500">
+            Mi cuenta
+          </p>
+          <div className="space-y-1">
+            {NAV_SECONDARY.map(({ id, label, icon: Icon }) => {
+              const isActive = view === id;
+              return (
+                <button
+                  key={id}
+                  onClick={() => navigate(id)}
+                  className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                    isActive
+                      ? "bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 shadow-sm"
+                      : "text-surface-500 dark:text-surface-400 hover:text-surface-800 dark:hover:text-surface-200 hover:bg-surface-50 dark:hover:bg-surface-800"
+                  }`}
+                >
+                  <Icon className="w-[18px] h-[18px] flex-shrink-0" />
+                  <span className="truncate">{label}</span>
+                  {id === "notif" && unreadCount > 0 && (
+                    <span className="ml-auto bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">
+                      {unreadCount}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </nav>
 
@@ -297,7 +389,7 @@ export default function Plataforma() {
         return (
           <CursoViewer
             courseId={activeCourse}
-            onBack={() => setView("cursos")}
+            onBack={() => navigate("cursos")}
             onStateChange={refreshState}
             onPracticeEnglish={() => setView("english-tutor")}
           />
@@ -312,9 +404,9 @@ export default function Plataforma() {
         return <PracticeHub onNavigate={navigate} />;
       case "tienda":
         return <Tienda />;
-case "ligas":
+      case "ligas":
         return <Ligas />;
-  case "horario":
+      case "horario":
         return <Horario />;
       case "logros":
         return <Logros state={state} />;
@@ -387,6 +479,7 @@ case "ligas":
           <button
             onClick={() => setMobileOpen(true)}
             className="p-2 rounded-xl hover:bg-surface-100 dark:hover:bg-surface-800"
+            aria-label="Abrir menú"
           >
             <Menu className="w-5 h-5 text-surface-700 dark:text-surface-300" />
           </button>
@@ -398,6 +491,7 @@ case "ligas":
             <button
               onClick={() => navigate("notif")}
               className="relative p-2 rounded-xl hover:bg-surface-100 dark:hover:bg-surface-800"
+              aria-label="Notificaciones"
             >
               <Bell className="w-5 h-5 text-surface-700 dark:text-surface-300" />
               {unreadCount > 0 && (
@@ -407,6 +501,7 @@ case "ligas":
             <button
               onClick={() => navigate("perfil")}
               className="w-9 h-9 rounded-full bg-gradient-to-br from-primary-400 to-accent-500 flex items-center justify-center text-white font-bold text-sm overflow-hidden"
+              aria-label="Mi perfil"
             >
               {avatarNode}
             </button>
@@ -417,7 +512,15 @@ case "ligas":
           <div className="mb-6">
             <GameBar onNavigate={navigate} />
           </div>
-          {renderView()}
+          <Suspense
+            fallback={
+              <div className="flex items-center justify-center py-24">
+                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary-500" />
+              </div>
+            }
+          >
+            {renderView()}
+          </Suspense>
         </div>
       </div>
     </div>

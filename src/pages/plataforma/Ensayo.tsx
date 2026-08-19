@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Sparkles, CheckCircle2, AlertCircle, RotateCcw, ChevronRight, Wand2, AlertTriangle, PenTool, FileEdit, BookOpen } from 'lucide-react';
+import { markFlag } from '../../lib/store';
 
 const ESSAY_PROMPTS = [
   {
@@ -42,6 +43,7 @@ export default function Ensayo() {
 
   const handleSubmit = () => {
     setSubmitted(true);
+    markFlag("essay_written");
     const words = essay.trim().split(/\s+/).filter(Boolean).length;
     const parrafos = essay.split('\n').filter(p => p.trim()).length;
     const hasIntro = essay.toLowerCase().includes('creo') || essay.toLowerCase().includes('en mi opinión') || essay.toLowerCase().includes('según mi perspectiva');

@@ -60,7 +60,6 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
   const [watchedLessons, setWatchedLessons] = useState<number[]>([]);
   const teoriaCompletedRef = useRef(false);
 
-  const isPremium = lastState.plan === "premium";
   const modules = useMemo(() => (course ? getModules(course) : []), [course]);
 
   const getPhaseProgress = useCallback(
@@ -436,7 +435,7 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
       }
       const q = practica[currentEx];
       const handleAnswer = (correct: boolean) => {
-        if (!correct && !isPremium) {
+        if (!correct) {
           setHearts((h) => {
             const nh = h - 1;
             if (nh <= 0) setNoHearts(true);

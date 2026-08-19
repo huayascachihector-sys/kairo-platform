@@ -221,13 +221,13 @@ export default function About() {
               Únete a nuestro equipo y ayúdanos a transformar el futuro de millones de estudiantes.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-              <a href="mailto:careers@studymind.pe" className="btn-primary flex items-center gap-2">
+              <a href="mailto:careers@kairo.pe" className="btn-primary flex items-center gap-2">
                 <span className="flex items-center gap-2">
                   Ver Posiciones Abiertas
                   <ArrowRight className="w-4 h-4" />
                 </span>
               </a>
-              <a href="mailto:hola@studymind.pe" className="btn-secondary flex items-center gap-2">
+              <a href="mailto:hola@kairo.pe" className="btn-secondary flex items-center gap-2">
                 Contactar
               </a>
             </div>

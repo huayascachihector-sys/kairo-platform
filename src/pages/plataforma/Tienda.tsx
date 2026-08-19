@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Gem, Heart, Shield, Zap, Pill, Check, Sparkles, Crown } from "lucide-react";
+import { Gem, Heart, Shield, Zap, Pill, Check } from "lucide-react";
 import { loadState, buyShopItem, buyMascotOutfit, setMascotOutfit } from "../../lib/store";
 import {
   SHOP_ITEMS,
@@ -9,7 +9,6 @@ import {
   type MascotOutfitId,
 } from "../../lib/gamification";
 import { Mascot } from "../../components/plataforma/Mascot";
-import { PremiumGate, isPremiumPlan } from "../../lib/premium";
 import { useCallback, useEffect } from "react";
 
 const SHOP_ICONS: Record<ShopItemId, React.ReactNode> = {
@@ -65,7 +64,7 @@ export default function Tienda() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-surface-900 dark:bg-white text-white dark:text-surface-900 text-sm font-semibold px-5 py-3 rounded-2xl shadow-2xl"
+            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-surface-900 dark:bg-white text-surface-900 dark:text-white text-sm font-semibold px-5 py-3 rounded-2xl shadow-2xl"
           >
             {toast}
           </motion.div>
@@ -74,7 +73,7 @@ export default function Tienda() {
 
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-white dark:text-surface-900">Tienda</h1>
+          <h1 className="text-2xl font-bold text-surface-900 dark:text-white">Tienda</h1>
           <p className="text-surface-400 dark:text-surface-500 text-sm mt-1">
             Gasta tus gemas en ventajas para seguir aprendiendo
           </p>
@@ -85,11 +84,11 @@ export default function Tienda() {
       </div>
 
       {/* Mascota + outfits */}
-      <div className="bg-white/5 dark:bg-white border border-white/10 dark:border-surface-100 rounded-2xl p-6">
+      <div className="bg-white dark:bg-white/5 border border-surface-100 dark:border-white/10 rounded-2xl p-6">
         <div className="flex items-center gap-4 mb-5">
           <Mascot outfit={state.mascotOutfit} size="lg" reaction="happy" />
           <div>
-            <h2 className="text-lg font-bold text-white dark:text-surface-900">
+            <h2 className="text-lg font-bold text-surface-900 dark:text-white">
               Personaliza a Kairo
             </h2>
             <p className="text-sm text-surface-400 dark:text-surface-500">
@@ -109,12 +108,12 @@ export default function Tienda() {
                   selected
                     ? "border-rose-500 bg-rose-500/10"
                     : owned
-                      ? "border-white/10 dark:border-surface-100 bg-white/5 hover:bg-white/10"
-                      : "border-dashed border-white/15 dark:border-surface-200 bg-black/20 hover:bg-black/30"
+                      ? "border-surface-100 dark:border-white/10 bg-white dark:bg-white/5 hover:bg-surface-50 dark:hover:bg-white/10"
+                      : "border-dashed border-surface-200 dark:border-white/15 bg-black/5 dark:bg-black/20 hover:bg-black/10 dark:hover:bg-black/30"
                 }`}
               >
                 <div className="text-4xl mb-2">{o.icon}</div>
-                <p className="text-xs font-bold text-white dark:text-surface-900">{o.name}</p>
+                <p className="text-xs font-bold text-surface-900 dark:text-white">{o.name}</p>
                 <p className="text-[10px] text-surface-400 dark:text-surface-500 mt-1">
                   {owned ? (selected ? "En uso" : "Puesto") : `${o.cost} 💎`}
                 </p>
@@ -134,13 +133,13 @@ export default function Tienda() {
         {SHOP_ITEMS.map((item) => (
           <div
             key={item.id}
-            className="bg-white/5 dark:bg-white border border-white/10 dark:border-surface-100 rounded-2xl p-5 flex items-start gap-4"
+            className="bg-white dark:bg-white/5 border border-surface-100 dark:border-white/10 rounded-2xl p-5 flex items-start gap-4"
           >
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500/20 to-amber-500/20 text-rose-400 flex items-center justify-center flex-shrink-0">
               {SHOP_ICONS[item.id]}
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-bold text-white dark:text-surface-900 text-sm">{item.name}</h3>
+              <h3 className="font-bold text-surface-900 dark:text-white text-sm">{item.name}</h3>
               <p className="text-xs text-surface-400 dark:text-surface-500 mt-0.5 leading-relaxed">
                 {item.description}
               </p>
@@ -150,7 +149,7 @@ export default function Tienda() {
               disabled={state.gems < item.cost}
               className={`flex-shrink-0 inline-flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
                 state.gems < item.cost
-                  ? "bg-white/5 dark:bg-surface-50 text-surface-500 dark:text-surface-400 cursor-not-allowed"
+                  ? "bg-surface-50 dark:bg-white/5 text-surface-400 dark:text-surface-500 cursor-not-allowed"
                   : "bg-gradient-to-r from-rose-500 to-amber-500 text-white hover:shadow-lg hover:shadow-rose-500/25 hover:-translate-y-0.5"
               }`}
             >
@@ -159,18 +158,6 @@ export default function Tienda() {
           </div>
         ))}
       </div>
-
-      {/* Pro */}
-      {!isPremiumPlan(state) && (
-        <PremiumGate
-          state={state}
-          title="KAIRO Pro — corazones ilimitados"
-          description="Con Pro nunca te quedas sin corazones, accedes a todas las ligas y disfrutas sin límites."
-          onUpgrade={() => (window.location.hash = "#/pago")}
-        >
-          <div />
-        </PremiumGate>
-      )}
     </div>
   );
 }

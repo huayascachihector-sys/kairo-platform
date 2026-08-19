@@ -533,15 +533,9 @@ return (
                   <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${typeColors[res.type]}`}>
                     {res.type}
                   </span>
-                  {res.free ? (
-                    <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">
-                      Gratis
-                    </span>
-                  ) : (
-                    <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-surface-100 dark:bg-surface-800 text-surface-600 dark:text-surface-400">
-                      Premium
-                    </span>
-                  )}
+                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">
+                    Gratis
+                  </span>
                 </div>
                 <ExternalLink className="w-4 h-4 text-surface-300 dark:text-surface-600 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors" />
               </div>
@@ -595,7 +589,7 @@ return (
             Si conoces una plataforma o herramienta educativa increíble, cuéntanos.
           </p>
           <a
-            href="mailto:recursos@studymind.pe"
+            href="mailto:recursos@kairo.pe"
             className="inline-flex items-center gap-2 bg-white text-primary-700 font-bold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors"
           >
             <Download className="w-4 h-4" />

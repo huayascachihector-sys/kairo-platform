@@ -35,7 +35,7 @@ async function callOpenRouter(
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${apiKey}`,
-      "HTTP-Referer": "https://kairo-platform.studymind.pe",
+      "HTTP-Referer": "https://kairoedu.vercel.app",
       "X-Title": "KAIRO AI Tutor",
     },
     body: JSON.stringify({

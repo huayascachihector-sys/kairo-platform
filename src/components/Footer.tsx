@@ -20,7 +20,7 @@ const footerLinks = {
     { label: 'Sobre Nosotros', href: '#/about' },
     { label: 'Equipo', href: '#/about' },
     { label: 'Carreras', href: '#/about', badge: 'Hiring' },
-    { label: 'Contacto', href: 'mailto:hola@studymind.pe', external: true },
+    { label: 'Contacto', href: 'mailto:hola@kairo.pe', external: true },
     { label: 'Prensa', href: '#/about' },
   ],
   'Becas y Oportunidades': [

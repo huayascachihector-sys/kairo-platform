@@ -291,13 +291,28 @@ export default function Navbar() {
                       Practicar Matemáticas
                     </span>
                   </a>
-                  <a
-                    href="#/registro"
-                    onClick={handleNavClick}
-                    className="btn-secondary block text-center text-base"
-                  >
-                    Iniciar Sesión
-                  </a>
+                  {user ? (
+                    <a
+                      href="#/plataforma"
+                      onClick={handleNavClick}
+                      className="btn-primary block text-center text-base"
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center font-bold text-xs">
+                          {user.avatar && user.avatar.length <= 4 ? user.avatar : user.name.charAt(0).toUpperCase()}
+                        </span>
+                        Mi Panel ({user.name.split(' ')[0]})
+                      </span>
+                    </a>
+                  ) : (
+                    <a
+                      href="#/registro"
+                      onClick={handleNavClick}
+                      className="btn-secondary block text-center text-base"
+                    >
+                      Iniciar Sesión
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

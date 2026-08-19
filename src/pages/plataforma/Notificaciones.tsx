@@ -9,10 +9,10 @@ interface Props {
 
 const TYPE_META: Record<Notification['type'], { icon: any; color: string; label: string }> = {
  tarea:    { icon: ClipboardList, color: 'bg-amber-100 dark:bg-amber-900/40 text-amber-700',  label: 'Tarea' },
- recordatorio: { icon: Calendar,   color: 'bg-blue-100 text-blue-700',   label: 'Recordatorio' },
+ recordatorio: { icon: Calendar,   color: 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300',   label: 'Recordatorio' },
  ia:      { icon: Sparkles,   color: 'bg-primary-100 dark:bg-primary-900/40 text-primary-700', label: 'Mensaje IA' },
  curso:    { icon: BookOpen,   color: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700', label: 'Curso' },
- anuncio:   { icon: Megaphone,   color: 'bg-purple-100 text-purple-700', label: 'Anuncio' },
+ anuncio:   { icon: Megaphone,   color: 'bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300', label: 'Anuncio' },
 };
 
 const FILTERS: { id: 'all' | Notification['type']; label: string }[] = [

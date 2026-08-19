@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare, Mic, Video, Clock, CheckCircle2, AlertCircle, RefreshCw, Star, ArrowLeft, ClipboardList, HelpCircle, AlertTriangle, Send } from 'lucide-react';
+import { markFlag } from '../../lib/store';
 
 interface EntrevistaProps {
   onNavigate: (view: string) => void;
@@ -131,6 +132,7 @@ export default function Entrevista({ onNavigate }: EntrevistaProps) {
   const checkAnswer = () => {
     setShowFeedback(true);
     setFeedback(aiFeedback(userAnswer));
+    markFlag("interview_done");
   };
 
   const newQuestions = () => {

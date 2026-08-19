@@ -108,8 +108,6 @@ export interface Settings {
   voiceRate: number;
 }
 
-export type GamePlan = "free" | "premium";
-
 export type QuestType = "xp" | "lessons" | "practice" | "perfect" | "streak";
 
 export interface QuestProgress {
@@ -255,7 +253,6 @@ export interface StoreState {
   ibBanks: import("./ibStore").IbQuestionBank[];
   ibFlashcardEntries: IbFlashcardEntry[];
   ibCourseData: import("./ibStore").IbCourseData[];
-  plan: GamePlan;
   gems: number;
   hearts: number;
   lastHeartRefillAt: string;
@@ -270,6 +267,7 @@ export interface StoreState {
   mascotOutfits: string[];
   powerups: PowerUps;
   dailyXp: { date: string; xp: number };
+  flags: Record<string, boolean>;
   modulePhase: {
     [courseId: string]: { [moduleId: string]: Record<string, boolean> };
   };
@@ -347,7 +345,6 @@ const defaultState: StoreState = {
   ibBanks: [],
   ibFlashcardEntries: [],
   ibCourseData: [],
-  plan: "free",
   gems: 0,
   hearts: 5,
   lastHeartRefillAt: new Date().toISOString(),
@@ -362,6 +359,7 @@ const defaultState: StoreState = {
   mascotOutfits: ["base"],
   powerups: { revive: 0, timerBoost: 0 },
   dailyXp: { date: getTodayKey(), xp: 0 },
+  flags: {},
   modulePhase: {},
   flashcards: [],
 };
@@ -795,8 +793,20 @@ export function exportData(): string {
 
 export function deleteAccount(): void {
   try {
+    const db = loadDB();
+    if (db.activeEmail) {
+      delete db.users[db.activeEmail];
+      db.activeEmail = null;
+    }
+    saveDB(db);
     localStorage.removeItem(STORAGE_KEY);
     localStorage.removeItem("sm_darkmode");
+    localStorage.removeItem("kairo_srs_cards");
+    localStorage.removeItem("kairo_daily_progress");
+    for (let i = localStorage.length - 1; i >= 0; i--) {
+      const key = localStorage.key(i);
+      if (key?.startsWith("kairo_repaso_")) localStorage.removeItem(key);
+    }
   } catch {}
 }
 
@@ -1058,6 +1068,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     icon: "✍️",
     xpReward: 150,
     check: (s) =>
+      !!s.flags?.["essay_written"] ||
       s.chatHistory.some((m) => m.role === "user" && m.text.toLowerCase().includes("ensayo")),
   },
   {
@@ -1067,6 +1078,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     icon: "🧪",
     xpReward: 100,
     check: (s) =>
+      !!s.flags?.["diag_complete"] ||
       s.chatHistory.some((m) => m.role === "user" && m.text.toLowerCase().includes("diagnostico")),
   },
   {
@@ -1076,6 +1088,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     icon: "💰",
     xpReward: 75,
     check: (s) =>
+      !!s.flags?.["becas_explored"] ||
       s.chatHistory.some((m) => m.role === "user" && m.text.toLowerCase().includes("beca")),
   },
   {
@@ -1085,6 +1098,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     icon: "🎤",
     xpReward: 100,
     check: (s) =>
+      !!s.flags?.["interview_done"] ||
       s.chatHistory.some((m) => m.role === "user" && m.text.toLowerCase().includes("entrevista")),
   },
   {
@@ -1478,17 +1492,6 @@ export function getIbCourseData(
 
 // ─── Gamificación (KAIRO World-Class) ────────────────────────────────────────
 
-export function setPlan(plan: GamePlan): StoreState {
-  const state = loadState();
-  state.plan = plan;
-  if (plan === "premium") {
-    state.hearts = MAX_HEARTS;
-    state.lastHeartRefillAt = new Date().toISOString();
-  }
-  saveState(state);
-  return state;
-}
-
 export function ensureGameState(): StoreState {
   const state = loadState();
   ensureDailyState(state);
@@ -1511,6 +1514,13 @@ export function addGems(amount: number): StoreState {
   return state;
 }
 
+export function markFlag(key: string): void {
+  const state = loadState();
+  state.flags = state.flags || {};
+  state.flags[key] = true;
+  saveState(state);
+}
+
 export function spendGems(amount: number): boolean {
   const state = loadState();
   if (state.gems < amount) return false;
@@ -1520,7 +1530,6 @@ export function spendGems(amount: number): boolean {
 }
 
 export function syncHearts(state: StoreState): void {
-  if (state.plan === "premium") return;
   const effective = getEffectiveHearts(state);
   if (effective >= MAX_HEARTS) {
     if (state.hearts < MAX_HEARTS) {
@@ -1535,7 +1544,6 @@ export function syncHearts(state: StoreState): void {
 export function spendHeart(): StoreState {
   const state = loadState();
   syncHearts(state);
-  if (state.plan === "premium") return state;
   if (state.hearts <= 0) return state;
   state.hearts -= 1;
   if (state.hearts === MAX_HEARTS - 1) {
@@ -1668,7 +1676,7 @@ export function getDailyXpToday(): number {
 export function getGameSummary(state: StoreState) {
   ensureDailyState(state);
   const hearts = getEffectiveHearts(state);
-  const heartsLeft = state.plan === "premium" ? Infinity : hearts;
+  const heartsLeft = hearts;
   const questsDone = state.dailyQuests.filter((q) => q.completed).length;
   const questsTotal = state.dailyQuests.length;
   return {
@@ -1681,7 +1689,6 @@ export function getGameSummary(state: StoreState) {
     questsTotal,
     dailyXp: state.dailyXp.xp,
     league: state.league,
-    plan: state.plan,
     powerups: state.powerups,
   };
 }

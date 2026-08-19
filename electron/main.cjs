@@ -5,7 +5,7 @@
 const { app, BrowserWindow, shell, Menu } = require("electron");
 const path = require("path");
 
-const APP_URL = process.env.KAIRO_APP_URL || "https://kairoedu.vercel.app";
+const APP_URL = process.env.KAIRO_APP_URL || "https://kairoedu.vercel.app/#/plataforma";
 const APP_NAME = "KAIRO";
 
 let mainWindow = null;

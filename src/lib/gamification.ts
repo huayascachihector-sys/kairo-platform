@@ -113,7 +113,6 @@ export function getLevelFromXp(xp: number): {
 // ─── Corazones (energía) ────────────────────────────────────────────────────
 
 export function getEffectiveHearts(state: StoreState): number {
-  if (state.plan === "premium") return MAX_HEARTS;
   if (state.hearts >= MAX_HEARTS) return state.hearts;
   const elapsed = Date.now() - new Date(state.lastHeartRefillAt).getTime();
   const refilled = Math.floor(elapsed / HEART_REFILL_MS);
@@ -121,18 +120,17 @@ export function getEffectiveHearts(state: StoreState): number {
 }
 
 export function getHeartRefillMs(state: StoreState): number | null {
-  if (state.plan === "premium" || state.hearts >= MAX_HEARTS) return null;
+  if (state.hearts >= MAX_HEARTS) return null;
   const elapsed = Date.now() - new Date(state.lastHeartRefillAt).getTime();
   return HEART_REFILL_MS - (elapsed % HEART_REFILL_MS);
 }
 
 export function getHeartsLeft(state: StoreState): number {
-  const h = getEffectiveHearts(state);
-  return state.plan === "premium" ? Infinity : h;
+  return getEffectiveHearts(state);
 }
 
 export function canStartLesson(state: StoreState): boolean {
-  return state.plan === "premium" || getEffectiveHearts(state) > 0;
+  return getEffectiveHearts(state) > 0;
 }
 
 // ─── XP boost ───────────────────────────────────────────────────────────────

@@ -31,7 +31,7 @@ export default function CTA() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-white/90 text-sm font-medium mb-8 backdrop-blur-sm">
             <Sparkles className="w-4 h-4" />
-            Únete a +25,000 estudiantes peruanos
+            Accede a todos los cursos 100% gratis
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
@@ -65,7 +65,7 @@ export default function CTA() {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            {['14 días gratis', 'Sin tarjeta requerida', 'Cancela cuando quieras'].map((item) => (
+            {['100% gratis', 'Sin tarjeta requerida', 'Sin límites de uso'].map((item) => (
               <div key={item} className="flex items-center gap-2 text-sm text-primary-100/70">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 {item}

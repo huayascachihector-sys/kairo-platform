@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import {
   TrendingUp,
   Clock,
@@ -12,25 +13,17 @@ import {
   Sparkles,
   Target,
   Lightbulb,
-  AlertTriangle,
-  Brain,
-  Calendar,
-  BarChart3 as BAChart,
-  Activity,
   Download,
-  BookOpen,
-  Zap as ZapIcon,
 } from "lucide-react";
 import {
   StoreState,
   getTotalStats,
-  getWeeklyMinutes,
   getCourseCompletionPct,
   getExamSummary,
   getWeeklyStudyMinutes as getWeeklyStudyMin,
   getDailyStudyHistory,
   getGameSummary,
-  exportData,
+  markFlag,
 } from "../../lib/store";
 import { exportProgressPDF } from "../../lib/pdfExport";
 import { ALL_COURSES, getTotalLessons } from "../../lib/courseData";
@@ -97,11 +90,10 @@ const dotBg = {
 };
 
 export default function Dashboard({ state, onNavigate }: Props) {
+  const diagFlagged = useRef(false);
   const firstName = (state.user?.name || "Estudiante").split(" ")[0];
   const stats = getTotalStats(state);
-  const weekData = getWeeklyMinutes();
-  const sessionWeekData = getWeeklyStudyMin(state);
-  const combinedWeekData = weekData.map((v, i) => v + sessionWeekData[i]);
+  const combinedWeekData = getWeeklyStudyMin(state);
   const maxVal = Math.max(...combinedWeekData, 10);
 
   const dailyHistory = getDailyStudyHistory(state);
@@ -159,7 +151,7 @@ export default function Dashboard({ state, onNavigate }: Props) {
             onClick={() => onNavigate("repaso-express")}
             className="group inline-flex items-center gap-2 bg-gradient-to-r from-primary-600 to-accent-600 hover:shadow-lg hover:shadow-primary-200/50 text-white font-semibold text-sm px-5 py-3 rounded-xl transition-all"
           >
-            <ZapIcon className="w-4 h-4" />
+            <Zap className="w-4 h-4" />
             Repaso Express
             <Sparkles className="w-3.5 h-3.5 opacity-80 group-hover:rotate-12 transition-transform" />
           </button>
@@ -362,13 +354,17 @@ export default function Dashboard({ state, onNavigate }: Props) {
         {/* Right column */}
         <div className="space-y-6">
           {/* Weakness Analysis */}
-          {(() => {
-            const scoresByTopic = buildScoresByTopic(state);
-            const topics = Object.keys(scoresByTopic);
-            if (topics.length === 0) return null;
-            const diagnostics: DiagnosticResult[] = diagnosePerformance(scoresByTopic);
-            const weakTopics = diagnostics.filter((d) => d.weakness);
-            if (weakTopics.length === 0 && diagnostics.length === 0) return null;
+{(() => {
+             const scoresByTopic = getScoresByTopic(state);
+             const topics = Object.keys(scoresByTopic);
+             if (topics.length === 0) return null;
+             const diagnostics: DiagnosticResult[] = diagnosePerformance(scoresByTopic);
+             const weakTopics = diagnostics.filter((d) => d.weakness);
+             if (weakTopics.length === 0 && diagnostics.length === 0) return null;
+             if (!diagFlagged.current) {
+               diagFlagged.current = true;
+               markFlag("diag_complete");
+             }
             return (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -455,7 +451,7 @@ export default function Dashboard({ state, onNavigate }: Props) {
             <div className="absolute inset-0 opacity-[0.05]" style={dotBg} />
             <div className="relative p-5">
               <h3 className="text-sm font-bold text-white mb-2 flex items-center gap-1.5">
-                <ZapIcon className="w-4 h-4" /> Repaso Express
+                <Zap className="w-4 h-4" /> Repaso Express
               </h3>
               <p className="text-white/80 text-sm mb-4">
                 5 minutos para repasar tus temas más débiles. ¡No dejes que el olvido te gane!

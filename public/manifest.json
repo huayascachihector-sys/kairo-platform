@@ -2,7 +2,7 @@
   "name": "KAIRO — Plataforma Educativa",
   "short_name": "KAIRO",
   "description": "El mejor recurso educativo del Perú para alcanzar tu máximo potencial y llegar a cualquier universidad.",
-  "start_url": "/",
+  "start_url": "/#/plataforma",
   "scope": "/",
   "display": "standalone",
   "background_color": "#050814",

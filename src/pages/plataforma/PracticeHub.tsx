@@ -67,14 +67,14 @@ export default function PracticeHub({ onNavigate }: Props) {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-white dark:text-surface-900">Centro de práctica</h1>
-        <p className="text-surface-400 dark:text-surface-500 text-sm mt-1">
+        <h1 className="text-2xl font-bold text-surface-900 dark:text-white">Centro de práctica</h1>
+        <p className="text-surface-500 dark:text-surface-400 text-sm mt-1">
           Tu repaso personalizado: lo que la ciencia dice que olvidarás, justo a tiempo.
         </p>
       </div>
 
       {/* Daily XP ring */}
-      <div className="flex items-center gap-5 bg-white/5 dark:bg-white border border-white/10 dark:border-surface-100 rounded-2xl p-6">
+      <div className="flex items-center gap-5 bg-white dark:bg-white/5 border border-surface-100 dark:border-white/10 rounded-2xl p-6">
         <div className="relative w-20 h-20">
           <svg className="w-20 h-20 -rotate-90" viewBox="0 0 80 80">
             <circle
@@ -83,7 +83,7 @@ export default function PracticeHub({ onNavigate }: Props) {
               r="34"
               fill="none"
               strokeWidth="8"
-              className="stroke-white/10 dark:stroke-surface-100"
+              className="stroke-surface-100 dark:stroke-white/10"
             />
             <motion.circle
               cx="40"
@@ -106,13 +106,13 @@ export default function PracticeHub({ onNavigate }: Props) {
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <Zap className="w-5 h-5 text-amber-400" />
-            <span className="text-sm font-bold text-white dark:text-surface-900">
+            <span className="text-sm font-bold text-surface-900 dark:text-white">
               {summary.dailyXp}
             </span>
           </div>
         </div>
         <div>
-          <h2 className="font-bold text-white dark:text-surface-900">Meta de hoy</h2>
+          <h2 className="font-bold text-surface-900 dark:text-white">Meta de hoy</h2>
           <p className="text-xs text-surface-400 dark:text-surface-500 mt-0.5">
             {summary.dailyXp}/{DAILY_XP_GOAL} XP · {srsStats.due} repasos pendientes ·{" "}
             {errorBank.length} errores por revisar
@@ -126,7 +126,7 @@ export default function PracticeHub({ onNavigate }: Props) {
             </button>
             <button
               onClick={() => onNavigate("tienda")}
-              className="inline-flex items-center gap-1.5 text-xs font-bold bg-white/10 dark:bg-surface-50 text-white dark:text-surface-900 px-4 py-2 rounded-xl hover:bg-white/15 transition-all"
+              className="inline-flex items-center gap-1.5 text-xs font-bold bg-surface-50 dark:bg-white/10 text-surface-900 dark:text-white px-4 py-2 rounded-xl hover:bg-surface-100 dark:hover:bg-white/15 transition-all"
             >
               💎 {summary.gems} gemas
             </button>
@@ -138,10 +138,10 @@ export default function PracticeHub({ onNavigate }: Props) {
       <QuestsPanel onClaimed={refresh} />
 
       {/* SRS repaso */}
-      <div className="bg-white/5 dark:bg-white border border-white/10 dark:border-surface-100 rounded-2xl overflow-hidden">
-        <div className="flex items-center gap-2 px-5 py-4 border-b border-white/5 dark:border-surface-100">
+      <div className="bg-white dark:bg-white/5 border border-surface-100 dark:border-white/10 rounded-2xl overflow-hidden">
+        <div className="flex items-center gap-2 px-5 py-4 border-b border-surface-100 dark:border-white/5">
           <Brain className="w-4 h-4 text-violet-400" />
-          <h2 className="text-sm font-bold text-white dark:text-surface-900">Repaso espaciado</h2>
+          <h2 className="text-sm font-bold text-surface-900 dark:text-white">Repaso espaciado</h2>
           <span className="ml-auto text-xs font-bold text-violet-400">
             {srsStats.due} pendientes
           </span>
@@ -172,7 +172,7 @@ export default function PracticeHub({ onNavigate }: Props) {
               return (
                 <div
                   key={review.cardId}
-                  className="rounded-xl border border-white/10 dark:border-surface-100 p-4"
+                  className="rounded-xl border border-surface-100 dark:border-white/10 p-4"
                 >
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <div className="min-w-0">
@@ -185,7 +185,7 @@ export default function PracticeHub({ onNavigate }: Props) {
                       >
                         {isError ? "ERROR" : "REPASO"}
                       </span>
-                      <p className="text-sm text-white dark:text-surface-900 mt-2 font-medium break-words">
+                      <p className="text-sm text-surface-900 dark:text-white mt-2 font-medium break-words">
                         {label}
                       </p>
                       {error && (
@@ -204,10 +204,10 @@ export default function PracticeHub({ onNavigate }: Props) {
       </div>
 
       {/* Banco de errores */}
-      <div className="bg-white/5 dark:bg-white border border-white/10 dark:border-surface-100 rounded-2xl overflow-hidden">
-        <div className="flex items-center gap-2 px-5 py-4 border-b border-white/5 dark:border-surface-100">
+      <div className="bg-white dark:bg-white/5 border border-surface-100 dark:border-white/10 rounded-2xl overflow-hidden">
+        <div className="flex items-center gap-2 px-5 py-4 border-b border-surface-100 dark:border-white/5">
           <AlertCircle className="w-4 h-4 text-rose-400" />
-          <h2 className="text-sm font-bold text-white dark:text-surface-900">
+          <h2 className="text-sm font-bold text-surface-900 dark:text-white">
             Tus errores de inglés
           </h2>
           <span className="ml-auto text-xs font-bold text-rose-400">
@@ -223,7 +223,7 @@ export default function PracticeHub({ onNavigate }: Props) {
             errorBank.slice(0, 6).map((e) => (
               <div
                 key={e.id}
-                className="flex items-center gap-3 rounded-xl bg-white/5 dark:bg-surface-50 p-3"
+                className="flex items-center gap-3 rounded-xl bg-surface-50 dark:bg-white/5 p-3"
               >
                 <div className="flex-1 min-w-0">
                   <p className="text-xs text-red-400 line-through">{e.studentText}</p>
@@ -243,24 +243,24 @@ export default function PracticeHub({ onNavigate }: Props) {
 
       {/* Temas débiles */}
       {weakSubjects.length > 0 && (
-        <div className="bg-white/5 dark:bg-white border border-white/10 dark:border-surface-100 rounded-2xl overflow-hidden">
-          <div className="flex items-center gap-2 px-5 py-4 border-b border-white/5 dark:border-surface-100">
+        <div className="bg-white dark:bg-white/5 border border-surface-100 dark:border-white/10 rounded-2xl overflow-hidden">
+          <div className="flex items-center gap-2 px-5 py-4 border-b border-surface-100 dark:border-white/5">
             <Zap className="w-4 h-4 text-amber-400" />
-            <h2 className="text-sm font-bold text-white dark:text-surface-900">Temas a reforzar</h2>
+            <h2 className="text-sm font-bold text-surface-900 dark:text-white">Temas a reforzar</h2>
           </div>
           <div className="p-5 space-y-3">
             {weakSubjects.map((s) => (
               <button
                 key={s.course.id}
                 onClick={() => onNavigate("cursos", s.course.id)}
-                className="w-full flex items-center gap-3 rounded-xl bg-white/5 dark:bg-surface-50 p-3 hover:bg-white/10 transition-colors text-left"
+                className="w-full flex items-center gap-3 rounded-xl bg-surface-50 dark:bg-white/5 p-3 hover:bg-white/10 transition-colors text-left"
               >
                 <span className="text-xl">{s.course.icon}</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-white dark:text-surface-900">
+                  <p className="text-sm font-semibold text-surface-900 dark:text-white">
                     {s.course.title}
                   </p>
-                  <div className="w-full h-1.5 mt-1 bg-white/5 dark:bg-surface-100 rounded-full overflow-hidden">
+                  <div className="w-full h-1.5 mt-1 bg-surface-100 dark:bg-white/5 rounded-full overflow-hidden">
                     <div
                       className="h-full rounded-full bg-gradient-to-r from-rose-500 to-amber-400"
                       style={{ width: `${s.pct}%` }}

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Heart, Timer, Trophy, RotateCcw, ChevronRight, Star, Brain, FlaskConical, Sigma, BookOpen, Lightbulb, Target, PartyPopper, X } from 'lucide-react';
 import { addXP } from '../../lib/store';
@@ -58,8 +58,8 @@ const PUZZLES: Puzzle[] = [
     question: 'Si el sistema tiene solución única, ¿cuál es x + y?\n  2x + y = 7\n  x − y = 2',
     hint: 'Suma las dos ecuaciones para eliminar y.',
     options: ['3', '5', '4', '6'],
-    correct: 1,
-    explanation: 'Sumando: 3x = 9 → x = 3. Sustituyendo: 3 − y = 2 → y = 1. Entonces x + y = 4... ¡espera! x = 3, y = 1 → x + y = 4. Pero la opción correcta es x = 3, y = 2 revisando: 2(3)+2=8≠7. Recalculando: x=3, y=1. x+y=4. La correcta es **5** solo si x=3, y=2 — revisemos: suma dá 3x=9 → x=3, y=7-6=1, x+y=4.',
+    correct: 2,
+    explanation: 'Sumando ambas ecuaciones: 3x = 9 → x = 3. Sustituyendo en x − y = 2: 3 − y = 2 → y = 1. Entonces x + y = 3 + 1 = 4. ✓',
     xp: 25,
   },
   {
@@ -251,7 +251,7 @@ function getTodaysPuzzles(): Puzzle[] {
 
 // ─── Component ─────────────────────────────────────────────────────────────────
 export default function TacticasCiencia({ onStateChange }: { onStateChange?: () => void }) {
-  const puzzles = getTodaysPuzzles();
+  const puzzles = useMemo(() => getTodaysPuzzles(), []);
 
   const [phase, setPhase] = useState<'intro' | 'playing' | 'success' | 'fail' | 'finished'>('intro');
   const [idx, setIdx] = useState(0);
@@ -296,6 +296,10 @@ export default function TacticasCiencia({ onStateChange }: { onStateChange?: () 
   }, [selected, phase, puzzle, lives, onStateChange]);
 
   const nextPuzzle = () => {
+    if (lives <= 0) {
+      setPhase('finished');
+      return;
+    }
     const nextIdx = idx + 1;
     if (nextIdx >= puzzles.length) {
       setPhase('finished');
