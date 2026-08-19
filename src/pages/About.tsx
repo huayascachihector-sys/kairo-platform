@@ -17,8 +17,8 @@ const values = [
 ];
 
 const team = [
-  { name: 'Jordan Rui Huamancayo', role: 'CONSTRUCTOR', bg: 'from-primary-400 to-primary-600', initials: 'AV', bio: 'estudiante del COAR LIMA.' },
-  { name: 'Ian Paredes', role: 'EXPLORADOR', bg: 'from-accent-400 to-accent-600', initials: 'SC', bio: 'Abierto a nuevas experiencias UWU.' },
+  { name: 'Jordan Rui Huamancayo', role: 'CONSTRUCTOR', bg: 'from-primary-400 to-primary-600', initials: 'AV', bio: 'Estudiante del COAR LIMA.' },
+  { name: 'Ian Paredes', role: 'EXPLORADOR', bg: 'from-accent-400 to-accent-600', initials: 'SC', bio: 'Estudiante del COAR LIMA.' },
   { name: 'Huanca Karlos', role: 'CREATIVO', bg: 'from-emerald-400 to-emerald-600', initials: 'LP', bio: 'Estudiante del COAR LIMA' },
   { name: 'Huaches Anderson', role: 'COORDINADOR', bg: 'from-amber-400 to-amber-600', initials: 'MQ', bio: 'Estudiante del COAR LIMA' },
   { name: 'Hector Huayascachi Borda', role: 'CONSTRUCTOR', bg: 'from-rose-400 to-rose-600', initials: 'JT', bio: 'Estudiante del COAR LIMA' },
@@ -33,13 +33,10 @@ const MILE_ICONS: Record<string, any> = {
 
 const milestones = [
   { year: 'FASE 1', event: 'Identificación del problema sobre el acceso a información academica', icon: 'phase1' },
-  { year: 'FASE 2', event: 'Lanzamiento de la plataforma con 100 cursos iniciales', icon: 'phase2' },
-  { year: '2023', event: '5,000 estudiantes activos en los primeros 6 meses', icon: 'milestone2023' },
-  { year: '2024', event: 'Alianza con universidades europeas para contenido exclusivo', icon: 'milestone2024' },
-  { year: '2024', event: 'Lanzamiento del motor de IA personalizada', icon: 'milestone2024b' },
-  { year: '2025', event: '25,000 estudiantes activos en todo el Perú', icon: 'milestone2025' },
-  { year: '2025', event: 'Primer estudiante becado en Oxford gracias a Kairo', icon: 'milestone2025b' },
-  { year: '2026', event: 'Expansión a Colombia, Ecuador y Bolivia', icon: 'milestone2026' },
+  { year: 'FASE 2', event: 'Definir que hacer para solucionar el problema', icon: 'phase2' },
+  { year: 'FASE 3', event: 'Idear una solución factible y revolucionaria para resolver el problema', icon: 'milestone2023' },
+  { year: 'FASE 4', event: 'Realizar el prototipo de nuestra pagina web de manera local', icon: 'milestone2024' },
+  { year: 'FASE 5', event: 'Afinar el prototipo y publicarlo en la web', icon: 'milestone2024b' },
 ];
 
 export default function About() {
@@ -147,9 +144,8 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className={`relative flex items-start gap-4 mb-8 ${
-                  i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
+                className={`relative flex items-start gap-4 mb-8 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                  }`}
               >
                 <div className={`hidden md:block flex-1 ${i % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
                   <div className="bg-white dark:cyber-card-dark rounded-xl p-4 border border-surface-100 shadow-sm inline-block">
@@ -185,7 +181,7 @@ export default function About() {
               Nuestro <span className="text-gradient">Equipo</span>
             </h2>
             <p className="mt-3 text-surface-500 dark:text-surface-400 max-w-xl mx-auto">
-              Estudiantes apasionados por generar un cambio en la educación 
+              Estudiantes apasionados por generar un cambio en la educación
             </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -217,7 +213,7 @@ export default function About() {
               ¿Quieres ser parte del <span className="text-gradient">cambio</span>?
             </h2>
             <p className="text-surface-500 dark:text-surface-400 max-w-xl mx-auto mb-8">
-              Estamos buscando personas talentosas y apasionadas por la educación. 
+              Estamos buscando personas talentosas y apasionadas por la educación.
               Únete a nuestro equipo y ayúdanos a transformar el futuro de millones de estudiantes.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
