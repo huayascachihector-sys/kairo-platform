@@ -1,3 +1,5 @@
+import { loadState } from "../../lib/store";
+
 export interface SistemaPuntosConfig {
   puntosPorActividad: {
     shadowing: number;
@@ -82,8 +84,7 @@ export class SistemaPuntos {
   }
 
   getPuntosTotales(): number {
-    if (typeof localStorage === 'undefined') return 0;
-    const historial = JSON.parse(localStorage.getItem('puntos_historial') || '[]');
-    return historial.reduce((sum: number, item: { puntos: number }) => sum + item.puntos, 0);
+    const state = loadState();
+    return state.xp + state.gems * 10;
   }
 }

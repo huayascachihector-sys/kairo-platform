@@ -378,30 +378,89 @@ function loadDB(): KairoDB {
     // Migration: If legacy studymind_state exists, migrate it into KairoDB
     const legacyRaw = localStorage.getItem(STORAGE_KEY);
     if (legacyRaw) {
-      const legacyState = JSON.parse(legacyRaw) as Partial<StoreState>;
-      if (legacyState.user && legacyState.user.email) {
-        const emailKey = legacyState.user.email.toLowerCase();
-        const mergedState: StoreState = {
-          ...defaultState,
-          ...legacyState,
-        };
-        const db: KairoDB = {
-          activeEmail: emailKey,
-          users: {
-            [emailKey]: {
-              id: "usr_" + Math.random().toString(36).slice(2, 9),
-              name: legacyState.user.name || "Estudiante",
-              email: legacyState.user.email,
-              joinedAt: legacyState.user.joinedAt || new Date().toISOString(),
-              lastLoginAt: new Date().toISOString(),
-              avatar: legacyState.user.avatar,
-              state: mergedState,
-            },
-          },
-        };
-        localStorage.setItem(DB_KEY, JSON.stringify(db));
-        return db;
-      }
+      try {
+        const legacyState = JSON.parse(legacyRaw) as Partial<StoreState>;
+        if (legacyState.user && legacyState.user.email) {
+          const emailKey = legacyState.user.email.toLowerCase();
+          const existingDb = loadDB();
+          const alreadyMigrated = existingDb.users && existingDb.users[emailKey];
+
+          if (!alreadyMigrated) {
+            const mergedState: StoreState = {
+              ...defaultState,
+              ...legacyState,
+              user: {
+                ...defaultState.user,
+                name: legacyState.user.name || "Estudiante",
+                email: legacyState.user.email,
+                joinedAt: legacyState.user.joinedAt || new Date().toISOString(),
+                avatar: legacyState.user.avatar,
+                colegio: legacyState.user.colegio,
+                grado: legacyState.user.grado,
+                pais: legacyState.user.pais,
+                metas: legacyState.user.metas,
+                onboarding: legacyState.user.onboarding,
+              },
+              settings: { ...defaultState.settings, ...(legacyState.settings || {}) },
+              chatHistory:
+                legacyState.chatHistory && legacyState.chatHistory.length > 0
+                  ? legacyState.chatHistory
+                  : defaultState.chatHistory,
+              notifications:
+                legacyState.notifications && legacyState.notifications.length > 0
+                  ? legacyState.notifications
+                  : defaultState.notifications,
+              studyPlans: legacyState.studyPlans || [],
+              examAttempts: legacyState.examAttempts || [],
+              errorBank: legacyState.errorBank || [],
+              questionProgress: legacyState.questionProgress || {},
+              importedBanks: legacyState.importedBanks || [],
+              ibBanks: legacyState.ibBanks || [],
+              ibFlashcardEntries: legacyState.ibFlashcardEntries || [],
+              ibCourseData: legacyState.ibCourseData || [],
+              gems: legacyState.gems ?? 0,
+              hearts: legacyState.hearts ?? 5,
+              lastHeartRefillAt: legacyState.lastHeartRefillAt || new Date().toISOString(),
+              streakFreezes: legacyState.streakFreezes ?? 0,
+              dailyQuests: legacyState.dailyQuests || [],
+              lastQuestDate: legacyState.lastQuestDate || "",
+              league: legacyState.league || {
+                division: "bronce",
+                weeklyXP: 0,
+                weekStart: getMondayKey(),
+                position: 1,
+                total: 10,
+              },
+              xpBoostUntil: legacyState.xpBoostUntil || null,
+              xpBoostMultiplier: legacyState.xpBoostMultiplier ?? 1,
+              legendaryLessons: legacyState.legendaryLessons || [],
+              mascotOutfit: legacyState.mascotOutfit ?? "base",
+              mascotOutfits: legacyState.mascotOutfits ?? ["base"],
+              powerups: legacyState.powerups ?? { revive: 0, timerBoost: 0 },
+              dailyXp: legacyState.dailyXp ?? { date: getTodayKey(), xp: 0 },
+              flags: legacyState.flags || {},
+              modulePhase: legacyState.modulePhase || {},
+              flashcards: legacyState.flashcards || [],
+            };
+            const db: KairoDB = {
+              activeEmail: emailKey,
+              users: {
+                [emailKey]: {
+                  id: "usr_" + Math.random().toString(36).slice(2, 9),
+                  name: legacyState.user.name || "Estudiante",
+                  email: legacyState.user.email,
+                  joinedAt: legacyState.user.joinedAt || new Date().toISOString(),
+                  lastLoginAt: new Date().toISOString(),
+                  avatar: legacyState.user.avatar,
+                  state: mergedState,
+                },
+              },
+            };
+            localStorage.setItem(DB_KEY, JSON.stringify(db));
+            return db;
+          }
+        }
+      } catch {}
     }
   } catch {}
 
@@ -424,20 +483,22 @@ export function loadState(): StoreState {
   if (db.activeEmail && db.users[db.activeEmail]) {
     const acc = db.users[db.activeEmail];
     const parsed = acc.state || {};
+    const userData: UserData = {
+      name: acc.name,
+      email: acc.email,
+      joinedAt: acc.joinedAt,
+      avatar: acc.avatar || parsed.user?.avatar,
+      colegio: acc.colegio || parsed.user?.colegio,
+      grado: acc.grado || parsed.user?.grado,
+      pais: acc.pais || parsed.user?.pais,
+      metas: acc.metas || parsed.user?.metas,
+      onboarding: acc.onboarding || parsed.user?.onboarding,
+    };
+
     const merged: StoreState = {
       ...defaultState,
       ...parsed,
-      user: {
-        name: acc.name,
-        email: acc.email,
-        joinedAt: acc.joinedAt,
-        avatar: acc.avatar || parsed.user?.avatar,
-        colegio: acc.colegio || parsed.user?.colegio,
-        grado: acc.grado || parsed.user?.grado,
-        pais: acc.pais || parsed.user?.pais,
-        metas: acc.metas || parsed.user?.metas,
-        onboarding: acc.onboarding || parsed.user?.onboarding,
-      },
+      user: userData,
       settings: { ...defaultState.settings, ...(parsed.settings || {}) },
       chatHistory:
         parsed.chatHistory && parsed.chatHistory.length > 0
@@ -455,6 +516,7 @@ export function loadState(): StoreState {
       admissionChecklist: parsed.admissionChecklist || {},
       vocationalTest: parsed.vocationalTest ?? null,
     };
+
     return merged;
   }
   return { ...defaultState, user: null };

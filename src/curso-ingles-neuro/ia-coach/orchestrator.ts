@@ -31,7 +31,7 @@ export class IAOrchestrator {
     this.baseUrl = 'https://api.openai.com/v1';
   }
 
-  async corregirPronuncicion(audioBase64: string): Promise<CorreccionPronunciacion> {
+  async corregirPronunciacion(audioBase64: string): Promise<CorreccionPronunciacion> {
     try {
       const response = await fetch(`${this.baseUrl}/audio/transcriptions`, {
         method: 'POST',
@@ -46,7 +46,7 @@ export class IAOrchestrator {
       });
 
       const transcripcion = await response.json();
-      
+
       const feedbackPositivo = await this.generarFeedbackPositivo(transcripcion.text);
       const errores = await this.analizarErrores(transcripcion.text);
 
@@ -56,7 +56,7 @@ export class IAOrchestrator {
         erroresFoneticos: errores,
         puntuacionFluidez: this.calcularFluidez(transcripcion.text),
         feedbackPositivo,
-        sugerenciaMejora: '¡Practica más el sonido /r/! Imita a tu coach: "I am a superhero!"',
+        sugerenciaMejora: this.generarSugerenciaMejora(errores),
       };
     } catch (error) {
       console.error('Error en corrección de pronunciación:', error);
@@ -101,7 +101,7 @@ export class IAOrchestrator {
       });
 
       const data = await response.json();
-      
+
       return {
         npcName: 'Coach Spark',
         npcPersonality: personalidad,
@@ -141,16 +141,54 @@ export class IAOrchestrator {
 
   private async analizarErrores(texto: string): Promise<ErrorFonetico[]> {
     const erroresComunes: ErrorFonetico[] = [];
-    
-    if (texto.includes('f')) {
-      erroresComunes.push({
-        palabra: 'f',
-        fonemaCorrecto: 'f',
-        fonemaProducido: '',
-        explicacion: 'Intenta soplar aire por delante de los dientes superiores.',
-      });
+
+    const fonemasProblematicos = ['f', 'v', 'th', 'r', 'l', 's', 'z'];
+
+    for (const fonema of fonemasProblematicos) {
+      if (texto.toLowerCase().includes(fonema)) {
+        erroresComunes.push({
+          palabra: fonema,
+          fonemaCorrecto: fonema,
+          fonemaProducido: '',
+          explicacion: this.obtenerExplicacionError(fonema),
+        });
+      }
     }
-    
+
     return erroresComunes;
+  }
+
+  private obtenerExplicacionError(fonema: string): string {
+    const explicaciones: Record<string, string> = {
+      f: 'Intenta soplar aire por delante de los dientes superiores.',
+      v: 'Coloca tus dientes sobre tu labio inferior y vibra.',
+      th: 'Coloca la lengua entre tus dientes superiores e inferiores al soplar.',
+      r: 'Curva la punta de la lengua hacia atrás sin tocar el paladar.',
+      l: 'Toca la punta de tu lengua al paladar superior al pronunciar.',
+      s: 'Mantén los dientes ligeramente separados y sopla aire por los surcos.',
+      z: 'Mantén los dientes ligeramente separados y haz vibrar las cuerdas vocales.',
+    };
+    return explicaciones[fonema] || 'Practica el sonido correcto.';
+  }
+
+  private generarSugerenciaMejora(errores: ErrorFonetico[]): string {
+    if (errores.length === 0) return '¡Excelente!';
+
+    const prioritarios = errores.filter(e => ['r', 'th'].includes(e.palabra));
+    if (prioritarios.length > 0) {
+      return `Intenta el sonido /${prioritarios[0].palabra}/ más claramente.`;
+    }
+
+    const primero = errores[0];
+    return `${this.obtenerExplicacionError(primero.palabra)} ${this.obtenerSugerenciaAdicional(primero.palabra)}`;
+  }
+
+  private obtenerSugerenciaAdicional(fonema: string): string {
+    const sugerencias: Record<string, string> = {
+      r: ' Imita a un león rugiendo: "RRR!"',
+      l: ' Toque el paladar con la lengua mientras habla.',
+      s: ' Mantenga los dientes separados y sople suavemente.',
+    };
+    return sugerencias[fonema] || '';
   }
 }

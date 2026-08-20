@@ -31,15 +31,25 @@ type Route = 'home' | 'matematicas' | 'recursos' | 'cursos' | 'blog' | 'about' |
 
 function getRoute(): Route {
   const hash = window.location.hash;
-  if (hash.startsWith('#/matematicas')) return 'matematicas';
-  if (hash.startsWith('#/recursos')) return 'recursos';
-  if (hash.startsWith('#/cursos')) return 'cursos';
-  if (hash.startsWith('#/blog')) return 'blog';
-  if (hash.startsWith('#/about')) return 'about';
-  if (hash.startsWith('#/registro')) return 'registro';
-  if (hash.startsWith('#/onboarding')) return 'onboarding';
-  if (hash.startsWith('#/plataforma')) return 'plataforma';
-  if (hash.startsWith('#/robot')) return 'robot';
+  const cleanHash = hash.replace('#/', '');
+
+  const routeMap: Record<Route, string> = {
+    matematicas: '#/matematicas',
+    recursos: '#/recursos',
+    cursos: '#/cursos',
+    blog: '#/blog',
+    about: '#/about',
+    registro: '#/registro',
+    onboarding: '#/onboarding',
+    plataforma: '#/plataforma',
+    robot: '#/robot',
+  };
+
+  for (const [route, pattern] of Object.entries(routeMap)) {
+    if (cleanHash === pattern || cleanHash.startsWith(pattern + '/')) {
+      return route;
+    }
+  }
   return 'home';
 }
 
