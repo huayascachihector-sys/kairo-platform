@@ -8,6 +8,7 @@ import {
   type QuestProgress,
 } from "../../lib/store";
 import { cn } from "../../lib/utils";
+import { ConfettiBurst } from "./ConfettiBurst";
 
 const QUEST_ICONS: Record<string, string> = {
   xp: "⚡",
@@ -25,6 +26,7 @@ interface QuestsPanelProps {
 export function QuestsPanel({ compact = false, onClaimed }: QuestsPanelProps) {
   const [quests, setQuests] = useState<QuestProgress[]>(() => ensureGameState().dailyQuests);
   const [claimedId, setClaimedId] = useState<string | null>(null);
+  const [showQuestConfetti, setShowQuestConfetti] = useState(false);
 
   const refresh = () => {
     setQuests(getDailyQuests());
@@ -34,13 +36,26 @@ export function QuestsPanel({ compact = false, onClaimed }: QuestsPanelProps) {
   const handleClaim = (id: string) => {
     claimQuestReward(id);
     setClaimedId(id);
-    setTimeout(refresh, 500);
+    setShowQuestConfetti(true);
+    
+    setTimeout(() => {
+      refresh();
+      setClaimedId(null);
+      setShowQuestConfetti(false);
+    }, 850);
   };
 
   const done = quests.filter((q) => q.completed).length;
 
   return (
-    <div className="rounded-2xl border border-surface-100 bg-white dark:cyber-card-dark shadow-sm overflow-hidden">
+    <div className="rounded-2xl border border-surface-100 bg-white dark:cyber-card-dark shadow-sm overflow-hidden relative">
+      <ConfettiBurst 
+        trigger={showQuestConfetti} 
+        particleCount={18} 
+        duration={1100}
+        colors={["#f43f5e", "#eab308", "#22c55e"]} 
+      />
+
       <div className="flex items-center justify-between px-4 py-3 border-b border-surface-100 dark:border-surface-800">
         <div className="flex items-center gap-2">
           <Target className="w-4 h-4 text-rose-500" />
@@ -90,7 +105,7 @@ export function QuestsPanel({ compact = false, onClaimed }: QuestsPanelProps) {
                 <div className="flex-1 h-1.5 bg-surface-100 dark:bg-white/10 rounded-full overflow-hidden">
                   <motion.div
                     animate={{ width: `${Math.min(100, (q.progress / q.target) * 100)}%` }}
-                    transition={{ duration: 0.4 }}
+                    transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
                     className={cn(
                       "h-full rounded-full",
                       q.completed
@@ -104,19 +119,21 @@ export function QuestsPanel({ compact = false, onClaimed }: QuestsPanelProps) {
                 </span>
               </div>
             </div>
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 relative">
               {q.completed ? (
                 q.claimed ? (
                   <span className="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center">
                     <Check className="w-4 h-4" />
                   </span>
                 ) : (
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.12 }}
+                    whileTap={{ scale: 0.9 }}
                     onClick={() => handleClaim(q.id)}
-                    className="w-8 h-8 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 text-white flex items-center justify-center shadow-md shadow-rose-500/25 hover:scale-110 transition-transform"
+                    className="w-8 h-8 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 text-white flex items-center justify-center shadow-md shadow-rose-500/30 hover:shadow-xl active:scale-[0.92] transition-all"
                   >
                     <Gift className="w-4 h-4" />
-                  </button>
+                  </motion.button>
                 )
               ) : (
                 <span className="w-7 h-7 rounded-full bg-surface-100 dark:bg-white/10 text-surface-400 flex items-center justify-center">
