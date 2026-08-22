@@ -43,6 +43,7 @@ export function Mascot({
         <motion.div
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 25 }}
           className="relative bg-white dark:bg-surface-800 border border-surface-100 dark:border-surface-700 rounded-2xl rounded-bl-sm px-3 py-2 text-xs font-medium text-surface-700 dark:text-surface-200 shadow-sm max-w-56 text-center"
         >
           {message}
@@ -50,13 +51,18 @@ export function Mascot({
       )}
       <motion.div
         animate={REACTION_ANIM[reaction]}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ 
+          duration: reaction === "streak" ? 1.8 : 2.4, 
+          repeat: Infinity, 
+          ease: "easeInOut" 
+        }}
+        whileHover={{ scale: 1.08, rotate: 4 }}
         className={cn(
-          "rounded-full bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/40 dark:to-accent-900/40 flex items-center justify-center shadow-inner",
+          "rounded-full bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/40 dark:to-accent-900/40 flex items-center justify-center shadow-inner cursor-pointer",
           s.box,
         )}
       >
-        <span className={cn("leading-none", s.emoji)}>{emoji}</span>
+        <span className={cn("leading-none select-none", s.emoji)}>{emoji}</span>
       </motion.div>
     </div>
   );

@@ -35,6 +35,7 @@ import { loadState, saveUser, logoutUser, ensureGameState, type StoreState } fro
 import { GameBar } from "../components/plataforma/GameBar";
 
 const Dashboard = lazy(() => import("./plataforma/Dashboard"));
+const PremiumDashboard = lazy(() => import("./plataforma/PremiumDashboard"));
 const MisCursos = lazy(() => import("./plataforma/MisCursos"));
 const CursoViewer = lazy(() => import("./plataforma/CursoViewer"));
 const AsistenteIA = lazy(() => import("./plataforma/AsistenteIA"));
@@ -382,7 +383,7 @@ export default function Plataforma() {
       case "flashcards":
         return <Flashcards onNavigate={navigate} />;
       case "dashboard":
-        return <Dashboard state={state} onNavigate={navigate} />;
+        return <PremiumDashboard state={state} onNavigate={navigate} />;
       case "cursos":
         return <MisCursos state={state} onSelectCourse={(id) => navigate("cursos", id)} />;
       case "curso-detail":
