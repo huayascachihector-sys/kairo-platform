@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Flame, Gem, Zap, Heart, Shield } from "lucide-react";
 import { loadState, ensureGameState, getDailyQuests } from "../../lib/store";
 import { getEffectiveHearts,
@@ -23,6 +23,8 @@ function fmtCountdown(ms: number): string {
 
 export function GameBar({ onNavigate }: GameBarProps) {
   const [, force] = useState(0);
+  const [showLevelUp, setShowLevelUp] = useState(false);
+  const [prevLevel, setPrevLevel] = useState(0);
 
   useEffect(() => {
     ensureGameState();
@@ -38,6 +40,15 @@ export function GameBar({ onNavigate }: GameBarProps) {
   const dailyPct = Math.min(100, (dailyXp / DAILY_XP_GOAL) * 100);
   const questsDone = getDailyQuestsDone(state.dailyQuests);
   const questsTotal = state.dailyQuests.length;
+
+  // Detect level up
+  useEffect(() => {
+    if (prevLevel > 0 && level.level > prevLevel) {
+      setShowLevelUp(true);
+      setTimeout(() => setShowLevelUp(false), 2200);
+    }
+    setPrevLevel(level.level);
+  }, [level.level]);
 
   const chip =
     "flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors";
@@ -94,28 +105,60 @@ export function GameBar({ onNavigate }: GameBarProps) {
 
       {/* Nivel */}
       <div
-        title={`Nivel ${level.level}`}
-        className={`${chip} bg-violet-50 dark:bg-violet-900/30 border-violet-200 dark:border-violet-800 text-violet-700 dark:text-violet-300`}
+        title={`Nivel ${level.level} • ${level.current}/${level.next} XP`}
+        onClick={() => onNavigate("logros")}
+        className={`${chip} bg-violet-50 dark:bg-violet-900/30 border-violet-200 dark:border-violet-800 text-violet-700 dark:text-violet-300 relative overflow-hidden cursor-pointer active:scale-95 transition-transform`}
       >
         <Zap className="w-4 h-4 text-violet-500" />
         Nv. {level.level}
+        
+        {/* Subtle level progress ring */}
+        <div className="absolute -right-px -top-px w-3 h-3">
+          <svg width="12" height="12" className="-rotate-90">
+            <circle cx="6" cy="6" r="5" fill="none" stroke="#c4b5fd" strokeWidth="1.5" />
+            <motion.circle 
+              cx="6" cy="6" r="5" fill="none" stroke="#7c3aed" strokeWidth="1.5" strokeLinecap="round"
+              strokeDasharray={`${level.pct * 0.314} 31.4`}
+              initial={{ strokeDashoffset: 31.4 }}
+              animate={{ strokeDashoffset: 31.4 * (1 - level.pct / 100) }}
+            />
+          </svg>
+        </div>
+
+        <AnimatePresence>
+          {showLevelUp && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.6, y: 8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.6, y: -10 }}
+              className="absolute -top-8 left-1/2 -translate-x-1/2 bg-violet-600 text-white text-[9px] px-2 py-px rounded-full font-bold whitespace-nowrap shadow-lg"
+            >
+              ¡LEVEL UP!
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* XP diario */}
       <button
         onClick={() => onNavigate("practice-hub")}
         title={`${dailyXp}/${DAILY_XP_GOAL} XP hoy`}
-        className={`${chip} relative overflow-hidden bg-amber-50 dark:bg-amber-900/30 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300`}
+        className={`${chip} relative overflow-hidden bg-amber-50 dark:bg-amber-900/30 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 group`}
       >
         <motion.div
           animate={{ width: `${dailyPct}%` }}
-          transition={{ duration: 0.5 }}
-          className="absolute inset-y-0 left-0 bg-gradient-to-r from-amber-400/40 to-rose-400/40"
+          transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+          className="absolute inset-y-0 left-0 bg-gradient-to-r from-amber-400/50 to-orange-400/50"
         />
-        <span className="relative flex items-center gap-1">
+        <span className="relative flex items-center gap-1 font-semibold">
           {dailyXp}
-          <span className="text-[10px] opacity-70">/ {DAILY_XP_GOAL} XP</span>
+          <span className="text-[10px] opacity-70 group-hover:opacity-100 transition">/ {DAILY_XP_GOAL}</span>
         </span>
+        
+        {/* Pulse effect when near goal */}
+        {dailyPct > 75 && (
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-400/20 to-transparent animate-pulse rounded-xl" />
+        )}
       </button>
 
       {/* Misiones */}
