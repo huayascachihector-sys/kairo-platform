@@ -5,7 +5,8 @@ import {
   getCourse,
   getTotalLessons,
   getModules,
-  getLessonVideoUrl, getLessonRepasoVideos,
+  getLessonVideoUrl,
+  getLessonRepasoVideos,
   getPracticaExercises,
   FASES,
   type Module,
@@ -139,7 +140,9 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
       >
         <div className="text-5xl mb-3">😴</div>
         <h2 className="text-xl font-bold text-white mb-1">Te quedaste sin corazones</h2>
-        <p className="text-sm text-surface-400 mb-5">Revisa la teoría o el tutor IA, y vuelve a practicar.</p>
+        <p className="text-sm text-surface-400 mb-5">
+          Revisa la teoría o el tutor IA, y vuelve a practicar.
+        </p>
         <button onClick={closeNoHearts} className="w-full btn-primary text-sm">
           Entendido
         </button>
@@ -180,9 +183,7 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
                   style={{ width: `${pct}%` }}
                 />
               </div>
-              <p className="text-xs text-surface-500 mt-1">
-                {pct}% completado
-              </p>
+              <p className="text-xs text-surface-500 mt-1">{pct}% completado</p>
             </div>
             <div className="flex items-center gap-1 text-sm font-semibold text-primary-400 bg-primary-500/10 px-3 py-1.5 rounded-lg border border-primary-500/20">
               <Zap size={16} /> {lastState.xp}
@@ -348,7 +349,7 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
                 <div className="bg-white/5 rounded-b-xl border-t border-white/10 mt-2 p-4">
                   <p className="text-xs text-surface-500 mb-2">Videos de repaso</p>
                   <ul className="text-xs text-surface-400 space-y-1">
-                    {getLessonRepasoVideos(leccion).map((v, i) => (
+                    {getLessonRepasoVideos(leccion)!.map((v, i) => (
                       <li key={i}>
                         <a
                           href={`https://www.youtube.com/watch?v=${v.videoId}`}
@@ -403,10 +404,7 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
                 Pasé la teoría &rarr; Práctica
               </button>
             ) : (
-              <button
-                onClick={() => setLeccionIdx((i) => i + 1)}
-                className="btn-primary text-sm"
-              >
+              <button onClick={() => setLeccionIdx((i) => i + 1)} className="btn-primary text-sm">
                 Siguiente lección &rarr;
               </button>
             )}
