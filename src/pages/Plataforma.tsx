@@ -61,6 +61,7 @@ const Ligas = lazy(() => import("./plataforma/Ligas"));
 const Flashcards = lazy(() => import("./plataforma/Flashcards"));
 const RepasoExpress = lazy(() => import("./plataforma/RepasoExpress"));
 const GeneradorVideos = lazy(() => import("./plataforma/GeneradorVideos"));
+const LaboratorioInteractivo = lazy(() => import("./plataforma/LaboratorioInteractivo"));
 
 type View =
   | "dashboard"
@@ -88,7 +89,8 @@ type View =
   | "ligas"
   | "repaso-express"
   | "flashcards"
-  | "generador-videos";
+  | "generador-videos"
+  | "laboratorio";
 
 interface NavItem {
   id: View;
@@ -115,8 +117,9 @@ const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
     title: "Practicar",
     items: [
       { id: "practice-hub", label: "Centro de Práctica", icon: Target },
+      { id: "laboratorio", label: "Laboratorio Virtual", icon: FlaskConical },
       { id: "banco", label: "Banco de Preguntas", icon: LibraryBig },
-      { id: "tacticas", label: "Tácticas de Ciencia", icon: FlaskConical },
+      { id: "tacticas", label: "Tácticas de Ciencia", icon: Zap },
       { id: "examenes", label: "Exámenes de Admisión", icon: Globe },
       { id: "english-tutor", label: "English Tutor", icon: Languages },
       { id: "asistente", label: "Asistente IA", icon: Sparkles },
@@ -413,6 +416,8 @@ export default function Plataforma() {
         return <Logros state={state} />;
       case "banco":
         return <BancoPreguntas />;
+      case "laboratorio":
+        return <LaboratorioInteractivo />;
       case "tacticas":
         return <TacticasCiencia onStateChange={refreshState} />;
       case "copiloto":
