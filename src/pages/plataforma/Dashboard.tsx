@@ -118,7 +118,7 @@ export default function Dashboard({ state, onNavigate }: Props) {
       ? `¡${game.streak} días de racha! Sigue así 🔥`
       : "¡Hola! ¿Listo para estudiar hoy?";
 
-  const hv = { y: -4, boxShadow: "0 12px 40px rgba(99,102,241,0.15)" };
+  const hv = { y: -4, transition: { duration: 0.2, ease: 'easeOut' } };
 
   // Build diagnostic data
   const scoresByTopic = buildScoresByTopic(state);
@@ -452,7 +452,7 @@ export default function Dashboard({ state, onNavigate }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
-            whileHover={{ y: -4, boxShadow: "0 12px 40px rgba(99,102,241,0.3)" }}
+            whileHover={{ y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
             className="relative bg-gradient-to-br from-primary-600 to-accent-600 rounded-2xl overflow-hidden cursor-pointer group"
             onClick={() => onNavigate("asistente")}
           >

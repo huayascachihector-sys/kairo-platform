@@ -5,7 +5,7 @@ const footerLinks = {
     { label: 'Cursos', href: '#/cursos' },
     { label: 'Matemáticas', href: '#/matematicas' },
     { label: 'Recursos', href: '#/recursos' },
-    { label: 'Precios', href: '#precios' },
+    { label: '100% Gratis', href: '#gratis' },
     { label: 'Blog', href: '#/blog' },
     { label: 'Descargar App', href: '#descargar-app', icon: Download },
   ],

@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sparkles, Calculator, Library, Newspaper, Info, ChevronDown, UserCheck, Sun, Moon, Home, BookOpen, Cpu } from 'lucide-react';
 import { loadState } from '../lib/store';
 import InstallApp from './InstallApp';
+import { useTheme } from 'next-themes';
 
 const navLinks = [
   {
@@ -13,7 +14,7 @@ const navLinks = [
       { label: 'Beneficios', href: '#beneficios', isAnchor: true },
       { label: 'Plataforma', href: '#plataforma', isAnchor: true },
       { label: 'Testimonios', href: '#testimonios', isAnchor: true },
-      { label: 'Precios', href: '#precios', isAnchor: true },
+      { label: '100% Gratis', href: '#gratis', isAnchor: true },
       { label: 'FAQ', href: '#faq', isAnchor: true },
     ],
   },
@@ -29,10 +30,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(() => {
-    try { return localStorage.getItem('sm_darkmode') !== '0'; } catch { return true; }
-  });
   const [user, setUser] = useState(() => loadState().user);
+  const { theme, setTheme } = useTheme();
+  const darkMode = theme === 'dark';
 
   useEffect(() => {
     const handleSync = () => setUser(loadState().user);
@@ -43,10 +43,6 @@ export default function Navbar() {
       window.removeEventListener('storage', handleSync);
     };
   }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode);
-  }, [darkMode]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -148,11 +144,7 @@ export default function Navbar() {
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
               <InstallApp iconOnly />
-              <button onClick={() => {
-                const next = !darkMode;
-                setDarkMode(next);
-                try { localStorage.setItem('sm_darkmode', next ? '1' : '0'); } catch {}
-              }}
+              <button onClick={() => setTheme(darkMode ? 'light' : 'dark')}
               className="p-2.5 rounded-xl bg-surface-100 dark:bg-surface-800 hover:bg-surface-200 dark:hover:bg-surface-700 text-surface-500 dark:text-surface-400 transition-colors"
               title="Toggle dark mode">
                 {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -253,7 +245,7 @@ export default function Navbar() {
                     { label: 'Beneficios', href: '#beneficios' },
                     { label: 'Plataforma', href: '#plataforma' },
                     { label: 'Testimonios', href: '#testimonios' },
-                    { label: 'Precios', href: '#precios' },
+                    { label: '100% Gratis', href: '#gratis' },
                     { label: 'FAQ', href: '#faq' },
                   ].map((link, i) => (
                     <motion.a
@@ -270,17 +262,13 @@ export default function Navbar() {
                   ))}
                 </div>
 
-                 <div className="space-y-3">
-                   <InstallApp className="w-full !py-3 justify-center" label="Instalar App (APK / EXE)" />
-                   <button onClick={() => {
-                     const next = !darkMode;
-                     setDarkMode(next);
-                     try { localStorage.setItem('sm_darkmode', next ? '1' : '0'); } catch {}
-                   }}
-                   className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-surface-100 dark:bg-surface-800 text-surface-600 dark:text-surface-300 hover:text-surface-900 dark:hover:text-white transition-colors text-sm font-medium">
-                     {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-                     {darkMode ? 'Modo Claro' : 'Modo Oscuro'}
-                   </button>
+<div className="space-y-3">
+                    <InstallApp className="w-full !py-3 justify-center" label="Instalar App (APK / EXE)" />
+                    <button onClick={() => setTheme(darkMode ? 'light' : 'dark')}
+                    className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-surface-100 dark:bg-surface-800 text-surface-600 dark:text-surface-300 hover:text-surface-900 dark:hover:text-white transition-colors text-sm font-medium">
+                      {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                      {darkMode ? 'Modo Claro' : 'Modo Oscuro'}
+                    </button>
                    <a
                      href="#/matematicas"
                      onClick={handleNavClick}

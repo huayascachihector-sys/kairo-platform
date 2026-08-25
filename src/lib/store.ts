@@ -271,6 +271,9 @@ export interface StoreState {
   modulePhase: {
     [courseId: string]: { [moduleId: string]: Record<string, boolean> };
   };
+  courseHearts: {
+    [courseId: string]: { [moduleId: string]: { hearts: number; noHearts: boolean } };
+  };
   flashcards: FlashcardEntry[];
 }
 
@@ -354,13 +357,14 @@ const defaultState: StoreState = {
   league: { division: "bronce", weeklyXP: 0, weekStart: getMondayKey(), position: 1, total: 10 },
   xpBoostUntil: null,
   xpBoostMultiplier: 1,
-  legendaryLessons: [],
+legendaryLessons: [],
   mascotOutfit: "base",
   mascotOutfits: ["base"],
   powerups: { revive: 0, timerBoost: 0 },
-  dailyXp: { date: getTodayKey(), xp: 0 },
+  dailyXp: { date: "", xp: 0 },
   flags: {},
   modulePhase: {},
+  courseHearts: {},
   flashcards: [],
 };
 
@@ -918,6 +922,27 @@ export function getModulePhaseProgress(
 ): Record<string, boolean> {
   const state = loadState();
   return state.modulePhase[courseId]?.[moduleId] ?? {};
+}
+
+export function getCourseModuleHearts(
+  courseId: string,
+  moduleId: string,
+): { hearts: number; noHearts: boolean } {
+  const state = loadState();
+  return state.courseHearts[courseId]?.[moduleId] ?? { hearts: 5, noHearts: false };
+}
+
+export function setCourseModuleHearts(
+  courseId: string,
+  moduleId: string,
+  hearts: number,
+  noHearts: boolean,
+): StoreState {
+  const state = loadState();
+  if (!state.courseHearts[courseId]) state.courseHearts[courseId] = {};
+  state.courseHearts[courseId][moduleId] = { hearts, noHearts };
+  saveState(state);
+  return state;
 }
 
 export function saveChatMessage(msg: ChatMessage): void {

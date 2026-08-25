@@ -340,6 +340,84 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Focus visible for accessibility - WCAG 2.1 AA */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #6366f1;
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Ensure sufficient contrast for text on semi-transparent backgrounds */
+.text-surface-400 {
+  color: #a1a1aa;
+}
+.dark .text-surface-400 {
+  color: #71717a;
+}
+.text-surface-500 {
+  color: #71717a;
+}
+.dark .text-surface-500 {
+  color: #a1a1aa;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-surface-100: #ffffff;
+    --color-surface-900: #000000;
+    --color-primary-500: #4f46e5;
+  }
+  .dark {
+    --color-surface-950: #000000;
+    --color-primary-500: #818cf8;
+  }
+}
+
+/* Touch target minimum size - already present but reinforcing */
+@media (pointer: coarse) {
+  button:not([disabled]),
+  [role="button"],
+  a[href],
+  input:not([type="hidden"]),
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Scrollbar profesional optimizado para todos los navegadores */
 * {
   scrollbar-width: thin;

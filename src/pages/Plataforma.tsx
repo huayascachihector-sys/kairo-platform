@@ -30,9 +30,11 @@ import {
   Languages,
   Microscope,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { loadState, saveUser, logoutUser, ensureGameState, type StoreState } from "../lib/store";
 import { GameBar } from "../components/plataforma/GameBar";
+import { useDarkMode } from "../hooks/useDarkMode";
 
 const Dashboard = lazy(() => import("./plataforma/Dashboard"));
 const PremiumDashboard = lazy(() => import("./plataforma/PremiumDashboard"));
@@ -92,10 +94,12 @@ type View =
   | "generador-videos"
   | "laboratorio";
 
+import type { LucideIcon } from "lucide-react";
+
 interface NavItem {
   id: View;
   label: string;
-  icon: any;
+  icon: LucideIcon;
 }
 
 const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
@@ -170,19 +174,6 @@ function getParam(key: string) {
   }
 }
 
-function loadDarkMode(): boolean {
-  try {
-    return localStorage.getItem("sm_darkmode") !== "0";
-  } catch {
-    return true;
-  }
-}
-function saveDarkMode(v: boolean) {
-  try {
-    localStorage.setItem("sm_darkmode", v ? "1" : "0");
-  } catch {}
-}
-
 function isStandaloneApp(): boolean {
   return (
     window.matchMedia("(display-mode: standalone)").matches ||
@@ -196,12 +187,7 @@ export default function Plataforma() {
   const [activeCourse, setActiveCourse] = useState<string>("");
   const [state, setState] = useState<StoreState>(loadState);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState<boolean>(loadDarkMode);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-    saveDarkMode(darkMode);
-  }, [darkMode]);
+  const [darkMode, , setDarkMode] = useDarkMode();
 
   useEffect(() => {
     ensureGameState();
@@ -232,6 +218,53 @@ export default function Plataforma() {
   }, []);
 
   const refreshState = () => setState(loadState());
+
+  // Swipe to close mobile sidebar
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    let startX = 0;
+    const threshold = 80;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      startX = e.touches[0].clientX;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (startX === 0) return;
+      const currentX = e.touches[0].clientX;
+      const diff = currentX - startX;
+      // Only allow swiping right (closing) from left edge
+      if (diff > 0 && startX < 100) {
+        // Could add visual feedback here if needed
+      }
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (startX === 0) return;
+      const endX = e.changedTouches[0].clientX;
+      const diff = endX - startX;
+      if (diff > threshold && startX < 100) {
+        setMobileOpen(false);
+      }
+      startX = 0;
+    };
+
+    const sidebar = document.querySelector('.lg\\:hidden .absolute.left-0') as HTMLElement;
+    if (sidebar) {
+      sidebar.addEventListener('touchstart', handleTouchStart, { passive: true });
+      sidebar.addEventListener('touchmove', handleTouchMove, { passive: true });
+      sidebar.addEventListener('touchend', handleTouchEnd, { passive: true });
+    }
+
+    return () => {
+      if (sidebar) {
+        sidebar.removeEventListener('touchstart', handleTouchStart);
+        sidebar.removeEventListener('touchmove', handleTouchMove);
+        sidebar.removeEventListener('touchend', handleTouchEnd);
+      }
+    };
+  }, [mobileOpen]);
 
   const navigate = (v: string, extra?: string) => {
     if (v === "cursos" && extra) {

@@ -10,6 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
+    "test": "vitest",
+    "test:run": "vitest run",
     "parse-ib": "set NODE_OPTIONS=--max-old-space-size=8192 && npx tsx scripts/parse-ib-zip.ts",
     "build:exe": "npm run build && electron-builder --win nsis --publish never"
   },
@@ -117,6 +119,9 @@
     "@types/react-dom": "^19.2.0",
     "@types/yauzl": "^3.4.0",
     "@vitejs/plugin-react": "^5.2.0",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@testing-library/jest-dom": "^6.4.5",
     "electron": "^31.7.7",
     "electron-builder": "^24.13.3",
     "eslint": "^9.32.0",
@@ -125,11 +130,13 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^15.15.0",
+    "jsdom": "^24.0.0",
     "nitro": "3.0.260603-beta",
     "prettier": "^3.7.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
     "vite": "^8.0.16",
+    "vitest": "^2.1.0",
     "yauzl": "^3.4.0"
   },
   "allowScripts": {

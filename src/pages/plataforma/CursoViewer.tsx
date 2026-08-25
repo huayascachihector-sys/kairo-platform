@@ -17,6 +17,8 @@ import {
   completeModulePhase,
   getModulePhaseProgress,
   getCourseCompletionPct,
+  getCourseModuleHearts,
+  setCourseModuleHearts,
 } from "../../lib/store";
 import { getLevelFromXp } from "../../lib/gamification";
 import { HealthBar } from "../../components/courses/HealthBar";
@@ -91,8 +93,9 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
     setActiveModule(m);
     setPhase(getNextPhase(m));
     setCurrentEx(0);
-    setHearts(Math.max(5, loadState().hearts));
-    setNoHearts(false);
+    const savedHearts = getCourseModuleHearts(courseId, m.id);
+    setHearts(savedHearts.hearts);
+    setNoHearts(savedHearts.noHearts);
     setXpEarned(0);
     setShowCelebration(false);
     setLeccionIdx(0);
@@ -128,6 +131,10 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
 
   const closeNoHearts = () => {
     setNoHearts(false);
+    if (activeModule) {
+      setCourseModuleHearts(courseId, activeModule.id, 5, false);
+      setHearts(5);
+    }
   };
 
   const heartGateModal = noHearts ? (
@@ -459,6 +466,9 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
             if (nh <= 0) setNoHearts(true);
             return nh;
           });
+          if (activeModule) {
+            setCourseModuleHearts(courseId, activeModule.id, hearts - 1, hearts - 1 <= 0);
+          }
         }
         setXpEarned((x) => x + (correct ? 10 : 2));
         if (currentEx < practica.length - 1) {

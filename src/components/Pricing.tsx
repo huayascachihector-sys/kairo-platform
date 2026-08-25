@@ -16,7 +16,7 @@ export default function Pricing() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="precios" ref={ref} className="py-20 md:py-32 bg-gradient-dark relative overflow-hidden">
+    <section id="gratis" ref={ref} className="py-20 md:py-32 bg-gradient-dark relative overflow-hidden">
       <div className="absolute inset-0 grid-cyber-pattern opacity-20" />
 
       {/* Ambient glows */}
@@ -83,9 +83,9 @@ export default function Pricing() {
 
               <div className="md:w-64 flex-shrink-0 flex flex-col items-center gap-4 md:border-l md:border-white/10 md:pl-8">
                 <div className="text-center">
-                  <p className="text-sm text-slate-400 mb-1">Precio para el estudiante</p>
-                  <p className="text-5xl font-extrabold text-emerald-400">S/ 0</p>
-                  <p className="text-xs text-slate-500 mt-1">No pedimos tu tarjeta</p>
+                  <p className="text-4xl font-extrabold text-emerald-400 mb-1">100%</p>
+                  <p className="text-lg font-bold text-white">Gratuito</p>
+                  <p className="text-xs text-slate-500 mt-1">Sin tarjeta · Sin límites</p>
                 </div>
                 <a
                   href="#/registro"

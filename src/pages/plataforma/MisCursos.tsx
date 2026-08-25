@@ -18,6 +18,13 @@ function getCrownLevel(pct: number): number {
   return 0;
 }
 
+function getTodayXP(state: StoreState): number {
+  const today = new Date().toISOString().split('T')[0];
+  return state.studySessions
+    .filter((s) => s.date === today)
+    .reduce((sum, s) => sum + Math.round(s.duration * 1.5), 0); // ~1.5 XP per minute
+}
+
 const patternStyles: Record<string, string> = {
   dots: 'radial-gradient(circle at 20px 20px, rgba(255,255,255,0.06) 1px, transparent 1px)',
   grid: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
@@ -70,7 +77,7 @@ const stripColors: Record<string, string> = {
 };
 
 export default function MisCursos({ state, onSelectCourse }: Props) {
-  const todayXP = 0;
+  const todayXP = getTodayXP(state);
   const xpPct = Math.min(100, (todayXP / DAILY_XP_GOAL) * 100);
 
   return (
@@ -129,9 +136,7 @@ export default function MisCursos({ state, onSelectCourse }: Props) {
               transition={{ delay: i * 0.07, duration: 0.5, ease: 'easeOut' }}
               whileHover={{
                 y: -8,
-                scale: 1.02,
-                boxShadow: `0 24px 48px -12px ${glowColor}, 0 0 0 1px ${glowColor.replace('0.25', '0.5')}`,
-                transition: { duration: 0.3, ease: 'easeOut' },
+                transition: { duration: 0.2, ease: 'easeOut' },
               }}
               onClick={() => onSelectCourse(course.id)}
               className={`relative text-left rounded-2xl border ${borderColor} overflow-hidden transition-all duration-300 group`}

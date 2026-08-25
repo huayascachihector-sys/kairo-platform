@@ -16,7 +16,7 @@ interface ExerciseCardProps {
 
 type PresentedType = 'choice' | 'fill' | 'order';
 
-function pickType(variant?: ExerciseVariant): PresentedType {
+function pickType(variant?: ExerciseVariant, seed?: string): PresentedType {
   if (variant) {
     const map: Record<string, PresentedType> = {
       choice: 'choice',
@@ -25,7 +25,13 @@ function pickType(variant?: ExerciseVariant): PresentedType {
     };
     return map[variant.type] || 'choice';
   }
-  const roll = Math.random();
+  // Deterministic pseudo-random based on seed (exercise.id) to avoid hydration mismatch
+  let hash = 0;
+  for (let i = 0; i < (seed || '').length; i++) {
+    hash = ((hash << 5) - hash) + seed!.charCodeAt(i);
+    hash |= 0;
+  }
+  const roll = (Math.abs(hash) % 100) / 100;
   if (roll < 0.3) return 'fill';
   if (roll < 0.45) return 'order';
   return 'choice';
@@ -34,7 +40,7 @@ function pickType(variant?: ExerciseVariant): PresentedType {
 export function ExerciseCard({ exercise, variant, index, total, onNext }: ExerciseCardProps) {
   const [selected, setSelected] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
-  const [mode] = useState<PresentedType>(pickType(variant));
+  const mode = useMemo(() => pickType(variant, exercise.id), [variant, exercise.id]);
 
   const handleChoiceSubmit = () => {
     if (submitted || selected === null) return;
@@ -118,6 +124,8 @@ export function ExerciseCard({ exercise, variant, index, total, onNext }: Exerci
               key={i}
               onClick={() => !submitted && setSelected(i)}
               disabled={submitted}
+              aria-pressed={isSelected}
+              aria-label={`Opción ${String.fromCharCode(65 + i)}: ${opt}`}
               className={cn(
                 'w-full text-left px-4 py-3.5 rounded-xl border-2 transition-all flex items-center gap-3',
                 borderClass
@@ -132,6 +140,7 @@ export function ExerciseCard({ exercise, variant, index, total, onNext }: Exerci
                     ? 'bg-red-500 text-white'
                     : 'bg-white/10 text-surface-400'
                 )}
+                aria-hidden="true"
               >
                 {submitted && i === correctIndex ? <CheckCircle2 size={16} /> : isSelected && isWrong ? <XCircle size={16} /> : String.fromCharCode(65 + i)}
               </span>
