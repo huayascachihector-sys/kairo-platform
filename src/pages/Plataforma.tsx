@@ -60,7 +60,6 @@ const Tienda = lazy(() => import("./plataforma/Tienda"));
 const Ligas = lazy(() => import("./plataforma/Ligas"));
 const Flashcards = lazy(() => import("./plataforma/Flashcards"));
 const RepasoExpress = lazy(() => import("./plataforma/RepasoExpress"));
-const GeneradorVideos = lazy(() => import("./plataforma/GeneradorVideos"));
 const LaboratorioInteractivo = lazy(() => import("./plataforma/LaboratorioInteractivo"));
 
 type View =
@@ -89,7 +88,6 @@ type View =
   | "ligas"
   | "repaso-express"
   | "flashcards"
-  | "generador-videos"
   | "laboratorio";
 
 interface NavItem {
@@ -124,7 +122,6 @@ const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
       { id: "english-tutor", label: "English Tutor", icon: Languages },
       { id: "asistente", label: "Asistente IA", icon: Sparkles },
       { id: "copiloto", label: "Copiloto IB", icon: Microscope },
-      { id: "generador-videos", label: "Generador de Videos", icon: Clapperboard },
     ],
   },
   {
@@ -381,8 +378,6 @@ export default function Plataforma() {
     switch (view) {
       case "repaso-express":
         return <RepasoExpress onNavigate={navigate} />;
-      case "generador-videos":
-        return <GeneradorVideos />;
       case "flashcards":
         return <Flashcards onNavigate={navigate} />;
       case "dashboard":

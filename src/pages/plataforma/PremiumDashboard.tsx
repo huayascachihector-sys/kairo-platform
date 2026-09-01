@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { 
-  BookOpen, Target, Clock, Award, Zap, ArrowRight, 
-  Play, TrendingUp, Star, Calendar 
+  BookOpen, Target, Award, Zap, ArrowRight, 
+  Play, Sparkles, Calendar, Heart, Gem
 } from "lucide-react";
 import { StoreState } from "../../lib/store";
 import { ALL_COURSES, getTotalLessons } from "../../lib/courseData";
@@ -14,67 +13,81 @@ interface Props {
   onNavigate: (view: string, extra?: string) => void;
 }
 
-const SUBJECTS = [
+const SUBJECTS_CONFIG = [
   { 
     id: "matematicas", 
     name: "Matemáticas", 
     color: "from-blue-500 to-cyan-400", 
     icon: "📐",
-    progress: 78 
   },
   { 
     id: "fisica", 
     name: "Física", 
     color: "from-violet-500 to-purple-400", 
     icon: "⚛️",
-    progress: 64 
   },
   { 
     id: "quimica", 
     name: "Química", 
     color: "from-rose-500 to-pink-400", 
     icon: "🧪",
-    progress: 41 
   },
   { 
     id: "biologia", 
     name: "Biología", 
     color: "from-emerald-500 to-teal-400", 
     icon: "🧬",
-    progress: 89 
   },
   { 
     id: "historia", 
     name: "Historia", 
     color: "from-amber-500 to-orange-400", 
     icon: "📜",
-    progress: 55 
   },
   { 
     id: "ingles", 
     name: "Inglés", 
     color: "from-sky-500 to-indigo-400", 
     icon: "🌍",
-    progress: 92 
   },
 ];
 
 export default function PremiumDashboard({ state, onNavigate }: Props) {
-  const firstName = (state.user?.name || "Hector").split(" ")[0];
+  const firstName = (state.user?.name || "Estudiante").split(" ")[0];
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Buenos días" : hour < 18 ? "Buenas tardes" : "Buenas noches";
 
-  const activeCourses = ALL_COURSES.slice(0, 6).map((course, index) => {
+  // Calculate real progress for each subject (starts at 0% for new users)
+  const subjects = SUBJECTS_CONFIG.map((subj) => {
+    const course = ALL_COURSES.find((c) => c.id === subj.id);
+    const total = course ? getTotalLessons(course) : 1;
+    const progress = getCourseCompletionPct(subj.id, total);
+    return { ...subj, progress };
+  });
+
+  const activeCourses = ALL_COURSES.slice(0, 6).map((course) => {
     const pct = getCourseCompletionPct(course.id, getTotalLessons(course));
     return {
       ...course,
-      pct: Math.max(pct, SUBJECTS[index % SUBJECTS.length].progress),
+      pct,
     };
   });
 
+  // Real statistics computed from state
+  const totalCompletedLessons = Object.values(state.progress || {}).reduce(
+    (sum, cp) => sum + Object.keys(cp || {}).length,
+    0
+  );
+
+  const weeklyMinutes = (state.studySessions || []).reduce((sum, s) => sum + (s.duration || 0), 0);
+  const weeklyHours = (weeklyMinutes / 60).toFixed(1);
+
+  const totalAvailableLessons = ALL_COURSES.reduce((sum, c) => sum + getTotalLessons(c), 0);
+  const overallPct = totalAvailableLessons > 0 ? Math.round((totalCompletedLessons / totalAvailableLessons) * 100) : 0;
+
   return (
     <div className="min-h-screen bg-[#0F0F11] text-white">
-      {/* Top Bar - RevisionDojo Style */}
+      {/* Top Bar */}
       <RevisionDojoTopBar 
         onNavigate={onNavigate}
         userName={state.user?.name}
@@ -89,44 +102,46 @@ export default function PremiumDashboard({ state, onNavigate }: Props) {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-5xl font-bold tracking-tighter">
+              <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">
                 {greeting}, <span className="text-white/90">{firstName}</span>
               </h1>
-              <p className="text-lg text-white/60 mt-1">
-                Tienes 3 lecciones pendientes hoy • ¡Sigue el ritmo!
+              <p className="text-sm sm:text-base text-white/60 mt-1">
+                {totalCompletedLessons === 0 
+                  ? "¡Bienvenido a Kairo! Elige un curso o practica en el banco de preguntas para comenzar."
+                  : "Continúa avanzando en tus cursos y repasos diarios • ¡Sigue el ritmo!"}
               </p>
             </div>
             
             <div className="hidden md:block text-right">
-              <div className="text-xs text-white/50">PROGRESO SEMANAL</div>
-              <div className="text-4xl font-bold tabular-nums tracking-tighter">74%</div>
+              <div className="text-xs text-white/50 uppercase tracking-wider">Progreso Global</div>
+              <div className="text-4xl font-bold tabular-nums tracking-tighter text-cyan-400">{overallPct}%</div>
             </div>
           </div>
         </div>
 
-        {/* Promo Banner - Very RevisionDojo */}
+        {/* 100% Free Platform Banner */}
         <div className="mb-10">
-          <div className="rounded-3xl bg-gradient-to-r from-emerald-600 to-teal-600 p-px">
-            <div className="bg-[#0F0F11] rounded-[22px] px-6 py-4 flex items-center justify-between">
+          <div className="rounded-3xl bg-gradient-to-r from-emerald-600 via-cyan-600 to-teal-600 p-px shadow-lg shadow-cyan-950/20">
+            <div className="bg-[#0F0F11] rounded-[22px] px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-4">
-                <div className="px-4 py-1 bg-emerald-500 text-white text-sm font-bold rounded-2xl flex items-center gap-2">
-                  OFERTA DE VERANO
+                <div className="px-4 py-1.5 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold rounded-2xl flex items-center gap-2">
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-400" /> PLATAFORMA 100% LIBRE Y GRATUITA
                 </div>
-                <div>
-                  <span className="font-semibold text-lg">50% de descuento</span> en plan anual
+                <div className="text-white/90 text-sm">
+                  Acceso ilimitado a <span className="font-semibold text-white">cursos, banco de preguntas y tutores IA</span>
                 </div>
               </div>
               <button 
-                onClick={() => onNavigate("tienda")}
-                className="flex items-center gap-2 text-sm font-semibold px-6 py-2.5 rounded-2xl bg-white text-black hover:bg-white/90 transition"
+                onClick={() => onNavigate("plan")}
+                className="flex items-center gap-2 text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-2xl bg-white text-black hover:bg-white/90 active:scale-95 transition"
               >
-                Conseguir 50% OFF <ArrowRight className="w-4 h-4" />
+                Crear Plan con IA <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
         </div>
 
-        {/* Mis Asignaturas - The main section from the screenshot */}
+        {/* Mis Asignaturas */}
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <BookOpen className="w-5 h-5 text-white/70" />
@@ -136,13 +151,13 @@ export default function PremiumDashboard({ state, onNavigate }: Props) {
             onClick={() => onNavigate("cursos")}
             className="text-sm flex items-center gap-1 text-white/60 hover:text-white transition"
           >
-            Cambiar asignaturas <ArrowRight className="w-4 h-4" />
+            Ver todos los cursos <ArrowRight className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Subject Grid - Beautiful cards like RevisionDojo */}
+        {/* Subject Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-10">
-          {SUBJECTS.map((subject, index) => (
+          {subjects.map((subject, index) => (
             <motion.div
               key={index}
               whileHover={{ scale: 1.02, y: -2 }}
@@ -179,12 +194,12 @@ export default function PremiumDashboard({ state, onNavigate }: Props) {
         </div>
 
         {/* Quick Actions Row */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {[
             { label: "Repaso Express", icon: Zap, view: "repaso-express", color: "from-amber-500 to-orange-500" },
             { label: "Plan de Estudio", icon: Calendar, view: "plan", color: "from-indigo-500 to-violet-500" },
             { label: "Banco de Preguntas", icon: Target, view: "banco", color: "from-sky-500 to-blue-500" },
-            { label: "Asistente IA", icon: Star, view: "asistente", color: "from-purple-500 to-pink-500" },
+            { label: "Asistente IA", icon: Sparkles, view: "asistente", color: "from-purple-500 to-pink-500" },
           ].map((action, i) => (
             <button
               key={i}
@@ -202,8 +217,8 @@ export default function PremiumDashboard({ state, onNavigate }: Props) {
           {/* Recent Courses */}
           <div className="lg:col-span-8 bg-[#18181B] border border-white/10 rounded-3xl p-6">
             <div className="flex items-center justify-between mb-5">
-              <div className="font-semibold flex items-center gap-2">Actividad reciente</div>
-              <button onClick={() => onNavigate("cursos")} className="text-xs text-white/60">Ver todo</button>
+              <div className="font-semibold flex items-center gap-2">Explorar cursos</div>
+              <button onClick={() => onNavigate("cursos")} className="text-xs text-white/60 hover:text-white">Ver todos</button>
             </div>
 
             <div className="space-y-3">
@@ -221,35 +236,41 @@ export default function PremiumDashboard({ state, onNavigate }: Props) {
                     <div className="text-xs text-white/50">{course.pct}% completado</div>
                   </div>
                   <div className="flex items-center gap-1 text-xs text-white/70 group-hover:text-white">
-                    <Play className="w-3 h-3" /> Continuar
+                    <Play className="w-3 h-3" /> Abrir lección
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Quick Stats */}
+          {/* Real Stats */}
           <div className="lg:col-span-4 bg-[#18181B] border border-white/10 rounded-3xl p-6 flex flex-col">
-            <div className="font-semibold mb-4">Esta semana</div>
+            <div className="font-semibold mb-4">Tu Actividad</div>
             
             <div className="flex-1 space-y-6">
               <div>
                 <div className="flex justify-between text-sm mb-1.5">
-                  <div className="text-white/60">Horas estudiadas</div>
-                  <div className="font-mono font-bold">14.5h</div>
+                  <div className="text-white/60">Tiempo estudiado</div>
+                  <div className="font-mono font-bold">{weeklyHours}h</div>
                 </div>
                 <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full w-[72%] bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full" />
+                  <div 
+                    className="h-full bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full transition-all" 
+                    style={{ width: `${Math.min(100, Math.max(0, weeklyMinutes > 0 ? (weeklyMinutes / 300) * 100 : 0))}%` }}
+                  />
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between text-sm mb-1.5">
                   <div className="text-white/60">Lecciones completadas</div>
-                  <div className="font-mono font-bold">23</div>
+                  <div className="font-mono font-bold">{totalCompletedLessons}</div>
                 </div>
                 <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full w-[61%] bg-gradient-to-r from-violet-400 to-purple-400 rounded-full" />
+                  <div 
+                    className="h-full bg-gradient-to-r from-violet-400 to-purple-400 rounded-full transition-all" 
+                    style={{ width: `${Math.min(100, (totalCompletedLessons / 20) * 100)}%` }}
+                  />
                 </div>
               </div>
 
@@ -258,7 +279,7 @@ export default function PremiumDashboard({ state, onNavigate }: Props) {
                   onClick={() => onNavigate("logros")}
                   className="w-full py-3 text-sm font-semibold rounded-2xl border border-white/20 hover:bg-white/5 transition flex items-center justify-center gap-2"
                 >
-                  <Award className="w-4 h-4" /> Ver logros y ligas
+                  <Award className="w-4 h-4" /> Ver logros y nivel
                 </button>
               </div>
             </div>
