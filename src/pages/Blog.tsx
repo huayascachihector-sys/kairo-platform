@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowUpRight, Clock, User, Tag, Sparkles } from 'lucide-react';
+import { ArrowLeft, Clock, User, Tag, Sparkles } from 'lucide-react';
 
 const posts = [
   {
@@ -117,6 +117,9 @@ export default function Blog() {
                   </span>
                   <span>{featured.date}</span>
                 </div>
+                <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-white/15 text-white mt-4">
+                  Próximamente
+                </span>
               </div>
             </div>
           </motion.article>
@@ -142,9 +145,8 @@ export default function Blog() {
                     <Clock className="w-3 h-3" /> {post.readTime}
                   </span>
                 </div>
-                <h3 className="text-lg font-bold text-surface-900 dark:text-white leading-snug group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2 flex items-start gap-1">
+                <h3 className="text-lg font-bold text-surface-900 dark:text-white leading-snug mb-2">
                   {post.title}
-                  <ArrowUpRight className="w-4 h-4 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity mt-1" />
                 </h3>
                 <p className="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-4">
                   {post.excerpt}
@@ -155,6 +157,11 @@ export default function Blog() {
                   <span className="text-surface-200 dark:text-surface-700">·</span>
                   <span>{post.date}</span>
                 </div>
+              </div>
+              <div className="px-6 pb-4">
+                <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-surface-100 dark:bg-surface-800 text-surface-500 dark:text-surface-400">
+                  Próximamente
+                </span>
               </div>
             </motion.article>
           ))}

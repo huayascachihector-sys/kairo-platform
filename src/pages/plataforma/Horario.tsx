@@ -1,16 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Clock, Plus, X, CheckCircle2, Trash2 } from 'lucide-react';
-
-interface ClassSlot {
-  id: string;
-  subject: string;
-  day: number;
-  hour: number;
-  duration: number;
-  teacher: string;
-  color: string;
-}
+import { ClassSlot, loadSchedule, saveSchedule } from '../../lib/store';
 
 const SUBJECTS = [
   { label: 'Matemáticas', light: 'bg-primary-100 text-primary-800 border-primary-200', dark: 'bg-primary-900/40 text-primary-200 border-primary-700' },
@@ -38,18 +29,8 @@ const DEFAULT_SCHEDULE: ClassSlot[] = [
   { id: '9', subject: 'Inglés',       day: 5, hour: 10, duration: 1, teacher: 'Prof. Smith',  color: 'bg-rose-100 text-rose-800 border-rose-200' },
 ];
 
-function loadSchedule(): ClassSlot[] {
-  try {
-    const raw = localStorage.getItem('sm_schedule');
-    return raw ? JSON.parse(raw) : DEFAULT_SCHEDULE;
-  } catch { return DEFAULT_SCHEDULE; }
-}
-function saveSchedule(s: ClassSlot[]) {
-  localStorage.setItem('sm_schedule', JSON.stringify(s));
-}
-
 export default function Horario() {
-  const [schedule, setSchedule] = useState<ClassSlot[]>(loadSchedule);
+  const [schedule, setSchedule] = useState<ClassSlot[]>(() => loadSchedule(DEFAULT_SCHEDULE));
   const [showAdd, setShowAdd] = useState(false);
   const [form, setForm] = useState({ subject: 0, day: 0, hour: 8, duration: 1, teacher: '' });
   const todayIdx = (new Date().getDay() + 6) % 7; // Monday = 0

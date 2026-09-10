@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import { StoreState } from "../../lib/store";
 import { ALL_COURSES, getTotalLessons } from "../../lib/courseData";
-import { getCourseCompletionPct } from "../../lib/store";
+import { getCourseCompletionPct, getWeeklyMinutes } from "../../lib/store";
 import { RevisionDojoTopBar } from "../../components/plataforma/RevisionDojoTopBar";
 
 interface Props {
@@ -19,58 +19,71 @@ const SUBJECTS = [
     id: "matematicas", 
     name: "Matemáticas", 
     color: "from-blue-500 to-cyan-400", 
-    icon: "📐",
-    progress: 78 
+    icon: "📐"
   },
   { 
     id: "fisica", 
     name: "Física", 
     color: "from-violet-500 to-purple-400", 
-    icon: "⚛️",
-    progress: 64 
+    icon: "⚛️"
   },
   { 
     id: "quimica", 
     name: "Química", 
     color: "from-rose-500 to-pink-400", 
-    icon: "🧪",
-    progress: 41 
+    icon: "🧪"
   },
   { 
     id: "biologia", 
     name: "Biología", 
     color: "from-emerald-500 to-teal-400", 
-    icon: "🧬",
-    progress: 89 
+    icon: "🧬"
   },
   { 
     id: "historia", 
     name: "Historia", 
     color: "from-amber-500 to-orange-400", 
-    icon: "📜",
-    progress: 55 
+    icon: "📜"
   },
   { 
     id: "ingles", 
     name: "Inglés", 
     color: "from-sky-500 to-indigo-400", 
-    icon: "🌍",
-    progress: 92 
+    icon: "🌍"
   },
 ];
 
 export default function PremiumDashboard({ state, onNavigate }: Props) {
-  const firstName = (state.user?.name || "Hector").split(" ")[0];
+  const firstName = (state.user?.name || "Estudiante").split(" ")[0];
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Buenos días" : hour < 18 ? "Buenas tardes" : "Buenas noches";
 
-  const activeCourses = ALL_COURSES.slice(0, 6).map((course, index) => {
-    const pct = getCourseCompletionPct(course.id, getTotalLessons(course));
-    return {
-      ...course,
-      pct: Math.max(pct, SUBJECTS[index % SUBJECTS.length].progress),
-    };
+  const subjectsWithProgress = SUBJECTS.map((subject) => {
+    const course = ALL_COURSES.find((c) => c.id === subject.id);
+    const pct = course ? getCourseCompletionPct(course.id, getTotalLessons(course)) : 0;
+    return { ...subject, progress: pct, course };
   });
+
+  const activeCourses = ALL_COURSES.slice(0, 6).map((course) => ({
+    ...course,
+    pct: getCourseCompletionPct(course.id, getTotalLessons(course)),
+  }));
+
+  const weeklyMinutes = getWeeklyMinutes().reduce((sum, m) => sum + m, 0);
+  const weeklyHours = (weeklyMinutes / 60).toFixed(1).replace(/\.0$/, "");
+  const lessonsCompletedThisWeek = getWeeklyMinutes().reduce((sum, m) => sum + (m > 0 ? Math.max(1, Math.round(m / 15)) : 0), 0);
+  const weeklyGoalPct = Math.min(100, Math.round((weeklyMinutes / (7 * 60)) * 100));
+
+  const pendingToday = activeCourses.reduce((sum, course) => {
+    const done = Object.keys(state.progress[course.id] || {}).length;
+    return sum + Math.max(0, getTotalLessons(course) - done);
+  }, 0);
+
+  const hoursBarPct = Math.min(100, Math.round((weeklyMinutes / (7 * 60)) * 100));
+  const lessonsBarPct = Math.min(
+    100,
+    Math.round((lessonsCompletedThisWeek / Math.max(1, pendingToday + lessonsCompletedThisWeek)) * 100),
+  );
 
   return (
     <div className="min-h-screen bg-[#0F0F11] text-white">
@@ -93,13 +106,13 @@ export default function PremiumDashboard({ state, onNavigate }: Props) {
                 {greeting}, <span className="text-white/90">{firstName}</span>
               </h1>
               <p className="text-lg text-white/60 mt-1">
-                Tienes 3 lecciones pendientes hoy • ¡Sigue el ritmo!
+                Tienes {pendingToday} lecciones pendientes • ¡Sigue el ritmo!
               </p>
             </div>
             
             <div className="hidden md:block text-right">
               <div className="text-xs text-white/50">PROGRESO SEMANAL</div>
-              <div className="text-4xl font-bold tabular-nums tracking-tighter">74%</div>
+              <div className="text-4xl font-bold tabular-nums tracking-tighter">{weeklyGoalPct}%</div>
             </div>
           </div>
         </div>
@@ -142,9 +155,9 @@ export default function PremiumDashboard({ state, onNavigate }: Props) {
 
         {/* Subject Grid - Beautiful cards like RevisionDojo */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-10">
-          {SUBJECTS.map((subject, index) => (
+          {subjectsWithProgress.map((subject, index) => (
             <motion.div
-              key={index}
+              key={subject.id || index}
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.985 }}
               onClick={() => onNavigate("cursos", subject.id)}
@@ -236,20 +249,26 @@ export default function PremiumDashboard({ state, onNavigate }: Props) {
               <div>
                 <div className="flex justify-between text-sm mb-1.5">
                   <div className="text-white/60">Horas estudiadas</div>
-                  <div className="font-mono font-bold">14.5h</div>
+                  <div className="font-mono font-bold">{weeklyHours}h</div>
                 </div>
                 <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full w-[72%] bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full" />
+                  <div
+                    className={`h-full bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full transition-all`}
+                    style={{ width: `${hoursBarPct}%` }}
+                  />
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between text-sm mb-1.5">
                   <div className="text-white/60">Lecciones completadas</div>
-                  <div className="font-mono font-bold">23</div>
+                  <div className="font-mono font-bold">{lessonsCompletedThisWeek}</div>
                 </div>
                 <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full w-[61%] bg-gradient-to-r from-violet-400 to-purple-400 rounded-full" />
+                  <div
+                    className={`h-full bg-gradient-to-r from-violet-400 to-purple-400 rounded-full transition-all`}
+                    style={{ width: `${lessonsBarPct}%` }}
+                  />
                 </div>
               </div>
 

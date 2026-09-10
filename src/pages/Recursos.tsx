@@ -533,9 +533,11 @@ return (
                   <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${typeColors[res.type]}`}>
                     {res.type}
                   </span>
-                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">
-                    Gratis
-                  </span>
+                  {res.free && (
+                    <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">
+                      Gratis
+                    </span>
+                  )}
                 </div>
                 <ExternalLink className="w-4 h-4 text-surface-300 dark:text-surface-600 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors" />
               </div>

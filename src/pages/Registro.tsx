@@ -427,7 +427,7 @@ export default function Registro() {
             <div className="mt-8 flex items-center justify-center gap-6 text-surface-400 dark:text-surface-500">
               <div className="flex items-center gap-1.5 text-xs">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-                Datos seguros en BD
+                Datos en tu dispositivo
               </div>
               <div className="w-px h-4 bg-surface-200 dark:bg-surface-700" />
               <div className="flex items-center gap-1.5 text-xs">
@@ -437,7 +437,7 @@ export default function Registro() {
               <div className="w-px h-4 bg-surface-200 dark:bg-surface-700" />
               <div className="flex items-center gap-1.5 text-xs">
                 <Lock className="w-3 h-3 text-emerald-500" />
-                SSL 256-bit
+                Funciona sin conexión
               </div>
             </div>
           </div>

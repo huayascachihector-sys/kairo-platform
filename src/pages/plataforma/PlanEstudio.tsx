@@ -8,6 +8,16 @@ import {
 import { StudyPlan, StudyPlanTask, ResourceRecommendation, loadState, saveStudyPlan, toggleStudyPlanTask, deleteStudyPlan, addNotification } from '../../lib/store';
 import { getAIResponse } from '../../lib/aiEngine';
 import { getDueCount } from '../../lib/srsEngine';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '../../components/ui/alert-dialog';
 
 interface Props {
   onStateChange: () => void;
@@ -217,6 +227,7 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
   const [activePlanId, setActivePlanId] = useState<string | null>(state.studyPlans[0]?.id || null);
   const [activeTab, setActiveTab] = useState<PlanTab>('plan');
   const [showExistingPlans, setShowExistingPlans] = useState(false);
+  const [planToDelete, setPlanToDelete] = useState<string | null>(null);
   const chatEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -283,11 +294,17 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
   };
 
   const remove = (id: string) => {
-    if (!confirm('¿Eliminar este plan?')) return;
-    deleteStudyPlan(id);
-    const remaining = loadState().studyPlans;
-    setActivePlanId(remaining[0]?.id || null);
-    setPhase(remaining.length === 0 ? 'idle' : 'complete');
+    setPlanToDelete(id);
+  };
+
+  const confirmRemove = () => {
+    if (planToDelete) {
+      deleteStudyPlan(planToDelete);
+      const remaining = loadState().studyPlans;
+      setActivePlanId(remaining[0]?.id || null);
+      setPhase(remaining.length === 0 ? 'idle' : 'complete');
+    }
+    setPlanToDelete(null);
     refresh();
   };
 
@@ -816,6 +833,23 @@ export default function PlanEstudio({ onStateChange, onNavigate }: Props) {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <AlertDialog open={planToDelete !== null} onOpenChange={(open) => { if (!open) setPlanToDelete(null); }}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>¿Eliminar este plan de estudio?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Perderás el horario y las tareas. Esta acción no se puede deshacer.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmRemove} className="bg-red-600 hover:bg-red-700 text-white">
+              Sí, eliminar
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

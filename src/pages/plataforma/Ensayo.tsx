@@ -79,11 +79,11 @@ export default function Ensayo() {
             <FileText className="w-7 h-7 text-primary-600" /> Práctica de Ensayos
           </h1>
           <p className="text-surface-500 text-sm mt-1">
-            Escribe ensayos de admisión con feedback inmediato de IA. Incluye SAT, ensayos peruanos y universales.
+            Escribe ensayos de admisión con corrección inmediata. Incluye SAT, ensayos peruanos y universales.
           </p>
         </div>
         <div className="flex items-center gap-2 text-xs text-surface-400">
-          <Sparkles className="w-4 h-4 text-accent-500" /> Feedback de IA en tiempo real
+          <Sparkles className="w-4 h-4 text-accent-500" /> Evaluación automática en tiempo real
         </div>
       </div>
 
@@ -135,7 +135,7 @@ export default function Ensayo() {
           </span>
           <button onClick={handleSubmit} disabled={essay.trim().length < 50}
             className="bg-primary-600 text-white text-sm font-semibold px-5 py-2 rounded-lg hover:bg-primary-700 disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2">
-            <Wand2 className="w-4 h-4" /> Obtener Feedback
+            <Wand2 className="w-4 h-4" /> Evaluar ensayo
           </button>
         </div>
       </div>
@@ -146,7 +146,7 @@ export default function Ensayo() {
           className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6 shadow-sm">
           <div className="flex items-center gap-2 mb-4">
             <Wand2 className="w-5 h-5 text-primary-500" />
-            <h3 className="text-base font-bold text-surface-900 dark:text-white">Feedback de IA</h3>
+            <h3 className="text-base font-bold text-surface-900 dark:text-white">Evaluación del ensayo</h3>
           </div>
           <div className="prose prose-sm max-w-none text-surface-700 dark:text-surface-300 whitespace-pre-line">
             {feedback}

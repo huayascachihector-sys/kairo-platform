@@ -301,6 +301,31 @@ export interface KairoDB {
 const DB_KEY = "kairo_database";
 const STORAGE_KEY = "studymind_state";
 
+export interface ClassSlot {
+  id: string;
+  subject: string;
+  day: number;
+  hour: number;
+  duration: number;
+  teacher: string;
+  color: string;
+}
+
+const SCHEDULE_STORAGE_KEY = "sm_schedule";
+
+export function loadSchedule(fallback: ClassSlot[] = []): ClassSlot[] {
+  try {
+    const raw = localStorage.getItem(SCHEDULE_STORAGE_KEY);
+    return raw ? (JSON.parse(raw) as ClassSlot[]) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+export function saveSchedule(schedule: ClassSlot[]): void {
+  localStorage.setItem(SCHEDULE_STORAGE_KEY, JSON.stringify(schedule));
+}
+
 const defaultState: StoreState = {
   user: null,
   progress: {},
@@ -357,7 +382,7 @@ const defaultState: StoreState = {
   league: { division: "bronce", weeklyXP: 0, weekStart: getMondayKey(), position: 1, total: 10 },
   xpBoostUntil: null,
   xpBoostMultiplier: 1,
-legendaryLessons: [],
+  legendaryLessons: [],
   mascotOutfit: "base",
   mascotOutfits: ["base"],
   powerups: { revive: 0, timerBoost: 0 },
@@ -482,6 +507,21 @@ function saveDB(db: KairoDB): void {
   } catch {}
 }
 
+export function onStoreChange(callback: (state: StoreState) => void): () => void {
+  if (typeof window === "undefined") return () => {};
+  const handler = (e: Event) => {
+    const custom = e as CustomEvent<StoreState>;
+    callback(custom.detail || loadState());
+  };
+  const storageHandler = () => callback(loadState());
+  window.addEventListener("kairo:state-change", handler);
+  window.addEventListener("storage", storageHandler);
+  return () => {
+    window.removeEventListener("kairo:state-change", handler);
+    window.removeEventListener("storage", storageHandler);
+  };
+}
+
 export function loadState(): StoreState {
   const db = loadDB();
   if (db.activeEmail && db.users[db.activeEmail]) {
@@ -523,6 +563,21 @@ export function loadState(): StoreState {
 
     return merged;
   }
+
+  // Fallback for guest mode / local state
+  try {
+    const legacyRaw = localStorage.getItem(STORAGE_KEY);
+    if (legacyRaw) {
+      const parsed = JSON.parse(legacyRaw) as Partial<StoreState>;
+      return {
+        ...defaultState,
+        ...parsed,
+        settings: { ...defaultState.settings, ...(parsed.settings || {}) },
+        notifications: parsed.notifications || defaultState.notifications,
+      };
+    }
+  } catch {}
+
   return { ...defaultState, user: null };
 }
 
@@ -550,6 +605,18 @@ export function saveState(state: StoreState): void {
       state,
     };
     saveDB(db);
+  } else {
+    // Guest persistence
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch {}
+  }
+
+  // Real-time reactive notification to all mounted components
+  if (typeof window !== "undefined") {
+    try {
+      window.dispatchEvent(new CustomEvent("kairo:state-change", { detail: state }));
+    } catch {}
   }
 }
 
@@ -909,8 +976,20 @@ export function completeModulePhase(
   if (!state.modulePhase[courseId][moduleId]) state.modulePhase[courseId][moduleId] = {};
   const yaCompletada = !!state.modulePhase[courseId][moduleId][fase];
   state.modulePhase[courseId][moduleId][fase] = true;
-  if (otorgaXp > 0 && !yaCompletada) {
-    applyGameRewards(state, { xp: otorgaXp, quests: [], gems: 0 });
+
+  const xpToAdd =
+    otorgaXp > 0
+      ? yaCompletada
+        ? Math.max(10, Math.round(otorgaXp * 0.4))
+        : otorgaXp
+      : 0;
+
+  if (xpToAdd > 0) {
+    applyGameRewards(state, {
+      xp: xpToAdd,
+      quests: [{ type: "lessons", amount: 1 }],
+      gems: yaCompletada ? 1 : GEM_PER_LESSON,
+    });
   }
   saveState(state);
   return state;

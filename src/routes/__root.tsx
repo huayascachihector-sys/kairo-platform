@@ -10,7 +10,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { ThemeProvider } from "../components/ThemeProvider";
 
 function NotFoundComponent() {
@@ -38,9 +37,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -73,22 +69,55 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const SITE_URL = "https://kairoedu.vercel.app";
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "KAIRO",
+  url: `${SITE_URL}/`,
+  logo: `${SITE_URL}/logo.png`,
+  description:
+    "KAIRO es la plataforma educativa peruana con tutor IA: cursos de secundaria, banco de preguntas, exámenes de admisión UNI y UNMSM, inglés y más.",
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "KAIRO",
+  alternateName: ["KAIRO Plataforma Educativa", "KAIRO Edu", "Plataforma KAIRO Perú"],
+  url: `${SITE_URL}/`,
+  inLanguage: "es-PE",
+  publisher: { "@type": "Organization", name: "KAIRO", logo: `${SITE_URL}/logo.png` },
+};
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "KAIRO — Aprende. Entiende. Crece." },
-      { name: "description", content: "KAIRO: Plataforma educativa integral con IA para aprender, entender y crecer." },
+      { title: "KAIRO — Plataforma Educativa con Tutor IA para Estudiantes del Perú" },
+      {
+        name: "description",
+        content:
+          "KAIRO es la plataforma educativa peruana con tutor IA: cursos de secundaria, banco de preguntas, exámenes de admisión UNI y UNMSM, inglés y más. 100% gratis.",
+      },
       { name: "author", content: "KAIRO" },
-      { property: "og:title", content: "KAIRO — Aprende. Entiende. Crece." },
-      { property: "og:description", content: "KAIRO: Plataforma educativa integral con IA para aprender, entender y crecer." },
+      { property: "og:site_name", content: "KAIRO" },
+      { property: "og:locale", content: "es_PE" },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: `${SITE_URL}/logo.png` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@KairoEdu" },
+      { name: "twitter:image", content: `${SITE_URL}/logo.png` },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "default" },
       { name: "apple-mobile-web-app-title", content: "KAIRO" },
+    ],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(organizationJsonLd) },
+      { type: "application/ld+json", children: JSON.stringify(websiteJsonLd) },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

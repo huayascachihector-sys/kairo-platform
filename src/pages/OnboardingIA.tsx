@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, ChevronRight, Check, School, GraduationCap, University, Briefcase, Heart, Brain, Target, Clock, BookOpen, Star, Zap, ArrowLeft, Bot, PartyPopper } from 'lucide-react';
+import { Sparkles, ChevronRight, Check, School, GraduationCap, University, Briefcase, Heart, Brain, Target, Clock, Star, Zap, ArrowLeft, Bot, PartyPopper } from 'lucide-react';
 import { loadState, saveState, type StoreState, type OnboardingData } from '../lib/store';
 import { generateRecommendations, getGreetingMessage, getWelcomeMessage, type OnboardingRecommendation } from '../lib/onboardingEngine';
 

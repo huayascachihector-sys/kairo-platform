@@ -2,6 +2,16 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FileText, Plus, Trash2, Save, BookOpen, ChevronDown, ChevronUp, Download, Upload, Edit3, Eye, X } from 'lucide-react';
 import { Document, addDocument, updateDocument, deleteDocument, getDocumentsBySubject, loadState } from '../../lib/store';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '../../components/ui/alert-dialog';
 
 const SUBJECTS = ['Matemáticas', 'Física', 'Química', 'Historia', 'Comunicación', 'Biología', 'Computación', 'Inglés', 'General'];
 
@@ -14,6 +24,7 @@ export default function MiDocumentos() {
   const [content, setContent] = useState('');
   const [subject, setSubject] = useState('General');
   const [viewMode, setViewMode] = useState<'list' | 'editor'>('list');
+  const [docToDelete, setDocToDelete] = useState<string | null>(null);
 
   const filtered = selectedSubject === 'Todos'
     ? state.documents
@@ -49,9 +60,15 @@ export default function MiDocumentos() {
   };
 
   const removeDoc = (id: string) => {
-    if (!confirm('¿Eliminar este documento?')) return;
-    deleteDocument(id);
-    setState(loadState());
+    setDocToDelete(id);
+  };
+
+  const confirmRemoveDoc = () => {
+    if (docToDelete) {
+      deleteDocument(docToDelete);
+      setState(loadState());
+    }
+    setDocToDelete(null);
   };
 
   const exportDoc = (doc: Document) => {
@@ -220,6 +237,23 @@ export default function MiDocumentos() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <AlertDialog open={docToDelete !== null} onOpenChange={(open) => { if (!open) setDocToDelete(null); }}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>¿Eliminar este documento?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Esta acción no se puede deshacer.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmRemoveDoc} className="bg-red-600 hover:bg-red-700 text-white">
+              Sí, eliminar
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

@@ -32,11 +32,10 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { loadState, saveUser, logoutUser, ensureGameState, type StoreState } from "../lib/store";
+import { loadState, saveUser, logoutUser, ensureGameState, onStoreChange, type StoreState } from "../lib/store";
 import { GameBar } from "../components/plataforma/GameBar";
-import { useDarkMode } from "../hooks/useDarkMode";
+import { useTheme } from "next-themes";
 
-const Dashboard = lazy(() => import("./plataforma/Dashboard"));
 const PremiumDashboard = lazy(() => import("./plataforma/PremiumDashboard"));
 const MisCursos = lazy(() => import("./plataforma/MisCursos"));
 const CursoViewer = lazy(() => import("./plataforma/CursoViewer"));
@@ -93,8 +92,6 @@ type View =
   | "flashcards"
   | "generador-videos"
   | "laboratorio";
-
-import type { LucideIcon } from "lucide-react";
 
 interface NavItem {
   id: View;
@@ -187,7 +184,9 @@ export default function Plataforma() {
   const [activeCourse, setActiveCourse] = useState<string>("");
   const [state, setState] = useState<StoreState>(loadState);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [darkMode, , setDarkMode] = useDarkMode();
+  const { theme, setTheme } = useTheme();
+  const darkMode = theme === "dark";
+  const setDarkMode = (v: boolean) => setTheme(v ? "dark" : "light");
 
   useEffect(() => {
     ensureGameState();
@@ -215,6 +214,11 @@ export default function Plataforma() {
         setView(v);
       }
     }
+
+    const unsub = onStoreChange((newState) => {
+      setState(newState);
+    });
+    return () => unsub();
   }, []);
 
   const refreshState = () => setState(loadState());
@@ -236,7 +240,6 @@ export default function Plataforma() {
       const diff = currentX - startX;
       // Only allow swiping right (closing) from left edge
       if (diff > 0 && startX < 100) {
-        // Could add visual feedback here if needed
       }
     };
 
@@ -428,7 +431,6 @@ export default function Plataforma() {
             courseId={activeCourse}
             onBack={() => navigate("cursos")}
             onStateChange={refreshState}
-            onPracticeEnglish={() => setView("english-tutor")}
           />
         );
       case "plan":
@@ -479,8 +481,6 @@ export default function Plataforma() {
         return <Entrevista onNavigate={navigate} />;
       case "mis-documentos":
         return <MiDocumentos />;
-      default:
-        return <Dashboard state={state} onNavigate={navigate} />;
     }
   };
 

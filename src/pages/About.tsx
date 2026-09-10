@@ -17,12 +17,12 @@ const values = [
 ];
 
 const team = [
-  { name: 'Jordan Rui Huamancayo', role: 'CONSTRUCTOR', bg: 'from-primary-400 to-primary-600', initials: 'AV', bio: 'Estudiante del COAR LIMA.' },
-  { name: 'Ian Paredes', role: 'EXPLORADOR', bg: 'from-accent-400 to-accent-600', initials: 'SC', bio: 'Estudiante del COAR LIMA.' },
-  { name: 'Huanca Karlos', role: 'CREATIVO', bg: 'from-emerald-400 to-emerald-600', initials: 'LP', bio: 'Estudiante del COAR LIMA' },
-  { name: 'Huaches Anderson', role: 'COORDINADOR', bg: 'from-amber-400 to-amber-600', initials: 'MQ', bio: 'Estudiante del COAR LIMA' },
-  { name: 'Hector Huayascachi Borda', role: 'CONSTRUCTOR', bg: 'from-rose-400 to-rose-600', initials: 'JT', bio: 'Estudiante del COAR LIMA' },
-  { name: 'Ivan Salazar', role: 'COMUNICADOR', bg: 'from-violet-400 to-violet-600', initials: 'AR', bio: 'Estudiante del COAR LIMA' },
+  { name: 'Jordan Rui Huamancayo', role: 'CONSTRUCTOR', bg: 'from-primary-400 to-primary-600', initials: 'JH', bio: 'Estudiante del COAR LIMA.' },
+  { name: 'Ian Paredes', role: 'EXPLORADOR', bg: 'from-accent-400 to-accent-600', initials: 'IP', bio: 'Estudiante del COAR LIMA.' },
+  { name: 'Huanca Karlos', role: 'CREATIVO', bg: 'from-emerald-400 to-emerald-600', initials: 'HK', bio: 'Estudiante del COAR LIMA' },
+  { name: 'Huaches Anderson', role: 'COORDINADOR', bg: 'from-amber-400 to-amber-600', initials: 'HA', bio: 'Estudiante del COAR LIMA' },
+  { name: 'Hector Huayascachi Borda', role: 'CONSTRUCTOR', bg: 'from-rose-400 to-rose-600', initials: 'HH', bio: 'Estudiante del COAR LIMA' },
+  { name: 'Ivan Salazar', role: 'COMUNICADOR', bg: 'from-violet-400 to-violet-600', initials: 'IS', bio: 'Estudiante del COAR LIMA' },
 ];
 
 const MILE_ICONS: Record<string, any> = {
@@ -72,10 +72,10 @@ export default function About() {
             className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4"
           >
             {[
-              { value: '25K+', label: 'Estudiantes', icon: Users },
-              { value: '500+', label: 'Cursos', icon: BookOpen },
-              { value: '12', label: 'Países', icon: Globe },
-              { value: '95%', label: 'Satisfacción', icon: Target },
+              { value: '6', label: 'Integrantes', icon: Users },
+              { value: '8', label: 'Cursos', icon: BookOpen },
+              { value: '1', label: 'País', icon: Globe },
+              { value: '100%', label: 'Compromiso', icon: Target },
             ].map((stat) => (
               <div key={stat.label} className="glass-card rounded-2xl p-5">
                 <stat.icon className="w-5 h-5 text-primary-500 mx-auto mb-2" />

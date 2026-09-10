@@ -11,22 +11,6 @@ export interface IbQuestionBank {
   importedAt: string;
 }
 
-export interface IbFlashcard {
-  id: string;
-  courseId: string;
-  examCode: string;
-  session: string;
-  level: string;
-  paper: string;
-  commandTerm: string;
-  marks: number;
-  questionHtml: string;
-  markschemeHtml: string;
-  topic: string;
-  subtopic: string;
-  parts: string[];
-}
-
 export interface IbCourseData {
   courseId: string;
   courseName: string;

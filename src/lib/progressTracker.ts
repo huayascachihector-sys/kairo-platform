@@ -1,3 +1,7 @@
+import { getTodayKey } from "./gamification";
+
+export { getTodayKey };
+
 const STORAGE_KEY = 'kairo_daily_progress';
 
 export interface DailyEntry {
@@ -7,10 +11,6 @@ export interface DailyEntry {
   srsReviewed: number;
   minutesStudied: number;
   subjects: Record<string, { correct: number; total: number }>;
-}
-
-export function getTodayKey(): string {
-  return new Date().toISOString().slice(0, 10);
 }
 
 export function loadDailyHistory(): DailyEntry[] {

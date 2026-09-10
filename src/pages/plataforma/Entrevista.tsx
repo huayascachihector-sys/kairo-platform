@@ -175,7 +175,7 @@ export default function Entrevista({ onNavigate }: EntrevistaProps) {
             <MessageSquare className="w-7 h-7 text-primary-600" /> Preparación para Entrevistas
           </h1>
           <p className="text-surface-500 text-sm mt-1">
-            Consejos, práctica con IA y simulacros de entrevistas de admisión.
+            Consejos, práctica guiada y simulacros de entrevistas de admisión.
           </p>
         </div>
         <div className="flex items-center gap-2 text-xs text-surface-400">
@@ -264,10 +264,10 @@ export default function Entrevista({ onNavigate }: EntrevistaProps) {
       {/* Mock interview with AI */}
       <div className="bg-white dark:cyber-card-dark rounded-2xl border border-surface-100 p-6 shadow-sm">
         <h3 className="text-sm font-bold text-surface-900 dark:text-white mb-4 flex items-center gap-2">
-          <MessageSquare className="w-4 h-4 text-primary-500" /> Práctica con tutor de IA
+          <MessageSquare className="w-4 h-4 text-primary-500" /> Práctica guiada
         </h3>
         <p className="text-xs text-surface-500 mb-4">
-          El tutor de IA te hace preguntas de entrevista, evalúa tus respuestas y da feedback personalizado.
+          La práctica guiada te hace preguntas de entrevista, evalúa tus respuestas y da feedback automático.
         </p>
 
         {!aiStarted ? (

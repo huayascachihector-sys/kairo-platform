@@ -22,7 +22,7 @@ const courses = [
     id: 1,
     title: 'Cálculo Diferencial e Integral',
     description: 'Domina límites, derivadas e integrales con cientos de ejercicios resueltos. Desde lo básico hasta aplicaciones avanzadas.',
-    instructor: 'Prof. Dr. García, TU München',
+    instructor: 'Equipo Kairo · COAR Lima',
     duration: '48 horas',
     lessons: 64,
     students: 8420,
@@ -38,7 +38,7 @@ const courses = [
     id: 2,
     title: 'Álgebra Lineal Aplicada',
     description: 'Matrices, vectores, espacios vectoriales, transformaciones lineales y aplicaciones en ingeniería y data science.',
-    instructor: 'Prof. Dra. Müller, ETH Zürich',
+    instructor: 'Equipo Kairo · COAR Lima',
     duration: '36 horas',
     lessons: 48,
     students: 5630,
@@ -54,7 +54,7 @@ const courses = [
     id: 3,
     title: 'Física: Mecánica Clásica',
     description: 'Las leyes de Newton, energía, momento, rotación y oscilaciones con enfoque en resolución de problemas.',
-    instructor: 'Prof. Laurent, Sorbonne',
+    instructor: 'Equipo Kairo · COAR Lima',
     duration: '42 horas',
     lessons: 56,
     students: 6180,
@@ -70,7 +70,7 @@ const courses = [
     id: 4,
     title: 'Química General Universitaria',
     description: 'Estructura atómica, enlaces, estequiometría, termodinámica y cinética química con laboratorios virtuales.',
-    instructor: 'Prof. Dra. Santos, Oxford',
+    instructor: 'Equipo Kairo · COAR Lima',
     duration: '38 horas',
     lessons: 52,
     students: 4950,
@@ -86,7 +86,7 @@ const courses = [
     id: 5,
     title: 'Programación con Python',
     description: 'Desde cero hasta programación orientada a objetos. Incluye proyectos reales, data science y automatización.',
-    instructor: 'Ing. Rodriguez, ex-Google',
+    instructor: 'Equipo Kairo · COAR Lima',
     duration: '52 horas',
     lessons: 72,
     students: 12350,
@@ -102,7 +102,7 @@ const courses = [
     id: 6,
     title: 'Estadística y Probabilidad',
     description: 'Distribuciones, inferencia estadística, regresión, pruebas de hipótesis con R y Python.',
-    instructor: 'Prof. Dr. Chen, Cambridge',
+    instructor: 'Equipo Kairo · COAR Lima',
     duration: '40 horas',
     lessons: 54,
     students: 5240,
@@ -118,7 +118,7 @@ const courses = [
     id: 7,
     title: 'Inglés Académico B2-C1',
     description: 'Prepárate para IELTS/TOEFL. Academic writing, lectura comprensiva, listening y speaking profesional.',
-    instructor: 'Prof. Williams, British Council',
+    instructor: 'Equipo Kairo · COAR Lima',
     duration: '60 horas',
     lessons: 80,
     students: 9870,
@@ -134,7 +134,7 @@ const courses = [
     id: 8,
     title: 'Ecuaciones Diferenciales',
     description: 'EDOs de primer y segundo orden, sistemas, transformada de Laplace, ecuaciones en derivadas parciales y series.',
-    instructor: 'Prof. Dr. Petrov, Moscow State',
+    instructor: 'Equipo Kairo · COAR Lima',
     duration: '44 horas',
     lessons: 58,
     students: 3680,
@@ -178,8 +178,8 @@ export default function Cursos() {
             Nuestros <span className="text-gradient">Cursos</span>
           </h1>
           <p className="mt-4 text-lg text-surface-500 dark:text-surface-400 max-w-2xl mx-auto">
-            Cursos diseñados por profesores de las mejores universidades del mundo,
-            adaptados para el éxito de cada estudiante peruano.
+            Catálogo de cursos de la plataforma Kairo. Actualmente en fase de prototipo:
+            el contenido completo está disponible dentro de la plataforma.
           </p>
           <div className="flex items-center justify-center gap-6 mt-6 text-sm text-surface-600 dark:text-surface-400">
             <span className="flex items-center gap-1.5">
@@ -188,11 +188,11 @@ export default function Cursos() {
             </span>
             <span className="flex items-center gap-1.5">
               <Users className="w-4 h-4 text-emerald-500" />
-              <span className="font-semibold">+{(courses.reduce((a, c) => a + c.students, 0) / 1000).toFixed(0)}K</span> estudiantes
+              <span className="font-semibold">Nivel</span> secundaria - universitario
             </span>
             <span className="flex items-center gap-1.5">
               <Star className="w-4 h-4 text-amber-500" />
-              <span className="font-semibold">4.8</span> promedio
+              <span className="font-semibold">Prototipo</span>
             </span>
           </div>
         </motion.div>
@@ -262,7 +262,7 @@ export default function Cursos() {
                   </div>
                   <div className="text-center">
                     <Users className="w-4 h-4 text-surface-400 mx-auto mb-1" />
-                    <span className="text-xs text-surface-600 dark:text-surface-300 font-medium">{course.students.toLocaleString()}</span>
+                    <span className="text-xs text-surface-600 dark:text-surface-300 font-medium">En desarrollo</span>
                   </div>
                   <div className="text-center">
                     <BarChart3 className="w-4 h-4 text-surface-400 mx-auto mb-1" />
@@ -270,17 +270,12 @@ export default function Cursos() {
                   </div>
                 </div>
 
-                {/* Rating */}
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex gap-0.5">
-                    {Array.from({ length: 5 }).map((_, si) => (
-                      <Star key={si} className={`w-3.5 h-3.5 ${
-                        si < Math.floor(course.rating) ? 'text-amber-400 fill-amber-400' : 'text-surface-200 dark:text-surface-700'
-                      }`} />
-                    ))}
-                  </div>
-                  <span className="text-sm font-bold text-surface-700 dark:text-white">{course.rating}</span>
-                  <span className="text-xs text-surface-400">({course.reviews.toLocaleString()} reseñas)</span>
+                {/* Level */}
+                <div className="mb-4">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300">
+                    <Star className="w-3.5 h-3.5" />
+                    Nivel: {course.level}
+                  </span>
                 </div>
 
                 {/* Topics */}

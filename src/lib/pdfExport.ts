@@ -1,14 +1,12 @@
 import type { StoreState } from "./store";
-import { getTotalStats, getExamSummary, getSubjectProgress } from "./store";
+import { getTotalStats, getExamSummary, getSubjectProgress, getWeeklyMinutes } from "./store";
 import { ALL_COURSES } from "./courseData";
-import { getWeeklyMinutes, getWeeklyStudyMinutes } from "./store";
 
 export function exportProgressPDF(state: StoreState): void {
   const stats = getTotalStats(state);
   const satSummary = getExamSummary(state, "sat");
   const toeflSummary = getExamSummary(state, "toefl");
   const weeklyMinutes = getWeeklyMinutes();
-  const studyMinutes = getWeeklyStudyMinutes(state);
   const days = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
   const now = new Date();
 

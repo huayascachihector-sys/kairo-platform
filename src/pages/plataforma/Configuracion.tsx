@@ -3,6 +3,17 @@ import { motion } from 'framer-motion';
 import { Bell, Download, Globe, Lock, Mail, Mic, Moon, Settings as SettingsIcon, Shield, Trash2, Volume2, AlertCircle } from 'lucide-react';
 import { loadState, updateSettings, exportData, deleteAccount, requestNotificationPermission, scheduleSmartNotification } from '../../lib/store';
 import { isSpeechSynthesisSupported, isSpeechRecognitionSupported } from '../../lib/speech';
+import { toast } from '../../hooks/use-toast';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '../../components/ui/alert-dialog';
 
 interface Props {
   darkMode: boolean;
@@ -18,6 +29,7 @@ const LANGUAGES = [
 
 export default function Configuracion({ darkMode, onDarkModeChange, onStateChange }: Props) {
   const [state, setState] = useState(loadState);
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const s = state.settings;
 
   const patch = (p: Partial<typeof s>) => { updateSettings(p); setState(loadState()); onStateChange(); };
@@ -31,7 +43,6 @@ export default function Configuracion({ darkMode, onDarkModeChange, onStateChang
   };
 
   const removeAccount = () => {
-    if (!confirm('¿Seguro? Se eliminarán todos tus datos localmente. Esta acción no se puede deshacer.')) return;
     deleteAccount();
     window.location.hash = '#';
     setTimeout(() => window.location.reload(), 100);
@@ -82,15 +93,15 @@ export default function Configuracion({ darkMode, onDarkModeChange, onStateChang
            >
              🔔 Activar recordatorios
            </button>
-           <button
-             onClick={() => {
-               const title = scheduleSmartNotification();
-               if (title) alert(`Notificación de prueba: ${title}`);
-             }}
-             className="text-xs bg-surface-100 dark:bg-surface-800 text-surface-600 dark:text-surface-400 px-3 py-2 rounded-xl font-semibold hover:bg-surface-200 dark:hover:bg-surface-700 transition-colors"
-           >
-             📋 Probar notificación
-           </button>
+<button
+              onClick={() => {
+                const title = scheduleSmartNotification();
+                if (title) toast({ title: 'Notificación de prueba', description: title });
+              }}
+              className="text-xs bg-surface-100 dark:bg-surface-800 text-surface-600 dark:text-surface-400 px-3 py-2 rounded-xl font-semibold hover:bg-surface-200 dark:hover:bg-surface-700 transition-colors"
+            >
+              📋 Probar notificación
+            </button>
          </div>
          <ToggleRow
            label="Correos con novedades"
@@ -179,7 +190,7 @@ export default function Configuracion({ darkMode, onDarkModeChange, onStateChang
           </div>
           <span className="text-xs font-semibold text-primary-600 group-hover:underline">Descargar</span>
         </button>
-        <button onClick={removeAccount}
+        <button onClick={() => setConfirmDelete(true)}
           className="w-full flex items-center justify-between p-4 rounded-xl bg-red-50 hover:bg-red-100 transition-all">
           <div className="flex items-center gap-3">
             <Trash2 className="w-4 h-4 text-red-600" />
@@ -191,6 +202,23 @@ export default function Configuracion({ darkMode, onDarkModeChange, onStateChang
           <span className="text-xs font-semibold text-red-600">Eliminar</span>
         </button>
       </Section>
+
+      <AlertDialog open={confirmDelete} onOpenChange={setConfirmDelete}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>¿Eliminar tu cuenta?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Se eliminarán todos tus datos localmente. Esta acción no se puede deshacer.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction onClick={removeAccount} className="bg-red-600 hover:bg-red-700 text-white">
+              Sí, eliminar
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

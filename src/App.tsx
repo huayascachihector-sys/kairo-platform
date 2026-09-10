@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Landing from "./pages/Landing";
 import { loadState } from "./lib/store";
+import { Toaster } from "./components/ui/toaster";
 
 const MathPractice = lazy(() => import("./pages/MathPractice"));
 const Recursos = lazy(() => import("./pages/Recursos"));
@@ -154,6 +155,7 @@ export default function App() {
 
   return (
     <Suspense fallback={<LoadingFallback />}>
+      <Toaster />
       {isStandalone ? (
         <div className={wrapperCls}>{renderPage()}</div>
       ) : (

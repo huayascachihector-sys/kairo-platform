@@ -109,7 +109,7 @@ const scholarships: Scholarship[] = [
     level: 'Pregrado',
     deadline: 'Marzo - abril',
     description: 'Beca del Ministerio de Educación del Perú para estudiantes con alto rendimiento académico y escasos recursos.',
-    requirements: ['Egresado de secundaria pública', 'Promio de 14+ en ICFES', 'Ingreso a universidad pública', 'No ser becario vigente'],
+    requirements: ['Egresado de secundaria pública', 'Promedio de 14+ en secundaria', 'Ingreso a universidad pública', 'No ser becario vigente'],
     url: 'https://www.sabe.unmsm.edu.pe/',
     highlight: true,
   },
