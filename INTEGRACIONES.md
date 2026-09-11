@@ -48,4 +48,4 @@ Microservicio FastAPI que genera video educativo en local.
 - Nunca se traspasa codigo pesado de los repos clonados a `src/lib`; solo se extraen
   patrones (edicion de video, voz, estructura de cursos).
 - Los repos de referencia quedan con clon depth-1 y sin instalacion.
-- Secretos (OPENROUTER_API_KEY) solo en `.env`; nunca en el codigo ni en el repo.
+- Secretos (GEMINI_API_KEY) solo en `.env`; nunca en el codigo ni en el repo.

@@ -73,7 +73,10 @@ Edita `.env` con los siguientes valores:
 ```env
 # Obligatorio para que el tutor de IA funcione (chat Perú e Inglés).
 # Si no se provee, las APIs devuelven un mensaje graceful 503.
-OPENROUTER_API_KEY=tu_api_key_aqui
+GEMINI_API_KEY=tu_api_key_aqui
+
+# Modelo de Gemini (opcional; por defecto gemini-2.0-flash)
+GEMINI_MODEL=gemini-2.0-flash
 
 # URL del microservicio local de generación de videos (FastAPI).
 # Es opcional; si no hay microservicio, el endpoint devuelve 502 graceful.
@@ -87,8 +90,9 @@ VIDEO_API_URL=http://localhost:8000
 DEBUG=false
 ```
 
-- `OPENROUTER_API_KEY` — clave de OpenRouter. Las APIs `/api/chat` y
-  `/api/chat-english` hacen `fetch` a `https://openrouter.ai/api/v1/chat/completions`.
+- `GEMINI_API_KEY` — clave de Google AI Studio (Gemini). Las APIs `/api/chat`,
+  `/api/chat-english` y `/api/extract-questions` llaman a
+  `https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent`.
   Sin esta clave, el chat muestra `⚠️ El servicio de IA no está configurado.` (HTTP 503)
   sin romper la app.
 - `VIDEO_API_URL` — el endpoint `/api/generar-video` proxyea a este servicio.
@@ -199,8 +203,8 @@ Los siguientes directorios pesados **no están en el repositorio** y están en
 |----------|----------------|----------|
 | `error:0308010E:digital envelope` | Node.js >= 17 con OpenSSL | `export NODE_OPTIONS=--openssl-legacy-provider` (solo si usas herramientas vieja). |
 | Port 5173 already in use | Otra instancia corriendo | Vite autoasigna el siguiente puerto disponible; revisa la consola. |
-| `OPENROUTER_API_KEY not set` | `.env` no copiado | `cp .env.example .env` y agrega la clave. |
-| Chat devuelve 503 | `OPENROUTER_API_KEY` ausente o inválida | Verifica `.env` y la clave en OpenRouter. |
+| `GEMINI_API_KEY not set` | `.env` no copiado | `cp .env.example .env` y agrega la clave. |
+| Chat devuelve 503 | `GEMINI_API_KEY` ausente o inválida | Verifica `.env` y la clave en Google AI Studio. |
 | `Cannot find module '@/...'` | Instalación incompleta o tsconfig | Ejecuta `npm ci` de nuevo. |
 | Tipos fallan (`tsc --noEmit`) | Lockfile desincronizado | `rm -rf node_modules package-lock.json && npm install`. |
 
@@ -213,7 +217,7 @@ git clone <repo>
 cd <repo>
 npm ci
 cp .env.example .env
-# Edit .env → agrega OPENROUTER_API_KEY (o déjalo vacío; funciona sin IA)
+# Edit .env → agrega GEMINI_API_KEY (o déjalo vacío; funciona sin IA)
 npm run dev
 ```
 
@@ -249,14 +253,14 @@ git push
 
 ### Notas importantes
 - `.gitignore` excluye: `.env`, `public/data/ib-questions/`, `public/videos/`, `public/avatars/`, `node_modules/`, `.output/`
-- El archivo `.env` **nunca** se sube al repo. Cada despliegue debe configurar `OPENROUTER_API_KEY`.
+- El archivo `.env` **nunca** se sube al repo. Cada despliegue debe configurar `GEMINI_API_KEY`.
 
 ### Despliegue público (recomendado: Vercel)
 
 1. Crea cuenta en [vercel.com](https://vercel.com) con OAuth de GitHub
 2. Haz clic en "New Project" → importa tu repo `kairo-platform`
 3. En Settings → Environment Variables, añade:
-   - `OPENROUTER_API_KEY` = tu clave (o déjalo vacío)
+   - `GEMINI_API_KEY` = tu clave de Google AI Studio (o déjalo vacío)
    - `VIDEO_API_URL` = `http://localhost:8000` (opcional)
 4. Haz clic en "Deploy" → obtienes una URL pública automática
 

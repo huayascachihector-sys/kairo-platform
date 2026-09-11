@@ -1,4 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  generateGeminiText,
+  hasGeminiKey,
+  type GeminiContent,
+} from "../../lib/gemini";
 
 const STANDARD_PROMPT = `Eres un extractor de preguntas de examen. Analiza el contenido proporcionado y extrae TODAS las preguntas de opción múltiple que encuentres.
 
@@ -55,8 +60,6 @@ Ejemplo de formato:
 
 Si el contenido del curso no contiene preguntas de opción múltiple reconocibles, responde con un array vacío [].`;
 
-const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "deepseek/deepseek-chat-v3-0324:free";
-
 export const Route = createFileRoute("/api/extract-questions")({
   server: {
     handlers: {
@@ -64,7 +67,7 @@ export const Route = createFileRoute("/api/extract-questions")({
         const body = (await request.json().catch(() => ({}))) as {
           text?: string;
           sourceName?: string;
-          mode?: 'standard' | 'ib';
+          mode?: "standard" | "ib";
         };
 
         const text = body.text?.trim();
@@ -75,67 +78,59 @@ export const Route = createFileRoute("/api/extract-questions")({
           );
         }
 
-        const apiKey = process.env.OPENROUTER_API_KEY || "";
-        if (!apiKey) {
+        if (!hasGeminiKey()) {
           return Response.json(
             { error: "⚠️ El servicio de IA no está configurado.", questions: [] },
             { status: 503 }
           );
         }
 
-        const truncated = text.length > 80000 ? text.slice(0, 80000) + "\n\n[... contenido truncado por límite de tamaño]" : text;
+        const truncated =
+          text.length > 80000
+            ? text.slice(0, 80000) + "\n\n[... contenido truncado por límite de tamaño]"
+            : text;
 
-        const prompt = body.mode === 'ib' ? IB_PROMPT : STANDARD_PROMPT;
+        const prompt = body.mode === "ib" ? IB_PROMPT : STANDARD_PROMPT;
+
+        const contents: GeminiContent[] = [
+          {
+            role: "user",
+            parts: [
+              {
+                text: `Extrae todas las preguntas del siguiente contenido de ${
+                  body.mode === "ib" ? "examen IB" : "examen"
+                }:\n\n${truncated}`,
+              },
+            ],
+          },
+        ];
 
         try {
-          const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": `Bearer ${apiKey}`,
-              "HTTP-Referer": "https://kairoedu.vercel.app",
-              "X-Title": "KAIRO Question Extractor",
-            },
-            body: JSON.stringify({
-              model: OPENROUTER_MODEL,
-              messages: [
-                { role: "system", content: prompt },
-                {
-                  role: "user",
-                  content: `Extrae todas las preguntas del siguiente contenido de ${body.mode === 'ib' ? 'examen IB' : 'examen'}:\n\n${truncated}`,
-                },
-              ],
-              max_tokens: 8192,
-              temperature: 0.1,
-              top_p: 0.95,
-            }),
+          const result = await generateGeminiText({
+            systemInstruction: prompt,
+            contents,
+            temperature: 0.1,
+            maxOutputTokens: 8192,
+            topP: 0.95,
+            responseMimeType: "application/json",
           });
 
-          if (res.status === 429) {
+          if (result.status === 429) {
             return Response.json({ error: "quota_exceeded", questions: [] }, { status: 429 });
           }
-          if (res.status === 402) {
-            return Response.json({ error: "credits_exhausted", questions: [] }, { status: 402 });
-          }
-          if (!res.ok) {
-            const detail = await res.text();
-            console.error("[api/extract-questions] error", res.status, detail);
-            return Response.json({ error: `gateway_error_${res.status}`, questions: [] }, { status: 500 });
-          }
-
-          const data = (await res.json()) as {
-            choices?: Array<{ message?: { content?: string } }>;
-          };
-          const raw = data.choices?.[0]?.message?.content ?? "";
-
-          if (!raw || raw.trim().length === 0) {
+          if (result.status !== 200 || !result.text.trim()) {
             return Response.json(
-              { error: "No se recibió respuesta del extractor", questions: [] },
-              { status: 500 }
+              {
+                error: result.status !== 200
+                  ? `gateway_error_${result.status}`
+                  : "No se recibió respuesta del extractor",
+                questions: [],
+              },
+              { status: result.status !== 200 ? 500 : 500 }
             );
           }
 
-          let cleaned = raw.trim();
+          let cleaned = result.text.trim();
           if (cleaned.startsWith("```")) {
             cleaned = cleaned.replace(/```(?:json)?\s*/g, "").trim();
           }

@@ -1,4 +1,4 @@
-﻿import { useState, useMemo, useCallback, useRef } from "react";
+import { useState, useMemo, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, Zap, BookOpen, Lock, Sparkles, CheckCircle2 } from "lucide-react";
 import {
@@ -6,6 +6,7 @@ import {
   getTotalLessons,
   getModules,
   getLessonVideoUrl,
+  getModuloVideo,
   getLessonRepasoVideos,
   getPracticaExercises,
   FASES,
@@ -34,13 +35,10 @@ interface Props {
   courseId: string;
   onBack: () => void;
   onStateChange: () => void;
-  onPracticeEnglish?: (ctx: { topic: string; context: string }) => void;
 }
 
 type View = "course" | "phase";
 type Phase = "teoria" | "practica" | "ia" | "prueba";
-
-const PHASES: Phase[] = ["teoria", "practica", "ia", "prueba"];
 
 export default function CursoViewer({ courseId, onBack, onStateChange }: Props) {
   const course = getCourse(courseId);
@@ -300,7 +298,9 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
     // ── FASE 1: TEORÍA (video + markdown por lección) ──────────────
     if (phase === "teoria") {
       const leccion = activeModule.lessons[leccionIdx];
-      const videoUrl = leccion ? getLessonVideoUrl(courseId, leccion) : undefined;
+      const videoUrl = leccion
+        ? getLessonVideoUrl(courseId, leccion) ?? getModuloVideo(courseId, activeModule)
+        : undefined;
       const leccionMark = leccion?.content || "";
       const esUltima = leccionIdx >= activeModule.lessons.length - 1;
 
@@ -328,28 +328,47 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
                     <CheckCircle2 size={10} /> Lección vista
                   </span>
                 )}
-                {videoUrl && (
-                  <span className="text-[10px] text-surface-500 px-2 py-1 rounded-full bg-white/5 border border-white/10">
-                    {leccion.duration}
+                {videoUrl ? (
+                  <span className="text-[10px] text-surface-400 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1 font-medium">
+                    📺 Video {leccion.duration}
+                  </span>
+                ) : (
+                  <span className="text-[10px] text-amber-300 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center gap-1 font-medium">
+                    📖 Lectura interactiva
                   </span>
                 )}
               </div>
 
-              {videoUrl && (
+              {videoUrl ? (
                 <VideoPlayer
                   videoUrl={videoUrl}
                   onComplete={() => {
                     setWatchedLessons((w) => (w.includes(leccionIdx) ? w : [...w, leccionIdx]));
                     if (esUltima && !teoriaCompletedRef.current) {
                       setTimeout(() => {
-                        completePhase("teoria", 20);
+                        completePhase("teoria", 25);
                         teoriaCompletedRef.current = true;
                         setLeccionIdx(0);
                         advance("practica");
-                      }, 800);
+                      }, 400);
                     }
                   }}
                 />
+              ) : (
+                <div className="bg-gradient-to-r from-primary-950/40 via-surface-900 to-accent-950/30 rounded-2xl border border-white/10 p-5 mb-4 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-primary-500/20 border border-primary-500/30 flex items-center justify-center text-primary-300 text-lg">
+                      📖
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-white">Concepto y Fundamentos</p>
+                      <p className="text-xs text-surface-400">Lee los conceptos clave antes de comenzar los ejercicios guiados.</p>
+                    </div>
+                  </div>
+                  <span className="text-[11px] text-surface-400 bg-white/5 px-2.5 py-1 rounded-lg border border-white/10">
+                    {leccion.duration}
+                  </span>
+                </div>
               )}
 
               {leccion && getLessonRepasoVideos(leccion) && (
@@ -502,6 +521,7 @@ export default function CursoViewer({ courseId, onBack, onStateChange }: Props) 
               exercise={q}
               index={currentEx}
               total={practica.length}
+              subject={course.title}
               onNext={handleAnswer}
             />
           </AnimatePresence>
