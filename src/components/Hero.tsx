@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion';
 import {
   ArrowRight,
   Zap,
@@ -80,13 +80,13 @@ function useTilt() {
   const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), { stiffness: 200, damping: 30 });
   const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), { stiffness: 200, damping: 30 });
 
-  const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouse = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     x.set((e.clientX - rect.left) / rect.width - 0.5);
     y.set((e.clientY - rect.top) / rect.height - 0.5);
-  };
-  const reset = () => { x.set(0); y.set(0); };
+  }, [x, y]);
+  const reset = useCallback(() => { x.set(0); y.set(0); }, [x, y]);
 
   return { ref, rotateX, rotateY, handleMouse, reset };
 }
@@ -94,15 +94,18 @@ function useTilt() {
 /* ─────────────────────────────────────────────
    PARTICLE BACKGROUND
 ───────────────────────────────────────────── */
-function ParticleField() {
-  const particles = Array.from({ length: 28 }, (_, i) => ({
+const ParticleField = React.memo(function ParticleField() {
+  const prefersReducedMotion = useReducedMotion();
+  const particles = useMemo(() => Array.from({ length: 28 }, (_, i) => ({
     id: i,
     left: `${(i * 37) % 100}%`,
     top: `${(i * 53) % 100}%`,
     duration: 4 + (i % 6),
     delay: (i * 0.4) % 4,
     size: i % 3 === 0 ? 2 : 1,
-  }));
+  })), []);
+
+  if (prefersReducedMotion) return null;
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -117,7 +120,7 @@ function ParticleField() {
       ))}
     </div>
   );
-}
+});
 
 /* ─────────────────────────────────────────────
    NEURAL ENGINE MOCK CARD
@@ -164,10 +167,14 @@ function NeuralEngineCard() {
         </div>
 
         {/* Tabs */}
-        <div className="flex border-b border-white/5" style={{ background: 'rgba(5,8,20,0.5)' }}>
+        <div className="flex border-b border-white/5" style={{ background: 'rgba(5,8,20,0.5)' }} role="tablist" aria-label="Demo sections">
           {TABS.map((tab) => (
             <button
               key={tab.id}
+              role="tab"
+              aria-selected={activeTab === tab.id}
+              aria-controls={`tabpanel-${tab.id}`}
+              id={`tab-${tab.id}`}
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 py-2.5 px-3 text-[11px] sm:text-xs font-semibold transition-all border-b-2 flex items-center justify-center gap-1.5 ${
                 activeTab === tab.id
@@ -183,7 +190,7 @@ function NeuralEngineCard() {
         </div>
 
         {/* Content */}
-        <div className="p-5 md:p-6 grid md:grid-cols-3 gap-5">
+        <div className="p-5 md:p-6 grid md:grid-cols-3 gap-5" role="tabpanel" id={`tabpanel-${activeTab}`} aria-labelledby={`tab-${activeTab}`}>
           {/* Left: main demo */}
           <div className="md:col-span-2">
             <AnimatePresence mode="wait">
@@ -387,11 +394,13 @@ function NeuralEngineCard() {
    MAIN HERO
 ───────────────────────────────────────────── */
 export default function Hero() {
-  const fadeUp = (delay = 0) => ({
+  const prefersReducedMotion = useReducedMotion();
+
+  const fadeUp = useCallback((delay = 0) => ({
     initial: { opacity: 0, y: 28 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.65, delay, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
-  });
+    transition: { duration: prefersReducedMotion ? 0 : 0.65, delay, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
+  }), [prefersReducedMotion]);
 
   return (
     <section
@@ -400,24 +409,28 @@ export default function Hero() {
       style={{ background: 'linear-gradient(160deg, #090D16 0%, #0F172A 60%, #090D16 100%)' }}
     >
       {/* Animated background orbs */}
-      <motion.div
-        animate={{ x: [0, 50, 0], y: [0, -40, 0], scale: [1, 1.15, 1] }}
-        transition={{ duration: 13, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(0,242,254,0.12) 0%, transparent 70%)' }}
-      />
-      <motion.div
-        animate={{ x: [0, -40, 0], y: [0, 50, 0], scale: [1, 1.2, 1] }}
-        transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(121,40,202,0.18) 0%, transparent 70%)' }}
-      />
-      <motion.div
-        animate={{ scale: [1, 1.1, 1], opacity: [0.08, 0.15, 0.08] }}
-        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(255,0,122,0.08) 0%, transparent 65%)' }}
-      />
+      {!prefersReducedMotion && (
+        <>
+          <motion.div
+            animate={{ x: [0, 50, 0], y: [0, -40, 0], scale: [1, 1.15, 1] }}
+            transition={{ duration: 13, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(0,242,254,0.12) 0%, transparent 70%)' }}
+          />
+          <motion.div
+            animate={{ x: [0, -40, 0], y: [0, 50, 0], scale: [1, 1.2, 1] }}
+            transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(121,40,202,0.18) 0%, transparent 70%)' }}
+          />
+          <motion.div
+            animate={{ scale: [1, 1.1, 1], opacity: [0.08, 0.15, 0.08] }}
+            transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(255,0,122,0.08) 0%, transparent 65%)' }}
+          />
+        </>
+      )}
 
       {/* Grid pattern */}
       <div
@@ -536,13 +549,8 @@ export default function Hero() {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-5">
                   {METRICS.map((m) => (
                     <div key={m.label} className="flex flex-col items-center text-center gap-1">
-                      <div
-                        className="w-9 h-9 rounded-xl flex items-center justify-center mb-1"
-                        style={{ background: `linear-gradient(135deg, var(--tw-gradient-stops))` }}
-                      >
-                        <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${m.color} flex items-center justify-center`}>
-                          <m.icon className="w-4 h-4 text-white" />
-                        </div>
+                      <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${m.color} flex items-center justify-center mb-1`}>
+                        <m.icon className="w-4 h-4 text-white" />
                       </div>
                       <span className="text-lg font-extrabold text-white leading-none">{m.label}</span>
                       <span className="text-[10px] text-slate-500">{m.sub}</span>

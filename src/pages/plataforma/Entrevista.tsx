@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare, Mic, Video, Clock, CheckCircle2, AlertCircle, RefreshCw, Star, ArrowLeft, ClipboardList, HelpCircle, AlertTriangle, Send } from 'lucide-react';
 import { markFlag } from '../../lib/store';
+import { getAIResponse } from '../../lib/aiEngine';
 
 interface EntrevistaProps {
   onNavigate: (view: string) => void;
@@ -86,6 +87,20 @@ const BASE_QUESTIONS = [
   },
 ];
 
+const INTERVIEW_COACH_PROMPT = `Eres un entrevistador virtual experto en admisión universitaria para estudiantes de Perú (UNI, UNMSM, PUCP, etc.).
+Debes evaluar las respuestas del estudiante y llevar la conversación como una entrevista real de admisión.
+
+Instrucciones:
+- Si el estudiante acaba de RESPONDER una pregunta de la entrevista: da un feedback breve y constructivo en español (2-3 oraciones: qué hizo bien y qué mejorar), y luego hazle la SIGUIENTE pregunta de entrevista adecuada y natural, conectada con su respuesta anterior.
+- Si el estudiante hace una DUDA o comentario fuera de la respuesta: respóndele de forma útil y motivadora, y luego reanuda la entrevista con una pregunta.
+- Sé cercano, motivador y profesional. Respuestas claras y directas, sin markdown pesado.
+- Preguntas modelo de referencia (úsalas o varía con preguntas similares): 
+  1. "¿Por qué quieres estudiar esta carrera?"
+  2. "¿Cuáles son tus fortalezas principales?"
+  3. "¿Cómo te preparas para exámenes?"
+  4. "¿Qué harás en los próximos 5 años?"
+  5. "¿Tienes alguna pregunta para nosotros?"`;
+
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -95,18 +110,17 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-function aiFeedback(answer: string): string {
-  const words = answer.trim().split(/\s+/).length;
-  if (words < 10) {
-    return 'Tu respuesta es muy corta. Los entrevistadores esperan al menos 2-3 oraciones desarrolladas. Intenta incluir un ejemplo concreto.';
+async function evaluateAnswerWithGemini(answer: string, question: string): Promise<string> {
+  const response = await getAIResponse(
+    `Eres un evaluador de entrevistas de admisión universitaria para estudiantes peruanos. \n` +
+      `Pregunta de la entrevista: "${question}"\n` +
+      `Respuesta del estudiante: "${answer}"\n\n` +
+      `Da un feedback breve (2-3 oraciones) en español: qué hizo bien, qué mejorar, y una recomendación concreta para una entrevista real. Sin markdown pesado.`
+  );
+  if (response.startsWith('⚠️') || response.startsWith('⏳')) {
+    throw new Error(response);
   }
-  if (answer.toLowerCase().includes('no sé') || answer.toLowerCase().includes('no se')) {
-    return 'Evita decir "no sé" directamente. En su lugar, di "No tengo esa información todavía, pero me gustaría aprender sobre...".';
-  }
-  if (words < 30) {
-    return 'Buen inicio. Puedes expandir tu respuesta con ejemplos concretos de tu experiencia: los entrevistadores valoran historias reales.';
-  }
-  return 'Excelente respuesta. Incluiste elementos clave y mostraste pensamiento claro. Para destacar más, menciona algo específico de la universidad o carrera.';
+  return response;
 }
 
 export default function Entrevista({ onNavigate }: EntrevistaProps) {
@@ -121,18 +135,32 @@ export default function Entrevista({ onNavigate }: EntrevistaProps) {
   const [aiStarted, setAiStarted] = useState(false);
   const [aiMsgs, setAiMsgs] = useState<{ role: 'ai' | 'user'; text: string }[]>([]);
   const [aiStep, setAiStep] = useState(0);
+  const [aiBusy, setAiBusy] = useState(false);
+  const [feedbackBusy, setFeedbackBusy] = useState(false);
+  const [aiError, setAiError] = useState('');
 
   const nextQuestion = () => {
     setQuestionIdx((prev) => (prev + 1) % questions.length);
     setUserAnswer('');
     setFeedback('');
     setShowFeedback(false);
+    setAiError('');
   };
 
-  const checkAnswer = () => {
+  const checkAnswer = async () => {
     setShowFeedback(true);
-    setFeedback(aiFeedback(userAnswer));
-    markFlag("interview_done");
+    setFeedbackBusy(true);
+    setFeedback('');
+    setAiError('');
+    try {
+      const result = await evaluateAnswerWithGemini(userAnswer, questions[questionIdx].question);
+      setFeedback(result);
+      markFlag("interview_done");
+    } catch (err) {
+      setAiError(err instanceof Error ? err.message : 'No se pudo conectar con el asistente IA.');
+    } finally {
+      setFeedbackBusy(false);
+    }
   };
 
   const newQuestions = () => {
@@ -141,6 +169,7 @@ export default function Entrevista({ onNavigate }: EntrevistaProps) {
     setUserAnswer('');
     setFeedback('');
     setShowFeedback(false);
+    setAiError('');
   };
 
   const startAiTutor = () => {
@@ -153,13 +182,27 @@ export default function Entrevista({ onNavigate }: EntrevistaProps) {
     ]);
   };
 
-  const sendAiMessage = (text: string) => {
-    const reply =
-      aiStep % 2 === 1
-        ? aiFeedback(text)
-        : questions[(aiStep / 2) % questions.length]?.question;
-    setAiMsgs((prev) => [...prev, { role: 'user', text }, { role: 'ai', text: reply }]);
-    setAiStep((s) => s + 1);
+  const sendAiMessage = async (text: string) => {
+    if (aiBusy) return;
+    setAiBusy(true);
+    setAiError('');
+    const history = aiMsgs.map((m) => ({
+      role: m.role === 'user' ? 'user' as const : 'model' as const,
+      text: m.text,
+    }));
+    setAiMsgs((prev) => [...prev, { role: 'user', text }]);
+    try {
+      const response = await getAIResponse(
+        `${INTERVIEW_COACH_PROMPT}\n\nMensaje del estudiante: "${text}"\n\nContinúa la entrevista según las instrucciones.`,
+        history
+      );
+      setAiMsgs((prev) => [...prev, { role: 'ai', text: response }]);
+      setAiStep((s) => s + 1);
+    } catch (err) {
+      setAiError(err instanceof Error ? err.message : 'No se pudo conectar con el asistente IA.');
+    } finally {
+      setAiBusy(false);
+    }
   };
 
   return (
@@ -233,9 +276,9 @@ export default function Entrevista({ onNavigate }: EntrevistaProps) {
         />
 
         <div className="flex items-center gap-3 mt-4 flex-wrap">
-          <button onClick={checkAnswer} disabled={!userAnswer.trim()}
+          <button onClick={checkAnswer} disabled={!userAnswer.trim() || feedbackBusy}
             className="bg-white text-primary-700 font-bold text-sm px-6 py-3 rounded-xl hover:bg-primary-50 transition-all disabled:opacity-40 disabled:cursor-not-allowed">
-            Ver feedback
+            {feedbackBusy ? 'Analizando...' : 'Ver feedback'}
           </button>
           <button onClick={nextQuestion}
             className="bg-white/15 text-white font-semibold text-sm px-5 py-3 rounded-xl hover:bg-white/25 transition-all">
@@ -243,10 +286,20 @@ export default function Entrevista({ onNavigate }: EntrevistaProps) {
           </button>
         </div>
 
+        {aiError && (
+          <p className="mt-4 flex items-center gap-2 text-xs bg-red-500/20 text-white px-4 py-2 rounded-xl">
+            <AlertCircle className="w-4 h-4" /> {aiError}
+          </p>
+        )}
+
         {showFeedback && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             className="mt-4 bg-white/20 backdrop-blur-sm rounded-xl p-4">
-            <p className="text-sm leading-relaxed">{feedback}</p>
+            {feedbackBusy ? (
+              <p className="text-sm text-white/80">El entrevistador está analizando tu respuesta...</p>
+            ) : (
+              <p className="text-sm leading-relaxed">{feedback}</p>
+            )}
           </motion.div>
         )}
 
@@ -299,10 +352,17 @@ export default function Entrevista({ onNavigate }: EntrevistaProps) {
                 </div>
               ))}
             </div>
+            {aiBusy && (
+              <div className="text-right">
+                <p className="text-xs text-surface-400 inline-flex items-center gap-1.5">
+                  <AlertCircle className="w-3.5 h-3.5 animate-pulse" /> El entrevistador está escribiendo...
+                </p>
+              </div>
+            )}
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                if (!aiInput.trim()) return;
+                if (!aiInput.trim() || aiBusy) return;
                 sendAiMessage(aiInput.trim());
                 setAiInput('');
               }}
@@ -312,9 +372,10 @@ export default function Entrevista({ onNavigate }: EntrevistaProps) {
                 value={aiInput}
                 onChange={(e) => setAiInput(e.target.value)}
                 placeholder={aiStep % 2 === 1 ? 'Tu respuesta...' : '¿Alguna duda? Continúa...'}
-                className="flex-1 px-4 py-3 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-800 dark:text-white placeholder-surface-400 text-sm outline-none focus:border-primary-400"
+                disabled={aiBusy}
+                className="flex-1 px-4 py-3 rounded-xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-800 text-surface-800 dark:text-white placeholder-surface-400 text-sm outline-none focus:border-primary-400 disabled:opacity-50"
               />
-              <button type="submit" className="bg-primary-600 text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-primary-700 transition-colors flex items-center gap-2">
+              <button type="submit" disabled={aiBusy} className="bg-primary-600 text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-primary-700 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
                 <Send className="w-4 h-4" /> Enviar
               </button>
             </form>

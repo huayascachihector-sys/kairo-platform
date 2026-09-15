@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Compass, Sparkles, ChevronRight, ChevronLeft, RefreshCw, BookOpen, Briefcase, GraduationCap, ArrowLeft, Loader as Loader2, Wrench, Microscope, Palette, Handshake, Briefcase as BriefcaseIcon, BarChart3, Settings, Heart, Landmark, Brain, Scale, Palette as PaletteIcon, Monitor, Globe, Dna, Megaphone, Star } from 'lucide-react';
+import { Compass, Sparkles, ChevronRight, ChevronLeft, RefreshCw, BookOpen, Briefcase, GraduationCap, ArrowLeft, Loader as Loader2, Wrench, Microscope, Palette, Handshake, Briefcase as BriefcaseIcon, BarChart3, Settings, Heart, Landmark, Brain, Scale, Palette as PaletteIcon, Monitor, Globe, Dna, Megaphone, Star, AlertCircle } from 'lucide-react';
 import { type StoreState, saveVocationalResult } from '../../lib/store';
 import {
   VOCATIONAL_QUESTIONS, RIASEC_LABELS, CAREERS,
@@ -52,6 +52,7 @@ export default function Carreras({ state, onStateChange }: Props) {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [detail, setDetail] = useState<string | null>(null);
+  const [aiError, setAiError] = useState('');
 
   const totalQ = VOCATIONAL_QUESTIONS.length;
   const current = VOCATIONAL_QUESTIONS[step];
@@ -84,9 +85,14 @@ export default function Carreras({ state, onStateChange }: Props) {
 
     let aiSummary = '';
     try {
-      aiSummary = await getAIResponse(prompt, []);
-    } catch {
-      aiSummary = 'No pudimos generar tu resumen personalizado en este momento, pero tus resultados y carreras recomendadas están listos abajo.';
+      const res = await getAIResponse(prompt, []);
+      if (!res.trim() || res.startsWith('⚠️') || res.startsWith('⏳')) {
+        throw new Error(res || 'sin respuesta de IA');
+      }
+      aiSummary = res;
+    } catch (err) {
+      console.error('[Carreras] Error al generar resumen IA:', err);
+      setAiError('No se pudo generar el resumen personalizado de IA en este momento.');
     }
 
     saveVocationalResult({
@@ -104,6 +110,7 @@ export default function Carreras({ state, onStateChange }: Props) {
     setAnswers({});
     setStep(0);
     setStage('quiz');
+    setAiError('');
   };
 
   // ── Detalle de una carrera ──────────────────────────────────────────────
@@ -331,7 +338,13 @@ export default function Carreras({ state, onStateChange }: Props) {
 
       <div className="bg-gradient-to-br from-primary-600 to-accent-500 rounded-2xl p-6 text-white">
         <h2 className="text-sm font-bold flex items-center gap-2 mb-2"><Sparkles className="w-4 h-4" /> Tu perfil, según la IA</h2>
-        <p className="text-sm leading-relaxed opacity-95 whitespace-pre-line">{result.aiSummary}</p>
+        {result.aiSummary ? (
+          <p className="text-sm leading-relaxed opacity-95 whitespace-pre-line">{result.aiSummary}</p>
+        ) : (
+          <p className="text-sm leading-relaxed opacity-95 flex items-center gap-2">
+            <AlertCircle className="w-4 h-4" /> {aiError || 'El resumen de IA no está disponible.'}
+          </p>
+        )}
       </div>
 
       <div className="grid grid-cols-3 md:grid-cols-6 gap-3">

@@ -1,3 +1,8 @@
+import {
+  generateGeminiText,
+  type GeminiContent,
+} from '../../lib/gemini';
+
 interface CorreccionPronunciacion {
   textoGrabado: string;
   transcripcion: string;
@@ -22,53 +27,68 @@ interface RoleplayResponse {
   followUp: string;
 }
 
+function extraerJson(texto: string): unknown {
+  const limpio = texto.replace(/```(?:json)?\s*/g, '').trim();
+  const match = limpio.match(/\{[\s\S]*\}|\[[\s\S]*\]/);
+  return match ? JSON.parse(match[0]) : JSON.parse(limpio);
+}
+
 export class IAOrchestrator {
   private apiKey: string;
-  private baseUrl: string;
 
   constructor(apiKey: string) {
-    this.apiKey = apiKey;
-    this.baseUrl = 'https://api.openai.com/v1';
+    this.apiKey =
+      apiKey ||
+      (typeof process !== 'undefined' && process.env && process.env.GEMINI_API_KEY
+        ? process.env.GEMINI_API_KEY
+        : '');
   }
 
-  async corregirPronunciacion(audioBase64: string): Promise<CorreccionPronunciacion> {
-    try {
-      const response = await fetch(`${this.baseUrl}/audio/transcriptions`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
-        },
-        body: JSON.stringify({
-          file: audioBase64,
-          model: 'whisper-1',
-          language: 'en',
-        }),
-      });
+  async corregirPronunciacion(
+    audioBase64: string,
+    mimeType = 'audio/webm'
+  ): Promise<CorreccionPronunciacion> {
+    const systemInstruction = `Eres Coach Spark, un coach de pronunciación de inglés para niños de 6-10 años.
+Escucha el audio del niño e:
+1. Transcribe exactamente lo que dijo en inglés.
+2. Da un feedback positivo breve, cariñoso y específico en español.
+3. Da una sugerencia de mejora práctica y divertida en español.
+Responde ÚNICAMENTE con JSON válido:
+{"transcripcion": "...", "feedbackPositivo": "...", "sugerenciaMejora": "..."}
+Sin markdown, sin texto adicional.`;
 
-      const transcripcion = await response.json();
+    const contents: GeminiContent[] = [
+      {
+        role: 'user',
+        parts: [
+          { text: 'Transcribe y corrige la pronunciación del siguiente audio de inglés del estudiante:' },
+          { inlineData: { mimeType, data: audioBase64 } },
+        ],
+      },
+    ];
 
-      const feedbackPositivo = await this.generarFeedbackPositivo(transcripcion.text);
-      const errores = await this.analizarErrores(transcripcion.text);
+    const result = await this.llamar(systemInstruction, contents);
+    const parsed = extraerJson(result.text) as {
+      transcripcion?: string;
+      feedbackPositivo?: string;
+      sugerenciaMejora?: string;
+    };
 
-      return {
-        textoGrabado: transcripcion.text,
-        transcripcion: transcripcion.text,
-        erroresFoneticos: errores,
-        puntuacionFluidez: this.calcularFluidez(transcripcion.text),
-        feedbackPositivo,
-        sugerenciaMejora: this.generarSugerenciaMejora(errores),
-      };
-    } catch (error) {
-      console.error('Error en corrección de pronunciación:', error);
-      return {
-        textoGrabado: '',
-        transcripcion: '',
-        erroresFoneticos: [],
-        puntuacionFluidez: 0,
-        feedbackPositivo: '¡Muy bien intentado!',
-        sugerenciaMejora: '¡Sigue practicando!',
-      };
+    const transcripcion = (parsed?.transcripcion || '').trim();
+    if (typeof parsed?.feedbackPositivo !== 'string') {
+      throw new Error('La respuesta de Gemini no tiene el formato esperado');
     }
+
+    const errores = this.analizarErrores(transcripcion);
+
+    return {
+      textoGrabado: transcripcion,
+      transcripcion,
+      erroresFoneticos: errores,
+      puntuacionFluidez: this.calcularFluidez(transcripcion),
+      feedbackPositivo: parsed.feedbackPositivo,
+      sugerenciaMejora: parsed.sugerenciaMejora || this.generarSugerenciaMejora(errores),
+    };
   }
 
   async roleplay(
@@ -76,60 +96,36 @@ export class IAOrchestrator {
     personalidad: 'curioso' | 'divertido' | 'valiente' | 'sabio',
     mensajeUsuario: string
   ): Promise<RoleplayResponse> {
-    const systemPrompt = `Eres un NPC amigable en un juego de inglés para niños. 
-    Tu personalidad es: ${personalidad}. 
-    El contexto es: ${contexto}.
-    Mantén las respuestas cortas y adaptadas a niños de 6-10 años.
-    Usa el humor de forma natural y apropiada.`;
+    const systemInstruction = `Eres un NPC amigable en un juego de inglés para niños.
+Tu personalidad es: ${personalidad}.
+El contexto es: ${contexto}.
+Mantén las respuestas cortas y adaptadas a niños de 6-10 años.
+Usa el humor de forma natural y apropiada.
+Responde ÚNICAMENTE con JSON válido:
+{"respuesta": "tu respuesta breve en inglés de forma natural", "followUp": "una pregunta corta en inglés para que el niño siga hablando"}
+Sin markdown, sin texto adicional.`;
 
-    try {
-      const response = await fetch(`${this.baseUrl}/chat/completions`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${this.apiKey}`,
-        },
-        body: JSON.stringify({
-          model: 'gpt-4o-mini',
-          messages: [
-            { role: 'system', content: systemPrompt },
-            { role: 'user', content: mensajeUsuario },
-          ],
-          temperature: 0.7,
-          max_tokens: 150,
-        }),
-      });
-
-      const data = await response.json();
-
-      return {
-        npcName: 'Coach Spark',
-        npcPersonality: personalidad,
-        contexto,
-        respuesta: data.choices[0]?.message?.content || '¡Genial!',
-        followUp: '¿Quieres intentarlo otra vez?',
-      };
-    } catch (error) {
-      console.error('Error en roleplay:', error);
-      return {
-        npcName: 'Coach Spark',
-        npcPersonality: personalidad,
-        contexto,
-        respuesta: '¡Muy bien!',
-        followUp: '¿Listo para el siguiente reto?',
-      };
-    }
-  }
-
-  private async generarFeedbackPositivo(texto: string): Promise<string> {
-    const respuestas = [
-      '¡Excelente pronunciación!',
-      '¡Muy creativo!',
-      '¡Te la pasas de campeón!',
-      '¡Fantástico!',
-      '¡Así se hace!',
+    const contents: GeminiContent[] = [
+      { role: 'user', parts: [{ text: mensajeUsuario }] },
     ];
-    return respuestas[Math.floor(Math.random() * respuestas.length)];
+
+    const result = await this.llamar(systemInstruction, contents);
+    const parsed = extraerJson(result.text) as {
+      respuesta?: string;
+      followUp?: string;
+    };
+
+    if (typeof parsed?.respuesta !== 'string') {
+      throw new Error('La respuesta de Gemini no tiene el formato esperado');
+    }
+
+    return {
+      npcName: 'Coach Spark',
+      npcPersonality: personalidad,
+      contexto,
+      respuesta: parsed.respuesta,
+      followUp: parsed.followUp || '',
+    };
   }
 
   private calcularFluidez(texto: string): number {
@@ -139,13 +135,13 @@ export class IAOrchestrator {
     return 0.9;
   }
 
-  private async analizarErrores(texto: string): Promise<ErrorFonetico[]> {
+  private analizarErrores(texto: string): ErrorFonetico[] {
     const erroresComunes: ErrorFonetico[] = [];
 
     const fonemasProblematicos = ['f', 'v', 'th', 'r', 'l', 's', 'z'];
 
     for (const fonema of fonemasProblematicos) {
-      if (texto.toLowerCase().includes(fonema)) {
+      if (/^[a-z]+$/.test(fonema) && texto.toLowerCase().includes(fonema)) {
         erroresComunes.push({
           palabra: fonema,
           fonemaCorrecto: fonema,
@@ -190,5 +186,27 @@ export class IAOrchestrator {
       s: ' Mantenga los dientes separados y sople suavemente.',
     };
     return sugerencias[fonema] || '';
+  }
+
+  private async llamar(
+    systemInstruction: string,
+    contents: GeminiContent[]
+  ): Promise<{ status: number; text: string }> {
+    if (!this.apiKey) {
+      throw new Error('El servicio de IA no está configurado (GEMINI_API_KEY)');
+    }
+
+    const result = await generateGeminiText({
+      systemInstruction,
+      contents,
+      temperature: 0.7,
+      maxOutputTokens: 512,
+      responseMimeType: 'application/json',
+    });
+
+    if (result.status !== 200 || !result.text.trim()) {
+      throw new Error(`Gemini no respondió (status ${result.status})`);
+    }
+    return result;
   }
 }

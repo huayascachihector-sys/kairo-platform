@@ -176,9 +176,17 @@ Termina con "3 acciones para subir de puntaje" en lista numerada.`;
 
     try {
       const out = await getAIResponse(message);
-      setFeedback(out);
+      if (!out.startsWith('⚠️') && !out.startsWith('⏳')) {
+        setFeedback(out);
+      } else {
+        throw new Error(out);
+      }
       const m = out.match(/PUNTAJE:\s*(\d+(?:\.\d+)?)\s*\/\s*30/i);
-      const scaled = m ? Math.round(parseFloat(m[1])) : Math.min(30, Math.round(words / 8));
+      if (!m) {
+        setError('El evaluador IA no devolvió un puntaje en el formato esperado. Reintenta.');
+        return;
+      }
+      const scaled = Math.round(parseFloat(m[1]));
       recordExamAttempt({
         exam: 'toefl', section: skill, mode: 'practica',
         score: Math.round((scaled / 30) * 100), scaledScore: scaled,
@@ -187,7 +195,7 @@ Termina con "3 acciones para subir de puntaje" en lista numerada.`;
       onStateChange();
       setPhase('idle');
     } catch {
-      setError('Error al obtener el feedback del asistente IA.');
+      setError('No se pudo obtener el feedback del evaluador IA. Verifica tu conexión e inténtalo de nuevo.');
     } finally {
       setLoading(false);
     }

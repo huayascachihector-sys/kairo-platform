@@ -190,14 +190,15 @@ export function getTheoryMarkdown(modulo: Module): string {
 }
 
 export function getModuloVideo(courseId: string, modulo: Module): string | undefined {
-  // Sobrescribe con la ruta explícita si se indica; si no, deriva la convención
-  // /videos/<curso>/<módulo>.mp4 (el MP4 lo genera el admin localmente y se
-  // coloca en public/videos/ para servirlo estático).
   const explicito = modulo.teoria?.videoUrl;
   if (explicito && explicito.trim().length > 0) return explicito;
-  const idLimpio = courseId.replace(/[^a-zA-Z0-9-]/g, "") || "curso";
-  const modLimpio = modulo.id.replace(/[^a-zA-Z0-9-]/g, "");
-  return `/videos/${idLimpio}/${modLimpio}.mp4`;
+  // If first lesson has a curated video, use that as modulo video
+  const firstLesson = modulo.lessons[0];
+  if (firstLesson) {
+    const fromLesson = getLessonVideoUrl(courseId, firstLesson);
+    if (fromLesson) return fromLesson;
+  }
+  return undefined;
 }
 
 export function getLessonVideoUrl(courseId: string, lesson: Lesson): string | undefined {
@@ -205,13 +206,12 @@ export function getLessonVideoUrl(courseId: string, lesson: Lesson): string | un
   const curated = VIDEO_LIBRARY[lesson.id];
   if (curated?.videoId) return `https://www.youtube.com/watch?v=${curated.videoId}`;
 
-  // 2. Fallback: deriva la ruta al MP4 local (/videos/<curso>/<lección>.mp4)
+  // 2. Si la lección tiene URL explícita de video
   const explicito = lesson.videoUrl;
   if (explicito && explicito.trim().length > 0) return explicito;
 
-  const idLimpio = courseId.replace(/[^a-zA-Z0-9-]/g, "") || "curso";
-  const lecLimpio = lesson.id.replace(/[^a-zA-Z0-9-]/g, "");
-  return `/videos/${idLimpio}/${lecLimpio}.mp4`;
+  // 3. No generar rutas locales ficticias si no existen
+  return undefined;
 }
 
 export function getLessonRepasoVideos(lesson: Lesson): CuratedVideo[] | undefined {

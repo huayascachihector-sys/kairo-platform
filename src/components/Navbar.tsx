@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sparkles, Calculator, Library, Newspaper, Info, ChevronDown, UserCheck, Sun, Moon, Home, BookOpen, Cpu } from 'lucide-react';
-import { loadState } from '../lib/store';
+import { Menu, X, Sparkles, Calculator, Library, Newspaper, Info, ChevronDown, Sun, Moon, Home, BookOpen, Cpu } from 'lucide-react';
+import { loadState, onStoreChange } from '../lib/store';
 import InstallApp from './InstallApp';
 import { useTheme } from 'next-themes';
 
@@ -36,11 +36,11 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleSync = () => setUser(loadState().user);
+    const unsub = onStoreChange((newState) => setUser(newState.user));
     window.addEventListener('hashchange', handleSync);
-    window.addEventListener('storage', handleSync);
     return () => {
+      unsub();
       window.removeEventListener('hashchange', handleSync);
-      window.removeEventListener('storage', handleSync);
     };
   }, []);
 

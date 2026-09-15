@@ -7,6 +7,7 @@ export const Route = createFileRoute("/plataforma-neuro")({
       { title: "NeuroEdu Perú - Aprendizaje con Neurociencia" },
       { name: "description", content: "Plataforma educativa peruana con metodología basada en neurociencia. 6 cursos con Método Feynman, Active Recall y Spaced Repetition." },
     ],
+    links: [{ rel: "canonical", href: "https://kairoedu.vercel.app/plataforma-neuro" }],
   }),
   component: NeuroPlatformPage,
 });

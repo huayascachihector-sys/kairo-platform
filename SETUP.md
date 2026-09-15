@@ -75,8 +75,8 @@ Edita `.env` con los siguientes valores:
 # Si no se provee, las APIs devuelven un mensaje graceful 503.
 GEMINI_API_KEY=tu_api_key_aqui
 
-# Modelo de Gemini (opcional; por defecto gemini-2.0-flash)
-GEMINI_MODEL=gemini-2.0-flash
+# Modelo de Gemini (opcional; por defecto gemini-3.6-flash)
+GEMINI_MODEL=gemini-3.6-flash
 
 # URL del microservicio local de generación de videos (FastAPI).
 # Es opcional; si no hay microservicio, el endpoint devuelve 502 graceful.

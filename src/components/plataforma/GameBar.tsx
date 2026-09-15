@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Flame, Gem, Zap, Heart, Shield } from "lucide-react";
-import { loadState, ensureGameState, getDailyQuests } from "../../lib/store";
-import { getEffectiveHearts,
+import { loadState, ensureGameState, getDailyQuests, onStoreChange, type StoreState } from "../../lib/store";
+import {
+  getEffectiveHearts,
   getHeartRefillMs,
   getLevelFromXp,
   getDailyQuestsDone,
@@ -22,17 +23,24 @@ function fmtCountdown(ms: number): string {
 }
 
 export function GameBar({ onNavigate }: GameBarProps) {
-  const [, force] = useState(0);
+  const [state, setState] = useState<StoreState>(loadState);
   const [showLevelUp, setShowLevelUp] = useState(false);
-  const [prevLevel, setPrevLevel] = useState(0);
+  const [prevLevel, setPrevLevel] = useState(() => getLevelFromXp(loadState().xp).level);
 
   useEffect(() => {
     ensureGameState();
-    const id = setInterval(() => force((x) => x + 1), 15000);
-    return () => clearInterval(id);
+    const unsub = onStoreChange((newState) => {
+      setState(newState);
+    });
+    const id = setInterval(() => {
+      setState(loadState());
+    }, 15000);
+    return () => {
+      unsub();
+      clearInterval(id);
+    };
   }, []);
 
-  const state = loadState();
   const hearts = getEffectiveHearts(state);
   const refillMs = getHeartRefillMs(state);
   const level = getLevelFromXp(state.xp);
@@ -45,10 +53,10 @@ export function GameBar({ onNavigate }: GameBarProps) {
   useEffect(() => {
     if (prevLevel > 0 && level.level > prevLevel) {
       setShowLevelUp(true);
-      setTimeout(() => setShowLevelUp(false), 2200);
+      setTimeout(() => setShowLevelUp(false), 2600);
     }
     setPrevLevel(level.level);
-  }, [level.level]);
+  }, [level.level, prevLevel]);
 
   const chip =
     "flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors";

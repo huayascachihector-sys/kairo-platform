@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { getCourseCompletionPct, loadState, saveState, completeModulePhase, getModulePhaseProgress, getCourseModuleHearts, setCourseModuleHearts } from '../lib/store';
 import { ALL_COURSES, getTotalLessons, getModules } from '../lib/courseData';
-import { applyGameRewards, ensureDailyState, getEffectiveHearts, MAX_HEARTS } from '../lib/gamification';
+import { applyGameRewards, ensureDailyState, getEffectiveHearts } from '../lib/gamification';
 
 // Mock localStorage
 const localStorageMock = {
@@ -31,6 +31,7 @@ describe('store', () => {
       user: { name: 'Test User', email: 'test@test.com', joinedAt: new Date().toISOString() },
       xp: 100,
       streak: 5,
+      lastStudyDate: '',
       hearts: 3,
       progress: {},
       chatHistory: [],
@@ -135,14 +136,16 @@ describe('gamification', () => {
     expect(state.gems).toBeGreaterThanOrEqual(2);
   });
 
-  it('should ensure daily state resets hearts', () => {
+  it('should ensure daily state resets dailyXp', () => {
     const state = loadState();
-    state.hearts = 0;
-    state.lastHeartRefillAt = '2020-01-01'; // Old date
-    
+    state.dailyXp = { date: '2020-01-01', xp: 999 };
+    state.lastQuestDate = '2020-01-01';
+    state.dailyQuests = [];
+
     ensureDailyState(state);
-    
-    expect(state.hearts).toBe(MAX_HEARTS);
+
+    expect(state.dailyXp.xp).toBe(0);
+    expect(state.dailyXp.date).not.toBe('2020-01-01');
   });
 
   it('should get effective hearts', () => {

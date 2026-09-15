@@ -25,7 +25,6 @@ import {
   getWeeklyStudyMinutes as getWeeklyStudyMin,
   getDailyStudyHistory,
   getGameSummary,
-  markFlag,
 } from "../../lib/store";
 import { exportProgressPDF } from "../../lib/pdfExport";
 import { ALL_COURSES, getTotalLessons } from "../../lib/courseData";
@@ -118,11 +117,10 @@ export default function Dashboard({ state, onNavigate }: Props) {
       ? `¡${game.streak} días de racha! Sigue así 🔥`
       : "¡Hola! ¿Listo para estudiar hoy?";
 
-  const hv = { y: -4, transition: { duration: 0.2, ease: 'easeOut' } };
+  const hv = { y: -4, transition: { duration: 0.2, ease: "easeOut" as const } };
 
   // Build diagnostic data
   const scoresByTopic = buildScoresByTopic(state);
-  const topics = Object.keys(scoresByTopic);
   const diagnostics: DiagnosticResult[] = diagnosePerformance(scoresByTopic);
   const weakTopics = diagnostics.filter((d) => d.weakness);
   const knowledgeTopics = diagnostics.map((d) => ({
@@ -132,12 +130,6 @@ export default function Dashboard({ state, onNavigate }: Props) {
     suggestion: d.suggestion,
     color: d.weakness ? "#ef4444" : "#22c55e",
   }));
-
-  const handleLevelUp = () => {
-    setShowLevelUp(true);
-    setShowConfetti(true);
-    setTimeout(() => setShowLevelUp(false), 1800);
-  };
 
   const handleKnowledgeClick = (topic: any) => {
     onNavigate("banco");

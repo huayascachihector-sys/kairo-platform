@@ -66,7 +66,7 @@ src/
 ## 🎯 Próximos Pasos
 
 1. Integrar frontend con componentes React
-2. Conectar las APIs de IA con variables de entorno (`GEMINI_API_KEY` en `.env`, modelo `gemini-2.0-flash`)
+2. Conectar las APIs de IA con variables de entorno (`GEMINI_API_KEY` en `.env`, modelo `gemini-3.6-flash`)
 3. Expandir contenido hasta nivel C2
 4. Crear componentes de UI para visualizaciones interactivas
 

@@ -5,7 +5,7 @@ import { BANK as FALLBACK_BANK, type SubjectBank, type Question } from '../../da
 import {
   loadState, recordQuestionAnswer, getSubjectProgress,
   addImportedBank, removeImportedBank,
-  addIbBank, removeIbBank, getIbBanksByCourse,
+  addIbBank, removeIbBank, getIbBanksByCourse, addXP,
   type ImportedQuestionBank, type ImportedQuestion
 } from '../../lib/store';
 import { extractZip, groupByFolder, mergeGroupText } from '../../lib/zipImporter';
@@ -222,13 +222,16 @@ export default function BancoPreguntas() {
       setShowExplanation(false);
     } else {
       const correctCount = newAnswers.filter((a, i) => a === qs[i].correct).length;
-      setScore(Math.round((correctCount / qs.length) * 100));
+      const calculatedScore = Math.round((correctCount / qs.length) * 100);
+      setScore(calculatedScore);
       setFinished(true);
       if (timerRef.current) clearInterval(timerRef.current);
+      const earnedXp = Math.max(20, Math.round(correctCount * 15 + (calculatedScore >= 80 ? 40 : 15)));
+      addXP(earnedXp);
       recordDailyEntry({
         questionsAnswered: qs.length,
         correct: correctCount,
-        minutesStudied: timerMode ? Math.ceil((questions.length * 60 - timeLeft) / 60) : Math.ceil(qs.length / 2),
+        minutesStudied: timerMode ? Math.ceil((qs.length * 60 - timeLeft) / 60) : Math.ceil(qs.length / 2),
         subjects: { [subject]: { correct: correctCount, total: qs.length } },
       });
     }

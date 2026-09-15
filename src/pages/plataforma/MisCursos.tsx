@@ -85,7 +85,7 @@ export default function MisCursos({ state, onSelectCourse }: Props) {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-white">Mis Cursos</h1>
-          <p className="text-surface-400 text-sm mt-1">6 materias completas para dominar</p>
+          <p className="text-surface-400 text-sm mt-1">{ALL_COURSES.length} materias completas para dominar</p>
         </div>
         <div className="flex items-center gap-5">
           <div className="flex items-center gap-2 text-sm font-semibold text-amber-400 bg-amber-500/10 px-3.5 py-2 rounded-xl border border-amber-500/20">

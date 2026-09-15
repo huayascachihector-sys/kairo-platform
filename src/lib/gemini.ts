@@ -33,7 +33,7 @@ const GEMINI_API_KEY: string =
 export const GEMINI_MODEL: string =
   typeof process !== "undefined" && process.env && process.env.GEMINI_MODEL
     ? process.env.GEMINI_MODEL
-    : "gemini-2.0-flash";
+    : "gemini-3.6-flash";
 
 export function hasGeminiKey(): boolean {
   return GEMINI_API_KEY.length > 1;
