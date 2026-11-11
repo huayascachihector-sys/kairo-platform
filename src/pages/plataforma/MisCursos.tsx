@@ -1,14 +1,16 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, CheckCircle2, Trophy, Zap, Flame, Star } from 'lucide-react';
+import { ChevronRight, CheckCircle2, Trophy, Zap, Flame, Star, BookOpen, Crown, Sparkles } from 'lucide-react';
 import { StoreState, getCourseCompletionPct } from '../../lib/store';
 import { ALL_COURSES, getTotalLessons } from '../../lib/courseData';
 import SubjectIllustration from '../../components/courses/SubjectIllustration';
+import CursosPremiumSection from '../../components/cursos/CursosPremiumSection';
 
 const DAILY_XP_GOAL = 100;
 
 interface Props {
   state: StoreState;
-  onSelectCourse: (courseId: string) => void;
+  onSelectCourse: (courseId: string, isPremium?: boolean) => void;
 }
 
 function getCrownLevel(pct: number): number {
@@ -77,17 +79,22 @@ const stripColors: Record<string, string> = {
 };
 
 export default function MisCursos({ state, onSelectCourse }: Props) {
+  const [activeTab, setActiveTab] = useState<'nacionales' | 'premium'>('nacionales');
   const todayXP = getTodayXP(state);
   const xpPct = Math.min(100, (todayXP / DAILY_XP_GOAL) * 100);
 
   return (
     <div className="space-y-8">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-white">Mis Cursos</h1>
-          <p className="text-surface-400 text-sm mt-1">{ALL_COURSES.length} materias completas para dominar</p>
+          <p className="text-surface-400 text-sm mt-1">
+            {activeTab === 'nacionales'
+              ? `${ALL_COURSES.length} materias completas para dominar secundaria y admisión`
+              : 'Catálogo de cursos interactivos del IB Diploma Programme con certificados'}
+          </p>
         </div>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 text-sm font-semibold text-amber-400 bg-amber-500/10 px-3.5 py-2 rounded-xl border border-amber-500/20">
             <Flame size={18} className="text-orange-400" />
             <span>{state.streak} días</span>
@@ -99,118 +106,156 @@ export default function MisCursos({ state, onSelectCourse }: Props) {
         </div>
       </div>
 
-      <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5">
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-xs font-medium text-surface-400">Meta diaria: {DAILY_XP_GOAL} XP</span>
-          <span className="text-xs font-semibold text-primary-400">{todayXP} / {DAILY_XP_GOAL}</span>
-        </div>
-        <div className="w-full h-3 bg-white/5 rounded-full overflow-hidden p-0.5">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: `${xpPct}%` }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="h-full rounded-full bg-gradient-to-r from-primary-500 via-accent-400 to-amber-400 relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent shimmer" />
-          </motion.div>
-        </div>
+      {/* Selector de pestañas */}
+      <div className="flex flex-wrap items-center gap-2 p-1.5 bg-white/5 border border-white/10 rounded-2xl w-fit">
+        <button
+          onClick={() => setActiveTab('nacionales')}
+          className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 ${
+            activeTab === 'nacionales'
+              ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/25'
+              : 'text-surface-400 hover:text-white hover:bg-white/5'
+          }`}
+        >
+          <BookOpen className="w-4 h-4" />
+          <span>Secundaria / Pre</span>
+          <span className="text-xs px-2 py-0.5 rounded-full bg-white/20 font-semibold">
+            {ALL_COURSES.length} materias
+          </span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('premium')}
+          className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 ${
+            activeTab === 'premium'
+              ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-surface-900 shadow-lg shadow-amber-500/25 font-extrabold'
+              : 'text-surface-400 hover:text-amber-400 hover:bg-white/5'
+          }`}
+        >
+          <Crown className="w-4 h-4" />
+          <span>Cursos Premium IB</span>
+          <span className="text-xs px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 font-bold">
+            65 módulos
+          </span>
+        </button>
       </div>
 
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {ALL_COURSES.map((course, i) => {
-          const total = getTotalLessons(course);
-          const pct = getCourseCompletionPct(course.id, total);
-          const done = Math.round((pct / 100) * total);
-          const crown = getCrownLevel(pct);
-          const pattern = patternStyles[course.pattern] || patternStyles.none;
-          const cardBg = cardGradients[course.illustration] || 'from-surface-900 to-surface-800';
-          const borderColor = cardBorderColors[course.illustration] || 'border-white/10 hover:border-primary-500/60';
-          const glowColor = glowColors[course.illustration] || 'rgba(99,102,241,0.25)';
-          const stripGradient = stripColors[course.illustration] || 'bg-primary-500';
+      {activeTab === 'premium' ? (
+        <CursosPremiumSection
+          embedded
+          onSelectCourse={(course) => onSelectCourse(course.id, true)}
+        />
+      ) : (
+        <>
+          <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-xs font-medium text-surface-400">Meta diaria: {DAILY_XP_GOAL} XP</span>
+              <span className="text-xs font-semibold text-primary-400">{todayXP} / {DAILY_XP_GOAL}</span>
+            </div>
+            <div className="w-full h-3 bg-white/5 rounded-full overflow-hidden p-0.5">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${xpPct}%` }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                className="h-full rounded-full bg-gradient-to-r from-primary-500 via-accent-400 to-amber-400 relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent shimmer" />
+              </motion.div>
+            </div>
+          </div>
 
-          return (
-            <motion.button
-              key={course.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.07, duration: 0.5, ease: 'easeOut' }}
-              whileHover={{
-                y: -8,
-                transition: { duration: 0.2, ease: 'easeOut' },
-              }}
-              onClick={() => onSelectCourse(course.id)}
-              className={`relative text-left rounded-2xl border ${borderColor} overflow-hidden transition-all duration-300 group`}
-              style={{ background: `linear-gradient(135deg, var(--tw-gradient-stops))`, backgroundImage: `linear-gradient(135deg, var(--tw-gradient-stops))` }}
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${cardBg} transition-opacity duration-500`}>
-                <div className="absolute inset-0" style={{ backgroundImage: pattern, backgroundSize: pattern === patternStyles.none ? undefined : patternStyles.dots === pattern ? '40px 40px' : patternStyles.grid === pattern ? '40px 40px' : '24px 24px' }} />
-              </div>
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {ALL_COURSES.map((course, i) => {
+              const total = getTotalLessons(course);
+              const pct = getCourseCompletionPct(course.id, total);
+              const done = Math.round((pct / 100) * total);
+              const crown = getCrownLevel(pct);
+              const pattern = patternStyles[course.pattern] || patternStyles.none;
+              const cardBg = cardGradients[course.illustration] || 'from-surface-900 to-surface-800';
+              const borderColor = cardBorderColors[course.illustration] || 'border-white/10 hover:border-primary-500/60';
+              const glowColor = glowColors[course.illustration] || 'rgba(99,102,241,0.25)';
+              const stripGradient = stripColors[course.illustration] || 'bg-primary-500';
 
-              <div className={`absolute top-0 left-0 right-0 h-1.5 ${stripGradient}`} />
-
-              <div className="relative z-10 p-5">
-                <div className="-mx-5 -mt-5 mb-4">
-                  <SubjectIllustration subject={course.illustration} animating={false} />
-                </div>
-
-                <div className="flex items-start justify-between gap-2">
-                  <div>
-                    <h3 className="text-lg font-bold text-white mb-1">{course.title}</h3>
-                    <p className="text-xs text-surface-400 mb-4 leading-relaxed line-clamp-2">{course.description}</p>
+              return (
+                <motion.button
+                  key={course.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.07, duration: 0.5, ease: 'easeOut' }}
+                  whileHover={{
+                    y: -8,
+                    transition: { duration: 0.2, ease: 'easeOut' },
+                  }}
+                  onClick={() => onSelectCourse(course.id, false)}
+                  className={`relative text-left rounded-2xl border ${borderColor} overflow-hidden transition-all duration-300 group`}
+                  style={{ background: `linear-gradient(135deg, var(--tw-gradient-stops))`, backgroundImage: `linear-gradient(135deg, var(--tw-gradient-stops))` }}
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${cardBg} transition-opacity duration-500`}>
+                    <div className="absolute inset-0" style={{ backgroundImage: pattern, backgroundSize: pattern === patternStyles.none ? undefined : patternStyles.dots === pattern ? '40px 40px' : patternStyles.grid === pattern ? '40px 40px' : '24px 24px' }} />
                   </div>
-                  {crown > 0 && (
-                    <div className="flex gap-0.5 mt-1 shrink-0">
-                      {Array.from({ length: crown }).map((_, ci) => (
-                        <Trophy key={ci} size={14} className="text-yellow-400 drop-shadow-[0_0_4px_rgba(250,204,21,0.5)]" />
-                      ))}
+
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 ${stripGradient}`} />
+
+                  <div className="relative z-10 p-5">
+                    <div className="-mx-5 -mt-5 mb-4">
+                      <SubjectIllustration subject={course.illustration} animating={false} />
                     </div>
-                  )}
-                </div>
 
-                <div className="mb-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-surface-500">{done}/{total} lecciones</span>
-                    <span className="text-xs font-bold text-white">{pct}%</span>
-                  </div>
-                  <div className="w-full h-2.5 bg-white/5 rounded-full overflow-hidden p-0.5">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${pct}%` }}
-                      transition={{ delay: 0.2 + i * 0.05, duration: 0.8, ease: 'easeOut' }}
-                      className="h-full rounded-full relative overflow-hidden"
-                      style={{ background: `linear-gradient(90deg, var(--tw-gradient-stops))` }}
-                    >
-                      <div className={`h-full w-full rounded-full bg-gradient-to-r ${course.gradientProgress}`}>
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent shimmer" />
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <h3 className="text-lg font-bold text-white mb-1">{course.title}</h3>
+                        <p className="text-xs text-surface-400 mb-4 leading-relaxed line-clamp-2">{course.description}</p>
                       </div>
-                    </motion.div>
-                  </div>
-                </div>
+                      {crown > 0 && (
+                        <div className="flex gap-0.5 mt-1 shrink-0">
+                          {Array.from({ length: crown }).map((_, ci) => (
+                            <Trophy key={ci} size={14} className="text-yellow-400 drop-shadow-[0_0_4px_rgba(250,204,21,0.5)]" />
+                          ))}
+                        </div>
+                      )}
+                    </div>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs text-surface-500">
-                    <Star className="w-3.5 h-3.5" />
-                    {course.modules.length} módulos
-                  </div>
-                  <div className="flex items-center gap-1 text-xs font-semibold text-white/80">
-                    {pct === 100 ? (
-                      <><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Completado</>
-                    ) : pct > 0 ? (
-                      <>Continuar <ChevronRight className="w-3.5 h-3.5" /></>
-                    ) : (
-                      <>Empezar <ChevronRight className="w-3.5 h-3.5" /></>
-                    )}
-                  </div>
-                </div>
-              </div>
+                    <div className="mb-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs text-surface-500">{done}/{total} lecciones</span>
+                        <span className="text-xs font-bold text-white">{pct}%</span>
+                      </div>
+                      <div className="w-full h-2.5 bg-white/5 rounded-full overflow-hidden p-0.5">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={{ width: `${pct}%` }}
+                          transition={{ delay: 0.2 + i * 0.05, duration: 0.8, ease: 'easeOut' }}
+                          className="h-full rounded-full relative overflow-hidden"
+                          style={{ background: `linear-gradient(90deg, var(--tw-gradient-stops))` }}
+                        >
+                          <div className={`h-full w-full rounded-full bg-gradient-to-r ${course.gradientProgress}`}>
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent shimmer" />
+                          </div>
+                        </motion.div>
+                      </div>
+                    </div>
 
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/5 to-transparent" />
-              </div>
-            </motion.button>
-          );
-        })}
-      </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1.5 text-xs text-surface-500">
+                        <Star className="w-3.5 h-3.5" />
+                        {course.modules.length} módulos
+                      </div>
+                      <div className="flex items-center gap-1 text-xs font-semibold text-white/80">
+                        {pct === 100 ? (
+                          <><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Completado</>
+                        ) : pct > 0 ? (
+                          <>Continuar <ChevronRight className="w-3.5 h-3.5" /></>
+                        ) : (
+                          <>Comenzar <ChevronRight className="w-3.5 h-3.5" /></>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </motion.button>
+              );
+            })}
+          </div>
+        </>
+      )}
     </div>
   );
 }

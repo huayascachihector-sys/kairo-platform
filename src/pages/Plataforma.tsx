@@ -39,6 +39,7 @@ import { useTheme } from "next-themes";
 const PremiumDashboard = lazy(() => import("./plataforma/PremiumDashboard"));
 const MisCursos = lazy(() => import("./plataforma/MisCursos"));
 const CursoViewer = lazy(() => import("./plataforma/CursoViewer"));
+const CursoPremiumViewer = lazy(() => import("./CursoPremiumViewer"));
 const AsistenteIA = lazy(() => import("./plataforma/AsistenteIA"));
 const Horario = lazy(() => import("./plataforma/Horario"));
 const Logros = lazy(() => import("./plataforma/Logros"));
@@ -67,6 +68,7 @@ type View =
   | "dashboard"
   | "cursos"
   | "curso-detail"
+  | "curso-premium-detail"
   | "plan"
   | "asistente"
   | "horario"
@@ -204,9 +206,9 @@ export default function Plataforma() {
 
     if (deepMatch) {
       const v = deepMatch[1] as View;
-      if (v === "curso-detail" && deepMatch[2]) {
+      if ((v === "curso-detail" || v === "curso-premium-detail") && deepMatch[2]) {
         setActiveCourse(decodeURIComponent(deepMatch[2]));
-        setView("curso-detail");
+        setView(v);
       } else if (VIEW_IDS.has(v)) {
         setView(v);
       }
@@ -275,9 +277,17 @@ export default function Plataforma() {
         "",
         `#/plataforma/curso-detail/${encodeURIComponent(extra)}`,
       );
+    } else if (v === "curso-premium-detail" && extra) {
+      setActiveCourse(extra);
+      setView("curso-premium-detail");
+      window.history.replaceState(
+        null,
+        "",
+        `#/plataforma/curso-premium-detail/${encodeURIComponent(extra)}`,
+      );
     } else {
       setView(v as View);
-      if (v !== "curso-detail") setActiveCourse("");
+      if (v !== "curso-detail" && v !== "curso-premium-detail") setActiveCourse("");
       const target = v === "dashboard" ? "#/plataforma" : `#/plataforma/${v}`;
       window.history.replaceState(null, "", target);
     }
@@ -327,7 +337,9 @@ export default function Plataforma() {
             </p>
             <div className="space-y-1">
               {group.items.map(({ id, label, icon: Icon }) => {
-                const isActive = view === id || (id === "cursos" && view === "curso-detail");
+                const isActive =
+                  view === id ||
+                  (id === "cursos" && (view === "curso-detail" || view === "curso-premium-detail"));
                 return (
                   <button
                     key={id}
@@ -419,13 +431,28 @@ export default function Plataforma() {
       case "dashboard":
         return <PremiumDashboard state={state} onNavigate={navigate} />;
       case "cursos":
-        return <MisCursos state={state} onSelectCourse={(id) => navigate("cursos", id)} />;
+        return (
+          <MisCursos
+            state={state}
+            onSelectCourse={(id, isPremium) =>
+              navigate(isPremium ? "curso-premium-detail" : "cursos", id)
+            }
+          />
+        );
       case "curso-detail":
         return (
           <CursoViewer
             courseId={activeCourse}
             onBack={() => navigate("cursos")}
             onStateChange={refreshState}
+          />
+        );
+      case "curso-premium-detail":
+        return (
+          <CursoPremiumViewer
+            courseId={activeCourse}
+            onBack={() => navigate("cursos")}
+            embedded
           />
         );
       case "plan":
@@ -518,8 +545,11 @@ export default function Plataforma() {
             <Menu className="w-5 h-5 text-surface-700 dark:text-surface-300" />
           </button>
           <span className="font-bold text-surface-900 dark:text-white">
-            {ALL_NAV.find((n) => n.id === view || (n.id === "cursos" && view === "curso-detail"))
-              ?.label || "Plataforma"}
+            {ALL_NAV.find(
+              (n) =>
+                n.id === view ||
+                (n.id === "cursos" && (view === "curso-detail" || view === "curso-premium-detail")),
+            )?.label || "Plataforma"}
           </span>
           <div className="flex items-center gap-1">
             <button

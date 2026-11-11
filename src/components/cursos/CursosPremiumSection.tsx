@@ -9,15 +9,18 @@ import {
   Sparkles,
   FolderOpen,
   Award,
+  ExternalLink,
+  ChevronRight,
 } from "lucide-react";
 import {
   loadPremiumCourses,
   getSubjectMeta,
   PREMIUM_SUBJECTS,
+  premiumCourseUrl,
   type PremiumCourse,
   type PremiumSubject,
 } from "@/data/premiumCourses";
-import { getPremiumProgressMap, getPremiumStats } from "@/lib/premium";
+import { getPremiumProgressMap, getPremiumStats, markPremiumCourseOpened } from "@/lib/premium";
 import { usePremium } from "@/hooks/usePremium";
 import PremiumActivationModal from "./PremiumActivationModal";
 
@@ -26,7 +29,15 @@ type LevelFilter = "todos" | "SL" | "HL";
 
 const hv = { y: -4, boxShadow: "0 12px 40px rgba(245,158,11,0.18)" };
 
-export default function CursosPremiumSection() {
+interface CursosPremiumSectionProps {
+  onSelectCourse?: (course: PremiumCourse) => void;
+  embedded?: boolean;
+}
+
+export default function CursosPremiumSection({
+  onSelectCourse,
+  embedded = false,
+}: CursosPremiumSectionProps = {}) {
   const { active, version } = usePremium();
   const [courses, setCourses] = useState<PremiumCourse[] | null>(null);
   const [subjectFilter, setSubjectFilter] = useState<SubjectFilter>("todas");
@@ -78,7 +89,11 @@ export default function CursosPremiumSection() {
       setModalOpen(true);
       return;
     }
-    window.location.hash = `#/cursos-premium/${encodeURIComponent(course.id)}`;
+    if (onSelectCourse) {
+      onSelectCourse(course);
+    } else {
+      window.location.hash = `#/cursos-premium/${encodeURIComponent(course.id)}`;
+    }
   };
 
   const renderCard = (course: PremiumCourse, i: number) => {
@@ -88,90 +103,121 @@ export default function CursosPremiumSection() {
     const started = !!p?.startedAt;
 
     return (
-      <motion.button
+      <motion.div
         key={course.id}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.05 * i }}
         whileHover={hv}
         onClick={() => openCourse(course)}
-        className="relative text-left w-full rounded-2xl border-2 border-amber-400/40 dark:border-amber-400/25 bg-white dark:bg-white/5 overflow-hidden group transition-colors hover:border-amber-400 dark:hover:border-amber-400/60"
+        className="relative text-left w-full rounded-2xl border-2 border-amber-400/40 dark:border-amber-400/25 bg-white dark:bg-white/5 overflow-hidden group transition-colors hover:border-amber-400 dark:hover:border-amber-400/60 cursor-pointer flex flex-col justify-between"
       >
-        {/* Header */}
-        <div
-          className={`bg-gradient-to-r ${meta.gradient} p-5 text-white relative overflow-hidden`}
-        >
-          <div className="absolute top-3 right-3 opacity-20 text-4xl">{meta.emoji}</div>
-          <span className="inline-flex items-center gap-1 text-[11px] font-bold bg-gradient-to-r from-amber-400 to-yellow-500 text-surface-900 px-2.5 py-1 rounded-full">
-            <Crown className="w-3 h-3" />
-            IB · PREMIUM
-          </span>
-          <h3 className="text-lg font-extrabold mt-3 pr-10 leading-snug">{course.title}</h3>
-          <p className="text-xs text-white/80 mt-1">
-            {meta.label} · {course.level}
-          </p>
-        </div>
-
-        {/* Body */}
-        <div className="p-5">
-          <p className="text-sm text-surface-600 dark:text-surface-300 leading-relaxed mb-4 line-clamp-3">
-            {course.description || "Curso premium del IB Diploma Programme."}
-          </p>
-
-          <div className="flex items-center gap-4 text-xs text-surface-500 dark:text-surface-400 mb-4">
-            <span className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5" />
-              {course.durationMin} min
+        <div>
+          {/* Header */}
+          <div
+            className={`bg-gradient-to-r ${meta.gradient} p-5 text-white relative overflow-hidden`}
+          >
+            <div className="absolute top-3 right-3 opacity-20 text-4xl">{meta.emoji}</div>
+            <span className="inline-flex items-center gap-1 text-[11px] font-bold bg-gradient-to-r from-amber-400 to-yellow-500 text-surface-900 px-2.5 py-1 rounded-full">
+              <Crown className="w-3 h-3" />
+              IB · PREMIUM
             </span>
-            <span className="flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5" />
-              IA generativa
-            </span>
+            <h3 className="text-lg font-extrabold mt-3 pr-10 leading-snug">{course.title}</h3>
+            <p className="text-xs text-white/80 mt-1">
+              {meta.label} · {course.level}
+            </p>
           </div>
 
-          {/* Progreso */}
-          {completed ? (
-            <div className="flex items-center gap-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
-              <CheckCircle2 className="w-4 h-4" />
-              Completado
-              <span className="text-[11px] font-normal text-surface-400">
-                · certificado disponible
-              </span>
-            </div>
-          ) : started ? (
-            <div className="flex items-center gap-2 text-sm font-medium text-amber-600 dark:text-amber-400">
-              <PlayCircle className="w-4 h-4" />
-              En progreso
-            </div>
-          ) : (
-            <div className="flex items-center gap-2 text-sm font-medium text-surface-500 dark:text-surface-400">
-              <PlayCircle className="w-4 h-4" />
-              No iniciado
-            </div>
-          )}
+          {/* Body */}
+          <div className="p-5">
+            <p className="text-sm text-surface-600 dark:text-surface-300 leading-relaxed mb-4 line-clamp-3">
+              {course.description || "Curso premium del IB Diploma Programme."}
+            </p>
 
-          {!active && (
-            <div className="absolute inset-0 bg-surface-50/60 dark:bg-surface-950/60 backdrop-blur-[2px] flex flex-col items-center justify-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-amber-400 text-surface-900 flex items-center justify-center shadow-lg shadow-amber-500/30">
-                <Lock className="w-5 h-5" />
-              </div>
-              <span className="text-sm font-semibold text-surface-700 dark:text-surface-200">
-                Activa Premium para abrir
+            <div className="flex items-center gap-4 text-xs text-surface-500 dark:text-surface-400 mb-4">
+              <span className="flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5" />
+                {course.durationMin} min
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5" />
+                IA generativa
               </span>
             </div>
-          )}
+
+            {/* Progreso */}
+            {completed ? (
+              <div className="flex items-center gap-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                <CheckCircle2 className="w-4 h-4" />
+                Completado
+                <span className="text-[11px] font-normal text-surface-400">
+                  · certificado disponible
+                </span>
+              </div>
+            ) : started ? (
+              <div className="flex items-center gap-2 text-sm font-medium text-amber-600 dark:text-amber-400">
+                <PlayCircle className="w-4 h-4" />
+                En progreso
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 text-sm font-medium text-surface-500 dark:text-surface-400">
+                <PlayCircle className="w-4 h-4" />
+                No iniciado
+              </div>
+            )}
+          </div>
         </div>
-      </motion.button>
+
+        {/* Footer con acciones y enlace en nueva pestaña */}
+        <div className="px-5 pb-5 pt-2 border-t border-surface-100 dark:border-white/10 flex items-center justify-between gap-2 mt-auto">
+          <span className="text-xs font-semibold text-amber-600 dark:text-amber-400 group-hover:underline flex items-center gap-1">
+            {completed ? "Repasar módulo" : started ? "Continuar módulo" : "Abrir módulo"}
+            <ChevronRight className="w-3.5 h-3.5" />
+          </span>
+
+          <a
+            href={premiumCourseUrl(course)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => {
+              e.stopPropagation();
+              if (active) markPremiumCourseOpened(course.id);
+            }}
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-amber-700 dark:text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/25 transition-colors z-10"
+            title="Abrir este curso HTML en una pestaña nueva"
+          >
+            <ExternalLink className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Nueva pestaña</span>
+          </a>
+        </div>
+
+        {!active && (
+          <div
+            className="absolute inset-0 bg-surface-50/70 dark:bg-surface-950/75 backdrop-blur-[2px] flex flex-col items-center justify-center gap-3 z-20 cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              setModalOpen(true);
+            }}
+          >
+            <div className="w-12 h-12 rounded-2xl bg-amber-400 text-surface-900 flex items-center justify-center shadow-lg shadow-amber-500/30">
+              <Lock className="w-5 h-5" />
+            </div>
+            <span className="text-sm font-semibold text-surface-700 dark:text-surface-200">
+              Activa Premium para abrir
+            </span>
+          </div>
+        )}
+      </motion.div>
     );
   };
 
   return (
-    <section className="mb-14" aria-labelledby="cursos-premium-title">
+    <section className={embedded ? "space-y-6" : "mb-14"} aria-labelledby="cursos-premium-title">
       {/* Banner premium */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative overflow-hidden rounded-3xl border-2 border-amber-400/50 dark:border-amber-400/30 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 dark:from-amber-500/10 dark:via-yellow-500/5 dark:to-orange-500/10 dark:bg-surface-900 p-6 sm:p-8 mb-6"
+        className="relative overflow-hidden rounded-3xl border-2 border-amber-400/50 dark:border-amber-400/30 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 dark:from-amber-500/10 dark:via-yellow-500/5 dark:to-orange-500/10 dark:bg-surface-900 p-6 sm:p-8"
       >
         <div
           className="absolute inset-0 opacity-20"
@@ -198,7 +244,7 @@ export default function CursosPremiumSection() {
               </h2>
               <p className="mt-1 text-sm text-surface-600 dark:text-surface-300 max-w-xl">
                 Cursos interactivos del IB Diploma Programme (Matemáticas, Física, Historia y
-                Sociedad Digital), creados con IA avanzada. Incluye certificados y tutor premium.
+                Sociedad Digital), creados con IA avanzada. Incluye certificados imprimibles y visor en nueva pestaña.
               </p>
             </div>
           </div>
@@ -227,7 +273,7 @@ export default function CursosPremiumSection() {
       </motion.div>
 
       {/* Filtros */}
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="flex flex-wrap gap-2">
         {(["todas", ...PREMIUM_SUBJECTS.map((s) => s.id)] as SubjectFilter[]).map((f) => {
           const label = f === "todas" ? "Todas" : getSubjectMeta(f as PremiumSubject).label;
           return (

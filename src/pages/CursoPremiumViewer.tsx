@@ -10,6 +10,7 @@ import {
   Layers3,
   Zap,
   Clock,
+  ExternalLink,
 } from "lucide-react";
 import {
   getPremiumCourse,
@@ -33,18 +34,37 @@ function getCourseIdFromHash(): string {
   return decodeURIComponent(hash.replace(/^#\/?/, "").split("/")[1] || "");
 }
 
-export default function CursoPremiumViewer() {
+interface CursoPremiumViewerProps {
+  courseId?: string;
+  onBack?: () => void;
+  embedded?: boolean;
+}
+
+export default function CursoPremiumViewer({
+  courseId: propCourseId,
+  onBack,
+  embedded = false,
+}: CursoPremiumViewerProps = {}) {
   const { active, version } = usePremium();
   const [courses, setCourses] = useState<PremiumCourse[] | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [certOpen, setCertOpen] = useState(false);
   const [studentName, setStudentName] = useState("");
 
-  const courseId = getCourseIdFromHash();
+  const courseId = propCourseId || getCourseIdFromHash();
   const course = useMemo(
     () => (courses ? getPremiumCourse(courses, courseId) : undefined),
     [courses, courseId],
   );
+
+  const handleBack = () => {
+    if (onBack) {
+      onBack();
+    } else if (typeof window !== "undefined") {
+      const isUser = !!loadState().user;
+      window.location.hash = isUser ? "#/plataforma/cursos" : "#/cursos";
+    }
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -77,8 +97,8 @@ export default function CursoPremiumViewer() {
   // ─── Cargando ───────────────────────────────────────────────────────────
   if (courses === null) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-surface-50 dark:from-transparent via-white dark:via-transparent to-amber-50/40 dark:to-transparent pt-24 pb-16">
-        <div className="max-w-5xl mx-auto px-4">
+      <div className={embedded ? "py-10" : "min-h-screen bg-gradient-to-br from-surface-50 dark:from-transparent via-white dark:via-transparent to-amber-50/40 dark:to-transparent pt-24 pb-16"}>
+        <div className={embedded ? "w-full" : "max-w-5xl mx-auto px-4"}>
           <div className="h-96 rounded-2xl border-2 border-amber-400/30 bg-white dark:bg-white/5 animate-pulse" />
         </div>
       </div>
@@ -88,7 +108,7 @@ export default function CursoPremiumViewer() {
   // ─── Curso no encontrado ────────────────────────────────────────────────
   if (!course) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-surface-50 dark:from-transparent via-white dark:via-transparent to-amber-50/40 dark:to-transparent pt-24 pb-16">
+      <div className={embedded ? "py-10" : "min-h-screen bg-gradient-to-br from-surface-50 dark:from-transparent via-white dark:via-transparent to-amber-50/40 dark:to-transparent pt-24 pb-16"}>
         <div className="max-w-2xl mx-auto px-4 text-center">
           <h1 className="text-3xl font-extrabold text-surface-900 dark:text-white">
             Curso premium no encontrado
@@ -96,10 +116,10 @@ export default function CursoPremiumViewer() {
           <p className="mt-3 text-surface-500 dark:text-surface-400">
             El curso solicitado no existe o fue removido del catálogo.
           </p>
-          <a href="#/cursos" className="btn-primary inline-flex mt-6 !py-3 !px-6 text-sm">
-            <ArrowLeft className="w-4 h-4" />
-            Volver a Cursos
-          </a>
+          <button onClick={handleBack} className="btn-primary inline-flex mt-6 !py-3 !px-6 text-sm">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            {embedded ? "Volver a Mis Cursos" : "Volver a Cursos"}
+          </button>
         </div>
       </div>
     );
@@ -110,7 +130,7 @@ export default function CursoPremiumViewer() {
   // ─── Bloqueo premium ────────────────────────────────────────────────────
   if (!active) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-surface-50 dark:from-transparent via-white dark:via-transparent to-amber-50/40 dark:to-transparent pt-24 pb-16">
+      <div className={embedded ? "py-10" : "min-h-screen bg-gradient-to-br from-surface-50 dark:from-transparent via-white dark:via-transparent to-amber-50/40 dark:to-transparent pt-24 pb-16"}>
         <div className="max-w-xl mx-auto px-4 text-center">
           <div className="mx-auto w-16 h-16 rounded-3xl bg-gradient-to-br from-amber-400 to-yellow-600 text-surface-900 flex items-center justify-center shadow-xl shadow-amber-500/25">
             <Lock className="w-8 h-8" />
@@ -131,12 +151,12 @@ export default function CursoPremiumViewer() {
             Activar Premium
           </button>
           <div className="mt-6">
-            <a
-              href="#/cursos"
+            <button
+              onClick={handleBack}
               className="text-sm text-surface-500 dark:text-surface-400 hover:text-amber-600 dark:hover:text-amber-400"
             >
-              ← Volver al catálogo
-            </a>
+              ← {embedded ? "Volver a Mis Cursos" : "Volver al catálogo"}
+            </button>
           </div>
           <PremiumActivationModal open={modalOpen} onClose={() => setModalOpen(false)} />
         </div>
@@ -146,17 +166,31 @@ export default function CursoPremiumViewer() {
 
   // ─── Visor del curso ────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen bg-gradient-to-br from-surface-50 dark:from-transparent via-white dark:via-transparent to-amber-50/40 dark:to-transparent pt-24 pb-16">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+    <div className={embedded ? "space-y-6" : "min-h-screen bg-gradient-to-br from-surface-50 dark:from-transparent via-white dark:via-transparent to-amber-50/40 dark:to-transparent pt-24 pb-16"}>
+      <div className={embedded ? "w-full" : "max-w-5xl mx-auto px-4 sm:px-6"}>
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
-          <a
-            href="#/cursos"
-            className="inline-flex items-center gap-2 text-sm text-surface-500 dark:text-surface-400 hover:text-amber-600 dark:hover:text-amber-400 mb-4 font-medium"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Volver a Cursos
-          </a>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+            <button
+              onClick={handleBack}
+              className="inline-flex items-center gap-2 text-sm text-surface-500 dark:text-surface-400 hover:text-amber-600 dark:hover:text-amber-400 font-medium w-fit"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              {embedded ? "Volver a Mis Cursos" : "Volver a Cursos"}
+            </button>
+
+            <a
+              href={premiumCourseUrl(course)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 transition-all shadow-sm w-fit"
+              title="Abrir este contenido HTML interactivo en una pestaña nueva del navegador"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              Abrir HTML en nueva pestaña
+            </a>
+          </div>
+
           <div className="flex flex-wrap items-center gap-2 mb-2">
             <span className="inline-flex items-center gap-1 text-[11px] font-bold bg-gradient-to-r from-amber-400 to-yellow-500 text-surface-900 px-2.5 py-1 rounded-full">
               <Crown className="w-3 h-3" />
@@ -181,11 +215,11 @@ export default function CursoPremiumViewer() {
               </span>
             )}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-surface-900 dark:text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-surface-900 dark:text-white tracking-tight">
             {course.title}
           </h1>
           {course.description && (
-            <p className="mt-2 text-surface-500 dark:text-surface-400 max-w-2xl">
+            <p className="mt-2 text-sm sm:text-base text-surface-500 dark:text-surface-400 max-w-3xl">
               {course.description}
             </p>
           )}
@@ -202,7 +236,7 @@ export default function CursoPremiumViewer() {
             src={premiumCourseUrl(course)}
             title={course.title}
             sandbox="allow-scripts allow-forms allow-popups allow-modals"
-            className="w-full h-[80vh] min-h-[500px] block"
+            className="w-full h-[78vh] min-h-[520px] block"
           />
         </motion.div>
 
@@ -229,6 +263,16 @@ export default function CursoPremiumViewer() {
             </button>
           )}
 
+          <a
+            href={premiumCourseUrl(course)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary text-sm !py-3 !px-5 flex items-center gap-2 text-amber-700 dark:text-amber-300"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Abrir en nueva pestaña
+          </a>
+
           {/* Integración con la plataforma IB */}
           <a
             href="#/plataforma/banco-preguntas"
@@ -247,7 +291,7 @@ export default function CursoPremiumViewer() {
         </div>
         <p className="mt-3 text-xs text-surface-400 dark:text-surface-500">
           Tip: al finalizar, imprime tu certificado desde el diálogo de impresión (Guardar como
-          PDF).
+          PDF). También puedes abrir el módulo interactivo en una pestaña aparte para mayor comodidad.
         </p>
       </div>
 
