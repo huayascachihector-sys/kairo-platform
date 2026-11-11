@@ -1,0 +1,373 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 14B · Modelación de un gas Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:52px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:26px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:12px 0;overflow-x:auto}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.pb{border:1px solid var(--line);border-radius:6px;margin:26px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#EFF4F2,#FFFFFF);border-bottom:1px solid var(--line);padding:14px 20px}
+.pb-head .code{font-family:"IBM Plex Mono";font-size:11px;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px;letter-spacing:.05em}
+.pb-head h3{margin:8px 0 0;font-size:19px}
+.pb-body{padding:6px 20px 18px}
+.enun{background:#F4F6F4;border-left:3px solid var(--ink-soft);padding:10px 16px;margin:14px 0;font-size:16.5px}
+.part{margin:16px 0 4px;font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep)}
+.pide{display:inline-block;font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:1px 7px;margin-right:8px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:5px 11px;display:inline-block;margin-top:6px}
+details.rev{margin:12px 0 2px;border:1px solid #CFE0DB;border-radius:5px;background:#F0F5F3;overflow:hidden}
+details.rev summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.08em;color:var(--teal-deep);padding:9px 14px;background:#E7F0ED;user-select:none}
+details.rev summary::-webkit-details-marker{display:none}
+details.rev summary::before{content:"▸  VER RESOLUCIÓN"}
+details.rev[open] summary::before{content:"▾  OCULTAR RESOLUCIÓN"}
+details.rev[open] summary{border-bottom:1px solid #CFE0DB}
+.rev-inner{padding:10px 16px 4px}
+.rev-inner .part{margin-top:10px}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.note{background:#EEF3F1;border:1px dashed var(--teal);border-radius:5px;padding:14px 18px;margin:16px 0;font-size:16px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<!-- rev 2026-10-31 14b · banco paper2 gas (3) oficiales 2022-26 -->
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> B.3 <span>//</span> MÓDULO 14B · TIPO 2 (PAPER 2)</p>
+  <h1>Gases en <em>respuesta larga</em></h1>
+  <p class="lede">Expansión isotérmica + Gay-Lussac, comportamiento microscópico, contenedor de helio (átomos, rapidez, gas ideal) y frigorífico (fuerza para abrir la puerta). Las 4 preguntas de la ficha resueltas, más 5 integradores.</p>
+  <div class="stats">
+    <div class="stat"><b>4/4</b><span>ficha resuelta</span></div>
+    <div class="stat"><b>3</b><span>Paper 2 oficiales 22–26</span></div>
+    <div class="stat"><b>5</b><span>problemas extra</span></div>
+    <div class="stat"><b>Paper 2</b><span>respuesta larga</span></div>
+    <div class="stat"><b>k_B</b><span>1,38×10⁻²³ J·K⁻¹</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#estrategia">0 · Método para tipo 2</a>
+  <a href="#p1">1 · Expansión de gas (M01)</a>
+  <a href="#p2">2 · Gas ideal: micro+macro (M02)</a>
+  <a href="#p3">3 · Contenedor de helio (M19)</a>
+  <a href="#p4">4 · Frigorífico (N19)</a>
+  <a href="#examenes">★ Banco Paper 2 · 2022–26</a>
+  <a href="#extra">Problemas extra para ti</a>
+  <a href="#practica2">Práctica extra · Paper 2</a>
+</nav>
+
+<main>
+
+<div class="wrap" style="padding:0"><div class="note"><strong>Nota:</strong> la teoría íntegra está en el Módulo 14A. Aquí van el método tipo 2 y las 4 preguntas de la ficha resueltas apartado por apartado, con las partes de explicación molecular que pide el Paper 2.</div></div>
+
+<!-- ESTRATEGIA -->
+<section id="estrategia">
+  <p class="sec-num">SECCIÓN 00 · LO QUE FALTA PARA TIPO 2</p>
+  <h2>Método para gases de respuesta larga<span class="rule"></span></h2>
+  <div class="box key"><span class="lbl">Los 5 gestos del tipo 2</span>
+    <ol>
+      <li><strong>Identifica qué se mantiene constante:</strong> T (isotérmico, \(P\propto1/V\)), V (\(P\propto T\)), o P (\(V\propto T\)); o usa \(PV=nRT\) completo.</li>
+      <li><strong>Temperatura SIEMPRE en kelvin;</strong> presión absoluta (no manométrica) en las leyes de gases.</li>
+      <li><strong>Micro ↔ macro:</strong> presión = cambio de momento en los choques; T = KE media; subir T = vectores de velocidad más largos.</li>
+      <li><strong>Contar partículas:</strong> \(N=\dfrac{PV}{k_BT}\); masa de un átomo \(=\dfrac{M}{N_A}\); rapidez \(v=\sqrt{\dfrac{3k_BT}{m}}\).</li>
+      <li><strong>"Muestre que" y comenta:</strong> fuerza por presión = ΔP·A; razón de volúmenes ≪1 justifica el modelo ideal.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- P1 -->
+<section id="p1" class="pb">
+  <div class="pb-head"><span class="code">FICHA 1 · M01/430/S(2)</span><h3>Expansión de un gas</h3></div>
+  <div class="pb-body">
+    <div class="enun">Gas en un cilindro con pistón, paredes conductoras. Luego el pistón se mueve hasta <strong>duplicar el volumen</strong> a la misma temperatura.</div>
+    <p class="part">(a) <span class="pide">explique</span> cómo surge la presión en el pistón.</p>
+    <p>Las moléculas chocan contra el pistón; en cada choque su cantidad de movimiento cambia (rebotan). Por la 2.ª ley, la tasa de cambio de momento es una fuerza; esa fuerza media dividida entre el área del pistón es la presión.</p>
+    <p class="part">(b) <span class="pide">explique</span> por qué no caen y se acumulan abajo pese a la gravedad.</p>
+    <p>Su energía cinética de movimiento aleatorio es muchísimo mayor que el cambio de energía potencial gravitatoria en la altura del cilindro; se mueven rápido en todas direcciones y chocan constantemente, así que la gravedad apenas afecta su distribución.</p>
+    <p class="part">(c) <span class="pide">compare</span> la energía cinética media antes y después.</p>
+    <p>Es la <strong>misma</strong>: la temperatura final es igual a la inicial, y la energía cinética media depende solo de la temperatura.</p>
+    <p class="part">(d) <span class="pide">dibuje</span> las moléculas tras la expansión.</p>
+    <p>Diez moléculas con vectores de velocidad de <strong>igual longitud</strong> que antes (misma rapidez, misma T), pero repartidas en el doble de volumen ⇒ la mitad de densidad.</p>
+    <p class="part">(e) <span class="pide">explique</span> por qué la presión es menor tras expandir.</p>
+    <p>Las moléculas van igual de rápido, pero al ocupar más volumen hay <strong>menos moléculas por unidad de volumen</strong>: chocan con el pistón <strong>con menor frecuencia</strong> (menos choques por segundo por unidad de área) ⇒ menor presión.</p>
+    <p class="part">(f) <span class="pide">calcule</span> la presión tras duplicar el volumen (P₁ = 300 kPa).</p>
+    <p>Isotérmico (Boyle), \(P\propto1/V\): al duplicar \(V\), \(P_2=\dfrac{300}{2}=150\) kPa. <span class="ans">150 kPa</span></p>
+    <p class="part">(g) <span class="pide">calcule</span> la temperatura para volver a 300 kPa (a volumen fijo).</p>
+    <p>A V constante \(P\propto T\): \(T_1=20\) °C \(=293\) K, \(P_1=150\), \(P_2=300\). \(T_2=T_1\dfrac{P_2}{P_1}=293\dfrac{300}{150}=586\) K. <span class="ans">586 K = 313 °C</span></p>
+  </div>
+</section>
+
+<!-- P2 -->
+<section id="p2" class="pb">
+  <div class="pb-head"><span class="code">FICHA 2 · M02/430/S(2)</span><h3>Comportamiento de un gas ideal</h3></div>
+  <div class="pb-body">
+    <div class="enun">Gas ideal: m = 4,0×10⁻³ kg, c_V = 3,1×10³ J·kg⁻¹·K⁻¹, inicial 27 °C y 1,0×10⁵ Pa. Se calienta a volumen constante hasta 2,0×10⁵ Pa.</div>
+    <p class="part">(a)(i) <span class="pide">explique</span> la diferencia entre temperatura y energía interna.</p>
+    <p>La <strong>temperatura</strong> es proporcional a la energía cinética <em>media por molécula</em> (propiedad intensiva). La <strong>energía interna</strong> es la energía cinética <em>total</em> de todas las moléculas (en un gas ideal, la PE intermolecular es nula); es extensiva: depende del número de moléculas además de la temperatura.</p>
+    <p class="part">(a)(ii) <span class="pide">explique</span> por qué sube la temperatura al comprimir rápido.</p>
+    <p>El pistón hace trabajo sobre el gas: las moléculas golpeadas por el pistón que avanza rebotan con mayor rapidez, aumentando su energía cinética media ⇒ sube la temperatura.</p>
+    <p class="part">(b)(i) <span class="pide">dibuje</span> los vectores de velocidad tras calentar.</p>
+    <p>Vectores <strong>más largos</strong> que en el Diagrama 1 (mayor rapidez media, pues subió la temperatura).</p>
+    <p class="part">(b)(ii) <span class="pide">calcule</span> la temperatura final.</p>
+    <p>A V constante \(P\propto T\): \(T_2=T_1\dfrac{P_2}{P_1}=300\dfrac{2{,}0\times10^{5}}{1{,}0\times10^{5}}=600\) K. <span class="ans">600 K (327 °C)</span></p>
+    <p class="part">(b)(iii) <span class="pide">determine</span> la energía térmica suministrada.</p>
+    <p>A volumen constante no hay trabajo, así que \(Q=mc_V\Delta T=4{,}0\times10^{-3}(3{,}1\times10^{3})(600-300)=4{,}0\times10^{-3}(3100)(300)\). <span class="ans">≈ 3,7×10³ J</span></p>
+    <p class="part">(c) <span class="pide">calcule</span> la presión tras comprimir a la mitad del volumen (isotérmico).</p>
+    <p>Partiendo de \(2{,}0\times10^{5}\) Pa, isotérmico \(P\propto1/V\): al reducir \(V\) a la mitad, \(P\) se duplica: \(P=4{,}0\times10^{5}\) Pa. <span class="ans">4,0×10⁵ Pa</span></p>
+  </div>
+</section>
+
+<!-- P3 -->
+<section id="p3" class="pb">
+  <div class="pb-head"><span class="code">FICHA 3 · M19/4/PHYSI/SP2</span><h3>Contenedor de helio</h3></div>
+  <div class="pb-body">
+    <div class="enun">V = 3,2×10⁻⁶ m³, P = 5,1×10⁵ Pa, T = 320 K. Helio, masa molar 4,0 g·mol⁻¹. Gas ideal.</div>
+    <p class="part">(a) <span class="pide">muestre que</span> la masa de un átomo es 6,6×10⁻²⁷ kg.</p>
+    <p>\(m=\dfrac{M}{N_A}=\dfrac{4{,}0\times10^{-3}}{6{,}02\times10^{23}}=6{,}64\times10^{-27}\) kg. ∎</p>
+    <p class="part">(b) <span class="pide">estime</span> la rapidez media de los átomos.</p>
+    <p>\(\tfrac12 m\overline{v^2}=\tfrac32 k_BT\Rightarrow v=\sqrt{\dfrac{3k_BT}{m}}=\sqrt{\dfrac{3(1{,}38\times10^{-23})(320)}{6{,}6\times10^{-27}}}=\sqrt{2{,}0\times10^{6}}\). <span class="ans">≈ 1,4×10³ m·s⁻¹</span></p>
+    <p class="part">(c) <span class="pide">muestre que</span> el número de átomos es 4×10²⁰.</p>
+    <p>\(N=\dfrac{PV}{k_BT}=\dfrac{(5{,}1\times10^{5})(3{,}2\times10^{-6})}{(1{,}38\times10^{-23})(320)}=\dfrac{1{,}632}{4{,}42\times10^{-21}}=3{,}7\times10^{20}\approx4\times10^{20}\). ∎</p>
+    <p class="part">(d)(i) <span class="pide">calcule</span> la razón (volumen de los átomos)/(volumen del gas).</p>
+    <p>Volumen total de átomos \(=N\times4{,}9\times10^{-31}=4\times10^{20}(4{,}9\times10^{-31})=2{,}0\times10^{-10}\) m³. Razón \(=\dfrac{2{,}0\times10^{-10}}{3{,}2\times10^{-6}}\). <span class="ans">≈ 6×10⁻⁵</span></p>
+    <p class="part">(d)(ii) <span class="pide">explique</span> por qué puede tratarse como gas ideal.</p>
+    <p>La razón es ≈6×10⁻⁵, es decir el volumen propio de los átomos es <strong>despreciable</strong> frente al del contenedor. Eso cumple un supuesto clave del modelo cinético (volumen molecular ≈ 0), así que el helio se comporta como gas ideal.</p>
+  </div>
+</section>
+
+<!-- P4 -->
+<section id="p4" class="pb">
+  <div class="pb-head"><span class="code">FICHA 4 · N19/4/PHYSI/SP2</span><h3>Frigorífico</h3></div>
+  <div class="pb-body">
+    <div class="enun">Cocina: aire a 1,0×10⁵ Pa, 22 °C. Frigorífico de volumen interno 0,36 m³ y puerta de área 0,72 m². Al cerrar y enfriar a 5,0 °C el número de moléculas no cambia.</div>
+    <p class="part">(a) <span class="pide">calcule</span> el número de moléculas de aire (puerta abierta).</p>
+    <p>\(N=\dfrac{PV}{k_BT}=\dfrac{(1{,}0\times10^{5})(0{,}36)}{(1{,}38\times10^{-23})(295)}=\dfrac{3{,}6\times10^{4}}{4{,}07\times10^{-21}}\). <span class="ans">≈ 8,8×10²⁴ moléculas</span></p>
+    <p class="part">(b)(i) <span class="pide">determine</span> la presión tras enfriar a 5,0 °C.</p>
+    <p>V y N constantes ⇒ \(P\propto T\). \(T_1=295\) K, \(T_2=278\) K: \(P_2=P_1\dfrac{T_2}{T_1}=1{,}0\times10^{5}\dfrac{278}{295}\). <span class="ans">≈ 9,4×10⁴ Pa</span></p>
+    <p class="part">(b)(ii) <span class="pide">muestre que</span> la fuerza mínima para abrir la puerta es ≈4 kN.</p>
+    <p>Diferencia de presión entre fuera y dentro: \(\Delta P=1{,}0\times10^{5}-9{,}4\times10^{4}=5{,}8\times10^{3}\) Pa. Fuerza \(=\Delta P\cdot A=5{,}8\times10^{3}(0{,}72)=4{,}2\times10^{3}\) N ≈ 4 kN. ∎</p>
+    <p class="part">(b)(iii) <span class="pide">comente</span> la magnitud de esa fuerza.</p>
+    <p>4 kN es enorme (equivale a levantar ~400 kg): sería imposible abrir la puerta así. En la práctica el sellado no es perfecto y entra aire que iguala las presiones en segundos, de modo que la fuerza real necesaria es mucho menor.</p>
+  </div>
+</section>
+
+<!-- BANCO PAPER 2 OFICIALES -->
+<section id="examenes">
+  <p class="sec-num">SECCIÓN ★ · BANCO DE EXÁMENES OFICIALES · PAPER 2 (2022–2026)</p>
+  <h2>Paper 2 oficiales de gases<span class="rule"></span></h2>
+  <p class="sec-intro">Tres preguntas reales del banco 2022–2026: compresión isotérmica (Boyle) con teoría cinética, gráfica \(pV\)–\(T\) para decidir si el gas es ideal, y calentamiento a volumen constante. Reescritas, resueltas apartado por apartado y <strong>verificadas contra el esquema oficial</strong>.</p>
+
+  <div class="pb"><div class="pb-head"><span class="code">May 2024 · TZ1 · SP2 · Q3 · PLAN NUEVO</span><h3>Compresión isotérmica: ¿gas ideal?, temperatura y teoría cinética</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una cantidad fija de \(4{,}5\times10^{-3}\) mol de aire se comprime a temperatura constante. La gráfica \(p\)–\(V\) muestra que, en cada punto, el producto \(pV\) vale \(\approx12\) J (por ejemplo \(1{,}0\times10^{5}\,\mathrm{Pa}\times12\times10^{-5}\,\mathrm{m^3}\), o \(4{,}0\times10^{5}\times3{,}0\times10^{-5}\)). \(R=8{,}31\).</div>
+      <p class="part">(a) <span class="pide">sugiera</span> si el aire se comporta como gas ideal en este proceso.</p>
+      <p>Sí: a temperatura constante, un gas ideal cumple la ley de Boyle \(pV=\) constante. En la gráfica, el producto \(pV\) es ≈ 12 J en todos los puntos, así que se comporta como ideal (dentro del rango medido). <span class="ans">Sí; pV ≈ constante (12 J)</span></p>
+      <p class="part">(b) <span class="pide">calcule</span> la temperatura del aire.</p>
+      <p>\(pV=nRT\Rightarrow T=\dfrac{pV}{nR}=\dfrac{12}{(4{,}5\times10^{-3})(8{,}31)}=\dfrac{12}{0{,}0374}\). <span class="ans">≈ 321 K</span></p>
+      <p class="part">(c) <span class="pide">explique</span>, con el modelo cinético, cómo surge la presión y qué la relaciona con la temperatura.</p>
+      <p>Las moléculas en movimiento aleatorio chocan contra las paredes; en cada choque cambian su cantidad de movimiento, y la <strong>tasa</strong> de cambio de momento por unidad de área es la presión. La temperatura (absoluta) es proporcional a la energía cinética media de las moléculas: a mayor \(T\), mayor rapidez, choques más frecuentes y con mayor cambio de momento ⇒ mayor presión. ∎</p>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:6px"><b>Verificado</b> · Physics_paper_2__TZ1_SL_markscheme_3 (2224–6705M, May 2024 TZ1): (a) pV constante ≈ 12 J → ideal · (b) T = pV/nR = 321 K · (c) T ∝ KE media; presión = tasa de cambio de momento en los choques.</p>
+    </div>
+  </div>
+
+  <div class="pb"><div class="pb-head"><span class="code">May 2023 · TZ2 · SP2 · Q2 · PLAN ANTIGUO</span><h3>Gráfica pV–T: ¿ideal? y masa del gas</h3></div>
+    <div class="pb-body">
+      <div class="enun">Para una masa fija de gas se mide \(p\), \(V\) y \(T\) (en °C). La gráfica de \(pV\) frente a \(T\) es una recta. La masa de una molécula del gas es \(4{,}7\times10^{-26}\) kg. (De la recta, \(pV/T=1{,}50\) J·K⁻¹.)</div>
+      <p class="part">(a) <span class="pide">indique</span> la unidad de \(pV\) en unidades SI fundamentales.</p>
+      <p>\([pV]=\mathrm{Pa\cdot m^3}=(\mathrm{N\,m^{-2}})(\mathrm{m^3})=\mathrm{N\,m}=\mathrm{J}\). En fundamentales: <span class="ans">kg·m²·s⁻²</span></p>
+      <p class="part">(b) <span class="pide">deduzca</span>, usando la gráfica, si el gas es ideal.</p>
+      <p>La recta \(pV\) vs \(T(^\circ\mathrm C)\), extrapolada a \(pV=0\), corta el eje en \(T=-273\,^\circ\mathrm C\) (cero absoluto). Equivalente: para un gas ideal \(\dfrac{pV}{T}=nR\) debe ser constante en kelvin; tomando dos puntos de la recta se obtiene \(1{,}50\) J·K⁻¹ en ambos. Por tanto, <strong>sí es ideal</strong>. ∎</p>
+      <p class="part">(c) <span class="pide">determine</span> la masa del gas.</p>
+      <p>De la pendiente, \(nR=1{,}50\Rightarrow n=\dfrac{1{,}50}{8{,}31}=0{,}1805\) mol. Número de moléculas \(N=nN_A=0{,}1805(6{,}02\times10^{23})=1{,}087\times10^{23}\). Masa \(=N\times m_{molécula}=1{,}087\times10^{23}(4{,}7\times10^{-26})\). <span class="ans">≈ 5,1×10⁻³ kg (5,1 g)</span></p>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:6px"><b>Verificado</b> · Physics_paper_2__TZ2_SL_markscheme_1 (M23/TZ2): (a) kg m² s⁻² · (b) recta corta en −273 °C / pV/T = 1,50 J K⁻¹ constante → ideal · (c) n = pV/RT → masa 5,1 g.</p>
+    </div>
+  </div>
+
+  <div class="pb"><div class="pb-head"><span class="code">May 2026 · TZ2 · SP2 · Q2 · PLAN NUEVO</span><h3>Calentamiento a volumen constante: energía y aumento de presión</h3></div>
+    <div class="pb-body">
+      <div class="enun">Un gas ideal en un contenedor recibe energía de un calentador a \(220\) V que lleva una corriente de \(2{,}0\) A durante \(30\) s, a volumen constante.</div>
+      <p class="part">(a) <span class="pide">calcule</span> la energía térmica transferida al gas.</p>
+      <p>Energía eléctrica disipada por el calentador: \(Q=VIt=220(2{,}0)(30)=13\,200\) J. <span class="ans">1,3×10⁴ J</span></p>
+      <p class="part">(b) <span class="pide">explique</span>, aludiendo al movimiento de las partículas, cómo surge el incremento de presión.</p>
+      <p>La energía transferida aumenta la energía cinética media (rapidez) de las partículas. A volumen constante, esto hace que choquen contra las paredes <strong>con mayor cambio de momento</strong> en cada choque y <strong>con mayor frecuencia</strong>; como la presión es la tasa de cambio de momento por unidad de área, la presión aumenta. ∎</p>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:6px"><b>Verificado</b> · Physics_paper_2_TZ2_SL_markscheme (2226–4727M, May 2026 TZ2): (a) Q = VIt = 220·2·30 = 13200 J · (b) sube la KE/rapidez; choques con mayor cambio de momento y más frecuentes → mayor presión.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <p class="sec-num">PARA TI · RESUELVE ESTILO PAPER 2 Y ENVÍA EN BLOQUE</p>
+  <h2>5 problemas extra (integradores)<span class="rule"></span></h2>
+  <p class="sec-intro">Nuevos y de nivel creciente. Integran las leyes de gases con el modelo microscópico, fuerzas, hidrostática e incertidumbre. R = 8,31; N_A = 6,02×10²³; k_B = 1,38×10⁻²³.</p>
+
+  <div class="prob"><p class="pn">E1 · globo que asciende (combinada)</p><p>Un globo de helio tiene volumen 1,0 m³ a nivel del mar (1,0×10⁵ Pa, 20 °C). Asciende hasta donde la presión es 0,60×10⁵ Pa y la temperatura −10 °C. (a) Halla el nuevo volumen. (b) Explica, con el modelo cinético, por qué se expande.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>Ley combinada \(\dfrac{P_1V_1}{T_1}=\dfrac{P_2V_2}{T_2}\), con \(T_1=293\) K y \(T_2=263\) K:</p>
+      <p>\(V_2=V_1\dfrac{P_1}{P_2}\dfrac{T_2}{T_1}=1{,}0\cdot\dfrac{1{,}0\times10^{5}}{0{,}60\times10^{5}}\cdot\dfrac{263}{293}=1{,}0(1{,}67)(0{,}898)\). <span class="ans">≈ 1,5 m³</span></p>
+      <p class="part">(b)</p>
+      <p>Al subir, la presión externa cae mucho; las moléculas internas siguen chocando con la membrana y, al haber menos presión que las contenga desde afuera, la empujan hacia afuera hasta igualar las presiones. El descenso de temperatura reduce algo la rapidez media y la frecuencia de choques, pero el efecto de la caída de presión domina ⇒ el gas se expande.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E2 · modelo microscópico (recuento y rapidez)</p><p>Un recipiente rígido de 5,0×10⁻³ m³ contiene nitrógeno (M = 28 g·mol⁻¹) a 2,0×10⁵ Pa y 300 K. (a) Halla el número de moles. (b) Halla el número de moléculas. (c) Halla la masa de una molécula. (d) Estima la rapidez cuadrática media. (e) Explica qué le ocurre a esa rapidez si la temperatura se duplica a 600 K.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>\(n=\dfrac{PV}{RT}=\dfrac{(2{,}0\times10^{5})(5{,}0\times10^{-3})}{(8{,}31)(300)}=\dfrac{1{,}0\times10^{3}}{2493}\). <span class="ans">≈ 0,40 mol</span></p>
+      <p class="part">(b)</p><p>\(N=nN_A=0{,}40(6{,}02\times10^{23})\). <span class="ans">≈ 2,4×10²³ moléculas</span></p>
+      <p class="part">(c)</p><p>\(m=\dfrac{M}{N_A}=\dfrac{28\times10^{-3}}{6{,}02\times10^{23}}\). <span class="ans">≈ 4,7×10⁻²⁶ kg</span></p>
+      <p class="part">(d)</p><p>\(\tfrac12 m\overline{v^2}=\tfrac32 k_BT\Rightarrow v_{\mathrm{rms}}=\sqrt{\dfrac{3k_BT}{m}}=\sqrt{\dfrac{3(1{,}38\times10^{-23})(300)}{4{,}65\times10^{-26}}}=\sqrt{2{,}67\times10^{5}}\). <span class="ans">≈ 5,2×10² m·s⁻¹</span></p>
+      <p class="part">(e)</p><p>Como \(v_{\mathrm{rms}}\propto\sqrt{T}\), duplicar \(T\) multiplica la rapidez por \(\sqrt2\approx1{,}41\): \(v_{\mathrm{rms}}\approx7{,}3\times10^{2}\) m·s⁻¹. (La energía cinética media sí se duplica.)</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E3 · gas + pistón (presión y fuerza)</p><p>Un cilindro vertical cerrado por abajo contiene gas atrapado por un pistón sin rozamiento de masa 2,0 kg y área 8,0×10⁻³ m². La presión atmosférica es 1,0×10⁵ Pa y la columna de gas mide 0,20 m a 27 °C. (a) Halla la presión del gas. (b) Se calienta a presión constante hasta 127 °C; halla la nueva longitud de la columna. (c) Halla la fuerza que el gas ejerce sobre el pistón.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>Equilibrio del pistón: \(P_{\text{gas}}A=P_{\text{atm}}A+mg\Rightarrow P_{\text{gas}}=P_{\text{atm}}+\dfrac{mg}{A}=1{,}0\times10^{5}+\dfrac{(2{,}0)(10)}{8{,}0\times10^{-3}}=1{,}0\times10^{5}+2{,}5\times10^{3}\). <span class="ans">≈ 1,03×10⁵ Pa</span></p>
+      <p class="part">(b)</p><p>A presión constante y \(V=A\,L\Rightarrow L\propto T\), con \(T_1=300\) K, \(T_2=400\) K: \(L_2=L_1\dfrac{T_2}{T_1}=0{,}20\dfrac{400}{300}\). <span class="ans">≈ 0,27 m</span></p>
+      <p class="part">(c)</p><p>\(F=P_{\text{gas}}A=(1{,}025\times10^{5})(8{,}0\times10^{-3})\). <span class="ans">≈ 8,2×10² N</span></p>
+    </div></details>
+  </div>
+
+  <div class="prob jefe"><p class="pn">E4 · INTEGRADOR · gas + hidrostática</p><p>Una burbuja de aire de volumen 0,50 cm³ se forma en el fondo de un lago de 20 m de profundidad (agua 1000 kg·m⁻³, P_atm=1,0×10⁵ Pa). Sube a la superficie; la temperatura pasa de 7 °C (fondo) a 20 °C (superficie). (a) Halla la presión en el fondo. (b) Determina el volumen de la burbuja al llegar a la superficie. (c) Explica los dos efectos que la hacen crecer.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>\(P_{\text{fondo}}=P_{\text{atm}}+\rho g h=1{,}0\times10^{5}+(1000)(10)(20)=1{,}0\times10^{5}+2{,}0\times10^{5}\). <span class="ans">3,0×10⁵ Pa</span></p>
+      <p class="part">(b)</p><p>Ley combinada con \(T_1=280\) K, \(T_2=293\) K: \(V_2=V_1\dfrac{P_1}{P_2}\dfrac{T_2}{T_1}=0{,}50\cdot\dfrac{3{,}0\times10^{5}}{1{,}0\times10^{5}}\cdot\dfrac{293}{280}=0{,}50(3{,}0)(1{,}046)\). <span class="ans">≈ 1,6 cm³</span></p>
+      <p class="part">(c)</p><p>(1) La presión cae a un tercio al subir ⇒ el gas se expande (efecto dominante, factor ≈3). (2) La temperatura sube de 280 a 293 K ⇒ expansión adicional (factor ≈1,05). Juntos triplican con creces el volumen.</p>
+    </div></details>
+  </div>
+
+  <div class="prob jefe"><p class="pn">E5 · PROBLEMA JEFE · gas ideal + incertidumbre (Módulo 1)</p><p>En un experimento a volumen constante se mide la presión \(P\) de un gas a varias temperaturas absolutas \(T\). Dos puntos: \((T_1=(290\pm3)\ \mathrm K,\ P_1=(1{,}00\pm0{,}02)\times10^{5}\ \mathrm{Pa})\) y \((T_2=(380\pm3)\ \mathrm K,\ P_2=(1{,}31\pm0{,}02)\times10^{5}\ \mathrm{Pa})\). (a) Comprueba si \(P/T\) es constante dentro de las incertidumbres. (b) Con \(P/T=Nk_B/V\) y los datos (V=2,0×10⁻³ m³), estima el número de moléculas N. (c) Propaga las incertidumbres para dar N±ΔN. (d) Señala un error sistemático posible.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>\(\dfrac{P_1}{T_1}=\dfrac{1{,}00\times10^{5}}{290}=345\) Pa·K⁻¹; \(\dfrac{P_2}{T_2}=\dfrac{1{,}31\times10^{5}}{380}=345\) Pa·K⁻¹. Incertidumbre relativa \(\dfrac{\Delta(P/T)}{P/T}=\dfrac{\Delta P}{P}+\dfrac{\Delta T}{T}\): punto 1 → \(0{,}02+0{,}010=0{,}030\) (±10); punto 2 → \(0{,}015+0{,}008=0{,}023\) (±8). Los dos valores \((345\pm10)\) y \((345\pm8)\) Pa·K⁻¹ <strong>coinciden</strong>, así que \(P/T\) es constante (gas ideal a V fijo). <span class="ans">P/T ≈ 345 Pa·K⁻¹</span></p>
+      <p class="part">(b)</p><p>\(N=\dfrac{P}{T}\cdot\dfrac{V}{k_B}=345\cdot\dfrac{2{,}0\times10^{-3}}{1{,}38\times10^{-23}}=\dfrac{0{,}690}{1{,}38\times10^{-23}}\). <span class="ans">≈ 5,0×10²²</span></p>
+      <p class="part">(c)</p><p>\(V\) y \(k_B\) sin incertidumbre ⇒ \(\dfrac{\Delta N}{N}=\dfrac{\Delta(P/T)}{P/T}\approx0{,}030\) (el punto más incierto) ⇒ \(\Delta N\approx0{,}15\times10^{22}\). <span class="ans">N = (5,0 ± 0,2)×10²²</span></p>
+      <p class="part">(d)</p><p>Posibles: el manómetro mide presión manométrica y no absoluta (desfase constante de ≈\(P_{\text{atm}}\)); el termómetro no registra la temperatura real del gas por falta de equilibrio térmico; o volumen muerto en los tubos de conexión. Cualquiera desplaza sistemáticamente todos los puntos.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- PRACTICA 2 -->
+<section id="practica2">
+  <p class="sec-num">PRÁCTICA EXTRA · PAPER 2 · SOLO TIPOS QUE SÍ CAEN</p>
+  <h2>6 problemas nuevos estilo Paper 2<span class="rule"></span></h2>
+  <p class="sec-intro">Multi-apartado, con "muestre que" y bosquejos P–V/P–T/V–T. Cubren leyes de gases y combinada, \(PV=nRT=Nk_BT\), densidad \(PM=\rho RT\), \(P=\tfrac13\rho\overline{v^2}\) y \(v_{\mathrm{rms}}\), energía cinética media \(\tfrac32 k_BT\) y energía interna \(U=\tfrac32 nRT\). Resuelve en limpio antes de abrir la resolución. R = 8,31; N_A = 6,02×10²³; k_B = 1,38×10⁻²³.</p>
+
+  <div class="prob"><p class="pn">P2-1 · isoterma + bosquejo P–V</p><p>Un gas ideal ocupa \(V_1=2{,}0\times10^{-3}\) m³ a \(P_1=1{,}5\times10^{5}\) Pa y 300 K. (a) <strong>Muestre que</strong> la cantidad de sustancia es ≈0,12 mol. (b) El gas se expande <strong>isotérmicamente</strong> hasta duplicar su volumen; calcule la nueva presión. (c) Bosqueje en los ejes P–V el proceso.</p>
+    <figure class="fig">
+      <svg viewBox="0 0 320 190" width="300" role="img" aria-label="Gráfica presión-volumen de una isoterma">
+        <line x1="50" y1="20" x2="50" y2="168" stroke="#43525C" stroke-width="1.5"/>
+        <line x1="50" y1="168" x2="300" y2="168" stroke="#43525C" stroke-width="1.5"/>
+        <polyline points="60,40 88,92 117,118 146,134 175,144 232,157 290,165" fill="none" stroke="#1F6E7C" stroke-width="2.5"/>
+        <circle cx="88" cy="92" r="4" fill="#C77B23"/><text x="94" y="88" font-family="IBM Plex Mono,monospace" font-size="11" fill="#134B55">1</text>
+        <circle cx="175" cy="144" r="4" fill="#C77B23"/><text x="181" y="140" font-family="IBM Plex Mono,monospace" font-size="11" fill="#134B55">2</text>
+        <line x1="88" y1="92" x2="88" y2="168" stroke="#C77B23" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="175" y1="144" x2="175" y2="168" stroke="#C77B23" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="84" y="182" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C">V</text>
+        <text x="163" y="182" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C">2V</text>
+        <text x="34" y="26" font-family="IBM Plex Mono,monospace" font-size="12" fill="#43525C">P</text>
+        <text x="296" y="182" font-family="IBM Plex Mono,monospace" font-size="12" fill="#43525C">V</text>
+      </svg>
+      <figcaption>Isoterma \(P\propto 1/V\): al duplicar V, P cae a la mitad (1 → 2).</figcaption>
+    </figure>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>\(n=\dfrac{PV}{RT}=\dfrac{(1{,}5\times10^{5})(2{,}0\times10^{-3})}{(8{,}31)(300)}=\dfrac{300}{2493}=0{,}120\) mol. ∎</p>
+      <p class="part">(b)</p><p>Isotérmico (Boyle) \(P\propto1/V\): al duplicar \(V\), \(P_2=\dfrac{P_1}{2}=\dfrac{1{,}5\times10^{5}}{2}\). <span class="ans">7,5×10⁴ Pa</span></p>
+      <p class="part">(c)</p><p>Rama de hipérbola decreciente (ver figura): el punto 2 está al doble de V y a la mitad de P que el 1; la curva no toca los ejes.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">P2-2 · recuento, energía cinética media y energía interna</p><p>Un recipiente rígido de \(2{,}0\times10^{-2}\) m³ contiene argón (monoatómico) a \(1{,}2\times10^{5}\) Pa y 290 K. (a) <strong>Muestre que</strong> contiene ≈1,0 mol. (b) Determine el número de átomos \(N\). (c) Calcule la energía cinética media de traslación por átomo. (d) Calcule la energía interna del gas.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>\(n=\dfrac{PV}{RT}=\dfrac{(1{,}2\times10^{5})(2{,}0\times10^{-2})}{(8{,}31)(290)}=\dfrac{2400}{2409}=0{,}996\approx1{,}0\) mol. ∎</p>
+      <p class="part">(b)</p><p>\(N=nN_A=0{,}996(6{,}02\times10^{23})\). <span class="ans">≈ 6,0×10²³ átomos</span></p>
+      <p class="part">(c)</p><p>\(\overline{E_k}=\tfrac32 k_BT=\tfrac32(1{,}38\times10^{-23})(290)\). <span class="ans">≈ 6,0×10⁻²¹ J</span></p>
+      <p class="part">(d)</p><p>Gas monoatómico: \(U=\tfrac32 nRT=\tfrac32 PV=\tfrac32(1{,}2\times10^{5})(2{,}0\times10^{-2})=\tfrac32(2400)\). <span class="ans">≈ 3,6×10³ J</span> (coincide con \(N\cdot\overline{E_k}\)).</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">P2-3 · densidad PM = ρRT</p><p>Dióxido de carbono (M = 44 g·mol⁻¹) a \(1{,}0\times10^{5}\) Pa y 300 K. (a) <strong>Muestre que</strong>, partiendo de \(PV=nRT\), la densidad cumple \(PM=\rho RT\). (b) Calcule la densidad del CO₂. (c) A presión constante se calienta hasta 600 K; determine la nueva densidad.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>\(n=\dfrac{m}{M}\) en \(PV=nRT\): \(PV=\dfrac{m}{M}RT\Rightarrow P=\dfrac{m}{V}\dfrac{RT}{M}=\dfrac{\rho RT}{M}\Rightarrow PM=\rho RT\). ∎</p>
+      <p class="part">(b)</p><p>\(\rho=\dfrac{PM}{RT}=\dfrac{(1{,}0\times10^{5})(44\times10^{-3})}{(8{,}31)(300)}=\dfrac{4400}{2493}\). <span class="ans">≈ 1,8 kg·m⁻³</span></p>
+      <p class="part">(c)</p><p>A \(P\) y \(M\) fijos \(\rho\propto1/T\): \(\rho_2=\rho_1\dfrac{T_1}{T_2}=1{,}76\dfrac{300}{600}\). <span class="ans">≈ 0,88 kg·m⁻³</span></p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">P2-4 · P = ⅓ρv̄² y rapidez cuadrática media</p><p>Nitrógeno (M = 28 g·mol⁻¹) tiene densidad 1,25 kg·m⁻³ a una presión de \(1{,}0\times10^{5}\) Pa. (a) A partir de \(P=\tfrac13\rho\overline{v^2}\), <strong>muestre que</strong> la rapidez cuadrática media es ≈4,9×10² m·s⁻¹. (b) Determine la temperatura del gas. (c) Si la temperatura se duplica, explique qué le ocurre a \(v_{\mathrm{rms}}\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>\(v_{\mathrm{rms}}=\sqrt{\overline{v^2}}=\sqrt{\dfrac{3P}{\rho}}=\sqrt{\dfrac{3(1{,}0\times10^{5})}{1{,}25}}=\sqrt{2{,}4\times10^{5}}\). <span class="ans">≈ 4,9×10² m·s⁻¹</span> ∎</p>
+      <p class="part">(b)</p><p>De \(PM=\rho RT\): \(T=\dfrac{PM}{\rho R}=\dfrac{(1{,}0\times10^{5})(28\times10^{-3})}{(1{,}25)(8{,}31)}=\dfrac{2800}{10{,}39}\). <span class="ans">≈ 2,7×10² K</span></p>
+      <p class="part">(c)</p><p>Como \(v_{\mathrm{rms}}=\sqrt{3RT/M}\propto\sqrt T\), al duplicar \(T\) la rapidez se multiplica por \(\sqrt2\approx1{,}41\): \(v_{\mathrm{rms}}\approx6{,}9\times10^{2}\) m·s⁻¹ (la energía cinética media sí se duplica).</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">P2-5 · Gay-Lussac + bosquejo P–T</p><p>Un gas a volumen constante está a \(1{,}0\times10^{5}\) Pa y 300 K. Se calienta hasta 450 K. (a) <strong>Muestre que</strong> la presión final es \(1{,}5\times10^{5}\) Pa. (b) Bosqueje la gráfica P–T (con T en kelvin). (c) El experimento se repite enfriando el gas; indique qué predice la gráfica cuando se extrapola a \(P=0\) y qué significa físicamente.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>V y N constantes ⇒ \(P\propto T\): \(P_2=P_1\dfrac{T_2}{T_1}=1{,}0\times10^{5}\dfrac{450}{300}\). <span class="ans">1,5×10⁵ Pa</span> ∎</p>
+      <p class="part">(b)</p><p>Recta que pasa por el origen al usar kelvin (P directamente proporcional a T); pendiente \(=P/T=333\) Pa·K⁻¹.</p>
+      <p class="part">(c)</p><p>Extrapolando a \(P=0\) la recta corta el eje en \(T=0\) K, el <strong>cero absoluto</strong>: la temperatura a la que cesaría el movimiento de traslación de las moléculas y, con él, la presión. (En la práctica el gas se licúa antes.)</p>
+    </div></details>
+  </div>
+
+  <div class="prob jefe"><p class="pn">P2-6 · PROBLEMA JEFE · Charles + energía interna + bosquejo V–T</p><p>0,50 mol de argón (monoatómico) están a 300 K y \(1{,}0\times10^{5}\) Pa. (a) Calcule el volumen inicial. (b) El gas se calienta a <strong>presión constante</strong> hasta 450 K; determine el nuevo volumen. (c) Calcule la variación de energía interna. (d) Bosqueje la gráfica V–T del proceso.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>\(V_1=\dfrac{nRT_1}{P}=\dfrac{(0{,}50)(8{,}31)(300)}{1{,}0\times10^{5}}=\dfrac{1246{,}5}{1{,}0\times10^{5}}\). <span class="ans">≈ 1,2×10⁻² m³</span></p>
+      <p class="part">(b)</p><p>A presión constante (Charles) \(V\propto T\): \(V_2=V_1\dfrac{T_2}{T_1}=1{,}25\times10^{-2}\dfrac{450}{300}\). <span class="ans">≈ 1,9×10⁻² m³</span></p>
+      <p class="part">(c)</p><p>Monoatómico: \(\Delta U=\tfrac32 nR\Delta T=\tfrac32(0{,}50)(8{,}31)(450-300)=\tfrac32(0{,}50)(8{,}31)(150)\). <span class="ans">≈ 9,3×10² J</span></p>
+      <p class="part">(d)</p><p>Recta que pasa por el origen al usar kelvin (\(V\propto T\)); el segmento recorrido va de (300 K, 1,2×10⁻² m³) a (450 K, 1,9×10⁻² m³).</p>
+    </div></details>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 14B · Modelación de un gas Tipo 2 (Paper 2).</strong> Ficha completa resuelta (expansión, micro+macro, helio, frigorífico) y 5 extra integradores. Con esto el tema queda completo (14A + 14B). Sigue el <strong>Módulo 15A — Electricidad I</strong>. Constantes: R = 8,31 J·mol⁻¹·K⁻¹; N_A = 6,02×10²³; k_B = 1,38×10⁻²³ J·K⁻¹.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

@@ -1,0 +1,434 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 13B · Calorimetría Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:52px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:26px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:12px 0;overflow-x:auto}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.pb{border:1px solid var(--line);border-radius:6px;margin:26px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#EFF4F2,#FFFFFF);border-bottom:1px solid var(--line);padding:14px 20px}
+.pb-head .code{font-family:"IBM Plex Mono";font-size:11px;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px;letter-spacing:.05em}
+.pb-head h3{margin:8px 0 0;font-size:19px}
+.pb-body{padding:6px 20px 18px}
+.enun{background:#F4F6F4;border-left:3px solid var(--ink-soft);padding:10px 16px;margin:14px 0;font-size:16.5px}
+.part{margin:16px 0 4px;font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep)}
+.pide{display:inline-block;font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:1px 7px;margin-right:8px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:5px 11px;display:inline-block;margin-top:6px}
+details.rev{border:1px solid #C4DECF;background:var(--ok-soft);border-radius:5px;margin:12px 0 2px;padding:0 16px}
+details.rev[open]{padding:0 16px 12px}
+details.rev summary{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ok);cursor:pointer;padding:10px 0;list-style:none}
+details.rev summary::-webkit-details-marker{display:none}
+details.rev summary::before{content:"\25B8  ";color:var(--ok)}
+details.rev[open] summary::before{content:"\25BE  "}
+details.rev summary:hover{color:var(--teal-deep)}
+details.rev .part{color:var(--ok)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.note{background:#EEF3F1;border:1px dashed var(--teal);border-radius:5px;padding:14px 18px;margin:16px 0;font-size:16px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<!-- rev 2026-10-31 13b · banco paper2 calorimetria (3) oficiales 2022-26 -->
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> B.1 <span>//</span> MÓDULO 13B · TIPO 2 (PAPER 2)</p>
+  <h1>Calorimetría <em>a fondo</em></h1>
+  <p class="lede">Hielo en un calorímetro (hallar potencia, c y L de una gráfica), curva de enfriamiento y congelación, y agua llevada a vapor. Las 3 preguntas de la ficha resueltas, más 5 integradores.</p>
+  <div class="stats">
+    <div class="stat"><b>3/3</b><span>ficha resuelta</span></div>
+    <div class="stat"><b>3</b><span>Paper 2 oficiales 22–26</span></div>
+    <div class="stat"><b>5</b><span>problemas extra</span></div>
+    <div class="stat"><b>Paper 2</b><span>respuesta larga</span></div>
+    <div class="stat"><b>c_agua</b><span>4,2×10³ J·kg⁻¹·K⁻¹</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#estrategia">0 · Método para tipo 2</a>
+  <a href="#p1">1 · Hielo en calorímetro (M04)</a>
+  <a href="#p2">2 · Enfriamiento y congelación (N05)</a>
+  <a href="#p3">3 · Agua a vapor (N04)</a>
+  <a href="#examenes">★ Banco Paper 2 · 2022–26</a>
+  <a href="#extra">Problemas extra para ti</a>
+  <a href="#practica2">Práctica extra · Paper 2</a>
+</nav>
+
+<main>
+
+<div class="wrap" style="padding:0"><div class="note"><strong>Nota:</strong> la teoría íntegra está en el Módulo 13A. Aquí va el método tipo 2 + las 3 preguntas de la ficha resueltas apartado por apartado, con lectura de gráfica.</div></div>
+
+<!-- ESTRATEGIA -->
+<section id="estrategia">
+  <p class="sec-num">SECCIÓN 00 · LO QUE FALTA PARA TIPO 2</p>
+  <h2>Método para calorimetría de respuesta larga<span class="rule"></span></h2>
+  <div class="box key"><span class="lbl">Los 5 gestos del tipo 2</span>
+    <ol>
+      <li><strong>Lee la curva por tramos:</strong> rampa = una fase (\(Q=mc\Delta T\)); meseta = cambio de fase (\(Q=mL\)). Usa el tramo del que conoces \(c\) para hallar la potencia.</li>
+      <li><strong>Potencia constante:</strong> \(Q=Pt\). De un tramo conocido obtienes \(P\); con \(P\) y otro tramo obtienes la incógnita (\(c\) o \(L\)).</li>
+      <li><strong>Pendiente = tasa:</strong> en enfriamiento, la tasa de pérdida de energía es \(\dfrac{\Delta Q}{\Delta t}=mc\dfrac{\Delta\theta}{\Delta t}\) (la pendiente de la curva en ese punto).</li>
+      <li><strong>Balance en varias etapas:</strong> energía total = suma de \(mc\Delta T\) (rampas) + \(mL\) (mesetas).</li>
+      <li><strong>Molecular y "estime":</strong> explica meseta = la energía rompe enlaces (sube la PE, T constante); una masa "estimada" implica pérdidas de calor no contabilizadas.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- P1 -->
+<section id="p1" class="pb">
+  <div class="pb-head"><span class="code">FICHA 1 · M04/432/S(2)</span><h3>Hielo en un calorímetro</h3></div>
+  <div class="pb-body">
+    <div class="enun">Hielo triturado recibe energía a ritmo constante. Gráfica θ–t: parte de −15 °C, sube hasta 0 °C (≈15 s), se mantiene en 0 °C durante la fusión (≈15 s a ≈165 s), y luego el agua sube de 0 a 15 °C (≈165 a ≈200 s). Masa = 0,25 kg; c_agua = 4200 J·kg⁻¹·K⁻¹.</div>
+    <p class="part">(a) <span class="pide">marque</span> dónde se ha fundido todo el hielo.</p>
+    <p>En el punto donde la temperatura <strong>deja la meseta de 0 °C y empieza a subir</strong> (final del tramo horizontal, ≈165 s): ahí ya es todo agua líquida.</p>
+    <p class="part">(b) <span class="pide">explique</span> la región de temperatura constante (molecular).</p>
+    <p>La energía suministrada <strong>no aumenta la energía cinética</strong> (la temperatura no sube) sino que <strong>rompe los enlaces</strong> de la red del hielo: aumenta la energía potencial de las moléculas. Por eso, durante la fusión, la temperatura permanece constante.</p>
+    <p class="part">(c)(i) <span class="pide">deduzca</span> que la potencia es ≈530 W.</p>
+    <p>Usa el tramo de agua líquida (0→15 °C), del que conocemos \(c_{agua}\). \(Q=mc\Delta T=0{,}25(4200)(15)=1{,}575\times10^{4}\) J. Ese tramo dura ≈30 s: \(P=\dfrac{Q}{t}=\dfrac{1{,}575\times10^{4}}{30}\). <span class="ans">≈ 525 W ≈ 530 W</span></p>
+    <p class="part">(c)(ii) <span class="pide">determine</span> el calor específico del hielo.</p>
+    <p>Tramo del hielo (−15→0 °C), que dura ≈15 s: \(Q=Pt=530(15)=7950\) J. \(c_{hielo}=\dfrac{Q}{m\Delta T}=\dfrac{7950}{0{,}25(15)}=\dfrac{7950}{3{,}75}\). <span class="ans">≈ 2,1×10³ J·kg⁻¹·K⁻¹</span></p>
+    <p class="part">(c)(iii) <span class="pide">determine</span> el calor latente de fusión del hielo.</p>
+    <p>Meseta de fusión (≈15 s a ≈165 s ⇒ Δt ≈150 s): \(Q=Pt=530(150)=7{,}95\times10^{4}\) J. \(L=\dfrac{Q}{m}=\dfrac{7{,}95\times10^{4}}{0{,}25}\). <span class="ans">≈ 3,2×10⁵ J·kg⁻¹</span> (cercano al valor real 3,3×10⁵).</p>
+  </div>
+</section>
+
+<!-- P2 -->
+<section id="p2" class="pb">
+  <div class="pb-head"><span class="code">FICHA 2 · N05/4/PHYSI/SP2</span><h3>Enfriamiento y congelación de un líquido</h3></div>
+  <div class="pb-body">
+    <div class="enun">Un líquido se enfría: de 75 °C baja a ≈48 °C en 600 s, se mantiene ≈48 °C de 600 a 1800 s (congelación), y luego sigue bajando. Ambiente a 20 °C. Masa = 0,11 kg; c = 1300 J·kg⁻¹·K⁻¹.</div>
+    <p class="part">(a) <span class="pide">explique</span> qué se entiende por temperatura.</p>
+    <p>La temperatura es una medida de la <strong>energía cinética media</strong> de las partículas de la sustancia (proporcional a ella en la escala absoluta).</p>
+    <p class="part">(b) <span class="pide">continúe</span> la curva otros 3000 s.</p>
+    <p>Tras la meseta, la temperatura sigue bajando pero cada vez más lento, <strong>acercándose asintóticamente a 20 °C</strong> (temperatura ambiente): decaimiento tipo exponencial (ley de enfriamiento de Newton).</p>
+    <p class="part">(c)(i) <span class="pide">indique y explique</span> la tasa de pérdida entre 0 y 600 s.</p>
+    <p>Alta y decreciente: al inicio la diferencia con el ambiente es grande (75 vs 20 °C), así que pierde energía rápido (curva empinada); conforme se acerca al ambiente, la tasa baja.</p>
+    <p class="part">(c)(ii) <span class="pide">indique y explique</span> entre 600 y 1800 s.</p>
+    <p>Temperatura constante (meseta) ⇒ el líquido se está <strong>solidificando</strong>: libera calor latente de fusión a temperatura constante. Sigue perdiendo energía al ambiente, pero esa energía sale de la formación de enlaces (baja la energía potencial), no del enfriamiento.</p>
+    <p class="part">(d)(i) <span class="pide">deduzca</span> que la tasa de pérdida en t = 600 s es ≈4 W.</p>
+    <p>Tasa \(=mc\,\dfrac{\Delta\theta}{\Delta t}\) (pendiente de la curva en 600 s). Con \(mc=0{,}11(1300)=143\) J·K⁻¹ y una pendiente ≈0,028 K·s⁻¹: \(\dfrac{\Delta Q}{\Delta t}=143(0{,}028)\approx4\) W. ∎</p>
+    <p class="part">(d)(ii) <span class="pide">calcule</span> el calor latente de fusión del líquido.</p>
+    <p>En la meseta (1200 s) la tasa de pérdida es ≈4 W: \(Q=Pt=4(1200)=4800\) J, todo latente. \(L=\dfrac{Q}{m}=\dfrac{4800}{0{,}11}\). <span class="ans">≈ 4,4×10⁴ J·kg⁻¹</span></p>
+  </div>
+</section>
+
+<!-- P3 -->
+<section id="p3" class="pb">
+  <div class="pb-head"><span class="code">FICHA 3 · N04/4/PHYSI/SP2</span><h3>Calor específico, latente y agua a vapor</h3></div>
+  <div class="pb-body">
+    <div class="enun">Agua a θ se calienta a ritmo constante hasta vaporizar algo. Punto de ebullición 100 °C. Potencia 400 W, 10 min. m inicial = 0,30 kg, θ = 20 °C, c = 4,2×10³, L_v = 2,3×10⁶ J·kg⁻¹.</div>
+    <p class="part">(a) <span class="pide">defina</span> calor específico.</p>
+    <p>Energía necesaria para elevar en 1 K la temperatura de 1 kg de la sustancia.</p>
+    <p class="part">(b) <span class="pide">explique</span> por qué el aluminio y el agua tienen distinto calor específico.</p>
+    <p>Porque tienen distinta estructura y masa molecular y distintos modos de almacenar energía: para una misma masa y mismo aumento de temperatura, cada sustancia requiere una cantidad de energía diferente. El agua tiene un calor específico inusualmente alto.</p>
+    <p class="part">(c)(i) <span class="pide">dibuje</span> θ–t del agua.</p>
+    <p>Recta ascendente de θ a 100 °C (calentamiento), luego <strong>meseta horizontal a 100 °C</strong> (ebullición).</p>
+    <figure class="fig">
+      <svg viewBox="0 0 280 120" width="260" xmlns="http://www.w3.org/2000/svg" aria-label="theta-t agua">
+        <line x1="35" y1="100" x2="270" y2="100" stroke="var(--ink)" stroke-width="1.2"/>
+        <line x1="35" y1="100" x2="35" y2="15" stroke="var(--ink)" stroke-width="1.2"/>
+        <polyline points="35,80 150,35 260,35" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+        <line x1="150" y1="35" x2="260" y2="35" stroke="var(--amber)" stroke-width="3"/>
+        <text x="12" y="40" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">100</text>
+        <text x="18" y="84" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">θ</text>
+        <text x="180" y="30" font-family="Space Grotesk" font-size="9" fill="var(--amber)">ebullición</text>
+      </svg>
+      <figcaption>Rampa (calentar 20→100) y luego meseta a 100 °C (vaporización).</figcaption>
+    </figure>
+    <p class="part">(c)(ii) <span class="pide">describa</span> el comportamiento molecular.</p>
+    <p>Durante el calentamiento (20→100 °C) la energía aumenta la <strong>energía cinética</strong> de las moléculas (sube la temperatura). Al llegar a 100 °C, la energía rompe los enlaces intermoleculares: aumenta la <strong>energía potencial</strong> (las moléculas se separan y escapan como vapor) mientras la temperatura se mantiene constante.</p>
+    <p class="part">(d)(i) <span class="pide">deduzca</span> que la energía total en 10 min es 2,4×10⁵ J.</p>
+    <p>\(Q=Pt=400(10\times60)=400(600)=2{,}4\times10^{5}\) J. ∎</p>
+    <p class="part">(d)(ii) <span class="pide">estime</span> la masa de agua vaporizada.</p>
+    <p>Primero calentar 0,30 kg de 20 a 100 °C: \(Q_1=mc\Delta T=0{,}30(4200)(80)=1{,}008\times10^{5}\) J. Lo que queda para vaporizar: \(Q_2=2{,}4\times10^{5}-1{,}008\times10^{5}=1{,}392\times10^{5}\) J. Masa vaporizada: \(m_v=\dfrac{Q_2}{L_v}=\dfrac{1{,}392\times10^{5}}{2{,}3\times10^{6}}\). <span class="ans">≈ 0,061 kg (61 g)</span></p>
+    <p class="part">(d)(iii) <span class="pide">sugiera</span> por qué es solo una estimación.</p>
+    <p>Porque parte de la energía se pierde al entorno (no todo el calor del cazo va al agua), así que la masa realmente vaporizada es algo menor. También se desprecia la capacidad calorífica del cazo.</p>
+  </div>
+</section>
+
+<!-- BANCO PAPER 2 OFICIALES -->
+<section id="examenes">
+  <p class="sec-num">SECCIÓN ★ · BANCO DE EXÁMENES OFICIALES · PAPER 2 (2022–2026)</p>
+  <h2>Paper 2 oficiales de calorimetría<span class="rule"></span></h2>
+  <p class="sec-intro">Tres preguntas reales del banco 2022–2026: hielo que se funde (c y L de una gráfica), esterilizador de leche (potencia) y panel solar (área por balance de energía). Reescritas, resueltas apartado por apartado y <strong>verificadas contra el esquema oficial</strong>.</p>
+
+  <div class="pb"><div class="pb-head"><span class="code">May 2024 · TZ2 · SP2 · Q2 · PLAN NUEVO</span><h3>Hielo triturado que se funde: potencia, calor latente y energía interna</h3></div>
+    <div class="pb-body">
+      <div class="enun">Hielo triturado de masa \(35\) g a \(-10\,^\circ\mathrm C\) se deja en una sala templada. La gráfica \(T\)–\(t\): sube de \(-10\) a \(0\,^\circ\mathrm C\) en los primeros \(4\) min, luego se mantiene a \(0\,^\circ\mathrm C\) entre \(4\) y \(64\) min (fusión). \(c_{hielo}=2100\) J·kg⁻¹·K⁻¹.</div>
+      <p class="part">(a)(i) <span class="pide">muestre que</span> la potencia media transferida al hielo es ~3 W.</p>
+      <p>Tramo de calentamiento del hielo (\(-10\to0\,^\circ\mathrm C\) en \(4\) min): \(Q=mc\Delta T=0{,}035(2100)(10)=735\) J. \(P=\dfrac{Q}{t}=\dfrac{735}{4\times60}=3{,}1\) W. <span class="ans">≈ 3,1 W</span></p>
+      <p class="part">(a)(ii) <span class="pide">estime</span> el calor latente de fusión del hielo.</p>
+      <p>La meseta de fusión dura \(64-4=60\) min: \(Q=Pt=3{,}06(60\times60)=1{,}10\times10^{4}\) J. \(L_f=\dfrac{Q}{m}=\dfrac{1{,}10\times10^{4}}{0{,}035}\). <span class="ans">≈ 3,1×10⁵ J·kg⁻¹</span></p>
+      <p class="part">(b) <span class="pide">compare</span> la energía interna del hielo y del agua (igual masa, a 0 °C).</p>
+      <p>A \(0\,^\circ\mathrm C\) la energía cinética media de las moléculas es <strong>la misma</strong> (igual temperatura), pero el agua líquida tiene <strong>mayor energía potencial</strong> intermolecular (absorbió el calor latente al romper enlaces). Por tanto, <strong>la energía interna del agua es mayor</strong> que la del hielo. ∎</p>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:6px"><b>Verificado</b> · Physics_paper_2__TZ2_SL_markscheme_3 (2224–6711M, May 2024 TZ2): (a)(i) Q=0,035·2100·10=735 J, P=3,1 W · (a)(ii) Q=1,10×10⁴ J, L=3,1×10⁵ J kg⁻¹ · (b) energía interna del agua mayor; misma KE, mayor PE.</p>
+    </div>
+  </div>
+
+  <div class="pb"><div class="pb-head"><span class="code">May 2022 · TZ1 · SP2 · Q2 · PLAN ANTIGUO</span><h3>Esterilizador de leche: potencia de entrada</h3></div>
+    <div class="pb-body">
+      <div class="enun">Leche fría entra en un esterilizador y pasa sobre una resistencia que la calienta de \(11\,^\circ\mathrm C\) a \(84\,^\circ\mathrm C\). Entran \(55\) g de leche cada segundo. \(c_{leche}=3{,}9\) kJ·kg⁻¹·K⁻¹.</div>
+      <p class="part">(a) <span class="pide">estime</span> la potencia de entrada (con la unidad adecuada).</p>
+      <p>Por segundo se calientan \(0{,}055\) kg en \(\Delta T=84-11=73\) K: \(P=\dfrac{mc\Delta T}{t}=0{,}055(3900)(73)=1{,}57\times10^{4}\) W. <span class="ans">≈ 16 kW</span></p>
+      <p class="part">(b) <span class="pide">comente</span> si ese valor sub- o sobreestima la potencia real.</p>
+      <p><strong>Subestima.</strong> Parte de la energía eléctrica se pierde como calor al entorno (y a las paredes del equipo) en vez de ir a la leche, así que la potencia de entrada real debe ser <em>mayor</em> que la calculada. ∎</p>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:6px"><b>Verificado</b> · Physics_paper_2__TZ1_SL_markscheme (M22/TZ1): (a) mcΔT por segundo → 16 kW (unidad de potencia) · (b) subestima, porque se pierde energía al entorno.</p>
+    </div>
+  </div>
+
+  <div class="pb"><div class="pb-head"><span class="code">Nov 2022 · SP2 · Q2 · PLAN ANTIGUO</span><h3>Panel solar: área mínima por balance de energía</h3></div>
+    <div class="pb-body">
+      <div class="enun">Un panel solar calienta el agua de un tanque. Intensidad incidente \(680\) W·m⁻²; masa de agua \(250\) kg; de \(15\) a \(30\,^\circ\mathrm C\) en \(1{,}0\) hora; \(c_{agua}=4200\) J·kg⁻¹·K⁻¹; eficiencia global \(0{,}30\).</div>
+      <p class="part">(a) <span class="pide">determine</span> el área mínima del panel.</p>
+      <p>Energía necesaria para el agua: \(Q=mc\Delta T=250(4200)(15)=1{,}575\times10^{7}\) J. La energía útil disponible en un tiempo \(t\) es \(\eta\,I\,A\,t\). Igualando y despejando \(A\):</p>
+      <div class="eq">\[ A=\frac{mc\Delta T}{\eta\,I\,t}=\frac{1{,}575\times10^{7}}{(0{,}30)(680)(3600)}=\frac{1{,}575\times10^{7}}{7{,}34\times10^{5}} \]</div>
+      <p><span class="ans">A ≈ 21 m²</span> <em>(t = 1,0 h = 3600 s.)</em></p>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:6px"><b>Verificado</b> · Physics_paper_2__SL_markscheme (N22/TZ0): energía requerida 250·4200·15; energía disponible 0,30·680·A·t → A = 21–22 m². (La parte (a)(ii), temperatura de equilibrio de las tejas por radiación, pertenece al tema de radiación/clima.)</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <p class="sec-num">PARA TI · RESUELVE ESTILO PAPER 2 Y ENVÍA EN BLOQUE</p>
+  <h2>5 problemas extra (integradores)<span class="rule"></span></h2>
+  <p class="sec-intro">Nuevos y de nivel creciente, con resolución oculta apartado por apartado. Cubren curva de calentamiento con potencia constante, cambios de fase combinados, método de las mezclas, calorímetro con equivalente en agua, condensación de vapor y medición con incertidumbre. c_agua = 4,2×10³, c_hielo = 2,1×10³, L_f = 3,3×10⁵, L_v = 2,3×10⁶ J·kg⁻¹.</p>
+
+  <div class="prob"><p class="pn">E1 · curva de calentamiento con potencia constante</p><p>A 0,20 kg de hielo a −10 °C se le suministran 400 W. (a) Dibuja la curva θ–t hasta convertirlo en vapor a 100 °C. (b) Calcula la energía de cada etapa (calentar hielo, fundir, calentar agua, vaporizar). (c) Determina el tiempo total.</p>
+  <details class="rev"><summary>ver resolución</summary>
+    <p class="part">(a) curva θ–t</p>
+    <p>Cuatro tramos en orden: rampa corta (hielo −10→0 °C), meseta de fusión a 0 °C, rampa larga (agua 0→100 °C) y meseta de vaporización, muy larga, a 100 °C. Como \(c_{agua}>c_{hielo}\) la rampa del agua es menos empinada que la del hielo, y como \(L_v\gg L_f\) la meseta de vaporización es mucho más larga que la de fusión.</p>
+    <figure class="fig">
+      <svg viewBox="0 0 300 120" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="curva de calentamiento de hielo a vapor">
+        <line x1="35" y1="100" x2="292" y2="100" stroke="var(--ink)" stroke-width="1.2"/>
+        <line x1="35" y1="100" x2="35" y2="14" stroke="var(--ink)" stroke-width="1.2"/>
+        <polyline points="35,90 55,78 80,78 150,30 288,30" fill="none" stroke="var(--teal)" stroke-width="2.4"/>
+        <line x1="55" y1="78" x2="80" y2="78" stroke="var(--amber)" stroke-width="3"/>
+        <line x1="150" y1="30" x2="288" y2="30" stroke="var(--amber)" stroke-width="3"/>
+        <text x="12" y="82" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">0</text>
+        <text x="6" y="34" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">100</text>
+        <text x="18" y="96" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">θ</text>
+        <text x="278" y="112" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">t</text>
+        <text x="96" y="24" font-family="Space Grotesk" font-size="8.5" fill="var(--amber)">vaporización</text>
+      </svg>
+      <figcaption>▲ Esquema (solo método): no a escala. Lo evaluado es el orden de los 4 tramos y que la meseta de vaporización sea, de lejos, la más larga.</figcaption>
+    </figure>
+    <p class="part">(b) energía por etapa</p>
+    <p>Calentar hielo: \(Q_1=mc_{h}\Delta T=0{,}20(2100)(10)=4{,}2\times10^{3}\) J.<br>
+    Fundir: \(Q_2=mL_f=0{,}20(3{,}3\times10^{5})=6{,}6\times10^{4}\) J.<br>
+    Calentar agua: \(Q_3=mc_{a}\Delta T=0{,}20(4200)(100)=8{,}4\times10^{4}\) J.<br>
+    Vaporizar: \(Q_4=mL_v=0{,}20(2{,}3\times10^{6})=4{,}6\times10^{5}\) J. <span class="ans">Q_total ≈ 6,14×10⁵ J</span></p>
+    <p class="part">(c) tiempo total</p>
+    <p>\(t=\dfrac{Q_{total}}{P}=\dfrac{6{,}142\times10^{5}}{400}\). <span class="ans">≈ 1,54×10³ s ≈ 26 min</span> De ellos, 165 s son fusión y 1150 s vaporización: casi todo el tiempo es cambio de fase.</p>
+  </details></div>
+  <div class="prob"><p class="pn">E2 · método de las mezclas (hielo + agua)</p><p>En 0,40 kg de agua a 30 °C se introducen 0,10 kg de hielo a 0 °C. (a) Determina si se derrite todo el hielo. (b) Halla la temperatura final. (c) Si en vez de 0,10 kg fueran 0,30 kg de hielo, ¿cuál sería el estado final? Justifica.</p>
+  <details class="rev"><summary>ver resolución</summary>
+    <p class="part">(a) ¿se funde todo?</p>
+    <p>Energía para fundir todo el hielo: \(Q_{fus}=m_hL_f=0{,}10(3{,}3\times10^{5})=3{,}3\times10^{4}\) J. Energía disponible si el agua se enfría de 30 a 0 °C: \(Q_{disp}=m_wc_a\Delta T=0{,}40(4200)(30)=5{,}04\times10^{4}\) J. Como \(Q_{disp}>Q_{fus}\), <span class="ans">sí se funde todo el hielo</span> y queda energía para calentar la mezcla por encima de 0 °C.</p>
+    <p class="part">(b) temperatura final</p>
+    <p>Balance (lo que cede el agua tibia = fundir el hielo + calentar esa agua de fusión hasta \(T_f\)):</p>
+    <div class="eq">\[0{,}40(4200)(30-T_f)=0{,}10(3{,}3\times10^{5})+0{,}10(4200)\,T_f\]</div>
+    <p>\(50400-1680\,T_f=33000+420\,T_f\Rightarrow 17400=2100\,T_f\). <span class="ans">T_f ≈ 8,3 °C</span></p>
+    <p class="part">(c) con 0,30 kg de hielo</p>
+    <p>Fundir todo exigiría \(0{,}30(3{,}3\times10^{5})=9{,}9\times10^{4}\) J, pero el agua solo puede ceder \(5{,}04\times10^{4}\) J al bajar a 0 °C. No alcanza: solo se funde \(m=\dfrac{5{,}04\times10^{4}}{3{,}3\times10^{5}}\approx0{,}15\) kg. <span class="ans">Equilibrio a 0 °C: ≈0,15 kg de hielo sin fundir junto a ≈0,55 kg de agua</span> (coexisten las dos fases).</p>
+  </details></div>
+  <div class="prob"><p class="pn">E3 · calorímetro con equivalente en agua</p><p>Un calorímetro de cobre (\(m_c=0{,}080\) kg, \(c_c=390\) J·kg⁻¹·K⁻¹) contiene 0,250 kg de agua; ambos a 19,0 °C. Se introduce un bloque metálico de 0,200 kg a 95,0 °C y el equilibrio se alcanza a 29,8 °C. (a) Halla el equivalente en agua del calorímetro. (b) Determina el calor específico del metal por el método de las mezclas. (c) ¿Qué error relativo se cometería al despreciar el calorímetro?</p>
+  <details class="rev"><summary>ver resolución</summary>
+    <p class="part">(a) equivalente en agua del calorímetro</p>
+    <p>Es la masa de agua que absorbería el mismo calor que el calorímetro por cada kelvin: \(w=\dfrac{m_cc_c}{c_a}=\dfrac{0{,}080(390)}{4200}=\dfrac{31{,}2}{4200}\). <span class="ans">w ≈ 7,4×10⁻³ kg (7,4 g)</span></p>
+    <p class="part">(b) calor específico del metal</p>
+    <p>El bloque cede calor; lo ganan el agua y el calorímetro (\(\Delta T=29{,}8-19{,}0=10{,}8\) K):</p>
+    <div class="eq">\[m_mc_m(95{,}0-29{,}8)=(m_wc_a+m_cc_c)\,\Delta T\]</div>
+    <p>Lado frío: \((0{,}250\cdot4200+0{,}080\cdot390)(10{,}8)=(1050+31{,}2)(10{,}8)=1{,}168\times10^{4}\) J. Lado caliente: \(0{,}200\,c_m(65{,}2)=13{,}04\,c_m\). Entonces \(c_m=\dfrac{1{,}168\times10^{4}}{13{,}04}\). <span class="ans">c_m ≈ 9,0×10² J·kg⁻¹·K⁻¹ (aluminio)</span></p>
+    <p class="part">(c) error al despreciar el calorímetro</p>
+    <p>Sin el término del cobre: \(c_m'=\dfrac{1050(10{,}8)}{13{,}04}=\dfrac{11340}{13{,}04}\approx8{,}7\times10^{2}\). <span class="ans">≈ 3 % por debajo</span> El calorímetro absorbe calor real; ignorarlo subestima \(c_m\).</p>
+  </details></div>
+  <div class="prob jefe"><p class="pn">E4 · PROBLEMA JEFE (condensación de vapor)</p><p>Se burbujea vapor de agua seco a 100 °C dentro de 0,400 kg de agua a 18,0 °C. El flujo se detiene cuando la mezcla llega a 45,0 °C. (a) Escribe el balance identificando las dos aportaciones energéticas del vapor. (b) Halla la masa de vapor condensado. (c) ¿Qué fracción de la energía proviene de la condensación, y por qué no puede despreciarse el enfriamiento del condensado?</p>
+  <details class="rev"><summary>ver resolución</summary>
+    <p class="part">(a) balance</p>
+    <p>El vapor aporta energía de dos formas: (i) <strong>condensa</strong> a 100 °C liberando \(m_sL_v\); (ii) el agua recién condensada <strong>se enfría</strong> de 100 a 45 °C liberando \(m_sc_a(100-45)\). Todo lo gana el agua fría:</p>
+    <div class="eq">\[m_sL_v+m_sc_a(100-45)=m_wc_a(45-18)\]</div>
+    <p class="part">(b) masa de vapor condensado</p>
+    <p>\(m_s[2{,}3\times10^{6}+4200(55)]=0{,}400(4200)(27)\). Es decir \(m_s(2{,}3\times10^{6}+2{,}31\times10^{5})=4{,}536\times10^{4}\), o sea \(m_s(2{,}531\times10^{6})=4{,}536\times10^{4}\). <span class="ans">m_s ≈ 0,018 kg (18 g)</span></p>
+    <p class="part">(c) fracción de la condensación</p>
+    <p>Por kg de vapor: condensación \(2{,}3\times10^{6}\) J frente a enfriamiento \(2{,}31\times10^{5}\) J. Fracción de condensación \(=\dfrac{2{,}3\times10^{6}}{2{,}531\times10^{6}}\approx\) <span class="ans">91 %</span> El 9 % del enfriamiento no es despreciable: omitirlo daría \(m_s=\dfrac{4{,}536\times10^{4}}{2{,}3\times10^{6}}\approx0{,}0197\) kg, un error cercano al 10 %.</p>
+  </details></div>
+  <div class="prob jefe"><p class="pn">E5 · PROBLEMA JEFE (medir L de fusión + Módulo 1, supera IB)</p><p>Para medir el calor latente de fusión del hielo se añade hielo a 0 °C a agua tibia en un calorímetro. Datos: agua \(m_w=(0{,}300\pm0{,}002)\ \mathrm{kg}\) a \(T_i=(40{,}0\pm0{,}5)\ ^\circ\mathrm C\); hielo fundido \(m_h=(0{,}050\pm0{,}002)\ \mathrm{kg}\); temperatura final \(T_f=(22{,}0\pm0{,}5)\ ^\circ\mathrm C\). (a) Plantea el balance \(m_h L+m_h c_w T_f=m_w c_w(T_i-T_f)\) y despeja \(L\). (b) Calcula \(L\). (c) Propaga las incertidumbres para dar \(L\pm\Delta L\). (d) Señala una fuente de error sistemático del montaje.</p>
+  <details class="rev"><summary>ver resolución</summary>
+    <p class="part">(a) despejar L</p>
+    <p>El hielo a 0 °C funde y luego su agua se calienta hasta \(T_f\); lo paga el agua tibia. Despejando:</p>
+    <div class="eq">\[L=\frac{m_wc_w(T_i-T_f)-m_hc_wT_f}{m_h}\]</div>
+    <p class="part">(b) valor</p>
+    <p>\(m_wc_w(T_i-T_f)=0{,}300(4200)(18{,}0)=2{,}268\times10^{4}\) J; \(m_hc_wT_f=0{,}050(4200)(22{,}0)=4{,}62\times10^{3}\) J. Numerador \(=1{,}806\times10^{4}\) J. \(L=\dfrac{1{,}806\times10^{4}}{0{,}050}\). <span class="ans">L ≈ 3,6×10⁵ J·kg⁻¹</span></p>
+    <p class="part">(c) propagación de incertidumbres</p>
+    <p>Diferencia de temperaturas \(T_i-T_f=18{,}0\) K con \(\Delta=0{,}5+0{,}5=1{,}0\) K.<br>
+    Término 1, \(Q_1=m_wc_w(T_i-T_f)\): \(\dfrac{\Delta Q_1}{Q_1}=\dfrac{0{,}002}{0{,}300}+\dfrac{1{,}0}{18{,}0}=0{,}062\Rightarrow\Delta Q_1\approx1{,}41\times10^{3}\) J.<br>
+    Término 2, \(Q_2=m_hc_wT_f\): \(\dfrac{\Delta Q_2}{Q_2}=\dfrac{0{,}002}{0{,}050}+\dfrac{0{,}5}{22{,}0}=0{,}063\Rightarrow\Delta Q_2\approx2{,}9\times10^{2}\) J.<br>
+    Numerador \(N=Q_1-Q_2=1{,}806\times10^{4}\) J (las incertidumbres de una resta se suman): \(\Delta N\approx1{,}70\times10^{3}\) J, es decir \(9{,}4\%\).<br>
+    \(L=N/m_h\): \(\dfrac{\Delta L}{L}=0{,}094+\dfrac{0{,}002}{0{,}050}=0{,}134\Rightarrow\Delta L\approx0{,}5\times10^{5}\).</p>
+    <p><span class="ans">L = (3,6 ± 0,5)×10⁵ J·kg⁻¹</span> El valor de referencia \(3{,}34\times10^{5}\) cae dentro del intervalo.</p>
+    <p class="part">(d) error sistemático</p>
+    <p>No se incluye la capacidad calorífica del calorímetro ni el intercambio con el ambiente (el agua está por encima de la temperatura del aire), y el hielo suele llegar con una película de agua de fusión que falsea \(m_h\). Todo ello tiende a <strong>sobrestimar</strong> \(L\), coherente con que el valor salga por encima del real.</p>
+  </details></div>
+</section>
+
+<!-- PRACTICA 2 -->
+<section id="practica2">
+  <p class="sec-num">PARA TI · SOLO TIPOS QUE SÍ CAEN · RESUELVE Y LUEGO ABRE LA RESOLUCIÓN</p>
+  <h2>Práctica extra · Paper 2 (todo tipo)<span class="rule"></span></h2>
+  <p class="sec-intro">Seis problemas nuevos, estilo respuesta larga: multi-apartado, con pasos "muestre que" y bosquejo de curva de calentamiento. Cubren los tipos que aparecen en la ficha: \(Q=mc\Delta T\), mezclas y equilibrio con calorímetro, calor latente de fusión y de vaporización, lectura de gráfica a potencia constante, el recorrido completo hielo→agua→vapor y el hielo añadido al agua. Resolución oculta en cada uno. Constantes: c_agua = 4,2×10³, c_hielo = 2,1×10³, L_f = 3,3×10⁵, L_v = 2,3×10⁶ J·kg⁻¹.</p>
+
+  <div class="prob"><p class="pn">P2·1 · Q = mcΔT con eficiencia</p><p>Un calentador de inmersión de 500 W calienta 1,5 kg de agua de 18 °C a 88 °C. (a) <strong>Muestre que</strong> la energía necesaria para el agua es ≈4,4×10⁵ J. (b) Calcule el tiempo mínimo (sin pérdidas). (c) En la práctica tarda 960 s; calcule la eficiencia del proceso.</p>
+  <details class="rev"><summary>ver resolución</summary>
+    <p class="part">(a) energía del agua</p>
+    <p>\(Q=mc\Delta T=1{,}5(4200)(88-18)=1{,}5(4200)(70)=4{,}41\times10^{5}\) J. ∎</p>
+    <p class="part">(b) tiempo mínimo</p>
+    <p>Sin pérdidas toda la potencia va al agua: \(t=\dfrac{Q}{P}=\dfrac{4{,}41\times10^{5}}{500}\). <span class="ans">≈ 882 s (≈ 15 min)</span></p>
+    <p class="part">(c) eficiencia</p>
+    <p>Energía realmente suministrada: \(Q_{sum}=Pt=500(960)=4{,}80\times10^{5}\) J. Eficiencia \(=\dfrac{Q_{util}}{Q_{sum}}=\dfrac{4{,}41\times10^{5}}{4{,}80\times10^{5}}\). <span class="ans">≈ 0,92 = 92 %</span> El 8 % restante se pierde al vaso y al entorno.</p>
+  </details></div>
+
+  <div class="prob"><p class="pn">P2·2 · mezcla con calorímetro (capacidad calorífica propia)</p><p>Un calorímetro de capacidad calorífica \(C=85\) J·K⁻¹ contiene 0,250 kg de agua a 15,0 °C. Se añaden 0,150 kg de agua a 80,0 °C. (a) <strong>Muestre que</strong> el lado frío (agua fría + calorímetro) absorbe 1135 J por cada kelvin que sube. (b) Plantee el balance y halle la temperatura final. (c) Explique qué pasaría con la temperatura final si se despreciara el calorímetro.</p>
+  <details class="rev"><summary>ver resolución</summary>
+    <p class="part">(a) capacidad del lado frío</p>
+    <p>\(m_{fría}c_a+C=0{,}250(4200)+85=1050+85=1135\) J·K⁻¹. ∎ (el agua fría aporta 1050 y el calorímetro 85).</p>
+    <p class="part">(b) temperatura final</p>
+    <p>El agua caliente cede = agua fría + calorímetro ganan:</p>
+    <div class="eq">\[0{,}150(4200)(80{,}0-T_f)=\big(0{,}250\cdot4200+85\big)(T_f-15{,}0)\]</div>
+    <p>\(630(80-T_f)=1135(T_f-15)\Rightarrow 50400-630T_f=1135T_f-17025\Rightarrow 67425=1765T_f\). <span class="ans">T_f ≈ 38,2 °C</span></p>
+    <p class="part">(c) si se desprecia el calorímetro</p>
+    <p>El lado frío absorbería menos energía por kelvin (1050 en vez de 1135), así que la misma energía cedida por el agua caliente elevaría más la temperatura: \(630(80-T_f)=1050(T_f-15)\Rightarrow T_f\approx39{,}5\) °C. <span class="ans">La T_f predicha saldría ~1,3 °C más alta</span> ignorar el calorímetro sobrestima la temperatura de equilibrio.</p>
+  </details></div>
+
+  <div class="prob"><p class="pn">P2·3 · calor latente de fusión y de vaporización</p><p>Se parte de 0,050 kg de agua a 100 °C. (a) <strong>Muestre que</strong> vaporizarla por completo requiere 1,15×10⁵ J. (b) Un quemador entrega 250 W con 80 % de eficiencia; calcule el tiempo de vaporización. (c) Compare esa energía con la necesaria para fundir la misma masa de hielo a 0 °C y explique la diferencia a nivel molecular.</p>
+  <details class="rev"><summary>ver resolución</summary>
+    <p class="part">(a) energía de vaporización</p>
+    <p>\(Q=mL_v=0{,}050(2{,}3\times10^{6})=1{,}15\times10^{5}\) J. ∎</p>
+    <p class="part">(b) tiempo</p>
+    <p>Potencia útil \(=0{,}80(250)=200\) W. \(t=\dfrac{Q}{P_{útil}}=\dfrac{1{,}15\times10^{5}}{200}\). <span class="ans">≈ 575 s (≈ 9,6 min)</span></p>
+    <p class="part">(c) comparación con la fusión</p>
+    <p>Fundir la misma masa: \(Q_f=mL_f=0{,}050(3{,}3\times10^{5})=1{,}65\times10^{4}\) J. Razón \(\dfrac{L_v}{L_f}=\dfrac{2{,}3\times10^{6}}{3{,}3\times10^{5}}\approx7\). <span class="ans">Vaporizar cuesta ≈ 7 veces más</span> En la fusión solo se debilita la red para pasar a líquido; en la vaporización hay que <strong>romper por completo</strong> los enlaces intermoleculares y separar las moléculas, lo que exige mucha más energía.</p>
+  </details></div>
+
+  <div class="prob"><p class="pn">P2·4 · lectura de gráfica a potencia constante (hallar c y L)</p><p>Se calientan 0,50 kg de un sólido con una resistencia de 60 W constante. La gráfica θ–t muestra una rampa de 20 °C a 80 °C en los primeros 200 s, una meseta a 80 °C de 200 s a 560 s, y luego el líquido sigue subiendo.</p>
+  <figure class="fig">
+    <svg viewBox="0 0 320 140" width="300" xmlns="http://www.w3.org/2000/svg" aria-label="curva de calentamiento de un solido a potencia constante">
+      <line x1="42" y1="120" x2="312" y2="120" stroke="var(--ink)" stroke-width="1.2"/>
+      <line x1="42" y1="120" x2="42" y2="18" stroke="var(--ink)" stroke-width="1.2"/>
+      <line x1="42" y1="48" x2="130" y2="48" stroke="var(--line)" stroke-dasharray="3 3" stroke-width="1"/>
+      <line x1="130" y1="48" x2="130" y2="120" stroke="var(--line)" stroke-dasharray="3 3" stroke-width="1"/>
+      <line x1="250" y1="48" x2="250" y2="120" stroke="var(--line)" stroke-dasharray="3 3" stroke-width="1"/>
+      <polyline points="45,102 130,48 250,48 305,26" fill="none" stroke="var(--teal)" stroke-width="2.4"/>
+      <line x1="130" y1="48" x2="250" y2="48" stroke="var(--amber)" stroke-width="3"/>
+      <text x="18" y="52" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">80</text>
+      <text x="18" y="106" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">20</text>
+      <text x="116" y="133" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">200</text>
+      <text x="236" y="133" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">560</text>
+      <text x="22" y="15" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">θ/°C</text>
+      <text x="298" y="133" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">t/s</text>
+      <text x="152" y="42" font-family="Space Grotesk" font-size="8.5" fill="var(--amber)">fusión</text>
+    </svg>
+    <figcaption>θ–t de 0,50 kg de sólido a 60 W constante.</figcaption>
+  </figure>
+  <p>(a) <strong>Muestre que</strong> la energía suministrada en los primeros 200 s es 1,2×10⁴ J. (b) Determine el calor específico del sólido. (c) Determine el calor latente de fusión del sólido.</p>
+  <details class="rev"><summary>ver resolución</summary>
+    <p class="part">(a) energía del primer tramo</p>
+    <p>\(Q=Pt=60(200)=1{,}2\times10^{4}\) J. ∎</p>
+    <p class="part">(b) calor específico del sólido</p>
+    <p>Ese tramo es calentamiento del sólido (20→80 °C, ΔT = 60 K): \(c=\dfrac{Q}{m\Delta T}=\dfrac{1{,}2\times10^{4}}{0{,}50(60)}=\dfrac{12000}{30}\). <span class="ans">c ≈ 4,0×10² J·kg⁻¹·K⁻¹</span></p>
+    <p class="part">(c) calor latente de fusión</p>
+    <p>La meseta dura \(\Delta t=560-200=360\) s: \(Q=Pt=60(360)=2{,}16\times10^{4}\) J, todo para fundir. \(L_f=\dfrac{Q}{m}=\dfrac{2{,}16\times10^{4}}{0{,}50}\). <span class="ans">L_f ≈ 4,3×10⁴ J·kg⁻¹</span></p>
+  </details></div>
+
+  <div class="prob jefe"><p class="pn">P2·5 · PROBLEMA JEFE · recorrido completo hielo→agua→vapor</p><p>A 0,080 kg de hielo a −20 °C se le suministran 300 W constantes hasta convertirlo en vapor a 100 °C. (a) <strong>Muestre que</strong> la energía para fundir todo el hielo es ≈2,6×10⁴ J. (b) Calcule la energía de las cuatro etapas y la energía total. (c) Determine el tiempo total y bosqueje la curva θ–t.</p>
+  <details class="rev"><summary>ver resolución</summary>
+    <p class="part">(a) energía de fusión</p>
+    <p>\(Q_{fus}=mL_f=0{,}080(3{,}3\times10^{5})=2{,}64\times10^{4}\approx2{,}6\times10^{4}\) J. ∎</p>
+    <p class="part">(b) energía por etapa</p>
+    <p>Calentar hielo (−20→0 °C): \(Q_1=mc_h\Delta T=0{,}080(2100)(20)=3{,}36\times10^{3}\) J.<br>
+    Fundir: \(Q_2=2{,}64\times10^{4}\) J.<br>
+    Calentar agua (0→100 °C): \(Q_3=mc_a\Delta T=0{,}080(4200)(100)=3{,}36\times10^{4}\) J.<br>
+    Vaporizar: \(Q_4=mL_v=0{,}080(2{,}3\times10^{6})=1{,}84\times10^{5}\) J. <span class="ans">Q_total ≈ 2,47×10⁵ J</span></p>
+    <p class="part">(c) tiempo total y curva</p>
+    <p>\(t=\dfrac{Q_{total}}{P}=\dfrac{2{,}474\times10^{5}}{300}\). <span class="ans">≈ 8,2×10² s (≈ 13,7 min)</span></p>
+    <figure class="fig">
+      <svg viewBox="0 0 300 120" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="curva de calentamiento de hielo a vapor desde -20 C">
+        <line x1="35" y1="100" x2="292" y2="100" stroke="var(--ink)" stroke-width="1.2"/>
+        <line x1="35" y1="100" x2="35" y2="14" stroke="var(--ink)" stroke-width="1.2"/>
+        <polyline points="35,88 52,80 78,80 120,34 250,34" fill="none" stroke="var(--teal)" stroke-width="2.4"/>
+        <line x1="52" y1="80" x2="78" y2="80" stroke="var(--amber)" stroke-width="3"/>
+        <line x1="120" y1="34" x2="250" y2="34" stroke="var(--amber)" stroke-width="3"/>
+        <text x="10" y="84" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">0</text>
+        <text x="4" y="38" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">100</text>
+        <text x="16" y="96" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">θ</text>
+        <text x="278" y="112" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">t</text>
+        <text x="150" y="28" font-family="Space Grotesk" font-size="8.5" fill="var(--amber)">vaporización</text>
+      </svg>
+      <figcaption>▲ Esquema (no a escala): hielo −20→0, meseta de fusión, agua 0→100, y meseta de vaporización, de lejos la más larga.</figcaption>
+    </figure>
+  </details></div>
+
+  <div class="prob"><p class="pn">P2·6 · hielo en agua (¿se funde todo? y T final)</p><p>En un recipiente aislado hay 0,500 kg de agua a 25,0 °C. Se añaden 0,060 kg de hielo a 0 °C. (a) <strong>Muestre que</strong> el agua puede ceder 5,25×10⁴ J al enfriarse hasta 0 °C. (b) Determine si todo el hielo se funde. (c) Halle la temperatura final de la mezcla.</p>
+  <details class="rev"><summary>ver resolución</summary>
+    <p class="part">(a) energía disponible del agua</p>
+    <p>\(Q_{disp}=m_wc_a\Delta T=0{,}500(4200)(25{,}0)=5{,}25\times10^{4}\) J. ∎</p>
+    <p class="part">(b) ¿se funde todo?</p>
+    <p>Fundir todo el hielo exige \(Q_{fus}=m_hL_f=0{,}060(3{,}3\times10^{5})=1{,}98\times10^{4}\) J. Como \(Q_{disp}=5{,}25\times10^{4}>1{,}98\times10^{4}\), <span class="ans">sí se funde todo el hielo</span> y la mezcla queda por encima de 0 °C.</p>
+    <p class="part">(c) temperatura final</p>
+    <p>Balance (lo que cede el agua = fundir el hielo + calentar esa agua de fusión hasta \(T_f\)):</p>
+    <div class="eq">\[0{,}500(4200)(25{,}0-T_f)=0{,}060(3{,}3\times10^{5})+0{,}060(4200)\,T_f\]</div>
+    <p>\(52500-2100\,T_f=19800+252\,T_f\Rightarrow 32700=2352\,T_f\). <span class="ans">T_f ≈ 13,9 °C</span></p>
+  </details></div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 13B · Calorimetría Tipo 2 (Paper 2).</strong> Ficha completa resuelta (hielo en calorímetro, enfriamiento/congelación, agua a vapor) con lectura de gráfica, y 5 extra integradores. Con esto el tema queda completo (13A + 13B). Sigue el <strong>Módulo 14A — Modelación de un gas</strong> (ficha: ítems 23–38 de la práctica de calorimetría/gases). Constantes: c_agua = 4,2×10³; L_f = 3,3×10⁵; L_v = 2,3×10⁶ J·kg⁻¹.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

@@ -1,0 +1,348 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 4B · Estática/torque Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:18ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:52px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:26px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:12px 0;overflow-x:auto}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.note{background:#EEF3F1;border:1px dashed var(--teal);border-radius:5px;padding:14px 18px;margin:16px 0;font-size:16px}
+.pb{border:1px solid var(--line);border-radius:6px;margin:26px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#EFF4F2,#FFFFFF);border-bottom:1px solid var(--line);padding:14px 20px}
+.pb-head .code{font-family:"IBM Plex Mono";font-size:11px;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px;letter-spacing:.05em}
+.pb-head h3{margin:8px 0 0;font-size:19px}
+.pb-body{padding:6px 20px 18px}
+.enun{background:#F4F6F4;border-left:3px solid var(--ink-soft);padding:10px 16px;margin:14px 0;font-size:16.5px}
+.part{margin:16px 0 4px;font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep)}
+.pide{display:inline-block;font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:1px 7px;margin-right:8px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:5px 11px;display:inline-block;margin-top:6px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.srcnote{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:10px;border-top:1px dashed var(--line);padding-top:6px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<!-- rev 2026-10-28 4b · banco paper2 HL torque (1) oficial 2025 -->
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> TORQUE · A.4 (HL) <span>//</span> MÓDULO 4B · TIPO 2 (PAPER 2)</p>
+  <h1>Torque en <em>respuesta larga</em></h1>
+  <p class="lede">Vigas, trampolines, barras articuladas, vuelco y resortes: equilibrio de cuerpos rígidos estilo Paper 2, apartado por apartado. Más el Paper 2 HL oficial de cuerpo rígido y 5 problemas integradores.</p>
+  <div class="stats">
+    <div class="stat"><b>5</b><span>resueltos completos</span></div>
+    <div class="stat"><b>1</b><span>Paper 2 HL oficial</span></div>
+    <div class="stat"><b>5</b><span>extra integradores</span></div>
+    <div class="stat"><b>Paper 2</b><span>cuerpo rígido</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#estrategia">0 · Método para torque tipo 2</a>
+  <a href="#nota">Nota sobre la ficha</a>
+  <a href="#r1">1 · Trampolín (reacción negativa)</a>
+  <a href="#r2">2 · Barra articulada + cable</a>
+  <a href="#r3">3 · Tablón que vuelca</a>
+  <a href="#r4">4 · Pértiga entre dos personas</a>
+  <a href="#r5">5 · Viga con resorte</a>
+  <a href="#examenes">★ Banco Paper 2 · HL (2025)</a>
+  <a href="#extra">Problemas extra para ti</a>
+</nav>
+
+<main>
+
+<!-- ESTRATEGIA -->
+<section id="estrategia">
+  <p class="sec-num">SECCIÓN 00 · LO QUE FALTA PARA TIPO 2</p>
+  <h2>Método para equilibrio de cuerpo rígido<span class="rule"></span></h2>
+  <p class="sec-intro">Toda la teoría es la del 4A. Lo nuevo del tipo 2 es aplicar <strong>las dos condiciones</strong> con orden y saber interpretar los signos.</p>
+  <div class="eq">\[ \sum F_x=0,\qquad \sum F_y=0,\qquad \sum\tau=0 \]</div>
+  <div class="box key"><span class="lbl">Los 5 gestos del torque tipo 2</span>
+    <ol>
+      <li><strong>Elige el pivote con astucia:</strong> tomando momentos respecto de una fuerza desconocida, esa se elimina y queda una sola incógnita.</li>
+      <li><strong>Peso en el centro de gravedad</strong> (centro geométrico si es uniforme).</li>
+      <li><strong>Brazo perpendicular:</strong> \(\tau=Fr\sin\theta\); si la fuerza no es perpendicular al brazo, usa su componente perpendicular.</li>
+      <li><strong>Signo con sentido:</strong> asigna horario/antihorario; una reacción que sale <em>negativa</em> significa que apunta al revés (p. ej. un apoyo que en vez de empujar, <strong>tira hacia abajo</strong>).</li>
+      <li><strong>Fuerza en la articulación:</strong> tiene componentes \(H_x,H_y\); se hallan con \(\sum F_x=0\) y \(\sum F_y=0\) después de conocer las demás; su módulo es \(\sqrt{H_x^2+H_y^2}\).</li>
+    </ol>
+  </div>
+  <div class="box def"><span class="lbl">Términos de mando</span><p><strong>Dibuje</strong> el DCL rotulado; <strong>Calcule/Determine</strong> con procedimiento; <strong>Muestre que</strong> llega al valor dado; <strong>Explique/Comente</strong> el porqué físico (p. ej. por qué una reacción es hacia abajo).</p></div>
+</section>
+
+<!-- NOTA -->
+<section id="nota">
+  <div class="note">
+    <strong>Sobre la ficha tipo 2.</strong> La única ficha de respuesta larga del tema es «Estática y dinámica», y sus preguntas de equilibrio (bloque en rampa sostenido, globo anclado, bloque tirado a velocidad constante) son de <em>equilibrio de fuerzas</em> y ya quedaron resueltas en el <strong>Módulo 3B</strong>. No trae problemas de <em>torque / cuerpo rígido</em>. Para cubrir el tema a nivel tipo 2 sin repetir, los 5 problemas resueltos de aquí son de torque estilo Paper 2 (formato IB: varias partes, DCL, «muestre que», explicación).
+  </div>
+</section>
+
+<!-- R1 -->
+<section id="r1" class="pb">
+  <div class="pb-head"><span class="code">TORQUE 1 · trampolín</span><h3>Viga con una reacción hacia abajo</h3></div>
+  <div class="pb-body">
+    <div class="enun">Un trampolín uniforme de 5,0 m y 200 N se apoya en dos puntos: A en el extremo izquierdo (\(x=0\)) y B a 1,5 m de A. Un clavadista de 600 N se para en el extremo libre (\(x=5{,}0\) m). \(g=10\).</div>
+
+    <p class="part">(a) <span class="pide">dibuje</span> el DCL del trampolín.</p>
+    <figure class="fig">
+      <svg viewBox="0 0 360 120" width="340" xmlns="http://www.w3.org/2000/svg" aria-label="trampolin">
+        <rect x="30" y="50" width="300" height="10" fill="#C9D2CC" stroke="var(--ink)"/>
+        <line x1="35" y1="60" x2="35" y2="100" stroke="var(--teal-deep)" stroke-width="2.5" marker-end="url(#p)"/>
+        <line x1="120" y1="50" x2="120" y2="14" stroke="var(--teal-deep)" stroke-width="2.5" marker-end="url(#p)"/>
+        <line x1="180" y1="60" x2="180" y2="100" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#p)"/>
+        <line x1="325" y1="60" x2="325" y2="105" stroke="var(--amber)" stroke-width="2.5" marker-end="url(#p)"/>
+        <defs><marker id="p" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+        <text x="20" y="112" font-family="IBM Plex Mono" font-size="10" fill="var(--teal-deep)">R_A ↓</text>
+        <text x="108" y="12" font-family="IBM Plex Mono" font-size="10" fill="var(--teal-deep)">R_B ↑</text>
+        <text x="168" y="112" font-family="IBM Plex Mono" font-size="10" fill="var(--warn)">200 N</text>
+        <text x="305" y="118" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">600 N</text>
+      </svg>
+      <figcaption>El apoyo A resulta hacia abajo (sujeta la tabla, que tiende a levantarse ahí).</figcaption>
+    </figure>
+
+    <p class="part">(b) <span class="pide">calcule</span> la reacción en B.</p>
+    <p>Momentos respecto de A (para eliminar \(R_A\)): \(R_B(1{,}5)=200(2{,}5)+600(5{,}0)=500+3000=3500\).</p>
+    <p class="ans">R_B = 2,3×10³ N (hacia arriba)</p>
+
+    <p class="part">(c) <span class="pide">determine</span> la reacción en A.</p>
+    <p>\(\sum F=0:\ R_A+R_B=200+600=800\Rightarrow R_A=800-2333=-1533\).</p>
+    <p class="ans">R_A = 1,5×10³ N hacia ABAJO</p>
+
+    <p class="part">(d) <span class="pide">explique</span> el signo de \(R_A\).</p>
+    <p>El resultado negativo indica que la fuerza real en A es opuesta a la supuesta: el apoyo A debe <strong>tirar hacia abajo</strong> de la tabla (funciona como un anclaje), porque el peso del clavadista, muy alejado de B, haría girar la tabla levantando el extremo A.</p>
+  </div>
+</section>
+
+<!-- R2 -->
+<section id="r2" class="pb">
+  <div class="pb-head"><span class="code">TORQUE 2 · articulación + cable</span><h3>Barra horizontal articulada con carga</h3></div>
+  <div class="pb-body">
+    <div class="enun">Una barra uniforme AB de 3,0 m y 100 N está articulada a una pared en A y sostenida horizontal por un cable que va de B a la pared, formando 30° con la barra. En B cuelga una carga de 150 N. \(g=10\).</div>
+    <figure class="fig">
+      <svg viewBox="0 0 320 150" width="300" xmlns="http://www.w3.org/2000/svg" aria-label="barra articulada">
+        <line x1="40" y1="20" x2="40" y2="130" stroke="var(--ink)" stroke-width="3"/>
+        <circle cx="40" cy="80" r="4" fill="var(--ink)"/>
+        <rect x="40" y="76" width="230" height="8" fill="#C9D2CC" stroke="var(--ink)"/>
+        <line x1="270" y1="80" x2="40" y2="40" stroke="var(--teal)" stroke-width="2"/>
+        <line x1="155" y1="84" x2="155" y2="112" stroke="var(--warn)" stroke-width="2.3" marker-end="url(#q)"/>
+        <line x1="270" y1="84" x2="270" y2="120" stroke="var(--amber)" stroke-width="2.3" marker-end="url(#q)"/>
+        <defs><marker id="q" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+        <text x="150" y="72" font-family="IBM Plex Mono" font-size="10" fill="var(--teal)">T</text>
+        <text x="120" y="110" font-family="IBM Plex Mono" font-size="10" fill="var(--warn)">100 N</text>
+        <text x="255" y="135" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">150 N</text>
+        <text x="30" y="95" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">A</text>
+        <text x="272" y="74" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">B</text>
+      </svg>
+      <figcaption>Momentos respecto de A: el cable levanta, el peso y la carga bajan.</figcaption>
+    </figure>
+
+    <p class="part">(a) <span class="pide">calcule</span> la tensión del cable.</p>
+    <p>Momentos respecto de A (solo la componente perpendicular del cable, \(T\sin30^\circ\), gira): \(T\sin30^\circ(3{,}0)=100(1{,}5)+150(3{,}0)=600\).</p>
+    <p>\(T(0{,}5)(3{,}0)=600\Rightarrow 1{,}5\,T=600\). <span class="ans">T = 400 N</span></p>
+
+    <p class="part">(b) <span class="pide">determine</span> la fuerza en la articulación.</p>
+    <p>\(\sum F_x=0:\ H_x=T\cos30^\circ=400(0{,}866)=346\) N (hacia la pared).</p>
+    <p>\(\sum F_y=0:\ H_y+T\sin30^\circ=100+150\Rightarrow H_y=250-200=50\) N (hacia arriba).</p>
+    <p>Módulo \(=\sqrt{346^2+50^2}=350\) N; dirección \(\arctan(50/346)=8{,}2^\circ\) sobre la horizontal.</p>
+    <p class="ans">Fuerza en A ≈ 350 N, 8° sobre la horizontal</p>
+  </div>
+</section>
+
+<!-- R3 -->
+<section id="r3" class="pb">
+  <div class="pb-head"><span class="code">TORQUE 3 · vuelco</span><h3>Tablón sobre dos caballetes</h3></div>
+  <div class="pb-body">
+    <div class="enun">Un tablón uniforme de 4,0 m y 200 N descansa sobre dos caballetes: A a 0,5 m del extremo izquierdo y B a 2,5 m del extremo izquierdo. Un niño de 400 N camina sobre el tablón.</div>
+
+    <p class="part">(a) <span class="pide">determine</span> las reacciones cuando el niño está en el centro (\(x=2{,}0\) m).</p>
+    <p>Momentos respecto de A(0,5): \(R_B(2{,}0)=200(1{,}5)+400(1{,}5)=900\Rightarrow R_B=450\) N.</p>
+    <p>\(\sum F:\ R_A=600-450=150\) N. <span class="ans">R_A = 150 N, R_B = 450 N</span></p>
+
+    <p class="part">(b) <span class="pide">determine</span> cuánto puede avanzar el niño más allá de B antes de que el tablón vuelque.</p>
+    <p>Vuelca girando sobre B cuando \(R_A=0\). Momentos respecto de B(2,5): el niño (a \(d\) a la derecha) equilibra al peso del tablón (centro a 2,0 m, es decir 0,5 m a la izquierda de B):</p>
+    <p>\(400\,d=200(0{,}5)=100\Rightarrow d=0{,}25\) m. <span class="ans">Vuelca 0,25 m pasado B (en x = 2,75 m)</span></p>
+  </div>
+</section>
+
+<!-- R4 -->
+<section id="r4" class="pb">
+  <div class="pb-head"><span class="code">TORQUE 4 · dos apoyos</span><h3>Pértiga cargada entre dos personas</h3></div>
+  <div class="pb-body">
+    <div class="enun">Dos personas cargan una pértiga uniforme de 2,0 m y 100 N, sujetándola por los extremos. Una carga de 400 N cuelga a 0,5 m de la persona 1 (izquierda).</div>
+
+    <p class="part">(a) <span class="pide">determine</span> la fuerza que ejerce cada persona.</p>
+    <p>Momentos respecto de la persona 1 (\(x=0\)): \(F_2(2{,}0)=100(1{,}0)+400(0{,}5)=300\Rightarrow F_2=150\) N.</p>
+    <p>\(\sum F:\ F_1=500-150=350\) N. <span class="ans">F₁ = 350 N, F₂ = 150 N</span></p>
+
+    <p class="part">(b) <span class="pide">explique</span> por qué difieren.</p>
+    <p>La carga está más cerca de la persona 1, así que su brazo respecto de la persona 2 es grande y le exige sostener más. Cuanto más cerca de alguien está el peso, mayor la fracción que soporta.</p>
+  </div>
+</section>
+
+<!-- R5 -->
+<section id="r5" class="pb">
+  <div class="pb-head"><span class="code">TORQUE 5 · torque + Hooke</span><h3>Viga articulada sostenida por un resorte</h3></div>
+  <div class="pb-body">
+    <div class="enun">Una viga uniforme AB de 2,0 m y 60 N está articulada en A y se mantiene horizontal por un resorte vertical (\(k=500\ \mathrm{N\,m^{-1}}\)) atado en B.</div>
+
+    <p class="part">(a) <span class="pide">calcule</span> la fuerza del resorte.</p>
+    <p>Momentos respecto de A: \(F_{res}(2{,}0)=60(1{,}0)\Rightarrow F_{res}=30\) N. <span class="ans">30 N</span></p>
+
+    <p class="part">(b) <span class="pide">determine</span> el estiramiento del resorte.</p>
+    <p>Hooke: \(x=\dfrac{F}{k}=\dfrac{30}{500}=0{,}060\) m. <span class="ans">x = 6,0 cm</span></p>
+
+    <p class="part">(c) <span class="pide">determine</span> la fuerza en la articulación.</p>
+    <p>\(\sum F_y=0:\ H_y+30=60\Rightarrow H_y=30\) N (arriba); no hay fuerzas horizontales. <span class="ans">30 N hacia arriba</span></p>
+  </div>
+</section>
+
+<!-- BANCO PAPER 2 HL OFICIAL -->
+<section id="examenes">
+  <p class="sec-num">SECCIÓN ★ · BANCO DE EXÁMENES OFICIALES · PAPER 2 (HL)</p>
+  <h2>Paper 2 oficial de cuerpo rígido (HL)<span class="rule"></span></h2>
+  <div class="box beyond"><span class="lbl">Por qué solo hay HL aquí (honestidad de cobertura)</span><p>El torque y la dinámica de cuerpo rígido (momento de inercia, \(\tau=I\alpha\), momento angular) son <strong>contenido A.4 exclusivo de HL</strong>: <em>no entran en tu examen de NM</em>. En todo el banco de Paper 2 que me diste (2022–2026), estos problemas aparecen <strong>únicamente en el paper HL</strong> (Nov 2025 TZ3). Incluyo esa pregunta real, reescrita y resuelta y verificada contra el esquema, por si cursas HL o quieres el reto; para NM, el tema «estática» que sí te toca es el <em>equilibrio de fuerzas</em> ya trabajado en el <a href="#r1">bloque de arriba</a> y en el Módulo 3B.</p></div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">Nov 2025 · TZ3 · HL · P2 · Q6 · SOLO HL</span><h3>Dos bloques y una polea con masa (dinámica rotacional)</h3></div>
+    <div class="pb-body">
+      <div class="enun">Dos bloques de masas \(m\) y \(2m\) se unen por una cuerda que pasa por una polea de masa \(m\) y radio \(r\), cuyo momento de inercia respecto del eje es \(I=\tfrac12 mr^2\). Al soltarlos, la polea gira (la cuerda no resbala).</div>
+
+      <p class="part">(a) <span class="pide">muestre que</span> la aceleración de los bloques es \(a=\dfrac{2g}{7}\).</p>
+      <p class="ans">a = 2g/7 ✓</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Idea (la clave HL):</strong> como la polea tiene masa, las tensiones a cada lado <em>no son iguales</em>; su diferencia produce el torque que la hace girar. Planteo la 2.ª ley a cada bloque y la 2.ª ley de rotación a la polea, con la ligadura \(a=\alpha r\).</p>
+      <p>Bloque pesado \(2m\) (baja): \(2mg-T_2=2ma\). Bloque ligero \(m\) (sube): \(T_1-mg=ma\).</p>
+      <p>Polea: \((T_2-T_1)r=I\alpha=\tfrac12 mr^2\cdot\dfrac{a}{r}\Rightarrow T_2-T_1=\tfrac12 ma\).</p>
+      <p>Sumo las dos de los bloques: \(2mg-mg-(T_2-T_1)=3ma\Rightarrow mg-\tfrac12 ma=3ma\).</p>
+      <p>\(mg=\tfrac72 ma\Rightarrow a=\dfrac{2g}{7}\). ∎ <em>(El esquema admite esto, o la vía de conservación de energía: \(\tfrac12 I\omega^2+\tfrac12(3m)v^2=mgh\Rightarrow v^2=\tfrac{4gh}{7}\), y \(v^2=2ah\) da \(a=2g/7\).)</em></p>
+      </div></details>
+
+      <p class="part">(b) <span class="pide">sugiera</span> si se conserva el momento angular del sistema polea–bloques.</p>
+      <p class="ans">No se conserva</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>No.</strong> Sobre el sistema actúa un <strong>torque externo neto distinto de cero</strong> (el debido a la diferencia de pesos, \(mgr\)), por lo que el sistema tiene aceleración angular y su momento angular <em>aumenta</em> con el tiempo. El momento angular solo se conservaría si el torque externo neto fuese cero. ∎</p>
+      </div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2_TZ3_HL_markscheme (8825–6721M, TZ3 HL): (a) a = 2g/7 «ALT1 energía v²=4gh/7 · ALT2 I y τ_net=mgr · ALT3 tres ecuaciones» · (b) No: torque externo neto ≠ 0 / hay aceleración angular.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <p class="sec-num">PARA TI · RESUELVE ESTILO PAPER 2 Y ENVÍA EN BLOQUE</p>
+  <h2>5 problemas extra (integradores)<span class="rule"></span></h2>
+  <p class="sec-intro">Nuevos y de nivel creciente. Integran fricción, poleas, reacciones en soportes, vuelco e incertidumbre (Módulo 1). \(g=10\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">E1 · grúa — pluma inclinada con cable horizontal</p><p>La <strong>pluma</strong> uniforme AB de una grúa (peso 200 N) está articulada en su base A y forma 45° con la horizontal. Del extremo superior B cuelga una carga de 800 N. Un cable <em>horizontal</em> une B con el mástil (pared) y mantiene la pluma en equilibrio. \(g=10\).</p><p style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);margin:8px 0">▲ Figura no incluida — bosqueja el DCL: peso propio en el centro de la pluma, carga de 800 N en B, tensión horizontal en B y reacción \(H_x,H_y\) en A.</p><p><strong>(a)</strong> Calcule la tensión del cable. <strong>(b)</strong> Determine el módulo y la dirección de la fuerza en la articulación A.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Momentos respecto de A (se eliminan \(H_x,H_y\)). La longitud \(L\) de la pluma se cancela; el cable horizontal en B tiene brazo \(L\sin45^\circ\), el peso propio brazo \(\tfrac{L}{2}\cos45^\circ\) y la carga brazo \(L\cos45^\circ\):</p>
+      <div class="eq">\[ T\,L\sin45^\circ = 200\cdot\tfrac{L}{2}\cos45^\circ + 800\,L\cos45^\circ \]</div>
+      <p>\(T=\dfrac{(100+800)\cos45^\circ}{\sin45^\circ}=900\ \mathrm N\) (pues \(\tan45^\circ=1\)). <span class="ans">T = 900 N</span></p>
+      <p><strong>(b)</strong> \(\sum F_x=0:\ H_x=T=900\) N (hacia afuera del mástil). \(\sum F_y=0:\ H_y=200+800=1000\) N (hacia arriba).</p>
+      <p>\(|H|=\sqrt{900^2+1000^2}=1345\ \mathrm N\); \(\theta=\arctan(1000/900)=48^\circ\) sobre la horizontal. <span class="ans">|H| ≈ 1,3×10³ N, 48° sobre la horizontal</span></p>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E2 · escalera apoyada en pared (fricción)</p><p>Una escalera uniforme de 4,0 m y 200 N se apoya en una pared vertical <em>lisa</em> (sin fricción) y en un piso rugoso, formando 60° con el piso. \(g=10\).</p><p style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);margin:8px 0">▲ Figura no incluida — bosqueja el DCL: en el tope solo normal horizontal de la pared; en el pie normal vertical y fricción horizontal; peso en el centro.</p><p><strong>(a)</strong> Determine el coeficiente de rozamiento mínimo del piso para que no resbale. <strong>(b)</strong> Una persona de 600 N sube hasta las tres cuartas partes de la escalera; determine el nuevo coeficiente de rozamiento necesario.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Pared lisa: solo normal horizontal \(N_p\) en el tope. Piso: normal \(N_s\) y fricción \(f\).</p>
+      <p>\(\sum F_y=0:\ N_s=W=200\) N. \(\sum F_x=0:\ f=N_p\).</p>
+      <p>Momentos respecto del pie (la longitud \(L\) se cancela):</p>
+      <div class="eq">\[ N_p\,(L\sin60^\circ)=W\left(\tfrac{L}{2}\cos60^\circ\right)\Rightarrow N_p=\frac{W\cos60^\circ}{2\sin60^\circ}=\frac{200(0{,}5)}{2(0{,}866)}=57{,}7\ \mathrm N \]</div>
+      <p>\(\mu_{min}=\dfrac{f}{N_s}=\dfrac{57{,}7}{200}\). <span class="ans">μ_min = 0,29</span></p>
+      <p><strong>(b)</strong> La persona (600 N) está a \(0{,}75L\) del pie. Momentos respecto del pie:</p>
+      <div class="eq">\[ N_p\,L\sin60^\circ=W\tfrac{L}{2}\cos60^\circ+P(0{,}75L)\cos60^\circ \]</div>
+      <p>\(N_p=\dfrac{(100+450)\cos60^\circ}{\sin60^\circ}=\dfrac{550(0{,}5)}{0{,}866}=317{,}5\) N; \(N_s=W+P=800\) N.</p>
+      <p>\(\mu=\dfrac{317{,}5}{800}\). <span class="ans">μ = 0,40</span></p>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E3 · viga sobre dos soportes + vuelco</p><p>Una viga uniforme de 6,0 m y 600 N descansa sobre dos soportes: A a 1,0 m del extremo izquierdo y B a 4,0 m del extremo izquierdo. Sobre la viga se coloca una caja de 1200 N. \(g=10\).</p><p style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);margin:8px 0">▲ Figura no incluida — bosqueja la viga con los soportes en \(x=1{,}0\) y \(x=4{,}0\), el peso propio en el centro (\(x=3{,}0\)) y la caja.</p><p><strong>(a)</strong> Con la caja en el centro (\(x=3{,}0\) m), determine las reacciones \(R_A\) y \(R_B\). <strong>(b)</strong> La caja se desliza hacia la derecha; determine hasta qué posición puede llegar antes de que la viga vuelque e indique el rango seguro.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Momentos respecto de A (\(x=1{,}0\); brazo A–B \(=3{,}0\) m):</p>
+      <div class="eq">\[ R_B(3{,}0)=600(3{,}0-1{,}0)+1200(3{,}0-1{,}0)=1200+2400=3600 \]</div>
+      <p>\(R_B=1200\) N; \(\sum F:\ R_A=(600+1200)-1200=600\) N. <span class="ans">R_A = 600 N, R_B = 1200 N</span></p>
+      <p><strong>(b)</strong> La viga vuelca girando sobre B cuando \(R_A=0\). Con la caja a \(d\) a la derecha de B, momentos respecto de B (el peso propio, a 1,0 m a la izquierda de B, es lo único que la retiene):</p>
+      <div class="eq">\[ 1200\,d=600\,(4{,}0-3{,}0)=600\Rightarrow d=0{,}5\ \mathrm m\ \ (x=4{,}5\ \mathrm m) \]</div>
+      <p>Por la izquierda no vuelca (se verifica que \(R_B=0\) solo en \(x=0\)). <span class="ans">Vuelca en x = 4,5 m; rango seguro 0 ≤ x ≤ 4,5 m</span></p>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E4 · equilibrio con polea y contrapeso</p><p>Una viga uniforme AB de 2,0 m y 120 N está articulada en la pared en A (\(x=0\)) y se mantiene horizontal por una cuerda atada en B (\(x=2{,}0\) m) que pasa por una polea ideal fija en la pared 1,5 m por encima de A y sostiene un contrapeso de masa \(m\). \(g=10\).</p><p style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);margin:8px 0">▲ Figura no incluida — bosqueja la viga horizontal, la cuerda de B a la polea (triángulo 2,0 m horizontal, 1,5 m vertical → hipotenusa 2,5 m) y el contrapeso colgando.</p><p><strong>(a)</strong> Determine la masa \(m\) del contrapeso. <strong>(b)</strong> Determine la fuerza en la articulación. <strong>(c)</strong> Explique el papel de la polea.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Cuerda de B\((2{,}0;0)\) a la polea \((0;1{,}5)\): largo \(\sqrt{2{,}0^2+1{,}5^2}=2{,}5\) m, componentes unitarias \((-0{,}8;\ 0{,}6)\). Polea ideal: \(T=mg\).</p>
+      <p><strong>(a)</strong> Momentos respecto de A (solo la componente vertical \(0{,}6T\) en B tiene brazo):</p>
+      <div class="eq">\[ 0{,}6T\,(2{,}0)=120(1{,}0)\Rightarrow 1{,}2T=120\Rightarrow T=100\ \mathrm N \]</div>
+      <p>\(m=T/g=100/10\). <span class="ans">m = 10 kg</span></p>
+      <p><strong>(b)</strong> \(\sum F_x=0:\ H_x=0{,}8T=80\) N. \(\sum F_y=0:\ H_y=120-0{,}6T=120-60=60\) N.</p>
+      <p>\(|H|=\sqrt{80^2+60^2}=100\) N; \(\arctan(60/80)=37^\circ\). <span class="ans">|H| = 100 N, 37° sobre la horizontal</span></p>
+      <p><strong>(c)</strong> La polea solo cambia la dirección de la cuerda: la tensión vale lo que pesa el contrapeso (\(T=mg\)) y su línea de acción va de B a la polea. El contrapeso fija el valor de \(T\) y la geometría fija su ángulo. <span class="ans">La polea transmite T = mg redirigido según la geometría</span></p>
+    </div></details></div>
+
+  <div class="prob jefe"><p class="pn">E5 · PROBLEMA JEFE — barra no uniforme + incertidumbre (Módulo 1)</p><p>Para hallar la masa de una barra <strong>no uniforme</strong> de largo \((100{,}0\pm0{,}1)\ \mathrm{cm}\): primero se equilibra sobre un pivote y queda horizontal con el pivote en la marca \((40{,}0\pm0{,}2)\ \mathrm{cm}\). Luego se cuelga una masa conocida de \((50{,}0\pm0{,}2)\ \mathrm g\) en la marca de \((90{,}0\pm0{,}2)\ \mathrm{cm}\) y la barra vuelve a equilibrarse con el pivote en \((55{,}0\pm0{,}2)\ \mathrm{cm}\). (a) Interprete qué indica el primer equilibrio. (b) Con equilibrio de torques respecto del nuevo pivote, halle la masa de la barra. (c) Propague las incertidumbres y dé \(m\pm\Delta m\). (d) Señale una fuente de error sistemático del montaje.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Que la barra sola se equilibre con el pivote en 40,0 cm indica que su <strong>centro de gravedad</strong> está en la marca 40,0 cm.</p>
+      <p><strong>(b)</strong> Nuevo pivote en 55,0 cm. El peso de la barra \(M\) actúa en su CG (40,0 cm), a \(55{,}0-40{,}0=15{,}0\) cm a la izquierda; la masa \(m\) (90,0 cm) a \(90{,}0-55{,}0=35{,}0\) cm a la derecha. Equilibrio de torques (\(g\) se cancela):</p>
+      <div class="eq">\[ M(15{,}0)=m(35{,}0)\Rightarrow M=50{,}0\cdot\frac{35{,}0}{15{,}0}=1{,}17\times10^2\ \mathrm g \]</div>
+      <p class="ans">M ≈ 117 g</p>
+      <p><strong>(c)</strong> \(M=m\,d_m/d_M\) con \(d_m=35{,}0\) cm y \(d_M=15{,}0\) cm. Al ser restas de marcas, las incertidumbres absolutas se suman: \(\Delta d_m=0{,}2+0{,}2=0{,}4\) cm, \(\Delta d_M=0{,}2+0{,}2=0{,}4\) cm.</p>
+      <div class="eq">\[ \frac{\Delta M}{M}=\frac{\Delta m}{m}+\frac{\Delta d_m}{d_m}+\frac{\Delta d_M}{d_M}=\frac{0{,}2}{50{,}0}+\frac{0{,}4}{35{,}0}+\frac{0{,}4}{15{,}0}=0{,}004+0{,}011+0{,}027=0{,}042 \]</div>
+      <p>\(\Delta M=0{,}042\cdot117=4{,}9\approx5\) g. <span class="ans">M = (117 ± 5) g</span></p>
+      <p><strong>(d)</strong> Error sistemático típico: el filo del pivote tiene anchura finita (su línea de contacto real no coincide con la marca leída), o el gancho/hilo que sostiene la masa añade un peso no considerado; ambos sesgan \(M\) siempre en el mismo sentido.</p>
+    </div></details></div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 4B · Estática/torque Tipo 2 (Paper 2).</strong> 5 problemas de cuerpo rígido resueltos apartado por apartado, el Paper 2 HL oficial de dinámica rotacional (Nov 2025 TZ3, verificado) y 5 integradores. La ficha tipo 2 del tema no incluía torque; sus problemas de equilibrio se resolvieron en 3B. Con esto Estática queda completa (4A + 4B). Sigue el <strong>Módulo 5A — Trabajo, energía y potencia</strong>. Convención: \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sociedad Digital NM: ruta al 7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#F6F7F4; --papel-2:#ECEEEA; --tinta:#172033; --grafito:#566072; --regla:#D5DAE1;
+  --azul:#2446A8; --rojo:#B83227; --rojo-suave:#FBE9E6;
+  --hl-contenido:rgba(255,222,70,.62); --hl-contexto:rgba(120,220,150,.55); --hl-concepto:rgba(196,160,255,.55);
+  --hl-juicio:rgba(255,160,120,.5);
+  --ok:#1F7A4A;
+  --serif:"Literata", Georgia, "Times New Roman", serif;
+  --sans:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --papel:#11151D; --papel-2:#191F2A; --tinta:#E4E7EC; --grafito:#A3ABB8; --regla:#2B3342;
+    --azul:#8FB0FF; --rojo:#FF8A7A; --rojo-suave:#2E1B1B;
+    --hl-contenido:rgba(255,210,0,.30); --hl-contexto:rgba(60,200,120,.28); --hl-concepto:rgba(160,110,255,.34);
+    --hl-juicio:rgba(255,120,80,.30); --ok:#6FD39C; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --papel:#11151D; --papel-2:#191F2A; --tinta:#E4E7EC; --grafito:#A3ABB8; --regla:#2B3342;
+  --azul:#8FB0FF; --rojo:#FF8A7A; --rojo-suave:#2E1B1B;
+  --hl-contenido:rgba(255,210,0,.30); --hl-contexto:rgba(60,200,120,.28); --hl-concepto:rgba(160,110,255,.34);
+  --hl-juicio:rgba(255,120,80,.30); --ok:#6FD39C; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px); scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--serif);font-size:1.0625rem;line-height:1.68;
+  font-optical-sizing:auto; -webkit-text-size-adjust:100%}
+a{color:var(--azul);text-underline-offset:.18em}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,label:focus-within{outline:3px solid var(--azul);outline-offset:2px;border-radius:3px}
+img{max-width:100%}
+
+.layout{display:grid;grid-template-columns:17.5rem minmax(0,1fr);min-height:100vh}
+nav.lateral{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:2rem 1.25rem 2rem 1.75rem;
+  border-right:1px solid var(--regla);font-family:var(--sans);font-size:.93rem}
+nav.lateral .marca{font-weight:800;font-stretch:80%;font-size:1.25rem;line-height:1.1;margin:0 0 1.5rem}
+nav.lateral .marca span{display:block;font-weight:500;font-stretch:100%;font-size:.85rem;color:var(--grafito);margin-top:.35rem}
+nav.lateral ol{list-style:none;margin:0;padding:0;counter-reset:m -1}
+nav.lateral li{counter-increment:m}
+nav.lateral li a{display:grid;grid-template-columns:1.9rem 1fr;gap:.2rem;padding:.42rem .5rem;border-radius:6px;color:var(--tinta);text-decoration:none;line-height:1.3}
+nav.lateral li a::before{content:counter(m);font-weight:700;color:var(--grafito);font-variant-numeric:tabular-nums}
+nav.lateral li a:hover{background:var(--papel-2)}
+nav.lateral li a.activo{background:var(--papel-2);font-weight:650}
+nav.lateral .herramientas{margin-top:1.75rem;padding-top:1.25rem;border-top:1px solid var(--regla);display:grid;gap:.6rem}
+.interruptor{display:flex;align-items:center;gap:.55rem;cursor:pointer;color:var(--tinta);font-size:.9rem}
+.interruptor input{width:1.05rem;height:1.05rem;accent-color:var(--azul)}
+button.tema{font:inherit;font-size:.88rem;background:none;border:1px solid var(--regla);color:var(--tinta);padding:.35rem .6rem;border-radius:6px;cursor:pointer;justify-self:start}
+
+.menu-movil{display:none}
+main{padding:3rem clamp(1.25rem,4vw,4rem) 6rem;max-width:62rem}
+.texto{max-width:44rem}
+
+/* Portada */
+.portada{padding:1rem 0 2.5rem;border-bottom:2px solid var(--tinta);margin-bottom:3rem}
+.portada h1{font-family:var(--sans);font-weight:800;font-stretch:78%;font-size:clamp(2.6rem,6.4vw,4.6rem);line-height:.98;letter-spacing:-.015em;margin:0 0 1.2rem;max-width:14ch}
+.portada p.bajada{font-size:1.2rem;line-height:1.55;max-width:40rem;margin:0 0 1.75rem;color:var(--tinta)}
+.pesos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--tinta);max-width:40rem;font-family:var(--sans)}
+.pesos div{padding:.8rem 1rem;border-right:1px solid var(--tinta)}
+.pesos div:last-child{border-right:0}
+.pesos b{display:block;font-size:2rem;font-weight:800;font-stretch:80%;line-height:1}
+.pesos span{display:block;font-size:.88rem;line-height:1.35;margin-top:.4rem;color:var(--grafito)}
+
+/* Secciones */
+section.modulo{padding-top:1rem;margin-bottom:4.5rem}
+.modulo > header{margin-bottom:1.5rem}
+.modulo > header .num{font-family:var(--sans);font-weight:700;color:var(--grafito);font-size:.95rem;margin:0 0 .2rem}
+h2{font-family:var(--sans);font-weight:800;font-stretch:82%;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1.05;margin:0;letter-spacing:-.01em}
+h3{font-family:var(--sans);font-weight:750;font-stretch:88%;font-size:1.4rem;line-height:1.2;margin:2.6rem 0 .7rem}
+h4{font-family:var(--sans);font-weight:700;font-size:1.08rem;line-height:1.3;margin:1.8rem 0 .5rem}
+p{margin:0 0 1rem}
+ul,ol{padding-left:1.3rem;margin:0 0 1rem}
+li{margin-bottom:.35rem}
+strong{font-weight:650}
+.nota{font-size:.95rem;color:var(--grafito)}
+
+/* Corchete de puntuación: el recurso visual de la guía */
+.pregunta-h{display:flex;align-items:baseline;gap:.75rem;flex-wrap:wrap}
+.pts{font-family:var(--sans);font-weight:800;font-stretch:80%;color:var(--rojo);font-size:1.5em;line-height:1;white-space:nowrap}
+
+/* Resaltadores (código de colores de las 3C) */
+.hl{padding:.05em .15em;border-radius:.2em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hc{background:var(--hl-contenido)} .hx{background:var(--hl-contexto)} .hk{background:var(--hl-concepto)} .hj{background:var(--hl-juicio)}
+.leyenda{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;font-family:var(--sans);font-size:.9rem;margin:0 0 1rem}
+
+/* Tablas */
+.tabla{overflow-x:auto;margin:0 0 1.5rem;border-top:2px solid var(--tinta)}
+table{border-collapse:collapse;width:100%;font-size:.95rem;line-height:1.5}
+th,td{text-align:left;vertical-align:top;padding:.65rem .75rem;border-bottom:1px solid var(--regla)}
+th{font-family:var(--sans);font-weight:700;font-size:.88rem;background:var(--papel-2)}
+td:first-child{font-weight:600}
+table.min td:first-child{white-space:nowrap}
+
+/* Bloques */
+.caja{border-left:4px solid var(--tinta);padding:.9rem 1.2rem;margin:0 0 1.5rem;background:var(--papel-2)}
+.caja.roja{border-color:var(--rojo);background:var(--rojo-suave)}
+.caja > :last-child{margin-bottom:0}
+.caja .t{font-family:var(--sans);font-weight:750;margin:0 0 .4rem}
+.modelo{border:1px solid var(--regla);border-top:3px solid var(--tinta);padding:1.1rem 1.3rem;margin:0 0 1.5rem;background:var(--papel)}
+.modelo .t{font-family:var(--sans);font-weight:750;margin:0 0 .6rem}
+.modelo p{margin-bottom:.8rem}
+.modelo .anot{font-family:var(--sans);font-size:.85rem;color:var(--grafito)}
+.plantilla{font-family:var(--serif);border:1px dashed var(--grafito);padding:1rem 1.2rem;margin:0 0 1.5rem;border-radius:4px}
+.plantilla p{margin:.3rem 0}
+.plantilla .hueco{border-bottom:1px solid var(--grafito);color:var(--grafito);font-style:italic}
+.cadena{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:0;margin:0 0 1.5rem;border:1px solid var(--tinta);font-family:var(--sans);font-size:.9rem}
+.cadena div{padding:.75rem .8rem;border-right:1px solid var(--tinta);line-height:1.35}
+.cadena div:last-child{border-right:0}
+.cadena b{display:block;font-size:1rem;margin-bottom:.25rem}
+
+/* Glosario */
+.buscador{position:sticky;top:0;z-index:5;background:var(--papel);padding:.75rem 0;margin-bottom:.5rem;border-bottom:1px solid var(--regla)}
+.buscador label{font-family:var(--sans);font-size:.9rem;font-weight:600;display:block;margin-bottom:.3rem}
+.buscador input{width:100%;max-width:30rem;font:inherit;font-size:1rem;padding:.55rem .75rem;border:1px solid var(--grafito);border-radius:6px;background:var(--papel);color:var(--tinta)}
+.buscador .conteo{font-family:var(--sans);font-size:.85rem;color:var(--grafito);margin-top:.3rem}
+details.area{border-top:1px solid var(--regla);padding:.2rem 0}
+details.area > summary{cursor:pointer;font-family:var(--sans);font-weight:750;font-size:1.12rem;padding:.8rem 0;list-style:none;display:flex;gap:.6rem;align-items:baseline}
+details.area > summary::-webkit-details-marker{display:none}
+details.area > summary::before{content:"+";font-weight:800;width:1rem;color:var(--grafito)}
+details.area[open] > summary::before{content:"\2212"}
+details.area > summary small{font-weight:500;color:var(--grafito);font-size:.88rem}
+dl.gl{margin:0 0 1.2rem}
+dl.gl dt{font-family:var(--sans);font-weight:700;margin-top:.85rem}
+dl.gl dd{margin:.15rem 0 0 0;padding-left:.9rem;border-left:2px solid var(--regla)}
+dl.gl dd .uso{display:block;font-size:.93rem;color:var(--grafito);margin-top:.25rem}
+.oculto{display:none !important}
+body.repaso dl.gl dd{filter:blur(5px);cursor:pointer;transition:filter .15s}
+body.repaso dl.gl dd.visto{filter:none}
+@media (prefers-reduced-motion:reduce){body.repaso dl.gl dd{transition:none}}
+
+/* Ejemplos */
+.ejemplo{border-top:1px solid var(--regla);padding:1rem 0 .4rem}
+.ejemplo h4{margin:0 0 .35rem}
+.etiquetas{display:flex;flex-wrap:wrap;gap:.35rem;margin:.2rem 0 .6rem;font-family:var(--sans);font-size:.8rem}
+.etiquetas span{padding:.1rem .45rem;border-radius:3px}
+
+/* Listas de control */
+.control{list-style:none;padding:0}
+.control li{margin:0;border-bottom:1px solid var(--regla)}
+.control label{display:flex;gap:.7rem;align-items:flex-start;padding:.55rem 0;cursor:pointer}
+.control input{margin-top:.35rem;width:1.1rem;height:1.1rem;flex:none;accent-color:var(--ok)}
+.control input:checked + span{color:var(--grafito);text-decoration:line-through;text-decoration-color:var(--grafito)}
+.progreso{font-family:var(--sans);font-size:.9rem;color:var(--grafito);margin:.5rem 0 1rem}
+.error{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border:1px solid var(--regla);margin:0 0 1rem}
+.error > div{padding:.8rem 1rem}
+.error > div:first-child{border-right:1px solid var(--regla);background:var(--rojo-suave)}
+.error .t{font-family:var(--sans);font-weight:700;font-size:.85rem;margin:0 0 .3rem}
+.error .t.mal{color:var(--rojo)} .error .t.bien{color:var(--ok)}
+.error p{margin:0;font-size:.97rem}
+
+footer.pie{border-top:2px solid var(--tinta);padding-top:1.2rem;font-family:var(--sans);font-size:.88rem;color:var(--grafito);max-width:44rem}
+
+@media (max-width:900px){
+  .layout{display:block}
+  nav.lateral{display:none}
+  .menu-movil{display:block;position:sticky;top:0;z-index:20;background:var(--papel);border-bottom:1px solid var(--regla);
+    padding:calc(env(safe-area-inset-top,0px) + .6rem) 1.25rem .6rem;font-family:var(--sans)}
+  .menu-movil summary{cursor:pointer;font-weight:750}
+  .menu-movil ol{margin:.6rem 0 .4rem;padding-left:1.4rem}
+  .menu-movil li{margin:.25rem 0}
+  .menu-movil a{color:var(--tinta)}
+  .menu-movil .herr{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin:.4rem 0}
+  main{padding-top:1.5rem}
+  .buscador{top:3rem}
+  .pesos{grid-template-columns:1fr}
+  .pesos div{border-right:0;border-bottom:1px solid var(--tinta)}
+  .pesos div:last-child{border-bottom:0}
+  .error{grid-template-columns:1fr}
+  .error > div:first-child{border-right:0;border-bottom:1px solid var(--regla)}
+}
+@media print{
+  nav.lateral,.menu-movil,.buscador,.herramientas{display:none !important}
+  .layout{display:block} details.area{display:block} details.area > *{display:block}
+  body.repaso dl.gl dd{filter:none}
+}
+</style>
+</head>
+<body>
+<details class="menu-movil">
+  <summary>Módulos de la guía</summary>
+  <ol start="0">
+    <li><a href="#m0">Cómo se gana el 7</a></li>
+    <li><a href="#m1">Términos de instrucción</a></li>
+    <li><a href="#m2">Prueba 2, pregunta por pregunta</a></li>
+    <li><a href="#m3">Prueba 1 del NM</a></li>
+    <li><a href="#m4">Conectar las 3C en un párrafo</a></li>
+    <li><a href="#m5">Conceptos</a></li>
+    <li><a href="#m6">Contenidos: glosario técnico</a></li>
+    <li><a href="#m7">Contextos</a></li>
+    <li><a href="#m8">Banco de ejemplos reales</a></li>
+    <li><a href="#m9">Lenguaje académico</a></li>
+    <li><a href="#m10">Errores que bajan la banda</a></li>
+    <li><a href="#m11">Plan de estudio y lista final</a></li>
+  </ol>
+  <div class="herr">
+    <label class="interruptor"><input type="checkbox" class="toggle-repaso"> Modo repaso (ocultar definiciones)</label>
+    <button class="tema" type="button">Cambiar tema</button>
+  </div>
+</details>
+<div class="layout">
+<nav class="lateral" aria-label="Módulos">
+  <p class="marca">Sociedad Digital NM<span>Ruta al 7 en las pruebas 1 y 2</span></p>
+  <ol>
+    <li><a href="#m0">Cómo se gana el 7</a></li>
+    <li><a href="#m1">Términos de instrucción</a></li>
+    <li><a href="#m2">Prueba 2, pregunta por pregunta</a></li>
+    <li><a href="#m3">Prueba 1 del NM</a></li>
+    <li><a href="#m4">Conectar las 3C en un párrafo</a></li>
+    <li><a href="#m5">Conceptos</a></li>
+    <li><a href="#m6">Contenidos: glosario técnico</a></li>
+    <li><a href="#m7">Contextos</a></li>
+    <li><a href="#m8">Banco de ejemplos reales</a></li>
+    <li><a href="#m9">Lenguaje académico</a></li>
+    <li><a href="#m10">Errores que bajan la banda</a></li>
+    <li><a href="#m11">Plan de estudio y lista final</a></li>
+  </ol>
+  <div class="herramientas">
+    <label class="interruptor"><input type="checkbox" class="toggle-repaso"> Modo repaso: ocultar definiciones del glosario</label>
+    <button class="tema" type="button">Cambiar tema claro/oscuro</button>
+  </div>
+</nav>
+<main>
+<header class="portada">
+  <h1>Sociedad Digital NM: ruta al 7</h1>
+  <p class="bajada">Guía completa para las pruebas 1 y 2: cómo leer cada pregunta, cómo estructurar la respuesta según las bandas de puntuación, qué terminología dominar y cómo unir conceptos, contenidos y contextos en cada párrafo. Está construida sobre la Guía de Sociedad Digital (versión 2025) y los esquemas de calificación de mayo 2024, noviembre 2024, mayo 2025 y noviembre 2025.</p>
+  <div class="pesos" role="list">
+    <div role="listitem"><b>40 %</b><span>Prueba 1: 1 h 30 min, 2 de 4 preguntas, 40 puntos</span></div>
+    <div role="listitem"><b>30 %</b><span>Prueba 2: 1 h 15 min, 4 preguntas con fuentes, 24 puntos</span></div>
+    <div role="listitem"><b>30 %</b><span>Proyecto de indagación (evaluación interna), 24 puntos</span></div>
+  </div>
+</header>
+
+<section class="modulo" id="m0">
+<header><p class="num">Módulo 0</p><h2>Cómo se gana el 7</h2></header>
+<div class="texto">
+<p>El examen del NM vale el 70 % de la nota final. Antes de estudiar contenido conviene entender dónde están los puntos y cómo se reparten, porque eso decide en qué invertir el tiempo.</p>
+
+<h3>El dato que cambia la estrategia</h3>
+<p>De los 64 puntos del examen, <strong>34 se corrigen con bandas de puntuación</strong> (juicio global del examinador) y solo 30 con esquema analítico (un punto por idea correcta):</p>
+<div class="tabla"><table class="min">
+<thead><tr><th>Parte</th><th>Tipo de corrección</th><th>Puntos</th><th>Peso en la nota final</th></tr></thead>
+<tbody>
+<tr><td>P1 partes A y B (×2 preguntas)</td><td>Analítica</td><td>24 / 40</td><td>24 %</td></tr>
+<tr><td>P1 parte C (×2 preguntas)</td><td>Bandas (0 a 8)</td><td>16 / 40</td><td>16 %</td></tr>
+<tr><td>P2 preguntas 1 y 2</td><td>Analítica</td><td>6 / 24</td><td>7,5 %</td></tr>
+<tr><td>P2 pregunta 3</td><td>Bandas (0 a 6)</td><td>6 / 24</td><td>7,5 %</td></tr>
+<tr><td>P2 pregunta 4</td><td>Bandas (0 a 12)</td><td>12 / 24</td><td>15 %</td></tr>
+</tbody></table></div>
+<p>Es decir, el <strong>38,5 % de tu nota final</strong> sale de respuestas extensas corregidas por bandas: las partes C de la prueba 1 y las preguntas 3 y 4 de la prueba 2. Ahí se separa el 6 del 7. Las preguntas analíticas se aseguran con precisión y disciplina; las de bandas, con estructura, integración de fuentes, ejemplos reales y juicio.</p>
+
+<h3>Meta de puntuación sugerida</h3>
+<p>El IB fija los límites de calificación después de cada convocatoria y cambian según la dificultad de la prueba, así que no existe un porcentaje oficial fijo para el 7. Como margen de seguridad, apunta a un <strong>75–80 % en cada prueba</strong>. Un reparto realista:</p>
+<div class="tabla"><table>
+<thead><tr><th>Prueba</th><th>Reparto objetivo</th><th>Total</th></tr></thead>
+<tbody>
+<tr><td>Prueba 1</td><td>Por pregunta: A 6/6, B 5–6/6, C 6–7/8. Dos preguntas.</td><td>≈ 32–34 / 40</td></tr>
+<tr><td>Prueba 2</td><td>P1 2/2, P2 4/4, P3 5/6, P4 9–10/12</td><td>≈ 20–22 / 24</td></tr>
+</tbody></table></div>
+<p>Fíjate en lo que implica: para el 7 no hace falta la perfección en las preguntas de bandas, pero sí <strong>no regalar ni un punto en las analíticas</strong> y llegar como mínimo a la banda 7–9 en la pregunta 4 y a la banda 5–6 en la pregunta 3.</p>
+
+<h3>Qué describe la banda más alta</h3>
+<p>Las bandas superiores de la prueba 1 (parte C, 7–8) y de la prueba 2 (pregunta 4, 10–12) comparten cuatro rasgos. Memorízalos como la lista de lo que el examinador busca:</p>
+<ol>
+<li><strong>Foco:</strong> la respuesta está centrada y demuestra una comprensión profunda de lo que exige la pregunta. Respondes exactamente a lo que se pregunta, con el término de instrucción correcto y para el actor o sistema que se nombra.</li>
+<li><strong>Conocimiento pertinente y preciso, sostenido:</strong> terminología técnica exacta y ejemplos reales explicados (no solo mencionados), presentes en toda la respuesta y que aportan perspectiva.</li>
+<li><strong>Evaluación y síntesis</strong> (prueba 1) o <strong>integración coherente y eficaz de las fuentes</strong> (prueba 2): conectas ideas entre sí y emites juicios fundamentados.</li>
+<li><strong>Estructura:</strong> bien estructurada y organizada de forma eficaz.</li>
+</ol>
+<p>La diferencia con la banda inmediatamente inferior es sutil: en la banda 7–9 de la pregunta 4 la integración de fuentes es “adecuada pero no siempre continua” y hay “algunos errores”; en la 10–12 es coherente de principio a fin. Por eso la estrategia central de esta guía es que <strong>cada párrafo</strong> tenga fuente, conocimiento propio, análisis y juicio, no solo algunos.</p>
+
+<h3>Presupuesto de tiempo</h3>
+<p>La regla práctica es de unos 2 minutos por punto en la prueba 1 y 3 minutos por punto en la prueba 2 (en esta última el tiempo incluye leer las fuentes).</p>
+<div class="tabla"><table class="min">
+<thead><tr><th>Prueba 1 (90 min)</th><th>Minutos</th><th>Extensión orientativa</th></tr></thead>
+<tbody>
+<tr><td>Leer las 4 preguntas y elegir</td><td>4</td><td>Decide por la parte C, no por la A</td></tr>
+<tr><td>Parte A [6]</td><td>8–9</td><td>Frases cortas y exactas</td></tr>
+<tr><td>Parte B [6]</td><td>10–11</td><td>2 explicaciones desarrolladas</td></tr>
+<tr><td>Parte C [8]</td><td>20–22</td><td>400–550 palabras, con plan de 2 min</td></tr>
+<tr><td>Segunda pregunta</td><td>40–42</td><td>Mismo reparto</td></tr>
+<tr><td>Revisión final</td><td>2–4</td><td>Término de instrucción y conclusión</td></tr>
+</tbody></table></div>
+<div class="tabla"><table class="min">
+<thead><tr><th>Prueba 2 (75 min)</th><th>Minutos</th><th>Extensión orientativa</th></tr></thead>
+<tbody>
+<tr><td>Leer preguntas y anotar fuentes</td><td>10–12</td><td>Anotar A–D con códigos (ver módulo 2)</td></tr>
+<tr><td>Pregunta 1 [2]</td><td>2–3</td><td>1 línea por punto</td></tr>
+<tr><td>Pregunta 2 [4]</td><td>7–8</td><td>2 párrafos breves</td></tr>
+<tr><td>Pregunta 3 [6]</td><td>13–15</td><td>200–300 palabras</td></tr>
+<tr><td>Pregunta 4 [12]</td><td>30–35</td><td>500–700 palabras, con plan de 3–4 min</td></tr>
+<tr><td>Revisión</td><td>2–3</td><td>Referencias explícitas a las fuentes</td></tr>
+</tbody></table></div>
+<div class="caja"><p class="t">Regla de oro</p><p>Nunca sacrifiques la pregunta 4 por perfeccionar la 2. Un punto extra en la pregunta 2 cuesta lo mismo que un punto en la 4, pero en la 4 es mucho más fácil perder tres puntos por falta de tiempo para la conclusión.</p></div>
+</div>
+</section>
+
+<section class="modulo" id="m1">
+<header><p class="num">Módulo 1</p><h2>Términos de instrucción</h2></header>
+<div class="texto">
+<p>Cada pregunta empieza con un término de instrucción que pertenece a un objetivo de evaluación (OE). El término te dice <strong>qué tipo de pensamiento se va a premiar</strong>. Responder “explicar” cuando piden “identificar” pierde tiempo; responder “describir” cuando piden “evaluar” pierde puntos. Las definiciones son las del glosario oficial de la guía.</p>
+</div>
+
+<h3>OE1: Conocimiento y comprensión</h3>
+<div class="tabla"><table>
+<thead><tr><th>Término</th><th>Definición oficial</th><th>Qué escribes</th><th>Trampa habitual</th></tr></thead>
+<tbody>
+<tr><td>Indicar</td><td>Especificar un nombre, valor u otra respuesta corta sin explicaciones.</td><td>Una palabra o frase. “Prohibición total.”</td><td>Explicar: no suma y consume tiempo.</td></tr>
+<tr><td>Identificar</td><td>Dar una respuesta entre varias posibilidades.</td><td>Nombrar el elemento con precisión técnica: “cámara”, “cifrado”.</td><td>Dar más elementos de los pedidos: el examinador corrige los primeros.</td></tr>
+<tr><td>Definir</td><td>Dar el significado exacto de una palabra, frase o concepto.</td><td>Definición de manual, con el rasgo que la distingue de términos parecidos.</td><td>Definir con un ejemplo en vez de con la esencia.</td></tr>
+<tr><td>Describir</td><td>Exponer detalladamente.</td><td>Qué es y cómo es o funciona, con detalle observable. Normalmente 1 punto por rasgo y 1 por su detalle.</td><td>Quedarse en una lista sin detalle.</td></tr>
+<tr><td>Resumir</td><td>Exponer brevemente o a grandes rasgos.</td><td>Las ideas principales, sin desarrollo.</td><td>Copiar la fuente.</td></tr>
+</tbody></table></div>
+
+<h3>OE2: Aplicación y análisis</h3>
+<div class="tabla"><table>
+<thead><tr><th>Término</th><th>Definición oficial</th><th>Qué escribes</th><th>Trampa habitual</th></tr></thead>
+<tbody>
+<tr><td>Explicar</td><td>Exponer detalladamente las razones o causas de algo.</td><td>Idea + “porque/por lo que” + consecuencia. Cadena causal completa.</td><td>Describir el qué sin el porqué.</td></tr>
+<tr><td>Sugerir</td><td>Proponer una solución, hipótesis u otra respuesta posible.</td><td>Una razón plausible y su desarrollo. No hace falta que esté en la fuente, pero sí que sea razonable.</td><td>Creer que solo vale lo que dice la fuente.</td></tr>
+<tr><td>Analizar</td><td>Separar las partes de un todo hasta identificar los elementos esenciales o la estructura.</td><td>Descomponer: componentes, actores, causas, relaciones entre ellos.</td><td>Narrar en vez de descomponer.</td></tr>
+<tr><td>Distinguir</td><td>Indicar claramente las diferencias entre dos o más conceptos o elementos.</td><td>Diferencias explícitas, en paralelo: “X…, mientras que Y…”.</td><td>Definir cada uno por separado sin contrastarlos.</td></tr>
+</tbody></table></div>
+
+<h3>OE3: Evaluación y síntesis</h3>
+<div class="tabla"><table>
+<thead><tr><th>Término</th><th>Definición oficial</th><th>Qué escribes</th><th>Trampa habitual</th></tr></thead>
+<tbody>
+<tr><td>Comparar y contrastar</td><td>Semejanzas y diferencias entre dos o más elementos refiriéndose constantemente a ambos.</td><td>Organización punto por punto. Cada párrafo menciona las dos fuentes o los dos elementos.</td><td>Un bloque para la Fuente C y otro para la D.</td></tr>
+<tr><td>Comparar / Contrastar</td><td>Solo semejanzas / solo diferencias, refiriéndose siempre a ambos.</td><td>Lo mismo, con un único eje.</td><td>Mezclar si solo piden uno.</td></tr>
+<tr><td>Discutir</td><td>Crítica equilibrada y bien fundamentada con varios argumentos, factores o hipótesis; conclusiones claras y justificadas con pruebas.</td><td>A favor y en contra, integrados por temas, y una conclusión con postura.</td><td>Terminar “depende” sin decir de qué depende.</td></tr>
+<tr><td>¿En qué medida…?</td><td>Considerar la eficacia u otros aspectos de un argumento; conclusiones claras y justificadas con pruebas y argumentos consistentes.</td><td>Un grado explícito: “en gran medida”, “solo parcialmente”, y bajo qué condiciones.</td><td>Responder sí o no sin graduar.</td></tr>
+<tr><td>Evaluar</td><td>Valorar los puntos fuertes y débiles.</td><td>Fortalezas y limitaciones y un juicio sobre su peso relativo.</td><td>Listar sin sopesar.</td></tr>
+<tr><td>Examinar</td><td>Considerar un argumento o concepto de modo que se revelen los supuestos e interrelaciones.</td><td>Qué se da por supuesto y cómo se conectan los factores.</td><td>Quedarse en la superficie del argumento.</td></tr>
+<tr><td>Justificar</td><td>Dar razones o pruebas válidas que respalden una respuesta o conclusión.</td><td>Tesis + evidencia + razonamiento.</td><td>Afirmar sin evidencia.</td></tr>
+<tr><td>Recomendar</td><td>Presentar un plan de acción aconsejable, con pruebas o razonamientos.</td><td>Acción concreta, quién la ejecuta y por qué funcionaría.</td><td>Recomendación vaga (“hay que concienciar”).</td></tr>
+</tbody></table></div>
+
+<div class="texto">
+<h3>Vocabulario de las preguntas que debes leer con lupa</h3>
+<p>Los esquemas de calificación penalizan respuestas que no atienden a la palabra exacta del enunciado. Estas parejas aparecen una y otra vez:</p>
+<ul>
+<li><strong>Efectos</strong> (impactos y resultados) frente a <strong>repercusiones</strong> (oportunidades y riesgos). Definición oficial de la guía: se superponen y se fundamentan entre sí. Si la pregunta dice “efectos y repercusiones”, necesitas hablar de lo que ya pasa <em>y</em> de lo que podría pasar.</li>
+<li><strong>Oportunidad</strong>: posibilidad de mejora o crecimiento que abre el sistema digital. <strong>Dilema</strong>: elección difícil entre opciones con consecuencias indeseables o valores en conflicto (por ejemplo, seguridad frente a privacidad). Un dilema no es solo “una desventaja”: tiene dos lados.</li>
+<li><strong>Ventajas y desventajas</strong>: siempre ligadas al propósito que nombra la pregunta. En noviembre de 2025 el esquema solo aceptaba impactos de privacidad si se vinculaban al asesoramiento sanitario, que era el foco del enunciado.</li>
+<li><strong>Personas y comunidades</strong> y <strong>partes interesadas</strong>: si la pregunta nombra a un actor (“para MMDP”, “para la ciudadanía”), escribe desde ese actor. En mayo de 2025 el esquema aclaró que los hijos o cónyuges de los empleados no contaban como partes interesadas de la empresa.</li>
+<li><strong>Haciendo referencia a las Fuentes A–D y a sus propios conocimientos</strong>: son dos requisitos, no uno. Sin conocimiento propio no llegas a la banda alta; sin fuentes, tampoco.</li>
+</ul>
+</div>
+</section>
+
+<section class="modulo" id="m2">
+<header><p class="num">Módulo 2</p><h2>Prueba 2, pregunta por pregunta</h2></header>
+<div class="texto">
+<p>La prueba 2 es igual para el NM y el NS: un cuadernillo con cuatro fuentes (A–D) sobre un mismo sistema digital y cuatro preguntas de dificultad creciente. En las convocatorias que tienes en tu carpeta los temas fueron el GPS y Google Street View (mayo 2024), los drones del Gobierno (noviembre 2024), el trabajo híbrido en una empresa (mayo 2025) y un botiquín inteligente con IdC (noviembre 2025). Los ejemplos de este módulo usan el botiquín One2Seven de noviembre de 2025.</p>
+
+<h3>Antes de escribir: 10 minutos de lectura estratégica</h3>
+<ol>
+<li><strong>Lee primero las cuatro preguntas</strong>, no las fuentes. Así sabes qué buscar: qué fuente usa cada pregunta y cuál es el foco de la 3 y de la 4.</li>
+<li><strong>Anota cada fuente con códigos</strong> en el margen: <strong>+</strong> oportunidad o ventaja, <strong>−</strong> riesgo o dilema, <strong>T</strong> término técnico que puedes explotar (cifrado, nube, IdC, biométrico), <strong>@</strong> actor afectado (usuario, médico, empresa, Gobierno).</li>
+<li><strong>Escribe al lado de cada fuente su origen y propósito</strong> en cuatro palabras: “C = anuncio del fabricante, vende”, “D = reseña de laboratorio de pruebas, equilibrada”. Esto es oro en la pregunta 3 y en la 4: explicar <em>por qué</em> una fuente omite riesgos (porque es publicidad) es análisis de fuentes, una de las herramientas del curso.</li>
+<li><strong>Antes de la pregunta 4, busca tu conocimiento propio</strong>: un ejemplo real parecido, una ley (RGPD, Ley 29733 en Perú) y dos o tres términos técnicos del contenido que la fuente no explica.</li>
+</ol>
+</div>
+
+<div class="texto">
+<h3 class="pregunta-h"><span>Pregunta 1</span><span class="pts">[2]</span></h3>
+<p><strong>OE1.</strong> Identificar, indicar o describir algo que está en una fuente (texto, imagen, mapa o datos). Un punto por elemento correcto.</p>
+<p>Ejemplos reales: “Identifique dos características del GPS” (2024); “Indique las leyes sobre drones en Argelia y en Namibia” (nov. 2024); “Identifique dos prácticas ergonómicas” (2025); “Identifique un dispositivo de entrada y uno de salida del botiquín” (nov. 2025).</p>
+<div class="caja"><p class="t">Cómo asegurar los dos puntos</p>
+<ul>
+<li>Da exactamente el número de elementos pedidos, uno por línea, con numeración (1, 2).</li>
+<li>Usa el término técnico exacto: “cámara” y “escáner 3D” como dispositivos de entrada; “espejo/pantalla” como salida. Si la fuente da una etiqueta, úsala.</li>
+<li>No expliques. No suma.</li>
+<li>Comprueba que cada elemento responde a la restricción del enunciado: “necesario para el reconocimiento facial” excluía los sensores de aliento.</li>
+</ul></div>
+
+<h3 class="pregunta-h"><span>Pregunta 2</span><span class="pts">[4]</span></h3>
+<p><strong>OE2.</strong> Explicar o sugerir con referencia a una fuente. Casi siempre se corrige como <strong>[2] + [2]</strong>: por cada razón, 1 punto por identificarla y 1 por desarrollarla (por qué o cómo ocurre). A veces llega dividida en (a) y (b) de 2 puntos cada una; la lógica es la misma.</p>
+<div class="plantilla">
+<p><strong>Razón 1: <span class="hueco">nombre técnico de la razón</span>.</strong> La Fuente <span class="hueco">X</span> muestra que <span class="hueco">dato de la fuente</span>; <strong>por lo tanto / esto provoca que</strong> <span class="hueco">mecanismo</span>, <strong>lo que significa que</strong> <span class="hueco">consecuencia para el actor de la pregunta</span>.</p>
+<p><strong>Razón 2:</strong> misma estructura, con una razón de otra categoría (técnica frente a humana, económica o legal).</p>
+</div>
+<div class="modelo">
+<p class="t">Modelo. Explique dos razones por las que puede ser difícil compartir los datos del botiquín con el personal del hospital (Fuente B). [4]</p>
+<p><strong>1. Falta de interoperabilidad.</strong> La Fuente B muestra que los datos pasan del botiquín a la nube y de la nube al hospital. Si el botiquín guarda los datos en un formato o protocolo distinto al del sistema de historias clínicas del hospital, este no podrá leerlos ni integrarlos, de modo que el médico recibiría datos inutilizables.</p>
+<p><strong>2. Dependencia de la conectividad.</strong> La transmisión depende de la red wifi doméstica y del proveedor de servicios de internet. Si el ancho de banda es bajo o se corta la energía o el servicio, los datos no llegan a la nube en tiempo real y el médico trabajaría con información incompleta o desactualizada.</p>
+<p class="anot">Por qué funciona: dos razones de categorías distintas (estándares y capacidad de red), términos técnicos del contenido 3.4 y un desarrollo que termina en el actor de la pregunta (el personal del hospital). El esquema pedía centrarse en la <em>dificultad de compartir</em>, no en riesgos genéricos.</p>
+</div>
+
+<h3 class="pregunta-h"><span>Pregunta 3</span><span class="pts">[6]</span></h3>
+<p><strong>OE3.</strong> Siempre ha sido “Compare y contraste lo que la Fuente C y la Fuente D revelan sobre…”. Es la pregunta donde más puntos se pierden por estructura.</p>
+<h4>Qué exige cada banda (síntesis de los esquemas 2024–2025)</h4>
+<div class="tabla"><table>
+<thead><tr><th>Banda</th><th>Lo que hace la respuesta</th></tr></thead>
+<tbody>
+<tr><td>1–2</td><td>Identifica aspectos de cada fuente, pero sin comparación ni contraste directos que las vinculen.</td></tr>
+<tr><td>3–4</td><td>Resume impactos; hay comparaciones o contrastes con conectores (“mientras que”, “sin embargo”). Solo 3 si trata una sola dimensión del enunciado (por ejemplo, solo privacidad) o se apoya más en una fuente; 4 si es equilibrada entre las dos dimensiones y las dos fuentes.</td></tr>
+<tr><td>5–6</td><td>Describe impactos y repercusiones con <strong>referencias explícitas</strong> a C y D. Hay comparaciones <em>y</em> contrastes. 5 si son breves; 6 si son detalladas y amplían hacia efectos más generales para las personas afectadas. En 2025 se precisó: el qué, más al menos dos de quién, dónde y cuándo.</td></tr>
+</tbody></table></div>
+<div class="caja roja"><p class="t">Los tres requisitos que no se negocian</p>
+<ol>
+<li><strong>Las dos dimensiones del enunciado</strong>: si dice “privacidad y seguridad” u “oportunidades y dilemas”, trata ambas. Con una sola, el techo es 3.</li>
+<li><strong>Semejanzas y diferencias</strong>: al menos una de cada.</li>
+<li><strong>Organización punto por punto</strong>: cada párrafo nombra la Fuente C y la Fuente D. Nunca un bloque por fuente.</li>
+</ol></div>
+<div class="plantilla">
+<p><strong>Eje 1 <span class="hueco">(dimensión A del enunciado)</span>.</strong> Tanto la Fuente C como la Fuente D <span class="hueco">semejanza</span>. Sin embargo, mientras la Fuente C <span class="hueco">…</span>, la Fuente D <span class="hueco">…</span>. Esto implica que, para <span class="hueco">quién</span>, en <span class="hueco">dónde/cuándo</span>, <span class="hueco">impacto o repercusión</span>.</p>
+<p><strong>Eje 2 <span class="hueco">(dimensión B)</span>.</strong> Misma estructura.</p>
+<p><strong>Eje 3 (opcional si hay tiempo).</strong> Contraste por origen y propósito: la Fuente C, al ser <span class="hueco">anuncio/institucional</span>, omite <span class="hueco">…</span>, mientras que la Fuente D <span class="hueco">…</span>.</p>
+</div>
+<div class="modelo">
+<p class="t">Modelo. Compare y contraste lo que las Fuentes C y D revelan sobre los impactos en la privacidad y la seguridad de los datos del usuario del botiquín. [6]</p>
+<p><strong>Seguridad del almacenamiento.</strong> Tanto la Fuente C como la Fuente D indican que los datos de salud se almacenan en la nube. Sin embargo, mientras la Fuente C, un anuncio del fabricante, subraya que esos datos están protegidos mediante cifrado, la Fuente D, una reseña independiente, advierte que demasiadas personas tienen acceso a ellos. El cifrado impide que un intruso lea los datos interceptados, pero no resuelve un control de acceso deficiente: cualquier usuario autorizado de más podría consultar el historial médico del paciente, que es información personal especialmente sensible.</p>
+<p><strong>Seguridad de la red y autenticación.</strong> La Fuente C presenta como ventajas la configuración sencilla del wifi y la cerradura biométrica por reconocimiento facial, que autentica al usuario con un rasgo difícil de suplantar. En contraste, la Fuente D señala que el wifi doméstico suele ser débil y que la compatibilidad con otras aplicaciones de salud es limitada. Para el usuario en su casa, cada transmisión diaria de datos pasa por una red que puede estar mal protegida, lo que abre una vía de acceso no autorizado que el anuncio no menciona.</p>
+<p><strong>Privacidad de lo que se capta y se comparte.</strong> Ambas fuentes valoran como una oportunidad que el botiquín comparta datos con médicos y farmacias para recordar la medicación y pedir reposiciones. No obstante, la Fuente D añade que las cámaras pueden captar más de lo previsto, algo que la Fuente C omite porque su propósito es vender. En un espacio íntimo como el baño, esto implica que otros miembros del hogar podrían ser grabados sin su consentimiento.</p>
+<p class="anot">Por qué es banda 6: trata seguridad y privacidad; cada párrafo cita C y D; hay semejanzas (“tanto… como”, “ambas”) y diferencias (“mientras”, “en contraste”, “no obstante”); cada contraste termina en un impacto concreto con quién (usuario, familia) y dónde (hogar, baño); usa el origen y propósito de las fuentes; y usa terminología precisa (cifrado, control de acceso, autenticación biométrica).</p>
+</div>
+
+<h3 class="pregunta-h"><span>Pregunta 4</span><span class="pts">[12]</span></h3>
+<p><strong>OE3.</strong> “Haciendo referencia a las Fuentes A–D y a sus propios conocimientos, discuta… / ¿en qué medida…?”. Es la mitad de la prueba. Se corrige con bandas y, desde noviembre de 2025, el esquema define explícitamente las tres operaciones que separan la banda 4–6 de la 7–9 y de la 10–12:</p>
+<div class="tabla"><table>
+<thead><tr><th>Operación</th><th>Qué significa según el esquema</th><th>Cómo suena en tu respuesta</th></tr></thead>
+<tbody>
+<tr><td>Análisis</td><td>Explicar por qué o en qué medida importa un aspecto, usando las fuentes o conocimientos propios.</td><td>“La Fuente A muestra X, lo cual permite Y porque Z.”</td></tr>
+<tr><td>Síntesis</td><td>Vincular ideas entre fuentes y/o conocimiento propio para mostrar una comprensión mayor.</td><td>“La Fuente A muestra X y la Fuente C añade Y; en conjunto, esto revela Z.” / “Si se compara con [ejemplo real], esto sugiere…”</td></tr>
+<tr><td>Comentario evaluativo</td><td>Juzgar la importancia de un aspecto: cuánto importa, para quién o en qué condiciones.</td><td>“Esto es especialmente relevante para…” / “Se convierte en un problema grave cuando…”</td></tr>
+</tbody></table></div>
+<p>Y tres notas más del esquema que conviene tener tatuadas:</p>
+<ul>
+<li>La terminología específica debe estar <strong>integrada</strong> en el razonamiento, no añadida de forma superficial.</li>
+<li><strong>No es necesario citar explícitamente todas las fuentes</strong> para llegar a la banda más alta, pero las fuentes deben <strong>sintetizarse de forma integrada</strong>, no analizarse una por una.</li>
+<li>Los impactos deben vincularse al foco del enunciado. “Un cifrado débil es malo porque roban datos” está poco desarrollado; “un cifrado débil permite interceptar información sanitaria sensible, y si los usuarios lo saben, compartirán datos menos precisos, lo que empeora el asesoramiento” sí responde a la pregunta.</li>
+</ul>
+
+<h4>Estructura para la banda 10–12</h4>
+<div class="cadena">
+<div><b>Introducción</b>2–3 frases: define el sistema en términos técnicos, nombra a las partes interesadas y anuncia la tesis y los criterios.</div>
+<div><b>3 párrafos temáticos</b>Cada uno sobre un criterio (precisión, acceso, privacidad…), con los dos lados dentro.</div>
+<div><b>Conclusión</b>Juicio explícito, para quién y bajo qué condiciones. Sin ideas nuevas.</div>
+</div>
+<p>Cada párrafo temático sigue la secuencia <strong>P-E-A-S-E</strong>:</p>
+<ol>
+<li><strong>Punto</strong>: frase temática que responde a la pregunta (“La principal ventaja es la rapidez del seguimiento, aunque depende de la fiabilidad de los sensores”).</li>
+<li><strong>Evidencia</strong>: datos de al menos dos fuentes, parafraseados y referenciados (“Fuente A”, “Fuente C”).</li>
+<li><strong>Análisis</strong>: por qué o cómo ocurre, con un término técnico del contenido (algoritmo, sensor, cifrado, IdC).</li>
+<li><strong>Síntesis</strong>: conecta con otra fuente o con conocimiento propio (un ejemplo real explicado, una ley, un concepto como poder o valores y ética).</li>
+<li><strong>Evaluación</strong>: comentario evaluativo sobre cuánto importa, para quién y en qué condiciones.</li>
+</ol>
+</div>
+
+<div class="texto">
+<div class="modelo">
+<p class="t">Modelo. Haciendo referencia a las Fuentes A–D y a sus propios conocimientos, discuta las ventajas y desventajas de utilizar el botiquín inteligente One2Seven para proporcionar asesoramiento sanitario. [12]</p>
+<p>El botiquín One2Seven es un dispositivo de Internet de las cosas que combina sensores, cámaras y escáneres 3D para obtener datos biométricos, los procesa en la nube y devuelve una puntuación de salud y consejos a través de un espejo inteligente. Su valor como fuente de asesoramiento depende de tres factores: la precisión de los datos que capta, quién puede acceder realmente a él y si los usuarios confían lo suficiente como para compartir información veraz. Aunque ofrece un seguimiento cómodo y continuo, sus limitaciones lo convierten en un complemento útil y no en un sustituto del diagnóstico médico.</p>
+<p><strong>La ventaja más evidente es la inmediatez del seguimiento, pero su valor depende de la fiabilidad de los sensores.</strong> La Fuente A muestra que el botiquín mide la frecuencia cardíaca, detecta cambios de peso y analiza el aliento, y la Fuente C añade que ofrece consejos en tiempo real desde casa. En conjunto, esto convierte mediciones diarias en orientación práctica sin necesidad de pedir una cita, lo que favorece la detección temprana de problemas como la diabetes tipo 2. Sin embargo, el asesoramiento es tan bueno como los datos de entrada: la iluminación del baño o un sensor mal calibrado pueden distorsionar la medición, y un algoritmo que recibe datos erróneos genera consejos erróneos. Algo parecido ocurre con los relojes inteligentes, cuya detección de arritmias puede producir falsos positivos que generan ansiedad o consultas innecesarias. Por eso esta ventaja es real para usuarios sanos que quieren vigilar tendencias, pero se vuelve peligrosa si un paciente crónico trata la puntuación de salud como un diagnóstico.</p>
+<p><strong>En segundo lugar, el botiquín facilita la comunicación con los profesionales, aunque no de forma equitativa.</strong> Según las Fuentes B y D, los datos se envían al hospital y se avisa al médico cuando hace falta atención, lo que ahorra desplazamientos y permite decisiones más informadas en la consulta. No obstante, la Fuente D advierte que el wifi doméstico suele ser débil y que la compatibilidad con otras aplicaciones de salud es limitada, y la Fuente C muestra un precio de 279 dólares. Así, el asesoramiento depende de tener dinero, una conexión estable e infraestructura compatible en el hospital: en zonas rurales del Perú, donde la conectividad es irregular, precisamente las personas con peor acceso a médicos serían las que menos se beneficiarían. Esto evidencia una brecha digital que el dispositivo puede ampliar en lugar de reducir.</p>
+<p><strong>Por último, el riesgo para la privacidad y la seguridad puede degradar la propia calidad del asesoramiento.</strong> La Fuente C afirma que los datos se guardan cifrados en la nube, pero la Fuente D señala que demasiadas personas acceden a ellos y que las cámaras pueden captar más de lo previsto. Los datos de salud son una categoría especialmente protegida por leyes como el RGPD europeo o la Ley 29733 de Protección de Datos Personales del Perú, y filtraciones como la de 23andMe en 2023, que expuso información de millones de usuarios, muestran que el daño es irreversible. Si los usuarios temen esa exposición, pueden desactivar funciones u ocultar información, lo que reduce los datos disponibles y, con ellos, la precisión de los consejos. Esta desventaja pesa más que las otras porque afecta a todos los usuarios y porque la Fuente C, al ser publicidad, no ofrece ninguna garantía sobre quién controla los datos.</p>
+<p>En conclusión, el botiquín One2Seven es ventajoso como herramienta de seguimiento preventivo para usuarios con buena conectividad y recursos, como reconoce la valoración moderada de la Fuente D. Sin embargo, sus beneficios solo superarían a sus riesgos si se cumplen tres condiciones: validación clínica de los sensores, control estricto de quién accede a los datos e interoperabilidad con los sistemas hospitalarios. Sin ellas, el dispositivo ofrece más comodidad que asesoramiento fiable.</p>
+<p class="anot">Por qué es banda 10–12: introducción con tesis y criterios; tres párrafos temáticos, cada uno con las dos caras; las cuatro fuentes sintetizadas (nunca una por una); conocimiento propio explicado (relojes inteligentes, RGPD y Ley 29733, 23andMe, brecha digital en el Perú); conceptos implícitos (valores y ética, poder, sistemas, espacio); juicio graduado con condiciones. Unas 600 palabras.</p>
+</div>
+
+<h4>Lista de control de la pregunta 4</h4>
+<ul class="control" data-grupo="p4">
+<li><label><input type="checkbox"><span>La introducción define el sistema con términos técnicos y anuncia una tesis.</span></label></li>
+<li><label><input type="checkbox"><span>Cada párrafo empieza con una frase temática que responde a la pregunta.</span></label></li>
+<li><label><input type="checkbox"><span>He usado las cuatro fuentes al menos una vez, siempre combinadas, nunca en fila.</span></label></li>
+<li><label><input type="checkbox"><span>Hay al menos dos ejemplos reales o conocimientos propios, explicados (no solo nombrados).</span></label></li>
+<li><label><input type="checkbox"><span>Cada párrafo termina con un comentario evaluativo: cuánto importa, para quién, en qué condiciones.</span></label></li>
+<li><label><input type="checkbox"><span>Todos los impactos están vinculados al foco exacto del enunciado.</span></label></li>
+<li><label><input type="checkbox"><span>La conclusión da un juicio graduado y no introduce ideas nuevas.</span></label></li>
+</ul>
+<p class="progreso" data-progreso="p4"></p>
+</div>
+</section>
+
+<section class="modulo" id="m3">
+<header><p class="num">Módulo 3</p><h2>Prueba 1 del NM</h2></header>
+<div class="texto">
+<p>Cuatro preguntas estructuradas; respondes <strong>dos</strong>. Cada una tiene tres partes que suben de nivel: A (OE1, 6 puntos, puede venir subdividida), B (OE2, 6 puntos, puede venir subdividida) y C (OE3, 8 puntos, corregida por bandas). En la parte C se puede pedir que incluyas ejemplos del mundo real estudiados en el curso. Las preguntas suelen partir de un sistema o ejemplo real concreto y se formulan a partir de los conocimientos esenciales y las áreas de indagación prescritas del programa; por eso el glosario del módulo 6 es tu seguro de puntos para A y B.</p>
+
+<h3>Cómo elegir las dos preguntas</h3>
+<ol>
+<li>Lee las cuatro <strong>partes C primero</strong>. Son 16 de los 40 puntos y las que más dependen de tener ejemplos preparados.</li>
+<li>Para cada una, anota en 20 segundos: ¿tengo <strong>dos ejemplos reales</strong> que encajen? ¿Sé explicar el <strong>funcionamiento técnico</strong> del sistema? ¿Veo claramente <strong>dos lados</strong>?</li>
+<li>Solo después revisa A y B: si hay un término que no sabes definir, cuesta 1–2 puntos; si no tienes ejemplos para C, cuesta 3–4.</li>
+</ol>
+
+<h3 class="pregunta-h"><span>Parte A</span><span class="pts">[6]</span></h3>
+<p>Definir, identificar, indicar, describir o resumir. Corrección analítica: cada punto corresponde a una idea correcta. Formatos frecuentes: “Identifique dos… [2]” junto con “Describa… [4]”, o “Defina… [2]” más “Describa… [4]”.</p>
+<ul>
+<li><strong>Definir [2]</strong>: rasgo esencial + rasgo que lo distingue. “El aprendizaje automático supervisado es un tipo de aprendizaje automático en el que el modelo se entrena con datos etiquetados (1) para aprender a predecir la etiqueta correcta de datos nuevos (1).”</li>
+<li><strong>Describir [4]</strong>: cuenta cuántos puntos hay y escribe esa cantidad de ideas con detalle. Para procesos, sigue el orden entrada → procesamiento → salida.</li>
+<li>Usa la palabra técnica del programa, no la cotidiana: “autenticación biométrica”, no “entrar con la cara”.</li>
+</ul>
+
+<h3 class="pregunta-h"><span>Parte B</span><span class="pts">[6]</span></h3>
+<p>Explicar, analizar, distinguir o sugerir. Suele pedir dos o tres razones, efectos o diferencias. La unidad que puntúa es la <strong>cadena causal</strong>:</p>
+<div class="cadena">
+<div><b>Mecanismo técnico</b>Cómo funciona el sistema en ese punto</div>
+<div><b>Consecuencia</b>Qué produce ese funcionamiento</div>
+<div><b>Para quién</b>Qué persona o comunidad se ve afectada y cómo</div>
+</div>
+<p>Si la parte vale [6] y pide dos razones, cuenta con [3]+[3]: identificación, desarrollo y aplicación al caso o ejemplo. Si pide tres, [2]+[2]+[2].</p>
+
+<h3 class="pregunta-h"><span>Parte C</span><span class="pts">[8]</span></h3>
+<p>Discutir, evaluar, examinar, ¿en qué medida…?, justificar o recomendar. Bandas oficiales resumidas:</p>
+<div class="tabla"><table>
+<thead><tr><th>Banda</th><th>Rasgos</th></tr></thead>
+<tbody>
+<tr><td>1–2</td><td>Comprensión limitada de la pregunta; descriptiva; generalizaciones sin fundamento; lista de elementos.</td></tr>
+<tr><td>3–4</td><td>Cierta comprensión; conocimientos no siempre precisos ni bien usados; algo de análisis, pero discontinuo; organización parcial.</td></tr>
+<tr><td>5–6</td><td>Comprensión adecuada; análisis adecuado y eficaz con conocimientos pertinentes y precisos; organización adecuada.</td></tr>
+<tr><td>7–8</td><td>Centrada, comprensión profunda; <strong>evaluación y síntesis</strong> fundamentadas de forma eficaz y coherente; bien estructurada.</td></tr>
+</tbody></table></div>
+<p>La diferencia entre 5–6 y 7–8 es pasar de <em>analizar</em> (explicar causas y efectos) a <em>evaluar y sintetizar</em> (sopesar, conectar ejemplos entre sí y llegar a un juicio con condiciones). En 20 minutos no puedes escribir un ensayo largo, así que la estructura debe ser compacta:</p>
+<div class="cadena">
+<div><b>Intro</b>2 frases: término clave definido + tesis graduada</div>
+<div><b>Argumento 1</b>Ejemplo real explicado + análisis + evaluación</div>
+<div><b>Argumento 2 o contraargumento</b>Otro ejemplo real + análisis + evaluación</div>
+<div><b>Conclusión</b>Juicio con condiciones</div>
+</div>
+<p>Unas 400–550 palabras. Dos ejemplos reales bien explicados valen más que cinco mencionados: la guía advierte que los ejemplos no deben limitarse a mencionarse, sino explicarse en relación con la pregunta.</p>
+</div>
+
+<div class="texto">
+<h3>Pregunta de práctica con respuesta modelo</h3>
+<p class="nota">Pregunta elaborada para esta guía siguiendo el formato de la prueba 1. No es una pregunta oficial.</p>
+<div class="caja">
+<p>Varias fuerzas policiales utilizan cámaras con reconocimiento facial en vivo que comparan los rostros de los transeúntes con bases de datos de personas buscadas.</p>
+<p>(a) (i) Identifique dos tipos de datos biométricos. <strong>[2]</strong><br>(ii) Describa cómo un sistema de reconocimiento facial usa el aprendizaje automático para identificar a una persona. <strong>[4]</strong></p>
+<p>(b) Explique dos razones por las que un sistema de reconocimiento facial puede producir resultados sesgados. <strong>[6]</strong></p>
+<p>(c) ¿En qué medida el uso policial del reconocimiento facial beneficia más que perjudica a las comunidades? Incluya ejemplos del mundo real. <strong>[8]</strong></p>
+</div>
+<div class="modelo">
+<p class="t">(a)(i) [2]</p>
+<p>1. Huella dactilar. 2. Geometría del rostro (rasgos faciales).</p>
+<p class="t">(a)(ii) [4]</p>
+<p>El sistema se entrena con un gran conjunto de imágenes de rostros etiquetados mediante aprendizaje supervisado (1). Una red neuronal aprende a extraer rasgos distintivos, como la distancia entre los ojos o la forma de la mandíbula, y los convierte en un vector numérico o plantilla facial (1). Cuando una cámara capta un rostro nuevo, el sistema calcula su plantilla y la compara con las plantillas almacenadas en la base de datos (1). Si la puntuación de similitud supera un umbral fijado, el sistema señala una coincidencia para que un agente la revise (1).</p>
+<p class="t">(b) [6]</p>
+<p><strong>Datos de entrenamiento poco representativos.</strong> Si el conjunto de imágenes con el que se entrena el modelo contiene sobre todo rostros de hombres de piel clara, la red aprende mejor sus rasgos y comete más errores con otros grupos. El estudio Gender Shades (2018) encontró tasas de error de hasta 34,7 % en mujeres de piel oscura frente a 0,8 % en hombres de piel clara en sistemas comerciales. Para la comunidad afectada esto se traduce en más falsos positivos y, por tanto, más detenciones o controles injustificados.</p>
+<p><strong>Bases de comparación sesgadas.</strong> Las listas de vigilancia suelen construirse con fichas policiales, que ya sobrerrepresentan a barrios y grupos más vigilados en el pasado. Aunque el algoritmo fuera preciso, al comparar más a esos grupos generará más coincidencias entre ellos, lo que justifica más vigilancia y crea un ciclo de retroalimentación que reproduce la desigualdad existente.</p>
+<p class="t">(c) [8]</p>
+<p>El reconocimiento facial en vivo es un sistema de inteligencia artificial que compara, en tiempo real, rostros captados por cámaras con listas de personas buscadas. Beneficia a las comunidades solo en una medida limitada: puede acelerar la localización de sospechosos de delitos graves, pero sus errores y su capacidad de vigilancia masiva recaen de forma desigual sobre ciertos grupos, por lo que sus beneficios solo superan a sus perjuicios con una regulación estricta.</p>
+<p>A favor, la Policía Metropolitana de Londres ha ampliado el uso de cámaras de reconocimiento facial en vivo y atribuye a esta tecnología detenciones de personas buscadas por delitos graves. Un sistema que revisa miles de rostros por hora hace algo imposible para un agente humano, lo que puede aumentar la sensación de seguridad en espacios concurridos. Este beneficio es mayor cuando el sistema se limita a listas cortas de delitos graves y cada coincidencia la verifica un humano antes de actuar.</p>
+<p>Sin embargo, el caso de Robert Williams, detenido por error en Detroit en 2020 tras una coincidencia falsa, muestra el coste de confiar en el algoritmo. Su caso no es aislado: la investigación Gender Shades demostró que los errores se concentran en personas de piel oscura. Así, el poder de identificar a cualquiera en el espacio público se ejerce de forma desigual, y quienes ya sufrían más controles son quienes asumen los falsos positivos. Además, el algoritmo funciona como una caja negra para el ciudadano, que no puede saber por qué fue señalado, lo que dificulta la rendición de cuentas. Este perjuicio pesa más que la eficiencia porque afecta a derechos fundamentales, como la presunción de inocencia y la privacidad, y a la confianza de comunidades enteras en la policía.</p>
+<p>Por eso la Ley de IA de la Unión Europea prohíbe, salvo excepciones muy acotadas, la identificación biométrica remota en tiempo real en espacios públicos con fines policiales, mientras que empresas como Clearview AI, que construyó su base de datos con miles de millones de imágenes extraídas de internet sin consentimiento, han sido multadas por autoridades europeas de protección de datos.</p>
+<p>En conclusión, el reconocimiento facial policial beneficia a las comunidades solo cuando se usa para delitos graves, con verificación humana, auditorías de sesgo y transparencia sobre dónde se instala. Sin estas condiciones, sus costes para la privacidad y la igualdad superan a su eficacia.</p>
+<p class="anot">Por qué es banda 7–8: tesis graduada desde el inicio; dos ejemplos reales explicados y conectados entre sí (Londres frente a Detroit y Gender Shades); terminología integrada (caja negra, falso positivo, identificación biométrica, rendición de cuentas); conceptos como lentes (poder, espacio, valores y ética); juicio condicionado y no un simple “depende”.</p>
+</div>
+</div>
+</section>
+
+<section class="modulo" id="m4">
+<header><p class="num">Módulo 4</p><h2>Conectar las 3C en un párrafo</h2></header>
+<div class="texto">
+<p>El curso se organiza en tres ejes: <strong>conceptos</strong> (perspectivas: cambio, expresión, identidad, poder, espacio, sistemas, valores y ética), <strong>contenidos</strong> (los detalles técnicos de los sistemas digitales: datos, algoritmos, computadoras, redes, medios, IA, robots) y <strong>contextos</strong> (las áreas de la vida donde ocurre: cultural, económico, ambiental, salud, conocimiento humano, político, social). Los esquemas de calificación incluyen una tabla de “3C” con lo que se busca en la respuesta. No se trata de nombrar las tres C: se trata de que el razonamiento pase por las tres.</p>
+
+<h3>La cadena de conexión</h3>
+<p>Cada idea desarrollada debería recorrer esta cadena. Es el mismo movimiento en la prueba 1 y en la prueba 2.</p>
+<div class="cadena">
+<div><b>1. Contenido</b>Qué es el sistema y cómo funciona, con el término técnico exacto.</div>
+<div><b>2. Contexto</b>Dónde ocurre y a qué personas y comunidades afecta.</div>
+<div><b>3. Concepto</b>La lente que explica por qué importa: poder, identidad, valores…</div>
+<div><b>4. Efecto o repercusión</b>Impacto concreto, oportunidad o riesgo.</div>
+<div><b>5. Juicio</b>Cuánto importa, para quién, en qué condiciones.</div>
+</div>
+
+<h3>Un párrafo anotado</h3>
+<div class="leyenda" aria-hidden="true"><span class="hl hc">Contenido</span><span class="hl hx">Contexto</span><span class="hl hk">Concepto</span><span class="hl hj">Juicio</span></div>
+<div class="modelo">
+<p>Plataformas como TikTok utilizan <span class="hl hc">un algoritmo de recomendación basado en aprendizaje automático que prioriza los contenidos según el tiempo de visualización y la interacción de cada usuario</span>. En el <span class="hl hx">ámbito de la salud mental de los adolescentes (contexto de salud, 4.4C)</span>, esto significa que un joven que se detiene en vídeos sobre dietas extremas recibirá cada vez más de ese contenido. Desde la perspectiva del <span class="hl hk">poder</span>, la plataforma decide qué ve el usuario sin que este conozca los criterios, porque se trata de <span class="hl hc">un algoritmo de caja negra</span>; y desde <span class="hl hk">valores y ética</span>, el diseño optimiza la atención, no el bienestar. El efecto es un ciclo de refuerzo que puede normalizar conductas dañinas. <span class="hl hj">Este riesgo es especialmente grave para usuarios de 13 a 17 años, cuya identidad aún se está formando, y menor para adultos que usan la plataforma con fines informativos, lo que justifica exigir mayor transparencia algorítmica en las cuentas de menores.</span></p>
+</div>
+<p>Observa que el concepto no aparece como etiqueta suelta (“esto se relaciona con el poder”), sino como una explicación: <em>quién</em> controla <em>qué</em> y <em>cómo</em>.</p>
+
+<h3>Cuatro maneras de introducir un concepto sin que suene forzado</h3>
+<ul>
+<li><strong>Como pregunta implícita</strong>: “¿Quién decide qué contenido se prioriza? La plataforma, no el usuario, lo que revela una asimetría de poder.”</li>
+<li><strong>Como tensión</strong>: “Aquí chocan dos valores: la seguridad pública y el derecho a la privacidad.”</li>
+<li><strong>Como transformación</strong>: “Este cambio no es solo técnico: altera cómo los trabajadores entienden su propia jornada.”</li>
+<li><strong>Como escala espacial</strong>: “El beneficio es local, pero el coste ambiental se traslada a otros países donde se extraen los minerales.”</li>
+</ul>
+
+<h3>Terminología integrada frente a terminología decorativa</h3>
+<p>El esquema de noviembre de 2025 lo dice explícitamente: la terminología debe estar integrada, no añadida en la superficie.</p>
+<div class="error">
+<div><p class="t mal">Decorativa</p><p>“El botiquín usa IdC, big data y la nube, lo que se relaciona con el concepto de sistemas.”</p></div>
+<div><p class="t bien">Integrada</p><p>“Como el botiquín es un dispositivo de IdC que envía datos a la nube y de ahí al hospital, un fallo en cualquier elemento del sistema, como el wifi doméstico, interrumpe toda la cadena de asesoramiento.”</p></div>
+</div>
+
+<h3>Cómo encontrar la conexión en 60 segundos</h3>
+<ol>
+<li><strong>Subraya el sistema digital</strong> de la pregunta y pregúntate: ¿de qué contenido (3.1–3.7) es? Un dron es 3.7 pero también 3.1 (datos) y 3.4 (redes).</li>
+<li><strong>Subraya el actor y el ámbito</strong>: eso te da el contexto (4.1–4.7).</li>
+<li><strong>Elige dos conceptos</strong>, no siete. Casi siempre funcionan poder y valores y ética; añade el que mejor encaje con la pregunta: espacio para mapas, drones y brechas; identidad para redes sociales y datos personales; cambio para automatización y evolución; sistemas para IdC e interdependencias; expresión para medios.</li>
+</ol>
+</div>
+</section>
+
+<section class="modulo" id="m5">
+<header><p class="num">Módulo 5</p><h2>Conceptos (2.1–2.7)</h2></header>
+<div class="texto">
+<p>La guía pide una conciencia fundamentada de cada concepto, no conocimientos exhaustivos. Para cada uno tienes su idea central según las áreas de indagación prescritas, los términos que lo activan, las preguntas que lo convierten en lente y frases puente listas para usar.</p>
+</div>
+
+<details class="area" open><summary>2.1 Cambio <small>evolución, transformación, adaptación</small></summary>
+<div class="texto">
+<p><strong>Idea central.</strong> El cambio es la evolución, transformación o adaptación de una forma, estado o valor a otro; implica comprender a las personas, ideas, objetos y fuerzas que configuran el mundo; su naturaleza e importancia se debaten; y puede suponer <strong>continuidad o discontinuidad</strong> con las formas previas de hacer las cosas.</p>
+<p><strong>Términos que lo activan:</strong> disrupción, innovación, revolución tecnológica, obsolescencia, adopción, transición, continuidad, discontinuidad, determinismo tecnológico, progreso, generaciones futuras.</p>
+<p><strong>Preguntas lente:</strong> ¿Qué cambió, para quién y a qué velocidad? ¿Es un cambio de grado (continuidad) o de naturaleza (discontinuidad)? ¿Es el progreso inevitable o es una elección social?</p>
+<p><strong>Frases puente:</strong> “Más que una ruptura, esto supone una continuidad con…”, “El cambio es desigual en el tiempo: los beneficios llegan antes a…”, “Esta transformación no es solo técnica sino también…”.</p>
+</div></details>
+
+<details class="area"><summary>2.2 Expresión <small>representar ideas, emociones y experiencias</small></summary>
+<div class="texto">
+<p><strong>Idea central.</strong> La expresión es representar ideas, emociones y experiencias con distintos modos y medios; cumple funciones como narrar, crear mundos, innovar artísticamente y hacer activismo político; y une a las personas a la vez que introduce dilemas (qué expresión limitar y quién lo decide).</p>
+<p><strong>Términos que lo activan:</strong> contenido generado por el usuario, libertad de expresión, censura, moderación de contenidos, cultura remix, memes, activismo digital, discurso de odio, autoría, medios sintéticos.</p>
+<p><strong>Preguntas lente:</strong> ¿Quién puede expresarse y quién es silenciado? ¿Qué formas de expresión hace posibles el medio? ¿Quién decide los límites: la plataforma, el Estado, la comunidad?</p>
+<p><strong>Frases puente:</strong> “La plataforma amplía la expresión de…, pero la moderación algorítmica puede silenciar…”, “La tensión entre libertad de expresión y protección frente al daño…”.</p>
+</div></details>
+
+<details class="area"><summary>2.3 Identidad <small>quién es una persona, un grupo o una comunidad</small></summary>
+<div class="texto">
+<p><strong>Idea central.</strong> La identidad define a una persona, grupo o comunidad; no es estática, cambia con el tiempo, el contexto y la mirada de los demás; y es <strong>interseccional</strong> (edad, nacionalidad, religión, cultura, género, etnia, clase social…).</p>
+<p><strong>Términos que lo activan:</strong> identidad digital, huella digital, perfilado, avatar, anonimato, seudónimo, autopresentación, robo de identidad, interseccionalidad, representación, sesgo.</p>
+<p><strong>Preguntas lente:</strong> ¿Cómo construye o altera el sistema la identidad de la persona? ¿Quién define esa identidad: la persona o el algoritmo que la perfila? ¿Qué aspectos de la identidad quedan mal representados en los datos?</p>
+<p><strong>Frases puente:</strong> “El sistema no solo refleja la identidad del usuario, sino que la construye mediante…”, “Los grupos en la intersección de… son los más expuestos a…”.</p>
+</div></details>
+
+<details class="area"><summary>2.4 Poder <small>capacidad de influir o controlar</small></summary>
+<div class="texto">
+<p><strong>Idea central.</strong> El poder está presente en todas las relaciones sociales e implica la capacidad de una persona o grupo de influir en las acciones de otros o controlarlas; es <strong>estructural</strong> (integrado en instituciones, organizaciones y gobiernos) y <strong>no está distribuido equitativamente</strong>.</p>
+<p><strong>Tipos útiles</strong> (del libro de texto del curso): coercitivo (obligar), de recompensa (dar beneficios), legítimo (de una relación formal, como una ley o una norma escolar), experto (de la habilidad o el conocimiento), de información (de controlar o recopilar información) y “blando” (cultural, casi invisible).</p>
+<p><strong>Términos que lo activan:</strong> asimetría de información, monopolio, grandes tecnológicas, vigilancia, control, regulación, rendición de cuentas, colonialismo de datos, empoderamiento, brecha digital.</p>
+<p><strong>Preguntas lente:</strong> ¿Quién gana control y quién lo pierde? ¿Quién posee los datos y quién los genera? ¿El sistema redistribuye o concentra el poder? ¿Quién puede exigir cuentas?</p>
+<p><strong>Frases puente:</strong> “Esto revela una asimetría de poder entre… y…”, “El poder se desplaza del… al…”, “Quien controla los datos controla…”.</p>
+</div></details>
+
+<details class="area"><summary>2.5 Espacio <small>lugares, fronteras, flujos y escalas</small></summary>
+<div class="texto">
+<p><strong>Idea central.</strong> Los seres humanos organizan, construyen y representan el espacio (lugares, regiones, fronteras); los espacios cumplen funciones distintas; el acceso, la circulación y los flujos son centrales; y el espacio se entiende a varias escalas: local, regional, nacional, global y virtual.</p>
+<p><strong>Términos que lo activan:</strong> brecha digital (urbano-rural, Norte-Sur), geolocalización, SIG, espacio público y privado, ciberespacio, soberanía de datos, jurisdicción, fronteras digitales, flujos de datos, deslocalización.</p>
+<p><strong>Preguntas lente:</strong> ¿Dónde se concentran los beneficios y dónde los costes? ¿Qué zonas quedan fuera del sistema? ¿Siguen importando las fronteras cuando los datos cruzan países? ¿Cómo influye el espacio físico en el virtual y viceversa?</p>
+<p><strong>Frases puente:</strong> “A escala local…, pero a escala global…”, “El sistema traslada el coste a otro espacio: …”, “Las zonas rurales, sin cobertura, quedan…”.</p>
+</div></details>
+
+<details class="area"><summary>2.6 Sistemas <small>elementos interdependientes</small></summary>
+<div class="texto">
+<p><strong>Idea central.</strong> Los sistemas son conjuntos de elementos que interactúan y son interdependientes; permiten pensar la estructura y el orden; un cambio en una parte genera <strong>consecuencias deseadas e indeseadas</strong>; y los modelos, mapas y visualizaciones ayudan a entender sus conexiones.</p>
+<p><strong>Términos que lo activan:</strong> entrada, proceso, salida, retroalimentación, interdependencia, punto único de fallo, efecto dominó, consecuencias no intencionadas, interoperabilidad, ecosistema digital, elemento humano.</p>
+<p><strong>Preguntas lente:</strong> ¿Qué elementos (técnicos y humanos) componen el sistema? ¿Qué pasa si falla uno? ¿Qué efecto no intencionado produjo el cambio? ¿Hay un bucle de retroalimentación?</p>
+<p><strong>Frases puente:</strong> “Como los elementos son interdependientes, un fallo en… repercute en…”, “Una consecuencia no intencionada del sistema es…”, “Se genera un bucle de retroalimentación: …”.</p>
+</div></details>
+
+<details class="area"><summary>2.7 Valores y ética <small>correcto e incorrecto, justo e injusto, legal e ilegal</small></summary>
+<div class="texto">
+<p><strong>Idea central.</strong> Los valores y la ética permiten distinguir lo correcto de lo incorrecto, lo justo de lo injusto, lo legal de lo ilegal, lo apropiado de lo inapropiado; guían la acción individual y colectiva; pueden ser personales, compartidos, colectivos o profesionales; se expresan en marcos, códigos, reglas, políticas y leyes; y moldean ideas, objetos, prácticas, sistemas y espacios.</p>
+<p><strong>Marcos éticos para argumentar:</strong> utilitarismo o consecuencialismo (la mejor acción maximiza el bienestar total), deontología (hay deberes y derechos que no se negocian aunque el resultado sea bueno), ética de la virtud (qué haría una persona o un profesional íntegro) y enfoque de derechos (privacidad, igualdad, libertad de expresión).</p>
+<p><strong>Términos que lo activan:</strong> consentimiento informado, privacidad, equidad, sesgo, transparencia, responsabilidad, rendición de cuentas, legal frente a ético, código deontológico, diseño ético, ética por diseño.</p>
+<p><strong>Preguntas lente:</strong> ¿Que algo sea legal lo hace ético? ¿Quién es responsable cuando el sistema falla? ¿Qué valores entran en conflicto? ¿Qué marco ético justifica cada postura?</p>
+<p><strong>Frases puente:</strong> “Desde un punto de vista utilitarista…, pero desde un enfoque de derechos…”, “Aunque es legal, plantea un problema ético porque…”, “La responsabilidad se diluye entre…”.</p>
+</div></details>
+</section>
+
+<section class="modulo" id="m6">
+<header><p class="num">Módulo 6</p><h2>Contenidos: glosario técnico</h2></header>
+<div class="texto">
+<p>Las partes A y B de la prueba 1 y las preguntas 1 y 2 de la prueba 2 se ganan con definiciones exactas. En las preguntas largas, estos términos son los que hacen que tu análisis sea “preciso”. Cada término tiene su definición y, en los más rentables, una línea de <em>uso</em> que muestra cómo convertirlo en análisis. Activa el <strong>modo repaso</strong> en el menú para ocultar las definiciones y autoevaluarte: toca cada una para revelarla.</p>
+</div>
+<div class="buscador">
+  <label for="buscar">Buscar en el glosario</label>
+  <input id="buscar" type="search" placeholder="Ej.: cifrado, sesgo, ancho de banda…" autocomplete="off">
+  <p class="conteo" id="conteo" aria-live="polite"></p>
+</div>
+
+<details class="area glos" open><summary>1.1 ¿Qué es la sociedad digital? <small>introducción</small></summary>
+<dl class="gl">
+<dt>Sociedad digital</dt><dd>Término controvertido para describir la vida contemporánea, marcada por la transformación de procesos y objetos analógicos en formas digitales. Puede haber múltiples sociedades digitales en lugar de una sola.<span class="uso">Uso: “No existe una única sociedad digital: la experiencia de un estudiante en Lima con fibra óptica no es la de uno en una comunidad amazónica sin cobertura.”</span></dd>
+<dt>Otros nombres</dt><dd>Era de la información, era de las computadoras, sociedad posindustrial (Daniel Bell), sociedad red (Manuel Castells), cuarta revolución industrial (Klaus Schwab, 2016). Cada nombre enfatiza un rasgo distinto: la información, las redes o la fusión de lo físico, lo digital y lo biológico.</dd>
+<dt>Brecha digital</dt><dd>Desigualdad en el acceso a los sistemas digitales, en las habilidades para usarlos y en los beneficios que se obtienen de ellos. Puede ser geográfica (urbano-rural), económica, generacional, de género, por discapacidad o lingüística.<span class="uso">Uso: distingue tres niveles para sonar preciso: acceso (conexión, dispositivo), uso (alfabetización digital) y resultados (beneficio real).</span></dd>
+<dt>Hitos de la sociedad digital</dt><dd>Circuito integrado (finales de los años 50), microprocesador (Intel 4004, 1971), computadora personal (años 70–80), Internet (ARPANET, 1969; TCP/IP, 1983), World Wide Web (Tim Berners-Lee, CERN, 1989–1991), redes sociales en línea (años 2000), computación móvil (teléfono inteligente, 2007) y en la nube (mediados de los 2000).</dd>
+<dt>Binario, bit y byte</dt><dd>Los sistemas digitales representan todo con dos estados, 0 y 1 (dígitos binarios). Un bit es un dígito binario; un byte son 8 bits y permite 256 combinaciones. Con n bits se representan 2ⁿ valores. Texto (ASCII, Unicode), imágenes (píxeles con valores RGB) y sonido se codifican así.</dd>
+<dt>Analógico</dt><dd>Cualidades y señales físicas continuas, que pueden tomar infinitos valores (la onda de sonido de una voz, un termómetro de mercurio).</dd>
+<dt>Digital</dt><dd>Señales discretas con un conjunto finito de valores. Para convertir lo analógico en digital se hace un muestreo (medir la señal a intervalos) y una cuantificación (asignar a cada medida un valor binario). Más frecuencia de muestreo y más bits por muestra dan más fidelidad y archivos más grandes.</dd>
+<dt>Digitalización de datos (en inglés, <em>digitization</em>)</dt><dd>Convertir datos e información analógicos en formato digital: escanear libros, fotografiar archivos, reformatear cintas. Relacionada con la conservación digital, los archivos digitales y el reformateo digital.</dd>
+<dt>Digitalización organizacional (en inglés, <em>digitalization</em>)</dt><dd>Usar sistemas digitales para cambiar la estructura y el funcionamiento de una organización, lo que puede generar disrupción en la educación o en las empresas.<span class="uso">Uso: la guía en español llama “digitalización” a ambas; aclara cuál usas: escanear historias clínicas es digitalización de datos; rediseñar todo el hospital en torno a la telemedicina es digitalización organizacional (transformación digital).</span></dd>
+<dt>Disrupción</dt><dd>Cambio provocado por una innovación que desplaza a los actores o modelos establecidos (las plataformas de streaming frente al alquiler de películas).</dd>
+</dl></details>
+
+<details class="area glos"><summary>3.1 Datos <small>tipos, ciclo de vida, seguridad, macrodatos, dilemas</small></summary>
+<dl class="gl">
+<dt>Pirámide del conocimiento (DICS)</dt><dd><strong>Datos</strong>: hechos y cifras en bruto sin organizar. <strong>Información</strong>: datos procesados y organizados que tienen contexto. <strong>Conocimiento</strong>: significado derivado de la información y aplicable a un objetivo. <strong>Sabiduría</strong>: aplicación juiciosa del conocimiento.<span class="uso">Uso: “El botiquín capta datos (85 ppm), los convierte en información (puntuación de salud), pero el conocimiento y la sabiduría para decidir un tratamiento siguen siendo del médico.”</span></dd>
+<dt>Datos cuantitativos y cualitativos</dt><dd>Cuantitativos: numéricos y medibles (temperatura, ventas). Cualitativos: descriptivos, no numéricos (opiniones, entrevistas, imágenes).</dd>
+<dt>Tipos de datos por ámbito</dt><dd>Culturales, financieros, geográficos, médicos, meteorológicos, de transporte, científicos y estadísticos.</dd>
+<dt>Metadatos</dt><dd>Datos que describen otros datos: fecha, hora, ubicación GPS y modelo de cámara de una foto; remitente, destinatario y hora de un mensaje.<span class="uso">Uso: los metadatos pueden revelar más que el contenido (patrones de ubicación y contactos) y suelen tener menos protección legal.</span></dd>
+<dt>Ciclo de vida de los datos</dt><dd>Crear u obtener, almacenar, procesar, analizar, acceder o compartir, conservar y reutilizar, y finalmente borrar. Cada etapa tiene riesgos propios: obtención sin consentimiento, almacenamiento inseguro, reutilización para otros fines.</dd>
+<dt>Datos primarios y secundarios</dt><dd>Primarios: obtenidos por primera vez para un propósito concreto (tu encuesta). Secundarios: ya obtenidos por otros con otro propósito (estadísticas del INEI).</dd>
+<dt>Base de datos</dt><dd>Colección organizada y estructurada de datos que permite acceder a ellos, gestionarlos y actualizarlos. Se organiza en tablas (entidades), registros (filas) y campos (columnas); una clave primaria identifica cada registro de forma única. Una base de datos relacional vincula varias tablas mediante claves.</dd>
+<dt>Validación y verificación</dt><dd>Validación: comprobar que un dato es razonable y del tipo correcto (una edad entre 0 y 120). Verificación: comprobar que coincide con la fuente original (doble entrada, revisión visual).</dd>
+<dt>Minería de datos</dt><dd>Proceso de encontrar patrones, correlaciones y anomalías en grandes conjuntos de datos.</dd>
+<dt>Coincidencia (cruce) de datos</dt><dd>Comparar dos conjuntos de datos para encontrar registros sobre la misma entidad. Permite reidentificar a personas “anónimas”.</dd>
+<dt>Formas de representar datos</dt><dd>Diagramas, tablas, informes, infografías y visualizaciones interactivas. La elección de escala, color o recorte puede orientar la interpretación.</dd>
+<dt>Cifrado</dt><dd>Convertir datos legibles (texto plano) en ilegibles (texto cifrado) mediante un algoritmo y una clave, para impedir el acceso no autorizado. Simétrico: la misma clave cifra y descifra. Asimétrico: una clave pública cifra y solo la clave privada descifra. El cifrado de extremo a extremo impide que incluso el proveedor lea los mensajes.<span class="uso">Uso: el cifrado protege frente a la interceptación, pero no frente al acceso de usuarios autorizados de más ni frente a una contraseña robada.</span></dd>
+<dt>SSL/TLS</dt><dd>Protocolos que cifran la comunicación entre un navegador y un servidor web; TLS es la versión mejorada de SSL. Es lo que indica el candado y el “https”.</dd>
+<dt>Enmascaramiento de datos</dt><dd>Sustituir datos sensibles por datos ficticios pero funcionales (por ejemplo, para pruebas de software), de modo que no se expongan los reales.</dd>
+<dt>Borrado de datos frente a eliminación</dt><dd>Borrado: destrucción irreversible al final del ciclo de vida (sobrescritura, destrucción física). Eliminación: enviar el archivo a la papelera o quitar su ruta; los datos siguen recuperables.</dd>
+<dt>Cadena de bloques (blockchain)</dt><dd>Registro distribuido en el que las transacciones se agrupan en bloques enlazados mediante funciones hash; cada nodo guarda una copia y un mecanismo de consenso (prueba de trabajo o de participación) valida los bloques. Alterar un bloque rompe la cadena, lo que la hace prácticamente inmutable.<span class="uso">Uso: la inmutabilidad es una ventaja para la trazabilidad, pero choca con el derecho al olvido; la prueba de trabajo tiene un alto coste energético.</span></dd>
+<dt>Macrodatos (big data)</dt><dd>Conjuntos de datos tan grandes o complejos que exigen herramientas especiales. Características (las 4 V): <strong>volumen</strong> (cantidad), <strong>variedad</strong> (estructurados y no estructurados: texto, vídeo, sensores), <strong>velocidad</strong> (ritmo de generación y procesamiento, a menudo en tiempo real) y <strong>veracidad</strong> (calidad y fiabilidad).</dd>
+<dt>Análisis predictivo y modelado</dt><dd>Uso de datos históricos y algoritmos estadísticos o de aprendizaje automático para estimar resultados futuros (riesgo crediticio, demanda, propagación de una enfermedad) o comprender el comportamiento humano pasado, presente y futuro.</dd>
+<dt>Perfilado</dt><dd>Construcción de un perfil de una persona a partir de sus datos para predecir o influir en su comportamiento (publicidad dirigida, puntuaciones de riesgo).</dd>
+<dt>Sesgo de los datos</dt><dd>Distorsión sistemática porque los datos no representan bien a la población (sesgo de muestreo) o reflejan discriminaciones pasadas (sesgo histórico). Un modelo entrenado con datos sesgados reproduce el sesgo.</dd>
+<dt>Fiabilidad e integridad de los datos</dt><dd>Fiabilidad: datos completos, precisos y coherentes. Integridad: que no hayan sido alterados o corrompidos a lo largo de su ciclo de vida.</dd>
+<dt>Control, propiedad y acceso</dt><dd>Quién decide sobre los datos, a quién pertenecen (¿al usuario que los genera o a la empresa que los recoge?) y quién puede consultarlos. Los corredores de datos (data brokers) compran y venden perfiles.</dd>
+<dt>Información personal identificable (IPI)</dt><dd>Cualquier dato que permita identificar a una persona, directa (nombre, DNI) o indirectamente (combinación de código postal, fecha de nacimiento y sexo).</dd>
+<dt>Anonimización y seudonimización</dt><dd>Anonimización: eliminar de forma irreversible la posibilidad de identificar a la persona. Seudonimización: sustituir identificadores por códigos, lo que es reversible con información adicional. La reidentificación cruzando bases de datos es un riesgo real.</dd>
+<dt>Privacidad de los datos</dt><dd>Capacidad de las personas para controlar su información personal: qué se recoge, con qué fin y con quién se comparte.</dd>
+<dt>Vigilancia</dt><dd>Observación y recogida sistemática de datos sobre personas, por gobiernos (vigilancia estatal) o empresas (capitalismo de vigilancia, término de Shoshana Zuboff).</dd>
+<dt>Consentimiento informado y minimización</dt><dd>Consentimiento informado: aceptación libre, específica y comprendida del uso de los datos. Minimización: recoger solo los datos estrictamente necesarios para el fin declarado. Ambos son principios del RGPD europeo y de la Ley 29733 del Perú.</dd>
+</dl></details>
+
+<details class="area glos"><summary>3.2 Algoritmos <small>características, componentes, usos, dilemas</small></summary>
+<dl class="gl">
+<dt>Algoritmo</dt><dd>Secuencia definida de pasos o instrucciones para resolver un problema o realizar una tarea. Su eficacia suele evaluarse por su eficiencia.</dd>
+<dt>Características de un algoritmo</dt><dd><strong>Inequívoco</strong> (cada paso tiene una sola interpretación), <strong>finito</strong> (termina tras un número limitado de pasos), <strong>entradas y salidas bien definidas</strong> y <strong>factible</strong> (realizable con los recursos disponibles).</dd>
+<dt>Componentes</dt><dd><strong>Instrucciones</strong> (acciones), <strong>variables</strong> (almacenan valores que cambian durante la ejecución), <strong>condicionales</strong> (si… entonces… si no; decisiones) y <strong>bucles</strong> (repiten instrucciones mientras se cumple una condición).</dd>
+<dt>Representaciones</dt><dd>Lenguaje natural, pseudocódigo, diagrama de flujo (óvalo: inicio o fin; rectángulo: proceso; rombo: decisión; paralelogramo: entrada o salida) y código en un lenguaje de programación.</dd>
+<dt>Eficiencia</dt><dd>Recursos (tiempo de ejecución y memoria) que necesita un algoritmo según crece el volumen de datos. Ejemplo: la búsqueda lineal revisa elemento por elemento; la búsqueda binaria divide una lista ordenada a la mitad en cada paso y es mucho más rápida con muchos datos.</dd>
+<dt>Usos de los algoritmos</dt><dd>Ordenar, buscar, filtrar, priorizar, clasificar, asociar (reglas de asociación: “quien compra X suele comprar Y”) y contar. También programación y desarrollo de software, aprendizaje automático, redes neuronales y creación de otros algoritmos.</dd>
+<dt>Algoritmo de recomendación</dt><dd>Algoritmo que predice qué contenido o producto interesará a un usuario, por filtrado basado en contenido (parecido a lo que ya viste) o colaborativo (lo que vieron usuarios parecidos).</dd>
+<dt>Sesgo algorítmico y equidad</dt><dd>Resultados sistemáticamente injustos para ciertos grupos, por datos de entrenamiento sesgados, variables sustitutas (el código postal funciona como sustituto de la etnia) o decisiones de diseño. La equidad busca resultados justos entre grupos.<span class="uso">Uso: nombra la fuente del sesgo (datos, diseño o uso) en lugar de decir solo “el algoritmo es sesgado”.</span></dd>
+<dt>Responsabilidad y transparencia algorítmica</dt><dd>Responsabilidad (accountability): poder atribuir a alguien las consecuencias de una decisión algorítmica y exigirle cuentas. Transparencia: poder comprender y explicar cómo funciona el algoritmo y por qué llegó a un resultado.</dd>
+<dt>Algoritmo de caja negra</dt><dd>Algoritmo cuyo funcionamiento interno no es comprensible para quienes lo usan o son afectados por él, por su complejidad (redes profundas) o porque es secreto comercial.</dd>
+<dt>Desgaste del juicio humano</dt><dd>Pérdida de la capacidad o disposición de las personas para decidir por sí mismas cuando delegan en algoritmos. Relacionado con el sesgo de automatización: confiar en la máquina incluso cuando se equivoca.</dd>
+<dt>Burbuja de filtro y cámara de eco</dt><dd>Burbuja de filtro (Eli Pariser): el algoritmo muestra solo contenido afín a tus preferencias. Cámara de eco: entorno en el que solo circulan opiniones que se refuerzan entre sí. Contribuyen a la polarización.</dd>
+</dl></details>
+
+<details class="area glos"><summary>3.3 Computadoras <small>tipos, hardware, software, evolución</small></summary>
+<dl class="gl">
+<dt>Computadora</dt><dd>Máquina que ejecuta automáticamente conjuntos de instrucciones para realizar tareas: recibe entradas, las procesa, las almacena y produce salidas.</dd>
+<dt>Tipos de computadoras</dt><dd>Mainframe (gran capacidad para transacciones masivas de bancos o gobiernos), servidor (gestiona recursos y servicios para otras computadoras de una red), computadora personal, tableta, dispositivo inteligente o móvil, ponibles (relojes inteligentes) y computadoras integradas o embebidas (dentro de otro aparato, como un auto o un electrodoméstico).</dd>
+<dt>Placa base</dt><dd>Circuito principal que conecta y permite la comunicación entre todos los componentes.</dd>
+<dt>Unidad central de procesamiento (CPU)</dt><dd>Ejecuta y controla las instrucciones mediante el ciclo de búsqueda, decodificación y ejecución. Incluye la unidad de control, la unidad aritmético-lógica (ALU), registros y memoria caché.</dd>
+<dt>Memoria</dt><dd>RAM: memoria principal, rápida y volátil (se borra sin energía), guarda lo que se está usando. ROM: no volátil, contiene instrucciones de arranque. Caché: memoria muy rápida junto a la CPU.</dd>
+<dt>Almacenamiento secundario</dt><dd>No volátil y de largo plazo: discos duros magnéticos (HDD), unidades de estado sólido (SSD, memoria flash), medios ópticos y almacenamiento en la nube.</dd>
+<dt>Componentes gráficos y de sonido</dt><dd>GPU (procesa gráficos y cálculos en paralelo; clave también para entrenar IA) y tarjeta de sonido.</dd>
+<dt>Dispositivos de entrada y salida</dt><dd>Entrada: teclado, ratón, micrófono, cámara, escáner, pantalla táctil. Salida: pantalla, altavoces, impresora, actuadores.</dd>
+<dt>Sensores</dt><dd>Dispositivos de entrada que miden magnitudes físicas y las convierten en datos: temperatura, luz, movimiento (acelerómetro, giroscopio), proximidad, presión, ritmo cardíaco.</dd>
+<dt>Interfaces de usuario</dt><dd>Medio por el que las personas interactúan con el sistema: gráfica (GUI, con ventanas e iconos), de línea de comandos, táctil, por voz y háptica (retroalimentación mediante vibración o fuerza).</dd>
+<dt>Sistema operativo</dt><dd>Software que gestiona el hardware, la memoria, los procesos, los archivos y la seguridad, y proporciona la interfaz de usuario (Windows, Android, iOS, Linux).</dd>
+<dt>Aplicaciones y utilidades</dt><dd>Aplicaciones: software con un propósito específico para el usuario. Utilidades: software de mantenimiento (antivirus, copias de seguridad, compresión).</dd>
+<dt>Software malicioso (malware)</dt><dd>Software diseñado para dañar sistemas o robar datos. Virus (se adjunta a archivos y necesita que se ejecuten), gusano (se propaga solo por la red), troyano (se disfraza de programa legítimo), ransomware (cifra los datos y exige un rescate), spyware (espía la actividad), adware.</dd>
+<dt>Código abierto frente a propietario</dt><dd>Código abierto: el código fuente es accesible y modificable por la comunidad, a menudo gratuito, sin garantía de soporte. Propietario: el código es privado, se usa con licencia de pago y el fabricante da soporte y actualizaciones.</dd>
+<dt>Programación informática</dt><dd>Uso de lenguajes y reglas específicos para dar instrucciones a las computadoras. Bajo nivel: código máquina (binario) y ensamblador, cercanos al hardware. Alto nivel: Python, Java, más legibles. Un compilador traduce todo el programa antes de ejecutarlo; un intérprete lo traduce y ejecuta línea a línea.</dd>
+<dt>Generaciones de la informática</dt><dd>1.ª válvulas de vacío (años 40–50, ENIAC); 2.ª transistores (años 50–60); 3.ª circuitos integrados (años 60–70); 4.ª microprocesadores (años 70 hasta hoy); 5.ª inteligencia artificial, procesamiento paralelo y tecnologías emergentes.</dd>
+<dt>Ley de Moore</dt><dd>Observación de Gordon Moore (1965) según la cual el número de transistores de un circuito integrado se duplica aproximadamente cada dos años, con más potencia y menor coste. Hoy se ralentiza por límites físicos.<span class="uso">Uso: explica la obsolescencia rápida y el aumento de residuos electrónicos (contexto ambiental).</span></dd>
+<dt>Computación cuántica</dt><dd>Área emergente que usa cúbits, que por superposición pueden representar 0 y 1 a la vez y por entrelazamiento correlacionan sus estados, para resolver ciertos problemas mucho más rápido que las computadoras clásicas. Amenaza el cifrado actual de clave pública, lo que impulsa la criptografía poscuántica.</dd>
+</dl></details>
+
+<details class="area glos"><summary>3.4 Redes informáticas e Internet <small>tipos, componentes, protocolos, seguridad, dilemas</small></summary>
+<dl class="gl">
+<dt>Red informática</dt><dd>Conjunto de nodos interconectados (computadoras, servidores, enrutadores) que transmiten, reciben e intercambian datos de forma distribuida.</dd>
+<dt>Tipos por alcance</dt><dd>PAN (personal: dispositivos cercanos a una persona, como Bluetooth), LAN (local: un edificio o campus), MAN (metropolitana: una ciudad), WAN (amplia: un país o el mundo; Internet es la mayor).</dd>
+<dt>Redes cableadas, inalámbricas y en la nube</dt><dd>Cableadas: Ethernet, fibra óptica; más estables y rápidas. Inalámbricas: wifi, Bluetooth, redes móviles 4G y 5G, satelitales; más movilidad y menos seguridad. Nube: capacidades de red y cómputo en servidores remotos accesibles por Internet.</dd>
+<dt>Cliente-servidor y P2P</dt><dd>Cliente-servidor: un servidor central almacena y ofrece los recursos a los clientes; más control y un punto único de fallo. P2P (entre pares): cada nodo comparte y almacena por igual; descentralizada y más difícil de controlar.</dd>
+<dt>Componentes de red</dt><dd>Cliente, servidor, módem (convierte señales entre la red del proveedor y la red local), enrutador o router (dirige paquetes entre redes por la mejor ruta), conmutador o switch (envía datos solo al dispositivo destinatario dentro de una LAN), concentrador o hub (reenvía a todos, menos eficiente), tarjeta de interfaz de red (NIC), punto de acceso inalámbrico y canales o medios de transmisión.</dd>
+<dt>Protocolo y estándar</dt><dd>Protocolo: conjunto de reglas acordadas sobre cómo formatear, enviar y recibir datos (TCP/IP divide los datos en paquetes y los dirige; HTTP y HTTPS para la web). Estándar: especificación común que permite que equipos de distintos fabricantes funcionen juntos.</dd>
+<dt>Interoperabilidad</dt><dd>Capacidad de sistemas distintos de conectarse e intercambiar datos y usarlos sin restricciones.<span class="uso">Uso: fue la clave de la pregunta 2 de noviembre de 2025: sin interoperabilidad, los datos del botiquín no llegan utilizables al hospital.</span></dd>
+<dt>Direcciones y nombres de dominio</dt><dd>Dirección IP: identificador numérico de un dispositivo en una red (IPv4 de 32 bits; IPv6 de 128 bits, con muchas más direcciones). Dirección MAC: identificador único de hardware. DNS: sistema que traduce nombres de dominio legibles (minedu.gob.pe) a direcciones IP.</dd>
+<dt>Identificación, autenticación y autorización</dt><dd>Identificación: decir quién eres (usuario). Autenticación: demostrarlo con algo que sabes (contraseña), tienes (token, teléfono) o eres (biometría); la autenticación multifactor combina dos o más. Autorización: qué se te permite hacer una vez autenticado.</dd>
+<dt>Cortafuegos (firewall)</dt><dd>Hardware o software que filtra el tráfico entrante y saliente según reglas de seguridad.</dd>
+<dt>Servidor proxy</dt><dd>Intermediario entre el usuario e Internet; puede ocultar la IP, filtrar contenidos y almacenar en caché.</dd>
+<dt>Red privada virtual (VPN)</dt><dd>Crea un túnel cifrado entre el dispositivo y un servidor, que protege los datos en redes públicas y oculta la ubicación real. Se usa también para evadir censura o restricciones geográficas.</dd>
+<dt>Capas de seguridad</dt><dd>Defensa en profundidad: varias medidas superpuestas (cortafuegos, cifrado, autenticación multifactor, antivirus, copias de seguridad) para que el fallo de una no comprometa todo el sistema.</dd>
+<dt>Ancho de banda y latencia</dt><dd>Ancho de banda: cantidad máxima de datos transmitidos por segundo (Mbps). Latencia: retardo en la transmisión (ms). Una videoconsulta médica necesita ambos.</dd>
+<dt>Compresión de datos</dt><dd>Reducir el tamaño de los archivos. Sin pérdida: se recupera el original exacto (ZIP, PNG). Con pérdida: elimina información poco perceptible (JPEG, MP3), con archivos más pequeños.</dd>
+<dt>Neutralidad de red</dt><dd>Principio según el cual los proveedores deben tratar todo el tráfico de Internet por igual, sin priorizar, ralentizar ni bloquear contenidos según su origen o el pago.</dd>
+<dt>Backbone de Internet</dt><dd>Infraestructura troncal de alta capacidad: cables de fibra óptica terrestres y submarinos, puntos de intercambio y grandes centros de datos, que conecta las redes del mundo.</dd>
+<dt>Proveedor de servicios de Internet (ISP)</dt><dd>Empresa que da acceso a Internet a usuarios y organizaciones.</dd>
+<dt>Servicios de red</dt><dd>Chat, mensajes de texto, correo electrónico, intercambio de archivos, VoIP (voz sobre IP), mensajería instantánea, alojamiento web y videoconferencia.</dd>
+<dt>Internet frente a la Web</dt><dd>Internet es la infraestructura: la red global de redes. La World Wide Web es un servicio que funciona sobre Internet: un sistema de páginas enlazadas por hipervínculos al que se accede con un navegador mediante URL y HTTP. El W3C (fundado por Berners-Lee en 1994) desarrolla sus estándares.</dd>
+<dt>Evolución de Internet y la Web</dt><dd>ARPANET (1969), TCP/IP (Vint Cerf y Bob Kahn; adoptado en 1983), World Wide Web (1989–1991), Web 2.0 participativa (contenido generado por usuarios y auge de las redes sociales), Internet de las cosas y computación ubicua.</dd>
+<dt>Internet de las cosas (IdC)</dt><dd>Red de objetos físicos con sensores, software y conectividad que recogen e intercambian datos sin intervención humana constante (termostatos, botiquines, ciudades inteligentes).</dd>
+<dt>Computación ubicua</dt><dd>Integración de la computación en objetos y entornos cotidianos hasta hacerla prácticamente invisible.</dd>
+<dt>Derecho al olvido</dt><dd>Derecho a solicitar que se supriman o desindexen datos personales inexactos, irrelevantes u obsoletos. Reconocido por el Tribunal de Justicia de la UE en el caso Google Spain (2014) e incorporado al RGPD como derecho de supresión.</dd>
+<dt>Robo de identidad</dt><dd>Uso fraudulento de los datos personales de otra persona para suplantarla.</dd>
+<dt>Ciberdelincuencia y hacking</dt><dd>Delitos cometidos mediante sistemas digitales. Hacking: acceso no autorizado a sistemas; sombrero blanco (ético, con permiso), negro (malicioso) y gris (sin permiso pero sin intención de daño).</dd>
+<dt>Ingeniería social</dt><dd>Manipulación psicológica para que las personas revelen información o den acceso. El phishing usa mensajes que imitan a entidades de confianza.<span class="uso">Uso: recuerda que el eslabón más débil de un sistema seguro suele ser el humano (concepto de sistemas).</span></dd>
+<dt>Denegación de servicio (DoS y DDoS)</dt><dd>Ataque que satura un servidor con peticiones para dejarlo inaccesible; en la versión distribuida se usan muchas máquinas infectadas (botnet).</dd>
+<dt>Spam, virus y trolear</dt><dd>Spam: mensajes no deseados masivos. Trolear: publicar mensajes provocadores para generar conflicto o molestar.</dd>
+<dt>Web profunda y web oscura</dt><dd>Web profunda: contenido no indexado por buscadores (correo, bancos). Web oscura: pequeña parte accesible solo con software especial como Tor, que da anonimato; se usa para actividades ilegales y también para eludir la censura.</dd>
+</dl></details>
+
+<details class="area glos"><summary>3.5 Medios digitales <small>tipos, características, inmersión, dilemas</small></summary>
+<dl class="gl">
+<dt>Medios digitales</dt><dd>Se definen por la convergencia de la informática, la comunicación y los contenidos; se crean y distribuyen por múltiples canales y plataformas.</dd>
+<dt>Tipos de medios digitales</dt><dd>Textos, audio, imágenes, animaciones, vídeos, páginas web; videojuegos y deportes electrónicos; blogs, videoblogs, pódcast, retransmisiones en directo, etiquetas (hashtags), memes, wikis y streaming; contenido generado por el usuario; y medios sintéticos.</dd>
+<dt>Contenido generado por el usuario</dt><dd>Material creado por usuarios y no por medios profesionales (reseñas, vídeos, publicaciones). Democratiza la expresión pero dificulta la verificación.</dd>
+<dt>Medios sintéticos y deepfakes (ultrafalsos)</dt><dd>Contenido generado o manipulado con IA. Un deepfake imita de forma realista el rostro o la voz de una persona real mediante aprendizaje profundo.<span class="uso">Uso: conecta con valores y ética (consentimiento) y con el contexto político (desinformación electoral).</span></dd>
+<dt>Características</dt><dd>Difusión rápida (viralidad), almacenamiento eficiente, contenidos interactivos, lineales (una secuencia fija, como una película) y no lineales (el usuario elige el recorrido, como el hipertexto o un videojuego), y convergencia de tipos y capas de medios en un mismo dispositivo.</dd>
+<dt>Realidad aumentada (RA)</dt><dd>Superpone información digital sobre la visión del mundo real (filtros de redes sociales, Pokémon GO).</dd>
+<dt>Realidad virtual (RV)</dt><dd>Sustituye la percepción del mundo real por un entorno completamente simulado, normalmente con visor.</dd>
+<dt>Realidad mixta (RM) y extendida (RX)</dt><dd>RM: los objetos digitales se anclan e interactúan con el entorno físico. RX: término general que abarca RA, RV y RM.</dd>
+<dt>Adicción y preocupaciones psicológicas</dt><dd>Diseño persuasivo que explota recompensas variables (notificaciones, “me gusta”, desplazamiento infinito) para retener la atención; se asocia a ansiedad, comparación social y problemas de sueño.</dd>
+<dt>Impacto en el periodismo</dt><dd><strong>Fragmentación</strong>: muchas fuentes pequeñas y audiencias divididas. <strong>Consolidación</strong>: concentración de la propiedad de los medios en pocos grupos. Además, dependencia de los algoritmos de las plataformas, pérdida de ingresos publicitarios y titulares gancho (clickbait).</dd>
+<dt>Información errónea, desinformación e información maliciosa</dt><dd>Errónea: falsa, sin intención de dañar. Desinformación: falsa y difundida deliberadamente para engañar. Información maliciosa: verdadera pero usada para dañar (filtrar datos privados).</dd>
+<dt>Autenticidad y uso de fuentes</dt><dd>Grado en que un contenido es genuino y verificable; exige comprobar origen, propósito y corroboración.</dd>
+<dt>Derechos de autor, copyleft y Creative Commons</dt><dd>Derechos de autor: protección legal que da al creador control exclusivo sobre copia y distribución. Copyleft: licencia que permite usar y modificar a condición de que las obras derivadas mantengan la misma libertad. Creative Commons: licencias estandarizadas que indican qué se permite (atribución, compartir igual, no comercial, sin obras derivadas).</dd>
+<dt>Cultura remix</dt><dd>Práctica de crear obras nuevas combinando o modificando obras existentes (memes, samples, edits). Tensiona los derechos de autor.</dd>
+<dt>Obsolescencia de los medios y conservación digital</dt><dd>Formatos, programas o soportes que dejan de ser legibles, y enlaces que desaparecen. La conservación digital busca mantener el acceso a largo plazo (migración de formatos, emulación, archivos web).</dd>
+<dt>Censura, filtros y moderación</dt><dd>Censura: supresión de contenido por una autoridad. Filtros de contenido: bloqueo automático según criterios. Moderación: revisión de contenidos por plataformas (humanos y algoritmos).</dd>
+<dt>Pánico moral</dt><dd>Reacción social desproporcionada ante un fenómeno percibido como amenaza a los valores (término de Stanley Cohen). Útil para matizar alarmas sobre los videojuegos o las redes sociales.</dd>
+<dt>Normas de decencia, discurso ofensivo y contenido objetable</dt><dd>Criterios, variables entre culturas, sobre lo aceptable en público; su aplicación global por una plataforma plantea quién decide.</dd>
+</dl></details>
+
+<details class="area glos"><summary>3.6 Inteligencia artificial <small>tipos, aprendizaje automático, redes neuronales, dilemas</small></summary>
+<dl class="gl">
+<dt>Inteligencia artificial</dt><dd>Agentes, dispositivos o sistemas que se adaptan para realizar, o simular que realizan, tareas que antes requerían procesos cognitivos y creativos humanos. Sus categorías se solapan y se discuten.</dd>
+<dt>IA débil, estrecha o de dominio específico</dt><dd>Diseñada para una tarea o un ámbito concreto (reconocer rostros, traducir, jugar ajedrez). Toda la IA existente es de este tipo, aunque algunos sistemas generativos son muy versátiles.</dd>
+<dt>IA fuerte, general o completa</dt><dd>IA hipotética con capacidad cognitiva comparable a la humana en cualquier tarea, capaz de transferir lo aprendido entre ámbitos.</dd>
+<dt>Prueba de Turing</dt><dd>Propuesta por Alan Turing (1950): una máquina la supera si un evaluador humano, conversando por texto, no distingue sus respuestas de las de una persona. Crítica: imitar no es comprender (argumento de la habitación china de John Searle).</dd>
+<dt>Aprendizaje automático</dt><dd>Rama de la IA en la que los sistemas aprenden patrones a partir de datos, en lugar de seguir reglas programadas explícitamente.</dd>
+<dt>Aprendizaje supervisado</dt><dd>Entrenamiento con datos etiquetados (entrada y respuesta correcta) para clasificar o predecir (detectar spam, diagnosticar imágenes).</dd>
+<dt>Aprendizaje no supervisado</dt><dd>Busca estructuras en datos sin etiquetar, por ejemplo agrupando clientes parecidos (clustering) o detectando anomalías.</dd>
+<dt>Aprendizaje por refuerzo</dt><dd>Un agente aprende por ensayo y error, recibiendo recompensas o penalizaciones según sus acciones (AlphaGo, robots que aprenden a caminar).</dd>
+<dt>Aprendizaje profundo</dt><dd>Aprendizaje automático con redes neuronales de muchas capas ocultas, capaz de aprender representaciones complejas a partir de grandes volúmenes de datos (visión artificial, reconocimiento de voz, modelos de lenguaje).</dd>
+<dt>Usos del aprendizaje automático</dt><dd>Reconocimiento de patrones, reconocimiento facial y de voz, análisis de imágenes y procesamiento del lenguaje natural (PLN: que las máquinas comprendan y generen lenguaje humano).</dd>
+<dt>Red neuronal artificial</dt><dd>Modelo inspirado en el cerebro, formado por nodos (neuronas) en capas de entrada, ocultas y de salida. Durante el entrenamiento se ajustan los pesos de las conexiones para reducir el error. Sirve para aprender y modelar relaciones complejas y no lineales y para generalizar a partir de las entradas iniciales.</dd>
+<dt>Datos de entrenamiento y sobreajuste</dt><dd>Datos de entrenamiento: con los que aprende el modelo; se evalúa con datos de prueba distintos. Sobreajuste: el modelo memoriza el entrenamiento y falla con datos nuevos.</dd>
+<dt>IA generativa y grandes modelos de lenguaje</dt><dd>Sistemas que generan texto, imágenes, audio o código nuevos a partir de patrones aprendidos. Pueden producir alucinaciones: respuestas falsas presentadas con seguridad.</dd>
+<dt>La IA en la ciencia ficción y la filosofía</dt><dd>Relatos y debates (HAL 9000, Terminator) que moldean las expectativas y los miedos sociales, y preguntas sobre la mente, la conciencia y la responsabilidad.</dd>
+<dt>Cibernética</dt><dd>Estudio del control y la comunicación en animales y máquinas mediante la retroalimentación (Norbert Wiener, 1948); precursora de la IA.</dd>
+<dt>Inviernos de la IA</dt><dd>Periodos (mediados de los 70 y finales de los 80) de reducción de financiación e interés porque las expectativas superaron los resultados.</dd>
+<dt>Singularidad y multiplicidad</dt><dd>Singularidad: momento hipotético en que la IA supera a la inteligencia humana y se mejora a sí misma de forma incontrolable. Multiplicidad: visión alternativa (Ken Goldberg) centrada en la colaboración entre grupos diversos de humanos y máquinas, no en la sustitución.</dd>
+<dt>Equidad y sesgo en el diseño y el uso</dt><dd>La IA hereda sesgos de los datos y de las decisiones de sus diseñadores, y puede discriminar en la contratación, el crédito o la justicia.</dd>
+<dt>Responsabilidad y transparencia en el diseño y el uso</dt><dd>¿Quién responde por un daño causado por la IA: el desarrollador, la empresa que la implementa o el usuario? ¿Se puede explicar la decisión (IA explicable)?</dd>
+<dt>Leyes y gobierno desiguales</dt><dd>La regulación varía mucho entre países y va por detrás de la tecnología. La Ley de IA de la UE (en vigor desde 2024) clasifica los sistemas por niveles de riesgo; el Perú aprobó la Ley 31814 (2023) para promover el uso de la IA.</dd>
+<dt>Automatización y reemplazo de seres humanos</dt><dd>Sustitución de tareas humanas por sistemas de IA, con ganancias de productividad y riesgos de desempleo, descualificación y desigualdad. Supervisión humana (human-in-the-loop): una persona valida las decisiones críticas.</dd>
+</dl></details>
+
+<details class="area glos"><summary>3.7 Robots y tecnologías autónomas <small>tipos, características, evolución, dilemas</small></summary>
+<dl class="gl">
+<dt>Robot</dt><dd>Máquina programable que percibe su entorno mediante sensores, procesa la información y actúa sobre el mundo físico mediante actuadores, con cierto grado de autonomía.</dd>
+<dt>Tecnología autónoma</dt><dd>Sistema capaz de percibir, decidir y actuar con cierto grado de independencia de la intervención humana.</dd>
+<dt>Robots industriales y de productividad</dt><dd>Realizan tareas repetitivas, precisas o peligrosas en fábricas y almacenes (brazos de soldadura, robots logísticos). Los cobots trabajan junto a humanos.</dd>
+<dt>Robots de servicio</dt><dd>Prestan servicios a personas fuera de la industria: limpieza, reparto, asistencia quirúrgica, agricultura.</dd>
+<dt>Robots sociales</dt><dd>Diseñados para interactuar con humanos siguiendo normas sociales: compañía, educación, cuidado de mayores.</dd>
+<dt>Vehículos autónomos</dt><dd>Vehículos que perciben el entorno y conducen sin intervención humana en distintos grados (niveles 0 a 5 de la SAE).</dd>
+<dt>Drones</dt><dd>Vehículos aéreos no tripulados, pilotados a distancia o autónomos. En noviembre de 2024 la prueba 2 pidió explicar sus características: acelerómetros, giroscopios, magnetómetros, GPS, LiDAR, cámaras y computadora de a bordo.</dd>
+<dt>Asistentes virtuales</dt><dd>Agentes de software que responden a órdenes de voz o texto usando PLN (Alexa, Siri).</dd>
+<dt>Características de robots y tecnologías autónomas</dt><dd>Entradas sensoriales para la percepción espacial, ambiental y operativa (cámaras, LiDAR, ultrasonidos, GPS, acelerómetros); capacidad de razonar lógicamente con esas entradas, a menudo con visión artificial y aprendizaje automático; capacidad de moverse e interactuar en entornos físicos, a veces a distancia (teleoperación); y cierto grado de autonomía.</dd>
+<dt>LiDAR</dt><dd>Sensor que emite pulsos láser y mide su retorno para construir un mapa 3D del entorno; clave en vehículos autónomos y drones.</dd>
+<dt>Actuador</dt><dd>Componente que convierte una señal en movimiento o acción física (motores, servos, pinzas).</dd>
+<dt>Evolución</dt><dd>Primeros autómatas; el término “robot” en la obra R.U.R. de Karel Čapek (1920); las tres leyes de la robótica de Isaac Asimov (1942); Unimate, primer robot industrial, en una fábrica de General Motors (1961); uso masivo en la industria; aumento de las interacciones con usuarios humanos; y debates sobre conciencia artificial, robótica cognitiva y derechos de los robots.</dd>
+<dt>Antropomorfismo</dt><dd>Atribuir rasgos, emociones o intenciones humanas a máquinas. Aumenta la aceptación, pero puede generar confianza o apego injustificados.</dd>
+<dt>Valle inquietante</dt><dd>Hipótesis de Masahiro Mori (1970): cuando un robot se parece mucho, pero no del todo, a un humano, provoca rechazo o incomodidad.</dd>
+<dt>Complejidad de las interacciones</dt><dd>Los entornos reales son impredecibles y presentan casos límite que el sistema no vio en su entrenamiento; de ahí muchos accidentes y errores.</dd>
+<dt>Leyes, reglamentos y gobierno</dt><dd>Normas desiguales y poco desarrolladas sobre responsabilidad en accidentes, uso del espacio aéreo, datos captados por sensores y armas autónomas letales.</dd>
+<dt>Reemplazo de humanos</dt><dd>Sustitución de trabajadores en múltiples contextos y roles; afecta más a tareas rutinarias y puede crear empleos nuevos de mayor cualificación, con transiciones desiguales.</dd>
+</dl></details>
+</section>
+
+<section class="modulo" id="m7">
+<header><p class="num">Módulo 7</p><h2>Contextos (4.1–4.7)</h2></header>
+<div class="texto">
+<p>El contexto responde a <strong>dónde</strong> ocurre el efecto y <strong>a quién</strong> afecta. La guía exige que al final del curso sepas analizar ejemplos reales que no has estudiado antes; por eso importa más dominar las tensiones típicas de cada contexto que memorizar casos. En los esquemas de calificación, nombrar el contexto entre paréntesis (“contexto económico”) acompaña a cada idea.</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Contexto</th><th>Áreas de indagación prescritas</th><th>Partes interesadas típicas</th><th>Tensión que suele dar juego</th></tr></thead>
+<tbody>
+<tr><td>4.1 Cultural</td><td>A Artes, entretenimiento y cultura popular. B Hogar, ocio y turismo. C Legado, costumbres y celebraciones. D Subculturas (culturas juveniles, comunidades y foros en línea).</td><td>Artistas, creadores, fans, influencers, plataformas, turistas, comunidades locales</td><td>Acceso y difusión global frente a homogeneización cultural, apropiación y pérdida de autoría</td></tr>
+<tr><td>4.2 Económico</td><td>A Empresas. B Empleo y trabajo (teletrabajo, nomadismo digital, microtrabajo, economía de encargos, automatización). C Bienes, servicios y divisas (comercio electrónico, marketing dirigido, criptomonedas, NFT, sociedad sin efectivo, fabricación aditiva). D Globalización (deslocalización, relocalización).</td><td>Empresas, trabajadores, consumidores, sindicatos, plataformas, Estados</td><td>Eficiencia y productividad frente a precariedad laboral, vigilancia del trabajador y concentración de mercado</td></tr>
+<tr><td>4.3 Ambiental</td><td>A Recursos naturales y ecosistemas (incluidos los que usan los dispositivos). B Contaminación y residuos (residuos electrónicos, obsolescencia programada, tecnologías verdes). C Ciudades, infraestructuras y medios construidos (GPS, SIG). D Agricultura.</td><td>Comunidades locales, gobiernos, ONG ambientales, empresas tecnológicas, agricultores</td><td>La tecnología como solución ambiental (monitoreo, eficiencia) frente a su propia huella (energía, agua, minerales, residuos)</td></tr>
+<tr><td>4.4 De salud</td><td>A Medicina y salud (diagnóstico, I+D, registros y seguimiento). B El cuerpo humano (mejoramiento, implantes, exoesqueletos, accesibilidad, ergonomía). C Salud mental (atención, adicción, ansiedad).</td><td>Pacientes, médicos, hospitales, aseguradoras, fabricantes, personas con discapacidad</td><td>Diagnóstico más rápido y accesible frente a privacidad de datos sensibles, fiabilidad y deshumanización del cuidado</td></tr>
+<tr><td>4.5 Conocimiento humano</td><td>A Aprendizaje y educación (formal, a distancia, no formal, pedagogías digitales). B Innovación en ciencia y tecnología.</td><td>Estudiantes, docentes, colegios, investigadores, ministerios</td><td>Acceso abierto y personalización frente a brecha digital, integridad académica y dependencia de plataformas</td></tr>
+<tr><td>4.6 Político</td><td>A Procesos políticos (elecciones, activismo, propaganda). B Órganos de gobierno, ONG, actores no estatales. C Conflictos y guerra. D Leyes, reglamentos y políticas (delitos, vigilancia, códigos profesionales).</td><td>Gobiernos, ciudadanía, partidos, activistas, plataformas, policía, organismos internacionales</td><td>Participación y transparencia frente a desinformación, vigilancia estatal y regulación que va por detrás</td></tr>
+<tr><td>4.7 Social</td><td>A Componentes sociales de la identidad (edad, género, etnia, capacidad, religión). B Clase social. C Familias y relaciones (amistad, relaciones y pertenencia en línea).</td><td>Familias, jóvenes, personas mayores, grupos minoritarios, comunidades en línea</td><td>Conexión y pertenencia frente a aislamiento, desigualdad por clase y discriminación algorítmica</td></tr>
+</tbody></table></div>
+<div class="texto">
+<div class="caja"><p class="t">Truco de examen</p><p>Si en la pregunta 4 no se te ocurre un tercer párrafo, recorre la tabla: casi todo sistema digital tiene una dimensión económica (costo, quién paga), ambiental (energía, residuos) y política (qué ley lo regula). Un párrafo sobre una dimensión que las fuentes no tratan, bien vinculada al foco de la pregunta, es conocimiento propio que suma.</p></div>
+</div>
+</section>
+
+<section class="modulo" id="m8">
+<header><p class="num">Módulo 8</p><h2>Banco de ejemplos reales</h2></header>
+<div class="texto">
+<p>Un ejemplo real vale puntos cuando está <strong>explicado en relación con la pregunta</strong>: qué sistema, qué pasó, a quién afectó y qué demuestra. Prepara cada ejemplo en cuatro líneas: <em>qué, cuándo y dónde, dato clave, qué demuestra</em>. Con ocho o diez ejemplos bien dominados cubres casi cualquier pregunta. Las etiquetas indican contenido, <span class="hl hx">contexto</span> y <span class="hl hk">conceptos</span> para los que sirve cada uno.</p>
+</div>
+
+<div class="texto">
+<h3>Algoritmos, datos e IA</h3>
+<div class="ejemplo"><h4>COMPAS, predicción de reincidencia (EE. UU.)</h4>
+<div class="etiquetas"><span class="hl hc">3.2 Algoritmos</span><span class="hl hc">3.6 IA</span><span class="hl hx">Político</span><span class="hl hk">Poder</span><span class="hl hk">Valores y ética</span></div>
+<p>Software usado en tribunales para estimar el riesgo de reincidencia. Una investigación de ProPublica (2016) halló que los acusados negros tenían casi el doble de probabilidad de ser clasificados erróneamente como de alto riesgo que los blancos. Demuestra sesgo algorítmico, caja negra (algoritmo propietario) y problemas de rendición de cuentas en decisiones que afectan a la libertad.</p></div>
+<div class="ejemplo"><h4>Herramienta de selección de personal de Amazon</h4>
+<div class="etiquetas"><span class="hl hc">3.6 IA</span><span class="hl hc">3.1 Datos</span><span class="hl hx">Económico</span><span class="hl hk">Identidad</span></div>
+<p>Sistema experimental de IA para puntuar currículos, abandonado tras conocerse (2018) que penalizaba a candidatas porque había aprendido de diez años de contrataciones mayoritariamente masculinas. Demuestra que los datos históricos reproducen discriminaciones pasadas aunque nadie las programe.</p></div>
+<div class="ejemplo"><h4>Gender Shades y el arresto de Robert Williams</h4>
+<div class="etiquetas"><span class="hl hc">3.6 IA</span><span class="hl hx">Político</span><span class="hl hx">Social</span><span class="hl hk">Identidad</span><span class="hl hk">Poder</span></div>
+<p>El estudio de Joy Buolamwini y Timnit Gebru (2018) mostró errores de hasta 34,7 % en mujeres de piel oscura frente a 0,8 % en hombres de piel clara en sistemas comerciales de análisis facial. En 2020, Robert Williams fue detenido por error en Detroit tras una coincidencia falsa de reconocimiento facial. Juntos demuestran que el sesgo técnico se convierte en daño real.</p></div>
+<div class="ejemplo"><h4>Cambridge Analytica y Facebook</h4>
+<div class="etiquetas"><span class="hl hc">3.1 Datos</span><span class="hl hx">Político</span><span class="hl hk">Poder</span><span class="hl hk">Valores y ética</span></div>
+<p>La consultora obtuvo datos de hasta 87 millones de usuarios de Facebook a través de una aplicación de test de personalidad y los usó para perfilado político. En 2019 la FTC de EE. UU. multó a Facebook con 5.000 millones de dólares. Demuestra perfilado, consentimiento no informado y uso de datos para fines distintos a los declarados.</p></div>
+<div class="ejemplo"><h4>Clearview AI</h4>
+<div class="etiquetas"><span class="hl hc">3.1 Datos</span><span class="hl hc">3.6 IA</span><span class="hl hx">Político</span><span class="hl hk">Espacio</span><span class="hl hk">Valores y ética</span></div>
+<p>Empresa que construyó una base de datos de reconocimiento facial con miles de millones de imágenes extraídas de internet sin consentimiento y la vendió a fuerzas policiales. Varias autoridades europeas de protección de datos la han multado. Demuestra el choque entre jurisdicciones y la desaparición del anonimato en el espacio público.</p></div>
+<div class="ejemplo"><h4>AlphaFold</h4>
+<div class="etiquetas"><span class="hl hc">3.6 IA</span><span class="hl hx">Conocimiento humano</span><span class="hl hx">Salud</span><span class="hl hk">Cambio</span></div>
+<p>Sistema de aprendizaje profundo de Google DeepMind que predice la estructura tridimensional de las proteínas. Sus creadores, Demis Hassabis y John Jumper, compartieron el Nobel de Química de 2024. Demuestra una oportunidad transformadora de la IA en la ciencia: útil como contrapeso en respuestas sobre riesgos de la IA.</p></div>
+<div class="ejemplo"><h4>ChatGPT y la educación</h4>
+<div class="etiquetas"><span class="hl hc">3.6 IA</span><span class="hl hx">Conocimiento humano</span><span class="hl hk">Cambio</span><span class="hl hk">Valores y ética</span></div>
+<p>Lanzado en noviembre de 2022, popularizó la IA generativa. Abrió oportunidades de tutoría personalizada y retos de integridad académica, alucinaciones y dependencia. Demuestra un cambio discontinuo en las prácticas de aprendizaje.</p></div>
+
+<h3>Redes, seguridad y derechos</h3>
+<div class="ejemplo"><h4>WannaCry (2017)</h4>
+<div class="etiquetas"><span class="hl hc">3.3 Malware</span><span class="hl hc">3.4 Redes</span><span class="hl hx">Salud</span><span class="hl hk">Sistemas</span></div>
+<p>Ransomware que se propagó como gusano aprovechando una vulnerabilidad de Windows sin actualizar; afectó a cientos de miles de equipos y al Servicio Nacional de Salud británico, donde se cancelaron citas y operaciones. Demuestra interdependencia de sistemas y la importancia de las actualizaciones.</p></div>
+<div class="ejemplo"><h4>Deepfake en una videollamada (Arup, 2024)</h4>
+<div class="etiquetas"><span class="hl hc">3.5 Medios sintéticos</span><span class="hl hc">3.4 Ingeniería social</span><span class="hl hx">Económico</span><span class="hl hk">Identidad</span></div>
+<p>Un empleado de la empresa en Hong Kong transfirió unos 25 millones de dólares tras una videollamada en la que el director financiero y otros colegas eran recreaciones con deepfake. Demuestra cómo los medios sintéticos potencian la ingeniería social.</p></div>
+<div class="ejemplo"><h4>Derecho al olvido: Google Spain (2014) y el RGPD (2018)</h4>
+<div class="etiquetas"><span class="hl hc">3.4 Dilemas de Internet</span><span class="hl hx">Político</span><span class="hl hk">Identidad</span><span class="hl hk">Poder</span></div>
+<p>El Tribunal de Justicia de la UE reconoció el derecho a pedir a los buscadores que desindexen información personal obsoleta. El RGPD lo incorporó y permite multas de hasta el 4 % de la facturación mundial anual o 20 millones de euros. Demuestra cómo la ley intenta reequilibrar el poder entre personas y plataformas.</p></div>
+<div class="ejemplo"><h4>Estonia, Estado digital</h4>
+<div class="etiquetas"><span class="hl hc">3.4 Redes</span><span class="hl hc">3.1 Seguridad de datos</span><span class="hl hx">Político</span><span class="hl hk">Sistemas</span></div>
+<p>Casi todos los servicios públicos funcionan en línea sobre la plataforma de intercambio de datos X-Road, con identidad digital para la ciudadanía; ofrece voto por internet desde 2005. Demuestra eficiencia y transparencia del gobierno electrónico y, a la vez, dependencia de la ciberseguridad.</p></div>
+<div class="ejemplo"><h4>Myanmar y Facebook</h4>
+<div class="etiquetas"><span class="hl hc">3.2 Algoritmos</span><span class="hl hc">3.5 Medios</span><span class="hl hx">Político</span><span class="hl hk">Expresión</span><span class="hl hk">Poder</span></div>
+<p>En 2018 una misión de investigación de la ONU señaló que Facebook había desempeñado un papel determinante en la difusión del discurso de odio contra la población rohinyá. Demuestra los límites de la moderación de contenidos en idiomas locales y la responsabilidad de las plataformas.</p></div>
+
+<h3>Robots, autonomía y trabajo</h3>
+<div class="ejemplo"><h4>Vehículo autónomo de Uber (Tempe, Arizona, 2018)</h4>
+<div class="etiquetas"><span class="hl hc">3.7 Robots</span><span class="hl hx">Político</span><span class="hl hk">Valores y ética</span><span class="hl hk">Sistemas</span></div>
+<p>Un vehículo de pruebas autónomo atropelló y mató a Elaine Herzberg; el sistema no clasificó correctamente a la peatona y la conductora de respaldo estaba distraída. Demuestra la complejidad de los casos límite y la difusión de la responsabilidad entre empresa, conductora y software.</p></div>
+<div class="ejemplo"><h4>Zipline en Ruanda</h4>
+<div class="etiquetas"><span class="hl hc">3.7 Drones</span><span class="hl hx">Salud</span><span class="hl hk">Espacio</span></div>
+<p>Desde 2016, drones autónomos entregan sangre y suministros médicos a centros de salud rurales, reduciendo los tiempos de entrega. Demuestra cómo la tecnología autónoma reduce barreras espaciales; enlaza con la prueba 2 de noviembre de 2024.</p></div>
+<div class="ejemplo"><h4>Sophia, “ciudadana” saudí (2017)</h4>
+<div class="etiquetas"><span class="hl hc">3.7 Robots sociales</span><span class="hl hx">Social</span><span class="hl hk">Identidad</span><span class="hl hk">Valores y ética</span></div>
+<p>Arabia Saudita otorgó la ciudadanía a este robot humanoide de Hanson Robotics, lo que suscitó críticas por conceder simbólicamente derechos a una máquina en un país con restricciones a los derechos de las mujeres. Útil para antropomorfismo, valle inquietante y derechos de los robots.</p></div>
+<div class="ejemplo"><h4>Economía de plataformas y la Ley Rider (España, 2021)</h4>
+<div class="etiquetas"><span class="hl hc">3.2 Algoritmos</span><span class="hl hx">Económico</span><span class="hl hk">Poder</span></div>
+<p>La ley presume que los repartidores de plataformas son trabajadores asalariados y obliga a informar sobre los algoritmos que afectan a sus condiciones laborales. Útil para hablar de gestión algorítmica del trabajo en plataformas como Rappi o Glovo.</p></div>
+
+<h3>Ambiente y salud</h3>
+<div class="ejemplo"><h4>Residuos electrónicos</h4>
+<div class="etiquetas"><span class="hl hc">3.3 Computadoras</span><span class="hl hx">Ambiental</span><span class="hl hk">Espacio</span><span class="hl hk">Poder</span></div>
+<p>El Global E-waste Monitor 2024 estimó 62 millones de toneladas de residuos electrónicos en 2022, de los que solo alrededor de un 22 % se recogió y recicló de forma documentada. Parte termina en lugares como Agbogbloshie (Ghana). Demuestra cómo los costes ambientales se desplazan hacia otros espacios y comunidades.</p></div>
+<div class="ejemplo"><h4>Ethereum y el paso a la prueba de participación (2022)</h4>
+<div class="etiquetas"><span class="hl hc">3.1 Cadena de bloques</span><span class="hl hx">Ambiental</span><span class="hl hx">Económico</span><span class="hl hk">Cambio</span></div>
+<p>Al abandonar la prueba de trabajo, la red redujo su consumo de energía en torno a un 99,9 %. Demuestra que el impacto ambiental depende de decisiones de diseño, no de la tecnología en sí.</p></div>
+<div class="ejemplo"><h4>Filtración de 23andMe (2023)</h4>
+<div class="etiquetas"><span class="hl hc">3.1 Datos</span><span class="hl hx">Salud</span><span class="hl hk">Identidad</span><span class="hl hk">Valores y ética</span></div>
+<p>Unos atacantes accedieron a cuentas con contraseñas reutilizadas y, mediante una función para compartir datos entre parientes, expusieron información de unos 6,9 millones de usuarios. La empresa se declaró en quiebra en 2025, lo que abrió el debate sobre qué pasa con los datos genéticos al venderse la empresa. Demuestra la irreversibilidad de las filtraciones de datos de salud.</p></div>
+
+<h3>Ejemplos del Perú</h3>
+<p>Los ejemplos locales muestran mentalidad internacional y conexiones locales y globales, algo que la guía valora explícitamente.</p>
+<div class="ejemplo"><h4>Yape</h4>
+<div class="etiquetas"><span class="hl hc">3.4 Redes</span><span class="hl hx">Económico</span><span class="hl hk">Cambio</span><span class="hl hk">Poder</span></div>
+<p>Billetera digital del BCP que popularizó los pagos instantáneos con el número de celular. Sirve para inclusión financiera y sociedad sin efectivo, y también para fraudes por ingeniería social y dependencia de un actor privado dominante.</p></div>
+<div class="ejemplo"><h4>Aprendo en Casa (2020)</h4>
+<div class="etiquetas"><span class="hl hc">3.5 Medios</span><span class="hl hx">Conocimiento humano</span><span class="hl hk">Espacio</span></div>
+<p>Estrategia del Minedu de educación a distancia por televisión, radio e internet durante la pandemia. Demuestra la brecha digital: el uso de radio y televisión fue una respuesta a la falta de conectividad en zonas rurales.</p></div>
+<div class="ejemplo"><h4>Internet para Todos</h4>
+<div class="etiquetas"><span class="hl hc">3.4 Redes</span><span class="hl hx">Social</span><span class="hl hx">Económico</span><span class="hl hk">Espacio</span></div>
+<p>Operador de infraestructura móvil rural creado con participación de Telefónica, Meta y organismos de desarrollo para llevar conectividad a localidades aisladas. Útil para la relación entre inversión privada, rentabilidad y cobertura rural.</p></div>
+<div class="ejemplo"><h4>Monitoreo satelital de la minería ilegal en Madre de Dios</h4>
+<div class="etiquetas"><span class="hl hc">3.1 Datos</span><span class="hl hc">3.6 IA</span><span class="hl hx">Ambiental</span><span class="hl hx">Político</span><span class="hl hk">Espacio</span><span class="hl hk">Poder</span></div>
+<p>Imágenes de satélites como Sentinel-2 permiten detectar la deforestación causada por la minería aurífera ilegal y apoyar la fiscalización. Tu propio trabajo de investigación sobre la huella minera con Sentinel-2 te da detalle técnico de primera mano: resolución de las imágenes, índices espectrales, limitaciones por nubosidad y la distancia entre detectar y sancionar. Un ejemplo que conoces a fondo puntúa más que uno memorizado.</p></div>
+<div class="ejemplo"><h4>Leyes peruanas que conviene citar</h4>
+<div class="etiquetas"><span class="hl hx">Político</span><span class="hl hk">Valores y ética</span></div>
+<p>Ley 29733 de Protección de Datos Personales (2011): consentimiento, finalidad y protección reforzada de datos sensibles como los de salud. Ley 31814 (2023): promueve el uso de la inteligencia artificial para el desarrollo económico y social.</p></div>
+<div class="ejemplo"><h4>Tus propios proyectos como ejemplos</h4>
+<div class="etiquetas"><span class="hl hc">3.7 Robots</span><span class="hl hc">3.6 IA</span><span class="hl hx">Salud</span><span class="hl hx">Conocimiento humano</span><span class="hl hk">Espacio</span></div>
+<p>Un robot asistivo para deporte adaptado encaja en 3.7 y en 4.4B (accesibilidad para personas con discapacidad). Una herramienta de IA que funciona sin conexión en escuelas rurales encaja en 3.6, en la brecha digital (1.1B) y en 4.5A. Úsalos si la pregunta lo permite, explicando el sistema con precisión técnica y sin convertir el párrafo en una presentación del proyecto.</p></div>
+</div>
+</section>
+
+<section class="modulo" id="m9">
+<header><p class="num">Módulo 9</p><h2>Lenguaje académico</h2></header>
+<div class="texto">
+<p>Los conectores hacen visible para el examinador la operación que estás haciendo. Los esquemas de 2024 y 2025 citan literalmente “mientras que”, “sin embargo” y “por su parte” como marcas de comparación.</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Operación</th><th>Expresiones</th></tr></thead>
+<tbody>
+<tr><td>Semejanza</td><td>Tanto la Fuente C como la D…; Ambas fuentes coinciden en que…; Del mismo modo…; De forma análoga…</td></tr>
+<tr><td>Diferencia</td><td>Mientras que la Fuente C…, la Fuente D…; En contraste…; Por el contrario…; A diferencia de…; Por su parte…</td></tr>
+<tr><td>Causa y efecto (análisis)</td><td>Esto se debe a que…; Como consecuencia…; Lo cual provoca que…; De ahí que…; Esto permite… porque…</td></tr>
+<tr><td>Síntesis</td><td>Si se combina lo que muestra la Fuente A con…, se observa que…; En conjunto, estas fuentes revelan…; Esto coincide con el caso de…, donde…</td></tr>
+<tr><td>Comentario evaluativo</td><td>Esto es especialmente significativo para…; Este riesgo pesa más cuando…; Esta ventaja se limita a…; El impacto es mayor a corto plazo, pero…</td></tr>
+<tr><td>Matiz</td><td>Aunque…, …; Si bien es cierto que…, también…; No obstante…; Hasta cierto punto…; Siempre que…</td></tr>
+<tr><td>Origen y propósito de la fuente</td><td>Al tratarse de un anuncio del fabricante, la Fuente C tiende a omitir…; La Fuente D, una reseña independiente, ofrece una perspectiva más equilibrada porque…; Como fuente gubernamental, la Fuente B puede priorizar…</td></tr>
+<tr><td>Juicio graduado</td><td>En gran medida…; Solo en parte…; De forma limitada…; Los beneficios superan a los riesgos siempre que…; A corto plazo…, pero a largo plazo…</td></tr>
+<tr><td>Conclusión</td><td>En conclusión…; En definitiva, el peso de la evidencia indica que…; Por tanto, …resulta más beneficioso para… que para…</td></tr>
+</tbody></table></div>
+<div class="texto">
+<h3>Tres hábitos de estilo que suben la precisión</h3>
+<ul>
+<li><strong>Sujeto concreto</strong>: en lugar de “la gente”, escribe “los pacientes crónicos que viven solos” o “los repartidores de plataformas”.</li>
+<li><strong>Verbo de efecto medible</strong>: “reduce el tiempo de respuesta”, “expone datos sensibles”, “concentra el control”, en lugar de “afecta” o “influye”.</li>
+<li><strong>Parafrasea las fuentes</strong>: cita solo frases muy breves cuando la palabra exacta importa. Copiar párrafos no demuestra comprensión.</li>
+</ul>
+</div>
+</section>
+
+<section class="modulo" id="m10">
+<header><p class="num">Módulo 10</p><h2>Errores que bajan la banda</h2></header>
+<div class="texto">
+<p>Cada error de la izquierda aparece, de una u otra forma, en los esquemas como el motivo por el que una respuesta se queda en la banda inferior.</p>
+</div>
+<div class="error"><div><p class="t mal">Analizar fuente por fuente en la pregunta 4</p><p>“La Fuente A dice… La Fuente B dice… La Fuente C dice…”</p></div><div><p class="t bien">Sintetizar por temas</p><p>“Las Fuentes A y C muestran…, pero la Fuente D matiza…”. El esquema pide integración, no un análisis sistemático de cada fuente.</p></div></div>
+<div class="error"><div><p class="t mal">Tratar una sola dimensión en la pregunta 3</p><p>Solo privacidad cuando piden privacidad y seguridad.</p></div><div><p class="t bien">Cubrir las dos</p><p>Con una sola dimensión el techo es 3 de 6.</p></div></div>
+<div class="error"><div><p class="t mal">Mencionar ejemplos sin explicarlos</p><p>“Como pasó con Cambridge Analytica.”</p></div><div><p class="t bien">Explicar en relación con la pregunta</p><p>Qué pasó, con qué sistema, a quién afectó y qué demuestra sobre la pregunta.</p></div></div>
+<div class="error"><div><p class="t mal">Terminología decorativa</p><p>Soltar “big data”, “IA” o “nube” sin mostrar su funcionamiento.</p></div><div><p class="t bien">Terminología que explica</p><p>El término aparece dentro del razonamiento causal.</p></div></div>
+<div class="error"><div><p class="t mal">Impactos genéricos</p><p>“Pueden robar los datos, lo cual es malo.”</p></div><div><p class="t bien">Impacto vinculado al foco</p><p>Qué datos, quién los roba, qué consecuencia tiene para el objetivo de la pregunta.</p></div></div>
+<div class="error"><div><p class="t mal">Conclusión sin juicio</p><p>“Hay ventajas y desventajas, así que depende.”</p></div><div><p class="t bien">Juicio con condiciones</p><p>“Es beneficioso para X si se cumple Y; para Z los riesgos superan a los beneficios.”</p></div></div>
+<div class="error"><div><p class="t mal">Responder a una pregunta distinta</p><p>Hablar de los empleados cuando piden los efectos para la empresa, o de riesgos generales cuando piden asesoramiento sanitario.</p></div><div><p class="t bien">Repetir el foco</p><p>Usa las palabras del enunciado en la frase temática de cada párrafo.</p></div></div>
+<div class="error"><div><p class="t mal">Explicar en las preguntas de 1 o 2 puntos</p><p>Párrafos en la pregunta 1 que roban minutos a la 4.</p></div><div><p class="t bien">Ajustar la extensión al valor</p><p>Pregunta 1: una línea por punto.</p></div></div>
+<div class="error"><div><p class="t mal">Organización débil</p><p>Un bloque continuo sin párrafos ni frase temática.</p></div><div><p class="t bien">Estructura visible</p><p>Introducción, párrafos temáticos y conclusión. “Bien estructurada” es un requisito explícito de la banda alta.</p></div></div>
+</section>
+
+<section class="modulo" id="m11">
+<header><p class="num">Módulo 11</p><h2>Plan de estudio y lista final</h2></header>
+<div class="texto">
+<p>Un plan de siete semanas previas al examen. Si tu convocatoria es la de noviembre, empieza ahora; si es en mayo, repite el ciclo con más holgura. Tienes en la carpeta del curso cinco pruebas 2 oficiales con su esquema: úsalas cronometradas y corrígete con el esquema, no con la intuición.</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Semana</th><th>Contenido</th><th>Práctica de examen</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Módulos 0, 1 y 4. Glosario 1.1 y 3.1.</td><td>Prueba 2 de mayo de 2024 (GPS y Street View) sin límite de tiempo; corrígela con el esquema.</td></tr>
+<tr><td>2</td><td>Glosario 3.2 y 3.3. Conceptos poder, valores y ética, sistemas.</td><td>Solo preguntas 3 y 4 de noviembre de 2024 (drones), cronometradas (15 + 35 min).</td></tr>
+<tr><td>3</td><td>Glosario 3.4 y 3.5. Conceptos espacio, identidad, cambio, expresión.</td><td>Pregunta de práctica del módulo 3 (prueba 1). Prepara tus 10 ejemplos reales en fichas de 4 líneas.</td></tr>
+<tr><td>4</td><td>Glosario 3.6 y 3.7. Contextos.</td><td>Prueba 2 de mayo de 2025 (trabajo híbrido) completa en 75 minutos.</td></tr>
+<tr><td>5</td><td>Repaso con el modo repaso activado. Banco de ejemplos.</td><td>Dos partes C de prueba 1 inventadas por ti o por tu profesor, 22 min cada una.</td></tr>
+<tr><td>6</td><td>Errores frecuentes: relee tus respuestas y márcalos.</td><td>Prueba 2 de noviembre de 2025 (botiquín) en 75 minutos; compárala después con los modelos del módulo 2.</td></tr>
+<tr><td>7</td><td>Solo repaso ligero: glosario, fichas y lista final.</td><td>Una prueba 1 completa (90 min) y una prueba 2 no vista (TZ3 de mayo de 2025) en condiciones reales.</td></tr>
+</tbody></table></div>
+<div class="texto">
+<h3>Cómo corregirte</h3>
+<ol>
+<li>Para las preguntas analíticas, tacha cada punto del esquema que hayas cubierto; si tu idea no aparece, pregúntate si es equivalente o si es una idea vaga.</li>
+<li>Para las de bandas, resalta tu respuesta con los colores del módulo 4: si un párrafo no tiene naranja (juicio), no llega a la banda alta; si no tiene amarillo (contenido técnico), no es preciso.</li>
+<li>Cuenta cuántas veces conectas dos fuentes en una misma frase en la pregunta 4. Menos de tres es señal de análisis fuente por fuente.</li>
+</ol>
+
+<h3>Lista final antes de entregar</h3>
+<ul class="control" data-grupo="final">
+<li><label><input type="checkbox"><span>He respondido con el término de instrucción exacto de cada pregunta.</span></label></li>
+<li><label><input type="checkbox"><span>En las preguntas de 1–2 puntos he dado exactamente el número de elementos pedidos.</span></label></li>
+<li><label><input type="checkbox"><span>Cada “explique” tiene identificación y desarrollo (por qué o cómo).</span></label></li>
+<li><label><input type="checkbox"><span>La pregunta 3 trata las dos dimensiones, con semejanzas y diferencias y con C y D nombradas en cada párrafo.</span></label></li>
+<li><label><input type="checkbox"><span>La pregunta 4 usa las fuentes combinadas, conocimiento propio y juicio en cada párrafo.</span></label></li>
+<li><label><input type="checkbox"><span>Cada parte C de la prueba 1 tiene tesis, al menos dos ejemplos reales explicados y conclusión con condiciones.</span></label></li>
+<li><label><input type="checkbox"><span>Los términos técnicos están dentro del razonamiento, no sueltos.</span></label></li>
+<li><label><input type="checkbox"><span>He escrito para el actor que nombra la pregunta.</span></label></li>
+<li><label><input type="checkbox"><span>Ninguna conclusión termina en un “depende” sin decir de qué.</span></label></li>
+</ul>
+<p class="progreso" data-progreso="final"></p>
+</div>
+<footer class="pie">
+<p>Fuentes: Guía de Sociedad Digital (IB, versión actualizada en 2025): evaluación externa, bandas de puntuación, glosario de términos de instrucción y programa de estudios. Esquemas de calificación de la prueba 2 de mayo 2024 (TZ1, TZ2), noviembre 2024, mayo 2025 (TZ2, TZ3) y noviembre 2025. Glosarios del curso basados en Bomfin et al., <em>Digital Society for the IB Diploma</em> (Hodder, 2022). Las respuestas modelo y la pregunta de práctica de la prueba 1 son de elaboración propia y no son materiales oficiales del IB. Los límites de calificación cambian en cada convocatoria; las metas de puntuación de esta guía son un margen de seguridad sugerido.</p>
+</footer>
+</section>
+</main>
+</div>
+<script>
+(function(){
+  var raiz=document.documentElement;
+  function guardar(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function leer(k){try{return localStorage.getItem(k)}catch(e){return null}}
+
+  var t=leer('sd-tema'); if(t==='light'||t==='dark'){raiz.setAttribute('data-theme',t)}
+  document.querySelectorAll('button.tema').forEach(function(b){
+    b.addEventListener('click',function(){
+      var actual=raiz.getAttribute('data-theme');
+      if(!actual){actual=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+      var nuevo=actual==='dark'?'light':'dark';
+      raiz.setAttribute('data-theme',nuevo); guardar('sd-tema',nuevo);
+    });
+  });
+
+  var toggles=document.querySelectorAll('.toggle-repaso');
+  function aplicarRepaso(on){
+    document.body.classList.toggle('repaso',on);
+    toggles.forEach(function(x){x.checked=on});
+    if(!on){document.querySelectorAll('dl.gl dd.visto').forEach(function(d){d.classList.remove('visto')})}
+    guardar('sd-repaso',on?'1':'0');
+  }
+  toggles.forEach(function(x){x.addEventListener('change',function(){aplicarRepaso(x.checked)})});
+  if(leer('sd-repaso')==='1'){aplicarRepaso(true)}
+  document.querySelectorAll('dl.gl dd').forEach(function(d){
+    d.setAttribute('tabindex','0');
+    function ver(){if(document.body.classList.contains('repaso')){d.classList.toggle('visto')}}
+    d.addEventListener('click',ver);
+    d.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();ver()}});
+  });
+
+  var entrada=document.getElementById('buscar'), conteo=document.getElementById('conteo');
+  var areas=document.querySelectorAll('details.glos');
+  function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+  function filtrar(){
+    var q=norm(entrada.value.trim()), n=0;
+    areas.forEach(function(a){
+      var dts=a.querySelectorAll('dt'), hay=0;
+      dts.forEach(function(dt){
+        var dd=dt.nextElementSibling;
+        var ok=!q||norm(dt.textContent+' '+(dd?dd.textContent:'')).indexOf(q)>-1;
+        dt.classList.toggle('oculto',!ok); if(dd){dd.classList.toggle('oculto',!ok)}
+        if(ok){hay++;n++}
+      });
+      a.classList.toggle('oculto',q&&!hay);
+      if(q&&hay){a.open=true}
+    });
+    conteo.textContent=q?(n+(n===1?' término encontrado':' términos encontrados')):'';
+  }
+  if(entrada){entrada.addEventListener('input',filtrar)}
+
+  document.querySelectorAll('ul.control').forEach(function(ul){
+    var g=ul.getAttribute('data-grupo'), cajas=ul.querySelectorAll('input[type=checkbox]');
+    var p=document.querySelector('[data-progreso="'+g+'"]');
+    var est=[]; try{est=JSON.parse(leer('sd-lista-'+g)||'[]')}catch(e){est=[]}
+    function pintar(){var c=0;cajas.forEach(function(x){if(x.checked)c++}); if(p){p.textContent=c+' de '+cajas.length+' comprobados'}}
+    cajas.forEach(function(x,i){
+      x.checked=!!est[i];
+      x.addEventListener('change',function(){var v=[];cajas.forEach(function(y){v.push(y.checked)});guardar('sd-lista-'+g,JSON.stringify(v));pintar()});
+    });
+    pintar();
+  });
+
+  var enlaces=document.querySelectorAll('nav.lateral li a');
+  var secciones=document.querySelectorAll('section.modulo');
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(ents){
+      ents.forEach(function(e){
+        if(e.isIntersecting){
+          enlaces.forEach(function(a){a.classList.toggle('activo',a.getAttribute('href')==='#'+e.target.id)});
+        }
+      });
+    },{rootMargin:'-20% 0px -70% 0px'});
+    secciones.forEach(function(s){obs.observe(s)});
+  }
+  document.querySelectorAll('.menu-movil a').forEach(function(a){
+    a.addEventListener('click',function(){a.closest('details').open=false});
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 3B · Dinámica Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:18ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:52px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:26px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:12px 0;overflow-x:auto}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.pb{border:1px solid var(--line);border-radius:6px;margin:26px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#EFF4F2,#FFFFFF);border-bottom:1px solid var(--line);padding:14px 20px}
+.pb-head .code{font-family:"IBM Plex Mono";font-size:11px;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px;letter-spacing:.05em}
+.pb-head h3{margin:8px 0 0;font-size:19px}
+.pb-body{padding:6px 20px 18px}
+.enun{background:#F4F6F4;border-left:3px solid var(--ink-soft);padding:10px 16px;margin:14px 0;font-size:16.5px}
+.part{margin:16px 0 4px;font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep)}
+.pide{display:inline-block;font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:1px 7px;margin-right:8px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:5px 11px;display:inline-block;margin-top:6px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}td.l,th.l{text-align:left}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.srcnote{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:10px;border-top:1px dashed var(--line);padding-top:6px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<!-- rev 2026-10-28 3b · banco paper2 dinamica (3) oficiales 2022-26 -->
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> A.2 FUERZAS <span>//</span> MÓDULO 3B · TIPO 2 (PAPER 2)</p>
+  <h1>Dinámica en <em>respuesta larga</em></h1>
+  <p class="lede">Diagramas de cuerpo libre puntuables, equilibrio en movimiento, planos inclinados, resistencia del aire y peso aparente. Las 6 preguntas de la ficha resueltas apartado por apartado, el banco de Paper 2 oficiales y 5 problemas integradores.</p>
+  <div class="stats">
+    <div class="stat"><b>6/6</b><span>ficha resuelta</span></div>
+    <div class="stat"><b>3</b><span>Paper 2 oficiales 22–26</span></div>
+    <div class="stat"><b>5</b><span>problemas extra</span></div>
+    <div class="stat"><b>Paper 2</b><span>respuesta larga</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#estrategia">0 · Método para tipo 2</a>
+  <a href="#p1">1 · Bloque en rampa con cuerda (M07)</a>
+  <a href="#p2">2 · Globo científico (N05)</a>
+  <a href="#p3">3 · Ciclista en pendiente (M15)</a>
+  <a href="#p4">4 · Bola con resistencia (M11)</a>
+  <a href="#p5">5 · Profesor en ascensor (M01)</a>
+  <a href="#p6">6 · Bloque tirado por cable (N13)</a>
+  <a href="#examenes">★ Banco Paper 2 · 2022–26</a>
+  <a href="#extra">Problemas extra para ti</a>
+</nav>
+
+<main>
+
+<!-- ESTRATEGIA -->
+<section id="estrategia">
+  <p class="sec-num">SECCIÓN 00 · LO QUE FALTA PARA TIPO 2</p>
+  <h2>Método para dinámica de respuesta larga<span class="rule"></span></h2>
+  <p class="sec-intro">La teoría es la del Módulo 3A. Lo nuevo del tipo 2 es <strong>ejecutar con orden</strong> y dominar cinco gestos que el Paper 2 premia con marcas.</p>
+
+  <div class="box key"><span class="lbl">Los 5 gestos del tipo 2 de dinámica</span>
+    <ol>
+      <li><strong>DCL puntuable:</strong> flechas que salen del cuerpo, rotuladas por su nombre o símbolo, con longitud proporcional a la magnitud. Solo fuerzas <em>sobre</em> el cuerpo.</li>
+      <li><strong>Velocidad constante = equilibrio</strong>, aunque el cuerpo se mueva: \(\sum F=0\). (Por eso una cuerda que sostiene y una que sube a velocidad constante dan la misma tensión.)</li>
+      <li><strong>Peso aparente:</strong> la báscula marca la normal \(F_N=m(g\pm a)\); el signo lo fija el <em>sentido de la aceleración</em>, no el del movimiento (frenar bajando ⇒ \(a\) hacia arriba ⇒ marca más).</li>
+      <li><strong>Resistencia del aire / velocidad límite:</strong> la fuerza de arrastre crece con la rapidez; cuando iguala a la fuerza motriz neta, \(a=0\) (velocidad límite).</li>
+      <li><strong>Puente con Cinemática:</strong> la pendiente de una v–t es \(a\), y el área es la distancia; con \(a\) constante se enlaza con SUVAT.</li>
+    </ol>
+  </div>
+  <div class="box def"><span class="lbl">Términos de mando</span><p><strong>Indique/State:</strong> respuesta directa. <strong>Calcule/Determine:</strong> con procedimiento. <strong>Muestre que:</strong> llega al valor dado con más cifras. <strong>Dibuje:</strong> DCL rotulado. <strong>Explique/Describa:</strong> prosa con la física detrás.</p></div>
+</section>
+
+<!-- P1 -->
+<section id="p1" class="pb">
+  <div class="pb-head"><span class="code">FICHA 1 · M07/4/PHYSI/SP2</span><h3>Bloque en plano inclinado sin fricción, sostenido por cuerda</h3></div>
+  <div class="pb-body">
+    <div class="enun">Bloque en reposo sobre un plano liso, sujeto por una cuerda paralela al plano. \(\theta=25^\circ\), \(m=2{,}6\) kg, \(g=9{,}8\) m·s⁻².</div>
+
+    <p class="part">(a)(i) <span class="pide">dibuje</span> las tres fuerzas sobre el bloque.</p>
+    <figure class="fig">
+      <svg viewBox="0 0 300 170" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="DCL rampa">
+        <polygon points="20,145 280,145 280,60" fill="#EDEFEA" stroke="var(--ink)"/>
+        <rect x="185" y="80" width="34" height="22" fill="#C9D2CC" stroke="var(--ink)" transform="rotate(-18 202 91)"/>
+        <line x1="202" y1="91" x2="202" y2="145" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#c)"/>
+        <line x1="202" y1="91" x2="170" y2="58" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#c)"/>
+        <line x1="202" y1="91" x2="245" y2="77" stroke="var(--amber)" stroke-width="2.5" marker-end="url(#c)"/>
+        <defs><marker id="c" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+        <text x="206" y="140" font-family="IBM Plex Mono" font-size="11" fill="var(--warn)">W=mg</text>
+        <text x="140" y="58" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">Fɴ</text>
+        <text x="248" y="74" font-family="IBM Plex Mono" font-size="11" fill="var(--amber)">T</text>
+        <text x="42" y="141" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">θ</text>
+      </svg>
+      <figcaption>Peso (abajo), normal (⊥ al plano), tensión (arriba, a lo largo del plano).</figcaption>
+    </figure>
+
+    <p class="part">(a)(ii) <span class="pide">calcule</span> la fuerza en la cuerda.</p>
+    <p><em>Equilibrio a lo largo del plano:</em> \(T=mg\sin\theta=2{,}6(9{,}8)\sin25^\circ=2{,}6(9{,}8)(0{,}423)\).</p>
+    <p class="ans">T = 10,8 N ≈ 11 N</p>
+
+    <p class="part">(b)(i) <span class="pide">explique</span> por qué la tensión al subir a velocidad constante es la misma.</p>
+    <p>A velocidad constante \(a=0\), de modo que sigue habiendo <strong>equilibrio</strong> (\(\sum F=0\)). Como el plano es sin fricción, ninguna fuerza nueva aparece: la única que equilibra a \(mg\sin\theta\) sigue siendo \(T\), así que \(T=mg\sin\theta\), idéntica a (a)(ii). ∎</p>
+  </div>
+</section>
+
+<!-- P2 -->
+<section id="p2" class="pb">
+  <div class="pb-head"><span class="code">FICHA 2 · N05/4/PHYSI/SP2</span><h3>Globo científico anclado</h3></div>
+  <div class="pb-body">
+    <div class="enun">Fuerza de sustentación \(F=2{,}15\times10^{3}\) N (hacia arriba). Masa total \(m=1{,}95\times10^{2}=195\) kg. Dos cuerdas lo atan al suelo. \(g=9{,}8\).</div>
+
+    <p class="part">(a) <span class="pide">indique</span> la fuerza resultante estando anclado.</p>
+    <p>Está en reposo ⇒ equilibrio. <span class="ans">Resultante = 0 N</span></p>
+
+    <p class="part">(b) <span class="pide">calcule</span> la tensión de cada cuerda.</p>
+    <p><em>DCL:</em> \(F\) arriba; peso \(mg\) abajo; dos tensiones \(T\) abajo (las cuerdas tiran hacia el suelo). Equilibrio: \(F=mg+2T\).</p>
+    <p>\(mg=195(9{,}8)=1911\) N. \(2T=2150-1911=239\Rightarrow T=119{,}5\). <span class="ans">T ≈ 1,2×10² N</span></p>
+
+    <p class="part">(c) <span class="pide">calcule</span> la aceleración inicial al soltar las cuerdas.</p>
+    <p>Fuerza neta \(=F-mg=2150-1911=239\) N. \(a=\dfrac{239}{195}\). <span class="ans">a ≈ 1,2 m·s⁻²</span></p>
+
+    <p class="part">(d) <span class="pide">describa</span> cómo varía el rozamiento del aire en los primeros 10 s.</p>
+    <p>Al inicio la rapidez es cero, así que el arrastre es cero. Conforme el globo acelera y gana rapidez, el arrastre <strong>aumenta</strong> progresivamente, hasta igualar la fuerza neta motriz (\(F-mg=239\) N); en ese punto \(a=0\) y se alcanza la velocidad límite. Es decir, el rozamiento crece de 0 a 239 N.</p>
+  </div>
+</section>
+
+<!-- P3 -->
+<section id="p3" class="pb">
+  <div class="pb-head"><span class="code">FICHA 3 · M15/4/PHYSI/SP2</span><h3>Ciclista subiendo una pendiente</h3></div>
+  <div class="pb-body">
+    <div class="enun">Pendiente de 19°. Masa ciclista+bici \(m=85\) kg. \(g=9{,}8\).</div>
+
+    <p class="part">(a)(i) <span class="pide">calcule</span> la componente del peso paralela a la pendiente.</p>
+    <p>\(mg\sin19^\circ=85(9{,}8)(0{,}326)\). <span class="ans">≈ 271 N</span></p>
+
+    <p class="part">(a)(ii) <span class="pide">calcule</span> la fuerza normal.</p>
+    <p>\(F_N=mg\cos19^\circ=85(9{,}8)(0{,}946)\). <span class="ans">≈ 788 N</span></p>
+
+    <p class="part">(b) <span class="pide">determine</span> la distancia de frenado desde 5,5 m·s⁻¹.</p>
+    <p><em>Fuerzas que frenan</em> (ambas hacia abajo del plano, opuestas al movimiento): componente del peso \(271\) N + freno \(250\) N \(=521\) N.</p>
+    <p><em>Deceleración:</em> \(a=\dfrac{521}{85}=6{,}13\) m·s⁻². <em>Cinemática</em> (Módulo 2): \(0=u^2-2as\Rightarrow s=\dfrac{u^2}{2a}=\dfrac{5{,}5^2}{2(6{,}13)}\).</p>
+    <p class="ans">s ≈ 2,5 m</p>
+  </div>
+</section>
+
+<!-- P4 -->
+<section id="p4" class="pb">
+  <div class="pb-head"><span class="code">FICHA 4 · M11/4/PHYSI/SP2</span><h3>Bola que cae con resistencia del aire</h3></div>
+  <div class="pb-body">
+    <div class="enun">Bola \(m=0{,}50\) kg soltada desde el reposo; resistencia del aire NO despreciable; \(g=9{,}81\). Se da la gráfica v–t (cóncava, tendiendo a la velocidad límite).</div>
+
+    <p class="part">(a) <span class="pide">indique</span> cómo hallar la distancia recorrida.</p>
+    <p>Midiendo el <strong>área bajo la curva</strong> v–t (contando cuadrados de la cuadrícula).</p>
+
+    <p class="part">(b)(i) <span class="pide">dibuje</span> las fuerzas a los 2,0 s.</p>
+    <figure class="fig">
+      <svg viewBox="0 0 200 150" width="180" xmlns="http://www.w3.org/2000/svg" aria-label="DCL bola">
+        <circle cx="100" cy="75" r="16" fill="#C9D2CC" stroke="var(--ink)"/>
+        <line x1="100" y1="91" x2="100" y2="140" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#d)"/>
+        <line x1="100" y1="59" x2="100" y2="25" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#d)"/>
+        <defs><marker id="d" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+        <text x="106" y="135" font-family="IBM Plex Mono" font-size="11" fill="var(--warn)">W=mg</text>
+        <text x="106" y="34" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">Fₐᵢᵣ</text>
+      </svg>
+      <figcaption>Peso hacia abajo (mayor); resistencia del aire hacia arriba (menor).</figcaption>
+    </figure>
+
+    <p class="part">(b)(ii) <span class="pide">muestre que</span> \(a\approx4\) m·s⁻² a los 2,0 s.</p>
+    <p>La aceleración es la <strong>pendiente de la tangente</strong> a la curva v–t en \(t=2{,}0\) s. Leyendo dos puntos sobre esa tangente en la gráfica, la pendiente da ≈ 4 m·s⁻². ∎</p>
+
+    <p class="part">(b)(iii) <span class="pide">calcule</span> la resistencia del aire a los 2,0 s.</p>
+    <p>2.ª ley (positivo hacia abajo): \(mg-F_{air}=ma\Rightarrow F_{air}=m(g-a)=0{,}50(9{,}81-4{,}0)\).</p>
+    <p class="ans">F_air ≈ 2,9 N</p>
+
+    <p class="part">(b)(iv) <span class="pide">explique</span> si a los 5,0 s el arrastre es menor, igual o mayor.</p>
+    <p><strong>Mayor.</strong> A los 5,0 s la bola va más rápido (más cerca de la velocidad límite); como el arrastre crece con la rapidez, es mayor que a los 2,0 s (se acerca a \(mg=4{,}9\) N, donde \(a\to0\)).</p>
+  </div>
+</section>
+
+<!-- P5 -->
+<section id="p5" class="pb">
+  <div class="pb-head"><span class="code">FICHA 5 · M01/430/S(2)</span><h3>Profesor sobre báscula en un ascensor</h3></div>
+  <div class="pb-body">
+    <div class="enun">\(m=60\) kg. Baja a 3 m·s⁻¹ constante; luego desacelera uniformemente y se detiene en 2 s. \(g=10\) N·kg⁻¹.</div>
+
+    <p class="part">(a) <span class="pide">dibuje</span> los dos DCL (velocidad constante y desacelerando).</p>
+    <figure class="fig">
+      <svg viewBox="0 0 360 150" width="340" xmlns="http://www.w3.org/2000/svg" aria-label="dos DCL ascensor">
+        <g><rect x="55" y="55" width="40" height="30" fill="#C9D2CC" stroke="var(--ink)"/>
+        <line x1="75" y1="85" x2="75" y2="130" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#e)"/>
+        <line x1="75" y1="55" x2="75" y2="12" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#e)"/>
+        <text x="18" y="145" font-family="Space Grotesk" font-size="11" fill="var(--ink-soft)">v constante: Fɴ = W</text></g>
+        <g><rect x="255" y="55" width="40" height="30" fill="#C9D2CC" stroke="var(--ink)"/>
+        <line x1="275" y1="85" x2="275" y2="122" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#e)"/>
+        <line x1="275" y1="55" x2="275" y2="6" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#e)"/>
+        <text x="210" y="145" font-family="Space Grotesk" font-size="11" fill="var(--ink-soft)">desacelerando: Fɴ &gt; W</text></g>
+        <defs><marker id="e" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      </svg>
+      <figcaption>La normal (báscula, ejercida por el piso) vs. el peso (ejercido por la Tierra). Al frenar bajando, Fɴ es mayor.</figcaption>
+    </figure>
+
+    <p class="part">(b)(i) <span class="pide">determine</span> la lectura a velocidad constante.</p>
+    <p>\(a=0\Rightarrow F_N=mg=60(10)\). <span class="ans">600 N</span></p>
+
+    <p class="part">(b)(ii) <span class="pide">determine</span> la lectura al desacelerar.</p>
+    <p>Baja y frena ⇒ \(a\) hacia arriba, \(a=\dfrac{\Delta v}{t}=\dfrac{3}{2}=1{,}5\) m·s⁻². \(F_N=m(g+a)=60(10+1{,}5)\).</p>
+    <p class="ans">690 N</p>
+  </div>
+</section>
+
+<!-- P6 -->
+<section id="p6" class="pb">
+  <div class="pb-head"><span class="code">FICHA 6 · N13/4/PHYSI/SP2</span><h3>Bloque de piedra tirado por un cable</h3></div>
+  <div class="pb-body">
+    <div class="enun">Bloque subido a rapidez constante por un cable, plano a 12°. Peso \(W=1{,}5\times10^{4}\) N; tensión \(T=4{,}2\times10^{3}\) N.</div>
+
+    <p class="part">(a) <span class="pide">dibuje</span> las fuerzas.</p>
+    <p>A lo largo del plano: \(T\) (arriba), componente del peso \(W\sin\theta\) (abajo), fricción \(f\) (abajo, opuesta al movimiento). Perpendicular: normal \(F_N\) y \(W\cos\theta\).</p>
+
+    <p class="part">(b) <span class="pide">calcule</span> la fuerza de rozamiento.</p>
+    <p>A rapidez constante ⇒ equilibrio a lo largo del plano: \(T=W\sin\theta+f\).</p>
+    <p>\(f=T-W\sin\theta=4{,}2\times10^{3}-1{,}5\times10^{4}(\sin12^\circ)=4200-15000(0{,}208)=4200-3119\).</p>
+    <p class="ans">f ≈ 1,1×10³ N</p>
+  </div>
+</section>
+
+<!-- BANCO PAPER 2 OFICIALES -->
+<section id="examenes">
+  <p class="sec-num">SECCIÓN ★ · BANCO DE EXÁMENES OFICIALES · PAPER 2</p>
+  <h2>Paper 2 oficiales de dinámica (2022–2026)<span class="rule"></span></h2>
+  <p class="sec-intro">Preguntas reales de Paper 2 que son <strong>centralmente de dinámica</strong> (2.ª ley, fricción estática/dinámica, planos, poleas), <strong>reescritas</strong> para evitar copia literal, resueltas apartado por apartado y con cada respuesta <strong>verificada contra el esquema de calificación oficial</strong>. Las etiquetas indican sesión, zona horaria y plan.</p>
+
+  <div class="box beyond"><span class="lbl">Cómo leer este banco</span><p>Son preguntas de respuesta larga: cada marca (✓) del esquema cuenta. Fíjate en el <em>comando</em> (Muestre que ⇒ cifras extra; Determine ⇒ procedimiento) y en el enlace recurrente dinámica↔energía↔cinemática que el Paper 2 adora. El valor "Muestre que" te sirve para seguir aunque te atasques (ECF).</p></div>
+
+  <!-- B1 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">May 2022 · TZ1 · SP2 · Q1 · PLAN ANTIGUO</span><h3>Caja subida por una rampa con polea y carga colgante</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una carga que cae verticalmente tira, mediante una cuerda inextensible y sin masa que pasa por una polea sin fricción, de una caja sobre una rampa a 30°. Hay fricción entre la caja y la rampa; la resistencia del aire es despreciable. Carga \(m_c=3{,}5\) kg (parte a \(0{,}95\) m del suelo); caja \(m_b=1{,}5\) kg. Al soltarla, la carga acelera hacia abajo. \(g=9{,}8\) m·s⁻².</div>
+
+      <p class="part">(a) <span class="pide">explique</span> dos diferencias entre las cantidades de movimiento de caja y carga en un mismo instante.</p>
+      <p class="ans">Dirección distinta · magnitud \(mv\) distinta</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Ambas se mueven con la <strong>misma rapidez</strong> (cuerda inextensible), pero: (1) la <strong>dirección</strong> del movimiento es distinta (la caja va paralela a la rampa, la carga cae vertical); (2) la <strong>magnitud</strong> del momento \(p=mv\) es distinta porque las masas difieren (3,5 kg vs 1,5 kg), aunque \(v\) sea igual. <em>(Esquema: "direction of motion is different ✓ / mv is different ✓".)</em></p>
+      </div></details>
+
+      <p class="part">(b) <span class="pide">calcule</span> la tensión de la cuerda, si la carga acelera a 2,4 m·s⁻² hacia abajo.</p>
+      <p class="ans">T ≈ 26 N</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Qué pide:</strong> \(T\). Aplico la 2.ª ley <em>a la carga</em> (así solo aparece \(T\) y el peso, no la fricción). Tomando "hacia abajo" positivo: \(m_c a=m_c g-T\).</p>
+      <p>\(T=m_c(g-a)=3{,}5(9{,}8-2{,}4)=3{,}5(7{,}4)=25{,}9\). <span class="ans">T ≈ 26 N</span> <em>(con \(g=10\) daría 27 N, también aceptado).</em></p>
+      <p class="box trap" style="margin-top:8px"><span class="lbl">Trampa</span>Si planteas la 2.ª ley a la caja aparecen \(T\), fricción y la componente del peso: tres incógnitas. Elige el cuerpo que menos incógnitas introduce — aquí, la carga.</p>
+      </div></details>
+
+      <p class="part">(c)(i) <span class="pide">muestre que</span> la rapidez de la carga al llegar al suelo es ≈ 2,1 m·s⁻¹.</p>
+      <p class="ans">v = 2,14 m·s⁻¹ ≈ 2,1</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Cinemática con \(a=2{,}4\) y \(s=0{,}95\) desde el reposo: \(v^2=u^2+2as=0+2(2{,}4)(0{,}95)=4{,}56\Rightarrow v=\sqrt{4{,}56}=2{,}14\) m·s⁻¹. ∎ <em>(En "Muestre que" conviene escribir la cifra a 3 c.s. — 2,14 — para asegurar la marca.)</em></p>
+      </div></details>
+
+      <p class="part">(d) <span class="pide">determine</span> la fuerza de fricción sobre la caja. Tras tocar el suelo la carga, la caja recorre 0,35 m más hasta parar.</p>
+      <p class="ans">f ≈ 2,1 N</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Idea:</strong> cuando la carga toca el suelo la cuerda deja de tirar; la caja sigue sola y frena en 0,35 m. Primero hallo su deceleración, luego la fuerza neta y de ahí la fricción.</p>
+      <p>Deceleración: \(0=v^2-2a's\Rightarrow a'=\dfrac{v^2}{2s}=\dfrac{2{,}1^2}{2(0{,}35)}=\dfrac{4{,}41}{0{,}70}=6{,}3\) m·s⁻².</p>
+      <p>Fuerza neta sobre la caja (sola, subiendo la rampa y frenando): \(F_{net}=m_b a'=1{,}5(6{,}3)=9{,}45\) N.</p>
+      <p>Esa fuerza neta la producen la componente del peso rampa abajo <em>más</em> la fricción (ambas frenan): componente del peso \(=m_b g\sin30^\circ=1{,}5(9{,}8)(0{,}5)=7{,}4\) N. Entonces \(f=F_{net}-7{,}4=9{,}45-7{,}4\). <span class="ans">f ≈ 2,1 N</span></p>
+      </div></details>
+
+      <p class="part">(e) <span class="pide">explique</span> por qué, una vez en movimiento, basta una fuerza menor para mantener la caja deslizando.</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Porque el coeficiente de fricción <strong>estático</strong> es mayor que el <strong>dinámico</strong> (\(\mu_s>\mu_k\)): la fricción cinética (en movimiento) es menor que la estática máxima (en reposo). Por eso, una vez superada la estática e iniciado el deslizamiento, la fuerza necesaria para seguir moviéndola cae, y si se mantuviera la fuerza inicial habría una fuerza neta y aceleraría (\(F_{net}=ma\)). <em>(Esquema: \(\mu_s>\mu_k\) ✓ · fricción dinámica < estática ✓ · referencia a \(F_{net}=ma\) ✓.)</em></p>
+      </div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2__TZ1_SL_markscheme (M22/4/PHYSI/SP2/TZ1): (b) 26 N «T = 3.5(g−2.4)» · (c)(i) 2.14 m s⁻¹ · (d) friction 2.1 N · (e) μs>μk.</p>
+    </div>
+  </div>
+
+  <!-- B2 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">May 2025 · TZ3 · SP2 · Q1 · PLAN NUEVO</span><h3>Caja en reposo: fricción estática vs dinámica</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una caja de \(m=1{,}2\) kg está en reposo sobre una superficie horizontal. Coeficiente de fricción <strong>estático</strong> \(\mu_s=0{,}36\); coeficiente <strong>dinámico</strong> \(\mu_k=0{,}28\). \(g=9{,}8\) m·s⁻².</div>
+
+      <p class="part">(a) <span class="pide">explique</span> por qué los coeficientes de fricción no tienen unidades.</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Porque \(\mu=\dfrac{F_f}{F_N}\) es un <strong>cociente entre dos fuerzas</strong>: las unidades (N) se cancelan y queda un número puro. ∎</p>
+      </div></details>
+
+      <p class="part">(b) <span class="pide">muestre que</span> la fuerza mínima para poner la caja en movimiento es ≈ 4 N.</p>
+      <p class="ans">F = 4,2 N ≈ 4 N</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Para que empiece a moverse hay que vencer la fricción estática <em>máxima</em>, que usa \(\mu_s\): \(F=\mu_s F_N=\mu_s mg=0{,}36(1{,}2)(9{,}8)=0{,}36(11{,}76)=4{,}23\) N ≈ 4 N. ∎ <em>(Clave: usar \(\mu_s\), no \(\mu_k\), para "arrancar".)</em></p>
+      </div></details>
+
+      <p class="part">(c) <span class="pide">determine</span> la distancia extra \(d\) que recorre tras retirar la fuerza. Se aplica \(14{,}0\) N a lo largo de \(0{,}35\) m y luego se retira; la caja sigue y para tras \(d\).</p>
+      <p class="ans">d ≈ 1,1 m</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Vía energía</strong> (la del esquema). Mientras actúa la fuerza, ya está en movimiento ⇒ fricción <em>dinámica</em>: \(F_f=\mu_k mg=0{,}28(1{,}2)(9{,}8)=3{,}29\) N.</p>
+      <p>Trabajo neto en los 0,35 m \(=(14-3{,}29)(0{,}35)=10{,}71(0{,}35)=3{,}75\) J. Toda esa energía cinética se disipa después por la fricción a lo largo de \(d\): \(F_f\,d=3{,}75\Rightarrow d=\dfrac{3{,}75}{3{,}29}\). <span class="ans">d ≈ 1,14 m</span></p>
+      <p><em>Vía cinemática (equivalente):</em> \(a=\dfrac{14-3{,}29}{1{,}2}=8{,}9\) m·s⁻² ⇒ \(v=\sqrt{2(8{,}9)(0{,}35)}=2{,}5\) m·s⁻¹; luego decelera con \(\mu_k g=2{,}74\): \(d=\dfrac{v^2}{2(2{,}74)}=1{,}14\) m. ✓</p>
+      </div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2_TZ3_SL_markscheme_1 (2225–6724M, TZ3): (b) 4,2 N «0.36×1.2×9.8» · (c) d = 1,14 m (ALT1 energía / ALT2 cinemática).</p>
+    </div>
+  </div>
+
+  <!-- B3 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">May 2026 · TZ2 · SP2 · Q1 · PLAN NUEVO</span><h3>Caja que baja una rampa con fricción (energía ↔ dinámica)</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una caja de \(m=1{,}3\) kg parte del reposo en lo alto de una rampa de \(L=1{,}6\) m inclinada \(25^\circ\). Al llegar al pie, su rapidez es \(2{,}4\) m·s⁻¹. \(g=9{,}8\) m·s⁻².</div>
+
+      <p class="part">(a) <span class="pide">muestre que</span> la energía potencial gravitatoria arriba es ≈ 9 J.</p>
+      <p class="ans">Ep = 8,6 J ≈ 9 J</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Altura \(h=L\sin25^\circ=1{,}6(0{,}423)=0{,}676\) m. \(E_p=mgh=1{,}3(9{,}8)(0{,}676)=8{,}6\) J ≈ 9 J. ∎</p>
+      </div></details>
+
+      <p class="part">(b)(i) <span class="pide">calcule</span> la energía cinética al pie de la rampa.</p>
+      <p class="ans">Ek ≈ 3,7 J</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p>\(E_k=\tfrac12 mv^2=\tfrac12(1{,}3)(2{,}4)^2=0{,}5(1{,}3)(5{,}76)=3{,}74\) J. <span class="ans">≈ 3,7 J</span></p>
+      </div></details>
+
+      <p class="part">(b)(ii) <span class="pide">determine</span> el coeficiente de fricción dinámica entre la rampa y la caja.</p>
+      <p class="ans">μk ≈ 0,26</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Idea:</strong> la energía "perdida" entre arriba y abajo se la llevó la fricción. \(W_{fric}=E_p-E_k=8{,}6-3{,}74=4{,}9\) J (el esquema acepta \(9-3{,}7\)).</p>
+      <p>La fricción actúa a lo largo de \(L=1{,}6\) m: \(F_f=\dfrac{W_{fric}}{L}=\dfrac{4{,}9}{1{,}6}=3{,}06\) N.</p>
+      <p>Y \(F_f=\mu_k F_N=\mu_k\,mg\cos25^\circ\Rightarrow\mu_k=\dfrac{F_f}{mg\cos25^\circ}=\dfrac{3{,}06}{1{,}3(9{,}8)(0{,}906)}=\dfrac{3{,}06}{11{,}54}=0{,}265\). <span class="ans">μk ≈ 0,26</span></p>
+      </div></details>
+
+      <p class="part">(c) <span class="pide">explique</span> por qué el trabajo para subir la caja a una altura \(h\) por otra rampa <em>sin fricción</em> no depende del ángulo.</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Sin fricción, el trabajo contra la gravedad es \(W=mgh\): solo depende de la altura \(h\), no del ángulo. Al disminuir el ángulo, la fuerza a lo largo del plano (\(mg\sin\theta\)) baja, pero la distancia recorrida (\(h/\sin\theta\)) sube en la misma proporción; su producto \(mgh\) queda igual. Equivalente: al no haber fricción, no cambia la energía mecánica, así que el trabajo útil es el mismo. ∎ <em>(Ojo: el esquema NO da la marca si solo repites "no depende del ángulo"; hay que dar la razón.)</em></p>
+      </div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2_TZ2_SL_markscheme (2226–4775/4727M, TZ2): (b)(ii) μ = 0,26 «W = 9−3.7, μ = g(sin25−… )» · (c) producto fuerza×distancia constante / sin fricción no cambia la energía mecánica.</p>
+    </div>
+  </div>
+
+  <div class="box key"><span class="lbl">Nota de cobertura</span><p>En el banco oficial 2022–2026 de Paper 2, la dinámica "pura" (2.ª ley + fricción + planos) aparece sobre todo como la <strong>Q1</strong> de mecánica, a menudo <em>enlazada</em> con energía o cinemática — exactamente estas tres. Otras preguntas de esos exámenes tocan fuerzas dentro de temas mayores (momento lineal en colisiones → Módulo 5B; circular → Módulo 6B), y se resuelven en sus módulos. Si tu profe te marca otra pregunta concreta, dímela y la añado aquí con el mismo formato.</p></div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <p class="sec-num">PARA TI · RESUELVE ESTILO PAPER 2 Y ENVÍA EN BLOQUE</p>
+  <h2>5 problemas extra (integradores)<span class="rule"></span></h2>
+  <p class="sec-intro">No son la ficha con otros números: integran Cinemática (M2) e Incertidumbre (M1) para completar el estudio, y escalan hasta superar el IB. \(g=9{,}8\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">E1 · rampa rugosa + cinemática (multifase)</p>
+  <p>Un bloque de 2,0 kg se lanza rampa arriba a 6,0 m·s⁻¹ por un plano de 30° con \(\mu_d=0{,}30\).</p>
+  <p>(a) Dibuje el DCL durante la subida. (b) Determine la desaceleración al subir. (c) Halle la distancia que recorre hasta detenerse. (d) ¿Vuelve a bajar? Si sí, calcule la aceleración de bajada. (e) Determine la rapidez con que regresa al punto de partida.</p>
+  <details class="rev"><summary></summary><div class="rev-inner">
+  <p><strong>(a) DCL (subida).</strong> Peso \(W=mg\) vertical hacia abajo; normal \(F_N\) perpendicular al plano; fricción \(f\) <em>hacia abajo del plano</em> (se opone al movimiento, que va hacia arriba).</p>
+  <p><strong>(b) Desaceleración al subir.</strong> Qué pide → \(a\) de subida. Normal: \(F_N=mg\cos30^\circ=2{,}0(9{,}8)(0{,}866)=16{,}97\) N, luego \(f=\mu_d F_N=0{,}30(16{,}97)=5{,}09\) N. A lo largo del plano, peso y fricción frenan: \(ma=mg\sin30^\circ+f=2{,}0(9{,}8)(0{,}5)+5{,}09=9{,}8+5{,}09=14{,}89\) N; \(a=14{,}89/2{,}0\). <span class="ans">a ≈ 7,4 m·s⁻² (desaceleración)</span></p>
+  <p><strong>(c) Distancia hasta detenerse.</strong> Cinemática (M2): \(0=u^2-2as\Rightarrow s=\dfrac{u^2}{2a}=\dfrac{6{,}0^2}{2(7{,}45)}=\dfrac{36}{14{,}9}\). <span class="ans">s ≈ 2,4 m</span></p>
+  <p><strong>(d) ¿Baja?</strong> Compara la componente del peso con la fricción máxima: \(mg\sin30^\circ=9{,}8\) N \(>\) \(f=5{,}09\) N, así que sí desliza de vuelta. Ahora la fricción apunta <em>hacia arriba del plano</em>: \(ma=mg\sin30^\circ-f=9{,}8-5{,}09=4{,}71\) N; \(a=4{,}71/2{,}0\). <span class="ans">sí baja; a ≈ 2,4 m·s⁻²</span></p>
+  <p><strong>(e) Rapidez de regreso.</strong> Baja desde el reposo esa misma distancia: \(v^2=2a\,s=2(2{,}35)(2{,}42)=11{,}4\Rightarrow v=\sqrt{11{,}4}\). <span class="ans">v ≈ 3,4 m·s⁻¹</span> (menor que los 6,0 m·s⁻¹ iniciales: la fricción disipó energía).</p>
+  </div></details></div>
+
+  <div class="prob"><p class="pn">E2 · ascensor con carga colgante</p>
+  <p>En un ascensor van una caja de 50 kg sobre el piso y una lámpara de 5,0 kg colgada del techo por una cuerda. Analice tres fases: (i) acelera hacia arriba a 2,0 m·s⁻², (ii) velocidad constante, (iii) acelera hacia abajo a 2,0 m·s⁻².</p>
+  <p>(a) Para cada fase, halle la fuerza normal sobre la caja y la tensión de la cuerda de la lámpara. (b) ¿En qué fase es más probable que la cuerda se rompa? Explique.</p>
+  <details class="rev"><summary></summary><div class="rev-inner">
+  <p><strong>(a) Tres fases.</strong> Qué pide → \(F_N\) sobre la caja y \(T\) de la lámpara (2.ª ley vertical sobre cada cuerpo por separado). Tomo "arriba" positivo: \(F_N=m_{caja}(g\pm a)\) y \(T=m_{lamp}(g\pm a)\), con \(g=9{,}8\).</p>
+  <p><em>(i) sube acelerando, \(a=2{,}0\) hacia arriba:</em> \(F_N=50(9{,}8+2{,}0)=50(11{,}8)=590\) N; \(T=5{,}0(11{,}8)=59\) N.</p>
+  <p><em>(ii) velocidad constante, \(a=0\):</em> \(F_N=50(9{,}8)=490\) N; \(T=5{,}0(9{,}8)=49\) N.</p>
+  <p><em>(iii) baja acelerando, \(a=2{,}0\) hacia abajo:</em> \(F_N=50(9{,}8-2{,}0)=50(7{,}8)=390\) N; \(T=5{,}0(7{,}8)=39\) N.</p>
+  <p><span class="ans">(i) 590 N, 59 N · (ii) 490 N, 49 N · (iii) 390 N, 39 N</span></p>
+  <p><strong>(b) ¿Cuándo se rompe?</strong> En la fase <strong>(i)</strong>: la tensión es máxima (59 N) porque la cuerda debe sostener el peso de la lámpara <em>y además</em> comunicarle la aceleración hacia arriba (peso aparente mayor).</p>
+  </div></details></div>
+
+  <div class="prob"><p class="pn">E3 · arrastre y velocidad límite</p>
+  <p>Una esfera de 0,20 kg cae en un fluido; el arrastre es \(F_d=bv\). Alcanza una velocidad límite de 8,0 m·s⁻¹. (\(g=9{,}8\))</p>
+  <p>(a) Determine la constante \(b\). (b) Halle la aceleración cuando \(v=4{,}0\) m·s⁻¹. (c) Bosqueje la gráfica v–t. (d) Explique, en términos de fuerzas, por qué la aceleración disminuye con el tiempo.</p>
+  <details class="rev"><summary></summary><div class="rev-inner">
+  <p><strong>(a) Constante \(b\).</strong> Qué pide → \(b\). En velocidad límite \(a=0\Rightarrow mg=bv_t\Rightarrow b=\dfrac{mg}{v_t}=\dfrac{0{,}20(9{,}8)}{8{,}0}=\dfrac{1{,}96}{8{,}0}\). <span class="ans">b ≈ 0,245 N·s·m⁻¹</span></p>
+  <p><strong>(b) Aceleración a \(v=4{,}0\).</strong> 2.ª ley (positivo hacia abajo): \(ma=mg-bv=1{,}96-0{,}245(4{,}0)=1{,}96-0{,}98=0{,}98\) N; \(a=0{,}98/0{,}20\). <span class="ans">a ≈ 4,9 m·s⁻²</span> (la mitad de \(g\), pues \(v=\tfrac12 v_t\)).</p>
+  <p><strong>(c) Gráfica v–t.</strong> Parte del origen con pendiente inicial \(=g=9{,}8\) m·s⁻², es cóncava hacia abajo y tiende asintóticamente a la recta horizontal \(v=8{,}0\) m·s⁻¹ (velocidad límite). <span class="ans">curva cóncava hacia 8,0 m·s⁻¹</span></p>
+  <p><strong>(d) Por qué \(a\) disminuye.</strong> Al aumentar \(v\), el arrastre \(bv\) crece, por lo que la fuerza neta \(mg-bv\) disminuye; como \(a=(mg-bv)/m\), la aceleración decrece hasta anularse cuando \(bv=mg\).</p>
+  </div></details></div>
+
+  <div class="prob"><p class="pn">E4 · doble plano inclinado con polea</p>
+  <p>Dos bloques unidos por una cuerda que pasa por una polea en la cima de una "tienda de campaña": \(m_1=3{,}0\) kg sobre un plano liso de 30°, \(m_2=5{,}0\) kg sobre el otro plano liso de 45°.</p>
+  <p>(a) Determine el sentido del movimiento. (b) Halle la aceleración del sistema. (c) Determine la tensión de la cuerda.</p>
+  <details class="rev"><summary></summary><div class="rev-inner">
+  <p><strong>(a) Sentido del movimiento.</strong> Compara las componentes del peso a lo largo de cada plano: \(m_1 g\sin30^\circ=3{,}0(9{,}8)(0{,}5)=14{,}7\) N frente a \(m_2 g\sin45^\circ=5{,}0(9{,}8)(0{,}707)=34{,}6\) N. Como el lado de \(m_2\) tira más fuerte: <span class="ans">\(m_2\) baja y \(m_1\) sube</span>.</p>
+  <p><strong>(b) Aceleración.</strong> Planos lisos; tratando el sistema como un todo (la tensión es interna): \(a=\dfrac{m_2 g\sin45^\circ-m_1 g\sin30^\circ}{m_1+m_2}=\dfrac{34{,}6-14{,}7}{8{,}0}=\dfrac{19{,}9}{8{,}0}\). <span class="ans">a ≈ 2,5 m·s⁻²</span></p>
+  <p><strong>(c) Tensión.</strong> Sobre \(m_1\) (que sube): \(T-m_1 g\sin30^\circ=m_1 a\Rightarrow T=m_1(g\sin30^\circ+a)=3{,}0(4{,}9+2{,}49)=3{,}0(7{,}39)\). <span class="ans">T ≈ 22 N</span> (comprobación con \(m_2\): \(T=m_2(g\sin45^\circ-a)=5{,}0(6{,}93-2{,}49)\approx22\) N ✓).</p>
+  </div></details></div>
+
+  <div class="prob jefe"><p class="pn">E5 · PROBLEMA JEFE (M1 + M2, supera al IB)</p>
+  <p>Un bloque de 1,5 kg se suelta desde el reposo en un plano inclinado de 30° y recorre \((1{,}20\pm0{,}03)\ \mathrm m\) en \((0{,}90\pm0{,}02)\ \mathrm s\). Usa \(g=9{,}8\).</p>
+  <p>(a) Determine la aceleración con su incertidumbre (Cinemática + Módulo 1). (b) Compárela con la de un plano sin fricción y demuestre que hay fricción; halle la fuerza de rozamiento. (c) Determine \(\mu_d\). (d) Señale una fuente de error <em>sistemático</em> del montaje y cómo afectaría al valor de \(\mu_d\).</p>
+  <details class="rev"><summary></summary><div class="rev-inner">
+  <p><strong>(a) Aceleración con incertidumbre.</strong> Desde el reposo, \(s=\tfrac12 a t^2\Rightarrow a=\dfrac{2s}{t^2}=\dfrac{2(1{,}20)}{0{,}90^2}=\dfrac{2{,}40}{0{,}81}=2{,}96\) m·s⁻². Incertidumbre relativa (M1, producto/potencia): \(\dfrac{\Delta a}{a}=\dfrac{\Delta s}{s}+2\dfrac{\Delta t}{t}=\dfrac{0{,}03}{1{,}20}+2\dfrac{0{,}02}{0{,}90}=0{,}025+0{,}044=0{,}069\Rightarrow\Delta a=0{,}069(2{,}96)=0{,}21\). <span class="ans">a = (2,96 ± 0,21) m·s⁻² ≈ (3,0 ± 0,2)</span></p>
+  <p><strong>(b) ¿Hay fricción?</strong> Sin fricción sería \(a_0=g\sin30^\circ=9{,}8(0{,}5)=4{,}9\) m·s⁻². El valor medido \(2{,}96\pm0{,}21\) queda muy por debajo de \(4{,}9\) (los rangos ni se solapan), luego hay fricción. A lo largo del plano: \(f=m(g\sin30^\circ-a)=1{,}5(4{,}9-2{,}96)=1{,}5(1{,}94)\). <span class="ans">f ≈ 2,9 N</span></p>
+  <p><strong>(c) Coeficiente \(\mu_d\).</strong> \(f=\mu_d F_N=\mu_d\,mg\cos30^\circ\Rightarrow\mu_d=\dfrac{f}{mg\cos30^\circ}=\dfrac{2{,}91}{1{,}5(9{,}8)(0{,}866)}=\dfrac{2{,}91}{12{,}73}\). <span class="ans">μ_d ≈ 0,23</span></p>
+  <p><strong>(d) Error sistemático.</strong> El tiempo de reacción al parar el cronómetro a mano hace que \(t\) salga <em>sistemáticamente mayor</em> que el real; como \(a=2s/t^2\), \(a\) resultaría <em>menor</em>, de modo que \(f=m(g\sin\theta-a)\) y por tanto \(\mu_d\) saldrían <em>sobrestimados</em>. Se corrige midiendo con fotopuertas/sensores en vez de a mano.</p>
+  </div></details></div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 3B · Dinámica Tipo 2 (Paper 2).</strong> Ficha completa resuelta (6 preguntas), banco de 3 Paper 2 oficiales 2022–26 verificados contra esquema, y 5 integradores. Nota de convención: los ítems reales del IB usan \(g=9{,}8\) o \(9{,}81\) según el enunciado; el M01 usa \(g=10\). Sigue el <strong>Módulo 4A — Estática y torque</strong>, que reutilizará el equilibrio de fuerzas visto aquí.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

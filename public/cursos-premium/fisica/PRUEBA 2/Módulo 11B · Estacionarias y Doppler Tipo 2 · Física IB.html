@@ -1,0 +1,602 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 11B · Estacionarias y Doppler Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:52px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:26px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:12px 0;overflow-x:auto}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.hl-tag{font-family:"IBM Plex Mono";font-size:10px;letter-spacing:.06em;color:#fff;background:var(--hl);padding:1px 6px;border-radius:3px;vertical-align:middle}
+.pb{border:1px solid var(--line);border-radius:6px;margin:26px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#EFF4F2,#FFFFFF);border-bottom:1px solid var(--line);padding:14px 20px}
+.pb-head .code{font-family:"IBM Plex Mono";font-size:11px;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px;letter-spacing:.05em}
+.pb-head h3{margin:8px 0 0;font-size:19px}
+.pb-body{padding:6px 20px 18px}
+.enun{background:#F4F6F4;border-left:3px solid var(--ink-soft);padding:10px 16px;margin:14px 0;font-size:16.5px}
+.part{margin:16px 0 4px;font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep)}
+.pide{display:inline-block;font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:1px 7px;margin-right:8px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:5px 11px;display:inline-block;margin-top:6px}
+.figlost{font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.04em;color:var(--warn);background:var(--warn-soft);border:1px dashed #E6C6BC;border-radius:3px;padding:1px 7px;margin-right:6px;white-space:nowrap}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.note{background:#EEF3F1;border:1px dashed var(--teal);border-radius:5px;padding:14px 18px;margin:16px 0;font-size:16px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<!-- rev 2026-10-31 11b · banco paper2 estacionarias+doppler (3) oficiales 2022-26 -->
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> C.4 + C.5 <span>//</span> MÓDULO 11B · TIPO 2 (PAPER 2)</p>
+  <h1>Estacionarias y Doppler <em>a fondo</em></h1>
+  <p class="lede">Ficha real DMpA 23 del proyecto (cuatro preguntas PHYSI SP2 resueltas), más onda estacionaria en cuerda, columna de aire resonante (análisis de datos), resonancia y amortiguamiento, y Doppler de la luz (astronomía) y del sonido. Cinco problemas Paper 2 originales y ocho extra con resolución oculta y verificada.</p>
+  <div class="stats">
+    <div class="stat"><b>4+5</b><span>resueltos (DMpA 23 + orig.)</span></div>
+    <div class="stat"><b>3</b><span>Paper 2 oficiales 22–26</span></div>
+    <div class="stat"><b>8</b><span>para practicar</span></div>
+    <div class="stat"><b>Paper 2</b><span>respuesta larga</span></div>
+    <div class="stat"><b>v ≈ 340</b><span>m·s⁻¹ (sonido)</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#estrategia">0 · Método para tipo 2</a>
+  <a href="#dmpa23">★ Ficha real · DMpA 23</a>
+  <a href="#p1">1 · Onda estacionaria en cuerda</a>
+  <a href="#p2">2 · Tubo resonante (datos)</a>
+  <a href="#p3">3 · Resonancia y amortiguamiento</a>
+  <a href="#p4">4 · Doppler de la luz</a>
+  <a href="#p5">5 · Doppler del sonido (NS)</a>
+  <a href="#examenes">★ Banco Paper 2 · 2022–26</a>
+  <a href="#extra">Problemas extra para ti</a>
+  <a href="#practica2">Práctica extra · Paper 2</a>
+</nav>
+
+<main>
+
+<div class="wrap" style="padding:0"><div class="note"><strong>Nota:</strong> la <strong>Sección ★ (Ficha real · DMpA 23)</strong> contiene las preguntas de examen oficial del proyecto (M07, N08, N04, N07 · PHYSI SP2), resueltas apartado por apartado y <strong>visibles</strong>. Donde la pregunta depende de una gráfica o un dibujo que no se conserva, verás el marcador <span class="figlost">▲ FIGURA</span> y se da <strong>solo el método</strong> (no se inventan lecturas). Los problemas P1–P5 y los extra E1–E8 son originales, con el formato y el nivel del Paper 2 del IB.</div></div>
+
+<!-- ESTRATEGIA -->
+<section id="estrategia">
+  <p class="sec-num">SECCIÓN 00 · LO QUE FALTA PARA TIPO 2</p>
+  <h2>Método para respuesta larga<span class="rule"></span></h2>
+  <p class="sec-intro">La teoría es la del 11A. El tipo 2 pide contar nodos/antinodos con cuidado, usar el <strong>método de las dos resonancias</strong>, y aplicar Doppler eligiendo bien la fórmula.</p>
+  <div class="box key"><span class="lbl">Los 5 gestos del tipo 2</span>
+    <ol>
+      <li><strong>Dibuja el modo</strong> y cuenta: extremos fijos/cerrados = nodo, libres/abiertos = antinodo; de ahí saca λ en función de L.</li>
+      <li><strong>Dos resonancias consecutivas:</strong> \(L_2-L_1=\lambda/2\) — elimina la corrección de extremo del tubo.</li>
+      <li><strong>Doppler luz:</strong> \(\dfrac{\Delta\lambda}{\lambda}=\dfrac{v}{c}\); en un radar el reflejo <strong>duplica</strong> el corrimiento.</li>
+      <li><strong>Doppler sonido (NS):</strong> decide primero si sube o baja (acercarse = sube), y usa la fórmula de fuente o de observador según quién se mueva.</li>
+      <li><strong>Cualitativo:</strong> explica por qué la estacionaria no transfiere energía, la coherencia de las dos ondas, y la resonancia útil/destructiva.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- DMpA 23 · FICHA REAL DEL PROYECTO -->
+<section id="dmpa23">
+  <p class="sec-num">★ FICHA OFICIAL DEL PROYECTO · DMpA 23 · EJERCICIOS TIPO 2</p>
+  <h2>Preguntas de examen IB resueltas<span class="rule"></span></h2>
+  <p class="sec-intro">Cuatro preguntas Paper 2 reales (PHYSI SP2) sobre ondas, estacionarias y tubos, tomadas de la ficha DMpA 23 del proyecto. Resueltas apartado por apartado. El marcador <span class="figlost">▲ FIGURA</span> señala apartados que dependen de una gráfica o dibujo que no se conserva: ahí se da <strong>el método exacto</strong>, no una lectura inventada.</p>
+
+  <!-- M07 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">DMpA 23 · M07 SP2 · olas en una cuerda</span><h3>Onda viajera, reflexión y estacionaria</h3></div>
+    <div class="pb-body">
+      <div class="enun">Se crea una onda viajera en una cuerda. El <strong>Gráfico 1</strong> muestra la variación del desplazamiento \(y\) de un punto con el <strong>tiempo</strong> \(t\); el <strong>Gráfico 2</strong>, la variación de \(y\) con la <strong>distancia</strong> \(x\) en \(t=0\).</div>
+
+      <p class="part">(a)(i) <span class="pide">calcule</span> la longitud de onda. <span class="figlost">▲ FIGURA · Gráfico 2</span></p>
+      <p><strong>Método:</strong> \(\lambda\) se lee <em>directamente</em> del Gráfico 2 (eje \(x\)): es la distancia de un ciclo completo (de cresta a cresta, o de un cruce por cero al segundo cruce en el mismo sentido).</p>
+
+      <p class="part">(a)(ii) <span class="pide">calcule</span> la frecuencia. <span class="figlost">▲ FIGURA · Gráfico 1</span></p>
+      <p><strong>Método:</strong> del Gráfico 1 (eje \(t\)) se lee el <strong>período</strong> \(T\) (un ciclo completo en el tiempo); luego \(f=\dfrac{1}{T}\). <em>(No confundir ejes: \(\lambda\) sale del gráfico en \(x\); \(T\) del gráfico en \(t\).)</em></p>
+
+      <p class="part">(a)(iii) <span class="pide">calcule</span> la velocidad de la ola. <span class="figlost">▲ FIGURA</span></p>
+      <p><strong>Método:</strong> \(v=f\lambda=\dfrac{\lambda}{T}\) con los valores leídos en (a)(i) y (a)(ii).</p>
+
+      <p class="part">(b)(i) <span class="pide">dibuje</span> la amplitud en el Gráfico 1. <span class="figlost">▲ FIGURA</span></p>
+      <p><strong>Método:</strong> segmento vertical desde el eje (\(y=0\)) hasta una cresta (desplazamiento máximo), rotulado \(A\). La amplitud es la <em>distancia del eje al pico</em>, no de pico a valle.</p>
+
+      <p class="part">(b)(ii) <span class="pide">dibuje</span> el desplazamiento de la cuerda en \(t=\tfrac{T}{4}\). <span class="figlost">▲ FIGURA</span></p>
+      <p><strong>Método:</strong> la onda viaja hacia la derecha, así que todo el perfil del Gráfico 2 se <strong>desplaza a la derecha</strong> una distancia \(\lambda/4\) (un cuarto de ciclo). Se redibuja la misma curva corrida \(\lambda/4\) a la derecha.</p>
+
+      <p class="part">(c)(i) <span class="pide">dibuje</span> el pulso tras reflejarse en la pared fija. <span class="figlost">▲ FIGURA</span></p>
+      <p><strong>Método:</strong> el pulso vuelve <strong>invertido</strong> (boca abajo), con la <strong>misma forma y tamaño</strong>, viajando hacia la izquierda.</p>
+
+      <p class="part">(c)(ii) <span class="pide">explique</span> el pulso reflejado con la 3.ª ley de Newton.</p>
+      <p>En el extremo fijo la cuerda ejerce una fuerza (hacia arriba) sobre la pared; por la <strong>tercera ley de Newton</strong>, la pared ejerce sobre la cuerda una fuerza <strong>igual y opuesta</strong> (hacia abajo). Esa reacción tira de la cuerda en sentido contrario al del pulso incidente, de modo que el pulso reflejado sale <strong>invertido</strong> (cambio de fase de \(\pi\)). Su tamaño es prácticamente el mismo porque la pared es rígida y no absorbe energía.</p>
+
+      <p class="part">(d)(i) <span class="pide">explique</span> la formación de la onda estacionaria (principio de superposición).</p>
+      <p>La onda incidente y la reflejada tienen <strong>igual frecuencia, longitud de onda y amplitud</strong> pero viajan en <strong>sentidos opuestos</strong>. Por el principio de superposición, en cada punto los desplazamientos se <strong>suman</strong>. Donde las dos ondas están siempre en antifase, el resultante es permanentemente cero → <strong>nodos</strong>; donde están siempre en fase, la amplitud es máxima → <strong>antinodos</strong>. El patrón resultante no avanza por la cuerda: es una onda estacionaria.</p>
+
+      <p class="part">(d)(ii) <span class="pide">calcule</span> \(f\) si \(L=3{,}0\) m, usando \(v\) de (a)(iii). <span class="figlost">▲ FIGURA · diagrama del modo</span></p>
+      <p><strong>Método:</strong> en la cuerda fija–fija, si el diagrama muestra \(n\) vientres (bucles): \(\lambda_n=\dfrac{2L}{n}=\dfrac{6{,}0}{n}\). Entonces \(f=\dfrac{v}{\lambda_n}=\dfrac{n\,v}{2L}=\dfrac{n\,v}{6{,}0}\), con \(v\) de (a)(iii). (Basta contar los bucles del diagrama y sustituir.)</p>
+    </div>
+  </div>
+
+  <!-- N08 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">DMpA 23 · N08 SP2 · movimiento ondulatorio</span><h3>Viajera vs estacionaria; la cuerda genera sonido</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una onda viaja en una cuerda en la dirección \(x\). Dos gráficos muestran \(y\) frente a \(x\): el <strong>Gráfico 1</strong> en \(t=0\) y el <strong>Gráfico 2</strong> en \(t=0{,}20\) s. El período es <strong>mayor</strong> que \(0{,}20\) s.</div>
+
+      <p class="part">(a)(i) <span class="pide">determine</span> la amplitud. <span class="figlost">▲ FIGURA</span></p>
+      <p><strong>Método:</strong> desplazamiento máximo del eje, leído directamente en cualquiera de los dos gráficos.</p>
+
+      <p class="part">(a)(ii) <span class="pide">determine</span> la longitud de onda. <span class="figlost">▲ FIGURA</span></p>
+      <p><strong>Método:</strong> distancia de un ciclo completo en el eje \(x\).</p>
+
+      <p class="part">(a)(iii) <span class="pide">determine</span> la rapidez. <span class="figlost">▲ FIGURA</span></p>
+      <p><strong>Método:</strong> entre \(t=0\) y \(t=0{,}20\) s el perfil se corrió una distancia \(\Delta x\) (se lee el avance de una cresta). Como \(T>0{,}20\) s, ese avance es <em>menor</em> que \(\lambda\), de modo que la cresta que se ve en el Gráfico 2 es la misma corrida \(\Delta x\). Entonces \(v=\dfrac{\Delta x}{0{,}20}\).</p>
+
+      <p class="part">(a)(iv) <span class="pide">determine</span> la frecuencia.</p>
+      <p><strong>Método:</strong> con \(v\) y \(\lambda\) ya obtenidos, \(f=\dfrac{v}{\lambda}\). <em>(Equivale a \(f=1/T\), y debe cumplir \(T>0{,}20\) s.)</em></p>
+
+      <p class="part">(b) <span class="pide">indique</span> dos diferencias entre onda viajera y estacionaria.</p>
+      <ol>
+        <li>La viajera <strong>transporta energía</strong> en su dirección de avance; la estacionaria <strong>no transfiere energía neta</strong> (queda confinada).</li>
+        <li>En la viajera todos los puntos tienen la <strong>misma amplitud</strong>; en la estacionaria la amplitud <strong>varía con la posición</strong> (cero en los nodos, máxima en los antinodos). <em>(También válido: la estacionaria tiene nodos/antinodos fijos; la viajera no.)</em></li>
+      </ol>
+
+      <p class="part">(c)(i) <span class="pide">explique</span> qué es la velocidad de onda en una <strong>onda viajera</strong>.</p>
+      <p>Es la rapidez con que avanza un punto de fase constante (el frente de onda y, con él, la energía) por el medio: \(v=f\lambda\).</p>
+
+      <p class="part">(c)(ii) <span class="pide">explique</span> qué es la velocidad de onda en una <strong>onda estacionaria</strong>.</p>
+      <p>El patrón estacionario <strong>no se traslada</strong>, así que la "velocidad de onda" se refiere a la rapidez de las <strong>dos ondas viajeras componentes</strong> que, al superponerse, lo forman (\(v=f\lambda\) de esas ondas). El perfil de la estacionaria permanece fijo en el espacio.</p>
+
+      <p class="part">(d)(i) <span class="pide">explique</span> cómo la estacionaria crea una onda sonora.</p>
+      <p>La cuerda vibrante (sobre todo en los antinodos) empuja el aire contiguo de un lado a otro, generando <strong>compresiones y rarefacciones</strong> que se propagan como una onda sonora <strong>longitudinal</strong>, con la misma frecuencia que la vibración de la cuerda.</p>
+
+      <p class="part">(d)(ii) <span class="pide">calcule</span> \(\lambda_{\text{sonido}}\). Datos: \(v_{\text{sonido}}=340\), \(L=0{,}80\) m, \(v_{\text{cuerda}}=240\) m·s⁻¹. <span class="figlost">▲ FIGURA · diagrama del modo</span></p>
+      <p><strong>Método:</strong> del diagrama de la cuerda (fija–fija, \(n\) vientres) se obtiene \(\lambda_{\text{cuerda}}=\dfrac{2L}{n}\); la frecuencia es \(f=\dfrac{v_{\text{cuerda}}}{\lambda_{\text{cuerda}}}\); el sonido tiene <strong>la misma \(f\)</strong>, así que \(\lambda_{\text{sonido}}=\dfrac{v_{\text{sonido}}}{f}\).</p>
+      <p><strong>Caso del examen</strong> (el diagrama muestra <strong>2 vientres</strong>): \(\lambda_{\text{cuerda}}=\dfrac{2(0{,}80)}{2}=0{,}80\) m; \(f=\dfrac{240}{0{,}80}=300\) Hz; \(\lambda_{\text{sonido}}=\dfrac{340}{300}=1{,}13\) m. <span class="ans">λ_sonido ≈ 1,1 m (f = 300 Hz)</span></p>
+    </div>
+  </div>
+
+  <!-- N04 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">DMpA 23 · N04 SP2 · estacionarias en tubos</span><h3>Tubo abierto vs tubo cerrado por un extremo</h3></div>
+    <div class="pb-body">
+      <div class="enun">Dos tubos de igual longitud: el <strong>tubo A</strong> abierto por ambos extremos y el <strong>tubo B</strong> cerrado por uno. La frecuencia fundamental del tubo A es <strong>512 Hz</strong>. Velocidad del sonido \(=325\) m·s⁻¹.</div>
+
+      <p class="part">(a) <span class="pide">dibuje</span> el primer armónico y rotule nodos (N) y antinodos (A). <span class="figlost">▲ FIGURA</span></p>
+      <p><strong>Método:</strong> <strong>Tubo A (abierto–abierto):</strong> antinodo en cada extremo abierto y un nodo en el centro → medio patrón, \(L=\lambda/2\) (A–N–A). <strong>Tubo B (cerrado–abierto):</strong> nodo en el extremo cerrado y antinodo en el abierto → un cuarto de patrón, \(L=\lambda/4\) (N–A).</p>
+
+      <p class="part">(b)(i) <span class="pide">calcule</span> la longitud del tubo A.</p>
+      <p>Abierto–abierto, fundamental: \(L=\dfrac{\lambda}{2}\) y \(\lambda=\dfrac{v}{f}=\dfrac{325}{512}=0{,}635\) m. Entonces \(L=\dfrac{0{,}635}{2}=0{,}317\) m. <span class="ans">L ≈ 0,32 m (31,7 cm)</span></p>
+
+      <p class="part">(b)(ii) <span class="pide">sugiera</span> por qué los tubos de frecuencia fundamental baja (≈ 32 Hz) suelen cerrarse por un extremo.</p>
+      <p>Un tubo cerrado–abierto tiene fundamental \(f=\dfrac{v}{4L}\), la <strong>mitad</strong> que un tubo abierto–abierto de igual longitud (\(\dfrac{v}{2L}\)). Por tanto, para producir una nota muy grave solo necesita <strong>la mitad de longitud</strong> que un tubo abierto: es más compacto y práctico de construir.</p>
+    </div>
+  </div>
+
+  <!-- N07 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">DMpA 23 · N07 SP2 · propiedades de las ondas</span><h3>Superposición en un punto y tubo con agua</h3></div>
+    <div class="pb-body">
+      <div class="enun">Dos ondas A y B pasan por un punto P. También: se hace sonar un diapasón sobre un tubo con agua; al bajar el nivel se oyen sonidos intensos (resonancias) sucesivos.</div>
+
+      <p class="part">(a)(i) <span class="pide">indique</span> qué entendemos por <strong>rayo</strong>.</p>
+      <p>Línea trazada en la <strong>dirección de propagación de la energía</strong> de la onda (perpendicular a los frentes de onda).</p>
+
+      <p class="part">(a)(ii) <span class="pide">indique</span> qué entendemos por <strong>rapidez de la onda</strong>.</p>
+      <p>Distancia que recorre un frente de onda (un punto de fase constante, es decir, la energía) por unidad de tiempo: \(v=f\lambda\).</p>
+
+      <p class="part">(b)(i) <span class="pide">calcule</span> la frecuencia de las ondas. <span class="figlost">▲ FIGURA</span></p>
+      <p><strong>Método:</strong> se lee el período \(T\) en el eje de tiempos de un gráfico \(x\)–\(t\); luego \(f=\dfrac{1}{T}\).</p>
+
+      <p class="part">(b)(ii) <span class="pide">determine</span> el desplazamiento resultante en P en \(t=1{,}0\) ms y \(t=8{,}0\) ms. <span class="figlost">▲ FIGURA</span></p>
+      <p><strong>Método:</strong> por superposición, \(y_R=x_A+x_B\). En cada instante se lee en cada gráfico el desplazamiento (<strong>con su signo</strong>) y se suman algebraicamente.</p>
+
+      <p class="part">(c)(i) <span class="pide">resuma</span> cómo se forma la onda estacionaria en el tubo.</p>
+      <p>El sonido del diapasón baja por el tubo y se <strong>refleja</strong> en la superficie del agua; la onda incidente y la reflejada (igual \(f\) y \(\lambda\), sentidos opuestos) se <strong>superponen</strong>. Cuando la columna de aire contiene un número impar de cuartos de longitud de onda, se forma un <strong>nodo en el agua</strong> y un <strong>antinodo en la boca</strong> → resonancia (sonido intenso).</p>
+
+      <p class="part">(c)(ii) <span class="pide">dibuje</span> la estacionaria y marque los nodos (N). <span class="figlost">▲ FIGURA</span></p>
+      <p><strong>Método:</strong> nodo (N) en la superficie del agua y antinodo en el extremo abierto; en el diagrama 3 (columna más larga) se dibuja el modo siguiente, añadiendo un nodo y un antinodo intermedios.</p>
+
+      <p class="part">(c)(iii) <span class="pide">calcule</span> la rapidez del sonido. Datos: entre las dos resonancias el nivel baja \(56\) cm; \(f=310\) Hz.</p>
+      <p>Entre dos resonancias consecutivas la columna crece \(\dfrac{\lambda}{2}\): \(\dfrac{\lambda}{2}=56\) cm → \(\lambda=112\) cm \(=1{,}12\) m. Entonces \(v=f\lambda=310\,(1{,}12)=347{,}2\) m·s⁻¹. <span class="ans">v ≈ 347 m·s⁻¹</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- P1 -->
+<section id="p1" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 1 · cuerda</span><h3>Onda estacionaria en una cuerda vibrante</h3></div>
+  <div class="pb-body">
+    <div class="enun">Una cuerda de 1,2 m fija en ambos extremos vibra en su <strong>tercer armónico</strong> a 150 Hz.</div>
+    <p class="part">(a) <span class="pide">dibuje</span> el modo y cuente nodos y antinodos.</p>
+    <p>Tercer armónico: 3 vientres ⇒ <strong>4 nodos</strong> (contando los dos extremos) y <strong>3 antinodos</strong>.</p>
+    <p class="part">(b) <span class="pide">determine</span> la longitud de onda y la rapidez de la onda.</p>
+    <p>\(\lambda_3=\dfrac{2L}{3}=\dfrac{2(1{,}2)}{3}=0{,}80\) m. \(v=f\lambda=150(0{,}80)=120\) m·s⁻¹. <span class="ans">λ = 0,80 m ; v = 120 m·s⁻¹</span></p>
+    <p class="part">(c) <span class="pide">calcule</span> la frecuencia del primer armónico.</p>
+    <p>\(f_1=\dfrac{f_3}{3}=\dfrac{150}{3}=50\) Hz (o \(f_1=\dfrac{v}{2L}=\dfrac{120}{2{,}4}=50\)). <span class="ans">f₁ = 50 Hz</span></p>
+    <p class="part">(d) <span class="pide">explique</span> por qué la onda estacionaria no transfiere energía a lo largo de la cuerda.</p>
+    <p>Se forma por dos ondas idénticas que viajan en sentidos opuestos y transportan energía en direcciones contrarias; sus flujos se cancelan. La energía queda confinada, oscilando entre cinética y potencial dentro de cada segmento nodo–nodo.</p>
+    <p class="part">(e) <span class="pide">describa</span> el movimiento de dos puntos del mismo segmento entre nodos.</p>
+    <p>Están <strong>en fase</strong>: alcanzan sus posiciones extremas a la vez y pasan por el equilibrio a la vez, aunque con <strong>distinta amplitud</strong> (mayor cerca del antinodo).</p>
+  </div>
+</section>
+
+<!-- P2 -->
+<section id="p2" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 2 · tubo + datos</span><h3>Medir la rapidez del sonido con un tubo resonante</h3></div>
+  <div class="pb-body">
+    <div class="enun">Un diapasón de 512 Hz se sostiene sobre un tubo cerrado por abajo cuya columna de aire se alarga con agua. Se registran las longitudes de las resonancias sucesivas: 15,8 cm, 49,0 cm, 82,2 cm.</div>
+    <p class="part">(a) <span class="pide">explique</span> por qué las resonancias aparecen a intervalos iguales.</p>
+    <p>Cada resonancia sucesiva añade medio patrón (un nodo y un antinodo más), es decir \(\lambda/2\); por eso la separación entre longitudes consecutivas es constante e igual a \(\lambda/2\).</p>
+    <p class="part">(b) <span class="pide">determine</span> la longitud de onda a partir de los datos.</p>
+    <p>Diferencias: \(49{,}0-15{,}8=33{,}2\) cm y \(82{,}2-49{,}0=33{,}2\) cm. Como \(\Delta L=\lambda/2\): \(\lambda=2(33{,}2)=66{,}4\) cm. <span class="ans">λ = 0,664 m</span></p>
+    <p class="part">(c) <span class="pide">calcule</span> la rapidez del sonido.</p>
+    <p>\(v=f\lambda=512(0{,}664)=340\) m·s⁻¹. <span class="ans">v ≈ 340 m·s⁻¹</span></p>
+    <p class="part">(d) <span class="pide">explique</span> por qué la primera resonancia NO ocurre exactamente en \(L=\lambda/4\).</p>
+    <p>El antinodo real se forma un poco <em>fuera</em> del extremo abierto (corrección de extremo). Usar la <strong>diferencia</strong> entre resonancias consecutivas elimina ese error sistemático, por eso ese método da un \(v\) más fiable que usar solo \(\lambda/4\).</p>
+  </div>
+</section>
+
+<!-- P3 -->
+<section id="p3" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 3 · resonancia</span><h3>Oscilador forzado y amortiguamiento</h3></div>
+  <div class="pb-body">
+    <div class="enun">Un sistema masa-resorte con frecuencia natural 3,0 Hz se somete a una fuerza periódica de frecuencia variable, en presencia de rozamiento.</div>
+    <p class="part">(a) <span class="pide">defina</span> resonancia.</p>
+    <p>Estado en que la frecuencia de la fuerza impulsora coincide (o casi) con la frecuencia natural del sistema, produciendo la máxima transferencia de energía y la máxima amplitud de oscilación.</p>
+    <p class="part">(b) <span class="pide">dibuje</span> la curva amplitud–frecuencia impulsora para dos grados de amortiguamiento.</p>
+    <figure class="fig">
+      <svg viewBox="0 0 300 120" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="curva resonancia">
+        <line x1="40" y1="100" x2="290" y2="100" stroke="var(--ink)" stroke-width="1"/><line x1="40" y1="100" x2="40" y2="15" stroke="var(--ink)" stroke-width="1"/>
+        <path d="M50,95 Q145,90 158,25 Q170,90 285,93" fill="none" stroke="var(--teal)" stroke-width="2"/>
+        <path d="M50,97 Q145,92 162,55 Q182,93 285,95" fill="none" stroke="var(--amber)" stroke-width="1.6" stroke-dasharray="4 3"/>
+        <line x1="158" y1="100" x2="158" y2="20" stroke="var(--ink-soft)" stroke-dasharray="2 3"/>
+        <text x="150" y="114" font-family="IBM Plex Mono" font-size="9" fill="var(--ink-soft)">3,0 Hz</text>
+      </svg>
+      <figcaption>Poco amortiguamiento (teal): pico alto y estrecho. Más amortiguamiento (ámbar): pico bajo, ancho y corrido.</figcaption>
+    </figure>
+    <p class="part">(c) <span class="pide">describa</span> el efecto de aumentar el amortiguamiento.</p>
+    <p>Baja la amplitud máxima, ensancha el pico y corre la frecuencia de resonancia ligeramente por debajo de la natural.</p>
+    <p class="part">(d) <span class="pide">distinga</span> subamortiguamiento, amortiguamiento crítico y sobreamortiguamiento.</p>
+    <p><strong>Sub:</strong> oscila varias veces con amplitud decreciente. <strong>Crítico:</strong> vuelve al equilibrio en el menor tiempo posible sin oscilar. <strong>Sobre:</strong> vuelve al equilibrio sin oscilar, pero más lentamente que el crítico.</p>
+    <p class="part">(e) <span class="pide">dé</span> un ejemplo útil y uno destructivo de resonancia.</p>
+    <p>Útil: la caja de resonancia de una guitarra amplifica el sonido; sintonizar una radio. Destructivo: un sismo que hace resonar un edificio, o el viento sobre un puente.</p>
+  </div>
+</section>
+
+<!-- P4 -->
+<section id="p4" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 4 · Doppler luz</span><h3>Corrimiento espectral de una galaxia</h3></div>
+  <div class="pb-body">
+    <div class="enun">Una línea del hidrógeno cuya longitud de onda en el laboratorio es 434,0 nm se observa en una galaxia a 448,0 nm. \(c=3{,}0\times10^{8}\).</div>
+    <p class="part">(a) <span class="pide">indique</span> si es corrimiento al rojo o al azul.</p>
+    <p>La longitud de onda aumentó (434 → 448 nm) ⇒ <strong>corrimiento al rojo</strong>: la galaxia se aleja.</p>
+    <p class="part">(b) <span class="pide">determine</span> la velocidad de recesión.</p>
+    <p>\(\dfrac{\Delta\lambda}{\lambda}=\dfrac{448{,}0-434{,}0}{434{,}0}=\dfrac{14{,}0}{434{,}0}=0{,}0323\). \(v=c\dfrac{\Delta\lambda}{\lambda}=3{,}0\times10^{8}(0{,}0323)=9{,}7\times10^{6}\) m·s⁻¹. <span class="ans">v ≈ 9,7×10⁶ m·s⁻¹</span></p>
+    <p class="part">(c) <span class="pide">explique</span> qué revelan estos desplazamientos sobre el universo.</p>
+    <p>Cuanto más lejana la galaxia, mayor su corrimiento al rojo (ley de Hubble): casi todas se alejan, lo que evidencia que el <strong>universo se expande</strong>.</p>
+    <p class="part">(d) <span class="pide">justifique</span> por qué se usa la fórmula aproximada.</p>
+    <p>Porque \(v\ll c\) (aquí \(v/c\approx0{,}03\)): en ese régimen \(\dfrac{\Delta\lambda}{\lambda}\approx\dfrac{v}{c}\) es una excelente aproximación de la expresión relativista completa.</p>
+  </div>
+</section>
+
+<!-- P5 -->
+<section id="p5" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 5 · Doppler sonido <span class="hl-tag">NS</span></span><h3>Sirena en movimiento</h3></div>
+  <div class="pb-body">
+    <div class="enun">Un coche de policía con sirena de 750 Hz se mueve por una calle recta a 20 m·s⁻¹. Un peatón está quieto en la acera. v_sonido = 340 m·s⁻¹.</div>
+    <p class="part">(a) <span class="pide">explique</span> cualitativamente por qué el peatón oye un cambio de tono al pasar el coche.</p>
+    <p>Al acercarse, los frentes de onda se comprimen delante del coche ⇒ menor λ ⇒ frecuencia mayor (más agudo). Al alejarse, los frentes se estiran ⇒ mayor λ ⇒ frecuencia menor (más grave). El tono cae al pasar.</p>
+    <p class="part">(b) <span class="pide">calcule</span> la frecuencia oída mientras el coche se acerca.</p>
+    <p>Fuente que se acerca: \(f'=f\dfrac{v}{v-u_s}=750\dfrac{340}{340-20}=750\dfrac{340}{320}=797\) Hz. <span class="ans">≈ 797 Hz</span></p>
+    <p class="part">(c) <span class="pide">calcule</span> la frecuencia oída cuando se aleja.</p>
+    <p>\(f'=750\dfrac{340}{340+20}=750\dfrac{340}{360}=708\) Hz. <span class="ans">≈ 708 Hz</span></p>
+    <p class="part">(d) <span class="pide">determine</span> el cambio total de frecuencia que percibe el peatón al pasar el coche.</p>
+    <p>\(\Delta f=797-708=89\) Hz. <span class="ans">≈ 89 Hz de caída</span></p>
+    <p class="part">(e) <span class="pide">indique</span> una aplicación médica del efecto Doppler.</p>
+    <p>La ecografía Doppler mide la velocidad del flujo sanguíneo a partir del corrimiento de frecuencia del ultrasonido reflejado por los glóbulos rojos.</p>
+  </div>
+</section>
+
+<!-- BANCO PAPER 2 OFICIALES -->
+<section id="examenes">
+  <p class="sec-num">SECCIÓN ★ · BANCO DE EXÁMENES OFICIALES · PAPER 2 (2022–2026)</p>
+  <h2>Paper 2 oficiales de estacionarias y Doppler<span class="rule"></span></h2>
+  <p class="sec-intro">Tres preguntas reales del banco 2022–2026: onda estacionaria en una cuerda, onda estacionaria por reflexión (altavoz + placa) y el efecto Doppler (sonido y luz). Reescritas, resueltas apartado por apartado y <strong>verificadas contra el esquema oficial</strong>.</p>
+
+  <div class="pb"><div class="pb-head"><span class="code">Nov 2022 · SP2 · Q3 · PLAN ANTIGUO</span><h3>Onda estacionaria en una cuerda fija en ambos extremos</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una cuerda de \(0{,}80\) m fija en ambos extremos forma la onda estacionaria mostrada (tres husos / tercer armónico). P y Q son dos partículas de la cuerda. El periodo de P, leído de su gráfica desplazamiento–tiempo, es \(2{,}8\) ms.</div>
+      <figure class="fig"><svg viewBox="0 0 300 90" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="onda estacionaria 3 husos">
+        <line x1="20" y1="45" x2="280" y2="45" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
+        <path d="M20,45 Q63,12 106,45 Q150,78 193,45 Q237,12 280,45" fill="none" stroke="var(--teal)" stroke-width="2"/>
+        <path d="M20,45 Q63,78 106,45 Q150,12 193,45 Q237,78 280,45" fill="none" stroke="var(--teal)" stroke-width="1" stroke-dasharray="3 2"/>
+        <circle cx="63" cy="12" r="3" fill="var(--warn)"/><text x="58" y="9" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">P</text>
+        <circle cx="106" cy="45" r="3" fill="var(--amber)"/><text x="101" y="58" font-family="IBM Plex Mono" font-size="9" fill="var(--amber)">Q</text>
+      </svg><figcaption>Tres husos → λ = 2L/3. P es un vientre; Q, un nodo.</figcaption></figure>
+
+      <p class="part">(a)(i) <span class="pide">dibuje</span> el desplazamiento de Q frente al tiempo, comparado con P. [2]</p>
+      <p class="part">(a)(ii) <span class="pide">calcule</span> la rapidez de las ondas en la cuerda. [2]</p>
+      <p class="part">(b)(i) Se propone \(T=a\,c^2\) (T = tensión, c = rapidez). <span class="pide">determine</span> la unidad SI fundamental de \(a\). [2]</p>
+      <p class="part">(c) <span class="pide">distinga</span> una onda estacionaria de una viajera. [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <p><strong>(a)(i)</strong> Q está en un <strong>nodo</strong> situado en un huso distinto al de P: oscila <strong>en antifase</strong> con P (desfasada \(180^\circ\)) y con <strong>menor amplitud</strong> que P (que está en un vientre). <em>(En una onda estacionaria todos los puntos de un mismo huso están en fase; husos contiguos, en antifase.)</em></p>
+        <p><strong>(a)(ii)</strong> Tercer armónico: \(\lambda=\dfrac{2L}{3}=\dfrac{2(0{,}80)}{3}=0{,}53\) m. \(v=\dfrac{\lambda}{T}=\dfrac{0{,}53}{2{,}8\times10^{-3}}\). <span class="ans">v ≈ 190 m·s⁻¹</span></p>
+        <p><strong>(b)(i)</strong> \(a=\dfrac{T}{c^2}\). \([T]=\) N \(=\) kg·m·s⁻²; \([c^2]=\) m²·s⁻². \([a]=\dfrac{\text{kg·m·s}^{-2}}{\text{m}^2\text{s}^{-2}}=\) <span class="ans">kg·m⁻¹</span></p>
+        <p><strong>(c)</strong> En una <strong>viajera</strong> la energía se transporta y todos los puntos tienen igual amplitud (desfasados); en una <strong>estacionaria</strong> no hay transporte neto de energía, la amplitud varía a lo largo (nodos y vientres) y los puntos entre nodos oscilan en fase. ∎</p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:6px"><b>Verificado</b> · Physics_paper_2__SL_markscheme (N22/TZ0): (a)(i) antifase y menor amplitud · (a)(ii) λ=2(0,80)/3=0,53 m, v=190 m s⁻¹ · (b)(i) kg m⁻¹ · (c) transporte de energía / amplitud constante vs nodos-vientres.</p>
+      </div></details>
+    </div>
+  </div>
+
+  <div class="pb"><div class="pb-head"><span class="code">May 2022 · TZ2 · SP2 · Q3 · PLAN ANTIGUO</span><h3>Altavoz y placa metálica: onda estacionaria por reflexión</h3></div>
+    <div class="pb-body">
+      <div class="enun">Un altavoz emite sonido de frecuencia \(f\) hacia una placa metálica que lo refleja. Un micrófono se mueve por la línea placa–altavoz y detecta una intensidad que varía regularmente entre máximos y mínimos. Rapidez del sonido \(=340\) m·s⁻¹.</div>
+      <figure class="fig"><svg viewBox="0 0 290 80" width="270" xmlns="http://www.w3.org/2000/svg" aria-label="altavoz y placa">
+        <rect x="18" y="28" width="18" height="26" fill="var(--teal-deep)"/><text x="10" y="70" font-family="IBM Plex Mono" font-size="8" fill="var(--ink-soft)">altavoz</text>
+        <rect x="258" y="18" width="8" height="46" fill="var(--ink-soft)"/><text x="238" y="74" font-family="IBM Plex Mono" font-size="8" fill="var(--ink-soft)">placa</text>
+        <path d="M40,41 H250" stroke="var(--amber)" stroke-width="1"/>
+        <g fill="var(--teal)"><circle cx="70" cy="41" r="2.5"/><circle cx="118" cy="41" r="2.5"/><circle cx="166" cy="41" r="2.5"/><circle cx="214" cy="41" r="2.5"/></g>
+        <text x="150" y="30" font-family="IBM Plex Mono" font-size="8" fill="var(--teal)">nodos cada λ/2</text>
+      </svg><figcaption>Onda incidente + reflejada = estacionaria; mínimos (nodos) separados λ/2.</figcaption></figure>
+
+      <p class="part">(a)(i) <span class="pide">explique</span> la variación de intensidad. [3]</p>
+      <p class="part">(a)(ii) Mínimos contiguos distan \(0{,}12\) m. <span class="pide">calcule</span> \(f\). [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <p><strong>(a)(i)</strong> La onda incidente del altavoz y la <strong>reflejada</strong> en la placa se <strong>superponen</strong> y forman una <strong>onda estacionaria</strong>. En los <strong>vientres</strong> (antinodos) la interferencia es constructiva → intensidad máxima (sonido fuerte); en los <strong>nodos</strong>, destructiva → intensidad mínima. Al moverse, el micrófono pasa por nodos y vientres alternados.</p>
+        <p><strong>(a)(ii)</strong> La distancia entre mínimos (nodos) consecutivos es \(\dfrac{\lambda}{2}=0{,}12\Rightarrow\lambda=0{,}24\) m. \(f=\dfrac{v}{\lambda}=\dfrac{340}{0{,}24}=1417\). <span class="ans">f ≈ 1,4×10³ Hz (1,4 kHz)</span></p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:6px"><b>Verificado</b> · Physics_paper_2__TZ2_SL_markscheme (M22/TZ2): (a)(i) incidente + reflejada → estacionaria; vientres máx, nodos mín · (a)(ii) λ = 0,24 m, f = 1,4 kHz.</p>
+      </div></details>
+    </div>
+  </div>
+
+  <div class="pb"><div class="pb-head"><span class="code">May 2025 · TZ3 · SP2 · Q2(b) · PLAN NUEVO</span><h3>Efecto Doppler: sonido (coche entre dos fuentes) y luz (galaxia)</h3></div>
+    <div class="pb-body">
+      <div class="enun">(i) Un coche se mueve a velocidad constante entre dos fuentes de sonido A y B que emiten a \(440\) Hz y \(540\) Hz. El conductor oye ambos sonidos con la <strong>misma</strong> frecuencia. (ii) La luz de una galaxia muestra un pico en \(659{,}0\) nm; la misma transición del hidrógeno en el laboratorio da \(656{,}1\) nm. \(c=3{,}0\times10^{8}\) m·s⁻¹.</div>
+
+      <p class="part">(b)(i) <span class="pide">explique</span> qué frecuencia emite la fuente A. [1]</p>
+      <p class="part">(b)(ii) <span class="pide">calcule</span> la velocidad de la galaxia respecto a la Tierra. [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <p><strong>(b)(i)</strong> El conductor se <em>acerca</em> a una fuente (frecuencia oída sube) y se <em>aleja</em> de la otra (baja). Para oír las dos iguales, la que emite la frecuencia <strong>menor</strong> debe ser hacia la que se acerca. Por tanto <strong>A emite 440 Hz</strong> (su frecuencia percibida sube hasta igualar a la de B, percibida más baja; equivalentemente, la longitud de onda aparente de A disminuye). <span class="ans">A = 440 Hz</span></p>
+        <p><strong>(b)(ii)</strong> Corrimiento al rojo: \(\Delta\lambda=659{,}0-656{,}1=2{,}9\) nm. Doppler de la luz (no relativista): \(\dfrac{\Delta\lambda}{\lambda}=\dfrac{v}{c}\Rightarrow v=c\dfrac{\Delta\lambda}{\lambda}=3{,}0\times10^{8}\cdot\dfrac{2{,}9}{656{,}1}\). <span class="ans">v ≈ 1,3×10⁶ m·s⁻¹ (se aleja)</span></p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:6px"><b>Verificado</b> · Physics_paper_2_TZ3_SL_markscheme_1 (2225–6724M, TZ3): (b)(i) 440 Hz porque la frecuencia oída será mayor / λ aparente disminuye · (b)(ii) v = 1,33×10⁶ m s⁻¹ (= 0,00442 c). La parte (a), con las gráficas λ y T, se resuelve en el Módulo 10B.</p>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <p class="sec-num">PARA TI · RESUELVE ESTILO PAPER 2 Y ENVÍA EN BLOQUE</p>
+  <h2>5 problemas extra (integradores)<span class="rule"></span></h2>
+  <p class="sec-intro">Nuevos y de nivel creciente. Integran tensión de cuerda, modos de tubos, batidos, radar e incertidumbre. Resuélvelos primero como Paper 2 (apartado por apartado) y luego abre la resolución para verificar. v_sonido = 340 m·s⁻¹, c = 3,0×10⁸ m·s⁻¹.</p>
+
+  <div class="prob"><p class="pn">E1 · cuerda con tensión (integra ondas)</p><p>Una cuerda de 0,90 m y masa 3,6 g está fija en ambos extremos y tensada a 100 N. (a) Halla la masa por unidad de longitud y la rapidez de la onda (\(v=\sqrt{T/\mu}\)). (b) Halla la frecuencia del primer y segundo armónicos. (c) ¿A qué tensión debería subirse para que el primer armónico aumente un 20 %?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>\(\mu=\dfrac{m}{L}=\dfrac{3{,}6\times10^{-3}}{0{,}90}=4{,}0\times10^{-3}\) kg·m⁻¹. \(v=\sqrt{\dfrac{T}{\mu}}=\sqrt{\dfrac{100}{4{,}0\times10^{-3}}}=\sqrt{2{,}5\times10^{4}}=158\) m·s⁻¹. <span class="ans">μ = 4,0×10⁻³ kg·m⁻¹ ; v ≈ 158 m·s⁻¹</span></p>
+      <p class="part">(b)</p><p>Fija–fija: \(f_1=\dfrac{v}{2L}=\dfrac{158}{1{,}80}=88\) Hz; \(f_2=2f_1=176\) Hz. <span class="ans">f₁ ≈ 88 Hz ; f₂ ≈ 176 Hz</span></p>
+      <p class="part">(c)</p><p>Como \(f_1\propto\sqrt{T}\): \(\sqrt{T'/T}=1{,}20\Rightarrow T'=1{,}20^{2}\,T=1{,}44(100)=144\) N. <span class="ans">T′ = 144 N</span></p>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">E2 · tubo con un extremo tapado</p><p>Un tubo abierto en ambos extremos tiene su primer armónico a 200 Hz. (a) Halla su longitud (v = 340 m·s⁻¹). (b) Si se tapa un extremo, halla el nuevo primer armónico. (c) Lista las tres frecuencias más bajas que puede producir el tubo tapado y explica por qué faltan los pares.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>Abierto–abierto: \(f_1=\dfrac{v}{2L}\Rightarrow L=\dfrac{v}{2f_1}=\dfrac{340}{2(200)}=0{,}85\) m. <span class="ans">L = 0,85 m</span></p>
+      <p class="part">(b)</p><p>Al tapar un extremo (cerrado–abierto): \(f_1'=\dfrac{v}{4L}=\dfrac{340}{4(0{,}85)}=100\) Hz (la mitad del fundamental abierto). <span class="ans">f₁′ = 100 Hz</span></p>
+      <p class="part">(c)</p><p>Solo armónicos impares: \(f=(2n-1)\dfrac{v}{4L}\) ⇒ 100 Hz, 300 Hz, 500 Hz. Faltan 200 y 400 Hz (los pares) porque el extremo cerrado debe ser nodo y el abierto antinodo, y esa condición solo cabe en múltiplos impares de \(\lambda/4\). <span class="ans">100, 300, 500 Hz</span></p>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">E3 · identificar el modo de un tubo</p><p>Un tubo cerrado por un extremo y abierto por el otro mide 0,68 m. v = 340 m·s⁻¹. (a) Halla la frecuencia fundamental. (b) Un parlante lo hace resonar con fuerza a 625 Hz: identifica el armónico (modo) y cuenta los nodos y antinodos de la columna de aire. (c) Explica por qué el tubo no puede resonar a 250 Hz.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>Cerrado–abierto: \(f_1=\dfrac{v}{4L}=\dfrac{340}{4(0{,}68)}=\dfrac{340}{2{,}72}=125\) Hz. <span class="ans">f₁ = 125 Hz</span></p>
+      <p class="part">(b)</p><p>\(\dfrac{625}{125}=5\) ⇒ <strong>quinto armónico</strong> (tercer modo resonante, \(2n-1=5\Rightarrow n=3\)). La columna mide \(5\lambda/4\): <strong>3 nodos</strong> (incluido el extremo cerrado) y <strong>3 antinodos</strong> (incluido el extremo abierto). <span class="ans">5.º armónico</span></p>
+      <p class="part">(c)</p><p>\(250=2\times125\) sería el segundo armónico (par). Un tubo cerrado–abierto solo admite armónicos impares, así que no resuena a 250 Hz. <span class="ans">armónico par: imposible</span></p>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">E4 · dos diapasones y batidos (más allá)</p><p>Dos diapasones de 440 Hz y 444 Hz suenan juntos. (a) Explica qué son los batidos. (b) Halla la frecuencia de batido. (c) Si a uno se le pega un poco de cera (baja su frecuencia), ¿cómo cambia el número de batidos por segundo? Justifica.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>Los batidos son la variación periódica de la intensidad (el volumen sube y baja) al superponerse dos ondas de frecuencias ligeramente distintas: alternan interferencia constructiva y destructiva.</p>
+      <p class="part">(b)</p><p>\(f_{\text{bat}}=|f_2-f_1|=|444-440|=4\) Hz. <span class="ans">4 Hz (4 batidos por segundo)</span></p>
+      <p class="part">(c)</p><p>La cera baja la frecuencia del diapasón al que se aplica. Si se pega al de 444 Hz, su frecuencia se acerca a 440 ⇒ la diferencia disminuye ⇒ <strong>menos</strong> batidos por segundo. Si se pega al de 440 Hz, se aleja de 444 ⇒ la diferencia aumenta ⇒ <strong>más</strong> batidos. (Así se identifica cuál diapasón es cuál.) <span class="ans">depende del diapasón: baja o sube</span></p>
+    </div></details>
+  </div>
+  <div class="prob jefe"><p class="pn">E5 · INTEGRADOR (radar Doppler, supera IB)</p><p>Un radar policial emite microondas de 10,5 GHz hacia un auto que se acerca. La señal reflejada vuelve con una frecuencia 1750 Hz mayor. (a) Explica por qué el corrimiento es el doble del de una fuente que emite directamente. (b) Determina la rapidez del auto. (c) Comenta si el auto excede un límite de 25 m·s⁻¹.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>El auto recibe la onda como <strong>observador en movimiento</strong> que se acerca (ya la capta con frecuencia mayor) y luego la refleja como <strong>fuente en movimiento</strong> que se acerca al radar (vuelve a subir). El corrimiento se aplica dos veces, por eso es el doble: \(\Delta f=\dfrac{2fv}{c}\).</p>
+      <p class="part">(b)</p><p>\(v=\dfrac{c\,\Delta f}{2f}=\dfrac{(3{,}0\times10^{8})(1750)}{2(10{,}5\times10^{9})}=\dfrac{5{,}25\times10^{11}}{2{,}1\times10^{10}}=25\) m·s⁻¹. <span class="ans">v = 25 m·s⁻¹</span></p>
+      <p class="part">(c)</p><p>\(25\) m·s⁻¹ (= 90 km·h⁻¹) coincide exactamente con el límite: el auto está justo en el límite, no lo excede. <span class="ans">en el límite, no lo supera</span></p>
+    </div></details>
+  </div>
+  <div class="prob jefe"><p class="pn">E6 · PROBLEMA JEFE (medir v del sonido + Módulo 1, supera IB)</p><p>Con un tubo cerrado-abierto y un diapasón de \(f=(480\pm2)\ \mathrm{Hz}\) se miden dos resonancias consecutivas en \(L_1=(17{,}0\pm0{,}2)\ \mathrm{cm}\) y \(L_2=(52{,}4\pm0{,}2)\ \mathrm{cm}\). (a) Halla λ a partir de \(L_2-L_1=\lambda/2\), con su incertidumbre. (b) Determina \(v=f\lambda\) con su incertidumbre absoluta y porcentual. (c) Compara con 340 m·s⁻¹ dentro del error. (d) Explica por qué el método de dos resonancias es mejor que medir \(L=\lambda/4\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>\(\lambda=2(L_2-L_1)=2(52{,}4-17{,}0)=2(35{,}4)=70{,}8\) cm. Las incertidumbres de una resta se suman: \(\Delta(L_2-L_1)=0{,}2+0{,}2=0{,}4\) cm, luego \(\Delta\lambda=2(0{,}4)=0{,}8\) cm. <span class="ans">λ = (70,8 ± 0,8) cm = (0,708 ± 0,008) m</span></p>
+      <p class="part">(b)</p><p>\(v=f\lambda=480(0{,}708)=340\) m·s⁻¹. Incertidumbres relativas (producto): \(\dfrac{\Delta f}{f}=\dfrac{2}{480}=0{,}42\%\) y \(\dfrac{\Delta\lambda}{\lambda}=\dfrac{0{,}8}{70{,}8}=1{,}13\%\); suma \(\approx1{,}55\%\). \(\Delta v=0{,}0155(340)\approx5\) m·s⁻¹. <span class="ans">v = (340 ± 5) m·s⁻¹ (≈ 1,5 %)</span></p>
+      <p class="part">(c)</p><p>El valor aceptado 340 m·s⁻¹ cae dentro de (335, 345) m·s⁻¹: el resultado es <strong>consistente</strong> con 340 m·s⁻¹ dentro del error. <span class="ans">compatible</span></p>
+      <p class="part">(d)</p><p>Usar la <strong>diferencia</strong> de dos resonancias elimina la corrección de extremo (el antinodo se forma un poco fuera del tubo), un error sistemático. Medir solo \(L=\lambda/4\) incluye esa corrección y da λ —y por tanto v— demasiado pequeños.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E7 · Doppler del sonido (sirena + observador móvil)</p><p>La sirena de una ambulancia emite \(850\) Hz. \(v_{\text{sonido}}=340\) m·s⁻¹. (a) La ambulancia se <strong>acerca</strong> a un peatón quieto a \(30\) m·s⁻¹: halla la frecuencia oída. (b) Cuando se <strong>aleja</strong> a \(30\) m·s⁻¹: halla la frecuencia oída. (c) Ahora la ambulancia está <strong>quieta</strong> y es un ciclista quien se acerca a ella a \(30\) m·s⁻¹: halla la frecuencia que oye y compárala con (a). (d) ¿Cuál es el salto total de frecuencia que percibe el peatón cuando la ambulancia pasa de largo?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>Fuente que se acerca (observador quieto): \(f'=f\dfrac{v}{v-u_s}=850\dfrac{340}{340-30}=850\dfrac{340}{310}=932\) Hz. <span class="ans">≈ 932 Hz (más agudo)</span></p>
+      <p class="part">(b)</p><p>Fuente que se aleja: \(f'=850\dfrac{340}{340+30}=850\dfrac{340}{370}=781\) Hz. <span class="ans">≈ 781 Hz (más grave)</span></p>
+      <p class="part">(c)</p><p>Observador que se acerca (fuente quieta): \(f'=f\dfrac{v+u_o}{v}=850\dfrac{340+30}{340}=850\dfrac{370}{340}=925\) Hz. Da <strong>algo menos</strong> que los 932 Hz del caso (a): el efecto <strong>no es simétrico</strong>: a igual rapidez relativa, mover la fuente y mover el observador dan corrimientos distintos. <span class="ans">≈ 925 Hz (≠ 932 Hz)</span></p>
+      <p class="part">(d)</p><p>Al pasar de largo, el tono cae de 932 a 781 Hz: \(\Delta f=932-781=151\) Hz. <span class="ans">≈ 151 Hz de caída</span></p>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">E8 · Doppler de la luz (corrimiento estelar)</p><p>Una línea del hidrógeno tiene \(600{,}0\) nm en el laboratorio. \(c=3{,}0\times10^{8}\) m·s⁻¹. (a) En una estrella se observa a \(600{,}3\) nm: indica el tipo de corrimiento y halla la velocidad radial. (b) En otra estrella la misma línea aparece a \(599{,}7\) nm: ¿qué indica eso sobre su movimiento? (c) Justifica por qué es válido usar \(\dfrac{\Delta\lambda}{\lambda}=\dfrac{v}{c}\) en estos casos.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>\(600{,}3>600{,}0\) nm ⇒ <strong>corrimiento al rojo</strong> (la estrella se aleja). \(\dfrac{\Delta\lambda}{\lambda}=\dfrac{0{,}3}{600{,}0}=5{,}0\times10^{-4}\); \(v=c\dfrac{\Delta\lambda}{\lambda}=3{,}0\times10^{8}(5{,}0\times10^{-4})=1{,}5\times10^{5}\) m·s⁻¹. <span class="ans">rojo; v ≈ 1,5×10⁵ m·s⁻¹ (alejándose)</span></p>
+      <p class="part">(b)</p><p>\(599{,}7<600{,}0\) nm ⇒ <strong>corrimiento al azul</strong>: la estrella se <strong>acerca</strong>. El mismo cálculo (\(|\Delta\lambda|=0{,}3\) nm) da \(v=1{,}5\times10^{5}\) m·s⁻¹ hacia nosotros. <span class="ans">azul; v ≈ 1,5×10⁵ m·s⁻¹ (acercándose)</span></p>
+      <p class="part">(c)</p><p>Porque \(v\ll c\) (aquí \(v/c=5{,}0\times10^{-4}\)): en ese régimen no relativista \(\dfrac{\Delta\lambda}{\lambda}\approx\dfrac{v}{c}\) es una excelente aproximación. <span class="ans">v/c ≪ 1</span></p>
+    </div></details>
+  </div>
+</section>
+
+<!-- PRACTICA 2 · PAPER 2 TODO TIPO -->
+<section id="practica2">
+  <p class="sec-num">PARA TI · PAPER 2 · UN PROBLEMA DE CADA TIPO QUE SÍ CAE</p>
+  <h2>Práctica extra · Paper 2 (todo tipo)<span class="rule"></span></h2>
+  <p class="sec-intro">Seis problemas nuevos, estilo respuesta larga (multi-apartado, con "muestre que" y bosquejos de modos). Cubren exactamente los tipos evaluables: cuerda fija–fija, tubo abierto–abierto, tubo cerrado–abierto, tubo de resonancia con agua, Doppler del sonido (fuente y observador) y corrimiento al rojo. Resuélvelos primero y luego abre la resolución. v_sonido = 340 m·s⁻¹, c = 3,0×10⁸ m·s⁻¹.</p>
+
+  <!-- 1 cuerda fija-fija -->
+  <div class="prob"><p class="pn">1 · cuerda fija–fija</p><p>Una cuerda de guitarra de longitud \(L=0{,}64\) m está fija en ambos extremos; la rapidez de las ondas transversales en ella es \(320\) m·s⁻¹. (a) <strong>Muestre que</strong> la frecuencia fundamental es 250 Hz. (b) Dibuje el modo del <strong>segundo armónico</strong> e indique nodos (N) y antinodos (A); dé su longitud de onda y su frecuencia. (c) Determine la frecuencia del cuarto armónico. (d) Explique por qué la cuerda solo vibra en un conjunto discreto de frecuencias.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>Fija–fija, fundamental \(L=\lambda/2\Rightarrow\lambda_1=2L=1{,}28\) m. \(f_1=\dfrac{v}{2L}=\dfrac{320}{2(0{,}64)}=\dfrac{320}{1{,}28}=250\) Hz. <span class="ans">f₁ = 250 Hz</span></p>
+      <p class="part">(b)</p>
+      <figure class="fig">
+        <svg viewBox="0 0 300 80" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="segundo armónico en cuerda">
+          <line x1="30" y1="40" x2="270" y2="40" stroke="var(--ink-soft)" stroke-dasharray="2 3"/>
+          <path d="M30,40 Q90,12 150,40 Q210,68 270,40" fill="none" stroke="var(--teal)" stroke-width="2"/>
+          <path d="M30,40 Q90,68 150,40 Q210,12 270,40" fill="none" stroke="var(--teal)" stroke-width="2"/>
+          <circle cx="30" cy="40" r="2.6" fill="var(--warn)"/><circle cx="150" cy="40" r="2.6" fill="var(--warn)"/><circle cx="270" cy="40" r="2.6" fill="var(--warn)"/>
+          <text x="22" y="56" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">N</text><text x="146" y="56" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">N</text><text x="263" y="56" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">N</text>
+          <text x="86" y="12" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">A</text><text x="206" y="12" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">A</text>
+        </svg>
+        <figcaption>Segundo armónico: 2 vientres, 3 nodos (extremos + centro), 2 antinodos.</figcaption>
+      </figure>
+      <p>\(\lambda_2=\dfrac{2L}{2}=L=0{,}64\) m; \(f_2=2f_1=500\) Hz. <span class="ans">λ₂ = 0,64 m ; f₂ = 500 Hz ; 3 N, 2 A</span></p>
+      <p class="part">(c)</p><p>\(f_4=4f_1=4(250)=1000\) Hz. <span class="ans">f₄ = 1000 Hz</span></p>
+      <p class="part">(d)</p><p>Los extremos fijos deben ser nodos, así que solo caben las longitudes de onda con \(L=\dfrac{n\lambda}{2}\) (\(n\) entero): \(f_n=\dfrac{nv}{2L}\). Las demás frecuencias no cumplen la condición de contorno y no forman onda estacionaria estable.</p>
+    </div></details>
+  </div>
+
+  <!-- 2 tubo abierto-abierto -->
+  <div class="prob"><p class="pn">2 · tubo abierto–abierto</p><p>Un tubo de órgano abierto en ambos extremos mide \(L=0{,}50\) m. (a) <strong>Muestre que</strong> la frecuencia fundamental es 340 Hz. (b) Dibuje el fundamental (antinodos en los extremos) y dé su longitud de onda. (c) Halle las dos frecuencias resonantes siguientes. (d) Si el tubo se tapa por un extremo, ¿qué le pasa al fundamental? Justifique en una línea.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>Abierto–abierto, fundamental \(L=\lambda/2\Rightarrow\lambda_1=1{,}0\) m. \(f_1=\dfrac{v}{2L}=\dfrac{340}{2(0{,}50)}=\dfrac{340}{1{,}0}=340\) Hz. <span class="ans">f₁ = 340 Hz</span></p>
+      <p class="part">(b)</p>
+      <figure class="fig">
+        <svg viewBox="0 0 300 90" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="fundamental tubo abierto-abierto">
+          <line x1="30" y1="22" x2="270" y2="22" stroke="var(--ink)" stroke-width="1.4"/><line x1="30" y1="68" x2="270" y2="68" stroke="var(--ink)" stroke-width="1.4"/>
+          <path d="M30,30 Q90,33 150,45 Q210,33 270,30" fill="none" stroke="var(--teal)" stroke-width="2"/>
+          <path d="M30,60 Q90,57 150,45 Q210,57 270,60" fill="none" stroke="var(--teal)" stroke-width="2"/>
+          <circle cx="150" cy="45" r="2.6" fill="var(--warn)"/>
+          <text x="146" y="58" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">N</text>
+          <text x="26" y="18" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">A</text><text x="263" y="18" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">A</text>
+        </svg>
+        <figcaption>Abierto–abierto fundamental: antinodo en cada boca, un nodo central. \(L=\lambda/2\).</figcaption>
+      </figure>
+      <p>\(\lambda_1=2L=1{,}0\) m. <span class="ans">λ₁ = 1,0 m</span></p>
+      <p class="part">(c)</p><p>Admite todos los armónicos: \(f_2=2f_1=680\) Hz, \(f_3=3f_1=1020\) Hz. <span class="ans">680 Hz y 1020 Hz</span></p>
+      <p class="part">(d)</p><p>Cerrado–abierto: \(f_1'=\dfrac{v}{4L}=170\) Hz, la <strong>mitad</strong> (una octava más grave), porque ahora \(L=\lambda/4\).</p>
+    </div></details>
+  </div>
+
+  <!-- 3 tubo cerrado-abierto -->
+  <div class="prob"><p class="pn">3 · tubo cerrado–abierto (solo impares)</p><p>Un tubo cerrado por un extremo y abierto por el otro tiene su frecuencia fundamental en 170 Hz. (a) <strong>Muestre que</strong> su longitud es 0,50 m. (b) Dibuje el modo del <strong>tercer armónico</strong> e indique N y A; dé su frecuencia. (c) Liste las tres frecuencias resonantes más bajas y explique por qué faltan 340 Hz y 680 Hz.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>Cerrado–abierto, fundamental \(L=\lambda/4\) y \(f_1=\dfrac{v}{4L}\Rightarrow L=\dfrac{v}{4f_1}=\dfrac{340}{4(170)}=\dfrac{340}{680}=0{,}50\) m. <span class="ans">L = 0,50 m</span></p>
+      <p class="part">(b)</p>
+      <figure class="fig">
+        <svg viewBox="0 0 300 90" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="tercer armónico tubo cerrado-abierto">
+          <line x1="30" y1="22" x2="270" y2="22" stroke="var(--ink)" stroke-width="1.4"/><line x1="30" y1="68" x2="270" y2="68" stroke="var(--ink)" stroke-width="1.4"/><line x1="30" y1="22" x2="30" y2="68" stroke="var(--ink)" stroke-width="2.4"/>
+          <path d="M30,45 Q70,24 110,24 Q150,24 150,45 Q150,66 190,66 Q230,66 270,24" fill="none" stroke="var(--teal)" stroke-width="2"/>
+          <path d="M30,45 Q70,66 110,66 Q150,66 150,45 Q150,24 190,24 Q230,24 270,66" fill="none" stroke="var(--teal)" stroke-width="2"/>
+          <circle cx="30" cy="45" r="2.6" fill="var(--warn)"/><circle cx="150" cy="45" r="2.6" fill="var(--warn)"/>
+          <text x="22" y="58" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">N</text><text x="146" y="58" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">N</text>
+          <text x="104" y="18" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">A</text><text x="263" y="18" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">A</text>
+        </svg>
+        <figcaption>Tercer armónico (cerrado izq.): \(L=3\lambda/4\), nodo en el extremo cerrado, antinodo en el abierto → 2 N y 2 A.</figcaption>
+      </figure>
+      <p>\(f_3=3f_1=3(170)=510\) Hz; \(\lambda=\dfrac{4L}{3}=\dfrac{2{,}0}{3}=0{,}67\) m. <span class="ans">f₃ = 510 Hz ; 2 N, 2 A</span></p>
+      <p class="part">(c)</p><p>Solo armónicos impares: \(f=(2n-1)f_1\) → <strong>170, 510, 850 Hz</strong>. Faltan 340 y 680 Hz (pares) porque el extremo cerrado debe ser nodo y el abierto antinodo, condición que solo cabe en múltiplos impares de \(\lambda/4\). <span class="ans">170, 510, 850 Hz</span></p>
+    </div></details>
+  </div>
+
+  <!-- 4 tubo de resonancia con agua -->
+  <div class="prob"><p class="pn">4 · tubo de resonancia con agua (dos resonancias → v)</p><p>Un diapasón de 440 Hz se sostiene sobre un tubo vertical cuyo nivel de agua se varía. Se oyen resonancias sucesivas cuando la columna de aire mide \(L_1=18{,}0\) cm y \(L_2=56{,}5\) cm. (a) Explique por qué hay resonancia a esas longitudes. (b) <strong>Muestre que</strong> la rapidez del sonido es ≈ 339 m·s⁻¹. (c) Determine la corrección de extremo del tubo. (d) ¿Por qué usar la diferencia \(L_2-L_1\) da mejor resultado que usar \(L_1\) solo?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>En cada resonancia se forma un nodo en la superficie del agua (extremo cerrado) y un antinodo en la boca (extremo abierto); eso ocurre cuando la columna contiene un número impar de \(\lambda/4\). Entre resonancias consecutivas la columna crece \(\lambda/2\).</p>
+      <p class="part">(b)</p><p>\(\dfrac{\lambda}{2}=L_2-L_1=56{,}5-18{,}0=38{,}5\) cm \(\Rightarrow\lambda=77{,}0\) cm \(=0{,}770\) m. \(v=f\lambda=440(0{,}770)=338{,}8\approx339\) m·s⁻¹. <span class="ans">v ≈ 339 m·s⁻¹</span></p>
+      <p class="part">(c)</p><p>La primera resonancia "ideal" sería en \(\lambda/4=\dfrac{77{,}0}{4}=19{,}25\) cm, pero se observa a 18,0 cm. La corrección de extremo es \(e=\lambda/4-L_1=19{,}25-18{,}0=1{,}25\) cm. <span class="ans">e ≈ 1,3 cm</span></p>
+      <p class="part">(d)</p><p>El antinodo real se forma un poco <em>fuera</em> de la boca (esa corrección \(e\)). La resta \(L_2-L_1\) la cancela (aparece en ambas medidas), dando \(\lambda\) —y \(v\)— sin ese error sistemático.</p>
+    </div></details>
+  </div>
+
+  <!-- 5 Doppler sonido fuente y observador -->
+  <div class="prob"><p class="pn">5 · Doppler del sonido (fuente y observador)</p><p>Una fuente emite un sonido de 500 Hz. (a) La fuente se <strong>acerca</strong> a un observador quieto a 34 m·s⁻¹: <strong>muestre que</strong> este oye ≈ 556 Hz, y dibuje los frentes de onda. (b) Halle la frecuencia cuando la fuente se <strong>aleja</strong> a 34 m·s⁻¹. (c) Ahora la fuente está <strong>quieta</strong> y es el observador quien se acerca a 34 m·s⁻¹: halle la frecuencia y compárela con (a).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>Fuente que se acerca: \(f'=f\dfrac{v}{v-v_s}=500\dfrac{340}{340-34}=500\dfrac{340}{306}=556\) Hz. <span class="ans">≈ 556 Hz</span></p>
+      <figure class="fig">
+        <svg viewBox="0 0 300 120" width="290" xmlns="http://www.w3.org/2000/svg" aria-label="frentes de onda Doppler fuente móvil">
+          <circle cx="92" cy="60" r="50" fill="none" stroke="var(--teal)" stroke-width="1.4"/>
+          <circle cx="112" cy="60" r="38" fill="none" stroke="var(--teal)" stroke-width="1.4"/>
+          <circle cx="130" cy="60" r="26" fill="none" stroke="var(--teal)" stroke-width="1.4"/>
+          <circle cx="144" cy="60" r="14" fill="none" stroke="var(--teal)" stroke-width="1.4"/>
+          <circle cx="152" cy="60" r="3" fill="var(--warn)"/>
+          <line x1="156" y1="60" x2="186" y2="60" stroke="var(--warn)" stroke-width="1.6"/><path d="M186,60 l-6,-3 v6 z" fill="var(--warn)"/>
+          <text x="150" y="26" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">v_s →</text>
+          <text x="196" y="50" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">delante:</text><text x="196" y="62" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">λ↓ f↑ agudo</text>
+          <text x="6" y="50" font-family="IBM Plex Mono" font-size="9" fill="var(--ink-soft)">detrás:</text><text x="6" y="62" font-family="IBM Plex Mono" font-size="9" fill="var(--ink-soft)">λ↑ f↓ grave</text>
+        </svg>
+        <figcaption>La fuente avanza hacia sus propios frentes: se comprimen delante (λ menor, f mayor) y se estiran detrás.</figcaption>
+      </figure>
+      <p class="part">(b)</p><p>Fuente que se aleja: \(f'=500\dfrac{340}{340+34}=500\dfrac{340}{374}=455\) Hz. <span class="ans">≈ 455 Hz</span></p>
+      <p class="part">(c)</p><p>Observador que se acerca (fuente quieta): \(f'=f\dfrac{v+v_o}{v}=500\dfrac{340+34}{340}=500\dfrac{374}{340}=550\) Hz. Da <strong>algo menos</strong> que los 556 Hz de (a): a igual rapidez, mover la fuente y mover el observador <strong>no</strong> son equivalentes (el efecto es asimétrico). <span class="ans">≈ 550 Hz (≠ 556 Hz)</span></p>
+    </div></details>
+  </div>
+
+  <!-- 6 corrimiento al rojo -->
+  <div class="prob"><p class="pn">6 · corrimiento al rojo (Δλ/λ = v/c)</p><p>La línea \(H_\alpha\) del hidrógeno tiene \(\lambda_0=656{,}3\) nm en el laboratorio. En el espectro de un cuásar aparece en \(662{,}9\) nm. (a) Indique el tipo de corrimiento y qué implica sobre el movimiento del cuásar. (b) <strong>Muestre que</strong> su velocidad de recesión es ≈ 3,0×10⁶ m·s⁻¹. (c) Justifique por qué es válido usar \(\dfrac{\Delta\lambda}{\lambda}=\dfrac{v}{c}\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p><p>\(662{,}9>656{,}3\) nm: la longitud de onda aumentó ⇒ <strong>corrimiento al rojo</strong> ⇒ el cuásar se <strong>aleja</strong> de nosotros.</p>
+      <p class="part">(b)</p><p>\(\Delta\lambda=662{,}9-656{,}3=6{,}6\) nm. \(\dfrac{\Delta\lambda}{\lambda}=\dfrac{6{,}6}{656{,}3}=1{,}006\times10^{-2}\). \(v=c\dfrac{\Delta\lambda}{\lambda}=3{,}0\times10^{8}(1{,}006\times10^{-2})=3{,}0\times10^{6}\) m·s⁻¹. <span class="ans">v ≈ 3,0×10⁶ m·s⁻¹ (alejándose)</span></p>
+      <p class="part">(c)</p><p>Porque \(v\ll c\) (aquí \(v/c\approx0{,}01\)): en ese régimen no relativista \(\dfrac{\Delta\lambda}{\lambda}\approx\dfrac{v}{c}\) aproxima muy bien a la expresión relativista completa. <span class="ans">v/c ≪ 1</span></p>
+    </div></details>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 11B · Ondas estacionarias, sonido y Doppler Tipo 2 (Paper 2).</strong> Incluye la <strong>ficha real DMpA 23</strong> del proyecto (M07, N08, N04, N07 · PHYSI SP2) resuelta apartado por apartado —con método y marcador ▲ donde falta la figura—, más 5 problemas Paper 2 originales (cuerda, tubo resonante con datos, resonancia/amortiguamiento, Doppler de luz y de sonido) y 8 extra integradores (E1–E8, dos de ellos de Doppler). Con esto el tema queda completo (11A + 11B). Sigue el <strong>Módulo 12A — Hidrostática</strong>. Constantes: v_sonido ≈ 340 m·s⁻¹, c = 3,0×10⁸ m·s⁻¹.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

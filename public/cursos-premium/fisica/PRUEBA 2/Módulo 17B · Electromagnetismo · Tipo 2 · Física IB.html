@@ -1,0 +1,658 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 17B · Electromagnetismo · Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:62ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:54px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:28px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:14px 0;overflow-x:auto}
+.eqname{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--teal);letter-spacing:.06em;display:block;margin-top:4px}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.pb{border:1px solid var(--line);border-radius:5px;margin:22px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#F0F5F3,#FFFFFF);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.code{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px}
+.pb-head h3{margin:0;font-size:19px}
+.pb-body{padding:16px 20px 20px}
+.apt{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.04em;margin-top:12px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:6px 12px;display:inline-block;margin-top:8px}
+.flag{color:var(--warn);font-weight:600}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}td.l,th.l{text-align:left}
+.jefe .pb-head{background:linear-gradient(180deg,#EDE6F2,#FFF)}.jefe .code{background:var(--hl)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:16px;margin:16px 0;text-align:center}
+.fig svg{max-width:100%;height:auto}.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:8px}
+details.rev{margin-top:14px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN (apartado por apartado)";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:14px 16px;border-top:1px solid var(--line)}
+.step{margin:10px 0;padding-left:12px;border-left:2px solid var(--line)}
+.step b{font-family:"Space Grotesk";color:var(--teal-deep)}
+.solved{margin-top:14px;border:1px solid #C4DECF;border-radius:4px;background:var(--ok-soft);overflow:hidden}
+.solved .solved-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:var(--ok);padding:8px 14px;background:#D8ECE1;display:block}
+.solved .solved-inner{padding:12px 16px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<!-- rev 2026-10-31 17b · banco paper2 EM (2) oficiales 2022-26 -->
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> ELECTROMAGNETISMO <span>//</span> MÓDULO 17B · TIPO 2 (PAPER 2)</p>
+  <h1>Electromagnetismo <em>de respuesta larga</em></h1>
+  <p class="lede">La ficha oficial Tipo 2 de Electromagnetismo, resuelta apartado por apartado y a la vista: fuerza sobre cargas y conductores, selector de velocidad, fuerza entre espiras e inducción. Más 5 integradores con resolución oculta. Integra solo lo ya visto (Módulos 16 → 01).</p>
+  <div class="stats">
+    <div class="stat"><b>2</b><span>Paper 2 oficiales 22–26</span></div>
+    <div class="stat"><b>4 + 5</b><span>ficha · integradores</span></div>
+    <div class="stat"><b>▲</b><span>figura perdida = solo método</span></div>
+    <div class="stat"><b>μ₀</b><span>4π×10⁻⁷ T·m·A⁻¹</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#s0">0 · Método para Tipo 2</a>
+  <a href="#f1">F1 · Avión (fem de movimiento)</a>
+  <a href="#f2">F2 · Selector de velocidad</a>
+  <a href="#f3">F3 · Fuerza entre espiras</a>
+  <a href="#f4">F4 · Manta calefactora</a>
+  <a href="#examenes">★ Banco Paper 2 · 2022–26</a>
+  <a href="#extra">Integradores (ocultos)</a>
+  <a href="#practica2">Práctica · Paper 2 (todo tipo)</a>
+</nav>
+
+<main>
+
+<section id="s0">
+  <p class="sec-num">SECCIÓN 00</p>
+  <h2>Método para problemas Tipo 2 (electromagnetismo)<span class="rule"></span></h2>
+  <p class="sec-intro">El Paper 2 encadena apartados que valen puntos por separado. En magnetismo casi todo sale de estos 5 gestos — y de dibujar bien antes de calcular.</p>
+  <div class="box key"><span class="lbl">Los 5 gestos</span>
+    <ol>
+      <li><strong>Regla de la mano y los tres ejes.</strong> \(\vec v\) (o \(I\)), \(\vec B\) y \(\vec F\) son mutuamente perpendiculares. Mano derecha: dedos de \(\vec v\) (o \(I\)) girando hacia \(\vec B\), el pulgar da \(\vec F\) para carga <em>positiva</em>; para el <strong>electrón, invierte el sentido</strong>. Dibuja ⊙ (sale) y ⊗ (entra) para el campo.</li>
+      <li><strong>Descompón con el seno del ángulo.</strong> Sobre una carga \(F=qvB\sin\theta\); sobre un hilo \(F=BIL\sin\theta\). Si \(\vec v\parallel\vec B\) (o \(I\parallel B\)) la fuerza es <strong>cero</strong>; máxima a 90°. Nunca olvides \(\sin\theta\).</li>
+      <li><strong>Movimiento circular.</strong> Si solo hay \(\vec B\) y \(\vec v\perp\vec B\), la fuerza es centrípeta: \(qvB=\dfrac{mv^2}{r}\Rightarrow r=\dfrac{mv}{qB}\), y el periodo \(T=\dfrac{2\pi m}{qB}\) <em>no depende de \(v\)</em>. El campo no hace trabajo: la rapidez no cambia.</li>
+      <li><strong>Flujo, Faraday y Lenz.</strong> \(\Phi=BA\cos\theta\); la fem inducida \(\varepsilon=-N\dfrac{\Delta\Phi}{\Delta t}\). Un conductor que corta líneas da \(\varepsilon=BvL\). El signo (Lenz) se opone al cambio de flujo: calcula primero la magnitud, el sentido por separado.</li>
+      <li><strong>Transformador y unidades.</strong> Ideal: \(\dfrac{V_s}{V_p}=\dfrac{N_s}{N_p}\) y \(P_p=P_s\Rightarrow V_pI_p=V_sI_s\). Pasa cm → m, g → kg, µC/nC → C; \(\mu_0=4\pi\times10^{-7}\). Cierra comprobando potencias de 10 y el sentido físico.</li>
+    </ol>
+  </div>
+  <div class="box def"><span class="lbl">Caja de fórmulas</span>
+    <p>\(F=qvB\sin\theta\) · \(F=BIL\sin\theta\) · \(r=\dfrac{mv}{qB}\) · \(T=\dfrac{2\pi m}{qB}\) · \(\dfrac{F}{L}=\dfrac{\mu_0 I_1 I_2}{2\pi d}\) (hilos paralelos) · \(\Phi=BA\cos\theta\) · \(\varepsilon=-N\dfrac{\Delta\Phi}{\Delta t}\) · \(\varepsilon=BvL\) · \(\dfrac{V_s}{V_p}=\dfrac{N_s}{N_p}\) · (circuitos) \(V=IR\), \(P=VI=I^2R\), \(R=\rho\dfrac{L}{A}\). Constantes: \(\mu_0=4\pi\times10^{-7}\) T·m·A⁻¹, \(e=1{,}6\times10^{-19}\) C, \(m_e=9{,}11\times10^{-31}\) kg, \(m_p=1{,}67\times10^{-27}\) kg, \(g=9{,}8\) m·s⁻².</p>
+  </div>
+  <div class="box trap"><span class="lbl">Sobre las figuras perdidas</span>
+    <p>La ficha original trae diagramas que aquí no se conservan. Donde el sentido de un vector depende del dibujo exacto, el apartado va marcado con <span class="flag">▲</span>: se da el <strong>método y la geometría típica</strong> de ese tipo de problema, sin inventar la orientación concreta. Los cálculos y demostraciones que no dependen del dibujo van resueltos por completo.</p>
+  </div>
+</section>
+
+<!-- ===================== FICHA ===================== -->
+
+<!-- F1 -->
+<section id="f1">
+  <div class="pb"><div class="pb-head"><span class="code">FICHA · F1 · N00/430/S(2)S</span><h3>Avión cerca del polo: fem de movimiento</h3></div>
+    <div class="pb-body">
+      <p>Un avión a reacción vuela con velocidad \(v\) formando ángulo recto con el campo magnético terrestre \(B\), cerca del polo norte. La envergadura (distancia entre puntas de ala) es \(L\); las puntas son P (babor) y S (estribor). Se considera un electrón de carga \(e\) en el ala metálica.</p>
+
+      <p class="apt">(a)(i) Sentido de la fuerza magnética sobre el electrón (dibujar vector). [1] <span class="flag">▲ figura</span></p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (a)(i)</span><div class="solved-inner">
+        <p>Geometría típica: cerca del polo norte \(\vec B\) es casi <em>vertical</em> (entra al suelo); el avión vuela horizontal, así que \(\vec v\perp\vec B\). La fuerza sobre una carga es \(\vec F=q\vec v\times\vec B\); para el electrón \(q=-e\), de modo que \(\vec F\) apunta <strong>en sentido opuesto</strong> al de \(\vec v\times\vec B\). Resultado: los electrones se empujan hacia <strong>una de las puntas del ala</strong> (según la orientación del dibujo, p. ej. hacia P), que queda negativa; la otra (S) queda positiva. El vector se dibuja a lo largo del ala, de punta a punta. <em>— por la regla de la mano derecha del producto \(\vec v\times\vec B\), invertida por ser el electrón de carga negativa (dedos de \(v\) hacia \(B\) dan el sentido para carga +; el electrón sufre la fuerza opuesta): empuja los electrones hacia la punta que queda negativa.</em></p>
+      </div></div>
+
+      <p class="apt">(a)(ii) Expresión del módulo de la fuerza. [1]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (a)(ii)</span><div class="solved-inner">
+        <p>Con \(\vec v\perp\vec B\) (\(\theta=90^\circ\), \(\sin\theta=1\)):</p>
+        <div class="eq">\[F=evB\]<span class="eqname">fuerza magnética sobre el electrón</span></div>
+        <span class="ans">F = e·v·B</span>
+      </div></div>
+
+      <p class="apt">(b)(i) Explicar cómo se origina el campo eléctrico y su sentido. [2] <span class="flag">▲ figura (sentido)</span></p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (b)(i)</span><div class="solved-inner">
+        <p>La fuerza magnética arrastra electrones hacia una punta del ala, que se vuelve <strong>negativa</strong>; la punta opuesta queda <strong>positiva</strong> por defecto de electrones. Esa separación de cargas crea un <strong>campo eléctrico interno</strong> a lo largo del ala, dirigido <em>del extremo positivo al negativo</em> (es decir, opuesto al arrastre, de S hacia P en el ejemplo). El vector \(\vec E\) se dibuja a lo largo del ala apuntando hacia la punta que quedó negativa.</p>
+      </div></div>
+
+      <p class="apt">(b)(ii) Explicar por qué la fuerza eléctrica iguala exactamente a la magnética. [2]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (b)(ii)</span><div class="solved-inner">
+        <p>Mientras la fuerza magnética supere a la eléctrica, los electrones <em>siguen</em> acumulándose en la punta, lo que aumenta \(E\) y, con él, la fuerza eléctrica \(eE\). La acumulación se detiene solo cuando ambas se equilibran: a partir de ahí no hay movimiento neto de carga a lo largo del ala (estado estacionario). Por eso, en equilibrio, \(eE=evB\) <strong>exactamente</strong>: si fuera menor, seguiría acumulándose carga hasta alcanzarlo.</p>
+      </div></div>
+
+      <p class="apt">(c) Demostrar que \(E=vB\). [1]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (c)</span><div class="solved-inner">
+        <p>En equilibrio la fuerza eléctrica cancela a la magnética sobre cada electrón:</p>
+        <div class="eq">\[eE=evB\;\Rightarrow\;\boxed{E=vB}\]</div>
+        <span class="ans">E = vB &nbsp;(la carga e se cancela)</span>
+      </div></div>
+
+      <p class="apt">(d) Calcular \(E\) para \(v=200\) m·s⁻¹ y \(B=8\times10^{-5}\) T. [1]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (d)</span><div class="solved-inner">
+        <p>\(E=vB=(200)(8\times10^{-5})=1{,}6\times10^{-2}\) V·m⁻¹.</p>
+        <span class="ans">E = 1,6×10⁻² V·m⁻¹ (= 0,016 V·m⁻¹)</span>
+      </div></div>
+
+      <p class="apt">(e) ¿Aparecería el efecto cerca del ecuador? Explicar. [1]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (e)</span><div class="solved-inner">
+        <p>Cerca del polo \(\vec B\) es casi vertical, perpendicular al vuelo horizontal, y el efecto es máximo. Cerca del <strong>ecuador</strong> \(\vec B\) es casi <em>horizontal</em> (paralelo al suelo). Si el avión vuela horizontalmente hacia el este/oeste, \(\vec v\) puede quedar casi paralela a \(\vec B\), con lo que \(F=evB\sin\theta\) se reduce mucho (tiende a 0 si \(\vec v\parallel\vec B\)). El efecto <strong>se debilita o desaparece</strong>: solo cuenta la componente de \(B\) perpendicular a \(v\).</p>
+      </div></div>
+
+      <p class="apt">(f) ¿Habrá ddp entre el morro y la cola? Explicar. [2]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (f)</span><div class="solved-inner">
+        <p>La fem de movimiento aparece a lo largo de un conductor <em>perpendicular</em> tanto a \(\vec v\) como a \(\vec B\). El eje morro–cola es <strong>paralelo a la velocidad</strong> \(\vec v\). La fuerza \(\vec v\times\vec B\) no tiene componente a lo largo de \(\vec v\), así que no separa carga en esa dirección: <strong>no hay ddp apreciable entre morro y cola</strong>. La separación de carga ocurre a lo ancho (entre las puntas de ala), no a lo largo.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- F2 -->
+<section id="f2">
+  <div class="pb"><div class="pb-head"><span class="code">FICHA · F2 · N01/430/S(2)S</span><h3>Selector de velocidad (campos E y B cruzados)</h3></div>
+    <div class="pb-body">
+      <p>Un ion positivo de carga \(+q\) entra con velocidad \(v\) a una región con campo eléctrico uniforme \(E\) (paralelo al plano del papel) y campo magnético uniforme \(B\) (dirigido hacia dentro del plano, ⊗).</p>
+
+      <p class="apt">(a) Mostrar los sentidos de la fuerza eléctrica y de la magnética sobre el ion. [2] <span class="flag">▲ figura</span></p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (a)</span><div class="solved-inner">
+        <p>Geometría típica: \(\vec v\) horizontal (hacia la derecha), \(\vec B\) entrando (⊗), \(\vec E\) vertical en el plano.</p>
+        <ul>
+          <li><strong>Fuerza eléctrica:</strong> \(\vec F_E=q\vec E\), <em>paralela a \(\vec E\)</em> (mismo sentido que \(\vec E\), por ser carga positiva).</li>
+          <li><strong>Fuerza magnética:</strong> \(\vec F_B=q\vec v\times\vec B\). Con \(\vec v\) a la derecha y \(\vec B\) entrando, la regla de la mano derecha da \(\vec F_B\) <em>perpendicular a \(\vec v\)</em>, en sentido <strong>opuesto</strong> a \(\vec F_E\) (ese es el diseño del selector: que se cancelen). <em>— regla de la mano derecha del producto \(\vec v\times\vec B\) (carga +): dedos de \(v\) girando hacia \(B\) (⊗), el pulgar da \(\vec F_B\).</em></li>
+        </ul>
+        <p>Se dibujan dos vectores sobre el ion, antiparalelos y perpendiculares a \(\vec v\).</p>
+      </div></div>
+
+      <p class="apt">(b)(i) Expresión de la fuerza eléctrica. [1]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (b)(i)</span><div class="solved-inner">
+        <div class="eq">\[F_E=qE\]</div><span class="ans">F_E = qE</span>
+      </div></div>
+
+      <p class="apt">(b)(ii) Expresión de la fuerza magnética. [1]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (b)(ii)</span><div class="solved-inner">
+        <p>Con \(\vec v\perp\vec B\): <div class="eq">\[F_B=qvB\]</div></p><span class="ans">F_B = qvB</span>
+      </div></div>
+
+      <p class="apt">(c) Mostrar que, si no se desvía, \(v=\dfrac{E}{B}\). [2]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (c)</span><div class="solved-inner">
+        <p>Sin desviación ⇒ fuerza neta nula ⇒ las dos fuerzas se igualan en módulo:</p>
+        <div class="eq">\[qE=qvB\;\Rightarrow\;\boxed{v=\dfrac{E}{B}}\]</div>
+        <span class="ans">v = E/B &nbsp;(independiente de q y de la masa: solo pasan iones con esta rapidez)</span>
+      </div></div>
+
+      <p class="apt">(d) Apagado \(E\), un ion idéntico entra con \(v\): explicar por qué describe una trayectoria circular. [2]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (d)</span><div class="solved-inner">
+        <p>Queda solo \(\vec F_B=q\vec v\times\vec B\), que es <strong>siempre perpendicular a la velocidad</strong>. Una fuerza perpendicular a \(\vec v\): (1) no hace trabajo, así que la <em>rapidez es constante</em>; (2) solo cambia la <em>dirección</em>. Una fuerza de módulo constante (\(qvB\)) siempre perpendicular a \(\vec v\) es precisamente una fuerza <strong>centrípeta</strong>, que produce movimiento circular uniforme:</p>
+        <div class="eq">\[qvB=\dfrac{mv^2}{r}\;\Rightarrow\;r=\dfrac{mv}{qB}\]</div>
+        <span class="ans">Trayectoria circular de radio r = mv/(qB).</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- F3 -->
+<section id="f3">
+  <div class="pb"><div class="pb-head"><span class="code">FICHA · F3 · M05/4/PHYSI/SP2</span><h3>Campo de un hilo y fuerza entre dos espiras</h3></div>
+    <div class="pb-body">
+      <p>Una bobina cuelga en vertical y consta de <strong>dos espiras</strong> de cable. Cada espira tiene diámetro \(6{,}0\) cm (radio \(r=3{,}0\) cm) y la separación entre ellas es \(0{,}20\) cm.</p>
+
+      <p class="apt">(a) Dibujar el campo magnético alrededor de un conductor rectilíneo largo con corriente. [3] <span class="flag">▲ figura (dibujo)</span></p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (a)</span><div class="solved-inner">
+        <p>Patrón típico: <strong>circunferencias concéntricas</strong> en planos perpendiculares al hilo, centradas en él, más juntas cerca del hilo (campo más intenso) y más separadas lejos. El <strong>sentido</strong> lo da la regla de la mano derecha <strong>del agarre</strong> (pulgar = corriente, dedos que envuelven = \(\vec B\)); se indica con flechas sobre las circunferencias. Magnitud \(B=\dfrac{\mu_0 I}{2\pi d}\).</p>
+      </div></div>
+
+      <p class="apt">(b)(i) Explicar por qué la distancia entre las dos espiras varía al activar la corriente. [3]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (b)(i)</span><div class="solved-inner">
+        <p>Las dos espiras están en serie, así que la corriente circula en el <strong>mismo sentido</strong> en ambas. Dos corrientes paralelas en el mismo sentido <strong>se atraen</strong> (cada espira está en el campo magnético creado por la otra; la fuerza \(F=BIL\) las junta). Por tanto, al activar la corriente la <strong>separación disminuye</strong> (las espiras se acercan). <em>— mano izquierda de Fleming aplicada al campo de la otra espira: corrientes en el mismo sentido se atraen.</em></p>
+      </div></div>
+
+      <p class="apt">(b)(ii) Se cuelga una masa de \(0{,}10\) g del extremo libre y la separación vuelve a \(0{,}20\) cm. Calcular la corriente \(I\). (Cada espira ≈ hilo recto largo; \(C=2\pi r\)). [5]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (b)(ii)</span><div class="solved-inner">
+        <div class="step"><b>Idea.</b> La atracción magnética junta las espiras; el peso colgado las vuelve a separar a \(0{,}20\) cm. En ese punto la <strong>fuerza magnética de atracción equilibra el peso</strong> añadido: \(F_{mag}=mg\).</div>
+        <div class="step"><b>Fuerza entre las espiras</b> (tratadas como hilos paralelos de longitud \(L=C=2\pi r\), separados \(d\)):
+          \[F=\dfrac{\mu_0 I^2}{2\pi d}\,L=\dfrac{\mu_0 I^2}{2\pi d}\,(2\pi r)=\dfrac{\mu_0 I^2 r}{d}\]</div>
+        <div class="step"><b>Equilibrio</b> \(F=mg\):
+          \[\dfrac{\mu_0 I^2 r}{d}=mg\;\Rightarrow\;I^2=\dfrac{mg\,d}{\mu_0\,r}\]</div>
+        <div class="step"><b>Datos.</b> \(m=1{,}0\times10^{-4}\) kg, \(g=9{,}8\) m·s⁻², \(d=0{,}20\) cm \(=2{,}0\times10^{-3}\) m, \(r=0{,}030\) m, \(\mu_0=4\pi\times10^{-7}\).
+          \[I^2=\dfrac{(1{,}0\times10^{-4})(9{,}8)(2{,}0\times10^{-3})}{(4\pi\times10^{-7})(0{,}030)}=\dfrac{1{,}96\times10^{-6}}{3{,}77\times10^{-8}}=52{,}0\]
+          \[I=\sqrt{52{,}0}=7{,}2\ \text{A}\]</div>
+        <span class="ans">I ≈ 7,2 A &nbsp;(con g = 9,8; con g = 10 daría 7,3 A)</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- F4 -->
+<section id="f4">
+  <div class="pb"><div class="pb-head"><span class="code">FICHA · F4 · IB MAY 2023</span><h3>Manta calefactora (integra circuitos, resistividad y térmica)</h3></div>
+    <div class="pb-body">
+      <p>Una manta se calienta con un resistor interno de resistencia \(4{,}2\ \Omega\) y longitud total \(1{,}25\) m. La temperatura pasa de \(20\,^\circ\)C a \(35\,^\circ\)C en funcionamiento.</p>
+
+      <p class="apt">(a) La energía transferida por el resistor cada segundo es \(15\) J. Calcular la corriente. [1]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (a)</span><div class="solved-inner">
+        <p>\(15\) J/s = \(15\) W de potencia. De \(P=I^2R\):</p>
+        <div class="eq">\[I=\sqrt{\dfrac{P}{R}}=\sqrt{\dfrac{15}{4{,}2}}=\sqrt{3{,}57}=1{,}9\ \text{A}\]</div>
+        <span class="ans">I ≈ 1,9 A</span>
+      </div></div>
+
+      <p class="apt">(b)(i) Área de sección \(9{,}6\times10^{-6}\) m². Mostrar que la fibra de carbono es adecuada (gráfico ρ–T). [3] <span class="flag">▲ figura (gráfico)</span></p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (b)(i)</span><div class="solved-inner">
+        <p><strong>Método</strong> (el valor exacto de la gráfica no se conserva, pero el cálculo es completo):</p>
+        <p>La resistividad que <em>necesita</em> el material para dar \(R=4{,}2\ \Omega\) con esa geometría es, de \(R=\rho\dfrac{L}{A}\):</p>
+        <div class="eq">\[\rho=\dfrac{RA}{L}=\dfrac{(4{,}2)(9{,}6\times10^{-6})}{1{,}25}=3{,}2\times10^{-5}\ \Omega\cdot\text{m}\]</div>
+        <p>Se <strong>lee en la gráfica</strong> la resistividad de la fibra de carbono a la temperatura operativa (\(35\,^\circ\)C \(=308\) K). Si ese valor coincide con \(\approx3{,}2\times10^{-5}\ \Omega\cdot\)m, el resistor de fibra de carbono dará justo los \(4{,}2\ \Omega\) requeridos ⇒ <strong>es adecuado</strong>.</p>
+        <span class="ans">Se requiere ρ ≈ 3,2×10⁻⁵ Ω·m a 308 K; comprobar en la gráfica.</span>
+      </div></div>
+
+      <p class="apt">(b)(ii) Fuente de resistencia interna despreciable: variación de la corriente al aumentar la temperatura. [2] <span class="flag">▲ figura (tendencia del gráfico)</span></p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (b)(ii)</span><div class="solved-inner">
+        <p>En la fibra de carbono la resistividad <strong>disminuye</strong> al subir la temperatura (pendiente negativa del gráfico, comportamiento tipo semiconductor). Entonces \(R=\rho L/A\) <strong>disminuye</strong>. Con la fem constante y resistencia interna despreciable, \(I=\dfrac{V}{R}\): al bajar \(R\), la <strong>corriente aumenta</strong>.</p>
+        <span class="ans">La corriente aumenta (porque ρ y por tanto R disminuyen con T).</span>
+      </div></div>
+
+      <p class="apt">(c)(i) Fuerza magnética sobre la banda RS debida a la corriente en PQ. [1] <span class="flag">▲ figura</span></p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (c)(i)</span><div class="solved-inner">
+        <p>Geometría típica: el resistor serpentea, de modo que en bandas vecinas (PQ y RS) la corriente va en <strong>sentidos opuestos</strong>. Corrientes antiparalelas <strong>se repelen</strong> ⇒ PQ ejerce sobre RS una fuerza de <strong>repulsión</strong> (la aleja de PQ). <em>— mano izquierda de Fleming en el campo de PQ: corrientes antiparalelas se repelen.</em></p>
+      </div></div>
+
+      <p class="apt">(c)(ii) Fuerza magnética neta sobre RS debida a PQ y TU. [2] <span class="flag">▲ figura</span></p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (c)(ii)</span><div class="solved-inner">
+        <p>RS está <strong>entre</strong> PQ y TU; en ambas la corriente es opuesta a la de RS, así que las dos la <strong>repelen</strong>, en sentidos contrarios. Si RS está a igual distancia de PQ y de TU, las dos repulsiones tienen igual módulo y se <strong>cancelan</strong>: la fuerza neta sobre RS es <strong>nula</strong> (por simetría). <em>— mano izquierda en ambos campos: PQ y TU repelen a RS en sentidos opuestos y, por simetría, se cancelan.</em></p>
+        <span class="ans">Fuerza neta ≈ 0 (dos repulsiones iguales y opuestas).</span>
+      </div></div>
+
+      <p class="apt">(d) El resistor se encierra en material que atrapa aire y se sitúa cerca de la superficie superior. Explicar (transferencia de energía térmica). [3]</p>
+      <div class="solved"><span class="solved-lbl">RESOLUCIÓN · (d)</span><div class="solved-inner">
+        <ul>
+          <li><strong>Aire atrapado:</strong> el aire es mal conductor térmico y, al estar <em>atrapado</em>, no puede transportar calor por <strong>convección</strong>. Así se reduce la pérdida de calor por la cara inferior y hacia el ambiente (buen aislante).</li>
+          <li><strong>Cerca de la superficie superior:</strong> el calor llega a la mascota principalmente por <strong>conducción</strong>; con poco material entre el resistor y la superficie, la transferencia es más rápida y eficiente, y el lado de la mascota se calienta más que el inferior.</li>
+        </ul>
+        <span class="ans">El aire atrapado aísla (corta convección/conducción hacia abajo); la posición alta maximiza la conducción hacia la mascota.</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BANCO PAPER 2 OFICIALES -->
+<section id="examenes">
+  <p class="sec-num">SECCIÓN ★ · BANCO DE EXÁMENES OFICIALES · PAPER 2 (2022–2026)</p>
+  <h2>Paper 2 oficiales de electromagnetismo<span class="rule"></span></h2>
+  <div class="box beyond"><span class="lbl">Honestidad de cobertura</span><p>En tu NM, el electromagnetismo cubre la <strong>fuerza magnética</strong> sobre cargas (\(F=qvB\)) y conductores (\(F=BIL\)) y el movimiento circular en un campo. La <strong>inducción electromagnética</strong> (fem de movimiento, Faraday, Lenz) y los transformadores son <strong>HL</strong>. En el banco 2022–2026 el magnetismo "puro" sale poco: incluyo la pregunta SL del protón en un campo y, por si cursas HL, la de inducción con barra sobre rieles.</p></div>
+
+  <div class="pb"><div class="pb-head"><span class="code">May 2026 · TZ2 · SP2 · Q5 · PLAN NUEVO</span><h3>Protón en un campo magnético: movimiento circular</h3></div>
+    <div class="pb-body">
+      <p>Un protón de rapidez \(v\) entra en una región con campo magnético \(B=0{,}14\) T, perpendicular a \(v\) y entrante en la página; describe una circunferencia de radio \(R\). (\(q=1{,}6\times10^{-19}\) C, \(m_p=1{,}67\times10^{-27}\) kg.)</p>
+      <figure class="fig"><svg viewBox="0 0 180 140" width="170" xmlns="http://www.w3.org/2000/svg" aria-label="proton en campo B">
+        <g fill="var(--ink-soft)" font-family="IBM Plex Mono" font-size="11">
+        <text x="30" y="30">×</text><text x="60" y="30">×</text><text x="90" y="30">×</text><text x="120" y="30">×</text><text x="150" y="30">×</text>
+        <text x="30" y="60">×</text><text x="60" y="60">×</text><text x="90" y="60">×</text><text x="120" y="60">×</text><text x="150" y="60">×</text>
+        <text x="30" y="90">×</text><text x="60" y="90">×</text><text x="90" y="90">×</text><text x="120" y="90">×</text><text x="150" y="90">×</text></g>
+        <path d="M40,110 A45 45 0 0 1 130,95" fill="none" stroke="var(--teal)" stroke-width="2.2"/>
+        <line x1="40" y1="110" x2="40" y2="88" stroke="var(--amber)" stroke-width="2.2" marker-end="url(#pv)"/>
+        <defs><marker id="pv" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+        <text x="20" y="118" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">v</text>
+        <text x="95" y="120" font-family="IBM Plex Mono" font-size="10" fill="var(--teal)">R</text>
+      </svg><figcaption>B entrante (×); la fuerza magnética es centrípeta y curva la trayectoria.</figcaption></figure>
+      <p class="apt">(a) Determine, en función de \(v\), el radio \(R\). [2]</p>
+      <p class="apt">(b) Un gas de hidrógeno ionizado muestra múltiples radios de curvatura. Explique cómo esto justifica la existencia de isótopos. [1]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> La fuerza magnética es la centrípeta: \(qvB=\dfrac{mv^{2}}{R}\Rightarrow R=\dfrac{mv}{qB}\). Sustituyendo \(m_p\), \(q\) y \(B\): \(R=\dfrac{1{,}67\times10^{-27}}{(1{,}6\times10^{-19})(0{,}14)}\,v=7{,}5\times10^{-8}\,v\) (con \(R\) en m y \(v\) en m·s⁻¹). <span class="ans">R = (7,5×10⁻⁸)·v</span></div>
+        <div class="step"><b>(b)</b> Como \(R=\dfrac{mv}{qB}\), a igual \(v\), \(q\) y \(B\) un radio distinto implica una <strong>masa distinta</strong>. Los distintos radios corresponden a átomos de hidrógeno con <strong>distinto número de neutrones</strong> (mismo protón/carga): es decir, <strong>isótopos</strong>. ∎</div>
+        <div class="step" style="border-left-color:var(--ok)"><b>Verificado</b> · Physics_paper_2_TZ2_SL_markscheme (2226–4727M, May 2026 TZ2): (a) qvB=mv²/R → R=mv/qB = 7,5×10⁻⁸·v · (b) radios distintos → masas distintas → isótopos (distinto número de neutrones).</div>
+      </div></details>
+    </div>
+  </div>
+
+  <div class="pb"><div class="pb-head"><span class="code">Nov 2025 · TZ3 · HL · P2 · Q8 · SOLO HL</span><h3>Barra sobre rieles: inducción, ley de Lenz y velocidad límite</h3></div>
+    <div class="pb-body">
+      <p>Una barra conductora descansa sobre dos rieles horizontales, conductores y sin rozamiento, dentro de un campo magnético uniforme entrante en la hoja. Tras un pequeño empujón, la barra se mueve hacia la derecha.</p>
+      <figure class="fig"><svg viewBox="0 0 220 110" width="210" xmlns="http://www.w3.org/2000/svg" aria-label="barra sobre rieles">
+        <g fill="var(--ink-soft)" font-family="IBM Plex Mono" font-size="10"><text x="60" y="35">×</text><text x="100" y="35">×</text><text x="140" y="35">×</text><text x="60" y="70">×</text><text x="100" y="70">×</text><text x="140" y="70">×</text></g>
+        <line x1="30" y1="28" x2="200" y2="28" stroke="var(--ink)" stroke-width="1.5"/><line x1="30" y1="78" x2="200" y2="78" stroke="var(--ink)" stroke-width="1.5"/><line x1="30" y1="28" x2="30" y2="78" stroke="var(--ink)"/>
+        <rect x="95" y="24" width="7" height="58" fill="var(--teal-deep)"/>
+        <line x1="103" y1="53" x2="150" y2="53" stroke="var(--amber)" stroke-width="2.2" marker-end="url(#bv)"/>
+        <defs><marker id="bv" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+        <text x="120" y="48" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">v</text>
+      </svg><figcaption>Al moverse, el flujo encerrado cambia y se induce una fem/corriente.</figcaption></figure>
+      <p class="apt">(a) Explique por qué la barra se detiene rápidamente. [3]</p>
+      <p class="apt">(b) Se añade una celda y un interruptor; al cerrarlo la barra acelera. (i) Indique el sentido inicial del movimiento. (ii) Explique por qué alcanza una rapidez constante. [3]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> Al moverse, la barra <strong>cambia el flujo magnético</strong> encerrado por el circuito, induciendo una <strong>fem de movimiento</strong> \(\varepsilon=BLv\) y, por tanto, una corriente. Por la <strong>ley de Lenz</strong>, esa corriente circula de modo que la fuerza magnética \(F=BIL\) sobre la barra <strong>se opone al movimiento</strong> (apunta hacia la izquierda), frenándola hasta detenerla. ∎</div>
+        <div class="step"><b>(b)(i)</b> La celda impulsa una corriente por la barra; la fuerza \(F=BIL\) la acelera <strong>hacia la derecha</strong> (sentido en que la empuja el campo según la corriente de la celda).</div>
+        <div class="step"><b>(b)(ii)</b> Al aumentar \(v\), crece la fem inducida de oposición \(BLv\) (contraelectromotriz), que se resta a la de la celda: la corriente neta y la fuerza <strong>disminuyen</strong>. Cuando \(BLv\) iguala a la fem de la celda, la corriente (y la fuerza) se anulan: fuerza neta cero → <strong>rapidez constante</strong> (velocidad límite). ∎</div>
+        <div class="step" style="border-left-color:var(--ok)"><b>Verificado</b> · Physics_paper_2_TZ3_HL_markscheme (8825–6721M, Nov 2025 TZ3 HL): (a) fem/corriente inducida; Lenz → fuerza magnética opuesta → frena · (b)(i) fuerza acelera hacia la derecha · (b)(ii) la fem inducida BLv crece con v hasta igualar la de la celda → corriente y fuerza cero → rapidez constante.</div>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXTRA ===================== -->
+<section id="extra">
+  <p class="sec-num">5 INTEGRADORES · RESOLUCIÓN OCULTA</p>
+  <h2>Problemas que combinan módulos<span class="rule"></span></h2>
+  <p class="sec-intro">Combinan electromagnetismo con movimiento circular, circuitos, energía e incertidumbre. Intenta cada uno antes de abrir la resolución. Nada rebuscado: todo entra en Paper 2.</p>
+
+  <!-- E1 -->
+  <div class="pb"><div class="pb-head"><span class="code">INTEGRADOR · E1</span><h3>Protón en campo magnético: radio y periodo (integra MCU)</h3></div>
+    <div class="pb-body">
+      <p>Un protón (\(m_p=1{,}67\times10^{-27}\) kg, \(q=1{,}6\times10^{-19}\) C) entra perpendicularmente a un campo uniforme \(B=0{,}50\) T con rapidez \(v=2{,}0\times10^{6}\) m·s⁻¹.</p>
+      <p class="apt">(a) Halla el radio de la trayectoria. [2]</p>
+      <p class="apt">(b) Halla el periodo del movimiento. [2]</p>
+      <p class="apt">(c) Si la rapidez se duplicara, ¿cómo cambian \(r\) y \(T\)? [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> La fuerza magnética es centrípeta: \(qvB=\dfrac{mv^2}{r}\Rightarrow r=\dfrac{mv}{qB}\).<br>
+        \(r=\dfrac{(1{,}67\times10^{-27})(2{,}0\times10^{6})}{(1{,}6\times10^{-19})(0{,}50)}=\dfrac{3{,}34\times10^{-21}}{8{,}0\times10^{-20}}=4{,}2\times10^{-2}\) m.<br>
+        <span class="ans">r ≈ 4,2 cm.</span></div>
+        <div class="step"><b>(b)</b> \(T=\dfrac{2\pi m}{qB}=\dfrac{2\pi(1{,}67\times10^{-27})}{(1{,}6\times10^{-19})(0{,}50)}=\dfrac{1{,}049\times10^{-26}}{8{,}0\times10^{-20}}=1{,}3\times10^{-7}\) s.<br>
+        <span class="ans">T ≈ 1,3×10⁻⁷ s.</span></div>
+        <div class="step"><b>(c)</b> \(r=\dfrac{mv}{qB}\propto v\): al duplicar \(v\), el radio <strong>se duplica</strong>. \(T=\dfrac{2\pi m}{qB}\) <strong>no depende de \(v\)</strong>: el periodo <strong>no cambia</strong> (va más rápido pero por una circunferencia mayor, en el mismo tiempo). Es la base del ciclotrón.<br>
+        <span class="ans">r → 2r; T igual.</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- E2 -->
+  <div class="pb"><div class="pb-head"><span class="code">INTEGRADOR · E2</span><h3>Barra sobre rieles: fem de movimiento + circuito (integra dinámica/energía)</h3></div>
+    <div class="pb-body">
+      <p>Una barra conductora de longitud \(L=0{,}25\) m se desliza sin fricción a \(v=3{,}0\) m·s⁻¹ sobre dos rieles conductores dentro de un campo \(B=0{,}40\) T perpendicular al plano. La resistencia total del circuito es \(R=0{,}50\ \Omega\).</p>
+      <p class="apt">(a) Halla la fem inducida. [2]</p>
+      <p class="apt">(b) Halla la corriente en el circuito. [1]</p>
+      <p class="apt">(c) Halla la fuerza necesaria para mover la barra a velocidad constante. [2]</p>
+      <p class="apt">(d) Comprueba que la potencia mecánica iguala la disipada. [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> \(\varepsilon=BvL=(0{,}40)(3{,}0)(0{,}25)=0{,}30\) V.<br><span class="ans">ε = 0,30 V.</span></div>
+        <div class="step"><b>(b)</b> \(I=\dfrac{\varepsilon}{R}=\dfrac{0{,}30}{0{,}50}=0{,}60\) A.<br><span class="ans">I = 0,60 A.</span></div>
+        <div class="step"><b>(c)</b> La barra lleva corriente en el campo ⇒ sufre \(F=BIL\) que (por Lenz) se opone al movimiento. Para \(v\) constante hay que aplicar una fuerza igual y opuesta:<br>
+        \(F=BIL=(0{,}40)(0{,}60)(0{,}25)=0{,}060\) N.<br><span class="ans">F = 0,060 N.</span></div>
+        <div class="step"><b>(d)</b> Mecánica: \(P_{mec}=Fv=(0{,}060)(3{,}0)=0{,}18\) W. Disipada: \(P_{dis}=I^2R=(0{,}60)^2(0{,}50)=0{,}18\) W. ✓ Coinciden: toda la energía mecánica se convierte en calor en \(R\) (conservación de energía).<br><span class="ans">P = 0,18 W por ambos caminos.</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- E3 -->
+  <div class="pb"><div class="pb-head"><span class="code">INTEGRADOR · E3</span><h3>Bobina que gira: flujo variable, Faraday y Lenz</h3></div>
+    <div class="pb-body">
+      <p>Una bobina cuadrada de \(N=50\) vueltas y lado \(0{,}10\) m (área \(A=0{,}010\) m²) está en un campo uniforme \(B=0{,}20\) T con su plano perpendicular a \(\vec B\). En \(\Delta t=0{,}050\) s se gira hasta que el plano queda paralelo a \(\vec B\).</p>
+      <p class="apt">(a) Halla el flujo inicial por vuelta. [2]</p>
+      <p class="apt">(b) Halla la fem media inducida. [2]</p>
+      <p class="apt">(c) Enuncia cómo determinar el sentido de la corriente inducida. [1]</p>
+      <p class="apt">(d) Si el giro durara la mitad del tiempo, ¿cuál sería la fem media? [1]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> Plano perpendicular a \(\vec B\) ⇒ \(\vec B\) perpendicular al plano ⇒ flujo máximo: \(\Phi=BA\cos0^\circ=(0{,}20)(0{,}010)=2{,}0\times10^{-3}\) Wb.<br><span class="ans">Φ = 2,0×10⁻³ Wb por vuelta.</span></div>
+        <div class="step"><b>(b)</b> Al final el plano es paralelo a \(\vec B\) ⇒ \(\Phi_f=0\). Faraday:<br>
+        \(|\varepsilon|=N\dfrac{|\Delta\Phi|}{\Delta t}=50\cdot\dfrac{2{,}0\times10^{-3}-0}{0{,}050}=50\cdot0{,}040=2{,}0\) V.<br><span class="ans">ε media = 2,0 V.</span></div>
+        <div class="step"><b>(c)</b> Por la <strong>ley de Lenz</strong>: la corriente inducida circula en el sentido que <em>se opone al cambio de flujo</em>. Como el flujo disminuye, la corriente fluye para <em>mantenerlo</em> (su campo apunta en el mismo sentido que el \(\vec B\) original a través de la bobina).</div>
+        <div class="step"><b>(d)</b> \(\varepsilon\propto\dfrac{1}{\Delta t}\): la mitad de tiempo ⇒ el <strong>doble</strong> de fem: \(2\times2{,}0=4{,}0\) V.<br><span class="ans">ε media = 4,0 V.</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- E4 -->
+  <div class="pb"><div class="pb-head"><span class="code">INTEGRADOR · E4</span><h3>Transformador con potencia (integra circuitos y energía)</h3></div>
+    <div class="pb-body">
+      <p>Un transformador ideal reduce \(220\) V a \(11\) V para alimentar un dispositivo que consume \(22\) W. El primario tiene \(N_p=1000\) vueltas.</p>
+      <p class="apt">(a) Halla el número de vueltas del secundario. [2]</p>
+      <p class="apt">(b) Halla la corriente en el secundario. [1]</p>
+      <p class="apt">(c) Halla la corriente en el primario (ideal). [2]</p>
+      <p class="apt">(d) Un transformador real tiene 90 % de eficiencia: halla la corriente real del primario. [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> \(\dfrac{N_s}{N_p}=\dfrac{V_s}{V_p}\Rightarrow N_s=N_p\dfrac{V_s}{V_p}=1000\cdot\dfrac{11}{220}=50\) vueltas.<br><span class="ans">N_s = 50 vueltas.</span></div>
+        <div class="step"><b>(b)</b> \(I_s=\dfrac{P}{V_s}=\dfrac{22}{11}=2{,}0\) A.<br><span class="ans">I_s = 2,0 A.</span></div>
+        <div class="step"><b>(c)</b> Ideal: \(P_p=P_s\Rightarrow V_pI_p=22\Rightarrow I_p=\dfrac{22}{220}=0{,}10\) A.<br><span class="ans">I_p = 0,10 A.</span></div>
+        <div class="step"><b>(d)</b> Real: \(\eta=\dfrac{P_{sal}}{P_{ent}}\Rightarrow P_{ent}=\dfrac{22}{0{,}90}=24{,}4\) W. Entonces \(I_p=\dfrac{P_{ent}}{V_p}=\dfrac{24{,}4}{220}=0{,}11\) A.<br>
+        La diferencia se pierde como calor (resistencia de los devanados, corrientes de Foucault, histéresis).<br><span class="ans">I_p real ≈ 0,11 A.</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- E5 JEFE -->
+  <div class="pb jefe"><div class="pb-head"><span class="code">PROBLEMA JEFE · E5</span><h3>Medir B con una gráfica y propagar la incertidumbre</h3></div>
+    <div class="pb-body">
+      <p>Para medir un campo magnético uniforme, se coloca un hilo recto de longitud \(L=0{,}100\) m perpendicular a \(\vec B\) y se mide la fuerza \(F\) sobre él para varias corrientes \(I\). Se grafica \(F\) frente a \(I\).</p>
+      <table>
+        <tr><th>I (A)</th><th>1,0</th><th>2,0</th><th>3,0</th><th>4,0</th><th>5,0</th></tr>
+        <tr><td>F (N)</td><td>0,031</td><td>0,059</td><td>0,091</td><td>0,119</td><td>0,151</td></tr>
+      </table>
+      <div class="fig">
+        <svg viewBox="0 0 400 210" role="img" aria-label="Gráfica de F frente a I">
+          <line x1="60" y1="185" x2="375" y2="185" stroke="#43525C" stroke-width="1.2"/>
+          <line x1="60" y1="185" x2="60" y2="25" stroke="#43525C" stroke-width="1.2"/>
+          <text x="215" y="205" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#43525C">I  (A)</text>
+          <text x="20" y="105" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#43525C" transform="rotate(-90 20 105)">F (N)</text>
+          <line x1="60" y1="185" x2="360" y2="39" stroke="#6E4C86" stroke-width="1.6"/>
+          <circle cx="120" cy="155" r="3.5" fill="#C77B23"/>
+          <circle cx="180" cy="128" r="3.5" fill="#C77B23"/>
+          <circle cx="240" cy="97" r="3.5" fill="#C77B23"/>
+          <circle cx="300" cy="70" r="3.5" fill="#C77B23"/>
+          <circle cx="360" cy="39" r="3.5" fill="#C77B23"/>
+          <text x="250" y="110" font-family="IBM Plex Mono" font-size="10" fill="#6E4C86">pendiente = B·L</text>
+        </svg>
+        <figcaption>Recta por el origen: F = (B·L)·I. La pendiente es B·L.</figcaption>
+      </div>
+      <p class="apt">(a) Explica por qué la gráfica de F vs I es una recta por el origen. [2]</p>
+      <p class="apt">(b) La pendiente medida es \((0{,}0300\pm0{,}0009)\) N·A⁻¹. Halla \(B\). [3]</p>
+      <p class="apt">(c) Propaga la incertidumbre y expresa \(B\) con su error (toma \(L\) como \(0{,}100\) m exacta). [3]</p>
+      <p class="apt">(d) Comenta qué conviene mejorar en la medición. [1]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> La fuerza sobre un hilo recto es \(F=BIL\sin\theta\); con \(\theta=90^\circ\), \(F=(BL)\,I\). Es de la forma \(y=mx\) con \(y=F\), \(x=I\) y pendiente \(m=BL\) (constante). Por eso recta que pasa por el origen: si \(I=0\), \(F=0\).</div>
+        <div class="step"><b>(b)</b> Pendiente \(=BL\Rightarrow B=\dfrac{\text{pendiente}}{L}=\dfrac{0{,}0300}{0{,}100}=0{,}30\) T.<br><span class="ans">B = 0,30 T.</span></div>
+        <div class="step"><b>(c)</b> Como \(B=\dfrac{\text{pend}}{L}\) y \(L\) es exacta, la incertidumbre relativa de \(B\) es la de la pendiente:<br>
+        \(\dfrac{\Delta B}{B}=\dfrac{\Delta(\text{pend})}{\text{pend}}=\dfrac{0{,}0009}{0{,}0300}=0{,}030\) (3,0 %).<br>
+        \(\Delta B=0{,}030\times0{,}30=0{,}009\approx0{,}01\) T.<br>
+        <span class="ans">B = (0,30 ± 0,01) T, es decir ±3 %.</span></div>
+        <div class="step"><b>(d)</b> El error viene sobre todo de la pendiente, que depende de medir bien \(F\) e \(I\). Conviene <strong>tomar más puntos y repetir las lecturas</strong> para promediar (reduce el error aleatorio en la pendiente), usar corrientes en un rango amplio y asegurar \(\theta=90^\circ\) exacto, pues cualquier desalineación reduce \(F=BIL\sin\theta\) y sesga \(B\) por defecto.</div>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRÁCTICA EXTRA PAPER 2 ===================== -->
+<section id="practica2">
+  <p class="sec-num">PRÁCTICA EXTRA · 6 PROBLEMAS · RESOLUCIÓN OCULTA</p>
+  <h2>Práctica extra · Paper 2 (todo tipo)<span class="rule"></span></h2>
+  <p class="sec-intro">Seis problemas nuevos estilo Paper 2: multi-apartado, con "muestre que" y uso de la regla de la mano. Cubren solo los tipos que caen: \(F=BIL\sin\theta\), hilos paralelos, \(F=qvB\) y movimiento circular, campo de hilo/solenoide, inducción (flujo, Faraday, Lenz, fem de movimiento) y transformador. Intenta cada uno antes de abrir la resolución.</p>
+
+  <!-- P1 -->
+  <div class="pb"><div class="pb-head"><span class="code">PRÁCTICA · P1</span><h3>Fuerza sobre un hilo con corriente (F = BIL sinθ) y su sentido</h3></div>
+    <div class="pb-body">
+      <p>Un hilo rectilíneo horizontal de longitud \(L=0{,}12\) m conduce una corriente \(I=4{,}0\) A hacia la <strong>derecha</strong> (este). Está en un campo magnético uniforme \(B=0{,}35\) T dirigido <strong>hacia dentro del plano</strong> del dibujo (⊗).</p>
+      <div class="fig">
+        <svg viewBox="0 0 420 190" role="img" aria-label="Hilo con corriente hacia la derecha en campo entrante; la fuerza apunta hacia arriba">
+          <g font-family="IBM Plex Mono" font-size="15" fill="#1F6E7C" text-anchor="middle">
+            <text x="70" y="52">×</text><text x="150" y="52">×</text><text x="230" y="52">×</text><text x="310" y="52">×</text><text x="380" y="52">×</text>
+            <text x="70" y="165">×</text><text x="150" y="165">×</text><text x="230" y="165">×</text><text x="310" y="165">×</text><text x="380" y="165">×</text>
+          </g>
+          <line x1="40" y1="112" x2="382" y2="112" stroke="#134B55" stroke-width="3"/>
+          <polygon points="388,112 374,106 374,118" fill="#134B55"/>
+          <text x="200" y="132" font-family="IBM Plex Mono" font-size="12" fill="#134B55" text-anchor="middle">I (hacia la derecha)</text>
+          <line x1="200" y1="112" x2="200" y2="62" stroke="#C77B23" stroke-width="2.6"/>
+          <polygon points="200,56 194,68 206,68" fill="#C77B23"/>
+          <text x="214" y="82" font-family="IBM Plex Mono" font-size="12" fill="#C77B23">F</text>
+          <text x="340" y="95" font-family="IBM Plex Mono" font-size="10" fill="#1F6E7C">B (× = entra)</text>
+        </svg>
+        <figcaption>I hacia la derecha, B entrando (×): la regla de la mano da F hacia arriba.</figcaption>
+      </div>
+      <p class="apt">(a) Muestre que, estando el hilo perpendicular a \(B\), la fuerza es \(F=BIL\), y calcúlela. [2]</p>
+      <p class="apt">(b) Usando la regla de la mano, determine el <strong>sentido</strong> de la fuerza. [2]</p>
+      <p class="apt">(c) El hilo se gira hasta formar \(30^\circ\) con \(\vec B\). Calcule la nueva fuerza. [2]</p>
+      <p class="apt">(d) ¿Para qué orientación la fuerza es nula? Justifique. [1]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> En general \(F=BIL\sin\theta\). Perpendicular ⇒ \(\theta=90^\circ\), \(\sin\theta=1\), luego \(F=BIL\).<br>
+        \(F=(0{,}35)(4{,}0)(0{,}12)=0{,}168\) N.<br><span class="ans">F = BIL ≈ 0,17 N.</span></div>
+        <div class="step"><b>(b)</b> \(\vec F=I\vec L\times\vec B\). Dedos de la mano derecha apuntando según \(I\) (a la derecha) y curvándose hacia \(\vec B\) (entrando); el pulgar sale <strong>hacia arriba</strong>. La fuerza es perpendicular tanto a \(I\) como a \(B\): <strong>vertical, hacia arriba</strong>.<br><span class="ans">F hacia arriba (perpendicular al plano I–B).</span></div>
+        <div class="step"><b>(c)</b> \(F=BIL\sin30^\circ=0{,}168\times0{,}50=0{,}084\) N.<br><span class="ans">F ≈ 0,084 N.</span></div>
+        <div class="step"><b>(d)</b> Cuando el hilo es <strong>paralelo</strong> a \(\vec B\) (\(\theta=0^\circ\) o \(180^\circ\)): \(\sin\theta=0\Rightarrow F=0\). La corriente no corta líneas de campo.<br><span class="ans">F = 0 con I ∥ B.</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- P2 -->
+  <div class="pb"><div class="pb-head"><span class="code">PRÁCTICA · P2</span><h3>Fuerza entre dos hilos paralelos</h3></div>
+    <div class="pb-body">
+      <p>Dos hilos rectos, largos y paralelos están separados \(d=0{,}050\) m. Conducen \(I_1=10\) A e \(I_2=15\) A en el <strong>mismo sentido</strong>. Se considera un tramo de longitud \(L=2{,}0\) m.</p>
+      <p class="apt">(a) Muestre que la fuerza por unidad de longitud es \(\dfrac{F}{L}=\dfrac{\mu_0 I_1 I_2}{2\pi d}\) y calcúlela. [3]</p>
+      <p class="apt">(b) Calcule la fuerza total sobre el tramo de \(2{,}0\) m. [1]</p>
+      <p class="apt">(c) ¿Los hilos se atraen o se repelen? Justifique con la regla de la mano. [2]</p>
+      <p class="apt">(d) ¿Qué cambiaría si se invirtiera una de las corrientes? [1]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> El hilo 1 crea en el hilo 2 un campo \(B_1=\dfrac{\mu_0 I_1}{2\pi d}\). Sobre el hilo 2 (longitud \(L\), perpendicular a \(B_1\)): \(F=B_1 I_2 L=\dfrac{\mu_0 I_1 I_2}{2\pi d}L\), de donde \(\dfrac{F}{L}=\dfrac{\mu_0 I_1 I_2}{2\pi d}\).<br>
+        \(\dfrac{F}{L}=\dfrac{(4\pi\times10^{-7})(10)(15)}{2\pi(0{,}050)}=\dfrac{2\times10^{-7}(150)}{0{,}050}=6{,}0\times10^{-4}\) N·m⁻¹.<br><span class="ans">F/L = 6,0×10⁻⁴ N·m⁻¹.</span></div>
+        <div class="step"><b>(b)</b> \(F=(6{,}0\times10^{-4})(2{,}0)=1{,}2\times10^{-3}\) N.<br><span class="ans">F ≈ 1,2×10⁻³ N.</span></div>
+        <div class="step"><b>(c)</b> Corrientes <strong>paralelas en el mismo sentido se atraen</strong>. Cada hilo está en el campo del otro; aplicando \(\vec F=I\vec L\times\vec B\) con el campo del vecino, la fuerza apunta hacia el otro hilo.<br><span class="ans">Se atraen.</span></div>
+        <div class="step"><b>(d)</b> Corrientes antiparalelas (sentidos opuestos) <strong>se repelen</strong>; el módulo de la fuerza no cambia.<br><span class="ans">Se repelen; mismo módulo.</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- P3 -->
+  <div class="pb"><div class="pb-head"><span class="code">PRÁCTICA · P3</span><h3>Electrón en campo magnético: F = qvB y movimiento circular</h3></div>
+    <div class="pb-body">
+      <p>Un electrón (\(m=9{,}11\times10^{-31}\) kg, \(q=1{,}6\times10^{-19}\) C) entra con rapidez \(v=3{,}0\times10^{6}\) m·s⁻¹ perpendicular a un campo uniforme \(B=0{,}020\) T que <strong>sale del plano</strong> (⊙).</p>
+      <div class="fig">
+        <svg viewBox="0 0 400 210" role="img" aria-label="Electrón en campo saliente describiendo una trayectoria circular; la fuerza magnética apunta al centro">
+          <g fill="#1F6E7C">
+            <circle cx="70" cy="45" r="2"/><circle cx="150" cy="45" r="2"/><circle cx="330" cy="45" r="2"/>
+            <circle cx="70" cy="175" r="2"/><circle cx="150" cy="175" r="2"/><circle cx="330" cy="175" r="2"/>
+          </g>
+          <text x="332" y="40" font-family="IBM Plex Mono" font-size="10" fill="#1F6E7C">B (• = sale)</text>
+          <circle cx="200" cy="110" r="62" fill="none" stroke="#6E4C86" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <circle cx="200" cy="48" r="6" fill="#C77B23"/>
+          <text x="200" y="36" font-family="IBM Plex Mono" font-size="11" fill="#C77B23" text-anchor="middle">e⁻</text>
+          <line x1="200" y1="48" x2="262" y2="48" stroke="#134B55" stroke-width="2.2"/>
+          <polygon points="268,48 256,43 256,53" fill="#134B55"/>
+          <text x="250" y="66" font-family="IBM Plex Mono" font-size="11" fill="#134B55">v</text>
+          <line x1="200" y1="58" x2="200" y2="98" stroke="#A8402C" stroke-width="2.2"/>
+          <polygon points="200,104 194,92 206,92" fill="#A8402C"/>
+          <text x="208" y="86" font-family="IBM Plex Mono" font-size="11" fill="#A8402C">F</text>
+        </svg>
+        <figcaption>F = qvB es siempre perpendicular a v (centrípeta): la rapidez no cambia, solo la dirección.</figcaption>
+      </div>
+      <p class="apt">(a) Explique por qué la trayectoria es circular y muestre que \(r=\dfrac{mv}{qB}\). [3]</p>
+      <p class="apt">(b) Calcule el radio \(r\). [2]</p>
+      <p class="apt">(c) Calcule el periodo \(T\). [2]</p>
+      <p class="apt">(d) Si la rapidez se duplicara, ¿cómo cambian \(r\) y \(T\)? [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> Con \(\vec v\perp\vec B\), la fuerza \(F=qvB\) es siempre perpendicular a \(\vec v\): no hace trabajo (rapidez constante) y solo cambia la dirección. Una fuerza de módulo constante siempre perpendicular a \(\vec v\) es centrípeta ⇒ movimiento circular uniforme. Igualando a la centrípeta: \(qvB=\dfrac{mv^2}{r}\Rightarrow r=\dfrac{mv}{qB}\).</div>
+        <div class="step"><b>(b)</b> \(r=\dfrac{(9{,}11\times10^{-31})(3{,}0\times10^{6})}{(1{,}6\times10^{-19})(0{,}020)}=\dfrac{2{,}73\times10^{-24}}{3{,}2\times10^{-21}}=8{,}5\times10^{-4}\) m.<br><span class="ans">r ≈ 8,5×10⁻⁴ m (≈ 0,85 mm).</span></div>
+        <div class="step"><b>(c)</b> \(T=\dfrac{2\pi m}{qB}=\dfrac{2\pi(9{,}11\times10^{-31})}{(1{,}6\times10^{-19})(0{,}020)}=\dfrac{5{,}72\times10^{-30}}{3{,}2\times10^{-21}}=1{,}8\times10^{-9}\) s.<br><span class="ans">T ≈ 1,8×10⁻⁹ s.</span></div>
+        <div class="step"><b>(d)</b> \(r=\dfrac{mv}{qB}\propto v\): el radio <strong>se duplica</strong>. \(T=\dfrac{2\pi m}{qB}\) no depende de \(v\): el periodo <strong>no cambia</strong>.<br><span class="ans">r → 2r; T igual.</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- P4 -->
+  <div class="pb"><div class="pb-head"><span class="code">PRÁCTICA · P4</span><h3>Campo magnético de un hilo recto y de un solenoide</h3></div>
+    <div class="pb-body">
+      <p>Un hilo recto largo conduce \(I=8{,}0\) A. Aparte, un solenoide largo tiene \(n=500\) vueltas por metro y conduce \(I=2{,}5\) A. \(\mu_0=4\pi\times10^{-7}\) T·m·A⁻¹.</p>
+      <p class="apt">(a) Calcule el campo del hilo a una distancia \(d=0{,}040\) m. [2]</p>
+      <p class="apt">(b) Describa la forma y el sentido de ese campo (regla de la mano). [2]</p>
+      <p class="apt">(c) Calcule el campo \(B\) en el interior del solenoide (\(B=\mu_0 n I\)). [2]</p>
+      <p class="apt">(d) ¿Qué ocurre con \(B\) interior si se duplica el número de vueltas por metro? [1]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> \(B=\dfrac{\mu_0 I}{2\pi d}=\dfrac{(4\pi\times10^{-7})(8{,}0)}{2\pi(0{,}040)}=\dfrac{2\times10^{-7}(8{,}0)}{0{,}040}=4{,}0\times10^{-5}\) T.<br><span class="ans">B = 4,0×10⁻⁵ T.</span></div>
+        <div class="step"><b>(b)</b> Son <strong>circunferencias concéntricas</strong> en planos perpendiculares al hilo, más intensas cerca de él. El sentido lo da la regla de la mano derecha: pulgar según la corriente, los dedos envuelven el hilo indicando \(\vec B\).</div>
+        <div class="step"><b>(c)</b> \(B=\mu_0 n I=(4\pi\times10^{-7})(500)(2{,}5)=(4\pi\times10^{-7})(1250)=1{,}6\times10^{-3}\) T.<br><span class="ans">B ≈ 1,6×10⁻³ T (uniforme en el interior).</span></div>
+        <div class="step"><b>(d)</b> \(B=\mu_0 n I\propto n\): al duplicar \(n\), el campo interior <strong>se duplica</strong> (\(\approx3{,}1\times10^{-3}\) T).<br><span class="ans">B se duplica.</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- P5 -->
+  <div class="pb"><div class="pb-head"><span class="code">PRÁCTICA · P5</span><h3>Barra sobre rieles: flujo, Faraday, fem de movimiento y Lenz</h3></div>
+    <div class="pb-body">
+      <p>Una barra conductora de longitud \(L=0{,}30\) m se desliza hacia la derecha a \(v=4{,}0\) m·s⁻¹ sobre dos rieles conductores, dentro de un campo \(B=0{,}25\) T perpendicular al plano (entrando, ⊗). La resistencia del circuito es \(R=2{,}0\ \Omega\).</p>
+      <div class="fig">
+        <svg viewBox="0 0 400 190" role="img" aria-label="Barra conductora deslizando sobre dos rieles en un campo entrante">
+          <g font-family="IBM Plex Mono" font-size="14" fill="#1F6E7C" text-anchor="middle">
+            <text x="150" y="70">×</text><text x="210" y="70">×</text><text x="300" y="70">×</text>
+            <text x="150" y="135">×</text><text x="210" y="135">×</text><text x="300" y="135">×</text>
+          </g>
+          <line x1="70" y1="55" x2="360" y2="55" stroke="#134B55" stroke-width="2.2"/>
+          <line x1="70" y1="150" x2="360" y2="150" stroke="#134B55" stroke-width="2.2"/>
+          <path d="M70,55 L70,72 L62,80 L78,88 L62,96 L78,104 L62,112 L70,120 L70,150" fill="none" stroke="#6E4C86" stroke-width="1.8"/>
+          <text x="46" y="106" font-family="IBM Plex Mono" font-size="11" fill="#6E4C86">R</text>
+          <line x1="250" y1="48" x2="250" y2="157" stroke="#C77B23" stroke-width="3.2"/>
+          <text x="250" y="40" font-family="IBM Plex Mono" font-size="11" fill="#C77B23" text-anchor="middle">barra (L)</text>
+          <line x1="256" y1="102" x2="316" y2="102" stroke="#134B55" stroke-width="2.2"/>
+          <polygon points="322,102 310,97 310,107" fill="#134B55"/>
+          <text x="300" y="120" font-family="IBM Plex Mono" font-size="11" fill="#134B55">v</text>
+          <text x="330" y="45" font-family="IBM Plex Mono" font-size="10" fill="#1F6E7C">B (× entra)</text>
+        </svg>
+        <figcaption>Al avanzar la barra, el área del circuito crece: Φ = BA aumenta e induce fem.</figcaption>
+      </div>
+      <p class="apt">(a) Partiendo de \(\Phi=BA\cos\theta\) y de Faraday, muestre que la fem es \(\varepsilon=BvL\). [3]</p>
+      <p class="apt">(b) Calcule la fem y la corriente inducida. [2]</p>
+      <p class="apt">(c) Use la ley de Lenz para indicar el efecto sobre la barra. [2]</p>
+      <p class="apt">(d) Calcule la fuerza necesaria para mantener \(v\) constante y compruebe que \(P_{mec}=I^2R\). [3]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> El plano del circuito es perpendicular a \(\vec B\) (\(\theta=0\)), así que \(\Phi=BA=B\,(L\,x)\), donde \(x\) es la posición de la barra. Por Faraday: \(\varepsilon=-\dfrac{d\Phi}{dt}=-BL\dfrac{dx}{dt}=-BLv\). En módulo \(\varepsilon=BvL\).</div>
+        <div class="step"><b>(b)</b> \(\varepsilon=BvL=(0{,}25)(4{,}0)(0{,}30)=0{,}30\) V.  \(I=\dfrac{\varepsilon}{R}=\dfrac{0{,}30}{2{,}0}=0{,}15\) A.<br><span class="ans">ε = 0,30 V;  I = 0,15 A.</span></div>
+        <div class="step"><b>(c)</b> El flujo entrante <strong>aumenta</strong>; por Lenz, la corriente inducida circula en el sentido que crea un campo <em>opuesto</em> (saliente) dentro del circuito para oponerse al aumento. La fuerza \(F=BIL\) sobre la barra resulta <strong>opuesta a \(v\)</strong>: frena la barra. Por eso hay que empujarla para mantener \(v\).</div>
+        <div class="step"><b>(d)</b> Fuerza aplicada = fuerza magnética de frenado: \(F=BIL=(0{,}25)(0{,}15)(0{,}30)=0{,}011\) N.<br>
+        Potencia mecánica: \(P_{mec}=Fv=(0{,}011)(4{,}0)=0{,}045\) W.<br>
+        Potencia disipada: \(I^2R=(0{,}15)^2(2{,}0)=0{,}045\) W. ✓ Coinciden: el trabajo mecánico se convierte íntegramente en calor en \(R\).<br><span class="ans">F ≈ 0,011 N;  P = 0,045 W por ambos caminos.</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- P6 -->
+  <div class="pb"><div class="pb-head"><span class="code">PRÁCTICA · P6</span><h3>Transformador elevador (Vs/Vp = Ns/Np)</h3></div>
+    <div class="pb-body">
+      <p>Un transformador ideal se alimenta con \(V_p=240\) V en el primario, que tiene \(N_p=800\) vueltas. El secundario tiene \(N_s=3000\) vueltas y entrega una potencia \(P=180\) W a una carga.</p>
+      <p class="apt">(a) Muestre que \(V_s=V_p\dfrac{N_s}{N_p}\) y calcule \(V_s\). [2]</p>
+      <p class="apt">(b) Calcule la corriente en el secundario \(I_s\). [1]</p>
+      <p class="apt">(c) Calcule la corriente en el primario \(I_p\) (ideal). [2]</p>
+      <p class="apt">(d) Explique por qué conviene transmitir energía a alta tensión. [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> En un transformador ideal la misma fem por vuelta actúa en ambos devanados, de donde \(\dfrac{V_s}{V_p}=\dfrac{N_s}{N_p}\Rightarrow V_s=V_p\dfrac{N_s}{N_p}\).<br>
+        \(V_s=240\cdot\dfrac{3000}{800}=240\times3{,}75=900\) V.<br><span class="ans">V_s = 900 V (eleva la tensión).</span></div>
+        <div class="step"><b>(b)</b> \(I_s=\dfrac{P}{V_s}=\dfrac{180}{900}=0{,}20\) A.<br><span class="ans">I_s = 0,20 A.</span></div>
+        <div class="step"><b>(c)</b> Ideal ⇒ \(P_p=P_s\Rightarrow V_pI_p=P\Rightarrow I_p=\dfrac{180}{240}=0{,}75\) A. (Comprobación: \(I_p=I_s\dfrac{N_s}{N_p}=0{,}20\times3{,}75=0{,}75\) A.)<br><span class="ans">I_p = 0,75 A.</span></div>
+        <div class="step"><b>(d)</b> A mayor tensión, para la misma potencia \(P=VI\) la <strong>corriente es menor</strong>. Las pérdidas en las líneas son \(P_{perd}=I^2R\): al reducir \(I\), esas pérdidas caen con el cuadrado. Por eso se eleva la tensión para el transporte y se reduce de nuevo antes del consumo.<br><span class="ans">Menor I ⇒ menores pérdidas I²R en las líneas.</span></div>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  Módulo 17B · Electromagnetismo · Tipo 2 (Paper 2) · ficha oficial resuelta y visible + 5 integradores · g = 9,8 m·s⁻² · μ₀ = 4π×10⁻⁷ T·m·A⁻¹ · e = 1,6×10⁻¹⁹ C.<br>
+  Con esto <strong>cierra el curso de Física Tipo 1A/Tipo 2</strong>. Integra solo lo visto hasta el Módulo 16; para repasar a fondo, vuelve desde el <strong>Módulo 01A</strong>.
+</div></footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

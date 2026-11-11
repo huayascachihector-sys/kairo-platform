@@ -1,0 +1,2076 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 2 · Polinomios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 2</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t1">1.1 Cuadráticas y discriminante</a>
+  <a class="sub" href="#t2">1.2 Ecuaciones reducibles a cuadráticas</a>
+  <a class="sub" href="#t3">1.3 División, resto y factor</a>
+  <a class="sub" href="#t4">1.4 Raíces racionales y factorización</a>
+  <a class="sub" href="#t5">1.5 Relaciones entre raíces y coeficientes</a>
+  <a class="sub" href="#t6">1.6 Transformar raíces</a>
+  <a class="sub" href="#t7">1.7 Gráficas e inecuaciones</a>
+  <a class="sub" href="#t8">1.8 Determinar un polinomio</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos resueltos</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 2 de 17</p>
+  <h1>Polinomios: factor, resto, raíces y discriminante</h1>
+  <p class="formula">\( \Delta=b^2-4ac \qquad P(a)=\text{resto de } \dfrac{P(x)}{x-a} \qquad \sum\alpha=-\dfrac{a_{n-1}}{a_n},\ \ \prod\alpha=(-1)^n\dfrac{a_0}{a_n} \)</p>
+  <p>Todo lo necesario para resolver cualquier pregunta de polinomios de la Prueba 1 sin calculadora, al nivel de la banda 7. Los problemas extra integran el Módulo 1 (sucesiones, series y logaritmos). Las soluciones están plegadas: intenta primero.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">Los polinomios aparecen en 6 de tus 7 pruebas. Las preguntas puramente de polinomios suman 30 puntos, y además son la herramienta de otras 5 preguntas de complejos y funciones racionales (más de 60 puntos). Es el tema que más se reutiliza en la Sección B.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2026 TZ2</td><td>4</td><td>6</td><td>Teorema del factor y raíces de \(f(x/2)=0\)</td></tr>
+<tr><td>Noviembre 2022</td><td>11(b)</td><td>12</td><td>Factor cuadrático, coeficientes con restricción entera, gráfica de la cúbica</td></tr>
+<tr><td>Noviembre 2021</td><td>7</td><td>7</td><td>Discriminante con parámetro; raíces en forma exacta</td></tr>
+<tr><td>Mayo 2021 TZ2</td><td>7</td><td>5</td><td>Relaciones entre raíces y coeficientes en una cúbica</td></tr>
+</tbody></table></div>
+<p>Otras preguntas usan polinomios, pero dependen de temas posteriores. Se resuelven en su módulo: mayo 2021 TZ1 P7, noviembre 2022 P5 y mayo 2026 P12 (raíces complejas, Módulo 6); mayo 2022 TZ2 P3 y P11 (funciones racionales, Módulo 3); noviembre 2022 P11(a) (conteo, Módulo 4).</p>
+
+<h3>Cómo lo pregunta el IB: patrones de tus 7 pruebas</h3>
+<ol>
+<li><b>Condición entre raíces + Vieta.</b> Una raíz es la suma de las otras dos (mayo 2021 TZ2), o las raíces cumplen una relación dada. Se combina la suma, la suma de productos y el producto.</li>
+<li><b>Discriminante con parámetro.</b> «Dos raíces reales distintas» exige \(\Delta\gt 0\) y resolver una inecuación cuadrática en el parámetro (noviembre 2021).</li>
+<li><b>Una raíz dada, hallar las demás.</b> Factor lineal y división, o Vieta (mayo 2026). Luego se pide transformar las raíces: \(f(x/2)=0\).</li>
+<li><b>Factor cuadrático con coeficientes desconocidos.</b> Dos raíces dan dos ecuaciones; con restricciones enteras, se descartan casos con argumentos (noviembre 2022, 12 puntos).</li>
+<li><b>Polinomio con coeficientes reales y raíces complejas.</b> Conjugadas y producto de raíces (Módulo 6).</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<p>Tus fichas no tienen una unidad dedicada a polinomios; el tema aparece dentro de otras. Los ejemplos de la sección 4 parten de esos ítems y los llevan a nivel de examen. Donde ninguna ficha cubre un tipo que el IB sí pregunta, el ejemplo lo indica.</p>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido con polinomios</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA 01 (2026)</td><td>Sistemas 3×3, método de Gauss</td><td>Hallar coeficientes de un polinomio con condiciones (F1)</td></tr>
+<tr><td>DMpA N°15 (2025)</td><td>Funciones racionales: factorizar numerador y denominador</td><td>Cubo de binomio, división, inecuación racional (F2, F3)</td></tr>
+<tr><td>DMpA N°28 (2025)</td><td>Parábolas, \(y=(x+1)^3(x-1)\), factorización de derivadas</td><td>Multiplicidad de raíces y gráficas (F4)</td></tr>
+<tr><td>DMpA N°03 (2025)</td><td>Rectas e intersecciones</td><td>Recta tangente a una parábola por discriminante (F6)</td></tr>
+<tr><td>DMpA 02 y 17 (2025)</td><td>Progresiones y logaritmos</td><td>Integración con el Módulo 1 (F7, F8)</td></tr>
+</tbody></table></div>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA NS</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Función cuadrática: formas, vértice, discriminante, ecuaciones e inecuaciones</td><td>1.1</td><td>Alto</td></tr>
+<tr><td>Ecuaciones reducibles a cuadráticas (bicuadradas, en \(e^x\), en \(\log x\), recíprocas)</td><td>1.2</td><td>Medio</td></tr>
+<tr><td>División de polinomios, teoremas del resto y del factor</td><td>1.3</td><td>Alto</td></tr>
+<tr><td>Factorización de cúbicas y cuárticas sin calculadora</td><td>1.4</td><td>Alto</td></tr>
+<tr><td>Suma y producto de raíces de polinomios de grado \(n\)</td><td>1.5</td><td>Alto</td></tr>
+<tr><td>Ecuaciones con raíces transformadas (\(2\alpha,\ \alpha+1,\ 1/\alpha,\ \alpha^2\))</td><td>1.6</td><td>Medio</td></tr>
+<tr><td>Gráficas de polinomios, multiplicidad, inecuaciones polinómicas</td><td>1.7</td><td>Alto</td></tr>
+<tr><td>Determinar un polinomio por condiciones (sistemas)</td><td>1.8</td><td>Medio</td></tr>
+<tr><td>Raíces complejas conjugadas</td><td>Sección 6 (T2) y Módulo 6</td><td>Alto</td></tr>
+<tr><td>Otros tipos de pregunta: raíces de \(P(ax+b)=0\), raíz compleja dada, polinomio desde su gráfica, relación entre raíces, mínimo por sustitución, identidad de polinomios, intersección recta–cúbica, número de soluciones de \(P(x)=k\)</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+<tr><td>Regla de Descartes, sumas de Newton, raíz doble por derivada, polinomio de diferencias (fuera del programa)</td><td>Cajas moradas</td><td>Solo como herramienta</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1 a 1.8 cubren todo lo evaluable de polinomios en la Prueba 1. Cada concepto clave trae ejemplos de nivel de examen y un recuadro «Para practicar». La sección 6 reúne los tipos de pregunta del IB que no salieron en tus 7 pruebas. Lo que va más allá del programa está solo en las cajas moradas, y ningún ejemplo ni problema extra pide contenido fuera del programa. El techo es la investigación I1, tipo Prueba 3.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Va de la cuadrática a los polinomios de grado \(n\). Cada concepto trae un ejemplo resuelto y, los esenciales, un recuadro «Para practicar». Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Cuadráticas y discriminante</h3>
+<p>Una cuadrática \(f(x)=ax^2+bx+c\) (\(a\neq0\)) tiene tres formas útiles:</p>
+\[ \underbrace{ax^2+bx+c}_{\text{general}}\qquad \underbrace{a(x-h)^2+k}_{\text{canónica}}\quad h=-\frac{b}{2a},\ k=f(h)\qquad \underbrace{a(x-p)(x-q)}_{\text{factorizada}} \]
+<p>La forma canónica da el vértice \((h,k)\) y el eje \(x=h\). Si \(a\gt 0\), \(k\) es el mínimo; si \(a\lt 0\), el máximo. Completando el cuadrado en la forma general se obtiene la fórmula:</p>
+\[ x=\frac{-b\pm\sqrt{\Delta}}{2a},\qquad \Delta=b^2-4ac \]
+<ul>
+<li>\(\Delta\gt 0\): dos raíces reales distintas. \(\Delta=0\): una raíz doble (el vértice toca el eje). \(\Delta\lt 0\): ninguna raíz real.</li>
+<li>\(f(x)\gt 0\) para todo \(x\) si y solo si \(a\gt 0\) y \(\Delta\lt 0\). \(f(x)\lt 0\) para todo \(x\) si y solo si \(a\lt 0\) y \(\Delta\lt 0\).</li>
+<li>Una recta y una parábola: al igualarlas queda una cuadrática. \(\Delta\gt 0\): se cortan en dos puntos; \(\Delta=0\): la recta es tangente; \(\Delta\lt 0\): no se cortan.</li>
+<li>Si el parámetro está en el coeficiente de \(x^2\), el caso en que ese coeficiente vale 0 se analiza aparte: ya no es cuadrática.</li>
+</ul>
+
+<div class="ex"><p class="et">Ejemplo 1.1. Forma canónica y recorrido</p>
+<p>Escribe \(f(x)=-2x^2+12x-7\) en forma canónica y halla su recorrido.</p>
+<p>\(f(x)=-2(x^2-6x)-7=-2\left[(x-3)^2-9\right]-7=-2(x-3)^2+11\). Máximo 11 en \(x=3\), así que el recorrido es \(f(x)\le 11\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Escribe \(f(x)=3x^2-12x+5\) en la forma \(a(x-h)^2+k\) e indica su recorrido.</li><li>La parábola \(y=x^2+bx+c\) tiene vértice \((3,-4)\). Halla \(b\) y \(c\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f(x)=3(x-2)^2-7\); recorrido \(f(x)\ge-7\).</li><li>\(y=(x-3)^2-4=x^2-6x+5\): \(b=-6,\ c=5\).</li></ol></div></details></div>
+
+<div class="ex"><p class="et">Ejemplo 1.2. Positiva para todo x, con parámetro arriba</p>
+<p>Halla \(k\) para que \((k-1)x^2+4x+(k+2)\gt 0\) para todo \(x\in\mathbb R\).</p>
+<p>Si \(k=1\): queda \(4x+3\), que no es positiva siempre. Si \(k\ne1\), se necesita \(k-1\gt 0\) y \(\Delta=16-4(k-1)(k+2)\lt 0\).</p>
+<p>\(4-(k^2+k-2)\lt 0\Rightarrow k^2+k-6\gt 0\Rightarrow(k+3)(k-2)\gt 0\Rightarrow k\lt -3\) o \(k\gt 2\). Con \(k\gt 1\), queda \(k\gt 2\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.3. Recta tangente por discriminante</p>
+<p>Halla \(m\) para que \(y=mx-2\) sea tangente a \(y=x^2+x+2\).</p>
+<p>\(x^2+(1-m)x+4=0\) debe tener raíz doble: \((1-m)^2-16=0\Rightarrow 1-m=\pm4\Rightarrow m=-3\) o \(m=5\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 609.84 249.84" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 249.84 
+L 609.84 249.84 
+L 609.84 0 
+L 0 0 
+L 0 249.84 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 242.64 
+L 298.98 242.64 
+L 298.98 7.2 
+L 7.2 7.2 
+L 7.2 242.64 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m4eb6551389" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m4eb6551389" x="153.09" y="178.429091" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="153.09" y="193.787372" transform="rotate(-0 153.09 193.787372)">1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m4eb6551389" x="219.403636" y="178.429091" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="219.403636" y="193.787372" transform="rotate(-0 219.403636 193.787372)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path id="me6c23f0f25" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#me6c23f0f25" x="86.776364" y="135.621818" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="79.776364" y="139.800959" transform="rotate(-0 79.776364 139.800959)">1</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#me6c23f0f25" x="86.776364" y="92.814545" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="79.776364" y="96.993686" transform="rotate(-0 79.776364 96.993686)">2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#me6c23f0f25" x="86.776364" y="50.007273" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="79.776364" y="54.186413" transform="rotate(-0 79.776364 54.186413)">3</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_6">
+    <path d="M 20.462727 50.007273 
+L 25.785561 63.475612 
+L 31.108395 76.392346 
+L 36.431228 88.757476 
+L 41.754062 100.571002 
+L 47.076896 111.832924 
+L 52.399729 122.543241 
+L 57.722563 132.701954 
+L 63.045397 142.309063 
+L 67.481092 149.893622 
+L 71.916786 157.095123 
+L 76.352481 163.913566 
+L 80.788176 170.348949 
+L 85.22387 176.401275 
+L 89.659565 182.070541 
+L 94.09526 187.356749 
+L 98.530955 192.259899 
+L 102.966649 196.77999 
+L 107.402344 200.917022 
+L 110.9509 203.950846 
+L 114.499456 206.739512 
+L 118.048012 209.283021 
+L 121.596567 211.581373 
+L 125.145123 213.634567 
+L 128.693679 215.442603 
+L 132.242235 217.005482 
+L 135.790791 218.323203 
+L 139.339346 219.395767 
+L 142.887902 220.223174 
+L 146.436458 220.805423 
+L 149.985014 221.142514 
+L 153.533569 221.234448 
+L 157.082125 221.081225 
+L 160.630681 220.682844 
+L 164.179237 220.039306 
+L 167.727793 219.15061 
+L 171.276348 218.016756 
+L 174.824904 216.637746 
+L 178.37346 215.013577 
+L 181.922016 213.144252 
+L 185.470572 211.029768 
+L 189.019127 208.670128 
+L 192.567683 206.065329 
+L 196.116239 203.215374 
+L 199.664795 200.120261 
+L 203.213351 196.77999 
+L 207.649045 192.259899 
+L 212.08474 187.356749 
+L 216.520435 182.070541 
+L 220.95613 176.401275 
+L 225.391824 170.348949 
+L 229.827519 163.913566 
+L 234.263214 157.095123 
+L 238.698908 149.893622 
+L 243.134603 142.309063 
+L 247.570298 134.341445 
+L 252.893132 124.274666 
+L 258.215965 113.656283 
+L 263.538799 102.486295 
+L 268.861633 90.764703 
+L 274.184466 78.491507 
+L 279.5073 65.666707 
+L 284.830134 52.290302 
+L 285.717273 50.007273 
+L 285.717273 50.007273 
+" clip-path="url(#p1ce63ba022)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 20.462727 7.2 
+L 25.785561 20.668339 
+L 31.108395 33.585074 
+L 36.431228 45.950204 
+L 41.754062 57.76373 
+L 47.076896 69.025651 
+L 52.399729 79.735969 
+L 57.722563 89.894682 
+L 63.045397 99.50179 
+L 67.481092 107.08635 
+L 71.916786 114.287851 
+L 76.352481 121.106293 
+L 80.788176 127.541677 
+L 85.22387 133.594002 
+L 89.659565 139.263269 
+L 94.09526 144.549477 
+L 98.530955 149.452626 
+L 102.966649 153.972717 
+L 107.402344 158.10975 
+L 110.9509 161.143573 
+L 114.499456 163.93224 
+L 118.048012 166.475749 
+L 121.596567 168.7741 
+L 125.145123 170.827294 
+L 128.693679 172.63533 
+L 132.242235 174.198209 
+L 135.790791 175.515931 
+L 139.339346 176.588495 
+L 142.887902 177.415901 
+L 146.436458 177.99815 
+L 149.985014 178.335242 
+L 153.533569 178.427176 
+L 157.082125 178.273952 
+L 160.630681 177.875571 
+L 164.179237 177.232033 
+L 167.727793 176.343337 
+L 171.276348 175.209484 
+L 174.824904 173.830473 
+L 178.37346 172.206305 
+L 181.922016 170.336979 
+L 185.470572 168.222496 
+L 189.019127 165.862855 
+L 192.567683 163.258057 
+L 196.116239 160.408101 
+L 199.664795 157.312988 
+L 203.213351 153.972717 
+L 207.649045 149.452626 
+L 212.08474 144.549477 
+L 216.520435 139.263269 
+L 220.95613 133.594002 
+L 225.391824 127.541677 
+L 229.827519 121.106293 
+L 234.263214 114.287851 
+L 238.698908 107.08635 
+L 243.134603 99.50179 
+L 247.570298 91.534172 
+L 252.893132 81.467393 
+L 258.215965 70.84901 
+L 263.538799 59.679023 
+L 268.861633 47.957431 
+L 274.184466 35.684234 
+L 279.5073 22.859434 
+L 284.830134 9.483029 
+L 285.717273 7.2 
+L 285.717273 7.2 
+" clip-path="url(#p1ce63ba022)" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 34.6213 -1 
+L 39.092645 9.118645 
+L 44.415479 20.656368 
+L 49.738313 31.642488 
+L 55.061146 42.077003 
+L 60.38398 51.959914 
+L 64.819675 59.774308 
+L 69.255369 67.205644 
+L 73.691064 74.253922 
+L 78.126759 80.919141 
+L 82.562454 87.201301 
+L 86.998148 93.100403 
+L 91.433843 98.616446 
+L 95.869538 103.749431 
+L 100.305233 108.499357 
+L 104.740927 112.866225 
+L 108.289483 116.083916 
+L 111.838039 119.056451 
+L 115.386595 121.783828 
+L 118.935151 124.266047 
+L 122.483706 126.503109 
+L 126.032262 128.495014 
+L 129.580818 130.241761 
+L 133.129374 131.74335 
+L 136.677929 132.999782 
+L 140.226485 134.011057 
+L 143.775041 134.777174 
+L 147.323597 135.298134 
+L 150.872153 135.573936 
+L 154.420708 135.604581 
+L 157.969264 135.390068 
+L 161.51782 134.930397 
+L 165.066376 134.22557 
+L 168.614932 133.275585 
+L 172.163487 132.080442 
+L 175.712043 130.640142 
+L 179.260599 128.954684 
+L 182.809155 127.024069 
+L 186.357711 124.848296 
+L 189.906266 122.427366 
+L 193.454822 119.761279 
+L 197.003378 116.850034 
+L 200.551934 113.693631 
+L 204.10049 110.292071 
+L 208.536184 105.695368 
+L 212.971879 100.715607 
+L 217.407574 95.352787 
+L 221.843268 89.606909 
+L 226.278963 83.477972 
+L 230.714658 76.965976 
+L 235.150353 70.070922 
+L 239.586047 62.79281 
+L 244.021742 55.131639 
+L 248.457437 47.087409 
+L 253.780271 36.928696 
+L 259.103104 26.218379 
+L 264.425938 14.956457 
+L 269.748772 3.142931 
+L 271.5587 -1 
+L 271.5587 -1 
+" clip-path="url(#p1ce63ba022)" style="fill: none; stroke: #a2530a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 86.776364 242.64 
+L 86.776364 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 178.429091 
+L 298.98 178.429091 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_9">
+     <path d="M 93.936172 19.643516 
+L 103.436172 19.643516 
+L 112.936172 19.643516 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="120.536172" y="22.968516" transform="rotate(-0 120.536172 22.968516)">Δ &gt; 0: dos raíces</text>
+    </g>
+    <g id="line2d_10">
+     <path d="M 93.936172 33.587734 
+L 103.436172 33.587734 
+L 112.936172 33.587734 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="120.536172" y="36.912734" transform="rotate(-0 120.536172 36.912734)">Δ = 0: raíz doble</text>
+    </g>
+    <g id="line2d_11">
+     <path d="M 93.936172 47.911953 
+L 103.436172 47.911953 
+L 112.936172 47.911953 
+" style="fill: none; stroke: #a2530a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="120.536172" y="51.236953" transform="rotate(-0 120.536172 51.236953)">Δ &lt; 0: ninguna raíz</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 310.86 242.64 
+L 602.64 242.64 
+L 602.64 7.2 
+L 310.86 7.2 
+L 310.86 242.64 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_3">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m4eb6551389" x="390.436364" y="180.682105" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="390.436364" y="196.040387" transform="rotate(-0 390.436364 196.040387)">−2</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m4eb6551389" x="523.063636" y="180.682105" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="523.063636" y="196.040387" transform="rotate(-0 523.063636 196.040387)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_4">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#me6c23f0f25" x="456.75" y="131.115789" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="449.75" y="135.29493" transform="rotate(-0 449.75 135.29493)">4</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#me6c23f0f25" x="456.75" y="81.549474" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="449.75" y="85.728614" transform="rotate(-0 449.75 85.728614)">8</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#me6c23f0f25" x="456.75" y="31.983158" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="449.75" y="36.162299" transform="rotate(-0 449.75 36.162299)">12</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_17">
+    <path d="M 324.122727 7.2 
+L 329.445561 20.805635 
+L 334.768395 33.772571 
+L 340.091228 46.100806 
+L 345.414062 57.790342 
+L 349.849757 67.043727 
+L 354.285452 75.853569 
+L 358.721146 84.219871 
+L 363.156841 92.142631 
+L 367.592536 99.621849 
+L 372.02823 106.657526 
+L 376.463925 113.249661 
+L 380.89962 119.398255 
+L 385.335315 125.103307 
+L 388.88387 129.347999 
+L 392.432426 133.308825 
+L 395.980982 136.985784 
+L 399.529538 140.378876 
+L 403.078094 143.488102 
+L 406.626649 146.313461 
+L 410.175205 148.854954 
+L 413.723761 151.11258 
+L 417.272317 153.08634 
+L 420.820873 154.776233 
+L 424.369428 156.182259 
+L 427.917984 157.304419 
+L 431.46654 158.142713 
+L 435.015096 158.69714 
+L 438.563652 158.9677 
+L 442.112207 158.954394 
+L 445.660763 158.657221 
+L 449.209319 158.076182 
+L 452.757875 157.211276 
+L 456.306431 156.062503 
+L 459.854986 154.629864 
+L 463.403542 152.913359 
+L 466.952098 150.912987 
+L 470.500654 148.628748 
+L 474.049209 146.060643 
+L 477.597765 143.208671 
+L 481.146321 140.072833 
+L 484.694877 136.653128 
+L 488.243433 132.949556 
+L 491.791988 128.962118 
+L 495.340544 124.690814 
+L 499.776239 118.952496 
+L 504.211934 112.770636 
+L 508.647628 106.145235 
+L 513.083323 99.076293 
+L 517.519018 91.563809 
+L 521.954713 83.607783 
+L 526.390407 75.208216 
+L 530.826102 66.365108 
+L 535.261797 57.078458 
+L 539.697492 47.348267 
+L 545.020325 35.086562 
+L 550.343159 22.186158 
+L 555.665993 8.647054 
+L 559.313358 -1 
+L 559.313358 -1 
+" clip-path="url(#p5bbc8e333d)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_18">
+    <path d="M 432.467672 250.84 
+L 567.240055 -1 
+L 567.240055 -1 
+" clip-path="url(#p5bbc8e333d)" style="fill: none; stroke: #5a3d9a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_19">
+    <path d="M 324.122727 56.766316 
+L 497.220546 250.84 
+L 497.220546 250.84 
+" clip-path="url(#p5bbc8e333d)" style="fill: none; stroke: #a2530a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_20">
+    <defs>
+     <path id="m3e07e7daf3" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#p5bbc8e333d)">
+     <use xlink:href="#m3e07e7daf3" x="523.063636" y="81.549474" style="stroke: currentColor"/>
+     <use xlink:href="#m3e07e7daf3" x="390.436364" y="131.115789" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="line2d_21">
+    <defs>
+     <path id="ma46ec04465" d="M -2 2 
+L 2 2 
+L 2 -2 
+L -2 -2 
+z
+" style="stroke: currentColor; stroke-linejoin: miter"/>
+    </defs>
+    <g clip-path="url(#p5bbc8e333d)">
+     <use xlink:href="#ma46ec04465" x="456.75" y="205.465263" style="stroke: currentColor; stroke-linejoin: miter"/>
+    </g>
+   </g>
+   <g id="patch_6">
+    <path d="M 456.75 242.64 
+L 456.75 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 310.86 180.682105 
+L 602.64 180.682105 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="466.697045" y="220.335158" transform="rotate(-0 466.697045 220.335158)">(0, −2)</text>
+   </g>
+   <g id="legend_2">
+    <g id="line2d_22">
+     <path d="M 504.237656 203.097656 
+L 513.237656 203.097656 
+L 522.237656 203.097656 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="529.437656" y="206.247656" transform="rotate(-0 529.437656 206.247656)">y = x² + x + 2</text>
+    </g>
+    <g id="line2d_23">
+     <path d="M 504.237656 216.307969 
+L 513.237656 216.307969 
+L 522.237656 216.307969 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 1.6; stroke-linecap: square"/>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="529.437656" y="219.457969" transform="rotate(-0 529.437656 219.457969)">y = 5x − 2</text>
+    </g>
+    <g id="line2d_24">
+     <path d="M 504.237656 229.518281 
+L 513.237656 229.518281 
+L 522.237656 229.518281 
+" style="fill: none; stroke: #a2530a; stroke-width: 1.6; stroke-linecap: square"/>
+    </g>
+    <g id="text_17">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="529.437656" y="232.668281" transform="rotate(-0 529.437656 232.668281)">y = −3x − 2</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p1ce63ba022">
+   <rect x="7.2" y="7.2" width="291.78" height="235.44"/>
+  </clipPath>
+  <clipPath id="p5bbc8e333d">
+   <rect x="310.86" y="7.2" width="291.78" height="235.44"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: izquierda: \(y=x^2-2x+c\) con \(c=0,1,2\). El signo del discriminante decide si la parábola corta, toca o no toca el eje. Derecha, Ejemplo 1.3: las rectas \(y=mx-2\) que pasan por \((0,-2)\) son tangentes justo cuando \(m=5\) o \(m=-3\), es decir, cuando la ecuación de los cortes tiene \(\Delta=0\).</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla los \(k\) para los que \(x^2+(k-3)x+k=0\) tiene dos raíces reales distintas.</li><li>Halla los \(c\) para los que la recta \(y=2x+c\) no corta la parábola \(y=x^2-4x+5\).</li><li>Halla los \(p\) para los que \(px^2-2px+3=0\) no tiene soluciones reales. (Cuidado con \(p=0\).)</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\((k-3)^2-4k=k^2-10k+9\gt0\iff k\lt1\) o \(k\gt9\).</li><li>\(x^2-6x+5-c=0\) con \(\Delta=16+4c\lt0\iff c\lt-4\).</li><li>Si \(p\ne0\): \(\Delta=4p^2-12p\lt0\iff0\lt p\lt3\). Si \(p=0\), queda \(3=0\): tampoco hay soluciones. Respuesta: \(0\le p\lt3\).</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2021, P7)</p><p>«Dos raíces reales distintas» de \(3px^2+2px+1=p\). Primero se pasa todo a un lado (\(c=1-p\)), luego \(\Delta\gt 0\) da una inecuación cuadrática en \(p\). El markscheme da una M1 por hallar los valores críticos y otra por reconocer que se necesita \(\Delta\gt 0\).</p></div>
+
+<h3 id="t2">1.2 Ecuaciones reducibles a cuadráticas</h3>
+<p>Se busca una sustitución \(t\) que convierta la ecuación en cuadrática. Después, cada valor de \(t\) se deshace y se revisan las restricciones.</p>
+<div class="tbl"><table>
+<thead><tr><th>Forma</th><th>Sustitución</th><th>Restricción</th></tr></thead>
+<tbody>
+<tr><td>\(ax^4+bx^2+c=0\) (bicuadrada)</td><td>\(t=x^2\)</td><td>\(t\ge0\)</td></tr>
+<tr><td>\(ae^{2x}+be^x+c=0\)</td><td>\(t=e^x\)</td><td>\(t\gt 0\)</td></tr>
+<tr><td>\(a(\log x)^2+b\log x+c=0\)</td><td>\(t=\log x\)</td><td>ninguna en \(t\); \(x\gt 0\)</td></tr>
+<tr><td>\(ax+b\sqrt x+c=0\)</td><td>\(t=\sqrt x\)</td><td>\(t\ge0\)</td></tr>
+<tr><td>Recíproca: coeficientes simétricos, como \(ax^4+bx^3+cx^2+bx+a\)</td><td>dividir por \(x^2\) y \(t=x+\frac1x\)</td><td>\(|t|\ge2\) para \(x\) real</td></tr>
+</tbody></table></div>
+
+<div class="ex"><p class="et">Ejemplo 1.4. Inecuación bicuadrada</p>
+<p>Resuelve \(x^4-5x^2+4\le0\).</p>
+<p>\((x^2-1)(x^2-4)\le0\Rightarrow1\le x^2\le4\Rightarrow -2\le x\le-1\) o \(1\le x\le2\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.5. Ecuación recíproca</p>
+<p>Resuelve \(x^4-5x^3+8x^2-5x+1=0\).</p>
+<p>\(x=0\) no es raíz; divide por \(x^2\): \(\left(x^2+\tfrac1{x^2}\right)-5\left(x+\tfrac1x\right)+8=0\). Con \(t=x+\tfrac1x\), \(x^2+\tfrac1{x^2}=t^2-2\), así que \(t^2-5t+6=0\): \(t=2\) o \(t=3\).</p>
+<p>\(x+\tfrac1x=2\Rightarrow(x-1)^2=0\Rightarrow x=1\) (doble). \(x+\tfrac1x=3\Rightarrow x^2-3x+1=0\Rightarrow x=\tfrac{3\pm\sqrt5}{2}\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(2e^{2x}-7e^x+3=0\).</li><li>Resuelve \(x-5\sqrt x+6=0\).</li><li>Resuelve \(9^x-4\cdot3^{x+1}+27=0\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(e^x=3\) o \(e^x=\tfrac12\): \(x=\ln3\) o \(x=-\ln2\).</li><li>\(\sqrt x=2\) o \(\sqrt x=3\): \(x=4\) o \(x=9\).</li><li>Con \(t=3^x\): \(t^2-12t+27=0\), \(t=3\) o \(t=9\): \(x=1\) o \(x=2\).</li></ol></div></details></div>
+
+<h3 id="t3">1.3 División, teorema del resto y teorema del factor</h3>
+<p><b>Algoritmo de la división.</b> Para polinomios \(P\) y \(D\neq0\) existen únicos \(Q\) y \(R\) con</p>
+\[ P(x)=D(x)\,Q(x)+R(x),\qquad \operatorname{grado}R\lt \operatorname{grado}D \]
+<p><b>División sintética</b> (divisor \(x-a\)): baja el primer coeficiente; multiplícalo por \(a\), súmalo al siguiente, y repite. El último número es el resto.</p>
+<div class="ex"><p class="et">Ejemplo 1.6. División sintética</p>
+<p>Divide \(2x^3-3x^2+4x-5\) entre \(x-2\).</p>
+<p>Coeficientes \(2,-3,4,-5\) con \(a=2\): \(2\); \(-3+4=1\); \(4+2=6\); \(-5+12=7\). Cociente \(2x^2+x+6\), resto 7. Comprobación: \(P(2)=16-12+8-5=7\).</p></div>
+
+<ul>
+<li><b>Teorema del resto:</b> el resto de dividir \(P(x)\) entre \(x-a\) es \(P(a)\). Entre \(ax-b\), el resto es \(P\!\left(\tfrac ba\right)\).</li>
+<li><b>Teorema del factor:</b> \(x-a\) es factor de \(P\) si y solo si \(P(a)=0\).</li>
+<li><b>Resto de dividir entre una cuadrática</b> con raíces distintas \(p,q\): el resto es \(rx+s\), y \(P(p)=rp+s,\ P(q)=rq+s\).</li>
+<li><b>Factor cuadrático:</b> si \((x-p)(x-q)\) es factor, entonces \(P(p)=0\) y \(P(q)=0\): dos ecuaciones.</li>
+</ul>
+
+<div class="ex"><p class="et">Ejemplo 1.7. Resto entre una cuadrática</p>
+<p>\(P(x)\) deja resto 3 al dividir entre \(x-1\) y resto \(-3\) al dividir entre \(x+2\). Halla el resto de dividir entre \((x-1)(x+2)\).</p>
+<p>\(P(x)=(x-1)(x+2)Q(x)+rx+s\). \(x=1\): \(r+s=3\); \(x=-2\): \(-2r+s=-3\). Así \(r=2,\ s=1\), y el resto es \(2x+1\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.8. Dos incógnitas con factor cuadrático</p>
+<p>\(x^2-x-2\) es factor de \(P(x)=x^4+ax^3+bx+6\). Halla \(a,b\) y factoriza \(P\) por completo.</p>
+<p>Raíces del factor: 2 y \(-1\). \(P(2)=22+8a+2b=0\) y \(P(-1)=7-a-b=0\). De la segunda, \(b=7-a\); sustituyendo, \(22+8a+14-2a=0\Rightarrow a=-6,\ b=13\).</p>
+<p>Dividiendo, \(P(x)=(x^2-x-2)(x^2-5x-3)\), así que las raíces son \(2,\ -1,\ \tfrac{5\pm\sqrt{37}}{2}\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(P(x)=x^3+ax^2+bx+6\) tiene el factor \(x+2\), y al dividirlo entre \(x-2\) deja resto \(-4\). Halla \(a,b\) y factoriza \(P\).</li><li>\(P(1)=2\) y \(P(3)=8\). Halla el resto de dividir \(P(x)\) entre \((x-1)(x-3)\).</li><li>Halla el resto de dividir \(4x^3-2x^2+6x-1\) entre \(2x-1\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(2a-b=1\) y \(2a+b=-9\): \(a=-2,\ b=-5\). \(P(x)=(x-1)(x+2)(x-3)\).</li><li>\(r+s=2,\ 3r+s=8\): resto \(3x-1\).</li><li>\(P\left(\tfrac12\right)=\tfrac12-\tfrac12+3-1=2\).</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2022, P11)</p><p>El markscheme acepta cuatro métodos para usar el factor \(x^2+3x+2\): teorema del factor con las dos raíces, comparar coeficientes con \((x^2+3x+2)(x+d)\), división larga, o Vieta. Elige el más corto para tu caso; el de comparar coeficientes suele serlo.</p></div>
+
+<h3 id="t4">1.4 Raíces racionales y factorización sin calculadora</h3>
+<p><b>Teorema de la raíz racional.</b> Si \(P\) tiene coeficientes enteros y \(\tfrac pq\) (irreducible) es raíz, entonces \(p\) divide al término independiente y \(q\) al coeficiente principal. Eso da una lista finita de candidatos.</p>
+<p><b>Estrategia para una cúbica:</b> prueba los candidatos más simples (\(\pm1,\pm2,\dots\)); al hallar una raíz \(a\), divide entre \(x-a\) y resuelve la cuadrática que queda.</p>
+<p><b>Identidades que ahorran tiempo:</b></p>
+\[ a^3\pm b^3=(a\pm b)(a^2\mp ab+b^2),\qquad (a\pm b)^3=a^3\pm3a^2b+3ab^2\pm b^3,\qquad a^2-b^2=(a-b)(a+b) \]
+<p><b>Agrupación:</b> \(x^3+2x^2-9x-18=x^2(x+2)-9(x+2)=(x+2)(x-3)(x+3)\).</p>
+
+<div class="ex"><p class="et">Ejemplo 1.9. Cúbica con coeficiente principal distinto de 1</p>
+<p>Resuelve \(2x^3-3x^2-11x+6=0\).</p>
+<p>Candidatos: \(\pm1,\pm2,\pm3,\pm6,\pm\tfrac12,\pm\tfrac32\). \(P(3)=54-27-33+6=0\). Dividiendo entre \(x-3\): \(2x^2+3x-2=(2x-1)(x+2)\). Raíces: \(3,\ \tfrac12,\ -2\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.10. Una cuártica con dos raíces racionales</p>
+<p>Factoriza \(P(x)=x^4-2x^3-7x^2+8x+12\).</p>
+<p>Candidatos: divisores de 12. \(P(-1)=1+2-7-8+12=0\) y \(P(2)=16-16-28+16+12=0\). Dividiendo entre \((x+1)(x-2)=x^2-x-2\) queda \(x^2-x-6=(x-3)(x+2)\). Así \(P(x)=(x+1)(x-2)(x-3)(x+2)\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(3x^3-x^2-12x+4=0\).</li><li>Factoriza por completo \(x^4-x^3-7x^2+x+6\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Agrupando: \((3x-1)(x^2-4)\). Raíces \(\tfrac13,\ 2,\ -2\).</li><li>\(P(1)=P(-1)=0\); al dividir entre \(x^2-1\) queda \(x^2-x-6\): \((x-1)(x+1)(x-3)(x+2)\).</li></ol></div></details></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li>\(x^4+4=(x^2+2x+2)(x^2-2x+2)\): se suma y resta \(4x^2\) para completar un cuadrado. Esta idea factoriza \(z^6+64\) en mayo 2026, P12 (Módulo 6).</li>
+<li><b>Regla de los signos de Descartes:</b> el número de raíces positivas es, como máximo, el número de cambios de signo en los coeficientes de \(P(x)\). Para las negativas, se cuentan los cambios en \(P(-x)\).</li>
+</ul></div>
+<h3 id="t5">1.5 Relaciones entre raíces y coeficientes (Vieta)</h3>
+<p>Para \(a_nx^n+a_{n-1}x^{n-1}+\dots+a_0\) con raíces \(\alpha_1,\dots,\alpha_n\) (contando multiplicidad y raíces complejas), el cuadernillo da:</p>
+\[ \sum\alpha_i=-\frac{a_{n-1}}{a_n},\qquad \prod\alpha_i=(-1)^n\frac{a_0}{a_n} \]
+<p>Para la cúbica \(ax^3+bx^2+cx+d\), con raíces \(\alpha,\beta,\gamma\), además:</p>
+\[ \alpha+\beta+\gamma=-\frac ba,\qquad \alpha\beta+\beta\gamma+\gamma\alpha=\frac ca,\qquad \alpha\beta\gamma=-\frac da \]
+<h4>Expresiones simétricas frecuentes</h4>
+\[ \sum\alpha^2=\Big(\sum\alpha\Big)^2-2\sum\alpha\beta,\qquad \sum\frac1\alpha=\frac{\sum\alpha\beta}{\alpha\beta\gamma},\qquad \alpha^3+\beta^3=(\alpha+\beta)^3-3\alpha\beta(\alpha+\beta),\qquad (\alpha-\beta)^2=(\alpha+\beta)^2-4\alpha\beta \]
+<h4>Condiciones entre raíces y cómo se usan</h4>
+<ul>
+<li><b>Raíces en PA</b> \((m-d,\ m,\ m+d)\): la suma es \(3m\), así que \(m\) sale de la suma y es raíz.</li>
+<li><b>Raíces en PG</b> \((m/r,\ m,\ mr)\): el producto es \(m^3\), así que \(m\) sale del producto y es raíz.</li>
+<li><b>Una raíz es la suma de las otras</b> (\(\gamma=\alpha+\beta\)): la suma total es \(2\gamma\).</li>
+<li><b>Raíces recíprocas</b> (\(\alpha\beta=1\)): el producto total se simplifica.</li>
+</ul>
+
+<div class="ex"><p class="et">Ejemplo 1.11. Expresiones simétricas</p>
+<p>\(\alpha,\beta,\gamma\) son raíces de \(x^3-3x^2+x+2=0\). Halla \(\sum\alpha^2\) y \(\sum\frac1\alpha\).</p>
+<p>\(\sum\alpha=3,\ \sum\alpha\beta=1,\ \alpha\beta\gamma=-2\). Entonces \(\sum\alpha^2=9-2=7\) y \(\sum\frac1\alpha=\frac{1}{-2}=-\frac12\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.12. Raíces en PG</p>
+<p>Las raíces de \(x^3-7x^2+kx-8=0\) están en PG. Halla \(k\) y las raíces.</p>
+<p>Producto \(m^3=8\Rightarrow m=2\), que es raíz: \(8-28+2k-8=0\Rightarrow k=14\). Queda \((x-2)(x^2-5x+4)=(x-2)(x-1)(x-4)\): raíces \(1,2,4\) (razón 2).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.13. Raíces en PA</p>
+<p>Las raíces de \(x^3-6x^2+kx-6=0\) están en PA. Halla \(k\).</p>
+<p>Suma \(3m=6\Rightarrow m=2\), que es raíz: \(8-24+2k-6=0\Rightarrow k=11\). Raíces \(1,2,3\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(\alpha,\beta,\gamma\) son raíces de \(2x^3-4x^2+3x-1=0\). Halla \(\sum\alpha^2\) y \(\sum\frac1\alpha\).</li><li>Las raíces de \(x^3-13x^2+kx-27=0\) están en PG. Halla \(k\) y las raíces.</li><li>Las raíces de \(x^3-6x^2+kx-6=0\) son \(\alpha,\ \beta,\ \alpha+\beta\). Halla \(k\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\sum\alpha=2,\ \sum\alpha\beta=\tfrac32,\ \alpha\beta\gamma=\tfrac12\): \(\sum\alpha^2=4-3=1\) y \(\sum\frac1\alpha=\frac{3/2}{1/2}=3\).</li><li>\(m^3=27\), \(m=3\): \(27-117+3k-27=0\Rightarrow k=39\). Raíces \(1,3,9\).</li><li>\(2(\alpha+\beta)=6\), así que 3 es raíz: \(27-54+3k-6=0\Rightarrow k=11\). Raíces \(1,2,3\).</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ2, P7)</p><p>Las raíces de \(x^3-kx^2+3k=0\) son \(\alpha,\beta,\alpha+\beta\). Como \(\alpha+\beta\) es la mitad de la suma total, es \(\tfrac k2\) y es raíz. Sustituir esa raíz en la ecuación resuelve la pregunta en dos líneas.</p></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB: sumas de Newton</p><p>Si \(\alpha,\beta\) son raíces de \(x^2-px+q=0\), entonces \(s_n=\alpha^n+\beta^n\) cumple \(s_{n+2}=p\,s_{n+1}-q\,s_n\), porque cada raíz cumple \(\alpha^{n+2}=p\alpha^{n+1}-q\alpha^n\). Así se calcula \(\alpha^{10}+\beta^{10}\) sin hallar las raíces. Es una recurrencia como las del Módulo 1.</p></div>
+
+<h3 id="t6">1.6 Ecuaciones con raíces transformadas</h3>
+<p>Para obtener la ecuación cuyas raíces son una transformación de las de \(P(x)=0\), se sustituye la inversa de la transformación:</p>
+<div class="tbl"><table>
+<thead><tr><th>Nuevas raíces</th><th>Nueva ecuación</th></tr></thead>
+<tbody>
+<tr><td>\(k\alpha\)</td><td>\(P(x/k)=0\)</td></tr>
+<tr><td>\(\alpha+h\)</td><td>\(P(x-h)=0\)</td></tr>
+<tr><td>\(-\alpha\)</td><td>\(P(-x)=0\)</td></tr>
+<tr><td>\(1/\alpha\)</td><td>\(x^nP(1/x)=0\): coeficientes en orden inverso</td></tr>
+<tr><td>\(\alpha^2\)</td><td>Separar potencias pares e impares, elevar al cuadrado y sustituir \(x^2=y\)</td></tr>
+</tbody></table></div>
+
+<div class="ex"><p class="et">Ejemplo 1.14. Doble y recíprocas</p>
+<p>Para \(x^3-3x^2+x+2=0\), halla las ecuaciones con raíces \(2\alpha,2\beta,2\gamma\) y con raíces \(\tfrac1\alpha,\tfrac1\beta,\tfrac1\gamma\).</p>
+<p>\(P(x/2)=\tfrac{x^3}{8}-\tfrac{3x^2}{4}+\tfrac x2+2=0\); multiplicando por 8: \(x^3-6x^2+4x+16=0\).</p>
+<p>Invirtiendo coeficientes: \(2x^3+x^2-3x+1=0\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.15. Raíces trasladadas y al cuadrado</p>
+<p>Para \(x^3-3x^2+x+2=0\), con raíces \(\alpha,\beta,\gamma\), halla las ecuaciones con raíces (a) \(\alpha+1,\beta+1,\gamma+1\) y (b) \(\alpha^2,\beta^2,\gamma^2\).</p>
+<p>(a) Si \(y=x+1\), entonces \(x=y-1\): \(P(y-1)=y^3-6y^2+10y-3=0\).</p>
+<p>(b) Si \(y=x^2\), separa potencias pares e impares: \(x(x^2+1)=3x^2-2\). Elevando al cuadrado, \(y(y+1)^2=(3y-2)^2\), es decir, \(y^3-7y^2+13y-4=0\). Comprobación: la suma de raíces es \(7=\sum\alpha^2\), como en el Ejemplo 1.11.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(\alpha,\beta,\gamma\) son raíces de \(x^3-2x^2+5x-3=0\). Halla la ecuación con raíces \(3\alpha,3\beta,3\gamma\).</li><li>Con la misma ecuación, halla la ecuación con raíces \(\alpha-2,\ \beta-2,\ \gamma-2\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(27P(x/3)=x^3-6x^2+45x-81=0\).</li><li>\(P(x+2)=x^3+4x^2+9x+7=0\). Comprobación: suma \(-4=2-6\).</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2026, P4)</p><p>Conocidas las raíces de \(f(x)=0\), se piden las de \(f(x/2)=0\). Si \(\tfrac x2\) debe ser una raíz \(r\), entonces \(x=2r\): las raíces se duplican. No hace falta desarrollar el polinomio.</p></div>
+
+<h3 id="t7">1.7 Gráficas e inecuaciones polinómicas</h3>
+<ul>
+<li><b>Comportamiento en los extremos:</b> lo decide el término principal \(a_nx^n\). Grado par: ambos extremos van al mismo lado. Grado impar: a lados opuestos.</li>
+<li><b>Multiplicidad:</b> si \((x-r)^m\) es factor, con \(m\) impar la gráfica cruza el eje en \(r\) (con \(m\ge3\), se aplana al cruzar). Con \(m\) par, lo toca y rebota.</li>
+<li>Un polinomio de grado \(n\) tiene como mucho \(n\) raíces reales y \(n-1\) puntos de inflexión horizontal o extremos.</li>
+<li><b>Inecuación \(P(x)\ge0\):</b> factoriza, ordena las raíces y haz una tabla de signos. En una raíz de multiplicidad par el signo no cambia.</li>
+</ul>
+
+<div class="ex"><p class="et">Ejemplo 1.16. Gráfica y la solución aislada</p>
+<p>Para \(y=-(x+2)^2(x-1)(x-3)\), describe la gráfica y resuelve \(y\ge0\).</p>
+<p>Grado 4 con coeficiente principal negativo: ambos extremos bajan. Toca el eje en \(x=-2\), lo cruza en 1 y 3; corta al eje \(y\) en \(-12\).</p>
+<p>Signos: negativa si \(x\lt -2\), negativa entre \(-2\) y 1 (no cambia en la raíz doble), positiva entre 1 y 3, negativa si \(x\gt 3\). Por lo tanto \(y\ge0\iff x=-2\) o \(1\le x\le3\). El punto aislado \(x=-2\) es lo que casi todos olvidan.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 609.84 206.358437" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 206.358437 
+L 609.84 206.358437 
+L 609.84 0 
+L 0 0 
+L 0 206.358437 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 199.158437 
+L 197.76 199.158437 
+L 197.76 21.198437 
+L 7.2 21.198437 
+L 7.2 199.158437 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m34b31dd719" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m34b31dd719" x="102.48" y="127.974437" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="102.48" y="143.332719" transform="rotate(-0 102.48 143.332719)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_2">
+    <path d="M 15.861818 127.974437 
+L 19.917519 131.151406 
+L 23.97322 134.016251 
+L 27.449535 136.223408 
+L 30.92585 138.20125 
+L 34.402165 139.949777 
+L 37.87848 141.468989 
+L 41.354795 142.758886 
+L 44.83111 143.819468 
+L 48.307425 144.650735 
+L 51.78374 145.252687 
+L 55.260055 145.625324 
+L 58.73637 145.768646 
+L 62.212685 145.682653 
+L 65.689 145.367345 
+L 69.165315 144.822722 
+L 72.64163 144.048783 
+L 76.117945 143.04553 
+L 79.59426 141.812962 
+L 83.070575 140.351079 
+L 86.54689 138.65988 
+L 90.023205 136.739367 
+L 93.49952 134.589539 
+L 96.975835 132.210395 
+L 101.031535 129.1449 
+L 105.087236 125.76728 
+L 109.142937 122.077538 
+L 113.198638 118.075673 
+L 117.254339 113.761684 
+L 121.31004 109.135572 
+L 125.36574 104.197336 
+L 130.000827 98.171447 
+L 134.635914 91.737887 
+L 139.271 84.896656 
+L 143.906087 77.647753 
+L 148.541174 69.99118 
+L 153.17626 61.926935 
+L 157.811347 53.455019 
+L 163.025819 43.436819 
+L 168.240292 32.90266 
+L 173.454764 21.852543 
+L 178.669237 10.286466 
+L 183.546746 -1 
+L 183.546746 -1 
+" clip-path="url(#pf2fa297ca0)" style="fill: none; stroke: #a2530a; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <defs>
+     <path id="m1c3ecd140a" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#pf2fa297ca0)">
+     <use xlink:href="#m1c3ecd140a" x="102.48" y="127.974437" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 59.170909 199.158437 
+L 59.170909 21.198437 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 127.974437 
+L 197.76 127.974437 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #a2530a" x="102.48" y="15.198437" transform="rotate(-0 102.48 15.198437)">raíz simple: cruza</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 209.64 199.158437 
+L 400.2 199.158437 
+L 400.2 21.198437 
+L 209.64 21.198437 
+L 209.64 199.158437 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m34b31dd719" x="304.92" y="127.974437" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="304.92" y="143.332719" transform="rotate(-0 304.92 143.332719)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4"/>
+   <g id="line2d_5">
+    <path d="M 218.301818 127.974437 
+L 220.619362 124.366369 
+L 222.936905 121.14961 
+L 225.254448 118.3078 
+L 227.571991 115.824576 
+L 229.889535 113.683578 
+L 232.207078 111.868445 
+L 234.524621 110.362814 
+L 236.842165 109.150325 
+L 239.159708 108.214615 
+L 241.477251 107.539325 
+L 243.794795 107.108092 
+L 246.112338 106.904554 
+L 248.429881 106.912352 
+L 250.747425 107.115122 
+L 253.644354 107.61784 
+L 256.541283 108.367684 
+L 259.438212 109.332697 
+L 262.914527 110.729741 
+L 266.970228 112.619407 
+L 272.184701 115.325075 
+L 286.08996 122.708916 
+L 290.145661 124.53893 
+L 293.621976 125.868229 
+L 296.518905 126.765069 
+L 299.415835 127.436088 
+L 302.312764 127.84933 
+L 304.630307 127.97285 
+L 306.94785 127.89458 
+L 309.265394 127.598158 
+L 311.582937 127.067222 
+L 313.90048 126.285412 
+L 316.218024 125.236366 
+L 318.535567 123.903723 
+L 320.85311 122.271121 
+L 323.170654 120.322199 
+L 325.488197 118.040596 
+L 327.80574 115.409949 
+L 330.123284 112.413899 
+L 332.440827 109.036083 
+L 334.75837 105.260139 
+L 337.075914 101.069708 
+L 339.393457 96.448426 
+L 341.711 91.379934 
+L 344.028544 85.847869 
+L 346.346087 79.83587 
+L 349.243016 71.621039 
+L 352.139945 62.59879 
+L 355.036874 52.737168 
+L 357.933804 42.004218 
+L 360.830733 30.367982 
+L 363.727662 17.796507 
+L 366.624591 4.257834 
+L 367.695327 -1 
+L 367.695327 -1 
+" clip-path="url(#pbb5501f2ec)" style="fill: none; stroke: #5a3d9a; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <g clip-path="url(#pbb5501f2ec)">
+     <use xlink:href="#m1c3ecd140a" x="304.92" y="127.974437" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_6">
+    <path d="M 261.610909 199.158437 
+L 261.610909 21.198437 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 209.64 127.974437 
+L 400.2 127.974437 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5a3d9a" x="304.92" y="15.198437" transform="rotate(-0 304.92 15.198437)">raíz doble: toca y rebota</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_8">
+    <path d="M 412.08 199.158437 
+L 602.64 199.158437 
+L 602.64 21.198437 
+L 412.08 21.198437 
+L 412.08 199.158437 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_5">
+    <g id="xtick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m34b31dd719" x="507.36" y="127.974437" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="507.36" y="143.332719" transform="rotate(-0 507.36 143.332719)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_6"/>
+   <g id="line2d_8">
+    <path d="M 420.741818 127.974437 
+L 422.479976 133.351087 
+L 424.218133 138.08056 
+L 425.956291 142.202609 
+L 427.694448 145.755878 
+L 429.432606 148.777905 
+L 431.170763 151.305116 
+L 432.908921 153.372833 
+L 434.647078 155.015268 
+L 436.385236 156.265525 
+L 438.123393 157.155599 
+L 439.861551 157.71638 
+L 441.599708 157.977646 
+L 443.337866 157.968069 
+L 445.076023 157.715213 
+L 446.814181 157.245534 
+L 448.552338 156.584379 
+L 450.869881 155.446724 
+L 453.187425 154.066023 
+L 456.084354 152.075559 
+L 460.140055 148.95704 
+L 473.465929 138.358962 
+L 476.942244 135.975124 
+L 480.418559 133.87745 
+L 483.315488 132.374366 
+L 486.212417 131.10653 
+L 489.109346 130.076721 
+L 492.006275 129.279167 
+L 494.903205 128.699546 
+L 498.37952 128.258869 
+L 501.855835 128.042856 
+L 507.070307 127.974448 
+L 513.443551 127.868861 
+L 516.34048 127.624205 
+L 519.23741 127.139627 
+L 521.554953 126.515875 
+L 523.872496 125.625712 
+L 525.610654 124.749748 
+L 527.348811 123.667657 
+L 529.086969 122.353445 
+L 530.825126 120.780009 
+L 532.563284 118.919141 
+L 534.301441 116.741521 
+L 536.039599 114.216723 
+L 537.777756 111.313214 
+L 539.515914 107.998351 
+L 541.254071 104.238382 
+L 542.992229 99.998451 
+L 544.730386 95.242589 
+L 546.468544 89.933723 
+L 548.206701 84.03367 
+L 549.944859 77.503138 
+L 551.683016 70.301728 
+L 554.000559 59.584362 
+L 556.318103 47.498954 
+L 558.635646 33.940553 
+L 560.953189 18.800701 
+L 563.270733 1.967442 
+L 563.653959 -1 
+L 563.653959 -1 
+" clip-path="url(#p302ae7d15c)" style="fill: none; stroke: #0e6e6a; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <g clip-path="url(#p302ae7d15c)">
+     <use xlink:href="#m1c3ecd140a" x="507.36" y="127.974437" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_9">
+    <path d="M 464.050909 199.158437 
+L 464.050909 21.198437 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 412.08 127.974437 
+L 602.64 127.974437 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #0e6e6a" x="507.36" y="15.198437" transform="rotate(-0 507.36 15.198437)">raíz triple: cruza aplanándose</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf2fa297ca0">
+   <rect x="7.2" y="21.198437" width="190.56" height="177.96"/>
+  </clipPath>
+  <clipPath id="pbb5501f2ec">
+   <rect x="209.64" y="21.198437" width="190.56" height="177.96"/>
+  </clipPath>
+  <clipPath id="p302ae7d15c">
+   <rect x="412.08" y="21.198437" width="190.56" height="177.96"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: \(y=\frac12(x-1)^n(x+1)\) con \(n=1,2,3\): la multiplicidad de cada raíz decide cómo pasa la gráfica por el eje: una raíz simple lo cruza, una doble lo toca sin cruzar y una triple lo cruza con tangente horizontal. Las de multiplicidad par no cambian el signo.</figcaption></figure>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 371.52 297.060656" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 297.060656 
+L 371.52 297.060656 
+L 371.52 0 
+L 0 0 
+L 0 297.060656 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 228.96 
+L 364.32 228.96 
+L 364.32 7.2 
+L 7.2 7.2 
+L 7.2 228.96 
+z
+" style="fill: none"/>
+   </g>
+   <g id="FillBetweenPolyCollection_1">
+    <defs>
+     <path id="mc04a39831a" d="M 230.031074 -204.568349 
+L 230.031074 -204.568349 
+L 231.024813 -205.813028 
+L 232.018552 -207.065379 
+L 233.012292 -208.324705 
+L 234.006031 -209.590298 
+L 234.99977 -210.861435 
+L 235.993509 -212.137379 
+L 236.987248 -213.41738 
+L 237.980987 -214.700674 
+L 238.974726 -215.986484 
+L 239.968465 -217.274019 
+L 240.962204 -218.562475 
+L 241.955943 -219.851033 
+L 242.949682 -221.13886 
+L 243.943421 -222.425112 
+L 244.93716 -223.70893 
+L 245.930899 -224.98944 
+L 246.924638 -226.265755 
+L 247.918377 -227.536977 
+L 248.912116 -228.802191 
+L 249.905855 -230.060469 
+L 250.899594 -231.310871 
+L 251.893333 -232.552441 
+L 252.887072 -233.784213 
+L 253.880811 -235.005203 
+L 254.87455 -236.214416 
+L 255.86829 -237.410843 
+L 256.862029 -238.593461 
+L 257.855768 -239.761233 
+L 258.849507 -240.913109 
+L 259.843246 -242.048026 
+L 260.836985 -243.164906 
+L 261.830724 -244.262658 
+L 262.824463 -245.340178 
+L 263.818202 -246.396346 
+L 264.811941 -247.430031 
+L 265.80568 -248.440088 
+L 266.799419 -249.425357 
+L 267.793158 -250.384664 
+L 268.786897 -251.316825 
+L 269.780636 -252.220638 
+L 270.774375 -253.09489 
+L 271.768114 -253.938353 
+L 272.761853 -254.749786 
+L 273.755592 -255.527935 
+L 274.749331 -256.271531 
+L 275.74307 -256.979291 
+L 276.736809 -257.649922 
+L 277.730548 -258.282112 
+L 278.724288 -258.87454 
+L 279.718027 -259.425868 
+L 280.711766 -259.934747 
+L 281.705505 -260.399813 
+L 282.699244 -260.819687 
+L 283.692983 -261.19298 
+L 284.686722 -261.518286 
+L 285.680461 -261.794187 
+L 286.6742 -262.019252 
+L 287.667939 -262.192033 
+L 288.661678 -262.311072 
+L 289.655417 -262.374897 
+L 290.649156 -262.38202 
+L 291.642895 -262.330941 
+L 292.636634 -262.220146 
+L 293.630373 -262.048109 
+L 294.624112 -261.813287 
+L 295.617851 -261.514126 
+L 296.61159 -261.149058 
+L 297.605329 -260.716501 
+L 298.599068 -260.214858 
+L 299.592807 -259.642521 
+L 300.586546 -258.997867 
+L 301.580285 -258.279258 
+L 302.574025 -257.485046 
+L 303.567764 -256.613565 
+L 304.561503 -255.663139 
+L 305.555242 -254.632076 
+L 306.548981 -253.518671 
+L 307.54272 -252.321207 
+L 308.536459 -251.03795 
+L 309.530198 -249.667156 
+L 310.523937 -248.207065 
+L 311.517676 -246.655903 
+L 312.511415 -245.011885 
+L 313.505154 -243.27321 
+L 314.498893 -241.438065 
+L 315.492632 -239.50462 
+L 316.486371 -237.471037 
+L 317.48011 -235.335459 
+L 318.473849 -233.096018 
+L 319.467588 -230.750833 
+L 320.461327 -228.298006 
+L 321.455066 -225.73563 
+L 322.448805 -223.061781 
+L 323.442544 -220.274523 
+L 324.436283 -217.371904 
+L 325.430023 -214.351962 
+L 326.423762 -211.212718 
+L 327.417501 -207.952182 
+L 328.41124 -204.568349 
+L 328.41124 -204.568349 
+L 328.41124 -204.568349 
+L 327.417501 -204.568349 
+L 326.423762 -204.568349 
+L 325.430023 -204.568349 
+L 324.436283 -204.568349 
+L 323.442544 -204.568349 
+L 322.448805 -204.568349 
+L 321.455066 -204.568349 
+L 320.461327 -204.568349 
+L 319.467588 -204.568349 
+L 318.473849 -204.568349 
+L 317.48011 -204.568349 
+L 316.486371 -204.568349 
+L 315.492632 -204.568349 
+L 314.498893 -204.568349 
+L 313.505154 -204.568349 
+L 312.511415 -204.568349 
+L 311.517676 -204.568349 
+L 310.523937 -204.568349 
+L 309.530198 -204.568349 
+L 308.536459 -204.568349 
+L 307.54272 -204.568349 
+L 306.548981 -204.568349 
+L 305.555242 -204.568349 
+L 304.561503 -204.568349 
+L 303.567764 -204.568349 
+L 302.574025 -204.568349 
+L 301.580285 -204.568349 
+L 300.586546 -204.568349 
+L 299.592807 -204.568349 
+L 298.599068 -204.568349 
+L 297.605329 -204.568349 
+L 296.61159 -204.568349 
+L 295.617851 -204.568349 
+L 294.624112 -204.568349 
+L 293.630373 -204.568349 
+L 292.636634 -204.568349 
+L 291.642895 -204.568349 
+L 290.649156 -204.568349 
+L 289.655417 -204.568349 
+L 288.661678 -204.568349 
+L 287.667939 -204.568349 
+L 286.6742 -204.568349 
+L 285.680461 -204.568349 
+L 284.686722 -204.568349 
+L 283.692983 -204.568349 
+L 282.699244 -204.568349 
+L 281.705505 -204.568349 
+L 280.711766 -204.568349 
+L 279.718027 -204.568349 
+L 278.724288 -204.568349 
+L 277.730548 -204.568349 
+L 276.736809 -204.568349 
+L 275.74307 -204.568349 
+L 274.749331 -204.568349 
+L 273.755592 -204.568349 
+L 272.761853 -204.568349 
+L 271.768114 -204.568349 
+L 270.774375 -204.568349 
+L 269.780636 -204.568349 
+L 268.786897 -204.568349 
+L 267.793158 -204.568349 
+L 266.799419 -204.568349 
+L 265.80568 -204.568349 
+L 264.811941 -204.568349 
+L 263.818202 -204.568349 
+L 262.824463 -204.568349 
+L 261.830724 -204.568349 
+L 260.836985 -204.568349 
+L 259.843246 -204.568349 
+L 258.849507 -204.568349 
+L 257.855768 -204.568349 
+L 256.862029 -204.568349 
+L 255.86829 -204.568349 
+L 254.87455 -204.568349 
+L 253.880811 -204.568349 
+L 252.887072 -204.568349 
+L 251.893333 -204.568349 
+L 250.899594 -204.568349 
+L 249.905855 -204.568349 
+L 248.912116 -204.568349 
+L 247.918377 -204.568349 
+L 246.924638 -204.568349 
+L 245.930899 -204.568349 
+L 244.93716 -204.568349 
+L 243.943421 -204.568349 
+L 242.949682 -204.568349 
+L 241.955943 -204.568349 
+L 240.962204 -204.568349 
+L 239.968465 -204.568349 
+L 238.974726 -204.568349 
+L 237.980987 -204.568349 
+L 236.987248 -204.568349 
+L 235.993509 -204.568349 
+L 234.99977 -204.568349 
+L 234.006031 -204.568349 
+L 233.012292 -204.568349 
+L 232.018552 -204.568349 
+L 231.024813 -204.568349 
+L 230.031074 -204.568349 
+z
+" style="stroke: #a2530a; stroke-opacity: 0.35"/>
+    </defs>
+    <g clip-path="url(#pb339518ca4)">
+     <use xlink:href="#mc04a39831a" x="0" y="297.060656" style="fill: #a2530a; fill-opacity: 0.35; stroke: #a2530a; stroke-opacity: 0.35"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m4747b555ca" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m4747b555ca" x="82.460826" y="92.492308" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="82.460826" y="107.850589" transform="rotate(-0 82.460826 107.850589)">−2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m4747b555ca" x="230.031074" y="92.492308" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="230.031074" y="107.850589" transform="rotate(-0 230.031074 107.850589)">1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m4747b555ca" x="328.41124" y="92.492308" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="328.41124" y="107.850589" transform="rotate(-0 328.41124 107.850589)">3</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <defs>
+       <path id="mb90cdbbbc3" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mb90cdbbbc3" x="180.840992" y="160.726154" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="173.840992" y="164.905294" transform="rotate(-0 173.840992 164.905294)">−20</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mb90cdbbbc3" x="180.840992" y="24.258462" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="173.840992" y="28.437602" transform="rotate(-0 173.840992 28.437602)">20</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_6">
+    <path d="M 23.432727 220.422581 
+L 26.687409 203.705015 
+L 29.942092 188.478946 
+L 32.383103 177.99389 
+L 34.824115 168.275954 
+L 37.265126 159.295189 
+L 39.706138 151.022141 
+L 42.14715 143.427853 
+L 44.588161 136.483864 
+L 47.029173 130.162211 
+L 49.470185 124.435426 
+L 51.911196 119.276537 
+L 54.352208 114.659072 
+L 56.793219 110.557051 
+L 59.234231 106.944993 
+L 61.675243 103.797915 
+L 64.116254 101.091327 
+L 66.557266 98.801238 
+L 68.998278 96.904153 
+L 71.439289 95.377072 
+L 73.880301 94.197495 
+L 76.321312 93.343416 
+L 78.762324 92.793324 
+L 81.203336 92.526209 
+L 83.644347 92.521554 
+L 86.085359 92.759339 
+L 88.52637 93.220042 
+L 90.967382 93.884637 
+L 93.408394 94.734593 
+L 96.663076 96.125111 
+L 99.917758 97.771786 
+L 103.986111 100.129864 
+L 108.054463 102.751818 
+L 113.750157 106.732438 
+L 123.514204 113.926716 
+L 130.837239 119.218768 
+L 136.532932 123.058059 
+L 141.414956 126.053224 
+L 145.483308 128.288169 
+L 149.551661 130.248052 
+L 152.806343 131.596698 
+L 156.061025 132.734845 
+L 159.315707 133.64976 
+L 162.57039 134.330281 
+L 165.825072 134.766812 
+L 169.079754 134.951329 
+L 172.334436 134.877376 
+L 175.589118 134.540068 
+L 178.8438 133.936087 
+L 182.098483 133.063686 
+L 185.353165 131.922686 
+L 188.607847 130.514478 
+L 191.862529 128.842024 
+L 195.117211 126.909851 
+L 198.371893 124.724059 
+L 201.626576 122.292317 
+L 204.881258 119.623861 
+L 208.94961 115.972026 
+L 213.017963 111.991882 
+L 217.086316 107.711815 
+L 221.968339 102.22547 
+L 227.664033 95.422195 
+L 234.173397 87.25664 
+L 256.142502 59.322059 
+L 261.024525 53.687083 
+L 265.092878 49.342629 
+L 268.34756 46.15252 
+L 271.602242 43.260899 
+L 274.856924 40.710743 
+L 277.297936 39.048952 
+L 279.738947 37.623633 
+L 282.179959 36.454655 
+L 284.620971 35.562383 
+L 287.061982 34.967681 
+L 289.502994 34.691905 
+L 291.130335 34.696008 
+L 292.757676 34.858159 
+L 294.385017 35.185052 
+L 296.012358 35.683483 
+L 297.639699 36.360343 
+L 299.26704 37.222624 
+L 300.894381 38.277413 
+L 302.521722 39.531898 
+L 304.149064 40.993363 
+L 305.776405 42.669192 
+L 307.403746 44.566864 
+L 309.844757 47.845936 
+L 312.285769 51.667226 
+L 314.726781 56.057223 
+L 317.167792 61.042913 
+L 319.608804 66.651778 
+L 322.049815 72.911798 
+L 324.490827 79.851447 
+L 326.931839 87.499699 
+L 329.37285 95.886022 
+L 331.813862 105.040381 
+L 334.254874 114.993237 
+L 336.695885 125.77555 
+L 339.136897 137.418773 
+L 341.577908 149.954858 
+L 344.01892 163.416252 
+L 346.459932 177.835901 
+L 348.087273 187.997857 
+L 348.087273 187.997857 
+" clip-path="url(#pb339518ca4)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <defs>
+     <path id="m802feebba7" d="M 0 3.5 
+C 0.928211 3.5 1.81853 3.131218 2.474874 2.474874 
+C 3.131218 1.81853 3.5 0.928211 3.5 0 
+C 3.5 -0.928211 3.131218 -1.81853 2.474874 -2.474874 
+C 1.81853 -3.131218 0.928211 -3.5 0 -3.5 
+C -0.928211 -3.5 -1.81853 -3.131218 -2.474874 -2.474874 
+C -3.131218 -1.81853 -3.5 -0.928211 -3.5 0 
+C -3.5 0.928211 -3.131218 1.81853 -2.474874 2.474874 
+C -1.81853 3.131218 -0.928211 3.5 0 3.5 
+z
+" style="stroke: #5a3d9a"/>
+    </defs>
+    <g clip-path="url(#pb339518ca4)">
+     <use xlink:href="#m802feebba7" x="82.460826" y="92.492308" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_8">
+    <defs>
+     <path id="mafbddc0b36" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#pb339518ca4)">
+     <use xlink:href="#mafbddc0b36" x="180.840992" y="133.432615" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 180.840992 228.96 
+L 180.840992 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 92.492308 
+L 364.32 92.492308 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="188.219504" y="143.667692" transform="rotate(-0 188.219504 143.667692)">(0, −12)</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_9">
+     <path d="M 90.610078 252.491516 
+L 100.110078 252.491516 
+L 109.610078 252.491516 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="117.210078" y="255.816516" transform="rotate(-0 117.210078 255.816516)">y = −(x + 2)²(x − 1)(x − 3)</text>
+    </g>
+    <g id="patch_5">
+     <path d="M 90.610078 269.760734 
+L 109.610078 269.760734 
+L 109.610078 263.110734 
+L 90.610078 263.110734 
+z
+" style="fill: #a2530a; fill-opacity: 0.35; stroke: #a2530a; stroke-opacity: 0.35; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="117.210078" y="269.760734" transform="rotate(-0 117.210078 269.760734)">y ≥ 0 en [1, 3]</text>
+    </g>
+    <g id="line2d_10">
+     <g>
+      <use xlink:href="#m802feebba7" x="100.110078" y="280.759953" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     </g>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="117.210078" y="284.084953" transform="rotate(-0 117.210078 284.084953)">y = 0 también en x = −2 (aislado)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb339518ca4">
+   <rect x="7.2" y="7.2" width="357.12" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.16: los extremos bajan (grado 4, coeficiente negativo), la gráfica toca el eje en \(-2\) y lo cruza en 1 y 3. La solución de \(y\ge0\) es \([1,3]\cup\{-2\}\): el punto aislado se pierde si se olvida la raíz doble.</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.17. Inecuación cúbica por tabla de signos</p>
+<p>Resuelve \(x^3-x^2-4x+4\gt0\).</p>
+<p>Agrupando: \(x^2(x-1)-4(x-1)=(x-1)(x-2)(x+2)\). Las raíces simples \(-2,1,2\) dividen la recta; el coeficiente principal es positivo, así que el signo a la derecha de 2 es \(+\) y alterna en cada raíz simple. Solución: \(-2\lt x\lt1\) o \(x\gt2\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \((x-1)^2(x+3)(2-x)\ge0\).</li><li>Resuelve \(x^3\ge4x\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Coeficiente principal negativo; raíz doble en 1. Es \(\ge0\) para \(-3\le x\le2\).</li><li>\(x(x-2)(x+2)\ge0\iff-2\le x\le0\) o \(x\ge2\). (No dividas entre \(x\).)</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2022, P11 b iv)</p><p>Dibujar \(y=(x+2)(x+1)^2\). El markscheme da una A1 por la forma de cúbica positiva con corte en \((0,2)\), otra por el corte en \((-2,0)\) con un máximo entre \(-2\) y \(-1\), y otra por el mínimo tangente en \((-1,0)\).</p></div>
+
+<h3 id="t8">1.8 Determinar un polinomio por condiciones</h3>
+<p>Cada condición (un punto, un resto, un factor, una raíz) es una ecuación lineal en los coeficientes. Con tantas condiciones como coeficientes desconocidos, queda un sistema lineal: se resuelve por eliminación, como en la ficha DMpA 01. <b>Igualdad de polinomios:</b> dos polinomios son iguales para todo \(x\) si y solo si coinciden todos sus coeficientes.</p>
+
+<div class="ex"><p class="et">Ejemplo 1.18. Parábola por tres puntos</p>
+<p>Halla la parábola \(y=ax^2+bx+c\) que pasa por \((-1,6)\), \((1,2)\) y \((2,3)\).</p>
+<p>\(a-b+c=6,\ a+b+c=2\Rightarrow b=-2,\ a+c=4\). \(4a+2b+c=3\Rightarrow4a+c=7\). Restando, \(3a=3\): \(a=1,\ c=3\). Así \(y=x^2-2x+3\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.19. Cúbica con una raíz doble y un punto</p>
+<p>Una cúbica corta al eje \(x\) en \(-1\), toca el eje en \(x=3\) y pasa por \((0,18)\). Halla su ecuación.</p>
+<p>Tocar sin cruzar significa raíz doble: \(f(x)=a(x+1)(x-3)^2\). Con \(f(0)=a\cdot1\cdot9=18\), \(a=2\). Así \(f(x)=2(x+1)(x-3)^2=2x^3-10x^2+6x+18\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Una cuártica toca el eje \(x\) en \(x=-1\) y en \(x=2\), y pasa por \((0,8)\). Halla su ecuación.</li><li>Una cúbica tiene raíces \(-2,\ 1,\ 3\) y pasa por \((2,8)\). Halla su ecuación.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(a(x+1)^2(x-2)^2\) con \(4a=8\): \(y=2(x+1)^2(x-2)^2\).</li><li>\(a(x+2)(x-1)(x-3)\) con \(-4a=8\): \(y=-2(x+2)(x-1)(x-3)\).</li></ol></div></details></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Raíz múltiple:</b> \(r\) es raíz doble de \(P\) si y solo si \(P(r)=0\) y \(P'(r)=0\). Lo usarás en el Módulo 12.</li>
+<li><b>Polinomio de diferencias:</b> si \(P(x+1)-P(x)=g(x)\), entonces \(\sum_{k=0}^{n-1}g(k)=P(n)-P(0)\) (suma telescópica del Módulo 1). Así se deducen las fórmulas de \(\sum k^2\) y \(\sum k^3\).</li>
+</ul></div>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Polinomio de grado \(n\)</td><td>\(a_nx^n+\dots+a_1x+a_0\) con \(a_n\neq0\); \(a_n\) es el coeficiente principal y \(a_0\) el término independiente.</td></tr>
+<tr><td>Raíz (cero)</td><td>Valor \(r\) con \(P(r)=0\). Si es real, es un corte con el eje \(x\).</td></tr>
+<tr><td>Multiplicidad</td><td>Mayor \(m\) tal que \((x-r)^m\) divide a \(P\).</td></tr>
+<tr><td>Discriminante</td><td>\(\Delta=b^2-4ac\) de la cuadrática \(ax^2+bx+c\).</td></tr>
+<tr><td>Cociente y resto</td><td>\(Q\) y \(R\) únicos con \(P=DQ+R\) y grado de \(R\) menor que el de \(D\).</td></tr>
+<tr><td>Factor</td><td>Polinomio que divide a \(P\) con resto cero.</td></tr>
+<tr><td>Expresión simétrica</td><td>Expresión en las raíces que no cambia al permutarlas; siempre se escribe con los coeficientes.</td></tr>
+<tr><td>Forma canónica</td><td>\(a(x-h)^2+k\), que muestra el vértice \((h,k)\).</td></tr>
+<tr><td>Polinomio recíproco</td><td>Coeficientes simétricos; si \(r\) es raíz, \(1/r\) también.</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Halle los posibles valores</td><td>Todos los valores, con la condición completa (por ejemplo, \(p\lt 0\) o \(p\gt \tfrac34\)).</td><td>Dar solo los valores críticos, o una sola rama.</td></tr>
+<tr><td>Muestre que la única manera es…</td><td>Descartar cada caso restante con una razón (R1 por caso).</td><td>Verificar que el caso dado funciona sin excluir los demás.</td></tr>
+<tr><td>Exprese como producto de factores lineales</td><td>Factorización completa, con multiplicidades.</td><td>Dejar un factor cuadrático que aún se factoriza.</td></tr>
+<tr><td>Dibuje aproximadamente</td><td>Forma correcta, cortes con los ejes rotulados, comportamiento en raíces múltiples.</td><td>No rotular coordenadas o cruzar donde la gráfica solo toca.</td></tr>
+<tr><td>A partir de lo anterior, escriba</td><td>Usar lo previo sin volver a calcular.</td><td>Rehacer desde cero: pierde tiempo y a veces la marca.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>El coeficiente que se anula.</b> Si el parámetro está en el coeficiente de \(x^2\), el caso en que vale 0 no es cuadrática. Analízalo aparte.</li>
+<li><b>La c escondida.</b> En \(3px^2+2px+1=p\), el término independiente es \(1-p\), no 1. Pasa todo a un lado antes de usar \(\Delta\).</li>
+<li><b>Distintas contra reales.</b> «Reales» es \(\Delta\ge0\); «reales y distintas», \(\Delta\gt 0\); «sin raíces reales», \(\Delta\lt 0\).</li>
+<li><b>La inecuación a medias.</b> De \(4p(4p-3)\gt 0\) salen dos intervalos: \(p\lt 0\) o \(p\gt \tfrac34\). Dar solo uno pierde la A1.</li>
+<li><b>El signo de Vieta.</b> En la cúbica, la suma es \(-b/a\) y el producto \(-d/a\). En grado \(n\), el producto lleva \((-1)^n\).</li>
+<li><b>El término que falta.</b> En \(x^3-kx^2+3k\) el coeficiente de \(x\) es 0, así que \(\sum\alpha\beta=0\). No lo olvides al aplicar Vieta.</li>
+<li><b>El divisor ax − b.</b> El resto de dividir entre \(2x-1\) es \(P\left(\tfrac12\right)\), no \(P(1)\).</li>
+<li><b>El resto de grado equivocado.</b> Al dividir entre una cuadrática, el resto es \(rx+s\) (dos incógnitas), no una constante.</li>
+<li><b>La raíz doble que cruza.</b> En multiplicidad par la gráfica toca y rebota; en la tabla de signos el signo no cambia.</li>
+<li><b>El punto aislado.</b> En \(P(x)\ge0\), una raíz doble puede ser solución aunque todo su entorno sea negativo.</li>
+<li><b>La sustitución sin deshacer.</b> Con \(t=x^2\) o \(t=e^x\), descarta \(t\lt 0\) antes de volver a \(x\).</li>
+<li><b>El descarte sin razón.</b> En «muestre que la única opción es…», cada caso descartado necesita su razón escrita.</li>
+<li><b>La transformación al revés.</b> Las raíces de \(f(x/2)=0\) son el doble, no la mitad, de las de \(f(x)=0\).</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">Parten de los ítems con polinomios de tus fichas (DMpA 01, N°03, N°15, N°28) y de las fichas del Módulo 1 para integrar temas. Los ejemplos F9 y F10 cubren tipos que el IB pregunta pero que no aparecen en ninguna ficha. Ninguno repite un tipo de la sección 5.</p>
+
+<div class="ex"><p class="et">F1. Cúbica por condiciones y su inecuación <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 01 (2026), sistemas 3×3 por eliminación, aplicado a polinomios.</p>
+<p>\(P(x)=x^3+ax^2+bx+c\) cumple \(P(1)=0\), \(P(-1)=4\), y deja resto 7 al dividir entre \(x-2\). (a) Halla \(a,b,c\). (b) Factoriza \(P\) y resuelve \(P(x)\gt 0\). (c) Halla el resto de dividir \(P(x)\) entre \(x^2-1\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(a+b+c=-1\), \(a-b+c=5\), \(4a+2b+c=-1\). Restando las dos primeras, \(b=-3\) y \(a+c=2\). La tercera da \(4a+c=5\). Así \(3a=3\): \(a=1,\ c=1\).</p>
+<p>(b) \(P(x)=x^3+x^2-3x+1=(x-1)(x^2+2x-1)\), con raíces \(1,\ -1\pm\sqrt2\). Orden: \(-1-\sqrt2\lt -1+\sqrt2\lt 1\). Cúbica positiva: \(P\gt 0\) si \(-1-\sqrt2\lt x\lt -1+\sqrt2\) o \(x\gt 1\).</p>
+<p>(c) Resto \(rx+s\): \(P(1)=r+s=0\), \(P(-1)=-r+s=4\Rightarrow s=2,\ r=-2\). Resto \(-2x+2\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Cubo de binomio, hueco y asíntota oblicua <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°15, actividad 6: \(y=\dfrac{x^3-6x^2+12x-8}{x^2-x-2}\), ampliada.</p>
+<p>(a) Simplifica la función e indica su dominio. (b) Muestra que la gráfica no corta el eje \(x\). (c) Escribe la función como \(x+p+\dfrac{q}{x+1}\) y deduce la asíntota oblicua. (d) Indica la asíntota vertical y el corte con el eje \(y\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(x^3-6x^2+12x-8=(x-2)^3\) y \(x^2-x-2=(x-2)(x+1)\). Entonces \(f(x)=\dfrac{(x-2)^2}{x+1}\), con \(x\ne-1,\ x\ne2\).</p>
+<p>(b) La expresión simplificada solo se anula en \(x=2\), que no está en el dominio: hay un hueco en \((2,0)\) y ningún corte con el eje \(x\).</p>
+<p>(c) \(x^2-4x+4=(x+1)(x-5)+9\), así que \(f(x)=x-5+\dfrac{9}{x+1}\). Cuando \(|x|\to\infty\), \(\tfrac9{x+1}\to0\): asíntota \(y=x-5\).</p>
+<p>(d) Asíntota vertical \(x=-1\); corte \((0,4)\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. Inecuación racional por tabla de signos <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA N°15, actividad 6: \(y=\dfrac{3x^2-11x-4}{2x^2+7x+5}\), ampliada.</p>
+<p>(a) Resuelve \(\dfrac{3x^2-11x-4}{2x^2+7x+5}\ge0\). (b) Halla dónde la gráfica corta a su asíntota horizontal.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\dfrac{(3x+1)(x-4)}{(2x+5)(x+1)}\). Valores críticos: \(-\tfrac52,\ -1,\ -\tfrac13,\ 4\), todos simples. Para \(x\) grande es positiva y el signo alterna.</p>
+<p>Solución: \(x\lt -\tfrac52\), o \(-1\lt x\le-\tfrac13\), o \(x\ge4\). Los ceros del numerador se incluyen; los del denominador, nunca.</p>
+<p>(b) Asíntota \(y=\tfrac32\). \(2(3x^2-11x-4)=3(2x^2+7x+5)\Rightarrow-43x=23\Rightarrow x=-\tfrac{23}{43}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Multiplicidad 3 contra multiplicidad 2 <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°28, figura 5: \(y=(x+1)^3(x-1)\), ampliada.</p>
+<p>Sea \(f(x)=(x+1)^3(x-1)\) y \(g(x)=(x+1)^2(x-1)^2\). (a) Describe el comportamiento de cada gráfica en \(x=-1\) y en \(x=1\). (b) Resuelve \(f(x)\le0\). (c) Resuelve \(g(x)\gt f(x)\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(f\): cruza el eje en \(-1\) aplanándose (multiplicidad 3) y cruza normalmente en 1. \(g\): toca y rebota en ambos puntos (multiplicidad 2) y nunca es negativa.</p>
+<p>(b) \(f\) es negativa entre sus raíces y cero en ellas: \(-1\le x\le1\).</p>
+<p>(c) \(g-f=(x+1)^2(x-1)\left[(x-1)-(x+1)\right]=-2(x+1)^2(x-1)\gt 0\iff(x+1)^2(x-1)\lt 0\iff x\lt 1\) y \(x\ne-1\).</p>
+<p><span class="lbl">Idea clave.</span> Factorizar la diferencia, en vez de desarrollar los dos polinomios de grado 4.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. Mínimo sin derivadas <span class="lvl">Sección B</span></p>
+<p class="src">Tipo DMpA N°28 (optimización), resuelto con la sustitución recíproca de 1.2.</p>
+<p>Sea \(E(x)=x^2+\dfrac1{x^2}-4\left(x+\dfrac1x\right)+10\). (a) Halla el mínimo de \(E\) para \(x\gt 0\) y dónde se alcanza. (b) Halla el mínimo para \(x\lt 0\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Con \(t=x+\tfrac1x\): \(E=t^2-2-4t+10=(t-2)^2+4\).</p>
+<p>(a) Si \(x\gt 0\), \(t\ge2\) (porque \(x+\tfrac1x-2=\tfrac{(x-1)^2}{x}\ge0\)). El mínimo es 4, en \(t=2\), es decir \(x=1\).</p>
+<p>(b) Si \(x\lt 0\), \(t\le-2\) y \((t-2)^2\ge16\). El mínimo es 20, en \(t=-2\), es decir \(x=-1\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Rectas desde un punto y raíces positivas <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°03 (intersección de rectas), llevada a recta–parábola.</p>
+<p>Considera \(y=x^2+3x+5\) y las rectas \(y=mx+1\). (a) Halla \(m\) para que la recta sea tangente, y los puntos de tangencia. (b) Halla los \(m\) para los que la recta corta la parábola en dos puntos con abscisa positiva.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(x^2+(3-m)x+4=0\). Tangencia: \((3-m)^2=16\Rightarrow m=-1\) o \(m=7\). Con \(m=-1\): \((x+2)^2=0\), punto \((-2,3)\). Con \(m=7\): \((x-2)^2=0\), punto \((2,15)\).</p>
+<p>(b) Dos raíces distintas: \((3-m)^2\gt 16\Rightarrow m\lt -1\) o \(m\gt 7\). Ambas positivas: producto \(4\gt 0\) (siempre) y suma \(m-3\gt 0\). Intersección: \(m\gt 7\).</p>
+<p><span class="lbl">Idea clave.</span> Para el signo de las raíces no hace falta hallarlas: basta el signo de la suma y del producto.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. Raíces que empiezan una serie geométrica <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p class="src">DMpA 02 (series geométricas) combinada con Vieta.</p>
+<p>Las raíces \(\alpha,\beta\) de \(x^2-6x+k=0\) son, en ese orden, los dos primeros términos de una PG cuya suma infinita es 8. Halla los valores posibles de \(k\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>\(\beta=\alpha r\). Suma de raíces: \(\alpha(1+r)=6\). Suma infinita: \(\alpha=8(1-r)\). Entonces \(8(1-r)(1+r)=6\Rightarrow r^2=\tfrac14\Rightarrow r=\pm\tfrac12\).</p>
+<p>\(r=\tfrac12\): \(\alpha=4,\ \beta=2,\ k=8\). \(r=-\tfrac12\): \(\alpha=12,\ \beta=-6,\ k=-72\). Ambas cumplen \(|r|\lt 1\).</p>
+<p><span class="lbl">Resultado.</span> \(k=8\) o \(k=-72\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. Cuadrática en \(\log_2x\) con parámetro <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p class="src">DMpA 17 (logaritmos) combinada con discriminante y Vieta.</p>
+<p>Considera \((\log_2x)^2-k\log_2x+4=0\). (a) Resuelve para \(k=5\). (b) Halla los \(k\) para los que hay dos soluciones distintas. (c) Halla los \(k\) para los que ambas soluciones son mayores que 1. (d) Muestra que el producto de las dos soluciones es \(2^k\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Sea \(t=\log_2x\): \(t^2-kt+4=0\). Cada \(t\) real da un único \(x=2^t\gt 0\).</p>
+<p>(a) \(t=1\) o \(t=4\): \(x=2\) o \(x=16\).</p>
+<p>(b) \(\Delta=k^2-16\gt 0\iff|k|\gt 4\).</p>
+<p>(c) \(x\gt 1\iff t\gt 0\). Con dos raíces distintas, ambas positivas si la suma \(k\gt 0\) y el producto \(4\gt 0\): \(k\gt 4\).</p>
+<p>(d) \(x_1x_2=2^{t_1}2^{t_2}=2^{t_1+t_2}=2^k\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. Expresiones simétricas que revelan raíces complejas <span class="lvl">Sección A alta</span></p>
+<p class="src">Tipo de examen sin ítem equivalente en las fichas.</p>
+<p>\(\alpha,\beta,\gamma\) son raíces de \(2x^3-3x^2+4x-5=0\). (a) Halla \(\alpha^2+\beta^2+\gamma^2\) y deduce que no todas las raíces son reales. (b) Halla la ecuación de raíces \(\alpha+1,\ \beta+1,\ \gamma+1\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\sum\alpha=\tfrac32,\ \sum\alpha\beta=2\). \(\sum\alpha^2=\tfrac94-4=-\tfrac74\lt 0\). Si las tres fueran reales, la suma de sus cuadrados sería no negativa: contradicción.</p>
+<p>(b) Sustituye \(x-1\): \(2(x-1)^3-3(x-1)^2+4(x-1)-5=2x^3-9x^2+16x-14=0\). Comprobación: suma de nuevas raíces \(\tfrac92=\tfrac32+3\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. Factor al cuadrado sin derivadas <span class="lvl">Sección B</span></p>
+<p class="src">Tipo de examen sin ítem equivalente en las fichas.</p>
+<p>Halla \(a\) y \(b\) para que \((x-1)^2\) sea factor de \(P(x)=x^4+ax+b\). Luego muestra que \(P(x)\ge0\) para todo \(x\) real.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>División sintética entre \(x-1\) (coeficientes \(1,0,0,a,b\)): cociente \(x^3+x^2+x+(1+a)\) y resto \(1+a+b\). Para que \((x-1)^2\) divida, el resto es 0 y el cociente también se anula en 1: \(4+a=0\).</p>
+<p>Así \(a=-4,\ b=3\), y \(P(x)=(x-1)^2(x^2+2x+3)\). Como \(x^2+2x+3=(x+1)^2+2\gt 0\), \(P(x)\ge0\), con igualdad solo en \(x=1\).</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son todas las preguntas de polinomios de tus 7 pruebas que no dependen de temas posteriores. Las marcas siguen el markscheme oficial, salvo en mayo 2021 TZ2, cuyo markscheme no está en tus archivos: ahí las marcas están reconstruidas con el criterio habitual y se indica. Resuélvelas en tiempo de examen, a 1,1 minutos por punto.</p>
+
+<div class="ex"><p class="et">X1. Mayo 2021 TZ2, pregunta 7 <span class="lvl">5 puntos</span></p>
+<p>La ecuación \(x^3-kx^2+3k=0\), con \(k\gt 0\), tiene raíces \(\alpha,\ \beta,\ \alpha+\beta\). Sabiendo que \(\alpha\beta=-\dfrac{k^2}{4}\), halla \(k\).</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">Suma de raíces: \(2(\alpha+\beta)=k\Rightarrow\alpha+\beta=\tfrac k2\) <span class="m">(M1)(A1)</span></p>
+<p class="step">Producto de raíces: \(\alpha\beta(\alpha+\beta)=-3k\) <span class="m">(M1)</span></p>
+<p class="step">\(-\dfrac{k^2}{4}\cdot\dfrac k2=-3k\Rightarrow\dfrac{k^3}{8}=3k\Rightarrow k^2=24\) <span class="m">A1</span></p>
+<p class="step">Como \(k\gt 0\), \(k=2\sqrt6\) <span class="m">A1</span></p>
+<p><span class="lbl">Método alternativo.</span> \(\tfrac k2\) es raíz: \(\tfrac{k^3}{8}-\tfrac{k^3}{4}+3k=0\Rightarrow k^2=24\). El dato \(\alpha\beta\) sale de \(\sum\alpha\beta=0\), porque falta el término en \(x\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Mayo 2026 TZ2, pregunta 4 <span class="lvl">6 puntos</span></p>
+<p>\(f(x)=x^3+3x^2-2\), y \(x=-1\) es raíz de \(f(x)=0\). (a) Halla las otras dos raíces. (b) A partir de lo anterior, escribe las tres raíces de \(f\!\left(\tfrac x2\right)=0\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Factorizar con \((x+1)\) <span class="m">(M1)</span>: \(f(x)=(x+1)(x^2+2x-2)\) <span class="m">A1</span></p>
+<p class="step">Resolver la cuadrática <span class="m">(M1)</span>: \(x=-1\pm\sqrt3\) <span class="m">A1</span></p>
+<p class="step">(b) \(\tfrac x2\in\{-1,\ -1\pm\sqrt3\}\Rightarrow x=-2\) <span class="m">A1</span> y \(x=-2\pm2\sqrt3\) <span class="m">A1</span></p>
+<p><span class="lbl">Otros métodos aceptados.</span> División larga, o Vieta con las raíces \(-1,\alpha,\beta\): \(\alpha+\beta=-2\) y \(\alpha\beta=2\), que da \(\beta^2+2\beta-2=0\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Noviembre 2021, pregunta 7 <span class="lvl">7 puntos</span></p>
+<p>La ecuación \(3px^2+2px+1=p\) tiene dos raíces reales distintas. (a) Halla los valores posibles de \(p\). (b) Si \(p=4\), las raíces son \(x=\dfrac{a\pm\sqrt{13}}{6}\), con \(a\in\mathbb Z\). Halla \(a\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Usar el discriminante <span class="m">M1</span>: \((2p)^2-4(3p)(1-p)\gt 0\Rightarrow16p^2-12p\gt 0\) <span class="m">(A1)</span></p>
+<p class="step">Valores críticos \(p=0,\ p=\tfrac34\) <span class="m">M1</span>; reconocer que \(\Delta\gt 0\) <span class="m">(M1)</span></p>
+<p class="step">\(p\lt 0\) o \(p\gt \tfrac34\) <span class="m">A1</span></p>
+<p class="step">(b) \(12x^2+8x-3=0\Rightarrow x=\dfrac{-8\pm\sqrt{208}}{24}\) <span class="m">M1</span> \(=\dfrac{-2\pm\sqrt{13}}{6}\), así que \(a=-2\) <span class="m">A1</span></p>
+<p><span class="lbl">Nota.</span> \(p=0\) queda excluido automáticamente: la ecuación sería \(1=0\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X4. Noviembre 2022, pregunta 11(b) (Sección B) <span class="lvl">12 puntos</span></p>
+<p>\(P(x)=x^3+ax^2+bx+c\), donde \(a,b,c\) toman valores distintos de \(\{1,2,3,4,5\}\), y \(x^2+3x+2\) es factor de \(P(x)\). (i) Halla \(b\) en función de \(a\). (ii) Muestra que la única posibilidad es \(a=4,\ b=5,\ c=2\). (iii) Expresa \(P(x)\) como producto de factores lineales. (iv) Dibuja \(y=P(x)\) con todos los cortes con los ejes.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(i) Método 2 del markscheme: \(P(x)=(x^2+3x+2)(x+d)\) <span class="m">(M1)</span> \(=x^3+(d+3)x^2+(3d+2)x+2d\) <span class="m">(A1)</span></p>
+<p class="step">Comparar coeficientes <span class="m">(M1)</span>: \(a=d+3,\ b=3d+2\) <span class="m">A1</span></p>
+<p class="step">Eliminar \(d\) <span class="m">(M1)</span>: \(b=3a-7\) <span class="m">A1</span></p>
+<p class="step">(ii) Con \(a\in\{1,2,5\}\), \(b=-4,-1,8\): fuera del conjunto <span class="m">R1</span>. Con \(a=3\): \(b=2\) pero \(c=2d=2(a-3)=0\), imposible <span class="m">R1</span>. Solo queda \(a=4,\ b=5,\ c=2\) <span class="m">AG</span></p>
+<p class="step">(iii) \(P(x)=(x^2+3x+2)(x+1)=(x+2)(x+1)^2\) <span class="m">A1</span></p>
+<p class="step">(iv) Cúbica positiva con corte \((0,2)\) <span class="m">A1</span>; corta en \((-2,0)\) con un máximo entre \(-2\) y \(-1\) <span class="m">A1</span>; mínimo tangente en \((-1,0)\) <span class="m">A1</span></p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> En (ii), cada caso descartado necesita su razón escrita: dos R1. En (iv), dibujar un cruce en \(x=-1\) en vez de un rebote.</p>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Estos tipos de pregunta no salieron en tus 7 pruebas, pero el IB los pone en otras convocatorias de la Prueba 1 (y algunos vienen de la Prueba 2, adaptados para resolver a mano). Junto con la teoría y las secciones 4 y 5, cubren todo el programa de polinomios. Cada tipo trae cómo reconocerlo, el método, un ejemplo resuelto y ejercicios para practicar.</p>
+<h3 id="ty1">T1. Raíces de \(P(ax+b)=0\) sin hallar las raíces</h3>
+<p><b>Qué reconocer:</b> te dan \(P(x)\) (o solo la suma o el producto de sus raíces) y preguntan por la suma o el producto de las raíces de \(P(2x-3)=0\), \(P(x/2)=0\) o similar. <b>Método:</b> si \(ax+b=\alpha\), la nueva raíz es \(\tfrac{\alpha-b}{a}\): suma esas expresiones. Para el producto, basta el coeficiente principal y el término independiente del nuevo polinomio: \(a_n\cdot a^n\) y \(P(b)\).</p>
+<div class="ex"><p class="et">Ejemplo T1. <span class="lvl">Tipo IB</span></p>
+<p>Sea \(P(x)=2x^4-8x^3+3x^2+x-5\). Halla la suma y el producto de las raíces de \(P(2x-3)=0\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Raíces de \(P\): suma \(4\). Las nuevas son \(\tfrac{\alpha+3}{2}\): suma \(\tfrac{4+4\cdot3}{2}=8\).</p><p>\(P(2x-3)\) tiene coeficiente principal \(2\cdot2^4=32\) y término independiente \(P(-3)=162+216+27-3-5=397\). Grado par: producto \(\tfrac{397}{32}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>La suma de las raíces de un polinomio \(P\) de grado 5 es 7. Halla la suma de las raíces de \(P(3x+2)=0\).</li><li>Las raíces de \(x^3-6x^2+11x-6=0\) son \(1,2,3\). Sin desarrollar, halla las raíces de \((x/2)^3-6(x/2)^2+11(x/2)-6=0\) y de \((x+1)^3-6(x+1)^2+11(x+1)-6=0\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Nuevas raíces \(\tfrac{\alpha-2}{3}\): suma \(\tfrac{7-10}{3}=-1\).</li><li>\(x=2,4,6\) y \(x=0,1,2\).</li></ol></div></details></div>
+<h3 id="ty2">T2. Una raíz compleja dada y coeficientes reales</h3>
+<p><b>Qué reconocer:</b> «\(P\) tiene coeficientes reales y \(1-2i\) es raíz». <b>Método:</b> la conjugada también es raíz; su producto da un factor cuadrático real \(x^2-2\operatorname{Re}(z)x+|z|^2\). La raíz que falta sale del producto de raíces (Vieta) o de dividir.</p>
+<div class="ex"><p class="et">Ejemplo T2. <span class="lvl">Tipo IB</span></p>
+<p class="src">Se amplía en el Módulo 6.</p>
+<p>\(P(x)=x^3+ax^2+bx+10\), con \(a,b\in\mathbb R\), tiene la raíz \(1-2i\). Halla \(a\), \(b\) y las otras raíces.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(1+2i\) también es raíz; factor \(x^2-2x+5\). Producto de raíces: \(5r=-10\Rightarrow r=-2\).</p><p>\(P(x)=(x+2)(x^2-2x+5)=x^3+x+10\): \(a=0,\ b=1\). Raíces \(-2,\ 1\pm2i\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla la cúbica mónica de coeficientes reales con raíces \(2\) y \(3+i\).</li><li>\(x^4-4x^3+ax^2+bx+c\), con coeficientes reales, tiene raíces \(i\) y \(2+i\). Halla \(a,b,c\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\((x-2)(x^2-6x+10)=x^3-8x^2+22x-20\).</li><li>\((x^2+1)(x^2-4x+5)=x^4-4x^3+6x^2-4x+5\): \(a=6,\ b=-4,\ c=5\).</li></ol></div></details></div>
+<h3 id="ty3">T3. Polinomio a partir de su gráfica</h3>
+<p><b>Qué reconocer:</b> te dan la gráfica (o su descripción): dónde corta o toca el eje \(x\) y un punto más. <b>Método:</b> cruzar = factor simple (o de multiplicidad impar); tocar y rebotar = factor al cuadrado. Escribe \(a\prod(x-r)^m\) y halla \(a\) con el punto extra. Comprueba que el signo de \(a\) cuadra con los extremos de la gráfica.</p>
+<div class="ex"><p class="et">Ejemplo T3. <span class="lvl">Tipo IB</span></p>
+<p>La gráfica de una cuártica toca el eje \(x\) en \(x=-2\), lo cruza en \(x=1\) y \(x=4\), y corta el eje \(y\) en \((0,-16)\). Halla su ecuación y resuelve \(y\gt0\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(y=a(x+2)^2(x-1)(x-4)\); en \(x=0\): \(16a=-16\Rightarrow a=-1\).</p><p>\(y=-(x+2)^2(x-1)(x-4)\). Es positiva solo entre las raíces simples: \(1\lt x\lt4\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Una cúbica cruza el eje \(x\) en \(x=3\), lo toca en \(x=-1\) y pasa por \((1,-8)\). Halla su ecuación.</li><li>Explica por qué ninguna cúbica puede tocar el eje en dos puntos distintos sin cruzarlo.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(a(x+1)^2(x-3)\) con \(a\cdot4\cdot(-2)=-8\): \(a=1\), \(y=(x+1)^2(x-3)\).</li><li>Dos raíces dobles darían grado al menos 4.</li></ol></div></details></div>
+<h3 id="ty4">T4. Relación dada entre las raíces de una cuadrática</h3>
+<p><b>Qué reconocer:</b> «una raíz es el doble de la otra», «las raíces difieren en 1», «una raíz es el cuadrado de la otra». <b>Método:</b> escribe las raíces en función de una incógnita (\(\alpha,\ 2\alpha\)) y usa suma y producto; o usa \((\alpha-\beta)^2=(\alpha+\beta)^2-4\alpha\beta\).</p>
+<div class="ex"><p class="et">Ejemplo T4. <span class="lvl">Tipo IB</span></p>
+<p>Una raíz de \(x^2-kx+18=0\) es el doble de la otra. Halla los valores de \(k\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Raíces \(\alpha,2\alpha\): producto \(2\alpha^2=18\Rightarrow\alpha=\pm3\). Suma \(3\alpha=k\Rightarrow k=\pm9\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Las raíces de \(x^2+px+12=0\) difieren en 1. Halla \(p\).</li><li>Una raíz de \(2x^2-9x+c=0\) es el doble de la otra. Halla \(c\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(p^2-48=1\Rightarrow p=\pm7\).</li><li>Raíces \(\alpha,2\alpha\): \(3\alpha=\tfrac92\Rightarrow\alpha=\tfrac32\); \(\tfrac c2=2\alpha^2\Rightarrow c=4\alpha^2=9\).</li></ol></div></details></div>
+<h3 id="ty5">T5. Mínimo o máximo por sustitución y forma canónica</h3>
+<p><b>Qué reconocer:</b> una expresión en \(e^x\), \(2^x\) o \(x^2\) que es cuadrática en otra variable, y piden su mínimo o recorrido sin derivar. <b>Método:</b> cambia a \(t\), completa el cuadrado y revisa que el valor de \(t\) del vértice sea alcanzable (\(t\gt0\) para exponenciales).</p>
+<div class="ex"><p class="et">Ejemplo T5. <span class="lvl">Tipo IB</span></p>
+<p>Halla el valor mínimo de \(g(x)=4^x-2^{x+2}+7\) y el \(x\) donde se alcanza.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(t=2^x\gt0\): \(g=t^2-4t+7=(t-2)^2+3\). Mínimo 3 en \(t=2\), es decir \(x=1\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el mínimo de \(e^{2x}-6e^x+10\).</li><li>Halla el recorrido de \(h(x)=4^x-2^{x+3}+20\) para \(x\ge3\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\((t-3)^2+1\): mínimo 1 en \(x=\ln3\).</li><li>\(t=2^x\ge8\): \((t-4)^2+4\) crece para \(t\ge8\). Recorrido \(h\ge20\).</li></ol></div></details></div>
+<h3 id="ty6">T6. Identidad de polinomios: igualar coeficientes</h3>
+<p><b>Qué reconocer:</b> el símbolo \(\equiv\) o la frase «para todo \(x\)», y piden constantes \(a,b,c\). <b>Método:</b> desarrolla e iguala coeficientes de cada potencia; o sustituye valores cómodos de \(x\) (raíces de los factores).</p>
+<div class="ex"><p class="et">Ejemplo T6. <span class="lvl">Tipo IB</span></p>
+<p>Halla \(a,b,c\) tales que \(2x^2+5x-1\equiv a(x+1)^2+b(x+1)+c\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(x^2\): \(a=2\). \(x\): \(2a+b=5\Rightarrow b=1\). Con \(x=-1\): \(c=2-5-1=-4\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(a,b,c\) con \(x^3\equiv(x-1)^3+a(x-1)^2+b(x-1)+c\).</li><li>Halla \(p,q\) con \(x^3+px+q\equiv(x-2)^2(x+4)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(a=3,\ b=3,\ c=1\).</li><li>\((x^2-4x+4)(x+4)=x^3-12x+16\): \(p=-12,\ q=16\).</li></ol></div></details></div>
+<h3 id="ty7">T7. Intersección de una recta y una cúbica</h3>
+<p><b>Qué reconocer:</b> piden los puntos de corte de una recta con una cúbica, sin calculadora. <b>Método:</b> iguala, pasa todo a un lado y factoriza la cúbica que queda (raíz racional y división, o agrupación). Una raíz doble indica tangencia en ese punto.</p>
+<div class="ex"><p class="et">Ejemplo T7. <span class="lvl">Tipo IB</span></p>
+<p>Halla los puntos de corte de \(y=x^3-4x^2+x+8\) con \(y=2x+4\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(x^3-4x^2-x+4=0\Rightarrow x^2(x-4)-(x-4)=(x-4)(x-1)(x+1)=0\).</p><p>Puntos \((-1,2),\ (1,6),\ (4,12)\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla los puntos de corte de \(y=x^3\) con \(y=7x-6\).</li><li>Muestra que \(y=3x-2\) es tangente a \(y=x^3\) e indica el otro punto de corte.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(x^3-7x+6=(x-1)(x-2)(x+3)\): \((1,1),\ (2,8),\ (-3,-27)\).</li><li>\(x^3-3x+2=(x-1)^2(x+2)\): raíz doble en 1 (tangente en \((1,1)\)); corta otra vez en \((-2,-8)\).</li></ol></div></details></div>
+<h3 id="ty8">T8. Número de soluciones de \(P(x)=k\)</h3>
+<p><b>Qué reconocer:</b> «halla los valores de \(k\) para los que la ecuación tiene exactamente cuatro soluciones reales». <b>Método:</b> escribe \(P\) en forma canónica (si es bicuadrada, en \(x^2\)), dibuja su gráfica y cuenta los cortes con la recta horizontal \(y=k\).</p>
+<div class="ex"><p class="et">Ejemplo T8. <span class="lvl">Sección B</span></p>
+<p>Halla el número de soluciones reales de \(x^4-4x^2=k\) según el valor de \(k\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(x^4-4x^2=(x^2-2)^2-4\): mínimo \(-4\) en \(x=\pm\sqrt2\) y máximo local 0 en \(x=0\) (gráfica en forma de W).</p><p>\(k\lt-4\): 0. \(k=-4\): 2. \(-4\lt k\lt0\): 4. \(k=0\): 3. \(k\gt0\): 2.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla los \(k\) para los que \(x^4-2x^2+k=0\) tiene exactamente cuatro soluciones reales.</li><li>Halla los \(k\) para los que \(x^4-6x^2+k=0\) no tiene soluciones reales.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(k=2x^2-x^4=1-(x^2-1)^2\): cuatro soluciones si \(0\lt k\lt1\).</li><li>\((x^2-3)^2=9-k\): sin soluciones si \(9-k\lt0\), es decir \(k\gt9\) (si \(k\le9\), \(x^2=3+\sqrt{9-k}\gt0\) siempre da solución).</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo ya resuelto. Integran el Módulo 1: series, logaritmos y sucesiones. El 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la Sección B. Al final, I1 es una investigación tipo Prueba 3 de NS: el techo del IB. Cada uno trae una pista y la respuesta final plegadas.</p>
+
+<div class="ex"><p class="et">E1. Discriminante con parámetro logarítmico <span class="lvl">Sección B</span></p>
+<p>Considera \(x^2-2(\log_2a)\,x+\log_2a+2=0\), con \(a\gt 0\). (a) Halla los \(a\) para los que tiene raíces reales. (b) Halla \(a\) si tiene una raíz doble positiva, e indica esa raíz. (c) Halla \(a\) si las raíces cumplen \(\alpha^2+\beta^2=2\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Trabaja con \(t=\log_2a\). En (c), la ecuación en \(t\) tiene dos soluciones, pero solo una es compatible con (a).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(0\lt a\le\tfrac12\) o \(a\ge4\). (b) \(a=4\), raíz \(x=2\). (c) \(a=\tfrac12\) (\(t=\tfrac32\) da raíces no reales).</p></div></details></div>
+
+<div class="ex"><p class="et">E2. Restos de potencias y serie geométrica <span class="lvl">Sección B</span></p>
+<p>(a) Halla el resto de dividir \(x^{100}\) entre \(x^2-1\). (b) Sea \(P(x)=1+x+x^2+\dots+x^{2n}\). Halla el resto de dividir \(P(x)\) entre \(x^2-1\). (c) Usando \(P(x)=\dfrac{x^{2n+1}-1}{x-1}\) para \(x\ne1\), muestra que \(P(x)\gt 0\) para todo \(x\) real.</p>
+<details><summary>Pista</summary><div class="inner"><p>El resto es \(rx+s\); evalúa en \(x=\pm1\). En (c), compara el signo de \(x^{2n+1}-1\) con el de \(x-1\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) 1. (b) \(nx+n+1\). (c) Numerador y denominador tienen el mismo signo, y \(P(1)=2n+1\gt 0\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Condición general de raíces en PA <span class="lvl">Sección B</span></p>
+<p>(a) Muestra que si las raíces de \(x^3+px^2+qx+r=0\) están en PA, entonces \(2p^3-9pq+27r=0\). (b) Aplícalo para hallar \(k\) si las raíces de \(x^3-9x^2+kx-15=0\) están en PA, y halla las raíces.</p>
+<details><summary>Pista</summary><div class="inner"><p>La raíz central es \(-\tfrac p3\) y satisface la ecuación.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(k=23\); raíces \(1,3,5\).</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Cuártica recíproca no mónica e inecuación <span class="lvl">Sección B</span></p>
+<p>(a) Resuelve \(2x^4-9x^3+14x^2-9x+2=0\). (b) Factoriza el polinomio y resuelve \(2x^4-9x^3+14x^2-9x+2\le0\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Divide por \(x^2\) y usa \(t=x+\tfrac1x\). En (b), una de las raíces es doble.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(x=1\) (doble), \(x=2\), \(x=\tfrac12\). (b) \((x-1)^2(2x-1)(x-2)\le0\iff\tfrac12\le x\le2\).</p></div></details></div>
+
+<div class="ex"><p class="et">E5. Ecuación de las raíces al cuadrado <span class="lvl">Sección B</span></p>
+<p>\(\alpha,\beta,\gamma\) son raíces de \(x^3-2x^2-3x+1=0\). (a) Muestra que \(\alpha^2,\beta^2,\gamma^2\) son raíces de \(y^3-10y^2+13y-1=0\). (b) A partir de lo anterior, halla \(\alpha^4+\beta^4+\gamma^4\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Escribe la ecuación como \(x(x^2-3)=2x^2-1\), eleva al cuadrado y pon \(y=x^2\). En (b), aplica \(\sum y^2=(\sum y)^2-2\sum y_iy_j\) a la nueva ecuación.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(100-26=74\).</p></div></details></div>
+
+<div class="ex"><p class="et">E6. Recorrido por el método del discriminante <span class="lvl">Sección B</span></p>
+<p>(a) Halla todos los \(k\) para los que \(x^2+(k-2)x+k+1\gt 0\) para todo \(x\). (b) Halla el recorrido de \(f(x)=\dfrac{x^2-x+1}{x^2+x+1}\) sin derivadas.</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) \(y\) está en el recorrido si \((y-1)x^2+(y+1)x+(y-1)=0\) tiene solución real en \(x\). Revisa aparte el caso \(y=1\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(0\lt k\lt 8\). (b) \(\tfrac13\le f(x)\le3\).</p></div></details></div>
+
+<div class="ex"><p class="et">E7. Raíces de \(P(2x-1)\) y de coeficientes invertidos <span class="lvl">Sección B</span></p>
+<p>\(\alpha,\beta,\gamma\) son las raíces de \(P(x)=2x^3-7x^2+4x+5=0\). (a) Halla la suma y el producto de las raíces de \(P(2x-1)=0\). (b) Halla la ecuación cúbica de coeficientes enteros con raíces \(\tfrac1\alpha,\tfrac1\beta,\tfrac1\gamma\). (c) Halla \(\sum\tfrac1\alpha\) de dos formas: con (b) y con Vieta en \(P\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Si \(2x-1=\alpha\), las nuevas raíces son \(\tfrac{\alpha+1}{2}\). Para el producto, \(\prod(\alpha+1)=-\tfrac{P(-1)}{2}\), porque \(P(x)=2\prod(x-\alpha)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) Suma \(\tfrac{7/2+3}{2}=\tfrac{13}{4}\); producto \(\tfrac{4}{8}=\tfrac12\). (b) \(5x^3+4x^2-7x+2=0\). (c) \(-\tfrac45\) en ambos casos (\(\sum\alpha\beta=2,\ \alpha\beta\gamma=-\tfrac52\)).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Raíces dentro de (−1, 1) y dos series geométricas <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>Considera \(4x^2-4x+k=0\) con raíces \(\alpha,\beta\). (a) Halla los \(k\) para los que ambas raíces son reales y están en \((-1,1)\). (b) Para esos \(k\), muestra que \(\displaystyle\sum_{n=0}^{\infty}(\alpha^n+\beta^n)=\frac4k\). (c) Halla \(k\) si esa suma vale 5.</p>
+<details><summary>Pista</summary><div class="inner"><p>Las raíces son \(\tfrac{1\pm\sqrt{1-k}}{2}\): exige \(k\le1\) para que sean reales, que la mayor sea menor que 1 y que la menor sea mayor que \(-1\). En (b), suma las dos series geométricas y usa Vieta.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(0\lt k\le1\). (b) \(\dfrac{1}{1-\alpha}+\dfrac{1}{1-\beta}=\dfrac{2-(\alpha+\beta)}{1-(\alpha+\beta)+\alpha\beta}=\dfrac{1}{k/4}\). (c) \(k=\tfrac45\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. Raíces en PG, logaritmos y restos <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>Las raíces de \(P(x)=x^3+ax^2+bx+c\) son \(\alpha,\ 2\alpha,\ 4\alpha\), y la suma de sus recíprocos es \(\tfrac78\). (a) Halla \(\alpha\) y \(P(x)\). (b) Resuelve \(P(x)\lt 0\). (c) Halla el resto de dividir \(P(x)\) entre \(x^2-1\). (d) Resuelve \(P(2^x)=0\) y halla la ecuación cúbica cuyas raíces son los logaritmos en base 2 de las raíces de \(P\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(\tfrac1\alpha\left(1+\tfrac12+\tfrac14\right)=\tfrac78\). En (d), los logaritmos de una PG forman una PA.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\alpha=2\), \(P(x)=x^3-14x^2+56x-64\). (b) \(x\lt 2\) o \(4\lt x\lt 8\). (c) \(57x-78\). (d) \(x=1,2,3\); la ecuación es \(x^3-6x^2+11x-6=0\).</p></div></details></div>
+
+<div class="ex"><p class="et">E10. Una cúbica cuyas raíces se transforman entre sí <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>Sea \(P(x)=x^3-3x+1\), con raíces \(\alpha,\beta,\gamma\). (a) Evaluando \(P\) en \(-2,-1,0,1,2\), muestra que las tres raíces son reales y están en \((-2,2)\). (b) Halla \(\sum\alpha^2\) y \(\sum\tfrac1\alpha\). (c) Muestra que \(\alpha^3=3\alpha-1\), y halla \(\sum\alpha^3\) y \(\sum\alpha^4\). (d) Muestra que si \(\alpha\) es raíz, entonces \(\alpha^2-2\) también lo es.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Cambios de signo. (c) Multiplica \(\alpha^3=3\alpha-1\) por \(\alpha\) para bajar \(\alpha^4\) a grado 2, y suma sobre las tres raíces. (d) Desarrolla \(P(\alpha^2-2)\) y escríbelo como \((\alpha^3-3\alpha)^2-1\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(P(-2)=-1,\ P(-1)=3,\ P(0)=1,\ P(1)=-1,\ P(2)=3\): una raíz en cada uno de \((-2,-1),\ (0,1),\ (1,2)\). (b) \(\sum\alpha^2=0-2(-3)=6\); \(\sum\tfrac1\alpha=\tfrac{-3}{-1}=3\). (c) \(\sum\alpha^3=3\cdot0-3=-3\); \(\sum\alpha^4=3\sum\alpha^2-\sum\alpha=18\). (d) \(P(\alpha^2-2)=\alpha^6-6\alpha^4+9\alpha^2-1=(\alpha^3-3\alpha)^2-1=(-1)^2-1=0\).</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. El centro de simetría de una cúbica <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>Una recta que corta una cúbica en tres puntos esconde una regularidad. Vas a descubrirla con casos concretos, demostrarla con Vieta y generalizarla.</p>
+<ol type="a"><li>La recta \(y=x\) y la recta \(y=2x+2\) cortan a \(y=x^3-3x\) en tres puntos cada una. Halla las abscisas de los puntos de corte en cada caso y su media. Formula una conjetura.</li><li>Demuestra tu conjetura para cualquier recta \(y=mx+q\) que corte \(y=x^3-3x\) en tres puntos.</li><li>Para \(y=x^3+ax^2+bx+c\), muestra que la media de las abscisas de los tres puntos de corte con cualquier recta es \(-\tfrac a3\).</li><li>Sea \(f(x)=x^3-6x^2+9x+1\). Con \(h=2\) y \(k=f(2)\), muestra que \(f(2+t)=t^3-3t+3\) y deduce que \(f(h+t)+f(h-t)=2k\) para todo \(t\). Interpreta el resultado en la gráfica.</li><li>Generaliza: para \(f(x)=x^3+ax^2+bx+c\) y \(h=-\tfrac a3\), muestra que \(f(h+t)=t^3+pt+f(h)\) para cierta constante \(p\). Deduce que toda cúbica es simétrica respecto del punto \((h,f(h))\), y que si una recta pasa por ese punto y corta la cúbica en tres puntos, los otros dos son simétricos respecto de él.</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>Iguala la recta con la cúbica: obtienes una cúbica cuyo término en \(x^2\) no cambia al restar \(mx+q\).</li><li>Suma de raíces de \(x^3-(3+m)x-q=0\).</li><li>El término en \(x^2\) es \(ax^2\) antes y después de restar la recta.</li><li>Desarrolla \((2+t)^3-6(2+t)^2+9(2+t)+1\). Los términos impares en \(t\) se cancelan al sumar \(f(2+t)+f(2-t)\).</li><li>Al sustituir \(x=h+t\), el coeficiente de \(t^2\) es \(3h+a=0\). Para la recta, la suma de abscisas es \(3h\) y una de ellas es \(h\).</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>\(y=x\): \(x=0,\pm2\). \(y=2x+2\): \((x+2)(x^2-2x-1)=0\), \(x=-2,\ 1\pm\sqrt2\). En ambos casos la media es 0. Conjetura: la media es siempre 0.</li><li>\(x^3-(3+m)x-q=0\) no tiene término en \(x^2\): la suma de raíces es 0.</li><li>Al restar la recta \(y=mx+q\) queda \(x^3+ax^2+(b-m)x+(c-q)=0\), cuya suma de raíces es \(-a\); la media es \(-\tfrac a3\), sin importar la recta.</li><li>\(k=3\); \(f(2+t)+f(2-t)=(t^3-3t+3)+(-t^3+3t+3)=6=2k\). La gráfica es simétrica respecto del punto \((2,3)\): un giro de 180° alrededor de él la deja igual.</li><li>\(f(h+t)=t^3+(3h+a)t^2+(3h^2+2ah+b)t+f(h)\), con \(3h+a=0\). Entonces \(f(h+t)-f(h)\) es impar en \(t\). Si la recta pasa por \((h,f(h))\), \(h\) es una de las abscisas; las otras dos suman \(3h-h=2h\), así que son \(h\pm s\) y, por la simetría, los puntos son simétricos.</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 3, funciones (composición, inversa, transformaciones, racionales, valor absoluto e inecuaciones).</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

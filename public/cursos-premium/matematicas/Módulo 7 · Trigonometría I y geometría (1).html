@@ -1,0 +1,1443 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 7 · Trigonometría I y geometría</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 7</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t1">1.1 Radianes, arcos y sectores</a>
+  <a class="sub" href="#t2">1.2 Triángulo rectángulo</a>
+  <a class="sub" href="#t3">1.3 Ángulos obtusos</a>
+  <a class="sub" href="#t4">1.4 Ley de senos y caso ambiguo</a>
+  <a class="sub" href="#t5">1.5 Ley de cosenos y área</a>
+  <a class="sub" href="#t6">1.6 Geometría 3D</a>
+  <a class="sub" href="#t7">1.7 Circunferencias y triángulos</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos resueltos</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 7 de 17</p>
+  <h1>Trigonometría I: radianes, triángulos y geometría 3D</h1>
+  <p class="formula">\( l=r\theta \qquad A=\tfrac12r^2\theta \qquad \frac{a}{\sin A}=\frac{b}{\sin B} \qquad c^2=a^2+b^2-2ab\cos C \qquad \text{Área}=\tfrac12ab\sin C \)</p>
+  <p>Todo lo necesario para resolver sin calculadora las preguntas de medida angular, triángulos, circunferencias y sólidos, al nivel de la banda 7. Los problemas extra integran los Módulos 1–6.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">Este módulo aparece en 4 de tus 7 pruebas y resuelve 36 puntos. Es la base de toda la trigonometría: sin radianes, triángulos y valores exactos no se puede avanzar a funciones, ecuaciones ni cálculo.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2026 TZ2</td><td>1</td><td>6</td><td>Sector en radianes: arco, perímetro, radio, área</td></tr>
+<tr><td>Mayo 2021 TZ2</td><td>6</td><td>7</td><td>Ley de cosenos con incógnita; área exacta \(\tfrac{p\sqrt q}2\)</td></tr>
+<tr><td>Noviembre 2022</td><td>2</td><td>7</td><td>Punto medio y distancia en 3D; volumen exacto de un cono</td></tr>
+<tr><td>Mayo 2021 TZ2</td><td>10(c)(d)</td><td>7</td><td>Superficie total de un cono; volumen</td></tr>
+<tr><td>Mayo 2026 TZ2</td><td>10(a)(b)(d)</td><td>9</td><td>Trapecio en un semicírculo: área con \(\tfrac12ab\sin C\), área en función de \(\theta\), caso límite</td></tr>
+</tbody></table></div>
+<p>Las partes que dependen de cálculo se resuelven en su módulo: mayo 2026 P10(c) (derivada, Módulo 13) y mayo 2021 TZ2 P10(a)(b) (área con integral, Módulo 14).</p>
+
+<h3>Cómo lo pregunta el IB: patrones de tus pruebas</h3>
+<ol>
+<li><b>Sector con un dato cruzado:</b> dan el perímetro o el área y piden el radio. Todo en radianes.</li>
+<li><b>Ley de cosenos con una incógnita algebraica</b> (lados \(x\), \(2x\)), y luego el área con \(\tfrac12ab\sin C\) usando \(\sin C=\sqrt{1-\cos^2C}\).</li>
+<li><b>3D con coordenadas:</b> punto medio, distancia y un sólido (cono, esfera) con volumen exacto.</li>
+<li><b>Área en función de un ángulo:</b> se descompone en triángulos con \(\tfrac12ab\sin C\) y se usa \(\sin(\pi-x)=\sin x\).</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA N°18 y su separata (2025)</td><td>Radianes, arco, sector, segmento, área de triángulos, paralelogramo, dos circunferencias que se cortan, animales atados a una cuerda</td><td>F1–F4, F8</td></tr>
+<tr><td>DMpA N°04 y MATERIAL S4 (2025)</td><td>Distancia y punto medio en 3D, áreas y volúmenes de sólidos</td><td>F6, F7, F9</td></tr>
+</tbody></table></div>
+<p>Las fichas traen ítems con decimales pensados para calculadora. Aquí se reformulan con ángulos notables para la Prueba 1. No hay ficha de ley de senos ni del caso ambiguo: las secciones 1.3–1.4 y el ejemplo F5 cubren ese hueco.</p>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Radianes; longitud de arco; área de sector y de segmento</td><td>1.1</td><td>Alto</td></tr>
+<tr><td>Razones en el triángulo rectángulo; valores exactos; elevación y depresión; rumbos; construcción de diagramas</td><td>1.2</td><td>Medio</td></tr>
+<tr><td>Seno y coseno de ángulos obtusos</td><td>1.3</td><td>Transversal</td></tr>
+<tr><td>Ley de senos y caso ambiguo</td><td>1.4</td><td>Medio</td></tr>
+<tr><td>Ley de cosenos; área \(\tfrac12ab\sin C\)</td><td>1.5</td><td>Alto</td></tr>
+<tr><td>Distancia y punto medio en 3D; volumen y superficie de sólidos, incluidos la semiesfera y los sólidos compuestos; ángulos en 3D</td><td>1.6</td><td>Alto</td></tr>
+<tr><td>Problemas con circunferencias, cuerdas y áreas compuestas</td><td>1.7</td><td>Medio (Sección B)</td></tr>
+<tr><td>Otros tipos de pregunta: sector con perímetro y área dados, cuadrilátero partido en dos triángulos, rumbos que forman triángulos notables, áreas sombreadas entre arcos, despejar una dimensión de un sólido, ángulos en el cubo, rango del área y del tercer lado, arcos en contexto (péndulo, reloj)</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+<tr><td>Circunradio, inradio, distancia de Euler (fuera del programa)</td><td>Cajas moradas</td><td>Solo como herramienta</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1 a 1.7 cubren todo lo evaluable de geometría y trigonometría del triángulo (temas 3.1–3.4 del programa). Cada concepto clave trae ejemplos de nivel de examen y un recuadro «Para practicar». La sección 6 reúne los tipos de pregunta del IB que no salieron en tus 7 pruebas. Lo que va más allá del programa está solo en las cajas moradas, y ningún problema extra lo necesita. La circunferencia unitaria completa, las identidades y las ecuaciones están en el Módulo 8. El techo es la investigación I1, tipo Prueba 3.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Va de la medida angular a los sólidos en 3D. Cada concepto trae un ejemplo resuelto con valores exactos y, los esenciales, un recuadro «Para practicar». Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Radianes, arcos, sectores y segmentos</h3>
+<p>Un radián es el ángulo central que abarca un arco de longitud igual al radio. Por lo tanto \(\pi\ \text{rad}=180^\circ\): para pasar de grados a radianes se multiplica por \(\tfrac{\pi}{180}\).</p>
+\[ l=r\theta,\qquad A_{\text{sector}}=\tfrac12r^2\theta=\tfrac12rl,\qquad A_{\text{segmento}}=\tfrac12r^2(\theta-\sin\theta)\qquad(\theta\text{ en radianes}) \]
+<p>El perímetro de un sector es \(2r+r\theta\). El segmento es la región entre la cuerda y el arco: sector menos triángulo.</p>
+<div class="ex"><p class="et">Ejemplo 1.1. Sector con dos datos cruzados</p>
+<p>Un sector tiene área 16 cm² y arco 8 cm. Halla \(r\) y \(\theta\).</p>
+<p>\(A=\tfrac12rl\Rightarrow16=4r\Rightarrow r=4\). Entonces \(\theta=\tfrac lr=2\) rad.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.2. Área de un segmento</p>
+<p>Halla el área del segmento determinado por una cuerda que subtiende \(\tfrac\pi3\) en una circunferencia de radio 6.</p>
+<p>\(\tfrac12\cdot36\left(\tfrac\pi3-\tfrac{\sqrt3}2\right)=6\pi-9\sqrt3\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 315.72 244.635535" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 244.635535 
+L 315.72 244.635535 
+L 315.72 0 
+L 0 0 
+L 0 244.635535 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 157.86 303.884308 
+C 194.741999 303.884308 230.118372 289.230934 256.197884 263.151422 
+C 282.277396 237.071911 296.930769 201.695538 296.930769 164.813538 
+C 296.930769 127.931539 282.277396 92.555166 256.197884 66.475654 
+C 230.118372 40.396143 194.741999 25.742769 157.86 25.742769 
+C 120.978001 25.742769 85.601628 40.396143 59.522116 66.475654 
+C 33.442604 92.555166 18.789231 127.931539 18.789231 164.813538 
+C 18.789231 201.695538 33.442604 237.071911 59.522116 263.151422 
+C 85.601628 289.230934 120.978001 303.884308 157.86 303.884308 
+" clip-path="url(#p029365783f)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 227.395385 44.374719 
+C 206.25553 32.169619 182.270201 25.742769 157.86 25.742769 
+C 133.449799 25.742769 109.46447 32.169619 88.324615 44.374719 
+L 157.86 164.813538 
+z
+" clip-path="url(#p029365783f)" style="fill: #0e6e6a; opacity: 0.18; stroke: #0e6e6a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 227.395385 44.374719 
+L 226.117546 43.645943 
+L 224.832071 42.930723 
+L 223.539102 42.229141 
+L 222.238784 41.541275 
+L 220.931263 40.867201 
+L 219.616685 40.206995 
+L 218.295198 39.560731 
+L 216.966948 38.928482 
+L 215.632085 38.310317 
+L 214.290759 37.706307 
+L 212.943118 37.116518 
+L 211.589314 36.541017 
+L 210.229498 35.979869 
+L 208.863823 35.433135 
+L 207.492441 34.900877 
+L 206.115506 34.383155 
+L 204.733172 33.880026 
+L 203.345593 33.391548 
+L 201.952925 32.917774 
+L 200.555324 32.458757 
+L 199.152945 32.014549 
+L 197.745946 31.5852 
+L 196.334485 31.170758 
+L 194.918718 30.771268 
+L 193.498805 30.386776 
+L 192.074905 30.017325 
+L 190.647177 29.662956 
+L 189.215779 29.323709 
+L 187.780874 28.999621 
+L 186.342621 28.690729 
+L 184.901181 28.397068 
+L 183.456715 28.11867 
+L 182.009386 27.855567 
+L 180.559354 27.607787 
+L 179.106783 27.375359 
+L 177.651834 27.158309 
+L 176.194671 26.956661 
+L 174.735456 26.770437 
+L 173.274354 26.599659 
+L 171.811526 26.444345 
+L 170.347138 26.304513 
+L 168.881352 26.180178 
+L 167.414334 26.071355 
+L 165.946246 25.978055 
+L 164.477254 25.900289 
+L 163.007521 25.838066 
+L 161.537212 25.791393 
+L 160.066492 25.760274 
+L 158.595525 25.744714 
+L 157.124475 25.744714 
+L 155.653508 25.760274 
+L 154.182788 25.791393 
+L 152.712479 25.838066 
+L 151.242746 25.900289 
+L 149.773754 25.978055 
+L 148.305666 26.071355 
+L 146.838648 26.180178 
+L 145.372862 26.304513 
+L 143.908474 26.444345 
+L 142.445646 26.599659 
+L 140.984544 26.770437 
+L 139.525329 26.956661 
+L 138.068166 27.158309 
+L 136.613217 27.375359 
+L 135.160646 27.607787 
+L 133.710614 27.855567 
+L 132.263285 28.11867 
+L 130.818819 28.397068 
+L 129.377379 28.690729 
+L 127.939126 28.999621 
+L 126.504221 29.323709 
+L 125.072823 29.662956 
+L 123.645095 30.017325 
+L 122.221195 30.386776 
+L 120.801282 30.771268 
+L 119.385515 31.170758 
+L 117.974054 31.5852 
+L 116.567055 32.014549 
+L 115.164676 32.458757 
+L 113.767075 32.917774 
+L 112.374407 33.391548 
+L 110.986828 33.880026 
+L 109.604494 34.383155 
+L 108.227559 34.900877 
+L 106.856177 35.433135 
+L 105.490502 35.979869 
+L 104.130686 36.541017 
+L 102.776882 37.116518 
+L 101.429241 37.706307 
+L 100.087915 38.310317 
+L 98.753052 38.928482 
+L 97.424802 39.560731 
+L 96.103315 40.206995 
+L 94.788737 40.867201 
+L 93.481216 41.541275 
+L 92.180898 42.229141 
+L 90.887929 42.930723 
+L 89.602454 43.645943 
+L 88.324615 44.374719 
+L 88.324615 44.374719 
+z
+" clip-path="url(#p029365783f)" style="fill: #a2530a; opacity: 0.45; stroke: #a2530a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 169.449231 144.740402 
+C 165.925922 142.706218 161.928367 141.635077 157.86 141.635077 
+C 153.791633 141.635077 149.794078 142.706218 146.270769 144.740402 
+" clip-path="url(#p029365783f)" style="fill: none; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 157.86 164.813538 
+L 227.395385 44.374719 
+" clip-path="url(#p029365783f)" style="fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 157.86 164.813538 
+L 88.324615 44.374719 
+" clip-path="url(#p029365783f)" style="fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 227.395385 44.374719 
+L 88.324615 44.374719 
+" clip-path="url(#p029365783f)" style="fill: none; stroke: #5a3d9a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="157.86" y="136.999385" transform="rotate(-0 157.86 136.999385)">π/3</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="197.263385" y="109.185231" transform="rotate(-0 197.263385 109.185231)">r = 6</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_6">
+     <path d="M 87.602188 200.974598 
+L 107.602188 200.974598 
+L 107.602188 193.974598 
+L 87.602188 193.974598 
+z
+" style="fill: #0e6e6a; opacity: 0.18; stroke: #0e6e6a; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_3">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="115.602188" y="200.974598" transform="rotate(-0 115.602188 200.974598)">sector: 6π</text>
+    </g>
+    <g id="patch_7">
+     <path d="M 87.602188 216.165223 
+L 107.602188 216.165223 
+L 107.602188 209.165223 
+L 87.602188 209.165223 
+z
+" style="fill: #a2530a; opacity: 0.45; stroke: #a2530a; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_4">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="115.602188" y="216.165223" transform="rotate(-0 115.602188 216.165223)">segmento: 6π − 9√3</text>
+    </g>
+    <g id="line2d_4">
+     <path d="M 87.602188 227.855848 
+L 97.602188 227.855848 
+L 107.602188 227.855848 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 1.6; stroke-linecap: square"/>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="115.602188" y="231.355848" transform="rotate(-0 115.602188 231.355848)">cuerda (triángulo 9√3)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p029365783f">
+   <rect x="7.2" y="7.2" width="301.32" height="180.792"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.2: el segmento es el sector menos el triángulo: \(\frac12r^2\theta-\frac12r^2\sin\theta=\frac12\cdot36\left(\frac\pi3-\frac{\sqrt3}2\right)=6\pi-9\sqrt3\).</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Un sector de radio 5 tiene área 15. Halla su ángulo, su arco y su perímetro.</li><li>Halla el área del segmento de una circunferencia de radio 4 cuya cuerda subtiende \(\tfrac\pi2\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\theta=\tfrac{2\cdot15}{25}=\tfrac65\); arco 6; perímetro 16.</li><li>\(\tfrac12\cdot16\left(\tfrac\pi2-1\right)=4\pi-8\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2026, P1)</p><p>El arco es \(1{,}5r\) y el perímetro \(3{,}5r=14\), así que \(r=4\) y el área es \(\tfrac12\cdot16\cdot1{,}5=12\) cm². Cada parte vale una marca: no olvides las unidades ni el «a partir de lo anterior».</p></div>
+
+<h3 id="t2">1.2 Triángulo rectángulo y valores exactos</h3>
+<p>\(\sin\theta=\tfrac{\text{op}}{\text{hip}},\ \cos\theta=\tfrac{\text{ady}}{\text{hip}},\ \tan\theta=\tfrac{\text{op}}{\text{ady}}\). Los valores exactos salen de dos triángulos:</p>
+<ul>
+<li>Medio triángulo equilátero de lado 2: catetos 1 y \(\sqrt3\). Da los valores de 30° y 60°.</li>
+<li>Triángulo isósceles rectángulo de catetos 1: hipotenusa \(\sqrt2\). Da los valores de 45°.</li>
+</ul>
+<div class="tbl"><table>
+<thead><tr><th>\(\theta\)</th><th>\(\frac\pi6\)</th><th>\(\frac\pi4\)</th><th>\(\frac\pi3\)</th></tr></thead>
+<tbody>
+<tr><td>\(\sin\)</td><td>\(\tfrac12\)</td><td>\(\tfrac{\sqrt2}2\)</td><td>\(\tfrac{\sqrt3}2\)</td></tr>
+<tr><td>\(\cos\)</td><td>\(\tfrac{\sqrt3}2\)</td><td>\(\tfrac{\sqrt2}2\)</td><td>\(\tfrac12\)</td></tr>
+<tr><td>\(\tan\)</td><td>\(\tfrac1{\sqrt3}\)</td><td>1</td><td>\(\sqrt3\)</td></tr>
+</tbody></table></div>
+<p><b>Elevación y depresión:</b> se miden desde la horizontal. <b>Rumbos:</b> ángulo en sentido horario desde el norte, con tres cifras (045°).</p>
+<div class="box ib"><p class="bt">Construir el diagrama a partir del enunciado (programa NM 3.3)</p>
+<ol>
+<li>Dibuja primero lo fijo: el suelo, el norte o la base del sólido.</li>
+<li>Marca cada dato con su valor y cada incógnita con una letra.</li>
+<li>Señala los ángulos rectos y las líneas horizontales y verticales.</li>
+<li>Separa el problema en triángulos y decide qué ley usar en cada uno: rectángulo, senos o cosenos.</li>
+</ol>
+<p>En la Sección B, un diagrama rotulado correcto suele ganar la primera M1 aunque el cálculo falle.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.3. Dos ángulos de elevación</p>
+<p>Desde un punto A, la cima de una torre se ve con elevación de 30°. Tras acercarse 20 m, con elevación de 60°. Halla la altura.</p>
+<p>Si la torre mide \(h\) y el segundo punto está a \(d\) de la base: \(h=d\sqrt3\) y \(h=\tfrac{d+20}{\sqrt3}\). Igualando, \(3d=d+20\), así que \(d=10\) y \(h=10\sqrt3\) m.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.4. Rumbos y ley de cosenos</p>
+<p>Un barco navega 8 km con rumbo 060° y luego 5 km con rumbo 180°. ¿A qué distancia queda del punto de partida?</p>
+<p>El ángulo entre los dos tramos, en el punto de giro, es 60° (el tramo de vuelta hacia el norte forma 60° con el primer tramo). Así \(d^2=64+25-2\cdot8\cdot5\cos60^\circ=49\) y \(d=7\) km.</p>
+<p>Comprobación con coordenadas: \((4\sqrt3,4)\) y luego \((4\sqrt3,-1)\), a distancia \(\sqrt{48+1}=7\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 279.766685 251.335385" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 251.335385 
+L 279.766685 251.335385 
+L 279.766685 0 
+L 0 0 
+L 0 251.335385 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 54.192901 179.26022 
+C 51.71744 174.972595 48.156196 171.411351 43.868571 168.93589 
+C 39.580947 166.460429 34.716197 165.156923 29.765275 165.156923 
+" clip-path="url(#p3331683262)" style="fill: none; stroke: #0e6e6a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 205.644185 91.81978 
+C 207.624554 95.24988 210.473549 98.098875 213.903649 100.079244 
+C 217.333749 102.059613 221.225548 103.102418 225.186286 103.102418 
+" clip-path="url(#p3331683262)" style="fill: none; stroke: #a2530a; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 29.765275 193.363516 
+L 225.186286 221.57011 
+" clip-path="url(#p3331683262)" style="fill: none; stroke-dasharray: 7.4,3.2; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 2"/>
+   </g>
+   <g id="line2d_2">
+    <defs>
+     <path id="m40a0d446cb" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#p3331683262)">
+     <use xlink:href="#m40a0d446cb" x="29.765275" y="193.363516" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="line2d_3">
+    <g clip-path="url(#p3331683262)">
+     <use xlink:href="#m40a0d446cb" x="225.186286" y="80.537143" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="line2d_4">
+    <g clip-path="url(#p3331683262)">
+     <use xlink:href="#m40a0d446cb" x="225.186286" y="221.57011" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_4">
+    <path d="M 31.497752 192.36327 
+Q 127.474594 136.951015 221.514944 82.656793 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 216.604432 82.951537 
+L 221.514944 82.656793 
+L 218.804432 86.762049 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 225.186286 82.538496 
+Q 225.186286 151.055098 225.186286 217.335632 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 227.386286 212.935632 
+L 225.186286 217.335632 
+L 222.986286 212.935632 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="36.816923" y="190.542857" transform="rotate(-0 36.816923 190.542857)">salida</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="232.237935" y="77.716484" transform="rotate(-0 232.237935 77.716484)">giro</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="232.237935" y="218.749451" transform="rotate(-0 232.237935 218.749451)">llegada</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 29.765275 191.363024 
+Q 29.765275 165.157985 29.765275 139.847373 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 27.565275 144.247373 
+L 29.765275 139.847373 
+L 31.965275 144.247373 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="25.534286" y="134.12967" transform="rotate(-0 25.534286 134.12967)">N</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 225.186286 78.536651 
+Q 225.186286 52.331611 225.186286 27.020999 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 222.986286 31.420999 
+L 225.186286 27.020999 
+L 227.386286 31.420999 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="220.955297" y="21.303297" transform="rotate(-0 220.955297 21.303297)">N</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0e6e6a" x="36.816923" y="162.336264" transform="rotate(-0 36.816923 162.336264)">060°</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="198.390023" y="111.564396" transform="rotate(-0 198.390023 111.564396)">60°</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0e6e6a" x="83.357802" y="128.488352" transform="rotate(-0 83.357802 128.488352)">8 km</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="229.417275" y="153.874286" transform="rotate(-0 229.417275 153.874286)">5 km</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="103.102418" y="207.466813" transform="rotate(-0 103.102418 207.466813)">d = 7 km</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3331683262">
+   <rect x="7.2" y="7.2" width="256.68" height="236.935385"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.4: cada rumbo se mide en sentido horario desde el norte de su propio punto. En el giro, el tramo de vuelta (rumbo 180°) forma 60° con el primer tramo, y la ley de cosenos da \(d=7\) km.</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Desde lo alto de un acantilado de 30 m se ve un bote con un ángulo de depresión de 30°. ¿A qué distancia horizontal está?</li><li>Una persona camina 6 km con rumbo 090° y luego \(6\sqrt3\) km con rumbo 000°. Halla su distancia al punto de partida y el rumbo desde ese punto.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\tan30^\circ=\tfrac{30}{d}\Rightarrow d=30\sqrt3\) m.</li><li>\(\sqrt{36+108}=12\) km; \(\tan\alpha=\tfrac{6}{6\sqrt3}=\tfrac1{\sqrt3}\) medido desde el norte, \(\alpha=30^\circ\): rumbo 030°.</li></ol></div></details></div>
+
+<h3 id="t3">1.3 Seno y coseno de ángulos obtusos</h3>
+<p>Para \(90^\circ\lt\theta\lt180^\circ\) (se detalla en el Módulo 8):</p>
+\[ \sin(\pi-\theta)=\sin\theta,\qquad \cos(\pi-\theta)=-\cos\theta \]
+<p>Consecuencias: un coseno negativo indica un ángulo obtuso. Un seno no distingue un ángulo agudo de su suplementario, y de ahí sale el caso ambiguo.</p>
+<p>Si se conoce \(\cos C\), entonces \(\sin C=\sqrt{1-\cos^2C}\), positivo porque \(0\lt C\lt\pi\).</p>
+
+<div class="ex"><p class="et">Ejemplo 1.5. Razones de un ángulo obtuso</p>
+<p>(a) Halla \(\sin150^\circ\) y \(\cos150^\circ\). (b) \(\theta\) es obtuso y \(\sin\theta=\frac35\). Halla \(\cos\theta\) y \(\tan\theta\).</p>
+<p>(a) \(\sin150^\circ=\sin30^\circ=\frac12\) y \(\cos150^\circ=-\cos30^\circ=-\frac{\sqrt3}2\). (b) \(\cos^2\theta=1-\frac9{25}\); como \(\theta\) es obtuso, \(\cos\theta=-\frac45\) y \(\tan\theta=-\frac34\). Ojo: \(\sin\theta=\frac35\) no decide si \(\theta\) es agudo u obtuso; eso es el origen del caso ambiguo.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.6. Triángulo con un ángulo de 120°</p>
+<p>\(a=4\), \(b=6\) y \(C=120^\circ\). Halla el área y \(c\).</p>
+<p>Área: \(\frac12\cdot4\cdot6\sin120^\circ=6\sqrt3\). Ley de cosenos: \(c^2=16+36-48\cos120^\circ=52+24=76\), así que \(c=2\sqrt{19}\). El coseno negativo suma: el lado opuesto al ángulo obtuso es el mayor.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(\cos120^\circ\), \(\sin135^\circ\) y \(\tan150^\circ\).</li><li>\(\theta\) es obtuso y \(\cos\theta=-\tfrac5{13}\). Halla \(\sin\theta\) y \(\tan\theta\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(-\tfrac12\), \(\tfrac{\sqrt2}2\), \(-\tfrac{\sqrt3}3\).</li><li>\(\sin\theta=\tfrac{12}{13}\) (positivo), \(\tan\theta=-\tfrac{12}5\).</li></ol></div></details></div>
+<h3 id="t4">1.4 Ley de senos y caso ambiguo</h3>
+\[ \frac{a}{\sin A}=\frac{b}{\sin B}=\frac{c}{\sin C}\;(=2R) \]
+<p>Se usa cuando se conocen un lado y su ángulo opuesto, más otro dato.</p>
+<p><b>Caso ambiguo (LLA):</b> dados \(A\), \(a\) y \(b\) con \(A\) agudo. Sea \(h=b\sin A\):</p>
+<ul>
+<li>\(a\lt h\): ningún triángulo.</li>
+<li>\(a=h\): un triángulo rectángulo.</li>
+<li>\(h\lt a\lt b\): <b>dos</b> triángulos (\(B\) y \(\pi-B\)).</li>
+<li>\(a\ge b\): un triángulo.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.7. Lado con la ley de senos</p>
+<p>En el triángulo \(ABC\), \(A=45^\circ\), \(B=60^\circ\) y \(a=4\). Halla \(b\).</p>
+<p>\(b=\dfrac{a\sin B}{\sin A}=\dfrac{4\cdot\frac{\sqrt3}2}{\frac{\sqrt2}2}=2\sqrt6\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.8. Caso ambiguo: dos triángulos</p>
+<p>En el triángulo \(ABC\), \(A=30^\circ\), \(a=6\) y \(b=6\sqrt3\). Halla los valores posibles de \(B\) y de \(C\).</p>
+<p>\(\sin B=\dfrac{6\sqrt3\cdot\frac12}{6}=\dfrac{\sqrt3}2\), así que \(B=60^\circ\) o \(B=120^\circ\). Ambos caben, porque \(30^\circ+120^\circ\lt180^\circ\).</p>
+<p>Por lo tanto \(C=90^\circ\) o \(C=30^\circ\). Comprobación con la regla: \(h=b\sin A=3\sqrt3\lt a=6\lt b\), así que hay dos triángulos.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 405 176.974054" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 176.974054 
+L 405 176.974054 
+L 405 -0 
+L 0 -0 
+L 0 176.974054 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 247.731582 271.118919 
+C 281.327798 271.118919 313.552522 257.771001 337.308634 234.014889 
+C 361.064746 210.258778 374.412663 178.034053 374.412663 144.437838 
+C 374.412663 110.841622 361.064746 78.616898 337.308634 54.860786 
+C 313.552522 31.104675 281.327798 17.756757 247.731582 17.756757 
+C 214.135367 17.756757 181.910643 31.104675 158.154531 54.860786 
+C 134.398419 78.616898 121.050501 110.841622 121.050501 144.437838 
+C 121.050501 178.034053 134.398419 210.258778 158.154531 234.014889 
+C 181.910643 257.771001 214.135367 271.118919 247.731582 271.118919 
+" clip-path="url(#pcebf8098e7)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 28.313514 144.437838 
+L 258.702486 11.422703 
+" clip-path="url(#pcebf8098e7)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.8"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 28.313514 144.437838 
+L 247.731582 144.437838 
+" clip-path="url(#pcebf8098e7)" style="fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 247.731582 144.437838 
+L 138.022548 81.097297 
+" clip-path="url(#pcebf8098e7)" style="fill: none; stroke: #a2530a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <defs>
+     <path id="m80465ef758" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: #a2530a"/>
+    </defs>
+    <g clip-path="url(#pcebf8098e7)">
+     <use xlink:href="#m80465ef758" x="138.022548" y="81.097297" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="line2d_5">
+    <path d="M 247.731582 144.437838 
+L 247.731582 17.756757 
+" clip-path="url(#pcebf8098e7)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <defs>
+     <path id="m4297f83181" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: #0e6e6a"/>
+    </defs>
+    <g clip-path="url(#pcebf8098e7)">
+     <use xlink:href="#m4297f83181" x="247.731582" y="17.756757" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+    </g>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="15.645405" y="152.883243" transform="rotate(-0 15.645405 152.883243)">A</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="251.954285" y="154.994595" transform="rotate(-0 251.954285 154.994595)">C</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="59.983784" y="139.159459" transform="rotate(-0 59.983784 139.159459)">30°</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="138.022548" y="159.217297" transform="rotate(-0 138.022548 159.217297)">b = 6√3</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="197.05915" y="89.542703" transform="rotate(-0 197.05915 89.542703)">a = 6</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_7">
+     <path d="M 16.2 20.298438 
+L 26.2 20.298438 
+L 36.2 20.298438 
+" style="fill: none; stroke: #a2530a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="44.2" y="23.798438" transform="rotate(-0 44.2 23.798438)">B₁: B = 120°, C = 30°</text>
+    </g>
+    <g id="line2d_8">
+     <path d="M 16.2 34.976563 
+L 26.2 34.976563 
+L 36.2 34.976563 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="44.2" y="38.476563" transform="rotate(-0 44.2 38.476563)">B₂: B = 60°, C = 90°</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pcebf8098e7">
+   <rect x="7.2" y="7.2" width="390.6" height="162.574054"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.8: con \(A=30^\circ\), \(b=6\sqrt3\) y \(a=6\), la circunferencia de radio \(a\) centrada en \(C\) corta dos veces al otro lado del ángulo: hay dos triángulos, porque \(b\sin A\lt a\lt b\).</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(A=60^\circ\), \(B=45^\circ\), \(b=4\sqrt2\). Halla \(a\).</li><li>\(A=45^\circ\), \(a=5\), \(b=6\). ¿Cuántos triángulos hay?</li><li>\(A=30^\circ\), \(a=4\), \(b=8\). ¿Cuántos triángulos hay?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(a=\dfrac{4\sqrt2\cdot\frac{\sqrt3}2}{\frac{\sqrt2}2}=4\sqrt3\).</li><li>\(h=6\cdot\tfrac{\sqrt2}2=3\sqrt2\lt5\lt6\): dos.</li><li>\(h=8\cdot\tfrac12=4=a\): uno, rectángulo en \(B\).</li></ol></div></details></div>
+
+<h3 id="t5">1.5 Ley de cosenos y área</h3>
+\[ c^2=a^2+b^2-2ab\cos C,\qquad \cos C=\frac{a^2+b^2-c^2}{2ab},\qquad \text{Área}=\tfrac12ab\sin C \]
+<p>Se usa con dos lados y el ángulo entre ellos (LAL), o con los tres lados (LLL). Si \(a^2+b^2-c^2\lt0\), el ángulo \(C\) es obtuso.</p>
+<div class="ex"><p class="et">Ejemplo 1.9. Ángulo a partir de los tres lados</p>
+<p>Un triángulo tiene lados 5, 7 y 8. Halla el ángulo opuesto a 7 y el área.</p>
+<p>\(\cos\theta=\tfrac{25+64-49}{80}=\tfrac12\), así que \(\theta=\tfrac\pi3\). Área \(=\tfrac12\cdot5\cdot8\cdot\tfrac{\sqrt3}2=10\sqrt3\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.10. Un área que da dos ángulos</p>
+<p>Un triángulo tiene \(a=4\), \(b=6\) y área 6. Halla los valores posibles de \(c^2\).</p>
+<p>\(\frac12\cdot24\sin C=6\), así que \(\sin C=\frac12\) y \(C=30^\circ\) o \(150^\circ\). Entonces \(c^2=52-48\cos C\), que da \(52-24\sqrt3\) o \(52+24\sqrt3\). Con el área no basta para fijar el triángulo.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Un triángulo tiene lados 3, 5 y 7. Halla su mayor ángulo y su área.</li><li>\(a=5\), \(b=8\), \(C=60^\circ\). Halla \(c\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\cos\theta=\tfrac{9+25-49}{30}=-\tfrac12\): 120°. Área \(\tfrac{15\sqrt3}4\).</li><li>\(c^2=25+64-40=49\): \(c=7\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ2, P6)</p><p>Lados \(x\) y \(2x\) con \(\cos C=\tfrac34\) y el lado opuesto 10. Con la ley de cosenos, \(x^2=50\). Después \(\sin C=\tfrac{\sqrt7}4\) y el área \(=x^2\sin C=\tfrac{25\sqrt7}{2}\). Pide el formato \(\tfrac{p\sqrt q}{2}\): no lo dejes como \(12{,}5\sqrt7\).</p></div>
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Herón:</b> \(\text{Área}=\sqrt{s(s-a)(s-b)(s-c)}\), con \(s=\tfrac{a+b+c}2\) (problema E5).</li>
+<li><b>Circunradio:</b> \(\tfrac a{\sin A}=2R\) y \(\text{Área}=\tfrac{abc}{4R}\). <b>Inradio:</b> \(r=\tfrac{\text{Área}}{s}\).</li>
+</ul></div>
+
+<h3 id="t6">1.6 Geometría en 3D</h3>
+\[ d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2},\qquad M=\left(\tfrac{x_1+x_2}2,\tfrac{y_1+y_2}2,\tfrac{z_1+z_2}2\right) \]
+<div class="tbl"><table>
+<thead><tr><th>Sólido</th><th>Volumen</th><th>Superficie</th></tr></thead>
+<tbody>
+<tr><td>Prisma / cilindro</td><td>\(A_{\text{base}}\,h\) / \(\pi r^2h\)</td><td>Cilindro: \(2\pi r^2+2\pi rh\)</td></tr>
+<tr><td>Pirámide</td><td>\(\tfrac13A_{\text{base}}\,h\)</td><td>Base + caras triangulares</td></tr>
+<tr><td>Cono</td><td>\(\tfrac13\pi r^2h\)</td><td>\(\pi r^2+\pi rl\), con \(l=\sqrt{r^2+h^2}\)</td></tr>
+<tr><td>Esfera</td><td>\(\tfrac43\pi r^3\)</td><td>\(4\pi r^2\)</td></tr>
+<tr><td>Semiesfera</td><td>\(\tfrac23\pi r^3\)</td><td>Curva \(2\pi r^2\); total, con la base, \(3\pi r^2\)</td></tr>
+</tbody></table></div>
+<p><b>Ángulos en 3D:</b> el ángulo entre una recta y un plano se mide en el triángulo rectángulo que forman la recta, su proyección sobre el plano y la perpendicular. El ángulo entre dos planos se mide con dos rectas perpendiculares a la arista común, una en cada plano. El ángulo entre dos rectas que se cortan se obtiene con la ley de cosenos en el triángulo que forman con un tercer segmento conocido.</p>
+<p><b>Sólidos compuestos</b> (cono sobre semiesfera, cilindro con tapas): los volúmenes se suman. En la superficie, las caras de unión quedan ocultas y no se cuentan.</p>
+<div class="ex"><p class="et">Ejemplo 1.11. Sólido compuesto</p>
+<p>Un helado es un cono de radio 3 y altura 4 coronado por una semiesfera de radio 3. Halla el volumen y la superficie exterior.</p>
+<p>Volumen: \(\tfrac13\pi\cdot9\cdot4+\tfrac23\pi\cdot27=12\pi+18\pi=30\pi\). Superficie: lateral del cono \(\pi\cdot3\cdot5=15\pi\) más la curva de la semiesfera \(18\pi\): \(33\pi\). Las bases unidas no se cuentan.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.12. Diagonal de un ortoedro</p>
+<p>En un ortoedro de 3 × 4 × 12, halla la diagonal espacial y el ángulo \(\theta\) que forma con la base.</p>
+<p>La diagonal de la base mide 5, y la espacial \(\sqrt{25+144}=13\). Así \(\sin\theta=\tfrac{12}{13}\) y \(\tan\theta=\tfrac{12}5\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 315.72 197.583704" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 197.583704 
+L 315.72 197.583704 
+L 315.72 0 
+L 0 0 
+L 0 197.583704 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 20.896364 182.433516 
+L 157.86 149.373328 
+L 157.86 23.429755 
+z
+" clip-path="url(#pcd74a40132)" style="fill: #a2530a; opacity: 0.3; stroke: #a2530a; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 20.896364 182.433516 
+L 209.811724 182.433516 
+" clip-path="url(#pcd74a40132)" style="fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 209.811724 182.433516 
+L 294.823636 116.31314 
+" clip-path="url(#pcd74a40132)" style="fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 294.823636 116.31314 
+L 105.908276 116.31314 
+" clip-path="url(#pcd74a40132)" style="fill: none; stroke-dasharray: 1.4,2.31; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 1.4"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 105.908276 116.31314 
+L 20.896364 182.433516 
+" clip-path="url(#pcd74a40132)" style="fill: none; stroke-dasharray: 1.4,2.31; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 1.4"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 20.896364 182.433516 
+L 157.86 23.429755 
+" clip-path="url(#pcd74a40132)" style="fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 209.811724 182.433516 
+L 157.86 23.429755 
+" clip-path="url(#pcd74a40132)" style="fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 294.823636 116.31314 
+L 157.86 23.429755 
+" clip-path="url(#pcd74a40132)" style="fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 105.908276 116.31314 
+L 157.86 23.429755 
+" clip-path="url(#pcd74a40132)" style="fill: none; stroke-dasharray: 1.4,2.31; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 1.4"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 20.896364 182.433516 
+L 157.86 149.373328 
+" clip-path="url(#pcd74a40132)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 157.86 23.429755 
+L 157.86 149.373328 
+" clip-path="url(#pcd74a40132)" style="fill: none; stroke: #0e6e6a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="49.233668" y="174.562043" transform="rotate(-0 49.233668 174.562043)">θ</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="151.562821" y="15.558281" transform="rotate(-0 151.562821 15.558281)">V</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_11">
+     <path d="M 15.75 19.66475 
+L 25.25 19.66475 
+L 34.75 19.66475 
+" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.6"/>
+    </g>
+    <g id="text_3">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="42.35" y="22.98975" transform="rotate(-0 42.35 22.98975)">semidiagonal 3√2</text>
+    </g>
+    <g id="line2d_12">
+     <path d="M 15.75 33.608969 
+L 25.25 33.608969 
+L 34.75 33.608969 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 1.6; stroke-linecap: square"/>
+    </g>
+    <g id="text_4">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="42.35" y="36.933969" transform="rotate(-0 42.35 36.933969)">altura 4</text>
+    </g>
+    <g id="patch_3">
+     <path d="M 15.75 51.258188 
+L 34.75 51.258188 
+L 34.75 44.608188 
+L 15.75 44.608188 
+z
+" style="fill: #a2530a; opacity: 0.3; stroke: #a2530a; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="42.35" y="51.258188" transform="rotate(-0 42.35 51.258188)">triángulo rectángulo del ángulo θ</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pcd74a40132">
+   <rect x="7.2" y="15.479567" width="301.32" height="174.904138"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: pirámide de base cuadrada de lado 6 y altura 4. El ángulo \(\theta\) entre una arista lateral y la base vive en un triángulo rectángulo: \(\tan\theta=\frac4{3\sqrt2}\). Siempre conviene dibujar ese triángulo aparte.</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla la distancia y el punto medio entre \(A(1,-2,3)\) y \(B(5,2,1)\).</li><li>Un cono tiene radio 5 y altura 12. Halla la generatriz, el volumen y la superficie total.</li><li>En un cubo de arista 4, halla la diagonal espacial y la tangente del ángulo que forma con la base.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\sqrt{16+16+4}=6\); \((3,0,2)\).</li><li>\(l=13\); \(V=100\pi\); \(S=25\pi+65\pi=90\pi\).</li><li>\(4\sqrt3\); \(\tan\theta=\tfrac4{4\sqrt2}=\tfrac{\sqrt2}2\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2022, P2)</p><p>El centro del círculo es el punto medio de \(AB\); la altura del cono es la distancia del centro al vértice. El volumen va en forma exacta: \(6\pi\sqrt5\).</p></div>
+
+<h3 id="t7">1.7 Circunferencias, cuerdas y áreas compuestas</h3>
+<ul>
+<li>Una cuerda que subtiende \(\theta\) en el centro mide \(2r\sin\tfrac\theta2\).</li>
+<li>La tangente es perpendicular al radio en el punto de contacto.</li>
+<li>El ángulo inscrito es la mitad del central que abarca el mismo arco. Un ángulo inscrito en una semicircunferencia es recto.</li>
+<li>Un área compuesta se descompone en sectores, triángulos (\(\tfrac12ab\sin C\)) y segmentos.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.13. Tangentes desde un punto exterior</p>
+<p>Desde \(P\), a distancia 12 del centro \(O\) de una circunferencia de radio 6, se trazan las tangentes \(PA\) y \(PB\). Halla la longitud de las tangentes y el área entre ellas y el arco menor \(AB\).</p>
+<p>\(OA\perp PA\), así que \(PA=\sqrt{144-36}=6\sqrt3\) y \(\cos\angle AOP=\tfrac6{12}\): \(\angle AOB=\tfrac{2\pi}3\). Área del cometa \(OAPB\): \(2\cdot\tfrac12\cdot6\cdot6\sqrt3=36\sqrt3\). Restando el sector \(\tfrac12\cdot36\cdot\tfrac{2\pi}3=12\pi\): \(36\sqrt3-12\pi\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 326.88 232.334769" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 232.334769 
+L 326.88 232.334769 
+L 326.88 -0 
+L 0 -0 
+L 0 232.334769 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 111.36 212.315077 
+C 136.858666 212.315077 161.316406 202.18435 179.346685 184.15407 
+C 197.376965 166.12379 207.507692 141.666051 207.507692 116.167385 
+C 207.507692 90.668719 197.376965 66.210979 179.346685 48.180699 
+C 161.316406 30.15042 136.858666 20.019692 111.36 20.019692 
+C 85.861334 20.019692 61.403594 30.15042 43.373315 48.180699 
+C 25.343035 66.210979 15.212308 90.668719 15.212308 116.167385 
+C 15.212308 141.666051 25.343035 166.12379 43.373315 184.15407 
+C 61.403594 202.18435 85.861334 212.315077 111.36 212.315077 
+L 111.36 212.315077 
+z
+" clip-path="url(#p795f9719b0)" style="fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 111.36 116.167385 
+L 159.433846 32.901041 
+L 303.655385 116.167385 
+L 159.433846 199.433729 
+z
+" clip-path="url(#p795f9719b0)" style="fill: #0e6e6a; opacity: 0.15; stroke: #0e6e6a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 159.433846 199.433729 
+C 174.049054 190.995634 186.18825 178.856439 194.626344 164.241231 
+C 203.064438 149.626023 207.507692 133.043573 207.507692 116.167385 
+C 207.507692 99.291196 203.064438 82.708747 194.626344 68.093538 
+C 186.18825 53.47833 174.049054 41.339135 159.433846 32.901041 
+L 111.36 116.167385 
+z
+" clip-path="url(#p795f9719b0)" style="fill: #ffffff; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 159.433846 199.433729 
+C 174.049054 190.995634 186.18825 178.856439 194.626344 164.241231 
+C 203.064438 149.626023 207.507692 133.043573 207.507692 116.167385 
+C 207.507692 99.291196 203.064438 82.708747 194.626344 68.093538 
+C 186.18825 53.47833 174.049054 41.339135 159.433846 32.901041 
+L 111.36 116.167385 
+z
+" clip-path="url(#p795f9719b0)" style="fill: #5a3d9a; opacity: 0.2; stroke: #5a3d9a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 159.433846 32.901041 
+L 159.433846 32.901041 
+L 162.358746 34.659676 
+L 165.219388 36.52101 
+L 168.012168 38.482698 
+L 170.733567 40.542268 
+L 173.380155 42.697125 
+L 175.948598 44.944553 
+L 178.435661 47.281722 
+L 180.838208 49.705687 
+L 183.153214 52.213392 
+L 185.377761 54.801679 
+L 187.509046 57.467286 
+L 189.544384 60.206855 
+L 191.48121 63.016934 
+L 193.317085 65.893982 
+L 195.049694 68.834374 
+L 196.676854 71.834405 
+L 198.196516 74.890295 
+L 199.606765 77.998194 
+L 200.905824 81.154186 
+L 202.092056 84.354294 
+L 203.163966 87.594486 
+L 204.120204 90.87068 
+L 204.959565 94.178748 
+L 205.680991 97.514521 
+L 206.283574 100.873797 
+L 206.766554 104.252342 
+L 207.129322 107.6459 
+L 207.371422 111.050195 
+L 207.492548 114.460938 
+L 207.492548 117.873831 
+L 207.371422 121.284574 
+L 207.129322 124.688869 
+L 206.766554 128.082427 
+L 206.283574 131.460973 
+L 205.680991 134.820248 
+L 204.959565 138.156021 
+L 204.120204 141.464089 
+L 203.163966 144.740283 
+L 202.092056 147.980475 
+L 200.905824 151.180584 
+L 199.606765 154.336575 
+L 198.196516 157.444474 
+L 196.676854 160.500365 
+L 195.049694 163.500396 
+L 193.317085 166.440787 
+L 191.48121 169.317835 
+L 189.544384 172.127914 
+L 187.509046 174.867483 
+L 185.377761 177.53309 
+L 183.153214 180.121377 
+L 180.838208 182.629082 
+L 178.435661 185.053047 
+L 175.948598 187.390216 
+L 173.380155 189.637645 
+L 170.733567 191.792502 
+L 168.012168 193.852072 
+L 165.219388 195.813759 
+L 162.358746 197.675094 
+L 159.433846 199.433729 
+L 159.433846 199.433729 
+L 303.655385 116.167385 
+z
+" clip-path="url(#p795f9719b0)" style="fill: #a2530a; opacity: 0.45; stroke: #a2530a; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <defs>
+     <path id="m9804a347a1" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#p795f9719b0)">
+     <use xlink:href="#m9804a347a1" x="111.36" y="116.167385" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="line2d_2">
+    <g clip-path="url(#p795f9719b0)">
+     <use xlink:href="#m9804a347a1" x="159.433846" y="32.901041" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="line2d_3">
+    <g clip-path="url(#p795f9719b0)">
+     <use xlink:href="#m9804a347a1" x="159.433846" y="199.433729" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="line2d_4">
+    <g clip-path="url(#p795f9719b0)">
+     <use xlink:href="#m9804a347a1" x="303.655385" y="116.167385" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="line2d_5">
+    <path d="M 111.36 116.167385 
+L 159.433846 32.901041 
+" clip-path="url(#p795f9719b0)" style="fill: none; stroke: currentColor; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 159.433846 32.901041 
+L 303.655385 116.167385 
+" clip-path="url(#p795f9719b0)" style="fill: none; stroke: #0e6e6a; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 111.36 116.167385 
+L 159.433846 199.433729 
+" clip-path="url(#p795f9719b0)" style="fill: none; stroke: currentColor; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 159.433846 199.433729 
+L 303.655385 116.167385 
+" clip-path="url(#p795f9719b0)" style="fill: none; stroke: #0e6e6a; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 111.36 116.167385 
+L 303.655385 116.167385 
+" clip-path="url(#p795f9719b0)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.8"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="116.167385" y="111.36" transform="rotate(-0 116.167385 111.36)">O</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="164.241231" y="28.093656" transform="rotate(-0 164.241231 28.093656)">A</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="164.241231" y="194.626344" transform="rotate(-0 164.241231 194.626344)">B</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="308.462769" y="111.36" transform="rotate(-0 308.462769 111.36)">P</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="207.507692" y="130.589538" transform="rotate(-0 207.507692 130.589538)">12</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="130.589538" y="69.696" transform="rotate(-0 130.589538 69.696)">r = 6</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0e6e6a" x="260.388923" y="68.093538" transform="rotate(-0 260.388923 68.093538)">6√3</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_7">
+     <path d="M 15.75 214.609066 
+L 34.75 214.609066 
+L 34.75 207.959066 
+L 15.75 207.959066 
+z
+" style="fill: #a2530a; opacity: 0.45; stroke: #a2530a; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="42.35" y="214.609066" transform="rotate(-0 42.35 214.609066)">área pedida: 36√3 − 12π</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p795f9719b0">
+   <rect x="7.2" y="7.2" width="312.48" height="217.934769"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.13: el radio es perpendicular a la tangente en el punto de contacto, así que \(OAP\) es rectángulo en \(A\). El área entre las tangentes y el arco menor es la del cometa \(OAPB\) menos la del sector de \(\frac{2\pi}3\).</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.14. El área común a dos circunferencias</p>
+<p>Dos circunferencias de radio 2 tienen sus centros a distancia 2. Halla el área de la región común.</p>
+<p>Los centros y un punto de corte forman un triángulo equilátero: cada centro ve la cuerda común con un ángulo \(\frac{2\pi}3\). La región es la suma de dos segmentos: \(2\cdot\frac12\cdot4\left(\frac{2\pi}3-\sin\frac{2\pi}3\right)=\frac{8\pi}3-2\sqrt3\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla la cuerda que subtiende \(\tfrac{2\pi}3\) en una circunferencia de radio 10.</li><li>Desde un punto a 10 del centro de una circunferencia de radio 6 se traza una tangente. ¿Cuánto mide?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(2\cdot10\sin\tfrac\pi3=10\sqrt3\).</li><li>\(\sqrt{100-36}=8\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2026, P10)</p><p>Un trapecio inscrito en un semicírculo de radio 2 se parte en tres triángulos con vértice en el centro, con ángulos \(\theta,\theta,\pi-2\theta\). Así \(A(\theta)=4\sin\theta+2\sin(\pi-2\theta)=4\sin\theta+2\sin2\theta\).</p></div>
+<div class="box beyond"><p class="bt">Más allá del IB: \(\sin x\lt x\lt\tan x\)</p><p>Para \(0\lt x\lt\tfrac\pi2\), en la circunferencia unitaria el triángulo inscrito (área \(\tfrac12\sin x\)) está dentro del sector (\(\tfrac12x\)), que está dentro del triángulo tangente (\(\tfrac12\tan x\)). De ahí salen cotas de \(\pi\) (problema E9) y el límite \(\tfrac{\sin x}{x}\to1\) (Módulo 17).</p></div>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Radián</td><td>Ángulo central que abarca un arco de longitud igual al radio.</td></tr>
+<tr><td>Sector circular</td><td>Región limitada por dos radios y el arco entre ellos.</td></tr>
+<tr><td>Segmento circular</td><td>Región limitada por una cuerda y su arco.</td></tr>
+<tr><td>Cuerda</td><td>Segmento que une dos puntos de la circunferencia.</td></tr>
+<tr><td>Ángulo de elevación / depresión</td><td>Ángulo entre la horizontal y la visual hacia arriba / hacia abajo.</td></tr>
+<tr><td>Rumbo</td><td>Ángulo medido en sentido horario desde el norte, con tres cifras.</td></tr>
+<tr><td>Generatriz (\(l\))</td><td>Distancia del vértice del cono a un punto del borde de la base.</td></tr>
+<tr><td>Superficie total</td><td>Área de todas las caras, incluida la base o las bases.</td></tr>
+<tr><td>Caso ambiguo</td><td>Datos LLA que pueden determinar dos triángulos distintos.</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Halle el valor exacto</td><td>Radicales y \(\pi\), sin decimales.</td><td>Dar \(12{,}5\sqrt7\) cuando piden \(\tfrac{p\sqrt q}{2}\), o dar un decimal.</td></tr>
+<tr><td>Halle una expresión en función de \(r\)</td><td>Fórmula en \(r\), sin sustituir valores.</td><td>Sustituir valores antes de tiempo.</td></tr>
+<tr><td>Muestre que el área es…</td><td>La descomposición en figuras visible, y el resultado dado al final.</td><td>Saltar la suma de las piezas.</td></tr>
+<tr><td>Describa qué efecto tiene…</td><td>Una frase geométrica concreta (por ejemplo, «B y C se juntan»).</td><td>«El área disminuye» sin describir la figura.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>El ángulo en grados.</b> \(l=r\theta\) y \(A=\tfrac12r^2\theta\) solo valen en radianes.</li>
+<li><b>El perímetro sin radios.</b> El perímetro del sector es \(2r+r\theta\), no solo el arco.</li>
+<li><b>El segmento confundido con el sector.</b> El segmento es sector menos triángulo.</li>
+<li><b>El seno ambiguo.</b> \(\sin B=\tfrac45\) da dos ángulos, \(B\) y \(\pi-B\). Comprueba si ambos caben en el triángulo.</li>
+<li><b>El coseno negativo ignorado.</b> Si \(\cos C\lt0\), el ángulo es obtuso; no lo dibujes agudo.</li>
+<li><b>El \(\sin C\) negativo.</b> En un triángulo, \(\sin C=+\sqrt{1-\cos^2C}\).</li>
+<li><b>El lado opuesto equivocado.</b> En la ley de cosenos, \(c\) es el lado opuesto al ángulo \(C\).</li>
+<li><b>La superficie incompleta.</b> «Superficie total» del cono incluye la base: \(\pi r^2+\pi rl\).</li>
+<li><b>Altura contra generatriz.</b> El volumen usa la altura \(h\); la superficie lateral usa la generatriz \(l\).</li>
+<li><b>El radio a partir del diámetro.</b> Si te dan los extremos del diámetro, el radio es la mitad de su distancia.</li>
+<li><b>El ángulo con el plano.</b> Se mide contra la proyección de la recta sobre el plano, no contra cualquier recta del plano.</li>
+<li><b>Redondear en Prueba 1.</b> Deja \(\sqrt{20}=2\sqrt5\), \(\pi\) y las raíces sin decimales.</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">F1–F4 y F8 parten de la ficha DMpA N°18 y su separata; F6, F7 y F9, de DMpA N°04 y MATERIAL S4. Los ítems con decimales de calculadora se reformulan con ángulos notables y se amplían a nivel Sección B. F5 y F10 cubren tipos que las fichas no traen. Ninguno repite un tipo de la sección 5.</p>
+
+<div class="ex"><p class="et">F1. Triángulo, cuerda y dos segmentos <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA N°18, ítem 5 (circunferencia de centro A, ángulo central dado), con valores exactos.</p>
+<p>En una circunferencia de centro \(O\) y radio 6, \(\angle BOC=\tfrac{2\pi}3\). Halla (a) el área del triángulo \(BOC\); (b) la cuerda \(BC\); (c) el área y el perímetro del segmento menor; (d) el área del segmento mayor.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\tfrac12\cdot36\cdot\sin\tfrac{2\pi}3=9\sqrt3\).</p>
+<p>(b) \(BC^2=36+36-72\cos\tfrac{2\pi}3=108\), así que \(BC=6\sqrt3\) (o \(2\cdot6\sin\tfrac\pi3\)).</p>
+<p>(c) Área: \(12\pi-9\sqrt3\). Perímetro: arco \(4\pi\) más cuerda: \(4\pi+6\sqrt3\).</p>
+<p>(d) \(36\pi-(12\pi-9\sqrt3)=24\pi+9\sqrt3\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Área común de dos circunferencias <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°18, ítem 7: radios 4 y 6, centros a 8 cm.</p>
+<p>Las circunferencias de centros \(O\) (radio 4) y \(P\) (radio 6), con \(OP=8\), se cortan en \(A\) y \(B\). (a) Halla \(\cos\angle AOP\) y \(\cos\angle APO\). (b) Halla la cuerda común \(AB\). (c) Halla el área común en forma exacta.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) En el triángulo \(OAP\) (lados 4, 6, 8): \(\cos\alpha=\tfrac{16+64-36}{64}=\tfrac{11}{16}\) y \(\cos\beta=\tfrac{36+64-16}{96}=\tfrac78\).</p>
+<p>(b) \(\sin\alpha=\tfrac{3\sqrt{15}}{16}\), y \(AB=2\cdot4\sin\alpha=\tfrac{3\sqrt{15}}2\). Comprobación: \(2\cdot6\sin\beta=12\cdot\tfrac{\sqrt{15}}8\), el mismo valor.</p>
+<p>(c) Área común = segmento de \(O\) (ángulo \(2\alpha\)) + segmento de \(P\) (ángulo \(2\beta\)) \(=\tfrac12\cdot16(2\alpha-\sin2\alpha)+\tfrac12\cdot36(2\beta-\sin2\beta)\).</p>
+<p>Con \(\sin2\alpha=\tfrac{33\sqrt{15}}{128}\) y \(\sin2\beta=\tfrac{7\sqrt{15}}{32}\): \(16\arccos\tfrac{11}{16}+36\arccos\tfrac78-6\sqrt{15}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. El sector de mayor área con perímetro fijo <span class="lvl">Sección B, integra Módulo 2</span></p>
+<p class="src">Separata DMpA 18 (sector: área, arco, perímetro), ampliada.</p>
+<p>Un sector tiene perímetro 20 cm. (a) Expresa su área en función de \(r\). (b) Halla, sin derivadas, el área máxima, y el radio y el ángulo en que se alcanza. (c) ¿Para qué valores de \(r\) existe el sector?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(2r+r\theta=20\Rightarrow r\theta=20-2r\). Así \(A=\tfrac12r(20-2r)=10r-r^2\).</p>
+<p>(b) \(A=25-(r-5)^2\le25\): máximo 25 cm² con \(r=5\) y \(\theta=2\) rad.</p>
+<p>(c) \(\theta\gt0\) exige \(r\lt10\), y \(\theta\le2\pi\) exige \(r\ge\tfrac{10}{1+\pi}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Paralelogramo: área y diagonales <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA N°18, ítem 1 (área del paralelogramo), con valores exactos.</p>
+<p>\(ABCD\) tiene \(AB=6\), \(AD=10\) y \(\angle DAB=60^\circ\). Halla (a) el área; (b) las dos diagonales; (c) comprueba que \(AC^2+BD^2=2(AB^2+AD^2)\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(6\cdot10\sin60^\circ=30\sqrt3\).</p>
+<p>(b) \(BD^2=36+100-120\cos60^\circ=76\Rightarrow BD=2\sqrt{19}\). Con \(\angle ABC=120^\circ\): \(AC^2=36+100+60=196\Rightarrow AC=14\).</p>
+<p>(c) \(196+76=272=2(36+100)\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. Caso ambiguo con valores exactos <span class="lvl">Sección B</span></p>
+<p class="src">Tipo de examen sin ítem equivalente en las fichas.</p>
+<p>En el triángulo \(ABC\), \(A=30^\circ\), \(a=5\) y \(b=8\). (a) Muestra que hay dos triángulos posibles. (b) Halla \(c\) en cada uno. (c) Halla las dos áreas.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\sin B=\tfrac{8\cdot\frac12}{5}=\tfrac45\lt1\), y \(b\sin A=4\lt a=5\lt b=8\): dos triángulos, con \(B\) agudo u obtuso.</p>
+<p>(b) Ley de cosenos en \(A\): \(25=64+c^2-8\sqrt3c\Rightarrow c^2-8\sqrt3c+39=0\Rightarrow c=4\sqrt3\pm3\), ambas positivas.</p>
+<p>(c) \(\tfrac12\cdot8\cdot c\cdot\tfrac12=2c\): \(8\sqrt3\pm6\).</p>
+<p><span class="lbl">Idea clave.</span> La ley de cosenos convierte el caso ambiguo en una cuadrática: dos raíces positivas son dos triángulos.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Esfera por un diámetro y un punto equidistante <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°04 (distancia y punto medio en 3D, volúmenes), ampliada.</p>
+<p>\(A(1,2,3)\) y \(B(5,-2,1)\) son extremos de un diámetro de una esfera. (a) Halla el centro, el radio, el volumen y la superficie. (b) Halla el punto del eje \(x\) que equidista de \(A\) y \(B\). (c) Halla la menor distancia del origen a la esfera.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Centro \((3,0,2)\); \(AB=\sqrt{16+16+4}=6\), así que el radio es 3. Volumen \(36\pi\), superficie \(36\pi\).</p>
+<p>(b) \((x-1)^2+13=(x-5)^2+5\Rightarrow8x=16\Rightarrow(2,0,0)\).</p>
+<p>(c) La distancia del origen al centro es \(\sqrt{13}\gt3\): \(\sqrt{13}-3\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. Cono y esfera inscrita <span class="lvl">Sección B</span></p>
+<p class="src">MATERIAL S4 (área y volumen de sólidos), ampliada.</p>
+<p>Un cono tiene radio 6 y altura 8. (a) Halla la generatriz, la superficie total y el volumen. (b) Halla el radio de la esfera inscrita, usando la sección vertical por el eje. (c) ¿Qué fracción del volumen del cono ocupa la esfera?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(l=10\); superficie \(36\pi+60\pi=96\pi\); volumen \(\tfrac13\pi\cdot36\cdot8=96\pi\).</p>
+<p>(b) La sección es un triángulo de lados 10, 10, 12 con área 48 y semiperímetro 16. Radio \(=\tfrac{48}{16}=3\).</p>
+<p>(c) \(\tfrac{36\pi}{96\pi}=\tfrac38\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. La cabra atada a un granero <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°18 (oveja y cabra en terrenos con forma de sector), ampliada.</p>
+<p>Una cabra está atada con una cuerda de 6 m a una esquina exterior de un granero cuadrado de 4 m de lado. No puede entrar en el granero. Halla el área en la que puede pastar.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Tres cuartos de círculo de radio 6: \(27\pi\). Al rodear cada lado adyacente quedan 2 m de cuerda: dos cuartos de círculo de radio 2, \(2\pi\).</p>
+<p><span class="lbl">Resultado.</span> \(29\pi\) m². Los dos cuartos pequeños no se solapan, porque \(2+2\lt\sqrt{4^2+4^2}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. Ángulos en una pirámide <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA N°04 (sólidos), ampliada con ángulos en 3D.</p>
+<p>Una pirámide recta de base cuadrada de lado 6 tiene altura 4. Halla (a) la altura de cada cara lateral y la superficie total; (b) el volumen; (c) la tangente del ángulo entre una cara lateral y la base; (d) la tangente del ángulo entre una arista lateral y la base.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\sqrt{4^2+3^2}=5\); superficie \(36+4\cdot\tfrac12\cdot6\cdot5=96\).</p>
+<p>(b) \(\tfrac13\cdot36\cdot4=48\).</p>
+<p>(c) Se mide en el triángulo altura–apotema: \(\tan=\tfrac43\).</p>
+<p>(d) La proyección de la arista es la media diagonal \(3\sqrt2\): \(\tan=\tfrac4{3\sqrt2}=\tfrac{2\sqrt2}3\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. Polígonos regulares inscritos <span class="lvl">Sección B, integra Módulo 6</span></p>
+<p class="src">Tipo de examen sin ítem equivalente en las fichas.</p>
+<p>(a) Muestra que un \(n\)-gono regular inscrito en una circunferencia de radio \(R\) tiene área \(\tfrac n2R^2\sin\tfrac{2\pi}n\) y perímetro \(2nR\sin\tfrac\pi n\). (b) Halla el área del octógono y la del dodecágono. (c) Usando \(\sin\tfrac\pi{12}=\tfrac{\sqrt6-\sqrt2}4\) (Módulo 6), halla el perímetro del dodecágono.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(n\) triángulos isósceles con ángulo central \(\tfrac{2\pi}n\): área \(\tfrac12R^2\sin\tfrac{2\pi}n\) y base \(2R\sin\tfrac\pi n\) cada uno.</p>
+<p>(b) Octógono: \(4R^2\sin\tfrac\pi4=2\sqrt2R^2\). Dodecágono: \(6R^2\sin\tfrac\pi6=3R^2\).</p>
+<p>(c) \(24R\cdot\tfrac{\sqrt6-\sqrt2}4=6(\sqrt6-\sqrt2)R\approx6{,}21R\), cerca de \(2\pi R\).</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son todas las preguntas (o partes) de este módulo en tus 7 pruebas. Las marcas siguen el markscheme oficial, salvo en mayo 2021 TZ2, cuyo markscheme no está en tus archivos: ahí están reconstruidas y se indica. Resuélvelas en tiempo de examen, a 1,1 minutos por punto.</p>
+
+<div class="ex"><p class="et">X1. Mayo 2026 TZ2, pregunta 1 <span class="lvl">6 puntos</span></p>
+<p>El sector \(AOB\) tiene radio \(r\) cm y \(\angle AOB=1{,}5\) rad. (a) (i) Halla el arco \(AB\) en función de \(r\); (ii) a partir de lo anterior, el perímetro. (b) Si el perímetro es 14 cm, halla \(r\). (c) A partir de lo anterior, halla el área.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a)(i) \(1{,}5r\) <span class="m">A1</span>; (ii) \(2r+1{,}5r=3{,}5r\) <span class="m">A1</span></p>
+<p class="step">(b) \(3{,}5r=14\) <span class="m">(M1)</span> \(\Rightarrow r=4\) cm <span class="m">A1</span></p>
+<p class="step">(c) \(\tfrac12\cdot4^2\cdot1{,}5\) <span class="m">(M1)</span> \(=12\) cm² <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Mayo 2021 TZ2, pregunta 6 <span class="lvl">7 puntos</span></p>
+<p>En el triángulo \(ABC\), \(AB=10\), \(BC=x\), \(AC=2x\) y \(\cos C=\tfrac34\). Halla el área en la forma \(\tfrac{p\sqrt q}{2}\), con \(p,q\in\mathbb Z^+\).</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">Ley de cosenos en \(C\) <span class="m">(M1)</span>: \(100=x^2+4x^2-2\cdot x\cdot2x\cdot\tfrac34\) <span class="m">A1</span> \(\Rightarrow2x^2=100\Rightarrow x^2=50\) <span class="m">A1</span></p>
+<p class="step">\(\sin C=\sqrt{1-\tfrac9{16}}\) <span class="m">(M1)</span> \(=\tfrac{\sqrt7}4\) <span class="m">A1</span></p>
+<p class="step">Área \(=\tfrac12\cdot x\cdot2x\cdot\sin C\) <span class="m">(M1)</span> \(=50\cdot\tfrac{\sqrt7}4=\tfrac{25\sqrt7}{2}\) <span class="m">A1</span></p>
+<p><span class="lbl">Atajo.</span> No hace falta \(x\), solo \(x^2\): el área es \(x^2\sin C\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Noviembre 2022, pregunta 2 <span class="lvl">7 puntos</span></p>
+<p>Un círculo tiene diámetro \(AB\), con \(A(1,4,0)\) y \(B(-3,2,-4)\). (a) Halla (i) el centro y (ii) el radio. (b) El círculo es la base de un cono recto con vértice \(V(-1,-1,0)\). Halla el volumen exacto.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a)(i) Punto medio <span class="m">(M1)</span>: \((-1,3,-2)\) <span class="m">A1</span></p>
+<p class="step">(ii) \(AB=\sqrt{16+4+16}=6\) <span class="m">(M1)</span>, radio 3 <span class="m">A1</span></p>
+<p class="step">(b) Altura = distancia del centro a \(V\) <span class="m">(M1)</span>: \(\sqrt{0+16+4}=\sqrt{20}=2\sqrt5\) <span class="m">(A1)</span></p>
+<p class="step">\(V=\tfrac13\pi\cdot9\cdot2\sqrt5=6\sqrt5\,\pi\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X4. Mayo 2021 TZ2, pregunta 10(c)(d) <span class="lvl">7 puntos</span></p>
+<p>Un cono recto tiene superficie total \(12\pi\), radio de la base 2, altura \(h\) y generatriz \(l\). (c) Halla \(l\). (d) A partir de lo anterior, halla el volumen.</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">(c) \(\pi\cdot2^2+\pi\cdot2\cdot l=12\pi\) <span class="m">(M1)A1</span> \(\Rightarrow l=4\) <span class="m">A1</span></p>
+<p class="step">(d) \(h=\sqrt{16-4}\) <span class="m">(M1)</span> \(=2\sqrt3\) <span class="m">A1</span>; \(V=\tfrac13\pi\cdot4\cdot2\sqrt3\) <span class="m">(M1)</span> \(=\tfrac{8\sqrt3}{3}\pi\) <span class="m">A1</span></p>
+<p>Las partes (a)(b), con el área \(12\pi\) bajo \(6+6\cos x\), se resuelven en el Módulo 14.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X5. Mayo 2026 TZ2, pregunta 10(a)(b)(d) <span class="lvl">9 puntos</span></p>
+<p>El trapecio \(ABCD\) está inscrito en un semicírculo de centro \(O\) y radio 2 cm, con \([AD]\) sobre el diámetro. \(\theta\) es el ángulo \(\angle DOC\), con \(0\lt\theta\lt\tfrac\pi2\). (a) Halla el área para \(\theta=\tfrac\pi6\). (b) Halla \(A(\theta)\) en la forma \(a\sin\theta+b\sin2\theta\). (d) Cuando \(\theta\to\tfrac\pi2\): (i) describe el efecto sobre \(ABCD\); (ii) halla el valor \(k\) al que se acerca el área.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Área de al menos un triángulo <span class="m">(M1)</span>: \(\sin\tfrac\pi6=\tfrac12\) o \(\sin\tfrac{2\pi}3=\tfrac{\sqrt3}2\) <span class="m">(A1)</span></p>
+<p class="step">\(2\cdot\tfrac12\cdot2\cdot2\cdot\tfrac12+\tfrac12\cdot2\cdot2\cdot\tfrac{\sqrt3}2\) <span class="m">(A1)</span> \(=2+\sqrt3\) <span class="m">A1</span></p>
+<p class="step">(b) \(A(\theta)=2\cdot\tfrac12\cdot2\cdot2\sin\theta+\tfrac12\cdot2\cdot2\sin(\pi-2\theta)\) <span class="m">M1</span> \(=4\sin\theta+2\sin2\theta\) <span class="m">A1A1</span></p>
+<p class="step">(d)(i) \(B\) y \(C\) se juntan en la parte superior y \(ABCD\) se acerca a un triángulo rectángulo isósceles <span class="m">A1</span>. (ii) \(k=4\sin\tfrac\pi2+2\sin\pi=4\) <span class="m">A1</span></p>
+<p>La parte (c), con \(A'(\theta)\) y el máximo \(3\sqrt3\), se resuelve en el Módulo 13.</p>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Estos tipos de pregunta no salieron en tus 7 pruebas, pero el IB los pone en otras convocatorias (algunos vienen de la Prueba 2 y aquí se resuelven con valores exactos). Junto con la teoría y las secciones 4 y 5, cubren todo el programa de geometría y trigonometría del triángulo. Cada tipo trae cómo reconocerlo, el método, un ejemplo resuelto y ejercicios para practicar.</p>
+<h3 id="ty1">T1. Sector con perímetro y área dados</h3>
+<p><b>Qué reconocer:</b> te dan el perímetro y el área de un sector y piden \(r\) y \(\theta\). <b>Método:</b> del perímetro, \(r\theta=P-2r\); sustituye en \(A=\tfrac12r(r\theta)\) y queda una cuadrática en \(r\). Comprueba que cada \(\theta\) sea positivo y menor que \(2\pi\).</p>
+<div class="ex"><p class="et">Ejemplo T1. <span class="lvl">Tipo IB</span></p>
+<p>Un sector tiene perímetro 16 cm y área 15 cm². Halla \(r\) y \(\theta\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(r\theta=16-2r\), así que \(\tfrac12r(16-2r)=15\Rightarrow r^2-8r+15=0\Rightarrow r=3\) o \(r=5\).</p><p>\(r=3\): \(\theta=\tfrac{10}3\). \(r=5\): \(\theta=\tfrac65\). Ambas valen.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Un sector tiene perímetro 10 y área 4. Halla \(r\) y \(\theta\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\tfrac12r(10-2r)=4\Rightarrow r^2-5r+4=0\): \(r=1\) da \(\theta=8\gt2\pi\) (no vale); \(r=4\), \(\theta=\tfrac12\).</li></ol></div></details></div>
+<h3 id="ty2">T2. Cuadrilátero partido en dos triángulos</h3>
+<p><b>Qué reconocer:</b> un cuadrilátero con algunos lados y ángulos conocidos, y piden su área o un lado. <b>Método:</b> traza la diagonal que deja un triángulo resoluble; halla la diagonal (casi siempre con la ley de cosenos) y úsala en el segundo triángulo.</p>
+<div class="ex"><p class="et">Ejemplo T2. <span class="lvl">Sección A alta</span></p>
+<p>En el cuadrilátero \(ABCD\), \(AB=3\), \(BC=5\), \(\angle ABC=120^\circ\), \(CD=3\) y \(DA=8\). Halla \(AC\), el ángulo \(D\) y el área.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(AC^2=9+25+15=49\), \(AC=7\). En \(ACD\): \(\cos D=\tfrac{64+9-49}{48}=\tfrac12\), \(D=60^\circ\).</p><p>Área \(=\tfrac12\cdot3\cdot5\sin120^\circ+\tfrac12\cdot8\cdot3\sin60^\circ=\tfrac{15\sqrt3}4+6\sqrt3=\tfrac{39\sqrt3}4\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Un cuadrilátero \(ABCD\) tiene \(AB=BC=2\), \(\angle B=90^\circ\), \(CD=2\) y \(\angle ACD=90^\circ\). Halla \(AD\) y el área.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(AC=2\sqrt2\); \(AD=\sqrt{8+4}=2\sqrt3\). Área \(2+\tfrac12\cdot2\sqrt2\cdot2=2+2\sqrt2\).</li></ol></div></details></div>
+<h3 id="ty3">T3. Rumbos que forman un triángulo notable</h3>
+<p><b>Qué reconocer:</b> dos tramos con rumbos dados y piden la distancia o el rumbo de vuelta. <b>Método:</b> dibuja el norte en cada punto. El ángulo interior en el punto de giro sale de la diferencia de rumbos (o de \(180^\circ\) menos ella). Con ángulos de 60° o 90° el triángulo suele ser equilátero o rectángulo.</p>
+<div class="ex"><p class="et">Ejemplo T3. <span class="lvl">Sección A</span></p>
+<p>Un barco sale de \(P\) y navega 10 km con rumbo 030° hasta \(A\), y luego 10 km con rumbo 150° hasta \(B\). Halla \(PB\) y el rumbo de \(P\) desde \(B\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>En \(A\), la dirección hacia \(P\) es 210° y hacia \(B\) 150°: el ángulo \(PAB\) es 60°. Con \(PA=AB=10\), el triángulo es equilátero: \(PB=10\).</p><p>\(B\) está con rumbo 090° desde \(P\), así que \(P\) está con rumbo 270° desde \(B\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Desde \(P\) se navegan 8 km con rumbo 060° hasta \(A\) y 8 km con rumbo 180° hasta \(B\). Halla \(PB\) y el rumbo de \(B\) desde \(P\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>En \(A\), el ángulo entre 240° (hacia \(P\)) y 180° es 60°: equilátero. \(PB=8\), rumbo 120°.</li></ol></div></details></div>
+<h3 id="ty4">T4. Áreas sombreadas entre arcos</h3>
+<p><b>Qué reconocer:</b> una región limitada por arcos y rectas dentro de un cuadrado o un círculo. <b>Método:</b> exprésala como suma y resta de sectores, triángulos y segmentos; la simetría suele reducirla a dos piezas iguales.</p>
+<div class="ex"><p class="et">Ejemplo T4. <span class="lvl">Sección A alta</span></p>
+<p>En un cuadrado de lado 2 se trazan dos cuartos de circunferencia de radio 2 con centro en dos vértices opuestos. Halla el área de la región común (el «pétalo»).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Cada mitad del pétalo es un segmento de ángulo \(\tfrac\pi2\): cuarto de círculo menos triángulo, \(\pi-2\).</p><p>Área \(=2(\pi-2)=2\pi-4\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el área entre un cuadrado de lado 2 y su circunferencia inscrita.</li><li>Halla el área entre un cuadrado de lado 2 y su circunferencia circunscrita.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(4-\pi\).</li><li>Radio \(\sqrt2\): \(2\pi-4\).</li></ol></div></details></div>
+<h3 id="ty5">T5. Despejar una dimensión de un sólido</h3>
+<p><b>Qué reconocer:</b> te dan el volumen o la superficie y una relación entre las dimensiones. <b>Método:</b> escribe la fórmula con una sola incógnita y despeja. Si dos sólidos tienen igual volumen o superficie, iguala las fórmulas.</p>
+<div class="ex"><p class="et">Ejemplo T5. <span class="lvl">Sección A</span></p>
+<p>Un cilindro tiene volumen \(54\pi\) y altura igual al doble del radio. Halla el radio y la superficie total.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\pi r^2(2r)=54\pi\Rightarrow r^3=27\Rightarrow r=3\), \(h=6\).</p><p>Superficie \(2\pi\cdot9+2\pi\cdot3\cdot6=54\pi\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Una esfera y un cono de radio 3 tienen el mismo volumen. Halla la altura del cono.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\tfrac43\pi\cdot27=\tfrac13\pi\cdot9h\Rightarrow h=12\).</li></ol></div></details></div>
+<h3 id="ty6">T6. Ángulos dentro de un cubo</h3>
+<p><b>Qué reconocer:</b> ángulo entre una diagonal espacial y una arista, entre dos diagonales de caras, o entre una diagonal y una cara. <b>Método:</b> identifica un triángulo con las dos rectas como lados; halla sus lados con Pitágoras en 3D y aplica la ley de cosenos o razones del triángulo rectángulo.</p>
+<div class="ex"><p class="et">Ejemplo T6. <span class="lvl">Tipo IB</span></p>
+<p>En un cubo de arista \(a\), halla el coseno del ángulo entre una diagonal espacial y una arista que sale del mismo vértice.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>La arista, la diagonal espacial (\(a\sqrt3\)) y una diagonal de cara (\(a\sqrt2\)) forman un triángulo rectángulo en el extremo de la arista.</p><p>\(\cos\theta=\tfrac{a}{a\sqrt3}=\tfrac1{\sqrt3}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el ángulo entre dos diagonales de caras de un cubo que salen del mismo vértice.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Los tres extremos forman un triángulo equilátero de lado \(a\sqrt2\): 60°.</li></ol></div></details></div>
+<h3 id="ty7">T7. Rango del área y del tercer lado</h3>
+<p><b>Qué reconocer:</b> dos lados fijos y el ángulo libre: «halla el área máxima» o «los valores posibles del tercer lado». <b>Método:</b> el área \(\tfrac12ab\sin C\) es máxima cuando \(C=90^\circ\). El tercer lado cumple la desigualdad triangular \(|a-b|\lt c\lt a+b\) (de \(\cos C\) entre \(-1\) y 1).</p>
+<div class="ex"><p class="et">Ejemplo T7. <span class="lvl">Sección A</span></p>
+<p>Dos lados de un triángulo miden 4 y 6. Halla el área máxima y los valores posibles del tercer lado.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Área máxima \(\tfrac12\cdot24=12\), con \(C=90^\circ\) (tercer lado \(2\sqrt{13}\)).</p><p>\(c^2=52-48\cos C\) con \(-1\lt\cos C\lt1\): \(2\lt c\lt10\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Con lados 5 y 8, ¿para qué ángulo el área vale 10? ¿Cuántos triángulos hay?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(20\sin C=10\Rightarrow\sin C=\tfrac12\): \(C=30^\circ\) o \(150^\circ\). Dos triángulos.</li></ol></div></details></div>
+<h3 id="ty8">T8. Arcos y sectores en contexto</h3>
+<p><b>Qué reconocer:</b> péndulos, relojes, ruedas o limpiaparabrisas. <b>Método:</b> traduce a ángulo en radianes (una vuelta \(=2\pi\)) y aplica \(l=r\theta\) o \(A=\tfrac12r^2\theta\). Un limpiaparabrisas barre la diferencia de dos sectores.</p>
+<div class="ex"><p class="et">Ejemplo T8. <span class="lvl">Sección A</span></p>
+<p>(a) Un péndulo de 90 cm oscila 20° a cada lado. ¿Qué longitud de arco recorre en una oscilación completa (de un extremo al otro)? (b) El minutero de un reloj mide 12 cm. ¿Qué área barre en 20 minutos?</p>
+<details><summary>Ver solución</summary><div class="inner"><p>(a) 40° \(=\tfrac{2\pi}9\) rad: \(90\cdot\tfrac{2\pi}9=20\pi\) cm.</p><p>(b) 20 minutos son \(\tfrac{2\pi}3\): \(\tfrac12\cdot144\cdot\tfrac{2\pi}3=48\pi\) cm².</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Un limpiaparabrisas tiene una escobilla entre 10 cm y 50 cm del eje y gira 120°. Halla el área que limpia.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\tfrac12(50^2-10^2)\tfrac{2\pi}3=800\pi\) cm².</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo de los Módulos 1–7. Integran series (Módulo 1), polinomios (Módulo 2), inducción (Módulo 5) y complejos (Módulo 6). El 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la Sección B. Al final, I1 es una investigación tipo Prueba 3 de NS. Cada uno trae una pista y la respuesta final plegadas.</p>
+
+<div class="ex"><p class="et">E1. Espiral de sectores <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>Se dibujan sectores de ángulo \(\tfrac\pi3\) con radios \(r_n=10(0{,}8)^n\), \(n=0,1,2,\dots\) Halla (a) el área total; (b) la longitud total de los arcos.</p>
+<details><summary>Pista</summary><div class="inner"><p>Las áreas forman una PG de razón \(0{,}64\); los arcos, una PG de razón \(0{,}8\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\tfrac\pi6\cdot\tfrac{100}{0{,}36}=\tfrac{1250\pi}{27}\). (b) \(\tfrac\pi3\cdot\tfrac{10}{0{,}2}=\tfrac{50\pi}3\).</p></div></details></div>
+
+<div class="ex"><p class="et">E2. Lados consecutivos y un ángulo de 120° <span class="lvl">Sección A alta, integra Módulo 2</span></p>
+<p>Los lados de un triángulo son \(x,\ x+1,\ x+2\), y su mayor ángulo mide 120°. Halla \(x\) y el área exacta.</p>
+<details><summary>Pista</summary><div class="inner"><p>El mayor ángulo está frente al mayor lado, y \(\cos120^\circ=-\tfrac12\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(2x^2-x-3=0\Rightarrow x=\tfrac32\). Área \(\tfrac{15\sqrt3}{16}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. ¿Cuántos triángulos? <span class="lvl">Sección A alta</span></p>
+<p>Se construye un triángulo con \(A=30^\circ\), \(b=10\) y \(a=k\gt0\). Determina, según \(k\), cuántos triángulos distintos hay.</p>
+<details><summary>Pista</summary><div class="inner"><p>Compara \(k\) con \(h=b\sin A=5\) y con \(b=10\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(k\lt5\): 0; \(k=5\): 1; \(5\lt k\lt10\): 2; \(k\ge10\): 1.</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Área de un triángulo con complejos <span class="lvl">Sección B, integra Módulo 6</span></p>
+<p>(a) Muestra que el triángulo de vértices \(0,\ z,\ w\) tiene área \(\tfrac12|\mathrm{Im}(\bar zw)|\). (b) Con \(z=2e^{i\pi/6}\) y \(w=3e^{2\pi i/3}\), halla el área y el lado \(|z-w|\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(\bar zw=|z||w|e^{i(\beta-\alpha)}\): su parte imaginaria es \(|z||w|\sin(\beta-\alpha)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) El ángulo es \(\tfrac\pi2\): área 3 y \(|z-w|=\sqrt{13}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E5. Demostrar la fórmula de Herón <span class="lvl">Sección B</span></p>
+<p>(a) Con \(\cos C=\tfrac{a^2+b^2-c^2}{2ab}\) y \(\text{Área}^2=\tfrac14a^2b^2(1-\cos^2C)\), prueba que \(\text{Área}=\sqrt{s(s-a)(s-b)(s-c)}\). (b) Aplícala al triángulo 13, 14, 15 y compruébala con \(\tfrac12ab\sin C\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(1-\cos^2C=(1-\cos C)(1+\cos C)\). Factoriza cada paréntesis como diferencia de cuadrados.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(s=21\): \(\sqrt{21\cdot8\cdot7\cdot6}=84\). Con \(c=15\): \(\cos C=\tfrac{169+196-225}{364}=\tfrac5{13}\), \(\sin C=\tfrac{12}{13}\) y \(\tfrac12\cdot13\cdot14\cdot\tfrac{12}{13}=84\).</p></div></details></div>
+
+<div class="ex"><p class="et">E6. El tetraedro regular <span class="lvl">Sección B</span></p>
+<p>Un tetraedro regular tiene arista \(a\). Halla (a) su altura; (b) su volumen; (c) el coseno del ángulo entre una arista y una cara que la contiene en un vértice; (d) su superficie. Particulariza con \(a=6\).</p>
+<details><summary>Pista</summary><div class="inner"><p>El pie de la altura es el centroide de la cara, a \(\tfrac{a}{\sqrt3}\) de cada vértice de esa cara.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(a\sqrt{\tfrac23}\). (b) \(\tfrac{\sqrt2}{12}a^3\) (con \(a=6\): \(18\sqrt2\)). (c) \(\tfrac1{\sqrt3}\). (d) \(\sqrt3a^2\).</p></div></details></div>
+
+<div class="ex"><p class="et">E7. El copo de nieve de Koch <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>Se parte de un triángulo equilátero de lado 1. En cada paso, sobre el tercio central de cada lado se añade un triángulo equilátero hacia afuera. (a) ¿Cuántos triángulos se añaden en el paso \(n\), y con qué área cada uno? (b) Halla el área límite. (c) Muestra que el perímetro crece sin límite.</p>
+<details><summary>Pista</summary><div class="inner"><p>En el paso \(n\) hay \(3\cdot4^{n-1}\) lados nuevos. Cada triángulo añadido tiene \(\tfrac1{9^n}\) del área inicial \(A_0=\tfrac{\sqrt3}4\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(A_0\left(1+\tfrac{1/3}{1-4/9}\right)=\tfrac85A_0=\tfrac{2\sqrt3}5\). (c) El perímetro es \(3\left(\tfrac43\right)^n\to\infty\).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. El cono que se forma con un sector <span class="lvl">Sección B</span></p>
+<p>Un sector de radio 12 y ángulo \(\tfrac{2\pi}3\) se enrolla hasta formar un cono. (a) Halla el radio, la altura y el volumen del cono. (b) ¿Qué ángulo debería tener el sector (de radio 12) para que el cono tenga altura igual al radio?</p>
+<details><summary>Pista</summary><div class="inner"><p>El arco del sector es la circunferencia de la base; el radio del sector es la generatriz.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(r=4\), \(h=8\sqrt2\), \(V=\tfrac{128\sqrt2}3\pi\). (b) \(r=h=6\sqrt2\), así que \(\theta=\sqrt2\,\pi\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. Acotar π con polígonos <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>(a) Comparando áreas en la circunferencia unitaria, prueba que \(\sin x\lt x\lt\tan x\) para \(0\lt x\lt\tfrac\pi2\). (b) Deduce que \(n\sin\tfrac\pi n\lt\pi\lt n\tan\tfrac\pi n\). (c) Con \(n=6\), muestra que \(3\lt\pi\lt2\sqrt3\). (d) Con \(n=12\), usando \(\sin15^\circ=\tfrac{\sqrt6-\sqrt2}4\) y \(\tan15^\circ=2-\sqrt3\), obtén cotas más finas.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Triángulo inscrito, sector y triángulo tangente con el mismo ángulo \(x\). (b) \(x=\tfrac\pi n\), multiplicado por \(n\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(d) \(3(\sqrt6-\sqrt2)\lt\pi\lt12(2-\sqrt3)\), es decir \(3{,}105\lt\pi\lt3{,}216\).</p></div></details></div>
+
+<div class="ex"><p class="et">E10. Una torre vista desde dos puntos <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>Una torre vertical \(FT\) tiene su base \(F\) en un suelo horizontal. Desde \(A\), situado al sur de \(F\), la cima \(T\) se ve con elevación de 45°. Desde \(B\), situado 20 m al este de \(A\), se ve con elevación de 30°. (a) Dibuja el diagrama 3D y muestra que la altura de la torre es \(10\sqrt2\) m. (b) Halla la tangente del ángulo de elevación desde el punto medio \(M\) de \(AB\). (c) ¿Desde qué punto del segmento \(AB\) se ve la torre con el mayor ángulo de elevación? Justifícalo. (d) Halla el volumen del tetraedro \(TFAB\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(FA=h\), \(FB=h\sqrt3\), y el triángulo \(FAB\) es rectángulo en \(A\) (sur y este son perpendiculares). (c) El ángulo es mayor cuanto más cerca de \(F\). (d) Base \(FAB\), altura \(FT\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(3h^2=h^2+400\Rightarrow h=10\sqrt2\). (b) \(FM=\sqrt{200+100}=10\sqrt3\): \(\tan=\tfrac{10\sqrt2}{10\sqrt3}=\tfrac{\sqrt6}3\). (c) Desde \(A\), el punto de \(AB\) más cercano a \(F\), porque \(FA\perp AB\): 45°. (d) \(\tfrac13\cdot\tfrac12\cdot10\sqrt2\cdot20\cdot10\sqrt2=\tfrac{2000}3\) m³.</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. El triángulo de área máxima con perímetro fijo <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>¿Qué triángulo encierra más área con un perímetro dado? Vas a explorarlo con casos concretos, conjeturar la respuesta y demostrarla con la fórmula de Herón (E5) y la desigualdad entre medias (Módulo 5).</p>
+<ol type="a"><li>Con perímetro 12, calcula con Herón el área de los triángulos de lados (3, 4, 5), (2, 5, 5) y (4, 4, 4). Formula una conjetura.</li><li>Con perímetro \(2s\) fijo, escribe \(x=s-a\), \(y=s-b\), \(z=s-c\). Muestra que \(x,y,z\gt0\) y que \(x+y+z=s\).</li><li>Muestra que el área al cuadrado es \(s\,xyz\). Usando que \(\sqrt[3]{xyz}\le\dfrac{x+y+z}{3}\) (con igualdad solo si \(x=y=z\)), prueba que el área es como mucho \(\dfrac{s^2}{3\sqrt3}\).</li><li>Deduce que el triángulo de área máxima es el equilátero, y comprueba el valor con perímetro 12.</li><li>Ahora fija dos lados \(a\) y \(b\) y deja libre el ángulo \(C\). ¿Qué triángulo tiene área máxima? Compara con la conclusión anterior: ¿qué cambia cuando lo fijo no es el perímetro?</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>Semiperímetro 6 en los tres casos.</li><li>Desigualdad triangular: \(a\lt b+c\iff s-a\gt0\).</li><li>Eleva la desigualdad al cubo: \(xyz\le\left(\tfrac s3\right)^3\).</li><li>Igualdad si \(x=y=z\), es decir \(a=b=c\).</li><li>Área \(=\tfrac12ab\sin C\).</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>\(\sqrt{6\cdot3\cdot2\cdot1}=6\); \(\sqrt{6\cdot4\cdot1\cdot1}=2\sqrt6\); \(\sqrt{6\cdot2\cdot2\cdot2}=4\sqrt3\). El equilátero da la mayor: conjetura.</li><li>\(x+y+z=3s-(a+b+c)=s\).</li><li>Área\(^2=s\,xyz\le s\cdot\tfrac{s^3}{27}\), así que Área \(\le\tfrac{s^2}{3\sqrt3}\).</li><li>Con \(s=6\): \(\tfrac{36}{3\sqrt3}=4\sqrt3\), el área del equilátero de lado 4.</li><li>Máximo con \(C=90^\circ\) (\(\sin C=1\)): área \(\tfrac12ab\). Con dos lados fijos, el mejor triángulo es rectángulo, no equilátero.</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 8, trigonometría II (circunferencia unitaria, funciones, identidades, ecuaciones, recíprocas e inversas).</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

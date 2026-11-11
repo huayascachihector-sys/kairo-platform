@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funciones Cuadráticas — IB Mathematics</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: linear-gradient(160deg, #0f172a 0%, #1e1b3a 100%); color: #e2e8f0; min-height: 100vh; padding: 40px 20px; }
+  .wrap { max-width: 820px; margin: 0 auto; }
+  .badge { display: inline-block; background: linear-gradient(90deg, #f59e0b, #d97706); color: #1c1917; font-size: 12px; font-weight: 800; letter-spacing: 1px; padding: 4px 12px; border-radius: 999px; }
+  h1 { font-size: 34px; margin: 16px 0 8px; color: #fff; }
+  h2 { font-size: 20px; margin: 36px 0 12px; color: #fbbf24; }
+  p { line-height: 1.7; color: #cbd5e1; margin-bottom: 12px; }
+  .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(251,191,36,0.25); border-radius: 16px; padding: 24px; margin: 16px 0; }
+  .formula { font-family: Georgia, serif; font-size: 20px; text-align: center; color: #fde68a; background: rgba(251,191,36,0.08); border-radius: 12px; padding: 16px; margin: 12px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 14px; }
+  th { color: #fbbf24; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .quiz { background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.35); border-radius: 16px; padding: 24px; margin-top: 40px; }
+  .opt { display: block; width: 100%; text-align: left; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 12px 16px; margin: 8px 0; cursor: pointer; font-size: 15px; transition: all 0.2s; }
+  .opt:hover { border-color: #fbbf24; }
+  .opt.correct { background: rgba(34,197,94,0.2); border-color: #22c55e; color: #bbf7d0; }
+  .opt.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #fecaca; }
+  .feedback { margin-top: 12px; font-size: 14px; min-height: 20px; }
+  footer { margin-top: 48px; text-align: center; font-size: 12px; color: #64748b; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">IB · MATHEMATICS AA/AI · SL</span>
+  <h1>Funciones Cuadráticas</h1>
+  <p>Curso premium generado con IA · KAIRO Platform</p>
+
+  <h2>1. La forma general</h2>
+  <p>Toda función cuadrática se puede escribir como:</p>
+  <div class="formula">f(x) = ax² + bx + c &nbsp;&nbsp; con a ≠ 0</div>
+  <p>Su gráfica es una <strong>parábola</strong>: abre hacia arriba si a &gt; 0 y hacia abajo si a &lt; 0. El valor de <strong>a</strong> controla qué tan "estrecha" es la parábola.</p>
+
+  <h2>2. El vértice</h2>
+  <p>El punto más importante de la parábola es el <strong>vértice</strong>. Usando la forma canónica:</p>
+  <div class="formula">f(x) = a(x − h)² + k &nbsp;⟹&nbsp; vértice V(h, k)</div>
+  <p>Desde la forma general, el vértice se calcula con:</p>
+  <div class="formula">h = −b / (2a)</div>
+
+  <h2>3. Intersecciones</h2>
+  <div class="card">
+    <table>
+      <tr><th>Intersección</th><th>Cómo se calcula</th></tr>
+      <tr><td>Con el eje y</td><td>f(0) = c</td></tr>
+      <tr><td>Con el eje x (raíces)</td><td>Resolver ax² + bx + c = 0 (factorización, fórmula cuadrática o gráfica)</td></tr>
+    </table>
+    <p><strong>Fórmula cuadrática:</strong></p>
+    <div class="formula">x = (−b ± √(b² − 4ac)) / (2a)</div>
+    <p>El <strong>discriminante</strong> Δ = b² − 4ac decide el número de raíces reales:</p>
+    <table>
+      <tr><th>Δ</th><th>Raíces reales</th></tr>
+      <tr><td>Δ &gt; 0</td><td>Dos raíces distintas</td></tr>
+      <tr><td>Δ = 0</td><td>Una raíz doble (toca el eje)</td></tr>
+      <tr><td>Δ &lt; 0</td><td>Ninguna (raíces complejas)</td></tr>
+    </table>
+  </div>
+
+  <h2>4. Ejemplo resuelto (estilo IB)</h2>
+  <p>Sea f(x) = x² − 4x + 3. Encuentra el vértice y las raíces.</p>
+  <div class="card">
+    <p><strong>Vértice:</strong> h = −(−4)/(2·1) = 2, k = f(2) = 4 − 8 + 3 = −1 ⟹ V(2, −1)</p>
+    <p><strong>Raíces:</strong> x² − 4x + 3 = (x − 1)(x − 3) = 0 ⟹ x = 1 y x = 3</p>
+    <p><strong>Discriminante:</strong> Δ = 16 − 12 = 4 &gt; 0 ⟹ dos raíces reales ✔</p>
+  </div>
+
+  <div class="quiz">
+    <h2 style="margin-top:0">Mini quiz de comprensión</h2>
+    <p id="question">¿Cuál es el vértice de f(x) = 2x² − 8x + 5?</p>
+    <button class="opt" data-correct="false">V(4, −3)</button>
+    <button class="opt" data-correct="true">V(2, −3)</button>
+    <button class="opt" data-correct="false">V(−2, 5)</button>
+    <button class="opt" data-correct="false">V(8, 5)</button>
+    <p class="feedback" id="feedback"></p>
+  </div>
+
+  <footer>KAIRO Premium · Curso demo — reemplázalo con tus HTMLs de Claude</footer>
+</div>
+<script>
+  var answered = false;
+  document.querySelectorAll('.opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (answered) return;
+      answered = true;
+      var ok = btn.dataset.correct === 'true';
+      btn.classList.add(ok ? 'correct' : 'wrong');
+      if (!ok) {
+        document.querySelector('.opt[data-correct="true"]').classList.add('correct');
+      }
+      document.getElementById('feedback').textContent = ok
+        ? '✓ ¡Correcto! h = −(−8)/(2·2) = 2 y k = f(2) = −3.'
+        : 'Revisa: h = −b/(2a) = 8/4 = 2, luego k = f(2) = 8 − 16 + 5 = −3.';
+    });
+  });
+</script>
+</body>
+</html>

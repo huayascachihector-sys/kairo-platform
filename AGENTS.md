@@ -53,6 +53,7 @@ src/
 - `npx tsx demo-neuro.ts` — Demo del curso de inglés
 - `npx tsx demo-plataforma.ts` — Demo de los 6 cursos
 - `npx tsc --noEmit` — Verificación de tipos
+- `npm run premium:add` — Copia un HTML de curso IB y lo registra en el manifest (ver Fase 3)
 
 **Setup rápido en nuevo dispositivo:** Lee `SETUP.md` para instrucciones completas.
 
@@ -84,3 +85,15 @@ Set up en nuevo dispositivo: lee `SETUP.md`.
 - ✅ Integrados en `ExamenesInternacionales.tsx` → renombrado a "Exámenes de Admisión"
 - ✅ Reporte de desempeño via `ScoreChart` y `getExamSummary` (store.ts)
 - ✅ Eliminado código muerto: `UNI_QUESTIONS` antiguo (explicaciones confusas) reemplazado por `UNI_SECTIONS` en `examData.ts`
+
+### Fase 3 — Cursos Premium IB (implementada)
+Catálogo premium de cursos IB en HTML autocontenidos (generados con IA, ej. Claude), servidos estáticamente y listados vía manifest.
+
+- **Contenido**: `public/cursos-premium/{matematicas,fisica,historia,sociedad-digital}/*.html` + `manifest.json` (instrucciones en `public/cursos-premium/README.md`).
+- **Agregar curso**: copiar el HTML a la carpeta de su materia y agregar la entrada a `manifest.json`, o usar `npm run premium:add -- --subject matematicas --title "..." --file ./curso.html [--level SL|HL]`. Para registrar en bloque todos los HTMLs ya copiados, `npm run premium:scan` regenera el manifest leyendo el `<title>`/`<meta description>` de cada archivo.
+- **Datos**: `src/data/premiumCourses.ts` (tipos + `loadPremiumCourses()` con fetch del manifest y fallback silencioso).
+- **Estado**: `src/lib/premium.ts` (localStorage) — activación libre "modo demo" + progreso por curso; hook `usePremium()` en `src/hooks/usePremium.ts`; tests en `src/lib/premium.test.ts`.
+- **UI**: sección en la página pública `#/cursos` (`src/components/cursos/CursosPremiumSection.tsx` + `PremiumActivationModal.tsx`) y visor en ruta `#/cursos-premium/<id>` (`src/pages/CursoPremiumViewer.tsx`, iframe sandbox `allow-scripts allow-forms allow-popups allow-modals` — sin `same-origin` a propósito).
+- **Certificados**: `src/lib/premiumCertificate.ts` (HTML imprimible → Guardar como PDF, patrón de `pdfExport.ts`).
+- **IA premium**: usuarios premium usan `GEMINI_PREMIUM_MODEL` (default `gemini-3.6-pro`): flag `premium` en `/api/chat` y `/api/chat-english`, enviado desde `aiEngine.ts` y `englishEngine.ts`.
+- **Integración IB**: botones al banco de preguntas y flashcards desde el visor; patrones `sociedad digital` agregados a `digital-society` en `src/data/ibCourses.ts`.

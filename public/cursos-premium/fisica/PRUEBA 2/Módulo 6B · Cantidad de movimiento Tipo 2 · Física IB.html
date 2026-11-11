@@ -1,0 +1,404 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 6B · Cantidad de movimiento Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:52px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:26px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:12px 0;overflow-x:auto}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.note{background:#EEF3F1;border:1px dashed var(--teal);border-radius:5px;padding:14px 18px;margin:16px 0;font-size:16px}
+.pb{border:1px solid var(--line);border-radius:6px;margin:26px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#EFF4F2,#FFFFFF);border-bottom:1px solid var(--line);padding:14px 20px}
+.pb-head .code{font-family:"IBM Plex Mono";font-size:11px;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px;letter-spacing:.05em}
+.pb-head h3{margin:8px 0 0;font-size:19px}
+.pb-body{padding:6px 20px 18px}
+.enun{background:#F4F6F4;border-left:3px solid var(--ink-soft);padding:10px 16px;margin:14px 0;font-size:16.5px}
+.part{margin:16px 0 4px;font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep)}
+.pide{display:inline-block;font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:1px 7px;margin-right:8px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:5px 11px;display:inline-block;margin-top:6px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<!-- rev 2026-10-31 6b · banco paper2 momento (4) oficiales 2022-26 -->
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> A.2 <span>//</span> MÓDULO 6B · TIPO 2 (PAPER 2)</p>
+  <h1>Momento en <em>respuesta larga</em></h1>
+  <p class="lede">Impulso y potencia en un golpe, colisiones en dos dimensiones y choque frontal con explicación conceptual (leyes de Newton, conservación). Toda la ficha resuelta, más 6 problemas integradores.</p>
+  <div class="stats">
+    <div class="stat"><b>3/3</b><span>ficha resuelta</span></div>
+    <div class="stat"><b>4</b><span>Paper 2 oficiales 22–26</span></div>
+    <div class="stat"><b>6</b><span>problemas extra</span></div>
+    <div class="stat"><b>Paper 2</b><span>respuesta larga</span></div>
+    <div class="stat"><b>g</b><span>según cada ítem</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#estrategia">0 · Método para momento tipo 2</a>
+  <a href="#p1">1 · Pelota de tenis (M19)</a>
+  <a href="#p2">2 · Billar en 2D (N01)</a>
+  <a href="#p3">3 · Coche y camión (N00)</a>
+  <a href="#examenes">★ Banco Paper 2 · 2022–26</a>
+  <a href="#extra">Problemas extra para ti</a>
+</nav>
+
+<main>
+
+<!-- ESTRATEGIA -->
+<section id="estrategia">
+  <p class="sec-num">SECCIÓN 00 · LO QUE FALTA PARA TIPO 2</p>
+  <h2>Método para momento de respuesta larga<span class="rule"></span></h2>
+  <p class="sec-intro">La teoría es la del 6A. El tipo 2 encadena impulso + energía + potencia, y añade el momento en <strong>dos dimensiones</strong> y las respuestas conceptuales con las leyes de Newton.</p>
+  <div class="box key"><span class="lbl">Los 5 gestos del tipo 2 de momento</span>
+    <ol>
+      <li><strong>Momento en 2D por componentes:</strong> \(\sum p_x\) y \(\sum p_y\) se conservan por separado; luego se recompone con Pitágoras y arcotangente.</li>
+      <li><strong>Impulso ↔ fuerza ↔ potencia:</strong> \(F=\Delta p/\Delta t\) y \(P=\Delta E/\Delta t\) en el mismo golpe.</li>
+      <li><strong>Energía perdida:</strong> compara \(E_k\) antes y después; en un choque real disminuye (a calor/deformación).</li>
+      <li><strong>Conceptual con Newton:</strong> 3.ª ley → fuerzas iguales y opuestas; \(F=ma\) → el de menor masa sufre mayor aceleración.</li>
+      <li><strong>Predecir sin calcular:</strong> razonar con «mismo tiempo, misma normal, distinta fricción» para comparar resultados.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- P1 -->
+<section id="p1" class="pb">
+  <div class="pb-head"><span class="code">FICHA 1 · M19/4/PHYSI/SP2</span><h3>Golpe de pelota de tenis (impulso, potencia y rebote)</h3></div>
+  <div class="pb-body">
+    <div class="enun">La pelota (0,058 kg) sale a 64 m·s⁻¹ desde el reposo; el contacto raqueta–pelota dura 25 ms.</div>
+
+    <p class="part">(a)(i) <span class="pide">calcule</span> la fuerza media de la raqueta.</p>
+    <p>\(F=\dfrac{\Delta p}{\Delta t}=\dfrac{m v}{\Delta t}=\dfrac{0{,}058(64)}{0{,}025}\). <span class="ans">≈ 150 N</span></p>
+
+    <p class="part">(a)(ii) <span class="pide">calcule</span> la potencia media durante el impacto.</p>
+    <p>\(P=\dfrac{\Delta E_k}{\Delta t}=\dfrac{\tfrac12 m v^2}{\Delta t}=\dfrac{\tfrac12(0{,}058)(64)^2}{0{,}025}=\dfrac{118{,}8}{0{,}025}\). <span class="ans">≈ 4,8 kW</span></p>
+
+    <p class="part">(b) parte de proyectil (llega/pasa la red, rapidez al suelo).</p>
+    <div class="note">Esta parte es de cinemática de proyectiles y se resolvió completa en el <strong>Módulo 2B</strong>. Resultados: tiempo a la red \(t=\dfrac{11{,}9}{64\cos7^\circ}\approx0{,}19\) s; altura en la red \(\approx4{,}1\) m \(>0{,}910\) m ⇒ pasa por encima; rapidez al suelo \(\approx64\) m·s⁻¹ (por energía, \(v=\sqrt{u^2+2gh_P}\)).</div>
+
+    <p class="part">(c) <span class="pide">prediga</span> (sin cálculos) si θ es mayor en tierra o en hierba.</p>
+    <p>Durante el bote la pelota desliza. La <strong>fuerza normal es igual</strong> y el <strong>tiempo de contacto es igual</strong> en ambas superficies ⇒ el impulso vertical (que da la componente vertical de salida \(v_y\)) es el mismo. Pero la fricción es <strong>mayor en tierra</strong> ⇒ el impulso horizontal es mayor ⇒ reduce más la componente horizontal \(v_x\). Como \(\tan\theta=\dfrac{v_y}{v_x}\), con igual \(v_y\) y menor \(v_x\), el ángulo es mayor.</p>
+    <p class="ans">θ es mayor para la tierra que para la hierba.</p>
+  </div>
+</section>
+
+<!-- P2 -->
+<section id="p2" class="pb">
+  <div class="pb-head"><span class="code">FICHA 2 · N01/430/S(3)</span><h3>Billar: colisión en dos dimensiones</h3></div>
+  <div class="pb-body">
+    <div class="enun">Bola blanca de 200 g a 0,5 m·s⁻¹ choca con una bola negra de 200 g en reposo. Tras el choque, la blanca se desvía 30° y su rapidez es 0,2 m·s⁻¹. Toma la dirección inicial como eje x.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 320 140" width="300" xmlns="http://www.w3.org/2000/svg" aria-label="billar 2D">
+        <line x1="30" y1="80" x2="290" y2="80" stroke="var(--ink-soft)" stroke-dasharray="4 3"/>
+        <circle cx="120" cy="80" r="10" fill="#fff" stroke="var(--ink)"/>
+        <line x1="120" y1="80" x2="210" y2="50" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#z)"/>
+        <line x1="120" y1="80" x2="205" y2="110" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#z)"/>
+        <defs><marker id="z" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+        <text x="185" y="45" font-family="IBM Plex Mono" font-size="10" fill="var(--teal)">blanca 0,2 (30°)</text>
+        <text x="185" y="125" font-family="IBM Plex Mono" font-size="10" fill="var(--warn)">negra ?</text>
+        <text x="40" y="75" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-soft)">x (inicial)</text>
+      </svg>
+      <figcaption>La blanca se desvía +30°; la negra sale hacia abajo para conservar \(p_y=0\).</figcaption>
+    </figure>
+
+    <p class="part">(a) <span class="pide">indique</span> la dirección del momento total después.</p>
+    <p>El momento se conserva: la flecha del momento total tras el choque apunta en la <strong>dirección inicial de la bola blanca</strong> (el eje x), con módulo \(0{,}200\times0{,}5=0{,}10\) kg·m·s⁻¹.</p>
+
+    <p class="part">(b) <span class="pide">calcule</span> la rapidez y dirección de la bola negra.</p>
+    <p><em>Antes:</em> \(p_x=0{,}200(0{,}5)=0{,}100\), \(p_y=0\).</p>
+    <p><em>Blanca después:</em> \(p_{bx}=0{,}200(0{,}2)\cos30^\circ=0{,}0346\); \(p_{by}=0{,}200(0{,}2)\sin30^\circ=0{,}0200\).</p>
+    <p><em>Negra (conservación por componentes):</em> \(p_{nx}=0{,}100-0{,}0346=0{,}0654\); \(p_{ny}=0-0{,}0200=-0{,}0200\).</p>
+    <p>\(p_n=\sqrt{0{,}0654^2+0{,}0200^2}=0{,}0684\Rightarrow v_n=\dfrac{0{,}0684}{0{,}200}=0{,}34\) m·s⁻¹. Dirección: \(\arctan\dfrac{0{,}0200}{0{,}0654}=17^\circ\) por debajo del eje x (lado opuesto a la blanca).</p>
+    <p class="ans">Bola negra: ≈ 0,34 m·s⁻¹, 17° por debajo de la dirección inicial.</p>
+
+    <p class="part">(c) <span class="pide">calcule</span> la energía perdida.</p>
+    <p>\(E_{k,i}=\tfrac12(0{,}200)(0{,}5)^2=0{,}025\) J. \(E_{k,f}=\tfrac12(0{,}200)(0{,}2)^2+\tfrac12(0{,}200)(0{,}34)^2=0{,}004+0{,}0117=0{,}0157\) J.</p>
+    <p class="ans">Energía perdida ≈ 0,025 − 0,0157 = 9,3×10⁻³ J (choque inelástico).</p>
+  </div>
+</section>
+
+<!-- P3 -->
+<section id="p3" class="pb">
+  <div class="pb-head"><span class="code">FICHA 3 · N00/430/S(2)</span><h3>Choque frontal coche–camión</h3></div>
+  <div class="pb-body">
+    <div class="enun">Coche y camión viajan a 60 km·h⁻¹ en sentidos opuestos; el camión tiene el doble de masa que el coche. Chocan de frente y quedan pegados. (Sea el coche de masa \(m\), el camión \(2m\); coche +60, camión −60.)</div>
+
+    <p class="part">(a) <span class="pide">explique</span> cómo se comparan las fuerzas mutuas.</p>
+    <p>Por la <strong>3.ª ley de Newton</strong>, la fuerza que el coche ejerce sobre el camión es igual en módulo y opuesta en sentido a la que el camión ejerce sobre el coche, sin importar sus masas.</p>
+
+    <p class="part">(b) <span class="pide">indique</span> el sentido del movimiento tras el choque (con un principio).</p>
+    <p>Por <strong>conservación del momento</strong>: \(p_{tot}=m(+60)+2m(-60)=-60m\) (negativo). Los restos se mueven en el <strong>sentido original del camión</strong>.</p>
+
+    <p class="part">(c) <span class="pide">determine</span> la velocidad de los restos.</p>
+    <p>\(v=\dfrac{p_{tot}}{m_{tot}}=\dfrac{-60m}{3m}=-20\). <span class="ans">20 km·h⁻¹ en el sentido del camión</span></p>
+
+    <p class="part">(d) <span class="pide">explique</span> cómo se comparan las aceleraciones.</p>
+    <p>Las fuerzas son iguales (3.ª ley), pero \(a=F/m\): el coche (menor masa) tiene el <strong>doble</strong> de aceleración que el camión.</p>
+
+    <p class="part">(e) <span class="pide">explique</span> qué conductor resulta más afectado.</p>
+    <p>El del <strong>coche</strong>: sufre mayor aceleración (y mayor cambio de velocidad: pasa de +60 a −20, \(|\Delta v|=80\), frente a 40 del camión), luego mayor fuerza sobre su cuerpo.</p>
+
+    <p class="part">(f) <span class="pide">explique</span> si se viola la conservación de la energía.</p>
+    <p>No. La energía cinética disminuye, pero se transforma en calor, sonido y deformación. La energía <strong>total</strong> se conserva; solo cambia de forma.</p>
+  </div>
+</section>
+
+<!-- BANCO PAPER 2 OFICIALES -->
+<section id="examenes">
+  <p class="sec-num">SECCIÓN ★ · BANCO DE EXÁMENES OFICIALES · PAPER 2</p>
+  <h2>Paper 2 oficiales de cantidad de movimiento (2022–2026)<span class="rule"></span></h2>
+  <p class="sec-intro">Cuatro preguntas reales que cubren los cuatro sabores del tema: choque <strong>elástico</strong>, choque <strong>perfectamente inelástico</strong> (se incrusta), péndulo–colisión con energía, y momento como <strong>tasa de cambio</strong> (empuje). Reescritas, resueltas apartado por apartado y verificadas contra el esquema oficial.</p>
+  <div class="box beyond"><span class="lbl">Las dos pruebas que decide el Paper 2</span><p><strong>¿Se conserva el momento?</strong> Sí, siempre que no haya fuerza externa neta (durante el breve choque, sí). <strong>¿Es elástico?</strong> Solo si la energía cinética total es igual antes y después. Casi todas estas preguntas giran en torno a aplicar esas dos pruebas por separado.</p></div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">May 2025 · TZ2 · SP2 · Q1 · PLAN NUEVO</span><h3>Carritos con resorte: choque elástico, fuerza y potencia</h3></div>
+    <div class="pb-body">
+      <div class="enun">El carrito X (\(3{,}0\) kg) a \(6{,}0\) m·s⁻¹ choca con Y (\(6{,}0\) kg) en reposo; X lleva un resorte. Del gráfico \(v\)–\(t\): tras el choque X queda a \(-2{,}0\) m·s⁻¹ e Y a \(+4{,}0\) m·s⁻¹. La colisión dura \(40\) ms.</div>
+
+      <p class="part">(a) <span class="pide">muestre que</span> la colisión es elástica.</p>
+      <p class="ans">KE antes = KE después = 54 J</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Compara la energía cinética total: \(E_i=\tfrac12(3{,}0)(6{,}0)^2=54\) J; \(E_f=\tfrac12(3{,}0)(2{,}0)^2+\tfrac12(6{,}0)(4{,}0)^2=6+48=54\) J. Iguales ⇒ elástica. ∎ <em>(Atajo del esquema: en un choque elástico la rapidez relativa se mantiene: \(|6-0|=|{-2}-4|=6\).)</em></p></div></details>
+
+      <p class="part">(b)(i) <span class="pide">determine</span> la magnitud de la fuerza media sobre Y.</p>
+      <p class="ans">F ≈ 6,0×10² N</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Fuerza = tasa de cambio del momento de Y: \(F=\dfrac{\Delta p_Y}{\Delta t}=\dfrac{m_Y\,\Delta v_Y}{\Delta t}=\dfrac{6{,}0(4{,}0-0)}{40\times10^{-3}}=\dfrac{24}{0{,}040}=600\) N. <span class="ans">6,0×10² N</span></p></div></details>
+
+      <p class="part">(b)(ii) <span class="pide">determine</span> la potencia media suministrada a Y.</p>
+      <p class="ans">P = 1200 W</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>\(P=\dfrac{\Delta E_k\text{ de Y}}{\Delta t}=\dfrac{\tfrac12(6{,}0)(4{,}0)^2}{0{,}040}=\dfrac{48}{0{,}040}=1200\) W. <span class="ans">1,2 kW</span> <em>(también \(P=F\bar v=600\cdot\tfrac{0+4}{2}=1200\) W).</em></p></div></details>
+
+      <p class="part">(b)(iii) <span class="pide">determine</span> la energía elástica máxima almacenada en el resorte durante el choque.</p>
+      <p class="ans">E_elástica = 36 J</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>La compresión es máxima cuando ambos carritos van a la <em>misma</em> velocidad (momento común): \(v=\dfrac{3{,}0(6{,}0)}{9{,}0}=2{,}0\) m·s⁻¹. Entonces \(E_k=\tfrac12(9{,}0)(2{,}0)^2=18\) J, y la diferencia con los 54 J iniciales está en el resorte: \(54-18=36\) J. <span class="ans">36 J</span></p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2_TZ2_SL_markscheme_1 (2225–6718M, TZ2): (a) 54 J = 54 J / rapidez relativa · (b)(i) 6,0×10² N · (b)(ii) 1200 W · (b)(iii) 36 J.</p>
+    </div>
+  </div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">May 2023 · TZ1 · SP2 · Q1 · PLAN ANTIGUO</span><h3>Bola pendular que choca con un bloque (integra circular y energía)</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una bola de \(0{,}800\) kg cuelga de un hilo de \(0{,}950\) m; se suelta desde el reposo con el hilo horizontal. Al pasar por la vertical choca con un bloque de \(2{,}40\) kg en reposo. \(g=9{,}81\).</div>
+
+      <p class="part">(a)(ii) <span class="pide">muestre que</span> la rapidez de la bola antes del choque es ~4,3 m·s⁻¹.</p>
+      <p class="ans">v = 4,32 m·s⁻¹</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Conservación de energía al bajar \(h=0{,}950\) m: \(mgh=\tfrac12 mv^2\Rightarrow v=\sqrt{2gh}=\sqrt{2(9{,}81)(0{,}950)}=4{,}32\) m·s⁻¹. ∎</p></div></details>
+
+      <p class="part">(a)(iii) <span class="pide">determine</span> la tensión del hilo en ese instante (enlace con <strong>circular</strong>, M7).</p>
+      <p class="ans">T ≈ 23,5 N</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>En el punto más bajo la bola describe un círculo: la fuerza neta hacia arriba es centrípeta. \(T-mg=\dfrac{mv^2}{r}\Rightarrow T=mg+\dfrac{mv^2}{r}=0{,}800(9{,}81)+\dfrac{0{,}800(4{,}32)^2}{0{,}950}=7{,}85+15{,}7=23{,}5\) N. <span class="ans">23,5 N</span></p></div></details>
+
+      <p class="part">(b)(i) <span class="pide">muestre que</span> la colisión es elástica, si el bloque sale a \(2{,}16\) m·s⁻¹.</p>
+      <p class="ans">KE antes = KE después = 7,46 J</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Momento (la bola rebota a \(v_1'\)): \(0{,}800(4{,}32)=0{,}800\,v_1'+2{,}40(2{,}16)\Rightarrow v_1'=-2{,}16\) m·s⁻¹ (rebota a 2,16).</p><p>KE antes \(=\tfrac12(0{,}800)(4{,}32)^2=7{,}46\) J. KE después \(=\tfrac12(0{,}800)(2{,}16)^2+\tfrac12(2{,}40)(2{,}16)^2=1{,}87+5{,}60=7{,}46\) J. Iguales ⇒ elástica. ∎</p></div></details>
+
+      <p class="part">(b)(ii) <span class="pide">determine</span> la altura a la que rebota la bola.</p>
+      <p class="ans">h′ = 23,8 cm</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>La rapidez de rebote es la mitad (2,16 vs 4,32), así que la energía —y la altura— bajan en factor 4: \(h'=\dfrac{95}{4}=23{,}8\) cm. (O \(h'=v'^2/2g\).) <span class="ans">23,8 cm</span></p></div></details>
+
+      <p class="part">(c) <span class="pide">determine</span> cuánto se desliza el bloque si \(\mu_d=0{,}400\).</p>
+      <p class="ans">d = 0,594 m</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Fricción \(f=\mu_d m_B g=0{,}400(2{,}40)(9{,}81)=9{,}42\) N. La energía cinética del bloque se disipa: \(f\,d=\tfrac12 m_B v_B^2\Rightarrow d=\dfrac{\tfrac12(2{,}40)(2{,}16)^2}{9{,}42}=\dfrac{5{,}60}{9{,}42}=0{,}594\) m. <span class="ans">0,594 m</span></p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2__TZ1_SL_markscheme_1 (M23/TZ1): (a)(ii) 4,32 m s⁻¹ · (a)(iii) 23,5 N «T−mg=mv²/r» · (b)(i) KE 7,46 J = 7,46 J · (b)(ii) 23,8 cm · (c) 0,594 m.</p>
+    </div>
+  </div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">May 2024 · TZ1 · SP2 · Q1 · PLAN NUEVO</span><h3>Perdigón que se incrusta en una bola (perfectamente inelástico)</h3></div>
+    <div class="pb-body">
+      <div class="enun">Un perdigón de \(2{,}0\) g viaja horizontal a \(160\) m·s⁻¹ y se incrusta en una bola de \(250\) g que cuelga de un hilo, en reposo.</div>
+
+      <p class="part">(a) <span class="pide">calcule</span> la rapidez de bola+perdigón justo tras el impacto.</p>
+      <p class="ans">v ≈ 1,3 m·s⁻¹</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Se incrustan ⇒ perfectamente inelástico; se conserva el momento: \(m_p u=(m_p+m_b)v\Rightarrow v=\dfrac{0{,}0020(160)}{0{,}252}=\dfrac{0{,}32}{0{,}252}=1{,}27\) m·s⁻¹. <span class="ans">≈ 1,3 m·s⁻¹</span></p></div></details>
+
+      <p class="part">(b) <span class="pide">explique</span> por qué la energía cinética final es menor que la inicial del perdigón.</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Es un choque <strong>inelástico</strong>: el perdigón realiza trabajo para deformar/penetrar la bola, así que parte de la energía cinética se transfiere a <strong>deformación y calor</strong> (energía interna). El momento se conserva, pero la energía cinética no. <em>(El esquema NO acepta "colisión inelástica" sin nombrar una forma de energía; comprobémoslo: \(E_i=\tfrac12(0{,}0020)(160)^2=25{,}6\) J → \(E_f=\tfrac12(0{,}252)(1{,}27)^2=0{,}20\) J.)</em></p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2__TZ1_SL_markscheme_3 (2224–6705M, TZ1): (a) 1,3 m s⁻¹ «m_p·160=(250+2)·v» · (b) trabajo de deformación → energía de deformación/calor/interna.</p>
+    </div>
+  </div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">May 2022 · TZ2 · SP2 · Q1 · PLAN ANTIGUO</span><h3>Aerodeslizador: momento como tasa de cambio (empuje)</h3></div>
+    <div class="pb-body">
+      <div class="enun">Un aerodeslizador impulsa aire hacia atrás con un ventilador de radio \(1{,}8\) m a una rapidez máxima de \(20\) m·s⁻¹. Densidad del aire \(1{,}2\) kg·m⁻³.</div>
+
+      <p class="part">(a) <span class="pide">explique</span> por qué actúa una fuerza sobre el aerodeslizador.</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>El ventilador empuja el aire hacia atrás, dándole momento (fuerza = tasa de cambio del momento del aire). Por la <strong>3.ª ley de Newton</strong>, el aire ejerce una fuerza igual y opuesta <em>hacia adelante</em> sobre el barco. ∎</p></div></details>
+
+      <p class="part">(b)(i) <span class="pide">muestre que</span> por el ventilador pasan ~240 kg de aire por segundo.</p>
+      <p class="ans">≈ 244 kg·s⁻¹</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Masa por segundo \(=\rho A v=1{,}2\cdot\pi(1{,}8)^2\cdot20=1{,}2(10{,}18)(20)=244\) kg·s⁻¹. ∎</p></div></details>
+
+      <p class="part">(b)(ii) <span class="pide">muestre que</span> la tensión de la cuerda (barco amarrado) es ~5 kN.</p>
+      <p class="ans">≈ 4,9 kN</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>La fuerza es la tasa de cambio del momento del aire: \(F=\dot m\,v=244(20)=4880\) N ≈ 4,9 kN. Amarrado en equilibrio, la cuerda aguanta esa fuerza. <span class="ans">≈ 5 kN</span></p></div></details>
+
+      <p class="part">(c)(i) <span class="pide">estime</span> la distancia hasta alcanzar la rapidez máxima (del gráfico \(v\)–\(t\)).</p>
+      <p class="ans">≈ 480–560 m (área)</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>La distancia es el <strong>área bajo la curva \(v\)–\(t\)</strong> hasta la rapidez máxima; contando cuadros/áreas geométricas da del orden de 480–560 m. <span class="ans">≈ 5×10² m</span></p></div></details>
+
+      <p class="part">(c)(ii) <span class="pide">determine</span> la masa del aerodeslizador (aceleración inicial de la gráfica).</p>
+      <p class="ans">≈ 4,9×10³ kg</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>La pendiente en \(t=0\) da \(a\approx1\) m·s⁻². Con la fuerza inicial \(F=4900\) N: \(m=\dfrac{F}{a}=\dfrac{4900}{1}\approx4{,}9\times10^3\) kg. <span class="ans">≈ 4900 kg</span></p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2__TZ2_SL_markscheme (M22/TZ2): (a) 3.ª ley / momento del aire · (b)(i) 244 kg s⁻¹ «ρAv» · (b)(ii) 4,9 kN «ρAv²» · (c)(i) 480–560 m (área) · (c)(ii) ≈4900 kg «a=pendiente, m=F/a».</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <p class="sec-num">PARA TI · RESUELVE ESTILO PAPER 2 Y ENVÍA EN BLOQUE</p>
+  <h2>6 problemas extra (integradores)<span class="rule"></span></h2>
+  <p class="sec-intro">Nuevos y de nivel creciente. Cubren los tipos de Paper 2 de momento: choque 2D por componentes, retroceso, impulso desde gráfica F–t, colisión inelástica con energía perdida y péndulo balístico. Integran energía, cinemática, dinámica e incertidumbre. \(g=9{,}8\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">E1 · colisión 2D y prueba de elasticidad</p><p>Un disco de 0,30 kg a 4,0 m·s⁻¹ choca con otro idéntico en reposo. Tras el choque, el primero se mueve a 2,0 m·s⁻¹ a 60° de su dirección original. (a) Halla la velocidad (rapidez y dirección) del segundo disco por componentes. (b) Determina si la colisión es elástica y comprueba si los discos se separan a 90° (propiedad de masas iguales).</p>
+  <details class="rev"><summary></summary><div class="rev-inner">
+    <p><strong>(a)</strong> Tomo la dirección inicial como eje x. Antes: \(p_x=0{,}30(4{,}0)=1{,}20\) kg·m·s⁻¹, \(p_y=0\).</p>
+    <p>Disco 1 después: \(p_{1x}=0{,}30(2{,}0)\cos60^\circ=0{,}30\); \(p_{1y}=0{,}30(2{,}0)\sin60^\circ=0{,}520\).</p>
+    <p>Disco 2 (conservación por componentes): \(p_{2x}=1{,}20-0{,}30=0{,}90\); \(p_{2y}=0-0{,}520=-0{,}520\).</p>
+    <p>\(p_2=\sqrt{0{,}90^2+0{,}520^2}=1{,}04\) kg·m·s⁻¹ ⇒ \(v_2=\dfrac{1{,}04}{0{,}30}=3{,}46\) m·s⁻¹. Ángulo: \(\arctan\dfrac{0{,}520}{0{,}90}=30^\circ\) al otro lado del eje x.</p>
+    <p class="ans">Disco 2: ≈ 3,5 m·s⁻¹ a 30° por debajo de la dirección inicial.</p>
+    <p><strong>(b)</strong> \(E_{k,i}=\tfrac12(0{,}30)(4{,}0)^2=2{,}4\) J. \(E_{k,f}=\tfrac12(0{,}30)(2{,}0)^2+\tfrac12(0{,}30)(3{,}46)^2=0{,}60+1{,}80=2{,}4\) J. Se conserva ⇒ elástica.</p>
+    <p>Ángulo de separación \(=60^\circ+30^\circ=90^\circ\): confirma la propiedad de dos masas iguales en un choque elástico 2D.</p>
+    <p class="ans">Elástica; los discos se separan a 90°.</p>
+  </div></details></div>
+  <div class="prob"><p class="pn">E2 · retroceso de un cañón con fricción</p><p>Un cañón de 500 kg sobre suelo rugoso (\(\mu_d=0{,}30\)) dispara horizontalmente un proyectil de 5,0 kg a 200 m·s⁻¹. (a) Halla la rapidez de retroceso del cañón. (b) Usando energía/dinámica, determina cuánto retrocede el cañón hasta detenerse.</p>
+  <details class="rev"><summary></summary><div class="rev-inner">
+    <p><strong>(a)</strong> Durante el disparo (muy breve) el momento del sistema se conserva; el impulso de la fricción en ese instante es despreciable. \(0=m_p v_p+m_c v_c\Rightarrow v_c=-\dfrac{5{,}0(200)}{500}=-2{,}0\) m·s⁻¹.</p>
+    <p class="ans">Rapidez de retroceso ≈ 2,0 m·s⁻¹.</p>
+    <p><strong>(b)</strong> Ya en retroceso, la única fuerza horizontal es la fricción: \(a=\mu_d g=0{,}30(9{,}8)=2{,}94\) m·s⁻². Con \(v^2=v_c^2-2a\,d\) y \(v=0\): \(d=\dfrac{2{,}0^2}{2(2{,}94)}=0{,}68\) m.</p>
+    <p class="ans">El cañón retrocede ≈ 0,68 m.</p>
+  </div></details></div>
+  <div class="prob"><p class="pn">E3 · impulso desde una gráfica F–t</p>
+    <figure class="fig">
+      <svg viewBox="0 0 300 178" width="300" xmlns="http://www.w3.org/2000/svg" aria-label="gráfica fuerza-tiempo triangular">
+        <line x1="42" y1="140" x2="278" y2="140" stroke="var(--ink-soft)"/>
+        <line x1="42" y1="140" x2="42" y2="24" stroke="var(--ink-soft)"/>
+        <polyline points="42,140 152,36 262,140" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+        <line x1="152" y1="140" x2="152" y2="36" stroke="var(--line)" stroke-dasharray="3 3"/>
+        <line x1="42" y1="36" x2="152" y2="36" stroke="var(--line)" stroke-dasharray="3 3"/>
+        <text x="152" y="155" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-soft)" text-anchor="middle">15</text>
+        <text x="262" y="155" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-soft)" text-anchor="middle">30</text>
+        <text x="36" y="40" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-soft)" text-anchor="end">300</text>
+        <text x="152" y="172" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-soft)" text-anchor="middle">t / ms</text>
+        <text x="14" y="30" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-soft)">F / N</text>
+      </svg>
+      <figcaption>Fuerza de contacto pie–balón: sube a 300 N en 15 ms y cae a 0 en 30 ms (pulso triangular).</figcaption>
+    </figure>
+    <p>La gráfica muestra la fuerza del pie sobre un balón de 0,30 kg inicialmente en reposo durante un remate. (a) Determina el impulso a partir del área. (b) Halla la rapidez de salida del balón. (c) Compara la fuerza media con la fuerza máxima.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Impulso = área del triángulo \(=\tfrac12(\text{base})(\text{altura})=\tfrac12(0{,}030\,\mathrm{s})(300\,\mathrm{N})=4{,}5\) N·s.</p>
+      <p class="ans">\(J\approx4{,}5\) N·s.</p>
+      <p><strong>(b)</strong> Parte del reposo: \(J=\Delta p=m v\Rightarrow v=\dfrac{4{,}5}{0{,}30}=15\) m·s⁻¹.</p>
+      <p class="ans">\(v\approx15\) m·s⁻¹.</p>
+      <p><strong>(c)</strong> \(F_{\text{med}}=\dfrac{J}{\Delta t}=\dfrac{4{,}5}{0{,}030}=150\) N, exactamente la mitad de la fuerza máxima (300 N), como corresponde a un pulso triangular.</p>
+      <p class="ans">\(F_{\text{med}}=150\) N \(=\tfrac12 F_{\max}\).</p>
+    </div></details></div>
+  <div class="prob jefe"><p class="pn">E4 · INTEGRADOR (colisión → proyectil, supera IB)</p><p>Sobre una mesa lisa, un bloque de 2,0 kg a 5,0 m·s⁻¹ choca y se pega a otro de 3,0 kg en reposo. El conjunto abandona el borde de la mesa (altura 1,25 m). (a) Halla la rapidez tras el choque. (b) Determina a qué distancia horizontal de la base de la mesa cae el conjunto.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Choque perfectamente inelástico (se pegan): \(m_1v_1=(m_1+m_2)v\Rightarrow v=\dfrac{2{,}0(5{,}0)}{5{,}0}=2{,}0\) m·s⁻¹.</p>
+      <p class="ans">\(v=2{,}0\) m·s⁻¹.</p>
+      <p><strong>(b)</strong> Sale horizontal del borde (proyectil, Módulo 2B). Caída: \(1{,}25=\tfrac12(9{,}8)t^2\Rightarrow t=\sqrt{\dfrac{2(1{,}25)}{9{,}8}}=0{,}505\) s.</p>
+      <p>Alcance horizontal: \(x=v\,t=2{,}0(0{,}505)=1{,}0\) m.</p>
+      <p class="ans">Cae a ≈ 1,0 m de la base de la mesa.</p>
+    </div></details></div>
+  <div class="prob jefe"><p class="pn">E5 · péndulo balístico (momento + energía)</p>
+    <figure class="fig">
+      <svg viewBox="0 0 300 162" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="péndulo balístico">
+        <line x1="40" y1="20" x2="260" y2="20" stroke="var(--ink-soft)" stroke-width="2"/>
+        <line x1="150" y1="20" x2="150" y2="110" stroke="var(--ink-soft)"/>
+        <rect x="135" y="110" width="30" height="26" fill="#fff" stroke="var(--ink)"/>
+        <line x1="68" y1="123" x2="130" y2="123" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#zp)"/>
+        <defs><marker id="zp" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+        <path d="M150,136 A86 86 0 0 1 214 96" fill="none" stroke="var(--teal)" stroke-width="2" stroke-dasharray="4 3"/>
+        <rect x="205" y="86" width="26" height="22" fill="none" stroke="var(--teal)" stroke-dasharray="3 2"/>
+        <line x1="242" y1="97" x2="242" y2="123" stroke="var(--ink-soft)" stroke-dasharray="2 2"/>
+        <text x="247" y="114" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">h</text>
+        <text x="66" y="116" font-family="IBM Plex Mono" font-size="10" fill="var(--warn)" text-anchor="end">bala v</text>
+      </svg>
+      <figcaption>La bala se incrusta (se conserva el momento) y el conjunto sube una altura h (se conserva la energía).</figcaption>
+    </figure>
+    <p>Una bala de 0,020 kg se incrusta en un bloque de 0,980 kg que cuelga en reposo de hilos verticales. El conjunto (bloque + bala) se eleva una altura \(h=0{,}20\) m. (a) Halla la rapidez del conjunto justo tras el impacto. (b) Halla la rapidez de la bala antes del impacto. (c) Determina la fracción de energía cinética perdida y explica por qué no puede usarse conservación de la energía en todo el proceso.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Tras el impacto, la energía cinética del conjunto se convierte en potencial al subir: \(\tfrac12(M+m)V^2=(M+m)gh\Rightarrow V=\sqrt{2gh}=\sqrt{2(9{,}8)(0{,}20)}=1{,}98\) m·s⁻¹.</p>
+      <p class="ans">\(V\approx1{,}98\) m·s⁻¹.</p>
+      <p><strong>(b)</strong> En el impacto (inelástico) se conserva el momento: \(m v=(M+m)V\Rightarrow v=\dfrac{(1{,}00)(1{,}98)}{0{,}020}=99\) m·s⁻¹.</p>
+      <p class="ans">\(v\approx99\) m·s⁻¹.</p>
+      <p><strong>(c)</strong> \(E_{k,i}=\tfrac12(0{,}020)(99)^2\approx98\) J; \(E_{k,f}=\tfrac12(1{,}00)(1{,}98)^2\approx1{,}96\) J. Fracción perdida \(=1-\dfrac{1{,}96}{98}=0{,}98\) (98%). No se puede usar conservación de la energía en el impacto porque es un choque inelástico (se disipa energía en calor y deformación); la energía solo se conserva en la subida posterior.</p>
+      <p class="ans">Se pierde ≈ 98% de la energía cinética en el impacto.</p>
+    </div></details></div>
+  <div class="prob jefe"><p class="pn">E6 · PROBLEMA JEFE (colisión + Módulo 1, incertidumbre)</p><p>En un riel de aire, el planeador A (\(m_A=(0{,}250\pm0{,}005)\ \mathrm{kg}\)) a \(v_A=(0{,}42\pm0{,}02)\ \mathrm{m\,s^{-1}}\) choca con B (\(m_B=(0{,}500\pm0{,}005)\ \mathrm{kg}\)) en reposo. Tras el choque A queda en reposo y B se mueve a \(v_B'=(0{,}20\pm0{,}02)\ \mathrm{m\,s^{-1}}\). (a) Comprueba si el momento se conserva dentro de las incertidumbres. (b) Determina la fracción de energía cinética perdida, con su incertidumbre. (c) Clasifica la colisión.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Antes: \(p_i=m_A v_A=0{,}250(0{,}42)=0{,}105\) kg·m·s⁻¹. Incert. relativa \(=\dfrac{0{,}005}{0{,}250}+\dfrac{0{,}02}{0{,}42}=0{,}068\Rightarrow p_i=0{,}105\pm0{,}007\).</p>
+      <p>Después: \(p_f=m_B v_B'=0{,}500(0{,}20)=0{,}100\). Rel. \(=\dfrac{0{,}005}{0{,}500}+\dfrac{0{,}02}{0{,}20}=0{,}11\Rightarrow p_f=0{,}100\pm0{,}011\).</p>
+      <p>Rangos: \(p_i\in[0{,}098;\,0{,}112]\), \(p_f\in[0{,}089;\,0{,}111]\): se solapan, luego el momento se conserva dentro de las incertidumbres.</p>
+      <p class="ans">Sí; \(p_i=0{,}105\pm0{,}007\) y \(p_f=0{,}100\pm0{,}011\) son compatibles.</p>
+      <p><strong>(b)</strong> \(E_{k,i}=\tfrac12(0{,}250)(0{,}42)^2=0{,}0221\) J; \(E_{k,f}=\tfrac12(0{,}500)(0{,}20)^2=0{,}0100\) J. Fracción perdida \(=1-\dfrac{0{,}0100}{0{,}0221}=0{,}55\).</p>
+      <p>Para la incertidumbre: \(E_{k,i}\) rel. \(=\dfrac{0{,}005}{0{,}250}+2\dfrac{0{,}02}{0{,}42}=0{,}115\); \(E_{k,f}\) rel. \(=\dfrac{0{,}005}{0{,}500}+2\dfrac{0{,}02}{0{,}20}=0{,}21\). El cociente \(E_{k,f}/E_{k,i}=0{,}45\) tiene rel. \(=0{,}33\Rightarrow\Delta=0{,}45(0{,}33)\approx0{,}15\).</p>
+      <p class="ans">Fracción perdida ≈ 0,55 ± 0,15 (55% ± 15%).</p>
+      <p><strong>(c)</strong> Se pierde ~55% de la energía cinética y los cuerpos no quedan unidos (A se detiene, B avanza): la colisión es inelástica (ni elástica ni perfectamente inelástica).</p>
+      <p class="ans">Colisión inelástica.</p>
+    </div></details></div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 6B · Cantidad de movimiento Tipo 2 (Paper 2).</strong> Ficha completa resuelta (3 preguntas, apartado por apartado; la parte de proyectil de la M19 se remite al Módulo 2B para no repetir). Con esto el tema queda completo (6A + 6B). Sigue el <strong>Módulo 7A — Dinámica circunferencial</strong>, que reutilizará fuerzas, energía y momento. Convención: los ítems reales del IB usan \(g=9{,}8\)/\(9{,}81\).</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

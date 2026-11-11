@@ -1,0 +1,1932 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 13 · Análisis de curvas y optimización</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 13</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t1">1.1 Crecimiento y decrecimiento</a>
+  <a class="sub" href="#t2">1.2 Extremos locales y globales</a>
+  <a class="sub" href="#t3">1.3 Concavidad e inflexión</a>
+  <a class="sub" href="#t4">1.4 Leer f, f′ y f″</a>
+  <a class="sub" href="#t5">1.5 Trazado de curvas y recorrido</a>
+  <a class="sub" href="#t6">1.6 Parámetros y soluciones</a>
+  <a class="sub" href="#t7">1.7 Optimización</a>
+  <a class="sub" href="#t8">1.8 Más allá del IB</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos resueltos</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 13 de 17</p>
+  <h1>Análisis de curvas y optimización</h1>
+  <p class="formula">\( f'(a)=0,\ f''(a)\lt0\Rightarrow\text{máximo local} \qquad f''\ \text{cambia de signo}\Rightarrow\text{inflexión} \)</p>
+  <p>Todo lo necesario para estudiar el comportamiento de una función con sus derivadas y para resolver problemas de optimización sin calculadora, al nivel de la banda 7. Los problemas extra integran los Módulos 1–12.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">En tus pruebas, este módulo aparece directamente en 2 preguntas (14 puntos). Además es la herramienta de otras: el máximo del trapecio de mayo 2026, los extremos de noviembre 2022 P10, la velocidad máxima en cinemática (Módulo 16) y los recorridos de funciones. En las fichas es uno de los temas con más preguntas IB: dos bancos completos.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2026 TZ2</td><td>10(c)</td><td>6</td><td>Máximo de \(A(\theta)=4\sin\theta+2\sin2\theta\): derivada y ecuación trigonométrica</td></tr>
+<tr><td>Mayo 2022 TZ2</td><td>6</td><td>8</td><td>\(x\sqrt{1-x^2}\): función impar; recorrido con la derivada</td></tr>
+</tbody></table></div>
+<p>El resto de mayo 2026 P10 está en el Módulo 7. Noviembre 2022 P10(b) está en el Módulo 12. La velocidad máxima de noviembre 2021 P10 está en el Módulo 16.</p>
+
+<h3>Cómo lo pregunta el IB: patrones de tus pruebas y de los bancos</h3>
+<ol>
+<li><b>Recorrido con la derivada:</b> hallar los extremos y compararlos con los valores en los extremos del dominio.</li>
+<li><b>Optimización geométrica:</b> escribir la cantidad en una sola variable usando la restricción, derivar, igualar a 0 y <b>justificar</b> que es máximo.</li>
+<li><b>Ecuación trigonométrica al anular la derivada:</b> \(\cos\theta+\cos2\theta=0\) se convierte en una cuadrática en \(\cos\theta\).</li>
+<li><b>Leer \(f\) desde la gráfica de \(f'\):</b> crece donde \(f'\gt0\); hay máximo donde \(f'\) pasa de + a −; hay inflexión donde \(f'\) tiene un extremo.</li>
+<li><b>Función siempre creciente:</b> \(f'\ge0\) para todo \(x\), que con una \(f'\) cuadrática es \(\Delta\le0\).</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA N°28 (2025)</td><td>Máximos y mínimos, criterio del signo, concavidad, inflexión, gráficas de \(f\), \(f'\) y \(f''\)</td><td>F2, F3 y secciones 1.1–1.4</td></tr>
+<tr><td>Banco IB «Máximos y mínimos»</td><td>Preguntas IB: \(f\) siempre creciente, caja, lata, gráfica de \(f'\), parábola con \(g'=f-d\)</td><td>F1, F4, F5, F9</td></tr>
+<tr><td>Banco IB «Optimización»</td><td>16 problemas tipo: cercado junto a un río, piscina, punto más cercano, rectángulo bajo una semicircunferencia</td><td>F6–F8, F10</td></tr>
+</tbody></table></div>
+<p>Los bancos llevan la etiqueta «con calculadora». Aquí todos se resuelven de forma exacta, como exige la Prueba 1.</p>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Funciones crecientes y decrecientes; signo de \(f'\)</td><td>1.1</td><td>Alto</td></tr>
+<tr><td>Puntos estacionarios; extremos locales y globales; criterios de la primera y la segunda derivada</td><td>1.2</td><td>Alto</td></tr>
+<tr><td>Concavidad y puntos de inflexión (incluidos los estacionarios)</td><td>1.3</td><td>Medio</td></tr>
+<tr><td>Relación entre las gráficas de \(f\), \(f'\) y \(f''\)</td><td>1.4</td><td>Medio</td></tr>
+<tr><td>Trazado de curvas; recorrido</td><td>1.5</td><td>Alto</td></tr>
+<tr><td>Extremos con parámetros; número de soluciones de \(f(x)=k\)</td><td>1.6</td><td>Medio</td></tr>
+<tr><td>Optimización en contexto, con justificación global</td><td>1.7</td><td>Alto</td></tr>
+<tr><td>Desigualdad entre medias, Lagrange, convexidad (fuera del programa)</td><td>1.8</td><td>Solo como herramienta</td></tr>
+<tr><td>Otros tipos de pregunta: intervalos de crecimiento, clasificar con \(f''\), concavidad e inflexión, función siempre creciente, recorrido con la derivada, número de soluciones, optimización geométrica, leer \(f\) desde \(f'\)</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1–1.7 cubren todo el análisis con derivadas del programa, con un recuadro «Para practicar» en cada concepto esencial. La sección 6 reúne los tipos de pregunta del IB que no salieron en tus 7 pruebas pero que pueden venir. Las cajas «Más allá» añaden el truco de minimizar \(D^2\) en lugar de \(D\), las desigualdades probadas con extremos (\(e^x\ge1+x\)) y los problemas de esquina; ningún problema extra las necesita. El techo es la investigación I1, tipo Prueba 3.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Va del signo de la derivada a la optimización. Cada concepto trae un ejemplo resuelto y, los esenciales, un recuadro «Para practicar». Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Crecimiento y decrecimiento</h3>
+<ul>
+<li>\(f'(x)\gt0\) en un intervalo \(\Rightarrow\) \(f\) creciente allí. \(f'(x)\lt0\) \(\Rightarrow\) decreciente.</li>
+<li>Para hallar los intervalos: resuelve \(f'(x)=0\) (y marca donde \(f'\) no existe), haz una tabla de signos y lee.</li>
+<li>\(f\) es creciente en todo \(\mathbb R\) si \(f'(x)\ge0\) para todo \(x\), anulándose solo en puntos aislados. Si \(f'\) es cuadrática con coeficiente principal positivo, la condición es \(\Delta\le0\).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.1. Intervalos de crecimiento</p>
+<p>\(f(x)=x^3-6x^2+9x+1\). \(f'(x)=3(x-1)(x-3)\): crece en \((-\infty,1)\) y en \((3,\infty)\), y decrece en \((1,3)\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla los intervalos de crecimiento de \(f(x)=x^3-12x\).</li><li>Halla los intervalos de crecimiento de \(f(x)=x^4-2x^2\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f'(x)=3(x-2)(x+2)\): crece en \((-\infty,-2)\) y \((2,\infty)\), decrece en \((-2,2)\).</li><li>\(f'(x)=4x(x-1)(x+1)\): decrece en \((-\infty,-1)\) y \((0,1)\), crece en \((-1,0)\) y \((1,\infty)\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.2. Crecimiento de una campana</p>
+<p>\(f(x)=xe^{-x^2}\). \(f'(x)=(1-2x^2)e^{-x^2}\). Como \(e^{-x^2}\gt0\), el signo lo decide \(1-2x^2\): crece en \(\left(-\frac1{\sqrt2},\frac1{\sqrt2}\right)\) y decrece fuera. El factor exponencial nunca se anula, así que no aporta puntos críticos.</p></div>
+
+<h3 id="t2">1.2 Extremos locales y globales</h3>
+<ul>
+<li><b>Punto estacionario:</b> \(f'(a)=0\). Puede ser máximo, mínimo o inflexión horizontal.</li>
+<li><b>Criterio de la primera derivada:</b> el signo de \(f'\) pasa de + a − (máximo), de − a + (mínimo) o no cambia (inflexión horizontal).</li>
+<li><b>Criterio de la segunda derivada:</b> \(f''(a)\lt0\): máximo; \(f''(a)\gt0\): mínimo; \(f''(a)=0\): el criterio no decide y se usa el de la primera derivada.</li>
+<li><b>Extremos globales en \([a,b]\):</b> compara los valores en los puntos estacionarios <b>y en los extremos del intervalo</b>.</li>
+<li>También puede haber extremos donde \(f'\) no existe (por ejemplo \(|x|\) en 0).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.3. Clasificar y hallar el máximo global</p>
+<p>Para la \(f\) del ejemplo 1.1 en \([0,4]\): \(f''(x)=6x-12\). \(f''(1)=-6\): máximo local \((1,5)\). \(f''(3)=6\): mínimo local \((3,1)\).</p>
+<p>En los extremos: \(f(0)=1\) y \(f(4)=5\). Máximo global 5 (en \(x=1\) y en \(x=4\)); mínimo global 1 (en \(x=0\) y en \(x=3\)).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Clasifica los extremos de \(f(x)=2x^3-3x^2-12x\).</li><li>Halla el máximo global de \(f(x)=x^3-3x\) en \([0,3]\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f'(x)=6(x-2)(x+1)\); \(f''=12x-6\): máximo en \((-1,7)\), mínimo en \((2,-20)\).</li><li>Estacionario en \((1,-2)\); bordes \(f(0)=0\), \(f(3)=18\): máximo global 18 en \(x=3\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.4. Un extremo donde \(f'\) no existe</p>
+<p>\(f(x)=x^{2/3}(x-5)\). \(f'(x)=\frac{5(x-2)}{3\sqrt[3]x}\), que se anula en \(x=2\) y no existe en \(x=0\).</p>
+<div class="tbl"><table><thead><tr><th>Intervalo</th><th>\(x\lt0\)</th><th>\(0\lt x\lt2\)</th><th>\(x\gt2\)</th></tr></thead><tbody><tr><td>Signo de \(f'\)</td><td>\(+\)</td><td>\(-\)</td><td>\(+\)</td></tr></tbody></table></div>
+<p>Máximo local en \((0,0)\), un pico sin tangente horizontal, y mínimo local en \(\left(2,-3\sqrt[3]4\right)\). Solo con \(f'=0\) se habría perdido el máximo.</p></div>
+
+<h3 id="t3">1.3 Concavidad e inflexión</h3>
+<ul>
+<li>\(f''\gt0\): cóncava hacia arriba (las pendientes crecen). \(f''\lt0\): cóncava hacia abajo.</li>
+<li><b>Punto de inflexión:</b> donde la concavidad cambia. Hace falta que \(f''\) <b>cambie de signo</b>; \(f''=0\) solo no basta (por ejemplo \(x^4\) en 0).</li>
+<li>Si además \(f'=0\) allí, es una inflexión horizontal (por ejemplo \(x^3\) en 0).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.5. Inflexión y el caso \(x^4\)</p>
+<p>(a) Para \(f(x)=x^3-6x^2+9x+1\): \(f''=6x-12\) cambia de signo en 2, así que hay inflexión en \((2,3)\). (b) \(g(x)=x^4\): \(g''(0)=0\), pero \(g''=12x^2\ge0\) no cambia de signo: no hay inflexión.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla los puntos de inflexión de \(f(x)=x^4-6x^2\).</li><li>¿Tiene \(g(x)=x^4+1\) un punto de inflexión en \(x=0\)?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f''=12(x^2-1)\) cambia de signo en \(x=\pm1\): inflexiones en \((\pm1,-5)\).</li><li>\(g''=12x^2\ge0\) no cambia de signo: no hay inflexión (es un mínimo).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.6. Dos inflexiones simétricas</p>
+<p>\(f(x)=\ln(1+x^2)\). \(f''(x)=\frac{2(1-x^2)}{(1+x^2)^2}\) cambia de signo en \(x=\pm1\): inflexiones en \((\pm1,\ln2)\). Es cóncava hacia arriba en \((-1,1)\) y hacia abajo fuera. Como \(f\) es par, basta estudiar \(x\ge0\) y reflejar.</p></div>
+
+<h3 id="t4">1.4 Relación entre las gráficas de \(f\), \(f'\) y \(f''\)</h3>
+<div class="tbl"><table>
+<thead><tr><th>En la gráfica de \(f'\) se ve…</th><th>…lo que significa para \(f\)</th></tr></thead>
+<tbody>
+<tr><td>\(f'\) por encima del eje</td><td>\(f\) creciente</td></tr>
+<tr><td>\(f'\) cruza el eje de + a −</td><td>Máximo local de \(f\)</td></tr>
+<tr><td>\(f'\) cruza el eje de − a +</td><td>Mínimo local de \(f\)</td></tr>
+<tr><td>\(f'\) toca el eje sin cruzarlo</td><td>Inflexión horizontal de \(f\)</td></tr>
+<tr><td>\(f'\) tiene un máximo o un mínimo local</td><td>Inflexión de \(f\) (\(f''\) cambia de signo)</td></tr>
+<tr><td>\(f'\) creciente</td><td>\(f\) cóncava hacia arriba</td></tr>
+</tbody></table></div>
+<div class="ex"><p class="et">Ejemplo 1.7. De la gráfica de \(f\) a la de \(f'\)</p>
+<p>\(f\) tiene un máximo local en \(x=1\), una inflexión en \(x=2\) y un mínimo local en \(x=3\), y crece para \(x\gt3\). Describe la gráfica de \(f'\).</p>
+<p>\(f'\) corta el eje en 1 (de + a −) y en 3 (de − a +). Es negativa entre 1 y 3 y positiva fuera. Tiene su mínimo en \(x=2\), donde \(f\) tiene la inflexión. Una parábola \(f'(x)=k(x-1)(x-3)\) con \(k\gt0\) cumple todo esto.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 390.575156 386.861937" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 386.861937 
+L 390.575156 386.861937 
+L 390.575156 0 
+L 0 0 
+L 0 386.861937 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 37.415156 111.557647 
+L 383.375156 111.557647 
+L 383.375156 7.2 
+L 37.415156 7.2 
+L 37.415156 111.557647 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m29dcd0d61f" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="67.118793" y="111.557647" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="137.009702" y="111.557647" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="206.900611" y="111.557647" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="276.79152" y="111.557647" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="346.682429" y="111.557647" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6">
+      <defs>
+       <path id="m4798f5e7ab" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m4798f5e7ab" x="37.415156" y="95.080124" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="99.259264" transform="rotate(-0 30.415156 99.259264)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m4798f5e7ab" x="37.415156" y="51.140062" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="55.319203" transform="rotate(-0 30.415156 55.319203)">4</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_8">
+    <path d="M 53.140611 117.577436 
+L 57.34809 110.219555 
+L 61.55557 103.3728 
+L 65.763049 97.02279 
+L 69.970529 91.155146 
+L 74.178008 85.755489 
+L 78.385488 80.809437 
+L 82.592967 76.302611 
+L 86.800447 72.220631 
+L 89.956056 69.429301 
+L 93.111666 66.862792 
+L 96.267275 64.515037 
+L 99.422885 62.37997 
+L 102.578495 60.451524 
+L 105.734104 58.723633 
+L 108.889714 57.19023 
+L 112.045323 55.845248 
+L 115.200933 54.682622 
+L 119.408413 53.405631 
+L 123.615892 52.427663 
+L 127.823372 51.734337 
+L 132.030851 51.311273 
+L 136.23833 51.144091 
+L 140.44581 51.218412 
+L 144.653289 51.519855 
+L 148.860769 52.034041 
+L 153.068248 52.74659 
+L 158.327598 53.894316 
+L 163.586947 55.30143 
+L 168.846296 56.939846 
+L 175.157516 59.171718 
+L 181.468735 61.64769 
+L 188.831824 64.780089 
+L 198.298653 69.074567 
+L 226.699139 82.195808 
+L 234.062228 85.272601 
+L 240.373448 87.686499 
+L 246.684667 89.842996 
+L 251.944016 91.408439 
+L 257.203365 92.733343 
+L 262.462715 93.789623 
+L 266.670194 94.422363 
+L 270.877674 94.850829 
+L 275.085153 95.06064 
+L 279.292633 95.037417 
+L 283.500112 94.76678 
+L 287.707592 94.234349 
+L 291.915071 93.425744 
+L 296.122551 92.326585 
+L 299.27816 91.302889 
+L 302.43377 90.101602 
+L 305.589379 88.716656 
+L 308.744989 87.141986 
+L 311.900599 85.371524 
+L 315.056208 83.399204 
+L 318.211818 81.21896 
+L 321.367427 78.824725 
+L 324.523037 76.210433 
+L 327.678647 73.370017 
+L 330.834256 70.29741 
+L 333.989866 66.986546 
+L 338.197345 62.190954 
+L 342.404825 56.946629 
+L 346.612304 51.239191 
+L 350.819784 45.054261 
+L 355.027263 38.377458 
+L 359.234743 31.194403 
+L 363.442222 23.490716 
+L 367.649702 15.252016 
+L 367.649702 15.252016 
+" clip-path="url(#p8b78e6de2b)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 37.415156 95.080124 
+L 383.375156 95.080124 
+" clip-path="url(#p8b78e6de2b)" style="fill: none; stroke: currentColor; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 137.009702 111.557647 
+L 137.009702 7.2 
+" clip-path="url(#p8b78e6de2b)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 206.900611 111.557647 
+L 206.900611 7.2 
+" clip-path="url(#p8b78e6de2b)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 276.79152 111.557647 
+L 276.79152 7.2 
+" clip-path="url(#p8b78e6de2b)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 37.415156 111.557647 
+L 37.415156 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 37.415156 111.557647 
+L 383.375156 111.557647 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="147.493338" y="35.76104" transform="rotate(-0 147.493338 35.76104)">máx. local</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="213.889702" y="59.928074" transform="rotate(-0 213.889702 59.928074)">inflexión</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="283.780611" y="79.701102" transform="rotate(-0 283.780611 79.701102)">mín. local</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_13">
+     <path d="M 46.415156 20.298437 
+L 56.415156 20.298437 
+L 66.415156 20.298437 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="74.415156" y="23.798437" transform="rotate(-0 74.415156 23.798437)">f(x) = x³ − 6x² + 9x</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 37.415156 236.786824 
+L 383.375156 236.786824 
+L 383.375156 132.429176 
+L 37.415156 132.429176 
+L 37.415156 236.786824 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_6">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="67.118793" y="236.786824" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="137.009702" y="236.786824" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="206.900611" y="236.786824" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="276.79152" y="236.786824" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="346.682429" y="236.786824" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_3">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m4798f5e7ab" x="37.415156" y="224.509453" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="228.688594" transform="rotate(-0 30.415156 228.688594)">−3</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m4798f5e7ab" x="37.415156" y="206.093398" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="210.272539" transform="rotate(-0 30.415156 210.272539)">0</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#m4798f5e7ab" x="37.415156" y="150.845232" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="155.024372" transform="rotate(-0 30.415156 155.024372)">9</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_22">
+    <path d="M 53.140611 135.375745 
+L 59.45183 142.542724 
+L 65.763049 149.409364 
+L 72.074268 155.975665 
+L 78.385488 162.241627 
+L 84.696707 168.20725 
+L 91.007926 173.872533 
+L 97.319145 179.237478 
+L 103.630365 184.302084 
+L 109.941584 189.066351 
+L 116.252803 193.530279 
+L 122.564022 197.693867 
+L 128.875241 201.557117 
+L 135.186461 205.120028 
+L 141.49768 208.382599 
+L 146.757029 210.871983 
+L 152.016379 213.152799 
+L 157.275728 215.225045 
+L 162.535077 217.088723 
+L 167.794427 218.743832 
+L 173.053776 220.190372 
+L 178.313125 221.428344 
+L 183.572475 222.457746 
+L 188.831824 223.27858 
+L 194.091173 223.890846 
+L 199.350523 224.294542 
+L 204.609872 224.48967 
+L 209.869221 224.476229 
+L 215.128571 224.254219 
+L 220.38792 223.82364 
+L 225.647269 223.184493 
+L 230.906619 222.336777 
+L 236.165968 221.280492 
+L 241.425317 220.015638 
+L 246.684667 218.542215 
+L 251.944016 216.860224 
+L 257.203365 214.969664 
+L 262.462715 212.870536 
+L 267.722064 210.562838 
+L 272.981413 208.046572 
+L 278.240763 205.321737 
+L 284.551982 201.776624 
+L 290.863201 197.931172 
+L 297.17442 193.785381 
+L 303.48564 189.339251 
+L 309.796859 184.592783 
+L 316.108078 179.545975 
+L 322.419297 174.198828 
+L 328.730517 168.551342 
+L 335.041736 162.603517 
+L 341.352955 156.355353 
+L 347.664174 149.80685 
+L 353.975393 142.958008 
+L 360.286613 135.808827 
+L 366.597832 128.359307 
+L 367.649702 127.08852 
+L 367.649702 127.08852 
+" clip-path="url(#pf080f8f4dd)" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_23">
+    <path d="M 37.415156 206.093398 
+L 383.375156 206.093398 
+" clip-path="url(#pf080f8f4dd)" style="fill: none; stroke: currentColor; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_24">
+    <path d="M 137.009702 236.786824 
+L 137.009702 132.429176 
+" clip-path="url(#pf080f8f4dd)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_25">
+    <path d="M 206.900611 236.786824 
+L 206.900611 132.429176 
+" clip-path="url(#pf080f8f4dd)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_26">
+    <path d="M 276.79152 236.786824 
+L 276.79152 132.429176 
+" clip-path="url(#pf080f8f4dd)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 37.415156 236.786824 
+L 37.415156 132.429176 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 37.415156 236.786824 
+L 383.375156 236.786824 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_2">
+    <g id="line2d_27">
+     <path d="M 46.415156 145.527614 
+L 56.415156 145.527614 
+L 66.415156 145.527614 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="74.415156" y="149.027614" transform="rotate(-0 74.415156 149.027614)">f′(x) = 3(x − 1)(x − 3)</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_8">
+    <path d="M 37.415156 362.016 
+L 383.375156 362.016 
+L 383.375156 257.658353 
+L 37.415156 257.658353 
+L 37.415156 362.016 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_5">
+    <g id="xtick_11">
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="67.118793" y="362.016" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="67.118793" y="377.374281" transform="rotate(-0 67.118793 377.374281)">0</text>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_29">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="137.009702" y="362.016" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="137.009702" y="377.374281" transform="rotate(-0 137.009702 377.374281)">1</text>
+     </g>
+    </g>
+    <g id="xtick_13">
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="206.900611" y="362.016" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="206.900611" y="377.374281" transform="rotate(-0 206.900611 377.374281)">2</text>
+     </g>
+    </g>
+    <g id="xtick_14">
+     <g id="line2d_31">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="276.79152" y="362.016" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="276.79152" y="377.374281" transform="rotate(-0 276.79152 377.374281)">3</text>
+     </g>
+    </g>
+    <g id="xtick_15">
+     <g id="line2d_32">
+      <g>
+       <use xlink:href="#m29dcd0d61f" x="346.682429" y="362.016" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="346.682429" y="377.374281" transform="rotate(-0 346.682429 377.374281)">4</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_6">
+    <g id="ytick_6">
+     <g id="line2d_33">
+      <g>
+       <use xlink:href="#m4798f5e7ab" x="37.415156" y="355.058824" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="359.237964" transform="rotate(-0 30.415156 359.237964)">−12</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_34">
+      <g>
+       <use xlink:href="#m4798f5e7ab" x="37.415156" y="313.315765" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="317.494905" transform="rotate(-0 30.415156 317.494905)">0</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_35">
+      <g>
+       <use xlink:href="#m4798f5e7ab" x="37.415156" y="271.572706" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="275.751847" transform="rotate(-0 30.415156 275.751847)">12</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_36">
+    <path d="M 53.140611 359.233129 
+L 367.649702 265.311247 
+L 367.649702 265.311247 
+" clip-path="url(#p767ed859a6)" style="fill: none; stroke: #a2530a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_37">
+    <path d="M 37.415156 313.315765 
+L 383.375156 313.315765 
+" clip-path="url(#p767ed859a6)" style="fill: none; stroke: currentColor; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_38">
+    <path d="M 137.009702 362.016 
+L 137.009702 257.658353 
+" clip-path="url(#p767ed859a6)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_39">
+    <path d="M 206.900611 362.016 
+L 206.900611 257.658353 
+" clip-path="url(#p767ed859a6)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_40">
+    <path d="M 276.79152 362.016 
+L 276.79152 257.658353 
+" clip-path="url(#p767ed859a6)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 37.415156 362.016 
+L 37.415156 257.658353 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 37.415156 362.016 
+L 383.375156 362.016 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_3">
+    <g id="line2d_41">
+     <path d="M 46.415156 270.75679 
+L 56.415156 270.75679 
+L 66.415156 270.75679 
+" style="fill: none; stroke: #a2530a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_19">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="74.415156" y="274.25679" transform="rotate(-0 74.415156 274.25679)">f″(x) = 6x − 12</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p8b78e6de2b">
+   <rect x="37.415156" y="7.2" width="345.96" height="104.357647"/>
+  </clipPath>
+  <clipPath id="pf080f8f4dd">
+   <rect x="37.415156" y="132.429176" width="345.96" height="104.357647"/>
+  </clipPath>
+  <clipPath id="p767ed859a6">
+   <rect x="37.415156" y="257.658353" width="345.96" height="104.357647"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.7: \(f\) con máximo en 1, inflexión en 2 y mínimo en 3. \(f'\) corta el eje en los extremos de \(f\) y tiene su mínimo en la inflexión; \(f''\) corta el eje en la inflexión.</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>La gráfica de \(f'\) es positiva en \((-\infty,2)\), nula en 2 y negativa después. ¿Qué tiene \(f\) en \(x=2\)?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f'\) pasa de \(+\) a \(-\): \(f\) tiene un máximo local en \(x=2\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.8. Una raíz doble de \(f'\)</p>
+<p>\(f'(x)=x^2(x-2)\). En \(x=0\), \(f'\) toca el eje sin cambiar de signo (negativa a ambos lados): es una <b>inflexión horizontal</b>, no un extremo. En \(x=2\), \(f'\) pasa de \(-\) a \(+\): mínimo. Además \(f''=3x^2-4x=x(3x-4)\) cambia de signo en 0 y en \(\frac43\): dos inflexiones, una horizontal y otra no.</p></div>
+
+<h3 id="t5">1.5 Trazado de curvas y recorrido</h3>
+<p><b>Lista para dibujar:</b> dominio y simetrías, cortes con los ejes, asíntotas (Módulo 3), puntos estacionarios con su naturaleza, inflexiones, comportamiento en los extremos del dominio.</p>
+<p><b>Recorrido de una función continua en \([a,b]\):</b> va del menor al mayor de los valores en los estacionarios y en los extremos.</p>
+<div class="ex"><p class="et">Ejemplo 1.9. Recorrido con la derivada</p>
+<p>Halla el recorrido de \(f(x)=xe^{-x}\) para \(x\ge0\).</p>
+<p>\(f'(x)=(1-x)e^{-x}\): máximo en \(\left(1,\tfrac1e\right)\). Además \(f(0)=0\), \(f(x)\ge0\) y \(f\to0\) cuando \(x\to\infty\). Recorrido: \(0\le y\le\tfrac1e\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el recorrido de \(f(x)=\dfrac{x}{x^2+1}\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f'(x)=\dfrac{1-x^2}{(x^2+1)^2}\): máximo \(\left(1,\tfrac12\right)\), mínimo \(\left(-1,-\tfrac12\right)\), \(f\to0\): recorrido \(\left[-\tfrac12,\tfrac12\right]\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.10. Trazado completo de \(\frac x{x^2+1}\)</p>
+<p>Es impar y su dominio es \(\mathbb R\); corta los ejes solo en el origen; tiene la asíntota horizontal \(y=0\).</p>
+<p>\(f'(x)=\frac{1-x^2}{(x^2+1)^2}\): máximo \(\left(1,\frac12\right)\) y mínimo \(\left(-1,-\frac12\right)\). \(f''(x)=\frac{2x(x^2-3)}{(x^2+1)^3}\): inflexiones en \(x=0\) y \(x=\pm\sqrt3\). Recorrido: \(\left[-\frac12,\frac12\right]\). Los extremos globales existen aunque el dominio no esté acotado, porque \(f\to0\) en los dos lados.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 371.52 202.896" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 202.896 
+L 371.52 202.896 
+L 371.52 -0 
+L 0 -0 
+L 0 202.896 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 195.696 
+L 364.32 195.696 
+L 364.32 7.2 
+L 7.2 7.2 
+L 7.2 195.696 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m4f56fbb71b" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m4f56fbb71b" x="138.900153" y="110.568774" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="138.900153" y="125.927055" transform="rotate(-0 138.900153 125.927055)">−√3</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m4f56fbb71b" x="158.705455" y="110.568774" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="158.705455" y="125.927055" transform="rotate(-0 158.705455 125.927055)">−1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m4f56fbb71b" x="212.814545" y="110.568774" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="212.814545" y="125.927055" transform="rotate(-0 212.814545 125.927055)">1</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m4f56fbb71b" x="232.619847" y="110.568774" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="232.619847" y="125.927055" transform="rotate(-0 232.619847 125.927055)">√3</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="ma98e0c934c" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#ma98e0c934c" x="185.76" y="171.373935" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="178.76" y="175.553076" transform="rotate(-0 178.76 175.553076)">−1/2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#ma98e0c934c" x="185.76" y="49.763613" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="178.76" y="53.942754" transform="rotate(-0 178.76 53.942754)">1/2</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M 23.432727 130.289367 
+L 36.451456 131.903934 
+L 47.842843 133.540516 
+L 58.42056 135.290204 
+L 67.370936 136.980181 
+L 76.321312 138.900816 
+L 84.458018 140.884733 
+L 91.781053 142.898506 
+L 98.290417 144.898843 
+L 104.799781 147.125144 
+L 111.309146 149.605652 
+L 117.004839 152.005492 
+L 122.700533 154.632731 
+L 128.396227 157.487569 
+L 134.905591 160.993935 
+L 147.92432 168.107192 
+L 151.179002 169.587199 
+L 153.620014 170.482949 
+L 156.061025 171.11048 
+L 157.688366 171.332552 
+L 159.315707 171.358114 
+L 160.943049 171.148061 
+L 162.57039 170.658581 
+L 164.197731 169.841456 
+L 165.825072 168.644799 
+L 167.452413 167.014374 
+L 169.079754 164.895657 
+L 170.707095 162.236756 
+L 172.334436 158.992245 
+L 173.961777 155.127841 
+L 175.589118 150.625669 
+L 177.216459 145.489622 
+L 178.8438 139.750089 
+L 181.284812 130.14902 
+L 184.539494 116.043812 
+L 190.235188 90.988529 
+L 192.6762 81.387459 
+L 194.303541 75.647926 
+L 195.930882 70.51188 
+L 197.558223 66.009708 
+L 199.185564 62.145303 
+L 200.812905 58.900793 
+L 202.440246 56.241892 
+L 204.067587 54.123175 
+L 205.694928 52.492749 
+L 207.322269 51.296092 
+L 208.94961 50.478968 
+L 210.576951 49.989488 
+L 212.204293 49.779434 
+L 213.831634 49.804996 
+L 215.458975 50.027068 
+L 217.899986 50.654599 
+L 220.340998 51.550349 
+L 223.59568 53.030357 
+L 227.664033 55.152897 
+L 246.378455 65.308489 
+L 252.074149 68.034346 
+L 257.769843 70.530613 
+L 263.465537 72.805674 
+L 269.974901 75.15556 
+L 276.484265 77.265383 
+L 283.8073 79.38659 
+L 291.130335 81.275625 
+L 299.26704 83.141009 
+L 308.217416 84.951749 
+L 317.981463 86.685369 
+L 328.55918 88.327001 
+L 339.950567 89.868123 
+L 348.087273 90.848181 
+L 348.087273 90.848181 
+" clip-path="url(#pdbf50794d0)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <defs>
+     <path id="md8b8501941" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: #a2530a"/>
+    </defs>
+    <g clip-path="url(#pdbf50794d0)">
+     <use xlink:href="#md8b8501941" x="212.814545" y="49.763613" style="fill: #a2530a; stroke: #a2530a"/>
+     <use xlink:href="#md8b8501941" x="158.705455" y="171.373935" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="line2d_9">
+    <defs>
+     <path id="m9b7763ef79" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: #5a3d9a"/>
+    </defs>
+    <g clip-path="url(#pdbf50794d0)">
+     <use xlink:href="#m9b7763ef79" x="185.76" y="110.568774" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     <use xlink:href="#m9b7763ef79" x="232.619847" y="57.90996" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     <use xlink:href="#m9b7763ef79" x="138.900153" y="163.227589" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_10">
+    <path d="M 7.2 49.763613 
+L 364.32 49.763613 
+" clip-path="url(#pdbf50794d0)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.8"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 7.2 171.373935 
+L 364.32 171.373935 
+" clip-path="url(#pdbf50794d0)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.8"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 185.76 195.696 
+L 185.76 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 110.568774 
+L 364.32 110.568774 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_12">
+     <path d="M 235.384219 153.576859 
+L 244.884219 153.576859 
+L 254.384219 153.576859 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="261.984219" y="156.901859" transform="rotate(-0 261.984219 156.901859)">y = x/(x² + 1)</text>
+    </g>
+    <g id="line2d_13">
+     <g>
+      <use xlink:href="#md8b8501941" x="244.884219" y="167.901078" style="fill: #a2530a; stroke: #a2530a"/>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="261.984219" y="171.226078" transform="rotate(-0 261.984219 171.226078)">máximo y mínimo</text>
+    </g>
+    <g id="line2d_14">
+     <g>
+      <use xlink:href="#m9b7763ef79" x="244.884219" y="181.845297" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     </g>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="261.984219" y="185.170297" transform="rotate(-0 261.984219 185.170297)">inflexiones (0, ±√3)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pdbf50794d0">
+   <rect x="7.2" y="7.2" width="357.12" height="188.496"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.10: función impar con asíntota \(y=0\), extremos en \(x=\pm1\) e inflexiones en \(0\) y \(\pm\sqrt3\). El recorrido \(\left[-\frac12,\frac12\right]\) se lee entre las dos rectas punteadas.</figcaption></figure>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ2, P6)</p><p>El recorrido de \(x\sqrt{1-x^2}\) exige derivar con producto y cadena, hallar \(x=\pm\tfrac1{\sqrt2}\) y <b>evaluar</b> \(f\) en ellos. Dar solo las \(x\) no gana la A1 final.</p></div>
+
+<h3 id="t6">1.6 Extremos con parámetros y número de soluciones</h3>
+<ul>
+<li><b>Número de soluciones de \(f(x)=k\):</b> es el número de cortes de \(y=f(x)\) con la recta horizontal \(y=k\). Los valores críticos de \(k\) son los máximos y mínimos locales y los límites en los extremos del dominio.</li>
+<li><b>Hallar un parámetro desde un extremo:</b> la condición «tiene un punto estacionario en \(x=a\)» da \(f'(a)=0\). Si además dan la ordenada, \(f(a)=b\) da otra ecuación.</li>
+<li>Después de hallar el parámetro, hay que <b>comprobar la naturaleza</b> del punto: \(f'(a)=0\) no garantiza que sea un máximo.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.11. ¿Cuántas soluciones tiene \(x^3-3x=k\)?</p>
+<p>\(f(x)=x^3-3x\) tiene \(f'=3(x-1)(x+1)\): máximo local \((-1,2)\) y mínimo local \((1,-2)\), y \(f\to\pm\infty\). Hay tres soluciones si \(-2\lt k\lt2\), dos si \(k=\pm2\) (una es doble, la recta es tangente) y una si \(|k|\gt2\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 349.2 267.119505" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 267.119505 
+L 349.2 267.119505 
+L 349.2 0 
+L 0 0 
+L 0 267.119505 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 217.872 
+L 342 217.872 
+L 342 7.2 
+L 7.2 7.2 
+L 7.2 217.872 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mdc9dc682dd" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mdc9dc682dd" x="47.781818" y="118.732235" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="47.781818" y="134.090517" transform="rotate(-0 47.781818 134.090517)">−2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mdc9dc682dd" x="111.190909" y="118.732235" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="111.190909" y="134.090517" transform="rotate(-0 111.190909 134.090517)">−1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mdc9dc682dd" x="238.009091" y="118.732235" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="238.009091" y="134.090517" transform="rotate(-0 238.009091 134.090517)">1</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mdc9dc682dd" x="301.418182" y="118.732235" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="301.418182" y="134.090517" transform="rotate(-0 301.418182 134.090517)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="mf6e1496f71" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mf6e1496f71" x="174.6" y="168.302118" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="167.6" y="172.481258" transform="rotate(-0 167.6 172.481258)">−2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mf6e1496f71" x="174.6" y="69.162353" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="167.6" y="73.341494" transform="rotate(-0 167.6 73.341494)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M 25.12743 268.119505 
+L 28.525813 250.450349 
+L 32.597568 230.586087 
+L 36.669322 212.095054 
+L 40.741076 194.937877 
+L 43.794892 182.921649 
+L 46.848708 171.616954 
+L 49.902524 161.00718 
+L 52.956339 151.075716 
+L 56.010155 141.805949 
+L 59.063971 133.181269 
+L 62.117787 125.185063 
+L 65.171602 117.80072 
+L 68.225418 111.011628 
+L 71.279234 104.801176 
+L 74.33305 99.152751 
+L 77.386865 94.049743 
+L 80.440681 89.475539 
+L 83.494497 85.413528 
+L 86.548313 81.847099 
+L 89.602128 78.759639 
+L 91.638005 76.959223 
+L 93.673883 75.359377 
+L 95.70976 73.95518 
+L 97.745637 72.74171 
+L 99.781514 71.714044 
+L 101.817391 70.86726 
+L 103.853268 70.196437 
+L 105.889146 69.696653 
+L 107.925023 69.362985 
+L 109.9609 69.190512 
+L 111.996777 69.174312 
+L 115.050593 69.432256 
+L 118.104409 70.014127 
+L 121.158224 70.903314 
+L 124.21204 72.083205 
+L 127.265856 73.537188 
+L 130.319672 75.248652 
+L 133.373487 77.200985 
+L 136.427303 79.377576 
+L 140.499057 82.59983 
+L 144.570812 86.151856 
+L 148.642566 89.994279 
+L 153.732259 95.145691 
+L 158.821952 100.612417 
+L 164.929583 107.480419 
+L 175.108969 119.32905 
+L 186.306294 132.303327 
+L 192.413925 139.07166 
+L 197.503618 144.421489 
+L 202.593311 149.425241 
+L 206.665065 153.127388 
+L 210.73682 156.51945 
+L 214.808574 159.562052 
+L 217.86239 161.590984 
+L 220.916206 163.384583 
+L 223.970021 164.926239 
+L 227.023837 166.19934 
+L 230.077653 167.187274 
+L 233.131469 167.87343 
+L 236.185284 168.241195 
+L 238.221161 168.301285 
+L 240.257039 168.207564 
+L 242.292916 167.955108 
+L 244.328793 167.538998 
+L 246.36467 166.954309 
+L 248.400547 166.196121 
+L 250.436424 165.259512 
+L 252.472302 164.139559 
+L 254.508179 162.83134 
+L 256.544056 161.329934 
+L 258.579933 159.630419 
+L 260.61581 157.727872 
+L 262.651687 155.617372 
+L 265.705503 152.050942 
+L 268.759319 147.988931 
+L 271.813135 143.414728 
+L 274.86695 138.311719 
+L 277.920766 132.663295 
+L 280.974582 126.452842 
+L 284.028398 119.663751 
+L 287.082213 112.279408 
+L 290.136029 104.283202 
+L 293.189845 95.658521 
+L 296.243661 86.388755 
+L 299.297476 76.45729 
+L 302.351292 65.847516 
+L 305.405108 54.542821 
+L 308.458924 42.526594 
+L 311.512739 29.782221 
+L 314.566555 16.293093 
+L 318.249593 -1 
+L 318.249593 -1 
+" clip-path="url(#pce13d16c02)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 7.2 93.947294 
+L 342 93.947294 
+" clip-path="url(#pce13d16c02)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 7.2 69.162353 
+L 342 69.162353 
+" clip-path="url(#pce13d16c02)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 7.2 44.377412 
+L 342 44.377412 
+" clip-path="url(#pce13d16c02)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_11">
+    <defs>
+     <path id="m8d56a74d2f" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#pce13d16c02)">
+     <use xlink:href="#m8d56a74d2f" x="111.190909" y="69.162353" style="stroke: currentColor"/>
+     <use xlink:href="#m8d56a74d2f" x="238.009091" y="168.302118" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 174.6 217.872 
+L 174.6 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 118.732235 
+L 342 118.732235 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_12">
+     <path d="M 37.63125 238.087474 
+L 46.63125 238.087474 
+L 55.63125 238.087474 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="62.83125" y="241.237474" transform="rotate(-0 62.83125 241.237474)">y = x³ − 3x</text>
+    </g>
+    <g id="line2d_13">
+     <path d="M 37.63125 251.297786 
+L 46.63125 251.297786 
+L 55.63125 251.297786 
+" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.2"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="62.83125" y="254.447786" transform="rotate(-0 62.83125 254.447786)">k = 1: tres cortes</text>
+    </g>
+    <g id="line2d_14">
+     <path d="M 158.945625 238.087474 
+L 167.945625 238.087474 
+L 176.945625 238.087474 
+" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="184.145625" y="241.237474" transform="rotate(-0 184.145625 241.237474)">k = 2: dos cortes (tangente)</text>
+    </g>
+    <g id="line2d_15">
+     <path d="M 158.945625 251.297786 
+L 167.945625 251.297786 
+L 176.945625 251.297786 
+" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 1.2"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="184.145625" y="254.447786" transform="rotate(-0 184.145625 254.447786)">k = 3: un corte</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pce13d16c02">
+   <rect x="7.2" y="7.2" width="334.8" height="210.672"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.11: el número de soluciones de \(x^3-3x=k\) es el número de cortes con la recta horizontal \(y=k\). Los valores frontera son el máximo local 2 y el mínimo local \(-2\).</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>¿Cuántas soluciones tiene \(x^3-12x=k\) según \(k\)?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Extremos \((-2,16)\) y \((2,-16)\): tres soluciones si \(-16\lt k\lt16\); dos si \(k=\pm16\); una si \(|k|\gt16\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.12. El parámetro que coloca un máximo</p>
+<p>Halla \(k\) para que \(f(x)=x^2e^{kx}\) tenga un máximo local en \(x=-1\).</p>
+<p>\(f'(x)=xe^{kx}(2+kx)\). Los estacionarios son \(x=0\) y \(x=-\frac2k\). Con \(-\frac2k=-1\), \(k=2\). Comprobación: con \(k=2\), \(f'=2xe^{2x}(1+x)\) es positiva para \(x\lt-1\) y negativa en \((-1,0)\): es un máximo, con valor \(e^{-2}\).</p></div>
+
+<h3 id="t7">1.7 Optimización</h3>
+<ol>
+<li>Dibuja y nombra las variables.</li>
+<li>Escribe la cantidad a optimizar \(Q\) y la restricción.</li>
+<li>Usa la restricción para dejar \(Q\) en <b>una</b> variable, con su dominio.</li>
+<li>Resuelve \(Q'=0\).</li>
+<li><b>Justifica</b> que es máximo o mínimo: con \(Q''\), con la tabla de signos o comparando con los extremos del dominio.</li>
+<li>Responde lo que se pide: la variable, el valor óptimo, o ambos, con unidades.</li>
+</ol>
+<div class="ex"><p class="et">Ejemplo 1.13. Caja abierta</p>
+<p>De una lámina de 12 × 12 se cortan cuadrados de lado \(x\) en las esquinas y se forma una caja abierta. Halla el volumen máximo.</p>
+<p>\(V=x(12-2x)^2\), \(0\lt x\lt6\). \(V'=(12-2x)(12-6x)=0\Rightarrow x=2\). \(V''(2)=-48\lt0\): máximo, con \(V=2\cdot64=128\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 377.19625 246.275875" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 246.275875 
+L 377.19625 246.275875 
+L 377.19625 0 
+L 0 0 
+L 0 246.275875 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 35.19625 206.784 
+L 369.99625 206.784 
+L 369.99625 7.2 
+L 35.19625 7.2 
+L 35.19625 206.784 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m25489e83c7" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m25489e83c7" x="35.19625" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="35.19625" y="222.142281" transform="rotate(-0 35.19625 222.142281)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m25489e83c7" x="139.82125" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="139.82125" y="222.142281" transform="rotate(-0 139.82125 222.142281)">2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m25489e83c7" x="244.44625" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="244.44625" y="222.142281" transform="rotate(-0 244.44625 222.142281)">4</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m25489e83c7" x="349.07125" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="349.07125" y="222.142281" transform="rotate(-0 349.07125 222.142281)">6</text>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="202.59625" y="236.788219" transform="rotate(-0 202.59625 236.788219)">x (lado del cuadrado cortado)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="mfb734165fa" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mfb734165fa" x="35.19625" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="28.19625" y="210.963141" transform="rotate(-0 28.19625 210.963141)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mfb734165fa" x="35.19625" y="124.375123" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="28.19625" y="128.554263" transform="rotate(-0 28.19625 128.554263)">64</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#mfb734165fa" x="35.19625" y="41.966245" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="28.19625" y="46.145386" transform="rotate(-0 28.19625 46.145386)">128</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_8">
+    <path d="M 35.19625 206.784 
+L 39.395247 192.296341 
+L 43.594243 178.589125 
+L 47.79324 165.646373 
+L 51.992237 153.4521 
+L 56.191233 141.990326 
+L 60.39023 131.24507 
+L 64.589227 121.200348 
+L 68.788223 111.84018 
+L 72.98722 103.148583 
+L 77.186217 95.109576 
+L 80.335464 89.498969 
+L 83.484712 84.239711 
+L 86.633959 79.325061 
+L 89.783207 74.748276 
+L 92.932454 70.502613 
+L 96.081702 66.581331 
+L 99.230949 62.977687 
+L 102.380196 59.684939 
+L 105.529444 56.696344 
+L 108.678691 54.005161 
+L 111.827939 51.604646 
+L 114.977186 49.488057 
+L 118.126434 47.648653 
+L 121.275681 46.079691 
+L 124.424929 44.774428 
+L 127.574176 43.726123 
+L 130.723424 42.928032 
+L 133.872671 42.373414 
+L 137.021919 42.055526 
+L 140.171166 41.967626 
+L 143.320414 42.102972 
+L 146.469661 42.454821 
+L 149.618909 43.016431 
+L 152.768156 43.78106 
+L 155.917404 44.741965 
+L 159.066651 45.892404 
+L 163.265648 47.709501 
+L 167.464645 49.835578 
+L 171.663641 52.254655 
+L 175.862638 54.95075 
+L 180.061635 57.907881 
+L 184.260631 61.110065 
+L 189.509377 65.433056 
+L 194.758123 70.082758 
+L 200.006869 75.027957 
+L 206.305364 81.308301 
+L 212.603859 87.915273 
+L 219.952103 95.964269 
+L 228.350096 105.507728 
+L 239.897337 119.004017 
+L 261.942069 144.853564 
+L 270.340063 154.343751 
+L 277.688307 162.328653 
+L 283.986802 168.867702 
+L 290.285297 175.068137 
+L 295.534043 179.937589 
+L 300.782788 184.50322 
+L 306.031534 188.733817 
+L 310.230531 191.856092 
+L 314.429528 194.727987 
+L 318.628524 197.333518 
+L 322.827521 199.656704 
+L 327.026518 201.681564 
+L 331.225514 203.392115 
+L 334.374762 204.459149 
+L 337.524009 205.333653 
+L 340.673257 206.008883 
+L 343.822504 206.478099 
+L 346.971752 206.734556 
+L 349.07125 206.784 
+L 349.07125 206.784 
+" clip-path="url(#p10450b8343)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <defs>
+     <path id="me8f5e442cc" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #a2530a"/>
+    </defs>
+    <g clip-path="url(#p10450b8343)">
+     <use xlink:href="#me8f5e442cc" x="139.82125" y="41.966245" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="line2d_10">
+    <path d="M 349.07125 206.784 
+L 349.07125 7.2 
+" clip-path="url(#p10450b8343)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.8"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 35.19625 206.784 
+L 35.19625 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 35.19625 206.784 
+L 369.99625 206.784 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="160.74625" y="32.952774" transform="rotate(-0 160.74625 32.952774)">máximo (2, 128)</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(265.37125 118.887756)">x = 6: la caja</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(265.37125 129.525677)">desaparece</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_11">
+     <path d="M 227.247187 21.608281 
+L 238.247187 21.608281 
+L 249.247187 21.608281 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="258.047188" y="25.458281" transform="rotate(-0 258.047188 25.458281)">V(x) = x(12 − 2x)²</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p10450b8343">
+   <rect x="35.19625" y="7.2" width="334.8" height="199.584"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.13: el volumen es 0 en los dos extremos del dominio, \(x=0\) y \(x=6\), así que el único punto estacionario interior, \(x=2\), es el máximo global: \(V=128\).</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>De una lámina cuadrada de lado 6 se recortan cuadrados de lado \(x\) en las esquinas. Halla \(x\) que maximiza el volumen de la caja abierta.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(V=x(6-2x)^2\), \(V'=(6-2x)(6-6x)=0\Rightarrow x=1\): \(V=1\cdot16=16\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.14. El cable más barato</p>
+<p>Una isla está a 3 km de la costa; el punto de la costa más cercano a ella está a 6 km de la central. El cable cuesta 3 por km en tierra y 5 por km bajo el agua. El cable va por tierra \(6-x\) km y luego en línea recta a la isla. Halla el coste mínimo.</p>
+<p>\(C(x)=3(6-x)+5\sqrt{x^2+9}\), con \(0\le x\le6\). \(C'(x)=-3+\frac{5x}{\sqrt{x^2+9}}=0\iff25x^2=9(x^2+9)\iff x=\frac94\). Entonces \(C\!\left(\frac94\right)=\frac{45}4+5\cdot\frac{15}4=30\).</p>
+<p><b>Justificación global:</b> \(C(0)=33\) y \(C(6)=15\sqrt5\approx33{,}5\), ambos mayores que 30. Así que el mínimo global es 30, con \(x=\frac94\) km.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Una lata cilíndrica cerrada tiene volumen \(V\) fijo. Halla la relación entre la altura y el radio que minimiza la superficie.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(S=2\pi r^2+\dfrac{2V}r\), \(S'=4\pi r-\dfrac{2V}{r^2}=0\Rightarrow r^3=\dfrac V{2\pi}\), y entonces \(h=2r\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2026, P10 c)</p><p>\(A'(\theta)=4\cos\theta+4\cos2\theta=0\). Con \(\cos2\theta=2\cos^2\theta-1\) queda \((\cos\theta+1)(2\cos\theta-1)=0\). La M1 exige escribir la ecuación en términos de \(\cos\theta\).</p></div>
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Minimiza \(D^2\), no \(D\):</b> la raíz cuadrada es creciente, así que ambas tienen el mínimo en el mismo punto, y \(D^2\) se deriva más fácil (ejemplo F8).</li>
+<li><b>Desigualdades con extremos:</b> si \(g(x)=f(x)-h(x)\) tiene mínimo 0, entonces \(f\ge h\). Así se prueba \(e^x\ge1+x\) (problema E4).</li>
+</ul></div>
+
+<h3 id="t8">1.8 Más allá del IB: optimizar sin derivar</h3>
+<p>La desigualdad entre la media aritmética y la geométrica (Módulo 5) dice que, para números no negativos, \(\frac{a_1+\cdots+a_n}n\ge\sqrt[n]{a_1\cdots a_n}\), con igualdad si y solo si todos son iguales. Si una suma es constante, el producto es máximo cuando los factores son iguales.</p>
+<div class="ex"><p class="et">Ejemplo 1.15. La caja con la desigualdad entre medias</p>
+<p>Para \(V=x(12-2x)^2\), se escribe \(4V=(4x)(12-2x)(12-2x)\). Los tres factores suman \(24\), una constante. Por tanto \(4V\le\left(\frac{24}3\right)^3=512\), así que \(V\le128\), con igualdad si \(4x=12-2x\), es decir, \(x=2\). Es el mismo resultado que la derivada, y prueba directamente que es el máximo global.</p></div>
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Multiplicadores de Lagrange:</b> para optimizar \(f(x,y)\) con la restricción \(g(x,y)=c\), los extremos cumplen \(\nabla f=\lambda\nabla g\). Evita despejar una variable cuando la restricción es complicada.</li>
+<li><b>Convexidad:</b> si \(f''\gt0\) en todo el intervalo, el único punto estacionario es el mínimo global, sin comparar extremos. Es la idea de la desigualdad de Jensen.</li>
+</ul></div>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Punto estacionario</td><td>Punto con \(f'(a)=0\).</td></tr>
+<tr><td>Máximo local</td><td>\(f(a)\ge f(x)\) para los \(x\) cercanos a \(a\).</td></tr>
+<tr><td>Máximo global (absoluto)</td><td>\(f(a)\ge f(x)\) para todo \(x\) del dominio.</td></tr>
+<tr><td>Punto de inflexión</td><td>Punto donde la concavidad cambia.</td></tr>
+<tr><td>Inflexión horizontal</td><td>Punto de inflexión con \(f'=0\).</td></tr>
+<tr><td>Cóncava hacia arriba</td><td>\(f''\gt0\): la gráfica queda por encima de sus tangentes.</td></tr>
+<tr><td>Recorrido</td><td>Conjunto de valores que toma \(f\) en su dominio.</td></tr>
+<tr><td>Restricción</td><td>Relación entre variables que permite reducir el problema a una sola variable.</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Justifique que es un máximo</td><td>\(f''(a)\lt0\) calculado, o cambio de signo de \(f'\) mostrado (R1).</td><td>Afirmarlo sin prueba o con «por la gráfica».</td></tr>
+<tr><td>Halle las coordenadas</td><td>Los dos valores, \(x\) e \(y\).</td><td>Dar solo \(x\).</td></tr>
+<tr><td>Halle los valores de \(x\) para los que \(f\) es creciente</td><td>Intervalos, con sus extremos correctos.</td><td>Dar puntos sueltos.</td></tr>
+<tr><td>Justifique (desde la gráfica de \(f'\))</td><td>Una frase con el signo o el cambio de signo de \(f'\).</td><td>Describir la gráfica de \(f\) en vez de la de \(f'\).</td></tr>
+<tr><td>Halle el valor máximo</td><td>El valor de la función, no el de la variable.</td><td>Dar el \(x\) óptimo en lugar del valor máximo.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>El extremo del intervalo olvidado.</b> El máximo global puede estar en un extremo del dominio, no en un estacionario.</li>
+<li><b>\(f''=0\) no es inflexión.</b> Hace falta cambio de signo de \(f''\) (como en \(x^4\)).</li>
+<li><b>\(f'=0\) no siempre es extremo.</b> En \(x^3\) hay inflexión horizontal.</li>
+<li><b>La justificación ausente.</b> En optimización, sin la R1 de naturaleza (\(Q''\) o la tabla de signos) se pierde la marca.</li>
+<li><b>Dos variables al derivar.</b> Primero usa la restricción para dejar una sola variable.</li>
+<li><b>El dominio del problema.</b> Longitudes positivas, ángulos en su rango: descarta las soluciones imposibles.</li>
+<li><b>Responder la variable en vez del valor.</b> Lee si piden \(x\) o \(V_{\max}\).</li>
+<li><b>Confundir la gráfica de \(f\) con la de \(f'\).</b> Un máximo de \(f'\) es una inflexión de \(f\), no un máximo de \(f\).</li>
+<li><b>La derivada anulada sin factorizar.</b> Si hay un factor común (\(\cos\theta\), \(e^{-x}\)), factoriza para no perder soluciones.</li>
+<li><b>El recorrido sin evaluar.</b> Hallar \(x=\pm\tfrac1{\sqrt2}\) no es el recorrido: hay que calcular \(f\) en esos puntos.</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">Parten de DMpA N°28 y de los bancos IB «Máximos y mínimos» y «Optimización», que traen preguntas de calculadora. Aquí se resuelven de forma exacta. Ninguno repite un tipo de la sección 5.</p>
+
+<div class="ex"><p class="et">F1. Función siempre creciente <span class="lvl">Sección A alta, integra Módulo 2</span></p>
+<p class="src">Banco IB «Máximos y mínimos», pregunta 5 (6 puntos).</p>
+<p>\(f'(x)=2x^2+5kx+3k^2+2\). (a) Muestra que el discriminante de \(f'(x)\) es \(k^2-16\). (b) Si \(f\) es creciente, halla todos los valores posibles de \(k\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \((5k)^2-4\cdot2(3k^2+2)=25k^2-24k^2-16=k^2-16\).</p>
+<p>(b) \(f'\ge0\) para todo \(x\) (parábola hacia arriba) si y solo si \(\Delta\le0\): \(-4\le k\le4\). Con \(\Delta=0\), \(f'\) se anula en un solo punto y \(f\) sigue siendo creciente.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Leer \(f\) desde \(f'\) <span class="lvl">Sección B</span></p>
+<p class="src">Banco IB «Máximos y mínimos», pregunta 9 (gráfica de \(f'\)), con una \(f'\) propia.</p>
+<p>\(f'(x)=x^2(x-3)\). Halla, justificando: (a) dónde \(f\) es creciente; (b) los extremos locales de \(f\); (c) los puntos de inflexión de \(f\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(f'\gt0\iff x\gt3\), así que crece en \((3,\infty)\) y decrece en \((-\infty,3)\). En \(x=0\) la pendiente se anula, pero sigue decreciendo.</p>
+<p>(b) En \(x=3\), \(f'\) pasa de − a +: mínimo local. En \(x=0\), \(f'\) no cambia de signo (−, 0, −): no es extremo.</p>
+<p>(c) \(f''=3x(x-2)\) cambia de signo en 0 y en 2. Hay inflexiones en \(x=0\) (horizontal, porque \(f'(0)=0\)) y en \(x=2\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. Cúbica: extremos, concavidad y número de soluciones <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°28 (máximo en −3 y mínimo en 3; concavidad), ampliada.</p>
+<p>\(f(x)=x^3-27x\). (a) Halla y clasifica los puntos estacionarios. (b) Halla la inflexión y los intervalos de concavidad. (c) ¿Para qué \(k\) tiene \(x^3-27x=k\) tres soluciones reales?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(f'=3x^2-27=0\Rightarrow x=\pm3\). Máximo \((-3,54)\) y mínimo \((3,-54)\), porque \(f''=6x\) vale \(\mp18\).</p>
+<p>(b) Inflexión en \((0,0)\); cóncava hacia abajo si \(x\lt0\) y hacia arriba si \(x\gt0\).</p>
+<p>(c) La recta \(y=k\) corta tres veces si está entre el mínimo y el máximo: \(-54\lt k\lt54\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. La caja de suma fija <span class="lvl">Sección B</span></p>
+<p class="src">Banco IB «Máximos y mínimos», pregunta 8 (14 puntos).</p>
+<p>Una caja tiene base de \(3x\) por \(x\) cm y altura \(y\) cm, con largo + ancho + alto = 12. (a) Expresa \(y\) y \(V\) en función de \(x\). (b) Halla \(\tfrac{dV}{dx}\). (c) Halla el \(x\) de volumen máximo y justifícalo. (d) Halla el volumen máximo.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(y=12-4x\) y \(V=3x^2(12-4x)=36x^2-12x^3\), con \(0\lt x\lt3\).</p>
+<p>(b) \(72x-36x^2\).</p>
+<p>(c) \(36x(2-x)=0\Rightarrow x=2\). \(V''(2)=72-144=-72\lt0\): máximo.</p>
+<p>(d) \(V=48\) cm³.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. La lata de coste mínimo <span class="lvl">Sección B</span></p>
+<p class="src">Banco IB «Optimización», pregunta 9 (15 puntos).</p>
+<p>Una lata cilíndrica cerrada tiene volumen \(20\pi\) cm³. Las tapas cuestan 10 céntimos/cm² y el lateral 8. (a) Expresa \(h\) en función de \(r\). (b) Muestra que \(C=20\pi r^2+\tfrac{320\pi}r\). (c) Halla el coste mínimo en función de \(\pi\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(h=\tfrac{20}{r^2}\). (b) \(10\cdot2\pi r^2+8\cdot2\pi r\cdot\tfrac{20}{r^2}\).</p>
+<p>(c) \(C'=40\pi r-\tfrac{320\pi}{r^2}=0\Rightarrow r^3=8\Rightarrow r=2\). \(C''\gt0\): mínimo. \(C=80\pi+160\pi=240\pi\) céntimos.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Cercado junto a un río <span class="lvl">Sección A alta</span></p>
+<p class="src">Banco IB «Optimización», problema 16.</p>
+<p>Un granjero cerca un terreno rectangular con 100 m de alambre, usando el río como uno de los lados. Los dos lados perpendiculares al río miden \(x\). Halla las dimensiones de área máxima.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>El lado paralelo al río mide \(y=100-2x\), así que \(A=x(100-2x)\), con \(0\lt x\lt50\). \(A'=100-4x=0\Rightarrow x=25\), y \(A''=-4\lt0\).</p>
+<p><span class="lbl">Resultado.</span> 25 m × 50 m, con área 1250 m².</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. La piscina con extremo semicircular <span class="lvl">Sección B</span></p>
+<p class="src">Banco IB «Optimización», problema 10.</p>
+<p>Una piscina es un rectángulo de largo \(L\) y ancho \(2r\) con un semicírculo de radio \(r\) en un extremo. Su perímetro es 50 m. Halla \(r\) y \(L\) para que el área sea máxima.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>\(2L+2r+\pi r=50\). \(A=2rL+\tfrac{\pi r^2}2=50r-2r^2-\tfrac{\pi r^2}2\). \(A'=50-(4+\pi)r=0\Rightarrow r=\tfrac{50}{4+\pi}\), con \(A''\lt0\).</p>
+<p>Entonces \(L=\tfrac{50-(2+\pi)r}2=\tfrac{50}{4+\pi}\): sorprendentemente, \(L=r\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. Puntos de una parábola más cercanos a un punto <span class="lvl">Sección B</span></p>
+<p class="src">Banco IB «Optimización», problema 20.</p>
+<p>Halla los puntos de \(y=9-x^2\) más cercanos a \((0,3)\) y la distancia mínima.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>\(D^2=x^2+(6-x^2)^2=x^4-11x^2+36\). \((D^2)'=4x^3-22x=0\Rightarrow x=0\) o \(x^2=\tfrac{11}2\).</p>
+<p>\(D^2(0)=36\) (máximo local) y \(D^2\) en \(x^2=\tfrac{11}2\) vale \(\tfrac{23}4\). Puntos \(\left(\pm\sqrt{\tfrac{11}2},\ \tfrac72\right)\), distancia \(\tfrac{\sqrt{23}}2\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. Parábola, tangente y una función derivada de ella <span class="lvl">Sección B</span></p>
+<p class="src">Banco IB «Máximos y mínimos», pregunta 7 (15 puntos).</p>
+<p>La cuadrática \(f\) tiene vértice \((3,4)\) y pasa por \(Q(5,12)\). (a) Halla \(f(x)=a(x-h)^2+k\). (b) Halla la tangente en \(Q\). (c) \(g'(x)=f(x)-d\). Halla los \(d\) para los que \(g\) es creciente. (d) Halla dónde \(g\) es cóncava hacia arriba.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(12=4a+4\Rightarrow a=2\): \(f=2(x-3)^2+4\). (b) \(f'(5)=8\): \(y=8x-28\).</p>
+<p>(c) \(g'\ge0\iff f(x)\ge d\) para todo \(x\). Como el mínimo de \(f\) es 4, \(d\le4\).</p>
+<p>(d) \(g''=f'=4(x-3)\gt0\iff x\gt3\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. Rectángulo bajo una semicircunferencia <span class="lvl">Sección A alta</span></p>
+<p class="src">Banco IB «Optimización», problemas 13 y 21.</p>
+<p>Un rectángulo tiene base en el eje \(x\) y los otros dos vértices en \(y=\sqrt{25-x^2}\). (a) Halla el área máxima y las dimensiones. (b) Generaliza a radio \(R\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(A=2x\sqrt{25-x^2}\). \(A'=\dfrac{2(25-2x^2)}{\sqrt{25-x^2}}=0\Rightarrow x=\tfrac5{\sqrt2}\). Dimensiones \(5\sqrt2\times\tfrac5{\sqrt2}\), área 25.</p>
+<p>(b) Área máxima \(R^2\), con base \(\sqrt2R\) y altura \(\tfrac R{\sqrt2}\).</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son las 2 preguntas de este módulo en tus pruebas, con las marcas del markscheme oficial. Resuélvelas en tiempo de examen, a 1,1 minutos por punto.</p>
+
+<div class="ex"><p class="et">X1. Mayo 2022 TZ2, pregunta 6 <span class="lvl">8 puntos</span></p>
+<p>\(f(x)=x\sqrt{1-x^2}\), \(-1\le x\le1\). (a) Muestra que \(f\) es impar. (b) El recorrido de \(f\) es \(a\le y\le b\). Halla \(a\) y \(b\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(f(-x)=-x\sqrt{1-(-x)^2}\) <span class="m">M1</span> \(=-x\sqrt{1-x^2}=-f(x)\) <span class="m">A1</span>: impar <span class="m">AG</span></p>
+<p class="step">(b) Producto y cadena <span class="m">M1</span>: \(f'(x)=\sqrt{1-x^2}-\dfrac{x^2}{\sqrt{1-x^2}}=\dfrac{1-2x^2}{\sqrt{1-x^2}}\) <span class="m">A1</span></p>
+<p class="step">\(f'(x)=0\) <span class="m">M1</span> \(\Rightarrow x=\pm\tfrac1{\sqrt2}\) <span class="m">A1</span></p>
+<p class="step">Evaluar <span class="m">(M1)</span>: \(f\left(\tfrac1{\sqrt2}\right)=\tfrac1{\sqrt2}\cdot\tfrac1{\sqrt2}=\tfrac12\). Por imparidad, \(a=-\tfrac12\) y \(b=\tfrac12\) <span class="m">A1</span></p>
+<p><span class="lbl">Por qué no hay más candidatos.</span> En los extremos \(f(\pm1)=0\), y \(f\) es continua: el recorrido va del mínimo al máximo.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Mayo 2026 TZ2, pregunta 10(c) <span class="lvl">6 puntos</span></p>
+<p>El área del trapecio es \(A(\theta)=4\sin\theta+2\sin2\theta\), \(0\lt\theta\lt\tfrac\pi2\). (i) Halla \(A'(\theta)\). (ii) A partir de lo anterior, halla el área máxima.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(i) \(A'(\theta)=4\cos\theta+4\cos2\theta\) <span class="m">A1A1</span></p>
+<p class="step">(ii) \(A'=0\) <span class="m">M1</span>; en términos de \(\cos\theta\) <span class="m">M1</span>: \(4\cos\theta+4(2\cos^2\theta-1)=0\Rightarrow(\cos\theta+1)(2\cos\theta-1)=0\)</p>
+<p class="step">\(\cos\theta=\tfrac12\) (\(\cos\theta=-1\) queda fuera del intervalo), así que \(\theta=\tfrac\pi3\) <span class="m">A1</span></p>
+<p class="step">\(A_{\max}=4\cdot\tfrac{\sqrt3}2+2\cdot\tfrac{\sqrt3}2=3\sqrt3\) <span class="m">A1</span></p>
+<p><span class="lbl">Justificación extra.</span> \(A''\left(\tfrac\pi3\right)=-4\sin\tfrac\pi3-8\sin\tfrac{2\pi}3\lt0\): es un máximo. Además es mayor que los valores límite \(A\to0\) y \(A\to4\).</p>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Estos tipos de pregunta no salieron en tus 7 pruebas, pero el IB los pone en otras convocatorias. Junto con la teoría y las secciones 4 y 5, cubren todo el análisis de curvas y la optimización del programa NS. Cada tipo trae cómo reconocerlo, el método, un ejemplo resuelto y ejercicios para practicar.</p>
+<h3 id="ty1">T1. Intervalos de crecimiento y decrecimiento</h3>
+<p><b>Qué reconocer:</b> piden dónde crece o decrece una función. <b>Método:</b> resuelve \(f'(x)=0\), marca los puntos donde \(f'\) no existe, haz una tabla de signos de \(f'\) y lee los intervalos.</p>
+<div class="ex"><p class="et">Ejemplo T1. <span class="lvl">Tipo IB</span></p>
+<p>Halla los intervalos de crecimiento de \(f(x)=x^3-3x^2+4\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(f'(x)=3x^2-6x=3x(x-2)\): crece en \((-\infty,0)\) y \((2,\infty)\), decrece en \((0,2)\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla los intervalos de crecimiento de \(f(x)=x^3-12x\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f'(x)=3x^2-12=3(x-2)(x+2)\): crece en \((-\infty,-2)\) y \((2,\infty)\), decrece en \((-2,2)\).</li></ol></div></details></div>
+<h3 id="ty2">T2. Clasificar estacionarios con la segunda derivada</h3>
+<p><b>Qué reconocer:</b> piden los máximos y mínimos locales, a veces en una función con cociente. <b>Método:</b> halla \(f'(x)=0\); clasifica con el signo de \(f''\): \(f''\lt0\) máximo, \(f''\gt0\) mínimo.</p>
+<div class="ex"><p class="et">Ejemplo T2. <span class="lvl">Tipo IB</span></p>
+<p>Clasifica los extremos de \(f(x)=x+\dfrac4x\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(f'(x)=1-\dfrac4{x^2}=0\Rightarrow x=\pm2\). \(f''(x)=\dfrac8{x^3}\): \(f''(2)\gt0\), mínimo \((2,4)\); \(f''(-2)\lt0\), máximo \((-2,-4)\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Clasifica los extremos de \(f(x)=x^2+\dfrac{16}x\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f'(x)=2x-\dfrac{16}{x^2}=0\Rightarrow x^3=8\Rightarrow x=2\). \(f''(2)=2+\dfrac{32}8=6\gt0\): mínimo \((2,12)\).</li></ol></div></details></div>
+<h3 id="ty3">T3. Concavidad y puntos de inflexión</h3>
+<p><b>Qué reconocer:</b> piden los intervalos de concavidad o los puntos de inflexión. <b>Método:</b> halla \(f''\), resuelve \(f''=0\) y comprueba que cambia de signo en cada candidato.</p>
+<div class="ex"><p class="et">Ejemplo T3. <span class="lvl">Tipo IB</span></p>
+<p>Halla los puntos de inflexión de \(f(x)=x^4-6x^2\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(f''(x)=12x^2-12=12(x-1)(x+1)\), cambia de signo en \(x=\pm1\): inflexiones en \((\pm1,-5)\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla los intervalos de concavidad de \(f(x)=x^3-3x\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f''(x)=6x\): cóncava hacia abajo en \((-\infty,0)\), hacia arriba en \((0,\infty)\); inflexión en \((0,0)\).</li></ol></div></details></div>
+<h3 id="ty4">T4. Función siempre creciente o decreciente</h3>
+<p><b>Qué reconocer:</b> «para qué valores del parámetro es \(f\) creciente en todo \(\mathbb R\)». <b>Método:</b> impón \(f'(x)\ge0\) para todo \(x\). Si \(f'\) es cuadrática con coeficiente principal positivo, la condición es \(\Delta\le0\).</p>
+<div class="ex"><p class="et">Ejemplo T4. <span class="lvl">Sección A alta</span></p>
+<p>¿Para qué \(a\) es \(f(x)=x^3+ax^2+3x+1\) creciente en todo \(\mathbb R\)?</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(f'(x)=3x^2+2ax+3\ge0\) para todo \(x\) exige \(\Delta=4a^2-36\le0\), es decir \(-3\le a\le3\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>¿Para qué \(k\) es \(f(x)=x^3+kx^2+kx\) creciente en todo \(\mathbb R\)?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f'(x)=3x^2+2kx+k\ge0\Rightarrow\Delta=4k^2-12k\le0\Rightarrow0\le k\le3\).</li></ol></div></details></div>
+<h3 id="ty5">T5. Recorrido con la derivada</h3>
+<p><b>Qué reconocer:</b> piden el recorrido (imagen) de una función, a veces con dominio no acotado. <b>Método:</b> halla los extremos locales, evalúa \(f\) allí y en los bordes del dominio (o el límite en el infinito), y toma el intervalo entre el menor y el mayor valor.</p>
+<div class="ex"><p class="et">Ejemplo T5. <span class="lvl">Sección A alta</span></p>
+<p>Halla el recorrido de \(f(x)=\dfrac x{x^2+4}\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(f'(x)=\dfrac{4-x^2}{(x^2+4)^2}\): máximo \(\left(2,\tfrac14\right)\), mínimo \(\left(-2,-\tfrac14\right)\); \(f\to0\) en \(\pm\infty\). Recorrido \(\left[-\tfrac14,\tfrac14\right]\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el recorrido de \(f(x)=xe^{-x}\) para \(x\ge0\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f'(x)=(1-x)e^{-x}\): máximo \(\left(1,\tfrac1e\right)\); \(f(0)=0\) y \(f\to0\). Recorrido \(\left[0,\tfrac1e\right]\).</li></ol></div></details></div>
+<h3 id="ty6">T6. Número de soluciones de \(f(x)=k\)</h3>
+<p><b>Qué reconocer:</b> «¿cuántas soluciones tiene la ecuación según \(k\)?». <b>Método:</b> halla los extremos locales de \(f\); los valores de \(k\) entre el mínimo y el máximo local dan el mayor número de cortes.</p>
+<div class="ex"><p class="et">Ejemplo T6. <span class="lvl">Tipo IB</span></p>
+<p>¿Cuántas soluciones tiene \(x^3-3x=k\) según \(k\)?</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Máximo local en \((-1,2)\), mínimo local en \((1,-2)\). Tres soluciones si \(-2\lt k\lt2\); dos si \(k=\pm2\); una si \(|k|\gt2\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>¿Cuántas soluciones tiene \(x^3-12x=k\) para \(k=10\)?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Extremos en \((-2,16)\) y \((2,-16)\); como \(-16\lt10\lt16\): tres soluciones.</li></ol></div></details></div>
+<h3 id="ty7">T7. Optimización geométrica</h3>
+<p><b>Qué reconocer:</b> una caja, una lata, un cercado o una ventana con una restricción, y piden el máximo o el mínimo. <b>Método:</b> escribe la cantidad en una sola variable usando la restricción, deriva, iguala a 0 y justifica que es el extremo pedido (con \(f''\) o el signo de \(f'\)).</p>
+<div class="ex"><p class="et">Ejemplo T7. <span class="lvl">Sección B</span></p>
+<p>De una lámina cuadrada de lado 12 se recortan cuadrados de lado \(x\) en las esquinas y se dobla una caja abierta. Halla \(x\) que maximiza el volumen.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(V=x(12-2x)^2\), \(V'=(12-2x)(12-6x)=0\Rightarrow x=2\) (el otro, \(x=6\), da \(V=0\)). \(V(2)=2\cdot64=128\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Un rectángulo tiene perímetro 20. Halla las dimensiones que maximizan el área.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(A=x(10-x)\), \(A'=10-2x=0\Rightarrow x=5\): un cuadrado \(5\times5\), área 25.</li></ol></div></details></div>
+<h3 id="ty8">T8. Leer \(f\) desde la gráfica de \(f'\)</h3>
+<p><b>Qué reconocer:</b> dan la gráfica de \(f'\) y preguntan por los extremos, la concavidad o la forma de \(f\). <b>Método:</b> \(f\) crece donde \(f'\gt0\); hay máximo donde \(f'\) cruza de \(+\) a \(-\); inflexión donde \(f'\) tiene un extremo (\(f''=0\)).</p>
+<div class="ex"><p class="et">Ejemplo T8. <span class="lvl">Tipo IB</span></p>
+<p>La gráfica de \(f'\) es una parábola con raíces en \(x=1\) y \(x=3\), abierta hacia arriba. Describe los extremos y la inflexión de \(f\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(f'\gt0\) fuera de \([1,3]\) y \(\lt0\) dentro: máximo local en \(x=1\), mínimo local en \(x=3\). El vértice de \(f'\) está en \(x=2\), donde \(f\) tiene una inflexión.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Si \(f'(x)=x^2\ge0\) para todo \(x\), ¿qué ocurre en \(x=0\)?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f'\) toca el eje sin cambiar de signo: \(x=0\) es una inflexión horizontal de \(f\), no un extremo.</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo de los Módulos 1–13. Integran sucesiones (Módulo 1), polinomios (Módulo 2), funciones (Módulo 3), geometría (Módulo 7), trigonometría (Módulo 8), probabilidad (Módulo 11) e implícitas (Módulo 12). El 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la Sección B. Al final, I1 es una investigación tipo Prueba 3 de NS. Cada uno trae una pista y la respuesta final plegadas.</p>
+
+<div class="ex"><p class="et">E1. Cilindro inscrito en un cono <span class="lvl">Sección B, integra Módulo 7</span></p>
+<p>Un cilindro se inscribe en un cono de radio \(R\) y altura \(H\), con la base sobre la del cono. Halla el radio del cilindro de volumen máximo y ese volumen.</p>
+<details><summary>Pista</summary><div class="inner"><p>Por semejanza, la altura del cilindro es \(h=H\left(1-\tfrac rR\right)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(r=\tfrac{2R}3\) y \(V=\tfrac{4\pi R^2H}{27}\), que es \(\tfrac49\) del volumen del cono.</p></div></details></div>
+
+<div class="ex"><p class="et">E2. La escalera que gira una esquina <span class="lvl">Sección B, integra Módulo 8</span></p>
+<p>Un pasillo de 8 m de ancho gira en ángulo recto hacia otro de 1 m. (a) Muestra que un segmento que toca la esquina interior y ambas paredes exteriores, formando un ángulo \(\theta\), mide \(L(\theta)=\tfrac8{\cos\theta}+\tfrac1{\sin\theta}\). (b) Halla la escalera más larga que puede girar la esquina.</p>
+<details><summary>Pista</summary><div class="inner"><p>\(L'=0\iff\tan^3\theta=\tfrac18\), así que \(\tan\theta=\tfrac12\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) Es el mínimo de \(L\): \(L=5\sqrt5\) m. En general, \(\left(a^{2/3}+b^{2/3}\right)^{3/2}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Construir una cúbica con sus extremos <span class="lvl">Sección A alta, integra Módulo 2</span></p>
+<p>Halla la cúbica \(f(x)=ax^3+bx^2+cx+d\) con máximo local \((-1,5)\) y mínimo local \((1,1)\). Muestra que es simétrica respecto a su punto de inflexión.</p>
+<details><summary>Pista</summary><div class="inner"><p>\(f'\) tiene raíces \(\pm1\), así que \(f'=3a(x^2-1)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(f=x^3-3x+3\). Inflexión en \((0,3)\), y \(f(x)+f(-x)=6\).</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Desigualdades probadas con extremos <span class="lvl">Sección B, integra Módulo 3</span></p>
+<p>(a) Prueba que \(e^x\ge1+x\) para todo \(x\), con igualdad solo en 0. (b) Deduce que \(\ln x\le x-1\) para \(x\gt0\). (c) Deduce que \(\left(1+\tfrac1n\right)^n\lt e\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Mínimo de \(g(x)=e^x-1-x\). (c) Aplica (a) con \(x=\tfrac1n\) y eleva a \(n\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(g'=e^x-1\): mínimo \(g(0)=0\). (c) \(1+\tfrac1n\lt e^{1/n}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E5. El mayor término de una sucesión <span class="lvl">Sección A alta, integra Módulo 1</span></p>
+<p>Halla el \(n\) que hace máximo a \(a_n=\dfrac{n^2}{2^n}\), estudiando \(f(x)=\dfrac{x^2}{2^x}\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(f'(x)=\dfrac{x(2-x\ln2)}{2^x}=0\Rightarrow x=\tfrac2{\ln2}\approx2{,}9\). Compara los enteros vecinos.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(a_2=1\), \(a_3=\tfrac98\), \(a_4=1\): el máximo es \(n=3\).</p></div></details></div>
+
+<div class="ex"><p class="et">E6. El camino más corto por un espejo <span class="lvl">Sección B</span></p>
+<p>Se va de \(A(0,3)\) a \(B(8,5)\) tocando el eje \(x\) en \(P(x,0)\). (a) Minimiza \(L(x)=\sqrt{x^2+9}+\sqrt{(8-x)^2+25}\). (b) Muestra que en el óptimo el ángulo de incidencia es igual al de reflexión. (c) Compara con la distancia de \(A'(0,-3)\) a \(B\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(L'=0\) iguala los cosenos de los dos ángulos con el eje; queda \(\tfrac x3=\tfrac{8-x}5\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(x=3\), \(L=3\sqrt2+5\sqrt2=8\sqrt2\). (c) \(A'B=\sqrt{64+64}=8\sqrt2\): son iguales.</p></div></details></div>
+
+<div class="ex"><p class="et">E7. La \(p\) que hace más probable un éxito <span class="lvl">Sección A alta, integra Módulo 11</span></p>
+<p>\(X\sim B(n,p)\). Halla el \(p\) que maximiza \(P(X=1)\) y ese máximo. ¿A qué tiende cuando \(n\to\infty\)?</p>
+<details><summary>Pista</summary><div class="inner"><p>Deriva \(np(1-p)^{n-1}\) respecto a \(p\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(p=\tfrac1n\), con máximo \(\left(1-\tfrac1n\right)^{n-1}\to\tfrac1e\).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Extremos de una curva implícita <span class="lvl">Sección B, integra Módulo 12</span></p>
+<p>Para \(x^2+xy+y^2=3\): halla los puntos con tangente horizontal y los valores máximo y mínimo de \(y\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(y'=-\dfrac{2x+y}{x+2y}=0\Rightarrow y=-2x\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(x^2-2x^2+4x^2=3\Rightarrow x=\pm1\): puntos \((1,-2)\) y \((-1,2)\). \(y_{\max}=2\) e \(y_{\min}=-2\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. Cilindro dentro de una esfera <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>Un cilindro de altura \(h\) está inscrito en una esfera de radio \(R\). (a) Halla la \(h\) de volumen máximo y ese volumen. (b) Halla la \(h\) de superficie lateral máxima y esa superficie. (c) ¿Coinciden los dos óptimos?</p>
+<details><summary>Pista</summary><div class="inner"><p>El radio del cilindro es \(\sqrt{R^2-\tfrac{h^2}4}\). En (b), maximiza el cuadrado de la superficie.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(h=\tfrac{2R}{\sqrt3}\), \(V=\tfrac{4\pi R^3}{3\sqrt3}\). (b) \(h=\sqrt2R\), \(S=2\pi R^2\) (la mitad de la superficie de la esfera). (c) No.</p></div></details></div>
+
+<div class="ex"><p class="et">E10. \(\left(1+\tfrac1n\right)^n\) es creciente <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>(a) Muestra que \(g(t)=\ln(1+t)-\tfrac t{1+t}\gt0\) para \(t\gt0\). (b) Con \(f(x)=x\ln\left(1+\tfrac1x\right)\), muestra que \(f'(x)=g\left(\tfrac1x\right)\gt0\). (c) Deduce que \(\left(1+\tfrac1n\right)^n\) es creciente y, con E4 (o el Módulo 5), que converge.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(g(0)=0\) y \(g'(t)=\tfrac t{(1+t)^2}\gt0\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) Es creciente y acotada por \(e\) (o por 3), así que converge. Su límite es \(e\) (Módulo 17).</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. El cilindro de superficie mínima <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>Una lata cilíndrica debe contener un volumen fijo \(V\). ¿Qué forma gasta menos material? Vas a hallar la proporción óptima, compararla con las latas reales y ver cómo cambia si la lata no lleva tapa.</p>
+<ol type="a"><li>Para una lata cerrada de radio \(r\) y altura \(h\) con \(\pi r^2h=V\), escribe la superficie total \(S\) en función solo de \(r\).</li><li>Deriva, halla el \(r\) que minimiza \(S\) y prueba que en el óptimo \(h=2r\) (la altura iguala al diámetro). Justifica que es un mínimo.</li><li>Una lata de refresco real mide unos 6,6 cm de diámetro y 11,5 cm de alto. ¿Se parece a la proporción óptima? ¿Por qué crees que no es exactamente \(h=2r\)?</li><li>Repite para una lata <b>sin tapa</b> (superficie \(\pi r^2+2\pi rh\)): prueba que ahora el óptimo es \(h=r\).</li><li>Generaliza: si el material de la base y la tapa cuesta el doble que el lateral, ¿qué proporción \(h/r\) minimiza el coste?</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>\(h=\dfrac V{\pi r^2}\), así que \(S=2\pi r^2+2\pi r\cdot\dfrac V{\pi r^2}\).</li><li>\(S'(r)=4\pi r-\dfrac{2V}{r^2}\); iguala a 0 y usa \(V=\pi r^2h\).</li><li>El óptimo da \(h/r=2\); la lata real tiene \(h/r\approx3{,}5\).</li><li>Ahora \(S=\pi r^2+\dfrac{2V}r\); deriva de nuevo.</li><li>Coste \(=2(2\pi r^2)+2\pi rh\) con el lateral a precio 1; repite el método.</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>\(S=2\pi r^2+\dfrac{2V}r\).</li><li>\(r^3=\dfrac V{2\pi}\Rightarrow r=\sqrt[3]{\dfrac V{2\pi}}\); como \(V=\pi r^2h\), sale \(h=2r\). \(S''=4\pi+\dfrac{4V}{r^3}\gt0\): mínimo.</li><li>No: la real es más alta y estrecha (\(h/r\approx3{,}5\)), por el agarre, el llenado y el grosor desigual del material.</li><li>\(S'=2\pi r-\dfrac{2V}{r^2}=0\Rightarrow r^3=\dfrac V\pi\Rightarrow h=r\).</li><li>Coste \(=4\pi r^2+\dfrac{2V}r\), \(C'=8\pi r-\dfrac{2V}{r^2}=0\Rightarrow r^3=\dfrac V{4\pi}\), que da \(h=4r\).</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 14, integración.</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

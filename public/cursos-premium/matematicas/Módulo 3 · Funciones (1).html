@@ -1,0 +1,2340 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 3 · Funciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 3</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t1">1.1 Dominio, recorrido y composición</a>
+  <a class="sub" href="#t2">1.2 Función inversa</a>
+  <a class="sub" href="#t3">1.3 Transformaciones</a>
+  <a class="sub" href="#t4">1.4 Funciones racionales</a>
+  <a class="sub" href="#t5">1.5 Exponenciales y logarítmicas</a>
+  <a class="sub" href="#t6">1.6 Paridad y simetrías</a>
+  <a class="sub" href="#t7">1.7 |f(x)|, f(|x|), 1/f(x), [f(x)]²</a>
+  <a class="sub" href="#t8">1.8 Ecuaciones e inecuaciones</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos resueltos</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 3 de 17</p>
+  <h1>Funciones: composición, inversa, transformaciones y gráficas</h1>
+  <p class="formula">\( (f\circ g)(x)=f(g(x)) \qquad f^{-1}(f(x))=x \qquad y=a\,f\big(b(x-h)\big)+k \)</p>
+  <p>Todo lo necesario para las preguntas de funciones de la Prueba 1 sin calculadora, al nivel de la banda 7. Los problemas extra integran los Módulos 1 y 2. Las soluciones están plegadas: intenta primero.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">Las funciones aparecen en las 7 pruebas. Solo en este módulo se resuelven 48 puntos de examen, incluida una pregunta de Sección B de 20 puntos. Además, casi toda pregunta de trigonometría y de cálculo empieza con dominio, composición, inversa o gráfica.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2021 TZ1</td><td>1</td><td>5</td><td>Composición leída de una gráfica; transformación \(\tfrac12f(x)+1\)</td></tr>
+<tr><td>Mayo 2026 TZ2</td><td>3</td><td>6</td><td>Composición exponencial–cuadrática; ecuación en \(e^x\)</td></tr>
+<tr><td>Mayo 2022 TZ2</td><td>3</td><td>8</td><td>Racional \(\frac{2x-1}{x+1}\): asíntotas, gráfica, inecuación con \(|x|\)</td></tr>
+<tr><td>Noviembre 2021</td><td>2</td><td>9</td><td>Racional: asíntotas, cortes, gráfica; función autoinversa</td></tr>
+<tr><td>Mayo 2022 TZ2</td><td>11</td><td>20</td><td>\(\frac1{x^2-2x-3}\): gráfica, inversa con dominio restringido, composición con arctan</td></tr>
+</tbody></table></div>
+<p>Otras preguntas usan funciones, pero dependen de temas posteriores. Se resuelven en su módulo: mayo 2022 TZ1 P3 y noviembre 2022 P8 y P10 (trigonometría, Módulo 8); mayo 2021 TZ2 P12 (arctan e inducción); mayo 2022 TZ2 P6 (recorrido con derivadas, Módulo 13).</p>
+
+<h3>Cómo lo pregunta el IB: patrones de tus 7 pruebas</h3>
+<ol>
+<li><b>Composición en dos pasos.</b> De una gráfica (\(f(f(2))\)) o de fórmulas que llevan a una cuadrática en \(e^x\).</li>
+<li><b>Racional homográfica \(\frac{ax+b}{cx+d}\).</b> Asíntotas, cortes y dibujo (3 marcas por la forma y los rótulos). Después, una inecuación resuelta a partir de la gráfica y una variante con \(|x|\).</li>
+<li><b>Autoinversa.</b> Hallar el parámetro para que \(g=g^{-1}\). Se aceptan dos métodos: hallar \(g^{-1}\) e igualar, o imponer \(g(g(x))=x\).</li>
+<li><b>Inversa con dominio restringido.</b> Al despejar sale un \(\pm\); la restricción del dominio (\(x\gt 3\)) decide el signo y vale una R1.</li>
+<li><b>Transformación de una gráfica dada.</b> Se corrige con A1 por cada tramo y por los puntos clave transformados.</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA 05 y su separata (2025)</td><td>Dominio, recorrido, prueba de la recta vertical; preguntas IB de mayo 2018, mayo 2019 y noviembre 2018</td><td>F1–F4 y F10</td></tr>
+<tr><td>DMpA N°07 (2025)</td><td>Función compuesta, modelos compuestos; pregunta IB de octubre 2023; composición conmutativa</td><td>F5–F7</td></tr>
+<tr><td>DMpA N°15 y su separata (2025)</td><td>Función racional, asíntotas</td><td>F8 y sección 1.4</td></tr>
+<tr><td>DMpA N°17 (2025)</td><td>Inversa, exponencial y logarítmica</td><td>F9 y sección 1.5</td></tr>
+</tbody></table></div>
+<p>Los ítems de las fichas son de nivel básico o de Prueba 2. Aquí cada uno se amplía hasta el nivel de la Sección B.</p>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA NS (Tema 2)</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Función, dominio, recorrido, composición, identidad</td><td>1.1</td><td>Alto</td></tr>
+<tr><td>Inversa: existencia, cálculo, restricción de dominio, autoinversas</td><td>1.2</td><td>Alto</td></tr>
+<tr><td>Transformaciones y su composición</td><td>1.3</td><td>Alto</td></tr>
+<tr><td>Racionales \(\frac{ax+b}{cx+d}\), \(\frac{ax+b}{cx^2+dx+e}\), \(\frac{ax^2+bx+c}{dx+e}\)</td><td>1.4</td><td>Alto</td></tr>
+<tr><td>Exponenciales y logarítmicas como funciones</td><td>1.5</td><td>Medio</td></tr>
+<tr><td>Funciones pares e impares</td><td>1.6</td><td>Medio</td></tr>
+<tr><td>\(|f(x)|\), \(f(|x|)\), \(\frac1{f(x)}\), \(f(ax+b)\), \([f(x)]^2\)</td><td>1.7</td><td>Alto en la Sección B</td></tr>
+<tr><td>Ecuaciones e inecuaciones \(g(x)\ge f(x)\), con módulo y racionales</td><td>1.8</td><td>Alto</td></tr>
+<tr><td>Otros tipos de pregunta: composición e inversa desde una tabla, inversa de una compuesta, racional por sus asíntotas, función definida por partes, hallar \(f\) o \(g\) a partir de \(f\circ g\), transformaciones equivalentes, \(f(x)=f^{-1}(x)\), recorrido sin derivadas</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+<tr><td>Corte de \(f\) y \(f^{-1}\) fuera de \(y=x\), simetría respecto de un punto, \(e^x\ge1+x\) (fuera del programa)</td><td>Cajas moradas</td><td>Solo como herramienta</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1 a 1.8 cubren todo el Tema 2 evaluable en la Prueba 1, salvo lo que ya está en el Módulo 2 (cuadráticas y polinomios). Cada concepto clave trae ejemplos de nivel de examen y un recuadro «Para practicar». La sección 6 reúne los tipos de pregunta del IB que no salieron en tus 7 pruebas. Lo que va más allá del programa está solo en las cajas moradas (cuando un ejemplo usa una de esas ideas, la da como dato), y ningún problema extra pide contenido fuera del programa. El techo es la investigación I1, tipo Prueba 3.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Va de la definición de función a las gráficas derivadas (\(|f|\), \(1/f\), \(f(|x|)\)). Cada concepto trae un ejemplo resuelto y, los esenciales, un recuadro «Para practicar». Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Dominio, recorrido y composición</h3>
+<p>Una <b>función</b> asigna a cada elemento del dominio exactamente una imagen. Gráficamente, ninguna recta vertical corta la gráfica dos veces.</p>
+<p><b>Dominio natural:</b> los \(x\) para los que la fórmula tiene sentido. Denominador \(\neq0\), radicando de raíz par \(\ge0\), argumento de logaritmo \(\gt 0\).</p>
+<p><b>Recorrido:</b> el conjunto de imágenes. Métodos: el vértice (cuadráticas), la monotonía y los extremos del dominio, las asíntotas (valores excluidos), o despejar \(x\) en \(y=f(x)\) y ver para qué \(y\) hay solución.</p>
+<p><b>Composición:</b> \((f\circ g)(x)=f(g(x))\), primero se aplica \(g\).</p>
+\[ \operatorname{dom}(f\circ g)=\{x\in\operatorname{dom}g:\ g(x)\in\operatorname{dom}f\} \]
+<p>En general \(f\circ g\neq g\circ f\). La identidad es \(\operatorname{id}(x)=x\).</p>
+
+<div class="ex"><p class="et">Ejemplo 1.1. Dominio con tres condiciones</p>
+<p>Halla el dominio de \(f(x)=\dfrac{\ln(x^2-5x+6)}{\sqrt{4-x}}\).</p>
+<p>\(x^2-5x+6=(x-2)(x-3)\gt 0\iff x\lt 2\) o \(x\gt 3\). Además \(4-x\gt 0\iff x\lt 4\) (estricto, por estar en el denominador). Dominio: \(x\lt 2\) o \(3\lt x\lt 4\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.2. Dos composiciones con dominios distintos</p>
+<p>\(f(x)=\dfrac1{x-2}\) y \(g(x)=x^2+1\). Halla \(f\circ g\) y \(g\circ f\) con sus dominios, y el recorrido de \(g\circ f\).</p>
+<p>\(f(g(x))=\dfrac1{x^2-1}\), con dominio \(x\ne\pm1\). \(g(f(x))=\dfrac1{(x-2)^2}+1\), con dominio \(x\ne2\). Como \(\tfrac1{(x-2)^2}\) toma todos los valores positivos, el recorrido de \(g\circ f\) es \(y\gt 1\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el dominio de \(f(x)=\dfrac{\sqrt{x^2-9}}{x-5}\).</li><li>Halla el dominio y el recorrido de \(f(x)=3-\sqrt{2x-4}\).</li><li>\(f(x)=2x-1\) y \(g(x)=x^2+3\). Resuelve \((f\circ g)(x)=(g\circ f)(x)\).</li><li>\(f(x)=\sqrt x\) y \(g(x)=4-x^2\). Halla el dominio y el recorrido de \(f\circ g\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(x\le-3\), o \(3\le x\lt5\), o \(x\gt5\).</li><li>Dominio \(x\ge2\); recorrido \(y\le3\).</li><li>\(2x^2+5=4x^2-4x+4\iff2x^2-4x-1=0\iff x=1\pm\tfrac{\sqrt6}{2}\).</li><li>Se necesita \(4-x^2\ge0\): dominio \(-2\le x\le2\); recorrido \(0\le y\le2\).</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2026, P3)</p><p>\(f(g(x))=50\), con \(f\) cuadrática y \(g(x)=e^x-10\). Con \(w=g(x)\) queda una cuadrática en \(w\); una de las soluciones da \(e^x\le0\) y se descarta. El markscheme quita la A1 final si aparece una solución extra incorrecta.</p></div>
+
+<h3 id="t2">1.2 Función inversa</h3>
+<p>\(f\) tiene inversa si y solo si es <b>inyectiva</b> (uno a uno): ninguna recta horizontal corta su gráfica dos veces. Entonces:</p>
+\[ f^{-1}(f(x))=x\ \ (x\in\operatorname{dom}f),\qquad f(f^{-1}(x))=x\ \ (x\in\operatorname{dom}f^{-1}),\qquad \operatorname{dom}f^{-1}=\operatorname{rec}f \]
+<p><b>Cálculo:</b> escribe \(x=f(y)\) y despeja \(y\). Si aparece \(\pm\), el recorrido de \(f^{-1}\), que es el dominio de \(f\), decide el signo. La gráfica de \(f^{-1}\) es la reflexión de la de \(f\) en \(y=x\): los puntos \((a,b)\) pasan a \((b,a)\) y las asíntotas intercambian papeles.</p>
+<p><b>Restringir el dominio:</b> si \(f\) no es inyectiva, se toma el mayor intervalo donde es monótona (por ejemplo, a un lado del vértice).</p>
+<p><b>Autoinversa:</b> \(f=f^{-1}\iff f(f(x))=x\); su gráfica es simétrica respecto a \(y=x\). \(\dfrac{ax+b}{cx+d}\) (con \(c\ne0\)) es autoinversa si y solo si \(d=-a\).</p>
+
+<div class="ex"><p class="et">Ejemplo 1.3. El signo lo decide el dominio</p>
+<p>\(f(x)=(x-1)^2+2\) con \(x\le1\). Halla \(f^{-1}\) y su dominio.</p>
+<p>\(x=(y-1)^2+2\Rightarrow y-1=\pm\sqrt{x-2}\). Como \(y\le1\), se toma el signo negativo: \(f^{-1}(x)=1-\sqrt{x-2}\), con dominio \(x\ge2\) (el recorrido de \(f\)).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 250.944 236.16" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 236.16 
+L 250.944 236.16 
+L 250.944 0 
+L 0 0 
+L 0 236.16 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 228.96 
+L 243.744 228.96 
+L 243.744 7.2 
+L 7.2 7.2 
+L 7.2 228.96 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m1080778a97" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m1080778a97" x="36.768" y="184.608" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="36.768" y="199.966281" transform="rotate(-0 36.768 199.966281)">−2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m1080778a97" x="95.904" y="184.608" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="95.904" y="199.966281" transform="rotate(-0 95.904 199.966281)">2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m1080778a97" x="125.472" y="184.608" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="125.472" y="199.966281" transform="rotate(-0 125.472 199.966281)">4</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m1080778a97" x="155.04" y="184.608" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="155.04" y="199.966281" transform="rotate(-0 155.04 199.966281)">6</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m1080778a97" x="184.608" y="184.608" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="184.608" y="199.966281" transform="rotate(-0 184.608 199.966281)">8</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m1080778a97" x="214.176" y="184.608" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="214.176" y="199.966281" transform="rotate(-0 214.176 199.966281)">10</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_7">
+      <defs>
+       <path id="m628b5a2510" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m628b5a2510" x="66.336" y="155.04" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="59.336" y="159.219141" transform="rotate(-0 59.336 159.219141)">2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m628b5a2510" x="66.336" y="125.472" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="59.336" y="129.651141" transform="rotate(-0 59.336 129.651141)">4</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m628b5a2510" x="66.336" y="95.904" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="59.336" y="100.083141" transform="rotate(-0 59.336 100.083141)">6</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m628b5a2510" x="66.336" y="66.336" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="59.336" y="70.515141" transform="rotate(-0 59.336 70.515141)">8</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m628b5a2510" x="66.336" y="36.768" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="59.336" y="40.947141" transform="rotate(-0 59.336 40.947141)">10</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_12">
+    <path d="M 33.089977 -1 
+L 36.125217 18.099357 
+L 39.33913 36.963629 
+L 42.305819 53.136549 
+L 45.272508 68.118825 
+L 48.239197 81.910456 
+L 50.958662 93.506836 
+L 53.678127 104.102744 
+L 56.150368 112.86721 
+L 58.622609 120.804839 
+L 60.847625 127.241761 
+L 63.072642 133.008944 
+L 65.050435 137.573081 
+L 67.028227 141.608043 
+L 69.00602 145.113829 
+L 70.736589 147.747303 
+L 72.467157 149.975627 
+L 73.950502 151.563153 
+L 75.433846 152.853018 
+L 76.917191 153.845221 
+L 78.400535 154.539764 
+L 79.636656 154.891169 
+L 80.872776 155.035866 
+L 81.12 155.04 
+L 81.12 155.04 
+" clip-path="url(#pc380876965)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 95.904 169.824 
+L 96.398448 172.527687 
+L 97.387344 174.506923 
+L 98.376241 175.869627 
+L 99.859585 177.471181 
+L 101.837378 179.189845 
+L 104.309619 180.971586 
+L 107.276308 182.790426 
+L 110.737445 184.632702 
+L 114.69303 186.490644 
+L 119.637512 188.555691 
+L 125.57089 190.766667 
+L 131.998716 192.924309 
+L 139.415438 195.186829 
+L 148.315505 197.660158 
+L 158.204468 200.172808 
+L 169.576776 202.826702 
+L 182.432428 205.590413 
+L 196.771425 208.44037 
+L 212.593766 211.358823 
+L 230.3939 214.414343 
+L 243.744 216.575113 
+L 243.744 216.575113 
+" clip-path="url(#pc380876965)" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_14">
+    <path d="M 13.784 237.16 
+L 33.482667 217.461333 
+L 59.765333 191.178667 
+L 86.048 164.896 
+L 112.330667 138.613333 
+L 138.613333 112.330667 
+L 164.896 86.048 
+L 191.178667 59.765333 
+L 217.461333 33.482667 
+L 243.744 7.2 
+" clip-path="url(#pc380876965)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_15">
+    <defs>
+     <path id="m3ebe289db7" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#pc380876965)">
+     <use xlink:href="#m3ebe289db7" x="81.12" y="155.04" style="stroke: currentColor"/>
+     <use xlink:href="#m3ebe289db7" x="95.904" y="169.824" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 66.336 228.96 
+L 66.336 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 184.608 
+L 243.744 184.608 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="85.5552" y="143.2128" transform="rotate(-0 85.5552 143.2128)">(1, 2)</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="101.8176" y="165.3888" transform="rotate(-0 101.8176 165.3888)">(2, 1)</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_16">
+     <path d="M 69.814313 20.298438 
+L 79.814313 20.298438 
+L 89.814313 20.298438 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_14">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="97.814313" y="23.798438" transform="rotate(-0 97.814313 23.798438)">f(x) = (x − 1)² + 2, x ≤ 1</text>
+    </g>
+    <g id="line2d_17">
+     <path d="M 69.814313 34.976562 
+L 79.814313 34.976562 
+L 89.814313 34.976562 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="97.814313" y="38.476562" transform="rotate(-0 97.814313 38.476562)">f⁻¹(x) = 1 − √(x − 2), x ≥ 2</text>
+    </g>
+    <g id="line2d_18">
+     <path d="M 69.814313 49.654687 
+L 79.814313 49.654687 
+L 89.814313 49.654687 
+" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.3"/>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="97.814313" y="53.154687" transform="rotate(-0 97.814313 53.154687)">y = x</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pc380876965">
+   <rect x="7.2" y="7.2" width="236.544" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.3: la inversa es el reflejo en \(y=x\). La rama \(x\le1\) de \(f\) pasa a la rama \(y\le1\) de \(f^{-1}\), por eso se elige el signo negativo de la raíz.</figcaption></figure>
+
+<div class="ex"><p class="et">Ejemplo 1.4. Inversa homográfica</p>
+<p>Halla la inversa de \(f(x)=\dfrac{3x+1}{x-2}\), \(x\ne2\).</p>
+<p>\(x=\dfrac{3y+1}{y-2}\Rightarrow xy-2x=3y+1\Rightarrow y(x-3)=2x+1\Rightarrow f^{-1}(x)=\dfrac{2x+1}{x-3}\), \(x\ne3\). Las asíntotas se intercambian: \(f\) tiene \(x=2,\ y=3\); \(f^{-1}\) tiene \(x=3,\ y=2\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla la inversa de \(f(x)=\dfrac{2x-5}{x+3}\) y sus asíntotas.</li><li>\(f(x)=x^2+6x\), con \(x\ge-3\). Halla \(f^{-1}\) y su dominio.</li><li>Halla \(k\) para que \(f(x)=\dfrac{kx+3}{x-5}\) sea autoinversa.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f^{-1}(x)=\dfrac{3x+5}{2-x}\); asíntotas \(x=2\), \(y=-3\) (las de \(f\), intercambiadas).</li><li>\(f(x)=(x+3)^2-9\): \(f^{-1}(x)=-3+\sqrt{x+9}\), con \(x\ge-9\).</li><li>Con la regla \(d=-a\): \(k=5\). (Compruébalo con \(f(f(x))=x\).)</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ2, P11 b)</p><p>Al despejar la inversa de \(g(x)=\frac{1}{x^2-2x-3}\), \(x\gt 3\), aparece \(y=1\pm\sqrt{\cdot}\). Descartar el signo negativo porque \(y\gt 3\) vale una R1 específica. Y el dominio de \(g^{-1}\) es el recorrido de \(g\), no el dominio natural de la fórmula.</p></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB</p><p>Si \(f\) es creciente, \(f\) y \(f^{-1}\) solo se cortan sobre \(y=x\): basta resolver \(f(x)=x\). Si \(f\) es decreciente, pueden cortarse fuera de esa recta. Por ejemplo, \(f(x)=\tfrac1x\) coincide con su inversa en todo su dominio.</p></div>
+
+<h3 id="t3">1.3 Transformaciones</h3>
+<div class="tbl"><table>
+<thead><tr><th>Nueva función</th><th>Efecto sobre la gráfica de \(f\)</th><th>Punto \((p,q)\) pasa a</th></tr></thead>
+<tbody>
+<tr><td>\(f(x)+k\)</td><td>Traslación vertical \(k\)</td><td>\((p,\ q+k)\)</td></tr>
+<tr><td>\(f(x-h)\)</td><td>Traslación horizontal \(h\)</td><td>\((p+h,\ q)\)</td></tr>
+<tr><td>\(a\,f(x)\)</td><td>Estiramiento vertical de factor \(a\)</td><td>\((p,\ aq)\)</td></tr>
+<tr><td>\(f(bx)\)</td><td>Estiramiento horizontal de factor \(\tfrac1b\)</td><td>\((p/b,\ q)\)</td></tr>
+<tr><td>\(-f(x)\)</td><td>Reflexión en el eje \(x\)</td><td>\((p,\ -q)\)</td></tr>
+<tr><td>\(f(-x)\)</td><td>Reflexión en el eje \(y\)</td><td>\((-p,\ q)\)</td></tr>
+</tbody></table></div>
+<p><b>Forma general</b> \(y=a\,f\big(b(x-h)\big)+k\). Dentro del paréntesis se actúa sobre \(x\) en orden inverso: primero el estiramiento horizontal \(\tfrac1b\) (con reflexión si \(b\lt 0\)), después la traslación \(h\). Fuera, en orden normal: estiramiento vertical \(a\), después la traslación \(k\). Un punto \((p,q)\) pasa a \(\left(\tfrac pb+h,\ aq+k\right)\).</p>
+<p>Cuidado: \(f(2x-6)=f\big(2(x-3)\big)\) es una traslación de 3, no de 6.</p>
+
+<div class="ex"><p class="et">Ejemplo 1.5. Cinco transformaciones de la raíz</p>
+<p>Describe cómo se obtiene \(g(x)=1-\sqrt{4-2x}\) a partir de \(f(x)=\sqrt x\), e indica el dominio y el extremo de \(g\).</p>
+<p>\(g(x)=-f\big(-2(x-2)\big)+1\): estiramiento horizontal de factor \(\tfrac12\), reflexión en el eje \(y\), traslación 2 a la derecha; luego reflexión en el eje \(x\) y traslación 1 hacia arriba.</p>
+<p>El extremo \((0,0)\) de \(f\) pasa a \((2,1)\). Dominio: \(x\le2\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 371.52 236.16" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 236.16 
+L 371.52 236.16 
+L 371.52 0 
+L 0 0 
+L 0 236.16 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 228.96 
+L 364.32 228.96 
+L 364.32 7.2 
+L 7.2 7.2 
+L 7.2 228.96 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="md5fbbf4a2d" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#md5fbbf4a2d" x="66.72" y="118.08" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="66.72" y="133.438281" transform="rotate(-0 66.72 133.438281)">−4</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#md5fbbf4a2d" x="126.24" y="118.08" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="126.24" y="133.438281" transform="rotate(-0 126.24 133.438281)">−2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#md5fbbf4a2d" x="245.28" y="118.08" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="245.28" y="133.438281" transform="rotate(-0 245.28 133.438281)">2</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#md5fbbf4a2d" x="304.8" y="118.08" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="304.8" y="133.438281" transform="rotate(-0 304.8 133.438281)">4</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="m9107cdb6d2" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m9107cdb6d2" x="185.76" y="192" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="178.76" y="196.179141" transform="rotate(-0 178.76 196.179141)">−2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m9107cdb6d2" x="185.76" y="155.04" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="178.76" y="159.219141" transform="rotate(-0 178.76 159.219141)">−1</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m9107cdb6d2" x="185.76" y="81.12" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="178.76" y="85.299141" transform="rotate(-0 178.76 85.299141)">1</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m9107cdb6d2" x="185.76" y="44.16" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="178.76" y="48.339141" transform="rotate(-0 178.76 48.339141)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_9">
+    <path d="M 185.76 118.08 
+L 186.357191 112.844333 
+L 186.954381 110.675649 
+L 188.148763 107.608667 
+L 189.343144 105.255288 
+L 191.134716 102.373 
+L 192.926288 99.943118 
+L 195.31505 97.137333 
+L 197.703813 94.665387 
+L 200.689766 91.901666 
+L 204.27291 88.929041 
+L 207.856054 86.232683 
+L 212.036388 83.350516 
+L 216.813913 80.32507 
+L 222.188629 77.188136 
+L 228.160535 73.963488 
+L 234.729632 70.669021 
+L 241.89592 67.318328 
+L 250.256589 63.669355 
+L 259.214448 60.013647 
+L 268.769498 56.3524 
+L 279.51893 52.477284 
+L 290.865552 48.621032 
+L 303.406555 44.593916 
+L 317.14194 40.422513 
+L 332.071706 36.128853 
+L 348.195853 31.731172 
+L 364.32 27.546859 
+L 364.32 27.546859 
+" clip-path="url(#p61d74edefb)" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 7.2 228.96 
+L 25.513846 223.160078 
+L 43.031438 217.381516 
+L 59.752776 211.627154 
+L 74.881605 206.192908 
+L 89.214181 200.817311 
+L 102.750502 195.508634 
+L 115.490569 190.276641 
+L 127.434381 185.132903 
+L 138.58194 180.091182 
+L 148.933244 175.167887 
+L 158.488294 170.382616 
+L 167.24709 165.758781 
+L 175.209632 161.324308 
+L 183.172174 156.629859 
+L 190.338462 152.140039 
+L 196.708495 147.896135 
+L 202.282274 143.948001 
+L 207.856054 139.73453 
+L 212.633579 135.865483 
+L 217.411104 131.701346 
+L 221.392375 127.949227 
+L 225.373645 123.86904 
+L 228.558662 120.300142 
+L 231.743679 116.371761 
+L 234.132441 113.110452 
+L 236.521204 109.476505 
+L 238.113712 106.769424 
+L 239.706221 103.740666 
+L 241.298729 100.237952 
+L 242.891237 95.928702 
+L 243.687492 93.211254 
+L 244.483746 89.669808 
+L 245.28 81.12 
+L 245.28 81.12 
+" clip-path="url(#p61d74edefb)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <defs>
+     <path id="mc6b527cbf6" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#p61d74edefb)">
+     <use xlink:href="#mc6b527cbf6" x="185.76" y="118.08" style="stroke: currentColor"/>
+     <use xlink:href="#mc6b527cbf6" x="245.28" y="81.12" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 185.76 228.96 
+L 185.76 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 118.08 
+L 364.32 118.08 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 187.456523 117.026514 
+Q 215.519474 99.600327 242.157711 83.058841 
+" style="fill: none; stroke: #a2530a; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 237.259187 83.511012 
+L 242.157711 83.058841 
+L 239.580334 87.248963 
+" style="fill: none; stroke: #a2530a; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="257.184" y="58.944" transform="rotate(-0 257.184 58.944)">(0, 0) pasa a (2, 1)</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_12">
+     <path d="M 209.814688 196.212656 
+L 220.814688 196.212656 
+L 231.814688 196.212656 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="240.614688" y="200.062656" transform="rotate(-0 240.614688 200.062656)">f(x) = √x</text>
+    </g>
+    <g id="line2d_13">
+     <path d="M 209.814688 212.922344 
+L 220.814688 212.922344 
+L 231.814688 212.922344 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="240.614688" y="216.772344" transform="rotate(-0 240.614688 216.772344)">g(x) = 1 − √(4 − 2x)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p61d74edefb">
+   <rect x="7.2" y="7.2" width="357.12" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.5: \(g(x)=1-\sqrt{4-2x}\) es \(\sqrt x\) estirada, reflejada en los dos ejes y trasladada. El extremo \((0,0)\) pasa a \((2,1)\) y el dominio queda \(x\le2\).</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.6. Seguir un punto por varias transformaciones</p>
+<p>El punto \((4,5)\) está en \(y=f(x)\). ¿A qué punto va en \(y=2f(3x-6)+1\)?</p>
+<p>Dentro (horizontal): hace falta \(3x-6=4\), así que \(x=\frac{10}3\). Fuera (vertical): \(y=2\cdot5+1=11\). Imagen: \(\left(\frac{10}3,11\right)\). Las transformaciones horizontales actúan «al revés»: se despeja \(x\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>El punto \((2,-3)\) está en \(y=f(x)\). Halla su imagen en \(y=-f(2x+4)+1\).</li><li>\(y=f(x)\) tiene asíntotas \(x=2\) e \(y=-1\). Halla las asíntotas de \(y=2f(3-x)+5\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(2x+4=2\Rightarrow x=-1\); \(y=3+1=4\): \((-1,4)\).</li><li>\(3-x=2\Rightarrow x=1\); \(y=2(-1)+5=3\). Asíntotas \(x=1\), \(y=3\).</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ1, P1 b)</p><p>Dibujar \(g(x)=\tfrac12f(x)+1\) a partir de una gráfica dada. El markscheme da una M1 por aplicar el estiramiento o la traslación, y dos A1 por los tramos correctos con sus puntos clave: segmento en \(y=3\), máximo en \((2,4)\), extremos \((0,3)\) y \((6,0)\).</p></div>
+
+<h3 id="t4">1.4 Funciones racionales</h3>
+<h4>Homográfica \(\ \dfrac{ax+b}{cx+d}\) (\(c\neq0\))</h4>
+<p>Asíntota vertical \(x=-\tfrac dc\); asíntota horizontal \(y=\tfrac ac\). Se escribe como \(\tfrac ac+\tfrac{k}{cx+d}\), así que el recorrido es \(y\ne\tfrac ac\). Su inversa también es homográfica.</p>
+<h4>\(\dfrac{ax+b}{cx^2+dx+e}\)</h4>
+<p>Asíntota horizontal \(y=0\) (el grado del numerador es menor). Asíntotas verticales en las raíces del denominador que no anulan el numerador. La gráfica puede cortar la asíntota horizontal: donde el numerador vale 0.</p>
+<h4>\(\dfrac{ax^2+bx+c}{dx+e}\)</h4>
+<p>Asíntota oblicua: se divide, \(f(x)=mx+n+\dfrac{r}{dx+e}\), y la recta es \(y=mx+n\).</p>
+<p><b>Hueco:</b> si numerador y denominador comparten un factor \((x-p)\), en \(x=p\) hay un punto excluido, no una asíntota.</p>
+
+<div class="ex"><p class="et">Ejemplo 1.7. Cruza su asíntota horizontal</p>
+<p>Analiza \(f(x)=\dfrac{x+3}{x^2-1}\).</p>
+<p>Asíntotas verticales \(x=\pm1\); horizontal \(y=0\). Corta el eje \(x\) en \((-3,0)\): allí cruza su propia asíntota horizontal. Corta el eje \(y\) en \((0,-3)\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.8. Asíntota oblicua</p>
+<p>Halla las asíntotas de \(f(x)=\dfrac{2x^2-3x+1}{x-2}\).</p>
+<p>\(2x^2-3x+1=(x-2)(2x+1)+3\), así que \(f(x)=2x+1+\dfrac{3}{x-2}\). Asíntota oblicua \(y=2x+1\); vertical \(x=2\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 609.84 249.518437" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 249.518437 
+L 609.84 249.518437 
+L 609.84 0 
+L 0 0 
+L 0 249.518437 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 242.318437 
+L 298.98 242.318437 
+L 298.98 20.798437 
+L 7.2 20.798437 
+L 7.2 242.318437 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m39be165903" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m39be165903" x="73.513636" y="131.558437" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="73.513636" y="146.916719" transform="rotate(-0 73.513636 146.916719)">−3</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m39be165903" x="126.564545" y="131.558437" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="126.564545" y="146.916719" transform="rotate(-0 126.564545 146.916719)">−1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m39be165903" x="179.615455" y="131.558437" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="179.615455" y="146.916719" transform="rotate(-0 179.615455 146.916719)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <defs>
+       <path id="m27051d3c31" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m27051d3c31" x="153.09" y="186.938437" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="146.09" y="191.117578" transform="rotate(-0 146.09 191.117578)">−3</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m27051d3c31" x="153.09" y="76.178437" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="146.09" y="80.357578" transform="rotate(-0 146.09 80.357578)">3</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_6">
+    <path d="M 20.462727 133.096771 
+L 42.298765 132.879373 
+L 56.386532 132.528199 
+L 66.600163 132.057966 
+L 74.348434 131.484071 
+L 80.335735 130.830592 
+L 85.266453 130.081476 
+L 89.492783 129.216524 
+L 93.014725 128.271877 
+L 96.184472 127.178722 
+L 98.649831 126.112656 
+L 101.11519 124.793245 
+L 103.228355 123.396069 
+L 104.989326 121.985975 
+L 106.750297 120.286089 
+L 108.159074 118.659539 
+L 109.56785 116.730089 
+L 110.976627 114.413378 
+L 112.385404 111.591317 
+L 113.441986 109.04336 
+L 114.498569 106.015982 
+L 115.555151 102.369353 
+L 116.611734 97.904132 
+L 117.668316 92.326112 
+L 118.724899 85.182284 
+L 119.429287 79.204558 
+L 120.133675 71.880547 
+L 120.838064 62.711964 
+L 121.542452 50.920887 
+L 122.24684 35.221654 
+L 122.951229 13.325951 
+L 123.298542 -1 
+L 123.298542 -1 
+" clip-path="url(#p974db18c8e)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 131.532099 250.518437 
+L 132.351353 236.895186 
+L 133.211878 226.325459 
+L 134.072402 218.281265 
+L 135.105032 210.894427 
+L 136.137662 205.232511 
+L 137.170292 200.800328 
+L 138.202921 197.279217 
+L 139.235551 194.455213 
+L 140.440286 191.84584 
+L 141.64502 189.81987 
+L 142.849755 188.262983 
+L 144.05449 187.094269 
+L 145.259225 186.255779 
+L 146.463959 185.705929 
+L 147.668694 185.41525 
+L 148.873429 185.363595 
+L 150.078163 185.53833 
+L 151.282898 185.933181 
+L 152.487633 186.547587 
+L 153.864472 187.525131 
+L 155.241312 188.812216 
+L 156.618152 190.435435 
+L 157.994991 192.433562 
+L 159.371831 194.860481 
+L 160.748671 197.789713 
+L 162.12551 201.321332 
+L 163.330245 205.012361 
+L 164.53498 209.393842 
+L 165.739714 214.635519 
+L 166.944449 220.973009 
+L 167.977079 227.528134 
+L 169.009708 235.433335 
+L 170.042338 245.119689 
+L 170.532395 250.518437 
+L 170.532395 250.518437 
+" clip-path="url(#p974db18c8e)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 186.579385 -1 
+L 187.455101 14.681213 
+L 188.511684 29.380348 
+L 189.568266 40.934066 
+L 190.624849 50.249069 
+L 191.681431 57.914406 
+L 193.090208 66.240781 
+L 194.498985 72.967376 
+L 195.907761 78.510495 
+L 197.316538 83.153816 
+L 198.725315 87.097286 
+L 200.134091 90.485873 
+L 201.895062 94.102709 
+L 203.656033 97.173994 
+L 205.417004 99.81241 
+L 207.177975 102.10176 
+L 209.291139 104.476704 
+L 211.404304 106.523001 
+L 213.869664 108.577277 
+L 216.335023 110.342771 
+L 219.152576 112.077397 
+L 222.322324 113.740763 
+L 225.844265 115.306374 
+L 229.718401 116.759175 
+L 233.944731 118.092859 
+L 238.523255 119.307393 
+L 243.806167 120.47853 
+L 249.793468 121.577222 
+L 256.837351 122.635272 
+L 264.937817 123.619247 
+L 274.44706 124.542644 
+L 285.717273 125.405104 
+L 285.717273 125.405104 
+" clip-path="url(#p974db18c8e)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 126.564545 242.318437 
+L 126.564545 20.798437 
+" clip-path="url(#p974db18c8e)" style="fill: none; stroke-dasharray: 1.2,1.98; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 179.615455 242.318437 
+L 179.615455 20.798437 
+" clip-path="url(#p974db18c8e)" style="fill: none; stroke-dasharray: 1.2,1.98; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_11">
+    <defs>
+     <path id="mb4161f3eaa" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#p974db18c8e)">
+     <use xlink:href="#mb4161f3eaa" x="73.513636" y="131.558437" style="stroke: currentColor"/>
+     <use xlink:href="#mb4161f3eaa" x="153.09" y="186.938437" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 153.09 242.318437 
+L 153.09 20.798437 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 131.558437 
+L 298.98 131.558437 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="23.115273" y="105.714437" transform="rotate(-0 23.115273 105.714437)">cruza y = 0 en (−3, 0)</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="153.09" y="14.798437" transform="rotate(-0 153.09 14.798437)">f(x) = (x + 3)/(x² − 1)</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 310.86 242.318437 
+L 602.64 242.318437 
+L 602.64 20.798437 
+L 310.86 20.798437 
+L 310.86 242.318437 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_4">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m39be165903" x="468.807025" y="159.248437" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="468.807025" y="174.606719" transform="rotate(-0 468.807025 174.606719)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_3">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m27051d3c31" x="420.578926" y="214.628437" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="413.578926" y="218.807578" transform="rotate(-0 413.578926 218.807578)">−10</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m27051d3c31" x="420.578926" y="103.868437" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="413.578926" y="108.047578" transform="rotate(-0 413.578926 108.047578)">10</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m27051d3c31" x="420.578926" y="48.488437" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="413.578926" y="52.667578" transform="rotate(-0 413.578926 52.667578)">20</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_16">
+    <path d="M 324.122727 200.783437 
+L 351.244984 188.96454 
+L 371.229805 180.483124 
+L 386.456336 174.248469 
+L 398.352063 169.605959 
+L 407.868644 166.122849 
+L 415.481909 163.564571 
+L 421.667687 161.709215 
+L 426.901807 160.366633 
+L 431.184268 159.48785 
+L 434.990901 158.938099 
+L 438.321705 158.702634 
+L 441.176679 158.7492 
+L 443.555824 159.022563 
+L 445.459141 159.441716 
+L 447.362457 160.090457 
+L 448.789944 160.767077 
+L 450.217431 161.648308 
+L 451.644919 162.785209 
+L 453.072406 164.247363 
+L 454.499893 166.132126 
+L 455.451551 167.690337 
+L 456.403209 169.554723 
+L 457.354867 171.801611 
+L 458.306526 174.535001 
+L 459.258184 177.900348 
+L 460.209842 182.107516 
+L 461.1615 187.470855 
+L 462.113158 194.48348 
+L 463.064816 203.965399 
+L 464.016474 217.388214 
+L 464.492304 226.392338 
+L 464.968133 237.682757 
+L 465.38798 250.518437 
+L 465.38798 250.518437 
+" clip-path="url(#p7e470f6762)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_17">
+    <path d="M 471.873724 -1 
+L 472.40397 18.525446 
+L 473.19433 38.227353 
+L 473.98469 51.803517 
+L 474.77505 61.68768 
+L 475.565411 69.175125 
+L 476.355771 75.018668 
+L 477.146131 79.685724 
+L 478.331671 85.121062 
+L 479.517211 89.232543 
+L 480.702752 92.415975 
+L 481.888292 94.923684 
+L 483.073832 96.924123 
+L 484.259372 98.534049 
+L 485.444913 99.83694 
+L 487.025633 101.200117 
+L 488.606353 102.229697 
+L 490.187073 102.999675 
+L 492.162974 103.67738 
+L 494.138874 104.10778 
+L 496.509955 104.372326 
+L 499.276215 104.414693 
+L 502.437656 104.198631 
+L 505.994277 103.704352 
+L 509.946077 102.924104 
+L 514.688238 101.752488 
+L 520.220759 100.150928 
+L 526.938821 97.965731 
+L 535.237602 95.014905 
+L 545.117104 91.25786 
+L 557.762867 86.195777 
+L 573.57007 79.614798 
+L 589.377273 72.855637 
+L 589.377273 72.855637 
+" clip-path="url(#p7e470f6762)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_18">
+    <path d="M 324.122727 198.014437 
+L 353.595455 184.477104 
+L 383.068182 170.939771 
+L 412.540909 157.402437 
+L 442.013636 143.865104 
+L 471.486364 130.327771 
+L 500.959091 116.790437 
+L 530.431818 103.253104 
+L 559.904545 89.715771 
+L 589.377273 76.178437 
+" clip-path="url(#p7e470f6762)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_19">
+    <path d="M 468.807025 242.318437 
+L 468.807025 20.798437 
+" clip-path="url(#p7e470f6762)" style="fill: none; stroke-dasharray: 1.2,1.98; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 420.578926 242.318437 
+L 420.578926 20.798437 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 310.86 159.248437 
+L 602.64 159.248437 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="456.75" y="14.798437" transform="rotate(-0 456.75 14.798437)">f(x) = (2x² − 3x + 1)/(x − 2)</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_20">
+     <path d="M 318.96 32.587031 
+L 327.96 32.587031 
+L 336.96 32.587031 
+" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.3"/>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="344.16" y="35.737031" transform="rotate(-0 344.16 35.737031)">oblicua y = 2x + 1</text>
+    </g>
+    <g id="line2d_21">
+     <path d="M 318.96 45.797344 
+L 327.96 45.797344 
+L 336.96 45.797344 
+" style="fill: none; stroke-dasharray: 1.2,1.98; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+    </g>
+    <g id="text_14">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="344.16" y="48.947344" transform="rotate(-0 344.16 48.947344)">vertical x = 2</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p974db18c8e">
+   <rect x="7.2" y="20.798437" width="291.78" height="221.52"/>
+  </clipPath>
+  <clipPath id="p7e470f6762">
+   <rect x="310.86" y="20.798437" width="291.78" height="221.52"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: izquierda, Ejemplo 1.7: una asíntota horizontal describe el comportamiento lejos del origen, así que la gráfica puede cruzarla (en \(x=-3\)). Una asíntota vertical no se cruza nunca. Derecha, Ejemplo 1.8: al dividir, \(f(x)=2x+1+\frac3{x-2}\); el resto \(\frac3{x-2}\to0\), así que la gráfica se pega a \(y=2x+1\).</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla asíntotas y cortes con los ejes de \(f(x)=\dfrac{3x-2}{2x+1}\).</li><li>Halla las asíntotas de \(f(x)=\dfrac{x^2+x-6}{x-1}\).</li><li>Halla la asíntota vertical y el hueco de \(f(x)=\dfrac{x-2}{x^2-x-2}\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(x=-\tfrac12\), \(y=\tfrac32\); cortes \(\left(\tfrac23,0\right)\) y \((0,-2)\).</li><li>\(f(x)=x+2-\dfrac4{x-1}\): oblicua \(y=x+2\), vertical \(x=1\).</li><li>\(f(x)=\dfrac1{x+1}\) con \(x\ne2\): asíntota \(x=-1\), hueco \(\left(2,\tfrac13\right)\).</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ2, P3)</p><p>Tras dibujar \(\frac{2x-1}{x+1}\), piden resolver \(0\lt f(x)\lt 2\) «a partir de lo anterior»: se lee de la gráfica. La variante con \(|x|\) se resuelve sustituyendo \(x\) por \(|x|\) en la solución anterior.</p></div>
+<h3 id="t5">1.5 Funciones exponenciales y logarítmicas</h3>
+<ul>
+<li>\(y=a^x\) (\(a\gt 0,\ a\ne1\)): dominio \(\mathbb R\), recorrido \(y\gt 0\), asíntota \(y=0\), pasa por \((0,1)\). Es creciente si \(a\gt 1\) y decreciente si \(0\lt a\lt 1\).</li>
+<li>\(y=\log_ax\) es su inversa: dominio \(x\gt 0\), asíntota \(x=0\), pasa por \((1,0)\).</li>
+<li>\(y=Ae^{kx}+C\) tiene asíntota \(y=C\). Su inversa es \(x=\tfrac1k\ln\tfrac{y-C}{A}\), con asíntota vertical en \(x=C\).</li>
+</ul>
+
+<div class="ex"><p class="et">Ejemplo 1.9. Logaritmo trasladado y su inversa</p>
+<p>\(f(x)=\ln(2x-4)+1\). Halla el dominio, la asíntota, el corte con el eje \(x\) y \(f^{-1}\).</p>
+<p>Dominio \(x\gt 2\), asíntota \(x=2\). Corte: \(\ln(2x-4)=-1\Rightarrow x=2+\tfrac1{2e}\). Inversa: \(x=\ln(2y-4)+1\Rightarrow f^{-1}(x)=2+\tfrac12e^{x-1}\), con dominio \(\mathbb R\) y asíntota \(y=2\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.10. Ecuaciones exponenciales y logarítmicas</p>
+<p>Resuelve (a) \(e^{2x}-5e^x+6=0\); (b) \(\log_2x+\log_2(x-2)=3\).</p>
+<p>(a) Con \(u=e^x\gt0\): \(u^2-5u+6=0\), así que \(u=2\) o \(u=3\), y \(x=\ln2\) o \(x=\ln3\).</p>
+<p>(b) Dominio \(x\gt2\). \(\log_2[x(x-2)]=3\), así que \(x^2-2x-8=0\) y \(x=4\) o \(x=-2\). Solo \(x=4\) está en el dominio.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(4^x-3\cdot2^{x+1}+8=0\).</li><li>Resuelve \(\log_3(x+1)+\log_3(x-1)=1\).</li><li>Halla la inversa de \(f(x)=3e^{2x}-1\), con su dominio.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(t=2^x\): \(t^2-6t+8=0\), \(t=2\) o \(4\): \(x=1\) o \(x=2\).</li><li>\(x^2-1=3\Rightarrow x=2\) (\(x=-2\) no está en el dominio).</li><li>\(f^{-1}(x)=\tfrac12\ln\tfrac{x+1}{3}\), con \(x\gt-1\).</li></ol></div></details></div>
+
+<h3 id="t6">1.6 Paridad y simetrías</h3>
+<p>Con dominio simétrico respecto a 0:</p>
+<ul>
+<li><b>Par:</b> \(f(-x)=f(x)\) para todo \(x\); gráfica simétrica respecto al eje \(y\).</li>
+<li><b>Impar:</b> \(f(-x)=-f(x)\); simétrica respecto al origen. Si \(0\) está en el dominio, \(f(0)=0\).</li>
+<li>La mayoría de funciones no es ni par ni impar. Para probarlo basta un contraejemplo numérico.</li>
+</ul>
+<p><b>Reglas:</b> par·par y impar·impar dan par; par·impar da impar. \(f\circ g\) es par si \(g\) es par. Impar compuesta con impar da impar.</p>
+
+<div class="ex"><p class="et">Ejemplo 1.11. Impar con logaritmo</p>
+<p>Muestra que \(g(x)=\ln\dfrac{1-x}{1+x}\), \(-1\lt x\lt 1\), es impar.</p>
+<p>\(g(-x)=\ln\dfrac{1+x}{1-x}=\ln\left(\dfrac{1-x}{1+x}\right)^{-1}=-g(x)\). El dominio es simétrico, así que \(g\) es impar.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.12. Parte par, parte impar y una integral</p>
+<p>Escribe \(f(x)=\frac{x+1}{x^2+1}\) como suma de una función par y una impar, y calcula \(\int_{-1}^1f(x)\,dx\).</p>
+<p>Par: \(\frac{f(x)+f(-x)}2=\frac1{x^2+1}\). Impar: \(\frac{f(x)-f(-x)}2=\frac x{x^2+1}\). En un intervalo simétrico la parte impar integra 0, así que \(\int_{-1}^1f=2\int_0^1\frac{dx}{x^2+1}=\frac\pi2\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Indica si cada función es par, impar o ninguna, y justifícalo: \(f(x)=x^3-x\), \(g(x)=x^2+\cos x\), \(h(x)=x^2+x\).</li><li>Muestra que \(f(x)=\dfrac{x}{x^2+1}\) es impar.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f\) impar, \(g\) par, \(h\) ninguna: \(h(1)=2\), \(h(-1)=0\), que no son iguales ni opuestos.</li><li>\(f(-x)=\dfrac{-x}{x^2+1}=-f(x)\), con dominio \(\mathbb R\) (simétrico).</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ2, P6 a)</p><p>«Muestre que \(f\) es impar» vale 2 marcas: sustituir \(-x\) de forma explícita (M1) y concluir \(f(-x)=-f(x)\) (A1). Solo verificarlo con valores numéricos no cuenta.</p></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB</p><p>Si \(f(a+x)=f(a-x)\) para todo \(x\), la gráfica es simétrica respecto a la recta \(x=a\). Si \(f(a+x)+f(a-x)=2b\), es simétrica respecto al punto \((a,b)\). Toda homográfica es simétrica respecto al cruce de sus asíntotas.</p></div>
+
+<h3 id="t7">1.7 Gráficas derivadas de \(f\)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Gráfica</th><th>Cómo se obtiene</th><th>Rasgos clave</th></tr></thead>
+<tbody>
+<tr><td>\(y=|f(x)|\)</td><td>Refleja hacia arriba las partes bajo el eje \(x\)</td><td>Picos en las raíces de \(f\); nunca negativa</td></tr>
+<tr><td>\(y=f(|x|)\)</td><td>Conserva la parte con \(x\ge0\) y la refleja en el eje \(y\)</td><td>Siempre par</td></tr>
+<tr><td>\(y=\dfrac1{f(x)}\)</td><td>Punto a punto, el recíproco</td><td>Raíces de \(f\) → asíntotas verticales. \(f\to\pm\infty\) → \(\frac1f\to0\). Máximos ↔ mínimos en el mismo \(x\). Mismo signo. Puntos invariantes donde \(f=\pm1\)</td></tr>
+<tr><td>\(y=[f(x)]^2\)</td><td>Cuadrado de cada ordenada</td><td>Nunca negativa. Las raíces pasan a ser tangentes al eje. Se aplana donde \(|f|\lt 1\) y crece donde \(|f|\gt 1\)</td></tr>
+</tbody></table></div>
+
+<div class="ex"><p class="et">Ejemplo 1.13. Recíproca de una parábola</p>
+<p>Para \(f(x)=x^2-4\), describe \(y=\dfrac1{f(x)}\).</p>
+<p>Asíntotas verticales \(x=\pm2\); horizontal \(y=0\). El mínimo \((0,-4)\) de \(f\) pasa a máximo local \(\left(0,-\tfrac14\right)\). Recorrido: \(y\le-\tfrac14\) o \(y\gt 0\). Puntos invariantes donde \(x^2-4=\pm1\): \(x=\pm\sqrt5\) (valor 1) y \(x=\pm\sqrt3\) (valor \(-1\)).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 609.84 249.84" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 249.84 
+L 609.84 249.84 
+L 609.84 0 
+L 0 0 
+L 0 249.84 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 242.64 
+L 298.98 242.64 
+L 298.98 7.2 
+L 7.2 7.2 
+L 7.2 242.64 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="maa3f69dc65" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#maa3f69dc65" x="86.776364" y="111.84" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="86.776364" y="127.198281" transform="rotate(-0 86.776364 127.198281)">−2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#maa3f69dc65" x="219.403636" y="111.84" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="219.403636" y="127.198281" transform="rotate(-0 219.403636 127.198281)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path id="m6143f58ecb" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m6143f58ecb" x="153.09" y="216.48" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="146.09" y="220.659141" transform="rotate(-0 146.09 220.659141)">−4</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m6143f58ecb" x="153.09" y="138" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="146.09" y="142.179141" transform="rotate(-0 146.09 142.179141)">−1</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m6143f58ecb" x="153.09" y="85.68" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="146.09" y="89.859141" transform="rotate(-0 146.09 89.859141)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_6">
+    <path d="M 57.488878 -1 
+L 61.960622 18.87003 
+L 66.608387 38.512946 
+L 70.924168 55.832282 
+L 75.239949 72.265194 
+L 79.55573 87.811684 
+L 83.539528 101.375525 
+L 87.523326 114.18407 
+L 91.507124 126.23732 
+L 95.158938 136.622627 
+L 98.810753 146.373277 
+L 102.462568 155.489268 
+L 106.114383 163.970603 
+L 109.434214 171.13017 
+L 112.754046 177.765228 
+L 116.073878 183.875774 
+L 119.061726 188.92681 
+L 122.049574 193.552992 
+L 125.037423 197.754321 
+L 127.693288 201.132168 
+L 130.349153 204.174329 
+L 133.005019 206.880803 
+L 135.660884 209.25159 
+L 137.984766 211.050661 
+L 140.308648 212.592722 
+L 142.63253 213.877772 
+L 144.956413 214.905813 
+L 147.280295 215.676843 
+L 149.604177 216.190864 
+L 151.928059 216.447874 
+L 154.251941 216.447874 
+L 156.575823 216.190864 
+L 158.899705 215.676843 
+L 161.223587 214.905813 
+L 163.54747 213.877772 
+L 165.871352 212.592722 
+L 168.195234 211.050661 
+L 170.519116 209.25159 
+L 172.842998 207.195509 
+L 175.498863 204.530996 
+L 178.154729 201.530796 
+L 180.810594 198.19491 
+L 183.466459 194.523337 
+L 186.454308 189.991566 
+L 189.442156 185.034942 
+L 192.430005 179.653465 
+L 195.749836 173.175761 
+L 199.069668 166.173546 
+L 202.389499 158.646821 
+L 205.709331 150.595586 
+L 209.361146 141.133417 
+L 213.012961 131.036591 
+L 216.664775 120.305107 
+L 220.648573 107.874209 
+L 224.632371 94.688016 
+L 228.616169 80.746528 
+L 232.93195 64.79092 
+L 237.247731 47.94889 
+L 241.563512 30.220436 
+L 246.211277 10.136931 
+L 248.691122 -1 
+L 248.691122 -1 
+" clip-path="url(#p615ab83aaf)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 20.462727 109.66 
+L 31.660639 109.060644 
+L 40.223747 108.392136 
+L 46.810754 107.670595 
+L 52.080359 106.886096 
+L 56.471697 106.015379 
+L 59.984767 105.106434 
+L 63.058704 104.084179 
+L 65.693507 102.965345 
+L 67.889175 101.790093 
+L 69.865277 100.467412 
+L 71.621813 98.998394 
+L 73.158781 97.398816 
+L 74.476182 95.706773 
+L 75.793583 93.605817 
+L 76.891418 91.42464 
+L 77.989252 88.695717 
+L 78.86752 85.964873 
+L 79.745787 82.549474 
+L 80.624055 78.156303 
+L 81.502323 72.296826 
+L 82.161023 66.436355 
+L 82.819724 58.622143 
+L 83.478425 47.683481 
+L 84.137125 31.280914 
+L 84.576259 14.886828 
+L 84.87566 -1 
+L 84.87566 -1 
+" clip-path="url(#p615ab83aaf)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 88.364724 250.84 
+L 88.756901 222.988028 
+L 89.196035 203.123165 
+L 89.635169 189.362842 
+L 90.513436 171.547925 
+L 91.391704 160.51761 
+L 92.269972 153.017996 
+L 93.148239 147.58919 
+L 94.026507 143.478693 
+L 94.904774 140.259237 
+L 95.783042 137.670212 
+L 97.100443 134.616883 
+L 98.417844 132.259299 
+L 99.735246 130.38541 
+L 101.052647 128.861443 
+L 102.809182 127.224935 
+L 104.565717 125.917902 
+L 106.761386 124.615487 
+L 108.957055 123.579675 
+L 111.591858 122.589649 
+L 114.665794 121.685554 
+L 118.178865 120.887579 
+L 122.570202 120.137549 
+L 127.839808 119.48899 
+L 133.987681 118.971786 
+L 141.013821 118.604325 
+L 149.357363 118.400787 
+L 158.140038 118.418149 
+L 166.48358 118.658133 
+L 173.948855 119.098124 
+L 180.096727 119.680398 
+L 184.927199 120.338985 
+L 189.318537 121.162437 
+L 192.831607 122.045319 
+L 195.905543 123.055275 
+L 198.540346 124.173853 
+L 200.736015 125.358962 
+L 202.49255 126.536632 
+L 204.249085 127.994865 
+L 205.566487 129.336713 
+L 206.883888 130.965712 
+L 208.201289 132.982998 
+L 209.518691 135.543626 
+L 210.396958 137.670212 
+L 211.275226 140.259237 
+L 212.153493 143.478693 
+L 213.031761 147.58919 
+L 213.910028 153.017996 
+L 214.788296 160.51761 
+L 215.666564 171.547925 
+L 216.105697 179.268542 
+L 216.544831 189.362842 
+L 216.983965 203.123165 
+L 217.423099 222.988028 
+L 217.815276 250.84 
+L 217.815276 250.84 
+" clip-path="url(#p615ab83aaf)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 221.30434 -1 
+L 221.603741 14.886828 
+L 222.262442 37.588678 
+L 222.921142 51.785216 
+L 223.579843 61.501031 
+L 224.238544 68.567493 
+L 225.116811 75.452121 
+L 225.995079 80.499541 
+L 226.873346 84.357837 
+L 227.971181 88.065668 
+L 229.069015 90.928649 
+L 230.16685 93.205354 
+L 231.484251 95.388625 
+L 232.801652 97.140083 
+L 234.338621 98.790214 
+L 235.875589 100.129836 
+L 237.632124 101.381464 
+L 239.608226 102.526359 
+L 242.023462 103.650249 
+L 244.658264 104.627097 
+L 247.732201 105.532574 
+L 251.464838 106.393212 
+L 255.856176 107.173794 
+L 261.345348 107.912012 
+L 268.151922 108.58729 
+L 276.71503 109.198023 
+L 285.717273 109.66 
+L 285.717273 109.66 
+" clip-path="url(#p615ab83aaf)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 86.776364 242.64 
+L 86.776364 7.2 
+" clip-path="url(#p615ab83aaf)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #a2530a"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 219.403636 242.64 
+L 219.403636 7.2 
+" clip-path="url(#p615ab83aaf)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #a2530a"/>
+   </g>
+   <g id="line2d_12">
+    <defs>
+     <path id="m2dd0f6a546" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#p615ab83aaf)">
+     <use xlink:href="#m2dd0f6a546" x="153.09" y="118.38" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 153.09 242.64 
+L 153.09 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 111.84 
+L 298.98 111.84 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="163.037045" y="148.464" transform="rotate(-0 163.037045 148.464)">(0, −1/4)</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_13">
+     <path d="M 112.137891 18.988594 
+L 121.137891 18.988594 
+L 130.137891 18.988594 
+" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.6"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="137.337891" y="22.138594" transform="rotate(-0 137.337891 22.138594)">f(x) = x² − 4</text>
+    </g>
+    <g id="line2d_14">
+     <path d="M 112.137891 32.198906 
+L 121.137891 32.198906 
+L 130.137891 32.198906 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="137.337891" y="35.348906" transform="rotate(-0 137.337891 35.348906)">1/f(x)</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 310.86 242.64 
+L 602.64 242.64 
+L 602.64 7.2 
+L 310.86 7.2 
+L 310.86 242.64 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_3">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#maa3f69dc65" x="357.279545" y="152.086154" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="357.279545" y="167.444435" transform="rotate(-0 357.279545 167.444435)">−3</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#maa3f69dc65" x="423.593182" y="152.086154" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="423.593182" y="167.444435" transform="rotate(-0 423.593182 167.444435)">−1</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#maa3f69dc65" x="489.906818" y="152.086154" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="489.906818" y="167.444435" transform="rotate(-0 489.906818 167.444435)">1</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#maa3f69dc65" x="556.220455" y="152.086154" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="556.220455" y="167.444435" transform="rotate(-0 556.220455 167.444435)">3</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_4">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m6143f58ecb" x="456.75" y="224.529231" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="449.75" y="228.708371" transform="rotate(-0 449.75 228.708371)">−4</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m6143f58ecb" x="456.75" y="79.643077" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="449.75" y="83.822218" transform="rotate(-0 449.75 83.822218)">4</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_21">
+    <path d="M 372.901472 -1 
+L 377.903999 17.872713 
+L 382.883747 35.840474 
+L 387.863494 52.99121 
+L 392.843242 69.324919 
+L 397.491006 83.832576 
+L 402.13877 97.628512 
+L 406.786534 110.712728 
+L 411.102315 122.225077 
+L 415.418096 133.123749 
+L 419.733878 143.408743 
+L 423.717676 152.3579 
+L 427.701473 160.784161 
+L 431.685271 168.687524 
+L 435.669069 176.067992 
+L 439.320884 182.37407 
+L 442.972699 188.24077 
+L 446.624514 193.668091 
+L 449.944345 198.220741 
+L 453.264177 202.410269 
+L 456.584008 206.236673 
+L 459.90384 209.699955 
+L 462.891688 212.506439 
+L 465.879537 215.018794 
+L 468.867385 217.237019 
+L 471.855234 219.161115 
+L 474.511099 220.624499 
+L 477.166964 221.855485 
+L 479.82283 222.854072 
+L 482.478695 223.620261 
+L 485.13456 224.154051 
+L 487.790426 224.455443 
+L 490.446291 224.524436 
+L 493.102156 224.361031 
+L 495.758021 223.965228 
+L 498.413887 223.337025 
+L 501.069752 222.476425 
+L 503.725617 221.383426 
+L 506.381483 220.058028 
+L 509.037348 218.500232 
+L 512.025196 216.469923 
+L 515.013045 214.145484 
+L 518.000893 211.526916 
+L 520.988742 208.614219 
+L 523.97659 205.407392 
+L 527.296422 201.499285 
+L 530.616253 197.228055 
+L 533.936085 192.593702 
+L 537.255916 187.596227 
+L 540.907731 181.679598 
+L 544.559546 175.32359 
+L 548.211361 168.528204 
+L 552.195159 160.613947 
+L 556.178957 152.176793 
+L 560.162755 143.216742 
+L 564.146553 133.733795 
+L 568.462334 122.870527 
+L 572.778115 111.393583 
+L 577.093896 99.302961 
+L 581.74166 85.59599 
+L 586.389424 71.177298 
+L 589.377273 61.532308 
+L 589.377273 61.532308 
+" clip-path="url(#p7deeff692b)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_22">
+    <path d="M 372.901472 -1 
+L 377.903999 17.872713 
+L 382.883747 35.840474 
+L 387.863494 52.99121 
+L 392.843242 69.324919 
+L 397.491006 83.832576 
+L 402.13877 97.628512 
+L 406.786534 110.712728 
+L 411.102315 122.225077 
+L 415.418096 133.123749 
+L 419.733878 143.408743 
+L 423.385692 151.632109 
+L 423.717676 151.814408 
+L 427.701473 143.388147 
+L 431.685271 135.484783 
+L 435.669069 128.104316 
+L 439.320884 121.798238 
+L 442.972699 115.931538 
+L 446.624514 110.504216 
+L 449.944345 105.951566 
+L 453.264177 101.762039 
+L 456.584008 97.935634 
+L 459.90384 94.472352 
+L 462.891688 91.665868 
+L 465.879537 89.153514 
+L 468.867385 86.935288 
+L 471.855234 85.011192 
+L 474.511099 83.547808 
+L 477.166964 82.316823 
+L 479.82283 81.318235 
+L 482.478695 80.552047 
+L 485.13456 80.018256 
+L 487.790426 79.716865 
+L 490.446291 79.647871 
+L 493.102156 79.811276 
+L 495.758021 80.20708 
+L 498.413887 80.835282 
+L 501.069752 81.695883 
+L 503.725617 82.788882 
+L 506.381483 84.11428 
+L 509.037348 85.672076 
+L 512.025196 87.702385 
+L 515.013045 90.026824 
+L 518.000893 92.645392 
+L 520.988742 95.558089 
+L 523.97659 98.764916 
+L 527.296422 102.673023 
+L 530.616253 106.944253 
+L 533.936085 111.578605 
+L 537.255916 116.57608 
+L 540.907731 122.49271 
+L 544.559546 128.848717 
+L 548.211361 135.644103 
+L 552.195159 143.558361 
+L 556.178957 151.995515 
+L 556.842923 150.719763 
+L 560.826721 141.672563 
+L 564.810519 132.102466 
+L 569.1263 121.144787 
+L 573.442081 109.573431 
+L 577.757862 97.388397 
+L 582.405626 83.579752 
+L 587.053391 69.059386 
+L 589.377273 61.532308 
+L 589.377273 61.532308 
+" clip-path="url(#p7deeff692b)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_23">
+    <path d="M 324.122727 61.532308 
+L 328.770492 76.408534 
+L 333.418256 90.57304 
+L 338.06602 104.025825 
+L 342.713784 116.76689 
+L 347.029565 127.960599 
+L 351.345346 138.54063 
+L 355.661128 148.506985 
+L 359.644925 157.162012 
+L 363.628723 165.294144 
+L 367.612521 172.903378 
+L 371.264336 179.41916 
+L 374.916151 185.495563 
+L 378.567966 191.132588 
+L 381.887797 195.875877 
+L 385.207629 200.256044 
+L 388.52746 204.273088 
+L 391.847292 207.927009 
+L 394.835141 210.905069 
+L 397.822989 213.588999 
+L 400.810837 215.978799 
+L 403.798686 218.074471 
+L 406.786534 219.876013 
+L 409.4424 221.23046 
+L 412.098265 222.352509 
+L 414.75413 223.24216 
+L 417.409995 223.899412 
+L 420.065861 224.324265 
+L 422.721726 224.51672 
+L 425.377591 224.476777 
+L 428.033457 224.204435 
+L 430.689322 223.699694 
+L 433.345187 222.962555 
+L 436.001052 221.993018 
+L 438.656918 220.791082 
+L 441.312783 219.356748 
+L 443.968648 217.690015 
+L 446.956497 215.537151 
+L 449.944345 213.090159 
+L 452.932194 210.349037 
+L 455.920042 207.313786 
+L 456.584008 206.599342 
+L 456.915992 206.599342 
+L 460.235823 210.026312 
+L 463.223672 212.800115 
+L 466.21152 215.279788 
+L 469.199369 217.465333 
+L 472.187217 219.356748 
+L 474.843082 220.791082 
+L 477.498948 221.993018 
+L 480.154813 222.962555 
+L 482.810678 223.699694 
+L 485.466543 224.204435 
+L 488.122409 224.476777 
+L 490.778274 224.51672 
+L 493.434139 224.324265 
+L 496.090005 223.899412 
+L 498.74587 223.24216 
+L 501.401735 222.352509 
+L 504.0576 221.23046 
+L 506.713466 219.876013 
+L 509.369331 218.289167 
+L 512.357179 216.226177 
+L 515.345028 213.869057 
+L 518.332876 211.217808 
+L 521.320725 208.272429 
+L 524.308573 205.032922 
+L 527.628405 201.088502 
+L 530.948236 196.78096 
+L 534.268068 192.110295 
+L 537.5879 187.076508 
+L 541.239714 181.119935 
+L 544.891529 174.723984 
+L 548.543344 167.888655 
+L 552.527142 159.930822 
+L 556.51094 151.450094 
+L 560.494738 142.446468 
+L 564.478536 132.919946 
+L 568.794317 122.009473 
+L 573.110098 110.485323 
+L 577.425879 98.347495 
+L 582.073643 84.589686 
+L 586.721407 70.120158 
+L 589.377273 61.532308 
+L 589.377273 61.532308 
+" clip-path="url(#p7deeff692b)" style="fill: none; stroke: #a2530a; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 456.75 242.64 
+L 456.75 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 310.86 152.086154 
+L 602.64 152.086154 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_2">
+    <g id="line2d_24">
+     <path d="M 403.640156 18.988594 
+L 412.640156 18.988594 
+L 421.640156 18.988594 
+" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.6"/>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="428.840156" y="22.138594" transform="rotate(-0 428.840156 22.138594)">f(x) = x² − 2x − 3</text>
+    </g>
+    <g id="line2d_25">
+     <path d="M 403.640156 32.238281 
+L 412.640156 32.238281 
+L 421.640156 32.238281 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="428.840156" y="35.388281" transform="rotate(-0 428.840156 35.388281)">|f(x)|</text>
+    </g>
+    <g id="line2d_26">
+     <path d="M 403.640156 45.738281 
+L 412.640156 45.738281 
+L 421.640156 45.738281 
+" style="fill: none; stroke: #a2530a; stroke-width: 1.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_17">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="428.840156" y="48.888281" transform="rotate(-0 428.840156 48.888281)">f(|x|)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p615ab83aaf">
+   <rect x="7.2" y="7.2" width="291.78" height="235.44"/>
+  </clipPath>
+  <clipPath id="p7deeff692b">
+   <rect x="310.86" y="7.2" width="291.78" height="235.44"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: izquierda, Ejemplo 1.13: \(\frac1{f(x)}\) para \(f(x)=x^2-4\), con asíntotas \(x=\pm2\) y el mínimo de \(f\) convertido en máximo local \(\left(0,-\frac14\right)\). Derecha: \(|f(x)|\) refleja hacia arriba la parte bajo el eje; \(f(|x|)\) copia la mitad derecha en la izquierda.</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.14. Valor absoluto, cuadrado y recíproca de una exponencial</p>
+<p>Para \(f(x)=2^x-4\), describe \(y=|f(x)|\), \(y=[f(x)]^2\) e \(y=\frac1{f(x)}\).</p>
+<p>\(|f|\): refleja la parte con \(x\lt2\) hacia arriba; su asíntota pasa a ser \(y=4\). \([f]^2\): mínimo 0 en \(x=2\), donde la gráfica toca el eje, y tiende a 16 por la izquierda. \(\frac1f\): asíntota vertical \(x=2\), horizontal \(y=-\frac14\) cuando \(x\to-\infty\) e \(y=0\) cuando \(x\to\infty\). Puntos invariantes donde \(f=\pm1\): \(x=\log_25\) y \(x=\log_23\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Para \(f(x)=x^2-2x-3\), halla las asíntotas de \(y=\dfrac1{f(x)}\) y su máximo local.</li><li>Con la misma \(f\), halla los puntos invariantes entre \(y=f(x)\) e \(y=\dfrac1{f(x)}\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Raíces \(-1\) y 3: asíntotas \(x=-1\), \(x=3\), \(y=0\). El vértice \((1,-4)\) da el máximo local \(\left(1,-\tfrac14\right)\).</li><li>\(f=1\): \(x=1\pm\sqrt5\) (valor 1). \(f=-1\): \(x=1\pm\sqrt3\) (valor \(-1\)).</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2022, P10 c–d)</p><p>Se dibuja \(y=|f(x)|\) con \(f\) trigonométrica y luego se resuelve \(|f(x)|\gt 1\) a partir de ese dibujo. Está resuelta en el Módulo 8.</p></div>
+
+<h3 id="t8">1.8 Ecuaciones e inecuaciones</h3>
+<ul>
+<li><b>\(g(x)\ge f(x)\):</b> estudia el signo de \(g-f\), o mira dónde la gráfica de \(g\) está por encima de la de \(f\).</li>
+<li><b>Racionales:</b> nunca multipliques por una expresión de signo desconocido. Pasa todo a un lado, usa denominador común y haz una tabla de signos, o multiplica por el cuadrado del denominador.</li>
+<li><b>Módulo:</b>
+\[ |A|=B\iff B\ge0\ \text{y}\ A=\pm B,\qquad |A|\lt B\iff -B\lt A\lt B,\qquad |A|\gt B\iff A\gt B\ \text{o}\ A\lt -B,\qquad |A|\le|B|\iff A^2\le B^2 \]
+Con varios módulos, separa en casos según el signo de cada expresión.</li>
+</ul>
+
+<div class="ex"><p class="et">Ejemplo 1.15. Inecuación racional contra un polinomio</p>
+<p>Resuelve \(\dfrac{x+1}{x-2}\ge x-1\).</p>
+<p>\(\dfrac{x+1-(x-1)(x-2)}{x-2}\ge0\iff\dfrac{-x^2+4x-1}{x-2}\ge0\iff\dfrac{x^2-4x+1}{x-2}\le0\).</p>
+<p>Valores críticos: \(2-\sqrt3,\ 2,\ 2+\sqrt3\). Tabla de signos: \(x\le2-\sqrt3\) o \(2\lt x\le2+\sqrt3\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.16. Dos módulos, elevando al cuadrado</p>
+<p>Resuelve \(|2x-3|\le|x+1|\).</p>
+<p>\(4x^2-12x+9\le x^2+2x+1\iff3x^2-14x+8\le0\iff(3x-2)(x-4)\le0\iff\tfrac23\le x\le4\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(|x-3|\lt2x\).</li><li>Resuelve \(\dfrac{2x-1}{x+2}\le1\).</li><li>Resuelve \(|x+1|\ge|2x-4|\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Si \(x\ge3\), siempre se cumple; si \(x\lt3\), \(3-x\lt2x\iff x\gt1\). Solución: \(x\gt1\).</li><li>\(\dfrac{x-3}{x+2}\le0\iff-2\lt x\le3\).</li><li>\(3x^2-18x+15\le0\iff1\le x\le5\).</li></ol></div></details></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB</p><p>\(e^x\ge1+x\) para todo \(x\), con igualdad solo en \(x=0\): la recta \(y=1+x\) es tangente a \(y=e^x\) en ese punto. Esta desigualdad demuestra que ciertas ecuaciones no tienen solución (ejemplo F9).</p></div>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Función</td><td>Relación que asigna a cada elemento del dominio exactamente una imagen.</td></tr>
+<tr><td>Dominio</td><td>Conjunto de valores de entrada permitidos.</td></tr>
+<tr><td>Recorrido (rango)</td><td>Conjunto de valores que toma la función.</td></tr>
+<tr><td>Inyectiva (uno a uno)</td><td>Entradas distintas dan imágenes distintas; condición para tener inversa.</td></tr>
+<tr><td>Función inversa</td><td>\(f^{-1}\) con \(f^{-1}(f(x))=x\) y \(f(f^{-1}(x))=x\) en los dominios correspondientes.</td></tr>
+<tr><td>Autoinversa</td><td>Función que coincide con su inversa: \(f(f(x))=x\).</td></tr>
+<tr><td>Función compuesta</td><td>\((f\circ g)(x)=f(g(x))\), definida donde \(g(x)\in\operatorname{dom}f\).</td></tr>
+<tr><td>Asíntota</td><td>Recta a la que la gráfica se acerca indefinidamente: vertical, horizontal u oblicua.</td></tr>
+<tr><td>Función par / impar</td><td>\(f(-x)=f(x)\) / \(f(-x)=-f(x)\) para todo \(x\) del dominio, que debe ser simétrico.</td></tr>
+<tr><td>Punto invariante</td><td>Punto que no cambia bajo una transformación.</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Dibuje aproximadamente</td><td>Forma correcta, asíntotas con su ecuación, cortes rotulados y comportamiento asintótico visible.</td><td>No rotular, o que una rama cruce una asíntota vertical.</td></tr>
+<tr><td>Escriba la ecuación de la asíntota</td><td>Una ecuación completa: \(x=3\), no «3».</td><td>Dar solo el número.</td></tr>
+<tr><td>Indique el dominio</td><td>Un conjunto o una desigualdad en \(x\).</td><td>Dar el dominio de la fórmula, no el recorrido de la función original.</td></tr>
+<tr><td>Muestre que \(f\) es impar</td><td>Calcular \(f(-x)\) en general y compararlo con \(-f(x)\).</td><td>Verificar con números.</td></tr>
+<tr><td>A partir de lo anterior, resuelva</td><td>Leer la solución de la gráfica o del resultado previo.</td><td>Resolver algebraicamente desde cero: 0 marcas si se exigía el hence.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>El orden de la composición.</b> \(f\circ g\) aplica primero \(g\). \((f\circ g)(x)\neq(g\circ f)(x)\) en general.</li>
+<li><b>El dominio heredado.</b> El dominio de \(f\circ g\) no es el de la fórmula simplificada: hay que exigir \(x\in\operatorname{dom}g\) y \(g(x)\in\operatorname{dom}f\).</li>
+<li><b>El ± de la inversa.</b> Al despejar aparece \(\pm\); el signo lo decide el dominio de \(f\), y esa justificación vale una R1.</li>
+<li><b>El dominio de la inversa.</b> Es el recorrido de \(f\), no el dominio natural de la fórmula de \(f^{-1}\).</li>
+<li><b>La traslación engañosa.</b> \(f(2x-6)\) traslada 3, no 6: factoriza \(2(x-3)\).</li>
+<li><b>El estiramiento al revés.</b> \(f(2x)\) comprime horizontalmente a la mitad; no estira al doble.</li>
+<li><b>La asíntota sin ecuación.</b> Escribe \(x=-1\) e \(y=2\) completos.</li>
+<li><b>La asíntota que sí se cruza.</b> Una gráfica puede cortar su asíntota horizontal u oblicua, pero nunca una vertical.</li>
+<li><b>El hueco confundido.</b> Un factor común entre numerador y denominador da un punto excluido, no una asíntota.</li>
+<li><b>Multiplicar por lo que puede ser negativo.</b> En inecuaciones racionales, pasa todo a un lado o multiplica por el cuadrado del denominador.</li>
+<li><b>El denominador incluido.</b> En \(\ge0\) se incluyen los ceros del numerador, nunca los del denominador.</li>
+<li><b>El módulo sin condición.</b> \(|A|=B\) exige \(B\ge0\): comprueba cada solución.</li>
+<li><b>\(|f(x)|\) contra \(f(|x|)\).</b> La primera refleja hacia arriba lo negativo; la segunda copia el lado derecho sobre el izquierdo.</li>
+<li><b>La solución imposible.</b> \(e^x=-10\) o \(\ln\) de un negativo: se descarta y se dice; una solución extra incorrecta quita la A1 final.</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">Cada ejemplo parte de un ítem de tus fichas (varios son preguntas IB que la ficha ya trae) y lo amplía hasta el nivel de la Sección B. Ninguno repite un tipo de la sección 5.</p>
+
+<div class="ex"><p class="et">F1. Valor absoluto contra una familia de rectas <span class="lvl">Sección B</span></p>
+<p class="src">Separata DMpA 05, pregunta IB de Prueba 1, mayo 2018 (\(y=\tfrac x2+1\) e \(y=|x-2|\)), ampliada.</p>
+<p>(a) Resuelve \(|x-2|=\tfrac x2+1\). (b) Resuelve \(|x-2|\gt \tfrac x2+1\). (c) Determina el número de soluciones de \(|x-2|=kx+1\) según el valor de \(k\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Si \(x\ge2\): \(x-2=\tfrac x2+1\Rightarrow x=6\). Si \(x\lt2\): \(2-x=\tfrac x2+1\Rightarrow x=\tfrac23\).</p>
+<p>(b) La V está por encima de la recta fuera de las intersecciones: \(x\lt\tfrac23\) o \(x\gt6\).</p>
+<p>(c) Todas las rectas pasan por \((0,1)\). La recta que va de \((0,1)\) al vértice \((2,0)\) tiene pendiente \(-\tfrac12\); las ramas de la V tienen pendientes \(\pm1\).</p>
+<p>Rama izquierda: \(x=\tfrac1{k+1}\lt2\) si \(k\lt-1\) o \(k\gt-\tfrac12\). Rama derecha: \(x=\tfrac3{1-k}\ge2\) si \(-\tfrac12\le k\lt1\).</p>
+<p><span class="lbl">Resultado.</span> \(k\lt-1\): 1 solución. \(-1\le k\lt-\tfrac12\): ninguna. \(k=-\tfrac12\): 1 (el vértice). \(-\tfrac12\lt k\lt1\): 2. \(k\ge1\): 1.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Seis transformaciones a la vez <span class="lvl">Sección B</span></p>
+<p class="src">Separata DMpA 05, pregunta IB de Prueba 1, mayo 2019 (cortes \((5,0)\) y \((0,8)\)), ampliada.</p>
+<p>La gráfica de \(f\) corta los ejes en \((5,0)\) y \((0,8)\). Supón además que tiene asíntotas \(x=-1\) e \(y=2\). Sea \(g(x)=-2f\!\left(3-\tfrac x2\right)+1\). (a) Halla las imágenes de los dos cortes y las asíntotas de \(g\). (b) Describe, en orden, la secuencia de transformaciones.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Un punto \((p,q)\) de \(f\) aparece en \(g\) cuando \(3-\tfrac x2=p\), es decir \(x=6-2p\), con \(y=-2q+1\).</p>
+<p>(a) \((5,0)\to(-4,1)\); \((0,8)\to(6,-15)\). La asíntota \(x=-1\) pasa a \(x=8\), y la asíntota \(y=2\) pasa a \(y=-3\).</p>
+<p>(b) \(g(x)=-2f\!\left(-\tfrac12(x-6)\right)+1\): estiramiento horizontal de factor 2, reflexión en el eje \(y\), traslación 6 a la derecha; luego estiramiento vertical de factor 2, reflexión en el eje \(x\) y traslación 1 hacia arriba.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. Modelo exponencial, límite e inversa <span class="lvl">Sección B</span></p>
+<p class="src">Separata DMpA 05, pregunta IB de noviembre 2018 (levadura \(g(t)=10-k\,c^{-t}\)), ampliada.</p>
+<p>(a) Si \(g(0)=2\) y \(g(3)=9\), halla \(k\) y \(c\). (b) Indica la cantidad a la que se aproxima la levadura y justifícalo. (c) Halla \(g^{-1}\), su dominio y su interpretación. (d) Halla el tiempo exacto para llegar a 9,9 g.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(10-k=2\Rightarrow k=8\). \(8c^{-3}=1\Rightarrow c=2\).</p>
+<p>(b) \(2^{-t}\to0\), así que \(g(t)\to10\) g sin alcanzarlo (asíntota \(g=10\)).</p>
+<p>(c) \(2^{-t}=\tfrac{10-g}{8}\Rightarrow t=\log_2\tfrac{8}{10-g}=3-\log_2(10-g)\), con dominio \(2\le g\lt10\). Da el tiempo necesario para tener \(g\) gramos.</p>
+<p>(d) \(t=\log_2\tfrac{8}{0{,}1}=\log_280=4+\log_25\) minutos.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Cuadrática restringida: inversa y variantes con módulo <span class="lvl">Sección B</span></p>
+<p class="src">Separata DMpA 05, pregunta IB de noviembre 2018 (\(f(x)=x^2-4x-5\)), ampliada.</p>
+<p>(a) Con dominio \(x\ge2\), halla \(f^{-1}\) y su dominio. (b) Resuelve \(f(x)=f^{-1}(x)\). (c) Con dominio \(\mathbb R\), resuelve \(f(|x|)=0\) y \(|f(x)|=9\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(f(x)=(x-2)^2-9\). \(x=(y-2)^2-9\) con \(y\ge2\): \(f^{-1}(x)=2+\sqrt{x+9}\), con dominio \(x\ge-9\).</p>
+<p>(b) \(f\) es creciente en su dominio, así que se cortan sobre \(y=x\): \(x^2-5x-5=0\Rightarrow x=\tfrac{5\pm3\sqrt5}{2}\). Solo \(\tfrac{5+3\sqrt5}{2}\ge2\).</p>
+<p>(c) \(f(|x|)=0\iff|x|=5\) (la raíz \(-1\) no puede ser \(|x|\)): \(x=\pm5\). \(|f(x)|=9\iff(x-2)^2=18\) o \((x-2)^2=0\): \(x=2\) y \(x=2\pm3\sqrt2\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. Composición con parámetro <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA N°07, ejemplo 8 (pregunta IB de octubre 2023), adaptado.</p>
+<p>\(f(x)=x^2-3\) y \(g(x)=(x+k)^2\). (a) Si \((g\circ f)(2)=10\), halla los valores de \(k\). (b) Halla los \(k\) para los que \((g\circ f)(x)=0\) tiene exactamente dos soluciones reales. (c) Halla el recorrido de \(f\circ g\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(f(2)=1\Rightarrow(1+k)^2=10\Rightarrow k=-1\pm\sqrt{10}\).</p>
+<p>(b) \((x^2-3+k)^2=0\iff x^2=3-k\): dos soluciones si \(k\lt3\).</p>
+<p>(c) \(f(g(x))=(x+k)^4-3\), con recorrido \(y\ge-3\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Funciones que conmutan <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°07, problema 5 (composición conmutativa), generalizado.</p>
+<p>\(g(x)=2x-1\). (a) Si \(f(x)=mx+3\) y \(f\circ g=g\circ f\), halla \(m\). (b) Halla todas las funciones lineales \(f(x)=ax+b\) que conmutan con \(g\). (c) Muestra que todas pasan por el punto fijo de \(g\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(b) \(a(2x-1)+b=2(ax+b)-1\Rightarrow-a+b=2b-1\Rightarrow b=1-a\). (a) Con \(b=3\): \(m=-2\).</p>
+<p>(c) Punto fijo de \(g\): \(2x-1=x\Rightarrow x=1\). Y \(f(1)=a+1-a=1\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. Modelo compuesto e inversa <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA N°07, ejemplo 7 (monóxido de carbono), ampliado.</p>
+<p>\(M(m)=1+0{,}6m\) ppm, con \(m\) miles de personas, y \(P(t)=400+30t+0{,}5t^2\). (a) Halla \((M\circ P)(t)\) y su valor en \(t=5\). (b) Halla el tiempo exacto en que el nivel llega a 391 ppm. (c) Expresa \(t\) en función de \(M\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(M(P(t))=241+18t+0{,}3t^2\); en \(t=5\), 338,5 ppm.</p>
+<p>(b) \(0{,}3t^2+18t-150=0\Rightarrow t^2+60t-500=0\Rightarrow t=-30+10\sqrt{14}\) (se descarta la raíz negativa).</p>
+<p>(c) \(t^2+60t-\tfrac{10(M-241)}{3}=0\Rightarrow t=-30+\sqrt{900+\tfrac{10(M-241)}{3}}\), para \(M\ge241\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. Racional par y una inecuación con sustitución <span class="lvl">Sección B</span></p>
+<p class="src">Separata DMpA 05, ítem 7f (\(y=\tfrac6{x^2-9}\)), y DMpA N°15, ampliados.</p>
+<p>\(f(x)=\dfrac6{x^2-9}\). (a) Muestra que es par y halla asíntotas, corte con el eje \(y\) y recorrido. (b) Resuelve \(f(x)\ge x^2-9\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(f(-x)=f(x)\). Asíntotas \(x=\pm3\), \(y=0\); corte \(\left(0,-\tfrac23\right)\). Si \(|x|\lt3\), \(x^2-9\in[-9,0)\) y \(f\le-\tfrac23\). Si \(|x|\gt3\), \(f\gt0\). Recorrido: \(y\le-\tfrac23\) o \(y\gt0\).</p>
+<p>(b) Con \(u=x^2-9\ne0\): \(\tfrac6u\ge u\iff\tfrac{6-u^2}{u}\ge0\iff u\le-\sqrt6\) o \(0\lt u\le\sqrt6\).</p>
+<p>Por lo tanto \(|x|\le\sqrt{9-\sqrt6}\) o \(3\lt|x|\le\sqrt{9+\sqrt6}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. Una función que nunca corta a su inversa <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°17 (inversa exponencial–logarítmica), ampliada.</p>
+<p>\(f(x)=3+2e^{x-1}\). (a) Halla \(f^{-1}\), su dominio y sus asíntotas. (b) Usando \(e^t\ge1+t\), muestra que \(f(x)\gt x\) para todo \(x\) y deduce que las gráficas de \(f\) y \(f^{-1}\) no se cortan.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(f^{-1}(x)=1+\ln\tfrac{x-3}{2}\), con dominio \(x\gt3\) y asíntota \(x=3\) (la de \(f\) es \(y=3\)).</p>
+<p>(b) Con \(t=x-1\): \(e^{x-1}\ge x\), así que \(f(x)\ge2x+3\), que es mayor que \(x\) si \(x\gt-3\). Si \(x\le-3\), \(f(x)\gt3\gt x\).</p>
+<p>Como \(f\) es creciente, cualquier corte con \(f^{-1}\) estaría sobre \(y=x\). Pero \(f(x)=x\) no tiene solución, así que no se cortan.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. Dominio y recorrido de composiciones con ln y raíz <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 05 (dominio y recorrido), ampliada con composición.</p>
+<p>\(f(x)=\sqrt{x-1}\) y \(g(x)=\ln(4-x^2)\). (a) Halla el dominio y el recorrido de \(g\). (b) Halla el dominio y el recorrido de \(f\circ g\). (c) Halla \(g\circ f\) con su dominio y recorrido.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Dominio \(-2\lt x\lt2\); como \(0\lt4-x^2\le4\), el recorrido es \(y\le\ln4\).</p>
+<p>(b) Se necesita \(\ln(4-x^2)\ge1\iff x^2\le4-e\): dominio \(|x|\le\sqrt{4-e}\). Recorrido \(0\le y\le\sqrt{\ln4-1}\).</p>
+<p>(c) \(g(f(x))=\ln(5-x)\), con \(x\ge1\) (para \(f\)) y \(x\lt5\): dominio \([1,5)\), recorrido \(y\le\ln4\).</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son todas las preguntas de funciones de tus 7 pruebas que no dependen de temas posteriores, con las marcas del markscheme oficial. En las gráficas se describen los rasgos que dan cada marca. Resuélvelas en tiempo de examen, a 1,1 minutos por punto.</p>
+
+<div class="ex"><p class="et">X1. Mayo 2021 TZ1, pregunta 1 <span class="lvl">5 puntos</span></p>
+<p>La gráfica de \(f\) en \(-4\le x\le6\): segmento horizontal \(y=4\) de \(x=-4\) a \(x=0\); después una parábola cóncava hacia abajo con máximo \((2,6)\) que termina en \((6,-2)\). (a) Escribe \(f(2)\) y \((f\circ f)(2)\). (b) Dibuja \(g(x)=\tfrac12f(x)+1\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(f(2)=6\) <span class="m">A1</span>; \(f(f(2))=f(6)=-2\) <span class="m">A1</span></p>
+<p class="step">(b) Aplicar el estiramiento o la traslación vertical <span class="m">M1</span>. Segmento horizontal en \(y=3\) entre \(-4\) y 0 <span class="m">A1</span>. Parábola con máximo \((2,4)\) y extremos \((0,3)\) y \((6,0)\) <span class="m">A1</span></p>
+<p><span class="lbl">Método rápido.</span> Cada punto \((p,q)\) pasa a \(\left(p,\ \tfrac q2+1\right)\): transforma solo los puntos clave y únelos con la misma forma.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Mayo 2026 TZ2, pregunta 3 <span class="lvl">6 puntos</span></p>
+<p>\(f(x)=x^2+5x\) y \(g(x)=e^x-10\). Halla \(x\) tal que \((f\circ g)(x)=50\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">\((e^x-10)^2+5(e^x-10)=50\) <span class="m">(M1)</span></p>
+<p class="step">Desarrollar: \(e^{2x}-15e^x=0\) <span class="m">(M1)A1</span></p>
+<p class="step">Resolver: \(e^x(e^x-15)=0\) <span class="m">(M1)</span>; como \(e^x\gt0\), \(e^x=15\) <span class="m">(A1)</span></p>
+<p class="step">\(x=\ln15\) <span class="m">A1</span></p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> Si con \(w=e^x-10\) (\(w^2+5w-50=0\)) sale \(w=-10\), eso da \(e^x=0\). Si no se descarta, se pierde la A1 final.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Mayo 2022 TZ2, pregunta 3 <span class="lvl">8 puntos</span></p>
+<p>\(f(x)=\dfrac{2x-1}{x+1}\), \(x\ne-1\). (a) Escribe las ecuaciones de las asíntotas. (b) Dibuja la gráfica con asíntotas y cortes. (c) A partir de lo anterior, resuelve \(0\lt f(x)\lt2\). (d) Resuelve \(0\lt\dfrac{2|x|-1}{|x|+1}\lt2\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(x=-1\) <span class="m">A1</span>; \(y=2\) <span class="m">A1</span></p>
+<p class="step">(b) Dos ramas en cuadrantes opuestos respecto a las asíntotas <span class="m">A1</span>; cortes \(x=\tfrac12\) e \(y=-1\) <span class="m">A1A1</span></p>
+<p class="step">(c) Como \(f=2-\tfrac3{x+1}\), \(f\lt2\) para \(x\gt-1\), y \(f\gt0\) para \(x\gt\tfrac12\): \(x\gt\tfrac12\) <span class="m">A1</span></p>
+<p class="step">(d) Es la condición anterior con \(|x|\) en lugar de \(x\) <span class="m">(M1)</span>: \(|x|\gt\tfrac12\), es decir \(x\lt-\tfrac12\) o \(x\gt\tfrac12\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X4. Noviembre 2021, pregunta 2 <span class="lvl">9 puntos</span></p>
+<p>\(f(x)=\dfrac{2x+4}{3-x}\), \(x\ne3\). (a) Escribe las asíntotas. (b) Halla los cortes con los ejes. (c) Dibuja la gráfica. (d) \(g(x)=\dfrac{ax+4}{3-x}\) cumple \(g=g^{-1}\). Halla \(a\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(x=3\) <span class="m">A1</span>; \(y=-2\) <span class="m">A1</span></p>
+<p class="step">(b) \((-2,0)\) <span class="m">A1</span>; \(\left(0,\tfrac43\right)\) <span class="m">A1</span></p>
+<p class="step">(c) Dos ramas en los cuadrantes correctos con comportamiento asintótico <span class="m">A1</span></p>
+<p class="step">(d) Método 1. Despejar: \(y(3-x)=ax+4\) <span class="m">(M1)</span> \(\Rightarrow x(a+y)=3y-4\) <span class="m">A1</span> \(\Rightarrow g^{-1}(x)=\dfrac{3x-4}{x+a}\) <span class="m">A1</span></p>
+<p class="step">Igualar con \(g(x)=\dfrac{-ax-4}{x-3}\): \(a=-3\) <span class="m">A1</span></p>
+<p><span class="lbl">Atajo.</span> \(\dfrac{ax+4}{-x+3}\) es autoinversa si y solo si \(d=-a\), con \(d=3\): \(a=-3\). Escribe igualmente el método, porque las marcas lo piden.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X5. Mayo 2022 TZ2, pregunta 11 (Sección B) <span class="lvl">20 puntos</span></p>
+<p>\(f(x)=\dfrac1{x^2-2x-3}\), \(x\ne-1,3\). (a) Dibuja la curva con asíntotas, extremos locales y cortes. [6] \(g(x)=\dfrac1{x^2-2x-3}\) con \(x\gt3\). (b)(i) Muestra que \(g^{-1}(x)=1+\dfrac{\sqrt{4x^2+x}}{x}\). (ii) Indica el dominio de \(g^{-1}\). [7] \(h(x)=\arctan\tfrac x2\). (c) Si \((h\circ g)(a)=\tfrac\pi4\), halla \(a\) en la forma \(p+\tfrac q2\sqrt r\), con \(p,q,r\in\mathbb Z^+\). [7]</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Corte \(\left(0,-\tfrac13\right)\) <span class="m">A1</span>; asíntotas verticales \(x=-1\), \(x=3\) <span class="m">A1</span>; horizontal \(y=0\) <span class="m">A1</span></p>
+<p class="step">El denominador \((x-1)^2-4\) tiene su mínimo en \(x=1\), eje de simetría <span class="m">(M1)</span>: máximo local \(\left(1,-\tfrac14\right)\) <span class="m">A1</span></p>
+<p class="step">Tres ramas correctas: positivas a los lados, negativa en el centro <span class="m">A1</span></p>
+<p class="step">(b)(i) Intercambiar: \(x=\dfrac{1}{y^2-2y-3}\) <span class="m">M1</span>. Completar el cuadrado <span class="m">M1</span>: \(y^2-2y-3=(y-1)^2-4\) <span class="m">A1</span></p>
+<p class="step">\((y-1)^2=4+\tfrac1x=\dfrac{4x^2+x}{x^2}\) <span class="m">A1</span> \(\Rightarrow y-1=\pm\dfrac{\sqrt{4x^2+x}}{x}\) <span class="m">A1</span></p>
+<p class="step">Como \(y\gt3\), se toma el \(+\) <span class="m">R1</span> \(\Rightarrow g^{-1}(x)=1+\dfrac{\sqrt{4x^2+x}}{x}\) <span class="m">AG</span></p>
+<p class="step">(ii) El recorrido de \(g\) para \(x\gt3\) es \((0,\infty)\): dominio \(x\gt0\) <span class="m">A1</span></p>
+<p class="step">(c) \(\arctan\dfrac{g(a)}{2}=\dfrac\pi4\) <span class="m">(M1)(A1)</span> \(\Rightarrow\dfrac{g(a)}2=1\Rightarrow g(a)=2\) <span class="m">M1</span></p>
+<p class="step">\(a=g^{-1}(2)\) <span class="m">A1</span>; sustituir <span class="m">M1</span>: \(1+\dfrac{\sqrt{18}}{2}\) <span class="m">A1</span> \(=1+\tfrac32\sqrt2\), con \(p=1,\ q=3,\ r=2\) <span class="m">A1</span></p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> No rotular el máximo con sus dos coordenadas: (M1)A0. En (b), no justificar el signo: pierdes la R1. En (b)(ii), dar como dominio \(x\ge-\tfrac14\) (el de la fórmula) en vez del recorrido de \(g\).</p>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Estos tipos de pregunta no salieron en tus 7 pruebas, pero el IB los pone en otras convocatorias (algunos vienen de la Prueba 2 y aquí se resuelven a mano). Junto con la teoría y las secciones 4 y 5, cubren todo el Tema 2 de funciones. Cada tipo trae cómo reconocerlo, el método, un ejemplo resuelto y ejercicios para practicar.</p>
+<h3 id="ty1">T1. Composición e inversa a partir de una tabla</h3>
+<p><b>Qué reconocer:</b> te dan una tabla con valores de \(f\) y \(g\) (o una gráfica) y piden \((f\circ g)(a)\), \(f^{-1}(b)\) o resolver \((g\circ f)(x)=c\). <b>Método:</b> evalúa de dentro hacia fuera. Para \(f^{-1}(b)\), busca en la fila de \(f\) el valor \(b\) y lee su \(x\).</p>
+<div class="ex"><p class="et">Ejemplo T1. <span class="lvl">Sección A</span></p>
+<p>Con la tabla \(x:\ 1,2,3,4\); \(f(x):\ 3,4,1,2\); \(g(x):\ 2,1,4,3\): halla \((f\circ g)(1)\), \(f^{-1}(1)\) y resuelve \((g\circ f)(x)=4\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(g(1)=2\), \(f(2)=4\): \((f\circ g)(1)=4\). \(f(3)=1\): \(f^{-1}(1)=3\).</p><p>\(g(f(x))=4\iff f(x)=3\iff x=1\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Con la misma tabla, halla \((g\circ g)(3)\) y \((f^{-1}\circ g)(2)\).</li><li>Resuelve \((f\circ f)(x)=x\) con la tabla.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(g(3)=4\), \(g(4)=3\): \(3\). \(g(2)=1\), \(f^{-1}(1)=3\): \(3\).</li><li>\(f(f(1))=f(3)=1\), \(f(f(2))=f(4)=2\), \(f(f(3))=3\), \(f(f(4))=4\): todos, \(x=1,2,3,4\).</li></ol></div></details></div>
+<h3 id="ty2">T2. Inversa de una composición</h3>
+<p><b>Qué reconocer:</b> piden \((f\circ g)^{-1}(x)\) o resolver \((f\circ g)^{-1}(x)=c\). <b>Método:</b> \((f\circ g)^{-1}=g^{-1}\circ f^{-1}\): se deshace en orden inverso. Para \((f\circ g)^{-1}(c)\) basta resolver \(f(g(x))=c\).</p>
+<div class="ex"><p class="et">Ejemplo T2. <span class="lvl">Tipo IB</span></p>
+<p>\(f(x)=2x+1\) y \(g(x)=x^3\). Halla \((f\circ g)^{-1}(x)\) y \((f\circ g)^{-1}(55)\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(f^{-1}(x)=\tfrac{x-1}{2}\), \(g^{-1}(x)=\sqrt[3]x\): \((f\circ g)^{-1}(x)=\sqrt[3]{\tfrac{x-1}{2}}\).</p><p>\(\sqrt[3]{27}=3\). (Comprueba: \(2\cdot27+1=55\).)</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(f(x)=e^x\) y \(g(x)=3x-2\). Halla \((g\circ f)^{-1}(x)\).</li><li>\(f(x)=x-4\), \(g(x)=\tfrac{1}{x}\). Resuelve \((g\circ f)^{-1}(x)=6\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(g(f(x))=3e^x-2\): inversa \(\ln\tfrac{x+2}{3}\), \(x\gt-2\).</li><li>Equivale a \(x=(g\circ f)(6)=\tfrac12\).</li></ol></div></details></div>
+<h3 id="ty3">T3. Racional a partir de sus asíntotas</h3>
+<p><b>Qué reconocer:</b> «la gráfica de \(f(x)=\frac{ax+b}{x+c}\) tiene asíntotas \(x=-2\), \(y=3\) y pasa por…». <b>Método:</b> la vertical da \(c\) (raíz del denominador); la horizontal, el cociente de coeficientes principales; el punto da la constante que falta.</p>
+<div class="ex"><p class="et">Ejemplo T3. <span class="lvl">Tipo IB</span></p>
+<p>\(f(x)=\dfrac{ax+b}{x+c}\) tiene asíntotas \(x=-2\) e \(y=3\), y pasa por \((1,2)\). Halla \(a,b,c\) y el corte con el eje \(x\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(c=2\), \(a=3\). \(\tfrac{3+b}{3}=2\Rightarrow b=3\): \(f(x)=\dfrac{3x+3}{x+2}\). Corte \((-1,0)\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(f(x)=\dfrac{px-4}{qx+1}\) tiene asíntota vertical \(x=\tfrac12\) y horizontal \(y=2\). Halla \(p\) y \(q\).</li><li>Una homográfica tiene asíntotas \(x=1\), \(y=-2\) y corta el eje \(y\) en \((0,3)\). Halla su ecuación en la forma \(-2+\tfrac{k}{x-1}\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(qx+1=0\) en \(\tfrac12\): \(q=-2\); \(\tfrac pq=2\): \(p=-4\).</li><li>\(-2-k=3\Rightarrow k=-5\): \(y=-2-\dfrac5{x-1}\).</li></ol></div></details></div>
+<h3 id="ty4">T4. Función definida por partes</h3>
+<p><b>Qué reconocer:</b> una llave con dos fórmulas según el valor de \(x\). <b>Método:</b> cada \(x\) usa solo su fórmula; al resolver \(f(x)=c\), resuelve en cada tramo y descarta lo que caiga fuera. Para que no haya salto en el cambio, iguala las dos fórmulas en ese punto.</p>
+<div class="ex"><p class="et">Ejemplo T4. <span class="lvl">Sección A</span></p>
+<p>\(f(x)=x^2+k\) si \(x\lt1\) y \(f(x)=2x+3\) si \(x\ge1\). (a) Halla \(k\) para que la gráfica no tenga salto en \(x=1\). (b) Con ese \(k\), halla \(f(f(0))\) y resuelve \(f(x)=8\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>(a) \(1+k=5\Rightarrow k=4\).</p><p>(b) \(f(0)=4\), \(f(4)=11\). Tramo izquierdo: \(x^2=4\), \(x=-2\) (vale, \(-2\lt1\); \(x=2\) no). Tramo derecho: \(x=\tfrac52\). Soluciones \(-2\) y \(\tfrac52\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(g(x)=3-x\) si \(x\lt2\) y \(g(x)=x^2-3\) si \(x\ge2\). Resuelve \(g(x)=1\) y halla el recorrido de \(g\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Izquierda: \(x=2\), no vale (\(x\lt2\)). Derecha: \(x=2\). Solución \(x=2\). Recorrido: izquierda \(y\gt1\), derecha \(y\ge1\): \(y\ge1\).</li></ol></div></details></div>
+<h3 id="ty5">T5. Hallar una función a partir de una composición</h3>
+<p><b>Qué reconocer:</b> te dan \(f\) y \(f\circ g\) (o \(g\) y \(f\circ g\)) y piden la función que falta. <b>Método:</b> si conoces la de fuera, aplica su inversa: \(g=f^{-1}\circ(f\circ g)\). Si conoces la de dentro, pon \(t=g(x)\), despeja \(x\) y sustituye.</p>
+<div class="ex"><p class="et">Ejemplo T5. <span class="lvl">Tipo IB</span></p>
+<p>(a) \(f(x)=2x+3\) y \((f\circ g)(x)=6x^2-1\). Halla \(g\). (b) \(g(x)=x+1\) y \(f(g(x))=x^2+2x\). Halla \(f\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>(a) \(2g(x)+3=6x^2-1\Rightarrow g(x)=3x^2-2\).</p><p>(b) \(t=x+1\Rightarrow x=t-1\): \(f(t)=(t-1)^2+2(t-1)=t^2-1\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(f(x)=e^x\) y \((f\circ g)(x)=x^2\), \(x\gt0\). Halla \(g\).</li><li>\(g(x)=2x-1\) y \(f(g(x))=4x^2\). Halla \(f(x)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(g(x)=\ln x^2=2\ln x\).</li><li>\(x=\tfrac{t+1}2\): \(f(t)=(t+1)^2\).</li></ol></div></details></div>
+<h3 id="ty6">T6. Transformaciones equivalentes y ecuación de la imagen</h3>
+<p><b>Qué reconocer:</b> «describe una sola transformación que lleve \(y=\ln x\) a \(y=\ln(e^2x)\)» o «escribe la ecuación tras estas transformaciones, en este orden». <b>Método:</b> aplica las reglas de los logaritmos y potencias: \(\ln(kx)=\ln x+\ln k\) (un estiramiento horizontal es una traslación vertical) y \(a^{x+h}=a^h\cdot a^x\) (una traslación horizontal es un estiramiento vertical). Cuando te dan el orden, aplica cada paso a la ecuación anterior.</p>
+<div class="ex"><p class="et">Ejemplo T6. <span class="lvl">Tipo IB</span></p>
+<p>(a) La gráfica de \(y=x^2\) se traslada 3 a la izquierda, después se estira verticalmente con factor 2 y por último se refleja en el eje \(x\). Halla su ecuación. (b) Muestra que \(y=2^{x+3}\) se obtiene de \(y=2^x\) con un estiramiento vertical, e indica el factor.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>(a) \(y=(x+3)^2\to y=2(x+3)^2\to y=-2(x+3)^2\).</p><p>(b) \(2^{x+3}=8\cdot2^x\): estiramiento vertical de factor 8.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Describe la transformación que lleva \(y=\ln x\) a \(y=\ln(e^2x)\), y la que lleva \(y=\ln x\) a \(y=\ln x^3\).</li><li>La gráfica de \(y=f(x)\) se refleja en el eje \(y\) y luego se traslada 2 a la derecha. Escribe la nueva ecuación.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\ln x+2\): traslación 2 hacia arriba. \(3\ln x\): estiramiento vertical de factor 3.</li><li>\(y=f(-x)\to y=f(-(x-2))=f(2-x)\).</li></ol></div></details></div>
+<h3 id="ty7">T7. Intersección de \(f\) y \(f^{-1}\)</h3>
+<p><b>Qué reconocer:</b> piden los puntos donde la gráfica de \(f\) corta a la de \(f^{-1}\). <b>Método:</b> si \(f\) es creciente, los cortes están sobre \(y=x\): resuelve \(f(x)=x\), que suele dar un polinomio (Módulo 2). Comprueba que cada solución está en el dominio.</p>
+<div class="ex"><p class="et">Ejemplo T7. <span class="lvl">Sección B</span></p>
+<p>\(f(x)=\dfrac{x^3+2}{3}\). Halla los puntos de corte de las gráficas de \(f\) y \(f^{-1}\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(f\) es creciente. \(\tfrac{x^3+2}{3}=x\iff x^3-3x+2=0\iff(x-1)^2(x+2)=0\).</p><p>Puntos \((1,1)\) (donde las gráficas son tangentes) y \((-2,-2)\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(f(x)=x^2-2\), \(x\ge0\). Halla el punto de corte de \(f\) y \(f^{-1}\).</li><li>\(f(x)=\dfrac{x^3+6}{7}\). Halla los puntos de corte de las gráficas de \(f\) y \(f^{-1}\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(x^2-x-2=0\), \(x=2\) (con \(x\ge0\)): \((2,2)\).</li><li>\(x^3-7x+6=(x-1)(x-2)(x+3)\), cortes \((1,1),(2,2),(-3,-3)\).</li></ol></div></details></div>
+<h3 id="ty8">T8. Recorrido sin derivadas</h3>
+<p><b>Qué reconocer:</b> «halla el recorrido de \(f\)» con una racional sencilla, una exponencial con exponente cuadrático o un dominio restringido. <b>Método:</b> lleva la expresión a una forma con un único término variable (por ejemplo \(\tfrac{4}{x^2+2}\) o \(2+\tfrac{3}{x-1}\)), acota ese término con el dominio, y revisa qué valores extremos se alcanzan.</p>
+<div class="ex"><p class="et">Ejemplo T8. <span class="lvl">Tipo IB</span></p>
+<p>Halla el recorrido de (a) \(f(x)=\dfrac4{x^2+2}\); (b) \(g(x)=e^{-x^2}\); (c) \(h(x)=\dfrac{2x+1}{x-1}\) con \(x\gt1\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>(a) \(x^2+2\ge2\): \(0\lt f\le2\). (b) \(-x^2\le0\): \(0\lt g\le1\).</p><p>(c) \(h=2+\tfrac3{x-1}\) y \(\tfrac3{x-1}\gt0\) toma todos los positivos: \(h\gt2\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el recorrido de \(f(x)=3-\dfrac{2}{x^2+1}\).</li><li>Halla el recorrido de \(g(x)=\ln(x^2+e)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(0\lt\tfrac2{x^2+1}\le2\): \(1\le f\lt3\).</li><li>\(x^2+e\ge e\): \(g\ge1\).</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo de los Módulos 1–3. Integran sucesiones, series y logaritmos (Módulo 1) y polinomios (Módulo 2). El 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la Sección B. Al final, I1 es una investigación tipo Prueba 3 de NS. Cada uno trae una pista y la respuesta final plegadas.</p>
+
+<div class="ex"><p class="et">E1. Autoinversa que genera una sucesión periódica <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>\(f(x)=\dfrac{2x+3}{x-2}\), \(x\ne2\). (a) Muestra que \(f\) es autoinversa. (b) Con \(u_1=3\) y \(u_{n+1}=f(u_n)\), halla \(\sum_{k=1}^{2n}u_k\). (c) Halla los \(u_1\) para los que la sucesión es constante. (d) Muestra que la sucesión está definida para todo \(n\) salvo si \(u_1=2\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Si \(f\circ f=\operatorname{id}\), la sucesión alterna entre dos valores. En (d), \(f\) nunca toma el valor 2 (asíntota horizontal).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) Los términos son \(3,9,3,9,\dots\), así que la suma es \(12n\). (c) \(u_1=2\pm\sqrt7\).</p></div></details></div>
+
+<div class="ex"><p class="et">E2. Una impar con logaritmo y su inversa exponencial <span class="lvl">Sección B</span></p>
+<p>\(f(x)=\ln\left(x+\sqrt{x^2+1}\right)\), \(x\in\mathbb R\). (a) Muestra que \(f\) es impar. (b) Halla \(f^{-1}(x)\) en términos de \(e^x\). (c) Resuelve \(f(x)=\ln3\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Multiplica \(\sqrt{x^2+1}-x\) por su conjugado. (b) De \(e^y-x=\sqrt{x^2+1}\), eleva al cuadrado.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(f^{-1}(x)=\dfrac{e^x-e^{-x}}{2}\). (c) \(x=f^{-1}(\ln3)=\tfrac{3-1/3}{2}=\tfrac43\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Descomposición par–impar e inversas impares <span class="lvl">Sección B</span></p>
+<p>(a) Muestra que toda \(f\) con dominio simétrico se escribe como \(E+O\), con \(E\) par y \(O\) impar, y halla \(E\) y \(O\) para \(f(x)=e^x\). (b) Muestra que la única función que es a la vez par e impar es la nula. (c) Muestra que si \(f\) es impar e invertible, \(f^{-1}\) también es impar.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(E(x)=\tfrac{f(x)+f(-x)}{2}\). (c) Pon \(y=f^{-1}(-x)\) y aplica \(f\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(E=\tfrac{e^x+e^{-x}}2\), \(O=\tfrac{e^x-e^{-x}}2\). (b) \(f=-f\Rightarrow f=0\). (c) \(f(y)=-x\Rightarrow f(-y)=x\Rightarrow f^{-1}(x)=-y\).</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Módulo de una cuadrática: número de soluciones <span class="lvl">Sección B</span></p>
+<p>(a) Determina, según \(k\), el número de soluciones de \(|x^2-4x|=k\). (b) Resuelve \(|x^2-4x|\lt3\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Dibuja \(y=|x^2-4x|\): la parte central se refleja y alcanza un máximo local de 4 en \(x=2\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(k\lt0\): 0; \(k=0\): 2; \(0\lt k\lt4\): 4; \(k=4\): 3; \(k\gt4\): 2. (b) \(2-\sqrt7\lt x\lt1\) o \(3\lt x\lt2+\sqrt7\).</p></div></details></div>
+
+<div class="ex"><p class="et">E5. Una función contra su recíproca <span class="lvl">Sección B</span></p>
+<p>\(f(x)=x^2-4x+3\). (a) Resuelve \(f(|x|)=0\). (b) Halla las asíntotas y el recorrido de \(y=\dfrac1{f(x)}\). (c) Resuelve \(\dfrac1{f(x)}\gt f(x)\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(c) Con \(u=f(x)\): \(\tfrac{1-u^2}{u}\gt0\). Recuerda que \(u\ge-1\) siempre.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(x=\pm1,\pm3\). (b) \(x=1\), \(x=3\), \(y=0\); recorrido \(y\le-1\) o \(y\gt0\). (c) \(2-\sqrt2\lt x\lt1\) o \(3\lt x\lt2+\sqrt2\).</p></div></details></div>
+
+<div class="ex"><p class="et">E6. Transformaciones repetidas y una serie geométrica <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>\(f_1(x)=2^x\) y \(f_{n+1}(x)=\tfrac12f_n(x-1)\). (a) Muestra que \(f_n(x)=2^{x-2(n-1)}\). (b) Muestra que la gráfica de \(f_{n+1}\) es una traslación horizontal de la de \(f_n\). (c) Resuelve \(\displaystyle\sum_{n=1}^{\infty}f_n(x)=\frac{32}{3}\).</p>
+<details><summary>Pista</summary><div class="inner"><p>En una exponencial, multiplicar por \(\tfrac12\) equivale a trasladar 1 a la derecha. En (c), razón \(\tfrac14\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(f_{n+1}(x)=f_n(x-2)\). (c) \(\tfrac43\cdot2^x=\tfrac{32}3\Rightarrow x=3\).</p></div></details></div>
+
+<div class="ex"><p class="et">E7. Composiciones que esconden un cuadrado <span class="lvl">Sección B</span></p>
+<p>\(f(x)=\sqrt{x-2}\) y \(g(x)=x^2-6x+11\). (a) Muestra que \((f\circ g)(x)=|x-3|\) para todo \(x\). (b) Muestra que \((g\circ f)(x)=\left(\sqrt{x-2}-3\right)^2+2\) y halla su recorrido. (c) Resuelve \((f\circ g)(x)\lt1\) y \((g\circ f)(x)=6\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(g(x)-2=(x-3)^2\), y \(\sqrt{t^2}=|t|\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) Recorrido \(y\ge2\), con mínimo en \(x=11\). (c) \(2\lt x\lt4\); \(x=3\) o \(x=27\).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Hueco, asíntota oblicua y precisión <span class="lvl">Sección B, integra Módulo 2</span></p>
+<p>\(f(x)=\dfrac{x^3-1}{x^2-1}\), \(x\ne\pm1\). (a) Simplifica y muestra que \(f(x)=x+\dfrac1{x+1}\). (b) Indica la asíntota vertical, la oblicua y el hueco. (c) Resuelve \(f(x)\gt x\). (d) Halla los \(x\) para los que \(|f(x)-x|\lt\tfrac1{100}\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(x^3-1=(x-1)(x^2+x+1)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(x=-1\); \(y=x\); hueco \(\left(1,\tfrac32\right)\). (c) \(x\gt-1,\ x\ne1\). (d) \(x\gt99\) o \(x\lt-101\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. Iterar una inversa: logaritmos en progresión geométrica <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>\(f(x)=x^2-2x+2\), \(x\ge1\). (a) Halla \(f^{-1}\). (b) Con \(u_1=5\) y \(u_{n+1}=f^{-1}(u_n)\), muestra que \(v_n=\ln(u_n-1)\) es una PG y halla su razón. (c) Halla \(\lim u_n\). (d) Halla \(\displaystyle\sum_{n=1}^{\infty}\ln(u_n-1)\) exacto.</p>
+<details><summary>Pista</summary><div class="inner"><p>\(f(x)=(x-1)^2+1\), así que \(f^{-1}(x)-1=\sqrt{x-1}\), y el ln de una raíz es la mitad del ln.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(f^{-1}(x)=1+\sqrt{x-1}\), \(x\ge1\). (b) Razón \(\tfrac12\), \(v_1=\ln4\). (c) 2. (d) \(2\ln4=\ln16\).</p></div></details></div>
+
+<div class="ex"><p class="et">E10. Una racional exponencial y una composición de período 4 <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>\(f(x)=\dfrac{e^x-1}{e^x+1}\), \(x\in\mathbb R\). (a) Muestra que \(f\) es impar. (b) Escribiendo \(f(x)=1-\dfrac{2}{e^x+1}\), halla el recorrido de \(f\). (c) Halla \(f^{-1}\) y su dominio. (d) Resuelve \(f(x)\gt\tfrac13\). (e) Sea \(g(x)=f(\ln x)\), \(x\gt0\). Muestra que \(g(x)=\dfrac{x-1}{x+1}\) y que \((g\circ g)(x)=-\dfrac1x\). (f) A partir de lo anterior, muestra que \(g\circ g\circ g\circ g\) es la identidad (donde está definida) y deduce \(g^{-1}=g\circ g\circ g\) sin despejar.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Multiplica numerador y denominador de \(f(-x)\) por \(e^x\). (b) \(\tfrac{2}{e^x+1}\) toma todos los valores de \((0,2)\). (f) \(-\tfrac1{-1/x}=x\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(-1\lt y\lt1\). (c) \(f^{-1}(x)=\ln\dfrac{1+x}{1-x}\), \(-1\lt x\lt1\). (d) \(e^x\gt2\iff x\gt\ln2\). (f) \(g^{-1}(x)=g\!\left(-\tfrac1x\right)=\dfrac{1+x}{1-x}\), que coincide con despejar en \(y=\tfrac{x-1}{x+1}\).</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. Homográficas que se repiten <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>Algunas funciones vuelven al punto de partida al componerlas consigo mismas dos o tres veces. Vas a descubrir cuándo pasa con \(h(x)=\dfrac{ax+b}{cx+d}\) (con \(c\ne0\) y \(ad-bc\ne0\)), conjeturar una condición y demostrarla.</p>
+<ol type="a"><li>Para \(k(x)=\dfrac{2x+3}{x-2}\), muestra que \(k\circ k\) es la identidad. Para \(u(x)=\dfrac1{1-x}\), halla \(u\circ u\) y \(u\circ u\circ u\).</li><li>Muestra que \((h\circ h)(x)=\dfrac{(a^2+bc)x+b(a+d)}{c(a+d)x+bc+d^2}\).</li><li>Deduce que \(h\circ h\) es la identidad si y solo si \(a+d=0\). Comprueba la condición con \(k\). Interpreta en la gráfica: ¿dónde se cortan las asíntotas de una homográfica autoinversa?</li><li>Muestra que \(h^{-1}(x)=\dfrac{dx-b}{-cx+a}\), y explica por qué \(h\circ h\circ h\) es la identidad si y solo si \(h\circ h=h^{-1}\).</li><li>Suponiendo \(b\ne0\) y \(a+d\ne0\), iguala coeficientes proporcionales en \(h\circ h=h^{-1}\) para demostrar que \(h\circ h\circ h\) es la identidad si y solo si \((a+d)^2=ad-bc\). Compruébalo con \(u\) y con \(w(x)=\dfrac{x+3}{1-x}\).</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>Sustituye y simplifica la fracción compuesta multiplicando arriba y abajo por el denominador interior.</li><li>Calcula \(h\!\left(\tfrac{ax+b}{cx+d}\right)\) y multiplica por \(cx+d\).</li><li>Para que la fracción sea \(x\), el término en \(x\) del denominador y el independiente del numerador deben anularse (con \(c\ne0\)).</li><li>Despeja \(x\) en \(y=h(x)\). Compón \(h^{-1}\) por la izquierda.</li><li>Escribe \((a^2+bc,\ b(a+d),\ c(a+d),\ bc+d^2)=\lambda(d,\ -b,\ -c,\ a)\). La segunda igualdad da \(\lambda\).</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>\(k(k(x))=x\). \(u(u(x))=\dfrac{x-1}{x}\) y \(u(u(u(x)))=x\): \(u\) tiene período 3.</li><li>Desarrollo directo.</li><li>\(c(a+d)=0\Rightarrow a+d=0\); entonces \(b(a+d)=0\) y \(a^2+bc=bc+d^2\), y la fracción es \(x\). En \(k\): \(2+(-2)=0\). Las asíntotas \(x=-\tfrac dc=\tfrac ac\) e \(y=\tfrac ac\) se cortan en \(\left(\tfrac ac,\tfrac ac\right)\), sobre \(y=x\).</li><li>\(h\circ h\circ h=\operatorname{id}\iff h^{-1}\circ(h\circ h\circ h)=h^{-1}\iff h\circ h=h^{-1}\).</li><li>\(\lambda=-(a+d)\). La primera: \(a^2+bc=-(a+d)d\iff a^2+ad+d^2+bc=0\iff(a+d)^2=ad-bc\). \(u\): \(a=0,b=1,c=-1,d=1\): \(1=1\). \(w\): \(a=1,b=3,c=-1,d=1\): \(4=1+3\). En efecto \(w(w(x))=\tfrac{x-3}{x+1}\) y \(w(w(w(x)))=x\).</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 4, combinatoria y teorema del binomio.</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

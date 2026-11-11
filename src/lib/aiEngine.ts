@@ -3,6 +3,7 @@
 // No hay respuestas algorítmicas ni canned: todo pasa por el modelo real.
 
 import type { StoreState } from "./store";
+import { isPremiumActive } from "./premium";
 
 const SAFETY_BOILERPLATE =
   /user safety|response safety|unable to comply|pol[íi]tica de seguridad|fuera del ámbito/i;
@@ -113,7 +114,13 @@ export async function getAIResponse(
     const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: userMessage, history, files, sessionContext }),
+      body: JSON.stringify({
+        message: userMessage,
+        history,
+        files,
+        sessionContext,
+        premium: isPremiumActive(),
+      }),
     });
 
     if (res.status === 429) {

@@ -1,0 +1,2786 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 12 · Derivación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 12</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t1">1.1 Definición y primeros principios</a>
+  <a class="sub" href="#t2">1.2 Tabla de derivadas</a>
+  <a class="sub" href="#t3">1.3 Reglas de derivación</a>
+  <a class="sub" href="#t4">1.4 Tangentes y normales</a>
+  <a class="sub" href="#t5">1.5 Derivadas de orden superior</a>
+  <a class="sub" href="#t6">1.6 Derivación implícita</a>
+  <a class="sub" href="#t7">1.7 Razones de cambio relacionadas</a>
+  <a class="sub" href="#t8">1.8 Inversas y derivación logarítmica</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos resueltos</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 12 de 17</p>
+  <h1>Derivación</h1>
+  <p class="formula">\( f'(x)=\lim_{h\to0}\frac{f(x+h)-f(x)}{h} \qquad (uv)'=u'v+uv' \qquad \left(\tfrac uv\right)'=\tfrac{u'v-uv'}{v^2} \qquad \tfrac{dy}{dx}=\tfrac{dy}{du}\tfrac{du}{dx} \)</p>
+  <p>Todo lo necesario para las preguntas de derivadas de la Prueba 1 sin calculadora, al nivel de la banda 7. El análisis de curvas y la optimización están en el Módulo 13. Los problemas extra integran los Módulos 1–11.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">La derivación aparece en 6 de tus 7 pruebas. En este módulo se resuelven 69 puntos, en 10 preguntas o partes. Es el tema del cálculo con más peso directo, y además es la herramienta de los Módulos 13 (optimización), 16 (cinemática) y 17 (Maclaurin).</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Noviembre 2022</td><td>1</td><td>4</td><td>Regla de la cadena con \(e^{x^2+1}\)</td></tr>
+<tr><td>Mayo 2022 TZ1</td><td>4</td><td>5</td><td>Regla del producto; tangente paralela a una recta</td></tr>
+<tr><td>Mayo 2021 TZ2</td><td>4(b)</td><td>6</td><td>Pendiente dada en \(\ln(x^2-16)\)</td></tr>
+<tr><td>Mayo 2021 TZ1</td><td>4</td><td>7</td><td>Tangente común a una parábola y una exponencial</td></tr>
+<tr><td>Noviembre 2021</td><td>5</td><td>7</td><td>Tangente de una composición \(f(g(x))\) con la regla de la cadena</td></tr>
+<tr><td>Noviembre 2022</td><td>7</td><td>7</td><td>Derivación implícita: la curva no tiene extremos</td></tr>
+<tr><td>Mayo 2026 TZ2</td><td>8</td><td>7</td><td>Derivación implícita y razones de cambio relacionadas</td></tr>
+<tr><td>Noviembre 2022</td><td>10(b)</td><td>7</td><td>\(f'(x)\) trigonométrica y puntos estacionarios</td></tr>
+<tr><td>Noviembre 2021</td><td>11(a)</td><td>7</td><td>Inducción: \(n\)-ésima derivada de \(x^2e^x\)</td></tr>
+<tr><td>Mayo 2021 TZ1</td><td>12(a)(b)</td><td>12</td><td>Inducción: \(n\)-ésima derivada de \(\sqrt{1+x}\)</td></tr>
+</tbody></table></div>
+<p>Las partes de Maclaurin de mayo 2021 TZ1 P12 y noviembre 2021 P11 están en el Módulo 17. Mayo 2022 TZ2 P6 (recorrido con derivadas) está en el Módulo 13.</p>
+
+<h3>Cómo lo pregunta el IB: patrones de tus pruebas</h3>
+<ol>
+<li><b>Condición de tangencia:</b> igual pendiente (\(f'=g'\)) e igual punto (\(f=g\)): dos ecuaciones para dos incógnitas.</li>
+<li><b>Regla de la cadena con datos:</b> \(h=f\circ g\) con \(f\) conocida solo por su tangente; se usa \(h'(4)=f'(g(4))\,g'(4)\).</li>
+<li><b>Implícita:</b> derivar, imponer \(\tfrac{dy}{dx}=0\) y comprobar si los puntos cumplen las restricciones.</li>
+<li><b>Razones relacionadas:</b> \(\tfrac{dx}{dt}=\tfrac{dy}{dt}\big/\tfrac{dy}{dx}\).</li>
+<li><b>Inducción con derivadas:</b> la \(n\)-ésima derivada se prueba derivando la hipótesis.</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA 02 (2026)</td><td>Definición por límite, reglas, derivadas de compuestas, segunda derivada, implícita; preguntas IB NS de mayo 2018</td><td>F3, F4, F9</td></tr>
+<tr><td>DMpA N°26 (2025)</td><td>Derivadas de exponencial, logaritmo y trigonométricas; orden superior; ritmo de cambio</td><td>F5, F6, F8</td></tr>
+<tr><td>DMpA N°27 (2025)</td><td>Interpretación geométrica; rectas tangente y normal</td><td>F7</td></tr>
+<tr><td>Banco IB «Recta tangente»</td><td>Dos preguntas IB de 15 y 16 puntos</td><td>F1, F2</td></tr>
+</tbody></table></div>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Derivada como límite; primeros principios; continuidad y derivabilidad (NS)</td><td>1.1</td><td>Medio</td></tr>
+<tr><td>Derivadas de \(x^n\), \(e^x\), \(a^x\), \(\ln x\), \(\log_ax\), trigonométricas, recíprocas e inversas (NS)</td><td>1.2</td><td>Alto</td></tr>
+<tr><td>Reglas de la suma, del producto, del cociente y de la cadena</td><td>1.3</td><td>Alto</td></tr>
+<tr><td>Tangentes y normales</td><td>1.4</td><td>Alto</td></tr>
+<tr><td>Segunda derivada y derivadas de orden superior</td><td>1.5</td><td>Alto</td></tr>
+<tr><td>Derivación implícita (NS)</td><td>1.6</td><td>Alto</td></tr>
+<tr><td>Razones de cambio relacionadas (NS)</td><td>1.7</td><td>Medio</td></tr>
+<tr><td>Derivada de la inversa; derivación logarítmica</td><td>1.8</td><td>Medio</td></tr>
+<tr><td>Otros tipos de pregunta: primeros principios, tabla y cadena, reglas combinadas, punto con pendiente dada, derivación logarítmica, implícita en un punto, razones relacionadas, derivada de la inversa</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1–1.8 cubren toda la derivación del programa NS, con un recuadro «Para practicar» en cada concepto esencial. La sección 6 reúne los tipos de pregunta del IB que no salieron en tus 7 pruebas pero que pueden venir. El crecimiento, los extremos, la concavidad y la optimización forman el Módulo 13; los límites y L'Hôpital, el Módulo 17. Las cajas «Más allá» añaden la regla de Leibniz y la derivación de series término a término; ningún problema extra las necesita. El techo es la investigación I1, tipo Prueba 3.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Va de la definición por límite a la derivación implícita y las razones relacionadas. Cada concepto trae un ejemplo resuelto y, los esenciales, un recuadro «Para practicar». Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Definición, primeros principios y derivabilidad</h3>
+\[ f'(x)=\lim_{h\to0}\frac{f(x+h)-f(x)}{h} \]
+<p>Es la pendiente de la tangente: el límite de las pendientes de las secantes. Derivar «por primeros principios» significa usar esta definición.</p>
+<ul>
+<li>Una función <b>continua</b> en \(a\) cumple \(\lim_{x\to a}f(x)=f(a)\). Si es <b>derivable</b> en \(a\), es continua allí (el recíproco no vale: \(|x|\) en 0).</li>
+<li>Una función definida a trozos es derivable en la unión si es continua allí y las derivadas laterales coinciden.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.1. Primeros principios</p>
+<p>(a) \(f(x)=x^3\): \(\dfrac{(x+h)^3-x^3}{h}=3x^2+3xh+h^2\to3x^2\). (b) \(f(x)=\tfrac1x\): \(\dfrac{\frac1{x+h}-\frac1x}{h}=\dfrac{-1}{x(x+h)}\to-\dfrac1{x^2}\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 374.1624 236.16" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 236.16 
+L 374.1624 236.16 
+L 374.1624 0 
+L 0 0 
+L 0 236.16 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 9.8424 228.96 
+L 366.9624 228.96 
+L 366.9624 7.2 
+L 9.8424 7.2 
+L 9.8424 228.96 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m376f244fc9" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m376f244fc9" x="142.486971" y="194.843077" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="142.486971" y="210.201358" transform="rotate(-0 142.486971 210.201358)">1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m376f244fc9" x="244.521257" y="194.843077" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="244.521257" y="210.201358" transform="rotate(-0 244.521257 210.201358)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path id="me764eb712b" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#me764eb712b" x="40.452686" y="160.726154" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="33.452686" y="164.905294" transform="rotate(-0 33.452686 164.905294)">1</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#me764eb712b" x="40.452686" y="58.375385" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="33.452686" y="62.554525" transform="rotate(-0 33.452686 62.554525)">4</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_5">
+    <path d="M 9.8424 191.772554 
+L 15.370679 192.781488 
+L 20.898958 193.590118 
+L 26.427237 194.198446 
+L 31.955516 194.606471 
+L 37.483795 194.814192 
+L 43.012074 194.821611 
+L 48.540353 194.628727 
+L 54.068632 194.235539 
+L 59.596911 193.642049 
+L 65.12519 192.848255 
+L 70.653469 191.854159 
+L 76.181748 190.659759 
+L 81.710027 189.265057 
+L 87.238306 187.670051 
+L 92.766585 185.874743 
+L 99.216244 183.527055 
+L 105.665903 180.906733 
+L 112.115562 178.013776 
+L 118.565221 174.848185 
+L 125.01488 171.409959 
+L 131.464539 167.699098 
+L 137.914197 163.715602 
+L 144.363856 159.459472 
+L 150.813515 154.930707 
+L 157.263174 150.129308 
+L 163.712833 145.055274 
+L 170.162492 139.708605 
+L 176.612151 134.089302 
+L 183.061809 128.197363 
+L 189.511468 122.032791 
+L 195.961127 115.595583 
+L 203.332166 107.904936 
+L 210.703205 99.858195 
+L 218.074243 91.455359 
+L 225.445282 82.69643 
+L 232.816321 73.581406 
+L 240.187359 64.110287 
+L 247.558398 54.283075 
+L 254.929437 44.099768 
+L 262.300475 33.560367 
+L 269.671514 22.664872 
+L 277.963933 9.981796 
+L 284.91648 -1 
+L 284.91648 -1 
+" clip-path="url(#pbb47562a45)" style="fill: none; stroke: #0e6e6a; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 66.28947 237.16 
+L 285.334971 17.435077 
+L 285.334971 17.435077 
+" clip-path="url(#pbb47562a45)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_7">
+    <defs>
+     <path id="m6a4226a678" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: #a2530a"/>
+    </defs>
+    <g clip-path="url(#pbb47562a45)">
+     <use xlink:href="#m6a4226a678" x="244.521257" y="58.375385" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="line2d_8">
+    <path d="M 51.04997 237.16 
+L 285.334971 41.316923 
+L 285.334971 41.316923 
+" clip-path="url(#pbb47562a45)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_9">
+    <defs>
+     <path id="m4336dc2ee8" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: #5a3d9a"/>
+    </defs>
+    <g clip-path="url(#pbb47562a45)">
+     <use xlink:href="#m4336dc2ee8" x="193.504114" y="118.08" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_10">
+    <path d="M 38.581288 237.16 
+L 285.334971 55.646031 
+L 285.334971 55.646031 
+" clip-path="url(#pbb47562a45)" style="fill: none; stroke-dasharray: 1.3,2.145; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_11">
+    <g clip-path="url(#pbb47562a45)">
+     <use xlink:href="#m4336dc2ee8" x="162.893829" y="145.714708" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_12">
+    <path d="M 28.190719 237.16 
+L 285.334971 65.198769 
+L 285.334971 65.198769 
+" clip-path="url(#pbb47562a45)" style="fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_13">
+    <defs>
+     <path id="m60d6856d36" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#pbb47562a45)">
+     <use xlink:href="#m60d6856d36" x="142.486971" y="160.726154" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 40.452686 228.96 
+L 40.452686 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 9.8424 194.843077 
+L 366.9624 194.843077 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_14">
+     <path d="M 10.8 18.988594 
+L 19.8 18.988594 
+L 28.8 18.988594 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2.2; stroke-linecap: square"/>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="36" y="22.138594" transform="rotate(-0 36 22.138594)">y = x²</text>
+    </g>
+    <g id="line2d_15">
+     <path d="M 10.8 32.198906 
+L 19.8 32.198906 
+L 28.8 32.198906 
+" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.3"/>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="36" y="35.348906" transform="rotate(-0 36 35.348906)">secante con h = 1: pendiente 3</text>
+    </g>
+    <g id="line2d_16">
+     <path d="M 10.8 45.409219 
+L 19.8 45.409219 
+L 28.8 45.409219 
+" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.3"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="36" y="48.559219" transform="rotate(-0 36 48.559219)">secante con h = 0,5: pendiente 2,5</text>
+    </g>
+    <g id="line2d_17">
+     <path d="M 10.8 58.619531 
+L 19.8 58.619531 
+L 28.8 58.619531 
+" style="fill: none; stroke-dasharray: 1.3,2.145; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.3"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="36" y="61.769531" transform="rotate(-0 36 61.769531)">secante con h = 0,2: pendiente 2,2</text>
+    </g>
+    <g id="line2d_18">
+     <path d="M 10.8 71.829844 
+L 19.8 71.829844 
+L 28.8 71.829844 
+" style="fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="36" y="74.979844" transform="rotate(-0 36 74.979844)">tangente: pendiente 2</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pbb47562a45">
+   <rect x="9.8424" y="7.2" width="357.12" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: primeros principios en \(y=x^2\), \(x=1\): la secante entre \(x=1\) y \(x=1+h\) tiene pendiente \(\frac{(1+h)^2-1}h=2+h\). Cuando \(h\to0\), las secantes giran hasta la tangente, de pendiente 2.</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.2. Pegar dos trozos de forma suave</p>
+<p>\(f(x)=x^2\) si \(x\le1\) y \(f(x)=ax+b\) si \(x\gt1\). Halla \(a,b\) para que \(f\) sea derivable.</p>
+<p>Continuidad: \(a+b=1\). Pendientes iguales: \(a=2\). Así \(b=-1\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Deriva \(f(x)=\dfrac1{x^2}\) por primeros principios.</li><li>\(f(x)=x^2\) si \(x\le2\) y \(f(x)=ax+b\) si \(x\gt2\). Halla \(a,b\) para que \(f\) sea derivable.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\dfrac{\frac1{(x+h)^2}-\frac1{x^2}}h=\dfrac{-(2x+h)}{x^2(x+h)^2}\to-\dfrac2{x^3}\).</li><li>Pendientes iguales en \(x=2\): \(a=2\cdot2=4\). Continuidad: \(2^2=a\cdot2+b\Rightarrow4=8+b\Rightarrow b=-4\).</li></ol></div></details></div>
+
+<h3 id="t2">1.2 Tabla de derivadas</h3>
+<div class="tbl"><table>
+<thead><tr><th>\(f(x)\)</th><th>\(f'(x)\)</th><th>\(f(x)\)</th><th>\(f'(x)\)</th></tr></thead>
+<tbody>
+<tr><td>\(x^n\)</td><td>\(nx^{n-1}\)</td><td>\(\tan x\)</td><td>\(\sec^2x\)</td></tr>
+<tr><td>\(e^x\)</td><td>\(e^x\)</td><td>\(\sec x\)</td><td>\(\sec x\tan x\)</td></tr>
+<tr><td>\(a^x\)</td><td>\(a^x\ln a\)</td><td>\(\csc x\)</td><td>\(-\csc x\cot x\)</td></tr>
+<tr><td>\(\ln x\)</td><td>\(\tfrac1x\)</td><td>\(\cot x\)</td><td>\(-\csc^2x\)</td></tr>
+<tr><td>\(\log_ax\)</td><td>\(\tfrac1{x\ln a}\)</td><td>\(\arcsin x\)</td><td>\(\tfrac1{\sqrt{1-x^2}}\)</td></tr>
+<tr><td>\(\sin x\)</td><td>\(\cos x\)</td><td>\(\arccos x\)</td><td>\(-\tfrac1{\sqrt{1-x^2}}\)</td></tr>
+<tr><td>\(\cos x\)</td><td>\(-\sin x\)</td><td>\(\arctan x\)</td><td>\(\tfrac1{1+x^2}\)</td></tr>
+</tbody></table></div>
+<div class="ex"><p class="et">Ejemplo 1.3. Derivadas de la tabla con la cadena</p>
+<p>\(\tfrac{d}{dx}3^x=3^x\ln3\); \(\tfrac{d}{dx}\log_2x=\tfrac1{x\ln2}\); \(\tfrac{d}{dx}\arcsin(2x)=\tfrac2{\sqrt{1-4x^2}}\); \(\tfrac{d}{dx}\arctan\tfrac x3=\tfrac{3}{9+x^2}\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.4. Las derivadas menos usadas de la tabla</p>
+<p>\(\frac{d}{dx}\sec2x=2\sec2x\tan2x\); \(\frac{d}{dx}\cot x^2=-2x\csc^2x^2\); \(\frac{d}{dx}\arccos\frac x2=-\frac1{\sqrt{4-x^2}}\); \(\frac{d}{dx}\log_3(x^2+1)=\frac{2x}{(x^2+1)\ln3}\). Todas están en el cuadernillo; la regla de la cadena es lo que se evalúa.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Deriva \(y=3^{x}\), \(y=\arctan(3x)\) y \(y=\log_5(x)\).</li><li>Deriva \(y=e^{x^2}\sin x\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(3^x\ln3\); \(\dfrac3{1+9x^2}\); \(\dfrac1{x\ln5}\).</li><li>\(e^{x^2}(2x\sin x+\cos x)\).</li></ol></div></details></div>
+
+<h3 id="t3">1.3 Reglas de derivación</h3>
+\[ (uv)'=u'v+uv',\qquad \left(\frac uv\right)'=\frac{u'v-uv'}{v^2},\qquad \big(f(g(x))\big)'=f'(g(x))\,g'(x) \]
+<p>En una composición anidada, se deriva de fuera hacia dentro y se multiplica cada capa.</p>
+<div class="ex"><p class="et">Ejemplo 1.5. Producto, cociente y cadena</p>
+<p>\((x^2\sin x)'=2x\sin x+x^2\cos x\). \(\left(\dfrac{x^2+1}{x-1}\right)'=\dfrac{x^2-2x-1}{(x-1)^2}\). \((\sin^2 3x)'=2\sin3x\cdot\cos3x\cdot3=3\sin6x\). \((\ln\cos x)'=-\tan x\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.6. Cadena en tres capas y un cociente que se simplifica</p>
+<p>(a) \(y=e^{\sin^23x}\): \(y'=e^{\sin^23x}\cdot2\sin3x\cdot\cos3x\cdot3=3\sin6x\,e^{\sin^23x}\). (b) \(y=\frac x{\sqrt{x^2+1}}\): \(y'=\frac{\sqrt{x^2+1}-\frac{x^2}{\sqrt{x^2+1}}}{x^2+1}=\frac1{(x^2+1)^{3/2}}\). Multiplicar arriba y abajo por \(\sqrt{x^2+1}\) es el paso que el markscheme espera ver.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Deriva \(y=(x^2+1)^5\) y \(y=\dfrac{\sin x}{x}\).</li><li>Deriva \(y=\ln\!\left(\dfrac{x}{x+1}\right)\) simplificando primero.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(10x(x^2+1)^4\); \(\dfrac{x\cos x-\sin x}{x^2}\).</li><li>\(\ln x-\ln(x+1)\Rightarrow\dfrac1x-\dfrac1{x+1}=\dfrac1{x(x+1)}\).</li></ol></div></details></div>
+
+<h3 id="t4">1.4 Tangentes y normales</h3>
+\[ \text{Tangente: }y-f(a)=f'(a)(x-a),\qquad \text{normal: }y-f(a)=-\frac1{f'(a)}(x-a) \]
+<ul>
+<li>Tangente paralela a una recta: misma pendiente. Tangente horizontal: \(f'(a)=0\).</li>
+<li><b>Tangente desde un punto exterior</b> \((p,q)\): impón que la tangente en \(a\) pase por \((p,q)\). Queda una ecuación en \(a\).</li>
+<li><b>Tangente común</b> a \(f\) y \(g\) en \(x=a\): \(f(a)=g(a)\) y \(f'(a)=g'(a)\).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.7. Tangente y normal</p>
+<p>Para \(y=x^3-3x\) en \(x=2\): \(y(2)=2\) e \(y'(2)=9\). Tangente \(y=9x-16\); normal \(y-2=-\tfrac19(x-2)\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.8. Tangentes desde un punto exterior</p>
+<p>Halla las tangentes a \(y=x^2\) que pasan por \((1,-3)\).</p>
+<p>Tangente en \(a\): \(y=2ax-a^2\). Pasa por \((1,-3)\) si \(-3=2a-a^2\), es decir \(a^2-2a-3=0\): \(a=3\) o \(a=-1\). Tangentes \(y=6x-9\) e \(y=-2x-1\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 545.585508 264.085937" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 264.085937 
+L 545.585508 264.085937 
+L 545.585508 0 
+L 0 0 
+L 0 264.085937 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 21.19875 239.24 
+L 175.892083 239.24 
+L 175.892083 7.2 
+L 21.19875 7.2 
+L 21.19875 239.24 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mf5b8fc0fc5" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mf5b8fc0fc5" x="40.535417" y="239.24" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="40.535417" y="254.598281" transform="rotate(-0 40.535417 254.598281)">1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mf5b8fc0fc5" x="79.20875" y="239.24" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="79.20875" y="254.598281" transform="rotate(-0 79.20875 254.598281)">2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mf5b8fc0fc5" x="117.882083" y="239.24" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="117.882083" y="254.598281" transform="rotate(-0 117.882083 254.598281)">3</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mf5b8fc0fc5" x="156.555417" y="239.24" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="156.555417" y="254.598281" transform="rotate(-0 156.555417 254.598281)">4</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="mf8b78d2b6f" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mf8b78d2b6f" x="21.19875" y="161.893333" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="14.19875" y="166.072474" transform="rotate(-0 14.19875 166.072474)">2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mf8b78d2b6f" x="21.19875" y="84.546667" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="14.19875" y="88.725807" transform="rotate(-0 14.19875 88.725807)">4</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M -1 230.66946 
+L 10.628218 265.085937 
+M 64.028786 265.085937 
+L 65.86063 255.973901 
+L 67.994777 244.251907 
+L 70.128924 231.321563 
+L 72.263071 217.143873 
+L 74.397218 201.679845 
+L 76.531365 184.890483 
+L 79.376895 160.375639 
+L 82.222424 133.342893 
+L 85.067954 103.699814 
+L 87.913484 71.353969 
+L 90.759013 36.21293 
+L 93.545225 -1 
+L 93.545225 -1 
+" clip-path="url(#p4aecee0e5b)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 67.742905 265.085937 
+L 97.308009 -1 
+L 97.308009 -1 
+" clip-path="url(#p4aecee0e5b)" style="fill: none; stroke: #5a3d9a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M -1 152.98125 
+L 125.61675 167.049778 
+L 125.61675 167.049778 
+" clip-path="url(#p4aecee0e5b)" style="fill: none; stroke: #a2530a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <defs>
+     <path id="mc609372826" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#p4aecee0e5b)">
+     <use xlink:href="#mc609372826" x="79.20875" y="161.893333" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 21.19875 239.24 
+L 21.19875 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 21.19875 239.24 
+L 175.892083 239.24 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_11">
+     <path d="M 51.899661 18.333672 
+L 60.399661 18.333672 
+L 68.899661 18.333672 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="75.699661" y="21.308672" transform="rotate(-0 75.699661 21.308672)">y = x³ − 3x</text>
+    </g>
+    <g id="line2d_12">
+     <path d="M 51.899661 30.810078 
+L 60.399661 30.810078 
+L 68.899661 30.810078 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 1.6; stroke-linecap: square"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="75.699661" y="33.785078" transform="rotate(-0 75.699661 33.785078)">tangente y = 9x − 16</text>
+    </g>
+    <g id="line2d_13">
+     <path d="M 51.899661 43.286484 
+L 60.399661 43.286484 
+L 68.899661 43.286484 
+" style="fill: none; stroke: #a2530a; stroke-width: 1.6; stroke-linecap: square"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="75.699661" y="46.261484" transform="rotate(-0 75.699661 46.261484)">normal</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 227.185689 239.24 
+L 538.385508 239.24 
+L 538.385508 7.2 
+L 227.185689 7.2 
+L 227.185689 239.24 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_5">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#mf5b8fc0fc5" x="288.482623" y="161.893333" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="288.482623" y="177.251615" transform="rotate(-0 288.482623 177.251615)">−1</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#mf5b8fc0fc5" x="382.785598" y="161.893333" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="382.785598" y="177.251615" transform="rotate(-0 382.785598 177.251615)">1</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#mf5b8fc0fc5" x="477.088574" y="161.893333" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="477.088574" y="177.251615" transform="rotate(-0 477.088574 177.251615)">3</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_3">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#mf8b78d2b6f" x="335.634111" y="110.328889" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="328.634111" y="114.50803" transform="rotate(-0 328.634111 114.50803)">4</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#mf8b78d2b6f" x="335.634111" y="58.764444" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="328.634111" y="62.943585" transform="rotate(-0 328.634111 62.943585)">8</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_19">
+    <path d="M 241.331136 110.328889 
+L 247.008238 116.350441 
+L 252.68534 121.998242 
+L 257.416259 126.419238 
+L 262.147177 130.580684 
+L 266.878096 134.482581 
+L 271.609014 138.124928 
+L 276.339932 141.507726 
+L 281.070851 144.630973 
+L 285.801769 147.494671 
+L 290.532688 150.09882 
+L 295.263606 152.443418 
+L 299.994525 154.528467 
+L 304.725443 156.353967 
+L 309.456362 157.919916 
+L 314.18728 159.226316 
+L 318.918199 160.273167 
+L 323.649117 161.060467 
+L 328.380036 161.588218 
+L 333.110954 161.85642 
+L 337.841873 161.865071 
+L 342.572791 161.614173 
+L 347.30371 161.103726 
+L 352.034628 160.333728 
+L 356.765547 159.304181 
+L 361.496465 158.015084 
+L 366.227384 156.466438 
+L 370.958302 154.658242 
+L 375.689221 152.590496 
+L 380.420139 150.263201 
+L 385.151058 147.676356 
+L 389.881976 144.829961 
+L 394.612895 141.724017 
+L 399.343813 138.358523 
+L 404.074732 134.733479 
+L 408.80565 130.848886 
+L 413.536569 126.704743 
+L 418.267487 122.30105 
+L 422.998406 117.637808 
+L 428.675508 111.699311 
+L 434.35261 105.387063 
+L 440.029712 98.701064 
+L 445.706814 91.641313 
+L 451.383917 84.20781 
+L 457.061019 76.400556 
+L 462.738121 68.219551 
+L 468.415223 59.664793 
+L 474.092325 50.736285 
+L 479.769428 41.434025 
+L 485.44653 31.758013 
+L 492.069816 19.996952 
+L 498.693101 7.727174 
+L 503.244454 -1 
+L 503.244454 -1 
+" clip-path="url(#pfb84743400)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_20">
+    <path d="M 343.453851 265.085937 
+L 505.663139 -1 
+L 505.663139 -1 
+" clip-path="url(#pfb84743400)" style="fill: none; stroke: #5a3d9a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_21">
+    <path d="M 241.331136 123.22 
+L 500.780842 265.085937 
+L 500.780842 265.085937 
+" clip-path="url(#pfb84743400)" style="fill: none; stroke: #a2530a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_22">
+    <defs>
+     <path id="mf01fcd9321" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#pfb84743400)">
+     <use xlink:href="#mf01fcd9321" x="382.785598" y="200.566667" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="line2d_23">
+    <defs>
+     <path id="mcc8cbfcc40" d="M 0 1.5 
+C 0.397805 1.5 0.77937 1.341951 1.06066 1.06066 
+C 1.341951 0.77937 1.5 0.397805 1.5 0 
+C 1.5 -0.397805 1.341951 -0.77937 1.06066 -1.06066 
+C 0.77937 -1.341951 0.397805 -1.5 0 -1.5 
+C -0.397805 -1.5 -0.77937 -1.341951 -1.06066 -1.06066 
+C -1.341951 -0.77937 -1.5 -0.397805 -1.5 0 
+C -1.5 0.397805 -1.341951 0.77937 -1.06066 1.06066 
+C -0.77937 1.341951 -0.397805 1.5 0 1.5 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#pfb84743400)">
+     <use xlink:href="#mcc8cbfcc40" x="477.088574" y="45.873333" style="stroke: currentColor"/>
+     <use xlink:href="#mcc8cbfcc40" x="288.482623" y="149.002222" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_6">
+    <path d="M 335.634111 239.24 
+L 335.634111 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 227.185689 161.893333 
+L 538.385508 161.893333 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="396.931045" y="221.192444" transform="rotate(-0 396.931045 221.192444)">(1, −3)</text>
+   </g>
+   <g id="legend_2">
+    <g id="line2d_24">
+     <path d="M 235.285689 18.988594 
+L 244.285689 18.988594 
+L 253.285689 18.988594 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="260.485689" y="22.138594" transform="rotate(-0 260.485689 22.138594)">y = x²</text>
+    </g>
+    <g id="line2d_25">
+     <path d="M 235.285689 32.198906 
+L 244.285689 32.198906 
+L 253.285689 32.198906 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 1.6; stroke-linecap: square"/>
+    </g>
+    <g id="text_17">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="260.485689" y="35.348906" transform="rotate(-0 260.485689 35.348906)">y = 6x − 9 (toca en x = 3)</text>
+    </g>
+    <g id="line2d_26">
+     <path d="M 235.285689 45.409219 
+L 244.285689 45.409219 
+L 253.285689 45.409219 
+" style="fill: none; stroke: #a2530a; stroke-width: 1.6; stroke-linecap: square"/>
+    </g>
+    <g id="text_18">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="260.485689" y="48.559219" transform="rotate(-0 260.485689 48.559219)">y = −2x − 1 (toca en x = −1)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4aecee0e5b">
+   <rect x="21.19875" y="7.2" width="154.693333" height="232.04"/>
+  </clipPath>
+  <clipPath id="pfb84743400">
+   <rect x="227.185689" y="7.2" width="311.199818" height="232.04"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: izquierda, Ejemplo 1.7: tangente y normal a \(y=x^3-3x\) en \((2,2)\), con escala igual en los dos ejes para que se vea el ángulo recto. Derecha, Ejemplo 1.8: desde el punto exterior \((1,-3)\) salen dos tangentes a \(y=x^2\), una por cada raíz de \(a^2-2a-3=0\).</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla la tangente y la normal a \(y=\ln x\) en \(x=1\).</li><li>Halla las tangentes a \(y=x^2\) que pasan por \((0,-4)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(y(1)=0\), \(y'(1)=1\): tangente \(y=x-1\); normal \(y=-(x-1)\).</li><li>Tangente en \(a\): \(y=2ax-a^2\); pasa por \((0,-4)\) si \(-a^2=-4\Rightarrow a=\pm2\): \(y=4x-4\) e \(y=-4x-4\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ1, P4)</p><p>«Tangente común en \(x=3\)» se usa dos veces: primero las pendientes (para \(h\)) y luego los valores (para \(k\)). La derivada de \(g\) debe verse escrita, o se pierde la primera A1.</p></div>
+
+<h3 id="t5">1.5 Segunda derivada y orden superior</h3>
+<p>\(f''(x)=\tfrac{d^2y}{dx^2}\) mide cómo cambia la pendiente. Las derivadas \(n\)-ésimas suelen seguir un patrón que se prueba por inducción (Módulo 5).</p>
+<div class="ex"><p class="et">Ejemplo 1.9. Patrones de la derivada \(n\)-ésima</p>
+<p>\(\tfrac{d^n}{dx^n}e^{3x}=3^ne^{3x}\). \(\tfrac{d^n}{dx^n}\ln x=\dfrac{(-1)^{n-1}(n-1)!}{x^n}\): \(\tfrac1x,\ -\tfrac1{x^2},\ \tfrac2{x^3},\ -\tfrac6{x^4},\dots\)</p></div>
+<div class="ex"><p class="et">Ejemplo 1.10. Comprobar una ecuación diferencial</p>
+<p>Muestra que \(y=e^{2x}\cos x\) cumple \(y''-4y'+5y=0\).</p>
+<p>\(y'=e^{2x}(2\cos x-\sin x)\) e \(y''=e^{2x}(3\cos x-4\sin x)\). Entonces \(y''-4y'+5y=e^{2x}\left[(3-8+5)\cos x+(-4+4)\sin x\right]=0\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla la \(n\)-ésima derivada de \(e^{2x}\) y de \(\dfrac1{x}\).</li><li>Muestra que \(y=e^{-x}\sin x\) cumple \(y''+2y'+2y=0\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(2^ne^{2x}\); \(\dfrac{(-1)^n n!}{x^{n+1}}\).</li><li>\(y'=e^{-x}(\cos x-\sin x)\), \(y''=e^{-x}(-2\cos x)\); \(y''+2y'+2y=e^{-x}[(-2+2)\cos x+(0)\sin x]=0\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2021, P11 y mayo 2021 TZ1, P12)</p><p>En el paso inductivo se <b>deriva la hipótesis</b>: \(f^{(k+1)}=\tfrac{d}{dx}f^{(k)}\). La primera M1 exige «supón que es cierto para \(n=k\)», y la R1 final exige al menos 4 marcas previas.</p></div>
+
+<h3 id="t6">1.6 Derivación implícita (NS)</h3>
+<p>Cuando \(y\) no está despejada, se deriva cada término respecto a \(x\), tratando \(y\) como función de \(x\): \(\tfrac{d}{dx}y^2=2y\tfrac{dy}{dx}\) y \(\tfrac{d}{dx}(xy)=y+x\tfrac{dy}{dx}\). Después se despeja \(\tfrac{dy}{dx}\).</p>
+<ul>
+<li>Tangente horizontal: numerador de \(\tfrac{dy}{dx}\) igual a 0. Tangente vertical: denominador igual a 0.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.11. Implícita y tangentes especiales</p>
+<p>\(x^2+xy+y^2=7\): \(2x+y+xy'+2yy'=0\Rightarrow y'=-\dfrac{2x+y}{x+2y}\). En \((1,2)\): \(-\tfrac45\). Hay tangente vertical donde \(x+2y=0\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 289.584 374.26077" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 374.26077 
+L 289.584 374.26077 
+L 289.584 0 
+L 0 0 
+L 0 374.26077 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 295.488 
+L 282.384 295.488 
+L 282.384 7.2 
+L 7.2 7.2 
+L 7.2 295.488 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mc8b6dca561" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mc8b6dca561" x="79.272" y="157.896" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="79.272" y="173.254281" transform="rotate(-0 79.272 173.254281)">−2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mc8b6dca561" x="210.312" y="157.896" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="210.312" y="173.254281" transform="rotate(-0 210.312 173.254281)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path id="mf4da971cd7" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mf4da971cd7" x="144.792" y="223.416" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="137.792" y="227.595141" transform="rotate(-0 137.792 227.595141)">−2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mf4da971cd7" x="144.792" y="92.376" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="137.792" y="96.555141" transform="rotate(-0 137.792 96.555141)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="QuadContourSet_1">
+    <path d="M 185.844632 257.469753 
+L 185.298632 257.407579 
+L 185.187789 257.394905 
+L 184.530947 257.314722 
+L 183.874105 257.229783 
+L 183.217263 257.140147 
+L 182.560421 257.045871 
+L 181.903579 256.947012 
+L 181.246737 256.843626 
+L 180.681376 256.750737 
+L 180.589895 256.735645 
+L 179.933053 256.622458 
+L 179.276211 256.504877 
+L 178.619368 256.382956 
+L 177.962526 256.256748 
+L 177.305684 256.126303 
+L 177.14805 256.093895 
+L 176.648842 255.990852 
+L 175.992 255.85098 
+L 175.335158 255.706996 
+L 174.678316 255.55895 
+L 174.152175 255.437053 
+L 174.021474 255.406651 
+L 173.364632 255.249389 
+L 172.707789 255.088186 
+L 172.050947 254.923088 
+L 171.495797 254.780211 
+L 171.394105 254.753935 
+L 170.737263 254.579827 
+L 170.080421 254.40194 
+L 169.423579 254.220318 
+L 169.080577 254.123368 
+L 168.766737 254.034314 
+L 168.109895 253.843882 
+L 167.453053 253.649828 
+L 166.844017 253.466526 
+L 166.796211 253.452082 
+L 166.139368 253.249346 
+L 165.482526 253.043097 
+L 164.825684 252.833375 
+L 164.752931 252.809684 
+L 164.168842 252.618754 
+L 163.512 252.400542 
+L 162.855158 252.178963 
+L 162.77913 252.152842 
+L 162.198316 251.952523 
+L 161.541474 251.722577 
+L 160.903383 251.496 
+L 160.884632 251.489316 
+L 160.227789 251.251063 
+L 159.570947 251.009609 
+L 159.113789 250.839158 
+L 158.914105 250.76442 
+L 158.257263 250.514779 
+L 157.600421 250.262036 
+L 157.396259 250.182316 
+L 156.943579 250.004879 
+L 156.286737 249.744069 
+L 155.742838 249.525474 
+L 155.629895 249.479908 
+L 154.973053 249.211089 
+L 154.316211 248.939325 
+L 154.147635 248.868632 
+L 153.659368 248.663095 
+L 153.002526 248.383439 
+L 152.604026 248.211789 
+L 152.345684 248.100087 
+L 151.688842 247.812597 
+L 151.106089 247.554947 
+L 151.032 247.522066 
+L 150.375158 247.226799 
+L 149.718316 246.928798 
+L 149.6515 246.898105 
+L 149.061474 246.626044 
+L 148.404632 246.320381 
+L 148.236547 246.241263 
+L 147.747789 246.010332 
+L 147.090947 245.697064 
+L 146.857269 245.584421 
+L 146.434105 245.379664 
+L 145.777263 245.058846 
+L 145.511208 244.927579 
+L 145.120421 244.73404 
+L 144.463579 244.405729 
+L 144.196122 244.270737 
+L 143.806737 244.073458 
+L 143.149895 243.737712 
+L 142.90997 243.613895 
+L 142.493053 243.397921 
+L 141.836211 243.054795 
+L 141.650885 242.957053 
+L 141.179368 242.707426 
+L 140.522526 242.356978 
+L 140.417158 242.300211 
+L 139.865684 242.001975 
+L 139.208842 241.644261 
+L 139.20722 241.643368 
+L 138.552 241.281568 
+L 138.021328 240.986526 
+L 137.895158 240.916111 
+L 137.238316 240.546204 
+L 136.856691 240.329684 
+L 136.581474 240.172941 
+L 135.924632 239.795883 
+L 135.712033 239.672842 
+L 135.267789 239.414758 
+L 134.610947 239.030606 
+L 134.586197 239.016 
+L 133.954105 238.641561 
+L 133.480426 238.359158 
+L 133.297263 238.24954 
+L 132.640421 237.85335 
+L 132.391853 237.702316 
+L 131.983579 237.453292 
+L 131.326737 237.050126 
+L 131.319221 237.045474 
+L 130.669895 236.641973 
+L 130.264704 236.388632 
+L 130.013053 236.230685 
+L 129.356211 235.815582 
+L 129.224608 235.731789 
+L 128.699368 235.39608 
+L 128.199936 235.074947 
+L 128.042526 234.973344 
+L 127.385684 234.546345 
+L 127.189751 234.418105 
+L 126.728842 234.115273 
+L 126.193183 233.761263 
+L 126.072 233.680865 
+L 125.415158 233.242015 
+L 125.210542 233.104421 
+L 124.758316 232.799147 
+L 124.24048 232.447579 
+L 124.101474 232.352839 
+L 123.444632 231.902182 
+L 123.283238 231.790737 
+L 122.787789 231.44729 
+L 122.338212 231.133895 
+L 122.130947 230.98885 
+L 121.474105 230.526435 
+L 121.404428 230.477053 
+L 120.817263 230.059284 
+L 120.483081 229.820211 
+L 120.160421 229.588476 
+L 119.571722 229.163368 
+L 119.503579 229.113968 
+L 118.846737 228.634705 
+L 118.672072 228.506526 
+L 118.189895 228.151288 
+L 117.78269 227.849684 
+L 117.533053 227.664057 
+L 116.902694 227.192842 
+L 116.876211 227.172966 
+L 116.219368 226.67685 
+L 116.033885 226.536 
+L 115.562526 226.176647 
+L 115.17433 225.879158 
+L 114.905684 225.672466 
+L 114.323613 225.222316 
+L 114.248842 225.16426 
+L 113.592 224.651292 
+L 113.482717 224.565474 
+L 112.935158 224.133766 
+L 112.651047 223.908632 
+L 112.278316 223.61209 
+L 111.827714 223.251789 
+L 111.621474 223.086216 
+L 111.012595 222.594947 
+L 110.964632 222.556093 
+L 110.307789 222.020995 
+L 110.20657 221.938105 
+L 109.650947 221.48126 
+L 109.408897 221.281263 
+L 108.994105 220.937146 
+L 108.618988 220.624421 
+L 108.337263 220.388598 
+L 107.836729 219.967579 
+L 107.680421 219.835564 
+L 107.06201 219.310737 
+L 107.023579 219.277987 
+L 106.366737 218.715306 
+L 106.295407 218.653895 
+L 105.709895 218.147733 
+L 105.536416 217.997053 
+L 105.053053 217.57548 
+L 104.784568 217.340211 
+L 104.396211 216.998488 
+L 104.039764 216.683368 
+L 103.739368 216.416697 
+L 103.301904 216.026526 
+L 103.082526 215.830048 
+L 102.570892 215.369684 
+L 102.425684 215.238479 
+L 101.846634 214.712842 
+L 101.768842 214.641929 
+L 101.129034 214.056 
+L 101.112 214.040334 
+L 100.455158 213.43334 
+L 100.418341 213.399158 
+L 99.798316 212.82108 
+L 99.714218 212.742316 
+L 99.141474 212.20362 
+L 99.016425 212.085474 
+L 98.484632 211.580894 
+L 98.324875 211.428632 
+L 97.827789 210.952834 
+L 97.639487 210.771789 
+L 97.170947 210.319372 
+L 96.960177 210.114947 
+L 96.514105 209.680437 
+L 96.286866 209.458105 
+L 95.857263 209.035958 
+L 95.619474 208.801263 
+L 95.200421 208.385862 
+L 94.957923 208.144421 
+L 94.543579 207.730077 
+L 94.302138 207.487579 
+L 93.886737 207.068526 
+L 93.652042 206.830737 
+L 93.229895 206.401134 
+L 93.007563 206.173895 
+L 92.573053 205.727823 
+L 92.368628 205.517053 
+L 91.916211 205.048513 
+L 91.735166 204.860211 
+L 91.259368 204.363125 
+L 91.107106 204.203368 
+L 90.602526 203.671575 
+L 90.48438 203.546526 
+L 89.945684 202.973782 
+L 89.86692 202.889684 
+L 89.288842 202.269659 
+L 89.25466 202.232842 
+L 88.647666 201.576 
+L 88.632 201.558966 
+L 88.046071 200.919158 
+L 87.975158 200.841366 
+L 87.449521 200.262316 
+L 87.318316 200.117108 
+L 86.857952 199.605474 
+L 86.661474 199.386096 
+L 86.271303 198.948632 
+L 86.004632 198.648236 
+L 85.689512 198.291789 
+L 85.347789 197.903432 
+L 85.11252 197.634947 
+L 84.690947 197.151584 
+L 84.540267 196.978105 
+L 84.034105 196.392593 
+L 83.972694 196.321263 
+L 83.410013 195.664421 
+L 83.377263 195.62599 
+L 82.852436 195.007579 
+L 82.720421 194.851271 
+L 82.299402 194.350737 
+L 82.063579 194.069012 
+L 81.750854 193.693895 
+L 81.406737 193.279103 
+L 81.20674 193.037053 
+L 80.749895 192.48143 
+L 80.667005 192.380211 
+L 80.131907 191.723368 
+L 80.093053 191.675405 
+L 79.601784 191.066526 
+L 79.436211 190.860286 
+L 79.07591 190.409684 
+L 78.779368 190.036953 
+L 78.554234 189.752842 
+L 78.122526 189.205283 
+L 78.036708 189.096 
+L 77.52374 188.439158 
+L 77.465684 188.364387 
+L 77.015534 187.782316 
+L 76.808842 187.51367 
+L 76.511353 187.125474 
+L 76.152 186.654115 
+L 76.01115 186.468632 
+L 75.515034 185.811789 
+L 75.495158 185.785306 
+L 75.023943 185.154947 
+L 74.838316 184.90531 
+L 74.536712 184.498105 
+L 74.181474 184.015928 
+L 74.053295 183.841263 
+L 73.574032 183.184421 
+L 73.524632 183.116278 
+L 73.099524 182.527579 
+L 72.867789 182.204919 
+L 72.628716 181.870737 
+L 72.210947 181.283572 
+L 72.161565 181.213895 
+L 71.69915 180.557053 
+L 71.554105 180.349788 
+L 71.24071 179.900211 
+L 70.897263 179.404762 
+L 70.785818 179.243368 
+L 70.335161 178.586526 
+L 70.240421 178.44752 
+L 69.888853 177.929684 
+L 69.583579 177.477458 
+L 69.445985 177.272842 
+L 69.007135 176.616 
+L 68.926737 176.494817 
+L 68.572727 175.959158 
+L 68.269895 175.498249 
+L 68.141655 175.302316 
+L 67.714656 174.645474 
+L 67.613053 174.488064 
+L 67.29192 173.988632 
+L 66.956211 173.463392 
+L 66.872418 173.331789 
+L 66.457315 172.674947 
+L 66.299368 172.423296 
+L 66.046027 172.018105 
+L 65.642526 171.368779 
+L 65.637874 171.361263 
+L 65.234708 170.704421 
+L 64.985684 170.296147 
+L 64.83465 170.047579 
+L 64.43846 169.390737 
+L 64.328842 169.207574 
+L 64.046439 168.733895 
+L 63.672 168.101803 
+L 63.657394 168.077053 
+L 63.273242 167.420211 
+L 63.015158 166.975967 
+L 62.892117 166.763368 
+L 62.515059 166.106526 
+L 62.358316 165.831309 
+L 62.141796 165.449684 
+L 61.771889 164.792842 
+L 61.701474 164.666672 
+L 61.406432 164.136 
+L 61.044632 163.48078 
+L 61.043739 163.479158 
+L 60.686025 162.822316 
+L 60.387789 162.270842 
+L 60.331022 162.165474 
+L 59.980574 161.508632 
+L 59.730947 161.037115 
+L 59.633205 160.851789 
+L 59.290079 160.194947 
+L 59.074105 159.77803 
+L 58.950288 159.538105 
+L 58.614542 158.881263 
+L 58.417263 158.491878 
+L 58.282271 158.224421 
+L 57.95396 157.567579 
+L 57.760421 157.176792 
+L 57.629154 156.910737 
+L 57.308336 156.253895 
+L 57.103579 155.830731 
+L 56.990936 155.597053 
+L 56.677668 154.940211 
+L 56.446737 154.451453 
+L 56.367619 154.283368 
+L 56.061956 153.626526 
+L 55.789895 153.0365 
+L 55.759202 152.969684 
+L 55.461201 152.312842 
+L 55.165934 151.656 
+L 55.133053 151.581911 
+L 54.875403 150.999158 
+L 54.587913 150.342316 
+L 54.476211 150.083974 
+L 54.304561 149.685474 
+L 54.024905 149.028632 
+L 53.819368 148.540365 
+L 53.748675 148.371789 
+L 53.476911 147.714947 
+L 53.208092 147.058105 
+L 53.162526 146.945162 
+L 52.943931 146.401263 
+L 52.683121 145.744421 
+L 52.505684 145.291741 
+L 52.425964 145.087579 
+L 52.173221 144.430737 
+L 51.92358 143.773895 
+L 51.848842 143.574211 
+L 51.678391 143.117053 
+L 51.436937 142.460211 
+L 51.198684 141.803368 
+L 51.192 141.784617 
+L 50.965423 141.146526 
+L 50.735477 140.489684 
+L 50.535158 139.90887 
+L 50.509037 139.832842 
+L 50.287458 139.176 
+L 50.069246 138.519158 
+L 49.878316 137.935069 
+L 49.854625 137.862316 
+L 49.644903 137.205474 
+L 49.438654 136.548632 
+L 49.235918 135.891789 
+L 49.221474 135.843983 
+L 49.038172 135.234947 
+L 48.844118 134.578105 
+L 48.653686 133.921263 
+L 48.564632 133.607423 
+L 48.467682 133.264421 
+L 48.28606 132.607579 
+L 48.108173 131.950737 
+L 47.934065 131.293895 
+L 47.907789 131.192203 
+L 47.764912 130.637053 
+L 47.599814 129.980211 
+L 47.438611 129.323368 
+L 47.281349 128.666526 
+L 47.250947 128.535825 
+L 47.12905 128.009684 
+L 46.981004 127.352842 
+L 46.83702 126.696 
+L 46.697148 126.039158 
+L 46.594105 125.53995 
+L 46.561697 125.382316 
+L 46.431252 124.725474 
+L 46.305044 124.068632 
+L 46.183123 123.411789 
+L 46.065542 122.754947 
+L 45.952355 122.098105 
+L 45.937263 122.006624 
+L 45.844374 121.441263 
+L 45.740988 120.784421 
+L 45.642129 120.127579 
+L 45.547853 119.470737 
+L 45.458217 118.813895 
+L 45.373278 118.157053 
+L 45.293095 117.500211 
+L 45.280421 117.389368 
+L 45.218247 116.843368 
+L 45.148344 116.186526 
+L 45.083343 115.529684 
+L 45.023304 114.872842 
+L 44.968291 114.216 
+L 44.918368 113.559158 
+L 44.873599 112.902316 
+L 44.83405 112.245474 
+L 44.799789 111.588632 
+L 44.770883 110.931789 
+L 44.747402 110.274947 
+L 44.729416 109.618105 
+L 44.716998 108.961263 
+L 44.710221 108.304421 
+L 44.709158 107.647579 
+L 44.713886 106.990737 
+L 44.724481 106.333895 
+L 44.741022 105.677053 
+L 44.76359 105.020211 
+L 44.792264 104.363368 
+L 44.827128 103.706526 
+L 44.868266 103.049684 
+L 44.915763 102.392842 
+L 44.969708 101.736 
+L 45.030189 101.079158 
+L 45.097296 100.422316 
+L 45.171122 99.765474 
+L 45.251761 99.108632 
+L 45.280421 98.892925 
+L 45.339865 98.451789 
+L 45.435319 97.794947 
+L 45.537955 97.138105 
+L 45.647877 96.481263 
+L 45.765188 95.824421 
+L 45.889998 95.167579 
+L 45.937263 94.932392 
+L 46.023252 94.510737 
+L 46.164776 93.853895 
+L 46.314224 93.197053 
+L 46.471715 92.540211 
+L 46.594105 92.054286 
+L 46.637808 91.883368 
+L 46.813523 91.226526 
+L 46.997754 90.569684 
+L 47.190635 89.912842 
+L 47.250947 89.715686 
+L 47.393774 89.256 
+L 47.606575 88.599158 
+L 47.828555 87.942316 
+L 47.907789 87.716526 
+L 48.061489 87.285474 
+L 48.304871 86.628632 
+L 48.558012 85.971789 
+L 48.564632 85.955173 
+L 48.823896 85.314947 
+L 49.100078 84.658105 
+L 49.221474 84.378974 
+L 49.388517 84.001263 
+L 49.689043 83.344421 
+L 49.878316 82.944342 
+L 50.001888 82.687579 
+L 50.328169 82.030737 
+L 50.535158 81.627285 
+L 50.667459 81.373895 
+L 51.021029 80.717053 
+L 51.192 80.408938 
+L 51.389015 80.060211 
+L 51.771541 79.403368 
+L 51.848842 79.274271 
+L 52.170718 78.746526 
+L 52.505684 78.21355 
+L 52.585005 78.089684 
+L 53.017148 77.432842 
+L 53.162526 77.217846 
+L 53.4671 76.776 
+L 53.819368 76.278963 
+L 53.934871 76.119158 
+L 54.422269 75.462316 
+L 54.476211 75.391415 
+L 54.93106 74.805474 
+L 55.133053 74.551908 
+L 55.460977 74.148632 
+L 55.789895 73.754203 
+L 56.013363 73.491789 
+L 56.446737 72.995252 
+L 56.58968 72.834947 
+L 57.103579 72.272299 
+L 57.191516 72.178105 
+L 57.760421 71.582842 
+L 57.820606 71.521263 
+L 58.417263 70.924606 
+L 58.478842 70.864421 
+L 59.074105 70.295516 
+L 59.168299 70.207579 
+L 59.730947 69.69368 
+L 59.891252 69.550737 
+L 60.387789 69.117363 
+L 60.650203 68.893895 
+L 61.044632 68.564977 
+L 61.447908 68.237053 
+L 61.701474 68.03506 
+L 62.287415 67.580211 
+L 62.358316 67.526269 
+L 63.015158 67.038871 
+L 63.174963 66.923368 
+L 63.672 66.5711 
+L 64.113846 66.266526 
+L 64.328842 66.121148 
+L 64.985684 65.689005 
+L 65.10955 65.609684 
+L 65.642526 65.274718 
+L 66.170271 64.952842 
+L 66.299368 64.875541 
+L 66.956211 64.493015 
+L 67.304938 64.296 
+L 67.613053 64.125029 
+L 68.269895 63.771459 
+L 68.523285 63.639158 
+L 68.926737 63.432169 
+L 69.583579 63.105888 
+L 69.840342 62.982316 
+L 70.240421 62.793043 
+L 70.897263 62.492517 
+L 71.274974 62.325474 
+L 71.554105 62.204078 
+L 72.210947 61.927896 
+L 72.851173 61.668632 
+L 72.867789 61.662012 
+L 73.524632 61.408871 
+L 74.181474 61.165489 
+L 74.612526 61.011789 
+L 74.838316 60.932555 
+L 75.495158 60.710575 
+L 76.152 60.497774 
+L 76.611686 60.354947 
+L 76.808842 60.294635 
+L 77.465684 60.101754 
+L 78.122526 59.917523 
+L 78.779368 59.741808 
+L 78.950286 59.698105 
+L 79.436211 59.575715 
+L 80.093053 59.418224 
+L 80.749895 59.268776 
+L 81.406737 59.127252 
+L 81.828392 59.041263 
+L 82.063579 58.993998 
+L 82.720421 58.869188 
+L 83.377263 58.751877 
+L 84.034105 58.641955 
+L 84.690947 58.539319 
+L 85.347789 58.443865 
+L 85.788925 58.384421 
+L 86.004632 58.355761 
+L 86.661474 58.275122 
+L 87.318316 58.201296 
+L 87.975158 58.134189 
+L 88.632 58.073708 
+L 89.288842 58.019763 
+L 89.945684 57.972266 
+L 90.602526 57.931128 
+L 91.259368 57.896264 
+L 91.916211 57.86759 
+L 92.573053 57.845022 
+L 93.229895 57.828481 
+L 93.886737 57.817886 
+L 94.543579 57.813158 
+L 95.200421 57.814221 
+L 95.857263 57.820998 
+L 96.514105 57.833416 
+L 97.170947 57.851402 
+L 97.827789 57.874883 
+L 98.484632 57.903789 
+L 99.141474 57.93805 
+L 99.798316 57.977599 
+L 100.455158 58.022368 
+L 101.112 58.072291 
+L 101.768842 58.127304 
+L 102.425684 58.187343 
+L 103.082526 58.252344 
+L 103.739368 58.322247 
+L 104.285368 58.384421 
+L 104.396211 58.397095 
+L 105.053053 58.477278 
+L 105.709895 58.562217 
+L 106.366737 58.651853 
+L 107.023579 58.746129 
+L 107.680421 58.844988 
+L 108.337263 58.948374 
+L 108.902624 59.041263 
+L 108.994105 59.056355 
+L 109.650947 59.169542 
+L 110.307789 59.287123 
+L 110.964632 59.409044 
+L 111.621474 59.535252 
+L 112.278316 59.665697 
+L 112.43595 59.698105 
+L 112.935158 59.801148 
+L 113.592 59.94102 
+L 114.248842 60.085004 
+L 114.905684 60.23305 
+L 115.431825 60.354947 
+L 115.562526 60.385349 
+L 116.219368 60.542611 
+L 116.876211 60.703814 
+L 117.533053 60.868912 
+L 118.088203 61.011789 
+L 118.189895 61.038065 
+L 118.846737 61.212173 
+L 119.503579 61.39006 
+L 120.160421 61.571682 
+L 120.503423 61.668632 
+L 120.817263 61.757686 
+L 121.474105 61.948118 
+L 122.130947 62.142172 
+L 122.739983 62.325474 
+L 122.787789 62.339918 
+L 123.444632 62.542654 
+L 124.101474 62.748903 
+L 124.758316 62.958625 
+L 124.831069 62.982316 
+L 125.415158 63.173246 
+L 126.072 63.391458 
+L 126.728842 63.613037 
+L 126.80487 63.639158 
+L 127.385684 63.839477 
+L 128.042526 64.069423 
+L 128.680617 64.296 
+L 128.699368 64.302684 
+L 129.356211 64.540937 
+L 130.013053 64.782391 
+L 130.470211 64.952842 
+L 130.669895 65.02758 
+L 131.326737 65.277221 
+L 131.983579 65.529964 
+L 132.187741 65.609684 
+L 132.640421 65.787121 
+L 133.297263 66.047931 
+L 133.841162 66.266526 
+L 133.954105 66.312092 
+L 134.610947 66.580911 
+L 135.267789 66.852675 
+L 135.436365 66.923368 
+L 135.924632 67.128905 
+L 136.581474 67.408561 
+L 136.979974 67.580211 
+L 137.238316 67.691913 
+L 137.895158 67.979403 
+L 138.477911 68.237053 
+L 138.552 68.269934 
+L 139.208842 68.565201 
+L 139.865684 68.863202 
+L 139.9325 68.893895 
+L 140.522526 69.165956 
+L 141.179368 69.471619 
+L 141.347453 69.550737 
+L 141.836211 69.781668 
+L 142.493053 70.094936 
+L 142.726731 70.207579 
+L 143.149895 70.412336 
+L 143.806737 70.733154 
+L 144.072792 70.864421 
+L 144.463579 71.05796 
+L 145.120421 71.386271 
+L 145.387878 71.521263 
+L 145.777263 71.718542 
+L 146.434105 72.054288 
+L 146.67403 72.178105 
+L 147.090947 72.394079 
+L 147.747789 72.737205 
+L 147.933115 72.834947 
+L 148.404632 73.084574 
+L 149.061474 73.435022 
+L 149.166842 73.491789 
+L 149.718316 73.790025 
+L 150.375158 74.147739 
+L 150.37678 74.148632 
+L 151.032 74.510432 
+L 151.562672 74.805474 
+L 151.688842 74.875889 
+L 152.345684 75.245796 
+L 152.727309 75.462316 
+L 153.002526 75.619059 
+L 153.659368 75.996117 
+L 153.871967 76.119158 
+L 154.316211 76.377242 
+L 154.973053 76.761394 
+L 154.997803 76.776 
+L 155.629895 77.150439 
+L 156.103574 77.432842 
+L 156.286737 77.54246 
+L 156.943579 77.93865 
+L 157.192147 78.089684 
+L 157.600421 78.338708 
+L 158.257263 78.741874 
+L 158.264779 78.746526 
+L 158.914105 79.150027 
+L 159.319296 79.403368 
+L 159.570947 79.561315 
+L 160.227789 79.976418 
+L 160.359392 80.060211 
+L 160.884632 80.39592 
+L 161.384064 80.717053 
+L 161.541474 80.818656 
+L 162.198316 81.245655 
+L 162.394249 81.373895 
+L 162.855158 81.676727 
+L 163.390817 82.030737 
+L 163.512 82.111135 
+L 164.168842 82.549985 
+L 164.373458 82.687579 
+L 164.825684 82.992853 
+L 165.34352 83.344421 
+L 165.482526 83.439161 
+L 166.139368 83.889818 
+L 166.300762 84.001263 
+L 166.796211 84.34471 
+L 167.245788 84.658105 
+L 167.453053 84.80315 
+L 168.109895 85.265565 
+L 168.179572 85.314947 
+L 168.766737 85.732716 
+L 169.100919 85.971789 
+L 169.423579 86.203524 
+L 170.012278 86.628632 
+L 170.080421 86.678032 
+L 170.737263 87.157295 
+L 170.911928 87.285474 
+L 171.394105 87.640712 
+L 171.80131 87.942316 
+L 172.050947 88.127943 
+L 172.681306 88.599158 
+L 172.707789 88.619034 
+L 173.364632 89.11515 
+L 173.550115 89.256 
+L 174.021474 89.615353 
+L 174.40967 89.912842 
+L 174.678316 90.119534 
+L 175.260387 90.569684 
+L 175.335158 90.62774 
+L 175.992 91.140708 
+L 176.101283 91.226526 
+L 176.648842 91.658234 
+L 176.932953 91.883368 
+L 177.305684 92.17991 
+L 177.756286 92.540211 
+L 177.962526 92.705784 
+L 178.571405 93.197053 
+L 178.619368 93.235907 
+L 179.276211 93.771005 
+L 179.37743 93.853895 
+L 179.933053 94.31074 
+L 180.175103 94.510737 
+L 180.589895 94.854854 
+L 180.965012 95.167579 
+L 181.246737 95.403402 
+L 181.747271 95.824421 
+L 181.903579 95.956436 
+L 182.52199 96.481263 
+L 182.560421 96.514013 
+L 183.217263 97.076694 
+L 183.288593 97.138105 
+L 183.874105 97.644267 
+L 184.047584 97.794947 
+L 184.530947 98.21652 
+L 184.799432 98.451789 
+L 185.187789 98.793512 
+L 185.544236 99.108632 
+L 185.844632 99.375303 
+L 186.282096 99.765474 
+L 186.501474 99.961952 
+L 187.013108 100.422316 
+L 187.158316 100.553521 
+L 187.737366 101.079158 
+L 187.815158 101.150071 
+L 188.454966 101.736 
+L 188.472 101.751666 
+L 189.128842 102.35866 
+L 189.165659 102.392842 
+L 189.785684 102.97092 
+L 189.869782 103.049684 
+L 190.442526 103.58838 
+L 190.567575 103.706526 
+L 191.099368 104.211106 
+L 191.259125 104.363368 
+L 191.756211 104.839166 
+L 191.944513 105.020211 
+L 192.413053 105.472628 
+L 192.623823 105.677053 
+L 193.069895 106.111563 
+L 193.297134 106.333895 
+L 193.726737 106.756042 
+L 193.964526 106.990737 
+L 194.383579 107.406138 
+L 194.626077 107.647579 
+L 195.040421 108.061923 
+L 195.281862 108.304421 
+L 195.697263 108.723474 
+L 195.931958 108.961263 
+L 196.354105 109.390866 
+L 196.576437 109.618105 
+L 197.010947 110.064177 
+L 197.215372 110.274947 
+L 197.667789 110.743487 
+L 197.848834 110.931789 
+L 198.324632 111.428875 
+L 198.476894 111.588632 
+L 198.981474 112.120425 
+L 199.09962 112.245474 
+L 199.638316 112.818218 
+L 199.71708 112.902316 
+L 200.295158 113.522341 
+L 200.32934 113.559158 
+L 200.936334 114.216 
+L 200.952 114.233034 
+L 201.537929 114.872842 
+L 201.608842 114.950634 
+L 202.134479 115.529684 
+L 202.265684 115.674892 
+L 202.726048 116.186526 
+L 202.922526 116.405904 
+L 203.312697 116.843368 
+L 203.579368 117.143764 
+L 203.894488 117.500211 
+L 204.236211 117.888568 
+L 204.47148 118.157053 
+L 204.893053 118.640416 
+L 205.043733 118.813895 
+L 205.549895 119.399407 
+L 205.611306 119.470737 
+L 206.173987 120.127579 
+L 206.206737 120.16601 
+L 206.731564 120.784421 
+L 206.863579 120.940729 
+L 207.284598 121.441263 
+L 207.520421 121.722988 
+L 207.833146 122.098105 
+L 208.177263 122.512897 
+L 208.37726 122.754947 
+L 208.834105 123.31057 
+L 208.916995 123.411789 
+L 209.452093 124.068632 
+L 209.490947 124.116595 
+L 209.982216 124.725474 
+L 210.147789 124.931714 
+L 210.50809 125.382316 
+L 210.804632 125.755047 
+L 211.029766 126.039158 
+L 211.461474 126.586717 
+L 211.547292 126.696 
+L 212.06026 127.352842 
+L 212.118316 127.427613 
+L 212.568466 128.009684 
+L 212.775158 128.27833 
+L 213.072647 128.666526 
+L 213.432 129.137885 
+L 213.57285 129.323368 
+L 214.068966 129.980211 
+L 214.088842 130.006694 
+L 214.560057 130.637053 
+L 214.745684 130.88669 
+L 215.047288 131.293895 
+L 215.402526 131.776072 
+L 215.530705 131.950737 
+L 216.009968 132.607579 
+L 216.059368 132.675722 
+L 216.484476 133.264421 
+L 216.716211 133.587081 
+L 216.955284 133.921263 
+L 217.373053 134.508428 
+L 217.422435 134.578105 
+L 217.88485 135.234947 
+L 218.029895 135.442212 
+L 218.34329 135.891789 
+L 218.686737 136.387238 
+L 218.798182 136.548632 
+L 219.248839 137.205474 
+L 219.343579 137.34448 
+L 219.695147 137.862316 
+L 220.000421 138.314542 
+L 220.138015 138.519158 
+L 220.576865 139.176 
+L 220.657263 139.297183 
+L 221.011273 139.832842 
+L 221.314105 140.293751 
+L 221.442345 140.489684 
+L 221.869344 141.146526 
+L 221.970947 141.303936 
+L 222.29208 141.803368 
+L 222.627789 142.328608 
+L 222.711582 142.460211 
+L 223.126685 143.117053 
+L 223.284632 143.368704 
+L 223.537973 143.773895 
+L 223.941474 144.423221 
+L 223.946126 144.430737 
+L 224.349292 145.087579 
+L 224.598316 145.495853 
+L 224.74935 145.744421 
+L 225.14554 146.401263 
+L 225.255158 146.584426 
+L 225.537561 147.058105 
+L 225.912 147.690197 
+L 225.926606 147.714947 
+L 226.310758 148.371789 
+L 226.568842 148.816033 
+L 226.691883 149.028632 
+L 227.068941 149.685474 
+L 227.225684 149.960691 
+L 227.442204 150.342316 
+L 227.812111 150.999158 
+L 227.882526 151.125328 
+L 228.177568 151.656 
+L 228.539368 152.31122 
+L 228.540261 152.312842 
+L 228.897975 152.969684 
+L 229.196211 153.521158 
+L 229.252978 153.626526 
+L 229.603426 154.283368 
+L 229.853053 154.754885 
+L 229.950795 154.940211 
+L 230.293921 155.597053 
+L 230.509895 156.01397 
+L 230.633712 156.253895 
+L 230.969458 156.910737 
+L 231.166737 157.300122 
+L 231.301729 157.567579 
+L 231.63004 158.224421 
+L 231.823579 158.615208 
+L 231.954846 158.881263 
+L 232.275664 159.538105 
+L 232.480421 159.961269 
+L 232.593064 160.194947 
+L 232.906332 160.851789 
+L 233.137263 161.340547 
+L 233.216381 161.508632 
+L 233.522044 162.165474 
+L 233.794105 162.7555 
+L 233.824798 162.822316 
+L 234.122799 163.479158 
+L 234.418066 164.136 
+L 234.450947 164.210089 
+L 234.708597 164.792842 
+L 234.996087 165.449684 
+L 235.107789 165.708026 
+L 235.279439 166.106526 
+L 235.559095 166.763368 
+L 235.764632 167.251635 
+L 235.835325 167.420211 
+L 236.107089 168.077053 
+L 236.375908 168.733895 
+L 236.421474 168.846838 
+L 236.640069 169.390737 
+L 236.900879 170.047579 
+L 237.078316 170.500259 
+L 237.158036 170.704421 
+L 237.410779 171.361263 
+L 237.66042 172.018105 
+L 237.735158 172.217789 
+L 237.905609 172.674947 
+L 238.147063 173.331789 
+L 238.385316 173.988632 
+L 238.392 174.007383 
+L 238.618577 174.645474 
+L 238.848523 175.302316 
+L 239.048842 175.88313 
+L 239.074963 175.959158 
+L 239.296542 176.616 
+L 239.514754 177.272842 
+L 239.705684 177.856931 
+L 239.729375 177.929684 
+L 239.939097 178.586526 
+L 240.145346 179.243368 
+L 240.348082 179.900211 
+L 240.362526 179.948017 
+L 240.545828 180.557053 
+L 240.739882 181.213895 
+L 240.930314 181.870737 
+L 241.019368 182.184577 
+L 241.116318 182.527579 
+L 241.29794 183.184421 
+L 241.475827 183.841263 
+L 241.649935 184.498105 
+L 241.676211 184.599797 
+L 241.819088 185.154947 
+L 241.984186 185.811789 
+L 242.145389 186.468632 
+L 242.302651 187.125474 
+L 242.333053 187.256175 
+L 242.45495 187.782316 
+L 242.602996 188.439158 
+L 242.74698 189.096 
+L 242.886852 189.752842 
+L 242.989895 190.25205 
+L 243.022303 190.409684 
+L 243.152748 191.066526 
+L 243.278956 191.723368 
+L 243.400877 192.380211 
+L 243.518458 193.037053 
+L 243.631645 193.693895 
+L 243.646737 193.785376 
+L 243.739626 194.350737 
+L 243.843012 195.007579 
+L 243.941871 195.664421 
+L 244.036147 196.321263 
+L 244.125783 196.978105 
+L 244.210722 197.634947 
+L 244.290905 198.291789 
+L 244.303579 198.402632 
+L 244.365753 198.948632 
+L 244.435656 199.605474 
+L 244.500657 200.262316 
+L 244.560696 200.919158 
+L 244.615709 201.576 
+L 244.665632 202.232842 
+L 244.710401 202.889684 
+L 244.74995 203.546526 
+L 244.784211 204.203368 
+L 244.813117 204.860211 
+L 244.836598 205.517053 
+L 244.854584 206.173895 
+L 244.867002 206.830737 
+L 244.873779 207.487579 
+L 244.874842 208.144421 
+L 244.870114 208.801263 
+L 244.859519 209.458105 
+L 244.842978 210.114947 
+L 244.82041 210.771789 
+L 244.791736 211.428632 
+L 244.756872 212.085474 
+L 244.715734 212.742316 
+L 244.668237 213.399158 
+L 244.614292 214.056 
+L 244.553811 214.712842 
+L 244.486704 215.369684 
+L 244.412878 216.026526 
+L 244.332239 216.683368 
+L 244.303579 216.899075 
+L 244.244135 217.340211 
+L 244.148681 217.997053 
+L 244.046045 218.653895 
+L 243.936123 219.310737 
+L 243.818812 219.967579 
+L 243.694002 220.624421 
+L 243.646737 220.859608 
+L 243.560748 221.281263 
+L 243.419224 221.938105 
+L 243.269776 222.594947 
+L 243.112285 223.251789 
+L 242.989895 223.737714 
+L 242.946192 223.908632 
+L 242.770477 224.565474 
+L 242.586246 225.222316 
+L 242.393365 225.879158 
+L 242.333053 226.076314 
+L 242.190226 226.536 
+L 241.977425 227.192842 
+L 241.755445 227.849684 
+L 241.676211 228.075474 
+L 241.522511 228.506526 
+L 241.279129 229.163368 
+L 241.025988 229.820211 
+L 241.019368 229.836827 
+L 240.760104 230.477053 
+L 240.483922 231.133895 
+L 240.362526 231.413026 
+L 240.195483 231.790737 
+L 239.894957 232.447579 
+L 239.705684 232.847658 
+L 239.582112 233.104421 
+L 239.255831 233.761263 
+L 239.048842 234.164715 
+L 238.916541 234.418105 
+L 238.562971 235.074947 
+L 238.392 235.383062 
+L 238.194985 235.731789 
+L 237.812459 236.388632 
+L 237.735158 236.517729 
+L 237.413282 237.045474 
+L 237.078316 237.57845 
+L 236.998995 237.702316 
+L 236.566852 238.359158 
+L 236.421474 238.574154 
+L 236.1169 239.016 
+L 235.764632 239.513037 
+L 235.649129 239.672842 
+L 235.161731 240.329684 
+L 235.107789 240.400585 
+L 234.65294 240.986526 
+L 234.450947 241.240092 
+L 234.123023 241.643368 
+L 233.794105 242.037797 
+L 233.570637 242.300211 
+L 233.137263 242.796748 
+L 232.99432 242.957053 
+L 232.480421 243.519701 
+L 232.392484 243.613895 
+L 231.823579 244.209158 
+L 231.763394 244.270737 
+L 231.166737 244.867394 
+L 231.105158 244.927579 
+L 230.509895 245.496484 
+L 230.415701 245.584421 
+L 229.853053 246.09832 
+L 229.692748 246.241263 
+L 229.196211 246.674637 
+L 228.933797 246.898105 
+L 228.539368 247.227023 
+L 228.136092 247.554947 
+L 227.882526 247.75694 
+L 227.296585 248.211789 
+L 227.225684 248.265731 
+L 226.568842 248.753129 
+L 226.409037 248.868632 
+L 225.912 249.2209 
+L 225.470154 249.525474 
+L 225.255158 249.670852 
+L 224.598316 250.102995 
+L 224.47445 250.182316 
+L 223.941474 250.517282 
+L 223.413729 250.839158 
+L 223.284632 250.916459 
+L 222.627789 251.298985 
+L 222.279062 251.496 
+L 221.970947 251.666971 
+L 221.314105 252.020541 
+L 221.060715 252.152842 
+L 220.657263 252.359831 
+L 220.000421 252.686112 
+L 219.743658 252.809684 
+L 219.343579 252.998957 
+L 218.686737 253.299483 
+L 218.309026 253.466526 
+L 218.029895 253.587922 
+L 217.373053 253.864104 
+L 216.732827 254.123368 
+L 216.716211 254.129988 
+L 216.059368 254.383129 
+L 215.402526 254.626511 
+L 214.971474 254.780211 
+L 214.745684 254.859445 
+L 214.088842 255.081425 
+L 213.432 255.294226 
+L 212.972314 255.437053 
+L 212.775158 255.497365 
+L 212.118316 255.690246 
+L 211.461474 255.874477 
+L 210.804632 256.050192 
+L 210.633714 256.093895 
+L 210.147789 256.216285 
+L 209.490947 256.373776 
+L 208.834105 256.523224 
+L 208.177263 256.664748 
+L 207.755608 256.750737 
+L 207.520421 256.798002 
+L 206.863579 256.922812 
+L 206.206737 257.040123 
+L 205.549895 257.150045 
+L 204.893053 257.252681 
+L 204.236211 257.348135 
+L 203.795075 257.407579 
+L 203.579368 257.436239 
+L 202.922526 257.516878 
+L 202.265684 257.590704 
+L 201.608842 257.657811 
+L 200.952 257.718292 
+L 200.295158 257.772237 
+L 199.638316 257.819734 
+L 198.981474 257.860872 
+L 198.324632 257.895736 
+L 197.667789 257.92441 
+L 197.010947 257.946978 
+L 196.354105 257.963519 
+L 195.697263 257.974114 
+L 195.040421 257.978842 
+L 194.383579 257.977779 
+L 193.726737 257.971002 
+L 193.069895 257.958584 
+L 192.413053 257.940598 
+L 191.756211 257.917117 
+L 191.099368 257.888211 
+L 190.442526 257.85395 
+L 189.785684 257.814401 
+L 189.128842 257.769632 
+L 188.472 257.719709 
+L 187.815158 257.664696 
+L 187.158316 257.604657 
+L 186.501474 257.539656 
+L 185.844632 257.469753 
+z
+" clip-path="url(#pe333b03858)" style="fill: none; stroke: #0e6e6a; stroke-width: 2"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 95.652 26.856 
+L 113.852 41.416 
+L 132.052 55.976 
+L 150.252 70.536 
+L 168.452 85.096 
+L 186.652 99.656 
+L 204.852 114.216 
+L 223.052 128.776 
+L 241.252 143.336 
+L 259.452 157.896 
+" clip-path="url(#pe333b03858)" style="fill: none; stroke: #5a3d9a; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <defs>
+     <path id="mba4c052058" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: #5a3d9a"/>
+    </defs>
+    <g clip-path="url(#pe333b03858)">
+     <use xlink:href="#mba4c052058" x="177.552" y="92.376" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M 44.708547 147.166273 
+L 44.708547 68.542273 
+" clip-path="url(#pe333b03858)" style="fill: none; stroke: #a2530a; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <defs>
+     <path id="mccca725b09" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: #a2530a"/>
+    </defs>
+    <g clip-path="url(#pe333b03858)">
+     <use xlink:href="#mccca725b09" x="44.708547" y="107.854273" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="line2d_9">
+    <path d="M 155.521727 257.979453 
+L 234.145727 257.979453 
+" clip-path="url(#pe333b03858)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_10">
+    <defs>
+     <path id="mbc26122cf7" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#pe333b03858)">
+     <use xlink:href="#mbc26122cf7" x="194.833727" y="257.979453" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="line2d_11">
+    <path d="M 244.875453 247.249727 
+L 244.875453 168.625727 
+" clip-path="url(#pe333b03858)" style="fill: none; stroke: #a2530a; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_12">
+    <g clip-path="url(#pe333b03858)">
+     <use xlink:href="#mccca725b09" x="244.875453" y="207.937727" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="line2d_13">
+    <path d="M 55.438273 57.812547 
+L 134.062273 57.812547 
+" clip-path="url(#pe333b03858)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_14">
+    <g clip-path="url(#pe333b03858)">
+     <use xlink:href="#mbc26122cf7" x="94.750273" y="57.812547" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="line2d_15"/>
+   <g id="patch_3">
+    <path d="M 144.792 295.488 
+L 144.792 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 157.896 
+L 282.384 157.896 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_16">
+     <path d="M 53.100984 318.808114 
+L 62.100984 318.808114 
+L 71.100984 318.808114 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 1.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="78.300984" y="321.958114" transform="rotate(-0 78.300984 321.958114)">tangente en (1, 2): pendiente −4/5</text>
+    </g>
+    <g id="line2d_17">
+     <path d="M 53.100984 332.018426 
+L 62.100984 332.018426 
+L 71.100984 332.018426 
+" style="fill: none; stroke: #a2530a; stroke-width: 1.4; stroke-linecap: square"/>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="78.300984" y="335.168426" transform="rotate(-0 78.300984 335.168426)">tangente vertical: x + 2y = 0</text>
+    </g>
+    <g id="line2d_18">
+     <path d="M 53.100984 345.228739 
+L 62.100984 345.228739 
+L 71.100984 345.228739 
+" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 1.2"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="78.300984" y="348.378739" transform="rotate(-0 78.300984 348.378739)">tangente horizontal: 2x + y = 0</text>
+    </g>
+    <g id="line2d_19">
+     <path d="M 53.100984 358.439051 
+L 62.100984 358.439051 
+L 71.100984 358.439051 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="78.300984" y="361.589051" transform="rotate(-0 78.300984 361.589051)">x² + xy + y² = 7</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe333b03858">
+   <rect x="7.2" y="7.2" width="275.184" height="288.288"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.11: la curva \(x^2+xy+y^2=7\) es una elipse inclinada. Las tangentes verticales están donde se anula el denominador de \(y'\) (\(x+2y=0\)), y las horizontales, donde se anula el numerador (\(2x+y=0\)).</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.12. Implícita con exponencial y segunda derivada</p>
+<p>(a) Halla \(y'\) en \((0,0)\) para \(e^{xy}+y=x+1\). (b) Para \(x^2+y^2=25\), muestra que \(y''=-\frac{25}{y^3}\).</p>
+<p>(a) \(e^{xy}(y+xy')+y'=1\); en \((0,0)\): \(0+y'=1\), así que \(y'=1\). (b) \(y'=-\frac xy\), y derivando con el cociente: \(y''=-\frac{y-xy'}{y^2}=-\frac{y+x^2/y}{y^2}=-\frac{x^2+y^2}{y^3}=-\frac{25}{y^3}\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Para \(x^2-xy+y^2=3\), halla \(\tfrac{dy}{dx}\) en \((1,-1)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(2x-y-xy'+2yy'=0\Rightarrow y'=\dfrac{y-2x}{2y-x}\); en \((1,-1)\): \(\dfrac{-3}{-3}=1\).</li></ol></div></details></div>
+<div class="box beyond"><p class="bt">Más allá del IB: curvas paramétricas</p><p>Si \(x=x(t)\) e \(y=y(t)\), por la regla de la cadena \(\frac{dy}{dx}=\frac{dy/dt}{dx/dt}\) y \(\frac{d^2y}{dx^2}=\frac{\frac{d}{dt}\left(\frac{dy}{dx}\right)}{dx/dt}\). Por ejemplo, con \(x=t^2\) e \(y=t^3\): \(\frac{dy}{dx}=\frac{3t}2\) y \(\frac{d^2y}{dx^2}=\frac{3}{4t}\). La curva \(y^2=x^3\) tiene un pico en el origen, donde \(\frac{dx}{dt}=\frac{dy}{dt}=0\). Es la misma idea que la derivación implícita y que la cinemática vectorial del Módulo 16.</p></div>
+
+<h3 id="t7">1.7 Razones de cambio relacionadas (NS)</h3>
+<p>Si dos magnitudes están ligadas por una ecuación, sus razones de cambio en el tiempo lo están por la regla de la cadena: \(\tfrac{dV}{dt}=\tfrac{dV}{dr}\tfrac{dr}{dt}\).</p>
+<ol>
+<li>Dibuja y nombra las variables.</li>
+<li>Escribe la relación entre ellas (en el caso general, no con los valores del instante).</li>
+<li>Deriva respecto a \(t\).</li>
+<li>Solo al final sustituye los valores del instante.</li>
+</ol>
+<div class="ex"><p class="et">Ejemplo 1.13. Esfera y escalera</p>
+<p>(a) El radio de una esfera crece 0,1 cm/s. Con \(r=5\): \(\tfrac{dV}{dt}=4\pi r^2\cdot0{,}1=10\pi\) cm³/s.</p>
+<p>(b) Una escalera de 5 m resbala: \(x^2+y^2=25\) y \(\tfrac{dx}{dt}=0{,}5\). Con \(x=3\) (\(y=4\)): \(\tfrac{dy}{dt}=-\tfrac xy\tfrac{dx}{dt}=-\tfrac38\) m/s. El signo indica que baja.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.14. La sombra que crece</p>
+<p>Una persona de 1,8 m se aleja a 1,4 m/s de una farola de 6 m. ¿A qué velocidad crece su sombra? ¿Y a qué velocidad se mueve el extremo de la sombra?</p>
+<p>Con \(x\) la distancia a la farola y \(s\) la sombra, por semejanza: \(\frac s{1{,}8}=\frac{x+s}6\), así que \(s=\frac37x\). Entonces \(\frac{ds}{dt}=\frac37\cdot1{,}4=0{,}6\) m/s, y el extremo se mueve a \(1{,}4+0{,}6=2\) m/s. Ninguna depende de \(x\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>El lado de un cuadrado crece a \(3\) cm/s. Halla la rapidez con que crece el área cuando el lado es 10 cm.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(A=L^2\Rightarrow\tfrac{dA}{dt}=2L\tfrac{dL}{dt}=2\cdot10\cdot3=60\) cm²/s.</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2026, P8)</p><p>Primero \(\tfrac{dy}{dx}\) por derivación implícita. Después \(\tfrac{dx}{dt}=\tfrac{dy}{dt}\big/\tfrac{dy}{dx}\) en el punto. Sin la derivación implícita a la vista no se da ninguna marca en (a).</p></div>
+
+<h3 id="t8">1.8 Derivada de la inversa y derivación logarítmica</h3>
+<ul>
+<li>Si \(y=f^{-1}(x)\), entonces \(x=f(y)\) y \(\dfrac{dy}{dx}=\dfrac1{f'(y)}\). Así se deducen las derivadas de arcsin, arccos y arctan.</li>
+<li><b>Derivación logarítmica:</b> para \(y=u^v\) (base y exponente variables), toma \(\ln\) antes de derivar.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.15. Deducir la derivada de arctan y derivar una potencia variable</p>
+<p>(a) \(y=\arctan x\Rightarrow\tan y=x\Rightarrow\sec^2y\,y'=1\Rightarrow y'=\dfrac1{1+\tan^2y}=\dfrac1{1+x^2}\).</p>
+<p>(b) \(y=x^{\sin x}\): \(\ln y=\sin x\ln x\Rightarrow\tfrac{y'}y=\cos x\ln x+\tfrac{\sin x}x\), así que \(y'=x^{\sin x}\left(\cos x\ln x+\tfrac{\sin x}x\right)\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.16. Derivada de la inversa en un punto</p>
+<p>\(f(x)=x^3+x+1\). Halla \(\left(f^{-1}\right)'(3)\).</p>
+<p>No hace falta despejar la inversa. \(f(1)=3\), así que \(f^{-1}(3)=1\), y \(\left(f^{-1}\right)'(3)=\frac1{f'(1)}=\frac14\). Las pendientes de una función y su inversa en puntos simétricos respecto a \(y=x\) son recíprocas.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(f(x)=x^5+x\). Halla \((f^{-1})'(2)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f(1)=2\Rightarrow a=1\); \(f'(x)=5x^4+1\), \(f'(1)=6\); \((f^{-1})'(2)=\tfrac16\).</li></ol></div></details></div>
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Regla de Leibniz:</b> \((uv)^{(n)}=\sum_{k=0}^{n}\binom nku^{(k)}v^{(n-k)}\). Es el binomio de Newton aplicado a derivadas (problema E4).</li>
+<li><b>Derivar una suma finita término a término</b> da nuevas sumas cerradas (problema E1).</li>
+</ul></div>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Derivada en \(a\)</td><td>\(\lim_{h\to0}\tfrac{f(a+h)-f(a)}h\), si existe: pendiente de la tangente en \(a\).</td></tr>
+<tr><td>Primeros principios</td><td>Calcular la derivada con la definición por límite.</td></tr>
+<tr><td>Derivable en \(a\)</td><td>Existe \(f'(a)\); implica continuidad en \(a\).</td></tr>
+<tr><td>Tangente</td><td>Recta por \((a,f(a))\) con pendiente \(f'(a)\).</td></tr>
+<tr><td>Normal</td><td>Recta perpendicular a la tangente en el punto: pendiente \(-\tfrac1{f'(a)}\).</td></tr>
+<tr><td>Derivación implícita</td><td>Derivar una relación entre \(x\) e \(y\) sin despejar \(y\), usando la regla de la cadena.</td></tr>
+<tr><td>Razón de cambio</td><td>Derivada respecto al tiempo: \(\tfrac{dQ}{dt}\), en unidades de \(Q\) por unidad de tiempo.</td></tr>
+<tr><td>Segunda derivada</td><td>\(f''(x)\): razón de cambio de la pendiente.</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Halle \(f'(x)\)</td><td>La derivada simplificada en \(x\).</td><td>Una regla aplicada a medias (la cadena sin la derivada interior).</td></tr>
+<tr><td>Muestre que \(f''(x)=\dots\)</td><td>Ambas derivadas escritas, llegando exactamente a la expresión dada.</td><td>Saltar la primera derivada.</td></tr>
+<tr><td>Halle la ecuación de la tangente</td><td>Una recta con números: \(y=mx+c\) o \(y-y_1=m(x-x_1)\).</td><td>Dejar solo la pendiente.</td></tr>
+<tr><td>Muestre que la curva no tiene extremos</td><td>Imponer \(\tfrac{dy}{dx}=0\) y mostrar que los candidatos no cumplen las restricciones (R1).</td><td>Resolver sin revisar el dominio.</td></tr>
+<tr><td>Halle la razón de cambio</td><td>Un valor con unidades por unidad de tiempo.</td><td>Olvidar unidades o signos.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>La cadena olvidada.</b> \(\big(e^{x^2+1}\big)'=2xe^{x^2+1}\), no \(e^{x^2+1}\) (el markscheme da A0M0A0).</li>
+<li><b>El producto tratado como producto de derivadas.</b> \((uv)'\neq u'v'\).</li>
+<li><b>El cociente con signo invertido.</b> Es \(u'v-uv'\), no \(uv'-u'v\).</li>
+<li><b>La derivada evaluada antes de derivar.</b> Primero deriva en \(x\) y después sustituye.</li>
+<li><b>La normal con pendiente \(\tfrac1m\).</b> Es \(-\tfrac1m\).</li>
+<li><b>La \(y\) implícita olvidada.</b> \(\tfrac d{dx}(y^2)=2y\,y'\) y \(\tfrac d{dx}(xy)=y+xy'\).</li>
+<li><b>Sustituir antes de derivar en razones relacionadas.</b> Si fijas \(x=3\) antes de derivar, la derivada de \(x\) desaparece.</li>
+<li><b>El dominio ignorado.</b> Con \(x\gt4\) se descarta \(x=-2\). En curvas implícitas, revisa las restricciones de \(x\) e \(y\).</li>
+<li><b>\(a^x\) sin \(\ln a\).</b> \((2^x)'=2^x\ln2\).</li>
+<li><b>\(\ln\) de una potencia variable.</b> \(x^x\) no es \(x\cdot x^{x-1}\): usa derivación logarítmica.</li>
+<li><b>La constante que no es constante.</b> Si una letra depende de \(x\) (por ejemplo \(y\)), deriva con la cadena.</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">Parten de ítems de DMpA 02, N°26, N°27 y del banco IB «Recta tangente», ampliados hasta la Sección B. Las preguntas de calculadora se reformulan para resolverse con valores exactos. Ninguno repite un tipo de la sección 5.</p>
+
+<div class="ex"><p class="et">F1. Tangente paralela a una recta trigonométrica <span class="lvl">Sección B, integra Módulo 8</span></p>
+<p class="src">Banco IB «Recta tangente», pregunta 9 (15 puntos, de calculadora), resuelta con valores exactos.</p>
+<p>\(\theta\) es obtuso con \(\sin\theta=\tfrac35\). (a) Halla \(\tan\theta\) y la recta \(L\) por el origen con pendiente \(\tan\theta\). (b) \(f(x)=e^x\sin x-\tfrac{3x}4\), \(0\le x\le3\). Halla \(f'(x)\). (c) La tangente en \(P\) es paralela a \(L\). Halla la coordenada \(x\) de \(P\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\cos\theta=-\tfrac45\), así que \(\tan\theta=-\tfrac34\) y \(L:\ y=-\tfrac34x\).</p>
+<p>(b) \(f'(x)=e^x(\sin x+\cos x)-\tfrac34\).</p>
+<p>(c) \(e^x(\sin x+\cos x)=0\Rightarrow\tan x=-1\Rightarrow x=\tfrac{3\pi}4\), que está en \([0,3]\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Normal que vuelve a cortar la curva <span class="lvl">Sección B</span></p>
+<p class="src">Banco IB «Recta tangente», pregunta 8 (16 puntos); el área está en el Módulo 14.</p>
+<p>\(f(x)=x^2-x\) corta el eje \(x\) en \(P(1,0)\). (a) Muestra que \(f'(1)=1\). (b) Halla la normal \(L\) en \(P\). (c) Halla el otro punto \(Q\) donde \(L\) corta a \(f\). (d) Halla el punto donde la tangente es paralela a \(L\) y la distancia entre esa tangente y \(L\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(f'(x)=2x-1\), y \(f'(1)=1\). (b) \(y=-x+1\).</p>
+<p>(c) \(x^2-x=-x+1\Rightarrow x=\pm1\): \(Q(-1,2)\).</p>
+<p>(d) \(2x-1=-1\Rightarrow x=0\): la tangente es \(y=-x\). Distancia entre \(y=-x\) e \(y=-x+1\): \(\tfrac1{\sqrt2}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. Derivabilidad por la definición <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 02 (definición de la derivada como límite), ampliada con derivabilidad.</p>
+<p>(a) Con primeros principios, deriva \(f(x)=\sqrt x\). (b) Muestra que \(g(x)=x|x|\) es derivable en 0 y halla \(g'(0)\). (c) Muestra que \(|x|\) no es derivable en 0.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\dfrac{\sqrt{x+h}-\sqrt x}{h}=\dfrac{1}{\sqrt{x+h}+\sqrt x}\to\dfrac1{2\sqrt x}\) (racionalizando).</p>
+<p>(b) \(\dfrac{h|h|}{h}=|h|\to0\): \(g'(0)=0\).</p>
+<p>(c) \(\tfrac{|h|}h\) vale \(+1\) si \(h\gt0\) y \(-1\) si \(h\lt0\): los límites laterales son distintos.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Extremos de una oscilación amortiguada <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 02 (IB NS mayo 2018: «halle las coordenadas \(x\) donde la pendiente es cero» con \(e^{-x}\sin x\)).</p>
+<p>\(y=e^{-x}\sin x\), \(0\le x\le2\pi\). (a) Halla los \(x\) con pendiente cero. (b) Clasifícalos con \(y''\). (c) Muestra que el cociente entre el valor en el segundo extremo y el valor en el primero es \(-e^{-\pi}\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(y'=e^{-x}(\cos x-\sin x)=0\Rightarrow\tan x=1\): \(x=\tfrac\pi4,\ \tfrac{5\pi}4\).</p>
+<p>(b) \(y''=-2e^{-x}\cos x\): negativa en \(\tfrac\pi4\) (máximo) y positiva en \(\tfrac{5\pi}4\) (mínimo).</p>
+<p>(c) \(\dfrac{e^{-5\pi/4}\sin\frac{5\pi}4}{e^{-\pi/4}\sin\frac\pi4}=e^{-\pi}\cdot(-1)\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. Derivada \(n\)-ésima trigonométrica <span class="lvl">Sección B, integra Módulo 5</span></p>
+<p class="src">DMpA N°26 (derivadas de orden superior), ampliada con inducción.</p>
+<p>Prueba por inducción que \(\dfrac{d^n}{dx^n}\sin2x=2^n\sin\left(2x+\tfrac{n\pi}2\right)\) para \(n\in\mathbb Z^+\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Base: \(2\cos2x=2\sin\left(2x+\tfrac\pi2\right)\). Supón que es cierto para \(n=k\). Derivando: \(2^k\cdot2\cos\left(2x+\tfrac{k\pi}2\right)=2^{k+1}\sin\left(2x+\tfrac{(k+1)\pi}2\right)\), porque \(\cos\alpha=\sin\left(\alpha+\tfrac\pi2\right)\). Conclusión con la frase completa.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. La tangente de \(\tfrac{\ln x}x\) que pasa por el origen <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°26 («halle la ecuación de L… halle la coordenada \(x\) de P»), ampliada.</p>
+<p>\(f(x)=\tfrac{\ln x}x\). (a) Halla \(f'(x)\) y el punto estacionario. (b) Halla la tangente en \(x=1\). (c) Halla el punto cuya tangente pasa por el origen.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(f'(x)=\tfrac{1-\ln x}{x^2}=0\Rightarrow x=e\), punto \(\left(e,\tfrac1e\right)\).</p>
+<p>(b) \(f(1)=0\) y \(f'(1)=1\): \(y=x-1\).</p>
+<p>(c) La tangente en \(a\) pasa por \(O\) si \(-f(a)=-af'(a)\): \(\tfrac{\ln a}a=\tfrac{1-\ln a}a\Rightarrow\ln a=\tfrac12\). Así \(a=\sqrt e\), punto \(\left(\sqrt e,\tfrac1{2\sqrt e}\right)\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. Triángulo formado por tangente, normal y eje <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA N°27 («halle la recta normal a la curva \(f(x)=2\sqrt x\) cuando \(x=4\)»), ampliada.</p>
+<p>Para \(f(x)=2\sqrt x\) en \(x=4\): halla la tangente y la normal, y el área del triángulo que forman con el eje \(x\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>\(f(4)=4\) y \(f'(x)=\tfrac1{\sqrt x}\), así que \(f'(4)=\tfrac12\). Tangente \(y=\tfrac x2+2\), que corta el eje en \(-4\). Normal \(y=-2x+12\), que lo corta en 6.</p>
+<p>Área: base 10 y altura 4, así que \(\tfrac12\cdot10\cdot4=20\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. Interpretar primera y segunda derivada <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA N°26 (tanque de combustible: «calcule la aceleración con la que se reduce…»), con valores propios.</p>
+<p>El volumen de un tanque es \(V(t)=1000\left(1-\tfrac t{40}\right)^2\) litros, con \(0\le t\le40\) min. (a) Halla \(V'(10)\) e interprétalo. (b) Halla \(V''(t)\) e interprétalo. (c) ¿Cuándo se vacía y con qué rapidez?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(V'(t)=-50\left(1-\tfrac t{40}\right)\), así que \(V'(10)=-37{,}5\) L/min: se vacía a 37,5 litros por minuto.</p>
+<p>(b) \(V''(t)=\tfrac54\gt0\): la rapidez de vaciado disminuye con el tiempo.</p>
+<p>(c) Se vacía en \(t=40\) min, cuando \(V(40)=0\). En ese instante \(V'(40)=0\): el caudal de salida se ha reducido a cero.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. Tangente horizontal en una curva implícita <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 02 («la derivada \(y'\) en función de las dos variables, aplicando la regla de la cadena»), ampliada.</p>
+<p>Para \(x^3+y^3=6xy\) (el folium de Descartes): (a) halla \(\tfrac{dy}{dx}\); (b) halla el punto distinto del origen donde la tangente es horizontal.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(3x^2+3y^2y'=6y+6xy'\Rightarrow y'=\dfrac{2y-x^2}{y^2-2x}\).</p>
+<p>(b) \(2y=x^2\). Sustituyendo: \(x^3+\tfrac{x^6}8=3x^3\Rightarrow x^3=16\). Punto \(\left(2\sqrt[3]2,\ 2\sqrt[3]4\right)\); el denominador no se anula allí.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. Tanque cónico <span class="lvl">Sección A alta</span></p>
+<p class="src">Tipo de examen sin ítem equivalente en las fichas (razones de cambio relacionadas).</p>
+<p>Un tanque cónico con el vértice hacia abajo tiene radio 3 m y altura 6 m. Se llena a 2 m³/min. Halla la rapidez con que sube el agua cuando su profundidad es 2 m.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Por semejanza \(r=\tfrac h2\), así que \(V=\tfrac13\pi\tfrac{h^2}4h=\tfrac{\pi h^3}{12}\). Entonces \(\tfrac{dV}{dt}=\tfrac{\pi h^2}{4}\tfrac{dh}{dt}\). Con \(h=2\): \(2=\pi\tfrac{dh}{dt}\), y \(\tfrac{dh}{dt}=\tfrac2\pi\) m/min.</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son las 10 preguntas o partes de derivación de tus pruebas, con las marcas del markscheme oficial, salvo en mayo 2021 TZ2, cuyo markscheme no está en tus archivos: ahí están reconstruidas y se indica. Resuélvelas en tiempo de examen, a 1,1 minutos por punto.</p>
+
+<div class="ex"><p class="et">X1. Noviembre 2022, pregunta 1 <span class="lvl">4 puntos</span></p>
+<p>\(g(x)=e^{x^2+1}\). Halla \(g'(-1)\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">\(g'(x)=2xe^{x^2+1}\) <span class="m">(A2)</span>; sustituir \(x=-1\) <span class="m">(M1)</span>: \(g'(-1)=-2e^2\) <span class="m">A1</span></p>
+<p>Escribir \(g'(x)=e^{x^2+1}\) da A0M0A0.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Mayo 2022 TZ1, pregunta 4 <span class="lvl">5 puntos</span></p>
+<p>\(y=(2x-1)e^{kx}\). La tangente en \(x=1\) es paralela a la recta \(y=5e^kx\). Halla \(k\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">Regla del producto <span class="m">(M1)</span>: \(y'=2e^{kx}+k(2x-1)e^{kx}\) <span class="m">A1</span></p>
+<p class="step">En \(x=1\): \(e^k(2+k)\) <span class="m">A1</span>. La recta tiene pendiente \(5e^k\) <span class="m">(M1)</span></p>
+<p class="step">\(2+k=5\Rightarrow k=3\) <span class="m">A1</span></p>
+<p><span class="lbl">Trampa de lectura.</span> La recta es \(y=5e^k\cdot x\): su pendiente es la constante \(5e^k\). No es \(5e^{kx}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Mayo 2021 TZ2, pregunta 4(b) <span class="lvl">6 puntos</span></p>
+<p>\(f(x)=\ln(x^2-16)\), \(x\gt4\). La tangente \(L\) en \(B\) tiene pendiente \(\tfrac13\). Halla la coordenada \(x\) de \(B\).</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">Regla de la cadena <span class="m">(M1)</span>: \(f'(x)=\dfrac{2x}{x^2-16}\) <span class="m">A1</span></p>
+<p class="step">\(\dfrac{2x}{x^2-16}=\dfrac13\) <span class="m">(M1)</span> \(\Rightarrow x^2-6x-16=0\) <span class="m">A1</span> \(\Rightarrow(x-8)(x+2)=0\) <span class="m">(A1)</span></p>
+<p class="step">Como \(x\gt4\), \(x=8\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X4. Mayo 2021 TZ1, pregunta 4 <span class="lvl">7 puntos</span></p>
+<p>\(f(x)=-(x-h)^2+2k\) y \(g(x)=e^{x-2}+k\). (a) Halla \(f'(x)\). Las gráficas tienen una tangente común en \(x=3\). (b) Muestra que \(h=\tfrac{e+6}2\). (c) A partir de lo anterior, muestra que \(k=e+\tfrac{e^2}4\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(f'(x)=-2(x-h)\) <span class="m">A1</span></p>
+<p class="step">(b) \(g'(3)=e\) <span class="m">A1</span>; \(f'(3)=g'(3)\) <span class="m">(M1)</span>: \(-2(3-h)=e\Rightarrow h=\tfrac{e+6}2\) <span class="m">A1</span> <span class="m">AG</span></p>
+<p class="step">(c) \(f(3)=g(3)\) <span class="m">(M1)</span>: \(-(3-h)^2+2k=e+k\). Con \(3-h=-\tfrac e2\): \(-\tfrac{e^2}4+2k=e+k\) <span class="m">A1</span> \(\Rightarrow k=e+\tfrac{e^2}4\) <span class="m">A1</span> <span class="m">AG</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X5. Noviembre 2021, pregunta 5 <span class="lvl">7 puntos</span></p>
+<p>La recta \(y=6x-1\) es tangente a \(f\) en \(x=4\). (a) Escribe \(f'(4)\). (b) Halla \(f(4)\). Sea \(g(x)=x^2-3x\) y \(h(x)=f(g(x))\). (c) Halla \(h(4)\). (d) A partir de lo anterior, halla la tangente a \(h\) en \(x=4\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) 6 <span class="m">A1</span>. (b) \(6\cdot4-1=23\) <span class="m">A1</span></p>
+<p class="step">(c) \(g(4)=4\) <span class="m">(M1)</span>, así que \(h(4)=f(4)=23\) <span class="m">A1</span></p>
+<p class="step">(d) \(h'(4)=f'(g(4))\,g'(4)\) <span class="m">(M1)</span> \(=6\cdot5=30\) <span class="m">A1</span>; \(y-23=30(x-4)\), es decir \(y=30x-97\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X6. Noviembre 2022, pregunta 7 <span class="lvl">7 puntos</span></p>
+<p>La curva \((x^2+y^2)y^2=4x^2\), con \(x\ge0\) y \(-2\lt y\lt2\). Muestra que no tiene máximos ni mínimos locales para \(x\gt0\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">Derivación implícita con la regla del producto <span class="m">(M1)</span>: \(\left(2x+2y\tfrac{dy}{dx}\right)y^2+(x^2+y^2)2y\tfrac{dy}{dx}=8x\) <span class="m">A1A1A1</span></p>
+<p class="step">En un extremo, \(\tfrac{dy}{dx}=0\) <span class="m">(M1)</span>: \(2xy^2=8x\Rightarrow y^2=4\) (porque \(x\gt0\)), así que \(y=\pm2\) <span class="m">A1</span></p>
+<p class="step">Pero \(-2\lt y\lt2\): no hay soluciones <span class="m">R1</span>. Por lo tanto no hay extremos locales <span class="m">AG</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X7. Mayo 2026 TZ2, pregunta 8 <span class="lvl">7 puntos</span></p>
+<p>\(C:\ 2y+3xy^2-2x^2+4=0\), \(x\ge2\). (a) Halla \(\tfrac{dy}{dx}\) en función de \(x\) e \(y\). (b) En \(P(2,-1)\), \(\tfrac{dy}{dt}=-6\). Halla \(\tfrac{dx}{dt}\) en \(P\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Derivación implícita <span class="m">(M1)</span>: \(2\tfrac{dy}{dx}+3y^2+6xy\tfrac{dy}{dx}-4x=0\) <span class="m">A1A1</span> \(\Rightarrow\tfrac{dy}{dx}=\dfrac{4x-3y^2}{2+6xy}\) <span class="m">A1</span></p>
+<p class="step">(b) \(\tfrac{dx}{dt}=\tfrac{dy}{dt}\big/\tfrac{dy}{dx}\) <span class="m">(M1)</span>. En \(P\): \(\tfrac{dy}{dx}=\tfrac{8-3}{2-12}=-\tfrac12\) <span class="m">(M1)</span>. Así \(\tfrac{dx}{dt}=\tfrac{-6}{-1/2}=12\) unidades/s <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X8. Noviembre 2022, pregunta 10(b) <span class="lvl">7 puntos</span></p>
+<p>\(f(x)=\cos^2x-3\sin^2x\), \(0\le x\le\pi\). (i) Halla \(f'(x)\). (ii) A partir de lo anterior, halla las coordenadas de los puntos donde \(f'(x)=0\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(i) Regla de la cadena <span class="m">(M1)</span>: \(f'(x)=-2\cos x\sin x-6\sin x\cos x=-8\sin x\cos x=-4\sin2x\) <span class="m">A1</span></p>
+<p class="step">(ii) \(\sin2x=0\) <span class="m">(M1)</span>: \(x=0,\tfrac\pi2,\pi\) <span class="m">(A1)</span>. Puntos \((0,1)\), \(\left(\tfrac\pi2,-3\right)\), \((\pi,1)\) <span class="m">A1A1A1</span></p>
+<p>Las partes (a), (c) y (d) de esta pregunta están en el Módulo 8.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X9. Noviembre 2021, pregunta 11(a) <span class="lvl">7 puntos</span></p>
+<p>Prueba por inducción que \(\dfrac{d^n}{dx^n}\left(x^2e^x\right)=\left(x^2+2nx+n(n-1)\right)e^x\) para \(n\in\mathbb Z^+\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">\(n=1\): LHS \(=2xe^x+x^2e^x\) <span class="m">A1</span>; RHS \(=(x^2+2x)e^x\) <span class="m">A1</span></p>
+<p class="step">Supón que es cierto para \(n=k\) <span class="m">M1</span>. Derivar el RHS <span class="m">M1</span>: \((2x+2k)e^x+\left(x^2+2kx+k(k-1)\right)e^x\) <span class="m">A1</span></p>
+<p class="step">\(=\left(x^2+2(k+1)x+(k+1)k\right)e^x\) <span class="m">A1</span>; cierre de la inducción <span class="m">R1</span></p>
+<p>Las partes (b) y (c) (Maclaurin y límite) están en el Módulo 17.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X10. Mayo 2021 TZ1, pregunta 12(a)(b) <span class="lvl">12 puntos</span></p>
+<p>\(f(x)=\sqrt{1+x}\), \(x\gt-1\). (a) Muestra que \(f''(x)=-\dfrac1{4\sqrt{(1+x)^3}}\). (b) Prueba por inducción que \(f^{(n)}(x)=\left(-\tfrac14\right)^{n-1}\dfrac{(2n-3)!}{(n-2)!}(1+x)^{\frac12-n}\) para \(n\ge2\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Regla de la cadena <span class="m">M1</span>: \(f'=\tfrac12(1+x)^{-1/2}\) <span class="m">A1</span>, \(f''=-\tfrac14(1+x)^{-3/2}\) <span class="m">A1</span> <span class="m">AG</span></p>
+<p class="step">(b) \(n=2\): \(\left(-\tfrac14\right)^1\tfrac{1!}{0!}(1+x)^{-3/2}\) coincide <span class="m">R1</span> (empezar en \(n=1\) da R0). Supón que es cierto para \(n=k\) <span class="m">M1</span>; considera \(f^{(k+1)}=\tfrac d{dx}f^{(k)}\) <span class="m">M1</span></p>
+<p class="step">\(=\left(-\tfrac14\right)^{k-1}\tfrac{(2k-3)!}{(k-2)!}\left(\tfrac12-k\right)(1+x)^{-\frac12-k}\) <span class="m">A1</span></p>
+<p class="step">\(\tfrac12-k=-\tfrac{2k-1}2\), y multiplicando arriba y abajo por \(2(k-1)\): \(\left(-\tfrac14\right)^{k}\tfrac{(2k-1)!}{(k-1)!}(1+x)^{\frac12-(k+1)}\) <span class="m">A1A1A1A1</span></p>
+<p class="step">Cierto para \(n=2\) y \(P(k)\Rightarrow P(k+1)\): cierto para todo \(n\ge2\) <span class="m">R1</span></p>
+<p><span class="lbl">Clave algebraica.</span> Como \((2k-1)!=(2k-1)(2k-2)(2k-3)!\), se tiene \((2k-1)(2k-3)!=\dfrac{(2k-1)!}{2(k-1)}\). Por lo tanto \(-\dfrac{2k-1}{2}\cdot\dfrac{(2k-3)!}{(k-2)!}=-\dfrac14\cdot\dfrac{(2k-1)!}{(k-1)!}\): aparece un factor \(-\tfrac14\) más.</p>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Estos tipos de pregunta no salieron en tus 7 pruebas, pero el IB los pone en otras convocatorias. Junto con la teoría y las secciones 4 y 5, cubren toda la derivación del programa NS. Cada tipo trae cómo reconocerlo, el método, un ejemplo resuelto y ejercicios para practicar.</p>
+<h3 id="ty1">T1. Derivar por primeros principios</h3>
+<p><b>Qué reconocer:</b> «usando la definición de la derivada» o «por primeros principios», para una función sencilla. <b>Método:</b> escribe \(\dfrac{f(x+h)-f(x)}h\), simplifica (racionaliza si hay raíces) y toma \(h\to0\).</p>
+<div class="ex"><p class="et">Ejemplo T1. <span class="lvl">Tipo IB</span></p>
+<p>Deriva \(f(x)=\sqrt x\) por primeros principios.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\dfrac{\sqrt{x+h}-\sqrt x}h=\dfrac{(x+h)-x}{h(\sqrt{x+h}+\sqrt x)}=\dfrac1{\sqrt{x+h}+\sqrt x}\to\dfrac1{2\sqrt x}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Deriva \(f(x)=x^2-x\) por primeros principios.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\dfrac{(x+h)^2-(x+h)-(x^2-x)}h=2x-1+h\to2x-1\).</li></ol></div></details></div>
+<h3 id="ty2">T2. Derivar con la tabla y la cadena</h3>
+<p><b>Qué reconocer:</b> una función con \(a^x\), \(\log_a\), o una trigonométrica inversa, a menudo compuesta. <b>Método:</b> toma la derivada de la tabla y multiplica por la derivada de lo de dentro. \((a^x)'=a^x\ln a\), \((\log_a x)'=\tfrac1{x\ln a}\).</p>
+<div class="ex"><p class="et">Ejemplo T2. <span class="lvl">Tipo IB</span></p>
+<p>Deriva \(2^x\), \(\log_3 x\), \(\arcsin\tfrac x2\) y \(\arctan(2x)\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(2^x\ln2\); \(\dfrac1{x\ln3}\); \(\dfrac1{\sqrt{4-x^2}}\) (de \(\tfrac{1/2}{\sqrt{1-x^2/4}}\)); \(\dfrac2{1+4x^2}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Deriva \(5^{2x}\) y \(\arccos\tfrac x3\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(5^{2x}\cdot2\ln5\); \(-\dfrac1{\sqrt{9-x^2}}\).</li></ol></div></details></div>
+<h3 id="ty3">T3. Producto, cociente y cadena combinados</h3>
+<p><b>Qué reconocer:</b> una expresión que mezcla las tres reglas, o un cociente que se simplifica. <b>Método:</b> identifica la estructura externa (producto, cociente o composición) y aplica su regla, derivando cada parte con las demás.</p>
+<div class="ex"><p class="et">Ejemplo T3. <span class="lvl">Sección A alta</span></p>
+<p>Deriva \(y=\dfrac x{x^2+1}\) y \(y=\ln(\sec x)\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\dfrac{(x^2+1)-x\cdot2x}{(x^2+1)^2}=\dfrac{1-x^2}{(x^2+1)^2}\). Y \(\dfrac{\sec x\tan x}{\sec x}=\tan x\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Deriva \(y=x^2\ln x\) y \(y=\ln(x^2+1)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(2x\ln x+x\); \(\dfrac{2x}{x^2+1}\).</li></ol></div></details></div>
+<h3 id="ty4">T4. Punto de la curva con una pendiente dada</h3>
+<p><b>Qué reconocer:</b> «halla el punto donde la tangente tiene pendiente \(m\)» o «es paralela a» una recta. <b>Método:</b> resuelve \(f'(x)=m\) para hallar la abscisa, y sustituye en \(f\) para el punto. Para una tangente que pasa por un punto exterior, impón que la recta lo contenga.</p>
+<div class="ex"><p class="et">Ejemplo T4. <span class="lvl">Tipo IB</span></p>
+<p>Halla los puntos de \(y=x^3-3x\) donde la tangente es paralela a \(y=9x\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(3x^2-3=9\Rightarrow x^2=4\Rightarrow x=\pm2\). Puntos \((2,2)\) y \((-2,-2)\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el punto de \(y=e^x\) donde la tangente pasa por el origen.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Tangente en \(a\): \(y-e^a=e^a(x-a)\); pasa por \((0,0)\) si \(-e^a=-ae^a\Rightarrow a=1\): punto \((1,e)\).</li></ol></div></details></div>
+<h3 id="ty5">T5. Derivación logarítmica</h3>
+<p><b>Qué reconocer:</b> una base y un exponente que dependen de \(x\) (\(x^x\), \(x^{\sin x}\)), o un producto grande de factores. <b>Método:</b> toma \(\ln\) a los dos lados, deriva implícitamente y multiplica por \(y\) al final.</p>
+<div class="ex"><p class="et">Ejemplo T5. <span class="lvl">Sección B</span></p>
+<p>Deriva \(y=x^x\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\ln y=x\ln x\Rightarrow\dfrac{y'}y=\ln x+1\Rightarrow y'=x^x(\ln x+1)\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Deriva \(y=x^{\sin x}\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\ln y=\sin x\ln x\Rightarrow\dfrac{y'}y=\cos x\ln x+\dfrac{\sin x}x\Rightarrow y'=x^{\sin x}\left(\cos x\ln x+\dfrac{\sin x}x\right)\).</li></ol></div></details></div>
+<h3 id="ty6">T6. Derivación implícita en un punto</h3>
+<p><b>Qué reconocer:</b> una curva con \(x\) e \(y\) mezclados y piden \(\tfrac{dy}{dx}\) en un punto o la tangente. <b>Método:</b> deriva término a término (cada \(y\) arrastra \(\tfrac{dy}{dx}\)), despeja y sustituye el punto.</p>
+<div class="ex"><p class="et">Ejemplo T6. <span class="lvl">Tipo IB</span></p>
+<p>Para \(x^3+y^3=6xy\), halla \(\tfrac{dy}{dx}\) en \((3,3)\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(3x^2+3y^2y'=6y+6xy'\Rightarrow y'=\dfrac{2y-x^2}{y^2-2x}\). En \((3,3)\): \(\dfrac{6-9}{9-6}=-1\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Para \(x^2+y^2=25\), halla la pendiente de la tangente en \((3,4)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(2x+2yy'=0\Rightarrow y'=-\dfrac xy=-\dfrac34\).</li></ol></div></details></div>
+<h3 id="ty7">T7. Razones de cambio relacionadas</h3>
+<p><b>Qué reconocer:</b> un recipiente que se llena, una sombra o un globo; piden la rapidez de una magnitud a partir de la de otra. <b>Método:</b> relaciona las variables con una fórmula, deriva respecto al tiempo con la regla de la cadena y sustituye los valores del instante pedido.</p>
+<div class="ex"><p class="et">Ejemplo T7. <span class="lvl">Sección A alta</span></p>
+<p>Un cono (vértice abajo) con \(r=\tfrac h2\) se llena a \(2\ \text{cm}^3/\text{s}\). Halla la rapidez con que sube el nivel cuando \(h=4\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(V=\tfrac13\pi r^2h=\tfrac{\pi h^3}{12}\), así que \(\tfrac{dV}{dt}=\tfrac{\pi h^2}4\tfrac{dh}{dt}\). Con \(h=4\): \(2=4\pi\tfrac{dh}{dt}\Rightarrow\tfrac{dh}{dt}=\tfrac1{2\pi}\) cm/s.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Un globo esférico se infla a \(12\pi\ \text{cm}^3/\text{s}\). Halla la rapidez con que crece el radio cuando \(r=3\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(V=\tfrac43\pi r^3\Rightarrow\tfrac{dV}{dt}=4\pi r^2\tfrac{dr}{dt}\); \(12\pi=36\pi\tfrac{dr}{dt}\Rightarrow\tfrac{dr}{dt}=\tfrac13\) cm/s.</li></ol></div></details></div>
+<h3 id="ty8">T8. Derivada de la función inversa</h3>
+<p><b>Qué reconocer:</b> «halla \((f^{-1})'(b)\)» sin despejar la inversa. <b>Método:</b> usa \((f^{-1})'(b)=\dfrac1{f'(a)}\), donde \(a\) es el valor con \(f(a)=b\).</p>
+<div class="ex"><p class="et">Ejemplo T8. <span class="lvl">Tipo IB</span></p>
+<p>\(f(x)=x^3+x\). Halla \((f^{-1})'(2)\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(f(1)=2\), así que \(a=1\). \(f'(x)=3x^2+1\), \(f'(1)=4\). Por tanto \((f^{-1})'(2)=\tfrac14\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(f(x)=x+e^x\). Halla \((f^{-1})'(1)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f(0)=1\Rightarrow a=0\); \(f'(x)=1+e^x\), \(f'(0)=2\); \((f^{-1})'(1)=\tfrac12\).</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo de los Módulos 1–12. Integran series (Módulo 1), polinomios (Módulo 2), funciones inversas (Módulo 3), binomio (Módulo 4), inducción (Módulo 5), complejos (Módulo 6), trigonometría (Módulo 8) y vectores (Módulo 9). El 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la Sección B. Al final, I1 es una investigación tipo Prueba 3 de NS. Cada uno trae una pista y la respuesta final plegadas.</p>
+
+<div class="ex"><p class="et">E1. Derivar una serie geométrica <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>(a) Derivando \(\sum_{k=0}^{n}x^k=\dfrac{1-x^{n+1}}{1-x}\), obtén una fórmula cerrada para \(\sum_{k=1}^{n}kx^{k-1}\). (b) Deduce que \(\sum_{k=1}^{n}k\,2^{k-1}=(n-1)2^n+1\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Regla del cociente sobre \(\dfrac{1-x^{n+1}}{1-x}\) y sustituye \(x=2\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\dfrac{1-(n+1)x^n+nx^{n+1}}{(1-x)^2}\). (b) Con \(x=2\): \(1-(n+1)2^n+n2^{n+1}=(n-1)2^n+1\).</p></div></details></div>
+
+<div class="ex"><p class="et">E2. Raíces dobles con la derivada <span class="lvl">Sección B, integra Módulo 2</span></p>
+<p>(a) Explica por qué \(r\) es raíz doble de \(P\) si y solo si \(P(r)=P'(r)=0\). (b) Halla los \(k\) para los que \(x^3-3x+k=0\) tiene una raíz doble. (c) ¿Para qué \(k\) tiene tres raíces reales distintas?</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Si \(P=(x-r)^2Q\), deriva con la regla del producto. (c) Los valores extremos de \(x^3-3x\) son \(\pm2\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(k=\pm2\). (c) \(|k|\lt2\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Derivada de una inversa sin despejarla <span class="lvl">Sección A alta, integra Módulo 3</span></p>
+<p>\(f(x)=x^3+x+1\). (a) Muestra que \(f\) tiene inversa. (b) Halla \((f^{-1})'(3)\) sin hallar \(f^{-1}\). (c) Halla la tangente a \(y=f^{-1}(x)\) en \(x=3\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(f'(x)=3x^2+1\gt0\). Además \(f(1)=3\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(\tfrac1{f'(1)}=\tfrac14\). (c) \(y=1+\tfrac14(x-3)\).</p></div></details></div>
+
+<div class="ex"><p class="et">E4. La regla de Leibniz <span class="lvl">Sección B, integra Módulos 4 y 5</span></p>
+<p>(a) Prueba por inducción que \((uv)^{(n)}=\sum_{k=0}^{n}\binom nku^{(k)}v^{(n-k)}\). (b) Úsala para hallar \(\dfrac{d^4}{dx^4}\left(x^3e^{2x}\right)\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) El paso usa la regla de Pascal, igual que la prueba del binomio del Módulo 5. (b) Solo hay 4 términos no nulos, porque \((x^3)^{(4)}=0\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(e^{2x}(16x^3+96x^2+144x+48)\).</p></div></details></div>
+
+<div class="ex"><p class="et">E5. La regla de la potencia por inducción <span class="lvl">Sección A alta, integra Módulo 5</span></p>
+<p>(a) Usando la regla del producto, prueba por inducción que \(\tfrac{d}{dx}x^n=nx^{n-1}\) para \(n\in\mathbb Z^+\). (b) Usando la regla del cociente, extiéndelo a \(x^{-n}\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(x^{k+1}=x\cdot x^k\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(\left(\tfrac1{x^n}\right)'=\tfrac{-nx^{n-1}}{x^{2n}}=-nx^{-n-1}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E6. Por qué \(\cos\theta+i\sin\theta=e^{i\theta}\) <span class="lvl">Sección B, integra Módulo 6</span></p>
+<p>Sea \(z(\theta)=\cos\theta+i\sin\theta\). (a) Muestra que \(z'(\theta)=iz(\theta)\). (b) Muestra que \(w(\theta)=z(\theta)e^{-i\theta}\) tiene derivada 0, suponiendo que \(\left(e^{-i\theta}\right)'=-ie^{-i\theta}\). (c) Deduce la fórmula de Euler.</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Regla del producto: \(z'e^{-i\theta}+z\cdot(-i)e^{-i\theta}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) \(w\) es constante e igual a \(w(0)=1\), así que \(z(\theta)=e^{i\theta}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E7. Recíprocas y tangentes <span class="lvl">Sección A alta, integra Módulo 8</span></p>
+<p>(a) Deduce con la regla del cociente las derivadas de \(\sec x\), \(\csc x\) y \(\cot x\). (b) Halla la tangente a \(y=\tan x\) en \(x=\tfrac\pi4\). (c) ¿Dónde tiene \(y=\sec x\) tangente horizontal?</p>
+<details><summary>Pista</summary><div class="inner"><p>(c) \(\sec x\tan x=0\), con \(\sec x\ne0\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(y=2x+1-\tfrac\pi2\). (c) En \(x=k\pi\).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Tangente a una curva paramétrica <span class="lvl">Sección B, integra Módulos 2 y 9</span></p>
+<p>La curva \(\mathbf r(t)=(t^2,t^3)\). (a) Muestra que \(\tfrac{dy}{dx}=\tfrac{3t}2\). (b) Halla la tangente en \(t=1\). (c) Halla el otro punto donde esa tangente corta la curva.</p>
+<details><summary>Pista</summary><div class="inner"><p>(c) Sustituye \((t^2,t^3)\) en la recta: la cúbica en \(t\) tiene raíz doble \(t=1\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(y=\tfrac32x-\tfrac12\). (c) \(2t^3-3t^2+1=(t-1)^2(2t+1)\): \(t=-\tfrac12\), punto \(\left(\tfrac14,-\tfrac18\right)\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. ¿Qué es mayor, \(e^\pi\) o \(\pi^e\)? <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>(a) Con derivación logarítmica, halla la derivada de \(x^x\) y su mínimo para \(x\gt0\). (b) Estudia el crecimiento de \(g(x)=\tfrac{\ln x}x\) y halla su máximo. (c) Deduce, sin calculadora, cuál es mayor: \(e^\pi\) o \(\pi^e\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(c) \(g\) decrece para \(x\gt e\), así que \(g(\pi)\lt g(e)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(x^x(\ln x+1)\), con mínimo en \(x=\tfrac1e\). (b) Máximo en \(x=e\). (c) \(\tfrac{\ln\pi}\pi\lt\tfrac1e\Rightarrow e\ln\pi\lt\pi\Rightarrow\pi^e\lt e^\pi\).</p></div></details></div>
+
+<div class="ex"><p class="et">E10. La tangente a \(y=\tfrac1x\) <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>(a) Muestra que la tangente a \(y=\tfrac1x\) en \(\left(a,\tfrac1a\right)\) forma con los ejes un triángulo de área constante 2. (b) Muestra que el punto de tangencia es el punto medio del segmento de tangente entre los ejes. (c) Para \(y=x^n\), \(x\gt0\), ¿para qué \(n\) es constante esa área?</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Los cortes con los ejes son \(2a\) y \(\tfrac2a\). (c) Calcula el área en general y exige que no dependa de \(a\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) El área es \(\dfrac{(n-1)^2a^{n+1}}{-2n}\): no depende de \(a\) solo si \(n=-1\). El caso \(n=1\) es degenerado: la tangente es la propia recta \(y=x\), que pasa por el origen, y el área es 0.</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. La hipérbola y el triángulo de área constante <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>La tangente a \(y=\tfrac1x\) en un punto corta a los dos ejes y forma un triángulo con ellos. Vas a descubrir una propiedad notable de ese triángulo, generalizarla y ver dónde deja de cumplirse.</p>
+<ol type="a"><li>Sea \(P=\left(a,\tfrac1a\right)\) con \(a\gt0\). Halla la ecuación de la tangente en \(P\) y sus cortes con los ejes.</li><li>Prueba que el área del triángulo que forma con los ejes es 2, independiente de \(a\). Muestra además que \(P\) es el punto medio del segmento de tangente entre los ejes.</li><li>Generaliza a \(y=\tfrac cx\) (\(c\gt0\)): halla el área del triángulo.</li><li>Repite con \(y=\tfrac1{x^2}\): halla el área del triángulo en \(\left(a,\tfrac1{a^2}\right)\). ¿Es constante?</li><li>¿Para qué exponentes \(n\) la curva \(y=x^n\) (con \(n\lt0\)) da un triángulo de área constante? Conjetura y justifícalo.</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>La pendiente es \(-\tfrac1{a^2}\); el corte con el eje \(x\) es \(y=0\).</li><li>Área \(=\tfrac12\,|x_{\text{int}}|\,|y_{\text{int}}|\). El punto medio de \((2a,0)\) y \((0,\tfrac2a)\).</li><li>La pendiente es \(-\tfrac c{a^2}\).</li><li>La pendiente es \(-\tfrac2{a^3}\); el corte en \(x\) ya no es \(2a\).</li><li>El área sale proporcional a una potencia de \(a\); es constante solo si ese exponente es 0.</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>Tangente \(y-\tfrac1a=-\tfrac1{a^2}(x-a)\); cortes \((2a,0)\) y \(\left(0,\tfrac2a\right)\).</li><li>Área \(=\tfrac12\cdot2a\cdot\tfrac2a=2\). El punto medio de los cortes es \(\left(a,\tfrac1a\right)=P\).</li><li>Cortes \((2a,0)\) y \(\left(0,\tfrac{2c}a\right)\): área \(=\tfrac12\cdot2a\cdot\tfrac{2c}a=2c\).</li><li>Cortes \(\left(\tfrac{3a}2,0\right)\) y \(\left(0,\tfrac3{a^2}\right)\): área \(=\tfrac12\cdot\tfrac{3a}2\cdot\tfrac3{a^2}=\tfrac9{4a}\). No es constante.</li><li>Solo \(n=-1\): para \(y=x^n\) el área es proporcional a \(a^{n+1}\), constante solo cuando \(n+1=0\).</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 13, análisis de curvas y optimización.</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

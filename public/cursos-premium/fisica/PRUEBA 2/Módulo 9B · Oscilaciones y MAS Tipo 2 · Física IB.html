@@ -1,0 +1,478 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 9B · Oscilaciones y MAS Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:52px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:26px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:12px 0;overflow-x:auto}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.hl-tag{font-family:"IBM Plex Mono";font-size:10px;letter-spacing:.06em;color:#fff;background:var(--hl);padding:1px 6px;border-radius:3px;vertical-align:middle}
+.pb{border:1px solid var(--line);border-radius:6px;margin:26px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#EFF4F2,#FFFFFF);border-bottom:1px solid var(--line);padding:14px 20px}
+.pb-head .code{font-family:"IBM Plex Mono";font-size:11px;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px;letter-spacing:.05em}
+.pb-head h3{margin:8px 0 0;font-size:19px}
+.pb-body{padding:6px 20px 18px}
+.enun{background:#F4F6F4;border-left:3px solid var(--ink-soft);padding:10px 16px;margin:14px 0;font-size:16.5px}
+.part{margin:16px 0 4px;font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep)}
+.pide{display:inline-block;font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:1px 7px;margin-right:8px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:5px 11px;display:inline-block;margin-top:6px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+.vsol{background:#F0F5F3;border:1px solid var(--line);border-left:3px solid var(--ok);border-radius:4px;padding:10px 16px;margin:8px 0 14px}
+.vsol .step{font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);font-weight:600}
+.flag{display:inline-block;font-family:"IBM Plex Mono";font-size:10px;letter-spacing:.04em;color:#fff;background:var(--warn);padding:1px 6px;border-radius:3px;margin-left:4px;vertical-align:middle}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.note{background:#EEF3F1;border:1px dashed var(--teal);border-radius:5px;padding:14px 18px;margin:16px 0;font-size:16px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<!-- rev 2026-10-31 9b · banco paper2 MAS (2) oficiales 2022-26 -->
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> C.1 <span>//</span> MÓDULO 9B · TIPO 2 (PAPER 2)</p>
+  <h1>MAS en <em>respuesta larga</em></h1>
+  <p class="lede">Análisis completo masa-resorte, experimento del péndulo (T²–L), energía, ecuación sinusoidal y amortiguamiento/resonancia. Cinco problemas Paper 2 resueltos, más 5 integradores.</p>
+  <div class="stats">
+    <div class="stat"><b>5</b><span>resueltos completos</span></div>
+    <div class="stat"><b>2</b><span>Paper 2 oficiales 22–26</span></div>
+    <div class="stat"><b>5</b><span>problemas extra</span></div>
+    <div class="stat"><b>Paper 2</b><span>respuesta larga</span></div>
+    <div class="stat"><b>g = 9,8</b><span>salvo indicación</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#estrategia">0 · Método para MAS tipo 2</a>
+  <a href="#p1">1 · Masa-resorte completo</a>
+  <a href="#p2">2 · Experimento del péndulo (T²–L)</a>
+  <a href="#p3">3 · Energía en el MAS</a>
+  <a href="#p4">4 · Ecuación sinusoidal</a>
+  <a href="#p5">5 · Amortiguamiento y resonancia</a>
+  <a href="#ficha">★ Ficha real · MAS masa-muelle</a>
+  <a href="#examenes">★ Banco Paper 2 · 2022–26</a>
+  <a href="#extra">Problemas extra para ti</a>
+  <a href="#practica2">Práctica extra · Paper 2 (todo tipo)</a>
+</nav>
+
+<main>
+
+<div class="wrap" style="padding:0"><div class="note"><strong>Nota:</strong> este módulo incorpora el problema de MAS de la <strong>ficha real tipo 2 (DMpA 19–20)</strong>, resuelto y <strong>visible</strong> (sección <a href="#ficha">Ficha real</a>). Los 5 problemas resueltos iniciales y los 5 extra son originales, con el formato y el nivel del Paper 2 del IB ("muestre que", gráficas, explicación). Los problemas de <em>ondas</em> de esa misma ficha (onda sonora, onda en resorte, cuerda de goma) corresponden al Módulo 10.</div></div>
+
+<!-- ESTRATEGIA -->
+<section id="estrategia">
+  <p class="sec-num">SECCIÓN 00 · LO QUE FALTA PARA TIPO 2</p>
+  <h2>Método para MAS de respuesta larga<span class="rule"></span></h2>
+  <p class="sec-intro">La teoría es la del 9A. El tipo 2 encadena las ecuaciones y añade el <strong>análisis de datos</strong> (linealizar) y las respuestas cualitativas (amortiguamiento, resonancia).</p>
+  <div class="box key"><span class="lbl">Los 5 gestos del tipo 2 de MAS</span>
+    <ol>
+      <li><strong>Empieza por ω:</strong> \(\omega=\sqrt{k/m}\) o \(\sqrt{g/l}\); de ahí salen \(T\), \(v_{\max}=\omega x_0\), \(a_{\max}=\omega^2 x_0\).</li>
+      <li><strong>Linealizar para hallar una constante:</strong> \(T=2\pi\sqrt{l/g}\Rightarrow T^2=\dfrac{4\pi^2}{g}l\); grafica \(T^2\) vs \(l\) y usa la <strong>pendiente</strong> (\(g=4\pi^2/\text{pendiente}\)).</li>
+      <li><strong>Energía:</strong> \(E_T=\tfrac12 m\omega^2 x_0^2\) es constante; usa \(v=\pm\omega\sqrt{x_0^2-x^2}\) para la rapidez en cualquier punto sin el tiempo.</li>
+      <li><strong>Ecuación sinusoidal:</strong> elige seno o coseno según dónde empieza (equilibrio → seno; extremo → coseno); deriva para \(v\) y \(a\).</li>
+      <li><strong>Cualitativo:</strong> sabe dibujar amplitud–tiempo (amortiguamiento) y amplitud–frecuencia (resonancia) y explicarlos.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- P1 -->
+<section id="p1" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 1 · masa-resorte</span><h3>Análisis completo de un oscilador masa-resorte</h3></div>
+  <div class="pb-body">
+    <div class="enun">Un bloque de 0,30 kg está unido a un resorte de \(k=48\) N·m⁻¹. Se desplaza 0,080 m del equilibrio y se suelta desde el reposo.</div>
+    <p class="part">(a) <span class="pide">muestre que</span> \(\omega\approx12{,}6\) rad·s⁻¹.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>\(\omega=\sqrt{\dfrac{k}{m}}=\sqrt{\dfrac{48}{0{,}30}}=\sqrt{160}=12{,}65\) rad·s⁻¹. ∎</p>
+    </div></details>
+    <p class="part">(b) <span class="pide">calcule</span> el periodo y la frecuencia.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>\(T=\dfrac{2\pi}{\omega}=\dfrac{2\pi}{12{,}65}=0{,}497\) s; \(f=\dfrac1T=2{,}0\) Hz. <span class="ans">T = 0,50 s ; f = 2,0 Hz</span></p>
+    </div></details>
+    <p class="part">(c) <span class="pide">determine</span> la rapidez y la aceleración máximas.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>\(v_{\max}=\omega x_0=12{,}65(0{,}080)=1{,}0\) m·s⁻¹; \(a_{\max}=\omega^2 x_0=160(0{,}080)=12{,}8\) m·s⁻². <span class="ans">v_máx = 1,0 m·s⁻¹ ; a_máx = 12,8 m·s⁻²</span></p>
+    </div></details>
+    <p class="part">(d) <span class="pide">escriba</span> \(x(t)\), tomando \(t=0\) en la posición de suelta. <span class="hl-tag">NS</span></p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>Parte del extremo ⇒ coseno: \(x=0{,}080\cos(12{,}6\,t)\) (m).</p>
+    </div></details>
+    <p class="part">(e) <span class="pide">determine</span> la energía total y la rapidez en \(x=0{,}040\) m. <span class="hl-tag">NS</span></p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>\(E_T=\tfrac12 k x_0^2=\tfrac12(48)(0{,}080)^2=0{,}15\) J. \(v=\omega\sqrt{x_0^2-x^2}=12{,}65\sqrt{0{,}080^2-0{,}040^2}=12{,}65\sqrt{4{,}8\times10^{-3}}=12{,}65(0{,}0693)\). <span class="ans">E_T = 0,15 J ; v = 0,88 m·s⁻¹</span></p>
+    </div></details>
+  </div>
+</section>
+
+<!-- P2 -->
+<section id="p2" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 2 · análisis de datos</span><h3>Experimento del péndulo para medir g</h3></div>
+  <div class="pb-body">
+    <div class="enun">Se mide el periodo \(T\) de un péndulo simple para varias longitudes \(l\). Al graficar \(T^2\) frente a \(l\) se obtiene una recta que pasa por el origen con pendiente 4,0 s²·m⁻¹.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 300 130" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="grafica T2 vs l">
+        <line x1="40" y1="110" x2="280" y2="110" stroke="var(--ink)" stroke-width="1.2"/>
+        <line x1="40" y1="110" x2="40" y2="15" stroke="var(--ink)" stroke-width="1.2"/>
+        <line x1="40" y1="110" x2="250" y2="30" stroke="var(--teal)" stroke-width="2.5"/>
+        <text x="24" y="22" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">T²</text>
+        <text x="270" y="124" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">l</text>
+        <text x="150" y="55" font-family="Space Grotesk" font-size="10" fill="var(--teal-deep)">pendiente = 4π²/g</text>
+      </svg>
+      <figcaption>La recta por el origen confirma T² ∝ l.</figcaption>
+    </figure>
+    <p class="part">(a) <span class="pide">explique</span> por qué \(T^2\) frente a \(l\) es una recta por el origen.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>De \(T=2\pi\sqrt{l/g}\) se sigue \(T^2=\dfrac{4\pi^2}{g}\,l\): es de la forma \(y=mx\) (con \(m=4\pi^2/g\) constante y sin ordenada al origen), así que es una recta que pasa por el origen.</p>
+    </div></details>
+    <p class="part">(b) <span class="pide">determine</span> \(g\) a partir de la pendiente.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>Pendiente \(=\dfrac{4\pi^2}{g}\Rightarrow g=\dfrac{4\pi^2}{\text{pendiente}}=\dfrac{39{,}5}{4{,}0}\). <span class="ans">g = 9,9 m·s⁻²</span></p>
+    </div></details>
+    <p class="part">(c) <span class="pide">explique</span> la ventaja de graficar \(T^2\) vs \(l\) en vez de \(T\) vs \(l\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>\(T\) vs \(l\) sería una curva (raíz cuadrada), difícil de ajustar; \(T^2\) vs \(l\) es una <strong>recta</strong>, y su pendiente da \(g\) directamente y con menor error.</p>
+    </div></details>
+    <p class="part">(d) <span class="pide">indique</span> un error sistemático y su efecto.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>Medir \(l\) hasta la base de la lenteja (y no hasta su centro de masa) da longitudes sistemáticamente <em>menores</em>: la recta tendría menor pendiente y se obtendría un \(g\) demasiado grande. (También: contar mal las oscilaciones o el retraso de reacción al cronometrar.)</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- P3 -->
+<section id="p3" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 3 · energía</span><h3>Energía en una oscilación</h3></div>
+  <div class="pb-body">
+    <div class="enun">Una masa de 0,50 kg realiza MAS con amplitud 0,12 m y periodo 0,80 s.</div>
+    <p class="part">(a) <span class="pide">calcule</span> ω y la energía total. <span class="hl-tag">NS</span></p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>\(\omega=\dfrac{2\pi}{T}=\dfrac{2\pi}{0{,}80}=7{,}85\) rad·s⁻¹. \(E_T=\tfrac12 m\omega^2 x_0^2=\tfrac12(0{,}50)(7{,}85^2)(0{,}12^2)=\tfrac12(0{,}50)(61{,}7)(0{,}0144)\). <span class="ans">E_T = 0,22 J</span></p>
+    </div></details>
+    <p class="part">(b) <span class="pide">describa</span> cómo varían \(E_k\) y \(E_p\) con el desplazamiento.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>\(E_p=\tfrac12 m\omega^2 x^2\) es una <strong>parábola</strong> con mínimo (cero) en el equilibrio y máximo en los extremos; \(E_k\) es la parábola invertida (máxima en el equilibrio, cero en los extremos). Su suma \(E_T\) es constante.</p>
+    </div></details>
+    <p class="part">(c) <span class="pide">determine</span> la posición donde \(E_k=E_p\). <span class="hl-tag">NS</span></p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>\(E_k=E_p\Rightarrow E_p=\tfrac12 E_T\Rightarrow \tfrac12 m\omega^2 x^2=\tfrac12\big(\tfrac12 m\omega^2 x_0^2\big)\Rightarrow x=\dfrac{x_0}{\sqrt2}=\dfrac{0{,}12}{\sqrt2}\). <span class="ans">x = 0,085 m</span></p>
+    </div></details>
+    <p class="part">(d) <span class="pide">calcule</span> la rapidez en ese punto. <span class="hl-tag">NS</span></p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>\(v=\omega\sqrt{x_0^2-x^2}=7{,}85\sqrt{0{,}12^2-0{,}085^2}=7{,}85\sqrt{7{,}2\times10^{-3}}=7{,}85(0{,}0849)=0{,}67\). <span class="ans">v = 0,67 m·s⁻¹</span></p>
+    </div></details>
+    <p class="part">(e) <span class="pide">indique</span> la frecuencia con que oscila la energía. <span class="hl-tag">NS</span></p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>La energía cinética (y la potencial) completa <strong>dos</strong> ciclos por cada ciclo de la oscilación: su frecuencia es \(2f=2{,}5\) Hz. (Depende de \(x^2\), no de \(x\).)</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- P4 -->
+<section id="p4" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 4 · ecuación sinusoidal <span class="hl-tag">NS</span></span><h3>Del movimiento a las ecuaciones</h3></div>
+  <div class="pb-body">
+    <div class="enun">El desplazamiento (en m) de una partícula es \(x=0{,}060\sin(10\pi t)\), con \(t\) en s.</div>
+    <p class="part">(a) <span class="pide">indique</span> amplitud, ω, T y f.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>\(x_0=0{,}060\) m; \(\omega=10\pi\) rad·s⁻¹; \(T=\dfrac{2\pi}{\omega}=0{,}20\) s; \(f=5{,}0\) Hz. <span class="ans">x₀=0,060 m; ω=10π; T=0,20 s; f=5,0 Hz</span></p>
+    </div></details>
+    <p class="part">(b) <span class="pide">escriba</span> \(v(t)\) y \(a(t)\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>\(v=\dfrac{dx}{dt}=0{,}060(10\pi)\cos(10\pi t)=0{,}60\pi\cos(10\pi t)\). \(a=\dfrac{dv}{dt}=-0{,}060(10\pi)^2\sin(10\pi t)=-\omega^2 x\).</p>
+    </div></details>
+    <p class="part">(c) <span class="pide">calcule</span> x, v y a en \(t=0{,}05\) s.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>\(10\pi(0{,}05)=0{,}5\pi\) rad. \(x=0{,}060\sin(0{,}5\pi)=0{,}060\) m (extremo). \(v=0{,}60\pi\cos(0{,}5\pi)=0\). \(a=-\omega^2x=-(10\pi)^2(0{,}060)=-59{,}2\) m·s⁻². <span class="ans">x=0,060 m; v=0; a=−59 m·s⁻²</span></p>
+    </div></details>
+    <p class="part">(d) <span class="pide">determine</span> el primer instante en que la rapidez es máxima.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>La rapidez es máxima al pasar por el equilibrio (\(x=0\)), es decir cuando \(\sin(10\pi t)=0\) por primera vez tras \(t=0\): \(10\pi t=\pi\Rightarrow t=0{,}10\) s (equivale a \(T/2\)). <span class="ans">t = 0,10 s</span></p>
+    </div></details>
+  </div>
+</section>
+
+<!-- P5 -->
+<section id="p5" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 5 · amortiguamiento y resonancia</span><h3>Oscilaciones reales</h3></div>
+  <div class="pb-body">
+    <div class="enun">Un oscilador tiene una frecuencia natural de 2,0 Hz. En la práctica experimenta rozamiento (amortiguamiento) y puede ser forzado por una fuerza externa periódica.</div>
+    <p class="part">(a) <span class="pide">defina</span> amortiguamiento y esboce la amplitud frente al tiempo (amortiguamiento ligero).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>Amortiguamiento: pérdida de energía de la oscilación por una fuerza resistiva, que hace <strong>decrecer la amplitud</strong> con el tiempo. Con amortiguamiento ligero, la amplitud decae exponencialmente mientras sigue oscilando.</p>
+    <figure class="fig">
+      <svg viewBox="0 0 320 110" width="300" xmlns="http://www.w3.org/2000/svg" aria-label="amortiguamiento">
+        <line x1="20" y1="55" x2="310" y2="55" stroke="var(--ink)" stroke-width="1"/>
+        <path d="M20,55 Q40,15 60,55 T100,55 T140,55 T180,55 T220,55 T260,55 T300,55" fill="none" stroke="var(--teal)" stroke-width="1.6"/>
+        <path d="M20,15 Q160,40 300,52" fill="none" stroke="var(--warn)" stroke-width="1.3" stroke-dasharray="4 3"/>
+        <path d="M20,95 Q160,70 300,58" fill="none" stroke="var(--warn)" stroke-width="1.3" stroke-dasharray="4 3"/>
+      </svg>
+      <figcaption>Envolvente exponencial decreciente (amortiguamiento ligero).</figcaption>
+    </figure>
+    </div></details>
+    <p class="part">(b) <span class="pide">defina</span> resonancia y describa la curva amplitud–frecuencia.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>Resonancia: aumento grande de la amplitud cuando la frecuencia de la fuerza impulsora se acerca a la frecuencia natural del sistema. La curva amplitud–frecuencia tiene un <strong>pico</strong> en la frecuencia natural; con más amortiguamiento el pico es <strong>más bajo y ancho</strong> y se corre un poco a menor frecuencia.</p>
+    </div></details>
+    <p class="part">(c) <span class="pide">indique</span> a qué frecuencia de forzamiento la amplitud es máxima y por qué.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>Cerca de <strong>2,0 Hz</strong> (la frecuencia natural): ahí la fuerza entrega energía en fase con el movimiento en cada ciclo, y la amplitud crece al máximo.</p>
+    </div></details>
+    <p class="part">(d) <span class="pide">dé</span> un ejemplo real de resonancia.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+    <p>Ejemplos: un puente que oscila peligrosamente al paso rítmico de personas o viento; sintonizar una emisora (circuito LC); el horno de microondas o la RMN. (Cualquiera válido.)</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- FICHA REAL TIPO 2 -->
+<section id="ficha" class="pb" style="border-left:3px solid var(--teal)">
+  <div class="pb-head" style="background:linear-gradient(180deg,#E7F0ED,#FFFFFF)"><span class="code">FICHA REAL · DMpA 19–20 · TIPO 2</span><h3>Problema de la ficha: MAS masa–muelle (M15/4/PHYSI/SP2/SPA/TZ0/XX)</h3></div>
+  <div class="pb-body">
+    <div class="note"><strong>De la ficha real.</strong> La ficha <em>DMpA 19–20 · Tipo 2</em> mezcla MAS y ondas. Aquí se resuelve <strong>solo el problema de MAS</strong> (masa–muelle, M15); los de ondas (onda sonora N03, onda en resorte M99, cuerda de goma M02) corresponden al <strong>Módulo 10</strong>. Resolución <strong>visible</strong>, apartado por apartado. El símbolo <span class="flag">▲ FIGURA PERDIDA</span> marca apartados que dependen de una gráfica que no viene en el texto de la ficha: se da el <strong>método</strong>, sin inventar valores.</div>
+    <div class="enun">Se coloca un objeto sobre una superficie sin rozamiento. El objeto está sujeto por un muelle fijo por un extremo y oscila con movimiento armónico simple (MAS). La tensión en el muelle es \(F=kx\), donde \(x\) es la extensión del muelle y \(k\) una constante.</div>
+
+    <p class="part">(a) <span class="pide">muestre que</span> \(\omega^2=\dfrac{k}{m}\). [2]</p>
+    <div class="vsol">
+      <p><span class="step">Qué pide</span> — demostrar la relación entre \(\omega\), \(k\) y \(m\) a partir de la dinámica.</p>
+      <p><span class="step">Ecuación</span> — 2.ª ley de Newton y la definición de MAS \(a=-\omega^2 x\).</p>
+      <p><span class="step">Desarrollo</span> — la fuerza neta sobre el objeto es la recuperadora del muelle, dirigida hacia el equilibrio: \(F_{\text{neta}}=-kx\). Por la 2.ª ley \(ma=-kx\Rightarrow a=-\dfrac{k}{m}\,x\). En todo MAS \(a=-\omega^2 x\). Igualando los coeficientes de \(x\): \(\omega^2=\dfrac{k}{m}\). ∎</p>
+      <p><span class="ans">ω² = k/m</span></p>
+    </div>
+
+    <p class="part">(b) Se da un ciclo de la variación del desplazamiento con el tiempo para dos sistemas masa–muelle, A y B.</p>
+    <p class="part" style="margin-left:14px">(b)(i) <span class="pide">calcule</span> la frecuencia de oscilación de A. [1] <span class="flag">▲ FIGURA PERDIDA</span></p>
+    <div class="vsol">
+      <p><span class="step">Método</span> — leer en la gráfica desplazamiento–tiempo la duración de un ciclo completo de A, es decir \(T_A\); entonces \(f_A=\dfrac{1}{T_A}\). Sin la gráfica no se puede dar el valor numérico.</p>
+    </div>
+    <p class="part" style="margin-left:14px">(b)(ii) <span class="pide">muestre que</span> la masa en A es igual a la masa en B (muelles idénticos). [2] <span class="flag">▲ FIGURA PERDIDA</span></p>
+    <div class="vsol">
+      <p><span class="step">Método</span> — muelles idénticos ⇒ misma \(k\). Para masa–muelle \(T=2\pi\sqrt{m/k}\Rightarrow m=\dfrac{kT^2}{4\pi^2}\). En la gráfica A y B completan el ciclo en el mismo tiempo (igual periodo, \(T_A=T_B\)); con igual \(k\) e igual \(T\) resulta \(m_A=m_B\). El argumento se apoya en leer \(T_A=T_B\) de la gráfica.</p>
+    </div>
+
+    <p class="part">(c) Se da la variación de la energía potencial de A con el desplazamiento.</p>
+    <p class="part" style="margin-left:14px">(c)(i) <span class="pide">dibuje</span> la variación de la energía cinética con el desplazamiento para A (rotúlela A). [2] <span class="flag">▲ FIGURA PERDIDA</span></p>
+    <div class="vsol">
+      <p><span class="step">Método</span> — la energía total es constante e igual al máximo de \(E_p\) (en los extremos \(x=\pm x_0\)): \(E_T=E_{p,\max}\). Como \(E_k=E_T-E_p\), la curva de \(E_k\) es la de \(E_p\) <strong>reflejada</strong> respecto a la horizontal \(E_T/2\): una parábola invertida, <strong>máxima en \(x=0\)</strong> (valor \(E_T\), el pico leído de la gráfica) y <strong>nula en \(x=\pm x_0\)</strong>.</p>
+    </div>
+    <p class="part" style="margin-left:14px">(c)(ii) <span class="pide">esquematice</span> la variación de la energía cinética con el desplazamiento para B (rotúlela B). [3] <span class="flag">▲ FIGURA PERDIDA</span></p>
+    <div class="vsol">
+      <p><span class="step">Método</span> — B tiene la misma masa (apartado b-ii) y el mismo muelle ⇒ misma \(\omega\) y \(T\); su amplitud \(x_{0,B}\) se lee de la gráfica (b). Su energía total es \(E_{T,B}=\tfrac12 k\,x_{0,B}^2\). La curva \(E_k\) de B es otra parábola invertida: máxima en \(x=0\) con valor \(E_{T,B}\) y nula en \(x=\pm x_{0,B}\). Si la amplitud de B es mayor que la de A, la parábola es <strong>más alta y más ancha</strong>; si es menor, <strong>más baja y estrecha</strong>. El trazo exacto depende de \(x_{0,B}\) (y del pico de energía) leídos de las gráficas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BANCO PAPER 2 OFICIALES -->
+<section id="examenes">
+  <p class="sec-num">SECCIÓN ★ · BANCO DE EXÁMENES OFICIALES · PAPER 2</p>
+  <h2>Paper 2 oficiales de MAS (2022–2026)<span class="rule"></span></h2>
+  <p class="sec-intro">Dos preguntas reales de Paper 2 donde el MAS es el protagonista: el <strong>corcho flotante</strong> (condición de MAS por el empuje) y la <strong>frecuencia</strong> de un oscilador masa–muelle. Reescritas, resueltas y verificadas contra el esquema oficial.</p>
+  <div class="box beyond"><span class="lbl">Nota de cobertura (honesta)</span><p>El MAS es contenido <em>nuevo</em> del programa, así que en el banco 2022–2026 aparece poco y casi siempre <em>incrustado</em>: la única pregunta que lo nombra explícitamente es la del corcho (May 2025 TZ3). Las demás aplicaciones de MAS que sí salieron quedan en su contexto: la oscilación de la bola en la cuerda elástica (<strong>5B</strong>), y el MAS de las partículas en una onda —"¿P o Q tiene mayor aceleración?", \(a\propto -x\)— en el <strong>10B</strong>. Los 5 problemas resueltos y la práctica de arriba cubren el resto de tipos con el nivel del IB.</p></div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">May 2025 · TZ3 · SP2 · Q6 · PLAN NUEVO</span><h3>Corcho flotante que oscila: ¿por qué es MAS?</h3></div>
+    <div class="pb-body">
+      <div class="enun">Un corcho cilíndrico de altura \(H\) y sección \(A\) flota en reposo; su profundidad sumergida es \(D\). \(\rho_c\) = densidad del corcho, \(\rho_w\) = densidad del agua.</div>
+
+      <p class="part">(a)(i) <span class="pide">dibuje</span> las fuerzas sobre el corcho en reposo.</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Dos flechas verticales desde el corcho: <strong>peso</strong> \(mg\) hacia abajo y <strong>empuje</strong> (fuerza de flotación) hacia arriba, de igual longitud (está en equilibrio). <em>(No vale escribir "gravedad" por peso.)</em></p></div></details>
+
+      <p class="part">(a)(ii) <span class="pide">muestre que</span> \(\dfrac{D}{H}=\dfrac{\rho_c}{\rho_w}\).</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Flotando en equilibrio, el empuje (peso del agua desalojada, volumen \(A\,D\)) iguala al peso del corcho (volumen \(A\,H\)):</p><div class="eq">\[ \rho_w\,A\,D\,g=\rho_c\,A\,H\,g\ \Rightarrow\ \frac{D}{H}=\frac{\rho_c}{\rho_w} \]</div><p>∎ (\(A\) y \(g\) se cancelan.)</p></div></details>
+
+      <p class="part">(b) <span class="pide">explique</span> por qué, al hundirlo un poco y soltarlo, el corcho describe un MAS.</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Al hundirlo una distancia \(x\), aumenta el volumen sumergido y con él el empuje, que pasa a ser <strong>mayor que el peso</strong>: aparece una fuerza neta <em>recuperadora</em>. Esa fuerza (empuje extra \(=\rho_w g A\,x\)) es <strong>proporcional al desplazamiento</strong> \(x\) y <strong>dirigida hacia la posición de equilibrio</strong> (sentido opuesto a \(x\)). Como \(a\propto -x\), el movimiento es armónico simple. ∎</p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2_TZ3_SL_markscheme_1 (2225–6724M, TZ3): (a)(i) peso y empuje bien dibujados · (a)(ii) ρ_c·A·H·g = ρ_w·A·D·g · (b) fuerza/aceleración ∝ desplazamiento y hacia el equilibrio (a = −ω²x). Las partes (c)–(e), sobre densidad del hielo y transferencia térmica, van en los módulos de térmica.</p>
+    </div>
+  </div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">May 2026 · TZ3 · SP2 · Q5(c)(i) · PLAN NUEVO</span><h3>Frecuencia de un oscilador masa–muelle</h3></div>
+    <div class="pb-body">
+      <div class="enun">Dos cuñas idénticas, cada una enganchada a un muelle vertical idéntico, oscilan y generan olas en el agua. La masa de cada cuña es \(0{,}200\) kg y la constante elástica \(504\) N·m⁻¹; la amortiguación es despreciable.</div>
+
+      <p class="part">(c)(i) <span class="pide">muestre que</span> la frecuencia de las oscilaciones es ~8 Hz.</p>
+      <p class="ans">f = 7,99 Hz ≈ 8 Hz</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Oscilador masa–muelle: \(f=\dfrac{1}{2\pi}\sqrt{\dfrac{k}{m}}=\dfrac{1}{2\pi}\sqrt{\dfrac{504}{0{,}200}}=\dfrac{1}{2\pi}\sqrt{2520}=\dfrac{50{,}2}{2\pi}=7{,}99\) Hz. ∎</p><p><em>Esta cuña oscilando en MAS es la fuente de la onda: su frecuencia es la frecuencia de la onda. La continuación de la pregunta (\(\lambda=v/f\) e interferencia en el punto P) se trabaja en los módulos de ondas (10B / 10C).</em></p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2_TZ3_SL_markscheme (2226–4733M, TZ3): f = (1/2π)√(k/m) = (1/2π)√(504/0,200) = 7,99 Hz. La energía elástica/impulso de la misma pregunta (bola de 4,0 kg) está resuelta en el Módulo 5B.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <p class="sec-num">PARA TI · RESUELVE ESTILO PAPER 2 Y ENVÍA EN BLOQUE</p>
+  <h2>5 problemas extra (integradores)<span class="rule"></span></h2>
+  <p class="sec-intro">Nuevos y de nivel creciente. Integran resortes, gravitación, cantidad de movimiento e incertidumbre. \(g=9{,}8\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">E1 · resorte vertical + energía</p><p>Una masa de 0,40 kg se cuelga de un resorte y lo estira 0,10 m hasta el equilibrio. (a) Halla la constante del resorte. (b) Determina el periodo de oscilación. (c) Si se tira 0,050 m más y se suelta, halla la rapidez máxima y la energía total. (d) Explica por qué la gravedad no aparece en el periodo.</p>
+<details class="rev"><summary></summary><div class="rev-inner">
+<p>(a) En equilibrio \(kx=mg\Rightarrow k=\dfrac{mg}{x}=\dfrac{0{,}40(9{,}8)}{0{,}10}=39{,}2\) N·m⁻¹. <span class="ans">k ≈ 39 N·m⁻¹</span></p>
+<p>(b) \(T=2\pi\sqrt{m/k}=2\pi\sqrt{0{,}40/39{,}2}=0{,}635\) s (equivale a \(2\pi\sqrt{x/g}\)). <span class="ans">T ≈ 0,63 s</span></p>
+<p>(c) Amplitud \(x_0=0{,}050\) m; \(\omega=\sqrt{k/m}=\sqrt{98}=9{,}90\) rad·s⁻¹. \(v_{\max}=\omega x_0=0{,}495\) m·s⁻¹; \(E_T=\tfrac12 k x_0^2=\tfrac12(39{,}2)(0{,}050)^2=0{,}049\) J. <span class="ans">v_máx ≈ 0,49 m·s⁻¹ ; E_T ≈ 0,049 J</span></p>
+<p>(d) En un resorte vertical el peso solo <strong>desplaza la posición de equilibrio</strong>; medidas desde ese nuevo equilibrio, la fuerza neta recuperadora vuelve a ser \(-kx\) (el peso constante se cancela con la extensión de equilibrio). Por eso \(T=2\pi\sqrt{m/k}\), independiente de \(g\).</p>
+</div></details></div>
+  <div class="prob"><p class="pn">E2 · péndulo en la Luna (con gravitación)</p><p>Un péndulo tiene periodo 2,0 s en la Tierra. (a) Halla su periodo en la Luna (\(g_L=1{,}6\) m·s⁻²). (b) ¿Qué longitud daría un periodo de 2,0 s en la Luna?</p>
+<details class="rev"><summary></summary><div class="rev-inner">
+<p>(a) Misma longitud ⇒ \(T\propto 1/\sqrt{g}\): \(T_L=T_T\sqrt{g_T/g_L}=2{,}0\sqrt{9{,}8/1{,}6}=2{,}0(2{,}47)=4{,}95\) s. <span class="ans">T_Luna ≈ 4,9 s</span></p>
+<p>(b) \(L=\dfrac{g_L T^2}{4\pi^2}=\dfrac{1{,}6(2{,}0)^2}{39{,}5}=0{,}162\) m. <span class="ans">L ≈ 0,16 m</span></p>
+</div></details></div>
+  <div class="prob jefe"><p class="pn">E3 · INTEGRADOR (momento + MAS, supera IB)</p><p>Un bloque de 0,20 kg que se mueve a 3,0 m·s⁻¹ choca y se pega a un bloque de 0,30 kg en reposo unido a un resorte de \(k=250\) N·m⁻¹ (superficie lisa). (a) Halla la rapidez del conjunto tras el choque. (b) Determina la frecuencia angular y el periodo del MAS resultante. (c) Halla la amplitud de la oscilación.</p>
+<details class="rev"><summary></summary><div class="rev-inner">
+<p>(a) Choque perfectamente inelástico, conservación de \(p\): \(0{,}20(3{,}0)=(0{,}20+0{,}30)v\Rightarrow v=\dfrac{0{,}60}{0{,}50}=1{,}2\) m·s⁻¹. <span class="ans">v = 1,2 m·s⁻¹</span></p>
+<p>(b) \(M=0{,}50\) kg: \(\omega=\sqrt{k/M}=\sqrt{250/0{,}50}=\sqrt{500}=22{,}4\) rad·s⁻¹; \(T=2\pi/\omega=0{,}281\) s. <span class="ans">ω ≈ 22,4 rad·s⁻¹ ; T ≈ 0,28 s</span></p>
+<p>(c) Justo tras el choque el conjunto pasa por el equilibrio con toda la energía cinética: \(\tfrac12 M v^2=\tfrac12 k x_0^2\Rightarrow x_0=v\sqrt{M/k}=\dfrac{v}{\omega}=\dfrac{1{,}2}{22{,}4}=0{,}054\) m. <span class="ans">x₀ ≈ 0,054 m</span></p>
+</div></details></div>
+  <div class="prob jefe"><p class="pn">E4 · objeto flotante que oscila (supera IB)</p><p>Un bloque uniforme de masa \(m\) y área transversal \(A\) flota en agua (densidad \(\rho\)). Se empuja hacia abajo una distancia pequeña \(x\) y se suelta. (a) Muestra que la fuerza recuperadora es \(F=-\rho g A\,x\) (fuerza de empuje adicional). (b) Deduce que oscila con MAS de periodo \(T=2\pi\sqrt{\dfrac{m}{\rho g A}}\). (c) Evalúa \(T\) para \(m=0{,}50\) kg, \(A=0{,}010\) m², \(\rho=1000\) kg·m⁻³.</p>
+<details class="rev"><summary></summary><div class="rev-inner">
+<p>(a) En equilibrio, empuje = peso. Al hundir una distancia extra \(x\), el volumen sumergido adicional es \(A x\) y el empuje adicional (hacia arriba, opuesto a \(x\)) es \(F=-\rho g (A x)=-\rho g A\,x\). ∎</p>
+<p>(b) 2.ª ley: \(m a=-\rho g A\,x\Rightarrow a=-\dfrac{\rho g A}{m}x=-\omega^2 x\) con \(\omega^2=\dfrac{\rho g A}{m}\). Luego \(T=\dfrac{2\pi}{\omega}=2\pi\sqrt{\dfrac{m}{\rho g A}}\). ∎</p>
+<p>(c) \(T=2\pi\sqrt{\dfrac{0{,}50}{1000(9{,}8)(0{,}010)}}=2\pi\sqrt{\dfrac{0{,}50}{98}}=2\pi(0{,}0714)=0{,}449\) s. <span class="ans">T ≈ 0,45 s</span></p>
+</div></details></div>
+  <div class="prob jefe"><p class="pn">E5 · PROBLEMA JEFE (constante de un resorte + Módulo 1, supera IB)</p><p>Para hallar la constante de un resorte se cuelga una masa \(m=(0{,}250\pm0{,}002)\ \mathrm{kg}\) y se cronometran 20 oscilaciones en \(t=(14{,}0\pm0{,}2)\ \mathrm s\). (a) Halla el periodo con su incertidumbre. (b) Deduce \(k=\dfrac{4\pi^2 m}{T^2}\) y calcúlalo. (c) Propaga las incertidumbres para dar \(k\pm\Delta k\) (el periodo entra al cuadrado). (d) Señala una fuente de error sistemático del montaje.</p>
+<details class="rev"><summary></summary><div class="rev-inner">
+<p>(a) \(T=t/20=14{,}0/20=0{,}700\) s; \(\Delta T=\Delta t/20=0{,}2/20=0{,}010\) s. <span class="ans">T = (0,700 ± 0,010) s</span></p>
+<p>(b) \(k=\dfrac{4\pi^2 m}{T^2}=\dfrac{4\pi^2(0{,}250)}{0{,}700^2}=\dfrac{9{,}87}{0{,}490}=20{,}1\) N·m⁻¹. <span class="ans">k ≈ 20,1 N·m⁻¹</span></p>
+<p>(c) \(\dfrac{\Delta k}{k}=\dfrac{\Delta m}{m}+2\dfrac{\Delta T}{T}=\dfrac{0{,}002}{0{,}250}+2\dfrac{0{,}010}{0{,}700}=0{,}008+0{,}029=0{,}037\) (3,7 %). \(\Delta k=0{,}037(20{,}1)=0{,}7\) N·m⁻¹. <span class="ans">k = (20,1 ± 0,7) N·m⁻¹</span></p>
+<p>(d) Error sistemático típico: despreciar la <strong>masa efectiva del propio resorte</strong> (≈ \(m_{\text{resorte}}/3\)), que aumenta el periodo real y hace que el \(k\) calculado salga sistemáticamente <em>menor</em>. (También: parar el cronómetro siempre con el mismo retraso, o medir la extensión desde un cero mal calibrado.)</p>
+</div></details></div>
+</section>
+
+<!-- PRACTICA 2 -->
+<section id="practica2">
+  <p class="sec-num">PARA TI · PRÁCTICA ESTILO PAPER 2 · TODO TIPO</p>
+  <h2>Práctica extra · Paper 2 (todo tipo)<span class="rule"></span></h2>
+  <p class="sec-intro">Seis problemas nuevos multi-apartado (qué pide → ecuación → desarrollo → resultado), solo del tipo que <strong>sí</strong> aparece en el IB. Cubren péndulo y masa-resorte, \(v_{\max}/a_{\max}\), \(v=\pm\omega\sqrt{x_0^2-x^2}\), energía y sus gráficas, gráficas \(x\)-\(t\)/\(v\)-\(t\)/\(a\)-\(t\) y resortes serie/paralelo. \(g=9{,}8\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">PE1 · péndulo (T, ω) + v_máx/a_máx</p><p>Un péndulo simple de longitud \(l=0{,}80\) m oscila con amplitud pequeña; la lenteja se separa \(x_0=0{,}050\) m del equilibrio. (a) <em>Muestre que</em> \(\omega\approx3{,}5\) rad·s⁻¹. (b) Calcule el periodo. (c) Determine la rapidez y la aceleración máximas.</p>
+<details class="rev"><summary></summary><div class="rev-inner">
+<p>(a) \(\omega=\sqrt{g/l}=\sqrt{9{,}8/0{,}80}=\sqrt{12{,}25}=3{,}5\) rad·s⁻¹. ∎</p>
+<p>(b) \(T=2\pi/\omega=2\pi/3{,}5=1{,}80\) s. <span class="ans">T ≈ 1,8 s</span></p>
+<p>(c) \(v_{\max}=\omega x_0=3{,}5(0{,}050)=0{,}175\); \(a_{\max}=\omega^2 x_0=12{,}25(0{,}050)=0{,}61\). <span class="ans">v_máx ≈ 0,18 m·s⁻¹ ; a_máx ≈ 0,61 m·s⁻²</span></p>
+</div></details></div>
+
+  <div class="prob"><p class="pn">PE2 · masa-resorte + v = ±ω√(x₀²−x²)</p><p>Un bloque de 0,25 kg en un resorte de \(k=100\) N·m⁻¹ oscila con amplitud \(x_0=0{,}060\) m. (a) Calcule \(\omega\) y \(T\). (b) Determine la rapidez en \(x=0{,}030\) m. (c) <em>Muestre que</em> en \(x=x_0/2\) la rapidez es \(\tfrac{\sqrt3}{2}\,v_{\max}\).</p>
+<details class="rev"><summary></summary><div class="rev-inner">
+<p>(a) \(\omega=\sqrt{k/m}=\sqrt{100/0{,}25}=\sqrt{400}=20\) rad·s⁻¹; \(T=2\pi/20=0{,}31\) s. <span class="ans">ω = 20 rad·s⁻¹ ; T ≈ 0,31 s</span></p>
+<p>(b) \(v=\omega\sqrt{x_0^2-x^2}=20\sqrt{0{,}060^2-0{,}030^2}=20\sqrt{2{,}7\times10^{-3}}=20(0{,}0520)=1{,}04\). <span class="ans">v ≈ 1,0 m·s⁻¹</span></p>
+<p>(c) \(v=\omega\sqrt{x_0^2-(x_0/2)^2}=\omega\sqrt{x_0^2\big(1-\tfrac14\big)}=\omega x_0\sqrt{\tfrac34}=\tfrac{\sqrt3}{2}\,\omega x_0=\tfrac{\sqrt3}{2}\,v_{\max}\). ∎</p>
+</div></details></div>
+
+  <div class="prob"><p class="pn">PE3 · energía Ec/Ep/total + gráfica</p><p>Una masa de 0,40 kg hace MAS con amplitud 0,10 m y \(\omega=15\) rad·s⁻¹. (a) Calcule la energía total. (b) Determine \(E_p\) y \(E_c\) en \(x=0{,}060\) m. (c) Bosqueje \(E_c\) y \(E_p\) frente a \(x\) sobre el mismo eje.</p>
+<details class="rev"><summary></summary><div class="rev-inner">
+<p>(a) \(E_T=\tfrac12 m\omega^2 x_0^2=\tfrac12(0{,}40)(225)(0{,}10^2)=0{,}45\) J. <span class="ans">E_T = 0,45 J</span></p>
+<p>(b) \(E_p=\tfrac12 m\omega^2 x^2=\tfrac12(0{,}40)(225)(0{,}060^2)=0{,}162\) J; \(E_c=E_T-E_p=0{,}45-0{,}16=0{,}29\) J. <span class="ans">E_p ≈ 0,16 J ; E_c ≈ 0,29 J</span></p>
+<p>(c) \(E_p\) es una parábola (mínima en \(x=0\), máxima en \(\pm x_0\)); \(E_c\) es su reflejo (máxima en \(x=0\), nula en \(\pm x_0\)); \(E_T\) es constante.</p>
+<figure class="fig">
+  <svg viewBox="0 0 300 165" width="290" xmlns="http://www.w3.org/2000/svg" aria-label="energia vs desplazamiento">
+    <line x1="40" y1="130" x2="285" y2="130" stroke="var(--ink)" stroke-width="1.2"/>
+    <line x1="40" y1="130" x2="40" y2="15" stroke="var(--ink)" stroke-width="1.2"/>
+    <line x1="50" y1="22" x2="280" y2="22" stroke="var(--ink)" stroke-width="1.1" stroke-dasharray="4 3"/>
+    <path d="M50,22 Q160,238 270,22" fill="none" stroke="var(--teal)" stroke-width="2"/>
+    <path d="M50,130 Q160,-86 270,130" fill="none" stroke="var(--amber)" stroke-width="2"/>
+    <text x="24" y="20" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">E</text>
+    <text x="282" y="143" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">x</text>
+    <text x="240" y="18" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">E_T</text>
+    <text x="60" y="48" font-family="Space Grotesk" font-size="10" fill="var(--teal)">E_p</text>
+    <text x="146" y="42" font-family="Space Grotesk" font-size="10" fill="var(--amber)">E_c</text>
+    <text x="34" y="145" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">−x₀</text>
+    <text x="157" y="145" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">0</text>
+    <text x="260" y="145" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">+x₀</text>
+  </svg>
+  <figcaption>E_p y E_c se cruzan en E_T/2 (en x = ±x₀/√2); su suma es constante.</figcaption>
+</figure>
+</div></details></div>
+
+  <div class="prob"><p class="pn">PE4 · gráficas x-t / v-t / a-t y desfases <span class="hl-tag">NS</span></p><p>Una partícula hace MAS descrito por \(x=x_0\cos(\omega t)\) (parte del extremo). (a) <em>Muestre que</em> \(a=-\omega^2 x\). (b) Bosqueje \(x\), \(v\) y \(a\) frente al tiempo en un ciclo. (c) Indique el desfase de \(v\) y de \(a\) respecto a \(x\).</p>
+<details class="rev"><summary></summary><div class="rev-inner">
+<p>(a) \(v=\dfrac{dx}{dt}=-x_0\omega\sin(\omega t)\); \(a=\dfrac{dv}{dt}=-x_0\omega^2\cos(\omega t)=-\omega^2\big(x_0\cos\omega t\big)=-\omega^2 x\). ∎</p>
+<p>(c) \(v\) adelanta a \(x\) en <strong>90° (π/2)</strong> (un cuarto de periodo); \(a\) está en <strong>oposición de fase, 180°</strong>, con \(x\) (es \(x\) reflejada).</p>
+<figure class="fig">
+  <svg viewBox="0 0 340 150" width="320" xmlns="http://www.w3.org/2000/svg" aria-label="x v a frente al tiempo">
+    <line x1="30" y1="75" x2="320" y2="75" stroke="var(--ink)" stroke-width="1.1"/>
+    <line x1="30" y1="20" x2="30" y2="130" stroke="var(--ink)" stroke-width="1.1"/>
+    <line x1="100" y1="22" x2="100" y2="128" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="170" y1="22" x2="170" y2="128" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="240" y1="22" x2="240" y2="128" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 3"/>
+    <path d="M30,47 Q65,48 100,75 T170,103 T240,75 T310,47" fill="none" stroke="var(--teal)" stroke-width="2"/>
+    <path d="M30,75 Q65,103 100,103 Q135,103 170,75 Q205,47 240,47 Q275,47 310,75" fill="none" stroke="var(--amber)" stroke-width="1.8"/>
+    <path d="M30,103 Q65,102 100,75 T170,47 T240,75 T310,103" fill="none" stroke="var(--hl)" stroke-width="1.6" stroke-dasharray="5 3"/>
+    <text x="314" y="45" font-family="Space Grotesk" font-size="11" fill="var(--teal)">x</text>
+    <text x="314" y="70" font-family="Space Grotesk" font-size="11" fill="var(--amber)">v</text>
+    <text x="314" y="110" font-family="Space Grotesk" font-size="11" fill="var(--hl)">a</text>
+    <text x="324" y="88" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">t</text>
+  </svg>
+  <figcaption>x = cos (parte del máximo); v adelantada 90°; a en oposición (−ω²x).</figcaption>
+</figure>
+</div></details></div>
+
+  <div class="prob"><p class="pn">PE5 · resortes en serie y en paralelo</p><p>Un bloque de 0,50 kg se une a dos resortes idénticos de \(k=200\) N·m⁻¹ cada uno. (a) Determine el periodo si los resortes están en <strong>paralelo</strong>. (b) Determine el periodo si están en <strong>serie</strong>. (c) Comente cuál montaje oscila más rápido.</p>
+<details class="rev"><summary></summary><div class="rev-inner">
+<p>(a) Paralelo: \(k_{eq}=k_1+k_2=400\) N·m⁻¹. \(T=2\pi\sqrt{m/k_{eq}}=2\pi\sqrt{0{,}50/400}=0{,}22\) s. <span class="ans">T_paralelo ≈ 0,22 s</span></p>
+<p>(b) Serie: \(\dfrac{1}{k_{eq}}=\dfrac{1}{k_1}+\dfrac{1}{k_2}\Rightarrow k_{eq}=\dfrac{(200)(200)}{400}=100\) N·m⁻¹. \(T=2\pi\sqrt{0{,}50/100}=0{,}44\) s. <span class="ans">T_serie ≈ 0,44 s</span></p>
+<p>(c) El <strong>paralelo</strong> oscila más rápido: tiene mayor \(k_{eq}\), luego mayor \(\omega\) y menor \(T\) (aquí la mitad, porque \(k_{eq}\) es 4 veces mayor).</p>
+</div></details></div>
+
+  <div class="prob"><p class="pn">PE6 · v_máx/a_máx + fracción de energía</p><p>Un oscilador masa-resorte tiene \(v_{\max}=0{,}80\) m·s⁻¹ y \(a_{\max}=16\) m·s⁻². (a) <em>Muestre que</em> \(\omega=20\) rad·s⁻¹ y determine la amplitud. (b) Calcule \(T\) y \(f\). (c) Determine la fracción de la energía total que es cinética cuando \(x=x_0/2\).</p>
+<details class="rev"><summary></summary><div class="rev-inner">
+<p>(a) \(\dfrac{a_{\max}}{v_{\max}}=\dfrac{\omega^2 x_0}{\omega x_0}=\omega=\dfrac{16}{0{,}80}=20\) rad·s⁻¹. ∎ \(\;x_0=\dfrac{v_{\max}}{\omega}=\dfrac{0{,}80}{20}=0{,}040\) m. <span class="ans">ω = 20 rad·s⁻¹ ; x₀ = 0,040 m</span></p>
+<p>(b) \(T=2\pi/\omega=0{,}31\) s; \(f=1/T=3{,}2\) Hz. <span class="ans">T ≈ 0,31 s ; f ≈ 3,2 Hz</span></p>
+<p>(c) \(\dfrac{E_p}{E_T}=\Big(\dfrac{x}{x_0}\Big)^2=\Big(\tfrac12\Big)^2=\tfrac14\Rightarrow \dfrac{E_c}{E_T}=1-\tfrac14=\tfrac34\). <span class="ans">E_c = 0,75 E_T (75 %)</span></p>
+</div></details></div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 9B · Oscilaciones y MAS Tipo 2 (Paper 2).</strong> Incluye el problema de MAS de la <strong>ficha real tipo 2 (DMpA 19–20)</strong> resuelto y visible, más 5 problemas Paper 2 resueltos apartado por apartado (masa-resorte, experimento T²–l, energía, ecuación sinusoidal, amortiguamiento/resonancia) y 5 extra integradores con resolución. Con esto el tema queda completo (9A + 9B). Sigue el <strong>Módulo 10A — Ondas: modelo y fenómenos</strong>, donde van los problemas de ondas de esa misma ficha. Convención: \(g=9{,}8\) salvo indicación.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

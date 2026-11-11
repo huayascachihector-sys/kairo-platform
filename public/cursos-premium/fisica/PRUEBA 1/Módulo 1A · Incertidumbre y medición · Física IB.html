@@ -1,0 +1,873 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 1A · Incertidumbre y medición · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{
+  --paper:#F6F7F4; --paper-2:#FFFFFF; --ink:#16222B; --ink-soft:#43525C;
+  --line:#D7DDD6; --grid:#E4E9E2;
+  --teal:#1F6E7C; --teal-deep:#134B55;
+  --amber:#C77B23; --amber-soft:#F6ECDB;
+  --warn:#A8402C; --warn-soft:#F4E4DF;
+  --hl:#6E4C86; --hl-soft:#EDE6F2;
+  --ok:#2E7D5B; --ok-soft:#E3F0EA;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.mono{font-family:"Space Grotesk",system-ui,sans-serif}
+.mono,.tag,.eq-ref{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+
+/* hero */
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:18ch}
+.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}
+.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+
+/* toc */
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}
+@media(max-width:900px){.toc{display:none}}
+
+/* sections */
+main{padding:60px 0 40px}
+section{margin-bottom:60px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}
+h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:32px 0 6px;font-weight:600}
+h4{font-family:"Space Grotesk";font-size:14px;letter-spacing:.02em;color:var(--teal-deep);margin:20px 0 6px;font-weight:600}
+p{margin:.55em 0}
+a{color:var(--teal)}
+ul,ol{margin:.5em 0 .5em 0;padding-left:1.3em}
+li{margin:.3em 0}
+strong{font-weight:600}
+
+/* equation block */
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:16px 0;overflow-x:auto}
+.eqname{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--teal);letter-spacing:.06em;display:block;margin-top:4px}
+
+/* callouts */
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}
+.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}
+.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}
+.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}
+.key .lbl{color:var(--ok)}
+
+/* example */
+.ej{border:1px solid var(--line);border-radius:5px;margin:22px 0;background:var(--paper-2);overflow:hidden}
+.ej-head{background:linear-gradient(180deg,#F0F5F3,#FFFFFF);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ej-tag{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal);padding:2px 8px;border-radius:3px}
+.ej-src{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);letter-spacing:.05em}
+.ej-body{padding:16px 20px 20px}
+.sepide{display:inline-block;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:2px 8px;margin:2px 0 8px}
+.sol{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:6px 12px;display:inline-block;margin-top:8px}
+
+/* tables */
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:15.5px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:center}
+th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}
+td.l,th.l{text-align:left}
+
+/* practice */
+.prob{border-left:3px solid var(--amber);background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}
+.jefe .pn{color:var(--hl)}
+
+/* svg fig */
+.fig{background:var(--paper-2);border:1px solid var(--line);border-radius:5px;padding:14px;margin:16px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--ink-soft);margin-top:8px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <p class="kicker">FÍSICA IB · NM <span>//</span> MÓDULO 1A <span>//</span> TEORÍA + PROBLEMAS TIPO 1</p>
+    <h1>Incertidumbre y <em>medición</em></h1>
+    <p class="lede">La base de todo el curso: qué medimos, con qué error, cómo se propaga y cómo se lee de una gráfica. Nivel completo del IB más herramientas de nivel superior. Todos los problemas de la ficha quedan resueltos aquí.</p>
+    <div class="stats">
+      <div class="stat"><b>8</b><span>secciones de teoría</span></div>
+      <div class="stat"><b>10/10</b><span>ficha resuelta</span></div>
+      <div class="stat"><b>10</b><span>problemas propuestos</span></div>
+      <div class="stat"><b>14</b><span>exámenes IB 2022–26</span></div>
+      <div class="stat"><b>g = 10</b><span>m·s⁻² salvo indicación</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#s1">1 · Magnitudes y unidades SI</a>
+  <a href="#s2">2 · Cifras significativas</a>
+  <a href="#s3">3 · Exactitud, precisión y errores</a>
+  <a href="#s4">4 · Incertidumbre y lectura</a>
+  <a href="#s5">5 · Medidas repetidas</a>
+  <a href="#s6">6 · Propagación</a>
+  <a href="#s7">7 · Gráficas y pendientes</a>
+  <a href="#s8">8 · Definiciones (examen)</a>
+  <a href="#traps">Checklist de trampas</a>
+  <a href="#bloque">Bloque de ejemplos (ficha)</a>
+  <a href="#examenes">Banco de exámenes IB · 2022–26</a>
+  <a href="#practica">10 problemas propuestos</a>
+</nav>
+
+<main>
+<!-- rev 2026-10-25 · teoria ampliada (S1: unidades deducidas, ordenes de magnitud) + banco examenes IB tipo 1 2022-2026 -->
+<!-- ================= S1 ================= -->
+<section id="s1">
+  <p class="sec-num">SECCIÓN 01</p>
+  <h2>Magnitudes, unidades SI y análisis dimensional<span class="rule"></span></h2>
+  <p class="sec-intro">Toda medición es un número acompañado de una unidad y una incertidumbre. Sin cualquiera de las tres, la medida no significa nada.</p>
+
+  <h3>Magnitudes fundamentales y derivadas</h3>
+  <p>El SI define <strong>siete magnitudes fundamentales</strong>. En Física IB usarás sobre todo las primeras seis:</p>
+  <table>
+    <tr><th class="l">Magnitud</th><th>Unidad</th><th>Símbolo</th></tr>
+    <tr><td class="l">Longitud</td><td>metro</td><td>m</td></tr>
+    <tr><td class="l">Masa</td><td>kilogramo</td><td>kg</td></tr>
+    <tr><td class="l">Tiempo</td><td>segundo</td><td>s</td></tr>
+    <tr><td class="l">Corriente eléctrica</td><td>ampere</td><td>A</td></tr>
+    <tr><td class="l">Temperatura</td><td>kelvin</td><td>K</td></tr>
+    <tr><td class="l">Cantidad de sustancia</td><td>mol</td><td>mol</td></tr>
+    <tr><td class="l">Intensidad luminosa</td><td>candela</td><td>cd</td></tr>
+  </table>
+  <p>Las <strong>magnitudes derivadas</strong> se construyen combinando las anteriores. Ejemplos: velocidad \(\mathrm{m\,s^{-1}}\), fuerza \(\mathrm{N = kg\,m\,s^{-2}}\), energía \(\mathrm{J = kg\,m^{2}\,s^{-2}}\), presión \(\mathrm{Pa = kg\,m^{-1}\,s^{-2}}\).</p>
+
+  <h3>Prefijos SI y notación científica</h3>
+  <p>Un número muy grande o muy pequeño se escribe como \(a \times 10^{n}\) con \(1 \le |a| < 10\). Los prefijos más pedidos:</p>
+  <table>
+    <tr><th>T</th><th>G</th><th>M</th><th>k</th><th>c</th><th>m</th><th>µ</th><th>n</th><th>p</th></tr>
+    <tr><td>10¹²</td><td>10⁹</td><td>10⁶</td><td>10³</td><td>10⁻²</td><td>10⁻³</td><td>10⁻⁶</td><td>10⁻⁹</td><td>10⁻¹²</td></tr>
+  </table>
+
+  <h3>Análisis dimensional (homogeneidad)</h3>
+  <p>Una ecuación física válida debe tener las <strong>mismas dimensiones a ambos lados</strong>. Es tu primer filtro para detectar un error de fórmula.</p>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 1.1</span><span class="ej-src">análisis dimensional</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Verifica que la expresión \(x = \tfrac{1}{2}\,a\,t^{2}\) (que aparecerá en Cinemática) es dimensionalmente consistente.</p>
+      <div class="sol">
+        <p>Lado derecho: \([a][t^{2}] = (\mathrm{m\,s^{-2}})(\mathrm{s^{2}}) = \mathrm{m}\). Lado izquierdo: \([x] = \mathrm{m}\). El factor \(\tfrac12\) es adimensional. Coinciden \(\Rightarrow\) es homogénea.</p>
+        <span class="ans">Consistente: ambos lados en metros.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="box beyond">
+    <span class="lbl">Más allá del IB</span>
+    <p>El análisis dimensional permite <em>deducir</em> la forma de una ley. Si sospechas que el período de un péndulo depende de \(L\), \(g\) y \(m\), escribe \(T = k\,L^{a}g^{b}m^{c}\) e iguala dimensiones: se obtiene \(a=\tfrac12,\ b=-\tfrac12,\ c=0\), es decir \(T \propto \sqrt{L/g}\). La constante \(k\) (aquí \(2\pi\)) el método no la da: solo la potencia de cada variable.</p>
+  </div>
+
+  <h3>Deducir la unidad de una constante o de una pendiente</h3>
+  <p>Una pregunta clásica de examen te da una ley física y te pide la <strong>unidad de una constante</strong> o de la <strong>pendiente de una gráfica</strong>. El método es siempre el mismo: <strong>despeja la incógnita y sustituye cada magnitud por sus unidades fundamentales</strong>.</p>
+  <div class="box key">
+    <span class="lbl">Receta</span>
+    <ol>
+      <li>Despeja la constante (o escribe la pendiente como \(y/x\)).</li>
+      <li>Reemplaza cada símbolo por su unidad SI.</li>
+      <li>Reduce todo a las fundamentales (\(\mathrm{kg, m, s, A, K, mol}\)). Recuerda: \(\mathrm{N=kg\,m\,s^{-2}}\), \(\mathrm{J=kg\,m^2\,s^{-2}}\), \(\mathrm{W=kg\,m^2\,s^{-3}}\), \(\mathrm{Pa=kg\,m^{-1}s^{-2}}\), \(\mathrm{V=kg\,m^2\,s^{-3}A^{-1}}\), \(\mathrm{\Omega=kg\,m^2\,s^{-3}A^{-2}}\).</li>
+    </ol>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 1.2</span><span class="ej-src">unidad de una constante</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Una fuerza resistiva cumple \(F=k\,v\) (\(v\) = rapidez). ¿Unidad fundamental de \(k\)?</p>
+      <div class="sol">
+        <p>\(k=\dfrac{F}{v}\Rightarrow \dfrac{\mathrm{kg\,m\,s^{-2}}}{\mathrm{m\,s^{-1}}}=\mathrm{kg\,s^{-1}}\).</p>
+        <span class="ans">\([k]=\mathrm{kg\,s^{-1}}\). (Este ítem cae literal en el examen: ver banco, EX‑1.)</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Órdenes de magnitud y estimación</h3>
+  <p>El <strong>orden de magnitud</strong> de un número es la potencia de 10 más cercana. Para estimarlo, escribe el número en notación científica \(a\times10^{n}\): si \(a<\sqrt{10}\approx3{,}16\) el orden es \(10^{n}\); si \(a\ge3{,}16\), es \(10^{n+1}\). Sirve para comprobar si un resultado es físicamente razonable y para las preguntas de "estimación de Fermi".</p>
+  <table>
+    <tr><th class="l">Cantidad</th><th>Valor típico</th><th>Orden</th></tr>
+    <tr><td class="l">Radio de un átomo</td><td>\(\sim1\times10^{-10}\) m</td><td>\(10^{-10}\)</td></tr>
+    <tr><td class="l">Longitud de onda de luz visible</td><td>400–700 nm</td><td>\(10^{-7}\) m</td></tr>
+    <tr><td class="l">Estatura de una persona</td><td>\(\sim1{,}7\) m</td><td>\(10^{0}\)</td></tr>
+    <tr><td class="l">Masa de la Tierra</td><td>\(6\times10^{24}\) kg</td><td>\(10^{25}\)</td></tr>
+  </table>
+  <div class="box trap">
+    <span class="lbl">Ojo</span>
+    <p>La luz visible (≈\(5\times10^{-7}\) m) tiene orden \(10^{-7}\) m, no \(10^{-9}\): ese es el orden de los átomos y de los rayos X. Distíngelos.</p>
+  </div>
+</section>
+
+<!-- ================= S2 ================= -->
+<section id="s2">
+  <p class="sec-num">SECCIÓN 02</p>
+  <h2>Cifras significativas y redondeo<span class="rule"></span></h2>
+  <p class="sec-intro">Las cifras significativas comunican la precisión de una medida. Reportar de más es mentir sobre lo que sabes.</p>
+
+  <h4>Reglas de conteo</h4>
+  <ul>
+    <li>Todo dígito distinto de cero <strong>es</strong> significativo: 24,7 → 3 c.s.</li>
+    <li>Ceros <strong>entre</strong> dígitos cuentan: 3005 → 4 c.s.</li>
+    <li>Ceros a la <strong>izquierda</strong> no cuentan: 0,00456 → 3 c.s.</li>
+    <li>Ceros a la <strong>derecha con punto decimal</strong> sí cuentan: 4,560 → 4 c.s.</li>
+    <li>1200 es ambiguo → usa notación científica: \(1{,}2\times10^{3}\) (2 c.s.) o \(1{,}200\times10^{3}\) (4 c.s.).</li>
+  </ul>
+
+  <h4>Reglas de operación</h4>
+  <ul>
+    <li><strong>× y ÷</strong>: el resultado lleva tantas c.s. como el dato con menos c.s.</li>
+    <li><strong>+ y −</strong>: el resultado lleva tantos <em>decimales</em> como el dato con menos decimales.</li>
+  </ul>
+
+  <div class="box key">
+    <span class="lbl">Regla de oro de la incertidumbre</span>
+    <p>La incertidumbre se redondea a <strong>1 cifra significativa</strong> (a veces 2 si la primera es 1). Luego el <strong>valor</strong> se redondea para que su último decimal coincida con el de la incertidumbre.</p>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 2.1</span><span class="ej-src">ficha P1</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Se registró la masa de un objeto como \(3{,}56\ \mathrm g\) con incertidumbre \(0{,}032\ \mathrm g\). Repórtala con la incertidumbre a 1 c.s.</p>
+      <div class="sol">
+        <p>Incertidumbre a 1 c.s.: \(0{,}032 \to 0{,}03\ \mathrm g\) (2 decimales). El valor ya tiene 2 decimales, así que no cambia.</p>
+        <span class="ans">\(m = (3{,}56 \pm 0{,}03)\ \mathrm g\) — opción b.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= S3 ================= -->
+<section id="s3">
+  <p class="sec-num">SECCIÓN 03</p>
+  <h2>Exactitud, precisión y tipos de error<span class="rule"></span></h2>
+  <p class="sec-intro">Dos palabras que el examen mezcla a propósito. No son sinónimos.</p>
+
+  <div class="box def">
+    <span class="lbl">Definiciones</span>
+    <p><strong>Exactitud (accuracy):</strong> cuán cerca está una medida del valor verdadero.</p>
+    <p><strong>Precisión (precision):</strong> cuán cerca están entre sí medidas repetidas (poca dispersión), sin importar si aciertan al valor verdadero.</p>
+  </div>
+
+  <table>
+    <tr><th class="l"></th><th>Preciso</th><th>No preciso</th></tr>
+    <tr><td class="l"><strong>Exacto</strong></td><td>Dianas juntas y en el centro (ideal)</td><td>Dispersas pero centradas en promedio</td></tr>
+    <tr><td class="l"><strong>No exacto</strong></td><td>Juntas pero lejos del centro (error sistemático)</td><td>Dispersas y descentradas</td></tr>
+  </table>
+
+  <h4>Error aleatorio vs. sistemático</h4>
+  <ul>
+    <li><strong>Aleatorio:</strong> fluctúa de medida a medida (reflejos del observador, ruido, última cifra que baila). Se <em>reduce</em> repitiendo y promediando. Afecta la <em>precisión</em>.</li>
+    <li><strong>Sistemático:</strong> desplaza todas las medidas en el mismo sentido (cero mal calibrado, regla dilatada, paralaje constante). <em>No</em> se elimina repitiendo. Afecta la <em>exactitud</em>.</li>
+  </ul>
+  <div class="box beyond">
+    <span class="lbl">Más allá del IB</span>
+    <p>En una gráfica linealizada, el error sistemático se delata en el <strong>intercepto</strong> (la recta no pasa por donde debería), mientras que el error aleatorio se ve en la <strong>dispersión</strong> de los puntos respecto de la recta. Lo usaremos en la Sección 7 y en el problema jefe.</p>
+  </div>
+</section>
+
+<!-- ================= S4 ================= -->
+<section id="s4">
+  <p class="sec-num">SECCIÓN 04</p>
+  <h2>Incertidumbre: absoluta, fraccionaria, porcentual y lectura<span class="rule"></span></h2>
+  <p class="sec-intro">Tres formas de expresar el mismo error, y cómo obtenerlo de un instrumento.</p>
+
+  <div class="eq">
+    \[ \text{absoluta: } \Delta x \qquad \text{fraccionaria: } \frac{\Delta x}{x} \qquad \text{porcentual: } \frac{\Delta x}{x}\times100\% \]
+    <span class="eqname">las tres representaciones de la incertidumbre</span>
+  </div>
+
+  <h4>Incertidumbre de lectura de un instrumento</h4>
+  <ul>
+    <li><strong>Analógico</strong> (regla, voltímetro de aguja): \(\tfrac12\) de la menor división de la escala.</li>
+    <li><strong>Digital</strong>: \(\pm1\) en el último dígito (la resolución del display).</li>
+  </ul>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 4.1</span><span class="ej-src">ficha P2 · instrumento analógico</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>El voltímetro analógico mide en una escala de 0 a 5 V. La aguja apunta un poco antes de 4. ¿Voltaje e incertidumbre?</p>
+      <figure class="fig">
+        <svg viewBox="0 0 260 150" width="240" xmlns="http://www.w3.org/2000/svg" aria-label="voltímetro analógico">
+          <circle cx="130" cy="120" r="96" fill="none" stroke="var(--line)" stroke-width="2"/>
+          <g stroke="var(--ink)" stroke-width="1.5" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">
+            <g id="ticks"></g>
+          </g>
+          <script type="application/ecmascript"><![CDATA[]]></script>
+          <!-- static ticks and labels -->
+          <g font-family="IBM Plex Mono" font-size="11" fill="var(--ink)" text-anchor="middle">
+            <text x="40" y="126">0</text>
+            <text x="55" y="72">1</text>
+            <text x="100" y="40">2</text>
+            <text x="160" y="40">3</text>
+            <text x="205" y="72">4</text>
+            <text x="220" y="126">5</text>
+          </g>
+          <line x1="130" y1="120" x2="182" y2="70" stroke="var(--warn)" stroke-width="3"/>
+          <circle cx="130" cy="120" r="9" fill="var(--ink)"/>
+          <text x="130" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#fff">V</text>
+        </svg>
+        <figcaption>Aguja entre 3 y 4, cerca de 3,85; menor división = 0,1 V</figcaption>
+      </figure>
+      <div class="sol">
+        <p>Lectura \(\approx 3{,}85\ \mathrm V\). La menor división vale \(0{,}1\ \mathrm V\), así que la incertidumbre de lectura es \(\tfrac12(0{,}1)=0{,}05\ \mathrm V\).</p>
+        <span class="ans">\(V = (3{,}85 \pm 0{,}05)\ \mathrm V\) — opción d.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 4.2</span><span class="ej-src">ficha P3 · lectura de regla</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Un objeto se mide sobre una escala en mm graduada de 3,80 a 4,10 con divisiones de 0,01 mm. ¿Ancho \(w\pm\Delta w\)?</p>
+      <figure class="fig">
+        <svg viewBox="0 0 340 90" width="320" xmlns="http://www.w3.org/2000/svg" aria-label="objeto sobre regla">
+          <rect x="90" y="14" width="150" height="20" rx="9" fill="#C9D2CC" stroke="var(--ink-soft)"/>
+          <line x1="40" y1="55" x2="300" y2="55" stroke="var(--ink)" stroke-width="1.5"/>
+          <g stroke="var(--ink)" stroke-width="1">
+            <line x1="40" y1="55" x2="40" y2="45"/><line x1="127" y1="55" x2="127" y2="45"/>
+            <line x1="213" y1="55" x2="213" y2="45"/><line x1="300" y1="55" x2="300" y2="45"/>
+          </g>
+          <g font-family="IBM Plex Mono" font-size="10" fill="var(--ink)" text-anchor="middle">
+            <text x="40" y="72">3,80</text><text x="127" y="72">3,90</text><text x="213" y="72">4,00</text><text x="300" y="72">4,10</text>
+          </g>
+          <g stroke="var(--warn)" stroke-width="1.5">
+            <line x1="90" y1="8" x2="90" y2="40"/><line x1="240" y1="8" x2="240" y2="40"/>
+          </g>
+        </svg>
+        <figcaption>Bordes en ≈3,89 mm y ≈4,08 mm</figcaption>
+      </figure>
+      <div class="sol">
+        <p>Ancho \(= 4{,}08 - 3{,}89 = 0{,}19\ \mathrm{mm}\). Cada borde se lee con \(\pm\tfrac12(0{,}01)=\pm0{,}005\); al restar dos lecturas las absolutas se suman: \(\Delta w = 0{,}005+0{,}005 = 0{,}01\ \mathrm{mm}\).</p>
+        <span class="ans">\(w = (0{,}19 \pm 0{,}01)\ \mathrm{mm}\) — opción a.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= S5 ================= -->
+<section id="s5">
+  <p class="sec-num">SECCIÓN 05</p>
+  <h2>Medidas repetidas: media, rango e incertidumbre<span class="rule"></span></h2>
+  <p class="sec-intro">Repetir una medida y promediar reduce el error aleatorio. Así se cuantifica.</p>
+
+  <div class="eq">
+    \[ \bar{x} = \frac{1}{N}\sum_{i=1}^{N} x_i \qquad \Delta x = \frac{x_{\max}-x_{\min}}{2} \]
+    <span class="eqname">media y método del rango (convención IB)</span>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 5.1</span><span class="ej-src">ficha P4 y P5</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Cuatro medidas de una cuerda: 38,6; 38,7; 38,6; 38,5 cm. (a) rango; (b) media e incertidumbre.</p>
+      <div class="sol">
+        <p>(a) Rango \(= 38{,}7-38{,}5 = 0{,}2\ \mathrm{cm}\) <em>(P4 → opción a)</em>.</p>
+        <p>(b) Media \(=\dfrac{38{,}6+38{,}7+38{,}6+38{,}5}{4}=\dfrac{154{,}4}{4}=38{,}6\ \mathrm{cm}\). Incertidumbre \(=\dfrac{0{,}2}{2}=0{,}1\ \mathrm{cm}\).</p>
+        <span class="ans">\(L = (38{,}6 \pm 0{,}1)\ \mathrm{cm}\) — P5 opción a.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 5.2</span><span class="ej-src">ficha P6</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Las lecturas caen entre 49,8 cm y 50,2 cm. ¿Mejor forma de registrar?</p>
+      <div class="sol">
+        <p>Valor central \(=\dfrac{49{,}8+50{,}2}{2}=50{,}0\); incertidumbre \(=\dfrac{50{,}2-49{,}8}{2}=0{,}2\).</p>
+        <span class="ans">\((50{,}0 \pm 0{,}2)\ \mathrm{cm}\) — opción c.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="box beyond">
+    <span class="lbl">Más allá del IB</span>
+    <p>El método más riguroso usa la <strong>desviación estándar</strong> \(s=\sqrt{\frac{1}{N-1}\sum(x_i-\bar x)^2}\) y el <strong>error estándar de la media</strong> \(\ \sigma_{\bar x}=\dfrac{s}{\sqrt{N}}\). Nota clave: el error de la media baja como \(1/\sqrt{N}\) — para reducirlo a la mitad necesitas <em>cuatro</em> veces más medidas. El IB acepta \(\text{rango}/2\), pero en tus monografías (frenado regenerativo, filtro RC) conviene reportar \(\sigma_{\bar x}\).</p>
+  </div>
+</section>
+
+<!-- ================= S6 ================= -->
+<section id="s6">
+  <p class="sec-num">SECCIÓN 06</p>
+  <h2>Propagación de incertidumbres<span class="rule"></span></h2>
+  <p class="sec-intro">Cuando combinas medidas, sus incertidumbres se combinan según reglas fijas. Esto es lo más evaluado del tema.</p>
+
+  <div class="eq">
+    \[ \begin{aligned}
+    &y = a \pm b &&\Rightarrow&& \Delta y = \Delta a + \Delta b \quad(\text{absolutas})\\[4pt]
+    &y = \frac{a\,b}{c} &&\Rightarrow&& \frac{\Delta y}{y} = \frac{\Delta a}{a}+\frac{\Delta b}{b}+\frac{\Delta c}{c} \quad(\text{relativas})\\[4pt]
+    &y = a^{n} &&\Rightarrow&& \frac{\Delta y}{y} = |n|\,\frac{\Delta a}{a}
+    \end{aligned} \]
+    <span class="eqname">las tres reglas del IB</span>
+  </div>
+  <p><strong>Traducción:</strong> en sumas/restas se suman las <em>absolutas</em>; en productos/cocientes se suman las <em>porcentuales</em>; al elevar a una potencia, la porcentual se <em>multiplica por el exponente</em> (¡al cuadrado se duplica!).</p>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 6.1</span><span class="ej-src">ficha P7 (se resuelve completo en el bloque final)</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Adelanto: producto de dos longitudes → se suman las incertidumbres porcentuales. Desarrollo completo en el <a href="#bloque">bloque de ejemplos</a>.</p>
+    </div>
+  </div>
+
+  <div class="box beyond">
+    <span class="lbl">Más allá del IB · dos herramientas</span>
+    <p><strong>1. Regla general por derivadas.</strong> Para cualquier \(y=f(x)\): \(\ \Delta y = \left|\dfrac{df}{dx}\right|\Delta x\). Para varias variables, \(\ \Delta y = \sum_i \left|\dfrac{\partial f}{\partial x_i}\right|\Delta x_i\). De aquí salen las tres reglas del IB como casos particulares.</p>
+    <p><strong>2. Suma en cuadratura.</strong> Cuando los errores son <em>independientes y aleatorios</em>, la combinación estadísticamente correcta no suma linealmente sino \(\ \Delta y=\sqrt{\sum_i\left(\frac{\partial f}{\partial x_i}\Delta x_i\right)^2}\). El IB suma linealmente (peor caso, sobreestima); la ciencia real usa cuadratura. Para logaritmos: \(\Delta(\ln x)=\dfrac{\Delta x}{x}\).</p>
+  </div>
+</section>
+
+<!-- ================= S7 ================= -->
+<section id="s7">
+  <p class="sec-num">SECCIÓN 07</p>
+  <h2>Gráficas, línea de mejor ajuste y pendientes máx/mín<span class="rule"></span></h2>
+  <p class="sec-intro">La destreza estrella del Paper 2: convertir datos en una recta y sacar de ella una constante física con su incertidumbre.</p>
+
+  <h4>Anatomía de una buena gráfica</h4>
+  <ul>
+    <li>Variable independiente en el eje \(x\); dependiente en \(y\). Ejes rotulados <em>con unidades</em>.</li>
+    <li>Escala que use la mayor parte del papel; no forzar el origen.</li>
+    <li><strong>Barras de error</strong> en cada punto (\(\pm\Delta y\), y \(\pm\Delta x\) si es apreciable).</li>
+    <li><strong>Línea de mejor ajuste</strong> que pase equilibrando puntos por encima y por debajo (no "unir puntos").</li>
+  </ul>
+
+  <h4>Linealización</h4>
+  <p>Si la relación no es recta, se transforma. Ejemplos que verás: \(s=\tfrac12 a t^2 \Rightarrow\) graficar \(s\) vs \(t^2\) (pendiente \(=\tfrac12 a\)); \(T=2\pi\sqrt{L/g}\Rightarrow T^2 = \frac{4\pi^2}{g}L\) (pendiente \(=\frac{4\pi^2}{g}\)).</p>
+
+  <div class="eq">
+    \[ \Delta(\text{pendiente}) = \frac{m_{\max}-m_{\min}}{2}, \qquad \Delta(\text{intercepto}) = \frac{c_{\max}-c_{\min}}{2} \]
+    <span class="eqname">incertidumbre por rectas de máxima y mínima pendiente</span>
+  </div>
+  <p>Trazas la recta de <em>mayor</em> pendiente y la de <em>menor</em> pendiente que aún pasen por (casi) todas las barras de error. La mitad de su diferencia es la incertidumbre.</p>
+
+  <div class="box beyond">
+    <span class="lbl">Más allá del IB</span>
+    <p><strong>Mínimos cuadrados:</strong> \( m=\dfrac{N\sum xy-\sum x\sum y}{N\sum x^2-(\sum x)^2}\). El coeficiente \(r^2\) mide qué tan bien la recta explica los datos (1 = perfecto). Para leyes de potencia \(y=kx^n\), un gráfico <strong>log–log</strong> da una recta de pendiente \(n\): \(\log y=\log k+n\log x\).</p>
+  </div>
+</section>
+
+<!-- ================= S8 ================= -->
+<section id="s8">
+  <p class="sec-num">SECCIÓN 08</p>
+  <h2>Definiciones para el examen<span class="rule"></span></h2>
+  <p class="sec-intro">El IB otorga la marca por la <em>definición</em>, no por el ejemplo. Apréndelas casi textuales.</p>
+  <div class="box def">
+    <span class="lbl">Glosario</span>
+    <ul>
+      <li><strong>Error aleatorio:</strong> variación impredecible en repeticiones de una medida; se reduce promediando.</li>
+      <li><strong>Error sistemático:</strong> desviación constante en un mismo sentido debida al método o instrumento; no se reduce promediando.</li>
+      <li><strong>Exactitud:</strong> cercanía de la medida al valor verdadero.</li>
+      <li><strong>Precisión:</strong> grado de concordancia entre medidas repetidas.</li>
+      <li><strong>Incertidumbre absoluta:</strong> margen \(\Delta x\), en las mismas unidades que la medida.</li>
+      <li><strong>Incertidumbre porcentual:</strong> \(\frac{\Delta x}{x}\times100\%\).</li>
+      <li><strong>Cifra significativa:</strong> dígito que aporta información sobre la precisión de la medida.</li>
+      <li><strong>Resolución:</strong> menor cambio que el instrumento puede detectar/mostrar.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= TRAPS ================= -->
+<section id="traps">
+  <p class="sec-num">CHECKLIST</p>
+  <h2>Trampas típicas del Paper 1<span class="rule"></span></h2>
+  <div class="box trap">
+    <span class="lbl">Antes de marcar, revisa</span>
+    <ul>
+      <li>Redondear la incertidumbre a <strong>1 c.s.</strong> y ajustar los decimales del valor a ella.</li>
+      <li><strong>Analógico = ½ división</strong>; <strong>digital = última cifra</strong>. No los confundas.</li>
+      <li>Al elevar al cuadrado, se <strong>duplica la porcentual</strong>, no la absoluta.</li>
+      <li>Suma/resta → absolutas; producto/cociente → porcentuales. (La resta puede dar un valor pequeño con incertidumbre grande: cuidado.)</li>
+      <li><strong>Precisión ≠ exactitud</strong> (el clásico de las dianas).</li>
+      <li>Promediar \(N\) oscilaciones divide \(\Delta t\) del período entre \(N\), no entre 2.</li>
+      <li>En una recta, <strong>no incluir el origen</strong> como dato si no fue medido.</li>
+      <li>Una constante multiplicativa (como \(\pi\) o \(\tfrac12\)) <strong>no</strong> aporta incertidumbre.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= BLOQUE ================= -->
+<section id="bloque">
+  <p class="sec-num">BLOQUE DE EJEMPLOS RESUELTOS</p>
+  <h2>Los 5 problemas complejos de la ficha (tipo 1)<span class="rule"></span></h2>
+  <p class="sec-intro">Aquí quedan resueltos los ítems más exigentes de la ficha (P7–P10) más una síntesis de nivel superior. Junto con los ejemplos incrustados en la teoría (P1–P6), <strong>la ficha completa está resuelta</strong>.</p>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO A</span><span class="ej-src">ficha P7 · producto y %</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>\(L_1=(10{,}25\pm0{,}05)\ \mathrm{cm}\), \(L_2=(15{,}45\pm0{,}05)\ \mathrm{cm}\). Halla (a) %unc de \(L_1\), (b) %unc de \(L_2\), (c) el área \(A=L_1L_2\), (d) %unc del área.</p>
+      <div class="sol">
+        <p>(a) \(\frac{0{,}05}{10{,}25}\times100=0{,}49\%\). &nbsp; (b) \(\frac{0{,}05}{15{,}45}\times100=0{,}32\%\).</p>
+        <p>(c) \(A=10{,}25\times15{,}45=158{,}4\ \mathrm{cm^2}\).</p>
+        <p>(d) %unc del área \(=0{,}49\%+0{,}32\%=0{,}81\%\Rightarrow \Delta A=0{,}0081\times158{,}4\approx1{,}3\ \mathrm{cm^2}\).</p>
+        <span class="ans">\(A=(158{,}4\pm1{,}3)\ \mathrm{cm^2}\), 0,81 %.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO B</span><span class="ej-src">ficha P8 · potencia (área de círculo)</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Incertidumbre en el área de un círculo con \(r=(14{,}6\pm0{,}5)\ \mathrm{cm}\).</p>
+      <div class="sol">
+        <p>\(A=\pi r^2=\pi(14{,}6)^2=669{,}7\approx670\ \mathrm{cm^2}\).</p>
+        <p>%unc de \(r\): \(\frac{0{,}5}{14{,}6}=3{,}42\%\). Como \(A\propto r^2\), la %unc se <strong>duplica</strong>: \(6{,}85\%\).</p>
+        <p>\(\Delta A=0{,}0685\times670\approx46\ \mathrm{cm^2}\).</p>
+        <span class="ans">\(A=(670\pm46)\ \mathrm{cm^2}\approx(6{,}7\pm0{,}5)\times10^{2}\ \mathrm{cm^2}\) — opción d.</span>
+        <p style="font-size:14px;color:var(--ink-soft)">Nota: la notación de las alternativas de la ficha está mal escrita (mezclan \(67\) y \(6{,}7\)); el resultado físico correcto es el de arriba.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO C</span><span class="ej-src">ficha P9 · promediar oscilaciones</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Período de un péndulo (\(T\approx0{,}5\ \mathrm s\)). Cronometrando <strong>5</strong> oscilaciones se obtiene \((2{,}4\pm0{,}1)\ \mathrm s\); cronometrando <strong>20</strong>, \((9{,}4\pm0{,}1)\ \mathrm s\). Halla \(T\) en cada caso.</p>
+      <div class="sol">
+        <p>El período es el tiempo total dividido entre el número de oscilaciones; la incertidumbre absoluta se divide igual (constante \(=1/N\)):</p>
+        <p>5 osc: \(T=\frac{2{,}4}{5}=0{,}48\), \(\Delta T=\frac{0{,}1}{5}=0{,}02\Rightarrow (0{,}48\pm0{,}02)\ \mathrm s\) (≈4 %).</p>
+        <p>20 osc: \(T=\frac{9{,}4}{20}=0{,}470\), \(\Delta T=\frac{0{,}1}{20}=0{,}005\Rightarrow (0{,}470\pm0{,}005)\ \mathrm s\) (≈1 %).</p>
+        <span class="ans">Más oscilaciones ⇒ misma \(\Delta t\) repartida ⇒ menos %unc. La opción de la ficha (0,47) corresponde a las 20 oscilaciones.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO D</span><span class="ej-src">ficha P10 · gráfica con barras de error (nivel Paper 2)</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Con los datos \((t^2, s)\), \(\Delta s=\pm0{,}1\ \mathrm{cm}\), \(\Delta t\) despreciable, y \(s=\tfrac12 a t^2\) (pendiente \(m=\tfrac12 a\)), determina la aceleración con su incertidumbre. No incluyas el origen.</p>
+      <table>
+        <tr><th>\(t^2\ (\mathrm{s^2})\)</th><td>0,00243</td><td>0,01134</td><td>0,02586</td><td>0,03956</td></tr>
+        <tr><th>\(s\ (\mathrm{cm})\)</th><td>0,1</td><td>0,5</td><td>1,1</td><td>1,7</td></tr>
+      </table>
+      <div class="sol">
+        <p><strong>Pendiente de mejor ajuste</strong> (mínimos cuadrados o recta a ojo): \(m\approx43\ \mathrm{cm\,s^{-2}}\).</p>
+        <p><strong>Máx/mín</strong> usando las barras \(\pm0{,}1\) en los puntos extremos:<br>
+        \(m_{\max}=\frac{1{,}8-0{,}0}{0{,}03956-0{,}00243}\approx48{,}5\); \(\ m_{\min}=\frac{1{,}6-0{,}2}{0{,}03713}\approx37{,}7\).<br>
+        \(\Delta m=\frac{48{,}5-37{,}7}{2}\approx5\ \mathrm{cm\,s^{-2}}\Rightarrow m=(43\pm5)\ \mathrm{cm\,s^{-2}}\).</p>
+        <p>Como \(a=2m\): \(a=(86\pm11)\ \mathrm{cm\,s^{-2}}=(0{,}86\pm0{,}11)\ \mathrm{m\,s^{-2}}\).</p>
+        <span class="ans">\(a=(0{,}86\pm0{,}11)\ \mathrm{m\,s^{-2}}\)  (≈13 %).</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO E</span><span class="ej-src">síntesis · más allá del IB</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Se mide la densidad de un cilindro: \(m=(85{,}0\pm0{,}1)\ \mathrm g\), diámetro \(d=(2{,}00\pm0{,}02)\ \mathrm{cm}\), altura \(h=(6{,}0\pm0{,}1)\ \mathrm{cm}\). Halla \(\rho=\dfrac{m}{\tfrac{\pi}{4}d^2 h}\) con su incertidumbre, e identifica el término dominante.</p>
+      <div class="sol">
+        <p>Valor: \(V=\frac{\pi}{4}(2{,}00)^2(6{,}0)=18{,}85\ \mathrm{cm^3}\Rightarrow \rho=\frac{85{,}0}{18{,}85}=4{,}51\ \mathrm{g\,cm^{-3}}\).</p>
+        <p>%unc (regla IB, suma lineal; \(d\) al cuadrado ⇒ ×2):<br>
+        \(\frac{\Delta m}{m}=0{,}12\%\); \(2\frac{\Delta d}{d}=2(1{,}0\%)=2{,}0\%\); \(\frac{\Delta h}{h}=1{,}7\%\).<br>
+        Total \(=0{,}12+2{,}0+1{,}7=3{,}8\%\Rightarrow\Delta\rho=0{,}038\times4{,}51=0{,}17\).</p>
+        <span class="ans">\(\rho=(4{,}5\pm0{,}2)\ \mathrm{g\,cm^{-3}}\); domina el diámetro (por estar al cuadrado).</span>
+        <p style="font-size:14px;color:var(--ink-soft)">En cuadratura sería \(\sqrt{0{,}12^2+2{,}0^2+1{,}7^2}=2{,}6\%\): siempre menor que la suma lineal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXAMENES ================= -->
+<section id="examenes">
+  <p class="sec-num">BANCO DE EXÁMENES IB · TIPO 1 (PAPER 1)</p>
+  <h2>Preguntas oficiales de examen, 2022–2026, resueltas<span class="rule"></span></h2>
+  <p class="sec-intro">Todas las preguntas de <em>medición e incertidumbre</em> que aparecieron en los Paper 1 del IB en este rango, resueltas paso a paso y con la <strong>respuesta oficial del esquema de calificación (markscheme)</strong>. Cada enunciado está reformulado; los datos y la clave son los reales.</p>
+
+  <div class="box key">
+    <span class="lbl">Lee esto primero · plan nuevo vs. anterior</span>
+    <p>Revisé los <strong>Paper 1A del plan de estudios vigente</strong> (primera evaluación mayo 2025): <strong>mayo 2025, noviembre 2025 y 2026</strong>. En ninguno hay una pregunta de opción múltiple de incertidumbre o cifras significativas: en el currículo actual esa destreza se evalúa en el <strong>trabajo experimental, la EI y el Paper 1B (análisis de datos)</strong>, no como MCQ. Por eso <strong>todas</strong> las preguntas tipo 1 de este tema provienen del <strong>plan anterior (Paper 1, 2022–2024)</strong>. Siguen siendo válidas: la física de la medición no cambió, y lo de unidades/propagación/gráficas es idéntico. Las de análisis de datos sobre gráfica (Paper 1B/Paper 2) irán en el <strong>Módulo 1B (tipo 2)</strong>.</p>
+  </div>
+
+  <h4>Índice del banco</h4>
+  <table>
+    <tr><th>#</th><th class="l">Subtema</th><th>Sesión</th><th>Resp.</th></tr>
+    <tr><td>EX‑1</td><td class="l">Unidad de una constante (F=kv)</td><td>Nov 2022·23</td><td>D</td></tr>
+    <tr><td>EX‑2</td><td class="l">Unidades de la pendiente (Eₖ vs p²)</td><td>May 2024 TZ2</td><td>A</td></tr>
+    <tr><td>EX‑3</td><td class="l">Unidad de la resistencia</td><td>May 2024 TZ1</td><td>A</td></tr>
+    <tr><td>EX‑4</td><td class="l">Magnitud con unidad kg s⁻³</td><td>Nov 2024</td><td>B</td></tr>
+    <tr><td>EX‑5</td><td class="l">Orden de magnitud (luz visible)</td><td>May 2022 TZ1</td><td>B</td></tr>
+    <tr><td>EX‑6</td><td class="l">Incertidumbre de una media (rango/2)</td><td>May 2022 TZ1</td><td>C</td></tr>
+    <tr><td>EX‑7</td><td class="l">%unc de un perímetro (suma)</td><td>Nov 2022</td><td>B</td></tr>
+    <tr><td>EX‑8</td><td class="l">Menor %unc entre operaciones</td><td>May 2023 TZ1</td><td>A</td></tr>
+    <tr><td>EX‑9</td><td class="l">%unc de una diferencia</td><td>May 2024 TZ2</td><td>D</td></tr>
+    <tr><td>EX‑10</td><td class="l">Incert. relativa de un volumen (potencia)</td><td>Nov 2024</td><td>A</td></tr>
+    <tr><td>EX‑11</td><td class="l">Razón de incertidumbres (círculo/cuadrado)</td><td>May 2024 TZ1</td><td>B</td></tr>
+    <tr><td>EX‑12</td><td class="l">%unc desde barras de error (gráfica)</td><td>May 2023 TZ2</td><td>B</td></tr>
+    <tr><td>EX‑13</td><td class="l">Error sistemático vs. incert. de pendiente</td><td>May 2022 TZ2</td><td>C</td></tr>
+  </table>
+
+  <!-- A -->
+  <h3>A · Unidades del SI y análisis dimensional</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EX‑1</span><span class="ej-src">Paper 1 · Nov 2023 TZ1 y TZ2 · Q1 · plan anterior</span></div>
+    <div class="ej-body">
+      <span class="sepide">Enunciado</span>
+      <p>Sobre un objeto que se mueve por un fluido actúa una fuerza resistiva \(F=k\,v\), con \(k\) constante y \(v\) la rapidez. ¿Cuál es la unidad de \(k\)?<br>A) N s⁻¹ &nbsp; B) N m s⁻¹ &nbsp; C) kg m² s⁻³ &nbsp; D) kg s⁻¹</p>
+      <div class="sol">
+        <p>Despeja: \(k=\dfrac{F}{v}\). Sustituye por fundamentales: \(\dfrac{\mathrm{N}}{\mathrm{m\,s^{-1}}}=\dfrac{\mathrm{kg\,m\,s^{-2}}}{\mathrm{m\,s^{-1}}}=\mathrm{kg\,s^{-1}}\).</p>
+        <span class="ans">D) kg s⁻¹ ✓ (apareció idéntica en ambas zonas horarias de Nov 2023)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EX‑2</span><span class="ej-src">Paper 1 · May 2024 TZ2 · Q1 · plan anterior</span></div>
+    <div class="ej-body">
+      <span class="sepide">Enunciado</span>
+      <p>Se grafica la energía cinética \(E_k\) frente al cuadrado de la cantidad de movimiento \(p^2\). ¿Cuáles son las unidades fundamentales SI de la pendiente?<br>A) kg⁻¹ &nbsp; B) kg &nbsp; C) J m² s⁻² &nbsp; D) J m s⁻¹</p>
+      <div class="sol">
+        <p>Relación: \(E_k=\dfrac{p^2}{2m}\). Comparando con \(y=mx\), la pendiente es \(\dfrac{1}{2m}\), cuyas unidades son \(\mathrm{kg^{-1}}\) (el factor \(\tfrac12\) es adimensional).</p>
+        <span class="ans">A) kg⁻¹ ✓</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EX‑3</span><span class="ej-src">Paper 1 · May 2024 TZ1 · Q19 · plan anterior</span></div>
+    <div class="ej-body">
+      <span class="sepide">Enunciado</span>
+      <p>¿Cuál es una unidad posible de la resistencia eléctrica?<br>A) W A⁻² &nbsp; B) A V⁻¹ &nbsp; C) V W⁻² &nbsp; D) W V⁻²</p>
+      <div class="sol">
+        <p>De la potencia disipada \(P=I^2R\) se despeja \(R=\dfrac{P}{I^2}\Rightarrow\) unidad \(\mathrm{W\,A^{-2}}\). (También \(R=V/I=\mathrm{V\,A^{-1}}=\Omega\), pero esa opción no está; \(\mathrm{W\,A^{-2}}\) es equivalente.)</p>
+        <span class="ans">A) W A⁻² ✓</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EX‑4</span><span class="ej-src">Paper 1 · Nov 2024 (español) · Q2 · plan anterior</span></div>
+    <div class="ej-body">
+      <span class="sepide">Enunciado</span>
+      <p>¿Qué magnitud tiene \(\mathrm{kg\,s^{-3}}\) como unidades fundamentales del SI?<br>A) Potencia &nbsp; B) Intensidad &nbsp; C) Cantidad de movimiento &nbsp; D) Energía</p>
+      <div class="sol">
+        <p>La intensidad (de radiación o sonora) es potencia por unidad de área: \(I=\dfrac{P}{A}\Rightarrow \dfrac{\mathrm{W}}{\mathrm{m^2}}=\dfrac{\mathrm{kg\,m^2\,s^{-3}}}{\mathrm{m^2}}=\mathrm{kg\,s^{-3}}\).</p>
+        <p>Comprobación de las otras: potencia \(\mathrm{kg\,m^2\,s^{-3}}\); cantidad de movimiento \(\mathrm{kg\,m\,s^{-1}}\); energía \(\mathrm{kg\,m^2\,s^{-2}}\). Ninguna coincide.</p>
+        <span class="ans">B) Intensidad ✓ — <em>trampa fina:</em> es fácil marcar "Potencia" si no reparas en que falta el m².</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <h3>B · Órdenes de magnitud</h3>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EX‑5</span><span class="ej-src">Paper 1 · May 2022 TZ1 · Q1 · plan anterior</span></div>
+    <div class="ej-body">
+      <span class="sepide">Enunciado</span>
+      <p>¿Cuál es el orden de magnitud de la longitud de onda de la luz visible?<br>A) 10⁻¹⁰ m &nbsp; B) 10⁻⁷ m &nbsp; C) 10⁻⁴ m &nbsp; D) 10⁻¹ m</p>
+      <div class="sol">
+        <p>La luz visible va de ≈400 nm a ≈700 nm, es decir \(4\times10^{-7}\) a \(7\times10^{-7}\) m. El orden es \(10^{-7}\) m.</p>
+        <span class="ans">B) 10⁻⁷ m ✓ (10⁻¹⁰ sería escala atómica / rayos X)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <h3>C · Incertidumbre de una medida repetida</h3>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EX‑6</span><span class="ej-src">Paper 1 · May 2022 TZ1 · Q3 · plan anterior</span></div>
+    <div class="ej-body">
+      <span class="sepide">Enunciado</span>
+      <p>Se mide el tiempo de 20 oscilaciones de un péndulo cuatro veces: 10,45 s; 10,30 s; 10,70 s; 10,55 s. ¿Cuál es la mejor estimación de la incertidumbre del tiempo <em>medio</em> de las 20 oscilaciones?<br>A) 0,01 s &nbsp; B) 0,05 s &nbsp; C) 0,2 s &nbsp; D) 0,5 s</p>
+      <div class="sol">
+        <p>Método del rango (convención IB): \(\Delta t=\dfrac{t_{\max}-t_{\min}}{2}=\dfrac{10{,}70-10{,}30}{2}=\dfrac{0{,}40}{2}=0{,}2\ \mathrm s\).</p>
+        <span class="ans">C) 0,2 s ✓ — <em>ojo:</em> la pregunta pide la incertidumbre del tiempo de <strong>20 oscilaciones</strong>, no del período; no la dividas entre 20.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <h3>D · Incertidumbre porcentual (propagación)</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EX‑7</span><span class="ej-src">Paper 1 · Nov 2022 · Q1 · plan anterior</span></div>
+    <div class="ej-body">
+      <span class="sepide">Enunciado</span>
+      <p>Una hoja rectangular mide \((30{,}0\pm0{,}5)\ \mathrm{cm}\) por \((20{,}0\pm0{,}5)\ \mathrm{cm}\). ¿Cuál es la incertidumbre porcentual del <strong>perímetro</strong>?<br>A) 1 % &nbsp; B) 2 % &nbsp; C) 2,5 % &nbsp; D) 4 %</p>
+      <div class="sol">
+        <p>El perímetro es una <em>suma</em>: \(P=2(a+b)=2(50{,}0)=100{,}0\ \mathrm{cm}\). En sumas se suman las <strong>incertidumbres absolutas</strong>: \(\Delta P=2(\Delta a+\Delta b)=2(0{,}5+0{,}5)=2{,}0\ \mathrm{cm}\).</p>
+        <p>\(\dfrac{\Delta P}{P}\times100=\dfrac{2{,}0}{100{,}0}\times100=2\%\).</p>
+        <span class="ans">B) 2 % ✓ — <em>trampa:</em> no se promedian las %unc de cada lado; el perímetro es una suma, no un producto.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EX‑8</span><span class="ej-src">Paper 1 · May 2023 TZ1 · Q2 · plan anterior</span></div>
+    <div class="ej-body">
+      <span class="sepide">Enunciado</span>
+      <p>\(P=(30\pm1)\ \mathrm g\) y \(Q=(20\pm1)\ \mathrm g\). ¿Qué operación da la <strong>menor</strong> incertidumbre porcentual?<br>A) \(P+Q\) &nbsp; B) \(P-Q\) &nbsp; C) \(P\times Q\) &nbsp; D) \(P/Q\)</p>
+      <div class="sol">
+        <p>Suma/resta → absolutas; producto/cociente → porcentuales.</p>
+        <table>
+          <tr><th class="l">Operación</th><th>Valor</th><th>Δ abs.</th><th>%unc</th></tr>
+          <tr><td class="l">P+Q</td><td>50</td><td>2</td><td><strong>4 %</strong></td></tr>
+          <tr><td class="l">P−Q</td><td>10</td><td>2</td><td>20 %</td></tr>
+          <tr><td class="l">P×Q</td><td>—</td><td>—</td><td>3,3+5=8,3 %</td></tr>
+          <tr><td class="l">P/Q</td><td>—</td><td>—</td><td>3,3+5=8,3 %</td></tr>
+        </table>
+        <span class="ans">A) \(P+Q\) ✓ — la <strong>resta</strong> es la peor (valor chico, Δ grande): 20 %.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EX‑9</span><span class="ej-src">Paper 1 · May 2024 TZ2 · Q2 · plan anterior</span></div>
+    <div class="ej-body">
+      <span class="sepide">Enunciado</span>
+      <p>Un carrito acelera de \((20\pm1)\ \mathrm{m\,s^{-1}}\) a \((30\pm1)\ \mathrm{m\,s^{-1}}\). ¿Cuál es la incertidumbre porcentual del <strong>cambio</strong> de rapidez?<br>A) 2 % &nbsp; B) 4 % &nbsp; C) 8 % &nbsp; D) 20 %</p>
+      <div class="sol">
+        <p>El cambio es una <em>resta</em>: \(\Delta v=30-20=10\ \mathrm{m\,s^{-1}}\). Las absolutas se suman: \(\delta(\Delta v)=1+1=2\).</p>
+        <p>\(\dfrac{2}{10}\times100=20\%\).</p>
+        <span class="ans">D) 20 % ✓ — mismo peligro que EX‑8: restar dos números parecidos dispara la %unc.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EX‑10</span><span class="ej-src">Paper 1 · Nov 2024 (español) · Q1 · plan anterior</span></div>
+    <div class="ej-body">
+      <span class="sepide">Enunciado</span>
+      <p>El radio de una esfera es \(R\) con incertidumbre absoluta \(\Delta R\). ¿Cuál es la incertidumbre <strong>relativa</strong> en el volumen?<br>A) \(3\,\Delta R/R\) &nbsp; B) \(\Delta R/R\) &nbsp; C) \(\tfrac43\,\Delta R/R\) &nbsp; D) \(4\,\Delta R/R\)</p>
+      <div class="sol">
+        <p>\(V=\tfrac43\pi R^3\): la constante \(\tfrac43\pi\) no aporta incertidumbre y el exponente 3 multiplica la relativa: \(\dfrac{\Delta V}{V}=3\,\dfrac{\Delta R}{R}\).</p>
+        <span class="ans">A) \(3\,\Delta R/R\) ✓</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EX‑11</span><span class="ej-src">Paper 1 · May 2024 TZ1 · Q1 · plan anterior</span></div>
+    <div class="ej-body">
+      <span class="sepide">Enunciado</span>
+      <p>El diámetro de un círculo es igual al lado de un cuadrado; ambos valen \(d\pm\Delta d\). El área del círculo es \(\tfrac{\pi}{4}d^2\). ¿Cuánto vale \(\dfrac{\text{incert. fraccionaria del área del cuadrado}}{\text{incert. fraccionaria del área del círculo}}\)?<br>A) \(4/\pi\) &nbsp; B) 1 &nbsp; C) \(\pi/4\) &nbsp; D) \(1/2\)</p>
+      <div class="sol">
+        <p>Área del cuadrado \(=d^2\Rightarrow\) fracc. \(=2\dfrac{\Delta d}{d}\). Área del círculo \(=\tfrac{\pi}{4}d^2\Rightarrow\) fracc. \(=2\dfrac{\Delta d}{d}\) (la constante \(\tfrac{\pi}{4}\) <em>no</em> aporta incertidumbre). La razón es \(1\).</p>
+        <span class="ans">B) 1 ✓ — las constantes multiplicativas se cancelan al comparar incertidumbres relativas.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- E -->
+  <h3>E · Gráficas: barras de error, pendiente y error sistemático</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EX‑12</span><span class="ej-src">Paper 1 · May 2023 TZ2 · Q1 · plan anterior</span></div>
+    <div class="ej-body">
+      <span class="sepide">Enunciado</span>
+      <p>En una gráfica rapidez–tiempo con barras de error en la rapidez, ¿cuál es la incertidumbre porcentual de la rapidez en \(t=4\ \mathrm s\)?<br>A) ±20 % &nbsp; B) ±10 % &nbsp; C) ±8 % &nbsp; D) ±5 %</p>
+      <div class="sol">
+        <p>Regla general: \(\%\text{unc}=\dfrac{\text{semilongitud de la barra de error}}{\text{valor leído}}\times100\). En \(t=4\ \mathrm s\) la barra abarca \(\pm\) la décima parte del valor de la rapidez, de modo que da 10 %.</p>
+        <span class="ans">B) ±10 % ✓ — localiza el punto en \(t=4\,\mathrm s\), mide media barra y divídela entre la lectura.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EX‑13</span><span class="ej-src">Paper 1 · May 2022 TZ2 · Q2 · plan anterior</span></div>
+    <div class="ej-body">
+      <span class="sepide">Enunciado</span>
+      <p>Dos experimentos, P y Q, buscan confirmar que \(y\propto x\). Para cada conjunto se trazan las rectas de pendiente máxima y mínima. ¿Qué es cierto al comparar el <strong>error sistemático</strong> y la <strong>incertidumbre de la pendiente</strong> de P frente a Q?<br>(A–D combinan "mayor en P / mayor en Q" para cada columna.)</p>
+      <div class="sol">
+        <p>Cómo se leen los dos defectos en una gráfica linealizada:</p>
+        <ul>
+          <li><strong>Error sistemático</strong> → lo delata el <strong>intercepto</strong>: si \(y\propto x\) la recta debería pasar por el origen; cuanto más se aleja del origen, mayor es el error sistemático.</li>
+          <li><strong>Incertidumbre de la pendiente</strong> → la da la <strong>separación entre las rectas de pendiente máxima y mínima</strong>: a mayor abanico, mayor \(\Delta m\).</li>
+        </ul>
+        <p>Comparas ambos conjuntos con esos dos criterios por separado. El esquema oficial concluye: error sistemático mayor en P, e incertidumbre de la pendiente mayor en Q.</p>
+        <span class="ans">C) sistemático mayor en P · incertidumbre de la pendiente mayor en Q ✓</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="box beyond">
+    <span class="lbl">Cómo seguirá creciendo este banco</span>
+    <p>Cuando trabajemos el <strong>Módulo 1B (tipo 2)</strong> añadiré las preguntas de <strong>análisis de datos</strong> del Paper 1B y del Paper 2 (determinar una constante a partir de una recta, propagar barras de error, pendientes máx/mín con datos reales): ese es el terreno donde el plan nuevo sí evalúa la incertidumbre a fondo.</p>
+  </div>
+</section>
+
+<!-- ================= PRACTICA ================= -->
+<section id="practica">
+  <p class="sec-num">PARA TI · RESUELVE Y ENVÍA EN BLOQUE</p>
+  <h2>10 problemas propuestos (tipo 1, nivel ascendente)<span class="rule"></span></h2>
+  <p class="sec-intro">Ninguno igual a la ficha. Van de menor a mayor dificultad; los dos últimos integran todo el módulo y superan el nivel IB. Responde todos y me los envías juntos: te devuelvo tabla de puntaje, análisis de errores por trampa y solución de los que dudes.</p>
+
+  <div class="prob"><p class="pn">P1</p><p>Una balanza digital muestra \(24{,}7\ \mathrm g\) con resolución \(0{,}1\ \mathrm g\). Escribe la medida con su incertidumbre absoluta y calcula su incertidumbre porcentual.</p></div>
+
+  <div class="prob"><p class="pn">P2</p><p>Un voltímetro analógico de escala 0–1,0 V con menor división 0,02 V marca la aguja en 0,36 V. Da la lectura con incertidumbre y su %unc.</p></div>
+
+  <div class="prob"><p class="pn">P3</p><p>Con un micrómetro (resolución 0,01 mm) se mide el diámetro de un alambre cinco veces: 1,24; 1,25; 1,23; 1,24; 1,24 mm. Reporta el diámetro medio con incertidumbre. ¿Domina el error de lectura o la dispersión?</p></div>
+
+  <div class="prob"><p class="pn">P4</p><p>\(m_1=(120\pm2)\ \mathrm g\) y \(m_2=(85\pm1)\ \mathrm g\). Halla la masa total y la diferencia \(m_1-m_2\), cada una con incertidumbre absoluta y porcentual. Comenta por qué la resta tiene mayor %unc.</p></div>
+
+  <div class="prob"><p class="pn">P5</p><p>Un cubo tiene arista \(L=(2{,}50\pm0{,}02)\ \mathrm{cm}\). Calcula su volumen con incertidumbre absoluta y porcentual.</p></div>
+
+  <div class="prob"><p class="pn">P6</p><p>Rapidez \(v=d/t\) con \(d=(1{,}50\pm0{,}02)\ \mathrm m\) y \(t=(0{,}60\pm0{,}05)\ \mathrm s\). Halla \(v\) con incertidumbre e indica qué medición aporta más al error.</p></div>
+
+  <div class="prob"><p class="pn">P7</p><p>La densidad de un líquido: \(m=(45{,}2\pm0{,}1)\ \mathrm g\) contenidos en \(V=(12{,}0\pm0{,}5)\ \mathrm{cm^3}\). Da \(\rho\) con incertidumbre absoluta y porcentual.</p></div>
+
+  <div class="prob"><p class="pn">P8</p><p>Se cronometran 25 oscilaciones de un péndulo obteniendo \((40{,}5\pm0{,}2)\ \mathrm s\). (a) Halla el período con incertidumbre. (b) Usando el dato provisto \(T=2\pi\sqrt{L/g}\) con \(L=(0{,}400\pm0{,}005)\ \mathrm m\), despeja \(g\) y propaga su incertidumbre. (La fórmula se te da; no necesitas deducirla.)</p></div>
+
+  <div class="prob jefe"><p class="pn">P9 · INTEGRADOR</p><p>En un circuito se miden \(V=(3{,}0\pm0{,}1)\ \mathrm V\) e \(I=(0{,}25\pm0{,}01)\ \mathrm A\). (a) Calcula \(R=V/I\) con su %unc. (b) Calcula la potencia \(P=VI\) y también por \(P=I^2R\); verifica que ambas dan el mismo valor y la misma %unc, y explica por qué. (c) Redondea correctamente cada resultado final.</p></div>
+
+  <div class="prob jefe"><p class="pn">P10 · PROBLEMA JEFE (supera al IB)</p><p>Determinación experimental de \(g\). Se mide el período \(T\) de un péndulo para varias longitudes \(L\) (todas con \(\Delta L=\pm0{,}002\ \mathrm m\) y \(\Delta T=\pm0{,}02\ \mathrm s\)):</p>
+  <table>
+    <tr><th>\(L\ (\mathrm m)\)</th><td>0,200</td><td>0,400</td><td>0,600</td><td>0,800</td><td>1,000</td></tr>
+    <tr><th>\(T\ (\mathrm s)\)</th><td>0,90</td><td>1,27</td><td>1,55</td><td>1,80</td><td>2,01</td></tr>
+  </table>
+  <p>(a) Linealiza \(T=2\pi\sqrt{L/g}\) para obtener una recta (decide qué graficar en cada eje y cuál es la pendiente teórica). (b) Construye la tabla linealizada con las <strong>barras de error propagadas</strong>. (c) Con rectas de máxima y mínima pendiente, halla la pendiente \(\pm\) su incertidumbre. (d) Determina \(g\pm\Delta g\) y compáralo con \(9{,}81\ \mathrm{m\,s^{-2}}\). (e) Si tu recta linealizada tiene un intercepto claramente distinto de cero, ¿qué tipo de error revela y por qué?</p></div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 1A · Incertidumbre y medición.</strong> Incluye la teoría completa, la ficha resuelta y el <strong>banco de exámenes IB tipo 1 (2022–2026)</strong>. Sigue el <strong>Módulo 1B</strong> (problemas tipo 2). Nota: la ficha de incertidumbre no trae una sección tipo 2 aparte, así que en 1B te daré una batería de problemas tipo 2 de análisis de datos y laboratorio de igual o mayor nivel. Convención del curso: \(g=10\ \mathrm{m\,s^{-2}}\) salvo que el problema indique otro valor (en P10 se usa el valor real \(9{,}81\) para comparar).</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

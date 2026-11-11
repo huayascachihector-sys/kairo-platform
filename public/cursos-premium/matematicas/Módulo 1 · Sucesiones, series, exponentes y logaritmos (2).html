@@ -1,0 +1,1332 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 1 · Sucesiones, series, exponentes y logaritmos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.tipo-nota{color:var(--soft)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 1</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t1">1.1 Exponentes</a>
+  <a class="sub" href="#t2">1.2 Logaritmos</a>
+  <a class="sub" href="#t3">1.3 Sucesiones y Σ</a>
+  <a class="sub" href="#t4">1.4 Progresión aritmética</a>
+  <a class="sub" href="#t5">1.5 Progresión geométrica</a>
+  <a class="sub" href="#t6">1.6 Series infinitas</a>
+  <a class="sub" href="#t7">1.7 Puente log–exp</a>
+  <a class="sub" href="#t8">1.8 Fracciones parciales y telescópicas</a>
+  <a class="sub" href="#t9">1.9 Más allá del IB: recurrencias</a>
+  <a class="sub" href="#t10">1.10 Aplicaciones y error</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos de las fichas</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 1 de 17</p>
+  <h1>Sucesiones, series, exponentes y logaritmos</h1>
+  <p class="formula">\( u_n = u_1 r^{\,n-1} \qquad S_\infty = \dfrac{u_1}{1-r} \qquad \log_a x = \dfrac{\ln x}{\ln a} \)</p>
+  <p>Todo lo necesario para resolver cualquier pregunta de este tema en la Prueba 1 sin calculadora, con el nivel que exige la banda 7. Todos los ejemplos y problemas son del nivel de la Prueba 1: desde lo básico hasta lo más difícil que pone el IB, sin pasarse. Las soluciones están plegadas: intenta primero y luego despliega.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">El tema vale cerca del 6 % de la Prueba 1 (47 de 770 puntos en tus 7 pruebas) y aparece en las 7. Suele ser una pregunta de 5–6 puntos en la Sección A, pero en mayo 2022 TZ1 fue una pregunta completa de la Sección B de 18 puntos.</p>
+
+<h3>Preguntas de examen de este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2026 TZ2</td><td>5</td><td>6</td><td>Suma telescópica de logaritmos con notación Σ</td></tr>
+<tr><td>Noviembre 2022</td><td>3</td><td>5</td><td>«Muestre que» con potencias; manipulación de un solo lado</td></tr>
+<tr><td>Mayo 2022 TZ1</td><td>10</td><td>18</td><td>Serie de logaritmos como PG (convergencia) y como PA (hallar n)</td></tr>
+<tr><td>Mayo 2022 TZ2</td><td>1</td><td>5</td><td>Término general de una PA</td></tr>
+<tr><td>Noviembre 2021</td><td>3</td><td>5</td><td>Ecuación logarítmica con cambio de base</td></tr>
+<tr><td>Mayo 2021 TZ1</td><td>2</td><td>5</td><td>PA con dos condiciones: \(u_8 = S_8 = 8\)</td></tr>
+<tr><td>Mayo 2021 TZ2</td><td>4(a)</td><td>3</td><td>Ecuación \(\ln(x^2-16)=0\) con restricción de dominio</td></tr>
+</tbody></table></div>
+
+<h3>Cómo lo pregunta el IB: patrones de tus 7 pruebas</h3>
+<ol>
+<li><b>Dos condiciones, dos incógnitas.</b> PA o PG donde se dan un término y una suma (o dos sumas). Se resuelve con un sistema lineal o con un cociente que elimina \(u_1\).</li>
+<li><b>Logaritmos en otra base.</b> La ecuación trae bases distintas (\(\log_3\) y \(\log_2\)); el markscheme reparte marcas por cada ley usada: cambio de base, potencia y producto.</li>
+<li><b>Σ telescópica con ln.</b> Una suma de logaritmos que se convierte en el logaritmo de un producto que se cancela en cadena.</li>
+<li><b>Serie mixta en la Sección B.</b> Los términos son logaritmos; la misma serie se estudia como PG (convergencia, \(S_\infty\)) y como PA (hallar \(n\)). Exige justificar cada división por \(\ln x\) y analizar los dos signos de \(r\).</li>
+<li><b>«Muestre que» algebraico.</b> Una identidad con potencias que se prueba desarrollando un solo lado.</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Cómo se usa aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA 02 (2025)</td><td>PG, series geométricas, convergencia, interés compuesto; 9 preguntas IB pasadas</td><td>Base de los ejemplos F1–F7. Las preguntas de Prueba 2 se adaptan a Prueba 1 con métodos exactos.</td></tr>
+<tr><td>DMpA 17 (2025)</td><td>Logaritmos: definición, leyes, cambio de base, gráficas, modelo de decaimiento</td><td>Ejemplos F8–F10 y sección 1.2.</td></tr>
+<tr><td>DMpA 24 (2025)</td><td>Cifras significativas, cotas, error porcentual</td><td>Sección 1.10 (contenido de Prueba 2, se ve breve).</td></tr>
+<tr><td>DMpA 15 (2026)</td><td>Series infinitas, criterios de convergencia</td><td>Solo la parte geométrica entra aquí; los criterios generales van al Módulo 17.</td></tr>
+</tbody></table></div>
+<p>Las fichas traen muchos ítems de cálculo directo con calculadora. Esos no aparecen aquí: todos los ejemplos están llevados al nivel de la Sección B o de las preguntas finales de la Sección A.</p>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA NS (Tema 1)</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Leyes de exponentes con exponentes racionales</td><td>1.1</td><td>Alto (transversal)</td></tr>
+<tr><td>Logaritmos, leyes, cambio de base, ecuaciones e inecuaciones</td><td>1.2</td><td>Alto</td></tr>
+<tr><td>Sucesiones, notación Σ, relación entre \(u_n\) y \(S_n\)</td><td>1.3</td><td>Medio</td></tr>
+<tr><td>Progresiones y series aritméticas</td><td>1.4</td><td>Alto</td></tr>
+<tr><td>Progresiones y series geométricas</td><td>1.5</td><td>Alto</td></tr>
+<tr><td>Series geométricas infinitas y convergencia</td><td>1.6</td><td>Alto</td></tr>
+<tr><td>Fracciones parciales (NS)</td><td>1.8</td><td>Medio (también en integración)</td></tr>
+<tr><td>Interés compuesto, depreciación, crecimiento</td><td>1.10</td><td>Bajo (sobre todo Prueba 2)</td></tr>
+<tr><td>Aproximación, cotas y error porcentual</td><td>1.10</td><td>Bajo (sobre todo Prueba 2)</td></tr>
+<tr><td>Puente log–exp entre PA y PG; sumas telescópicas</td><td>1.7–1.8</td><td>Alto en la Sección B</td></tr>
+<tr><td>Otros tipos de pregunta: razón trigonométrica, PA frente a PG en contexto, términos en un intervalo, Σ con límites, decimales periódicos, sistemas de logaritmos, cotas, «muestre que» con potencias</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+<tr><td>Recurrencias y series aritmético-geométricas (fuera del programa)</td><td>1.9</td><td>Solo como herramienta</td></tr>
+<tr><td>Notación científica \(a\times10^k\), \(1\le a\lt10\)</td><td>1.1</td><td>Bajo</td></tr>
+</tbody></table></div>
+<p>El binomio, la inducción, los complejos y los sistemas 3×3 también son del Tema 1, pero tienen su propio módulo (4, 5, 6 y 9).</p>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1 a 1.8 y 1.10 cubren todo el Tema 1 del programa que corresponde a este módulo. Cada concepto clave trae ejemplos de nivel de examen y un recuadro «Para practicar». La sección 6 reúne los tipos de pregunta del IB que no salieron en tus 7 pruebas. Todo lo que va más allá del programa está marcado en morado (cajas y sección 1.9), y ningún ejemplo ni problema extra pide contenido fuera del programa. El techo es la investigación I1, tipo Prueba 3.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Va de lo básico a lo más exigente. Cada concepto trae un ejemplo resuelto. Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa y resuelven lo inesperado.</p>
+
+<h3 id="t1">1.1 Exponentes</h3>
+<p>Para \(a,b\gt 0\) y \(m,n\) reales:</p>
+\[ a^m a^n = a^{m+n},\qquad \frac{a^m}{a^n}=a^{m-n},\qquad (a^m)^n=a^{mn},\qquad (ab)^n=a^nb^n \]
+\[ a^0=1,\qquad a^{-n}=\frac{1}{a^n},\qquad a^{m/n}=\sqrt[n]{a^m}=\left(\sqrt[n]{a}\right)^m \]
+<p><b>Racionalizar.</b> Se multiplica por el conjugado: \(\dfrac{1}{\sqrt a+\sqrt b}=\dfrac{\sqrt a-\sqrt b}{a-b}\). Es la clave de las sumas telescópicas con raíces.</p>
+
+<h4>Cuatro estrategias para ecuaciones exponenciales</h4>
+<ol>
+<li><b>Igualar bases:</b> si \(a^{f(x)}=a^{g(x)}\) con \(a\gt 0,\ a\neq 1\), entonces \(f(x)=g(x)\).</li>
+<li><b>Sustitución:</b> si aparecen \(a^{2x}\) y \(a^x\), pon \(u=a^x\gt 0\) y resuelve una cuadrática. Descarta raíces \(u\le 0\).</li>
+<li><b>Tomar ln:</b> si las bases no se igualan, aplica ln y despeja; la respuesta queda como cociente de logaritmos.</li>
+<li><b>Sistemas:</b> escribe todo en bases primas (2, 3, 5) y compara exponentes; queda un sistema lineal.</li>
+</ol>
+
+<div class="ex"><p class="et">Ejemplo 1.1. sustitución</p>
+<p>Resuelve \(9^x-4\cdot 3^{x+1}+27=0\).</p>
+<p>Sea \(u=3^x\gt 0\): \(u^2-12u+27=0\Rightarrow (u-3)(u-9)=0\). Así \(3^x=3\) o \(3^x=9\), y \(x=1\) o \(x=2\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.2. bases distintas</p>
+<p>Resuelve \(5^{2x-1}=3^{x+2}\) y da \(x\) exacto.</p>
+<p>\((2x-1)\ln 5=(x+2)\ln 3 \Rightarrow x(2\ln5-\ln3)=\ln5+2\ln3 \Rightarrow x=\dfrac{\ln 45}{\ln(25/3)}\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.3. sistema exponencial</p>
+<p>Resuelve \(2^x\cdot 4^y=32\) y \(\dfrac{9^x}{3^y}=27\).</p>
+<p>En base 2: \(2^{x+2y}=2^5\Rightarrow x+2y=5\). En base 3: \(3^{2x-y}=3^3\Rightarrow 2x-y=3\). Resolviendo: \(x=\tfrac{11}{5},\ y=\tfrac{7}{5}\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(4^x-6\cdot2^x+8=0\).</li><li>Resuelve \(3^{x+1}=5^x\) y da \(x\) en forma exacta.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Con \(u=2^x\): \(u^2-6u+8=0\), así que \(u=2\) o \(u=4\), y \(x=1\) o \(x=2\).</li><li>\((x+1)\ln3=x\ln5\), así que \(x=\dfrac{\ln3}{\ln(5/3)}\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.4. Notación científica sin calculadora</p>
+<p>Un número está en notación científica si se escribe \(a\times10^k\) con \(1\le a\lt10\) y \(k\in\mathbb Z\). Calcula y da el resultado en esa forma: (a) \((3{,}2\times10^5)(4\times10^{-8})\); (b) \(\dfrac{6\times10^4}{1{,}5\times10^{-3}}\); (c) \(\sqrt{9\times10^{-6}}\).</p>
+<p>(a) \(12{,}8\times10^{-3}=1{,}28\times10^{-2}\): como \(12{,}8\ge10\), se corre la coma y se suma 1 al exponente. (b) \(4\times10^{4-(-3)}=4\times10^7\). (c) \(\sqrt9\times10^{-3}=3\times10^{-3}\), porque el exponente par se divide entre 2.</p></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2022, P3)</p><p>Te piden «muestre que» una identidad con potencias. Hay que desarrollar un lado hasta llegar exactamente al otro. Si mueves términos entre lados, el markscheme da como máximo M1A0A0.</p></div>
+
+<h3 id="t2">1.2 Logaritmos</h3>
+<p><b>Definición.</b> Para \(a\gt 0,\ a\neq1,\ x\gt 0\): \(\ \log_a x=y \iff a^y=x\). El argumento siempre debe ser positivo, y la base positiva y distinta de 1.</p>
+<p><b>Identidades:</b> \(\log_a 1=0,\ \log_a a=1,\ a^{\log_a x}=x,\ \log_a(a^x)=x,\ e^{\ln x}=x\).</p>
+\[ \log_a(xy)=\log_a x+\log_a y,\qquad \log_a\frac{x}{y}=\log_a x-\log_a y,\qquad \log_a x^n=n\log_a x \]
+\[ \log_a x=\frac{\log_b x}{\log_b a}\quad\Rightarrow\quad \log_a b=\frac{1}{\log_b a},\qquad \log_{a^k}x=\frac{1}{k}\log_a x,\qquad \log_a b\cdot\log_b c=\log_a c \]
+
+<h4>Método seguro para ecuaciones logarítmicas</h4>
+<ol>
+<li>Escribe el dominio: argumentos positivos y, si la base tiene variable, base positiva y distinta de 1.</li>
+<li>Lleva todo a una sola base.</li>
+<li>Junta en un logaritmo por lado.</li>
+<li>Quita el logaritmo: \(\log_a A=\log_a B\Rightarrow A=B\), o \(\log_a A=c\Rightarrow A=a^c\).</li>
+<li>Descarta lo que viole el dominio.</li>
+</ol>
+
+<div class="ex"><p class="et">Ejemplo 1.5. bases distintas y dominio</p>
+<p>Resuelve \(\log_4 x=\log_2(x-2)\).</p>
+<p>Dominio: \(x\gt 2\). Como \(\log_4 x=\tfrac12\log_2 x=\log_2\sqrt x\), queda \(\sqrt x=x-2\). Con \(t=\sqrt x\): \(t^2-t-2=0\Rightarrow t=2\) (se descarta \(t=-1\)). Así \(x=4\), que cumple \(x\gt 2\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.6. base variable</p>
+<p>Resuelve \(\log_3 x-2\log_x 3=1\).</p>
+<p>Dominio: \(x\gt 0,\ x\ne1\). Sea \(t=\log_3 x\ne 0\); entonces \(\log_x 3=1/t\) y \(t-\dfrac{2}{t}=1\Rightarrow t^2-t-2=0\Rightarrow t=2\) o \(t=-1\). Así \(x=9\) o \(x=\tfrac13\).</p></div>
+
+<p><b>Inecuaciones.</b> Si la base es mayor que 1, el logaritmo conserva el sentido de la desigualdad. Si está entre 0 y 1, lo invierte. Lo mismo pasa al dividir por un logaritmo negativo, como \(\ln\tfrac34\lt 0\).</p>
+
+<div class="ex"><p class="et">Ejemplo 1.7. inecuación con dominio</p>
+<p>Resuelve \(\ln(x^2-3)\lt \ln(2x)\).</p>
+<p>Dominio: \(x^2\gt 3\) y \(x\gt 0\), o sea \(x\gt \sqrt3\). Como ln es creciente: \(x^2-2x-3\lt 0\Rightarrow -1\lt x\lt 3\). Intersección: \(\sqrt3\lt x\lt 3\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 269.424 269.424" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 269.424 
+L 269.424 269.424 
+L 269.424 0 
+L 0 0 
+L 0 269.424 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 262.224 
+L 262.224 262.224 
+L 262.224 7.2 
+L 7.2 7.2 
+L 7.2 262.224 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m519c83d0c9" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m519c83d0c9" x="123.12" y="192.672" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="123.12" y="208.030281" transform="rotate(-0 123.12 208.030281)">2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m519c83d0c9" x="169.488" y="192.672" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="169.488" y="208.030281" transform="rotate(-0 169.488 208.030281)">4</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m519c83d0c9" x="215.856" y="192.672" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="215.856" y="208.030281" transform="rotate(-0 215.856 208.030281)">6</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <defs>
+       <path id="m4ed4b9a797" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m4ed4b9a797" x="76.752" y="146.304" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="69.752" y="150.483141" transform="rotate(-0 69.752 150.483141)">2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m4ed4b9a797" x="76.752" y="99.936" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="69.752" y="104.115141" transform="rotate(-0 69.752 104.115141)">4</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m4ed4b9a797" x="76.752" y="53.568" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="69.752" y="57.747141" transform="rotate(-0 69.752 57.747141)">6</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M 7.2 189.774 
+L 16.039385 188.897388 
+L 23.948308 187.890492 
+L 30.926769 186.781178 
+L 37.44 185.51475 
+L 43.022769 184.214636 
+L 48.140308 182.816399 
+L 53.257846 181.186994 
+L 57.910154 179.473075 
+L 62.097231 177.712909 
+L 66.284308 175.718014 
+L 70.471385 173.457086 
+L 74.193231 171.19546 
+L 77.915077 168.667636 
+L 81.636923 165.842283 
+L 84.893538 163.098601 
+L 88.150154 160.074342 
+L 91.406769 156.740815 
+L 94.663385 153.066391 
+L 97.92 149.016211 
+L 100.711385 145.216532 
+L 103.502769 141.086141 
+L 106.294154 136.596251 
+L 109.085538 131.715573 
+L 111.876923 126.410096 
+L 114.668308 120.642844 
+L 117.459692 114.373626 
+L 120.251077 107.558754 
+L 123.042462 100.150733 
+L 125.833846 92.097939 
+L 128.625231 83.344253 
+L 131.416615 73.82867 
+L 134.208 63.484877 
+L 136.999385 52.240789 
+L 139.790769 40.018047 
+L 142.582154 26.731471 
+L 145.373538 12.288469 
+L 146.304 7.2 
+L 146.304 7.2 
+" clip-path="url(#p3e554a6f42)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 79.033817 270.424 
+L 79.144062 268.641403 
+L 79.760492 260.972456 
+L 80.993354 249.485151 
+L 82.226215 240.950487 
+L 83.459077 234.156834 
+L 84.691938 228.512836 
+L 85.9248 223.68513 
+L 87.774092 217.542204 
+L 89.623385 212.354341 
+L 91.472677 207.864139 
+L 93.321969 203.906006 
+L 95.171262 200.367101 
+L 97.636985 196.164981 
+L 100.102708 192.432352 
+L 102.568431 189.074769 
+L 105.650585 185.302517 
+L 108.732738 181.912914 
+L 111.814892 178.835429 
+L 115.513477 175.481202 
+L 119.212062 172.432902 
+L 123.527077 169.195638 
+L 127.842092 166.244233 
+L 132.773538 163.162197 
+L 137.704985 160.34035 
+L 143.252862 157.426674 
+L 149.417169 154.46165 
+L 155.581477 151.738197 
+L 162.362215 148.978194 
+L 169.759385 146.206262 
+L 177.772985 143.441852 
+L 186.403015 140.700015 
+L 195.649477 137.992149 
+L 206.1288 135.166927 
+L 217.224554 132.41477 
+L 228.936738 129.736197 
+L 241.881785 127.005663 
+L 256.059692 124.250545 
+L 262.224 123.12 
+L 262.224 123.12 
+" clip-path="url(#p3e554a6f42)" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 7.2 262.224 
+L 35.536 233.888 
+L 63.872 205.552 
+L 92.208 177.216 
+L 120.544 148.88 
+L 148.88 120.544 
+L 177.216 92.208 
+L 205.552 63.872 
+L 233.888 35.536 
+L 262.224 7.2 
+" clip-path="url(#p3e554a6f42)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_10">
+    <defs>
+     <path id="m55859ce362" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#p3e554a6f42)">
+     <use xlink:href="#m55859ce362" x="76.752" y="169.488" style="stroke: currentColor"/>
+     <use xlink:href="#m55859ce362" x="99.936" y="192.672" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 76.752 262.224 
+L 76.752 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 192.672 
+L 262.224 192.672 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="44.2944" y="162.5328" transform="rotate(-0 44.2944 162.5328)">(0, 1)</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="102.2544" y="208.9008" transform="rotate(-0 102.2544 208.9008)">(1, 0)</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_11">
+     <path d="M 176.21775 218.288062 
+L 186.21775 218.288062 
+L 196.21775 218.288062 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="204.21775" y="221.788062" transform="rotate(-0 204.21775 221.788062)">y = 2ˣ</text>
+    </g>
+    <g id="line2d_12">
+     <path d="M 176.21775 232.966187 
+L 186.21775 232.966187 
+L 196.21775 232.966187 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="204.21775" y="236.466187" transform="rotate(-0 204.21775 236.466187)">y = log₂ x</text>
+    </g>
+    <g id="line2d_13">
+     <path d="M 176.21775 247.644312 
+L 186.21775 247.644312 
+L 196.21775 247.644312 
+" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="204.21775" y="251.144312" transform="rotate(-0 204.21775 251.144312)">y = x</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3e554a6f42">
+   <rect x="7.2" y="7.2" width="255.024" height="255.024"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: \(a^x\) y \(\log_ax\) son inversas: una es el reflejo de la otra en \(y=x\). Por eso el dominio del logaritmo es \(x\gt0\) (el recorrido de la exponencial) y su asíntota es vertical. Es el origen de las restricciones de dominio de los Ejemplos 1.5 y 1.7.</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(\log_2(x+3)+\log_2(x-3)=4\).</li><li>Resuelve \(\log_9x+\log_3x=6\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Dominio \(x\gt3\). \((x+3)(x-3)=16\), así que \(x^2=25\) y \(x=5\) (se descarta \(-5\)).</li><li>\(\log_9x=\tfrac12\log_3x\), así que \(\tfrac32\log_3x=6\), \(\log_3x=4\) y \(x=81\).</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2021, P3)</p><p>Aparece \(\dfrac{1}{2\log_2 3}\), que es \(\tfrac12\log_3 2\). El markscheme da tres M1 por usar cambio de base, regla de la potencia y regla del producto, en cualquier orden.</p></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li>\(x^{\log y}=y^{\log x}\) en cualquier base (toma log a ambos lados).</li>
+<li>Para comparar números sin calculadora, compara sus logaritmos: \(2^{300}\lt 3^{200}\) porque \(2^{300}=8^{100}\lt 9^{100}=3^{200}\).</li>
+<li>\(\log_2 3\) es irracional. Si fuera \(p/q\), tendríamos \(3^q=2^p\): un impar igual a un par. Este tipo de prueba por contradicción vuelve en el Módulo 5.</li>
+</ul></div>
+
+<h3 id="t3">1.3 Sucesiones y notación Σ</h3>
+<p>Una sucesión puede ser <b>explícita</b> (\(u_n=f(n)\)) o <b>recursiva</b> (se da \(u_1\) y \(u_{n+1}=g(u_n)\)). \(S_n\) es la suma de los \(n\) primeros términos, y:</p>
+\[ u_1=S_1,\qquad u_n=S_n-S_{n-1}\ \ (n\ge2) \]
+<p>La fórmula de \(u_n\) solo vale desde \(n=2\). Hay que comprobar aparte si también da \(u_1\).</p>
+
+<div class="ex"><p class="et">Ejemplo 1.8. la constante que rompe la PA</p>
+<p>Si \(S_n=2n^2+3n+1\), ¿es una PA?</p>
+<p>\(u_1=S_1=6\). Para \(n\ge2\): \(u_n=S_n-S_{n-1}=4n+1\), así que \(u_2=9,\ u_3=13\). Como \(u_2-u_1=3\neq 4=u_3-u_2\), <b>no</b> es una PA; lo impide la constante 1. En general, \(S_n=An^2+Bn+C\) es de una PA si y solo si \(C=0\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Si \(S_n=3n^2-n\), halla \(u_n\) y muestra que la sucesión es una PA.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(u_n=S_n-S_{n-1}=6n-4\) para \(n\ge2\), y \(u_1=S_1=2=6(1)-4\): la fórmula vale para todo \(n\). Es una PA con \(d=6\). Coincide con la regla: no hay término independiente.</li></ol></div></details></div>
+
+<p><b>Notación sigma.</b> \(\sum_{k=p}^{q}u_k\) tiene \(q-p+1\) términos. Es lineal: \(\sum(u_k+v_k)=\sum u_k+\sum v_k\) y \(\sum c\,u_k=c\sum u_k\). El índice se puede desplazar: \(\sum_{k=1}^{n}u_{k+1}=\sum_{j=2}^{n+1}u_j\).</p>
+
+<div class="ex"><p class="et">Ejemplo 1.9. suma alternada por pares</p>
+<p>Muestra que \(\displaystyle\sum_{k=1}^{2n}(-1)^k k^2=n(2n+1)\).</p>
+<p>Agrupa en pares: \((2j)^2-(2j-1)^2=4j-1\). Entonces la suma es \(\sum_{j=1}^{n}(4j-1)=4\cdot\dfrac{n(n+1)}{2}-n=2n^2+n=n(2n+1)\).</p></div>
+
+<p>Sumas que conviene conocer (se prueban por inducción en el Módulo 5):</p>
+\[ \sum_{k=1}^{n}k=\frac{n(n+1)}{2},\qquad \sum_{k=1}^{n}k^2=\frac{n(n+1)(2n+1)}{6},\qquad \sum_{k=1}^{n}k^3=\left(\frac{n(n+1)}{2}\right)^2 \]
+<h3 id="t4">1.4 Progresión aritmética (PA)</h3>
+<p>Una PA suma una constante \(d\) (diferencia común): \(u_{n+1}-u_n=d\).</p>
+\[ u_n=u_1+(n-1)d,\qquad S_n=\frac n2\big(2u_1+(n-1)d\big)=\frac n2\,(u_1+u_n) \]
+<h4>Propiedades que resuelven preguntas difíciles</h4>
+<ul>
+<li>\(a,b,c\) son consecutivos en una PA si y solo si \(2b=a+c\).</li>
+<li>\(u_n=dn+(u_1-d)\) es lineal en \(n\): el coeficiente de \(n\) es \(d\).</li>
+<li>\(S_n=\tfrac d2 n^2+\left(u_1-\tfrac d2\right)n\): cuadrática sin término independiente. Recíprocamente, \(S_n=An^2+Bn\) implica PA con \(d=2A\) y \(u_1=A+B\).</li>
+<li>Simetría: \(u_k+u_{n+1-k}=u_1+u_n\). Por eso \(S_n=\tfrac n2(u_1+u_n)\).</li>
+<li>Bloques: \(S_m,\ S_{2m}-S_m,\ S_{3m}-S_{2m}\) forman una PA de diferencia \(m^2d\).</li>
+<li>Si al despejar \(n\) sale un número no entero o no positivo, ese valor no es término.</li>
+</ul>
+
+<div class="ex"><p class="et">Ejemplo 1.10. dos sumas y la propiedad de bloques</p>
+<p>En una PA, \(S_{10}=155\) y \(S_{20}=610\). Halla \(u_1\), \(d\) y \(S_{30}\).</p>
+<p>\(5(2u_1+9d)=155\Rightarrow 2u_1+9d=31\); \(10(2u_1+19d)=610\Rightarrow 2u_1+19d=61\). Restando, \(d=3\) y \(u_1=2\).</p>
+<p>Bloques de 10: \(155,\ 455,\ 755\) (diferencia \(100d=300\)). Así \(S_{30}=610+755=1365\). Comprobación: \(S_{30}=15(4+87)=1365\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.11. conteo con inclusión–exclusión</p>
+<p>Halla la suma de los enteros del 1 al 500 que no son divisibles ni por 3 ni por 5.</p>
+<p>Total: \(\tfrac{500\cdot501}{2}=125\,250\). Múltiplos de 3 (hasta 498, 166 términos): \(3\cdot\tfrac{166\cdot167}{2}=41\,583\). Múltiplos de 5 (100 términos): \(5\cdot\tfrac{100\cdot101}{2}=25\,250\). Múltiplos de 15 (33 términos, se contaron dos veces): \(15\cdot\tfrac{33\cdot34}{2}=8\,415\).</p>
+<p>Suma pedida: \(125\,250-(41\,583+25\,250-8\,415)=66\,832\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>En una PA, \(u_5=17\) y \(S_{10}=185\). Halla \(u_1\) y \(d\).</li><li>¿Cuántos términos de \(7+11+15+\dots\) hacen falta para que la suma supere 500?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(u_1+4d=17\) y \(2u_1+9d=37\). Así \(d=3\) y \(u_1=5\).</li><li>\(S_n=n(2n+5)\). \(S_{14}=462\) y \(S_{15}=525\), así que hacen falta 15 términos.</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ1, P2)</p><p>Dan \(u_8=S_8=8\). La forma \(S_n=\tfrac n2(u_1+u_n)\) usa directamente el dato \(u_8\) y resuelve \(u_1\) en una línea.</p></div>
+
+<h3 id="t5">1.5 Progresión geométrica (PG)</h3>
+<p>Una PG multiplica por una constante \(r\neq0\) (razón común): \(u_{n+1}/u_n=r\).</p>
+\[ u_n=u_1r^{n-1},\qquad S_n=\frac{u_1(r^n-1)}{r-1}=\frac{u_1(1-r^n)}{1-r}=\frac{u_1-u_n r}{1-r}\qquad(r\neq1) \]
+<p>Usa la segunda forma si \(r\lt 1\) para evitar signos. La tercera sirve cuando conoces el último término.</p>
+<h4>Propiedades clave</h4>
+<ul>
+<li>\(a,b,c\) no nulos son consecutivos en una PG si y solo si \(b^2=ac\).</li>
+<li>De \(r^2=k\) salen dos razones, \(r=\pm\sqrt k\): analiza ambas.</li>
+<li><b>Subsucesiones:</b> los términos en posiciones pares (o impares) forman una PG de razón \(r^2\). Los tomados cada \(m\) posiciones, de razón \(r^m\).</li>
+<li><b>Umbral:</b> para el menor \(n\) con \(S_n\gt K\), aísla \(r^n\) y compáralo con potencias exactas, o toma ln. Si \(0\lt r\lt 1\), dividir por \(\ln r\lt 0\) invierte la desigualdad.</li>
+<li>Si \(u_n\gt 0\) para todo \(n\), \(\ln u_n\) es una PA de diferencia \(\ln r\) (sección 1.7).</li>
+</ul>
+
+<div class="ex"><p class="et">Ejemplo 1.12. dos razones, una misma suma</p>
+<p>Una PG cumple \(u_1+u_2=12\) y \(u_3+u_4=3\). Halla \(u_1\), \(r\) y \(S_\infty\) en cada caso.</p>
+<p>\(u_3+u_4=r^2(u_1+u_2)\Rightarrow r^2=\tfrac14\Rightarrow r=\pm\tfrac12\).</p>
+<p>Si \(r=\tfrac12\): \(u_1\cdot\tfrac32=12\Rightarrow u_1=8\), \(S_\infty=\dfrac{8}{1/2}=16\). Si \(r=-\tfrac12\): \(u_1\cdot\tfrac12=12\Rightarrow u_1=24\), \(S_\infty=\dfrac{24}{3/2}=16\).</p>
+<p>Coinciden porque, agrupando en pares, \(S_\infty=\dfrac{u_1+u_2}{1-r^2}=\dfrac{12}{3/4}=16\), que solo depende de \(r^2\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.13. umbral sin calculadora</p>
+<p>Halla el menor \(n\) con \(3+6+12+\dots\gt 1000\).</p>
+<p>\(S_n=3(2^n-1)\gt 1000\Rightarrow 2^n\gt 334{,}3\). Como \(2^8=256\lt 334{,}3\lt 512=2^9\), el menor valor es \(n=9\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Una PG tiene \(u_2=6\) y \(u_5=-48\). Halla \(u_1\), \(r\) y \(S_8\).</li><li>Halla el menor \(n\) con \(2+6+18+\dots\gt2000\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(r^3=-8\), así que \(r=-2\) y \(u_1=-3\). \(S_8=\dfrac{-3\left((-2)^8-1\right)}{-2-1}=255\).</li><li>\(S_n=3^n-1\gt2000\iff3^n\gt2001\). Como \(3^6=729\) y \(3^7=2187\), \(n=7\).</li></ol></div></details></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB</p><p>El producto de los \(n\) primeros términos de una PG es \(u_1^n r^{n(n-1)/2}=(u_1u_n)^{n/2}\), porque los exponentes de \(r\) suman \(0+1+\dots+(n-1)\).</p></div>
+
+<h3 id="t6">1.6 Series geométricas infinitas</h3>
+\[ S_\infty=\frac{u_1}{1-r}\quad\text{si } |r|\lt 1,\qquad S_\infty-S_n=\frac{u_1r^n}{1-r} \]
+<p>Si \(|r|\ge1\) (y \(u_1\ne0\)), la serie diverge. Si \(r\) depende de \(x\), la condición \(-1\lt r\lt 1\) es una inecuación doble que hay que resolver completa.</p>
+
+<div class="ex"><p class="et">Ejemplo 1.14. razón con variable</p>
+<p>Considera \(\displaystyle\sum_{n=0}^{\infty}\left(\frac{2x-1}{3}\right)^n\). (a) ¿Para qué \(x\) converge? (b) Halla \(x\) si la suma es 3.</p>
+<p>(a) \(\left|\tfrac{2x-1}{3}\right|\lt 1\iff -3\lt 2x-1\lt 3\iff -1\lt x\lt 2\).</p>
+<p>(b) El primer término (\(n=0\)) es 1, así que \(S_\infty=\dfrac{1}{1-\frac{2x-1}{3}}=\dfrac{3}{4-2x}=3\Rightarrow x=\tfrac32\), que está en el intervalo.</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.15. razón exponencial</p>
+<p>Muestra que \(\displaystyle\sum_{n=1}^{\infty}e^{-nx}=\frac{1}{e^x-1}\) para \(x\gt 0\).</p>
+<p>Es geométrica con \(u_1=r=e^{-x}\), y \(0\lt e^{-x}\lt 1\) si \(x\gt 0\). Entonces \(S_\infty=\dfrac{e^{-x}}{1-e^{-x}}=\dfrac{1}{e^x-1}\) (multiplicando arriba y abajo por \(e^x\)).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 410.869062 246.275875" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 246.275875 
+L 410.869062 246.275875 
+L 410.869062 0 
+L 0 0 
+L 0 246.275875 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 46.549063 206.784 
+L 403.669063 206.784 
+L 403.669063 7.2 
+L 46.549063 7.2 
+L 46.549063 206.784 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m02bceed6d0" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m02bceed6d0" x="62.78179" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="62.78179" y="222.142281" transform="rotate(-0 62.78179 222.142281)">1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m02bceed6d0" x="151.323939" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="151.323939" y="222.142281" transform="rotate(-0 151.323939 222.142281)">4</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m02bceed6d0" x="269.380137" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="269.380137" y="222.142281" transform="rotate(-0 269.380137 222.142281)">8</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m02bceed6d0" x="387.436335" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="387.436335" y="222.142281" transform="rotate(-0 387.436335 222.142281)">12</text>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="225.109063" y="236.788219" transform="rotate(-0 225.109063 236.788219)">n</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="m79a6b6aa2e" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m79a6b6aa2e" x="46.549063" y="197.712" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="39.549063" y="201.891141" transform="rotate(-0 39.549063 201.891141)">0,5</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m79a6b6aa2e" x="46.549063" y="177.552" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="39.549063" y="181.731141" transform="rotate(-0 39.549063 181.731141)">2/3</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m79a6b6aa2e" x="46.549063" y="137.232" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="39.549063" y="141.411141" transform="rotate(-0 39.549063 141.411141)">1</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m79a6b6aa2e" x="46.549063" y="16.272" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="39.549063" y="20.451141" transform="rotate(-0 39.549063 20.451141)">2</text>
+     </g>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="15.558281" y="106.992" transform="rotate(-90 15.558281 106.992)">Sₙ</text>
+    </g>
+   </g>
+   <g id="line2d_9">
+    <path d="M 62.78179 137.232 
+L 92.295839 76.752 
+L 121.809889 46.512 
+L 151.323939 31.392 
+L 180.837988 23.832 
+L 210.352038 20.052 
+L 239.866087 18.162 
+L 269.380137 17.217 
+L 298.894186 16.7445 
+L 328.408236 16.50825 
+L 357.922286 16.390125 
+L 387.436335 16.331063 
+" clip-path="url(#p56e2f78f3d)" style="fill: none; stroke: #0e6e6a; stroke-width: 1.4; stroke-linecap: square"/>
+    <defs>
+     <path id="m19aface35a" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: #0e6e6a"/>
+    </defs>
+    <g clip-path="url(#p56e2f78f3d)">
+     <use xlink:href="#m19aface35a" x="62.78179" y="137.232" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#m19aface35a" x="92.295839" y="76.752" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#m19aface35a" x="121.809889" y="46.512" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#m19aface35a" x="151.323939" y="31.392" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#m19aface35a" x="180.837988" y="23.832" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#m19aface35a" x="210.352038" y="20.052" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#m19aface35a" x="239.866087" y="18.162" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#m19aface35a" x="269.380137" y="17.217" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#m19aface35a" x="298.894186" y="16.7445" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#m19aface35a" x="328.408236" y="16.50825" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#m19aface35a" x="357.922286" y="16.390125" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#m19aface35a" x="387.436335" y="16.331063" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+    </g>
+   </g>
+   <g id="line2d_10">
+    <path d="M 46.549063 16.272 
+L 403.669063 16.272 
+" clip-path="url(#p56e2f78f3d)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #0e6e6a"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 62.78179 137.232 
+L 92.295839 197.712 
+L 121.809889 167.472 
+L 151.323939 182.592 
+L 180.837988 175.032 
+L 210.352038 178.812 
+L 239.866087 176.922 
+L 269.380137 177.867 
+L 298.894186 177.3945 
+L 328.408236 177.63075 
+L 357.922286 177.512625 
+L 387.436335 177.571687 
+" clip-path="url(#p56e2f78f3d)" style="fill: none; stroke: #5a3d9a; stroke-width: 1.4; stroke-linecap: square"/>
+    <defs>
+     <path id="m6f55d093b8" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: #5a3d9a"/>
+    </defs>
+    <g clip-path="url(#p56e2f78f3d)">
+     <use xlink:href="#m6f55d093b8" x="62.78179" y="137.232" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     <use xlink:href="#m6f55d093b8" x="92.295839" y="197.712" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     <use xlink:href="#m6f55d093b8" x="121.809889" y="167.472" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     <use xlink:href="#m6f55d093b8" x="151.323939" y="182.592" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     <use xlink:href="#m6f55d093b8" x="180.837988" y="175.032" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     <use xlink:href="#m6f55d093b8" x="210.352038" y="178.812" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     <use xlink:href="#m6f55d093b8" x="239.866087" y="176.922" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     <use xlink:href="#m6f55d093b8" x="269.380137" y="177.867" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     <use xlink:href="#m6f55d093b8" x="298.894186" y="177.3945" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     <use xlink:href="#m6f55d093b8" x="328.408236" y="177.63075" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     <use xlink:href="#m6f55d093b8" x="357.922286" y="177.512625" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     <use xlink:href="#m6f55d093b8" x="387.436335" y="177.571687" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_12">
+    <path d="M 46.549063 177.552 
+L 403.669063 177.552 
+" clip-path="url(#p56e2f78f3d)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #5a3d9a"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 46.549063 206.784 
+L 46.549063 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 46.549063 206.784 
+L 403.669062 206.784 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_13">
+     <path d="M 196.045625 98.912312 
+L 206.045625 98.912312 
+L 216.045625 98.912312 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 1.4; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#m19aface35a" x="206.045625" y="98.912312" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     </g>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="224.045625" y="102.412312" transform="rotate(-0 224.045625 102.412312)">r = 1/2: Sₙ sube hacia S∞ = 2</text>
+    </g>
+    <g id="line2d_14">
+     <path d="M 196.045625 113.590437 
+L 206.045625 113.590437 
+L 216.045625 113.590437 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 1.4; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#m6f55d093b8" x="206.045625" y="113.590437" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+     </g>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="224.045625" y="117.090437" transform="rotate(-0 224.045625 117.090437)">r = −1/2: Sₙ oscila hacia S∞ = 2/3</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p56e2f78f3d">
+   <rect x="46.549063" y="7.2" width="357.12" height="199.584"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: sumas parciales de \(\sum\left(\pm\frac12\right)^{n-1}\). Con \(|r|\lt1\), \(r^n\to0\) y \(S_n=\frac{1-r^n}{1-r}\to\frac1{1-r}\): de forma monótona si \(r\gt0\), alternando a un lado y otro si \(r\lt0\).</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Una PG infinita tiene \(u_1=4\) y \(S_\infty=12\). Halla \(r\) y \(u_3\).</li><li>Halla los \(x\) para los que \(\displaystyle\sum_{n=1}^{\infty}\left(\frac{x-1}{2}\right)^n\) converge, y el \(x\) para el que la suma es 3.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\dfrac4{1-r}=12\), así que \(r=\tfrac23\) y \(u_3=\tfrac{16}9\).</li><li>Converge si \(|x-1|\lt2\), es decir, \(-1\lt x\lt3\). La suma es \(\dfrac{x-1}{3-x}=3\), así que \(x=\tfrac52\), que está en el intervalo.</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ1, P10)</p><p>Piden «muestre que la serie es convergente» con \(r=\pm1/\sqrt3\). El markscheme da R1 solo si se justifica \(|r|\lt 1\) <b>para los dos valores</b>; con uno solo es R0.</p></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li>Decimales periódicos: \(0{,}\overline{27}=\dfrac{27/100}{1-1/100}=\dfrac{27}{99}=\dfrac{3}{11}\).</li>
+<li>Que los términos tiendan a 0 no garantiza convergencia: \(\sum\ln(1+\tfrac1k)=\ln(n+1)\to\infty\). Los criterios generales están en el Módulo 17.</li>
+</ul></div>
+<h3 id="t7">1.7 Puente log–exp entre PA y PG</h3>
+<p>Este es el recurso con que el IB sube la dificultad en la Sección B:</p>
+<ul>
+<li>Si \(u_n\) es PG de términos positivos con razón \(r\), entonces \(\ln u_n\) es PA con diferencia \(\ln r\).</li>
+<li>Si \(v_n\) es PA con diferencia \(d\), entonces \(e^{v_n}\) es PG con razón \(e^d\).</li>
+</ul>
+<p>Por eso \(\ln x,\ \ln x^2,\ \ln x^3,\dots\) es aritmética (\(d=\ln x\)), mientras que \(\ln x,\ \ln x^2,\ \ln x^4,\dots\) es geométrica (\(r=2\)).</p>
+
+<div class="ex"><p class="et">Ejemplo 1.16. de PA a PG</p>
+<p>Si \(\ln a,\ \ln b,\ \ln c\) están en PA, muestra que \(a,b,c\) están en PG.</p>
+<p>\(2\ln b=\ln a+\ln c\Rightarrow \ln b^2=\ln(ac)\Rightarrow b^2=ac\), porque ln es inyectiva. Es la condición de media geométrica.</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.17. suma de logaritmos que es PA</p>
+<p>Halla \(n\) si \(\displaystyle\sum_{k=1}^{n}\log_2\!\left(4^k\cdot 2^{-3}\right)=63\).</p>
+<p>Cada término es \(2k-3\): PA con \(u_1=-1\), \(d=2\). \(S_n=\tfrac n2(-2+2(n-1))=n^2-2n\). Entonces \(n^2-2n-63=0\Rightarrow(n-9)(n+7)=0\Rightarrow n=9\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(n\) si \(\displaystyle\sum_{k=1}^{n}\ln\left(2^k\right)=33\ln4\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>La suma es \(\ln2\cdot\dfrac{n(n+1)}2\) y \(33\ln4=66\ln2\). Así \(n(n+1)=132\) y \(n=11\).</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ1, P10)</p><p>La serie \(\ln x+p\ln x+\tfrac13\ln x+\dots\) se estudia como PG y como PA. Al final se iguala \(S_n\) a \(\ln(1/x^3)=-3\ln x\) y se divide por \(\ln x\). Escribir «\(\ln x\neq0\) porque \(x\gt 1\)» es parte de un examen de 7.</p></div>
+
+<h3 id="t8">1.8 Fracciones parciales y sumas telescópicas</h3>
+<p><b>Fracciones parciales (programa NS).</b> Si el denominador tiene dos factores lineales distintos y el grado del numerador es menor:</p>
+\[ \frac{px+q}{(x-a)(x-b)}=\frac{A}{x-a}+\frac{B}{x-b} \]
+<p>Para hallar \(A\) y \(B\), multiplica por el denominador y sustituye \(x=a\) y \(x=b\) (método de «tapar»). Si el grado del numerador no es menor, primero divide.</p>
+<p><b>Suma telescópica.</b> Si cada término es \(f(k)-f(k+1)\):</p>
+\[ \sum_{k=1}^{n}\big(f(k)-f(k+1)\big)=f(1)-f(n+1) \]
+<p>Si el término es \(f(k)-f(k+2)\), sobreviven dos términos al inicio y dos al final.</p>
+
+<div class="ex"><p class="et">Ejemplo 1.18. fracciones parciales y telescópica</p>
+<p>Halla \(\displaystyle\sum_{k=1}^{n}\frac{1}{4k^2-1}\) y su límite cuando \(n\to\infty\).</p>
+<p>\(\dfrac{1}{(2k-1)(2k+1)}=\dfrac{A}{2k-1}+\dfrac{B}{2k+1}\). Con \(k=\tfrac12\): \(A=\tfrac12\); con \(k=-\tfrac12\): \(B=-\tfrac12\).</p>
+<p>La suma es \(\tfrac12\sum\left(\tfrac{1}{2k-1}-\tfrac{1}{2k+1}\right)=\tfrac12\left(1-\tfrac{1}{2n+1}\right)=\dfrac{n}{2n+1}\), que tiende a \(\tfrac12\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.19. telescópica con raíces</p>
+<p>Halla \(\displaystyle\sum_{k=1}^{n}\frac{1}{\sqrt{k}+\sqrt{k+1}}\).</p>
+<p>Racionalizando, cada término es \(\sqrt{k+1}-\sqrt k\). La suma es \(\sqrt{n+1}-1\). Con \(n=99\) vale exactamente 9.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Escribe \(\dfrac{5x+1}{(x-1)(x+2)}\) en fracciones parciales.</li><li>Halla \(\displaystyle\sum_{k=1}^{n}\frac{2}{k(k+2)}\) y el valor de la serie infinita.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\dfrac2{x-1}+\dfrac3{x+2}\).</li><li>\(\dfrac2{k(k+2)}=\dfrac1k-\dfrac1{k+2}\). Sobreviven dos términos al inicio y dos al final: \(1+\tfrac12-\tfrac1{n+1}-\tfrac1{n+2}\). La serie vale \(\tfrac32\).</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2026, P5)</p><p>\(\sum_{n=2}^{8}\ln\left(1-\tfrac1n\right)\): hay que ver \(1-\tfrac1n=\tfrac{n-1}{n}\), pasar a ln de un producto y cancelar en cadena hasta \(\ln\tfrac18\). Las fracciones parciales vuelven en mayo 2026, P11, para un área: el mismo tema sirve en integración.</p></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB</p><p>Con factor repetido, \(\dfrac{1}{x^2(x+1)}=\dfrac{A}{x}+\dfrac{B}{x^2}+\dfrac{C}{x+1}\); con factor cuadrático irreducible, el numerador de ese factor es lineal. No los pide el IB, pero aparecen en integrales «de 7».</p></div>
+
+<h3 id="t9">1.9 Más allá del IB: recurrencias y series aritmético-geométricas</h3>
+<div class="box beyond"><p class="bt">Fuera del programa AA</p><p>Las recurrencias \(u_{n+1}=au_n+b\) y las sumas \(\sum kr^k\) no están en el programa y no aparecen en la Prueba 1. Se incluyen como herramienta: explican por qué una PG «aparece» dentro de problemas que no lo parecen. Si vas justo de tiempo, puedes saltarte esta sección.</p></div>
+<p><b>Recurrencia lineal</b> \(u_{n+1}=a\,u_n+b\) con \(a\neq1\). El punto fijo es \(L=\dfrac{b}{1-a}\). Entonces \(u_n-L\) es PG de razón \(a\):</p>
+\[ u_n=L+(u_1-L)\,a^{\,n-1} \]
+<p>Si \(|a|\lt 1\), \(u_n\to L\).</p>
+
+<div class="ex"><p class="et">Ejemplo 1.20. recurrencia</p>
+<p>\(u_1=5,\ u_{n+1}=\tfrac12u_n+3\). Halla \(u_n\) y \(\sum_{k=1}^{n}u_k\).</p>
+<p>\(L=\dfrac{3}{1/2}=6\), así que \(u_n=6-\left(\tfrac12\right)^{n-1}\). La suma es \(6n-\dfrac{1-(1/2)^n}{1/2}=6n-2+2^{1-n}\).</p></div>
+
+<p><b>Serie aritmético-geométrica</b> \(\sum k\,r^{k}\): escribe \(S\), multiplica por \(r\) y resta. \(S-rS\) deja una serie geométrica.</p>
+
+<div class="ex"><p class="et">Ejemplo 1.21. método S − rS</p>
+<p>Halla \(S_n=\displaystyle\sum_{k=1}^{n}\frac{k}{2^k}\) y \(S_\infty\).</p>
+<p>\(S_n-\tfrac12S_n=\tfrac12+\tfrac14+\dots+\tfrac{1}{2^n}-\tfrac{n}{2^{n+1}}=1-\tfrac{1}{2^n}-\tfrac{n}{2^{n+1}}\). Multiplicando por 2: \(S_n=2-\dfrac{n+2}{2^n}\). Como \(\tfrac{n+2}{2^n}\to0\), \(S_\infty=2\).</p></div>
+
+<h3 id="t10">1.10 Aplicaciones y aproximación</h3>
+<p>Estos contenidos se evalúan sobre todo en la Prueba 2. En la Prueba 1 salen con respuesta exacta.</p>
+\[ VF=VP\left(1+\frac{r}{100k}\right)^{kn} \]
+<p>Aquí \(r\) es la tasa anual en %, \(k\) el número de capitalizaciones por año y \(n\) el número de años. La depreciación de \(i\,\%\) anual es \(V=V_0(1-i/100)^n\). En un modelo continuo \(N=N_0e^{kt}\), el tiempo de duplicación es \(\ln2/k\). Si depositas \(A\) al inicio de cada año con tasa \(i\), el saldo tras \(n\) años es la serie geométrica \(A(1+i)\dfrac{(1+i)^n-1}{i}\).</p>
+
+<div class="ex"><p class="et">Ejemplo 1.22. tiempo exacto</p>
+<p>¿En cuántos años se triplica un capital al 8 % anual con capitalización trimestral? Da la respuesta exacta.</p>
+<p>\((1{,}02)^{4n}=3\Rightarrow n=\dfrac{\ln3}{4\ln1{,}02}\) años.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.23. Depreciación y capitalización trimestral</p>
+<p>(a) Un coche de 25 000 pierde el 20 % de su valor cada año. ¿Tras cuántos años completos vale menos de 10 000? (b) Se invierten 1000 al 8 % anual nominal con capitalización trimestral. Escribe el valor tras \(n\) años y la tasa anual efectiva.</p>
+<p>(a) \(25000\cdot0{,}8^n\lt10000\iff0{,}8^n\lt0{,}4\). Como \(0{,}8^4=0{,}4096\) y \(0{,}8^5=0{,}32768\), hacen falta 5 años.</p>
+<p>(b) Cada trimestre se aplica \(\frac{8\%}4=2\%\), y en \(n\) años hay \(4n\) trimestres: \(V=1000\cdot1{,}02^{4n}\). La tasa efectiva es \(1{,}02^4-1\approx8{,}24\%\), mayor que el 8 % nominal.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Una máquina pierde el 10 % de su valor cada año. ¿Tras cuántos años completos vale menos de la mitad? Puedes usar \(0{,}9^6\approx0{,}531\) y \(0{,}9^7\approx0{,}478\).</li><li>Una población crece según \(N=N_0e^{0{,}05t}\). Halla el tiempo exacto en que se triplica.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(0{,}9^n\lt0{,}5\): 7 años.</li><li>\(e^{0{,}05t}=3\), así que \(t=20\ln3\).</li></ol></div></details></div>
+
+<p><b>Aproximación y error.</b> Las respuestas van exactas o a 3 cifras significativas. Un valor medido como 12 «al entero más cercano» cumple \(11{,}5\le x\lt 12{,}5\). Para el máximo de \(a/b\), usa \(a_{\max}/b_{\min}\); para el máximo de \(a-b\), usa \(a_{\max}-b_{\min}\). El error porcentual es \(\left|\dfrac{v_A-v_E}{v_E}\right|\times100\,\%\).</p>
+
+<div class="box beyond"><p class="bt">Más allá del IB</p><p>Si \(y=x^n\), el error relativo de \(y\) es aproximadamente \(n\) veces el de \(x\). Un 1 % de error en el radio produce cerca de un 3 % en el volumen de una esfera. Lo verás con derivadas en el Módulo 12.</p></div>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Sucesión</td><td>Función de los enteros positivos en ℝ: \(u_1,u_2,u_3,\dots\)</td></tr>
+<tr><td>Serie</td><td>Suma de los términos de una sucesión; finita (\(S_n\)) o infinita.</td></tr>
+<tr><td>Progresión aritmética</td><td>\(u_{n+1}-u_n=d\) constante para todo \(n\).</td></tr>
+<tr><td>Progresión geométrica</td><td>\(u_{n+1}/u_n=r\) constante, con \(r\neq0\), para todo \(n\).</td></tr>
+<tr><td>Suma parcial \(S_n\)</td><td>Suma de los \(n\) primeros términos.</td></tr>
+<tr><td>Serie convergente</td><td>\(S_n\) tiende a un número real finito cuando \(n\to\infty\).</td></tr>
+<tr><td>Serie divergente</td><td>\(S_n\) no tiene límite finito.</td></tr>
+<tr><td>Logaritmo en base \(a\)</td><td>\(\log_a x\) es el exponente al que se eleva \(a\) para obtener \(x\) (\(a\gt 0,\ a\ne1,\ x\gt 0\)).</td></tr>
+<tr><td>Fracciones parciales</td><td>Descomposición de un cociente de polinomios en suma de fracciones con denominadores lineales.</td></tr>
+<tr><td>Suma telescópica</td><td>Suma cuyos términos se cancelan en cadena, dejando solo los extremos.</td></tr>
+<tr><td>Valor exacto</td><td>Respuesta sin redondear: fracción, radical, ln, e o π.</td></tr>
+<tr><td>Error porcentual</td><td>Valor absoluto de \((v_A-v_E)/v_E\), multiplicado por 100 %.</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción y cómo se corrigen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término (ES / EN)</th><th>Qué exige</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Escriba / <i>Write down</i></td><td>Respuesta directa; suele valer 1 punto.</td><td>Gastar tiempo desarrollando.</td></tr>
+<tr><td>Halle / <i>Find</i></td><td>Respuesta con método visible.</td><td>Dar solo el número: sin método no hay M1.</td></tr>
+<tr><td>Muestre que / <i>Show that</i></td><td>Llegar al resultado dado con todos los pasos; la última línea es el resultado (AG).</td><td>Manipular ambos lados, saltar pasos o no escribir la conclusión.</td></tr>
+<tr><td>Verifique / <i>Verify</i></td><td>Sustituir y comprobar.</td><td>No concluir «por lo tanto se cumple».</td></tr>
+<tr><td>A partir de lo anterior / <i>Hence</i></td><td>Usar obligatoriamente lo previo.</td><td>Otro método vale 0, aunque sea correcto.</td></tr>
+<tr><td>… o de cualquier otro modo / <i>Hence or otherwise</i></td><td>Se sugiere lo previo; otro método vale.</td><td>No aplica.</td></tr>
+<tr><td>Deduzca / <i>Deduce</i></td><td>Conclusión en pocos pasos desde lo anterior.</td><td>No mostrar el vínculo con lo anterior.</td></tr>
+<tr><td>Justifique / <i>Justify</i></td><td>Dar la razón matemática (R1).</td><td>Afirmar sin razón.</td></tr>
+</tbody></table></div>
+
+<h3>Cómo leer un markscheme</h3>
+<ul>
+<li><b>M1:</b> método válido intentado, aunque haya errores después.</li>
+<li><b>A1:</b> precisión; depende de que el método correspondiente sea correcto.</li>
+<li><b>(M1), (A1):</b> entre paréntesis, la marca puede estar implícita en un trabajo correcto posterior.</li>
+<li><b>R1:</b> razonamiento o justificación.</li>
+<li><b>AG:</b> respuesta dada. No suma, pero debe aparecer al final de un «muestre que».</li>
+<li><b>FT:</b> permite ganar marcas usando un resultado previo equivocado de forma consistente.</li>
+</ul>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<p>Repasa esta lista antes de entregar cualquier pregunta del tema. Cada trampa tiene nombre para que la reconozcas al instante.</p>
+<ul class="trap-list">
+<li><b>El dominio fantasma.</b> Una solución algebraica de una ecuación logarítmica puede dejar un argumento negativo. Escribe el dominio primero y descarta al final.</li>
+<li><b>La ley inventada.</b> \(\log(a+b)\neq\log a+\log b\) y \((\log a)^2\neq2\log a\). Solo el producto, el cociente y la potencia tienen ley.</li>
+<li><b>La base prohibida.</b> Si la variable está en la base (\(\log_x 3\)), también exige \(x\neq1\).</li>
+<li><b>El gemelo olvidado.</b> De \(r^2=k\) salen \(r=\pm\sqrt k\). Analiza los dos: el markscheme quita la R1 de convergencia si miras uno solo.</li>
+<li><b>El n imposible.</b> \(n\) es entero positivo. Si sale \(n=-2\) o \(n=7{,}5\), descártalo y dilo.</li>
+<li><b>\(u_n\) disfrazado de \(S_n\).</b> Lee si te dan un término o una suma.</li>
+<li><b>La fórmula que no llega a \(u_1\).</b> \(u_n=S_n-S_{n-1}\) vale desde \(n=2\). Comprueba \(u_1=S_1\) aparte.</li>
+<li><b>El conteo corrido.</b> \(\sum_{k=2}^{8}\) tiene 7 términos: \(q-p+1\).</li>
+<li><b>El índice cero.</b> Si la serie empieza en \(n=0\), el primer término es \(r^0=1\).</li>
+<li><b>La desigualdad volteada.</b> Al dividir por \(\ln r\lt 0\) (con \(0\lt r\lt 1\)) o aplicar un logaritmo de base menor que 1, el sentido cambia.</li>
+<li><b>La división sin permiso.</b> Antes de dividir por \(\ln x\), escribe «\(\ln x\ne0\) porque \(x\gt 1\)».</li>
+<li><b>Convergencia a medias.</b> Escribe \(|r|\lt 1\) con el valor de \(r\). Si \(r\) depende de \(x\), resuelve \(-1\lt r\lt 1\) completo.</li>
+<li><b>El show-that de dos manos.</b> Trabaja un solo lado hasta llegar al otro.</li>
+<li><b>El AG mudo.</b> La última línea de un «muestre que» es exactamente el resultado pedido.</li>
+<li><b>El hence ignorado.</b> Si dice «a partir de lo anterior», úsalo. Otro método vale 0.</li>
+<li><b>El redondeo prematuro.</b> Deja \(\ln2\), \(\sqrt3\) o \(e^2\) hasta el final.</li>
+<li><b>La telescópica mal cortada.</b> Si el término es \(f(k)-f(k+2)\), sobreviven dos términos a cada lado, no uno.</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos de las fichas, llevados a nivel de examen</h2>
+<p class="lead">Salen de las fichas DMpA 02 y DMpA 17. Cada ítem se amplió hasta el nivel de la Sección B o del final de la Sección A, y los que eran de calculadora se resuelven con métodos exactos. Cubren los tipos que no preguntaron tus 7 pruebas; los de PA, ecuación logarítmica y telescópica están en la sección 5.</p>
+
+<div class="ex" id="f1"><p class="et">F1. Parámetro, convergencia y precisión <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 02, sección «Transferimos», pregunta IB de Prueba 1 (mayo 2016), ampliada; en (c) se dan las potencias, como hace el IB.</p>
+<p>\(x-3,\ 6,\ x+2\) son tres términos consecutivos de una PG. (a) Halla los valores de \(x\). (b) Para cada valor, decide si la serie infinita que empieza en \(x-3\) converge; si converge, halla \(S_\infty\). (c) Para el caso convergente, halla el menor \(n\) con \(|S_\infty-S_n|\lt \tfrac{1}{100}\). Puedes usar \(\left(\tfrac32\right)^{15}\approx437{,}9\) y \(\left(\tfrac32\right)^{16}\approx656{,}8\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p><span class="lbl">Estrategia.</span> Media geométrica; luego \(S_\infty-S_n=\dfrac{u_1r^n}{1-r}\).</p>
+<p>(a) \(36=(x-3)(x+2)\Rightarrow x^2-x-42=0\Rightarrow x=7\) o \(x=-6\).</p>
+<p>(b) \(x=7\): términos \(4,6,9\), \(r=\tfrac32\), diverge. \(x=-6\): términos \(-9,6,-4\), \(r=-\tfrac23\), converge, \(S_\infty=\dfrac{-9}{5/3}=-\dfrac{27}{5}\).</p>
+<p>(c) \(|S_\infty-S_n|=\dfrac{9\,(2/3)^n}{5/3}=\dfrac{27}{5}\left(\dfrac23\right)^n\lt \dfrac1{100}\iff\left(\dfrac32\right)^n\gt 540\).</p>
+<p>Con los valores dados, \(\left(\tfrac32\right)^{15}\approx437{,}9\lt540\) y \(\left(\tfrac32\right)^{16}\approx656{,}8\gt540\). En la Prueba 1 el IB da estas potencias cuando el umbral no sale exacto.</p>
+<p><span class="lbl">Resultado.</span> \(x=7\) (diverge) o \(x=-6\) (\(S_\infty=-\tfrac{27}{5}\)); \(n=16\).</p>
+</div></details></div>
+
+<div class="ex" id="f2"><p class="et">F2. Serie finita y su prolongación infinita <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 02, actividad 06, ítem 1, ampliado.</p>
+<p>(a) Para \(8192+6144+4608+\dots+1458\), halla el número de términos y la suma, sin calculadora. (b) Si la serie continúa indefinidamente, halla el menor \(n\) con \(S_n\gt 32\,000\). Puedes usar \(\left(\tfrac43\right)^{13}\approx42{,}1\) y \(\left(\tfrac43\right)^{14}\approx56{,}1\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(r=\tfrac34\). \(\left(\tfrac34\right)^{n-1}=\dfrac{1458}{8192}=\dfrac{729}{4096}=\left(\tfrac34\right)^6\Rightarrow n=7\). Con \(S=\dfrac{u_1-u_nr}{1-r}=\dfrac{8192-1093{,}5}{1/4}=28\,394\).</p>
+<p>(b) \(S_\infty=32\,768\) y \(S_n=32\,768\left(1-(3/4)^n\right)\gt 32\,000\iff(3/4)^n\lt \tfrac{3}{128}\iff(4/3)^n\gt \tfrac{128}{3}\).</p>
+<p>\(\tfrac{128}3\approx42{,}7\). Con los valores dados, \(\left(\tfrac43\right)^{13}\approx42{,}1\) no alcanza y \(\left(\tfrac43\right)^{14}\approx56{,}1\) sí.</p>
+<p><span class="lbl">Resultado.</span> \(n=7\), \(S_7=28\,394\); para (b), \(n=14\).</p>
+</div></details></div>
+
+<div class="ex" id="f3"><p class="et">F3. Umbral con razón irracional <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 02, actividad 06, ítem 2 (de calculadora, resuelto a mano).</p>
+<p>Para \(3+3\sqrt2+6+6\sqrt2+\dots\), halla el menor \(n\) con \(S_n\gt 500\). Puedes usar \(\sqrt2\approx1{,}414\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p><span class="lbl">Estrategia.</span> Racionalizar \(S_n\) y comparar \((\sqrt2)^n\) con potencias exactas de 2.</p>
+<p>\(S_n=\dfrac{3\left((\sqrt2)^n-1\right)}{\sqrt2-1}=3(\sqrt2+1)\left((\sqrt2)^n-1\right)\gt 500\iff(\sqrt2)^n\gt 1+\dfrac{500}{3(\sqrt2+1)}\approx1+\dfrac{500}{7{,}243}\approx70{,}0\).</p>
+<p>\((\sqrt2)^{12}=64\lt 70\) no alcanza; \((\sqrt2)^{13}=64\sqrt2\approx90{,}5\gt 70\) sí.</p>
+<p><span class="lbl">Resultado.</span> \(n=13\).</p>
+</div></details></div>
+
+<div class="ex" id="f4"><p class="et">F4. \(S_3\), \(S_\infty\) y subsucesiones <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 02, actividad 09, ítem 1, ampliado.</p>
+<p>(a) La suma de los 3 primeros términos de una serie geométrica es 148 y su suma infinita es 256. Halla \(u_1\) y \(r\). (b) Halla la suma de los términos en posiciones impares y la de los términos en posiciones pares. (c) Muestra que su cociente es \(1/r\) en cualquier PG convergente.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(u_1=256(1-r)\). Entonces \(256(1-r)(1+r+r^2)=148\Rightarrow 256(1-r^3)=148\Rightarrow r^3=\tfrac{27}{64}\Rightarrow r=\tfrac34,\ u_1=64\).</p>
+<p>(b) Impares: PG con primer término 64 y razón \(r^2=\tfrac9{16}\): \(\dfrac{64}{7/16}=\dfrac{1024}{7}\). Pares: primer término 48, misma razón: \(\dfrac{48}{7/16}=\dfrac{768}{7}\). Comprobación: \(\tfrac{1024+768}{7}=256\).</p>
+<p>(c) Impares: \(\dfrac{u_1}{1-r^2}\); pares: \(\dfrac{u_1r}{1-r^2}\). El cociente impares/pares es \(\dfrac1r\).</p>
+<p><span class="lbl">Resultado.</span> \(u_1=64,\ r=\tfrac34\); impares \(\tfrac{1024}{7}\), pares \(\tfrac{768}{7}\).</p>
+</div></details></div>
+
+<div class="ex" id="f5"><p class="et">F5. Dos razones y la condición de existencia <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 02, sección «Consolidamos», pregunta 4 (IB, noviembre 2018, Prueba 2), con valores propios para resolverla sin calculadora.</p>
+<p>(a) Una PG infinita tiene \(S_\infty=25\) y \(u_2=6\). Halla los valores posibles de \(r\) y de \(u_1\). (b) Muestra que, si \(S_\infty=S\gt 0\) y \(u_2=t\gt 0\), la PG existe solo si \(t\le\tfrac{S}{4}\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(u_1r=6\) y \(u_1=25(1-r)\), así que \(25r(1-r)=6\), es decir, \(25r^2-25r+6=0\), o \((5r-2)(5r-3)=0\). Hay dos PG: \(r=\tfrac25\) con \(u_1=15\), y \(r=\tfrac35\) con \(u_1=10\). Ambas cumplen \(|r|\lt1\).</p>
+<p>(b) Se necesita \(r(1-r)=\tfrac tS\gt 0\), así que \(0\lt r\lt 1\). En ese intervalo, \(r(1-r)=\tfrac14-\left(r-\tfrac12\right)^2\le\tfrac14\). Por lo tanto \(\tfrac tS\le\tfrac14\), es decir \(t\le\tfrac S4\). En (a), \(\tfrac{6}{25}=0{,}24\le0{,}25\).</p>
+</div></details></div>
+
+<div class="ex" id="f6"><p class="et">F6. Ingresos que se reducen y costos fijos <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 02, actividades 02, 04 y 07 (restaurante de Jordi), ampliadas.</p>
+<p>Los ingresos mensuales de un restaurante son \(2000,1000,500,\dots\) soles, y el costo fijo es de 600 soles al mes. (a) Muestra que la ganancia acumulada tras \(n\) meses es \(P_n=4000(1-2^{-n})-600n\). (b) Halla el mes en que la ganancia acumulada es máxima y su valor. (c) Halla el primer mes en que la ganancia acumulada es negativa.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Ingresos: PG con \(u_1=2000,\ r=\tfrac12\), así que \(S_n=\dfrac{2000(1-2^{-n})}{1/2}=4000(1-2^{-n})\). Restando costos, \(P_n=4000(1-2^{-n})-600n\).</p>
+<p>(b) \(P_n-P_{n-1}=u_n-600=2000\cdot2^{1-n}-600\). Es positivo para \(n=1\) (1400) y \(n=2\) (400), y negativo desde \(n=3\) (−100). El máximo es \(P_2=3000-1200=1800\) soles.</p>
+<p>(c) \(P_6=4000\cdot\tfrac{63}{64}-3600=337{,}5\gt 0\) y \(P_7=4000\cdot\tfrac{127}{128}-4200=-231{,}25\lt 0\).</p>
+<p><span class="lbl">Resultado.</span> Máximo en el mes 2 (1800 soles); primera pérdida acumulada en el mes 7.</p>
+<p><span class="lbl">Idea clave.</span> Para optimizar una suma acumulada, estudia el signo del término que se agrega.</p>
+</div></details></div>
+
+<div class="ex" id="f7"><p class="et">F7. Umbral de un término con razón menor que 1 <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 02, sección «Transferimos», pregunta 2 (IB, mayo 2017), adaptada a Prueba 1.</p>
+<p>Una PG tiene \(u_1=768\) y \(u_2=576\). Halla el menor \(n\) con \(u_n\lt 7\). Puedes usar \(\left(\tfrac34\right)^{16}\approx0{,}0100\) y \(\left(\tfrac34\right)^{17}\approx0{,}0075\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>\(r=\tfrac34\). Condición: \(768\left(\tfrac34\right)^{n-1}\lt 7\iff\left(\tfrac34\right)^{n-1}\lt\tfrac7{768}\approx0{,}0091\).</p>
+<p>Con los valores dados, \(\left(\tfrac34\right)^{16}\approx0{,}0100\) no basta y \(\left(\tfrac34\right)^{17}\approx0{,}0075\) sí, así que \(n-1=17\).</p>
+<p><span class="lbl">Resultado.</span> \(n=18\). Si se resuelve con logaritmos, recuerda que \(\ln\tfrac34\lt0\): al dividir por él se invierte la desigualdad.</p>
+</div></details></div>
+
+<div class="ex" id="f8"><p class="et">F8. Dos materiales radiactivos <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 17, actividad 1 (artefacto arqueológico), ampliada.</p>
+<p>El material A cumple \(M_A=M_0e^{-k_At}\), con vida media de 1200 años. (a) Halla \(k_A\) exacto. (b) Si hoy queda el 30 % de A, halla la edad exacta del artefacto. (c) Un material B tiene vida media de 800 años y empieza con el cuádruple de masa que A. Halla cuándo sus masas se igualan.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(e^{-1200k_A}=\tfrac12\Rightarrow k_A=\dfrac{\ln2}{1200}\).</p>
+<p>(b) \(e^{-k_At}=\tfrac3{10}\Rightarrow t=\dfrac{\ln(10/3)}{k_A}=\dfrac{1200\ln(10/3)}{\ln2}\) años.</p>
+<p>(c) \(k_B=\dfrac{\ln2}{800}\). \(4M_0e^{-k_Bt}=M_0e^{-k_At}\Rightarrow\ln4=t(k_B-k_A)=t\ln2\left(\tfrac1{800}-\tfrac1{1200}\right)=\dfrac{t\ln2}{2400}\). Como \(\ln4=2\ln2\), \(t=4800\) años.</p>
+<p><span class="lbl">Idea clave.</span> Escribir todo en función de \(\ln2\) hace que se cancele y la respuesta sea entera.</p>
+</div></details></div>
+
+<div class="ex" id="f9"><p class="et">F9. Expresiones con \(p=\log_2a\) y \(q=\log_2b\) <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 17, sección «Transferimos», ítem 4, ampliado.</p>
+<p>Sea \(p=\log_2a\) y \(q=\log_2b\), con \(a,b\gt 0\), \(a\ne1\) y \(ab\ne1\). (a) Expresa en función de \(p\) y \(q\): (i) \(\log_2\dfrac{8a^2}{\sqrt b}\); (ii) \(\log_4(ab^3)\); (iii) \(\log_a(2b)\); (iv) \(\log_{ab}\dfrac ab\). (b) Si \(a=4b^2\) y \(\log_2(ab)=5\), halla \(a\) y \(b\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a)(i) \(3+2p-\tfrac q2\). (ii) \(\dfrac{\log_2(ab^3)}{\log_24}=\dfrac{p+3q}{2}\). (iii) \(\dfrac{1+q}{p}\). (iv) \(\dfrac{\log_2(a/b)}{\log_2(ab)}=\dfrac{p-q}{p+q}\).</p>
+<p>(b) \(a=4b^2\Rightarrow p=2+2q\); \(p+q=5\Rightarrow 3q+2=5\Rightarrow q=1,\ p=4\).</p>
+<p><span class="lbl">Resultado.</span> \(a=16,\ b=2\). Comprobación: \(4b^2=16\) y \(\log_232=5\).</p>
+</div></details></div>
+
+<div class="ex" id="f10"><p class="et">F10. Sucesión potencial que no es PA ni PG <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 02, sección «Transferimos», pregunta 5 (IB, noviembre 2014), adaptada a Prueba 1.</p>
+<p>Una sucesión cumple \(v_n=a\,n^k\), con \(v_1=0{,}05\) y \(v_2=0{,}25\). (a) Halla \(a\) y \(k\) exactos. (b) Muestra que \(v_{2n}=5v_n\) y halla \(v_8\) exacto. (c) Muestra que \(v_n\) no es PA ni PG. (d) Muestra que \(v_1,v_2,v_4,v_8,\dots\) es una PG, halla la suma de sus 6 primeros términos y muestra que sus logaritmos forman una PA.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(v_1=a=0{,}05\). \(v_2=0{,}05\cdot2^k=0{,}25\Rightarrow 2^k=5\Rightarrow k=\log_25\).</p>
+<p>(b) \(v_{2n}=a(2n)^k=2^k\cdot a n^k=5v_n\). Así \(v_8=5^3v_1=125\cdot0{,}05=6{,}25\).</p>
+<p>(c) \(v_1=0{,}05,\ v_2=0{,}25,\ v_3=0{,}05\cdot3^{\log_25}\). Diferencias: si fuera PA, \(v_3=0{,}45\), así que \(3^{\log_25}=9\), es decir \(\log_25=2\): falso. Razones: si fuera PG, \(v_3=1{,}25\), así que \(3^{\log_25}=25=5^2\), es decir \(\log_25\cdot\ln3=2\ln5\), o sea \(\ln3=2\ln2\): falso.</p>
+<p>(d) Por (b), cada término es 5 veces el anterior: PG con primer término \(0{,}05\) y \(r=5\). La suma es \(\dfrac{0{,}05(5^6-1)}{4}=\dfrac{15\,624}{80}=195{,}3\). Como sus términos son positivos, \(\ln v_{2^m}=\ln0{,}05+m\ln5\) es una PA de diferencia \(\ln5\) (sección 1.7).</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son todas las preguntas del tema en tus 7 pruebas, de la más corta a la más larga. Las marcas siguen el markscheme oficial de cada sesión, y los enunciados van resumidos. Resuelve cada una en tiempo de examen (unos 1,1 minutos por punto) antes de abrir la solución.</p>
+
+<div class="ex"><p class="et">X1. Mayo 2022 TZ2, pregunta 1 <span class="lvl">5 puntos</span></p>
+<p>El término general de una PA es \(u_n=15-3n\). (a) Indica \(u_1\). (b) Si \(u_n=-33\), halla \(n\). (c) Halla \(d\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(u_1=12\) <span class="m">A1</span> [1]</p>
+<p class="step">(b) \(15-3n=-33\) <span class="m">(M1)</span> \(\Rightarrow n=16\) <span class="m">A1</span> [2]</p>
+<p class="step">(c) \(u_2=9\), \(d=9-12\) <span class="m">(M1)</span> \(=-3\) <span class="m">A1</span> [2]</p>
+<p><span class="lbl">Atajo.</span> En \(u_n=dn+(u_1-d)\), el coeficiente de \(n\) es \(d\). Aun así, escribe una línea de método.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Mayo 2021 TZ1, pregunta 2 <span class="lvl">5 puntos</span></p>
+<p>En una PA, \(u_8=S_8=8\). Halla \(u_1\) y \(d\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">\(S_8=\tfrac82(u_1+u_8)\) <span class="m">(M1)</span> \(\Rightarrow4(u_1+8)=8\) <span class="m">(A1)</span> \(\Rightarrow u_1=-6\) <span class="m">A1</span></p>
+<p class="step">\(u_8=u_1+7d\Rightarrow8=-6+7d\) <span class="m">(M1)</span> \(\Rightarrow d=2\) <span class="m">A1</span></p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> Usar \(\tfrac n2(2u_1+(n-1)d)\) obliga a un sistema; la forma \(\tfrac n2(u_1+u_n)\) usa el dato \(u_8\) directamente.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Mayo 2021 TZ2, pregunta 4(a) <span class="lvl">3 puntos</span></p>
+<p>\(f(x)=\ln(x^2-16)\), con \(x\gt 4\), corta al eje \(x\) en \((a,0)\). Halla el valor exacto de \(a\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">\(x^2-16=e^0=1\) <span class="m">(M1)</span> \(\Rightarrow x^2=17\) <span class="m">(A1)</span></p>
+<p class="step">Como \(x\gt 4\), \(a=\sqrt{17}\) <span class="m">A1</span></p>
+<p>La parte (b) de esta pregunta es de derivadas y está en el Módulo 12.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X4. Noviembre 2022, pregunta 3 <span class="lvl">5 puntos</span></p>
+<p>Sea \(a\gt 1\). (a) Muestra que \(a^2+\left(\dfrac{a^2-1}{2}\right)^2=\left(\dfrac{a^2+1}{2}\right)^2\). (b) Un triángulo rectángulo tiene lados \(a,\ \dfrac{a^2-1}{2},\ \dfrac{a^2+1}{2}\). Halla su área en función de \(a\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Trabajando solo el lado izquierdo: \(a^2+\dfrac{a^4-2a^2+1}{4}\) <span class="m">(M1)</span> \(=\dfrac{4a^2+a^4-2a^2+1}{4}\) <span class="m">A1</span> \(=\dfrac{a^4+2a^2+1}{4}\) <span class="m">A1</span> \(=\left(\dfrac{a^2+1}{2}\right)^2\) <span class="m">AG</span></p>
+<p class="step">(b) La hipotenusa es \(\tfrac{a^2+1}{2}\). Área \(=\tfrac12\cdot a\cdot\dfrac{a^2-1}{2}\) <span class="m">(M1)</span> \(=\dfrac{a(a^2-1)}{4}\) <span class="m">A1</span></p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> Si manipulas ambos lados, el markscheme da como máximo M1A0A0.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X5. Noviembre 2021, pregunta 3 <span class="lvl">5 puntos</span></p>
+<p>Resuelve \(\log_3\sqrt x=\dfrac{1}{2\log_23}+\log_3(4x^3)\), con \(x\gt 0\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p>Las tres M1 se dan por usar cada ley, en cualquier orden.</p>
+<p class="step">Cambio de base: \(\dfrac{1}{2\log_23}=\tfrac12\log_32\) <span class="m">(M1)</span></p>
+<p class="step">Potencia: \(\tfrac12\log_32=\log_3\sqrt2\) <span class="m">(M1)</span></p>
+<p class="step">Producto: \(\log_3\sqrt x=\log_3\left(4\sqrt2\,x^3\right)\) <span class="m">(M1)</span></p>
+<p class="step">\(\sqrt x=4\sqrt2\,x^3\Rightarrow x^{5/2}=\dfrac{1}{4\sqrt2}=2^{-5/2}\) <span class="m">(A1)</span> \(\Rightarrow x=\tfrac12\) <span class="m">A1</span></p>
+<p><span class="lbl">Atajo.</span> En términos de \(\log_3x\) y \(\log_32\) todo es lineal: \(\tfrac12\log_3x=\tfrac52\log_32+3\log_3x\Rightarrow\log_3x=-\log_32\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X6. Mayo 2026 TZ2, pregunta 5 <span class="lvl">6 puntos</span></p>
+<p>(a) Muestra que \(\displaystyle\sum_{n=2}^{8}\ln\left(1-\frac1n\right)=-\ln a\), con \(a\in\mathbb Z^+\) por determinar. (b) A partir de lo anterior, escribe \(\displaystyle\sum_{n=2}^{2026}\ln\left(1-\frac1n\right)\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(\ln\tfrac12+\ln\tfrac23+\dots+\ln\tfrac78\) <span class="m">(A1)</span></p>
+<p class="step">Ley del producto: \(\ln\left(\tfrac12\cdot\tfrac23\cdots\tfrac78\right)\) <span class="m">M1</span>; cancelación en cadena <span class="m">(M1)</span></p>
+<p class="step">\(=\ln\tfrac18\) <span class="m">(A1)</span> \(=-\ln8\), así que \(a=8\) <span class="m">A1</span></p>
+<p class="step">(b) \(-\ln2026\) <span class="m">A1</span></p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> La M1 exige ver el producto o la resta \(\ln1-\ln2+\ln2-\ln3+\dots\)</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X7. Mayo 2022 TZ1, pregunta 10 (Sección B) <span class="lvl">18 puntos</span></p>
+<p>Considera \(\ln x+p\ln x+\tfrac13\ln x+\dots\), con \(x\gt 1\) y \(p\ne0\).</p>
+<p>(a) Caso geométrico. (i) Muestra que \(p=\pm\tfrac{1}{\sqrt3}\). (ii) Muestra que la serie converge. (iii) Si \(p\gt 0\) y \(S_\infty=3+\sqrt3\), halla \(x\). [6]</p>
+<p>(b) Caso aritmético. (i) Muestra que \(p=\tfrac23\). (ii) Escribe \(d\) como \(k\ln x\) con \(k\in\mathbb Q\). (iii) Si \(S_n=\ln\dfrac1{x^3}\), halla \(n\). [12]</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a)(i) \(\dfrac{p\ln x}{\ln x}=\dfrac{\frac13\ln x}{p\ln x}\) <span class="m">M1</span>; como \(\ln x\ne0\), \(p^2=\tfrac13\) <span class="m">A1</span> \(\Rightarrow p=\pm\tfrac1{\sqrt3}\) <span class="m">AG</span></p>
+<p class="step">(ii) \(r=\pm\tfrac1{\sqrt3}\) y en ambos casos \(|r|\lt 1\), así que converge <span class="m">R1</span>. Con un solo valor es R0.</p>
+<p class="step">(iii) \(\dfrac{\ln x}{1-\frac1{\sqrt3}}=3+\sqrt3\) <span class="m">(A1)</span>; \(\ln x=\dfrac{(3+\sqrt3)(\sqrt3-1)}{\sqrt3}=\dfrac{2\sqrt3}{\sqrt3}=2\) <span class="m">A1</span> \(\Rightarrow x=e^2\) <span class="m">A1</span></p>
+<p class="step">(b)(i) \(2p\ln x=\ln x+\tfrac13\ln x\) <span class="m">M1 A1</span> \(\Rightarrow2p=\tfrac43\) <span class="m">A1</span> \(\Rightarrow p=\tfrac23\) <span class="m">AG</span></p>
+<p class="step">(ii) \(d=\tfrac23\ln x-\ln x=-\tfrac13\ln x\) <span class="m">A1</span></p>
+<p class="step">(iii) \(\ln\dfrac1{x^3}=-3\ln x\) <span class="m">(A1)(A1)</span>. Plantear \(S_n\) <span class="m">(M1)</span>: \(S_n=\dfrac n2\left(2\ln x-\dfrac{n-1}{3}\ln x\right)=\dfrac{n(7-n)}{6}\ln x\) <span class="m">(A1)</span></p>
+<p class="step">\(\dfrac{n(7-n)}{6}=-3\) <span class="m">A1</span> \(\Rightarrow n^2-7n-18=0\) <span class="m">(M1)</span> \(\Rightarrow(n-9)(n+2)=0\) <span class="m">(M1)</span> \(\Rightarrow n=9\) <span class="m">A1</span></p>
+<p><span class="lbl">Método alternativo aceptado.</span> En unidades de \(\ln x\), los términos son \(1,\tfrac23,\tfrac13,0,-\tfrac13,-\tfrac23,-1,-\tfrac43,-\tfrac53,\dots\) Los 7 primeros suman 0 por simetría, y \(-\tfrac43-\tfrac53=-3\). Así \(n=9\).</p>
+<p><span class="lbl">Lecciones.</span> Justifica \(\ln x\ne0\) cada vez que divides; analiza los dos signos de \(r\); con \(d\lt 0\) la suma puede volver a 0, y a veces listar términos es más rápido.</p>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Tus 7 pruebas no agotan el tema. Estos son los demás tipos de pregunta que el IB ha puesto sobre sucesiones, exponentes y logaritmos en otras convocatorias, incluidos algunos que suelen ir en la Prueba 2 y aquí se resuelven sin calculadora. Para cada uno: qué reconocer, un ejemplo resuelto y un ejercicio para practicar. El nivel es el del examen, sin pasarse.</p>
+<h3 id="ty1">6.1 Serie geométrica de razón trigonométrica</h3>
+<p><b>Qué reconocer:</b> los términos son potencias de \(\sin x\), \(\cos x\) o \(\tan x\). <b>Método:</b> identifica \(r\), resuelve \(|r|\lt1\) dentro del intervalo dado y usa \(S_\infty=\frac{u_1}{1-r}\). Es una pregunta clásica de NS que une los Módulos 1 y 8.</p>
+<div class="ex"><p class="et">T1. Convergencia con seno <span class="lvl">Sección A alta, integra Módulo 8</span></p>
+<p>Considera \(1+2\sin x+4\sin^2x+\dots\), con \(-\tfrac\pi2\lt x\lt\tfrac\pi2\). (a) Halla los \(x\) para los que la serie converge. (b) Halla \(x\) si la suma es \(\tfrac23\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>(a) \(r=2\sin x\) y \(|2\sin x|\lt1\iff|\sin x|\lt\tfrac12\iff-\tfrac\pi6\lt x\lt\tfrac\pi6\).</p><p>(b) \(\dfrac1{1-2\sin x}=\dfrac23\), así que \(1-2\sin x=\tfrac32\) y \(\sin x=-\tfrac14\). Entonces \(x=-\arcsin\tfrac14\), que está en el intervalo de (a) porque \(\tfrac14\lt\tfrac12\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Muestra que \(\displaystyle\sum_{n=0}^{\infty}\cos^{2n}x=\csc^2x\) e indica para qué \(x\) es válido.</li><li>Halla \(\displaystyle\sum_{n=1}^{\infty}\sin^{2n}x\) para \(0\lt x\lt\tfrac\pi2\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Es una PG con \(r=\cos^2x\); converge si \(\cos^2x\lt1\), es decir, \(x\ne k\pi\). La suma es \(\dfrac1{1-\cos^2x}=\dfrac1{\sin^2x}\).</li><li>\(\dfrac{\sin^2x}{1-\sin^2x}=\tan^2x\).</li></ol></div></details></div>
+<h3 id="ty2">6.2 PA frente a PG en contexto</h3>
+<p><b>Qué reconocer:</b> dos planes, uno que suma una cantidad fija (PA) y otro que multiplica (PG). Se compara el término (lo que se recibe ese mes) o la suma (lo acumulado). <b>Método:</b> escribe las dos expresiones y compara valores enteros consecutivos; la PG siempre termina ganando.</p>
+<div class="ex"><p class="et">T2. Dos planes de ahorro <span class="lvl">Adaptado de Prueba 2</span></p>
+<p class="src">Tipo frecuente de la Prueba 2, con números elegidos para resolverlo a mano.</p>
+<p>Ana ahorra 100 el primer mes y cada mes 20 más que el anterior. Beto ahorra 10 el primer mes y cada mes el doble. (a) Halla lo acumulado por cada uno tras \(n\) meses. (b) ¿En qué mes el ahorro mensual de Beto supera por primera vez al de Ana? (c) ¿En qué mes lo acumulado por Beto supera por primera vez al de Ana?</p>
+<details><summary>Ver solución</summary><div class="inner"><p>(a) Ana: \(\tfrac n2\big(200+20(n-1)\big)=10n^2+90n\). Beto: \(10(2^n-1)\).</p><p>(b) Mensual: Ana \(20n+80\), Beto \(10\cdot2^{n-1}\). En \(n=5\): 180 frente a 160; en \(n=6\): 200 frente a 320. Es el mes 6.</p><p>(c) En \(n=6\): 900 frente a 630; en \(n=7\): 1120 frente a 1270. Es el mes 7. Lo acumulado tarda más en cambiar que lo mensual.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Un teatro tiene 20 asientos en la primera fila y cada fila tiene 2 más que la anterior. (a) ¿Cuántos asientos hay en 25 filas? (b) ¿Cuántas filas hacen falta como mínimo para 1000 asientos?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>(a) \(\tfrac{25}2(40+48)=1100\). (b) \(S_n=n(n+19)\): \(S_{23}=966\) y \(S_{24}=1032\), así que 24 filas.</li></ol></div></details></div>
+<h3 id="ty3">6.3 Términos de una PA dentro de un intervalo</h3>
+<p><b>Qué reconocer:</b> «¿cuántos términos están entre…?» o «la suma de los múltiplos de 7 entre 100 y 500». <b>Método:</b> escribe el término general, impón las dos desigualdades para hallar el primer y el último índice, cuenta (último − primero + 1) y usa \(S=\tfrac n2(\text{primero}+\text{último})\).</p>
+<div class="ex"><p class="et">T3. Contar y sumar en un rango <span class="lvl">Sección A</span></p>
+<p>¿Cuántos términos de la PA \(5,9,13,\dots\) están entre 100 y 400? Halla su suma.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(u_k=4k+1\). \(4k+1\gt100\iff k\ge25\) (el término 101) y \(4k+1\lt400\iff k\le99\) (el término 397). Hay \(99-25+1=75\) términos, que suman \(\tfrac{75}2(101+397)=18\,675\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla la suma de los múltiplos de 7 entre 100 y 500.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Desde \(105=7\cdot15\) hasta \(497=7\cdot71\): 57 términos. Suma \(\tfrac{57}2(105+497)=17\,157\).</li></ol></div></details></div>
+<h3 id="ty4">6.4 Cálculos con notación Σ</h3>
+<p><b>Qué reconocer:</b> una suma con límites que no empiezan en 1, o una serie escrita con Σ que hay que identificar como PA o PG. <b>Método:</b> el número de términos de \(\sum_{r=p}^{q}\) es \(q-p+1\); calcula el primer y el último término sustituyendo los límites.</p>
+<div class="ex"><p class="et">T4. Tres sumas con Σ <span class="lvl">Sección A</span></p>
+<p>Halla (a) \(\displaystyle\sum_{r=5}^{20}(3r-1)\); (b) \(\displaystyle\sum_{r=1}^{6}3\cdot2^{r-1}\); (c) el valor de \(n\) si \(\displaystyle\sum_{r=1}^{n}(2r+1)=168\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>(a) 16 términos, de 14 a 59: \(8\cdot73=584\).</p><p>(b) PG con \(u_1=3\) y \(r=2\): \(3(2^6-1)=189\).</p><p>(c) \(n(n+1)+n=n^2+2n=168\), así que \((n+14)(n-12)=0\) y \(n=12\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Escribe \(2+5+8+\dots+56\) con notación Σ y calcula la suma.</li><li>Halla \(\displaystyle\sum_{r=0}^{\infty}5\left(-\tfrac14\right)^r\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\displaystyle\sum_{r=1}^{19}(3r-1)=\tfrac{19}2(2+56)=551\).</li><li>\(\dfrac5{1+\frac14}=4\).</li></ol></div></details></div>
+<h3 id="ty5">6.5 Decimales periódicos</h3>
+<p><b>Qué reconocer:</b> «escribe \(0{,}3\overline{18}\) como fracción». <b>Método:</b> la parte que se repite es una serie geométrica de razón \(\frac1{10^k}\), con \(k\) el número de cifras del período. La parte que no se repite se suma aparte.</p>
+<div class="ex"><p class="et">T5. Un período que no empieza enseguida <span class="lvl">Sección A</span></p>
+<p>Escribe \(0{,}3\overline{18}=0{,}318181\ldots\) como fracción irreducible.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(0{,}3+0{,}018+0{,}00018+\dots=\tfrac3{10}+\dfrac{18/1000}{1-1/100}=\tfrac3{10}+\tfrac{18}{990}=\tfrac3{10}+\tfrac1{55}=\tfrac7{22}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Escribe \(0{,}\overline{142857}\) y \(2{,}\overline3\) como fracciones.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\tfrac{142857}{999999}=\tfrac17\) y \(2+\dfrac{3/10}{1-1/10}=\tfrac73\).</li></ol></div></details></div>
+<h3 id="ty6">6.6 Sistemas con logaritmos</h3>
+<p><b>Qué reconocer:</b> dos ecuaciones con logaritmos de \(x\) y de \(y\), a veces en bases distintas. <b>Método:</b> pasa todo a una base, llama \(a=\log x\) y \(b=\log y\), resuelve el sistema lineal en \(a\) y \(b\) y vuelve a \(x\) e \(y\).</p>
+<div class="ex"><p class="et">T6. Dos bases en el mismo sistema <span class="lvl">Sección A alta</span></p>
+<p>Resuelve \(\log_2x+\log_2y=6\) y \(\log_2x-\log_4y=0\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Con \(a=\log_2x\) y \(b=\log_2y\): \(\log_4y=\tfrac b2\). El sistema es \(a+b=6\) y \(a-\tfrac b2=0\), así que \(b=4\) y \(a=2\). Entonces \(x=4\) e \(y=16\). Comprobación: \(\log_216=4\) y \(\log_416=2=\log_24\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(\log_{10}x+\log_{10}y=3\) y \(\log_{10}x-\log_{10}y=1\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Sumando, \(\log_{10}x=2\); restando, \(\log_{10}y=1\). Así \(x=100\) e \(y=10\).</li></ol></div></details></div>
+<h3 id="ty7">6.7 Cotas y error porcentual</h3>
+<p><b>Qué reconocer:</b> datos redondeados («al centímetro más cercano») y una pregunta por el máximo, el mínimo o el error. <b>Método:</b> cada dato está en \([\text{valor}-\tfrac12\text{unidad},\ \text{valor}+\tfrac12\text{unidad})\). Para un producto o una suma, combina los extremos iguales; para un cociente o una resta, cruzados.</p>
+<div class="ex"><p class="et">T7. Área de un rectángulo medido <span class="lvl">Sección A, contenido NM 1.6</span></p>
+<p class="src">Suele ir en la Prueba 2; en la Prueba 1 sale con números simples.</p>
+<p>Un rectángulo mide 12 cm por 5 cm, cada lado al centímetro más cercano. (a) Halla las cotas inferior y superior del área. (b) Alguien estima el área en 60 cm², y la real es 64 cm². Halla el error porcentual.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>(a) Inferior: \(11{,}5\cdot4{,}5=51{,}75\) cm². Superior: \(12{,}5\cdot5{,}5=68{,}75\) cm².</p><p>(b) \(\left|\dfrac{60-64}{64}\right|\cdot100\,\%=6{,}25\,\%\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Un corredor recorre 100 m (al metro más cercano) en 12,5 s (a la décima más cercana). Halla la velocidad máxima y mínima posibles, en forma de fracción.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Máxima \(\dfrac{100{,}5}{12{,}45}=\dfrac{670}{83}\) m/s; mínima \(\dfrac{99{,}5}{12{,}55}=\dfrac{1990}{251}\) m/s.</li></ol></div></details></div>
+<h3 id="ty8">6.8 «Muestre que» con potencias y un modelo exponencial exacto</h3>
+<p><b>Qué reconocer:</b> una identidad con exponentes variables, o un modelo \(N_0e^{kt}\) con datos que dan \(k\) en función de \(\ln2\). <b>Método:</b> en la identidad, saca factor común la potencia menor y trabaja un solo lado. En el modelo, escribe la condición dada, despeja \(k\) exacto y deja que \(\ln2\) se cancele.</p>
+<div class="ex"><p class="et">T8. Factor común y tiempo exacto <span class="lvl">Sección A</span></p>
+<p>(a) Muestra que \(2^{n+3}-2^n=7\cdot2^n\). (b) Muestra que \(3^{2n+1}+9^n=4\cdot9^n\). (c) Una población \(P=500e^{kt}\) se duplica en 10 años. Halla en cuántos años llega a 4000.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>(a) \(2^{n+3}-2^n=2^n(2^3-1)=7\cdot2^n\).</p><p>(b) \(3^{2n+1}=3\cdot9^n\), así que la suma es \(9^n(3+1)=4\cdot9^n\).</p><p>(c) \(e^{10k}=2\), así que \(k=\tfrac{\ln2}{10}\). Llegar a 4000 es multiplicar por \(8=2^3\): tres duplicaciones, 30 años. Con la fórmula: \(e^{kt}=8\), \(t=\dfrac{\ln8}{k}=\dfrac{3\ln2}{\ln2/10}=30\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Muestra que \(5^{n+2}-5^{n+1}\) es divisible por 20 para todo \(n\ge1\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(5^{n+1}(5-1)=4\cdot5^{n+1}=20\cdot5^n\).</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo ya resuelto. Suben de dificultad: el 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la Sección B. Al final, I1 es una investigación tipo Prueba 3 de NS: el techo del IB. Cada uno trae una pista y la respuesta final plegadas; la solución completa la haces tú.</p>
+
+<div class="ex"><p class="et">E1. PA que contiene una PG <span class="lvl">Sección A alta</span></p>
+<p>Los términos \(u_3,\ u_7,\ u_{16}\) de una PA con \(d\neq0\) son, en ese orden, términos consecutivos de una PG. (a) Muestra que \(u_1=\tfrac65d\) y halla la razón de la PG. (b) Si además \(S_{10}=285\), halla \(u_1\) y \(d\). (c) Muestra que el siguiente término de esa PG no es término de la PA.</p>
+<details><summary>Pista</summary><div class="inner"><p>\((u_1+6d)^2=(u_1+2d)(u_1+15d)\). En (c), comprueba si \(n\) sale entero.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(r=\tfrac94\). (b) \(u_1=6,\ d=5\). (c) El siguiente término es \(\tfrac{729}{4}\), y \(6+5(n-1)=\tfrac{729}{4}\) da \(n\) no entero.</p></div></details></div>
+
+<div class="ex"><p class="et">E2. Logaritmos con base variable e inecuación <span class="lvl">Sección A alta</span></p>
+<p>(a) Resuelve \(\log_2x+6\log_x2=5\). (b) Resuelve \(\log_{1/3}(x^2-4x)\ge-1\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(t=\log_2x\). (b) Base menor que 1: se invierte el sentido, y hay que intersecar con el dominio \(x^2-4x\gt 0\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(x=4\) o \(x=8\). (b) \(2-\sqrt7\le x\lt 0\) o \(4\lt x\le2+\sqrt7\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Sistema exponencial y cuadrática en \(3^x\) <span class="lvl">Sección A alta</span></p>
+<p>(a) Resuelve el sistema \(2^x+2^y=12,\ x+y=5\). (b) Resuelve \(3^{2x+1}-28\cdot3^x+9=0\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(2^x\cdot2^y=2^5\): conoces la suma y el producto de \(2^x\) y \(2^y\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \((x,y)=(2,3)\) o \((3,2)\). (b) \(x=2\) o \(x=-1\).</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Familias de sumas parciales <span class="lvl">Sección B</span></p>
+<p>(a) Si \(S_n=2^{n+1}+c\), halla \(c\) para que la sucesión sea una PG. (b) Con ese \(c\), halla la suma de los términos en posiciones múltiplo de 3, desde \(u_3\) hasta \(u_{3m}\). (c) Muestra que \(S_n=pn^2+qn+c\) corresponde a una PA si y solo si \(c=0\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Calcula \(u_1=S_1\) y \(u_n=S_n-S_{n-1}\) para \(n\ge2\) por separado.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(c=-2\), con \(u_n=2^n\). (b) \(\dfrac{8(8^m-1)}{7}\). (c) Para \(n\ge2\), \(u_n=2pn+q-p\), y la PA exige \(u_1=S_1=p+q+c\) igual a \(p+q\).</p></div></details></div>
+
+<div class="ex"><p class="et">E5. Distancia y tiempo de una pelota que rebota <span class="lvl">Sección B</span></p>
+<p>Se deja caer una pelota desde 10 m; tras cada bote sube \(\tfrac34\) de la altura anterior. El tiempo de caída desde una altura \(h\) es \(\sqrt{h/5}\) segundos, y el de subida es igual. (a) Halla la distancia exacta hasta el quinto contacto con el suelo. (b) Halla la distancia total. (c) Muestra que el tiempo total es \(7\sqrt2+4\sqrt6\) segundos.</p>
+<details><summary>Pista</summary><div class="inner"><p>Los tiempos de cada rebote forman una PG de razón \(\sqrt{3/4}=\tfrac{\sqrt3}{2}\). Racionaliza \(\dfrac{1}{2-\sqrt3}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\tfrac{3265}{64}\) m. (b) 70 m. (c) \(\sqrt2+2\sqrt2\cdot\dfrac{\sqrt3/2}{1-\sqrt3/2}=7\sqrt2+4\sqrt6\) s.</p></div></details></div>
+
+<div class="ex"><p class="et">E6. Convergencia con razón cuadrática <span class="lvl">Sección B</span></p>
+<p>Considera \(\displaystyle\sum_{n=0}^{\infty}\left(\frac{x^2-5}{4}\right)^n\). (a) Halla los \(x\) para los que converge. (b) Halla \(x\) si la suma es 2. (c) Muestra que, cuando converge, la suma es siempre mayor que \(\tfrac12\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(-4\lt x^2-5\lt 4\). La suma es \(\dfrac{4}{9-x^2}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(1\lt |x|\lt 3\). (b) \(x=\pm\sqrt7\). (c) \(0\lt 9-x^2\lt 8\), así que \(\dfrac4{9-x^2}\gt \dfrac12\).</p></div></details></div>
+
+<div class="ex"><p class="et">E7. Serie geométrica de razón trigonométrica <span class="lvl">Sección B, integra Módulo 8</span></p>
+<p>Considera \(1+\sqrt2\cos x+2\cos^2x+2\sqrt2\cos^3x+\dots\), con \(0\le x\le\pi\). (a) Halla los valores de \(x\) para los que la serie infinita converge. (b) Halla la suma cuando \(x=\tfrac\pi3\), en la forma \(a+b\sqrt2\). (c) Halla el \(x\) para el que la suma vale \(\tfrac23\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Es una PG con \(r=\sqrt2\cos x\). Converge si \(|\cos x|\lt\tfrac1{\sqrt2}\). En (b), racionaliza \(\dfrac1{1-\frac{\sqrt2}2}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\tfrac\pi4\lt x\lt\tfrac{3\pi}4\). (b) \(r=\tfrac{\sqrt2}2\), suma \(2+\sqrt2\). (c) \(1-r=\tfrac32\), así que \(\cos x=-\tfrac{\sqrt2}4\) y \(x=\arccos\left(-\tfrac{\sqrt2}4\right)\), que está en el intervalo de (a).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Una suma que mezcla PA y PG <span class="lvl">Sección B</span></p>
+<p>(a) Muestra que \(\displaystyle\sum_{r=1}^{n}\left(3\cdot2^{r-1}+2r\right)=3\cdot2^n+n^2+n-3\). (b) Halla el menor \(n\) para el que la suma supera 1000. (c) Halla \(\displaystyle\sum_{r=n+1}^{2n}2r\) en función de \(n\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Separa en dos sumas: una geométrica y una aritmética. En (c), resta dos sumas desde \(r=1\), o cuenta términos: hay \(n\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) Con \(n=8\) la suma es 837; con \(n=9\), 1623. Así \(n=9\). (c) \(n(3n+1)\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. PA y PG entrelazadas <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>Una PA y una PG tienen el mismo primer término \(a\gt 0\). Los términos 1.º, 3.º y 4.º de la PA (con \(d\ne0\)) son, en ese orden, los tres primeros de la PG. (a) Muestra que \(r=\tfrac12\) y \(d=-\tfrac a4\). (b) Muestra que la suma de los \(n\) primeros términos de la PA es \(\dfrac{a\,n(9-n)}{8}\), y halla el \(n\) para el que vale 0. (c) Halla el menor \(n\) para el que esa suma es menor que \(-S_\infty\) de la PG.</p>
+<details><summary>Pista</summary><div class="inner"><p>\(ar=a+2d\) y \(ar^2=a+3d\). Divide \(a(r^2-1)=3d\) entre \(a(r-1)=2d\). En (c) aparece \(\sqrt{145}\), que está entre 12 y 13.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(n=9\). (c) \(n^2-9n-16\gt 0\Rightarrow n\gt \tfrac{9+\sqrt{145}}{2}\approx10{,}5\), así que \(n=11\).</p></div></details></div>
+
+<div class="ex"><p class="et">E10. Producto telescópico dentro de un logaritmo <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>Sea \(S_n=\displaystyle\sum_{k=1}^{n}\ln\left(1+\frac{1}{k(k+2)}\right)\). (a) Muestra que \(1+\dfrac1{k(k+2)}=\dfrac{(k+1)^2}{k(k+2)}\). (b) A partir de lo anterior, muestra que \(S_n=\ln\dfrac{2(n+1)}{n+2}\). (c) Halla la suma de la serie infinita. (d) Halla el menor \(n\) con \(S_n\gt \ln1{,}99\). (e) Muestra que \(S_n\lt\ln2\) para todo \(n\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Separa el producto en \(\prod\dfrac{k+1}{k}\cdot\prod\dfrac{k+1}{k+2}\): cada uno telescopa por su lado.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) \(\ln2\). (d) \(n=199\). (e) \(2-\dfrac{2(n+1)}{n+2}=\dfrac2{n+2}\gt0\), así que \(\dfrac{2(n+1)}{n+2}\lt2\), y como \(\ln\) es creciente, \(S_n\lt\ln2\). Es la versión de nivel máximo de mayo 2026 P5.</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. Productos telescópicos y un límite combinatorio <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>Para cada entero \(m\ge1\) se define \(P_m(n)=\displaystyle\prod_{k=m+1}^{n}\left(1-\frac{m^2}{k^2}\right)\), para \(n\gt m\). Esta investigación lleva de unos casos concretos a una fórmula general y a su límite.</p>
+<ol type="a"><li>Para \(m=1\), calcula \(P_1(2)\), \(P_1(3)\), \(P_1(4)\) y \(P_1(5)\) como fracciones irreducibles, y conjetura una fórmula para \(P_1(n)\).</li><li>Demuestra la conjetura escribiendo \(1-\frac1{k^2}=\frac{(k-1)(k+1)}{k\cdot k}\) y separando el producto en dos productos telescópicos.</li><li>A partir de lo anterior, halla \(\displaystyle\sum_{k=2}^{n}\ln\left(1-\frac1{k^2}\right)\) y su límite cuando \(n\to\infty\).</li><li>Para \(m=2\), muestra que \(P_2(n)=\dfrac{(n+1)(n+2)}{6n(n-1)}\) y halla \(\displaystyle\lim_{n\to\infty}P_2(n)\).</li><li>Los límites para \(m=1,2,3\) son \(\tfrac12\), \(\tfrac16\) y \(\tfrac1{20}\). Relaciónalos con el triángulo de Pascal y conjetura el límite para cualquier \(m\).</li><li>Muestra que \(P_m(n)=\dfrac{(m!)^2}{(2m)!}\cdot\dfrac{(n-m)!\,(n+m)!}{(n!)^2}\) y deduce el límite general.</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>Calcula y simplifica cada producto. Mira el numerador y el denominador por separado: el numerador va \(3,4,5,6\) y el denominador, \(4,6,8,10\).</li><li>\(\prod_{k=2}^{n}\frac{k-1}{k}\) deja solo el primer numerador y el último denominador. \(\prod_{k=2}^{n}\frac{k+1}{k}\) hace lo mismo en sentido contrario.</li><li>La suma de logaritmos es el logaritmo del producto.</li><li>Haz lo mismo que en (b) con \(\frac{(k-2)(k+2)}{k\cdot k}\), desde \(k=3\).</li><li>\(\binom21=2\), \(\binom42=6\), \(\binom63=20\).</li><li>\(\prod_{k=m+1}^{n}(k-m)=(n-m)!\), \(\prod_{k=m+1}^{n}(k+m)=\frac{(n+m)!}{(2m)!}\) y \(\prod_{k=m+1}^{n}k=\frac{n!}{m!}\). Para el límite, escribe \(\frac{(n-m)!(n+m)!}{(n!)^2}=\prod_{j=1}^{m}\frac{n+j}{n-m+j}\): cada factor tiende a 1.</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>\(\tfrac34,\ \tfrac23,\ \tfrac58,\ \tfrac35\). Conjetura: \(P_1(n)=\dfrac{n+1}{2n}\).</li><li>\(\prod\frac{k-1}{k}=\frac1n\) y \(\prod\frac{k+1}{k}=\frac{n+1}2\). El producto es \(\frac{n+1}{2n}\).</li><li>\(\ln\dfrac{n+1}{2n}\), que tiende a \(\ln\tfrac12=-\ln2\).</li><li>\(\prod_{k=3}^{n}\frac{k-2}{k}=\frac{2}{n(n-1)}\) y \(\prod_{k=3}^{n}\frac{k+2}{k}=\frac{(n+1)(n+2)}{12}\). Multiplicando sale la fórmula. El límite es \(\tfrac16\).</li><li>Son \(\dfrac1{\binom{2m}{m}}\): los inversos de los números centrales de las filas pares del triángulo de Pascal. Conjetura: \(\displaystyle\lim_{n\to\infty}P_m(n)=\dfrac{1}{\binom{2m}{m}}\).</li><li>Con los productos de la pista, \(P_m(n)=\frac{(n-m)!\,m!}{n!}\cdot\frac{(n+m)!\,m!}{(2m)!\,n!}\). El segundo factor de la fórmula tiende a 1, así que el límite es \(\dfrac{(m!)^2}{(2m)!}=\dfrac1{\binom{2m}{m}}\). Comprobado con \(m=4\): \(\tfrac1{70}\).</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 2, polinomios (factor y resto, discriminante, relaciones entre raíces).</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

@@ -39,6 +39,8 @@ export const Route = createFileRoute("/api/chat")({
           history?: HistoryItem[];
           files?: Array<{ name: string; type: string; data: string }>;
           sessionContext?: string;
+          /** Usuarios premium usan el modelo avanzado (GEMINI_PREMIUM_MODEL). */
+          premium?: boolean;
         };
 
         const message = body.message?.trim();
@@ -97,6 +99,7 @@ export const Route = createFileRoute("/api/chat")({
             contents,
             temperature: 0.7,
             maxOutputTokens: 4096,
+            premium: body.premium === true,
           });
           let text = result.text;
 
@@ -117,6 +120,7 @@ export const Route = createFileRoute("/api/chat")({
               contents,
               temperature: 1,
               maxOutputTokens: 4096,
+              premium: body.premium === true,
             });
             if (retry.status === 200 && retry.text.trim()) text = retry.text;
           }

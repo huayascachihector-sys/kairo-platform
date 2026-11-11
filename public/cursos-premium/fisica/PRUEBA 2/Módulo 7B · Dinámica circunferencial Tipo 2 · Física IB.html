@@ -1,0 +1,416 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 7B · Dinámica circunferencial Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:52px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:26px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:12px 0;overflow-x:auto}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.pb{border:1px solid var(--line);border-radius:6px;margin:26px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#EFF4F2,#FFFFFF);border-bottom:1px solid var(--line);padding:14px 20px}
+.pb-head .code{font-family:"IBM Plex Mono";font-size:11px;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px;letter-spacing:.05em}
+.pb-head h3{margin:8px 0 0;font-size:19px}
+.pb-body{padding:6px 20px 18px}
+.enun{background:#F4F6F4;border-left:3px solid var(--ink-soft);padding:10px 16px;margin:14px 0;font-size:16.5px}
+.part{margin:16px 0 4px;font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep)}
+.pide{display:inline-block;font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:1px 7px;margin-right:8px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:5px 11px;display:inline-block;margin-top:6px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<!-- rev 2026-10-31 7b · banco paper2 circular (3) oficiales 2022-26 -->
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> A.2 <span>//</span> MÓDULO 7B · TIPO 2 (PAPER 2)</p>
+  <h1>Círculo en <em>respuesta larga</em></h1>
+  <p class="lede">Descomposición de fuerzas en ángulos cualesquiera (radial y tangencial), peralte, "gravitrón", círculo vertical y resorte giratorio. Toda la ficha resuelta, más 7 problemas integradores.</p>
+  <div class="stats">
+    <div class="stat"><b>5/5</b><span>ficha resuelta</span></div>
+    <div class="stat"><b>3</b><span>Paper 2 oficiales 22–26</span></div>
+    <div class="stat"><b>7</b><span>problemas extra</span></div>
+    <div class="stat"><b>Paper 2</b><span>respuesta larga</span></div>
+    <div class="stat"><b>g = 10</b><span>salvo indicación</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#estrategia">0 · Fuerzas en ángulos (método)</a>
+  <a href="#p1">1 · Bola que oscila (N02)</a>
+  <a href="#p2">2 · Gravitrón (N04)</a>
+  <a href="#p3">3 · Curva peraltada (M04)</a>
+  <a href="#p4">4 · Curva plana (M99)</a>
+  <a href="#p5">5 · Resorte giratorio (M05)</a>
+  <a href="#examenes">★ Banco Paper 2 · 2022–26</a>
+  <a href="#extra">Problemas extra para ti</a>
+</nav>
+
+<main>
+
+<!-- ESTRATEGIA -->
+<section id="estrategia">
+  <p class="sec-num">SECCIÓN 00 · LO QUE FALTA PARA TIPO 2</p>
+  <h2>Descomponer fuerzas en cualquier ángulo<span class="rule"></span></h2>
+  <p class="sec-intro">Aquí las fuerzas ya no apuntan solo arriba/abajo/izquierda/derecha. La clave del tipo 2 es <strong>elegir ejes inteligentes y descomponer cada fuerza en ellos</strong>.</p>
+
+  <div class="box key"><span class="lbl">Dos formas de descomponer (elige según el problema)</span>
+    <p><strong>1) Ejes radial–tangencial</strong> (círculo vertical, punto arbitrario): el eje radial apunta al centro; el tangencial, a lo largo del movimiento. El peso, a un ángulo \(\phi\) respecto de la horizontal, se parte en:</p>
+    <ul>
+      <li>componente <strong>radial</strong> \(mg\sin\phi\) (a favor o en contra del centro según el punto),</li>
+      <li>componente <strong>tangencial</strong> \(mg\cos\phi\) (cambia la rapidez → \(a_t\)).</li>
+    </ul>
+    <p>La ecuación radial da la <strong>tensión/normal</strong> (\(\sum F_{rad}=mv^2/r\)); la tangencial da la <strong>aceleración tangencial</strong> (\(a_t=g\cos\phi\)).</p>
+    <p><strong>2) Ejes horizontal–vertical</strong> (peralte, péndulo cónico): una fuerza inclinada un ángulo \(\theta\) (como la normal en un peralte, o la tensión) se parte en \(F\cos\theta\) (vertical) y \(F\sin\theta\) (horizontal). La vertical equilibra el peso; la horizontal <strong>es la centrípeta</strong>.</p>
+  </div>
+  <figure class="fig">
+    <svg viewBox="0 0 360 150" width="340" xmlns="http://www.w3.org/2000/svg" aria-label="descomposicion peralte y radial">
+      <!-- banked -->
+      <polygon points="20,120 150,120 150,80" fill="#EDEFEA" stroke="var(--ink)"/>
+      <rect x="108" y="70" width="26" height="16" fill="#C9D2CC" stroke="var(--ink)" transform="rotate(-17 121 78)"/>
+      <line x1="121" y1="78" x2="121" y2="40" stroke="var(--teal)" stroke-width="2" marker-end="url(#a)"/>
+      <line x1="121" y1="78" x2="90" y2="78" stroke="var(--amber)" stroke-width="2" marker-end="url(#a)"/>
+      <line x1="121" y1="78" x2="121" y2="115" stroke="var(--warn)" stroke-width="2" marker-end="url(#a)"/>
+      <defs><marker id="a" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <text x="124" y="45" font-family="IBM Plex Mono" font-size="9" fill="var(--teal)">R</text>
+      <text x="70" y="75" font-family="IBM Plex Mono" font-size="8" fill="var(--amber)">Rsenθ→centro</text>
+      <text x="124" y="112" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">mg</text>
+      <text x="40" y="140" font-family="Space Grotesk" font-size="10" fill="var(--ink-soft)">peralte: H–V</text>
+      <!-- radial -->
+      <circle cx="280" cy="80" r="45" fill="none" stroke="var(--line)"/>
+      <circle cx="315" cy="52" r="6" fill="#C9D2CC" stroke="var(--ink)"/>
+      <line x1="315" y1="52" x2="315" y2="80" stroke="var(--warn)" stroke-width="2" marker-end="url(#a)"/>
+      <line x1="315" y1="52" x2="288" y2="73" stroke="var(--teal)" stroke-width="2" stroke-dasharray="3 2"/>
+      <text x="318" y="72" font-family="IBM Plex Mono" font-size="8" fill="var(--warn)">mg</text>
+      <text x="250" y="140" font-family="Space Grotesk" font-size="10" fill="var(--ink-soft)">círculo: radial–tangencial</text>
+    </svg>
+    <figcaption>Peralte: la normal inclinada da la centrípeta horizontal. Círculo: el peso se parte en radial y tangencial.</figcaption>
+  </figure>
+
+  <div class="box key"><span class="lbl">Condiciones críticas de Paper 2 (apréndelas)</span>
+    <p><strong>Círculo vertical — punto más alto.</strong> En el tope, el peso y la tensión (o la normal) apuntan los dos al centro, hacia abajo: \(mg+T=\dfrac{mv^2}{r}\). La <strong>rapidez mínima</strong> para que la cuerda siga tensa (o el agua no caiga del cubo) es la que hace \(T=0\): \(v_{min}=\sqrt{gr}\).</p>
+    <p><strong>Pérdida de contacto en una cima/lomo.</strong> En lo alto de un lomo, la normal apunta hacia afuera: \(mg-N=\dfrac{mv^2}{r}\). El objeto <strong>despega</strong> cuando \(N=0\): \(v_{max}=\sqrt{gr}\).</p>
+    <p><strong>Péndulo cónico.</strong> Cuerda a un ángulo \(\theta\) de la vertical, radio \(r=L\sin\theta\). Vertical: \(T\cos\theta=mg\); horizontal (centrípeta): \(T\sin\theta=\dfrac{mv^2}{r}\). De ahí \(\tan\theta=\dfrac{v^2}{gr}\) y el periodo \(T_{per}=2\pi\sqrt{\dfrac{L\cos\theta}{g}}\).</p>
+  </div>
+  <div style="display:flex;gap:14px;flex-wrap:wrap">
+  <figure class="fig" style="flex:1;min-width:230px">
+    <svg viewBox="0 0 220 185" width="100%" style="max-width:220px" xmlns="http://www.w3.org/2000/svg" aria-label="circulo vertical condicion en el tope">
+      <circle cx="110" cy="92" r="58" fill="none" stroke="var(--line)"/>
+      <circle cx="110" cy="92" r="2.5" fill="var(--ink-soft)"/>
+      <text x="116" y="96" font-family="IBM Plex Mono" font-size="9" fill="var(--ink-soft)">C</text>
+      <circle cx="110" cy="34" r="8" fill="#C9D2CC" stroke="var(--ink)"/>
+      <line x1="104" y1="42" x2="104" y2="72" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#vc)"/>
+      <line x1="116" y1="42" x2="116" y2="60" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#vc)"/>
+      <defs><marker id="vc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <text x="82" y="66" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">mg</text>
+      <text x="120" y="58" font-family="IBM Plex Mono" font-size="9" fill="var(--teal)">T</text>
+      <text x="36" y="178" font-family="Space Grotesk" font-size="10" fill="var(--ink-soft)">tope: mg y T hacia el centro</text>
+    </svg>
+    <figcaption>En el tope ambas fuerzas apuntan al centro. Mínimo: \(T=0\Rightarrow v=\sqrt{gr}\).</figcaption>
+  </figure>
+  <figure class="fig" style="flex:1;min-width:230px">
+    <svg viewBox="0 0 220 185" width="100%" style="max-width:220px" xmlns="http://www.w3.org/2000/svg" aria-label="pendulo conico">
+      <line x1="110" y1="22" x2="110" y2="150" stroke="var(--line)" stroke-dasharray="3 3"/>
+      <circle cx="110" cy="22" r="3" fill="var(--ink)"/>
+      <line x1="110" y1="22" x2="165" y2="120" stroke="var(--teal-deep)" stroke-width="1.5"/>
+      <ellipse cx="110" cy="120" rx="55" ry="14" fill="none" stroke="var(--line)"/>
+      <line x1="110" y1="120" x2="165" y2="120" stroke="var(--line)" stroke-dasharray="2 2"/>
+      <circle cx="165" cy="120" r="8" fill="#C9D2CC" stroke="var(--ink)"/>
+      <line x1="165" y1="112" x2="141" y2="69" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#cp)"/>
+      <line x1="165" y1="128" x2="165" y2="162" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#cp)"/>
+      <defs><marker id="cp" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <path d="M110,57 A 20 20 0 0 0 128,51" fill="none" stroke="var(--amber)" stroke-width="1.2"/>
+      <text x="113" y="52" font-family="IBM Plex Mono" font-size="9" fill="var(--amber)">θ</text>
+      <text x="143" y="92" font-family="IBM Plex Mono" font-size="9" fill="var(--teal)">T</text>
+      <text x="170" y="150" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">mg</text>
+      <text x="134" y="133" font-family="IBM Plex Mono" font-size="8" fill="var(--ink-soft)">r</text>
+    </svg>
+    <figcaption>Péndulo cónico: \(T\cos\theta\) equilibra \(mg\); \(T\sin\theta\) es la centrípeta.</figcaption>
+  </figure>
+  </div>
+</section>
+
+<!-- P1 -->
+<section id="p1" class="pb">
+  <div class="pb-head"><span class="code">FICHA 1 · N02/430/S(3)</span><h3>Bola que oscila hasta el punto más bajo</h3></div>
+  <div class="pb-body">
+    <div class="enun">Bola de 0,20 kg atada en P, sostenida en A con la cuerda <strong>horizontal</strong> (PM = 0,45 m). Se suelta y pasa por B, justo debajo de P. \(g=10\).</div>
+
+    <p class="part">(a) <span class="pide">explique</span> si la fuerza neta en B es cero.</p>
+    <p>No es cero: en B la bola describe un arco, así que necesita una <strong>fuerza centrípeta</strong> dirigida hacia P (hacia arriba). La resultante apunta al centro.</p>
+
+    <p class="part">(b) <span class="pide">dibuje</span> el DCL en B.</p>
+    <figure class="fig">
+      <svg viewBox="0 0 160 140" width="150" xmlns="http://www.w3.org/2000/svg" aria-label="DCL en B">
+        <circle cx="80" cy="70" r="10" fill="#C9D2CC" stroke="var(--ink)"/>
+        <line x1="80" y1="60" x2="80" y2="20" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#b)"/>
+        <line x1="80" y1="80" x2="80" y2="125" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#b)"/>
+        <defs><marker id="b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+        <text x="86" y="30" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">T</text>
+        <text x="86" y="118" font-family="IBM Plex Mono" font-size="11" fill="var(--warn)">mg</text>
+      </svg>
+      <figcaption>Tensión hacia arriba (a P), peso hacia abajo.</figcaption>
+    </figure>
+
+    <p class="part">(c)(i) <span class="pide">pruebe</span> que la rapidez en B es 3,0 m·s⁻¹.</p>
+    <p>De A a B la bola baja una altura igual a la longitud de la cuerda, \(h=0{,}45\) m. Energía: \(\tfrac12 mv^2=mgh\Rightarrow v=\sqrt{2gh}=\sqrt{2(10)(0{,}45)}=\sqrt9\). ∎ (v = 3,0 m·s⁻¹)</p>
+
+    <p class="part">(c)(ii) <span class="pide">determine</span> su aceleración en B.</p>
+    <p>En el punto más bajo solo hay aceleración centrípeta: \(a=\dfrac{v^2}{r}=\dfrac{3{,}0^2}{0{,}45}\). <span class="ans">a = 20 m·s⁻² hacia arriba</span></p>
+
+    <p class="part">(c)(iii) <span class="pide">determine</span> la tensión.</p>
+    <p>Radial: \(T-mg=\dfrac{mv^2}{r}\Rightarrow T=m\Big(g+\dfrac{v^2}{r}\Big)=0{,}20(10+20)\). <span class="ans">T = 6,0 N</span></p>
+  </div>
+</section>
+
+<!-- P2 -->
+<section id="p2" class="pb">
+  <div class="pb-head"><span class="code">FICHA 2 · N04/4/PHYSI/SP3</span><h3>"El vuelo" (gravitrón): fricción contra la pared</h3></div>
+  <div class="pb-body">
+    <div class="enun">Habitación circular que gira; al bajar el suelo, la fricción sostiene a la persona contra la pared. Datos: \(m=80\) kg, \(\mu=0{,}40\), \(r=6{,}0\) m. \(g=10\).</div>
+
+    <p class="part">(a) <span class="pide">defina</span> coeficiente de rozamiento.</p>
+    <p>Razón entre la fuerza de rozamiento y la fuerza normal: \(\mu=\dfrac{F_f}{F_N}\).</p>
+
+    <p class="part">(b)(i) <span class="pide">explique</span> si el rozamiento es estático o dinámico.</p>
+    <p><strong>Estático:</strong> la persona no desliza respecto a la pared (gira solidaria con ella), así que la fricción es estática.</p>
+
+    <p class="part">(b)(ii) <span class="pide">dibuje</span> las fuerzas sobre la persona.</p>
+    <p>Peso \(mg\) (abajo), normal \(N\) de la pared (horizontal, hacia el centro = centrípeta), fricción \(f\) (vertical, hacia arriba, sosteniéndola).</p>
+
+    <p class="part">(c)(i) <span class="pide">calcule</span> la mínima fuerza horizontal resultante.</p>
+    <p>La horizontal resultante es la normal \(N\). En el mínimo, la fricción es máxima (\(f=\mu N\)) y sostiene el peso: \(\mu N=mg\Rightarrow N=\dfrac{mg}{\mu}=\dfrac{80(10)}{0{,}40}\). <span class="ans">N = 2000 N</span></p>
+
+    <p class="part">(c)(ii) <span class="pide">calcule</span> la velocidad mínima de la pared.</p>
+    <p>\(N=\dfrac{mv^2}{r}\Rightarrow v=\sqrt{\dfrac{Nr}{m}}=\sqrt{\dfrac{2000(6{,}0)}{80}}=\sqrt{150}\). <span class="ans">v ≈ 12 m·s⁻¹</span></p>
+  </div>
+</section>
+
+<!-- P3 -->
+<section id="p3" class="pb">
+  <div class="pb-head"><span class="code">FICHA 3 · M04/431/S(2)</span><h3>Curva peraltada (sin fricción)</h3></div>
+  <div class="pb-body">
+    <div class="enun">Auto de peso 8500 N en una curva peraltada 14°, radio 150 m. A cierta \(v\) no hay fricción; la reacción de la carretera es \(R\). \(g=10\).</div>
+
+    <p class="part">(a) <span class="pide">deduzca</span> que la componente horizontal de \(R\) ≈ 2100 N.</p>
+    <p>Vertical (equilibrio): \(R\cos14^\circ=W\Rightarrow R=\dfrac{8500}{\cos14^\circ}=8760\) N. Horizontal: \(R\sin14^\circ=8760(0{,}242)=2120\approx2100\) N. ∎ (Equivale a \(W\tan14^\circ\).)</p>
+
+    <p class="part">(b) <span class="pide">indique</span> la fuerza resultante sobre el auto.</p>
+    <p>La vertical se cancela; la resultante es la componente horizontal de \(R\): ≈ <strong>2100 N hacia el centro</strong> del círculo.</p>
+
+    <p class="part">(c) <span class="pide">determine</span> la rapidez \(v\).</p>
+    <p>\(m=\dfrac{W}{g}=850\) kg. Centrípeta: \(F_c=\dfrac{mv^2}{r}\Rightarrow 2100=\dfrac{850\,v^2}{150}\Rightarrow v^2=\dfrac{2100(150)}{850}=370\). <span class="ans">v ≈ 19 m·s⁻¹</span></p>
+
+    <p class="part">(d) <span class="pide">deduzca</span> hacia dónde desliza si va más rápido.</p>
+    <p>Si \(v>19\) m·s⁻¹ se necesita más centrípeta de la que da la normal, así que el auto <strong>tiende a deslizar hacia arriba del peralte</strong> (hacia el exterior de la curva).</p>
+  </div>
+</section>
+
+<!-- P4 -->
+<section id="p4" class="pb">
+  <div class="pb-head"><span class="code">FICHA 4 · M99/430/S(3)</span><h3>Curva plana</h3></div>
+  <div class="pb-body">
+    <div class="enun">Auto a 20 m·s⁻¹ constante en una curva de radio 100 m.</div>
+    <p class="part">(a) <span class="pide">calcule</span> la aceleración.</p>
+    <p>\(a=\dfrac{v^2}{r}=\dfrac{20^2}{100}\). <span class="ans">a = 4,0 m·s⁻²</span></p>
+    <p class="part">(b) <span class="pide">indique</span> la dirección de la aceleración.</p>
+    <p>Hacia el <strong>centro</strong> del círculo (centrípeta).</p>
+    <p class="part">(c) <span class="pide">indique</span> el origen de la fuerza.</p>
+    <p>La <strong>fricción</strong> entre los neumáticos y la carretera.</p>
+  </div>
+</section>
+
+<!-- P5 -->
+<section id="p5" class="pb">
+  <div class="pb-head"><span class="code">FICHA 5 · M05/4/PHYSI/SP2</span><h3>Esfera en un resorte giratorio</h3></div>
+  <div class="pb-body">
+    <div class="enun">Resorte: 18,0 N por 1,0 cm de estiramiento (\(k=1800\ \mathrm{N\,m^{-1}}\)). Esfera de 75,0 g; longitud sin estirar PM = 25,0 cm. Al girar en un círculo horizontal de centro P, PM pasa a 26,5 cm.</div>
+
+    <p class="part">(a) <span class="pide">explique</span> por qué el resorte se alarga.</p>
+    <p>El movimiento circular exige una fuerza centrípeta hacia P. El resorte la aporta estirándose (\(F=kx\)): se alarga hasta que su tensión iguala la centrípeta requerida.</p>
+
+    <p class="part">(b) <span class="pide">determine</span> la rapidez de la esfera.</p>
+    <p>Estiramiento \(x=26{,}5-25{,}0=1{,}5\) cm \(=0{,}015\) m. Fuerza del resorte \(F=kx=1800(0{,}015)=27\) N.</p>
+    <p>Radio \(r=0{,}265\) m. Centrípeta: \(F=\dfrac{mv^2}{r}\Rightarrow v=\sqrt{\dfrac{Fr}{m}}=\sqrt{\dfrac{27(0{,}265)}{0{,}075}}=\sqrt{95{,}4}\). <span class="ans">v ≈ 9,8 m·s⁻¹</span></p>
+  </div>
+</section>
+
+<!-- BANCO PAPER 2 OFICIALES -->
+<section id="examenes">
+  <p class="sec-num">SECCIÓN ★ · BANCO DE EXÁMENES OFICIALES · PAPER 2</p>
+  <h2>Paper 2 oficiales de movimiento circular (2022–2026)<span class="rule"></span></h2>
+  <p class="sec-intro">Tres preguntas reales que recorren el tema: círculo vertical conceptual, rizo (energía + centrípeta + contacto) y órbita circular. Reescritas, resueltas apartado por apartado y verificadas contra el esquema oficial.</p>
+  <div class="box beyond"><span class="lbl">La regla de oro de este tema</span><p>La fuerza centrípeta <em>no</em> es una fuerza nueva: es el <strong>nombre de la resultante</strong> de las fuerzas reales (peso, normal, tensión…) proyectadas sobre el eje radial. Siempre: proyecta al eje que apunta al centro e iguala a \(mv^2/r\).</p></div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">Nov 2022 · SP2 · Q4 · PLAN ANTIGUO</span><h3>Masa en el extremo de una varilla, círculo vertical</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una masa en el extremo de una varilla gira con rapidez <strong>constante</strong> en un círculo vertical. (Figura: en un instante la varilla está horizontal y se da el peso \(W\) de la masa.)</div>
+
+      <p class="part">(a) <span class="pide">dibuje</span> la fuerza que la varilla ejerce sobre la masa (varilla horizontal).</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Dos componentes: una <strong>horizontal hacia el centro</strong> (la centrípeta, cualquier longitud) y una <strong>vertical hacia arriba</strong> de longitud igual a dos cuadros (para equilibrar el peso \(W\), ya que con rapidez constante no hay aceleración tangencial). La fuerza de la varilla es la suma vectorial de ambas. <em>(Esquema: horizontal al centro + vertical de 2 cuadros hacia arriba.)</em></p></div></details>
+
+      <p class="part">(b) <span class="pide">explique</span> por qué la magnitud de la fuerza de la varilla no es constante.</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>La fuerza neta (centrípeta) tiene <strong>magnitud constante</strong> (\(mv^2/r\)) pero cambia continuamente de dirección (siempre al centro). El peso, en cambio, es constante (siempre hacia abajo). La fuerza de la varilla es la <strong>diferencia vectorial</strong> entre la centrípeta y el peso; como el ángulo entre ambas cambia a lo largo del giro, su resultante varía. Concretamente, en el tope \(F_{varilla}=F_c-mg\) y en el fondo \(F_{varilla}=F_c+mg\): distinta en cada punto. ∎</p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2__SL_markscheme (N22/TZ0): (a) componente horizontal al centro + vertical de 2 cuadros arriba · (b) F_c de magnitud constante pero dirección cambiante; F_varilla = diferencia vectorial con el peso (tope F_c−W, fondo F_c+W).</p>
+    </div>
+  </div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">Nov 2024 · SP2 · Q1 · PLAN NUEVO</span><h3>Rizo (loop): energía, fuerza normal y contacto</h3></div>
+    <div class="pb-body">
+      <div class="enun">En una pista con rizo se suelta desde el reposo un auto de \(0{,}12\) kg a \(45\) cm sobre el suelo. El radio del rizo es \(15\) cm; el auto llega a lo más alto del rizo (P). Fricción y resistencia del aire despreciables. \(g=9{,}81\).</div>
+
+      <p class="part">(a)(i) <span class="pide">muestre que</span> la rapidez en P es \(1{,}7\) m·s⁻¹.</p>
+      <p class="ans">v_P = 1,72 m·s⁻¹</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>P (lo alto del rizo) está a \(2r=30\) cm; el auto baja \(45-30=15\) cm \(=0{,}15\) m. Conservación de energía: \(mg(0{,}15)=\tfrac12 mv^2\Rightarrow v=\sqrt{2(9{,}81)(0{,}15)}=1{,}72\) m·s⁻¹. ∎ <em>(La masa se cancela; no vale usar SUVAT aquí.)</em></p></div></details>
+
+      <p class="part">(a)(ii) <span class="pide">determine</span> la fuerza normal del rizo sobre el auto en P.</p>
+      <p class="ans">N ≈ 1,2 N</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>En lo más alto, la normal y el peso apuntan <em>ambos</em> hacia el centro (abajo): \(N+mg=\dfrac{mv^2}{r}\Rightarrow N=m\Big(\dfrac{v^2}{r}-g\Big)=0{,}12\Big(\dfrac{1{,}72^2}{0{,}15}-9{,}81\Big)=0{,}12(19{,}7-9{,}81)=1{,}2\) N. <span class="ans">≈ 1,2 N</span></p></div></details>
+
+      <p class="part">(a)(iii) <span class="pide">indique</span> por qué el auto permanece en contacto con el rizo.</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Porque en P la rapidez es suficiente para que \(\dfrac{mv^2}{r}\ge mg\): sigue necesitándose que la pista <em>empuje</em> (\(N>0\)). Mientras \(N\ge0\) hay contacto; justo en el límite \(N=0\) y \(v_{min}=\sqrt{gr}=\sqrt{9{,}81(0{,}15)}=1{,}21\) m·s⁻¹, menor que 1,72, así que va sobrado. ∎</p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2__SL_markscheme_1 (8824–9594M, Nov 2024): (a)(i) 1,72 m s⁻¹ «mg·0,15=½mv²» · (a)(ii) 1,2 N «N=m(v²/r−g)» · (a)(iii) la rapidez basta para que N≥0. La parte (b), con la colisión en A, se resuelve en el Módulo 6B.</p>
+    </div>
+  </div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">May 2024 · TZ1 · SP2 · Q8 · PLAN NUEVO</span><h3>Satélite en órbita circular</h3></div>
+    <div class="pb-body">
+      <div class="enun">Un satélite orbita la Tierra en un círculo de radio \(1{,}0\times10^{7}\) m. A ese radio, la intensidad del campo gravitatorio terrestre es \(g=4{,}0\) m·s⁻².</div>
+
+      <p class="part">(a) <span class="pide">muestre que</span> la rapidez orbital es ~\(6\times10^{3}\) m·s⁻¹.</p>
+      <p class="ans">v = 6,3×10³ m·s⁻¹</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>La gravedad <em>es</em> la fuerza centrípeta: la aceleración centrípeta iguala a \(g\) en esa órbita. \(g=\dfrac{v^2}{r}\Rightarrow v=\sqrt{gr}=\sqrt{4{,}0(1{,}0\times10^{7})}=\sqrt{4{,}0\times10^{7}}=6{,}3\times10^{3}\) m·s⁻¹. ∎</p></div></details>
+
+      <p class="part">(b) <span class="pide">calcule</span> el periodo orbital.</p>
+      <p class="ans">T ≈ 9,9×10³ s</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>El periodo es el tiempo de una vuelta: \(T=\dfrac{2\pi r}{v}=\dfrac{2\pi(1{,}0\times10^{7})}{6{,}3\times10^{3}}=9{,}9\times10^{3}\) s (≈ 2,8 h). <span class="ans">≈ 9,9×10³ s</span></p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2__TZ1_SL_markscheme_3 (2224–6705M, TZ1): (a) 6,3×10³ m s⁻¹ «v=√(gr)» · (b) 9,9×10³ s «T=2πr/v». (Enlaza con el Módulo 8 — Gravitación.)</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <p class="sec-num">PARA TI · RESUELVE ESTILO PAPER 2 Y ENVÍA EN BLOQUE</p>
+  <h2>7 problemas extra (integradores)<span class="rule"></span></h2>
+  <p class="sec-intro">Nuevos y de nivel creciente. Practican la descomposición en ángulos y la integran con energía, fricción e incertidumbre. \(g=9{,}8\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">E1 · peralte CON fricción (dos límites)</p><p>Una curva de radio 60 m está peraltada 20° y tiene \(\mu_s=0{,}30\). Descomponiendo la normal y la fricción en horizontal y vertical: (a) halla la rapidez <strong>máxima</strong> sin deslizar hacia afuera. (b) Halla la rapidez <strong>mínima</strong> sin deslizar hacia adentro.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a) máxima.</strong> A punto de deslizar hacia afuera/arriba, la fricción máxima \(\mu N\) apunta <em>hacia abajo</em> del peralte. Ejes horizontal–vertical:</p>
+      <div class="eq">\[N\cos\theta-\mu N\sin\theta=mg,\qquad N\sin\theta+\mu N\cos\theta=\dfrac{mv^2}{r}\]</div>
+      <p>Dividiendo (se cancelan \(N\) y \(m\)): \(v_{max}=\sqrt{rg\,\dfrac{\sin\theta+\mu\cos\theta}{\cos\theta-\mu\sin\theta}}=\sqrt{60(9{,}8)\dfrac{0{,}624}{0{,}837}}=\sqrt{438}\). <span class="ans">v_máx ≈ 21 m·s⁻¹</span></p>
+      <p><strong>(b) mínima.</strong> A punto de deslizar hacia adentro/abajo, la fricción apunta <em>hacia arriba</em> del peralte: se invierten los signos de \(\mu\).</p>
+      <p>\(v_{min}=\sqrt{rg\,\dfrac{\sin\theta-\mu\cos\theta}{\cos\theta+\mu\sin\theta}}=\sqrt{60(9{,}8)\dfrac{0{,}0601}{1{,}042}}=\sqrt{33{,}9}\). <span class="ans">v_mín ≈ 5,8 m·s⁻¹</span></p>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">E2 · círculo vertical en un punto cualquiera</p><p>Una bola de 0,40 kg atada a una cuerda de 0,70 m se suelta desde la horizontal. En el punto donde la cuerda forma 40° <em>por debajo</em> de la horizontal: (a) halla la rapidez (energía). (b) Descompón el peso en sus componentes radial y tangencial. (c) Determina la tensión de la cuerda y la aceleración tangencial.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Desde la horizontal desciende \(h=L\sin40^\circ=0{,}70(0{,}643)=0{,}450\) m. \(v=\sqrt{2gh}=\sqrt{2(9{,}8)(0{,}450)}=\sqrt{8{,}82}\). <span class="ans">v ≈ 2,97 m·s⁻¹</span></p>
+      <p><strong>(b)</strong> Con \(\phi=40^\circ\) bajo la horizontal, el peso se parte en:</p>
+      <ul><li>radial, a lo largo de la cuerda y <em>hacia afuera</em> de P: \(mg\sin\phi=0{,}40(9{,}8)(0{,}643)=2{,}52\) N;</li>
+      <li>tangencial, a lo largo del arco: \(mg\cos\phi=0{,}40(9{,}8)(0{,}766)=3{,}00\) N.</li></ul>
+      <p><strong>(c)</strong> Radial hacia el centro: \(T-mg\sin\phi=\dfrac{mv^2}{r}\Rightarrow T=m\dfrac{v^2}{r}+mg\sin\phi=0{,}40\dfrac{8{,}82}{0{,}70}+2{,}52=5{,}04+2{,}52\). <span class="ans">T ≈ 7,6 N</span></p>
+      <p>Tangencial: solo el peso tiene componente a lo largo del arco \(\Rightarrow a_t=g\cos\phi=9{,}8(0{,}766)\). <span class="ans">a_t ≈ 7,5 m·s⁻²</span></p>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">E3 · círculo vertical completo: condición en el tope (cubo de agua)</p><p>Un cubo con agua de masa total 1,5 kg se hace girar en un círculo vertical de radio 0,90 m. (a) Halla la rapidez mínima en el punto más alto para que el agua no caiga. (b) Indica la tensión de la cuerda en el tope en ese instante. (c) Si en el tope lleva justo esa rapidez mínima, determina la tensión en el punto más bajo.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> En el tope, el peso y la tensión (o la normal del fondo del cubo) apuntan ambos al centro, hacia abajo: \(mg+T=\dfrac{mv^2}{r}\). El mínimo ocurre con \(T=0\): \(v_{min}=\sqrt{gr}=\sqrt{9{,}8(0{,}90)}=\sqrt{8{,}82}\). <span class="ans">v_mín ≈ 3,0 m·s⁻¹</span></p>
+      <p><strong>(b)</strong> En ese instante la gravedad sola aporta toda la centrípeta. <span class="ans">T = 0 N</span></p>
+      <p><strong>(c)</strong> Energía de tope a fondo (baja \(2r\)): \(v_{fondo}^2=v_{tope}^2+2g(2r)=gr+4gr=5gr\). En el fondo: \(T-mg=\dfrac{mv^2}{r}\Rightarrow T=m(g+5g)=6mg=6(1{,}5)(9{,}8)\). <span class="ans">T ≈ 88 N</span></p>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">E4 · péndulo cónico (ángulo, rapidez y periodo)</p><p>Una masa de 0,25 kg cuelga de una cuerda de 1,2 m y gira describiendo un círculo horizontal; la cuerda forma 30° con la vertical. (a) Halla la tensión de la cuerda. (b) Determina la rapidez de la masa. (c) Calcula el periodo del movimiento.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Ejes horizontal–vertical. Vertical (equilibrio): \(T\cos\theta=mg\). Horizontal (centrípeta): \(T\sin\theta=\dfrac{mv^2}{r}\), con \(r=L\sin\theta\).</p>
+      <p><strong>(a)</strong> \(T=\dfrac{mg}{\cos\theta}=\dfrac{0{,}25(9{,}8)}{\cos30^\circ}=\dfrac{2{,}45}{0{,}866}\). <span class="ans">T ≈ 2,8 N</span></p>
+      <p><strong>(b)</strong> \(r=L\sin30^\circ=1{,}2(0{,}5)=0{,}60\) m. De \(T\sin\theta=mv^2/r\): \(v=\sqrt{\dfrac{T\sin\theta\;r}{m}}=\sqrt{\dfrac{2{,}83(0{,}5)(0{,}60)}{0{,}25}}=\sqrt{3{,}40}\) (equiv. \(\sqrt{gr\tan\theta}\)). <span class="ans">v ≈ 1,8 m·s⁻¹</span></p>
+      <p><strong>(c)</strong> \(T_{per}=\dfrac{2\pi r}{v}=\dfrac{2\pi(0{,}60)}{1{,}84}\) (equiv. \(2\pi\sqrt{L\cos\theta/g}\)). <span class="ans">T_periodo ≈ 2,0 s</span></p>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">E5 · auto sobre una loma</p><p>Un auto de 1000 kg pasa por la cima de una loma circular de radio 25 m. (a) Halla la rapidez máxima antes de que el auto despegue de la carretera. (b) Determina la fuerza normal sobre el auto cuando viaja a la mitad de esa rapidez.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> En la cima, la normal apunta hacia afuera: \(mg-N=\dfrac{mv^2}{r}\). Despega cuando \(N=0\): \(v_{max}=\sqrt{gr}=\sqrt{9{,}8(25)}=\sqrt{245}\). <span class="ans">v_máx ≈ 16 m·s⁻¹</span></p>
+      <p><strong>(b)</strong> A \(v=\tfrac12 v_{max}\Rightarrow v^2=\tfrac14(245)=61{,}3\) m²·s⁻². \(N=m\Big(g-\dfrac{v^2}{r}\Big)=1000\big(9{,}8-2{,}45\big)\). <span class="ans">N ≈ 7,4 × 10³ N</span></p>
+    </div></details>
+  </div>
+  <div class="prob jefe"><p class="pn">E6 · objeto que se despega de una cúpula (supera IB)</p><p>Un objeto pequeño parte del reposo en la cima de una cúpula hemisférica lisa de radio \(R\). Usando energía y la condición de que la normal se anula al despegar: (a) determina el ángulo (medido desde la cima) en el que abandona la superficie. (b) Halla su rapidez en ese punto en función de \(R\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> A un ángulo \(\theta\) desde la cima baja \(h=R(1-\cos\theta)\), luego \(v^2=2gR(1-\cos\theta)\). Radial hacia el centro: \(mg\cos\theta-N=\dfrac{mv^2}{R}\). Se despega con \(N=0\): \(mg\cos\theta=\dfrac{m\,2gR(1-\cos\theta)}{R}=2mg(1-\cos\theta)\Rightarrow\cos\theta=\tfrac23\). <span class="ans">θ = arccos(2/3) ≈ 48°</span></p>
+      <p><strong>(b)</strong> \(v^2=2gR\big(1-\tfrac23\big)=\tfrac23 gR\). <span class="ans">v = √(2gR/3)</span></p>
+    </div></details>
+  </div>
+  <div class="prob jefe"><p class="pn">E7 · PROBLEMA JEFE (resorte giratorio + Módulo 1, supera IB)</p><p>Una esfera de \(m=(80{,}0\pm0{,}5)\ \mathrm g\) unida a un resorte (\(k=(1500\pm50)\ \mathrm{N\,m^{-1}}\), longitud natural 0,200 m) gira en un círculo horizontal; el resorte se estira hasta un radio \(r=(0{,}235\pm0{,}003)\ \mathrm m\). (a) Halla la fuerza del resorte (centrípeta). (b) Determina la rapidez de la esfera. (c) Propaga las incertidumbres para dar \(v\pm\Delta v\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Estiramiento \(x=r-\ell_0=0{,}235-0{,}200=0{,}035\) m. \(F=kx=1500(0{,}035)\). <span class="ans">F = 52,5 N</span></p>
+      <p><strong>(b)</strong> \(F=\dfrac{mv^2}{r}\Rightarrow v=\sqrt{\dfrac{Fr}{m}}=\sqrt{\dfrac{52{,}5(0{,}235)}{0{,}0800}}=\sqrt{154}\). <span class="ans">v ≈ 12,4 m·s⁻¹</span></p>
+      <p><strong>(c)</strong> Incertidumbres relativas: \(\dfrac{\Delta x}{x}=\dfrac{0{,}003}{0{,}035}=8{,}6\%\) (la longitud natural se toma exacta, así que \(\Delta x=\Delta r\)); \(\dfrac{\Delta k}{k}=3{,}3\%\); \(\dfrac{\Delta m}{m}=0{,}6\%\); \(\dfrac{\Delta r}{r}=1{,}3\%\).</p>
+      <p>Producto \(F=kx\Rightarrow\dfrac{\Delta F}{F}=\dfrac{\Delta k}{k}+\dfrac{\Delta x}{x}=11{,}9\%\). Para \(v=\sqrt{Fr/m}\): \(\dfrac{\Delta v}{v}=\tfrac12\Big(\dfrac{\Delta F}{F}+\dfrac{\Delta r}{r}+\dfrac{\Delta m}{m}\Big)=\tfrac12(11{,}9+1{,}3+0{,}6)\%=6{,}9\%\).</p>
+      <p>\(\Delta v=0{,}069(12{,}4)=0{,}86\). <span class="ans">v = (12,4 ± 0,9) m·s⁻¹</span></p>
+    </div></details>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 7B · Dinámica circunferencial Tipo 2 (Paper 2).</strong> Ficha completa resuelta (5 preguntas, apartado por apartado) con descomposición de fuerzas en ángulos cualesquiera. Con esto el tema queda completo (7A + 7B). Sigue el <strong>Módulo 8A — Gravitación universal</strong>, que reutilizará fuerza centrípeta y energía. Convención: los ítems reales del IB usan \(g=9{,}8\)/\(10\) según el enunciado.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

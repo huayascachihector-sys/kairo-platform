@@ -1,6 +1,7 @@
 // ─── KAIRO English Conversation Engine ──────────────────────────────
 
 import type { ErrorEntry } from "./store";
+import { isPremiumActive } from "./premium";
 
 const CONTEXT_KEY = "kairo_english_tutor_context";
 
@@ -62,7 +63,14 @@ export async function getEnglishTutorResponse(
     const res = await fetch("/api/chat-english", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message, level, topic, context, history }),
+      body: JSON.stringify({
+        message,
+        level,
+        topic,
+        context,
+        history,
+        premium: isPremiumActive(),
+      }),
     });
 
     if (res.status === 429) {

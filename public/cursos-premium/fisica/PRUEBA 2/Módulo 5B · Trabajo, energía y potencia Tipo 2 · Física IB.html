@@ -1,0 +1,372 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 5B · Trabajo, energía y potencia Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:52px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:26px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:12px 0;overflow-x:auto}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.pb{border:1px solid var(--line);border-radius:6px;margin:26px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#EFF4F2,#FFFFFF);border-bottom:1px solid var(--line);padding:14px 20px}
+.pb-head .code{font-family:"IBM Plex Mono";font-size:11px;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px;letter-spacing:.05em}
+.pb-head h3{margin:8px 0 0;font-size:19px}
+.pb-body{padding:6px 20px 18px}
+.enun{background:#F4F6F4;border-left:3px solid var(--ink-soft);padding:10px 16px;margin:14px 0;font-size:16.5px}
+.part{margin:16px 0 4px;font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep)}
+.pide{display:inline-block;font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:1px 7px;margin-right:8px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:5px 11px;display:inline-block;margin-top:6px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<!-- rev 2026-10-31 5b · banco paper2 energia (2) oficiales 2022-26 -->
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> A.3 <span>//</span> MÓDULO 5B · TIPO 2 (PAPER 2)</p>
+  <h1>Energía en <em>respuesta larga</em></h1>
+  <p class="lede">Problemas Paper 2 que encadenan energía, potencia, rendimiento y proyectiles: resorte lanzador, escalera mecánica, rampa curva y barco con vela. Toda la ficha resuelta, más 5 problemas integradores.</p>
+  <div class="stats">
+    <div class="stat"><b>4/4</b><span>ficha resuelta</span></div>
+    <div class="stat"><b>2</b><span>Paper 2 oficiales 22–26</span></div>
+    <div class="stat"><b>5</b><span>problemas extra</span></div>
+    <div class="stat"><b>Paper 2</b><span>respuesta larga</span></div>
+    <div class="stat"><b>g</b><span>según cada ítem</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#estrategia">0 · Método para energía tipo 2</a>
+  <a href="#p1">1 · Resorte y bloque de hielo (M16)</a>
+  <a href="#p2">2 · Escalera mecánica (N04)</a>
+  <a href="#p3">3 · Rampa curva → proyectil (M99)</a>
+  <a href="#p4">4 · Barco con vela (N14)</a>
+  <a href="#examenes">★ Banco Paper 2 · 2022–26</a>
+  <a href="#extra">Problemas extra para ti</a>
+</nav>
+
+<main>
+
+<!-- ESTRATEGIA -->
+<section id="estrategia">
+  <p class="sec-num">SECCIÓN 00 · LO QUE FALTA PARA TIPO 2</p>
+  <h2>Método para energía de respuesta larga<span class="rule"></span></h2>
+  <p class="sec-intro">La teoría es la del 5A. El tipo 2 encadena varias ideas en un mismo problema; el arte está en elegir el balance energético correcto.</p>
+  <div class="box key"><span class="lbl">Los 5 gestos del tipo 2 de energía</span>
+    <ol>
+      <li><strong>Balance de energía elegido con cuidado:</strong> «EPE = Ek + Ep», «Ek,i + Ep,i = Ek,f + Ep,f + E_perdida». Escribe la conservación <em>antes</em> de meter números.</li>
+      <li><strong>«Muestre que»:</strong> te dan el resultado; llega a él con más cifras y con todos los términos (no redondees antes de tiempo).</li>
+      <li><strong>Combina herramientas:</strong> energía para hallar \(v\), luego impulso (\(F\Delta t=\Delta p\)) o potencia (\(P=Fv\)) o rendimiento en el mismo problema.</li>
+      <li><strong>Proyectil desde energía:</strong> usa energía para la rapidez de salida y cinemática para el vuelo.</li>
+      <li><strong>Bosquejos:</strong> desplazamiento–tiempo (pendiente = velocidad) y velocidad–tiempo (curva si la fuerza depende de \(v\)).</li>
+    </ol>
+  </div>
+  <div class="box def"><span class="lbl">Términos de mando</span><p><strong>Muestre que</strong> (llega al valor dado); <strong>Calcule/Determine/Estime</strong> (con procedimiento); <strong>Describa/Resuma</strong> (prosa); <strong>Dibuje/Esquematice</strong> (gráfica de forma correcta); <strong>Indique una suposición</strong>.</p></div>
+</section>
+
+<!-- P1 -->
+<section id="p1" class="pb">
+  <div class="pb-head"><span class="code">FICHA 1 · M16/4/PHYSI/SP2</span><h3>Resorte lanzador de bloques de hielo</h3></div>
+  <div class="pb-body">
+    <div class="enun">Un resorte lanza un bloque de hielo de 55 kg por una rampa lisa ABC. Pierde contacto con el resorte en A (a nivel de AB). C está 1,2 m por encima de AB. \(g=9{,}8\).</div>
+    <figure class="fig">
+      <svg viewBox="0 0 340 120" width="320" xmlns="http://www.w3.org/2000/svg" aria-label="rampa ABC">
+        <line x1="20" y1="95" x2="230" y2="95" stroke="var(--ink)" stroke-width="1.5"/>
+        <line x1="230" y1="95" x2="300" y2="45" stroke="var(--ink)" stroke-width="1.5"/>
+        <rect x="30" y="80" width="18" height="15" fill="#BcaCE0" stroke="var(--ink)"/>
+        <text x="30" y="110" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">A</text>
+        <text x="220" y="110" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">B</text>
+        <text x="298" y="40" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">C</text>
+        <line x1="300" y1="45" x2="300" y2="95" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
+        <text x="304" y="72" font-family="IBM Plex Mono" font-size="9" fill="var(--ink-soft)">1,2 m</text>
+      </svg>
+      <figcaption>A→B horizontal; B→C sube 1,2 m.</figcaption>
+    </figure>
+
+    <p class="part">(a)(i) <span class="pide">muestre que</span> la energía elástica es 670 J. (\(v_C=0{,}90\) m·s⁻¹)</p>
+    <p>Sin fricción, la EPE se reparte en energía cinética y potencial en C: \(E_H=\tfrac12 mv_C^2+mgh_C=\tfrac12(55)(0{,}90)^2+55(9{,}8)(1{,}2)=22{,}3+646{,}8=669\approx670\) J. ∎</p>
+
+    <p class="part">(a)(ii) <span class="pide">calcule</span> la rapidez en A.</p>
+    <p>En A (\(h=0\)) toda la EPE es cinética: \(\tfrac12 mv_A^2=670\Rightarrow v_A=\sqrt{\dfrac{2(670)}{55}}=\sqrt{24{,}4}\). <span class="ans">v_A ≈ 4,9 m·s⁻¹</span></p>
+
+    <p class="part">(b)(i) <span class="pide">describa</span> el movimiento de A a B (1.ª ley).</p>
+    <p>A→B es horizontal y sin fricción: no hay fuerza resultante ⇒ por la 1.ª ley el bloque se mueve a <strong>velocidad constante</strong>.</p>
+
+    <p class="part">(b)(ii) <span class="pide">describa</span> el movimiento de B a C (2.ª ley).</p>
+    <p>B→C sube la rampa: la componente del peso a lo largo del plano es una fuerza resultante hacia abajo del plano ⇒ por la 2.ª ley (\(F=ma\)) el bloque <strong>desacelera</strong> uniformemente.</p>
+
+    <p class="part">(c) <span class="pide">dibuje</span> desplazamiento–tiempo de A a C.</p>
+    <figure class="fig">
+      <svg viewBox="0 0 300 130" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="s-t bloque">
+        <line x1="40" y1="105" x2="290" y2="105" stroke="var(--ink)" stroke-width="1.3"/>
+        <line x1="40" y1="105" x2="40" y2="15" stroke="var(--ink)" stroke-width="1.3"/>
+        <path d="M40,105 L150,45 Q220,20 260,20" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+        <line x1="150" y1="45" x2="150" y2="105" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
+        <text x="30" y="20" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">s</text>
+        <text x="280" y="120" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">t</text>
+        <text x="90" y="100" font-family="Space Grotesk" font-size="9" fill="var(--teal-deep)">A→B recta</text>
+        <text x="185" y="100" font-family="Space Grotesk" font-size="9" fill="var(--teal-deep)">B→C se aplana</text>
+      </svg>
+      <figcaption>Recta (v constante) y luego curva de pendiente decreciente (desacelera).</figcaption>
+    </figure>
+
+    <p class="part">(d) <span class="pide">determine</span> la fuerza media del resorte (descompresión 0,42 s).</p>
+    <p>Impulso–cantidad de movimiento: \(F_{med}\,\Delta t=\Delta p=m v_A\Rightarrow F_{med}=\dfrac{55(4{,}9)}{0{,}42}\). <span class="ans">≈ 6,5×10² N</span></p>
+
+    <p class="part">(e) <span class="pide">estime</span> el rendimiento del motor (120 V, 6,8 A, 1,5 s).</p>
+    <p>Energía eléctrica de entrada \(=VIt=120(6{,}8)(1{,}5)=1224\) J. Útil = EPE = 670 J. \(\eta=\dfrac{670}{1224}\). <span class="ans">≈ 55 %</span></p>
+  </div>
+</section>
+
+<!-- P2 -->
+<section id="p2" class="pb">
+  <div class="pb-head"><span class="code">FICHA 2 · N04/4/PHYSI/SP2</span><h3>Escalera mecánica</h3></div>
+  <div class="pb-body">
+    <div class="enun">Escalera de 30 m a 40°. Suben 48 personas por minuto. Persona de peso \(7{,}0\times10^{2}\) N. Motor con rendimiento 70 %.</div>
+
+    <p class="part">(a)(i) <span class="pide">calcule</span> la Ep ganada por una persona.</p>
+    <p>Altura ganada: \(h=30\sin40^\circ=30(0{,}643)=19{,}3\) m. \(\Delta E_p=Wh=700(19{,}3)\). <span class="ans">≈ 1,35×10⁴ J</span></p>
+
+    <p class="part">(a)(ii) <span class="pide">estime</span> la energía dada a la gente por minuto.</p>
+    <p>\(48\times1{,}35\times10^{4}=6{,}5\times10^{5}\) J. <span class="ans">≈ 6,5×10⁵ J·min⁻¹</span></p>
+
+    <p class="part">(a)(iii) <span class="pide">indique</span> una suposición.</p>
+    <p>Por ejemplo: todas las personas tienen el mismo peso (700 N); o van quietas sin realizar trabajo ellas mismas; o no se cuenta la energía para mover la propia cinta ni la fricción.</p>
+
+    <p class="part">(b) <span class="pide">calcule</span> la potencia de entrada mínima (η = 70 %).</p>
+    <p>Potencia útil \(=\dfrac{6{,}5\times10^{5}}{60}=1{,}08\times10^{4}\) W. Entrada \(=\dfrac{P_{útil}}{0{,}70}=\dfrac{1{,}08\times10^{4}}{0{,}70}\). <span class="ans">≈ 1,5×10⁴ W (15 kW)</span></p>
+  </div>
+</section>
+
+<!-- P3 -->
+<section id="p3" class="pb">
+  <div class="pb-head"><span class="code">FICHA 3 · M99/430/S(2)</span><h3>Rampa curva y proyectil</h3></div>
+  <div class="pb-body">
+    <div class="enun">Un cuerpo parte del reposo en A y baja una rampa curva lisa que termina horizontal en B, a una altura \(h_1\) por debajo de A. B está a una altura \(h_2\) sobre el piso. Sale como proyectil.</div>
+
+    <p class="part">(a) <span class="pide">dibuje</span> la trayectoria tras salir de B.</p>
+    <p>Media parábola descendente (lanzamiento horizontal).</p>
+
+    <p class="part">(b) <span class="pide">demuestre que</span> \(d=2\sqrt{h_1 h_2}\).</p>
+    <p><strong>Rapidez en B</strong> (energía, rampa lisa): \(\tfrac12 v_B^2=g h_1\Rightarrow v_B=\sqrt{2gh_1}\), horizontal.</p>
+    <p><strong>Tiempo de caída</strong> \(h_2\): \(h_2=\tfrac12 g t^2\Rightarrow t=\sqrt{\dfrac{2h_2}{g}}\).</p>
+    <p><strong>Alcance</strong>: \(d=v_B\,t=\sqrt{2gh_1}\cdot\sqrt{\dfrac{2h_2}{g}}=\sqrt{4h_1 h_2}=2\sqrt{h_1 h_2}\). ∎</p>
+  </div>
+</section>
+
+<!-- P4 -->
+<section id="p4" class="pb">
+  <div class="pb-head"><span class="code">FICHA 4 · N14/4/PHYSI/SP2</span><h3>Barco con vela (cometa)</h3></div>
+  <div class="pb-body">
+    <div class="enun">La vela tira con \(T=250\) kN a 39° sobre la horizontal. El barco navega estable a 8,5 m·s⁻¹ con los motores dando 2,7 MW de salida. La resistencia es \(F=kv^2\).</div>
+
+    <p class="part">(a) <span class="pide">resuma</span> el significado de trabajo.</p>
+    <p>Se realiza trabajo cuando una fuerza desplaza su punto de aplicación; es la energía transferida, \(W=Fs\cos\theta\) (solo cuenta la componente de la fuerza en la dirección del desplazamiento).</p>
+
+    <p class="part">(b)(i) <span class="pide">calcule</span> el trabajo de la vela en 1,0 km.</p>
+    <p>\(W=T\cos\theta\,d=250\,000(\cos39^\circ)(1000)=250\,000(0{,}777)(1000)\). <span class="ans">≈ 1,9×10⁸ J</span></p>
+
+    <p class="part">(b)(ii) <span class="pide">demuestre que</span> la vela aporta ~40 % de la potencia.</p>
+    <p>Potencia de la vela: \(P_{vela}=T\cos\theta\,v=250\,000(0{,}777)(8{,}5)=1{,}65\times10^{6}\) W.</p>
+    <p>Potencia total \(=P_{vela}+P_{motor}=1{,}65+2{,}7=4{,}35\) MW. Fracción \(=\dfrac{1{,}65}{4{,}35}=0{,}38\approx40\%\). ∎</p>
+
+    <p class="part">(c) <span class="pide">demuestre que</span> sin vela la rapidez cae a ~7 m·s⁻¹ (motores en 2,7 MW).</p>
+    <p>A 8,5 m·s⁻¹ la potencia total vence la resistencia: \(P_{tot}=Fv=kv^3\Rightarrow k=\dfrac{4{,}35\times10^{6}}{8{,}5^3}=7{,}1\times10^{3}\).</p>
+    <p>Solo motores: \(2{,}7\times10^{6}=k v^3\Rightarrow v^3=\dfrac{2{,}7\times10^{6}}{7{,}1\times10^{3}}=381\Rightarrow v=7{,}25\). <span class="ans">≈ 7 m·s⁻¹</span> ∎</p>
+
+    <p class="part">(d)(i) <span class="pide">estime</span> la distancia hasta parar (7 m·s⁻¹ → 0 en 650 s, a uniforme).</p>
+    <p>\(d=\bar v\,t=\dfrac{7}{2}(650)\). <span class="ans">≈ 2,3×10³ m</span></p>
+
+    <p class="part">(d)(ii) <span class="pide">esquematice</span> v–t real (F depende de v).</p>
+    <p>Como \(F=kv^2\), la desaceleración es grande al principio (v alta) y disminuye al bajar \(v\): la curva cae rápido y luego se aplana, acercándose a cero (cóncava hacia arriba), no una recta.</p>
+  </div>
+</section>
+
+<!-- BANCO PAPER 2 OFICIALES -->
+<section id="examenes">
+  <p class="sec-num">SECCIÓN ★ · BANCO DE EXÁMENES OFICIALES · PAPER 2</p>
+  <h2>Paper 2 oficiales de energía (2022–2026)<span class="rule"></span></h2>
+  <p class="sec-intro">Preguntas reales de Paper 2 centradas en <strong>energía, trabajo y potencia</strong>, reescritas, resueltas apartado por apartado y con cada respuesta <strong>verificada contra el esquema oficial</strong>.</p>
+  <div class="box beyond"><span class="lbl">Nota de cobertura (honesta)</span><p>En el banco 2022–2026, la energía rara vez viene "sola": casi siempre está <em>incrustada</em> en problemas de otros temas. Por eso aquí tienes las dos preguntas donde el método energético <em>es</em> el protagonista (cuerda elástica y generador), y el resto de aplicaciones de energía quedan trabajadas en su contexto: rampa con fricción (<strong>3B</strong>), rizo vertical por conservación (<strong>7B</strong>), caída con arrastre (<strong>2B</strong>) y energía cinética en colisiones (<strong>6B</strong>, con la potencia media de 1200 W de los carritos).</p></div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">May 2026 · TZ3 · SP2 · Q5 · PLAN NUEVO</span><h3>Cuerda elástica: caída libre, ley de Hooke e impulso</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una cuerda elástica obedece la ley de Hooke con constante \(k\). Una bola de \(m=4{,}0\) kg se ata a una cuerda de longitud sin estirar \(L=2{,}2\) m, fija en S, y se suelta desde el reposo en S cayendo vertical. Cae libre hasta A (donde la cuerda empieza a estirarse) y llega a su extensión máxima \(x=0{,}58\) m en B. Resistencia del aire despreciable. \(g=9{,}8\).</div>
+
+      <p class="part">(a) <span class="pide">indique</span> qué dice la ley de Hooke.</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>La fuerza es proporcional a la deformación (estiramiento o compresión): \(F=kx\). ∎</p></div></details>
+
+      <p class="part">(b)(i) <span class="pide">calcule</span> la rapidez de la bola en A.</p>
+      <p class="ans">v_A ≈ 6,6 m·s⁻¹</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>De S a A la cuerda aún no estira ⇒ <strong>caída libre</strong> una distancia \(L=2{,}2\) m. Energía (o SUVAT): \(v^2=2gL=2(9{,}8)(2{,}2)=43{,}1\Rightarrow v=6{,}57\) m·s⁻¹. <span class="ans">≈ 6,6 m·s⁻¹</span></p></div></details>
+
+      <p class="part">(b)(ii) <span class="pide">muestre que</span> \(k\approx650\) N·m⁻¹.</p>
+      <p class="ans">k = 648 ≈ 650 N·m⁻¹</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>En B la bola está instantáneamente en reposo (extensión máxima). Conservación de energía de S a B: toda la energía potencial gravitatoria perdida se guarda como energía elástica. La bola baja \(L+x=2{,}2+0{,}58=2{,}78\) m:</p><div class="eq">\[ mg(L+x)=\tfrac12 kx^2\ \Rightarrow\ k=\frac{2mg(L+x)}{x^2}=\frac{2(4{,}0)(9{,}8)(2{,}78)}{0{,}58^2}=\frac{218}{0{,}336}=648\ \mathrm{N\,m^{-1}} \]</div><p>≈ 650 N·m⁻¹. ∎</p></div></details>
+
+      <p class="part">(b)(iii) <span class="pide">indique y explique</span> si la bola está en equilibrio en B.</p>
+      <p class="ans">No</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p><strong>No.</strong> En B la fuerza neta no es cero: la tensión del resorte (\(kx=648\times0{,}58\approx376\) N) supera con mucho al peso (\(mg=39{,}2\) N), así que hay una fuerza neta hacia arriba y la bola <strong>acelera hacia arriba</strong> (es el punto de retorno, no de equilibrio). ∎</p></div></details>
+
+      <p class="part">(b)(iv) <span class="pide">estime</span> la fuerza media de la cuerda sobre la bola (la caída de A a B dura 0,13 s).</p>
+      <p class="ans">F_cuerda ≈ 2,4×10² N</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p><strong>Impulso–cantidad de movimiento.</strong> De A a B la bola pasa de 6,57 m·s⁻¹ (hacia abajo) al reposo: \(\Delta p=m\,\Delta v=4{,}0(6{,}57)=26{,}3\) kg·m·s⁻¹. La fuerza neta media es \(F_{neta}=\dfrac{\Delta p}{\Delta t}=\dfrac{26{,}3}{0{,}13}=202\) N (hacia arriba).</p><p>Pero sobre la bola actúan la cuerda (arriba) y el peso (abajo): \(F_{cuerda}-mg=F_{neta}\Rightarrow F_{cuerda}=202+39{,}2=241\) N. <span class="ans">≈ 2,4×10² N</span></p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2_TZ3_SL_markscheme (2226–4733M, TZ3): (b)(i) 6,57 m s⁻¹ · (b)(ii) k=648 «mg(L+x)=½kx²» · (b)(iii) No, fuerza neta ≠ 0 / acelera hacia arriba · (b)(iv) 241 N «Δp=26,3; Fneta=202; Fcuerda=Fneta+mg».</p>
+    </div>
+  </div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">Nov 2024 · SP2 · Q6 · PLAN NUEVO</span><h3>Generador eólico: transferencias, suposición y potencia</h3></div>
+    <div class="pb-body">
+      <div class="enun">Generador eólico con potencia máxima \(P=\tfrac12\,\rho A v^3\). Datos: radio de pala \(2{,}5\) m; densidad del aire \(1{,}2\) kg·m⁻³; rapidez del viento que incide \(6{,}8\) m·s⁻¹; rapidez tras rebasar las palas \(2{,}6\) m·s⁻¹.</div>
+
+      <p class="part">(a) <span class="pide">describa</span> las transferencias de energía en el generador.</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Energía <strong>cinética del viento</strong> → energía <strong>mecánica/rotacional</strong> de las palas y el rotor → energía <strong>eléctrica</strong> en el generador. ∎</p></div></details>
+
+      <p class="part">(b) <span class="pide">indique</span> una suposición al deducir \(P=\tfrac12\rho A v^3\).</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Por ejemplo: el aire llega perpendicular a las palas / el aire es incompresible / el flujo no es turbulento / se ignora el límite de Betz. <em>(El esquema NO acepta "las magnitudes son constantes" ni argumentos sobre fricción.)</em></p></div></details>
+
+      <p class="part">(c) <span class="pide">determine</span> la potencia máxima producida (con la unidad correcta).</p>
+      <p class="ans">P ≈ 3,5×10³ W</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>La potencia útil usa la <em>diferencia</em> de los cubos de las rapideces (energía cinética que el aire cede por segundo): \(A=\pi r^2=\pi(2{,}5)^2=19{,}6\) m².</p><div class="eq">\[ P=\tfrac12\rho A\,(v_1^3-v_2^3)=\tfrac12(1{,}2)(19{,}6)(6{,}8^3-2{,}6^3)=\tfrac12(1{,}2)(19{,}6)(314{,}4-17{,}6)=3{,}5\times10^3\ \mathrm W \]</div><p>≈ 3500 W. <span class="ans">3,5 kW</span> <em>(usar solo \(v_1^3\) daría 3704 W: medio punto; usar \((v_1-v_2)^3\) es incorrecto.)</em></p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2__SL_markscheme_1 (8824–9594M, Nov 2024): (a) KE viento → mecánica/rotacional → eléctrica · (b) aire perpendicular/incompresible/no turbulento/Betz ignorado · (c) 3500 W «½ρA(v₁³−v₂³)».</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <p class="sec-num">PARA TI · RESUELVE ESTILO PAPER 2 Y ENVÍA EN BLOQUE</p>
+  <h2>5 problemas extra (integradores)<span class="rule"></span></h2>
+  <p class="sec-intro">Nuevos y de nivel creciente. Integran conservación con fricción, potencia, rendimiento de máquinas y resortes; el último añade propagación de incertidumbre (Módulo 1) a partir de una gráfica F–x. Usa \(g=10\) m·s⁻² en todos. Despliega la resolución solo después de intentarlo.</p>
+
+  <div class="prob"><p class="pn">E1 · montaña rusa con tramo rugoso</p><p>Un carro de montaña rusa parte del reposo en lo alto de una colina de 8,0 m de altura y desciende por una vía curva lisa. Al llegar abajo cruza un tramo horizontal rugoso de 12 m (\(\mu_d=0{,}25\)) y luego sube por una segunda colina lisa. (La masa del carro no hace falta: compruébalo.) (a) Halla su rapidez al pie de la primera colina. (b) Halla su rapidez justo después del tramo rugoso. (c) Determina la altura máxima que alcanza en la segunda colina. (d) Describe qué ocurre en los pasos siguientes y dónde queda finalmente el carro.</p>
+  <details class="rev"><summary></summary><div class="rev-inner">
+    <p class="part">(a) Rapidez al pie de la primera colina</p>
+    <p>Vía lisa ⇒ conservación de energía. \(mgh=\tfrac12 mv^2\Rightarrow v=\sqrt{2gh}=\sqrt{2(10)(8{,}0)}=\sqrt{160}\) (la masa se cancela). <span class="ans">v ≈ 13 m·s⁻¹</span></p>
+    <p class="part">(b) Rapidez tras el tramo rugoso</p>
+    <p>La fricción disipa \(W_f=\mu_d\,mgL\). Balance de energía: \(\tfrac12 mv'^2=mgh-\mu_d mgL\Rightarrow v'^2=2g(h-\mu_d L)=2(10)\,[\,8{,}0-0{,}25(12)\,]=2(10)(5{,}0)=100\). <span class="ans">v′ = 10 m·s⁻¹</span></p>
+    <p class="part">(c) Altura máxima en la segunda colina</p>
+    <p>Segunda colina lisa: \(\tfrac12 mv'^2=mgh_2\Rightarrow h_2=\dfrac{v'^2}{2g}=\dfrac{100}{20}\). <span class="ans">h₂ = 5,0 m</span></p>
+    <p class="part">(d) Pasos siguientes</p>
+    <p>Trabaja con energía por unidad de masa, \(e=E/m\) (en J·kg⁻¹); cada cruce del tramo cuesta \(\mu_d gL=0{,}25(10)(12)=30\). Partiendo de \(e=gh=80\) arriba: al pie \(80\) → cruza →\(50\) (sube a 5,0 m) → vuelve \(50\) → cruza →\(20\) (sube a 2,0 m en la 1.ª colina) → vuelve \(20\) → al re-entrar necesita 30 pero solo tiene 20, así que se detiene dentro del tramo a \(d=20/(\mu_d g)=20/2{,}5=8{,}0\) m de su borde. El carro oscila con amplitud decreciente y <strong>queda en reposo a 8,0 m dentro del tramo rugoso</strong>.</p>
+  </div></details></div>
+  <div class="prob"><p class="pn">E2 · rendimiento de una rampa como máquina</p><p>Para subir un barril de 80 kg a una plataforma de 1,2 m de altura, un operario lo empuja a velocidad constante por una rampa recta de 5,0 m de longitud, aplicando una fuerza constante de 240 N paralela a la rampa. \(g=10\). (a) Calcula el trabajo de entrada (el del operario). (b) Calcula el trabajo útil (ganancia de energía potencial). (c) Determina el rendimiento de la rampa como máquina. (d) Explica a dónde va la energía “perdida”. (e) Halla la fuerza de fricción media a lo largo de la rampa.</p>
+  <details class="rev"><summary></summary><div class="rev-inner">
+    <p class="part">(a) Trabajo de entrada</p>
+    <p>La fuerza es paralela al desplazamiento: \(W_{ent}=F\,d=240(5{,}0)\). <span class="ans">W_ent = 1,2×10³ J</span></p>
+    <p class="part">(b) Trabajo útil</p>
+    <p>Lo útil es la energía potencial ganada: \(W_{útil}=mgh=80(10)(1{,}2)\). <span class="ans">W_útil = 9,6×10² J</span></p>
+    <p class="part">(c) Rendimiento</p>
+    <p>\(\eta=\dfrac{W_{útil}}{W_{ent}}=\dfrac{960}{1200}=0{,}80\). <span class="ans">η = 80 %</span></p>
+    <p class="part">(d) Energía perdida</p>
+    <p>Los \(1200-960=240\) J restantes se disipan como <strong>calor por la fricción</strong> entre el barril y la rampa (y algo de sonido). No “desaparecen”: salen del sistema mecánico.</p>
+    <p class="part">(e) Fricción media</p>
+    <p>A velocidad constante, el trabajo de la fricción iguala a la energía perdida: \(W_{fric}=f\,d=240\ \text{J}\Rightarrow f=\dfrac{240}{5{,}0}\). <span class="ans">f = 48 N</span> (consistencia: \(F=mg\sin\theta+f=80(10)(1{,}2/5{,}0)+48=192+48=240\) N ✓)</p>
+  </div></details></div>
+  <div class="prob"><p class="pn">E3 · potencia de un auto en subida</p><p>Un auto de 1200 kg sube una pendiente de 5,0° a 20 m·s⁻¹ constante, venciendo una resistencia (fricción + aire) de 600 N. \(g=10\). (a) Halla la potencia de salida del motor. (b) En terreno plano, con la misma potencia y la misma resistencia de 600 N, determina la rapidez máxima.</p>
+  <details class="rev"><summary></summary><div class="rev-inner">
+    <p class="part">(a) Potencia en subida</p>
+    <p>A rapidez constante la fuerza motriz equilibra resistencia y componente del peso: \(F=600+mg\sin\theta=600+1200(10)\sin5^\circ=600+1200(10)(0{,}0872)=600+1046=1646\) N. Potencia \(P=Fv=1646(20)\). <span class="ans">P ≈ 3,3×10⁴ W (33 kW)</span></p>
+    <p class="part">(b) Rapidez máxima en plano</p>
+    <p>En plano no hay componente del peso; a rapidez máxima toda la potencia vence la resistencia: \(P=F_{res}\,v_{máx}\Rightarrow v_{máx}=\dfrac{3{,}29\times10^4}{600}\). <span class="ans">v_máx ≈ 55 m·s⁻¹</span></p>
+    <p>(Es tan alta porque el enunciado supone la resistencia constante; en la práctica el arrastre crece con \(v^2\) y limitaría mucho más la rapidez.)</p>
+  </div></details></div>
+  <div class="prob jefe"><p class="pn">E4 · trabajo–energía en plano inclinado (supera IB)</p><p>Un bloque de 3,0 kg se empuja 4,0 m hacia arriba por un plano de 30° con una fuerza constante de 40 N paralela al plano; \(\mu_d=0{,}20\); parte del reposo. \(g=10\). (a) Calcula el trabajo de la fuerza aplicada, del peso y de la fricción. (b) Con el teorema trabajo–energía, halla la rapidez en la cima. (c) Si el recorrido dura 2,5 s, halla la potencia media de la fuerza aplicada. (d) Ahora el bloque se suelta desde el reposo en la cima (sin fuerza aplicada): comprueba si desliza hacia abajo comparando la componente del peso con la fricción máxima y, si lo hace, halla su rapidez al volver al punto de partida.</p>
+  <details class="rev"><summary></summary><div class="rev-inner">
+    <p>Previos: normal \(N=mg\cos\theta=3{,}0(10)\cos30^\circ=26{,}0\) N; fricción \(f=\mu_d N=0{,}20(26{,}0)=5{,}2\) N.</p>
+    <p class="part">(a) Trabajos (desplazamiento 4,0 m)</p>
+    <p>Fuerza aplicada: \(W_F=F\,d=40(4{,}0)=\) <span class="ans">+160 J</span>. Peso: \(W_P=-mg\sin\theta\,d=-(3{,}0\cdot10\cdot0{,}5)(4{,}0)=\) <span class="ans">−60 J</span>. Fricción: \(W_f=-f\,d=-5{,}2(4{,}0)=\) <span class="ans">−21 J</span>.</p>
+    <p class="part">(b) Rapidez en la cima</p>
+    <p>\(W_{neto}=\tfrac12 mv^2\): \(160-60-20{,}8=79{,}2\) J \(=\tfrac12(3{,}0)v^2\Rightarrow v=\sqrt{\dfrac{2(79{,}2)}{3{,}0}}=\sqrt{52{,}8}\). <span class="ans">v ≈ 7,3 m·s⁻¹</span></p>
+    <p class="part">(c) Potencia media de la fuerza aplicada</p>
+    <p>\(\bar P=\dfrac{W_F}{t}=\dfrac{160}{2{,}5}\). <span class="ans">P̄ = 64 W</span></p>
+    <p class="part">(d) ¿Desliza de vuelta?</p>
+    <p>Componente del peso a lo largo del plano \(mg\sin\theta=15\) N \(>\) fricción máxima \(\approx5{,}2\) N ⇒ <strong>sí desliza</strong>. Bajando 4,0 m la fricción apunta ahora hacia arriba del plano: \(W_{neto}=(mg\sin\theta-f)\,d=(15-5{,}2)(4{,}0)=39{,}2\) J \(=\tfrac12 mv'^2\Rightarrow v'=\sqrt{\dfrac{2(39{,}2)}{3{,}0}}=\sqrt{26{,}1}\). <span class="ans">v′ ≈ 5,1 m·s⁻¹</span></p>
+  </div></details></div>
+  <div class="prob jefe"><p class="pn">E5 · PROBLEMA JEFE — resorte lanzador (energía + gráfica F–x + incertidumbre, Módulo 1)</p><p>Un resorte vertical lanza una bolita hacia arriba. Se mide la fuerza \(F\) necesaria para cada compresión \(x\) y los puntos quedan sobre una recta por el origen (gráfica). De la pendiente, la constante elástica es \(k=(48\pm3)\ \mathrm{N\,m^{-1}}\). Se comprime el resorte \(x=(0{,}150\pm0{,}005)\ \mathrm m\) y se lanza una bolita de masa \(m=(0{,}020\pm0{,}001)\ \mathrm{kg}\). \(g=10\). (a) Determina la energía elástica almacenada (trabajo = área bajo la recta F–x), con su incertidumbre. (b) Determina la altura máxima sobre el punto de lanzamiento, con su incertidumbre. (c) ¿Qué conservación supusiste y cómo afectaría a la altura real? (d) Indica un error sistemático al medir la altura.</p>
+  <figure class="fig">
+    <svg viewBox="0 0 300 150" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="grafica F frente a x del resorte">
+      <line x1="45" y1="120" x2="285" y2="120" stroke="var(--ink)" stroke-width="1.3"/>
+      <line x1="45" y1="120" x2="45" y2="14" stroke="var(--ink)" stroke-width="1.3"/>
+      <line x1="45" y1="120" x2="255" y2="32" stroke="var(--teal)" stroke-width="2.5"/>
+      <text x="26" y="20" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">F/N</text>
+      <text x="258" y="134" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">x/m</text>
+      <text x="108" y="58" font-family="Space Grotesk" font-size="9" fill="var(--teal-deep)">pendiente = k</text>
+    </svg>
+    <figcaption>Recta F–x por el origen; el área bajo ella es la energía elástica \(\tfrac12 kx^2\).</figcaption>
+  </figure>
+  <details class="rev"><summary></summary><div class="rev-inner">
+    <p class="part">(a) Energía elástica y su incertidumbre</p>
+    <p>Área del triángulo bajo la recta: \(E=\tfrac12 kx^2=\tfrac12(48)(0{,}150)^2=0{,}540\) J.</p>
+    <p>Incertidumbres relativas (producto de potencias): \(\dfrac{\Delta E}{E}=\dfrac{\Delta k}{k}+2\dfrac{\Delta x}{x}=\dfrac{3}{48}+2\dfrac{0{,}005}{0{,}150}=0{,}063+0{,}067=0{,}13\). Luego \(\Delta E=0{,}13(0{,}540)=0{,}07\) J. <span class="ans">E = (0,54 ± 0,07) J</span></p>
+    <p class="part">(b) Altura máxima y su incertidumbre</p>
+    <p>En el punto más alto toda la energía elástica es potencial gravitatoria: \(E=mgh\Rightarrow h=\dfrac{E}{mg}=\dfrac{0{,}540}{0{,}020(10)}=2{,}70\) m.</p>
+    <p>\(\dfrac{\Delta h}{h}=\dfrac{\Delta E}{E}+\dfrac{\Delta m}{m}=0{,}13+\dfrac{0{,}001}{0{,}020}=0{,}13+0{,}05=0{,}18\). Luego \(\Delta h=0{,}18(2{,}70)=0{,}5\) m. <span class="ans">h = (2,7 ± 0,5) m</span></p>
+    <p class="part">(c) Suposición</p>
+    <p>Que <strong>toda</strong> la energía elástica se transforma en potencial gravitatoria (resorte sin masa, bolita que se despega en la longitud natural, sin resistencia del aire). En la práctica hay pérdidas por aire y por la masa del resorte, así que la <strong>altura real sería algo menor</strong>.</p>
+    <p class="part">(d) Error sistemático</p>
+    <p>P. ej.: medir la altura desde el suelo en vez de desde el punto de lanzamiento (origen desplazado), o un error de cero en el dinamómetro usado para trazar la gráfica F–x: ambos sesgan todas las lecturas en el mismo sentido.</p>
+  </div></details></div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 5B · Trabajo, energía y potencia Tipo 2 (Paper 2).</strong> Ficha completa resuelta (4 preguntas, apartado por apartado, con «muestre que» y bosquejos). Con esto el tema queda completo (5A + 5B). Sigue el <strong>Módulo 6A — Cantidad de movimiento</strong>, que reutilizará energía (colisiones elásticas/inelásticas) y \(E_k=p^2/2m\). Convención: los ítems reales del IB usan \(g=9{,}8\)/\(9{,}81\).</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

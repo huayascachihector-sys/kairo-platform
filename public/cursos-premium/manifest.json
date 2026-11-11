@@ -1,0 +1,625 @@
+{
+  "version": 1,
+  "courses": [
+    {
+      "id": "matematicas-m01-modulo-1-sucesiones-series-exponentes-y-logaritmos",
+      "title": "Módulo 1 · Sucesiones, series, exponentes y logaritmos",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 1 · Sucesiones, series, exponentes y logaritmos (2).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 1
+    },
+    {
+      "id": "matematicas-m02-modulo-2-polinomios",
+      "title": "Módulo 2 · Polinomios",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 2 · Polinomios (2).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 2
+    },
+    {
+      "id": "matematicas-m03-modulo-3-funciones",
+      "title": "Módulo 3 · Funciones",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 3 · Funciones (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 3
+    },
+    {
+      "id": "matematicas-m04-modulo-4-combinatoria-y-binomio",
+      "title": "Módulo 4 · Combinatoria y binomio",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 4 · Combinatoria y binomio (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 4
+    },
+    {
+      "id": "matematicas-m05-modulo-5-demostracion",
+      "title": "Módulo 5 · Demostración",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 5 · Demostración (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 5
+    },
+    {
+      "id": "matematicas-m06-modulo-6-numeros-complejos",
+      "title": "Módulo 6 · Números complejos",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 6 · Números complejos (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 6
+    },
+    {
+      "id": "matematicas-m07-modulo-7-trigonometria-i-y-geometria",
+      "title": "Módulo 7 · Trigonometría I y geometría",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 7 · Trigonometría I y geometría (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 7
+    },
+    {
+      "id": "matematicas-m08-modulo-8-trigonometria-ii",
+      "title": "Módulo 8 · Trigonometría II",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 8 · Trigonometría II (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 8
+    },
+    {
+      "id": "matematicas-m09-modulo-9-vectores-rectas-y-planos",
+      "title": "Módulo 9 · Vectores, rectas y planos",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 9 · Vectores, rectas y planos (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 9
+    },
+    {
+      "id": "matematicas-m10-modulo-10-estadistica-y-probabilidad",
+      "title": "Módulo 10 · Estadística y probabilidad",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 10 · Estadística y probabilidad (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 10
+    },
+    {
+      "id": "matematicas-m11-modulo-11-variables-aleatorias",
+      "title": "Módulo 11 · Variables aleatorias",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 11 · Variables aleatorias (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 11
+    },
+    {
+      "id": "matematicas-m12-modulo-12-derivacion",
+      "title": "Módulo 12 · Derivación",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 12 · Derivación (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 12
+    },
+    {
+      "id": "matematicas-m13-modulo-13-analisis-de-curvas-y-optimizacion",
+      "title": "Módulo 13 · Análisis de curvas y optimización",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 13 · Análisis de curvas y optimización (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 13
+    },
+    {
+      "id": "matematicas-m14-modulo-14-integracion",
+      "title": "Módulo 14 · Integración",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 14 · Integración (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 14
+    },
+    {
+      "id": "matematicas-m15-modulo-15-ecuaciones-diferenciales",
+      "title": "Módulo 15 · Ecuaciones diferenciales",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 15 · Ecuaciones diferenciales (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 15
+    },
+    {
+      "id": "matematicas-m16-modulo-16-cinematica",
+      "title": "Módulo 16 · Cinemática",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 16 · Cinemática (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 16
+    },
+    {
+      "id": "matematicas-m17-modulo-17-limites-l-hopital-y-series-de-maclaurin",
+      "title": "Módulo 17 · Límites, L’Hôpital y series de Maclaurin",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/Módulo 17 · Límites, L_Hôpital y series de Maclaurin (1).html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 17
+    },
+    {
+      "id": "matematicas-funciones-cuadraticas",
+      "title": "Funciones Cuadráticas",
+      "subject": "matematicas",
+      "level": "SL",
+      "file": "matematicas/funciones-cuadraticas.html",
+      "description": "Curso premium de Matemáticas del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 18
+    },
+    {
+      "id": "fisica-m01-modulo-1a-incertidumbre-y-medicion",
+      "title": "Módulo 1A · Incertidumbre y medición",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 1A · Incertidumbre y medición · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 19
+    },
+    {
+      "id": "fisica-m02-modulo-2a-cinematica",
+      "title": "Módulo 2A · Cinemática",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 2A · Cinemática · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 20
+    },
+    {
+      "id": "fisica-m02-modulo-2b-cinematica-tipo-2",
+      "title": "Módulo 2B · Cinemática Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 2B · Cinemática Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 21
+    },
+    {
+      "id": "fisica-m03-modulo-3a-dinamica",
+      "title": "Módulo 3A · Dinámica",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 3A · Dinámica · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 22
+    },
+    {
+      "id": "fisica-m03-modulo-3b-dinamica-tipo-2",
+      "title": "Módulo 3B · Dinámica Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 3B · Dinámica Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 23
+    },
+    {
+      "id": "fisica-m04-modulo-4a-estatica-y-torque",
+      "title": "Módulo 4A · Estática y torque",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 4A · Estática y torque · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 24
+    },
+    {
+      "id": "fisica-m04-modulo-4b-estatica-torque-tipo-2",
+      "title": "Módulo 4B · Estática/torque Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 4B · Estática_torque Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 25
+    },
+    {
+      "id": "fisica-m05-modulo-5a-trabajo-energia-y-potencia",
+      "title": "Módulo 5A · Trabajo, energía y potencia",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 5A · Trabajo, energía y potencia · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 26
+    },
+    {
+      "id": "fisica-m05-modulo-5b-trabajo-energia-y-potencia-tipo-2",
+      "title": "Módulo 5B · Trabajo, energía y potencia Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 5B · Trabajo, energía y potencia Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 27
+    },
+    {
+      "id": "fisica-m06-modulo-6a-cantidad-de-movimiento",
+      "title": "Módulo 6A · Cantidad de movimiento",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 6A · Cantidad de movimiento · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 28
+    },
+    {
+      "id": "fisica-m06-modulo-6b-cantidad-de-movimiento-tipo-2",
+      "title": "Módulo 6B · Cantidad de movimiento Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 6B · Cantidad de movimiento Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 29
+    },
+    {
+      "id": "fisica-m07-modulo-7a-dinamica-circunferencial",
+      "title": "Módulo 7A · Dinámica circunferencial",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 7A · Dinámica circunferencial · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 30
+    },
+    {
+      "id": "fisica-m07-modulo-7b-dinamica-circunferencial-tipo-2",
+      "title": "Módulo 7B · Dinámica circunferencial Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 7B · Dinámica circunferencial Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 31
+    },
+    {
+      "id": "fisica-m08-modulo-8a-gravitacion-universal",
+      "title": "Módulo 8A · Gravitación universal",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 8A · Gravitación universal · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 32
+    },
+    {
+      "id": "fisica-m08-modulo-8b-gravitacion-universal-tipo-2",
+      "title": "Módulo 8B · Gravitación universal Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 8B · Gravitación universal Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 33
+    },
+    {
+      "id": "fisica-m09-modulo-9a-oscilaciones-y-mas",
+      "title": "Módulo 9A · Oscilaciones y MAS",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 9A · Oscilaciones y MAS · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 34
+    },
+    {
+      "id": "fisica-m09-modulo-9b-oscilaciones-y-mas-tipo-2",
+      "title": "Módulo 9B · Oscilaciones y MAS Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 9B · Oscilaciones y MAS Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 35
+    },
+    {
+      "id": "fisica-m10-modulo-10a-modelo-de-onda-y-fenomenos",
+      "title": "Módulo 10A · Modelo de onda y fenómenos",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 10A · Modelo de onda y fenómenos · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 36
+    },
+    {
+      "id": "fisica-m10-modulo-10b-ondas-tipo-2",
+      "title": "Módulo 10B · Ondas Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 10B · Ondas Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 37
+    },
+    {
+      "id": "fisica-m10-modulo-10c-comportamiento-de-ondas-tipo-2",
+      "title": "Módulo 10C · Comportamiento de ondas · Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 10C · Comportamiento de ondas · Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 38
+    },
+    {
+      "id": "fisica-m10-modulo-10d-comportamiento-de-ondas-tipo-2",
+      "title": "Módulo 10D · Comportamiento de ondas Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 10D · Comportamiento de ondas Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 39
+    },
+    {
+      "id": "fisica-m11-modulo-11a-estacionarias-sonido-y-doppler",
+      "title": "Módulo 11A · Estacionarias, sonido y Doppler",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 11A · Estacionarias, sonido y Doppler · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 40
+    },
+    {
+      "id": "fisica-m11-modulo-11b-estacionarias-y-doppler-tipo-2",
+      "title": "Módulo 11B · Estacionarias y Doppler Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 11B · Estacionarias y Doppler Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 41
+    },
+    {
+      "id": "fisica-m12-modulo-12a-hidrostatica",
+      "title": "Módulo 12A · Hidrostática",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 12A · Hidrostática · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 42
+    },
+    {
+      "id": "fisica-m12-modulo-12b-hidrostatica-tipo-2",
+      "title": "Módulo 12B · Hidrostática Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 12B · Hidrostática Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 43
+    },
+    {
+      "id": "fisica-m13-modulo-13a-calorimetria",
+      "title": "Módulo 13A · Calorimetría",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 13A · Calorimetría · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 44
+    },
+    {
+      "id": "fisica-m13-modulo-13b-calorimetria-tipo-2",
+      "title": "Módulo 13B · Calorimetría Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 13B · Calorimetría Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 45
+    },
+    {
+      "id": "fisica-m14-modulo-14a-modelacion-de-un-gas",
+      "title": "Módulo 14A · Modelación de un gas",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 14A · Modelación de un gas · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 46
+    },
+    {
+      "id": "fisica-m14-modulo-14b-modelacion-de-un-gas-tipo-2",
+      "title": "Módulo 14B · Modelación de un gas Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 14B · Modelación de un gas Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 47
+    },
+    {
+      "id": "fisica-m15-modulo-15a-electricidad-i-electrostatica",
+      "title": "Módulo 15A · Electricidad I (electrostática)",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 15A · Electricidad I (electrostática) · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 48
+    },
+    {
+      "id": "fisica-m15-modulo-15b-electricidad-i-tipo-2",
+      "title": "Módulo 15B · Electricidad I · Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 15B · Electricidad I · Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 49
+    },
+    {
+      "id": "fisica-m16-modulo-16a-electricidad-ii-circuitos",
+      "title": "Módulo 16A · Electricidad II (circuitos)",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 16A · Electricidad II (circuitos) · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 50
+    },
+    {
+      "id": "fisica-m16-modulo-16b-electricidad-ii-tipo-2",
+      "title": "Módulo 16B · Electricidad II · Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 16B · Electricidad II · Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 51
+    },
+    {
+      "id": "fisica-m17-modulo-17a-electromagnetismo",
+      "title": "Módulo 17A · Electromagnetismo",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/Módulo 17A · Electromagnetismo · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 52
+    },
+    {
+      "id": "fisica-m17-modulo-17b-electromagnetismo-tipo-2",
+      "title": "Módulo 17B · Electromagnetismo · Tipo 2",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 2/Módulo 17B · Electromagnetismo · Tipo 2 · Física IB.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 53
+    },
+    {
+      "id": "fisica-cinematica-movimiento-uniforme",
+      "title": "Cinemática: Movimiento Uniforme",
+      "subject": "fisica",
+      "level": "SL",
+      "file": "fisica/PRUEBA 1/cinematica-mru.html",
+      "description": "Curso premium de Física del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 54
+    },
+    {
+      "id": "historia-la-guerra-fria",
+      "title": "La Guerra Fría",
+      "subject": "historia",
+      "level": "SL",
+      "file": "historia/guerra-fria.html",
+      "description": "Curso premium de Historia del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 55
+    },
+    {
+      "id": "historia-prueba-2-tema-10-estados-autoritarios-hitler-vs-castro",
+      "title": "Prueba 2 · Tema 10 — Estados autoritarios · Hitler vs. Castro",
+      "subject": "historia",
+      "level": "SL",
+      "file": "historia/Prueba 2 · Tema 10 — Estados autoritarios · Hitler vs. Castro.html",
+      "description": "Curso premium de Historia del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 56
+    },
+    {
+      "id": "historia-la-guerra-fria-contada-de-principio-a-fin",
+      "title": "La Guerra Fría, contada de principio a fin",
+      "subject": "historia",
+      "level": "SL",
+      "file": "historia/Prueba 2 · Tema 12 — Guerra Fría · narración completa (1).html",
+      "description": "Curso premium de Historia del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 57
+    },
+    {
+      "id": "historia-prueba-2-tema-12-la-guerra-fria",
+      "title": "Prueba 2 · Tema 12 — La Guerra Fría",
+      "subject": "historia",
+      "level": "SL",
+      "file": "historia/Prueba 2 · Tema 12 — La Guerra Fría (1).html",
+      "description": "Curso premium de Historia del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 58
+    },
+    {
+      "id": "sociedad-digital-ensayo-anotado-de-la-prueba-2",
+      "title": "Ensayo anotado de la prueba 2",
+      "subject": "sociedad-digital",
+      "level": "SL",
+      "file": "sociedad-digital/Ensayo anotado de la prueba 2.html",
+      "description": "Curso premium de Sociedad Digital del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 59
+    },
+    {
+      "id": "sociedad-digital-inteligencia-artificial-y-sociedad",
+      "title": "Inteligencia Artificial y Sociedad",
+      "subject": "sociedad-digital",
+      "level": "SL",
+      "file": "sociedad-digital/inteligencia-artificial.html",
+      "description": "Curso premium de Sociedad Digital del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 60
+    },
+    {
+      "id": "sociedad-digital-prueba-2-de-sociedad-digital-nivel-7-a-fondo",
+      "title": "Prueba 2 de Sociedad Digital: nivel 7 a fondo",
+      "subject": "sociedad-digital",
+      "level": "SL",
+      "file": "sociedad-digital/Prueba 2 de Sociedad Digital_ el 7 a fondo.html",
+      "description": "Curso premium de Sociedad Digital del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 61
+    },
+    {
+      "id": "sociedad-digital-sociedad-digital-nm-ruta-al-7",
+      "title": "Sociedad Digital NM: ruta al 7",
+      "subject": "sociedad-digital",
+      "level": "SL",
+      "file": "sociedad-digital/Sociedad Digital NM_ ruta al 7.html",
+      "description": "Curso premium de Sociedad Digital del IB Diploma Programme.",
+      "durationMin": 45,
+      "order": 62
+    }
+  ]
+}

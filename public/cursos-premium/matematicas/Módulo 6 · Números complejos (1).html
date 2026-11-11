@@ -1,0 +1,1538 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 6 · Números complejos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 6</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t0">Prerrequisitos</a>
+  <a class="sub" href="#t1">1.1 Forma cartesiana</a>
+  <a class="sub" href="#t2">1.2 Argand, módulo y argumento</a>
+  <a class="sub" href="#t3">1.3 Forma polar y de Euler</a>
+  <a class="sub" href="#t4">1.4 Teorema de De Moivre</a>
+  <a class="sub" href="#t5">1.5 Raíces n-ésimas</a>
+  <a class="sub" href="#t6">1.6 Polinomios con raíces complejas</a>
+  <a class="sub" href="#t7">1.7 Geometría con complejos</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos resueltos</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 6 de 17</p>
+  <h1>Números complejos</h1>
+  <p class="formula">\( z=a+bi=r\,\mathrm{cis}\,\theta=re^{i\theta} \qquad (re^{i\theta})^n=r^ne^{in\theta} \qquad z^n=w\iff z=\sqrt[n]{|w|}\,e^{i(\arg w+2k\pi)/n} \)</p>
+  <p>Es el tema con más puntos en tus pruebas y el favorito de la pregunta 12. Aquí está todo lo necesario para resolverlo sin calculadora al nivel de la banda 7. Los problemas extra integran los Módulos 1–5.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">Los complejos aparecen en 6 de tus 7 pruebas y suman 101 puntos: el 13 % del total. En 4 pruebas son la pregunta 12, la más larga y difícil. Dominar este módulo vale, por sí solo, casi una banda completa.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2022 TZ1</td><td>9</td><td>6</td><td>Producto en forma cartesiana; argumento dado</td></tr>
+<tr><td>Noviembre 2022</td><td>5</td><td>7</td><td>Cuártica real con raíz \(3+i\): conjugada, producto y suma de raíces</td></tr>
+<tr><td>Mayo 2021 TZ1</td><td>7</td><td>8</td><td>Cuártica con raíces \(a+bi\), \(b+ai\): conjugadas y Vieta</td></tr>
+<tr><td>Mayo 2022 TZ2</td><td>12</td><td>18</td><td>Triángulo en Argand: \(z_1z_2^*\), rotación de \(\frac\pi3\), relación \(a^2=3b\)</td></tr>
+<tr><td>Noviembre 2022</td><td>12</td><td>18</td><td>Argumento de un producto, fórmula de arctan, inducción</td></tr>
+<tr><td>Noviembre 2021</td><td>12</td><td>22</td><td>Raíces de \((z-1)^3=i\), Argand, distancias, \((z-1)^3=iz^3\)</td></tr>
+<tr><td>Mayo 2026 TZ2</td><td>12</td><td>22</td><td>Cuadrática en forma polar, raíces de \(z^6+64\), factores cuadráticos reales, longitudes</td></tr>
+</tbody></table></div>
+
+<h3>Cómo lo pregunta el IB: patrones de tus 7 pruebas</h3>
+<ol>
+<li><b>Polinomio real con raíz compleja</b> → su conjugada también es raíz; luego producto o suma de raíces (Módulo 2).</li>
+<li><b>Raíces de \(z^n=w\) o de \((z-a)^n=w\)</b> en forma polar, con dibujo en Argand y una distancia o un área.</li>
+<li><b>Factorizar \(z^n\pm c\) en cuadráticas reales</b> juntando raíces conjugadas: \((z-\alpha)(z-\bar\alpha)=z^2-2\mathrm{Re}(\alpha)z+|\alpha|^2\).</li>
+<li><b>Argumento de un producto</b> = suma de argumentos, a veces combinado con la fórmula de \(\tan(A+B)\) e inducción.</li>
+<li><b>Geometría:</b> multiplicar por \(e^{i\theta}\) gira; un triángulo equilátero o rectángulo se traduce en una ecuación.</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA N°21 (2025)</td><td>Forma binómica, potencias de \(i\), conjugado, módulo y argumento, forma trigonométrica; preguntas IB</td><td>F1, F2, F8 y secciones 1.1–1.3</td></tr>
+<tr><td>DMpA N°25 (2025)</td><td>Potencias y raíces, De Moivre; preguntas IB (mayo 2017)</td><td>F3, F4, F9 y secciones 1.4–1.5</td></tr>
+<tr><td>Preguntas IB – raíces complejas</td><td>6 preguntas IB: raíces cúbicas y 24-ésimas, \(\tan\frac{5\pi}{12}\), \(\sin72^\circ\) con De Moivre</td><td>F3–F7</td></tr>
+</tbody></table></div>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA NS</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Forma cartesiana, operaciones, conjugado, igualdad; ecuaciones con \(\bar z\); cuadráticas con coeficientes complejos</td><td>1.1</td><td>Alto</td></tr>
+<tr><td>Diagrama de Argand, módulo, argumento principal</td><td>1.2</td><td>Alto</td></tr>
+<tr><td>Forma polar y de Euler; productos, cocientes y rotaciones; formas «falsas»; ángulo medio \(1\pm e^{i\theta}\)</td><td>1.3</td><td>Alto</td></tr>
+<tr><td>Teorema de De Moivre; potencias; identidades de ángulo múltiple y de \(\cos^n\theta\)</td><td>1.4</td><td>Alto</td></tr>
+<tr><td>Raíces \(n\)-ésimas, polígonos regulares, raíces de la unidad</td><td>1.5</td><td>Alto</td></tr>
+<tr><td>Raíces conjugadas de polinomios reales; factorización</td><td>1.6</td><td>Alto</td></tr>
+<tr><td>Geometría: distancias, rotaciones, triángulos</td><td>1.7</td><td>Medio (Sección B)</td></tr>
+<tr><td>Otros tipos de pregunta: ecuaciones con \(|z|\), sistemas con incógnitas complejas, cúbicas resueltas con \(\cos3\theta\), cocientes reales o imaginarios puros, \(\sin^n\theta\) e integrales, ecuaciones recíprocas con \(z+\frac1z\), áreas de polígonos de raíces, potencias reales con parámetro</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+<tr><td>Lugares geométricos, desigualdad triangular, sumas trigonométricas generales (fuera del programa)</td><td>Cajas moradas</td><td>Solo como herramienta</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1 a 1.7 cubren todo el contenido de complejos del programa NS. Cada concepto clave trae ejemplos de nivel de examen y un recuadro «Para practicar». La sección 6 reúne los tipos de pregunta del IB que no salieron en tus 7 pruebas, de modo que cualquier variante de la pregunta 12 tiene un modelo resuelto. Lo que va más allá del programa está solo en las cajas moradas, y ningún problema extra lo necesita. El techo es la investigación I1, tipo Prueba 3.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Va de la forma cartesiana a la geometría en el plano complejo. Cada concepto trae un ejemplo resuelto y, los esenciales, un recuadro «Para practicar». Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t0">Prerrequisitos de trigonometría</h3>
+<p>Este módulo usa lo siguiente, que se desarrolla a fondo en los Módulos 7 y 8:</p>
+<div class="tbl"><table>
+<thead><tr><th>\(\theta\)</th><th>0</th><th>\(\frac\pi6\)</th><th>\(\frac\pi4\)</th><th>\(\frac\pi3\)</th><th>\(\frac\pi2\)</th></tr></thead>
+<tbody>
+<tr><td>\(\cos\theta\)</td><td>1</td><td>\(\frac{\sqrt3}2\)</td><td>\(\frac{\sqrt2}2\)</td><td>\(\frac12\)</td><td>0</td></tr>
+<tr><td>\(\sin\theta\)</td><td>0</td><td>\(\frac12\)</td><td>\(\frac{\sqrt2}2\)</td><td>\(\frac{\sqrt3}2\)</td><td>1</td></tr>
+</tbody></table></div>
+<p>\(\pi\) rad = 180°. Signos por cuadrante: en el I todo es positivo; en el II solo el seno; en el III solo la tangente; en el IV solo el coseno. Además \(\cos^2\theta+\sin^2\theta=1\) y, del cuadernillo, \(\tan(A+B)=\dfrac{\tan A+\tan B}{1-\tan A\tan B}\).</p>
+
+<h3 id="t1">1.1 Forma cartesiana</h3>
+<p>\(i^2=-1\). Todo complejo es \(z=a+bi\), con \(\mathrm{Re}(z)=a\) e \(\mathrm{Im}(z)=b\) reales. Las potencias de \(i\) se repiten cada 4: \(i,-1,-i,1\).</p>
+<ul>
+<li><b>Igualdad:</b> \(a+bi=c+di\iff a=c\) y \(b=d\). Una ecuación compleja equivale a dos ecuaciones reales.</li>
+<li><b>Conjugado:</b> \(z^*=\bar z=a-bi\). Propiedades: \(z\bar z=a^2+b^2=|z|^2\), \(z+\bar z=2\mathrm{Re}(z)\), \(\overline{z_1z_2}=\bar z_1\bar z_2\).</li>
+<li><b>División:</b> multiplica arriba y abajo por el conjugado del denominador.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.1. División</p>
+<p>\(\dfrac{3+4i}{1-2i}=\dfrac{(3+4i)(1+2i)}{5}=\dfrac{3+10i-8}{5}=-1+2i\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.2. Raíz cuadrada por igualación</p>
+<p>Resuelve \(z^2=-5+12i\).</p>
+<p>Con \(z=a+bi\): \(a^2-b^2=-5\) y \(2ab=12\). Además \(a^2+b^2=|z^2|=13\). Sumando, \(a^2=4\); restando, \(b^2=9\). Como \(ab=6\gt0\), \(a\) y \(b\) tienen el mismo signo: \(z=\pm(2+3i)\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.3. Ecuación con z y su conjugado</p>
+<p>Resuelve \(2z+i\bar z=5+4i\).</p>
+<p>Con \(z=a+bi\): \(2a+2bi+i(a-bi)=(2a+b)+(a+2b)i\). Igualando: \(2a+b=5\) y \(a+2b=4\), así que \(a=2,\ b=1\) y \(z=2+i\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.4. Cuadrática con coeficientes complejos</p>
+<p>Resuelve \(z^2-3z+(3+i)=0\).</p>
+<p>\(\Delta=9-4(3+i)=-3-4i\). Su raíz cuadrada, por igualación (\(a^2-b^2=-3\), \(ab=-2\), \(a^2+b^2=5\)), es \(\pm(1-2i)\). Así \(z=\tfrac{3\pm(1-2i)}{2}\): \(z=2-i\) o \(z=1+i\).</p>
+<p>Comprobación con Vieta: suma 3 y producto \(3+i\). Las raíces <b>no</b> son conjugadas, porque los coeficientes no son reales.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Escribe \(\dfrac{2+i}{3-4i}\) en la forma \(a+bi\).</li><li>Resuelve \(z^2=3-4i\).</li><li>Resuelve \(z+2\bar z=6-i\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\dfrac{(2+i)(3+4i)}{25}=\dfrac{2}{25}+\dfrac{11}{25}i\).</li><li>\(a^2-b^2=3\), \(ab=-2\), \(a^2+b^2=5\): \(z=\pm(2-i)\).</li><li>\(3a-bi=6-i\): \(z=2+i\).</li></ol></div></details></div>
+
+<h3 id="t2">1.2 Diagrama de Argand, módulo y argumento</h3>
+<p>\(z=a+bi\) es el punto \((a,b)\). El <b>módulo</b> \(|z|=\sqrt{a^2+b^2}\) es su distancia al origen. \(|z_1-z_2|\) es la distancia entre dos puntos.</p>
+<p>El <b>argumento</b> \(\arg z\) es el ángulo desde el eje real positivo. El argumento principal está en \(-\pi\lt\theta\le\pi\). \(\tan\theta=\tfrac ba\), <b>pero hay que ubicar el cuadrante</b>: \(\arctan\tfrac ba\) solo es correcto si \(a\gt0\).</p>
+<div class="ex"><p class="et">Ejemplo 1.5. Cuadrante III</p>
+<p>Halla el módulo y el argumento principal de \(z=-1-\sqrt3\,i\).</p>
+<p>\(|z|=2\). Está en el tercer cuadrante, con ángulo de referencia \(\tfrac\pi3\): \(\arg z=-\pi+\tfrac\pi3=-\tfrac{2\pi}{3}\). \(\arctan\sqrt3=\tfrac\pi3\) sería un error.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 280.512 269.424" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 269.424 
+L 280.512 269.424 
+L 280.512 0 
+L 0 0 
+L 0 269.424 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 262.224 
+L 273.312 262.224 
+L 273.312 7.2 
+L 7.2 7.2 
+L 7.2 262.224 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 151.344 240.048 
+C 180.74972 240.048 208.955016 228.364984 229.748 207.572 
+C 250.540984 186.779016 262.224 158.57372 262.224 129.168 
+C 262.224 99.76228 250.540984 71.556984 229.748 50.764 
+C 208.955016 29.971016 180.74972 18.288 151.344 18.288 
+C 121.93828 18.288 93.732984 29.971016 72.94 50.764 
+C 52.147016 71.556984 40.464 99.76228 40.464 129.168 
+C 40.464 158.57372 52.147016 186.779016 72.94 207.572 
+C 93.732984 228.364984 121.93828 240.048 151.344 240.048 
+L 151.344 240.048 
+z
+" clip-path="url(#p21d6479563)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 137.484 153.174224 
+C 141.697659 155.606981 146.478486 156.888 151.344 156.888 
+C 156.209514 156.888 160.990341 155.606981 165.204 153.174224 
+C 169.417659 150.741467 172.917467 147.241659 175.350224 143.028 
+C 177.782981 138.814341 179.064 134.033514 179.064 129.168 
+" clip-path="url(#p21d6479563)" style="fill: none; stroke: #5a3d9a; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 106.992 129.168 
+C 106.992 136.952822 109.04163 144.602146 112.934041 151.344 
+C 116.826453 158.085854 122.426146 163.685547 129.168 167.577959 
+" clip-path="url(#p21d6479563)" style="fill: none; stroke: #a2530a; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="ma0fbfc2531" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#ma0fbfc2531" x="95.904" y="129.168" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="95.904" y="144.526281" transform="rotate(-0 95.904 144.526281)">−1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#ma0fbfc2531" x="206.784" y="129.168" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="206.784" y="144.526281" transform="rotate(-0 206.784 144.526281)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path id="me83ee258f7" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#me83ee258f7" x="151.344" y="184.608" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="144.344" y="188.787141" transform="rotate(-0 144.344 188.787141)">−1</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#me83ee258f7" x="151.344" y="73.728" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="144.344" y="77.907141" transform="rotate(-0 144.344 77.907141)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_5">
+    <path d="M 95.904 129.168 
+L 95.904 225.192897 
+" clip-path="url(#p21d6479563)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.8"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 151.344 262.224 
+L 151.344 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 7.2 129.168 
+L 273.312 129.168 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 150.34409 130.899894 
+Q 123.62329 177.181679 98.020523 221.526971 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 102.125779 218.816459 
+L 98.020523 221.526971 
+L 98.315267 216.616459 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0e6e6a" x="79.272" y="244.596897" transform="rotate(-0 79.272 244.596897)">z = −1 − √3 i</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="170.748" y="170.748" transform="rotate(-0 170.748 170.748)">arg z = −2π/3</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #a2530a" transform="translate(23.832 149.022078)">ángulo de</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #a2530a" transform="translate(23.832 159.66)">referencia π/3</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p21d6479563">
+   <rect x="7.2" y="7.2" width="266.112" height="255.024"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.5: \(z=-1-\sqrt3\,i\) está en el tercer cuadrante. El ángulo de referencia es \(\frac\pi3\), pero el argumento principal se mide desde el eje real positivo y está en \(]-\pi,\pi]\): \(-\frac{2\pi}3\). La calculadora mental \(\arctan\sqrt3=\frac\pi3\) da el cuadrante equivocado.</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.6. Producto y argumento principal</p>
+<p>\(z=1+\sqrt3\,i\) y \(w=-2+2i\). Halla \(|zw|\) y \(\arg(zw)\) en \(]-\pi,\pi]\).</p>
+<p>\(|z|=2\) y \(\arg z=\frac\pi3\); \(|w|=2\sqrt2\) y \(\arg w=\frac{3\pi}4\). Entonces \(|zw|=4\sqrt2\) y \(\arg(zw)=\frac\pi3+\frac{3\pi}4=\frac{13\pi}{12}\). No está en \(]-\pi,\pi]\): se resta \(2\pi\) y queda \(-\frac{11\pi}{12}\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el módulo y el argumento principal de \(-\sqrt3+i\).</li><li>\(z=1-i\), \(w=-\sqrt3-i\). Halla \(\left|\tfrac zw\right|\) y \(\arg\tfrac zw\) en \(]-\pi,\pi]\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(2\) y \(\tfrac{5\pi}6\) (segundo cuadrante).</li><li>\(\tfrac{\sqrt2}{2}\); \(-\tfrac\pi4-\left(-\tfrac{5\pi}6\right)=\tfrac{7\pi}{12}\).</li></ol></div></details></div>
+
+<h3 id="t3">1.3 Forma polar y forma de Euler</h3>
+\[ z=r(\cos\theta+i\sin\theta)=r\,\mathrm{cis}\,\theta=re^{i\theta},\qquad \bar z=re^{-i\theta} \]
+\[ z_1z_2=r_1r_2\,e^{i(\theta_1+\theta_2)},\qquad \frac{z_1}{z_2}=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)} \]
+<p>Multiplicar por \(e^{i\alpha}\) gira el punto un ángulo \(\alpha\) alrededor del origen; multiplicar por \(i\) gira \(\tfrac\pi2\). Multiplicar por un real \(k\gt0\) cambia la distancia al origen sin girar.</p>
+<div class="ex"><p class="et">Ejemplo 1.7. Formas polares «falsas»</p>
+<p>Escribe en forma \(re^{i\phi}\), con \(r\gt0\): (a) \(-2(\cos\theta+i\sin\theta)\); (b) \(\cos\theta-i\sin\theta\); (c) \(\sin\theta+i\cos\theta\).</p>
+<p>(a) \(-1=e^{i\pi}\), así que \(2e^{i(\theta+\pi)}\). (b) \(\cos(-\theta)+i\sin(-\theta)=e^{-i\theta}\). (c) \(\cos\left(\tfrac\pi2-\theta\right)+i\sin\left(\tfrac\pi2-\theta\right)=e^{i(\pi/2-\theta)}\).</p>
+<p>Una forma polar exige \(r\gt0\), el coseno en la parte real y el mismo ángulo en ambas funciones.</p></div>
+
+<div class="box ib"><p class="bt">Herramienta de pregunta 12: el ángulo medio</p>
+\[ 1+e^{i\theta}=e^{i\theta/2}\left(e^{-i\theta/2}+e^{i\theta/2}\right)=2\cos\tfrac\theta2\;e^{i\theta/2},\qquad 1-e^{i\theta}=-2i\sin\tfrac\theta2\;e^{i\theta/2} \]
+<p>Da de inmediato el módulo (\(2|\cos\tfrac\theta2|\)) y el argumento de \(1\pm e^{i\theta}\). Es el método 3 del markscheme de noviembre 2021, P12(e).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.8. Módulo y argumento con el ángulo medio</p>
+<p>Halla el módulo y el argumento de \(w=1+e^{i2\pi/3}\).</p>
+<p>\(w=2\cos\tfrac\pi3\,e^{i\pi/3}=e^{i\pi/3}\): módulo 1, argumento \(\tfrac\pi3\). Comprobación: \(1+\left(-\tfrac12+\tfrac{\sqrt3}2i\right)=\tfrac12+\tfrac{\sqrt3}2i\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.9. Producto y cociente</p>
+<p>\(z_1=2e^{i\pi/3}\) y \(z_2=4e^{-i\pi/6}\): \(z_1z_2=8e^{i\pi/6}=4\sqrt3+4i\) y \(\tfrac{z_1}{z_2}=\tfrac12e^{i\pi/2}=\tfrac i2\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 421.224399 220.908522" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 220.908522 
+L 421.224399 220.908522 
+L 421.224399 0 
+L 0 0 
+L 0 220.908522 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 59.698021 213.708522 
+L 372.178021 213.708522 
+L 372.178021 7.2 
+L 59.698021 7.2 
+L 59.698021 213.708522 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 152.083412 124.235435 
+C 149.611278 122.808148 146.882039 121.881696 144.051887 121.5091 
+C 141.221734 121.136503 138.345708 121.325008 135.588401 122.063826 
+C 132.831095 122.802644 130.246131 124.077407 127.981445 125.815162 
+C 125.71676 127.552916 123.816395 129.719867 122.389108 132.192 
+" clip-path="url(#p7f2da55a7a)" style="fill: none; stroke: #0e6e6a; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m4b221c40ca" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m4b221c40ca" x="195.55889" y="143.06087" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="195.55889" y="158.419151" transform="rotate(-0 195.55889 158.419151)">2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m4b221c40ca" x="249.903238" y="143.06087" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="249.903238" y="158.419151" transform="rotate(-0 249.903238 158.419151)">4</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m4b221c40ca" x="304.247586" y="143.06087" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="304.247586" y="158.419151" transform="rotate(-0 304.247586 158.419151)">6</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m4b221c40ca" x="358.591934" y="143.06087" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="358.591934" y="158.419151" transform="rotate(-0 358.591934 158.419151)">8</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="m52e2b540d5" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m52e2b540d5" x="141.214542" y="197.405217" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="134.214542" y="201.584358" transform="rotate(-0 134.214542 201.584358)">−2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m52e2b540d5" x="141.214542" y="88.716522" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="134.214542" y="92.895662" transform="rotate(-0 134.214542 92.895662)">2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m52e2b540d5" x="141.214542" y="34.372174" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="134.214542" y="38.551315" transform="rotate(-0 134.214542 38.551315)">4</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_4">
+    <path d="M 141.214542 213.708522 
+L 141.214542 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 59.698021 143.06087 
+L 372.178021 143.06087 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 142.214592 141.328732 
+Q 154.799863 119.530403 166.378903 99.474917 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 162.273648 102.185429 
+L 166.378903 99.474917 
+L 166.084159 104.385429 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0e6e6a" x="173.821151" y="86.487023" transform="rotate(-0 173.821151 86.487023)">z₁ = 2e^(iπ/3)</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 142.94668 144.06092 
+Q 188.277148 170.232477 231.864773 195.397804 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 229.154261 191.292549 
+L 231.864773 195.397804 
+L 226.954261 195.10306 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="239.41754" y="191.970783" transform="rotate(-0 239.41754 191.970783)">z₂ = 4e^(−iπ/6)</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 142.94668 142.060819 
+Q 235.341144 88.716851 325.992766 36.379112 
+" style="fill: none; stroke: #a2530a; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 321.082254 36.673856 
+L 325.992766 36.379112 
+L 323.282254 40.484368 
+" style="fill: none; stroke: #a2530a; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="333.544711" y="28.937739" transform="rotate(-0 333.544711 28.937739)">z₁z₂ = 8e^(iπ/6)</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 139.482405 142.060819 
+Q 117.684076 129.475549 97.62859 117.896508 
+" style="fill: none; stroke-dasharray: 6.66,2.88; stroke-dashoffset: 0; stroke: #0e6e6a; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 100.339102 122.001764 
+L 97.62859 117.896508 
+L 102.539102 118.191252 
+" style="fill: none; stroke-dasharray: 6.66,2.88; stroke-dashoffset: 0; stroke: #0e6e6a; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0e6e6a" x="7.2" y="109.095652" transform="rotate(-0 7.2 109.095652)">i·z₁ = 2e^(i5π/6)</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0e6e6a" x="131.704281" y="115.888696" transform="rotate(-0 131.704281 115.888696)">+π/2</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p7f2da55a7a">
+   <rect x="59.698021" y="7.2" width="312.48" height="206.508522"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.9: al multiplicar, los módulos se multiplican (\(2\cdot4=8\)) y los argumentos se suman (\(\frac\pi3-\frac\pi6=\frac\pi6\)). Multiplicar por \(i=e^{i\pi/2}\) es girar \(90^\circ\) sin cambiar el módulo.</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.10. Un valor exacto a partir de un producto</p>
+<p>Calcula \((1+i)\left(\tfrac12+\tfrac{\sqrt3}2i\right)\) de dos formas y deduce \(\cos\tfrac{7\pi}{12}\).</p>
+<p>Cartesiana: \(\tfrac{(1-\sqrt3)+(1+\sqrt3)i}{2}\). Polar: \(\sqrt2e^{i\pi/4}\cdot e^{i\pi/3}=\sqrt2e^{i7\pi/12}\). Igualando partes reales: \(\sqrt2\cos\tfrac{7\pi}{12}=\tfrac{1-\sqrt3}{2}\), así que \(\cos\tfrac{7\pi}{12}=\tfrac{\sqrt2-\sqrt6}{4}\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Escribe \(2e^{i\pi/6}\cdot3e^{-i\pi/2}\) en forma cartesiana.</li><li>Escribe \(-3(\cos\theta-i\sin\theta)\) en la forma \(re^{i\phi}\) con \(r\gt0\).</li><li>Halla el módulo y el argumento de \(1-e^{i\pi/3}\) con el ángulo medio.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(6e^{-i\pi/3}=3-3\sqrt3\,i\).</li><li>\(3e^{i(\pi-\theta)}\).</li><li>\(-2i\sin\tfrac\pi6\,e^{i\pi/6}=e^{-i\pi/2}e^{i\pi/6}=e^{-i\pi/3}\): módulo 1, argumento \(-\tfrac\pi3\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ1, P9 y TZ2, P12)</p><p>Si \(z_1z_2=(1+b^2)(1-bi)\) tiene argumento \(\tfrac\pi4\), el factor real positivo \(1+b^2\) no cambia el argumento. Otro caso: \(z_1z_2^*=r_1r_2e^{i(\alpha-\theta)}\) mide el ángulo entre dos vectores; si su parte real es 0, el ángulo es recto.</p></div>
+
+<h3 id="t4">1.4 Teorema de De Moivre</h3>
+\[ \big(r(\cos\theta+i\sin\theta)\big)^n=r^n(\cos n\theta+i\sin n\theta),\qquad n\in\mathbb Z \]
+<p>Se prueba por inducción para \(n\in\mathbb Z^+\) (Módulo 5) y se extiende a enteros negativos con \(z^{-1}=\tfrac1r e^{-i\theta}\).</p>
+<div class="ex"><p class="et">Ejemplo 1.11. Potencia grande</p>
+<p>\((1+i)^{10}=\left(\sqrt2e^{i\pi/4}\right)^{10}=32e^{i10\pi/4}=32e^{i\pi/2}=32i\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.12. Identidad de ángulo múltiple</p>
+<p>Muestra que \(\cos3\theta=4\cos^3\theta-3\cos\theta\).</p>
+<p>Con \(c=\cos\theta\), \(s=\sin\theta\): \((c+is)^3=c^3+3c^2(is)+3c(is)^2+(is)^3\), cuya parte real es \(c^3-3cs^2\). Por De Moivre, esa parte real es \(\cos3\theta\). Así \(\cos3\theta=c^3-3c(1-c^2)=4c^3-3c\).</p></div>
+<p><b>Otra herramienta:</b> si \(z=e^{i\theta}\), entonces \(z^n+z^{-n}=2\cos n\theta\) y \(z^n-z^{-n}=2i\sin n\theta\). Sirve para escribir \(\cos^n\theta\) como suma de cosenos de múltiplos de \(\theta\).</p>
+<div class="ex"><p class="et">Ejemplo 1.13. Potencia de coseno en ángulos múltiples</p>
+<p>Muestra que \(\cos^3\theta=\tfrac14(\cos3\theta+3\cos\theta)\).</p>
+<p>Con \(z=e^{i\theta}\): \((2\cos\theta)^3=\left(z+\tfrac1z\right)^3=z^3+3z+\tfrac3z+\tfrac1{z^3}=\left(z^3+z^{-3}\right)+3\left(z+z^{-1}\right)=2\cos3\theta+6\cos\theta\). Dividiendo por 8 se obtiene la identidad.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Calcula \((\sqrt3+i)^6\).</li><li>Muestra que \(\sin3\theta=3\sin\theta-4\sin^3\theta\).</li><li>Con \(z=e^{i\theta}\), muestra que \(\sin^3\theta=\tfrac14(3\sin\theta-\sin3\theta)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\left(2e^{i\pi/6}\right)^6=64e^{i\pi}=-64\).</li><li>Parte imaginaria de \((c+is)^3\): \(3c^2s-s^3=3s-4s^3\).</li><li>\((z-z^{-1})^3=(2i\sin\theta)^3=-8i\sin^3\theta\), y también \(=(z^3-z^{-3})-3(z-z^{-1})=2i\sin3\theta-6i\sin\theta\).</li></ol></div></details></div>
+
+<h3 id="t5">1.5 Raíces n-ésimas</h3>
+<p>Las \(n\) soluciones de \(z^n=w\), con \(w=Re^{i\phi}\), son:</p>
+\[ z_k=\sqrt[n]{R}\;e^{\,i\left(\frac{\phi+2k\pi}{n}\right)},\qquad k=0,1,\dots,n-1 \]
+<p>Forman un polígono regular de \(n\) lados centrado en el origen, con radio \(\sqrt[n]R\). Para \((z-a)^n=w\), resuelve para \(z-a\) y traslada todo \(a\).</p>
+<p><b>Raíces de la unidad:</b> con \(\omega=e^{2\pi i/n}\), las raíces de \(z^n=1\) son \(1,\omega,\dots,\omega^{n-1}\). Su suma es 0: es una serie geométrica (Módulo 1), \(\dfrac{\omega^n-1}{\omega-1}=0\).</p>
+<div class="ex"><p class="et">Ejemplo 1.14. Raíces cuartas y área</p>
+<p>Resuelve \(z^4=-16\) y halla el área del polígono que forman las raíces.</p>
+<p>\(-16=16e^{i\pi}\), así que \(z=2e^{i(\pi/4+k\pi/2)}\): \(\pm\sqrt2\pm\sqrt2\,i\). Es un cuadrado de diagonal 4, con área \(\tfrac{4^2}{2}=8\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 302.688 302.688" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 302.688 
+L 302.688 302.688 
+L 302.688 0 
+L 0 0 
+L 0 302.688 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 295.488 
+L 295.488 295.488 
+L 295.488 7.2 
+L 7.2 7.2 
+L 7.2 295.488 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 151.344 247.44 
+C 176.828957 247.44 201.273547 237.314719 219.294133 219.294133 
+C 237.314719 201.273547 247.44 176.828957 247.44 151.344 
+C 247.44 125.859043 237.314719 101.414453 219.294133 83.393867 
+C 201.273547 65.373281 176.828957 55.248 151.344 55.248 
+C 125.859043 55.248 101.414453 65.373281 83.393867 83.393867 
+C 65.373281 101.414453 55.248 125.859043 55.248 151.344 
+C 55.248 176.828957 65.373281 201.273547 83.393867 219.294133 
+C 101.414453 237.314719 125.859043 247.44 151.344 247.44 
+L 151.344 247.44 
+z
+" clip-path="url(#p758b43ed38)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 219.294133 83.393867 
+L 83.393867 83.393867 
+L 83.393867 219.294133 
+L 219.294133 219.294133 
+z
+" clip-path="url(#p758b43ed38)" style="fill: #0e6e6a; opacity: 0.25; stroke: #0e6e6a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 171.72904 130.95896 
+C 166.324665 125.554585 158.986941 122.5152 151.344 122.5152 
+C 143.701059 122.5152 136.363335 125.554585 130.95896 130.95896 
+" clip-path="url(#p758b43ed38)" style="fill: none; stroke: #a2530a; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mb58d2f7a4a" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mb58d2f7a4a" x="55.248" y="151.344" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="55.248" y="166.702281" transform="rotate(-0 55.248 166.702281)">−2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mb58d2f7a4a" x="247.44" y="151.344" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="247.44" y="166.702281" transform="rotate(-0 247.44 166.702281)">2</text>
+     </g>
+    </g>
+    <g id="text_3">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="295.488" y="181.348219" transform="rotate(-0 295.488 181.348219)">Re</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path id="m79b7e01640" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m79b7e01640" x="151.344" y="247.44" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="144.344" y="251.619141" transform="rotate(-0 144.344 251.619141)">−2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m79b7e01640" x="151.344" y="55.248" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="144.344" y="59.427141" transform="rotate(-0 144.344 59.427141)">2</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="121.839938" y="7.2" transform="rotate(-90 121.839938 7.2)">Im</text>
+    </g>
+   </g>
+   <g id="line2d_5">
+    <defs>
+     <path id="m8279e9c8d4" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #5a3d9a"/>
+    </defs>
+    <g clip-path="url(#p758b43ed38)">
+     <use xlink:href="#m8279e9c8d4" x="219.294133" y="83.393867" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_6">
+    <path d="M 151.344 151.344 
+L 219.294133 83.393867 
+" clip-path="url(#p758b43ed38)" style="fill: none; stroke: #5a3d9a; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <g clip-path="url(#p758b43ed38)">
+     <use xlink:href="#m8279e9c8d4" x="83.393867" y="83.393867" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_8">
+    <path d="M 151.344 151.344 
+L 83.393867 83.393867 
+" clip-path="url(#p758b43ed38)" style="fill: none; stroke: #5a3d9a; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <g clip-path="url(#p758b43ed38)">
+     <use xlink:href="#m8279e9c8d4" x="83.393867" y="219.294133" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_10">
+    <path d="M 151.344 151.344 
+L 83.393867 219.294133 
+" clip-path="url(#p758b43ed38)" style="fill: none; stroke: #5a3d9a; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <g clip-path="url(#p758b43ed38)">
+     <use xlink:href="#m8279e9c8d4" x="219.294133" y="219.294133" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_12">
+    <path d="M 151.344 151.344 
+L 219.294133 219.294133 
+" clip-path="url(#p758b43ed38)" style="fill: none; stroke: #5a3d9a; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 151.344 295.488 
+L 151.344 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 7.2 151.344 
+L 295.488 151.344 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="198.619349" y="71.162843" transform="rotate(-0 198.619349 71.162843)">√2 + √2 i</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="46.411051" y="71.162843" transform="rotate(-0 46.411051 71.162843)">−√2 + √2 i</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="46.411051" y="231.525157" transform="rotate(-0 46.411051 231.525157)">−√2 − √2 i</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="198.619349" y="231.525157" transform="rotate(-0 198.619349 231.525157)">√2 − √2 i</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #a2530a" x="151.344" y="115.308" transform="rotate(-0 151.344 115.308)">π/2</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p758b43ed38">
+   <rect x="7.2" y="7.2" width="288.288" height="288.288"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.14: las raíces de \(z^4=-16\) están en la circunferencia de radio 2, separadas \(\frac{2\pi}4=\frac\pi2\). Forman un cuadrado de diagonal 4 y área 8.</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.15. Raíces cúbicas de un imaginario</p>
+<p>Resuelve \(z^3=8i\).</p>
+<p>\(8i=8e^{i\pi/2}\), así que \(z=2e^{i(\pi/6+2k\pi/3)}\), \(k=0,1,2\): \(\sqrt3+i\), \(-\sqrt3+i\) y \(-2i\). Comprobación: suman 0 y cada una al cubo da \(8i\). Forman un triángulo equilátero inscrito en la circunferencia de radio 2.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(z^3=-27\).</li><li>Resuelve \((z-2)^4=-4\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(3e^{i(\pi/3+2k\pi/3)}\): \(\tfrac32\pm\tfrac{3\sqrt3}2i\) y \(-3\).</li><li>\(z-2=\sqrt2e^{i(\pi/4+k\pi/2)}=\pm1\pm i\): \(z=3\pm i,\ 1\pm i\).</li></ol></div></details></div>
+<div class="box beyond"><p class="bt">Más allá del IB: las raíces de la unidad</p>
+<ul>
+<li>Las raíces \(n\)-ésimas de 1 son \(1,\omega,\omega^2,\dots,\omega^{n-1}\) con \(\omega=e^{2\pi i/n}\). Su suma es 0, porque es una serie geométrica: \(\frac{\omega^n-1}{\omega-1}=0\). Por eso los vértices del polígono regular tienen el centro como baricentro, y \(\sum_{k=0}^{n-1}\cos\frac{2\pi k}n=0\).</li>
+<li>\(z^n-1=\prod_{k=0}^{n-1}(z-\omega^k)\). Igualando coeficientes se obtienen identidades trigonométricas que no se ven a simple vista.</li>
+<li>Con la misma serie geométrica: \(\sum_{k=0}^{n-1}\cos k\theta=\frac{\sin(n\theta/2)\cos((n-1)\theta/2)}{\sin(\theta/2)}\), la parte real de \(\sum e^{ik\theta}\).</li>
+</ul></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2021, P12 y mayo 2026, P12)</p><p>En \((z-1)^3=i\) se resuelve \(z-1=e^{i(\pi/6+2k\pi/3)}\) y se suma 1. El markscheme da (M1) por sumar \(\tfrac{2k\pi}{3}\) y otra por dividir. En \(z^6=-64\), dar raíces de más quita una A1.</p></div>
+
+<h3 id="t6">1.6 Polinomios con raíces complejas</h3>
+<ul>
+<li><b>Teorema de las raíces conjugadas:</b> si un polinomio tiene coeficientes reales y \(\alpha\) es raíz, \(\bar\alpha\) también lo es.</li>
+<li>Juntando las dos: \((z-\alpha)(z-\bar\alpha)=z^2-2\mathrm{Re}(\alpha)\,z+|\alpha|^2\), un factor cuadrático real.</li>
+<li>Un polinomio real de grado impar tiene al menos una raíz real.</li>
+<li>Las relaciones de Vieta (Módulo 2) valen con raíces complejas.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.16. Construir un polinomio real</p>
+<p>Halla la cúbica mónica real con raíces 2 y \(1-3i\).</p>
+<p>También es raíz \(1+3i\): \((z-2)(z^2-2z+10)=z^3-4z^2+14z-20\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.17. Una raíz dada y los coeficientes</p>
+<p>\(2-i\) es raíz de \(x^3+ax^2+bx+10\), con \(a,b\in\mathbb R\). Halla \(a\), \(b\) y las otras raíces.</p>
+<p>Por coeficientes reales, \(2+i\) también es raíz, y \((x-2+i)(x-2-i)=x^2-4x+5\). El producto de las tres raíces es \(-10\): \(5r=-10\), así que \(r=-2\). Entonces \((x+2)(x^2-4x+5)=x^3-2x^2-3x+10\), con \(a=-2\) y \(b=-3\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(2+3i\) es raíz de \(z^3-5z^2+17z-13=0\). Halla las otras raíces.</li><li>Factoriza \(z^4+4\) en dos cuadráticas reales.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Factor \(z^2-4z+13\); el cociente es \(z-1\). Raíces \(2\pm3i\) y 1.</li><li>Raíces \(\pm1\pm i\): \((z^2+2z+2)(z^2-2z+2)\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ1, P7 y noviembre 2022, P5)</p><p>El primer A1 es escribir las raíces conjugadas. Después se usan el producto de las cuatro raíces (el término independiente) y su suma (menos el coeficiente de \(z^3\)).</p></div>
+
+<h3 id="t7">1.7 Geometría con complejos</h3>
+<ul>
+<li>Vector de \(A\) a \(B\): \(b-a\). Distancia: \(|b-a|\).</li>
+<li>Girar \(B\) alrededor de \(A\) un ángulo \(\theta\): \(a+(b-a)e^{i\theta}\).</li>
+<li>Triángulo \(OZ_1Z_2\) equilátero, recorrido en sentido antihorario: \(z_1=z_2e^{i\pi/3}\).</li>
+<li>Ángulo \(Z_2OZ_1\): \(\arg\dfrac{z_1}{z_2}=\arg(z_1\bar z_2)\).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.18. Área de un triángulo con complejos</p>
+<p>Halla el área del triángulo con vértices \(0\), \(z_1=2+i\) y \(z_2=-1+3i\).</p>
+<p>El área es \(\frac12\left|\mathrm{Im}\left(\overline{z_1}\,z_2\right)\right|\). \((2-i)(-1+3i)=1+7i\), así que el área es \(\frac72\). Es la versión compleja de \(\frac12|x_1y_2-x_2y_1|\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.19. Completar un cuadrado con una rotación</p>
+<p>\(A=1+i\) y \(B=4+2i\) son vértices consecutivos de un cuadrado \(ABCD\) recorrido en sentido antihorario. Halla \(C\) y \(D\).</p>
+<p>\(\overrightarrow{AB}=3+i\). Girar \(90^\circ\) es multiplicar por \(i\): \(\overrightarrow{AD}=i(3+i)=-1+3i\). Así \(D=A+(-1+3i)=4i\) y \(C=B+(-1+3i)=3+5i\). El área es \(|AB|^2=10\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Gira el punto \(3+i\) un ángulo \(\tfrac\pi2\) alrededor de \(1+i\).</li><li>\(0\) y \(2\) son vértices de un triángulo equilátero con el tercer vértice en el semiplano superior. Halla ese vértice.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(1+i+i(2)=1+3i\).</li><li>\(2e^{i\pi/3}=1+\sqrt3\,i\).</li></ol></div></details></div>
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Lugares geométricos:</b> \(|z-a|=r\) es una circunferencia; \(|z-a|=|z-b|\) es la mediatriz del segmento \(AB\); \(\arg(z-a)=\theta\) es una semirrecta.</li>
+<li><b>Desigualdad triangular:</b> \(|z_1+z_2|\le|z_1|+|z_2|\).</li>
+<li>\(\cos\theta=\dfrac{e^{i\theta}+e^{-i\theta}}{2}\) y \(\sin\theta=\dfrac{e^{i\theta}-e^{-i\theta}}{2i}\): las sumas \(\sum\cos k\theta\) se calculan como la parte real de una serie geométrica.</li>
+</ul></div>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Número complejo</td><td>\(z=a+bi\), con \(a,b\in\mathbb R\) e \(i^2=-1\).</td></tr>
+<tr><td>Parte real / imaginaria</td><td>\(\mathrm{Re}(z)=a\), \(\mathrm{Im}(z)=b\); ambas son números reales.</td></tr>
+<tr><td>Conjugado</td><td>\(z^*=\bar z=a-bi\): reflexión en el eje real.</td></tr>
+<tr><td>Módulo</td><td>\(|z|=\sqrt{a^2+b^2}\): distancia al origen.</td></tr>
+<tr><td>Argumento principal</td><td>Ángulo \(\theta\in(-\pi,\pi]\) desde el eje real positivo.</td></tr>
+<tr><td>Forma módulo-argumental</td><td>\(r(\cos\theta+i\sin\theta)=r\,\mathrm{cis}\,\theta\).</td></tr>
+<tr><td>Forma de Euler</td><td>\(re^{i\theta}\).</td></tr>
+<tr><td>Raíz \(n\)-ésima de la unidad</td><td>Solución de \(z^n=1\): \(e^{2k\pi i/n}\).</td></tr>
+<tr><td>Diagrama de Argand</td><td>Plano con el eje real horizontal y el imaginario vertical.</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Exprese en la forma \(a+bi\) / \(re^{i\theta}\)</td><td>Exactamente esa forma, con valores exactos.</td><td>Dejar \(2\,\mathrm{cis}\frac\pi6\) cuando piden cartesiana, o al revés.</td></tr>
+<tr><td>Sitúe en un diagrama de Argand</td><td>Puntos en la posición relativa correcta, rotulados, con módulos coherentes.</td><td>No rotular, o dibujar distancias al origen claramente distintas cuando son iguales.</td></tr>
+<tr><td>Utilizando el teorema de De Moivre, muestre que…</td><td>Aplicar \((re^{i\theta})^n=r^ne^{in\theta}\) de forma visible.</td><td>Desarrollar por el binomio cuando se exige De Moivre.</td></tr>
+<tr><td>Verifique que \(z_0\) es raíz</td><td>Sustituir y llegar al valor exacto del otro lado.</td><td>No concluir «por lo tanto es raíz».</td></tr>
+<tr><td>Halle los otros factores cuadráticos</td><td>Factores con coeficientes reales, emparejando conjugados.</td><td>Dejar factores lineales complejos.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>El arctan ciego.</b> \(\arctan\frac ba\) falla en los cuadrantes II y III. Ubica el punto antes de dar el ángulo.</li>
+<li><b>La parte imaginaria con i.</b> \(\mathrm{Im}(3-4i)=-4\), no \(-4i\).</li>
+<li><b>El conjugado olvidado.</b> En un polinomio real con raíz \(3+i\), también \(3-i\) es raíz. Escribirlo vale la primera A1.</li>
+<li><b>La forma polar falsa.</b> \(-2\,\mathrm{cis}\,\theta\) y \(\cos\theta-i\sin\theta\) no están en forma polar: el módulo debe ser positivo y el ángulo el mismo en seno y coseno.</li>
+<li><b>El conjugado sin permiso.</b> Si los coeficientes no son reales, las raíces no vienen en pares conjugados.</li>
+<li><b>Raíces de más o de menos.</b> \(z^n=w\) tiene exactamente \(n\) raíces: \(k=0,\dots,n-1\).</li>
+<li><b>El \(2k\pi\) dividido a medias.</b> El argumento es \(\frac{\phi+2k\pi}{n}\), no \(\frac\phi n+2k\pi\).</li>
+<li><b>La raíz del módulo.</b> El módulo de cada raíz es \(\sqrt[n]{R}\), no \(R\).</li>
+<li><b>Olvidar la traslación.</b> En \((z-1)^3=i\), al final se suma 1 a cada raíz.</li>
+<li><b>El argumento fuera de rango.</b> Si piden el principal, lleva el ángulo a \((-\pi,\pi]\).</li>
+<li><b>El factor real que cambia el argumento.</b> Un factor real positivo no cambia el argumento; uno negativo le suma \(\pi\).</li>
+<li><b>Dividir complejos a mano.</b> Siempre multiplica por el conjugado del denominador; no dividas parte a parte.</li>
+<li><b>El orden de la rotación.</b> Antihorario es \(e^{+i\theta}\). Revisa el sentido que da el enunciado (\(0\lt\alpha-\theta\lt\pi\)).</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">F1–F9 parten de ítems de DMpA N°21, N°25 y del banco «Preguntas IB – raíces complejas», ampliados hasta la Sección B. F10 cubre la geometría por rotación, que las fichas no traen. Ninguno repite un tipo de la sección 5.</p>
+
+<div class="ex"><p class="et">F1. Potencias de i y una serie aritmético-geométrica <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p class="src">DMpA N°21 (sumas \(i+i^2+\dots+i^{1999}\) y \(S=\sum_{k=1}^{4n}(k+i^k)\)), ampliada.</p>
+<p>(a) Calcula \(\sum_{k=1}^{1999}i^k\). (b) Calcula \(\sum_{k=1}^{4n}(k+i^k)\). (c) Con el método \(T-iT\), muestra que \(\sum_{k=1}^{4n}k\,i^k=2n-2ni\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Cada bloque de 4 suma 0, y \(1999=4\cdot499+3\): queda \(i-1-i=-1\).</p>
+<p>(b) \(\tfrac{4n(4n+1)}{2}+0=2n(4n+1)\).</p>
+<p>(c) \(T-iT=\sum_{k=1}^{4n}i^k-4n\,i^{4n+1}=0-4ni\). Así \(T=\dfrac{-4ni}{1-i}=\dfrac{-4ni(1+i)}{2}=2n-2ni\). Comprobación con \(n=1\): \(i-2-3i+4=2-2i\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Ecuaciones con el conjugado <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°21 y N°25 («halle todos los valores de \(r\) y \(\theta\)…»), ampliada.</p>
+<p>(a) Resuelve \(z^2=\bar z\). (b) Resuelve \(z^3=\bar z\). (c) Muestra que \(z^n=\bar z\) tiene exactamente \(n+2\) soluciones.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Con \(z=re^{i\theta}\): \(r^ne^{in\theta}=re^{-i\theta}\). Entonces \(r=0\), o bien \(r=1\) y \(e^{i(n+1)\theta}=1\).</p>
+<p>(a) \(0,\ 1,\ -\tfrac12\pm\tfrac{\sqrt3}{2}i\). (b) \(0,\ \pm1,\ \pm i\).</p>
+<p>(c) Además de 0, están las \(n+1\) raíces \((n+1)\)-ésimas de la unidad: \(n+2\) en total.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. Raíces cúbicas y una transformación <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°25 (IB mayo 2017) y banco IB, pregunta 11(a).</p>
+<p>(a) Resuelve \(w^3=8i\) en forma polar y cartesiana. (b) La raíz \(w_1\) con \(\mathrm{Re}(w_1)=0\) cumple \(w_1=\dfrac{z}{z-i}\). Halla \(z\) en la forma \(a+bi\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(8i=8e^{i\pi/2}\), así que \(w=2e^{i(\pi/6+2k\pi/3)}\): \(\sqrt3+i,\ -\sqrt3+i,\ -2i\).</p>
+<p>(b) \(w_1=-2i\). Despejando: \(w_1(z-i)=z\Rightarrow z=\dfrac{w_1 i}{w_1-1}=\dfrac{2}{-1-2i}=\dfrac{2(-1+2i)}{5}=-\tfrac25+\tfrac45i\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Raíces trasladadas y un área <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°25, ítem 7, y banco IB, pregunta 8.</p>
+<p>(a) Resuelve \((z+2i)^3=216i\) y da las raíces en la forma \(a\sqrt3+bi\), con \(a,b\in\mathbb Z\). (b) Halla el área del triángulo que forman.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(z+2i=6e^{i(\pi/6+2k\pi/3)}\in\{3\sqrt3+3i,\ -3\sqrt3+3i,\ -6i\}\). Restando \(2i\): \(3\sqrt3+i,\ -3\sqrt3+i,\ -8i\).</p>
+<p>(b) Es un triángulo equilátero de circunradio 6 (trasladar no cambia el área). Lado \(6\sqrt3\), área \(\tfrac{\sqrt3}{4}\cdot108=27\sqrt3\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. La tangente de 5π/12 y una potencia real <span class="lvl">Sección B</span></p>
+<p class="src">Banco IB, pregunta 11(b).</p>
+<p>\(z_1=1+i\) y \(z_2=2\left(\cos\tfrac\pi6+i\sin\tfrac\pi6\right)\). (a) Escribe \(z_1\) en forma polar. (b) Calcula \(z_1z_2\) en forma \(a+bi\). (c) Deduce \(\tan\tfrac{5\pi}{12}\) en la forma \(c+d\sqrt3\). (d) Halla el menor \(p\gt0\) con \(z_2^p\) real positivo.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\sqrt2e^{i\pi/4}\). (b) \((1+i)(\sqrt3+i)=(\sqrt3-1)+(\sqrt3+1)i\).</p>
+<p>(c) \(\arg(z_1z_2)=\tfrac\pi4+\tfrac\pi6=\tfrac{5\pi}{12}\), así que \(\tan\tfrac{5\pi}{12}=\dfrac{\sqrt3+1}{\sqrt3-1}=\dfrac{(\sqrt3+1)^2}{2}=2+\sqrt3\).</p>
+<p>(d) \(z_2^p=2^pe^{ip\pi/6}\) es real positivo cuando \(\tfrac{p\pi}6=2\pi\): \(p=12\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Suma de raíces 24-ésimas <span class="lvl">Sección B</span></p>
+<p class="src">Banco IB, pregunta 11 (16 puntos).</p>
+<p>(a) Halla las raíces de \(z^{24}=1\) con \(0\lt\arg z\lt\tfrac\pi2\). (b) Sea \(S\) su suma. Muestra que \(\mathrm{Re}\,S=\mathrm{Im}\,S\). (c) Escribiendo \(\tfrac\pi{12}=\tfrac\pi4-\tfrac\pi6\), halla \(\cos\tfrac\pi{12}\). (d) Muestra que \(S=\tfrac12(1+\sqrt2)(1+\sqrt3)(1+i)\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(e^{ik\pi/12}\), \(k=1,\dots,5\).</p>
+<p>(b) Al emparejar \(k\) con \(6-k\): \(\cos\tfrac{k\pi}{12}=\sin\tfrac{(6-k)\pi}{12}\), así que las partes reales y las imaginarias suman lo mismo.</p>
+<p>(c) \(e^{i\pi/12}=\dfrac{e^{i\pi/4}}{e^{i\pi/6}}=\dfrac{(1+i)(\sqrt3-i)}{2\sqrt2}=\dfrac{(\sqrt3+1)+(\sqrt3-1)i}{2\sqrt2}\). Así \(\cos\tfrac\pi{12}=\tfrac{\sqrt6+\sqrt2}{4}\) y \(\sin\tfrac\pi{12}=\tfrac{\sqrt6-\sqrt2}{4}\).</p>
+<p>(d) \(\mathrm{Re}\,S=\tfrac{\sqrt6+\sqrt2}4+\tfrac{\sqrt3}2+\tfrac{\sqrt2}2+\tfrac12+\tfrac{\sqrt6-\sqrt2}4=\tfrac12(1+\sqrt2+\sqrt3+\sqrt6)=\tfrac12(1+\sqrt2)(1+\sqrt3)\). Con (b), \(S=\mathrm{Re}\,S\,(1+i)\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. sin 72° con De Moivre y el binomio <span class="lvl">Sección B, integra Módulo 4</span></p>
+<p class="src">Banco IB, pregunta 12 (19 puntos).</p>
+<p>(a) Desarrolla \((\cos\theta+i\sin\theta)^5\) y deduce \(\sin5\theta=5\cos^4\theta\sin\theta-10\cos^2\theta\sin^3\theta+\sin^5\theta\). (b) \(\alpha\) es la raíz de \(z^5=1\) con menor argumento positivo. Muestra que \(16\sin^4\alpha-20\sin^2\alpha+5=0\). (c) Expresa \(\sin72^\circ\) como \(\tfrac{\sqrt{a+b\sqrt c}}{d}\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) La parte imaginaria del binomio, igualada con la de \(\cos5\theta+i\sin5\theta\).</p>
+<p>(b) \(\alpha=72^\circ\) y \(\sin5\alpha=\sin360^\circ=0\). Con \(\cos^2=1-s^2\): \(s\left[5(1-s^2)^2-10(1-s^2)s^2+s^4\right]=s(16s^4-20s^2+5)=0\). Como \(s\neq0\), queda la ecuación.</p>
+<p>(c) \(s^2=\tfrac{20\pm\sqrt{80}}{32}=\tfrac{5\pm\sqrt5}{8}\). Como \(\sin72^\circ\gt\sin45^\circ\), \(s^2\gt\tfrac12\) y se toma el \(+\): \(\sin72^\circ=\sqrt{\tfrac{5+\sqrt5}{8}}=\tfrac{\sqrt{10+2\sqrt5}}{4}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. Cociente en forma polar y potencias reales <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA N°21, ítem 19 (IB, 19 puntos), adaptado.</p>
+<p>\(z_1=2\sqrt3\,\mathrm{cis}\tfrac{3\pi}2\) y \(z_2=-1+\sqrt3i\). (a) Halla \(\tfrac{z_1}{z_2}\) en forma polar y cartesiana. (b) Halla el menor \(n\in\mathbb Z^+\) con \(\left(\tfrac{z_1}{z_2}\right)^n\) real, y su valor. (c) Lo mismo con «real positivo».</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(z_2=2\,\mathrm{cis}\tfrac{2\pi}3\), así que \(\tfrac{z_1}{z_2}=\sqrt3\,\mathrm{cis}\tfrac{5\pi}6=-\tfrac32+\tfrac{\sqrt3}2i\).</p>
+<p>(b) \(\tfrac{5n\pi}{6}=k\pi\) exige \(6\mid n\): \(n=6\), con valor \(27\,\mathrm{cis}\,5\pi=-27\).</p>
+<p>(c) \(\tfrac{5n}{6}\) debe ser par: \(n=12\), con valor \(3^6=729\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. cos(π/8) por dos caminos <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA N°25 (raíces con \(\cos\tfrac\pi8=\tfrac{\sqrt{2+\sqrt2}}2\)), ampliada.</p>
+<p>(a) Resuelve \(z^2=e^{i\pi/4}\) en forma polar. (b) Resuélvela en forma cartesiana. (c) Deduce \(\cos\tfrac\pi8\), \(\sin\tfrac\pi8\) y \(\tan\tfrac\pi8\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(z=\pm e^{i\pi/8}\).</p>
+<p>(b) \(a^2-b^2=\tfrac{\sqrt2}2\) y \(a^2+b^2=1\). Así \(a^2=\tfrac{2+\sqrt2}{4}\) y \(b^2=\tfrac{2-\sqrt2}{4}\), con \(a,b\) del mismo signo.</p>
+<p>(c) Comparando con la raíz de argumento \(\tfrac\pi8\): \(\cos\tfrac\pi8=\tfrac{\sqrt{2+\sqrt2}}2\), \(\sin\tfrac\pi8=\tfrac{\sqrt{2-\sqrt2}}2\), \(\tan\tfrac\pi8=\sqrt{\tfrac{2-\sqrt2}{2+\sqrt2}}=\sqrt2-1\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. Cuadrado y triángulo por rotación <span class="lvl">Sección B</span></p>
+<p class="src">Tipo de examen sin ítem equivalente en las fichas.</p>
+<p>\(A=1+2i\) y \(B=4+3i\) son vértices consecutivos del cuadrado \(ABCD\), recorrido en sentido antihorario. (a) Halla \(C\) y \(D\). (b) Halla el tercer vértice \(E\) del triángulo equilátero \(ABE\), con \(E\) al lado izquierdo de \(\overrightarrow{AB}\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\overrightarrow{BC}=i(B-A)=i(3+i)=-1+3i\). Así \(C=3+6i\) y \(D=A+(-1+3i)=5i\).</p>
+<p>(b) \(E=A+(B-A)e^{i\pi/3}=1+2i+(3+i)\left(\tfrac12+\tfrac{\sqrt3}2i\right)=\tfrac{5-\sqrt3}{2}+\tfrac{5+3\sqrt3}{2}i\).</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son todas las preguntas de complejos de tus 7 pruebas, con las marcas del markscheme oficial, de la más corta a las tres de 18–22 puntos. Resuélvelas en tiempo de examen, a 1,1 minutos por punto. Una pregunta 12 completa lleva unos 25 minutos.</p>
+
+<div class="ex"><p class="et">X1. Mayo 2022 TZ1, pregunta 9 <span class="lvl">6 puntos</span></p>
+<p>\(z_1=1+bi\) y \(z_2=(1-b^2)-2bi\), con \(b\in\mathbb R,\ b\neq0\). (a) Halla \(z_1z_2\) en función de \(b\). (b) A partir de lo anterior, si \(\arg(z_1z_2)=\tfrac\pi4\), halla \(b\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \((1+bi)\left((1-b^2)-2bi\right)=1-2bi-b^2+bi+2b^2-b^3i\) <span class="m">M1</span> \(=(1+b^2)+(-b-b^3)i\) <span class="m">A1A1</span></p>
+<p class="step">(b) \(\arctan\dfrac{-b-b^3}{1+b^2}=\dfrac\pi4\) <span class="m">(M1)</span>. Como \(1+b^2\gt0\), queda \(\arctan(-b)=\tfrac\pi4\) <span class="m">A1</span> \(\Rightarrow b=-1\) <span class="m">A1</span></p>
+<p><span class="lbl">Atajo.</span> \(z_1z_2=(1+b^2)(1-bi)\): el factor real positivo no afecta al argumento.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Noviembre 2022, pregunta 5 <span class="lvl">7 puntos</span></p>
+<p>\(z^4+pz^3+54z^2-108z+80=0\), con \(p\in\mathbb R\). Tres raíces son \(3+i\), \(\alpha\) y \(\alpha^2\), con \(\alpha\in\mathbb R\). (a) Usando el producto de las raíces, halla \(\alpha\). (b) Halla \(p\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Producto \(=80\) <span class="m">(A1)</span>; \(3-i\) es raíz <span class="m">(A1)</span></p>
+<p class="step">\((3+i)(3-i)\alpha\cdot\alpha^2=80\) <span class="m">(M1)</span> \(\Rightarrow10\alpha^3=80\Rightarrow\alpha=2\) <span class="m">A1</span></p>
+<p class="step">(b) Suma de raíces \(=-p\) <span class="m">(A1)</span>: \(-p=(3+i)+(3-i)+2+4\) <span class="m">(M1)</span> \(\Rightarrow p=-12\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Mayo 2021 TZ1, pregunta 7 <span class="lvl">8 puntos</span></p>
+<p>Dos raíces de \(z^4+4z^3+8z^2+80z+400=0\) son \(a+bi\) y \(b+ai\), con \(a,b\in\mathbb R\). Halla los valores posibles de \(a\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">Las otras dos raíces son \(a-bi\) y \(b-ai\) <span class="m">A1</span>. Suma \(=-4\), producto \(=400\) <span class="m">A1</span></p>
+<p class="step">Plantear la suma o el producto <span class="m">M1</span>: \(2a+2b=-4\Rightarrow a+b=-2\) <span class="m">A1</span></p>
+<p class="step">\((a^2+b^2)^2=400\Rightarrow a^2+b^2=20\) <span class="m">A1</span></p>
+<p class="step">Resolver el sistema <span class="m">(M1)</span>: \(ab=\tfrac{4-20}2=-8\), así que \(a,b\) son raíces de \(t^2+2t-8=0\): \(a=2\) o \(a=-4\) <span class="m">A1A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X4. Mayo 2022 TZ2, pregunta 12 <span class="lvl">18 puntos</span></p>
+<p>\(Z_1,O,Z_2\) son vértices de un triángulo recorrido en sentido antihorario, con \(z_1=r_1e^{i\alpha}\), \(z_2=r_2e^{i\theta}\), \(0\lt\alpha-\theta\lt\pi\). (a) Muestra que \(z_1z_2^*=r_1r_2e^{i(\alpha-\theta)}\). (b) Si \(\mathrm{Re}(z_1z_2^*)=0\), muestra que el triángulo es rectángulo. En (c)–(e) el triángulo es equilátero. (c) (i) Expresa \(z_1\) en función de \(z_2\); (ii) muestra que \(z_1^2+z_2^2=z_1z_2\). (d) Si \(z_1,z_2\) son las raíces de \(z^2+az+b=0\), muestra que \(a^2-3b=0\). (e) Para \(z^2+az+12=0\), deduce que solo se forma un triángulo equilátero.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(z_2^*=r_2e^{-i\theta}\) <span class="m">(A1)</span>, así que \(z_1z_2^*=r_1e^{i\alpha}r_2e^{-i\theta}\) <span class="m">A1</span> \(=r_1r_2e^{i(\alpha-\theta)}\) <span class="m">AG</span></p>
+<p class="step">(b) \(r_1r_2\cos(\alpha-\theta)=0\) <span class="m">A1</span>; como \(0\lt\alpha-\theta\lt\pi\), \(\alpha-\theta=\tfrac\pi2\) <span class="m">A1</span>, y el triángulo es rectángulo en \(O\) <span class="m">AG</span></p>
+<p class="step">(c)(i) \(r_1=r_2\) y \(\alpha=\theta+\tfrac\pi3\) <span class="m">(M1)</span>: \(z_1=z_2e^{i\pi/3}\) <span class="m">A1</span></p>
+<p class="step">(ii) \(z_1^2+z_2^2=z_2^2\left(e^{2i\pi/3}+1\right)\) <span class="m">M1A1</span>; \(e^{2i\pi/3}+1=e^{i\pi/3}\) <span class="m">A1</span>; así queda \(z_2^2e^{i\pi/3}=z_2\cdot z_1\) <span class="m">A1</span> <span class="m">AG</span></p>
+<p class="step">(d) \(z_1+z_2=-a\), \(z_1z_2=b\) <span class="m">(A1)</span>. \(a^2=z_1^2+z_2^2+2z_1z_2\) <span class="m">A1</span> \(=3z_1z_2\) <span class="m">A1</span>; sustituir \(b\) <span class="m">M1</span>: \(a^2=3b\) <span class="m">A1</span> <span class="m">AG</span></p>
+<p class="step">(e) \(a^2=36\Rightarrow a=\pm6\) <span class="m">A1</span>. Con \(a=-6\): raíces \(3\pm\sqrt3i\), que dan \(\alpha-\theta=-\tfrac\pi3\), fuera del rango <span class="m">R1</span>. Con \(a=6\): raíces \(-3\pm\sqrt3i\), que dan \(\alpha-\theta=\tfrac\pi3\) <span class="m">A1</span>. Solo un triángulo <span class="m">AG</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X5. Noviembre 2022, pregunta 12 <span class="lvl">18 puntos</span></p>
+<p>\(z_n=(n^2+n+1)+i\) y \(w_n=z_0z_1\cdots z_n\), para \(n\in\mathbb N\). (a) (i) Halla \(\arg z_0\). (ii) Escribe \(\arg z_n\) en función de \(n\). (b) (i) Muestra que \(\arctan a+\arctan b=\arctan\tfrac{a+b}{1-ab}\) para \(a,b\gt0\), \(ab\lt1\). (ii) Muestra que \(\arg w_1=\arctan2\). (c) Prueba por inducción que \(\arg w_n=\arctan(n+1)\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a)(i) \(z_0=1+i\) <span class="m">(A1)</span>, \(\arg z_0=\tfrac\pi4\) <span class="m">A1</span>. (ii) \(\arctan\dfrac1{n^2+n+1}\) <span class="m">A1</span></p>
+<p class="step">(b)(i) Aplicar \(\tan(A+B)\) con \(A=\arctan a\), \(B=\arctan b\) <span class="m">M1</span>: \(\tan(A+B)=\tfrac{a+b}{1-ab}\) <span class="m">A1</span> <span class="m">AG</span></p>
+<p class="step">(ii) \(\arg w_1=\arg z_0+\arg z_1\) <span class="m">M1</span> \(=\arctan1+\arctan\tfrac13\) <span class="m">(A1)</span> \(=\arctan\dfrac{4/3}{2/3}\) <span class="m">A1</span> \(=\arctan2\) <span class="m">AG</span></p>
+<p class="step">(c) \(n=0\): \(\arg w_0=\tfrac\pi4=\arctan1\) <span class="m">R1</span> (empezar en \(n=1\) da R0). Supón que \(\arg w_k=\arctan(k+1)\) <span class="m">M1</span></p>
+<p class="step">\(\arg w_{k+1}=\arg w_k+\arg z_{k+1}\) <span class="m">(M1)</span> \(=\arctan(k+1)+\arctan\dfrac1{k^2+3k+3}\) <span class="m">A1</span></p>
+<p class="step">Aplicar (b)(i) <span class="m">M1</span>: \(\arctan\dfrac{(k+1)(k^2+3k+3)+1}{(k^2+3k+3)-(k+1)}\) <span class="m">(A1)</span> \(=\arctan\dfrac{k^3+4k^2+6k+4}{k^2+2k+2}\) <span class="m">A1</span> \(=\arctan\dfrac{(k+2)(k^2+2k+2)}{k^2+2k+2}\) <span class="m">A1</span> \(=\arctan(k+2)\) <span class="m">A1</span></p>
+<p class="step">Cierto para \(n=0\) y, si es cierto para \(n=k\), también para \(n=k+1\): por inducción, cierto para todo \(n\in\mathbb N\) <span class="m">R1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X6. Noviembre 2021, pregunta 12 <span class="lvl">22 puntos</span></p>
+<p>\((z-1)^3=i\) tiene raíces \(\omega_1,\omega_2,\omega_3\), con \(\mathrm{Im}(\omega_2)\gt0\) e \(\mathrm{Im}(\omega_3)\lt0\). (a) (i) Verifica que \(\omega_1=1+e^{i\pi/6}\) es raíz. (ii) Halla \(\omega_2,\omega_3\) en la forma \(a+e^{i\theta}\), con \(\theta\gt0\). (b) Sitúa \(A,B,C\) en un diagrama de Argand. (c) Halla \(AC\). Para \((z-1)^3=iz^3\): (d) usando De Moivre, muestra que \(\alpha=\dfrac1{1-e^{i\pi/6}}\) es raíz; (e) halla \(\mathrm{Re}(\alpha)\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a)(i) \(\left(e^{i\pi/6}\right)^3\) <span class="m">A1</span> \(=e^{i\pi/2}\) <span class="m">A1</span> \(=i\) <span class="m">AG</span></p>
+<p class="step">(ii) \(z-1=e^{i(\pi/2+2k\pi)/3}\) <span class="m">(M1)(M1)</span>: \(\omega_2=1+e^{i5\pi/6}\) <span class="m">A1</span>, \(\omega_3=1+e^{i3\pi/2}\) <span class="m">A1</span></p>
+<p class="step">(b) Pasar a cartesiana y trasladar 1 a la derecha <span class="m">(M1)</span>: \(A\left(1+\tfrac{\sqrt3}2,\tfrac12\right)\), \(B\left(1-\tfrac{\sqrt3}2,\tfrac12\right)\), \(C(1,-1)\) <span class="m">A1A1A1</span></p>
+<p class="step">(c) \(\omega_1-\omega_3=\tfrac{\sqrt3}2+\tfrac32i\) <span class="m">M1M1</span>; \(AC=\sqrt{\tfrac34+\tfrac94}=\sqrt3\) <span class="m">A1</span></p>
+<p class="step">(d) \(\left(\tfrac{z-1}{z}\right)^3=i\) <span class="m">M1</span> \(=e^{i\pi/2}\) <span class="m">A1</span>; una raíz cumple \(1-\tfrac1z=e^{i\pi/6}\) <span class="m">A1</span>, así que \(z=\dfrac1{1-e^{i\pi/6}}\) <span class="m">AG</span></p>
+<p class="step">(e) \(\alpha=\dfrac1{\left(1-\tfrac{\sqrt3}2\right)-\tfrac i2}\) <span class="m">M1A1</span>; multiplicar por el conjugado <span class="m">M1</span>. El denominador vale \(\left(1-\tfrac{\sqrt3}2\right)^2+\tfrac14=2-\sqrt3\) <span class="m">A1</span></p>
+<p class="step">\(\mathrm{Re}(\alpha)=\dfrac{1-\frac{\sqrt3}2}{2-\sqrt3}=\dfrac12\) <span class="m">A1A1</span></p>
+<p><span class="lbl">Atajo de 7 (método 3 del markscheme).</span> \(1-e^{i\pi/6}=-2i\sin\tfrac\pi{12}\,e^{i\pi/12}\), así que \(\alpha=\tfrac12+\tfrac i2\cot\tfrac\pi{12}\). La parte real sale sin cálculos.</p>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 304.56 286.425" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 286.425 
+L 304.56 286.425 
+L 304.56 0 
+L 0 0 
+L 0 286.425 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 279.225 
+L 297.36 279.225 
+L 297.36 7.2 
+L 7.2 7.2 
+L 7.2 279.225 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 152.28 233.8875 
+C 176.327291 233.8875 199.392905 224.33341 216.396907 207.329407 
+C 233.40091 190.325405 242.955 167.259791 242.955 143.2125 
+C 242.955 119.165209 233.40091 96.099595 216.396907 79.095593 
+C 199.392905 62.09159 176.327291 52.5375 152.28 52.5375 
+C 128.232709 52.5375 105.167095 62.09159 88.163093 79.095593 
+C 71.15909 96.099595 61.605 119.165209 61.605 143.2125 
+C 61.605 167.259791 71.15909 190.325405 88.163093 207.329407 
+C 105.167095 224.33341 128.232709 233.8875 152.28 233.8875 
+L 152.28 233.8875 
+z
+" clip-path="url(#pdd143f7f1a)" style="fill: none; stroke-dasharray: 0.9,1.485; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 230.806853 97.875 
+L 73.753147 97.875 
+L 152.28 233.8875 
+z
+" clip-path="url(#pdd143f7f1a)" style="fill: #0e6e6a; opacity: 0.2; stroke: #0e6e6a; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m0d729a70e1" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m0d729a70e1" x="152.28" y="143.2125" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="152.28" y="158.570781" transform="rotate(-0 152.28 158.570781)">1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m0d729a70e1" x="242.955" y="143.2125" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="242.955" y="158.570781" transform="rotate(-0 242.955 158.570781)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path id="m84ff9ed8f4" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m84ff9ed8f4" x="61.605" y="233.8875" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="54.605" y="238.066641" transform="rotate(-0 54.605 238.066641)">−1</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m84ff9ed8f4" x="61.605" y="52.5375" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="54.605" y="56.716641" transform="rotate(-0 54.605 56.716641)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_5">
+    <defs>
+     <path id="m962231880a" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #5a3d9a"/>
+    </defs>
+    <g clip-path="url(#pdd143f7f1a)">
+     <use xlink:href="#m962231880a" x="230.806853" y="97.875" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_6">
+    <g clip-path="url(#pdd143f7f1a)">
+     <use xlink:href="#m962231880a" x="73.753147" y="97.875" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <g clip-path="url(#pdd143f7f1a)">
+     <use xlink:href="#m962231880a" x="152.28" y="233.8875" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_8">
+    <defs>
+     <path id="m25d43d8a5e" d="M -4.5 0 
+L 4.5 0 
+M 0 4.5 
+L 0 -4.5 
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#pdd143f7f1a)">
+     <use xlink:href="#m25d43d8a5e" x="152.28" y="143.2125" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="line2d_9">
+    <path d="M 230.806853 97.875 
+L 152.28 233.8875 
+" clip-path="url(#pdd143f7f1a)" style="fill: none; stroke: #a2530a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 61.605 279.225 
+L 61.605 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 7.2 143.2125 
+L 297.36 143.2125 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="238.060853" y="90.621" transform="rotate(-0 238.060853 90.621)">A</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="81.007147" y="90.621" transform="rotate(-0 81.007147 90.621)">B</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="159.534" y="226.6335" transform="rotate(-0 159.534 226.6335)">C</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="159.534" y="163.161" transform="rotate(-0 159.534 163.161)">centro 1</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_10">
+     <path d="M 16.2 20.298437 
+L 26.2 20.298437 
+L 36.2 20.298437 
+" style="fill: none; stroke: #a2530a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="44.2" y="23.798437" transform="rotate(-0 44.2 23.798437)">AC = √3</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pdd143f7f1a">
+   <rect x="7.2" y="7.2" width="290.16" height="272.025"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: X6(b) y (c): las raíces de \((z-1)^3=i\) son \(1+e^{i\theta}\), así que están en la circunferencia de radio 1 y centro 1, separadas \(\frac{2\pi}3\). Forman un triángulo equilátero de lado \(\sqrt3\). El markscheme da una A1 por cada punto bien situado.</figcaption></figure>
+</div></details></div>
+
+<div class="ex"><p class="et">X7. Mayo 2026 TZ2, pregunta 12 <span class="lvl">22 puntos</span></p>
+<p>\(Q(z)=z^2-2\sqrt3z+4\) y \(P(z)=z^6+64\). (a) Halla las raíces de \(Q(z)=0\) en forma (i) cartesiana y (ii) módulo-argumental. (b) Resuelve \(P(z)=0\) en forma módulo-argumental. (c) Sitúa las raíces en un diagrama de Argand, con \(z_2\) en el eje imaginario positivo. (d) Verifica que \(z^2+4\) es factor de \(P\). (e) Halla los otros dos factores cuadráticos reales de \(P\). (f) Halla la suma de las longitudes de los segmentos que van de \(z_2\) a cada una de las otras raíces.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a)(i) \(z=\dfrac{2\sqrt3\pm\sqrt{-4}}{2}\) <span class="m">(M1)(A1)</span> \(=\sqrt3\pm i\) <span class="m">A1</span></p>
+<p class="step">(ii) Módulo 2, argumento \(\pm\tfrac\pi6\) <span class="m">(M1)A1</span>: \(2\,\mathrm{cis}\left(\pm\tfrac\pi6\right)\) <span class="m">A1</span></p>
+<p class="step">(b) \(z^6=64\,\mathrm{cis}\,\pi\), De Moivre <span class="m">(M1)</span>: \(r=2\), \(\theta=\tfrac\pi6+\tfrac{k\pi}3\) <span class="m">(A1)(A1)</span>. Raíces \(2\,\mathrm{cis}\left(\pm\tfrac\pi6\right),\ 2\,\mathrm{cis}\left(\pm\tfrac\pi2\right),\ 2\,\mathrm{cis}\left(\pm\tfrac{5\pi}6\right)\) <span class="m">A1A1</span> (raíces extra: A1A0)</p>
+<p class="step">(c) Hexágono regular de radio 2 con vértices en \(\pm2i\), bien rotulado <span class="m">A1A1</span></p>
+<p class="step">(d) Con \(z^2=-4\): \((-4)^3+64=0\) <span class="m">M1</span>, así que es factor <span class="m">R1</span></p>
+<p class="step">(e) Emparejar conjugados <span class="m">(M1)</span> y desarrollar <span class="m">(M1)</span>: \(z^2-2\sqrt3z+4\) <span class="m">A1</span> y \(z^2+2\sqrt3z+4\) <span class="m">A1</span></p>
+<p class="step">(f) Desde \(2i\): dos distancias de 2, dos de \(2\sqrt3\) y una de 4 <span class="m">(M1)A1</span>. Suma: \(8+4\sqrt3\) <span class="m">A1</span></p>
+<p><span class="lbl">Idea clave.</span> (a) es la mitad de (e): \(Q\) ya es uno de los factores de \(P\).</p>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 304.56 286.425" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 286.425 
+L 304.56 286.425 
+L 304.56 0 
+L 0 0 
+L 0 286.425 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 279.225 
+L 297.36 279.225 
+L 297.36 7.2 
+L 7.2 7.2 
+L 7.2 279.225 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 152.28 233.8875 
+C 176.327291 233.8875 199.392905 224.33341 216.396907 207.329407 
+C 233.40091 190.325405 242.955 167.259791 242.955 143.2125 
+C 242.955 119.165209 233.40091 96.099595 216.396907 79.095593 
+C 199.392905 62.09159 176.327291 52.5375 152.28 52.5375 
+C 128.232709 52.5375 105.167095 62.09159 88.163093 79.095593 
+C 71.15909 96.099595 61.605 119.165209 61.605 143.2125 
+C 61.605 167.259791 71.15909 190.325405 88.163093 207.329407 
+C 105.167095 224.33341 128.232709 233.8875 152.28 233.8875 
+L 152.28 233.8875 
+z
+" clip-path="url(#pa2e8e80030)" style="fill: none; stroke-dasharray: 0.9,1.485; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 230.806853 97.875 
+L 152.28 52.5375 
+L 73.753147 97.875 
+L 73.753147 188.55 
+L 152.28 233.8875 
+L 230.806853 188.55 
+z
+" clip-path="url(#pa2e8e80030)" style="fill: #0e6e6a; opacity: 0.15; stroke: #0e6e6a; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_1">
+    <defs>
+     <path id="md7a19de707" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #5a3d9a"/>
+    </defs>
+    <g clip-path="url(#pa2e8e80030)">
+     <use xlink:href="#md7a19de707" x="230.806853" y="97.875" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_2">
+    <g clip-path="url(#pa2e8e80030)">
+     <use xlink:href="#md7a19de707" x="152.28" y="52.5375" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_3">
+    <g clip-path="url(#pa2e8e80030)">
+     <use xlink:href="#md7a19de707" x="73.753147" y="97.875" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_4">
+    <g clip-path="url(#pa2e8e80030)">
+     <use xlink:href="#md7a19de707" x="73.753147" y="188.55" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_5">
+    <g clip-path="url(#pa2e8e80030)">
+     <use xlink:href="#md7a19de707" x="152.28" y="233.8875" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_6">
+    <g clip-path="url(#pa2e8e80030)">
+     <use xlink:href="#md7a19de707" x="230.806853" y="188.55" style="fill: #5a3d9a; stroke: #5a3d9a"/>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M 152.28 52.5375 
+L 73.753147 97.875 
+" clip-path="url(#pa2e8e80030)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #a2530a"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 152.28 52.5375 
+L 73.753147 188.55 
+" clip-path="url(#pa2e8e80030)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #a2530a"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 152.28 52.5375 
+L 152.28 233.8875 
+" clip-path="url(#pa2e8e80030)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #a2530a"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 152.28 52.5375 
+L 230.806853 188.55 
+" clip-path="url(#pa2e8e80030)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #a2530a"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 152.28 52.5375 
+L 230.806853 97.875 
+" clip-path="url(#pa2e8e80030)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #a2530a"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 152.28 279.225 
+L 152.28 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 7.2 143.2125 
+L 297.36 143.2125 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="226.717757" y="88.8075" transform="rotate(-0 226.717757 88.8075)">√3 + i</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="136.411875" y="36.669375" transform="rotate(-0 136.411875 36.669375)">z₂ = 2i</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="46.105993" y="88.8075" transform="rotate(-0 46.105993 88.8075)">−√3 + i</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="46.105993" y="193.08375" transform="rotate(-0 46.105993 193.08375)">−√3 − i</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="136.411875" y="245.221875" transform="rotate(-0 136.411875 245.221875)">−2i</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="226.717757" y="193.08375" transform="rotate(-0 226.717757 193.08375)">√3 − i</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa2e8e80030">
+   <rect x="7.2" y="7.2" width="290.16" height="272.025"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: X7(c) y (f): las seis raíces de \(z^6=-64\) forman un hexágono regular de radio 2 con vértices en \(\pm2i\). Desde \(z_2=2i\), los segmentos discontinuos miden 2, 2, \(2\sqrt3\), \(2\sqrt3\) y 4: suman \(8+4\sqrt3\).</figcaption></figure>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Estos tipos de pregunta no salieron en tus 7 pruebas, pero el IB los pone en otras convocatorias, casi siempre como partes de la pregunta 12. Junto con la teoría y las secciones 4 y 5, cubren todo el programa de complejos. Cada tipo trae cómo reconocerlo, el método, un ejemplo resuelto y ejercicios para practicar.</p>
+<h3 id="ty1">T1. Ecuaciones con el módulo \(|z|\)</h3>
+<p><b>Qué reconocer:</b> aparece \(|z|\) junto a \(z\), como en \(z+|z|=2+8i\). <b>Método:</b> escribe \(z=a+bi\); \(|z|\) es real, así que solo entra en la parte real. Iguala partes, despeja y comprueba (al elevar al cuadrado pueden aparecer soluciones falsas).</p>
+<div class="ex"><p class="et">Ejemplo T1. <span class="lvl">Tipo IB</span></p>
+<p>Resuelve \(z+|z|=2+8i\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(a+\sqrt{a^2+b^2}=2\) y \(b=8\). Entonces \(\sqrt{a^2+64}=2-a\Rightarrow a^2+64=4-4a+a^2\Rightarrow a=-15\).</p><p>Comprobación: \(|{-15}+8i|=17\) y \(-15+17=2\). Así \(z=-15+8i\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(z+|z|=3+4i\).</li><li>Resuelve \(|z|-z=1+2i\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(b=4\), \(a+\sqrt{a^2+16}=3\Rightarrow a=-\tfrac76\): \(z=-\tfrac76+4i\) (\(|z|=\tfrac{25}6\)).</li><li>\(b=-2\), \(\sqrt{a^2+4}-a=1\Rightarrow a=\tfrac32\): \(z=\tfrac32-2i\).</li></ol></div></details></div>
+<h3 id="ty2">T2. Sistemas con incógnitas complejas</h3>
+<p><b>Qué reconocer:</b> dos ecuaciones lineales con \(z\) y \(w\) y coeficientes complejos. <b>Método:</b> resuelve como un sistema real (sustitución o reducción), operando con complejos. Al final, divide multiplicando por el conjugado.</p>
+<div class="ex"><p class="et">Ejemplo T2. <span class="lvl">Sección A</span></p>
+<p>Resuelve el sistema \(z+w=3+i\), \(z-iw=2\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>De la segunda, \(z=2+iw\). Sustituyendo: \(2+(1+i)w=3+i\), así que \(w=\dfrac{1+i}{1+i}=1\) y \(z=2+i\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(2z+w=5\), \(z-w=1+3i\).</li><li>Resuelve \(iz+2w=3i\), \(z+w=2\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Sumando: \(3z=6+3i\Rightarrow z=2+i,\ w=1-2i\).</li><li>\(w=2-z\Rightarrow(i-2)z=3i-4\Rightarrow z=\dfrac{(-4+3i)(-2-i)}{5}=\dfrac{11-2i}{5}\), \(w=\dfrac{-1+2i}{5}\).</li></ol></div></details></div>
+<h3 id="ty3">T3. Resolver una cúbica con \(\cos3\theta\)</h3>
+<p><b>Qué reconocer:</b> una cúbica de la forma \(4x^3-3x=c\) (o un múltiplo, como \(8x^3-6x-1=0\)) después de haber probado \(\cos3\theta=4\cos^3\theta-3\cos\theta\). <b>Método:</b> pon \(x=\cos\theta\): queda \(\cos3\theta=c\). Halla tres valores de \(\theta\) que den cosenos distintos. Vieta da después sumas y productos de esos cosenos.</p>
+<div class="ex"><p class="et">Ejemplo T3. <span class="lvl">Sección B</span></p>
+<p>Resuelve \(8x^3-6x-1=0\) y deduce el valor de \(\cos20^\circ\cos100^\circ\cos140^\circ\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Dividiendo por 2: \(4x^3-3x=\tfrac12\). Con \(x=\cos\theta\): \(\cos3\theta=\tfrac12\), \(3\theta=60^\circ,300^\circ,420^\circ\). Así \(x=\cos20^\circ,\ \cos100^\circ,\ \cos140^\circ\).</p><p>Producto de raíces: \(-\tfrac{-1}{8}=\tfrac18\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Con el mismo método, halla \(\cos20^\circ+\cos100^\circ+\cos140^\circ\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Suma de raíces: \(-\tfrac08=0\).</li></ol></div></details></div>
+<h3 id="ty4">T4. Cocientes reales o imaginarios puros</h3>
+<p><b>Qué reconocer:</b> «muestra que si \(|z|=1\), \(\frac{1+z}{1-z}\) es imaginario puro». <b>Método:</b> escribe \(z=e^{i\theta}\) y saca el ángulo medio de numerador y denominador; o comprueba que \(w+\bar w=0\) (imaginario puro) o \(w-\bar w=0\) (real).</p>
+<div class="ex"><p class="et">Ejemplo T4. <span class="lvl">Sección B</span></p>
+<p>Muestra que, si \(|z|=1\) y \(z\ne1\), \(\dfrac{1+z}{1-z}\) es imaginario puro.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Con \(z=e^{i\theta}\): \(\dfrac{2\cos\frac\theta2\,e^{i\theta/2}}{-2i\sin\frac\theta2\,e^{i\theta/2}}=\dfrac{i\cos\frac\theta2}{\sin\frac\theta2}=i\cot\tfrac\theta2\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Muestra que, si \(|z|=1\) y \(z\ne\pm i\), \(\dfrac{z}{1+z^2}\) es real.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Divide arriba y abajo por \(z\): \(\dfrac{1}{z^{-1}+z}=\dfrac1{2\cos\theta}\).</li></ol></div></details></div>
+<h3 id="ty5">T5. Potencias de seno o coseno e integrales</h3>
+<p><b>Qué reconocer:</b> «escribe \(\sin^4\theta\) en función de \(\cos4\theta\) y \(\cos2\theta\) y halla \(\int_0^{\pi/2}\sin^4\theta\,d\theta\)». La integral se ve en el Módulo 14. <b>Método:</b> con \(z=e^{i\theta}\): \((z-z^{-1})^n=(2i\sin\theta)^n\). Desarrolla con el binomio, agrupa \(z^k\pm z^{-k}\) y divide.</p>
+<div class="ex"><p class="et">Ejemplo T5. <span class="lvl">Sección B</span></p>
+<p>Muestra que \(\sin^4\theta=\tfrac18(\cos4\theta-4\cos2\theta+3)\) y calcula \(\int_0^{\pi/2}\sin^4\theta\,d\theta\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\((2i\sin\theta)^4=16\sin^4\theta=(z-z^{-1})^4=(z^4+z^{-4})-4(z^2+z^{-2})+6=2\cos4\theta-8\cos2\theta+6\).</p><p>La integral: \(\tfrac18\left[\tfrac{\sin4\theta}4-2\sin2\theta+3\theta\right]_0^{\pi/2}=\tfrac{3\pi}{16}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Muestra que \(\cos^4\theta=\tfrac18(\cos4\theta+4\cos2\theta+3)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\((z+z^{-1})^4=2\cos4\theta+8\cos2\theta+6=16\cos^4\theta\).</li></ol></div></details></div>
+<h3 id="ty6">T6. Ecuaciones recíprocas y \(z+\frac1z\)</h3>
+<p><b>Qué reconocer:</b> \(z^4+z^3+z^2+z+1=0\) o una ecuación con coeficientes simétricos. <b>Método:</b> reconoce \(\frac{z^5-1}{z-1}\): las raíces son las raíces quintas de la unidad salvo 1. O divide por \(z^2\) y usa \(w=z+\frac1z=2\cos\theta\) (Módulo 2, sección 1.2).</p>
+<div class="ex"><p class="et">Ejemplo T6. <span class="lvl">Sección B</span></p>
+<p>Resuelve \(z^4+z^3+z^2+z+1=0\) y deduce los valores de \(\cos72^\circ\) y \(\cos144^\circ\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Las raíces son \(e^{2\pi ik/5}\), \(k=1,2,3,4\). Dividiendo por \(z^2\): \(w^2+w-1=0\) con \(w=z+\frac1z=2\cos\theta\).</p><p>\(w=\tfrac{-1\pm\sqrt5}{2}\). Como \(\cos72^\circ\gt0\): \(\cos72^\circ=\tfrac{\sqrt5-1}4\) y \(\cos144^\circ=-\tfrac{\sqrt5+1}4\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(z^6+z^3+1=0\) en forma exponencial.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(u=z^3\): \(u^2+u+1=0\), \(u=e^{\pm2\pi i/3}\). Entonces \(z=e^{i(\pm2\pi/9+2k\pi/3)}\), seis raíces.</li></ol></div></details></div>
+<h3 id="ty7">T7. Área y perímetro del polígono de raíces</h3>
+<p><b>Qué reconocer:</b> «las raíces de \(z^n=w\) forman un polígono; halla su área». <b>Método:</b> el polígono es regular, de radio \(R=\sqrt[n]{|w|}\). Está formado por \(n\) triángulos isósceles de lados \(R\) y ángulo \(\frac{2\pi}n\): área \(\tfrac n2R^2\sin\tfrac{2\pi}n\); lado \(2R\sin\frac\pi n\).</p>
+<div class="ex"><p class="et">Ejemplo T7. <span class="lvl">Tipo IB</span></p>
+<p>Halla el área y el perímetro del polígono formado por las raíces de \(z^6=64\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(R=2\): hexágono regular. Área \(3\cdot4\sin60^\circ=6\sqrt3\). Lado \(2\cdot2\sin30^\circ=2\): perímetro 12.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el área del octógono formado por las raíces de \(z^8=16\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(R=\sqrt2\): \(4\cdot2\sin45^\circ=4\sqrt2\).</li></ol></div></details></div>
+<h3 id="ty8">T8. Potencia real o imaginaria con parámetro</h3>
+<p><b>Qué reconocer:</b> «halla los \(a\) para los que \((a+i)^3\) es real». <b>Método:</b> desarrolla con el binomio e iguala a cero la parte imaginaria (o la real). Alternativa: el argumento multiplicado por \(n\) debe ser múltiplo de \(\pi\) (o de \(\pi\) más \(\tfrac\pi2\)).</p>
+<div class="ex"><p class="et">Ejemplo T8. <span class="lvl">Tipo IB</span></p>
+<p>Halla los \(a\in\mathbb R\) para los que \((a+i)^3\) es real.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\((a+i)^3=a^3-3a+(3a^2-1)i\). Real si \(3a^2=1\): \(a=\pm\tfrac{\sqrt3}{3}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla los \(b\gt0\) para los que \((1+bi)^4\) es imaginario puro.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Parte real \(1-6b^2+b^4=0\Rightarrow b^2=3\pm2\sqrt2\Rightarrow b=\sqrt2\pm1\).</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo de los Módulos 1–6. Integran series (Módulo 1), polinomios (Módulo 2), funciones (Módulo 3), binomio (Módulo 4) e inducción (Módulo 5). El 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la pregunta 12. Al final, I1 es una investigación tipo Prueba 3 de NS. Cada uno trae una pista y la respuesta final plegadas.</p>
+
+<div class="ex"><p class="et">E1. Sumas de cosenos y el valor de cos 72° <span class="lvl">Sección B, integra Módulos 1 y 2</span></p>
+<p>(a) Sumando la serie geométrica \(\sum_{k=0}^{n-1}e^{ik\theta}\), muestra que \(\displaystyle\sum_{k=0}^{n-1}\cos k\theta=\frac{\sin\frac{n\theta}2\cos\frac{(n-1)\theta}2}{\sin\frac\theta2}\). (b) Con las raíces quintas de la unidad, muestra que \(\cos72^\circ+\cos144^\circ=-\tfrac12\). (c) Usando \(\cos144^\circ=2\cos^272^\circ-1\), halla \(\cos72^\circ\) exacto.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(e^{i\phi}-1=2i\sin\tfrac\phi2\,e^{i\phi/2}\). (b) La suma de las 5 raíces es 0; mira la parte real.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) \(4c^2+2c-1=0\Rightarrow\cos72^\circ=\tfrac{\sqrt5-1}{4}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E2. De Moivre por inducción y exponentes negativos <span class="lvl">Sección B, integra Módulo 5</span></p>
+<p>(a) Prueba por inducción que \((\cos\theta+i\sin\theta)^n=\cos n\theta+i\sin n\theta\) para \(n\in\mathbb Z^+\). (b) Muestra que también vale para \(n=-m\), con \(m\in\mathbb Z^+\). (c) Calcula \((1-\sqrt3i)^{-6}\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) El paso usa las fórmulas de \(\cos(A+B)\) y \(\sin(A+B)\). (b) \(\tfrac1{\cos\theta+i\sin\theta}=\cos\theta-i\sin\theta\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) \(\left(2e^{-i\pi/3}\right)^{-6}=2^{-6}e^{2\pi i}=\tfrac1{64}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Una cuártica con una raíz compleja dada <span class="lvl">Sección A alta, integra Módulo 2</span></p>
+<p>(a) Muestra que \(1+i\) es raíz de \(z^4-2z^3+3z^2-2z+2=0\) y halla las demás raíces. (b) Verifica con Vieta que la suma de los cuadrados de las raíces es \(-2\). (c) Halla la ecuación cuyas raíces son el doble de las anteriores.</p>
+<details><summary>Pista</summary><div class="inner"><p>El factor real asociado a \(1\pm i\) es \(z^2-2z+2\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \((z^2-2z+2)(z^2+1)\): raíces \(1\pm i,\ \pm i\). (c) \(z^4-4z^3+12z^2-16z+32=0\).</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Las raíces cúbicas de la unidad <span class="lvl">Sección B</span></p>
+<p>Sea \(\omega=e^{2\pi i/3}\). (a) Muestra que \(1+\omega+\omega^2=0\) y que \(\omega^2=\bar\omega\). (b) Calcula \((1+\omega)(1+\omega^2)\), \((1-\omega)(1-\omega^2)\) y \((2+\omega)(2+\omega^2)\). (c) Halla \(|1-\omega|\) e interprétalo en el diagrama de Argand.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(\omega^3=1\) y \(\omega\ne1\): factoriza \(\omega^3-1\). (b) Desarrolla y usa \(\omega^3=1\) y \(\omega+\omega^2=-1\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(1\), \(3\) y \(3\). (c) \(\sqrt3\): es el lado del triángulo equilátero que forman \(1,\omega,\omega^2\), inscrito en la circunferencia unidad.</p></div></details></div>
+
+<div class="ex"><p class="et">E5. Sumas alternadas de binomiales <span class="lvl">Sección B, integra Módulo 4</span></p>
+<p>(a) Desarrolla \((1+i)^{10}\) con el binomio y compara con De Moivre para hallar \(\binom{10}0-\binom{10}2+\binom{10}4-\dots\) y \(\binom{10}1-\binom{10}3+\dots\). (b) Generaliza: \(\sum_k(-1)^k\binom n{2k}=2^{n/2}\cos\tfrac{n\pi}4\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Las potencias pares de \(i\) dan la parte real; las impares, la imaginaria.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \((1+i)^{10}=32i\): la primera suma es 0 y la segunda 32.</p></div></details></div>
+
+<div class="ex"><p class="et">E6. Raíces de (z + 1)ⁿ = (z − 1)ⁿ <span class="lvl">Sección B</span></p>
+<p>(a) Resuelve \((z+1)^4=(z-1)^4\). (b) Muestra que, para todo \(n\), las raíces de \((z+1)^n=(z-1)^n\) son imaginarias puras.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(w=\tfrac{z+1}{z-1}\) cumple \(w^4=1\), con \(w\neq1\). (b) \(|z+1|=|z-1|\): \(z\) equidista de \(-1\) y de 1.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(z=0,\ \pm i\) (el grado baja a 3). (b) La mediatriz de \(-1\) y 1 es el eje imaginario.</p></div></details></div>
+
+<div class="ex"><p class="et">E7. Una función que convierte una recta en una circunferencia <span class="lvl">Sección B, integra Módulo 3</span></p>
+<p>\(f(z)=\dfrac{z-i}{z+i}\), \(z\ne-i\). (a) Muestra que \(f\) envía el eje real a la circunferencia \(|w|=1\). (b) Halla \(f^{-1}\). (c) Muestra que los \(z\) con \(\mathrm{Im}(z)\gt0\) van a \(|w|\lt1\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(|w|=\tfrac{|z-i|}{|z+i|}\): la distancia a \(i\) dividida por la distancia a \(-i\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(f^{-1}(w)=\dfrac{i(1+w)}{1-w}\). (c) Si \(\mathrm{Im}\,z\gt0\), \(z\) está más cerca de \(i\) que de \(-i\).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Espiral geométrica <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>\(z_0=1\) y \(z_{n+1}=\tfrac{1+i}{2}z_n\). (a) Describe geométricamente cada paso. (b) Halla \(\sum_{n=0}^{\infty}z_n\). (c) Halla la longitud total de la poligonal \(z_0z_1z_2\cdots\)</p>
+<details><summary>Pista</summary><div class="inner"><p>\(\tfrac{1+i}{2}=\tfrac1{\sqrt2}e^{i\pi/4}\). En (c), \(|z_{n+1}-z_n|=\left|\tfrac{1+i}2-1\right|\cdot|z_n|\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) Giro de 45° y reducción por \(\tfrac1{\sqrt2}\). (b) \(\tfrac1{1-\frac{1+i}2}=1+i\). (c) \(\dfrac{1/\sqrt2}{1-1/\sqrt2}=\sqrt2+1\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. La quíntica de cos 5θ <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>(a) Con De Moivre y el binomio, muestra que \(\cos5\theta=16\cos^5\theta-20\cos^3\theta+5\cos\theta\). (b) Deduce que las raíces de \(16x^5-20x^3+5x-1=0\) son \(\cos\tfrac{2k\pi}5\), \(k=0,\dots,4\). (c) Muestra que el polinomio es \((x-1)(4x^2+2x-1)^2\). (d) Deduce \(\cos72^\circ\cos144^\circ\) y \(\cos72^\circ+\cos144^\circ\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) \(\cos5\theta=1\). Los valores de \(k\) y \(5-k\) dan el mismo coseno, por eso hay raíces dobles.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(d) Por Vieta en \(4x^2+2x-1\): producto \(-\tfrac14\), suma \(-\tfrac12\) (coincide con E1).</p></div></details></div>
+
+<div class="ex"><p class="et">E10. Paralelogramo, desigualdad triangular y extremos <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>(a) Usando \(|z|^2=z\bar z\), prueba que \(|z_1+z_2|^2+|z_1-z_2|^2=2\left(|z_1|^2+|z_2|^2\right)\). (b) Prueba que \(|z_1+z_2|\le|z_1|+|z_2|\). (c) Extiéndelo por inducción a \(n\) sumandos. (d) Sea \(z=3+4i+2e^{i\theta}\), con \(\theta\) real. Usando (b), muestra que \(3\le|z|\le7\), y halla los \(z\) en los que se alcanzan los extremos.</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) \(|z_1+z_2|^2=|z_1|^2+|z_2|^2+2\mathrm{Re}(z_1\bar z_2)\), y \(\mathrm{Re}(w)\le|w|\). (d) \(|3+4i|=5\) y \(|2e^{i\theta}|=2\); para el mínimo, escribe \(3+4i=z-2e^{i\theta}\). Los extremos se alcanzan cuando \(2e^{i\theta}\) tiene la dirección de \(\pm(3+4i)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(d) Máximo 7 en \(z=\tfrac75(3+4i)\); mínimo 3 en \(z=\tfrac35(3+4i)\).</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. Filtrar coeficientes binomiales con raíces de la unidad <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>¿Cuánto vale \(\binom N0+\binom N3+\binom N6+\dots\)? Las raíces de la unidad «filtran» los términos de un desarrollo. Vas a descubrir por qué funciona, demostrarlo y obtener una fórmula cerrada.</p>
+<ol type="a"><li>Con \(n=4\) y \(\omega=i\), calcula \(S_m=\sum_{k=0}^{3}\omega^{km}\) para \(m=1,2,3,4,8\). Conjetura cuánto vale \(S_m\) en general.</li><li>Demuestra que, con \(\omega=e^{2\pi i/n}\), \(\displaystyle\sum_{k=0}^{n-1}\omega^{km}=n\) si \(n\mid m\) y 0 en otro caso.</li><li>Con \(n=3\) y \(\omega=e^{2\pi i/3}\), muestra que \(1+\omega=e^{i\pi/3}\) y \(1+\omega^2=e^{-i\pi/3}\).</li><li>Suma los desarrollos de \((1+1)^N\), \((1+\omega)^N\) y \((1+\omega^2)^N\) y usa (b) para mostrar que \(\displaystyle\sum_{3\mid r}\binom Nr=\frac{2^N+2\cos\frac{N\pi}{3}}{3}\).</li><li>Comprueba la fórmula con \(N=6\) y calcula \(\binom90+\binom93+\binom96+\binom99\) de las dos maneras.</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>Las potencias de \(i\) se repiten cada 4.</li><li>Si \(n\nmid m\), \(\omega^m\ne1\) y la suma es una serie geométrica de razón \(\omega^m\), cuya potencia \(n\)-ésima es 1.</li><li>\(1+\omega=-\omega^2\) por (a) del E4, o ángulo medio: \(1+e^{i\theta}=2\cos\tfrac\theta2e^{i\theta/2}\).</li><li>El coeficiente de \(\binom Nr\) en la suma es \(1+\omega^r+\omega^{2r}\). Las dos últimas potencias son conjugadas.</li><li>Para \(N=9\), \(\cos3\pi=-1\).</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>\(S_1=S_2=S_3=0\), \(S_4=S_8=4\). Conjetura: \(S_m=4\) si \(4\mid m\) y 0 si no.</li><li>Si \(n\mid m\), cada término vale 1. Si no, \(\dfrac{(\omega^m)^n-1}{\omega^m-1}=0\).</li><li>\(1+\omega=\tfrac12+\tfrac{\sqrt3}2i=e^{i\pi/3}\); su conjugado es \(1+\omega^2\).</li><li>\(\sum_r\binom Nr(1+\omega^r+\omega^{2r})=3\sum_{3\mid r}\binom Nr\), y el lado izquierdo es \(2^N+e^{iN\pi/3}+e^{-iN\pi/3}=2^N+2\cos\tfrac{N\pi}3\).</li><li>\(N=6\): \(1+20+1=22=\tfrac{64+2}{3}\). \(N=9\): \(1+84+84+1=170=\tfrac{512-2}{3}\).</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 7, trigonometría I (radianes, arcos y sectores, triángulos, geometría 3D).</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

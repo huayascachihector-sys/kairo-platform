@@ -1,0 +1,665 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 8A · Gravitación universal · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:54px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:28px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:14px 0;overflow-x:auto}
+.eqname{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--teal);letter-spacing:.06em;display:block;margin-top:4px}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.ej{border:1px solid var(--line);border-radius:5px;margin:22px 0;background:var(--paper-2);overflow:hidden}
+.ej-head{background:linear-gradient(180deg,#F0F5F3,#FFFFFF);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ej-tag{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal);padding:2px 8px;border-radius:3px}
+.ej-num{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px}
+.ej-src{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);letter-spacing:.05em}
+.ej-body{padding:16px 20px 20px}
+.sepide{display:inline-block;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:2px 8px;margin:2px 0 8px}
+.sol{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:6px 12px;display:inline-block;margin-top:8px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}td.l,th.l{text-align:left}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> D.1 <span>//</span> MÓDULO 8A · TEORÍA + TIPO 1</p>
+  <h1>Gravitación <em>universal</em></h1>
+  <p class="lede">Ley de gravitación de Newton, intensidad de campo, leyes de Kepler y órbitas. Con la profundidad de Nivel Superior (potencial, energía y velocidades de escape/orbital). Reutiliza la fuerza centrípeta y la energía.</p>
+  <div class="stats">
+    <div class="stat"><b>5</b><span>secciones de teoría</span></div>
+    <div class="stat"><b>D.1</b><span>syllabus IB</span></div>
+    <div class="stat"><b>10 + 10</b><span>resueltos · retos</span></div>
+    <div class="stat"><b>14</b><span>exámenes IB 2022–26</span></div>
+    <div class="stat"><b>G</b><span>= 6,67×10⁻¹¹</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#s1">1 · Ley de gravitación</a>
+  <a href="#s2">2 · Intensidad de campo g</a>
+  <a href="#s3">3 · Leyes de Kepler</a>
+  <a href="#s4">4 · Órbitas</a>
+  <a href="#s5">5 · Más allá / NS</a>
+  <a href="#s6">6 · Definiciones (examen)</a>
+  <a href="#traps">Checklist de trampas</a>
+  <a href="#bloque">10 resueltos (ficha)</a>
+  <a href="#resto">Resto de la ficha</a>
+  <a href="#examenes">Banco de exámenes IB · 2022–26</a>
+  <a href="#practica">10 retos</a>
+  <a href="#masproblemas">Más problemas (past paper)</a>
+</nav>
+
+<main>
+<!-- rev 2026-10-25 grav · banco examenes IB gravitacion (14) v2 -->
+
+<!-- S1 -->
+<section id="s1">
+  <p class="sec-num">SECCIÓN 01</p>
+  <h2>Ley de gravitación universal<span class="rule"></span></h2>
+  <p class="sec-intro">Toda masa atrae a toda otra masa con una fuerza que decrece con el cuadrado de la distancia.</p>
+  <div class="eq">\[ F=\frac{G\,m_1 m_2}{r^2}\qquad G=6{,}67\times10^{-11}\ \mathrm{N\,m^2\,kg^{-2}} \]<span class="eqname">ley de gravitación de Newton</span></div>
+  <p><strong>¿De dónde sale, y qué representa?</strong> Newton no «dedujo» esta ley de otra más básica: la propuso para que, combinada con \(F=ma\), reprodujera las órbitas de los planetas (las leyes de Kepler). Lo que sí tiene una explicación geométrica limpia es el \(1/r^2\). Imagina la influencia gravitatoria de una masa como algo que emana de ella y se reparte por igual en todas las direcciones del espacio. A una distancia \(r\), esa influencia está «desparramada» sobre la superficie de una esfera imaginaria de área \(4\pi r^2\). Si duplicas la distancia, la <em>misma</em> cantidad de influencia debe cubrir una esfera de área cuatro veces mayor \(\big(4\pi(2r)^2=4\times 4\pi r^2\big)\), de modo que su intensidad por unidad de área cae a \(1/4\); al triplicar \(r\), a \(1/9\). Ese reparto sobre \(4\pi r^2\) es exactamente el origen del inverso del cuadrado.</p>
+  <p><strong>Qué representa cada factor.</strong> La fuerza crece con el <em>producto</em> \(m_1 m_2\): cada masa aporta a la atracción, y por eso la fuerza sobre una es idéntica a la fuerza sobre la otra —un par acción–reacción— aunque sus masas sean muy distintas (la Tierra tira de ti con la misma fuerza con la que tú tiras de la Tierra). \(G\) es solo la constante universal que fija la escala —diminuta— de la gravedad: «cuántos newton por cada kg·kg a 1 m de distancia».</p>
+  <ul>
+    <li>Vale para <strong>masas puntuales</strong>; un cuerpo esférico de densidad uniforme se trata como si toda su masa estuviera en su centro.</li>
+    <li>Es una fuerza de <strong>atracción</strong>, a lo largo de la línea que une los centros, y forma un par acción–reacción (igual sobre ambos cuerpos).</li>
+    <li><strong>Inverso del cuadrado:</strong> al triplicar \(r\), la fuerza cae a \(1/9\); al duplicar \(r\), cae a \(1/4\).</li>
+    <li><strong>Ejemplo numérico:</strong> dos masas de \(1{,}0\times10^{3}\) kg separadas \(2{,}0\) m: \(F=\dfrac{(6{,}67\times10^{-11})(1{,}0\times10^{3})^2}{2{,}0^{2}}=1{,}7\times10^{-5}\) N — minúscula, por eso la gravitación solo domina con masas astronómicas.</li>
+  </ul>
+  <figure class="fig">
+    <svg viewBox="0 0 310 162" width="300" xmlns="http://www.w3.org/2000/svg" aria-label="curva F contra r inverso del cuadrado">
+      <line x1="46" y1="20" x2="46" y2="132" stroke="var(--ink)" stroke-width="1.2"/>
+      <line x1="46" y1="132" x2="288" y2="132" stroke="var(--ink)" stroke-width="1.2"/>
+      <polyline points="50,30 76,86 103,105 129,114 155,119 181,122 208,124 234,125 260,126" fill="none" stroke="var(--teal)" stroke-width="2"/>
+      <line x1="103" y1="105" x2="103" y2="132" stroke="var(--amber)" stroke-width="1" stroke-dasharray="3 3"/>
+      <line x1="208" y1="124" x2="208" y2="132" stroke="var(--amber)" stroke-width="1" stroke-dasharray="3 3"/>
+      <circle cx="103" cy="105" r="3" fill="var(--amber)"/><circle cx="208" cy="124" r="3" fill="var(--amber)"/>
+      <text x="97" y="146" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">r</text>
+      <text x="200" y="146" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">2r</text>
+      <text x="296" y="135" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-soft)" text-anchor="end">r</text>
+      <text x="40" y="26" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-soft)" text-anchor="end">F</text>
+      <text x="120" y="60" font-family="Space Grotesk" font-size="10" fill="var(--teal-deep)">F ∝ 1/r²  (r→2r ⇒ F→F/4)</text>
+    </svg>
+    <figcaption>Ley del inverso del cuadrado: la fuerza cae muy rápido; duplicar la distancia divide \(F\) entre 4.</figcaption>
+  </figure>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 1.1</span><span class="ej-src">ficha · N12 (inverso del cuadrado)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza al separar a 3R</span>
+      <p>Dos planetas separados \(R\) se atraen con fuerza \(F\). ¿Y a \(3R\)?</p>
+      <div class="sol"><p>\(F\propto\dfrac{1}{r^2}\Rightarrow F'=\dfrac{F}{3^2}=\dfrac{F}{9}\).</p><span class="ans">F/9 (opción A).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S2 -->
+<section id="s2">
+  <p class="sec-num">SECCIÓN 02</p>
+  <h2>Intensidad del campo gravitatorio<span class="rule"></span></h2>
+  <p class="sec-intro">El campo describe la influencia de una masa en el espacio que la rodea: la fuerza que sentiría por kilogramo una masa de prueba.</p>
+  <div class="eq">\[ g=\frac{F}{m}=\frac{GM}{r^2}\qquad(\text{N·kg}^{-1}=\text{m·s}^{-2}) \]<span class="eqname">intensidad de campo (definición y para una masa puntual/esférica)</span></div>
+  <p><strong>Qué es un campo y por qué \(g=F/m\).</strong> El concepto de campo resuelve una incomodidad: ¿cómo «sabe» una masa que hay otra a millones de kilómetros? En vez de imaginar una acción instantánea a distancia, decimos que toda masa \(M\) modifica el espacio a su alrededor creando un <em>campo gravitatorio</em> \(g\); cualquier masa de prueba \(m\) que se coloque allí siente la fuerza \(F=mg\). De ahí la definición \(g=F/m\): la fuerza por cada kilogramo, una propiedad del <em>punto del espacio</em> y no del objeto que pongas (como la pendiente de una ladera, que existe aunque no haya ninguna bola rodando por ella). Si en \(g=F/m\) sustituimos la fuerza de Newton \(F=GMm/r^2\), la masa de prueba \(m\) se cancela y queda \(g=GM/r^2\): el campo depende solo de la masa que lo crea y de la distancia, no de quién lo mida.</p>
+  <p><strong>Por qué en la superficie \(g=GM/R^2\), y cómo varía con la altura.</strong> Sobre la superficie de un planeta la distancia al centro es su propio radio \(R\), así que el valor superficial es \(g_s=GM/R^2\). Como \(g\) hereda el inverso del cuadrado, para un punto a una altura \(h\) hay que usar la distancia al <strong>centro</strong>, \(r=R+h\): \(g=GM/(R+h)^2\). El campo disminuye con la altura, pero despacio mientras \(h\ll R\); por eso a 400 km (donde orbita la ISS) \(g\) todavía vale ≈8,7 N·kg⁻¹ y los astronautas NO están «fuera de la gravedad».</p>
+  <p><strong>Ejemplo numérico (Tierra):</strong> \(g=\dfrac{(6{,}67\times10^{-11})(6{,}0\times10^{24})}{(6{,}4\times10^{6})^{2}}=9{,}8\) N·kg⁻¹. <strong>Proporción:</strong> a \(r=2R_T\), \(g\) cae a \(1/4\) (\(2{,}5\) N·kg⁻¹); a \(r=3R_T\), a \(1/9\).</p>
+  <div class="box key"><span class="lbl">Escalado en la superficie de un planeta</span>
+    <p>En la superficie \(g=\dfrac{GM}{R^2}\Rightarrow g\propto\dfrac{M}{R^2}\). Y como \(M=\rho\cdot\tfrac43\pi R^3\), también \(\ g=\tfrac43\pi G\rho R\Rightarrow g\propto\rho R\) (útil cuando dan la densidad).</p>
+  </div>
+  <figure class="fig">
+    <svg viewBox="0 0 300 140" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="lineas de campo">
+      <circle cx="80" cy="70" r="22" fill="#C9D2CC" stroke="var(--ink)"/>
+      <g stroke="var(--teal)" stroke-width="1.5">
+        <line x1="80" y1="48" x2="80" y2="18" marker-end="url(#g)"/><line x1="80" y1="92" x2="80" y2="122" marker-end="url(#g)"/>
+        <line x1="58" y1="70" x2="18" y2="70" marker-end="url(#g)"/><line x1="102" y1="70" x2="150" y2="70" marker-end="url(#g)"/>
+        <line x1="64" y1="54" x2="40" y2="30" marker-end="url(#g)"/><line x1="96" y1="54" x2="120" y2="30" marker-end="url(#g)"/>
+        <line x1="64" y1="86" x2="40" y2="110" marker-end="url(#g)"/><line x1="96" y1="86" x2="120" y2="110" marker-end="url(#g)"/>
+      </g>
+      <g stroke="var(--amber)" stroke-width="1.5">
+        <line x1="220" y1="30" x2="220" y2="118" marker-end="url(#g)"/><line x1="245" y1="30" x2="245" y2="118" marker-end="url(#g)"/><line x1="270" y1="30" x2="270" y2="118" marker-end="url(#g)"/>
+      </g>
+      <defs><marker id="g" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <text x="55" y="138" font-family="Space Grotesk" font-size="9" fill="var(--teal-deep)">radial (masa puntual)</text>
+      <text x="215" y="138" font-family="Space Grotesk" font-size="9" fill="var(--amber)">uniforme (superficie)</text>
+    </svg>
+    <figcaption>Las líneas apuntan hacia la masa: radiales lejos, casi uniformes cerca de la superficie.</figcaption>
+  </figure>
+  <figure class="fig">
+    <svg viewBox="0 0 320 162" width="300" xmlns="http://www.w3.org/2000/svg" aria-label="grafica g contra r, decae con inverso del cuadrado">
+      <line x1="48" y1="16" x2="48" y2="138" stroke="var(--ink)" stroke-width="1.2"/>
+      <line x1="48" y1="138" x2="306" y2="138" stroke="var(--ink)" stroke-width="1.2"/>
+      <polyline points="78,32 86,70 93,91 101,103 108,112 138,126 168,131 198,134 228,135 258,136 288,136" fill="none" stroke="var(--teal)" stroke-width="2"/>
+      <line x1="78" y1="32" x2="78" y2="138" stroke="var(--amber)" stroke-width="1" stroke-dasharray="3 3"/>
+      <line x1="108" y1="112" x2="108" y2="138" stroke="var(--amber)" stroke-width="1" stroke-dasharray="3 3"/>
+      <line x1="138" y1="126" x2="138" y2="138" stroke="var(--amber)" stroke-width="1" stroke-dasharray="3 3"/>
+      <circle cx="78" cy="32" r="3" fill="var(--amber)"/><circle cx="108" cy="112" r="3" fill="var(--amber)"/><circle cx="138" cy="126" r="3" fill="var(--amber)"/>
+      <text x="78" y="152" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)" text-anchor="middle">R</text>
+      <text x="108" y="152" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)" text-anchor="middle">2R</text>
+      <text x="138" y="152" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)" text-anchor="middle">3R</text>
+      <text x="44" y="26" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-soft)" text-anchor="end">g</text>
+      <text x="304" y="152" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-soft)" text-anchor="end">r</text>
+      <text x="84" y="30" font-family="Space Grotesk" font-size="9.5" fill="var(--teal-deep)">g_s</text>
+      <text x="113" y="110" font-family="Space Grotesk" font-size="9.5" fill="var(--teal-deep)">g_s/4</text>
+      <text x="143" y="124" font-family="Space Grotesk" font-size="9.5" fill="var(--teal-deep)">g_s/9</text>
+    </svg>
+    <figcaption>Campo \(g=GM/r^2\) fuera del planeta: en la superficie vale \(g_s\); a \(2R\) cae a \(g_s/4\); a \(3R\), a \(g_s/9\) (inverso del cuadrado).</figcaption>
+  </figure>
+  <div class="box key"><span class="lbl">Superposición y punto de campo nulo</span>
+    <p>El campo es un <strong>vector</strong>: con varias masas, el campo total es la <strong>suma vectorial</strong> de los campos de cada una. Entre dos masas \(M_1,M_2\) separadas \(d\), sus campos apuntan en sentidos opuestos, así que hay un punto donde se anulan: \(\dfrac{GM_1}{x^2}=\dfrac{GM_2}{(d-x)^2}\Rightarrow\dfrac{x}{d-x}=\sqrt{\dfrac{M_1}{M_2}}\) (\(x\) desde \(M_1\)).</p>
+    <p><strong>Mini-ejemplo:</strong> si \(M_1=4M_2\), \(\dfrac{x}{d-x}=\sqrt4=2\Rightarrow x=\tfrac23 d\): el punto nulo queda más cerca de la masa <em>menor</em> (su campo, más débil, solo iguala al del otro de cerca). <strong>Proporción:</strong> con \(M_1=81M_2\) (Tierra–Luna), \(x/(d-x)=9\Rightarrow x=0{,}9\,d\).</p>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 2.1</span><span class="ej-src">ficha · N10 y M11 (escalado de g)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide g en otro planeta</span>
+      <p>Un planeta tiene masa \(2M\) y radio \(R/2\) (la Tierra: \(M\), \(R\), \(g\)). ¿Su \(g'\)?</p>
+      <div class="sol"><p>\(g'=\dfrac{G(2M)}{(R/2)^2}=\dfrac{2GM}{R^2/4}=8\dfrac{GM}{R^2}=8g\).</p><span class="ans">8g. (Con \(3M\) y \(2R\): \(g'=\tfrac34 g\).)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S3 -->
+<section id="s3">
+  <p class="sec-num">SECCIÓN 03</p>
+  <h2>Leyes de Kepler<span class="rule"></span></h2>
+  <ol>
+    <li><strong>1.ª (órbitas):</strong> los planetas describen elipses con el Sol en un foco. (En este curso las órbitas se toman circulares.)</li>
+    <li><strong>2.ª (áreas):</strong> la línea Sol–planeta barre áreas iguales en tiempos iguales ⇒ el planeta va más rápido cuando está más cerca.</li>
+    <li><strong>3.ª (periodos):</strong> \(T^2\propto r^3\) para todos los cuerpos que orbitan la misma masa central.</li>
+  </ol>
+  <div class="box beyond"><span class="lbl">De dónde sale la 3.ª ley</span>
+    <p>Igualando gravedad y centrípeta: \(\dfrac{GMm}{r^2}=\dfrac{mv^2}{r}=\dfrac{m}{r}\Big(\dfrac{2\pi r}{T}\Big)^2\Rightarrow T^2=\dfrac{4\pi^2}{GM}\,r^3\). El factor \(\dfrac{4\pi^2}{GM}\) es igual para todos los satélites de esa masa central.</p>
+    <p><strong>Proporción:</strong> si \(r\) se cuadruplica, \(T\) crece \(4^{3/2}=8\times\); si \(r\) se duplica, \(T\) crece \(2^{3/2}\approx2{,}83\times\). Y \(v=\sqrt{GM/r}\propto r^{-1/2}\): al cuadruplicar \(r\), la rapidez cae a la mitad.</p>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 3.1</span><span class="ej-src">estilo IB · 3.ª de Kepler (proporción)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el periodo de una luna a partir de otra</span>
+      <p>Dos lunas orbitan el mismo planeta. La luna B tiene un radio orbital \(4\) veces el de la luna A, cuyo periodo es \(T_A=1{,}8\) días. Halla el periodo de la luna B.</p>
+      <div class="sol"><p>Mismo cuerpo central ⇒ \(T^2\propto r^3\), es decir \(T\propto r^{3/2}\). Al ser \(r_B=4r_A\): \(\dfrac{T_B}{T_A}=4^{3/2}=8\). Luego \(T_B=8\times1{,}8=14{,}4\) días.</p><span class="ans">T_B = 8 T_A ≈ 14 días.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 -->
+<section id="s4">
+  <p class="sec-num">SECCIÓN 04</p>
+  <h2>Órbitas: la gravedad como fuerza centrípeta<span class="rule"></span></h2>
+  <p class="sec-intro">Un satélite no «flota»: cae continuamente hacia el planeta, y su gravedad es exactamente la fuerza centrípeta que lo mantiene en círculo.</p>
+  <div class="eq">\[ \frac{GMm}{r^2}=\frac{mv^2}{r}\;\Rightarrow\; v_{orb}=\sqrt{\frac{GM}{r}}\qquad T=2\pi\sqrt{\frac{r^3}{GM}} \]<span class="eqname">velocidad y periodo orbitales (órbita circular)</span></div>
+  <p><strong>De dónde sale \(v=\sqrt{GM/r}\).</strong> Para recorrer un círculo hace falta una fuerza neta dirigida al centro: la fuerza centrípeta \(F_c=mv^2/r\). En una órbita la única fuerza presente es la gravedad, \(F_g=GMm/r^2\); si la órbita circular se mantiene, esa gravedad <em>es</em> la centrípeta (no «además de» ella). Igualamos entonces \(\dfrac{GMm}{r^2}=\dfrac{mv^2}{r}\): la masa del satélite \(m\) aparece en los dos lados y se cancela, y al despejar queda \(v^2=\dfrac{GM}{r}\Rightarrow v=\sqrt{GM/r}\) —la rapidez queda fijada por el radio, no por quién orbite—.</p>
+  <p><strong>De dónde sale la 3.ª ley.</strong> En una vuelta el satélite recorre la circunferencia \(2\pi r\) a rapidez constante, así que \(v=\dfrac{2\pi r}{T}\). Sustituyendo esto en \(v=\sqrt{GM/r}\) (o igualando directamente gravedad y centrípeta con \(v=2\pi r/T\)) y despejando \(T\), se obtiene \(T=2\pi\sqrt{r^3/GM}\), es decir \(T^2=\dfrac{4\pi^2}{GM}r^3\). La 3.ª ley de Kepler no es un postulado aparte: cae sola al combinar la ley de Newton con el movimiento circular, y el factor \(4\pi^2/GM\) es común a todos los satélites de una misma masa central.</p>
+  <p><strong>Por qué el satélite «cae» sin estrellarse.</strong> Piensa en el cañón de Newton: una bala disparada en horizontal cae y choca; disparada más rápido, cae más lejos; con la rapidez justa, el suelo se «curva» bajo ella al mismo ritmo al que ella cae, y la bala rodea el planeta sin tocarlo nunca. Un satélite hace exactamente eso: está en <strong>caída libre permanente</strong> hacia el centro, pero su velocidad tangencial lo hace «errar» el planeta vuelta tras vuelta. Como el satélite y todo lo que lleva caen con la <em>misma</em> aceleración \(g\), no hay fuerza de contacto entre ellos: el peso aparente es cero (<em>ingravidez aparente</em>) aunque la gravedad real siga siendo intensa —es justo lo que sostiene la órbita—.</p>
+  <ul>
+    <li>La velocidad orbital <strong>no depende de la masa del satélite</strong> — igual que la aceleración de caída libre.</li>
+    <li>La fuerza resultante sobre el satélite <strong>es</strong> la gravedad, dirigida al centro (no cero, no hay «fuerza centrífuga»).</li>
+    <li><strong>Geoestacionario:</strong> periodo de 24 h sobre el ecuador, moviéndose hacia el este; da un radio fijo \((\approx4{,}2\times10^{7}\) m, altura \(\approx3{,}6\times10^{7}\) m\()\).</li>
+    <li><strong>Ejemplo numérico:</strong> a \(r=7{,}0\times10^{6}\) m de la Tierra, \(v=\sqrt{GM/r}=\sqrt{\dfrac{4{,}0\times10^{14}}{7{,}0\times10^{6}}}=7{,}6\times10^{3}\) m·s⁻¹. <strong>Proporción:</strong> a \(4r\) la rapidez es la mitad y el periodo es \(8\times\) mayor.</li>
+    <li><strong>Ingravidez aparente:</strong> el satélite y todo lo que lleva caen con la misma aceleración \(g\); sin fuerza de contacto, el peso aparente es cero aunque la gravedad real NO lo sea.</li>
+  </ul>
+  <figure class="fig">
+    <svg viewBox="0 0 300 184" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="orbita circular: gravedad igual a centripeta">
+      <circle cx="150" cy="96" r="66" fill="none" stroke="var(--line)" stroke-width="1.4" stroke-dasharray="4 4"/>
+      <circle cx="150" cy="96" r="19" fill="#C9D2CC" stroke="var(--ink)" stroke-width="1.2"/>
+      <text x="150" y="100" font-family="Space Grotesk" font-size="10" fill="var(--teal-deep)" text-anchor="middle">M</text>
+      <circle cx="150" cy="30" r="7" fill="var(--teal)"/>
+      <text x="150" y="20" font-family="Space Grotesk" font-size="10" fill="var(--teal-deep)" text-anchor="middle">m</text>
+      <line x1="150" y1="37" x2="150" y2="73" stroke="var(--warn)" stroke-width="2" marker-end="url(#ov)"/>
+      <text x="158" y="58" font-family="IBM Plex Mono" font-size="10" fill="var(--warn)">F_g = F_c</text>
+      <line x1="157" y1="30" x2="233" y2="30" stroke="var(--amber)" stroke-width="2" marker-end="url(#ov)"/>
+      <text x="196" y="24" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)" text-anchor="middle">v</text>
+      <defs><marker id="ov" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <text x="150" y="178" font-family="Space Grotesk" font-size="9.5" fill="var(--ink-soft)" text-anchor="middle">la gravedad apunta al centro y ES la fuerza centrípeta; v es tangente</text>
+    </svg>
+    <figcaption>En órbita circular la gravedad no se «cancela»: es exactamente la fuerza centrípeta \(\big(\tfrac{GMm}{r^2}=\tfrac{mv^2}{r}\big)\).</figcaption>
+  </figure>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 4.1</span><span class="ej-src">ficha · N17 (periodo y masa del satélite)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el periodo del satélite de masa 2m</span>
+      <p>Un satélite de masa \(m\) orbita con periodo \(T\). ¿Y otro de masa \(2m\) en la misma órbita?</p>
+      <div class="sol"><p>\(T=2\pi\sqrt{r^3/GM}\) no contiene la masa del satélite ⇒ el periodo es el mismo.</p><span class="ans">T (opción B).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 -->
+<section id="s5">
+  <p class="sec-num">SECCIÓN 05</p>
+  <h2>Más allá del NM (temas de Nivel Superior D.1)<span class="rule"></span></h2>
+  <div class="box beyond"><span class="lbl">Profundidad NS / para el 7</span>
+    <ul>
+      <li><strong>Energía potencial gravitatoria</strong> (dos cuerpos): \(E_p=-\dfrac{GMm}{r}\) (cero en el infinito, negativa por ser atractiva).</li>
+      <li><strong>Potencial gravitatorio:</strong> \(V_g=-\dfrac{GM}{r}\) (energía por unidad de masa); \(W=m\Delta V_g\) al mover una masa.</li>
+      <li><strong>Campo como gradiente del potencial:</strong> \(g=-\dfrac{\Delta V_g}{\Delta r}\); las <strong>superficies equipotenciales</strong> son perpendiculares a las líneas de campo.</li>
+      <li><strong>Velocidad de escape:</strong> \(v_{esc}=\sqrt{\dfrac{2GM}{r}}=\sqrt2\,v_{orb}\) (no depende de la masa que escapa).</li>
+      <li><strong>Energía de un satélite:</strong> \(E=E_k+E_p=\dfrac{GMm}{2r}-\dfrac{GMm}{r}=-\dfrac{GMm}{2r}\). Subir de órbita <em>aumenta</em> la energía total (menos negativa) aunque baje la rapidez.</li>
+    </ul>
+  </div>
+  <p><strong>Por qué el signo es negativo.</strong> Elegimos por convenio que la energía potencial valga <em>cero</em> cuando las masas están infinitamente separadas, donde ya prácticamente no se atraen. Como la gravedad es atractiva, al dejar que una masa se acerque desde el infinito el campo hace trabajo positivo sobre ella y el sistema «libera» energía: la \(E_p\) baja por debajo de cero. Por eso tanto \(E_p=-GMm/r\) como el potencial \(V_g=-GM/r\) son negativos, y se vuelven <em>más</em> negativos al acercarse. La imagen útil es la de un <em>pozo</em> de potencial: cuanto más hondo estás (menor \(r\)), más abajo del «nivel del suelo» (el cero del infinito) te encuentras, y más energía hay que aportarte para volver a subir.</p>
+  <p><strong>De dónde sale \(v_{esc}\).</strong> «Escapar» significa llegar al infinito —donde \(E_p=0\)— con rapidez nula o mayor; es decir, con energía total \(E\ge0\). En la superficie \(E=\tfrac12 m v^2-\dfrac{GMm}{R}\), y el caso límite \(E=0\) da \(\tfrac12 m v_{esc}^2=\dfrac{GMm}{R}\Rightarrow v_{esc}=\sqrt{\dfrac{2GM}{R}}\). Sale \(\sqrt2\) veces la velocidad orbital \(\sqrt{GM/R}\), y como la masa que escapa se cancela, no depende de ella: una canica y una nave necesitan la misma \(v_{esc}\).</p>
+</section>
+
+<!-- S6 -->
+<section id="s6">
+  <p class="sec-num">SECCIÓN 06</p>
+  <h2>Definiciones para el examen<span class="rule"></span></h2>
+  <div class="box def"><span class="lbl">Glosario</span>
+    <ul>
+      <li><strong>Ley de gravitación de Newton:</strong> dos masas puntuales se atraen con una fuerza proporcional al producto de sus masas e inversamente proporcional al cuadrado de su separación.</li>
+      <li><strong>Intensidad del campo gravitatorio (g):</strong> la fuerza gravitatoria por unidad de masa que actúa sobre una pequeña masa de prueba situada en el punto.</li>
+      <li><strong>Masa inercial:</strong> resistencia a acelerar (\(F=ma\)). <strong>Masa gravitatoria:</strong> la que determina la fuerza gravitatoria; experimentalmente son iguales.</li>
+      <li><strong>Leyes de Kepler:</strong> órbitas elípticas; áreas iguales en tiempos iguales; \(T^2\propto r^3\).</li>
+      <li><strong>Potencial gravitatorio (NS):</strong> trabajo por unidad de masa para traer una masa desde el infinito hasta el punto (cero en el infinito).</li>
+      <li><strong>Velocidad de escape (NS):</strong> rapidez mínima para alejarse indefinidamente sin volver.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRAPS -->
+<section id="traps">
+  <p class="sec-num">CHECKLIST</p>
+  <h2>Trampas típicas del Paper 1<span class="rule"></span></h2>
+  <div class="box trap"><span class="lbl">Antes de marcar, revisa</span>
+    <ul>
+      <li>\(F\propto1/r^2\) pero \(g\propto M/R^2\): distingue «fuerza entre dos» de «campo de uno».</li>
+      <li>Con densidad fija, \(g\propto\rho R\): al triplicar el radio (misma densidad), \(g\) se triplica.</li>
+      <li>La masa (inercial y gravitatoria) <strong>no cambia</strong> de un astro a otro; el peso sí.</li>
+      <li>La velocidad y el periodo orbitales <strong>no dependen</strong> de la masa del satélite.</li>
+      <li>La fuerza resultante sobre un satélite en órbita <strong>es</strong> la gravedad (centrípeta), no cero.</li>
+      <li>El campo g y la aceleración de caída libre son la misma cantidad (N·kg⁻¹ = m·s⁻²).</li>
+      <li>\(v_{esc}=\sqrt2\,v_{orb}\); ninguna depende de la masa del objeto que escapa/orbita.</li>
+      <li>La energía potencial gravitatoria es <strong>negativa</strong> (cero en el infinito).</li>
+      <li>«\(g\) a la mitad» NO es «el doble de radio»: el inverso del cuadrado exige \(r=\sqrt2\,R\) (altura \(\approx0{,}41\,R\)), no \(2R\).</li>
+      <li>El radio geoestacionario es <strong>fijo</strong>: lo impone el periodo de 24 h vía \(T^2=4\pi^2 r^3/GM\); no se puede elegir «la altura que uno quiera».</li>
+      <li>El punto de campo nulo entre dos masas cae <strong>más cerca de la masa menor</strong> (su campo, más débil, solo iguala al de la otra muy de cerca).</li>
+      <li>Al alejarse, \(V_g\) y \(E_p\) <strong>aumentan</strong> hacia cero (se hacen menos negativos); subir de órbita aumenta la energía total aunque la rapidez disminuya.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BLOQUE -->
+<section id="bloque">
+  <p class="sec-num">BLOQUE DE 10 EJEMPLOS RESUELTOS · TIPO 1</p>
+  <h2>Los 10 de la ficha que cubren todos los tipos<span class="rule"></span></h2>
+  <p class="sec-intro">Cubren: fuerza centrípeta orbital, razón de masas planetarias, escalado de g por M/R², g medido por desaceleración, densidad, inverso del cuadrado, y periodo orbital.</p>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">1</span><span class="ej-tag">F centrípeta orbital</span><span class="ej-src">M03</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la razón F_c(S1)/F_c(S2)</span>
+      <p>S1: radio \(r\), rapidez \(v\). S2: radio \(2r\), rapidez \(v/\sqrt2\). Igual masa.</p>
+      <div class="sol"><p>\(F_c=\dfrac{mv^2}{r}\). \(F_1=\dfrac{mv^2}{r}\); \(F_2=\dfrac{m(v/\sqrt2)^2}{2r}=\dfrac{mv^2/2}{2r}=\dfrac{mv^2}{4r}\). Razón \(=4\).</p><span class="ans">4 (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">2</span><span class="ej-tag">razón de masas</span><span class="ej-src">N10</span></div>
+    <div class="ej-body"><span class="sepide">Se pide M_Marte/M_Tierra</span>
+      <p>1 kg pesa ≈4 N en Marte (\(g_M=4\)); \(g_T=10\); \(R_M\approx R_T/2\).</p>
+      <div class="sol"><p>\(g=\dfrac{GM}{R^2}\Rightarrow M\propto gR^2\). \(\dfrac{M_M}{M_T}=\dfrac{g_M}{g_T}\Big(\dfrac{R_M}{R_T}\Big)^2=0{,}4\times(0{,}5)^2=0{,}1\).</p><span class="ans">0,1 (opción A).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">3</span><span class="ej-tag">escalado de g</span><span class="ej-src">N10</span></div>
+    <div class="ej-body"><span class="sepide">Se pide g del planeta (2M, R/2)</span>
+      <p>Ver Ejemplo 2.1.</p>
+      <div class="sol"><p>\(g'=\dfrac{G(2M)}{(R/2)^2}=8g\).</p><span class="ans">8g (opción D).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">4</span><span class="ej-tag">g por desaceleración</span><span class="ej-src">M11</span></div>
+    <div class="ej-body"><span class="sepide">Se pide g medio</span>
+      <p>Nave con motores apagados: de 5,4 a 5,1 km·s⁻¹ en 600 s.</p>
+      <div class="sol"><p>\(g=\dfrac{\Delta v}{\Delta t}=\dfrac{(5400-5100)}{600}=0{,}50\ \mathrm{N\,kg^{-1}}\).</p><span class="ans">5,0×10⁻¹ N·kg⁻¹ (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">5</span><span class="ej-tag">escalado (3M, 2R)</span><span class="ej-src">M11</span></div>
+    <div class="ej-body"><span class="sepide">Se pide g del planeta</span>
+      <p>Planeta con masa \(3M\) y radio \(2R\).</p>
+      <div class="sol"><p>\(g'=\dfrac{G(3M)}{(2R)^2}=\dfrac{3GM}{4R^2}=\dfrac34 g\).</p><span class="ans">3/4 g (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">6</span><span class="ej-tag">densidad · g ∝ ρR</span><span class="ej-src">N20</span></div>
+    <div class="ej-body"><span class="sepide">Se pide g de Y</span>
+      <p>Planeta X: \(g=18\) N·kg⁻¹. Y tiene la misma densidad y radio \(3\times\).</p>
+      <div class="sol"><p>Misma densidad ⇒ \(g\propto R\). \(g_Y=3\times18=54\).</p><span class="ans">54 (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">7</span><span class="ej-tag">radio Tierra/Marte</span><span class="ej-src">N16</span></div>
+    <div class="ej-body"><span class="sepide">Se pide R_Tierra/R_Marte</span>
+      <p>\(g_M=\tfrac14 g_T\); \(M_T\approx10\,M_M\).</p>
+      <div class="sol"><p>\(g\propto\dfrac{M}{R^2}\Rightarrow R\propto\sqrt{M/g}\). \(\dfrac{R_T}{R_M}=\sqrt{\dfrac{M_T/M_M}{g_T/g_M}}=\sqrt{\dfrac{10}{4}}=1{,}58\).</p><span class="ans">1,6 (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">8</span><span class="ej-tag">g/G y F desde campo</span><span class="ej-src">M09 y M12</span></div>
+    <div class="ej-body"><span class="sepide">Se piden g/G y g en R</span>
+      <p>(a) \(g/G=?\) (b) Fuerza \(F\) sobre masa \(m\) a distancia \(R\); ¿campo en \(R\)?</p>
+      <div class="sol"><p>(a) \(g=\dfrac{GM}{R^2}\Rightarrow \dfrac{g}{G}=\dfrac{M_E}{R_E^2}\) (opción A). (b) \(g=\dfrac{F}{m}\) (opción C).</p><span class="ans">g/G = M/R² ; g = F/m.</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">9</span><span class="ej-tag">g (M/2, R/2) numérico</span><span class="ej-src">M15</span></div>
+    <div class="ej-body"><span class="sepide">Se pide g del planeta</span>
+      <p>Planeta con mitad de masa y mitad de radio; \(g_T=10\) N·kg⁻¹.</p>
+      <div class="sol"><p>\(g'=\dfrac{G(M/2)}{(R/2)^2}=\dfrac{G M/2}{R^2/4}=2\dfrac{GM}{R^2}=2g=20\).</p><span class="ans">20 N·kg⁻¹ (opción D).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">10</span><span class="ej-tag">periodo y masa del satélite</span><span class="ej-src">N17</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el periodo del satélite 2m</span>
+      <p>Ver Ejemplo 4.1.</p>
+      <div class="sol"><p>\(T=2\pi\sqrt{r^3/GM}\): sin la masa del satélite.</p><span class="ans">T (opción B).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTO -->
+<section id="resto">
+  <p class="sec-num">RESTO DE LA FICHA</p>
+  <h2>Ítems de la misma familia (resueltos)<span class="rule"></span></h2>
+  <table>
+    <tr><th>Ítem</th><th>Resp.</th><th class="l">Razón</th></tr>
+    <tr><td>Masa inercial y gravitatoria en la Luna (N07)</td><td>A</td><td class="l">Ambas no cambian (la masa es intrínseca).</td></tr>
+    <tr><td>Fuerza resultante sobre satélite (M09)</td><td>B</td><td class="l">Es la fuerza gravitatoria (centrípeta).</td></tr>
+    <tr><td>g' (2M, 2R) (M13 ×2)</td><td>g/2</td><td class="l">\(g'=\dfrac{G(2M)}{(2R)^2}=\tfrac12 g\).</td></tr>
+    <tr><td>Definición de g (M14, N14, N15, M21)</td><td>C / A / D / B</td><td class="l">Fuerza por unidad de masa sobre una pequeña masa de prueba.</td></tr>
+    <tr><td>Condición para usar la ley (M15)</td><td>D</td><td class="l">Tierra y Sol se comportan como masas puntuales.</td></tr>
+    <tr><td>g' Y (2M, 3R) (M16)</td><td>A</td><td class="l">\(g'=\dfrac{G(2M)}{(3R)^2}=\tfrac29 g\).</td></tr>
+    <tr><td>g' (2R, misma densidad) (M17)</td><td>2g</td><td class="l">\(g\propto\rho R\Rightarrow 2g\).</td></tr>
+    <tr><td>Gráfica F vs r (M19)</td><td>a</td><td class="l">Curva de inverso del cuadrado.</td></tr>
+    <tr><td>Verdad sobre las fuerzas en órbita (N19)</td><td>A</td><td class="l">La resultante (gravedad) va en la dirección de la aceleración (al centro).</td></tr>
+  </table>
+</section>
+
+<!-- EXAMENES -->
+<section id="examenes">
+  <p class="sec-num">BANCO DE EXÁMENES IB · TIPO 1 (PAPER 1 / 1A)</p>
+  <h2>Gravitación en los exámenes, 2022–2026<span class="rule"></span></h2>
+  <p class="sec-intro">Todas las preguntas de gravitación de los Paper 1 del IB en este rango, resueltas y con la <strong>respuesta oficial del markscheme</strong>. Cae en ambos planes (preguntas ≈16–23). Enunciados reformulados; datos y clave reales.</p>
+
+  <div class="box key">
+    <span class="lbl">14 preguntas · herramientas clave</span>
+    <p><strong>Plan nuevo (Paper 1A):</strong> mayo 2025, nov 2025 y 2026 (7). <strong>Plan anterior (Paper 1):</strong> 2022–2024 (7). Casi todo sale de dos fórmulas: \(F=\dfrac{GMm}{r^2}\) y \(g=\dfrac{GM}{r^2}\) (más Kepler \(T^2\propto r^3\)). Recuerda: campo y fuerza van como \(1/r^2\).</p>
+  </div>
+
+  <h4>Índice</h4>
+  <table>
+    <tr><th>#</th><th class="l">Subtema</th><th>Sesión</th><th>Plan</th><th>Resp.</th></tr>
+    <tr><td>G1</td><td class="l">\(g\) de un planeta (300\(M\), 10\(R\))</td><td>Nov 2023</td><td>ant.</td><td>C</td></tr>
+    <tr><td>G2</td><td class="l">\(g\) de un planeta (3\(M\), 2\(R\))</td><td>May 2024 TZ1</td><td>ant.</td><td>B</td></tr>
+    <tr><td>G3</td><td class="l">\(g\) con igual densidad y medio radio</td><td>May 2026 TZ3</td><td>nuevo</td><td>A</td></tr>
+    <tr><td>G4</td><td class="l">Razón de fuerzas a altura \(h=R/4\)</td><td>May 2023 TZ1</td><td>ant.</td><td>C</td></tr>
+    <tr><td>G5</td><td class="l">Diferencia de campo entre \(d\) y \(3d\)</td><td>May 2025 TZ3</td><td>nuevo</td><td>A</td></tr>
+    <tr><td>G6</td><td class="l">Gráfica fuerza–distancia (\(\propto 1/d^2\))</td><td>May 2026 TZ2</td><td>nuevo</td><td>D</td></tr>
+    <tr><td>G7</td><td class="l">Punto nulo Tierra–Luna</td><td>Nov 2022</td><td>ant.</td><td>C</td></tr>
+    <tr><td>G8</td><td class="l">Punto nulo X–Y: razón de masas</td><td>Nov 2025</td><td>nuevo</td><td>C</td></tr>
+    <tr><td>G9</td><td class="l">Dirección del campo entre dos masas</td><td>Nov 2024</td><td>ant.</td><td>C</td></tr>
+    <tr><td>G10</td><td class="l">Fuerza neta sobre un satélite (3 afirm.)</td><td>May 2022 TZ2</td><td>ant.</td><td>D</td></tr>
+    <tr><td>G11</td><td class="l">Qué dice (y no) la ley de gravitación</td><td>May 2022 TZ2</td><td>ant.</td><td>B</td></tr>
+    <tr><td>G12</td><td class="l">Dos masas soltadas: aceleración inicial/final</td><td>May 2025 TZ2</td><td>nuevo</td><td>A</td></tr>
+    <tr><td>G13</td><td class="l">Kepler: \(T^n\propto R^m\)</td><td>May 2025 TZ3</td><td>nuevo</td><td>B</td></tr>
+    <tr><td>G14</td><td class="l">Identificar una ley de Kepler</td><td>Nov 2025</td><td>nuevo</td><td>A</td></tr>
+  </table>
+
+  <!-- A -->
+  <h3>A · Intensidad del campo en una superficie (\(g=GM/R^2\))</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G1</span><span class="ej-src">Paper 1 · Nov 2023 TZ1 y TZ2 · Q23 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un planeta X tiene 300 veces la masa de la Tierra y 10 veces su radio. ¿Intensidad del campo en su superficie en términos de \(g\) (Tierra)?</p>
+      <div class="sol"><p>\(g=\dfrac{GM}{R^2}\Rightarrow g_X=\dfrac{G(300M)}{(10R)^2}=\dfrac{300}{100}\,g=3g\).</p>
+        <span class="ans">C) \(3g\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G2</span><span class="ej-src">Paper 1 · May 2024 TZ1 · Q23 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>El planeta X (masa \(M\), radio \(R\)) tiene campo \(g\). El planeta Y tiene masa \(3M\) y radio \(2R\). ¿Campo en la superficie de Y?</p>
+      <div class="sol"><p>\(g_Y=\dfrac{G(3M)}{(2R)^2}=\dfrac{3}{4}\,\dfrac{GM}{R^2}=\dfrac34 g\).</p>
+        <span class="ans">B) \(\tfrac34 g\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G3</span><span class="ej-src">Paper 1A · May 2026 TZ3 · Q17 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un planeta tiene la misma densidad media que la Tierra pero la mitad de su radio. ¿Aceleración de caída libre en su superficie?</p>
+      <div class="sol"><p>Con \(M=\rho\cdot\tfrac43\pi R^3\): \(g=\dfrac{GM}{R^2}=\dfrac43\pi G\rho R\Rightarrow g\propto R\) (a densidad fija). Medio radio ⇒ \(g=\tfrac12(10)=5\) m s⁻².</p>
+        <span class="ans">A) 5 m s⁻² ✓ — truco útil: a densidad constante, \(g\propto R\).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G4</span><span class="ej-src">Paper 1 · May 2023 TZ1 · Q23 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>El radio de la Tierra es \(R\). Un satélite se eleva a una altura \(h=R/4\) sobre la superficie. ¿Cuánto vale \(\dfrac{F\ \text{en superficie}}{F\ \text{a la altura }h}\)?</p>
+      <div class="sol"><p>\(F\propto\dfrac{1}{r^2}\Rightarrow \dfrac{F_\text{sup}}{F_h}=\dfrac{(R+h)^2}{R^2}=\Big(\dfrac{5R/4}{R}\Big)^2=\Big(\dfrac54\Big)^2=\dfrac{25}{16}\).</p>
+        <span class="ans">C) 25/16 ✓ — la distancia se mide desde el <em>centro</em>: \(r=R+h\).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G5</span><span class="ej-src">Paper 1A · May 2025 TZ3 · Q18 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>X está a distancia \(d\) del centro de la Tierra (\(d>R\)); el campo ahí es \(g_X\). Y está a \(3d\). ¿Diferencia de magnitud del campo entre X e Y?</p>
+      <div class="sol"><p>\(g\propto\dfrac1{r^2}\Rightarrow g_Y=g_X\Big(\dfrac{d}{3d}\Big)^2=\dfrac{g_X}{9}\). Diferencia \(=g_X-\dfrac{g_X}{9}=\dfrac89 g_X\).</p>
+        <span class="ans">A) \(\tfrac89 g_X\) ✓</span></div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <h3>B · Campo con la distancia y puntos nulos</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G6</span><span class="ej-src">Paper 1A · May 2026 TZ2 · Q17 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una nave se aproxima a un planeta. ¿Qué gráfica representa la fuerza de atracción \(F\) frente a la distancia \(d\) al centro? (ejes: \(F\) vs \(d\), \(d^2\), \(d^{-1}\), \(d^{-2}\))</p>
+      <div class="sol"><p>\(F=\dfrac{GMm}{d^2}\propto d^{-2}\). Graficar \(F\) frente a \(d^{-2}\) da una <strong>recta por el origen</strong> (esa es la opción correcta); frente a \(d\) sería una curva decreciente.</p>
+        <span class="ans">D) \(F\) vs \(d^{-2}\) (recta) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G7</span><span class="ej-src">Paper 1 · Nov 2022 · Q22 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>La Tierra (masa \(M_E\)) y la Luna (masa \(M_M\)) están separadas \(D\). En un punto X entre ellas los campos se cancelan; X está a distancia \(d\) de la Tierra. ¿Qué es correcto en X?</p>
+      <div class="sol"><p>Campos iguales y opuestos: \(\dfrac{GM_E}{d^2}=\dfrac{GM_M}{(D-d)^2}\Rightarrow \dfrac{M_E}{d^2}=\dfrac{M_M}{(D-d)^2}\).</p>
+        <span class="ans">C) \(\dfrac{M_E}{d^2}=\dfrac{M_M}{(D-d)^2}\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G8</span><span class="ej-src">Paper 1A · Nov 2025 · Q18 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Dos planetas X e Y (masas \(M_X\), \(M_Y\)) están separados \(R\). En un punto P a \(R/3\) de X el campo es cero. ¿Cuánto vale \(\dfrac{M_Y}{M_X}\)?</p>
+      <div class="sol"><p>P está a \(R/3\) de X y \(2R/3\) de Y. Campos iguales: \(\dfrac{GM_X}{(R/3)^2}=\dfrac{GM_Y}{(2R/3)^2}\Rightarrow \dfrac{M_Y}{M_X}=\Big(\dfrac{2R/3}{R/3}\Big)^2=2^2=4\).</p>
+        <span class="ans">C) 4 ✓ — el punto nulo está más cerca de la masa menor.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G9</span><span class="ej-src">Paper 1 · Nov 2024 · Q23 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Dos masas fijas, \(M\) y \(3M\), sobre una línea dividida en tres segmentos (X, Y, Z). ¿En qué segmentos puede el campo neto apuntar hacia la izquierda (hacia \(3M\))?</p>
+      <div class="sol"><p>El campo apunta hacia cada masa. A la derecha de ambas (Z) los dos campos apuntan a la izquierda ⇒ neto a la izquierda. En el medio (Y) domina \(3M\) (a la izquierda) salvo muy cerca de \(M\) ⇒ puede ir a la izquierda. A la izquierda de ambas (X) los dos apuntan a la derecha.</p>
+        <span class="ans">C) en los segmentos Z e Y ✓</span></div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <h3>C · Órbitas, satélites y leyes de Kepler</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G10</span><span class="ej-src">Paper 1 · May 2022 TZ2 · Q23 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un satélite orbita la Tierra en círculo a rapidez constante. I) la fuerza neta es igual a la atracción gravitatoria; II) es igual a masa × aceleración; III) es igual a la fuerza centrípeta. ¿Cuáles son correctas?</p>
+      <div class="sol"><p>La gravedad es la <em>única</em> fuerza, así que es la neta (I ✓); por la 2.ª ley, neta \(=ma\) (II ✓); y en movimiento circular esa neta es la centrípeta (III ✓). Las tres describen la <em>misma</em> fuerza.</p>
+        <span class="ans">D) I, II y III ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G11</span><span class="ej-src">Paper 1 · May 2022 TZ2 · Q24 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Sobre la ley de gravitación de Newton: I) sirve para predecir el movimiento de un satélite; II) explica <em>por qué</em> existe la gravedad; III) se usa para deducir la expresión de la energía potencial gravitatoria. ¿Cuáles son correctas?</p>
+      <div class="sol"><p>I ✓ y III ✓. II ✗: la ley <em>describe</em> la fuerza (cuánto vale), no explica <em>por qué</em> existe la gravedad (eso lo aborda la relatividad general).</p>
+        <span class="ans">B) I y III solamente ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G12</span><span class="ej-src">Paper 1A · May 2025 TZ2 · Q16 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Dos masas puntuales X e Y se sueltan desde el reposo; Y está más lejos de la superficie del planeta. Las dos terminan chocando con el planeta. ¿Cómo comparan sus aceleraciones inicial y final?</p>
+      <div class="sol"><p>Aceleración \(=g=\dfrac{GM}{r^2}\). Al inicio están a distancias <em>distintas</em> ⇒ aceleraciones iniciales <strong>diferentes</strong> (X, más cerca, mayor). Al final ambas llegan a la <em>misma</em> superficie ⇒ aceleración final <strong>igual</strong>.</p>
+        <span class="ans">A) inicial diferente · final igual ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G13</span><span class="ej-src">Paper 1A · May 2025 TZ3 · Q17 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>La relación entre el período \(T\) y la distancia \(R\) al Sol se escribe \(T^n\propto R^m\). ¿Qué par \((n,m)\) es posible?</p>
+      <div class="sol"><p>Tercera ley de Kepler: \(T^2\propto R^3\), equivalente a \(T\propto R^{3/2}\), es decir \(n=1\), \(m=1{,}5\) (o \(n=2\), \(m=3\)).</p>
+        <span class="ans">B) \(n=1{,}0\), \(m=1{,}5\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">G14</span><span class="ej-src">Paper 1A · Nov 2025 · Q17 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>¿Cuál de las afirmaciones es una ley de Kepler?</p>
+      <div class="sol"><p>La correcta es la 3.ª ley: <strong>el cuadrado del período es proporcional al cubo del semieje mayor</strong> (\(T^2\propto a^3\)). Cuidado con la trampa: la 2.ª ley dice que se barren áreas <em>iguales</em> en tiempos iguales (no "longitudes de arco iguales").</p>
+        <span class="ans">A) \(T^2\propto a^3\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="box beyond">
+    <span class="lbl">Qué va en el Módulo 8B (tipo 2)</span>
+    <p>Los problemas de gravitación del <strong>Paper 2</strong> (deducir la velocidad orbital y el período, energía orbital y de escape, satélites geoestacionarios, Kepler con datos reales) se resolverán en el Módulo 8B.</p>
+  </div>
+</section>
+
+<!-- PRACTICA -->
+<section id="practica">
+  <p class="sec-num">PARA TI · RESUELVE Y ENVÍA EN BLOQUE</p>
+  <h2>10 retos (nuevos, ninguno fácil, nivel ascendente)<span class="rule"></span></h2>
+  <p class="sec-intro">Ninguno repite los ejemplos. Integran movimiento circular, energía e incertidumbre. Los #9 y #10 usan energía orbital, potencial y propagación de incertidumbre, superando el NM. Usa \(G=6{,}67\times10^{-11}\); \(M_T=6{,}0\times10^{24}\) kg, \(R_T=6{,}4\times10^{6}\) m salvo indicación.</p>
+
+  <div class="prob"><p class="pn">C1 · g de un planeta</p><p>Un planeta tiene masa \(3{,}3\times10^{23}\) kg y radio \(2{,}4\times10^{6}\) m. Calcula la intensidad del campo gravitatorio en su superficie y el peso de un astronauta de 80 kg allí.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(g=\dfrac{GM}{r^2}=\dfrac{(6{,}67\times10^{-11})(3{,}3\times10^{23})}{(2{,}4\times10^{6})^2}=\dfrac{2{,}20\times10^{13}}{5{,}76\times10^{12}}=3{,}8\) N·kg⁻¹.</p><p>Peso: \(W=mg=80\times3{,}8=3{,}1\times10^{2}\) N (≈306 N).</p><span class="ans">g = 3,8 N·kg⁻¹ ; W ≈ 3,1×10² N</span></div></details></div>
+  <div class="prob"><p class="pn">C2 · satélite en órbita baja</p><p>Un satélite orbita a 400 km sobre la superficie terrestre. (a) Halla su rapidez orbital. (b) Determina su periodo (en minutos). (c) Explica por qué un astronauta a bordo experimenta ingravidez aparente aunque \(g\) apenas ha disminuido.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>Radio orbital: \(r=R_T+400\text{ km}=6{,}4\times10^{6}+4{,}0\times10^{5}=6{,}8\times10^{6}\) m.</p><p>(a) \(v=\sqrt{\dfrac{GM}{r}}=\sqrt{\dfrac{4{,}0\times10^{14}}{6{,}8\times10^{6}}}=7{,}7\times10^{3}\) m·s⁻¹.</p><p>(b) \(T=\dfrac{2\pi r}{v}=\dfrac{2\pi(6{,}8\times10^{6})}{7{,}7\times10^{3}}=5{,}6\times10^{3}\) s \(\approx93\) min.</p><p>(c) El satélite y el astronauta caen con la misma aceleración \(g\approx8{,}7\) N·kg⁻¹; no hay fuerza normal entre ellos, así que el peso aparente es cero. La gravedad real NO es cero: es justamente lo que mantiene la órbita.</p><span class="ans">v ≈ 7,7×10³ m·s⁻¹ ; T ≈ 93 min ; caída libre común ⇒ peso aparente nulo</span></div></details></div>
+  <div class="prob"><p class="pn">C3 · órbita geoestacionaria</p><p>Un satélite geoestacionario tiene periodo de 24 h. (a) Deduce, con la 3.ª ley, el radio de su órbita. (b) Halla su altura sobre la superficie terrestre.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(T=24\text{ h}=8{,}64\times10^{4}\) s.</p><p>(a) De \(T^2=\dfrac{4\pi^2}{GM}r^3\Rightarrow r=\left(\dfrac{GMT^2}{4\pi^2}\right)^{1/3}=\left(\dfrac{(4{,}0\times10^{14})(8{,}64\times10^{4})^2}{39{,}5}\right)^{1/3}=4{,}2\times10^{7}\) m.</p><p>(b) \(h=r-R_T=4{,}2\times10^{7}-6{,}4\times10^{6}=3{,}6\times10^{7}\) m (≈36 000 km).</p><span class="ans">r ≈ 4,2×10⁷ m ; h ≈ 3,6×10⁷ m</span></div></details></div>
+  <div class="prob"><p class="pn">C4 · Kepler comparando dos lunas</p><p>Una luna A orbita un planeta con radio \(r_A\) y periodo \(T_A=2{,}0\) días. Otra luna B tiene radio orbital \(4r_A\). Usando \(T^2\propto r^3\), halla el periodo de B.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(\dfrac{T_B^2}{T_A^2}=\dfrac{r_B^3}{r_A^3}=4^3=64\Rightarrow \dfrac{T_B}{T_A}=\sqrt{64}=8\).</p><p>\(T_B=8\times T_A=8\times2{,}0=16\) días. (Equivale a \(T_B=T_A\cdot4^{3/2}\).)</p><span class="ans">T_B = 16 días</span></div></details></div>
+  <div class="prob"><p class="pn">C5 · fuerza entre dos masas e inverso del cuadrado</p><p>La Tierra (masa \(M_T\)) y la Luna (masa \(M_L=M_T/81\)) están separadas \(d=3{,}8\times10^{8}\) m, y la fuerza gravitatoria mutua vale \(2{,}0\times10^{20}\) N. (a) Partiendo de \(F=\dfrac{GM_T m}{r^2}\), halla la fuerza si la separación se redujera a la mitad. (b) Halla el punto, sobre la recta Tierra–Luna, donde el campo gravitatorio neto se anula.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) \(F\propto\dfrac{1}{r^2}\); al pasar de \(d\) a \(d/2\), la fuerza se multiplica por \(2^2=4\): \(F'=4\times2{,}0\times10^{20}=8{,}0\times10^{20}\) N.</p><p>(b) Sea \(x\) la distancia desde la Tierra. Campos iguales y opuestos: \(\dfrac{GM_T}{x^2}=\dfrac{GM_L}{(d-x)^2}\Rightarrow\dfrac{x^2}{(d-x)^2}=\dfrac{M_T}{M_L}=81\Rightarrow\dfrac{x}{d-x}=9\Rightarrow x=\tfrac{9}{10}d=3{,}4\times10^{8}\) m.</p><p>Queda a \(0{,}9\,d\) de la Tierra, es decir muy cerca de la Luna (la masa menor): su campo, más débil, solo iguala al terrestre casi pegado a ella.</p><span class="ans">F′ = 8,0×10²⁰ N ; campo nulo a x = 0,9 d ≈ 3,4×10⁸ m de la Tierra</span></div></details></div>
+  <div class="prob"><p class="pn">C6 · variación de g con la altura</p><p>¿A qué altura sobre la superficie de la Tierra el campo gravitatorio vale la mitad de su valor en la superficie? Exprésalo en función de \(R_T\) y en km.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(g(r)=\dfrac{GM}{r^2}=\dfrac12\dfrac{GM}{R_T^2}\Rightarrow r^2=2R_T^2\Rightarrow r=R_T\sqrt2\).</p><p>Altura: \(h=r-R_T=R_T(\sqrt2-1)=0{,}41\,R_T=0{,}41\times6{,}4\times10^{6}=2{,}6\times10^{6}\) m (≈2 650 km).</p><p><em>Trampa:</em> «mitad de g» NO es «el doble de radio»; el inverso del cuadrado exige \(r=\sqrt2\,R_T\).</p><span class="ans">h = R_T(√2−1) ≈ 0,41 R_T ≈ 2,6×10³ km</span></div></details></div>
+  <div class="prob"><p class="pn">C7 · velocidad de escape (NS)</p><p>Determina la velocidad de escape desde la superficie de la Tierra y compárala con la velocidad orbital baja. Muestra que \(v_{esc}=\sqrt2\,v_{orb}\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(v_{esc}=\sqrt{\dfrac{2GM}{R_T}}=\sqrt{\dfrac{2(4{,}0\times10^{14})}{6{,}4\times10^{6}}}=1{,}1\times10^{4}\) m·s⁻¹ (≈11,2 km·s⁻¹).</p><p>\(v_{orb}=\sqrt{\dfrac{GM}{R_T}}=\sqrt{\dfrac{4{,}0\times10^{14}}{6{,}4\times10^{6}}}=7{,}9\times10^{3}\) m·s⁻¹.</p><p>Cociente: \(\dfrac{v_{esc}}{v_{orb}}=\sqrt{\dfrac{2GM/R_T}{GM/R_T}}=\sqrt2\). Ninguna depende de la masa del objeto.</p><span class="ans">v_esc ≈ 1,1×10⁴ m·s⁻¹ = √2·v_orb</span></div></details></div>
+  <div class="prob"><p class="pn">C8 · energía para poner en órbita (NS)</p><p>Un satélite de 500 kg se lanza desde el reposo en la superficie terrestre hasta una órbita de radio \(2R_T\). Usando \(E_p=-GMm/r\) y \(E=-GMm/2r\), halla la energía total mínima que debe suministrarse.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>Estado inicial (en reposo en la superficie): \(E_i=0+\left(-\dfrac{GMm}{R_T}\right)=-\dfrac{GMm}{R_T}\).</p><p>Estado final (órbita circular a \(2R_T\)): \(E_f=-\dfrac{GMm}{2(2R_T)}=-\dfrac{GMm}{4R_T}\).</p><p>\(\Delta E=E_f-E_i=\dfrac{GMm}{R_T}\left(1-\dfrac14\right)=\dfrac{3}{4}\dfrac{GMm}{R_T}=\dfrac34\cdot\dfrac{(4{,}0\times10^{14})(500)}{6{,}4\times10^{6}}=2{,}3\times10^{10}\) J.</p><span class="ans">ΔE ≈ 2,3×10¹⁰ J</span></div></details></div>
+  <div class="prob jefe"><p class="pn">C9 · INTEGRADOR («pesar» un planeta, supera NM)</p><p>Una luna orbita un planeta desconocido con radio orbital \(r=1{,}9\times10^{8}\) m y periodo \(T=7{,}2\) días. (a) Usando circular + gravitación, determina la masa del planeta. (b) Si la luna orbitara al doble de radio, ¿cuál sería su nuevo periodo y su nueva rapidez?</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(T=7{,}2\times86400=6{,}2\times10^{5}\) s.</p><p>(a) De \(\dfrac{GMm}{r^2}=\dfrac{m}{r}\left(\dfrac{2\pi r}{T}\right)^2\Rightarrow M=\dfrac{4\pi^2 r^3}{GT^2}=\dfrac{39{,}5\,(1{,}9\times10^{8})^3}{(6{,}67\times10^{-11})(6{,}2\times10^{5})^2}=1{,}0\times10^{25}\) kg.</p><p>(b) \(r'=2r\): \(T'=T\cdot2^{3/2}=7{,}2\times2{,}83=2{,}0\times10^{1}\) días (≈20 días). Rapidez \(v\propto r^{-1/2}\Rightarrow v'=\dfrac{v}{\sqrt2}\). Con \(v=\dfrac{2\pi r}{T}=1{,}9\times10^{3}\) m·s⁻¹, \(v'=1{,}4\times10^{3}\) m·s⁻¹.</p><span class="ans">M ≈ 1,0×10²⁵ kg ; T′ ≈ 20 días ; v′ ≈ 1,4×10³ m·s⁻¹</span></div></details></div>
+  <div class="prob jefe"><p class="pn">C10 · PROBLEMA JEFE (masa de un planeta + Módulo 1, supera NM)</p><p>Para hallar la masa de un planeta se mide el radio orbital \(r=(4{,}20\pm0{,}05)\times10^{8}\ \mathrm m\) y el periodo \(T=(6{,}00\pm0{,}10)\times10^{5}\ \mathrm s\) de una de sus lunas. (a) Deduce \(M=\dfrac{4\pi^2 r^3}{GT^2}\). (b) Calcula \(M\). (c) Propaga las incertidumbres para dar \(M\pm\Delta M\) (recuerda: el cubo triplica la %unc de \(r\) y el cuadrado duplica la de \(T\)).</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) \(\dfrac{GMm}{r^2}=\dfrac{m}{r}\left(\dfrac{2\pi r}{T}\right)^2\Rightarrow \dfrac{GM}{r^2}=\dfrac{4\pi^2 r}{T^2}\Rightarrow M=\dfrac{4\pi^2 r^3}{GT^2}.\)</p><p>(b) \(M=\dfrac{39{,}5\,(4{,}20\times10^{8})^3}{(6{,}67\times10^{-11})(6{,}00\times10^{5})^2}=\dfrac{39{,}5\times7{,}41\times10^{25}}{2{,}40\times10^{1}}=1{,}22\times10^{26}\) kg.</p><p>(c) \(\dfrac{\Delta r}{r}=\dfrac{0{,}05}{4{,}20}=1{,}19\%\); \(\dfrac{\Delta T}{T}=\dfrac{0{,}10}{6{,}00}=1{,}67\%\). Como \(M\propto r^3 T^{-2}\): \(\dfrac{\Delta M}{M}=3(1{,}19)+2(1{,}67)=6{,}9\%\). \(\Delta M=0{,}069\times1{,}22\times10^{26}=0{,}08\times10^{26}\).</p><span class="ans">M = (1,22 ± 0,08)×10²⁶ kg  (≈6,9 %)</span></div></details></div>
+</section>
+
+<!-- MAS PROBLEMAS -->
+<section id="masproblemas">
+  <p class="sec-num">MÁS PROBLEMAS · ESTILO PAST PAPER IB</p>
+  <h2>Nueve problemas nuevos para consolidar<span class="rule"></span></h2>
+  <p class="sec-intro">Uno por idea clave: fuerza y proporción, campo \(g\) en otro planeta, rapidez orbital, 3.ª de Kepler, satélite geoestacionario y punto de campo nulo; y tres más (P7–P9) buscados del estilo de examen IB: relación de \(g\) entre planetas, \(g\) y peso en la ISS, y masa del cuerpo central por la 3.ª de Kepler. Resolución oculta. \(G=6{,}67\times10^{-11}\); para la Tierra \(M_T=6{,}0\times10^{24}\) kg, \(R_T=6{,}4\times10^{6}\) m salvo indicación.</p>
+
+  <div class="prob"><p class="pn">P1 · fuerza y proporción (\(F=GMm/r^2\))</p><p>Dos esferas idénticas de masa \(M\), cuyos centros distan \(d\), se atraen con una fuerza \(F\). Se reemplazan por esferas de masa \(2M\) y \(3M\) y se alejan hasta que sus centros distan \(2d\). ¿Cuál es la nueva fuerza, en función de \(F\)?</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>Original: \(F=\dfrac{G\,M\cdot M}{d^2}=\dfrac{GM^2}{d^2}\).</p><p>Nueva: \(F'=\dfrac{G\,(2M)(3M)}{(2d)^2}=\dfrac{6\,GM^2}{4\,d^2}=\dfrac{3}{2}\cdot\dfrac{GM^2}{d^2}=1{,}5\,F\).</p><p>El producto de masas sube \(\times6\) y la distancia al cuadrado sube \(\times4\): \(6/4=1{,}5\).</p><span class="ans">F′ = 1,5 F (= 3F/2)</span></div></details></div>
+
+  <div class="prob"><p class="pn">P2 · campo \(g\) en otro cuerpo</p><p>Titán, la mayor luna de Saturno, tiene masa \(1{,}35\times10^{23}\) kg y radio \(2{,}58\times10^{6}\) m. Calcula la intensidad del campo gravitatorio en su superficie y el peso de una sonda de 320 kg que se posa en él.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(g=\dfrac{GM}{r^2}=\dfrac{(6{,}67\times10^{-11})(1{,}35\times10^{23})}{(2{,}58\times10^{6})^2}=\dfrac{9{,}00\times10^{12}}{6{,}66\times10^{12}}=1{,}35\) N·kg⁻¹.</p><p>Peso: \(W=mg=320\times1{,}35=4{,}3\times10^{2}\) N (≈432 N).</p><span class="ans">g ≈ 1,35 N·kg⁻¹ ; W ≈ 4,3×10² N</span></div></details></div>
+
+  <div class="prob"><p class="pn">P3 · rapidez y periodo orbitales</p><p>Un satélite de observación describe una órbita circular de radio \(r=1{,}2\times10^{7}\) m alrededor de la Tierra. (a) Halla su rapidez orbital. (b) ¿Cuántas veces mayor es su periodo que el de un satélite en órbita baja de radio \(6{,}8\times10^{6}\) m?</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) \(v=\sqrt{\dfrac{GM}{r}}=\sqrt{\dfrac{4{,}0\times10^{14}}{1{,}2\times10^{7}}}=\sqrt{3{,}33\times10^{7}}=5{,}8\times10^{3}\) m·s⁻¹.</p><p>(b) \(T\propto r^{3/2}\Rightarrow \dfrac{T_1}{T_2}=\left(\dfrac{1{,}2\times10^{7}}{6{,}8\times10^{6}}\right)^{3/2}=(1{,}76)^{3/2}=2{,}3\).</p><span class="ans">v ≈ 5,8×10³ m·s⁻¹ ; periodo ≈ 2,3 veces mayor</span></div></details></div>
+
+  <div class="prob"><p class="pn">P4 · 3.ª ley de Kepler</p><p>Marte orbita el Sol a un radio medio de \(1{,}52\) UA. Usando \(T^2\propto r^3\) para los cuerpos que giran en torno al Sol (con \(T\) en años y \(r\) en UA, la constante vale 1), (a) comprueba el periodo de Marte y (b) halla el periodo orbital de un asteroide situado a \(2{,}77\) UA.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>Con \(T^2=r^3\) (años, UA): \(T=r^{3/2}\).</p><p>(a) Marte: \(T=(1{,}52)^{3/2}=1{,}88\) años — coincide con el valor conocido, lo que valida la ley.</p><p>(b) Asteroide: \(T=(2{,}77)^{3/2}=4{,}6\) años.</p><span class="ans">T(Marte) ≈ 1,88 años ; T(asteroide) ≈ 4,6 años</span></div></details></div>
+
+  <div class="prob"><p class="pn">P5 · satélite «areoestacionario» (Marte)</p><p>Se quiere un satélite que permanezca fijo sobre un punto del ecuador de Marte, cuyo día dura \(24{,}6\) h. Datos de Marte: \(M=6{,}4\times10^{23}\) kg, \(R=3{,}4\times10^{6}\) m. (a) Deduce el radio de la órbita. (b) Halla su altura sobre la superficie.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(T=24{,}6\times3600=8{,}86\times10^{4}\) s; \(GM=(6{,}67\times10^{-11})(6{,}4\times10^{23})=4{,}27\times10^{13}\).</p><p>(a) De \(T^2=\dfrac{4\pi^2}{GM}r^3\Rightarrow r=\left(\dfrac{GMT^2}{4\pi^2}\right)^{1/3}=\left(\dfrac{(4{,}27\times10^{13})(8{,}86\times10^{4})^2}{39{,}5}\right)^{1/3}=2{,}0\times10^{7}\) m.</p><p>(b) \(h=r-R=2{,}0\times10^{7}-3{,}4\times10^{6}=1{,}7\times10^{7}\) m (≈17 000 km).</p><span class="ans">r ≈ 2,0×10⁷ m ; h ≈ 1,7×10⁷ m</span></div></details></div>
+
+  <div class="prob"><p class="pn">P6 · punto de campo nulo</p><p>Dos estrellas, una de masa \(M\) y otra de masa \(4M\), tienen sus centros separados \(d=3{,}0\times10^{11}\) m. (a) Halla, sobre la recta que las une, el punto donde el campo gravitatorio neto es cero. (b) Explica por qué queda más cerca de la estrella menos masiva.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) Sea \(x\) la distancia desde la estrella de masa \(M\). Los campos son iguales y opuestos: \(\dfrac{GM}{x^2}=\dfrac{G(4M)}{(d-x)^2}\Rightarrow\dfrac{(d-x)^2}{x^2}=4\Rightarrow\dfrac{d-x}{x}=2\Rightarrow d=3x\Rightarrow x=\dfrac{d}{3}=1{,}0\times10^{11}\) m (desde \(M\)); a \(2{,}0\times10^{11}\) m de la estrella \(4M\).</p><p>(b) El punto nulo está donde los dos campos se cancelan. La estrella menor crea un campo más débil, así que solo puede igualar al de la estrella \(4M\) a poca distancia de ella; por eso el equilibrio cae del lado de la masa menor.</p><span class="ans">x = d/3 = 1,0×10¹¹ m desde M (2,0×10¹¹ m desde 4M)</span></div></details></div>
+
+  <div class="prob"><p class="pn">P7 · relación de \(g\) entre dos planetas</p><p>Un planeta X tiene el doble de la masa de la Tierra y la mitad de su radio. (a) Expresa la intensidad del campo gravitatorio en la superficie de X en función de la de la Tierra. (b) Calcula su valor, tomando \(g_T=9{,}8\) N·kg⁻¹.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) Como \(g=\dfrac{GM}{R^2}\), la razón es \(\dfrac{g_X}{g_T}=\dfrac{M_X/M_T}{(R_X/R_T)^2}=\dfrac{2}{(1/2)^2}=\dfrac{2}{1/4}=8\).</p><p>(b) \(g_X=8\,g_T=8\times9{,}8=78{,}4\approx78\) N·kg⁻¹.</p><p>La mitad del radio multiplica \(g\) por \(4\) (el radio va al cuadrado) y el doble de masa por \(2\): \(4\times2=8\).</p><span class="ans">g_X = 8 g_T ≈ 78 N·kg⁻¹</span></div></details></div>
+
+  <div class="prob"><p class="pn">P8 · \(g\) y peso a cierta altura</p><p>La Estación Espacial Internacional orbita a una altura \(h=4{,}0\times10^{5}\) m (400 km) sobre la superficie terrestre. (a) Halla la intensidad del campo gravitatorio a esa altura. (b) Calcula el peso real de un astronauta de 80 kg allí. (c) Si \(g\) es casi el 90 % del valor en superficie, ¿por qué flota el astronauta?</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>Radio orbital: \(r=R_T+h=6{,}4\times10^{6}+4{,}0\times10^{5}=6{,}8\times10^{6}\) m.</p><p>(a) \(g=\dfrac{GM}{r^2}=\dfrac{(6{,}67\times10^{-11})(6{,}0\times10^{24})}{(6{,}8\times10^{6})^2}=\dfrac{4{,}0\times10^{14}}{4{,}62\times10^{13}}=8{,}7\) N·kg⁻¹.</p><p>(b) \(W=mg=80\times8{,}65=6{,}9\times10^{2}\) N (≈692 N).</p><p>(c) El campo sigue siendo intenso; el astronauta no pesa «cero». Flota porque él y la estación caen libremente con la misma aceleración \(g\): es ingravidez aparente (caída libre permanente), no ausencia de gravedad.</p><span class="ans">g ≈ 8,7 N·kg⁻¹ ; W ≈ 6,9×10² N ; flota por caída libre (ingravidez aparente)</span></div></details></div>
+
+  <div class="prob"><p class="pn">P9 · masa del planeta a partir de una luna</p><p>Ganímedes describe una órbita circular alrededor de Júpiter de radio \(r=1{,}07\times10^{9}\) m con un periodo \(T=7{,}15\) días. A partir de estos datos, determina la masa de Júpiter.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(T=7{,}15\times86\,400=6{,}18\times10^{5}\) s.</p><p>Igualando gravedad y fuerza centrípeta se llega a \(T^2=\dfrac{4\pi^2}{GM}r^3\), de donde \(M=\dfrac{4\pi^2 r^3}{G\,T^2}\).</p><p>\(M=\dfrac{4\pi^2\,(1{,}07\times10^{9})^3}{(6{,}67\times10^{-11})(6{,}18\times10^{5})^2}=\dfrac{4{,}84\times10^{28}}{2{,}55\times10^{1}}=1{,}9\times10^{27}\) kg.</p><p>Coincide con la masa conocida de Júpiter, lo que valida el método: midiendo \(r\) y \(T\) de un satélite se obtiene la masa del cuerpo central.</p><span class="ans">M ≈ 1,9×10²⁷ kg</span></div></details></div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 8A · Gravitación universal (D.1).</strong> Ficha completa resuelta (10 en bloque + resto) e integración con Movimiento circular y Energía. Sigue el <strong>Módulo 8B</strong> (tipo 2). Constantes: \(G=6{,}67\times10^{-11}\) N·m²·kg⁻²; en Paper 1 el escalado suele bastar sin valores numéricos.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

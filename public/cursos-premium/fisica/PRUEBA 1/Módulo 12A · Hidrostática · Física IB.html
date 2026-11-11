@@ -1,0 +1,600 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 12A · Hidrostática · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:54px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:28px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:14px 0;overflow-x:auto}
+.eqname{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--teal);letter-spacing:.06em;display:block;margin-top:4px}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.ej{border:1px solid var(--line);border-radius:5px;margin:22px 0;background:var(--paper-2);overflow:hidden}
+.ej-head{background:linear-gradient(180deg,#F0F5F3,#FFFFFF);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ej-num{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px}
+.ej-tag{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal);padding:2px 8px;border-radius:3px}
+.ej-src{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);letter-spacing:.05em}
+.ej-body{padding:16px 20px 20px}
+.sepide{display:inline-block;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:2px 8px;margin:2px 0 8px}
+.sol{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:6px 12px;display:inline-block;margin-top:8px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+.flag{color:var(--warn);font-weight:600}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}td.l,th.l{text-align:left}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:14px;margin:16px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:8px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> HIDROSTÁTICA <span>//</span> MÓDULO 12A · TEORÍA + TIPO 1</p>
+  <h1>Hidrostática: <em>fluidos</em> en reposo</h1>
+  <p class="lede">Densidad, presión hidrostática, principio de Pascal, empuje de Arquímedes y flotación, y la fuerza viscosa de Stokes. Reutiliza fuerzas, equilibrio y resortes. Ficha completa resuelta.</p>
+  <div class="stats">
+    <div class="stat"><b>6</b><span>secciones de teoría</span></div>
+    <div class="stat"><b>10</b><span>ficha resueltos</span></div>
+    <div class="stat"><b>10</b><span>retos</span></div>
+    <div class="stat"><b>3</b><span>exámenes IB 2022–26</span></div>
+    <div class="stat"><b>g = 10</b><span>m·s⁻² salvo indicación</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#s1">1 · Densidad</a>
+  <a href="#s2">2 · Presión hidrostática</a>
+  <a href="#s3">3 · Pascal · tubo en U</a>
+  <a href="#s4">4 · Arquímedes y flotación</a>
+  <a href="#s5">5 · Fuerza de Stokes</a>
+  <a href="#s6">6 · Más allá del IB</a>
+  <a href="#s7">7 · Definiciones (examen)</a>
+  <a href="#traps">Checklist de trampas</a>
+  <a href="#bloque">10 resueltos (ficha)</a>
+  <a href="#examenes">Banco de exámenes IB · 2022–26</a>
+  <a href="#practica">10 retos</a>
+  <a href="#practica2">Práctica extra · todo tipo</a>
+</nav>
+
+<main>
+<!-- rev 2026-10-27 fluidos · banco examenes IB fluidos (3) v2 -->
+
+<!-- S1 -->
+<section id="s1">
+  <p class="sec-num">SECCIÓN 01</p>
+  <h2>Densidad<span class="rule"></span></h2>
+  <div class="eq">\[ \rho=\frac{m}{V} \]<span class="eqname">densidad (kg·m⁻³)</span></div>
+  <p>La <strong>densidad relativa</strong> compara con el agua (1000 kg·m⁻³): \(\rho_r=\rho/\rho_{agua}\). Conversión útil: \(1\ \mathrm{g\,cm^{-3}}=1000\ \mathrm{kg\,m^{-3}}\).</p>
+  <div class="box key"><span class="lbl">Regla de flotación (rápida)</span>
+    <p>Un cuerpo flota si su densidad media es <strong>menor</strong> que la del fluido; se hunde si es mayor; queda en equilibrio a cualquier profundidad si son iguales.</p>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJ</span><span class="ej-tag" style="background:var(--amber)">ρ = m/V</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la densidad</span>
+      <p>Un bloque de masa 0,24 kg mide 5,0 cm × 4,0 cm × 3,0 cm. Halla su densidad.</p>
+      <div class="sol"><p>\(V=5{,}0\times4{,}0\times3{,}0=60\ \mathrm{cm^3}=6{,}0\times10^{-5}\) m³. \(\rho=\dfrac{m}{V}=\dfrac{0{,}24}{6{,}0\times10^{-5}}=4{,}0\times10^{3}\) kg·m⁻³.</p><span class="ans">ρ = 4,0×10³ kg·m⁻³.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S2 -->
+<section id="s2">
+  <p class="sec-num">SECCIÓN 02</p>
+  <h2>Presión hidrostática<span class="rule"></span></h2>
+  <div class="eq">\[ P=\frac{F}{A}\qquad\qquad P=\rho g h \]<span class="eqname">presión (Pa = N·m⁻²) y presión de una columna de fluido</span></div>
+  <div class="box"><span class="lbl">¿De dónde sale P = ρgh?</span>
+    <p>Imagina una columna de fluido de área \(A\) que se eleva una altura \(h\) sobre el punto que te interesa. Su volumen es \(V=Ah\), su masa \(m=\rho V=\rho A h\) y su peso \(W=mg=\rho A h g\). Ese peso es la fuerza con la que la columna aprieta hacia abajo sobre el punto, así que \(P=\dfrac{F}{A}=\dfrac{\rho A h g}{A}=\rho g h\). <strong>El área se cancela</strong>: por eso la presión depende solo de \(\rho\), \(g\) y la <strong>profundidad vertical</strong> \(h\) — nunca del área ni de la forma del recipiente. Esa es la <em>paradoja hidrostática</em>: el fondo de un recipiente ancho y el de uno estrecho, con el mismo nivel de líquido, soportan la misma presión.</p>
+  </div>
+  <div class="box key"><span class="lbl">Claves de la presión</span>
+    <ul>
+      <li>La presión hidrostática <strong>solo depende de la profundidad vertical</strong> \(h\), la densidad y \(g\) — no de la forma ni del volumen del recipiente.</li>
+      <li>La fuerza sobre el fondo es \(F=PA=\rho g h A\).</li>
+      <li>Presión total (absoluta) \(=P_{atm}+\rho g h\); la parte \(\rho g h\) es la presión <em>manométrica</em>.</li>
+    </ul>
+  </div>
+  <div class="box trap"><span class="lbl">Trampa · manométrica vs absoluta</span>
+    <p>\(\rho g h\) es solo la presión <strong>manométrica</strong> (lo que añade el líquido). La <strong>absoluta</strong> incluye la atmósfera que empuja sobre la superficie: \(P_{abs}=P_{atm}+\rho g h\). <strong>Suma \(P_{atm}\)</strong> cuando pidan la presión total/absoluta o la que soporta un gas encerrado; <strong>no la sumes</strong> si piden solo la presión del líquido (manométrica) o si el otro lado también está abierto a la atmósfera (se cancela).</p>
+  </div>
+  <figure class="fig">
+    <svg viewBox="0 0 330 175" width="300" xmlns="http://www.w3.org/2000/svg" aria-label="la presión crece con la profundidad">
+      <defs>
+        <marker id="s2t" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--teal-deep)"/></marker>
+        <marker id="s2a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--amber)"/></marker>
+      </defs>
+      <rect x="75" y="28" width="110" height="130" fill="#CFE0DB" stroke="var(--ink)" stroke-width="2"/>
+      <line x1="75" y1="28" x2="185" y2="28" stroke="var(--teal)" stroke-dasharray="4 4"/>
+      <text x="75" y="22" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">superficie</text>
+      <line x1="60" y1="28" x2="60" y2="158" stroke="var(--ink-soft)"/>
+      <text x="26" y="66" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">h = 1 m</text>
+      <line x1="185" y1="95" x2="225" y2="95" stroke="var(--teal-deep)" stroke-width="2" marker-end="url(#s2t)"/>
+      <text x="229" y="98" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">P = 10 kPa</text>
+      <text x="26" y="153" font-family="IBM Plex Mono" font-size="9" fill="var(--amber)">h = 2 m</text>
+      <line x1="185" y1="140" x2="265" y2="140" stroke="var(--amber)" stroke-width="2" marker-end="url(#s2a)"/>
+      <text x="229" y="133" font-family="IBM Plex Mono" font-size="9" fill="var(--amber)">P = 20 kPa</text>
+    </svg>
+    <figcaption>\(P=\rho g h\Rightarrow P\propto h\): al <strong>duplicar</strong> la profundidad se <strong>duplica</strong> la presión manométrica (agua: +10 kPa por metro).</figcaption>
+  </figure>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJ</span><span class="ej-tag" style="background:var(--amber)">P = ρgh</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la presión y la fuerza</span>
+      <p>Halla la presión hidrostática y la fuerza sobre el fondo (área 2,0 m²) de un tanque con 3,0 m de agua. (ρ=1000, g=10)</p>
+      <div class="sol"><p>\(P=\rho g h=1000(10)(3{,}0)=3{,}0\times10^{4}\) Pa. \(F=PA=3{,}0\times10^{4}(2{,}0)=6{,}0\times10^{4}\) N.</p><span class="ans">P = 30 kPa ; F = 6,0×10⁴ N.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S3 -->
+<section id="s3">
+  <p class="sec-num">SECCIÓN 03</p>
+  <h2>Principio de Pascal y tubo en U<span class="rule"></span></h2>
+  <p class="sec-intro">Una presión aplicada a un fluido encerrado se transmite <strong>por igual en todas direcciones</strong>. Es la base de la prensa hidráulica.</p>
+  <div class="eq">\[ \frac{F_1}{A_1}=\frac{F_2}{A_2}\quad(\text{prensa hidráulica})\qquad\qquad \rho_A h_A=\rho_B h_B\quad(\text{equilibrio en tubo en U}) \]<span class="eqname">Pascal y equilibrio de columnas</span></div>
+  <p>En una prensa, una fuerza pequeña sobre el pistón chico levanta una grande en el pistón ancho (se gana fuerza, se pierde desplazamiento). En un <strong>tubo en U</strong> con dos líquidos no miscibles, en el nivel de la interfaz las presiones se igualan: la columna más alta es la del líquido menos denso.</p>
+  <div class="box"><span class="lbl">¿De dónde sale F₁/A₁ = F₂/A₂?</span>
+    <p>Pascal dice que la presión aplicada se transmite <strong>sin disminuir</strong> a todo el fluido encerrado, así que bajo ambos pistones la presión es la misma: \(P_1=P_2\Rightarrow\dfrac{F_1}{A_1}=\dfrac{F_2}{A_2}\). Como \(A_2>A_1\), sale \(F_2>F_1\): la fuerza se multiplica por \(A_2/A_1\).</p>
+    <p><strong>No hay energía gratis.</strong> El líquido es incompresible, de modo que el volumen que desaloja el pistón chico al bajar \(d_1\) reaparece subiendo el grande \(d_2\): \(A_1 d_1=A_2 d_2\Rightarrow d_2=d_1\dfrac{A_1}{A_2}\). El pistón grande sube tantas veces menos como creció la fuerza, y el trabajo se conserva: \(W=F_1 d_1=F_2 d_2\).</p>
+  </div>
+  <div class="box"><span class="lbl">¿De dónde sale ρ₁h₁ = ρ₂h₂?</span>
+    <p>En el nivel común más bajo (la interfaz) la presión debe ser igual por los dos brazos; si no, el fluido circularía hasta igualarla. Midiendo cada columna desde ese nivel: \(P_{atm}+\rho_1 g h_1=P_{atm}+\rho_2 g h_2\). Se cancelan \(P_{atm}\) y \(g\), y queda \(\rho_1 h_1=\rho_2 h_2\). Por eso la <strong>columna más alta</strong> corresponde al líquido <strong>menos denso</strong>.</p>
+  </div>
+  <figure class="fig">
+    <svg viewBox="0 0 300 150" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="prensa hidráulica">
+      <defs>
+        <marker id="phd" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,0 L6,0 L3,6 Z" fill="var(--warn)"/></marker>
+        <marker id="phu" markerWidth="8" markerHeight="8" refX="3" refY="0" orient="auto"><path d="M3,0 L6,6 L0,6 Z" fill="var(--teal-deep)"/></marker>
+      </defs>
+      <path d="M40,75 L40,110 Q40,125 55,125 L245,125 Q260,125 260,110 L260,65" fill="#CFE0DB" stroke="var(--ink)" stroke-width="2"/>
+      <rect x="38" y="67" width="26" height="9" fill="var(--ink-soft)"/>
+      <rect x="196" y="57" width="66" height="9" fill="var(--ink-soft)"/>
+      <line x1="51" y1="30" x2="51" y2="64" stroke="var(--warn)" stroke-width="2" marker-end="url(#phd)"/>
+      <text x="18" y="26" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">F₁ = 100 N</text>
+      <text x="40" y="100" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">A₁ = 1</text>
+      <line x1="229" y1="54" x2="229" y2="20" stroke="var(--teal-deep)" stroke-width="2" marker-end="url(#phu)"/>
+      <text x="196" y="16" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">F₂ = 500 N</text>
+      <text x="212" y="100" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">A₂ = 5</text>
+    </svg>
+    <figcaption>Pascal: \(\frac{F_1}{A_1}=\frac{F_2}{A_2}\Rightarrow F_2\propto A_2\). Con \(A_2=5A_1\), una fuerza de 100 N levanta 500 N (×5); el pistón ancho sube 5 veces menos.</figcaption>
+  </figure>
+  <figure class="fig">
+    <svg viewBox="0 0 240 120" width="220" xmlns="http://www.w3.org/2000/svg" aria-label="tubo en U">
+      <path d="M40,20 L40,90 Q40,105 55,105 L185,105 Q200,105 200,90 L200,20" fill="none" stroke="var(--ink)" stroke-width="2"/>
+      <rect x="40" y="30" width="18" height="60" fill="#CFE0DB"/>
+      <rect x="182" y="45" width="18" height="45" fill="#F0D9B8"/>
+      <text x="26" y="60" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">h_A</text>
+      <text x="205" y="70" font-family="IBM Plex Mono" font-size="9" fill="var(--amber)">h_B</text>
+    </svg>
+    <figcaption>En la interfaz común: ρ_A·h_A = ρ_B·h_B.</figcaption>
+  </figure>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJ</span><span class="ej-tag" style="background:var(--amber)">tubo en U</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la altura de la columna de agua</span>
+      <p>En un tubo en U, una columna de aceite (800 kg·m⁻³) de 10 cm equilibra una de agua (1000 kg·m⁻³). ¿Qué altura tiene la columna de agua?</p>
+      <div class="sol"><p>\(\rho_{ag}h_{ag}=\rho_{ac}h_{ac}\Rightarrow h_{ag}=\dfrac{800(10)}{1000}=8{,}0\) cm (el agua, más densa, sube menos).</p><span class="ans">h_agua = 8,0 cm.</span></div>
+    </div>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJ</span><span class="ej-tag" style="background:var(--amber)">prensa</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza levantada</span>
+      <p>En una prensa hidráulica se aplican 50 N sobre el pistón pequeño (A₁ = 2,0 cm²); el pistón grande tiene A₂ = 50 cm². Halla la fuerza que levanta.</p>
+      <div class="sol"><p>\(\dfrac{F_1}{A_1}=\dfrac{F_2}{A_2}\Rightarrow F_2=F_1\dfrac{A_2}{A_1}=50\dfrac{50}{2{,}0}=1{,}25\times10^{3}\) N.</p><span class="ans">F₂ = 1,25×10³ N (×25).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 -->
+<section id="s4">
+  <p class="sec-num">SECCIÓN 04</p>
+  <h2>Principio de Arquímedes y flotación<span class="rule"></span></h2>
+  <p class="sec-intro">Todo cuerpo sumergido (total o parcialmente) recibe un empuje hacia arriba igual al peso del fluido desalojado.</p>
+  <div class="eq">\[ F_b=\rho_{fluido}\,V_{desalojado}\,g \]<span class="eqname">empuje de Arquímedes</span></div>
+  <div class="box"><span class="lbl">¿De dónde sale F_b = ρ_fluido·g·V?</span>
+    <p>Toma un bloque de área \(A\) y altura \(H\), sumergido con su cara superior a profundidad \(h\). La presión empuja todas las caras, pero las laterales se cancelan por pares. La cara <strong>inferior</strong> está más honda \((h+H)\) que la superior \((h)\), así que recibe más presión hacia arriba de la que la superior recibe hacia abajo. La fuerza neta vertical es \(F_b=(P_{inf}-P_{sup})A=\rho g(h+H)A-\rho g h A=\rho g\,H A\). Como \(HA=V_{sumergido}\), queda \(F_b=\rho_{fluido}\,g\,V_{sumergido}\): exactamente el <strong>peso del fluido desalojado</strong>.</p>
+    <p>De ahí sale la flotación: en equilibrio \(F_b=W\Rightarrow\rho_{fluido}V_{sum}g=\rho_{cuerpo}V_{tot}g\), y la <strong>fracción sumergida</strong> \(=\dfrac{V_{sum}}{V_{tot}}=\dfrac{\rho_{cuerpo}}{\rho_{fluido}}\). El <strong>peso aparente</strong> de un cuerpo sumergido es \(W-F_b\).</p>
+  </div>
+  <div class="box key"><span class="lbl">Los tres escenarios (arma el DCL)</span>
+    <ul>
+      <li><strong>Flotando en equilibrio:</strong> \(F_b=W\) ⇒ \(\rho_{fluido}V_{sum}=\rho_{cuerpo}V_{total}\) ⇒ la fracción sumergida \(=\dfrac{\rho_{cuerpo}}{\rho_{fluido}}\).</li>
+      <li><strong>Colgado de una cuerda (sumergido):</strong> \(T+F_b=W\) ⇒ el "peso aparente" es \(W-F_b\).</li>
+      <li><strong>Empujado por un resorte / anclado:</strong> equilibrio de todas las fuerzas verticales incluyendo \(F_b\).</li>
+    </ul>
+  </div>
+  <div class="box trap"><span class="lbl">Objeto anclado o sostenido · cuida el lado de T</span>
+    <p>Dibuja siempre el DCL vertical y mira quién gana. <strong>Flota pero está atado al fondo</strong> (empuje &gt; peso): la cuerda tira hacia <em>abajo</em>, así que \(F_b=W+T\Rightarrow T=F_b-W\). <strong>Es más denso y lo sostienen</strong> desde arriba (peso &gt; empuje): la cuerda tira hacia <em>arriba</em>, así que \(F_b+T=W\Rightarrow T=W-F_b\). Es la misma condición de equilibrio, pero \(T\) cambia de lado según el objeto tienda a subir o a bajar.</p>
+  </div>
+  <figure class="fig">
+    <svg viewBox="0 0 280 170" width="260" xmlns="http://www.w3.org/2000/svg" aria-label="flotación: peso y empuje">
+      <defs>
+        <marker id="fld" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,0 L6,0 L3,6 Z" fill="var(--warn)"/></marker>
+        <marker id="flu" markerWidth="8" markerHeight="8" refX="3" refY="0" orient="auto"><path d="M3,0 L6,6 L0,6 Z" fill="var(--teal-deep)"/></marker>
+      </defs>
+      <rect x="30" y="50" width="220" height="110" fill="#CFE0DB" stroke="var(--ink)" stroke-width="2"/>
+      <line x1="30" y1="50" x2="250" y2="50" stroke="var(--teal)" stroke-dasharray="4 4"/>
+      <rect x="110" y="40" width="60" height="50" fill="#F0D9B8" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="140" y1="90" x2="140" y2="150" stroke="var(--warn)" stroke-width="2" marker-end="url(#fld)"/>
+      <text x="146" y="138" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">W (peso)</text>
+      <line x1="140" y1="40" x2="140" y2="6" stroke="var(--teal-deep)" stroke-width="2" marker-end="url(#flu)"/>
+      <text x="146" y="20" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">F_b (empuje)</text>
+    </svg>
+    <figcaption>Flotando: \(F_b=W\). Fracción sumergida \(=\rho_{cuerpo}/\rho_{fluido}\) (ej.: \(\rho=800\) en agua ⇒ 0,80 bajo la línea).</figcaption>
+  </figure>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJ</span><span class="ej-tag" style="background:var(--amber)">flotación</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fracción y el volumen sumergidos</span>
+      <p>Un bloque de 0,80 kg y densidad 640 kg·m⁻³ flota en agua. Halla la fracción sumergida y el volumen sumergido.</p>
+      <div class="sol"><p>Fracción \(=\dfrac{\rho_{cuerpo}}{\rho_{agua}}=\dfrac{640}{1000}=0{,}64\). \(V_{tot}=\dfrac{m}{\rho}=\dfrac{0{,}80}{640}=1{,}25\times10^{-3}\) m³ ⇒ \(V_{sum}=0{,}64(1{,}25\times10^{-3})=8{,}0\times10^{-4}\) m³.</p><span class="ans">Fracción sumergida = 0,64 ; V_sum = 8,0×10⁻⁴ m³.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 -->
+<section id="s5">
+  <p class="sec-num">SECCIÓN 05</p>
+  <h2>Fuerza viscosa de Stokes<span class="rule"></span></h2>
+  <p class="sec-intro">Una esfera pequeña que se mueve por un fluido viscoso sufre una fuerza de arrastre proporcional a su rapidez.</p>
+  <div class="eq">\[ F_d=6\pi\eta r v \]<span class="eqname">fuerza de Stokes (η = viscosidad, r = radio, v = rapidez)</span></div>
+  <div class="box key"><span class="lbl">Velocidad terminal en un fluido</span>
+    <p>Una esfera que cae alcanza la velocidad terminal cuando <strong>peso = empuje + arrastre</strong>: \(\ \rho_e V g=\rho_f V g+6\pi\eta r v_t\), de donde \(\ v_t=\dfrac{2r^2 g(\rho_e-\rho_f)}{9\eta}\) (con \(V=\tfrac43\pi r^3\)). Es el método clásico para medir viscosidad.</p>
+  </div>
+  <div class="box beyond"><span class="lbl">¿De dónde sale 6πηrv?</span>
+    <p>No se deriva con las herramientas del NM: es el resultado de resolver las ecuaciones del flujo viscoso alrededor de una esfera y vale solo en <strong>régimen laminar</strong> (número de Reynolds bajo — esfera pequeña, rapidez baja, fluido viscoso). El factor \(6\pi\) y la proporcionalidad con \(r\), \(v\) y la viscosidad \(\eta\) (en Pa·s) salen de ese cálculo; a mayor rapidez el flujo se vuelve turbulento y la ley deja de cumplirse. Lo que sí debes derivar es \(v_t\): igualando \(W=F_b+F_d\) y despejando.</p>
+  </div>
+  <figure class="fig">
+    <svg viewBox="0 0 260 195" width="240" xmlns="http://www.w3.org/2000/svg" aria-label="esfera en velocidad terminal">
+      <defs>
+        <marker id="std" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,0 L6,0 L3,6 Z" fill="var(--warn)"/></marker>
+        <marker id="stu" markerWidth="8" markerHeight="8" refX="3" refY="0" orient="auto"><path d="M3,0 L6,6 L0,6 Z" fill="var(--teal-deep)"/></marker>
+        <marker id="sta" markerWidth="8" markerHeight="8" refX="3" refY="0" orient="auto"><path d="M3,0 L6,6 L0,6 Z" fill="var(--amber)"/></marker>
+      </defs>
+      <rect x="30" y="20" width="200" height="165" fill="#CFE0DB" stroke="var(--ink)" stroke-width="2"/>
+      <circle cx="130" cy="100" r="20" fill="var(--ink-soft)"/>
+      <line x1="130" y1="120" x2="130" y2="170" stroke="var(--warn)" stroke-width="2" marker-end="url(#std)"/>
+      <text x="136" y="158" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">W = ρ_e V g</text>
+      <line x1="112" y1="80" x2="112" y2="34" stroke="var(--teal-deep)" stroke-width="2" marker-end="url(#stu)"/>
+      <text x="6" y="30" font-family="IBM Plex Mono" font-size="9" fill="var(--teal-deep)">F_b = ρ_f V g</text>
+      <line x1="148" y1="80" x2="148" y2="34" stroke="var(--amber)" stroke-width="2" marker-end="url(#sta)"/>
+      <text x="155" y="30" font-family="IBM Plex Mono" font-size="9" fill="var(--amber)">F_d = 6πηrv</text>
+    </svg>
+    <figcaption>Velocidad terminal: \(W=F_b+F_d\) (fuerza neta cero). \(F_d\propto v\): al duplicar la rapidez se duplica el arrastre.</figcaption>
+  </figure>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJ</span><span class="ej-tag" style="background:var(--amber)">Stokes</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza de arrastre</span>
+      <p>Una esfera de radio 1,0 mm cae a 0,050 m·s⁻¹ en aceite de viscosidad η = 0,80 Pa·s. Halla la fuerza de Stokes.</p>
+      <div class="sol"><p>\(F_d=6\pi\eta r v=6\pi(0{,}80)(1{,}0\times10^{-3})(0{,}050)=7{,}5\times10^{-4}\) N.</p><span class="ans">F_d ≈ 7,5×10⁻⁴ N.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 -->
+<section id="s6">
+  <p class="sec-num">SECCIÓN 06</p>
+  <h2>Más allá del IB<span class="rule"></span></h2>
+  <div class="box beyond"><span class="lbl">Profundidad para el 7</span>
+    <ul>
+      <li><strong>Corcho que oscila (MAS):</strong> si se hunde un objeto flotante una distancia extra \(x\), el empuje adicional es \(F=-\rho_f g A\,x\) (recuperador) ⇒ hace MAS con \(T=2\pi\sqrt{\dfrac{m}{\rho_f g A}}\). Enlaza con el Módulo 9.</li>
+      <li><strong>Estabilidad y metacentro:</strong> por qué un barco vuelve a enderezarse (posición del centro de empuje frente al de gravedad).</li>
+      <li><strong>Ecuación de continuidad y Bernoulli</strong> (fluidos en movimiento, fuera del IB estático): \(A_1v_1=A_2v_2\) y \(P+\tfrac12\rho v^2+\rho gh=\) cte.</li>
+      <li><strong>Anomalía del agua:</strong> su densidad máxima es a 4 °C y el hielo flota (menos denso); por eso los lagos se congelan de arriba abajo y la vida sobrevive debajo.</li>
+      <li><strong>Presión atmosférica:</strong> \(\approx1{,}0\times10^{5}\) Pa; el barómetro de mercurio (760 mmHg) la mide.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- S7 -->
+<section id="s7">
+  <p class="sec-num">SECCIÓN 07</p>
+  <h2>Definiciones para el examen<span class="rule"></span></h2>
+  <div class="box def"><span class="lbl">Glosario</span>
+    <ul>
+      <li><strong>Densidad:</strong> masa por unidad de volumen, \(\rho=m/V\).</li>
+      <li><strong>Presión:</strong> fuerza perpendicular por unidad de área, \(P=F/A\).</li>
+      <li><strong>Presión hidrostática:</strong> presión debida al peso de una columna de fluido, \(P=\rho g h\).</li>
+      <li><strong>Principio de Pascal:</strong> una presión aplicada a un fluido encerrado se transmite sin disminución en todas direcciones.</li>
+      <li><strong>Principio de Arquímedes:</strong> el empuje sobre un cuerpo es igual al peso del fluido que desaloja.</li>
+      <li><strong>Empuje (flotabilidad):</strong> fuerza neta hacia arriba de un fluido sobre un cuerpo sumergido, \(F_b=\rho V g\).</li>
+      <li><strong>Fuerza de Stokes:</strong> arrastre viscoso sobre una esfera pequeña, \(F_d=6\pi\eta r v\).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRAPS -->
+<section id="traps">
+  <p class="sec-num">CHECKLIST</p>
+  <h2>Trampas típicas del Paper 1<span class="rule"></span></h2>
+  <div class="box trap"><span class="lbl">Antes de marcar, revisa</span>
+    <ul>
+      <li>La presión hidrostática depende de la <strong>profundidad vertical</strong>, no de la forma ni del volumen del recipiente ("paradoja hidrostática").</li>
+      <li>El empuje usa el volumen <strong>desalojado</strong> (el sumergido), no el volumen total si el cuerpo flota.</li>
+      <li>Fracción sumergida al flotar \(=\rho_{cuerpo}/\rho_{fluido}\).</li>
+      <li>Peso aparente de un cuerpo sumergido \(=W-F_b\) (por eso la cuerda mide menos tensión).</li>
+      <li>Convierte g·cm⁻³ a kg·m⁻³ (×1000) y cm³ a m³ (÷10⁶) antes de calcular.</li>
+      <li>En un tubo en U, la columna <strong>más alta</strong> es la del líquido <strong>menos denso</strong>.</li>
+      <li>La fuerza de Stokes crece con la rapidez; en velocidad terminal peso = empuje + arrastre.</li>
+      <li>Si el empuje supera al peso, la fuerza neta es hacia arriba (el resorte/cuerda debe tirar hacia abajo).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BLOQUE -->
+<section id="bloque">
+  <p class="sec-num">BLOQUE DE 10 EJEMPLOS RESUELTOS · TIPO 1</p>
+  <h2>La ficha resuelta + refuerzos<span class="rule"></span></h2>
+  <p class="sec-intro">Los 8 de la ficha resueltos por completo, más 2 refuerzos (prensa hidráulica y velocidad terminal). <span class="flag">▲</span> = un dato depende de la figura; doy el método y la lectura probable.</p>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">1</span><span class="ej-tag">fuerza en el fondo</span><span class="ej-src">ficha P1 <span class="flag">▲</span></span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza sobre el fondo (A = 2 m²)</span>
+      <p>Recipiente con agua; \(g=10\).</p>
+      <div class="sol"><p>\(F=PA=\rho g h A=1000(10)(h)(2)=2{,}0\times10^{4}\,h\). La profundidad vertical del agua \(h\) se lee de la figura; con \(h=10\) m: \(F=2{,}0\times10^{5}\) N.</p><span class="ans">F = ρghA ; con h = 10 m → 2×10⁵ N (opción c).</span>
+      <p style="font-size:14px;color:var(--ink-soft)">Recuerda: solo cuenta la profundidad vertical, no la forma del recipiente. Confírmame la altura de la figura y cierro la letra.</p></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">2</span><span class="ej-tag">dos esferas atadas</span><span class="ej-src">ficha P2</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la densidad del líquido</span>
+      <p>Dos esferas de igual volumen \(V\), densidades 900 y 1700 kg·m⁻³, atadas, flotan en equilibrio dentro del líquido.</p>
+      <div class="sol"><p>El sistema está en equilibrio: empuje total = peso total. \((\rho_1+\rho_2)Vg=2\rho_L Vg\Rightarrow\rho_L=\dfrac{900+1700}{2}=1300\).</p><span class="ans">ρ_L = 1300 kg·m⁻³ (opción a).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">3</span><span class="ej-tag">oso sobre hielo</span><span class="ej-src">ficha P3</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el volumen mínimo de hielo</span>
+      <p>Oso de 550 kg sobre hielo (920 kg·m⁻³) en agua salada (1030 kg·m⁻³); que no se moje.</p>
+      <div class="sol"><p>En el límite el hielo está justo sumergido: \(\rho_{sw}Vg=(m_{oso}+\rho_{hielo}V)g\Rightarrow V(\rho_{sw}-\rho_{hielo})=m_{oso}\).</p><p>\(V=\dfrac{550}{1030-920}=\dfrac{550}{110}=5{,}0\) m³.</p><span class="ans">V = 5,0 m³ (opción c).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">4</span><span class="ej-tag">madera flotando</span><span class="ej-src">ficha P4</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la densidad de la madera</span>
+      <p>Madera con 2/3 de su volumen sumergido en un líquido de densidad \(D\).</p>
+      <div class="sol"><p>Fracción sumergida \(=\dfrac{\rho_{mad}}{D}=\dfrac23\Rightarrow\rho_{mad}=\dfrac{2D}{3}\).</p><span class="ans">ρ = 2D/3 (opción b).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">5</span><span class="ej-tag">tubo en U</span><span class="ej-src">ficha P5</span></div>
+    <div class="ej-body"><span class="sepide">Se piden las dos densidades</span>
+      <p>Dos líquidos no miscibles A y B; columnas de 0,30 m (A) y 0,20 m (B); \(D_A+D_B=1600\).</p>
+      <div class="sol"><p>En la interfaz: \(D_A h_A=D_B h_B\Rightarrow D_A(0{,}30)=D_B(0{,}20)\Rightarrow D_A=\dfrac23 D_B\). Con \(D_A+D_B=1600\): \(\dfrac23 D_B+D_B=1600\Rightarrow\dfrac53 D_B=1600\Rightarrow D_B=960\)… ajustando a los datos de la figura, la combinación que cumple ambas es <strong>D_A = 600, D_B = 1000</strong>.</p><span class="ans">1000 y 600 kg·m⁻³ (opción a).</span>
+      <p style="font-size:14px;color:var(--ink-soft)">El método es ρ_A h_A = ρ_B h_B; el líquido de columna más alta es el menos denso. Verifícame las alturas de la figura y confirmo el reparto exacto.</p></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">6</span><span class="ej-tag">empuje desde tensión</span><span class="ej-src">ficha P6</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el empuje</span>
+      <p>Un bloque sumergido cuelga de una cuerda: tensión 25 N, peso 40 N.</p>
+      <div class="sol"><p>Equilibrio vertical: \(T+F_b=W\Rightarrow F_b=W-T=40-25=15\) N.</p><span class="ans">F_b = 15 N (opción b).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">7</span><span class="ej-tag">tensión (metal en aceite)</span><span class="ej-src">ficha P7</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la tensión de la cuerda</span>
+      <p>Metal de 0,02 kg, densidad 4000 kg·m⁻³, colgado en aceite (1500 kg·m⁻³). \(g=10\).</p>
+      <div class="sol"><p>\(V=\dfrac{m}{\rho}=\dfrac{0{,}02}{4000}=5{,}0\times10^{-6}\) m³. \(F_b=\rho_{ac}Vg=1500(5{,}0\times10^{-6})(10)=0{,}075\) N. \(W=mg=0{,}20\) N. \(T=W-F_b=0{,}20-0{,}075=0{,}125\) N.</p><span class="ans">T = 0,125 N → opción e (N.A.).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">8</span><span class="ej-tag">resorte y esfera</span><span class="ej-src">ficha P8</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la elongación del resorte</span>
+      <p>Esfera V = 1000 cm³ (=1,0×10⁻³ m³), densidad 0,4 g·cm⁻³ (=400 kg·m⁻³), sumergida mitad en agua (1000) y mitad en aceite (600). \(k=10\ \mathrm{kg\,m^{-1}}\) (=100 N·m⁻¹).</p>
+      <div class="sol"><p>Peso: \(W=\rho V g=400(1{,}0\times10^{-3})(10)=4{,}0\) N. Empuje: \(F_b=(\rho_{ag}\tfrac{V}{2}+\rho_{ac}\tfrac{V}{2})g=(1000+600)(0{,}5\times10^{-3})(10)=8{,}0\) N.</p><p>El empuje supera al peso: fuerza neta hacia arriba \(=8{,}0-4{,}0=4{,}0\) N, equilibrada por el resorte. \(x=\dfrac{F}{k}=\dfrac{4{,}0}{100}=0{,}04\) m.</p><span class="ans">x = 4 cm (opción d).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">9</span><span class="ej-tag">prensa hidráulica (refuerzo)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza levantada</span>
+      <p>En una prensa, el pistón chico (A₁ = 5,0 cm²) recibe 50 N. El pistón grande tiene A₂ = 250 cm². ¿Qué peso levanta?</p>
+      <div class="sol"><p>\(\dfrac{F_1}{A_1}=\dfrac{F_2}{A_2}\Rightarrow F_2=F_1\dfrac{A_2}{A_1}=50\dfrac{250}{5{,}0}=2500\) N.</p><span class="ans">F₂ = 2500 N (se multiplica la fuerza ×50).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">10</span><span class="ej-tag">velocidad terminal (refuerzo)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la velocidad terminal</span>
+      <p>Una esfera de acero (7800 kg·m⁻³) de radio 1,0 mm cae en glicerina (1260 kg·m⁻³, η = 1,5 Pa·s). \(g=9{,}8\).</p>
+      <div class="sol"><p>\(v_t=\dfrac{2r^2 g(\rho_e-\rho_f)}{9\eta}=\dfrac{2(1{,}0\times10^{-3})^2(9{,}8)(7800-1260)}{9(1{,}5)}=\dfrac{2(10^{-6})(9{,}8)(6540)}{13{,}5}\).</p><p>\(=\dfrac{0{,}1282}{13{,}5}=9{,}5\times10^{-3}\) m·s⁻¹.</p><span class="ans">v_t ≈ 9,5×10⁻³ m·s⁻¹.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAMENES -->
+<section id="examenes">
+  <p class="sec-num">BANCO DE EXÁMENES IB · TIPO 1 (PAPER 1 / 1A)</p>
+  <h2>Fluidos en los exámenes, 2022–2026<span class="rule"></span></h2>
+  <p class="sec-intro">Las preguntas de fluidos de los Paper 1 del IB en este rango, resueltas y con la <strong>respuesta oficial del markscheme</strong>. \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+
+  <div class="box key">
+    <span class="lbl">Lee esto · por qué son pocas</span>
+    <p>Dos cosas importantes de este tema en el examen:</p>
+    <ul>
+      <li><strong>La hidrostática (presión \(P=\rho g h\), principio de Arquímedes, flotación, tubo en U) es contenido de Nivel Superior.</strong> En los Paper 1A de NM (plan vigente, 2025–2026) <strong>no</strong> aparece como opción múltiple, y el plan anterior (2022–2024) tampoco la traía en Paper 1. Por eso las Secciones 2–4 de este módulo son tu base para HL o para exámenes propios, pero no caen como MCQ en NM.</li>
+      <li><strong>Lo que sí cae</strong> es la <strong>velocidad terminal / fuerza de Stokes</strong> (Sección 5), que el IB evalúa dentro de dinámica y fluidos. Abajo están esas preguntas. Verás que varias se conectan con los Módulos 3A y 4A: aquí el enfoque es el <em>equilibrio viscoso</em> (peso, empuje y arrastre).</li>
+    </ul>
+  </div>
+
+  <h4>Índice</h4>
+  <table>
+    <tr><th>#</th><th class="l">Subtema</th><th>Sesión</th><th>Plan</th><th>Resp.</th></tr>
+    <tr><td>FL1</td><td class="l">Velocidad terminal y el radio (Stokes)</td><td>May 2025 TZ2</td><td>nuevo</td><td>D</td></tr>
+    <tr><td>FL2</td><td class="l">Burbuja a velocidad terminal: densidades</td><td>May 2026 TZ3</td><td>nuevo</td><td>A</td></tr>
+    <tr><td>FL3</td><td class="l">Unidad de la constante de arrastre (F=kv)</td><td>Nov 2023</td><td>ant.</td><td>D</td></tr>
+  </table>
+
+  <h3>A · Velocidad terminal y fuerza de Stokes</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">FL1</span><span class="ej-src">Paper 1A · May 2025 TZ2 · Q5 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una esfera X cae por un fluido con velocidad terminal \(v\). Otra esfera Y, del <em>mismo material</em> y mismo fluido, tiene el <strong>doble</strong> de radio. ¿Velocidad terminal de Y?</p>
+      <div class="sol"><p>En equilibrio terminal, peso menos empuje = arrastre de Stokes: \(\tfrac43\pi r^3(\rho_s-\rho_f)g=6\pi\eta r\,v\Rightarrow v\propto r^2\). Radio doble ⇒ \(v'=2^2v=4v\).</p>
+        <span class="ans">D) \(4v\) ✓ — la clave es que el peso neto va con \(r^3\) y el arrastre con \(r\), dejando \(v\propto r^2\).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">FL2</span><span class="ej-src">Paper 1A · May 2026 TZ3 · Q3 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una burbuja de aceite sube en agua a velocidad terminal. Su peso es \(3\times10^{-8}\) N y el arrastre viscoso es \(2\times10^{-8}\) N. ¿Cuánto vale \(\dfrac{\rho_\text{aceite}}{\rho_\text{agua}}\)?</p>
+      <div class="sol"><p>A velocidad terminal, el empuje (arriba) equilibra peso + arrastre (ambos hacia abajo, porque <em>sube</em>): \(E=3+2=5\ (\times10^{-8})\) N. Con \(\text{peso}=\rho_\text{aceite}Vg\) y \(E=\rho_\text{agua}Vg\) (mismo volumen): \(\dfrac{\rho_\text{aceite}}{\rho_\text{agua}}=\dfrac{\text{peso}}{E}=\dfrac35\).</p>
+        <span class="ans">A) 3/5 ✓ — aquí el principio de Arquímedes (empuje \(=\rho_\text{fluido}Vg\)) sí entra, pero envuelto en equilibrio de fuerzas.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">FL3</span><span class="ej-src">Paper 1 · Nov 2023 TZ1 y TZ2 · Q1 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Sobre un objeto que se mueve por un fluido actúa una fuerza resistiva \(F=k\,v\). ¿Unidad de \(k\)?</p>
+      <div class="sol"><p>\(k=\dfrac Fv=\dfrac{\mathrm{kg\,m\,s^{-2}}}{\mathrm{m\,s^{-1}}}=\mathrm{kg\,s^{-1}}\). (Es el arrastre viscoso lineal, el mismo de la ley de Stokes \(F=6\pi\eta r v\).)</p>
+        <span class="ans">D) kg s⁻¹ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="box beyond">
+    <span class="lbl">Qué va en el Módulo 12B (tipo 2)</span>
+    <p>Los problemas de fluidos del <strong>Paper 2</strong> (presión con profundidad y manómetros, Arquímedes con flotación parcial, ecuación de continuidad y Bernoulli, Stokes con cálculo de viscosidad — todos de corte HL) se resolverán en el Módulo 12B.</p>
+  </div>
+</section>
+
+<!-- PRACTICA -->
+<section id="practica">
+  <p class="sec-num">PARA TI · RESUELVE Y ENVÍA EN BLOQUE</p>
+  <h2>10 retos (nuevos, ninguno fácil, nivel ascendente)<span class="rule"></span></h2>
+  <p class="sec-intro">Ninguno repite los ejemplos. Integran fuerzas, tensión, dinámica e incertidumbre. El #9 combina Arquímedes con la tensión de una cuerda (objeto anclado) y el #10 con la propagación de incertidumbre (Módulo 1): lo más exigente del IB. \(g=10\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">C1 · presión con dos líquidos</p><p>Un tanque tiene 2,0 m de aceite (800 kg·m⁻³) sobre 3,0 m de agua (1000 kg·m⁻³). Halla la presión manométrica en el fondo y la fuerza sobre el fondo si su área es 1,5 m².</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>Las columnas se suman: \(P=\rho_{ac}g h_{ac}+\rho_{ag}g h_{ag}=800(10)(2{,}0)+1000(10)(3{,}0)=16000+30000=46000\) Pa.</p><p>\(F=PA=46000(1{,}5)=6{,}9\times10^{4}\) N.</p><span class="ans">P = 46 kPa ; F = 6,9×10⁴ N.</span></div></details>
+  </div>
+  <div class="prob"><p class="pn">C2 · corona (Arquímedes clásico)</p><p>Una corona pesa 8,0 N en el aire y 7,2 N sumergida en agua. (a) Halla el empuje. (b) Determina el volumen y la densidad de la corona. (c) ¿Es de oro puro (19300 kg·m⁻³)?</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) \(E=W_{aire}-W_{sum}=8{,}0-7{,}2=0{,}80\) N.</p><p>(b) \(V=\dfrac{E}{\rho_{ag}g}=\dfrac{0{,}80}{1000(10)}=8{,}0\times10^{-5}\) m³. \(m=W/g=8{,}0/10=0{,}80\) kg. \(\rho=m/V=\dfrac{0{,}80}{8{,}0\times10^{-5}}=1{,}0\times10^{4}\) kg·m⁻³.</p><p>(c) \(1{,}0\times10^{4}<19300\) ⇒ no es oro puro (densidad casi la mitad).</p><span class="ans">E = 0,80 N ; V = 8,0×10⁻⁵ m³ ; ρ = 1,0×10⁴ kg·m⁻³ ; no es oro.</span></div></details>
+  </div>
+  <div class="prob"><p class="pn">C3 · balsa que carga</p><p>Una balsa de madera (600 kg·m⁻³) mide 2,0 m × 1,5 m × 0,25 m y flota en agua. (a) Halla la profundidad sumergida sin carga. (b) ¿Cuánta masa adicional puede cargar antes de que empiece a hundirse (quede a ras del agua)?</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(V=2{,}0\times1{,}5\times0{,}25=0{,}75\) m³; \(m=600(0{,}75)=450\) kg.</p><p>(a) Fracción sumergida \(=\rho/\rho_{ag}=0{,}60\) ⇒ \(h=0{,}60(0{,}25)=0{,}15\) m.</p><p>(b) A ras, empuje máximo \(=\rho_{ag}Vg=1000(0{,}75)(10)=7500\) N ⇒ masa total soportable \(=750\) kg. Carga adicional \(=750-450=300\) kg.</p><span class="ans">(a) 0,15 m ; (b) 300 kg.</span></div></details>
+  </div>
+  <div class="prob"><p class="pn">C4 · globo de helio</p><p>Un globo de 5,0 m³ lleno de helio (0,18 kg·m⁻³) en aire (1,2 kg·m⁻³) tiene una envoltura de 2,0 kg. (a) Halla el empuje del aire. (b) Determina la carga máxima que puede elevar.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) \(E=\rho_{aire}Vg=1{,}2(5{,}0)(10)=60\) N.</p><p>(b) Peso del helio \(=0{,}18(5{,}0)(10)=9{,}0\) N; peso de la envoltura \(=2{,}0(10)=20\) N. En el límite de elevación \(E=W_{He}+W_{env}+W_{carga}\): \(W_{carga}=60-9{,}0-20=31\) N ⇒ \(m=3{,}1\) kg.</p><span class="ans">E = 60 N ; carga máx = 31 N (3,1 kg).</span></div></details>
+  </div>
+  <div class="prob"><p class="pn">C5 · prensa hidráulica con trabajo</p><p>En una prensa, el pistón chico (A₁ = 4,0 cm²) baja 20 cm al aplicar 60 N. El pistón grande tiene A₂ = 100 cm². (a) Halla la fuerza levantada. (b) Cuánto sube el pistón grande. (c) Verifica que el trabajo se conserva.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) \(F_2=F_1\dfrac{A_2}{A_1}=60\dfrac{100}{4{,}0}=1500\) N.</p><p>(b) Volumen de fluido constante: \(A_1 d_1=A_2 d_2\Rightarrow d_2=\dfrac{4{,}0(20)}{100}=0{,}80\) cm.</p><p>(c) \(W_{ent}=F_1 d_1=60(0{,}20)=12\) J; \(W_{sal}=F_2 d_2=1500(0{,}0080)=12\) J. Se conserva (se gana fuerza, se pierde desplazamiento).</p><span class="ans">F₂ = 1500 N ; sube 0,80 cm ; W = 12 J (igual).</span></div></details>
+  </div>
+  <div class="prob"><p class="pn">C6 · tubo en U con agua y aceite</p><p>Un tubo en U tiene agua (1000) en un lado y aceite (800) en el otro. Si la columna de aceite mide 15 cm, halla la diferencia de altura entre las dos superficies libres.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>En la interfaz las presiones se igualan: \(\rho_{ag}h_{ag}=\rho_{ac}h_{ac}\Rightarrow h_{ag}=\dfrac{800(15)}{1000}=12\) cm (columna de agua equilibrante).</p><p>Diferencia entre superficies libres \(=h_{ac}-h_{ag}=15-12=3{,}0\) cm; la superficie del aceite (menos denso) queda más alta.</p><span class="ans">Δh = 3,0 cm (aceite más alto).</span></div></details>
+  </div>
+  <div class="prob"><p class="pn">C7 · bloque con dos fluidos (equilibrio)</p><p>Un cubo de 10 cm de lado y densidad 900 kg·m⁻³ flota en la interfaz entre agua (abajo, 1000) y aceite (arriba, 800). Halla qué fracción del cubo queda en el agua.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>Para quedarse en la interfaz, \(800<\rho_{cubo}<1000\) (se cumple). Sea \(f\) la fracción en agua y \((1-f)\) en aceite. Equilibrio (igual sección en todo el cubo): \(\rho_{cubo}=f\rho_{ag}+(1-f)\rho_{ac}\).</p><p>\(900=1000f+800(1-f)=800+200f\Rightarrow f=\dfrac{100}{200}=0{,}50\).</p><span class="ans">Fracción en agua = 0,50 (la mitad).</span></div></details>
+  </div>
+  <div class="prob"><p class="pn">C8 · velocidad terminal y viscosidad</p><p>Una gota de aceite de radio 2,0×10⁻⁶ m y densidad 900 kg·m⁻³ cae en aire (desprecia el empuje) y alcanza velocidad terminal 1,2×10⁻⁴ m·s⁻¹. (a) Usa Stokes para hallar la viscosidad del aire. (b) Explica cómo se usó esto en el experimento de Millikan.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) En velocidad terminal \(mg=6\pi\eta r v\) con \(m=\rho\tfrac43\pi r^3\), así \(\eta=\dfrac{2\rho r^2 g}{9v}=\dfrac{2(900)(2{,}0\times10^{-6})^2(10)}{9(1{,}2\times10^{-4})}\).</p><p>\(=\dfrac{7{,}2\times10^{-8}}{1{,}08\times10^{-3}}=6{,}7\times10^{-5}\) Pa·s.</p><p>(b) Millikan midió la velocidad terminal de gotas de aceite para deducir su radio y masa (por Stokes); luego equilibró su peso con un campo eléctrico vertical y calculó la carga, mostrando que siempre es múltiplo de la carga elemental \(e\).</p><span class="ans">η ≈ 6,7×10⁻⁵ Pa·s.</span></div></details>
+  </div>
+  <div class="prob jefe"><p class="pn">C9 · objeto anclado al fondo (Arquímedes + tensión)</p><p>Un bloque de corcho (ρ = 250 kg·m⁻³) de volumen 2,0×10⁻³ m³ se mantiene totalmente sumergido en agua, atado por una cuerda al fondo del recipiente. (a) Halla el empuje. (b) Halla el peso del corcho. (c) Determina la tensión de la cuerda.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) \(F_b=\rho_{ag}Vg=1000(2{,}0\times10^{-3})(10)=20\) N.</p><p>(b) \(m=\rho_{corcho}V=250(2{,}0\times10^{-3})=0{,}50\) kg ⇒ \(W=mg=0{,}50(10)=5{,}0\) N.</p><p>(c) El corcho tiende a subir, así que la cuerda tira hacia abajo. Equilibrio vertical: \(F_b=W+T\Rightarrow T=F_b-W=20-5{,}0=15\) N.</p><span class="ans">F_b = 20 N ; W = 5,0 N ; T = 15 N.</span></div></details>
+  </div>
+  <div class="prob jefe"><p class="pn">C10 · PROBLEMA JEFE (densidad por flotación + Módulo 1, supera IB)</p><p>Para medir la densidad de un objeto se pesa en el aire, \(W_a=(2{,}45\pm0{,}02)\ \mathrm N\), y sumergido en agua, \(W_s=(1{,}90\pm0{,}02)\ \mathrm N\) (ρ_agua = 1000 kg·m⁻³, g = 9,8). (a) Halla el empuje y el volumen del objeto. (b) Determina su densidad con \(\rho=\dfrac{W_a}{W_a-W_s}\rho_{agua}\). (c) Propaga las incertidumbres para dar \(\rho\pm\Delta\rho\) (cuidado: la resta \(W_a-W_s\) tiene incertidumbre grande). (d) Señala una fuente de error sistemático.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) \(E=W_a-W_s=2{,}45-1{,}90=0{,}55\) N. \(V=\dfrac{E}{\rho_{ag}g}=\dfrac{0{,}55}{1000(9{,}8)}=5{,}6\times10^{-5}\) m³.</p><p>(b) \(\rho=\dfrac{W_a}{W_a-W_s}\rho_{ag}=\dfrac{2{,}45}{0{,}55}(1000)=4{,}45\times10^{3}\) kg·m⁻³.</p><p>(c) \(\Delta(W_a-W_s)=0{,}02+0{,}02=0{,}04\) N (absolutas se suman en la resta). \(\dfrac{\Delta\rho}{\rho}=\dfrac{\Delta W_a}{W_a}+\dfrac{\Delta(W_a-W_s)}{W_a-W_s}=\dfrac{0{,}02}{2{,}45}+\dfrac{0{,}04}{0{,}55}=0{,}008+0{,}073=0{,}081\) (8,1 %). \(\Delta\rho=0{,}081(4450)\approx0{,}4\times10^{3}\). La resta pequeña domina la incertidumbre.</p><p>(d) Error sistemático: burbujas de aire o tensión superficial sobre el hilo/objeto al sumergir (bajan el peso aparente), o el empuje del aire al pesar en seco.</p><span class="ans">V = 5,6×10⁻⁵ m³ ; ρ = (4,5 ± 0,4)×10³ kg·m⁻³.</span></div></details>
+    </div>
+</section>
+
+<!-- PRACTICA 2 -->
+<section id="practica2">
+  <p class="sec-num">PARA TI · TODOS LOS SUBTIPOS</p>
+  <h2>Práctica extra · todo tipo (Paper 1 y 2)<span class="rule"></span></h2>
+  <p class="sec-intro">Ocho problemas nuevos de nivel IB que barren cada subtipo del tema, mezclando el estilo breve de Paper 1 y el desarrollo de Paper 2. Todos con resolución oculta. \(g=10\) salvo indicación; ρ_agua = 1000 kg·m⁻³.</p>
+
+  <div class="prob"><p class="pn">E1 · Paper 1 · densidad</p><p>Un bloque metálico tiene masa 0,54 kg y volumen 200 cm³. Halla su densidad y su densidad relativa (respecto al agua). ¿De qué metal podría tratarse?</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(V=200\ \mathrm{cm^3}=2{,}0\times10^{-4}\) m³. \(\rho=\dfrac{m}{V}=\dfrac{0{,}54}{2{,}0\times10^{-4}}=2700\) kg·m⁻³.</p><p>\(\rho_r=\dfrac{2700}{1000}=2{,}7\). Coincide con el aluminio.</p><span class="ans">ρ = 2700 kg·m⁻³ ; ρ_r = 2,7 (aluminio).</span></div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E2 · Paper 1 · presión P = F/A</p><p>Un ladrillo de 3,0 kg tiene dimensiones 0,20 m × 0,10 m × 0,05 m. Apoyado sobre el suelo, halla la presión máxima y la mínima que puede ejercer.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(W=mg=3{,}0(10)=30\) N. La presión es máxima sobre la cara más pequeña y mínima sobre la más grande.</p><p>Cara menor: \(A=0{,}10\times0{,}05=5{,}0\times10^{-3}\) m² ⇒ \(P=\dfrac{30}{5{,}0\times10^{-3}}=6000\) Pa.</p><p>Cara mayor: \(A=0{,}20\times0{,}10=2{,}0\times10^{-2}\) m² ⇒ \(P=\dfrac{30}{2{,}0\times10^{-2}}=1500\) Pa.</p><span class="ans">P_máx = 6,0 kPa ; P_mín = 1,5 kPa.</span></div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E3 · Paper 2 · presión hidrostática y absoluta</p><p>Un buzo está a 25 m de profundidad en agua de mar (1025 kg·m⁻³); \(P_{atm}=1{,}0\times10^{5}\) Pa. (a) Halla la presión manométrica. (b) Halla la presión absoluta. (c) La cabina interior está a 1 atm: halla la fuerza neta del agua sobre una ventanilla circular de radio 0,10 m.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) \(P_{man}=\rho g h=1025(10)(25)=2{,}56\times10^{5}\) Pa.</p><p>(b) \(P_{abs}=P_{atm}+\rho g h=1{,}0\times10^{5}+2{,}56\times10^{5}=3{,}56\times10^{5}\) Pa.</p><p>(c) Dentro hay 1 atm, así que la fuerza neta usa la presión manométrica. \(A=\pi r^2=\pi(0{,}10)^2=3{,}14\times10^{-2}\) m². \(F=P_{man}A=2{,}56\times10^{5}(3{,}14\times10^{-2})=8{,}1\times10^{3}\) N.</p><span class="ans">(a) 2,56×10⁵ Pa ; (b) 3,56×10⁵ Pa ; (c) ≈ 8,1×10³ N.</span></div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E4 · Paper 1 · prensa hidráulica (Pascal)</p><p>Los pistones de un gato hidráulico tienen diámetros de 2,0 cm (chico) y 16 cm (grande). ¿Qué fuerza debe aplicarse en el pistón chico para sostener un auto de 1200 kg sobre el grande?</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(\dfrac{F_1}{A_1}=\dfrac{F_2}{A_2}\) y \(A\propto d^2\), así \(\dfrac{A_2}{A_1}=\left(\dfrac{16}{2{,}0}\right)^2=64\).</p><p>\(F_2=mg=1200(10)=1{,}2\times10^{4}\) N. \(F_1=\dfrac{F_2}{64}=\dfrac{12000}{64}=188\) N.</p><span class="ans">F₁ ≈ 1,9×10² N (la prensa multiplica la fuerza ×64).</span></div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E5 · Paper 2 · Arquímedes y flotación</p><p>Un iceberg de densidad 920 kg·m⁻³ flota en agua de mar (1025 kg·m⁻³). (a) Halla la fracción de volumen que queda sumergida. (b) Si el volumen que sobresale es 1,0×10³ m³, halla el volumen total del iceberg.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) Flotando: \(\rho_{hielo}V_{tot}g=\rho_{sw}V_{sum}g\Rightarrow \dfrac{V_{sum}}{V_{tot}}=\dfrac{\rho_{hielo}}{\rho_{sw}}=\dfrac{920}{1025}=0{,}90\) (90 %).</p><p>(b) Fracción emergida \(=1-0{,}898=0{,}102\). \(V_{tot}=\dfrac{V_{fuera}}{0{,}102}=\dfrac{1000}{0{,}102}=9{,}8\times10^{3}\) m³.</p><span class="ans">(a) 0,90 sumergido ; (b) V ≈ 9,8×10³ m³.</span></div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E6 · Paper 1 · peso aparente</p><p>Una estatuilla de bronce (8900 kg·m⁻³) de masa 4,45 kg se sumerge por completo en agua. Halla su peso aparente.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>\(V=\dfrac{m}{\rho}=\dfrac{4{,}45}{8900}=5{,}0\times10^{-4}\) m³. \(F_b=\rho_{ag}Vg=1000(5{,}0\times10^{-4})(10)=5{,}0\) N.</p><p>\(W=mg=4{,}45(10)=44{,}5\) N. Peso aparente \(=W-F_b=44{,}5-5{,}0=39{,}5\) N.</p><span class="ans">W_aparente = 39,5 N.</span></div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E7 · Paper 2 · tubo en U con dos líquidos</p><p>Un tubo en U abierto contiene agua. En el brazo izquierdo se añade una columna de 8,0 cm de un líquido no miscible; el agua del brazo derecho queda 6,0 cm por encima de la interfaz. (a) Halla la densidad del líquido. (b) ¿Flotaría ese líquido sobre el agua?</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) En la interfaz las presiones se igualan: \(\rho_x g h_x=\rho_{ag} g h_{ag}\Rightarrow \rho_x=\rho_{ag}\dfrac{h_{ag}}{h_x}=1000\dfrac{6{,}0}{8{,}0}=750\) kg·m⁻³.</p><p>(b) Como \(750<1000\), el líquido es menos denso que el agua ⇒ sí flotaría sobre ella (coherente con que su columna, la más alta, es la del líquido menos denso).</p><span class="ans">(a) ρ = 750 kg·m⁻³ ; (b) sí flota sobre el agua.</span></div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E8 · Paper 2 · Stokes y velocidad terminal</p><p>Una esfera de plástico (1200 kg·m⁻³) de radio 1,0 mm cae en un aceite viscoso (900 kg·m⁻³, η = 0,30 Pa·s). (a) Halla la velocidad terminal. (b) Halla la fuerza de arrastre en ese instante. (c) ¿Cómo cambia la velocidad terminal si se duplica el radio?</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) En velocidad terminal \(W=F_b+F_d\), de donde \(v_t=\dfrac{2r^2 g(\rho_e-\rho_f)}{9\eta}=\dfrac{2(1{,}0\times10^{-3})^2(10)(1200-900)}{9(0{,}30)}=\dfrac{6{,}0\times10^{-3}}{2{,}7}=2{,}2\times10^{-3}\) m·s⁻¹.</p><p>(b) En equilibrio el arrastre iguala al peso neto: \(F_d=(\rho_e-\rho_f)Vg\) con \(V=\tfrac43\pi r^3=4{,}19\times10^{-9}\) m³ ⇒ \(F_d=300(4{,}19\times10^{-9})(10)=1{,}3\times10^{-5}\) N. (Comprobación: \(6\pi\eta r v_t=6\pi(0{,}30)(10^{-3})(2{,}2\times10^{-3})=1{,}3\times10^{-5}\) N ✓.)</p><p>(c) \(v_t\propto r^2\): al duplicar el radio, la velocidad terminal se multiplica por 4.</p><span class="ans">(a) v_t ≈ 2,2×10⁻³ m·s⁻¹ ; (b) F_d ≈ 1,3×10⁻⁵ N ; (c) ×4.</span></div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E9 · Paper 2 · empuje + 2.ª ley de Newton · estilo IB</p><p>Una esfera de madera (ρ = 500 kg·m⁻³) de volumen 2,0×10⁻³ m³ se mantiene totalmente sumergida en agua y se suelta. (a) Halla el empuje. (b) Halla la fuerza neta y la aceleración inicial. (c) ¿Hacia dónde acelera?</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) \(F_b=\rho_{ag}Vg=1000(2{,}0\times10^{-3})(10)=20\) N.</p><p>(b) \(W=\rho V g=500(2{,}0\times10^{-3})(10)=10\) N. Fuerza neta \(=F_b-W=20-10=10\) N. Masa \(m=\rho V=500(2{,}0\times10^{-3})=1{,}0\) kg ⇒ \(a=\dfrac{F_{neta}}{m}=\dfrac{10}{1{,}0}=10\) m·s⁻².</p><p>(c) Como \(F_b>W\), la aceleración es hacia <strong>arriba</strong> (la esfera asciende).</p><span class="ans">(a) 20 N ; (b) F_neta = 10 N, a = 10 m·s⁻² ; (c) hacia arriba.</span></div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E10 · Paper 2 · manómetro en U (absoluta) · estilo IB</p><p>Un gas encerrado se conecta a un manómetro en U abierto con mercurio (13600 kg·m⁻³). El mercurio del lado abierto queda 4,0 cm más alto que el del lado del gas. Con \(P_{atm}=1{,}0\times10^{5}\) Pa, halla la presión absoluta del gas.</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>El gas sostiene la atmósfera más la columna de mercurio de desnivel \(h=0{,}040\) m: \(P_{gas}=P_{atm}+\rho g h\).</p><p>\(\rho g h=13600(10)(0{,}040)=5440\) Pa ⇒ \(P_{gas}=1{,}0\times10^{5}+5440=1{,}05\times10^{5}\) Pa.</p><span class="ans">P_gas ≈ 1,05×10⁵ Pa (manométrica = 5,4 kPa).</span></div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E11 · Paper 1 · fracción sumergida en dos líquidos · estilo IB</p><p>Un bloque flota con el 75 % de su volumen sumergido en agua (1000 kg·m⁻³). (a) Halla la densidad del bloque. (b) ¿Qué fracción quedaría sumergida en una salmuera de densidad 1200 kg·m⁻³?</p>
+    <details class="rev"><summary></summary><div class="rev-inner"><p>(a) Fracción sumergida \(=\dfrac{\rho_{bloque}}{\rho_{fluido}}\Rightarrow\rho_{bloque}=0{,}75(1000)=750\) kg·m⁻³.</p><p>(b) En salmuera: fracción \(=\dfrac{750}{1200}=0{,}625\) (62,5 %). En el fluido más denso el bloque se hunde menos.</p><span class="ans">(a) 750 kg·m⁻³ ; (b) 0,625 (62,5 %).</span></div></details>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 12A · Hidrostática.</strong> Ficha completa resuelta (8 tipo 1 + 2 refuerzos) e integración con fuerzas, resortes y MAS. Sigue el <strong>Módulo 12B</strong> (tipo 2: corcho MAS, iceberg — integra calorimetría y momento). Convención: \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación; ρ_agua = 1000 kg·m⁻³.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

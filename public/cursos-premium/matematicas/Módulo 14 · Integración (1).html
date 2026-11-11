@@ -1,0 +1,2511 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 14 · Integración</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 14</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t1">1.1 Antiderivadas</a>
+  <a class="sub" href="#t2">1.2 Integral definida</a>
+  <a class="sub" href="#t3">1.3 Sustitución</a>
+  <a class="sub" href="#t4">1.4 Por partes</a>
+  <a class="sub" href="#t5">1.5 Fracciones parciales e inversas</a>
+  <a class="sub" href="#t6">1.6 Áreas</a>
+  <a class="sub" href="#t7">1.7 Volúmenes de revolución</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos resueltos</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 14 de 17</p>
+  <h1>Integración</h1>
+  <p class="formula">\( \int_a^bf(x)\,dx=F(b)-F(a) \qquad \int u\,dv=uv-\int v\,du \qquad V=\pi\int_a^by^2\,dx \)</p>
+  <p>Todo lo necesario para las preguntas de integración de la Prueba 1 sin calculadora, al nivel de la banda 7. Aquí la exactitud es todo: logaritmos, \(\pi\) y radicales sin redondear. Los problemas extra integran los Módulos 1–13.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">La integración aparece en 5 de tus 7 pruebas y suma 58 puntos en 8 preguntas o partes, entre ellas una de 17 puntos en la Sección B. Es el tercer tema con más peso, después de complejos y trigonometría.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Noviembre 2021</td><td>1</td><td>4</td><td>Antiderivada con condición inicial</td></tr>
+<tr><td>Mayo 2022 TZ1</td><td>1</td><td>5</td><td>Integral definida con raíces: separar y usar potencias</td></tr>
+<tr><td>Mayo 2021 TZ2</td><td>10(b)</td><td>5</td><td>Área bajo \(6+6\cos x\)</td></tr>
+<tr><td>Mayo 2022 TZ2</td><td>7</td><td>6</td><td>\(\int_0^{\pi/3}\sec^nx\tan x\,dx\) por sustitución, en función de \(n\)</td></tr>
+<tr><td>Mayo 2026 TZ2</td><td>2</td><td>6</td><td>Periodo de \(3+\cos bx\) y área bajo la curva</td></tr>
+<tr><td>Mayo 2021 TZ2</td><td>9</td><td>7</td><td>Sustitución \(u=\sin x\) y fracciones parciales</td></tr>
+<tr><td>Mayo 2022 TZ1</td><td>7</td><td>8</td><td>Densidad \(\tfrac k{\sqrt{4-3x^2}}\): arcsin y esperanza</td></tr>
+<tr><td>Mayo 2026 TZ2</td><td>11</td><td>17</td><td>Fracciones parciales, área con logaritmos, binomio y aproximación</td></tr>
+</tbody></table></div>
+
+<h3>Cómo lo pregunta el IB: patrones de tus pruebas</h3>
+<ol>
+<li><b>Sustitución dada o por inspección:</b> \(\int f'(g(x))g'(x)\,dx\). Con límites, hay que cambiarlos a \(u\) o volver a \(x\).</li>
+<li><b>Fracciones parciales + logaritmos:</b> la respuesta se compacta con las leyes de logaritmos (\(\ln\tfrac92\)).</li>
+<li><b>Área con región bajo el eje:</b> la integral sale negativa y el área es su valor absoluto (R1).</li>
+<li><b>Resultados estándar de arcsin y arctan:</b> hay que sacar factor para llegar a la forma \(\tfrac1{\sqrt{a^2-x^2}}\).</li>
+<li><b>Integración que alimenta otro tema:</b> probabilidad continua (\(\int f=1\), \(\mathrm E(X)\)) o geometría (el área igualada a la superficie de un cono).</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA 03 (2026)</td><td>Antiderivadas, condiciones iniciales, sustitución, integración por partes</td><td>F1, F10</td></tr>
+<tr><td>DMpA 04 (2026)</td><td>Integral definida y propiedades; «halle \(\tfrac{dy}{dx}\) y a partir de lo anterior integre»; sustitución y partes</td><td>F2–F4</td></tr>
+<tr><td>DMpA 05 (2026)</td><td>Áreas bajo la curva y entre curvas, parámetro por área, recta que biseca el área, volúmenes de revolución</td><td>F5–F8</td></tr>
+</tbody></table></div>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Antiderivadas estándar; condiciones de contorno</td><td>1.1</td><td>Alto</td></tr>
+<tr><td>Integral definida; propiedades; área con signo</td><td>1.2</td><td>Alto</td></tr>
+<tr><td>Sustitución e inspección</td><td>1.3</td><td>Alto</td></tr>
+<tr><td>Integración por partes, incluida la repetida (NS)</td><td>1.4</td><td>Medio</td></tr>
+<tr><td>Fracciones parciales; formas de arcsin y arctan (NS)</td><td>1.5</td><td>Alto</td></tr>
+<tr><td>Área bajo una curva, entre curvas y respecto al eje \(y\) (NS)</td><td>1.6</td><td>Alto</td></tr>
+<tr><td>Volúmenes de revolución alrededor de los ejes \(x\) e \(y\) (NS)</td><td>1.7</td><td>Medio</td></tr>
+<tr><td>Otros tipos de pregunta: antiderivada con condición, integral definida con simetría, área entre curvas, volumen alrededor de cada eje, integral trigonométrica con identidad, sustitución trigonométrica, derivar una integral de límite variable</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1–1.7 cubren toda la integración del programa NS, con un recuadro «Para practicar» en cada técnica esencial. La sección 6 reúne los tipos de pregunta del IB que no salieron en tus 7 pruebas pero que pueden venir. Las ecuaciones diferenciales y la cinemática forman los Módulos 15 y 16. Las cajas «Más allá» añaden fórmulas de reducción, sumas de Riemann e integrales impropias; ningún problema extra las necesita. El techo es la investigación I1, tipo Prueba 3.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Va de las antiderivadas básicas a los volúmenes de revolución. Cada técnica trae un ejemplo resuelto con valores exactos y, las esenciales, un recuadro «Para practicar». Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Antiderivadas e integral indefinida</h3>
+<p>\(F\) es antiderivada de \(f\) si \(F'=f\). Todas difieren en una constante: \(\int f(x)\,dx=F(x)+c\).</p>
+<div class="tbl"><table>
+<thead><tr><th>\(f(x)\)</th><th>\(\int f\,dx\)</th><th>\(f(x)\)</th><th>\(\int f\,dx\)</th></tr></thead>
+<tbody>
+<tr><td>\(x^n\ (n\ne-1)\)</td><td>\(\tfrac{x^{n+1}}{n+1}\)</td><td>\(\sec^2x\)</td><td>\(\tan x\)</td></tr>
+<tr><td>\(\tfrac1x\)</td><td>\(\ln|x|\)</td><td>\(\sec x\tan x\)</td><td>\(\sec x\)</td></tr>
+<tr><td>\(e^x\)</td><td>\(e^x\)</td><td>\(\csc^2x\)</td><td>\(-\cot x\)</td></tr>
+<tr><td>\(a^x\)</td><td>\(\tfrac{a^x}{\ln a}\)</td><td>\(\tfrac1{a^2+x^2}\)</td><td>\(\tfrac1a\arctan\tfrac xa\)</td></tr>
+<tr><td>\(\sin x\)</td><td>\(-\cos x\)</td><td>\(\tfrac1{\sqrt{a^2-x^2}}\)</td><td>\(\arcsin\tfrac xa\)</td></tr>
+<tr><td>\(\cos x\)</td><td>\(\sin x\)</td><td>\(f(ax+b)\)</td><td>\(\tfrac1aF(ax+b)\)</td></tr>
+</tbody></table></div>
+<p><b>Condición inicial:</b> un punto de la curva determina \(c\).</p>
+<div class="ex"><p class="et">Ejemplo 1.1. Integral indefinida y condición inicial</p>
+<p>(a) \(\int\left(4x^3-\tfrac2x+e^{2x}\right)dx=x^4-2\ln|x|+\tfrac12e^{2x}+c\). \(\int\cos(3x+1)\,dx=\tfrac13\sin(3x+1)+c\).</p>
+<p>(b) \(f'(x)=6x^2-4\) y \(f(1)=3\): \(f=2x^3-4x+c\), con \(2-4+c=3\). Así \(f(x)=2x^3-4x+5\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(\int\left(6x^2-\dfrac4x+\sin x\right)dx\).</li><li>\(f'(x)=4x-3\) y \(f(2)=5\). Halla \(f\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(2x^3-4\ln|x|-\cos x+c\).</li><li>\(f=2x^2-3x+c\); \(8-6+c=5\Rightarrow c=3\): \(f(x)=2x^2-3x+3\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.2. Antiderivada con condición</p>
+<p>(a) \(\int\left(\frac3x+e^{2x}-\sec^2x\right)dx=3\ln|x|+\frac12e^{2x}-\tan x+c\). (b) \(\int\frac{dx}{2x+3}=\frac12\ln|2x+3|+c\): el factor \(\frac12\) sale de la composición lineal. (c) Si \(f'(x)=6x^2-4\) y \(f(1)=3\), entonces \(f(x)=2x^3-4x+c\) con \(c=5\).</p></div>
+
+<h3 id="t2">1.2 Integral definida y propiedades</h3>
+\[ \int_a^bf(x)\,dx=F(b)-F(a),\qquad \int_a^b=-\int_b^a,\qquad \int_a^b+\int_b^c=\int_a^c,\qquad \frac{d}{dx}\int_a^xf(t)\,dt=f(x) \]
+<ul>
+<li>La integral definida es un <b>área con signo</b>: lo que está bajo el eje cuenta como negativo.</li>
+<li>Simetrías: si \(f\) es impar, \(\int_{-a}^{a}f=0\); si es par, \(\int_{-a}^{a}f=2\int_0^af\).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.3. Simetría y valor</p>
+<p>\(\int_{-2}^{2}x^3\cos x\,dx=0\), porque el integrando es impar. \(\int_0^\pi\sin x\,dx=[-\cos x]_0^\pi=2\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.4. Derivar una integral con límites variables</p>
+<p>Si \(G(x)=\int_x^{x^2}e^{t^2}\,dt\), halla \(G'(x)\).</p>
+<p>Con \(F'=e^{t^2}\): \(G(x)=F(x^2)-F(x)\), y por la regla de la cadena \(G'(x)=e^{x^4}\cdot2x-e^{x^2}\). No hace falta (ni se puede) integrar \(e^{t^2}\): el teorema fundamental basta. Este es el giro de Sección B que combina el Módulo 12 con la integral.</p></div>
+
+<h3 id="t3">1.3 Sustitución e inspección</h3>
+<p>Si el integrando tiene la forma \(f'(g(x))\,g'(x)\), con \(u=g(x)\) queda \(\int f'(u)\,du\). Casos frecuentes:</p>
+\[ \int\frac{g'(x)}{g(x)}dx=\ln|g(x)|+c,\qquad \int g'(x)\,[g(x)]^n\,dx=\frac{[g(x)]^{n+1}}{n+1}+c,\qquad \int g'(x)e^{g(x)}dx=e^{g(x)}+c \]
+<p>En una integral definida: <b>cambia los límites</b> a \(u\), o vuelve a \(x\) antes de sustituir.</p>
+<div class="ex"><p class="et">Ejemplo 1.5. Tres sustituciones</p>
+<p>\(\int x(x^2+1)^4dx=\tfrac{(x^2+1)^5}{10}+c\). \(\int\tan x\,dx=-\ln|\cos x|+c\). \(\int_0^1xe^{x^2}dx=\tfrac12\left[e^{u}\right]_0^1=\tfrac{e-1}2\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(\int\dfrac{2x}{x^2+1}\,dx\).</li><li>Halla \(\displaystyle\int_0^1 x(x^2+1)^3\,dx\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\ln(x^2+1)+c\) (numerador = derivada del denominador).</li><li>\(u=x^2+1\): \(\tfrac12\int_1^2 u^3\,du=\tfrac12\cdot\tfrac{16-1}4=\tfrac{15}8\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.6. Sustituciones dadas: una raíz y un seno</p>
+<p>(a) Usando \(u=\sqrt x\), halla \(\displaystyle\int_1^4\frac{dx}{\sqrt x\,(1+\sqrt x)}\). (b) Usando \(x=2\sin\theta\), halla \(\displaystyle\int_0^2\sqrt{4-x^2}\,dx\).</p>
+<p>(a) \(x=u^2\), \(dx=2u\,du\); los límites pasan a \(1\) y \(2\): \(\int_1^2\frac{2u\,du}{u(1+u)}=\big[2\ln(1+u)\big]_1^2=2\ln\tfrac32=\ln\tfrac94\).</p>
+<p>(b) \(dx=2\cos\theta\,d\theta\), límites \(0\) y \(\tfrac\pi2\), y \(\sqrt{4-4\sin^2\theta}=2\cos\theta\) (positivo en ese intervalo): \(\int_0^{\pi/2}4\cos^2\theta\,d\theta=\big[2\theta+\sin2\theta\big]_0^{\pi/2}=\pi\). Comprobación: es un cuarto del círculo de radio 2.</p></div>
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Sustitución de Weierstrass:</b> con \(t=\tan\tfrac x2\) se tiene \(\cos x=\tfrac{1-t^2}{1+t^2}\) y \(dx=\tfrac{2\,dt}{1+t^2}\); cualquier cociente de senos y cosenos pasa a ser racional. Por ejemplo, \(\int_0^\pi\tfrac{dx}{2+\cos x}=\int_0^\infty\tfrac{2\,dt}{t^2+3}=\tfrac\pi{\sqrt3}\).</li>
+<li><b>Derivar bajo el signo integral:</b> si \(I(a)=\int_0^1\tfrac{x^a-1}{\ln x}dx\), entonces \(I'(a)=\int_0^1x^a\,dx=\tfrac1{a+1}\) e \(I(a)=\ln(a+1)\), porque \(I(0)=0\).</li>
+</ul></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ2, P7)</p><p>\(\sec^nx\tan x=\sec^{n-1}x\cdot(\sec x\tan x)\), y con \(u=\sec x\) queda \(\int u^{n-1}du\). Los límites pasan de \(0,\tfrac\pi3\) a \(1,2\): resultado \(\tfrac{2^n-1}n\).</p></div>
+
+<h3 id="t4">1.4 Integración por partes (NS)</h3>
+\[ \int u\,\frac{dv}{dx}\,dx=uv-\int v\frac{du}{dx}\,dx \]
+<p>Elige como \(u\) lo que se simplifica al derivar (orden orientativo: logaritmos, inversas trigonométricas, polinomios, trigonométricas, exponenciales). En \(e^x\sin x\), tras dos pasos reaparece la integral original: se despeja.</p>
+<div class="ex"><p class="et">Ejemplo 1.7. Por partes, simple y repetida</p>
+<p>\(\int x\cos x\,dx=x\sin x+\cos x+c\). \(\int\ln x\,dx=x\ln x-x+c\) (con \(u=\ln x\), \(dv=dx\)). \(\int x^2e^x\,dx=e^x(x^2-2x+2)+c\) (dos veces).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(\int xe^{x}\,dx\).</li><li>Halla \(\int x^2\ln x\,dx\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(xe^x-e^x+c=e^x(x-1)+c\).</li><li>\(u=\ln x\): \(\tfrac{x^3}3\ln x-\int\tfrac{x^2}3\,dx=\tfrac{x^3}3\ln x-\tfrac{x^3}9+c\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.8. Partes cíclica y partes con una inversa</p>
+<p>(a) \(I=\int_0^\pi e^x\sin x\,dx\). Dos veces por partes, con \(u\) la trigonométrica ambas veces: \(\int e^x\sin x\,dx=e^x\sin x-\int e^x\cos x\,dx=e^x\sin x-e^x\cos x-\int e^x\sin x\,dx\). Despejando, \(\int e^x\sin x\,dx=\tfrac12e^x(\sin x-\cos x)+c\), e \(I=\tfrac{e^\pi+1}2\).</p>
+<p>(b) \(\int\arctan x\,dx\) con \(u=\arctan x\), \(dv=dx\): \(x\arctan x-\int\tfrac{x}{1+x^2}dx=x\arctan x-\tfrac12\ln(1+x^2)+c\).</p>
+<p><b>Error típico:</b> en (a), cambiar el papel de \(u\) en el segundo paso devuelve la identidad \(I=I\).</p></div>
+
+<h3 id="t5">1.5 Fracciones parciales, arcsin, arctan e identidades</h3>
+<ul>
+<li><b>Fracciones parciales</b> (Módulo 1): \(\tfrac{px+q}{(x-a)(x-b)}=\tfrac A{x-a}+\tfrac B{x-b}\). Cada término se integra como un logaritmo.</li>
+<li><b>Formas estándar:</b> saca factor hasta tener \(a^2+x^2\) o \(\sqrt{a^2-x^2}\). Completa el cuadrado si hace falta.</li>
+<li><b>Identidades:</b> \(\cos^2x=\tfrac{1+\cos2x}2\), \(\sin^2x=\tfrac{1-\cos2x}2\), \(\tan^2x=\sec^2x-1\).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.9. Formas estándar</p>
+<p>\(\int\tfrac{dx}{x^2-1}=\tfrac12\ln\left|\tfrac{x-1}{x+1}\right|+c\). \(\int\tfrac{dx}{9+x^2}=\tfrac13\arctan\tfrac x3+c\). \(\int\tfrac{dx}{\sqrt{9-4x^2}}=\tfrac12\arcsin\tfrac{2x}3+c\). \(\int\cos^2x\,dx=\tfrac x2+\tfrac{\sin2x}4+c\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(\int\dfrac{dx}{x^2+4}\) y \(\int\dfrac{dx}{\sqrt{1-4x^2}}\).</li><li>Halla \(\displaystyle\int\dfrac{3}{(x-1)(x+2)}\,dx\) con fracciones parciales.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\tfrac12\arctan\tfrac x2+c\); \(\tfrac12\arcsin(2x)+c\).</li><li>\(\tfrac1{x-1}-\tfrac1{x+2}\Rightarrow\ln|x-1|-\ln|x+2|+c=\ln\left|\tfrac{x-1}{x+2}\right|+c\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.10. Completar el cuadrado y separar el numerador</p>
+<p>(a) \(\int_0^1\frac{dx}{x^2+2x+2}=\int_0^1\frac{dx}{(x+1)^2+1}=\big[\arctan(x+1)\big]_0^1=\arctan2-\tfrac\pi4\).</p>
+<p>(b) \(\int\frac{2x+3}{x^2+1}dx=\int\frac{2x}{x^2+1}dx+3\int\frac{dx}{x^2+1}=\ln(x^2+1)+3\arctan x+c\). Cuando el denominador no se factoriza, el numerador se parte en «derivada del denominador» más una constante.</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ1, P7)</p><p>\(\int\tfrac{dx}{\sqrt{4-3x^2}}=\tfrac1{\sqrt3}\int\tfrac{dx}{\sqrt{\frac43-x^2}}=\tfrac1{\sqrt3}\arcsin\tfrac{\sqrt3x}2\). Escribir \(\arcsin\tfrac{\sqrt3x}2\) sin el factor \(\tfrac1{\sqrt3}\) da (M1)A0.</p></div>
+
+<h3 id="t6">1.6 Áreas</h3>
+<ul>
+<li>Área entre \(f\) y el eje \(x\): \(\int_a^b|f(x)|\,dx\). Separa donde \(f\) cambia de signo.</li>
+<li>Área entre dos curvas: \(\int_a^b\big(\text{arriba}-\text{abajo}\big)\,dx\), con los cortes como límites.</li>
+<li>Área respecto al eje \(y\): \(\int_c^dx\,dy\), con \(x\) despejada en función de \(y\).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.11. Tres tipos de área</p>
+<p>(a) Entre \(y=x^2\) e \(y=x+2\): cortes en \(-1\) y 2, \(\int_{-1}^{2}(x+2-x^2)\,dx=\tfrac92\).</p>
+<p>(b) Entre \(y=x^2-1\) y el eje en \([0,2]\): \(\tfrac23+\tfrac43=2\). Sin separar, la integral daría \(\tfrac23\), que es incorrecto.</p>
+<p>(c) Entre \(x=y^2\), el eje \(y\) e \(y=2\): \(\int_0^2y^2\,dy=\tfrac83\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 371.52 236.16" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 236.16 
+L 371.52 236.16 
+L 371.52 0 
+L 0 0 
+L 0 236.16 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 228.96 
+L 364.32 228.96 
+L 364.32 7.2 
+L 7.2 7.2 
+L 7.2 228.96 
+z
+" style="fill: none"/>
+   </g>
+   <g id="FillBetweenPolyCollection_1">
+    <defs>
+     <path id="md25051e2d7" d="M 62.391273 -83.963077 
+L 62.391273 -41.316923 
+L 63.703008 -41.321274 
+L 65.014744 -41.334328 
+L 66.326479 -41.356084 
+L 67.638215 -41.386542 
+L 68.94995 -41.425703 
+L 70.261686 -41.473566 
+L 71.573421 -41.530132 
+L 72.885157 -41.5954 
+L 74.196893 -41.669371 
+L 75.508628 -41.752044 
+L 76.820364 -41.843419 
+L 78.132099 -41.943497 
+L 79.443835 -42.052277 
+L 80.75557 -42.169759 
+L 82.067306 -42.295944 
+L 83.379041 -42.430831 
+L 84.690777 -42.574421 
+L 86.002512 -42.726713 
+L 87.314248 -42.887708 
+L 88.625983 -43.057405 
+L 89.937719 -43.235804 
+L 91.249455 -43.422906 
+L 92.56119 -43.61871 
+L 93.872926 -43.823217 
+L 95.184661 -44.036426 
+L 96.496397 -44.258337 
+L 97.808132 -44.488951 
+L 99.119868 -44.728267 
+L 100.431603 -44.976286 
+L 101.743339 -45.233007 
+L 103.055074 -45.49843 
+L 104.36681 -45.772556 
+L 105.678545 -46.055385 
+L 106.990281 -46.346915 
+L 108.302017 -46.647148 
+L 109.613752 -46.956084 
+L 110.925488 -47.273722 
+L 112.237223 -47.600062 
+L 113.548959 -47.935105 
+L 114.860694 -48.27885 
+L 116.17243 -48.631298 
+L 117.484165 -48.992448 
+L 118.795901 -49.3623 
+L 120.107636 -49.740855 
+L 121.419372 -50.128112 
+L 122.731107 -50.524071 
+L 124.042843 -50.928733 
+L 125.354579 -51.342098 
+L 126.666314 -51.764165 
+L 127.97805 -52.194934 
+L 129.289785 -52.634406 
+L 130.601521 -53.08258 
+L 131.913256 -53.539456 
+L 133.224992 -54.005035 
+L 134.536727 -54.479316 
+L 135.848463 -54.9623 
+L 137.160198 -55.453986 
+L 138.471934 -55.954375 
+L 139.783669 -56.463465 
+L 141.095405 -56.981259 
+L 142.40714 -57.507754 
+L 143.718876 -58.042953 
+L 145.030612 -58.586853 
+L 146.342347 -59.139456 
+L 147.654083 -59.700761 
+L 148.965818 -60.270769 
+L 150.277554 -60.849479 
+L 151.589289 -61.436892 
+L 152.901025 -62.033007 
+L 154.21276 -62.637824 
+L 155.524496 -63.251344 
+L 156.836231 -63.873566 
+L 158.147967 -64.504491 
+L 159.459702 -65.144118 
+L 160.771438 -65.792448 
+L 162.083174 -66.449479 
+L 163.394909 -67.115214 
+L 164.706645 -67.78965 
+L 166.01838 -68.472789 
+L 167.330116 -69.164631 
+L 168.641851 -69.865175 
+L 169.953587 -70.574421 
+L 171.265322 -71.29237 
+L 172.577058 -72.019021 
+L 173.888793 -72.754375 
+L 175.200529 -73.49843 
+L 176.512264 -74.251189 
+L 177.824 -75.01265 
+L 179.135736 -75.782813 
+L 180.447471 -76.561678 
+L 181.759207 -77.349246 
+L 183.070942 -78.145517 
+L 184.382678 -78.95049 
+L 185.694413 -79.764165 
+L 187.006149 -80.586542 
+L 188.317884 -81.417622 
+L 189.62962 -82.257405 
+L 190.941355 -83.10589 
+L 192.253091 -83.963077 
+L 192.253091 -83.963077 
+L 192.253091 -83.963077 
+L 190.941355 -83.963077 
+L 189.62962 -83.963077 
+L 188.317884 -83.963077 
+L 187.006149 -83.963077 
+L 185.694413 -83.963077 
+L 184.382678 -83.963077 
+L 183.070942 -83.963077 
+L 181.759207 -83.963077 
+L 180.447471 -83.963077 
+L 179.135736 -83.963077 
+L 177.824 -83.963077 
+L 176.512264 -83.963077 
+L 175.200529 -83.963077 
+L 173.888793 -83.963077 
+L 172.577058 -83.963077 
+L 171.265322 -83.963077 
+L 169.953587 -83.963077 
+L 168.641851 -83.963077 
+L 167.330116 -83.963077 
+L 166.01838 -83.963077 
+L 164.706645 -83.963077 
+L 163.394909 -83.963077 
+L 162.083174 -83.963077 
+L 160.771438 -83.963077 
+L 159.459702 -83.963077 
+L 158.147967 -83.963077 
+L 156.836231 -83.963077 
+L 155.524496 -83.963077 
+L 154.21276 -83.963077 
+L 152.901025 -83.963077 
+L 151.589289 -83.963077 
+L 150.277554 -83.963077 
+L 148.965818 -83.963077 
+L 147.654083 -83.963077 
+L 146.342347 -83.963077 
+L 145.030612 -83.963077 
+L 143.718876 -83.963077 
+L 142.40714 -83.963077 
+L 141.095405 -83.963077 
+L 139.783669 -83.963077 
+L 138.471934 -83.963077 
+L 137.160198 -83.963077 
+L 135.848463 -83.963077 
+L 134.536727 -83.963077 
+L 133.224992 -83.963077 
+L 131.913256 -83.963077 
+L 130.601521 -83.963077 
+L 129.289785 -83.963077 
+L 127.97805 -83.963077 
+L 126.666314 -83.963077 
+L 125.354579 -83.963077 
+L 124.042843 -83.963077 
+L 122.731107 -83.963077 
+L 121.419372 -83.963077 
+L 120.107636 -83.963077 
+L 118.795901 -83.963077 
+L 117.484165 -83.963077 
+L 116.17243 -83.963077 
+L 114.860694 -83.963077 
+L 113.548959 -83.963077 
+L 112.237223 -83.963077 
+L 110.925488 -83.963077 
+L 109.613752 -83.963077 
+L 108.302017 -83.963077 
+L 106.990281 -83.963077 
+L 105.678545 -83.963077 
+L 104.36681 -83.963077 
+L 103.055074 -83.963077 
+L 101.743339 -83.963077 
+L 100.431603 -83.963077 
+L 99.119868 -83.963077 
+L 97.808132 -83.963077 
+L 96.496397 -83.963077 
+L 95.184661 -83.963077 
+L 93.872926 -83.963077 
+L 92.56119 -83.963077 
+L 91.249455 -83.963077 
+L 89.937719 -83.963077 
+L 88.625983 -83.963077 
+L 87.314248 -83.963077 
+L 86.002512 -83.963077 
+L 84.690777 -83.963077 
+L 83.379041 -83.963077 
+L 82.067306 -83.963077 
+L 80.75557 -83.963077 
+L 79.443835 -83.963077 
+L 78.132099 -83.963077 
+L 76.820364 -83.963077 
+L 75.508628 -83.963077 
+L 74.196893 -83.963077 
+L 72.885157 -83.963077 
+L 71.573421 -83.963077 
+L 70.261686 -83.963077 
+L 68.94995 -83.963077 
+L 67.638215 -83.963077 
+L 66.326479 -83.963077 
+L 65.014744 -83.963077 
+L 63.703008 -83.963077 
+L 62.391273 -83.963077 
+z
+" style="stroke: #a2530a; stroke-opacity: 0.3"/>
+    </defs>
+    <g clip-path="url(#p921524ef86)">
+     <use xlink:href="#md25051e2d7" x="0" y="236.16" style="fill: #a2530a; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3"/>
+    </g>
+   </g>
+   <g id="FillBetweenPolyCollection_2">
+    <defs>
+     <path id="mfb771da15f" d="M 192.253091 -83.963077 
+L 192.253091 -83.963077 
+L 193.564826 -84.828967 
+L 194.876562 -85.703559 
+L 196.188298 -86.586853 
+L 197.500033 -87.47885 
+L 198.811769 -88.379549 
+L 200.123504 -89.288951 
+L 201.43524 -90.207055 
+L 202.746975 -91.133862 
+L 204.058711 -92.069371 
+L 205.370446 -93.013582 
+L 206.682182 -93.966496 
+L 207.993917 -94.928112 
+L 209.305653 -95.89843 
+L 210.617388 -96.877451 
+L 211.929124 -97.865175 
+L 213.24086 -98.861601 
+L 214.552595 -99.866729 
+L 215.864331 -100.880559 
+L 217.176066 -101.903092 
+L 218.487802 -102.934328 
+L 219.799537 -103.974266 
+L 221.111273 -105.022906 
+L 222.423008 -106.080249 
+L 223.734744 -107.146294 
+L 225.046479 -108.221041 
+L 226.358215 -109.304491 
+L 227.66995 -110.396643 
+L 228.981686 -111.497498 
+L 230.293421 -112.607055 
+L 231.605157 -113.725315 
+L 232.916893 -114.852277 
+L 234.228628 -115.987941 
+L 235.540364 -117.132308 
+L 236.852099 -118.285377 
+L 238.163835 -119.447148 
+L 239.47557 -120.617622 
+L 240.787306 -121.796799 
+L 242.099041 -122.984678 
+L 243.410777 -124.181259 
+L 244.722512 -125.386542 
+L 246.034248 -126.600528 
+L 247.345983 -127.823217 
+L 248.657719 -129.054608 
+L 249.969455 -130.294701 
+L 251.28119 -131.543497 
+L 252.592926 -132.800995 
+L 253.904661 -134.067195 
+L 255.216397 -135.342098 
+L 256.528132 -136.625703 
+L 257.839868 -137.918011 
+L 259.151603 -139.219021 
+L 260.463339 -140.528733 
+L 261.775074 -141.847148 
+L 263.08681 -143.174266 
+L 264.398545 -144.510085 
+L 265.710281 -145.854608 
+L 267.022017 -147.207832 
+L 268.333752 -148.569759 
+L 269.645488 -149.940389 
+L 270.957223 -151.31972 
+L 272.268959 -152.707754 
+L 273.580694 -154.104491 
+L 274.89243 -155.50993 
+L 276.204165 -156.924071 
+L 277.515901 -158.346915 
+L 278.827636 -159.778462 
+L 280.139372 -161.21871 
+L 281.451107 -162.667661 
+L 282.762843 -164.125315 
+L 284.074579 -165.591671 
+L 285.386314 -167.066729 
+L 286.69805 -168.55049 
+L 288.009785 -170.042953 
+L 289.321521 -171.544118 
+L 290.633256 -173.053986 
+L 291.944992 -174.572556 
+L 293.256727 -176.099829 
+L 294.568463 -177.635804 
+L 295.880198 -179.180482 
+L 297.191934 -180.733862 
+L 298.503669 -182.295944 
+L 299.815405 -183.866729 
+L 301.12714 -185.446216 
+L 302.438876 -187.034406 
+L 303.750612 -188.631298 
+L 305.062347 -190.236892 
+L 306.374083 -191.851189 
+L 307.685818 -193.474188 
+L 308.997554 -195.10589 
+L 310.309289 -196.746294 
+L 311.621025 -198.3954 
+L 312.93276 -200.053209 
+L 314.244496 -201.71972 
+L 315.556231 -203.394934 
+L 316.867967 -205.07885 
+L 318.179702 -206.771469 
+L 319.491438 -208.472789 
+L 320.803174 -210.182813 
+L 322.114909 -211.901538 
+L 322.114909 -83.963077 
+L 322.114909 -83.963077 
+L 320.803174 -83.963077 
+L 319.491438 -83.963077 
+L 318.179702 -83.963077 
+L 316.867967 -83.963077 
+L 315.556231 -83.963077 
+L 314.244496 -83.963077 
+L 312.93276 -83.963077 
+L 311.621025 -83.963077 
+L 310.309289 -83.963077 
+L 308.997554 -83.963077 
+L 307.685818 -83.963077 
+L 306.374083 -83.963077 
+L 305.062347 -83.963077 
+L 303.750612 -83.963077 
+L 302.438876 -83.963077 
+L 301.12714 -83.963077 
+L 299.815405 -83.963077 
+L 298.503669 -83.963077 
+L 297.191934 -83.963077 
+L 295.880198 -83.963077 
+L 294.568463 -83.963077 
+L 293.256727 -83.963077 
+L 291.944992 -83.963077 
+L 290.633256 -83.963077 
+L 289.321521 -83.963077 
+L 288.009785 -83.963077 
+L 286.69805 -83.963077 
+L 285.386314 -83.963077 
+L 284.074579 -83.963077 
+L 282.762843 -83.963077 
+L 281.451107 -83.963077 
+L 280.139372 -83.963077 
+L 278.827636 -83.963077 
+L 277.515901 -83.963077 
+L 276.204165 -83.963077 
+L 274.89243 -83.963077 
+L 273.580694 -83.963077 
+L 272.268959 -83.963077 
+L 270.957223 -83.963077 
+L 269.645488 -83.963077 
+L 268.333752 -83.963077 
+L 267.022017 -83.963077 
+L 265.710281 -83.963077 
+L 264.398545 -83.963077 
+L 263.08681 -83.963077 
+L 261.775074 -83.963077 
+L 260.463339 -83.963077 
+L 259.151603 -83.963077 
+L 257.839868 -83.963077 
+L 256.528132 -83.963077 
+L 255.216397 -83.963077 
+L 253.904661 -83.963077 
+L 252.592926 -83.963077 
+L 251.28119 -83.963077 
+L 249.969455 -83.963077 
+L 248.657719 -83.963077 
+L 247.345983 -83.963077 
+L 246.034248 -83.963077 
+L 244.722512 -83.963077 
+L 243.410777 -83.963077 
+L 242.099041 -83.963077 
+L 240.787306 -83.963077 
+L 239.47557 -83.963077 
+L 238.163835 -83.963077 
+L 236.852099 -83.963077 
+L 235.540364 -83.963077 
+L 234.228628 -83.963077 
+L 232.916893 -83.963077 
+L 231.605157 -83.963077 
+L 230.293421 -83.963077 
+L 228.981686 -83.963077 
+L 227.66995 -83.963077 
+L 226.358215 -83.963077 
+L 225.046479 -83.963077 
+L 223.734744 -83.963077 
+L 222.423008 -83.963077 
+L 221.111273 -83.963077 
+L 219.799537 -83.963077 
+L 218.487802 -83.963077 
+L 217.176066 -83.963077 
+L 215.864331 -83.963077 
+L 214.552595 -83.963077 
+L 213.24086 -83.963077 
+L 211.929124 -83.963077 
+L 210.617388 -83.963077 
+L 209.305653 -83.963077 
+L 207.993917 -83.963077 
+L 206.682182 -83.963077 
+L 205.370446 -83.963077 
+L 204.058711 -83.963077 
+L 202.746975 -83.963077 
+L 201.43524 -83.963077 
+L 200.123504 -83.963077 
+L 198.811769 -83.963077 
+L 197.500033 -83.963077 
+L 196.188298 -83.963077 
+L 194.876562 -83.963077 
+L 193.564826 -83.963077 
+L 192.253091 -83.963077 
+z
+" style="stroke: #0e6e6a; stroke-opacity: 0.3"/>
+    </defs>
+    <g clip-path="url(#p921524ef86)">
+     <use xlink:href="#mfb771da15f" x="0" y="236.16" style="fill: #0e6e6a; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m1fbde118b1" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m1fbde118b1" x="192.253091" y="152.196923" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="192.253091" y="167.555204" transform="rotate(-0 192.253091 167.555204)">1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m1fbde118b1" x="322.114909" y="152.196923" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="322.114909" y="167.555204" transform="rotate(-0 322.114909 167.555204)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path id="m8a881a0ca4" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m8a881a0ca4" x="62.391273" y="194.843077" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="55.391273" y="199.022218" transform="rotate(-0 55.391273 199.022218)">−1</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m8a881a0ca4" x="62.391273" y="109.550769" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="55.391273" y="113.72991" transform="rotate(-0 55.391273 113.72991)">1</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m8a881a0ca4" x="62.391273" y="66.904615" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="55.391273" y="71.083756" transform="rotate(-0 55.391273 71.083756)">2</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m8a881a0ca4" x="62.391273" y="24.258462" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="55.391273" y="28.437602" transform="rotate(-0 55.391273 28.437602)">3</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M 23.432727 191.004923 
+L 29.947534 192.181257 
+L 36.462341 193.142931 
+L 42.977148 193.889946 
+L 49.491955 194.422301 
+L 56.006762 194.739997 
+L 62.521569 194.843034 
+L 69.036376 194.731411 
+L 75.551183 194.405129 
+L 82.06599 193.864187 
+L 88.580797 193.108586 
+L 95.095604 192.138325 
+L 101.61041 190.953405 
+L 108.125217 189.553825 
+L 114.640024 187.939586 
+L 121.154831 186.110688 
+L 127.669638 184.06713 
+L 134.184445 181.808912 
+L 140.699252 179.336036 
+L 147.214059 176.648499 
+L 153.728866 173.746304 
+L 160.243673 170.629448 
+L 166.75848 167.297934 
+L 174.359088 163.139861 
+L 181.959696 158.689613 
+L 189.560304 153.947189 
+L 197.160912 148.912591 
+L 204.76152 143.585816 
+L 212.362128 137.966867 
+L 219.962736 132.055742 
+L 227.563344 125.852442 
+L 235.163953 119.356966 
+L 242.764561 112.569315 
+L 250.365169 105.489489 
+L 257.965777 98.117487 
+L 265.566385 90.45331 
+L 273.166993 82.496958 
+L 280.767601 74.24843 
+L 288.368209 65.707727 
+L 297.054618 55.589157 
+L 305.741028 45.088971 
+L 314.427437 34.207168 
+L 323.113846 22.943749 
+L 331.800255 11.298712 
+L 340.679717 -1 
+L 340.679717 -1 
+" clip-path="url(#p921524ef86)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 62.391273 228.96 
+L 62.391273 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 152.196923 
+L 364.32 152.196923 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_8">
+     <path d="M 198.387188 185.024062 
+L 208.387188 185.024062 
+L 218.387188 185.024062 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="226.387188" y="188.524062" transform="rotate(-0 226.387188 188.524062)">y = x² − 1</text>
+    </g>
+    <g id="patch_5">
+     <path d="M 198.387188 203.202187 
+L 218.387188 203.202187 
+L 218.387188 196.202187 
+L 198.387188 196.202187 
+z
+" style="fill: #a2530a; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="226.387188" y="203.202187" transform="rotate(-0 226.387188 203.202187)">integral −2/3 (bajo el eje)</text>
+    </g>
+    <g id="patch_6">
+     <path d="M 198.387188 217.880313 
+L 218.387188 217.880313 
+L 218.387188 210.880313 
+L 198.387188 210.880313 
+z
+" style="fill: #0e6e6a; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="226.387188" y="217.880313" transform="rotate(-0 226.387188 217.880313)">integral +4/3</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p921524ef86">
+   <rect x="7.2" y="7.2" width="357.12" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: en \([0,2]\) la integral de \(x^2-1\) vale \(\tfrac23\), pero el área es \(\tfrac23+\tfrac43=2\): la parte bajo el eje se suma con valor absoluto.</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el área encerrada entre \(y=x^2\) e \(y=2x\).</li><li>Halla el área entre \(y=\sin x\) y el eje \(x\) en \([0,2\pi]\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Cortes 0 y 2: \(\int_0^2(2x-x^2)\,dx=\tfrac43\).</li><li>\(\int_0^\pi\sin x\,dx+\left|\int_\pi^{2\pi}\sin x\,dx\right|=2+2=4\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.12. La normal que encierra una región</p>
+<p class="src">Banco IB «Recta tangente», pregunta 8(d) (6 puntos), resuelta sin calculadora. El Módulo 12 resolvió (a) a (c).</p>
+<p>\(f(x)=x^2-x\). La normal \(L\) en \(P(1,0)\) es \(y=1-x\) (como \(f'(1)=1\), la pendiente de la normal es \(-1\)). \(L\) vuelve a cortar a \(f\) en \(Q\). Halla el área de la región entre \(f\) y \(L\).</p>
+<p>Cortes: \(x^2-x=1-x\iff x^2=1\), así que \(x=-1\) (el punto \(Q(-1,2)\)) y \(x=1\). En \([-1,1]\) la recta está arriba (en \(x=0\): \(1\gt0\)).</p>
+<p>\(\displaystyle A=\int_{-1}^{1}\big[(1-x)-(x^2-x)\big]dx=\int_{-1}^{1}(1-x^2)\,dx=2\left[x-\tfrac{x^3}3\right]_0^1=\tfrac43\).</p>
+<p><b>Marcas típicas:</b> límites correctos (A1), integral de «arriba menos abajo» (M1), antiderivada (A1), valor (A1). Escribir \(f-L\) da \(-\tfrac43\): si se escribe «área \(=-\tfrac43\)» se pierde la última A1.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 371.52 236.16" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 236.16 
+L 371.52 236.16 
+L 371.52 0 
+L 0 0 
+L 0 236.16 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 228.96 
+L 364.32 228.96 
+L 364.32 7.2 
+L 7.2 7.2 
+L 7.2 228.96 
+z
+" style="fill: none"/>
+   </g>
+   <g id="FillBetweenPolyCollection_1">
+    <defs>
+     <path id="m04e7452333" d="M 76.07941 -162.432 
+L 76.07941 -162.432 
+L 76.961264 -160.766042 
+L 77.843118 -159.111284 
+L 78.724972 -157.467725 
+L 79.606826 -155.835367 
+L 80.48868 -154.214208 
+L 81.370534 -152.604248 
+L 82.252388 -151.005489 
+L 83.134242 -149.417929 
+L 84.016096 -147.841568 
+L 84.89795 -146.276408 
+L 85.779804 -144.722447 
+L 86.661658 -143.179686 
+L 87.543512 -141.648125 
+L 88.425366 -140.127763 
+L 89.30722 -138.618601 
+L 90.189074 -137.120639 
+L 91.070928 -135.633877 
+L 91.952782 -134.158314 
+L 92.834636 -132.693951 
+L 93.71649 -131.240788 
+L 94.598344 -129.798824 
+L 95.480198 -128.36806 
+L 96.362052 -126.948496 
+L 97.243906 -125.540132 
+L 98.12576 -124.142967 
+L 99.007614 -122.757002 
+L 99.889468 -121.382237 
+L 100.771322 -120.018671 
+L 101.653176 -118.666305 
+L 102.53503 -117.325139 
+L 103.416884 -115.995173 
+L 104.298738 -114.676406 
+L 105.180592 -113.368839 
+L 106.062446 -112.072472 
+L 106.9443 -110.787304 
+L 107.826154 -109.513336 
+L 108.708008 -108.250568 
+L 109.589862 -106.999 
+L 110.471716 -105.758631 
+L 111.35357 -104.529462 
+L 112.235424 -103.311493 
+L 113.117278 -102.104723 
+L 113.999132 -100.909154 
+L 114.880986 -99.724784 
+L 115.76284 -98.551613 
+L 116.644694 -97.389642 
+L 117.526548 -96.238872 
+L 118.408402 -95.0993 
+L 119.290256 -93.970929 
+L 120.17211 -92.853757 
+L 121.053964 -91.747785 
+L 121.935818 -90.653013 
+L 122.817672 -89.56944 
+L 123.699526 -88.497067 
+L 124.58138 -87.435894 
+L 125.463234 -86.38592 
+L 126.345088 -85.347147 
+L 127.226942 -84.319573 
+L 128.108796 -83.303198 
+L 128.99065 -82.298024 
+L 129.872504 -81.304049 
+L 130.754358 -80.321274 
+L 131.636212 -79.349698 
+L 132.518066 -78.389322 
+L 133.399919 -77.440146 
+L 134.281773 -76.50217 
+L 135.163627 -75.575393 
+L 136.045481 -74.659816 
+L 136.927335 -73.755439 
+L 137.809189 -72.862262 
+L 138.691043 -71.980284 
+L 139.572897 -71.109506 
+L 140.454751 -70.249928 
+L 141.336605 -69.401549 
+L 142.218459 -68.56437 
+L 143.100313 -67.738391 
+L 143.982167 -66.923612 
+L 144.864021 -66.120032 
+L 145.745875 -65.327652 
+L 146.627729 -64.546472 
+L 147.509583 -63.776491 
+L 148.391437 -63.01771 
+L 149.273291 -62.270129 
+L 150.155145 -61.533748 
+L 151.036999 -60.808566 
+L 151.918853 -60.094584 
+L 152.800707 -59.391802 
+L 153.682561 -58.700219 
+L 154.564415 -58.019837 
+L 155.446269 -57.350654 
+L 156.328123 -56.69267 
+L 157.209977 -56.045887 
+L 158.091831 -55.410303 
+L 158.973685 -54.785918 
+L 159.855539 -54.172734 
+L 160.737393 -53.570749 
+L 161.619247 -52.979964 
+L 162.501101 -52.400379 
+L 163.382955 -51.831993 
+L 164.264809 -51.274807 
+L 165.146663 -50.728821 
+L 166.028517 -50.194034 
+L 166.910371 -49.670448 
+L 167.792225 -49.15806 
+L 168.674079 -48.656873 
+L 169.555933 -48.166885 
+L 170.437787 -47.688098 
+L 171.319641 -47.220509 
+L 172.201495 -46.764121 
+L 173.083349 -46.318932 
+L 173.965203 -45.884943 
+L 174.847057 -45.462154 
+L 175.728911 -45.050564 
+L 176.610765 -44.650174 
+L 177.492619 -44.260984 
+L 178.374473 -43.882994 
+L 179.256327 -43.516203 
+L 180.138181 -43.160612 
+L 181.020035 -42.816221 
+L 181.901889 -42.483029 
+L 182.783743 -42.161037 
+L 183.665597 -41.850245 
+L 184.547451 -41.550653 
+L 185.429305 -41.26226 
+L 186.311159 -40.985067 
+L 187.193013 -40.719074 
+L 188.074867 -40.46428 
+L 188.956721 -40.220686 
+L 189.838575 -39.988292 
+L 190.720429 -39.767098 
+L 191.602283 -39.557103 
+L 192.484137 -39.358308 
+L 193.365991 -39.170713 
+L 194.247845 -38.994317 
+L 195.129699 -38.829121 
+L 196.011553 -38.675125 
+L 196.893407 -38.532329 
+L 197.775261 -38.400732 
+L 198.657115 -38.280335 
+L 199.538969 -38.171138 
+L 200.420823 -38.07314 
+L 201.302677 -37.986343 
+L 202.184531 -37.910744 
+L 203.066385 -37.846346 
+L 203.948238 -37.793147 
+L 204.830092 -37.751149 
+L 205.711946 -37.720349 
+L 206.5938 -37.70075 
+L 207.475654 -37.69235 
+L 208.357508 -37.69515 
+L 209.239362 -37.70915 
+L 210.121216 -37.734349 
+L 211.00307 -37.770748 
+L 211.884924 -37.818347 
+L 212.766778 -37.877145 
+L 213.648632 -37.947144 
+L 214.530486 -38.028342 
+L 215.41234 -38.120739 
+L 216.294194 -38.224337 
+L 217.176048 -38.339134 
+L 218.057902 -38.46513 
+L 218.939756 -38.602327 
+L 219.82161 -38.750723 
+L 220.703464 -38.910319 
+L 221.585318 -39.081115 
+L 222.467172 -39.26311 
+L 223.349026 -39.456305 
+L 224.23088 -39.6607 
+L 225.112734 -39.876295 
+L 225.994588 -40.103089 
+L 226.876442 -40.341083 
+L 227.758296 -40.590277 
+L 228.64015 -40.85067 
+L 229.522004 -41.122263 
+L 230.403858 -41.405056 
+L 231.285712 -41.699049 
+L 232.167566 -42.004241 
+L 233.04942 -42.320633 
+L 233.931274 -42.648225 
+L 234.813128 -42.987016 
+L 235.694982 -43.337007 
+L 236.576836 -43.698198 
+L 237.45869 -44.070589 
+L 238.340544 -44.454179 
+L 239.222398 -44.848969 
+L 240.104252 -45.254959 
+L 240.986106 -45.672148 
+L 241.86796 -46.100538 
+L 242.749814 -46.540127 
+L 243.631668 -46.990915 
+L 244.513522 -47.452904 
+L 245.395376 -47.926092 
+L 246.27723 -48.410479 
+L 247.159084 -48.906067 
+L 248.040938 -49.412854 
+L 248.922792 -49.930841 
+L 249.804646 -50.460028 
+L 250.6865 -51.000414 
+L 251.568354 -51.552 
+L 251.568354 -51.552 
+L 251.568354 -51.552 
+L 250.6865 -52.109186 
+L 249.804646 -52.666372 
+L 248.922792 -53.223558 
+L 248.040938 -53.780744 
+L 247.159084 -54.33793 
+L 246.27723 -54.895116 
+L 245.395376 -55.452302 
+L 244.513522 -56.009487 
+L 243.631668 -56.566673 
+L 242.749814 -57.123859 
+L 241.86796 -57.681045 
+L 240.986106 -58.238231 
+L 240.104252 -58.795417 
+L 239.222398 -59.352603 
+L 238.340544 -59.909789 
+L 237.45869 -60.466975 
+L 236.576836 -61.024161 
+L 235.694982 -61.581347 
+L 234.813128 -62.138533 
+L 233.931274 -62.695719 
+L 233.04942 -63.252905 
+L 232.167566 -63.81009 
+L 231.285712 -64.367276 
+L 230.403858 -64.924462 
+L 229.522004 -65.481648 
+L 228.64015 -66.038834 
+L 227.758296 -66.59602 
+L 226.876442 -67.153206 
+L 225.994588 -67.710392 
+L 225.112734 -68.267578 
+L 224.23088 -68.824764 
+L 223.349026 -69.38195 
+L 222.467172 -69.939136 
+L 221.585318 -70.496322 
+L 220.703464 -71.053508 
+L 219.82161 -71.610693 
+L 218.939756 -72.167879 
+L 218.057902 -72.725065 
+L 217.176048 -73.282251 
+L 216.294194 -73.839437 
+L 215.41234 -74.396623 
+L 214.530486 -74.953809 
+L 213.648632 -75.510995 
+L 212.766778 -76.068181 
+L 211.884924 -76.625367 
+L 211.00307 -77.182553 
+L 210.121216 -77.739739 
+L 209.239362 -78.296925 
+L 208.357508 -78.854111 
+L 207.475654 -79.411296 
+L 206.5938 -79.968482 
+L 205.711946 -80.525668 
+L 204.830092 -81.082854 
+L 203.948238 -81.64004 
+L 203.066385 -82.197226 
+L 202.184531 -82.754412 
+L 201.302677 -83.311598 
+L 200.420823 -83.868784 
+L 199.538969 -84.42597 
+L 198.657115 -84.983156 
+L 197.775261 -85.540342 
+L 196.893407 -86.097528 
+L 196.011553 -86.654714 
+L 195.129699 -87.211899 
+L 194.247845 -87.769085 
+L 193.365991 -88.326271 
+L 192.484137 -88.883457 
+L 191.602283 -89.440643 
+L 190.720429 -89.997829 
+L 189.838575 -90.555015 
+L 188.956721 -91.112201 
+L 188.074867 -91.669387 
+L 187.193013 -92.226573 
+L 186.311159 -92.783759 
+L 185.429305 -93.340945 
+L 184.547451 -93.898131 
+L 183.665597 -94.455317 
+L 182.783743 -95.012503 
+L 181.901889 -95.569688 
+L 181.020035 -96.126874 
+L 180.138181 -96.68406 
+L 179.256327 -97.241246 
+L 178.374473 -97.798432 
+L 177.492619 -98.355618 
+L 176.610765 -98.912804 
+L 175.728911 -99.46999 
+L 174.847057 -100.027176 
+L 173.965203 -100.584362 
+L 173.083349 -101.141548 
+L 172.201495 -101.698734 
+L 171.319641 -102.25592 
+L 170.437787 -102.813106 
+L 169.555933 -103.370291 
+L 168.674079 -103.927477 
+L 167.792225 -104.484663 
+L 166.910371 -105.041849 
+L 166.028517 -105.599035 
+L 165.146663 -106.156221 
+L 164.264809 -106.713407 
+L 163.382955 -107.270593 
+L 162.501101 -107.827779 
+L 161.619247 -108.384965 
+L 160.737393 -108.942151 
+L 159.855539 -109.499337 
+L 158.973685 -110.056523 
+L 158.091831 -110.613709 
+L 157.209977 -111.170894 
+L 156.328123 -111.72808 
+L 155.446269 -112.285266 
+L 154.564415 -112.842452 
+L 153.682561 -113.399638 
+L 152.800707 -113.956824 
+L 151.918853 -114.51401 
+L 151.036999 -115.071196 
+L 150.155145 -115.628382 
+L 149.273291 -116.185568 
+L 148.391437 -116.742754 
+L 147.509583 -117.29994 
+L 146.627729 -117.857126 
+L 145.745875 -118.414312 
+L 144.864021 -118.971497 
+L 143.982167 -119.528683 
+L 143.100313 -120.085869 
+L 142.218459 -120.643055 
+L 141.336605 -121.200241 
+L 140.454751 -121.757427 
+L 139.572897 -122.314613 
+L 138.691043 -122.871799 
+L 137.809189 -123.428985 
+L 136.927335 -123.986171 
+L 136.045481 -124.543357 
+L 135.163627 -125.100543 
+L 134.281773 -125.657729 
+L 133.399919 -126.214915 
+L 132.518066 -126.772101 
+L 131.636212 -127.329286 
+L 130.754358 -127.886472 
+L 129.872504 -128.443658 
+L 128.99065 -129.000844 
+L 128.108796 -129.55803 
+L 127.226942 -130.115216 
+L 126.345088 -130.672402 
+L 125.463234 -131.229588 
+L 124.58138 -131.786774 
+L 123.699526 -132.34396 
+L 122.817672 -132.901146 
+L 121.935818 -133.458332 
+L 121.053964 -134.015518 
+L 120.17211 -134.572704 
+L 119.290256 -135.129889 
+L 118.408402 -135.687075 
+L 117.526548 -136.244261 
+L 116.644694 -136.801447 
+L 115.76284 -137.358633 
+L 114.880986 -137.915819 
+L 113.999132 -138.473005 
+L 113.117278 -139.030191 
+L 112.235424 -139.587377 
+L 111.35357 -140.144563 
+L 110.471716 -140.701749 
+L 109.589862 -141.258935 
+L 108.708008 -141.816121 
+L 107.826154 -142.373307 
+L 106.9443 -142.930492 
+L 106.062446 -143.487678 
+L 105.180592 -144.044864 
+L 104.298738 -144.60205 
+L 103.416884 -145.159236 
+L 102.53503 -145.716422 
+L 101.653176 -146.273608 
+L 100.771322 -146.830794 
+L 99.889468 -147.38798 
+L 99.007614 -147.945166 
+L 98.12576 -148.502352 
+L 97.243906 -149.059538 
+L 96.362052 -149.616724 
+L 95.480198 -150.17391 
+L 94.598344 -150.731095 
+L 93.71649 -151.288281 
+L 92.834636 -151.845467 
+L 91.952782 -152.402653 
+L 91.070928 -152.959839 
+L 90.189074 -153.517025 
+L 89.30722 -154.074211 
+L 88.425366 -154.631397 
+L 87.543512 -155.188583 
+L 86.661658 -155.745769 
+L 85.779804 -156.302955 
+L 84.89795 -156.860141 
+L 84.016096 -157.417327 
+L 83.134242 -157.974513 
+L 82.252388 -158.531698 
+L 81.370534 -159.088884 
+L 80.48868 -159.64607 
+L 79.606826 -160.203256 
+L 78.724972 -160.760442 
+L 77.843118 -161.317628 
+L 76.961264 -161.874814 
+L 76.07941 -162.432 
+z
+" style="stroke: #a2530a; stroke-opacity: 0.3"/>
+    </defs>
+    <g clip-path="url(#pccef868d32)">
+     <use xlink:href="#m04e7452333" x="0" y="236.16" style="fill: #a2530a; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m5a9e7f9d25" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m5a9e7f9d25" x="76.07941" y="184.608" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="76.07941" y="199.966281" transform="rotate(-0 76.07941 199.966281)">−1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m5a9e7f9d25" x="251.568354" y="184.608" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="251.568354" y="199.966281" transform="rotate(-0 251.568354 199.966281)">1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m5a9e7f9d25" x="339.312826" y="184.608" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="339.312826" y="199.966281" transform="rotate(-0 339.312826 199.966281)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <defs>
+       <path id="m2af5b8d0a5" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m2af5b8d0a5" x="163.823882" y="129.168" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="156.823882" y="133.347141" transform="rotate(-0 156.823882 133.347141)">1</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m2af5b8d0a5" x="163.823882" y="73.728" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="156.823882" y="77.907141" transform="rotate(-0 156.823882 77.907141)">2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m2af5b8d0a5" x="163.823882" y="18.288" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="156.823882" y="22.467141" transform="rotate(-0 156.823882 22.467141)">3</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M 41.261939 -1 
+L 47.320353 13.259388 
+L 53.83516 28.000905 
+L 60.349967 42.131175 
+L 66.864773 55.650198 
+L 72.293779 66.449126 
+L 77.722785 76.823576 
+L 83.151791 86.77355 
+L 88.580797 96.299046 
+L 94.009802 105.400065 
+L 99.438808 114.076607 
+L 104.867814 122.328672 
+L 110.29682 130.15626 
+L 115.725825 137.55937 
+L 121.154831 144.538004 
+L 126.583837 151.09216 
+L 132.012843 157.221839 
+L 136.356047 161.819959 
+L 140.699252 166.146414 
+L 145.042457 170.201203 
+L 149.385661 173.984327 
+L 153.728866 177.495785 
+L 158.072071 180.735578 
+L 162.415275 183.703706 
+L 166.75848 186.400168 
+L 171.101684 188.824965 
+L 175.444889 190.978096 
+L 179.788094 192.859563 
+L 184.131298 194.469363 
+L 188.474503 195.807499 
+L 192.817708 196.873969 
+L 197.160912 197.668774 
+L 201.504117 198.191913 
+L 205.847321 198.443387 
+L 210.190526 198.423196 
+L 214.533731 198.131339 
+L 218.876935 197.567817 
+L 223.22014 196.73263 
+L 227.563344 195.625777 
+L 231.906549 194.247259 
+L 236.249754 192.597075 
+L 240.592958 190.675226 
+L 244.936163 188.481712 
+L 249.279368 186.016532 
+L 253.622572 183.279687 
+L 257.965777 180.271177 
+L 262.308981 176.991001 
+L 266.652186 173.43916 
+L 270.995391 169.615654 
+L 275.338595 165.520482 
+L 279.6818 161.153645 
+L 284.025005 156.515142 
+L 288.368209 151.604974 
+L 293.797215 145.085235 
+L 299.226221 138.141019 
+L 304.655227 130.772325 
+L 310.084232 122.979154 
+L 315.513238 114.761507 
+L 320.942244 106.119382 
+L 326.37125 97.05278 
+L 331.800255 87.5617 
+L 337.229261 77.646144 
+L 342.658267 67.306111 
+L 348.087273 56.5416 
+L 348.087273 56.5416 
+" clip-path="url(#pccef868d32)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 23.432727 40.464 
+L 334.74201 237.16 
+L 334.74201 237.16 
+" clip-path="url(#pccef868d32)" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <defs>
+     <path id="mb984f4ecc9" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#pccef868d32)">
+     <use xlink:href="#mb984f4ecc9" x="76.07941" y="73.728" style="stroke: currentColor"/>
+     <use xlink:href="#mb984f4ecc9" x="251.568354" y="184.608" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 163.823882 228.96 
+L 163.823882 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 184.608 
+L 364.32 184.608 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="27.819951" y="54.324" transform="rotate(-0 27.819951 54.324)">Q(−1, 2)</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="258.587912" y="170.748" transform="rotate(-0 258.587912 170.748)">P(1, 0)</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_10">
+     <path d="M 236.120156 21.608281 
+L 247.120156 21.608281 
+L 258.120156 21.608281 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="266.920156" y="25.458281" transform="rotate(-0 266.920156 25.458281)">f(x) = x² − x</text>
+    </g>
+    <g id="line2d_11">
+     <path d="M 236.120156 37.754219 
+L 247.120156 37.754219 
+L 258.120156 37.754219 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="266.920156" y="41.604219" transform="rotate(-0 266.920156 41.604219)">L: y = 1 − x</text>
+    </g>
+    <g id="patch_5">
+     <path d="M 236.120156 58.190156 
+L 258.120156 58.190156 
+L 258.120156 50.490156 
+L 236.120156 50.490156 
+z
+" style="fill: #a2530a; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="266.920156" y="58.190156" transform="rotate(-0 266.920156 58.190156)">región, área 4/3</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pccef868d32">
+   <rect x="7.2" y="7.2" width="357.12" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: región entre \(f(x)=x^2-x\) y su normal en P, la recta \(y=1-x\). Los cortes son \(x=\pm1\) y el área es \(\tfrac43\).</figcaption></figure>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2026 TZ2, P11(b))</p><p>La región de \(f(x)=\tfrac{-x-7}{x^2+4x+3}\) entre \(x=0\) y \(x=1\) está bajo el eje. La integral da \(\ln\tfrac29\), negativa, y el markscheme reserva una <b>R1</b> para decir que el área es su opuesto, \(\ln\tfrac92\). Sin esa frase, el «muestre que» queda incompleto.</p></div>
+
+<h3 id="t7">1.7 Volúmenes de revolución (NS)</h3>
+\[ \text{Eje }x:\ V=\pi\int_a^by^2\,dx,\qquad \text{eje }y:\ V=\pi\int_c^dx^2\,dy \]
+<p>Si la región está entre dos curvas (una arandela), resta: \(\pi\int\left(y_{\text{ext}}^2-y_{\text{int}}^2\right)dx\).</p>
+<div class="ex"><p class="et">Ejemplo 1.13. Alrededor de cada eje</p>
+<p>(a) \(y=\sin x\), \(0\le x\le\pi\), alrededor del eje \(x\): \(\pi\int_0^\pi\sin^2x\,dx=\tfrac{\pi^2}2\).</p>
+<p>(b) \(y=x^2\) entre \(y=0\) e \(y=4\), alrededor del eje \(y\): \(\pi\int_0^4y\,dy=8\pi\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.14. Una arandela</p>
+<p>La región entre \(y=x\) e \(y=x^2\) gira alrededor del eje \(x\). En \([0,1]\), \(x\ge x^2\): radio exterior \(x\), interior \(x^2\).</p>
+<p>\(V=\pi\int_0^1\left(x^2-x^4\right)dx=\pi\left(\tfrac13-\tfrac15\right)=\tfrac{2\pi}{15}\). <b>Error típico:</b> \(\pi\int_0^1(x-x^2)^2dx=\tfrac\pi{30}\), que eleva al cuadrado la diferencia en lugar de restar los cuadrados.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 185.32944 231.629937" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 231.629937 
+L 185.32944 231.629937 
+L 185.32944 0 
+L 0 0 
+L 0 231.629937 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 206.784 
+L 178.12944 206.784 
+L 178.12944 7.2 
+L 7.2 7.2 
+L 7.2 206.784 
+z
+" style="fill: none"/>
+   </g>
+   <g id="FillBetweenPolyCollection_1">
+    <defs>
+     <path id="m567d62d092" d="M 104.78232 -167.849711 
+L 104.78232 -52.914164 
+L 110.48472 -52.914164 
+L 110.48472 -167.849711 
+L 110.48472 -167.849711 
+L 104.78232 -167.849711 
+z
+" style="stroke: #a2530a; stroke-opacity: 0.35"/>
+    </defs>
+    <g clip-path="url(#p2085f58347)">
+     <use xlink:href="#m567d62d092" x="0" y="231.629937" style="fill: #a2530a; fill-opacity: 0.35; stroke: #a2530a; stroke-opacity: 0.35"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m9e8538cb31" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m9e8538cb31" x="14.96952" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="14.96952" y="222.142281" transform="rotate(-0 14.96952 222.142281)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m9e8538cb31" x="50.60952" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="50.60952" y="222.142281" transform="rotate(-0 50.60952 222.142281)">1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m9e8538cb31" x="86.24952" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="86.24952" y="222.142281" transform="rotate(-0 86.24952 222.142281)">2</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m9e8538cb31" x="121.88952" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="121.88952" y="222.142281" transform="rotate(-0 121.88952 222.142281)">3</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m9e8538cb31" x="157.52952" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="157.52952" y="222.142281" transform="rotate(-0 157.52952 222.142281)">4</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_6">
+    <path d="M 14.96952 121.248 
+L 15.685902 116.195095 
+L 16.402284 114.102113 
+L 17.835048 111.14219 
+L 19.267811 108.87096 
+L 20.700575 106.956226 
+L 22.849721 104.489409 
+L 24.998867 102.34176 
+L 27.864394 99.810339 
+L 31.446304 97.015118 
+L 35.028213 94.510539 
+L 39.326505 91.784753 
+L 44.341178 88.89362 
+L 50.072234 85.877663 
+L 56.519671 82.76622 
+L 63.68349 79.580676 
+L 71.563691 76.336796 
+L 80.160274 73.046356 
+L 89.473239 69.718275 
+L 100.218967 66.127312 
+L 111.681078 62.538547 
+L 124.575952 58.747014 
+L 138.187208 54.979769 
+L 153.231229 51.050797 
+L 157.52952 49.968 
+L 157.52952 49.968 
+" clip-path="url(#p2085f58347)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 14.96952 121.248 
+L 15.685902 126.300905 
+L 16.402284 128.393887 
+L 17.835048 131.35381 
+L 19.267811 133.62504 
+L 20.700575 135.539774 
+L 22.849721 138.006591 
+L 24.998867 140.15424 
+L 27.864394 142.685661 
+L 31.446304 145.480882 
+L 35.028213 147.985461 
+L 39.326505 150.711247 
+L 44.341178 153.60238 
+L 50.072234 156.618337 
+L 56.519671 159.72978 
+L 63.68349 162.915324 
+L 71.563691 166.159204 
+L 80.160274 169.449644 
+L 89.473239 172.777725 
+L 100.218967 176.368688 
+L 111.681078 179.957453 
+L 124.575952 183.748986 
+L 138.187208 187.516231 
+L 153.231229 191.445203 
+L 157.52952 192.528 
+L 157.52952 192.528 
+" clip-path="url(#p2085f58347)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #0e6e6a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 57.02472 121.248 
+L 57.011804 118.987572 
+L 56.973109 116.736245 
+L 56.908789 114.503086 
+L 56.819105 112.297086 
+L 56.704416 110.127128 
+L 56.565186 108.00195 
+L 56.401974 105.930109 
+L 56.215439 103.919948 
+L 56.00633 101.979561 
+L 55.77549 100.116761 
+L 55.523848 98.33905 
+L 55.252419 96.653584 
+L 54.962294 95.067152 
+L 54.654641 93.58614 
+L 54.330701 92.216513 
+L 53.991777 90.963786 
+L 53.639233 89.833002 
+L 53.27449 88.828716 
+L 52.899016 87.95497 
+L 52.514324 87.215284 
+L 52.121961 86.612636 
+L 51.723508 86.149452 
+L 51.320569 85.827597 
+L 50.914768 85.648368 
+L 50.507737 85.612486 
+L 50.101116 85.720096 
+L 49.696542 85.970764 
+L 49.295644 86.363481 
+L 48.900037 86.896665 
+L 48.511314 87.568171 
+L 48.131039 88.375293 
+L 47.760744 89.314782 
+L 47.40192 90.382855 
+L 47.056012 91.57521 
+L 46.724413 92.887048 
+L 46.408457 94.313085 
+L 46.109418 95.84758 
+L 45.8285 97.484353 
+L 45.566832 99.216814 
+L 45.32547 101.037986 
+L 45.105385 102.940538 
+L 44.907463 104.916807 
+L 44.732501 106.958836 
+L 44.581204 109.058402 
+L 44.454181 111.207052 
+L 44.351943 113.396133 
+L 44.274902 115.61683 
+L 44.223369 117.860203 
+L 44.19755 120.117216 
+L 44.19755 122.378784 
+L 44.223369 124.635797 
+L 44.274902 126.87917 
+L 44.351943 129.099867 
+L 44.454181 131.288948 
+L 44.581204 133.437598 
+L 44.732501 135.537164 
+L 44.907463 137.579193 
+L 45.105385 139.555462 
+L 45.32547 141.458014 
+L 45.566832 143.279186 
+L 45.8285 145.011647 
+L 46.109418 146.64842 
+L 46.408457 148.182915 
+L 46.724413 149.608952 
+L 47.056012 150.92079 
+L 47.40192 152.113145 
+L 47.760744 153.181218 
+L 48.131039 154.120707 
+L 48.511314 154.927829 
+L 48.900037 155.599335 
+L 49.295644 156.132519 
+L 49.696542 156.525236 
+L 50.101116 156.775904 
+L 50.507737 156.883514 
+L 50.914768 156.847632 
+L 51.320569 156.668403 
+L 51.723508 156.346548 
+L 52.121961 155.883364 
+L 52.514324 155.280716 
+L 52.899016 154.54103 
+L 53.27449 153.667284 
+L 53.639233 152.662998 
+L 53.991777 151.532214 
+L 54.330701 150.279487 
+L 54.654641 148.90986 
+L 54.962294 147.428848 
+L 55.252419 145.842416 
+L 55.523848 144.15695 
+L 55.77549 142.379239 
+L 56.00633 140.516439 
+L 56.215439 138.576052 
+L 56.401974 136.565891 
+L 56.565186 134.49405 
+L 56.704416 132.368872 
+L 56.819105 130.198914 
+L 56.908789 127.992914 
+L 56.973109 125.759755 
+L 57.011804 123.508428 
+L 57.02472 121.248 
+" clip-path="url(#p2085f58347)" style="fill: none; stroke: #5a3d9a; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 95.321983 121.248 
+L 95.303717 118.051271 
+L 95.248993 114.867415 
+L 95.158032 111.709251 
+L 95.031199 108.589496 
+L 94.869005 105.520712 
+L 94.672104 102.515257 
+L 94.441287 99.585231 
+L 94.177486 96.742434 
+L 93.881761 93.998313 
+L 93.555304 91.363916 
+L 93.19943 88.849852 
+L 92.81557 86.466243 
+L 92.405271 84.222689 
+L 91.970186 82.128222 
+L 91.512065 80.191277 
+L 91.032753 78.419653 
+L 90.534182 76.820484 
+L 90.018357 75.400208 
+L 89.487357 74.164546 
+L 88.943319 73.118472 
+L 88.388434 72.266198 
+L 87.824937 71.611157 
+L 87.255095 71.155986 
+L 86.681205 70.902518 
+L 86.105577 70.851773 
+L 85.530528 71.003956 
+L 84.958374 71.358454 
+L 84.391419 71.91384 
+L 83.831946 72.667877 
+L 83.282208 73.617529 
+L 82.744418 74.758972 
+L 82.220742 76.08761 
+L 81.713289 77.598093 
+L 81.224101 79.284338 
+L 80.755149 81.139557 
+L 80.30832 83.156278 
+L 79.885415 85.326381 
+L 79.488136 87.641128 
+L 79.118083 90.091198 
+L 78.776745 92.666725 
+L 78.465497 95.357339 
+L 78.185593 98.152205 
+L 77.93816 101.04007 
+L 77.724194 104.009305 
+L 77.544556 107.047955 
+L 77.39997 110.143783 
+L 77.291017 113.284323 
+L 77.218138 116.456931 
+L 77.181625 119.648831 
+L 77.181625 122.847169 
+L 77.218138 126.039069 
+L 77.291017 129.211677 
+L 77.39997 132.352217 
+L 77.544556 135.448045 
+L 77.724194 138.486695 
+L 77.93816 141.45593 
+L 78.185593 144.343795 
+L 78.465497 147.138661 
+L 78.776745 149.829275 
+L 79.118083 152.404802 
+L 79.488136 154.854872 
+L 79.885415 157.169619 
+L 80.30832 159.339722 
+L 80.755149 161.356443 
+L 81.224101 163.211662 
+L 81.713289 164.897907 
+L 82.220742 166.40839 
+L 82.744418 167.737028 
+L 83.282208 168.878471 
+L 83.831946 169.828123 
+L 84.391419 170.58216 
+L 84.958374 171.137546 
+L 85.530528 171.492044 
+L 86.105577 171.644227 
+L 86.681205 171.593482 
+L 87.255095 171.340014 
+L 87.824937 170.884843 
+L 88.388434 170.229802 
+L 88.943319 169.377528 
+L 89.487357 168.331454 
+L 90.018357 167.095792 
+L 90.534182 165.675516 
+L 91.032753 164.076347 
+L 91.512065 162.304723 
+L 91.970186 160.367778 
+L 92.405271 158.273311 
+L 92.81557 156.029757 
+L 93.19943 153.646148 
+L 93.555304 151.132084 
+L 93.881761 148.497687 
+L 94.177486 145.753566 
+L 94.441287 142.910769 
+L 94.672104 139.980743 
+L 94.869005 136.975288 
+L 95.031199 133.906504 
+L 95.158032 130.786749 
+L 95.248993 127.628585 
+L 95.303717 124.444729 
+L 95.321983 121.248 
+" clip-path="url(#p2085f58347)" style="fill: none; stroke: #5a3d9a; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 133.000972 121.248 
+L 132.978601 117.332823 
+L 132.911579 113.433411 
+L 132.800174 109.565466 
+L 132.644836 105.744562 
+L 132.44619 101.986085 
+L 132.205036 98.305169 
+L 131.922345 94.716635 
+L 131.599256 91.234934 
+L 131.237069 87.874085 
+L 130.837242 84.647621 
+L 130.401386 81.568534 
+L 129.931256 78.649222 
+L 129.428745 75.90144 
+L 128.895876 73.336253 
+L 128.334795 70.96399 
+L 127.747761 68.794202 
+L 127.137138 66.835628 
+L 126.505384 65.096152 
+L 125.855044 63.582781 
+L 125.188737 62.301607 
+L 124.509144 61.257789 
+L 123.819003 60.455531 
+L 123.121093 59.898063 
+L 122.418224 59.587629 
+L 121.713226 59.525479 
+L 121.008938 59.711865 
+L 120.308195 60.146035 
+L 119.61382 60.82624 
+L 118.928609 61.749743 
+L 118.25532 62.912825 
+L 117.596665 64.310801 
+L 116.955295 65.938044 
+L 116.333794 67.788 
+L 115.734664 69.853221 
+L 115.160317 72.12539 
+L 114.613066 74.595359 
+L 114.095115 77.253182 
+L 113.60855 80.088156 
+L 113.155329 83.088866 
+L 112.737277 86.24323 
+L 112.356078 89.538545 
+L 112.013267 92.961544 
+L 111.710225 96.498441 
+L 111.44817 100.134997 
+L 111.22816 103.856567 
+L 111.051078 107.648167 
+L 110.91764 111.494528 
+L 110.828381 115.380163 
+L 110.783662 119.289425 
+L 110.783662 123.206575 
+L 110.828381 127.115837 
+L 110.91764 131.001472 
+L 111.051078 134.847833 
+L 111.22816 138.639433 
+L 111.44817 142.361003 
+L 111.710225 145.997559 
+L 112.013267 149.534456 
+L 112.356078 152.957455 
+L 112.737277 156.25277 
+L 113.155329 159.407134 
+L 113.60855 162.407844 
+L 114.095115 165.242818 
+L 114.613066 167.900641 
+L 115.160317 170.37061 
+L 115.734664 172.642779 
+L 116.333794 174.708 
+L 116.955295 176.557956 
+L 117.596665 178.185199 
+L 118.25532 179.583175 
+L 118.928609 180.746257 
+L 119.61382 181.66976 
+L 120.308195 182.349965 
+L 121.008938 182.784135 
+L 121.713226 182.970521 
+L 122.418224 182.908371 
+L 123.121093 182.597937 
+L 123.819003 182.040469 
+L 124.509144 181.238211 
+L 125.188737 180.194393 
+L 125.855044 178.913219 
+L 126.505384 177.399848 
+L 127.137138 175.660372 
+L 127.747761 173.701798 
+L 128.334795 171.53201 
+L 128.895876 169.159747 
+L 129.428745 166.59456 
+L 129.931256 163.846778 
+L 130.401386 160.927466 
+L 130.837242 157.848379 
+L 131.237069 154.621915 
+L 131.599256 151.261066 
+L 131.922345 147.779365 
+L 132.205036 144.190831 
+L 132.44619 140.509915 
+L 132.644836 136.751438 
+L 132.800174 132.930534 
+L 132.911579 129.062589 
+L 132.978601 125.163177 
+L 133.000972 121.248 
+" clip-path="url(#p2085f58347)" style="fill: none; stroke: #5a3d9a; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 170.35992 121.248 
+L 170.334088 116.727143 
+L 170.256697 112.22449 
+L 170.128058 107.758171 
+L 169.948689 103.346171 
+L 169.719312 99.006256 
+L 169.440852 94.7559 
+L 169.114429 90.612219 
+L 168.741357 86.591897 
+L 168.323139 82.711123 
+L 167.86146 78.985523 
+L 167.358177 75.430099 
+L 166.815317 72.059168 
+L 166.235067 68.886303 
+L 165.619763 65.92428 
+L 164.971882 63.185026 
+L 164.294034 60.679571 
+L 163.588947 58.418004 
+L 162.859461 56.409431 
+L 162.108513 54.661941 
+L 161.339127 53.182568 
+L 160.554401 51.977271 
+L 159.757496 51.050903 
+L 158.951618 50.407194 
+L 158.140015 50.048736 
+L 157.325953 49.976972 
+L 156.512711 50.192192 
+L 155.703564 50.693528 
+L 154.901769 51.478962 
+L 154.110554 52.545331 
+L 153.333107 53.888342 
+L 152.572557 55.502586 
+L 151.831968 57.381564 
+L 151.11432 59.517709 
+L 150.422504 61.902421 
+L 149.759305 64.526096 
+L 149.127395 67.37817 
+L 148.529317 70.447159 
+L 147.967479 73.720706 
+L 147.444144 77.185627 
+L 146.96142 80.827973 
+L 146.52125 84.633076 
+L 146.125406 88.585614 
+L 145.775482 92.669671 
+L 145.472888 96.868804 
+L 145.218841 101.166103 
+L 145.014366 105.544265 
+L 144.860284 109.98566 
+L 144.757217 114.472405 
+L 144.70558 118.986433 
+L 144.70558 123.509567 
+L 144.757217 128.023595 
+L 144.860284 132.51034 
+L 145.014366 136.951735 
+L 145.218841 141.329897 
+L 145.472888 145.627196 
+L 145.775482 149.826329 
+L 146.125406 153.910386 
+L 146.52125 157.862924 
+L 146.96142 161.668027 
+L 147.444144 165.310373 
+L 147.967479 168.775294 
+L 148.529317 172.048841 
+L 149.127395 175.11783 
+L 149.759305 177.969904 
+L 150.422504 180.593579 
+L 151.11432 182.978291 
+L 151.831968 185.114436 
+L 152.572557 186.993414 
+L 153.333107 188.607658 
+L 154.110554 189.950669 
+L 154.901769 191.017038 
+L 155.703564 191.802472 
+L 156.512711 192.303808 
+L 157.325953 192.519028 
+L 158.140015 192.447264 
+L 158.951618 192.088806 
+L 159.757496 191.445097 
+L 160.554401 190.518729 
+L 161.339127 189.313432 
+L 162.108513 187.834059 
+L 162.859461 186.086569 
+L 163.588947 184.077996 
+L 164.294034 181.816429 
+L 164.971882 179.310974 
+L 165.619763 176.57172 
+L 166.235067 173.609697 
+L 166.815317 170.436832 
+L 167.358177 167.065901 
+L 167.86146 163.510477 
+L 168.323139 159.784877 
+L 168.741357 155.904103 
+L 169.114429 151.883781 
+L 169.440852 147.7401 
+L 169.719312 143.489744 
+L 169.948689 139.149829 
+L 170.128058 134.737829 
+L 170.256697 130.27151 
+L 170.334088 125.768857 
+L 170.35992 121.248 
+" clip-path="url(#p2085f58347)" style="fill: none; stroke: #5a3d9a; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 7.2 121.248 
+L 178.12944 121.248 
+" clip-path="url(#p2085f58347)" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 7.2 206.784 
+L 178.12944 206.784 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_13">
+     <path d="M 16.2 20.810937 
+L 26.2 20.810937 
+L 36.2 20.810937 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="44.2" y="24.310937" transform="rotate(-0 44.2 24.310937)">y = √x</text>
+    </g>
+    <g id="line2d_14">
+     <path d="M 16.2 35.489062 
+L 26.2 35.489062 
+L 36.2 35.489062 
+" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #0e6e6a; stroke-width: 1.2"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="44.2" y="38.989062" transform="rotate(-0 44.2 38.989062)">reflejo de la curva</text>
+    </g>
+    <g id="patch_4">
+     <path d="M 16.2 53.667188 
+L 36.2 53.667188 
+L 36.2 46.667188 
+L 16.2 46.667188 
+z
+" style="fill: #a2530a; fill-opacity: 0.35; stroke: #a2530a; stroke-opacity: 0.35; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="44.2" y="53.667188" transform="rotate(-0 44.2 53.667188)">disco: volumen π y² dx</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p2085f58347">
+   <rect x="7.2" y="7.2" width="170.92944" height="199.584"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: al girar \(y=\sqrt x\), \(0\le x\le4\), alrededor del eje \(x\), cada rebanada es un disco de radio \(y\). Sumando: \(V=\pi\int_0^4x\,dx=8\pi\).</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>La región bajo \(y=\sqrt x\) en \([0,4]\) gira alrededor del eje \(x\). Halla el volumen.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(V=\pi\int_0^4 x\,dx=8\pi\).</li></ol></div></details></div>
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Fórmulas de reducción:</b> \(I_n=\int_0^{\pi/2}\sin^nx\,dx\) cumple \(I_n=\tfrac{n-1}nI_{n-2}\) (problema E5).</li>
+<li><b>Sumas de Riemann:</b> \(\int_0^1f=\lim\tfrac1n\sum f\left(\tfrac kn\right)\) (problema E1).</li>
+<li><b>Integrales impropias:</b> \(\int_1^\infty\tfrac{dx}{x^2}=1\), pero \(\int_1^\infty\tfrac{dx}x\) diverge (problema E10).</li>
+</ul></div>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Antiderivada</td><td>\(F\) con \(F'=f\).</td></tr>
+<tr><td>Integral indefinida</td><td>Familia de antiderivadas \(F(x)+c\).</td></tr>
+<tr><td>Integral definida</td><td>\(\int_a^bf=F(b)-F(a)\): el área con signo entre \(f\) y el eje.</td></tr>
+<tr><td>Condición de contorno</td><td>Dato (un punto de la curva) que fija la constante \(c\).</td></tr>
+<tr><td>Integración por inspección</td><td>Reconocer \(f'(g(x))g'(x)\) y escribir la antiderivada directamente.</td></tr>
+<tr><td>Sólido de revolución</td><td>Sólido que se genera al girar una región alrededor de un eje.</td></tr>
+<tr><td>Área con signo</td><td>Valor de \(\int_a^bf\): cuenta positivo lo que está sobre el eje y negativo lo que está debajo.</td></tr>
+<tr><td>Teorema fundamental del cálculo</td><td>Si \(f\) es continua, \(\frac{d}{dx}\int_a^xf(t)\,dt=f(x)\) y \(\int_a^bf=F(b)-F(a)\).</td></tr>
+<tr><td>Arandela</td><td>Sección de un sólido de revolución con hueco: \(\pi(R^2-r^2)\,dx\).</td></tr>
+<tr><td>Fracciones parciales</td><td>Descomposición de un cociente en fracciones con denominadores lineales.</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Halle \(\int\)</td><td>Antiderivada + \(c\).</td><td>Olvidar la \(+c\), o los valores absolutos del ln cuando importan.</td></tr>
+<tr><td>Halle el valor exacto de \(\int_a^b\)</td><td>Número exacto, simplificado con leyes de logaritmos.</td><td>Dar un decimal, o dejar \(2\ln4-3\ln2\) sin simplificar si piden una forma.</td></tr>
+<tr><td>Utilizando la sustitución…</td><td>Esa sustitución, con \(dx\) cambiado y los límites en \(u\).</td><td>Resolver por otro método: se pierden las marcas del método.</td></tr>
+<tr><td>Muestre que el área es…</td><td>Integral planteada, evaluada, y justificación del signo si la región está bajo el eje (R1).</td><td>Aceptar un área negativa, o quitar el signo sin explicarlo.</td></tr>
+<tr><td>Escriba una expresión para el área / volumen</td><td>La integral con sus límites, sin evaluar.</td><td>Olvidar \(\pi\) o el cuadrado en un volumen.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>La \(+c\) olvidada.</b> En una integral indefinida vale una A1.</li>
+<li><b>El factor de la función interior.</b> \(\int\cos3x\,dx=\tfrac13\sin3x\), no \(3\sin3x\) ni \(\sin3x\).</li>
+<li><b>Los límites sin cambiar.</b> Si cambias a \(u\), cambia los límites; si no, vuelve a \(x\) antes de sustituir.</li>
+<li><b>\(\int\tfrac1x\) como potencia.</b> \(n=-1\) no usa la regla de potencias: es \(\ln|x|\).</li>
+<li><b>El área bajo el eje.</b> Separa la integral donde \(f\) cambia de signo. Sumar integrales con signo da la integral, no el área.</li>
+<li><b>El orden en el área entre curvas.</b> Es «arriba menos abajo». Si se invierte, sale el valor negativo.</li>
+<li><b>El cuadrado en el volumen.</b> Es \(\pi\int y^2\), no \(\pi\int y\). Con arandelas, es \(y_{\text{ext}}^2-y_{\text{int}}^2\), no \((y_{\text{ext}}-y_{\text{int}})^2\).</li>
+<li><b>El eje equivocado.</b> Alrededor del eje \(y\), despeja \(x\) y usa límites en \(y\).</li>
+<li><b>El arcsin sin sacar factor.</b> \(\int\tfrac{dx}{\sqrt{4-3x^2}}\) necesita un \(\tfrac1{\sqrt3}\) delante.</li>
+<li><b>El producto integrado como producto.</b> \(\int uv\neq\int u\int v\): usa sustitución o partes.</li>
+<li><b>El \(\sin^2\) sin identidad.</b> \(\int\sin^2x\) necesita \(\tfrac{1-\cos2x}2\).</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">Parten de ítems de DMpA 03, 04 y 05. Los de calculadora se reformulan para resolverse de forma exacta, y se amplían hasta la Sección B. Ninguno repite un tipo de la sección 5.</p>
+
+<div class="ex"><p class="et">F1. Dos antiderivadas por inspección <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 03 («la pendiente de una curva está dada por \(3x^2e^{x^3}\); pasa por \((1,5e)\)» y «\(f'(x)=\tfrac{8x}{4x^2+1}\)»).</p>
+<p>(a) \(f'(x)=3x^2e^{x^3}\) y la curva pasa por \((1,5e)\). Halla \(f\). (b) \(g'(x)=\tfrac{8x}{4x^2+1}\) y \(g(0)=4\). Halla \(g\) y \(g\left(\tfrac12\right)\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(f=e^{x^3}+c\), con \(e+c=5e\). Así \(f(x)=e^{x^3}+4e\).</p>
+<p>(b) Es la forma \(\tfrac{g'}{g}\): \(g=\ln(4x^2+1)+4\) (sin valor absoluto, porque \(4x^2+1\gt0\)). \(g\left(\tfrac12\right)=\ln2+4\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Derivar para integrar <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 04 y 05 («halle \(\tfrac{dy}{dx}\)… a partir de lo anterior halle \(\int(3x^2+1)\sqrt{x^3+x}\,dx\)»).</p>
+<p>(a) Si \(y=(x^3+x)^{3/2}\), halla \(\tfrac{dy}{dx}\). (b) A partir de lo anterior, halla \(\int(3x^2+1)\sqrt{x^3+x}\,dx\) y su valor entre 0 y 1.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\tfrac32(3x^2+1)\sqrt{x^3+x}\).</p>
+<p>(b) \(\tfrac23(x^3+x)^{3/2}+c\). Entre 0 y 1: \(\tfrac23\cdot2^{3/2}=\tfrac{4\sqrt2}3\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. Integración por partes cíclica <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 02 (IB NS mayo 2018: «halle \(\int_0^\pi e^{-x}\sin x\,dx\)») y DMpA 04 («demuestre usando integración por partes»).</p>
+<p>Halla \(I=\int_0^\pi e^{-x}\sin x\,dx\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Por partes dos veces: \(I=\left[-e^{-x}\sin x\right]_0^\pi+\int_0^\pi e^{-x}\cos x\,dx=0+\left[-e^{-x}\cos x\right]_0^\pi-\int_0^\pi e^{-x}\sin x\,dx\).</p>
+<p>Así \(I=(e^{-\pi}+1)-I\), y \(I=\dfrac{1+e^{-\pi}}2\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Sustitución y una identidad <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 04 («mediante el método de la sustitución, demuestra que…»), con integrandos propios.</p>
+<p>Halla (a) \(\int_0^{\pi/2}\sin^3x\,dx\) con \(u=\cos x\); (b) \(\int_0^{\pi/4}\tan^2x\,dx\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\sin^3x=(1-\cos^2x)\sin x\): \(\int_0^1(1-u^2)\,du=\tfrac23\).</p>
+<p>(b) \(\int(\sec^2x-1)\,dx=\left[\tan x-x\right]_0^{\pi/4}=1-\tfrac\pi4\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. Un parámetro fijado por el área <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 05 («sabiendo que el área de la región sombreada es 2 unidades, calcula el valor exacto de \(a\)»).</p>
+<p>(a) El área bajo \(y=\tfrac1x\) entre \(x=1\) y \(x=a\) es 2. Halla \(a\). (b) Halla \(k\) para que la recta \(x=k\) divida esa región en dos partes de igual área.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\ln a=2\), así que \(a=e^2\). (b) \(\ln k=1\), así que \(k=e\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Área entre curvas y la recta que la biseca <span class="lvl">Sección B, integra Módulo 2</span></p>
+<p class="src">DMpA 05 («la recta divide el área de la región por la mitad… halle una expresión que no contenga una integral»).</p>
+<p>(a) Halla el área entre \(y=x^2\) e \(y=2x\). (b) Halla \(k\) para que \(x=k\) divida esa área por la mitad.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Cortes en 0 y 2: \(\int_0^2(2x-x^2)\,dx=\tfrac43\).</p>
+<p>(b) \(k^2-\tfrac{k^3}3=\tfrac23\Rightarrow k^3-3k^2+2=0\Rightarrow(k-1)(k^2-2k-2)=0\). En \((0,2)\): \(k=1\) (las otras raíces son \(1\pm\sqrt3\)). Tiene sentido: la región es simétrica respecto a \(x=1\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. Volúmenes alrededor de los dos ejes <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 05 (volumen del sólido engendrado al girar un arco alrededor de un eje).</p>
+<p>La región bajo \(y=\sqrt x\) en \([0,4]\): (a) gira alrededor del eje \(x\); halla el volumen. (b) La región entre \(y=\sqrt x\), el eje \(y\) e \(y=2\) gira alrededor del eje \(y\); halla el volumen.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\pi\int_0^4x\,dx=8\pi\). (b) \(x=y^2\): \(\pi\int_0^2y^4\,dy=\tfrac{32\pi}5\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. Área respecto al eje \(y\) <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 05 («la región R está delimitada por el gráfico, el eje \(x\) y el eje \(y\)… el área se puede escribir en la forma…»).</p>
+<p>Halla el área entre \(y=\ln x\), el eje \(y\), \(y=0\) e \(y=1\), integrando respecto a \(y\). Compruébalo integrando respecto a \(x\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Con \(x=e^y\): \(\int_0^1e^y\,dy=e-1\).</p>
+<p>Respecto a \(x\): rectángulo \(e\times1\) menos \(\int_1^e\ln x\,dx=[x\ln x-x]_1^e=1\). Queda \(e-1\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. Arctan y arcsin <span class="lvl">Sección A alta</span></p>
+<p class="src">Tipo de examen sin ítem equivalente en las fichas (formas estándar NS).</p>
+<p>Halla (a) \(\int_0^{\sqrt3}\tfrac{dx}{1+x^2}\); (b) \(\int_0^1\tfrac{dx}{\sqrt{4-x^2}}\); (c) \(\int\tfrac{dx}{x^2+4x+8}\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\tfrac\pi3\). (b) \(\arcsin\tfrac12=\tfrac\pi6\). (c) \(x^2+4x+8=(x+2)^2+4\): \(\tfrac12\arctan\tfrac{x+2}2+c\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. Área de una función que no se integra directamente <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 03 (integración por partes, ejemplo 04), aplicada a un área.</p>
+<p>Halla el área bajo \(y=xe^{-x}\) entre \(x=0\) y \(x=1\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Con \(u=x\), \(dv=e^{-x}dx\): \(\left[-xe^{-x}\right]_0^1+\int_0^1e^{-x}dx=-e^{-1}+1-e^{-1}=1-\tfrac2e\).</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son las 8 preguntas o partes de integración de tus pruebas, con las marcas del markscheme oficial, salvo en mayo 2021 TZ2, cuyo markscheme no está en tus archivos: ahí están reconstruidas y se indica. Resuélvelas en tiempo de examen, a 1,1 minutos por punto.</p>
+
+<div class="ex"><p class="et">X1. Noviembre 2021, pregunta 1 <span class="lvl">4 puntos</span></p>
+<p>\(\tfrac{dy}{dx}=\cos\left(x-\tfrac\pi4\right)\) e \(y=2\) cuando \(x=\tfrac{3\pi}4\). Halla \(y\) en función de \(x\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">\(y=\int\cos\left(x-\tfrac\pi4\right)dx\) <span class="m">(M1)</span> \(=\sin\left(x-\tfrac\pi4\right)+c\) <span class="m">(A1)</span></p>
+<p class="step">Sustituir el punto <span class="m">(M1)</span>: \(2=\sin\tfrac\pi2+c\Rightarrow c=1\). Así \(y=\sin\left(x-\tfrac\pi4\right)+1\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Mayo 2022 TZ1, pregunta 1 <span class="lvl">5 puntos</span></p>
+<p>Halla \(\displaystyle\int_1^9\frac{3\sqrt x-5}{\sqrt x}\,dx\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">Separar: \(\int_1^9\left(3-5x^{-1/2}\right)dx\) <span class="m">(M1)</span></p>
+<p class="step">\(=\left[3x-10\sqrt x\right]_1^9\) <span class="m">A1A1</span></p>
+<p class="step">\(=(27-30)-(3-10)\) <span class="m">(M1)</span> \(=4\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Mayo 2021 TZ2, pregunta 10(b) <span class="lvl">5 puntos</span></p>
+<p>\(f(x)=6+6\cos x\) toca el eje en \(A(\pi,0)\) y \(B(3\pi,0)\). Muestra que el área entre \(f\) y el eje, entre \(A\) y \(B\), es \(12\pi\).</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">\(\int_\pi^{3\pi}(6+6\cos x)\,dx\) <span class="m">M1</span> \(=\left[6x+6\sin x\right]_\pi^{3\pi}\) <span class="m">A1A1</span></p>
+<p class="step">\(=(18\pi+0)-(6\pi+0)\) <span class="m">A1</span> \(=12\pi\) <span class="m">A1</span> <span class="m">AG</span></p>
+<p>Las partes (c) y (d), sobre el cono, están en el Módulo 7.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X4. Mayo 2022 TZ2, pregunta 7 <span class="lvl">6 puntos</span></p>
+<p>Usando \(u=\sec x\) u otro método, halla \(\int_0^{\pi/3}\sec^nx\tan x\,dx\) en función de \(n\neq0\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">\(du=\sec x\tan x\,dx\) <span class="m">(A1)</span>; en términos de \(u\) <span class="m">M1</span>: \(\int_1^2u^{n-1}du\) <span class="m">A1</span></p>
+<p class="step">\(=\left[\tfrac{u^n}n\right]_1^2\) <span class="m">A1</span>; sustituir los límites <span class="m">M1</span>: \(\dfrac{2^n-1}n\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X5. Mayo 2026 TZ2, pregunta 2 <span class="lvl">6 puntos</span></p>
+<p>\(f(x)=3+\cos bx\), \(0\le x\le2\pi\), con máximo \((0,4)\) y mínimo \((2\pi,2)\). (a) Muestra que \(b=\tfrac12\). (b) Halla el área entre \(f\), los ejes y \(x=2\pi\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) De un máximo al mínimo siguiente va medio periodo: el periodo es \(4\pi=\tfrac{2\pi}b\) <span class="m">A1</span> <span class="m">AG</span></p>
+<p class="step">(b) \(\int_0^{2\pi}\left(3+\cos\tfrac x2\right)dx\) <span class="m">(M1)</span> \(=\left[3x+2\sin\tfrac x2\right]_0^{2\pi}\) <span class="m">A1A1</span> \(=6\pi+2\sin\pi\) <span class="m">(M1)</span> \(=6\pi\) <span class="m">A1</span></p>
+<p><span class="lbl">Trampa del markscheme.</span> \(\tfrac12\sin\tfrac x2\) también da \(6\pi\) al evaluar, pero pierde dos A1.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X6. Mayo 2021 TZ2, pregunta 9 <span class="lvl">7 puntos</span></p>
+<p>Usando \(u=\sin x\), halla \(\displaystyle\int\frac{\sin x\cos x}{\sin^2x-\sin x-2}\,dx\).</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">\(du=\cos x\,dx\) <span class="m">(M1)</span>: \(\int\dfrac{u}{u^2-u-2}\,du=\int\dfrac{u}{(u-2)(u+1)}\,du\) <span class="m">A1</span></p>
+<p class="step">Fracciones parciales <span class="m">M1</span>: \(\dfrac{2/3}{u-2}+\dfrac{1/3}{u+1}\) <span class="m">A1A1</span></p>
+<p class="step">\(=\tfrac23\ln|u-2|+\tfrac13\ln|u+1|+c\) <span class="m">A1</span> \(=\tfrac23\ln|\sin x-2|+\tfrac13\ln|\sin x+1|+c\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X7. Mayo 2022 TZ1, pregunta 7 <span class="lvl">8 puntos</span></p>
+<p>\(f(x)=\dfrac k{\sqrt{4-3x^2}}\) para \(0\le x\le1\), y 0 en otro caso. (a) Halla \(k\). (b) Halla \(\mathrm E(X)\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Integrar <span class="m">(M1)</span>: \(\tfrac k{\sqrt3}\arcsin\tfrac{\sqrt3x}2\) <span class="m">A1</span>. Igualar a 1 <span class="m">M1</span>: \(\tfrac k{\sqrt3}\cdot\tfrac\pi3=1\Rightarrow k=\tfrac{3\sqrt3}\pi\) <span class="m">A1</span></p>
+<p class="step">(b) \(\mathrm E(X)=\tfrac{3\sqrt3}\pi\int_0^1\dfrac{x}{\sqrt{4-3x^2}}\,dx\) <span class="m">A1</span>; por inspección <span class="m">(M1)</span>: \(\left[-\tfrac13\sqrt{4-3x^2}\right]_0^1=\tfrac13\) <span class="m">A1</span></p>
+<p class="step">\(\mathrm E(X)=\tfrac{3\sqrt3}\pi\cdot\tfrac13=\tfrac{\sqrt3}\pi\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X8. Mayo 2026 TZ2, pregunta 11 (Sección B) <span class="lvl">17 puntos</span></p>
+<p>\(f(x)=\dfrac{-x-7}{x^2+4x+3}\). (a) Muestra que \(f(x)=\dfrac2{x+3}-\dfrac3{x+1}\). (b) Muestra que el área entre \(f\), el eje \(x\) y las rectas \(x=0\) y \(x=1\) es \(\ln\tfrac92\). (c) Muestra que el desarrollo binomial de \(f\) hasta \(x^2\) es \(-\tfrac73+\tfrac{25}9x-\tfrac{79}{27}x^2\). (d) (i) Usa (c) para aproximar \(\int_0^1f\). (ii) Escribe la aproximación del área. (e) Sabiendo que \(\ln\tfrac92\approx1{,}50\), decide si la aproximación es por exceso o por defecto.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(-x-7\equiv A(x+1)+B(x+3)\) <span class="m">M1</span>; con \(x=-1\) y \(x=-3\) <span class="m">M1</span>: \(A=2,\ B=-3\) <span class="m">A1</span> <span class="m">AG</span></p>
+<p class="step">(b) \(\int_0^1\left(\tfrac2{x+3}-\tfrac3{x+1}\right)dx\) <span class="m">(M1)</span> \(=\left[2\ln(x+3)-3\ln(x+1)\right]_0^1\) <span class="m">A1</span></p>
+<p class="step">\(=2\ln4-3\ln2-2\ln3=\ln\tfrac{16}{8\cdot9}=\ln\tfrac29\) <span class="m">(M1)A1</span>. La región está bajo el eje, así que el área es \(-\ln\tfrac29=\ln\tfrac92\) <span class="m">R1</span> <span class="m">AG</span></p>
+<p class="step">(c) \(\tfrac2{x+3}=\tfrac23\left(1+\tfrac x3\right)^{-1}=\tfrac23-\tfrac29x+\tfrac2{27}x^2\) y \(-\tfrac3{1+x}=-3+3x-3x^2\) <span class="m">M1A1A1</span></p>
+<p class="step">Sumando: \(-\tfrac73+\tfrac{25}9x-\tfrac{79}{27}x^2\) <span class="m">A1</span> <span class="m">AG</span></p>
+<p class="step">(d)(i) \(\left[-\tfrac73x+\tfrac{25}{18}x^2-\tfrac{79}{81}x^3\right]_0^1\) <span class="m">A1</span> \(=-\tfrac{311}{162}\) <span class="m">A1</span>. (ii) \(\tfrac{311}{162}\) <span class="m">A1</span></p>
+<p class="step">(e) \(\tfrac{311}{162}\approx1{,}92\gt1{,}50\) <span class="m">A1</span>: es una sobreestimación <span class="m">R1</span></p>
+<p><span class="lbl">Por qué falla tanto.</span> El desarrollo de \(\tfrac1{1+x}\) solo converge si \(|x|\lt1\), y en \(x=1\) está en el borde: los términos no se hacen pequeños.</p>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Estos tipos de pregunta no salieron en tus 7 pruebas, pero el IB los pone en otras convocatorias. Junto con la teoría y las secciones 4 y 5, cubren toda la integración del programa NS. Cada tipo trae cómo reconocerlo, el método, un ejemplo resuelto y ejercicios para practicar.</p>
+<h3 id="ty1">T1. Antiderivada con composición lineal y condición inicial</h3>
+<p><b>Qué reconocer:</b> piden \(f\) a partir de \(f'\) (a menudo con un \(ax+b\) dentro) y un punto de la curva. <b>Método:</b> integra término a término; para \(f(ax+b)\) divide entre \(a\). Usa el punto dado para fijar la constante \(c\).</p>
+<div class="ex"><p class="et">Ejemplo T1. <span class="lvl">Tipo IB</span></p>
+<p>\(f'(x)=\cos2x\) y \(f(0)=1\). Halla \(f\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(f(x)=\tfrac12\sin2x+c\); \(f(0)=c=1\), así que \(f(x)=\tfrac12\sin2x+1\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(f'(x)=e^{2x}\) y \(f(0)=0\). Halla \(f\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(f(x)=\tfrac12e^{2x}+c\); \(f(0)=\tfrac12+c=0\Rightarrow f(x)=\tfrac12(e^{2x}-1)\).</li></ol></div></details></div>
+<h3 id="ty2">T2. Integral definida con simetría</h3>
+<p><b>Qué reconocer:</b> una integral en un intervalo simétrico \([-a,a]\). <b>Método:</b> si el integrando es impar, la integral es 0; si es par, es \(2\int_0^a\). Separa la parte par de la impar.</p>
+<div class="ex"><p class="et">Ejemplo T2. <span class="lvl">Tipo IB</span></p>
+<p>Halla \(\displaystyle\int_{-1}^{1}(x^3+x^2)\,dx\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(x^3\) es impar (aporta 0) y \(x^2\) par: \(2\int_0^1x^2\,dx=\tfrac23\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(\displaystyle\int_{-2}^{2}(x^5-3x)\,dx\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>El integrando es impar: la integral es 0.</li></ol></div></details></div>
+<h3 id="ty3">T3. Área entre dos curvas</h3>
+<p><b>Qué reconocer:</b> la región encerrada entre dos curvas, o entre una curva y una recta. <b>Método:</b> halla los cortes (límites), integra «arriba menos abajo». Si se cruzan, separa por tramos.</p>
+<div class="ex"><p class="et">Ejemplo T3. <span class="lvl">Sección A alta</span></p>
+<p>Halla el área encerrada entre \(y=x\) e \(y=x^2\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Cortes en 0 y 1; arriba está \(y=x\): \(\int_0^1(x-x^2)\,dx=\tfrac12-\tfrac13=\tfrac16\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el área entre \(y=4-x^2\) y el eje \(x\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Cortes en \(\pm2\): \(\int_{-2}^{2}(4-x^2)\,dx=\tfrac{32}3\).</li></ol></div></details></div>
+<h3 id="ty4">T4. Volumen de revolución alrededor del eje \(x\)</h3>
+<p><b>Qué reconocer:</b> una región girada alrededor del eje \(x\). <b>Método:</b> usa \(V=\pi\int_a^b y^2\,dx\). Para dos curvas (arandela), \(V=\pi\int(y_{\text{ext}}^2-y_{\text{int}}^2)\,dx\).</p>
+<div class="ex"><p class="et">Ejemplo T4. <span class="lvl">Tipo IB</span></p>
+<p>La región bajo \(y=x\) en \([0,1]\) gira alrededor del eje \(x\). Halla el volumen.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(V=\pi\int_0^1 x^2\,dx=\tfrac\pi3\) (un cono de radio 1 y altura 1).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>La región bajo \(y=x^2\) en \([0,2]\) gira alrededor del eje \(x\). Halla el volumen.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(V=\pi\int_0^2 x^4\,dx=\tfrac{32\pi}5\).</li></ol></div></details></div>
+<h3 id="ty5">T5. Área o volumen respecto al eje \(y\)</h3>
+<p><b>Qué reconocer:</b> una región descrita con \(x\) en función de \(y\), o girada alrededor del eje \(y\). <b>Método:</b> integra en \(y\): área \(\int_c^d x\,dy\); volumen \(V=\pi\int_c^d x^2\,dy\).</p>
+<div class="ex"><p class="et">Ejemplo T5. <span class="lvl">Sección A alta</span></p>
+<p>La región entre \(x=y^2\), el eje \(y\) e \(y=2\) gira alrededor del eje \(y\). Halla el volumen.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(V=\pi\int_0^2 (y^2)^2\,dy=\pi\int_0^2 y^4\,dy=\tfrac{32\pi}5\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el área encerrada entre \(x=2y-y^2\) y el eje \(y\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Cortes \(y=0,2\): \(\int_0^2(2y-y^2)\,dy=\tfrac43\).</li></ol></div></details></div>
+<h3 id="ty6">T6. Integral trigonométrica con identidad</h3>
+<p><b>Qué reconocer:</b> \(\int\sin^2x\), \(\int\cos^2x\) o \(\int\tan^2x\). <b>Método:</b> baja el grado con \(\sin^2x=\tfrac{1-\cos2x}2\), \(\cos^2x=\tfrac{1+\cos2x}2\) o \(\tan^2x=\sec^2x-1\).</p>
+<div class="ex"><p class="et">Ejemplo T6. <span class="lvl">Tipo IB</span></p>
+<p>Halla \(\displaystyle\int_0^{\pi/2}\sin^2x\,dx\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\int_0^{\pi/2}\tfrac{1-\cos2x}2\,dx=\left[\tfrac x2-\tfrac{\sin2x}4\right]_0^{\pi/2}=\tfrac\pi4\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(\displaystyle\int_0^{\pi}\cos^2x\,dx\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\int_0^\pi\tfrac{1+\cos2x}2\,dx=\tfrac\pi2\).</li></ol></div></details></div>
+<h3 id="ty7">T7. Sustitución trigonométrica</h3>
+<p><b>Qué reconocer:</b> una raíz \(\sqrt{a^2-x^2}\) en el integrando, sin ser una forma estándar directa. <b>Método:</b> sustituye \(x=a\sin\theta\), con lo que \(\sqrt{a^2-x^2}=a\cos\theta\); cambia los límites y usa identidades.</p>
+<div class="ex"><p class="et">Ejemplo T7. <span class="lvl">Sección B</span></p>
+<p>Halla \(\displaystyle\int_0^{1}\sqrt{1-x^2}\,dx\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(x=\sin\theta\), límites \(0,\tfrac\pi2\): \(\int_0^{\pi/2}\cos^2\theta\,d\theta=\tfrac\pi4\) (un cuarto del círculo unidad).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(\displaystyle\int_0^{3/2}\frac{dx}{\sqrt{9-x^2}}\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\left[\arcsin\tfrac x3\right]_0^{3/2}=\arcsin\tfrac12=\tfrac\pi6\).</li></ol></div></details></div>
+<h3 id="ty8">T8. Derivar una integral con límite variable</h3>
+<p><b>Qué reconocer:</b> piden \(\tfrac{d}{dx}\int_{a}^{g(x)}f(t)\,dt\), sin poder integrar \(f\). <b>Método:</b> por el teorema fundamental y la regla de la cadena, es \(f(g(x))\,g'(x)\) (menos el término del límite inferior si también depende de \(x\)).</p>
+<div class="ex"><p class="et">Ejemplo T8. <span class="lvl">Sección B</span></p>
+<p>Halla \(\dfrac{d}{dx}\displaystyle\int_0^{x^2}\sin t\,dt\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\sin(x^2)\cdot2x=2x\sin(x^2)\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(\dfrac{d}{dx}\displaystyle\int_1^{x^3}\ln t\,dt\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\ln(x^3)\cdot3x^2=9x^2\ln x\).</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo de los Módulos 1–14. Integran series (Módulo 1), polinomios (Módulo 2), funciones inversas (Módulo 3), binomio (Módulo 4), inducción (Módulo 5), complejos (Módulo 6), trigonometría (Módulo 8) y probabilidad (Módulo 11). El 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la Sección B. Al final, I1 es una investigación tipo Prueba 3 de NS. Cada uno trae una pista y la respuesta final plegadas.</p>
+
+<div class="ex"><p class="et">E1. Una suma de Riemann <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>(a) Usando \(\sum_{k=1}^nk^2=\tfrac{n(n+1)(2n+1)}6\), halla \(\lim_{n\to\infty}\tfrac1n\sum_{k=1}^n\left(\tfrac kn\right)^2\). (b) Interprétalo como un área y compruébalo con una integral.</p>
+<details><summary>Pista</summary><div class="inner"><p>Son rectángulos de ancho \(\tfrac1n\) bajo \(y=x^2\) en \([0,1]\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\tfrac{(n+1)(2n+1)}{6n^2}\to\tfrac13\). (b) \(\int_0^1x^2\,dx=\tfrac13\).</p></div></details></div>
+
+<div class="ex"><p class="et">E2. Dividir antes de integrar <span class="lvl">Sección B, integra Módulo 2</span></p>
+<p>Halla \(\int_2^3\dfrac{x^2+1}{x^2-1}\,dx\) de forma exacta.</p>
+<details><summary>Pista</summary><div class="inner"><p>\(\dfrac{x^2+1}{x^2-1}=1+\dfrac2{x^2-1}=1+\dfrac1{x-1}-\dfrac1{x+1}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(1+\ln\tfrac32\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Integrar una inversa con un rectángulo <span class="lvl">Sección B, integra Módulo 3</span></p>
+<p>(a) Halla \(\int_0^1\arcsin x\,dx\) por partes. (b) Compruébalo geométricamente: la región bajo \(y=\arcsin x\) es un rectángulo menos la región entre \(x=\sin y\) y el eje \(y\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Rectángulo \(1\times\tfrac\pi2\) menos \(\int_0^{\pi/2}\sin y\,dy\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(\tfrac\pi2-1\).</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Una integral beta con el binomio <span class="lvl">Sección A alta, integra Módulo 4</span></p>
+<p>Halla \(\int_0^1x(1-x)^{10}\,dx\) (a) con la sustitución \(u=1-x\); (b) generaliza: muestra que \(\int_0^1x(1-x)^n\,dx=\dfrac1{(n+1)(n+2)}\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(\int_0^1(1-u)u^{10}\,du\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\tfrac1{11}-\tfrac1{12}=\tfrac1{132}\). (b) \(\tfrac1{n+1}-\tfrac1{n+2}=\tfrac1{(n+1)(n+2)}\). Desarrollar con el binomio también funciona, pero da 11 términos.</p></div></details></div>
+
+<div class="ex"><p class="et">E5. Fórmula de reducción de Wallis <span class="lvl">Sección B, integra Módulo 5</span></p>
+<p>\(I_n=\int_0^{\pi/2}\sin^nx\,dx\). (a) Por partes, con \(\sin^nx=\sin^{n-1}x\cdot\sin x\), prueba que \(I_n=\tfrac{n-1}nI_{n-2}\). (b) Halla \(I_0\), \(I_1\), \(I_4\) e \(I_5\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Aparece \(\cos^2x=1-\sin^2x\), que produce \(I_{n-2}\) e \(I_n\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(I_0=\tfrac\pi2\), \(I_1=1\), \(I_4=\tfrac34\cdot\tfrac12\cdot\tfrac\pi2=\tfrac{3\pi}{16}\), \(I_5=\tfrac45\cdot\tfrac23=\tfrac8{15}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E6. Integrar con la exponencial compleja <span class="lvl">Sección B, integra Módulo 6</span></p>
+<p>Halla \(\int e^x\cos x\,dx\) como la parte real de \(\int e^{(1+i)x}dx\). Compara con el método por partes cíclico de F3.</p>
+<details><summary>Pista</summary><div class="inner"><p>\(\int e^{(1+i)x}dx=\tfrac{e^{(1+i)x}}{1+i}=\tfrac{(1-i)}2e^x(\cos x+i\sin x)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(\tfrac{e^x}2(\cos x+\sin x)+c\).</p></div></details></div>
+
+<div class="ex"><p class="et">E7. Integrales trigonométricas con identidades <span class="lvl">Sección A alta, integra Módulo 8</span></p>
+<p>Halla (a) \(\int_0^\pi\sin^2x\,dx\); (b) \(\int\sin3x\cos x\,dx\), usando \(\sin A\cos B=\tfrac12\big(\sin(A+B)+\sin(A-B)\big)\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Ángulo doble. (b) \(\tfrac12(\sin4x+\sin2x)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\tfrac\pi2\). (b) \(-\tfrac{\cos4x}8-\tfrac{\cos2x}4+c\).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Densidad arctan con mediana exacta <span class="lvl">Sección B, integra Módulos 6 y 11</span></p>
+<p>\(f(x)=\dfrac k{1+x^2}\) en \([0,1]\). Halla (a) \(k\); (b) \(\mathrm E(X)\); (c) la mediana exacta.</p>
+<details><summary>Pista</summary><div class="inner"><p>(c) \(\tfrac4\pi\arctan m=\tfrac12\), y \(\tan\tfrac\pi8\) está en el Módulo 6.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\tfrac4\pi\). (b) \(\tfrac4\pi\cdot\tfrac12\ln2=\tfrac{2\ln2}\pi\). (c) \(m=\tan\tfrac\pi8=\sqrt2-1\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. El anillo de servilleta <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>Se perfora una esfera de radio \(R\) con un taladro cilíndrico que atraviesa su centro, de modo que el anillo resultante tiene altura \(h\). (a) Muestra que el volumen del anillo es \(\pi\int_{-h/2}^{h/2}\left(\tfrac{h^2}4-x^2\right)dx\). (b) Muestra que ese volumen es \(\tfrac{\pi h^3}6\), sin depender de \(R\). (c) Halla el volumen al girar la región entre \(y=x\) e \(y=x^2\) alrededor de cada eje.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Arandelas: el radio exterior al cuadrado es \(R^2-x^2\) y el interior al cuadrado es \(R^2-\tfrac{h^2}4\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(\pi\left(\tfrac{h^3}4-\tfrac{h^3}{12}\right)=\tfrac{\pi h^3}6\). (c) Eje \(x\): \(\tfrac{2\pi}{15}\); eje \(y\): \(\tfrac\pi6\).</p></div></details></div>
+
+<div class="ex"><p class="et">E10. La trompeta de Gabriel <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>Sea \(y=\tfrac1x\) para \(x\ge1\). (a) Muestra que el área bajo la curva en \([1,b]\) es \(\ln b\), que no tiene límite cuando \(b\to\infty\). (b) Muestra que el volumen de revolución alrededor del eje \(x\) en \([1,b]\) tiende a \(\pi\). (c) Compara con \(\int_0^1\tfrac{dx}{\sqrt x}\), que es finita aunque el integrando no esté acotado.</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) \(\pi\int_1^b\tfrac{dx}{x^2}=\pi\left(1-\tfrac1b\right)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>Área infinita, volumen \(\pi\) («se llena con pintura, pero no se puede pintar»). (c) \(\int_0^1x^{-1/2}dx=2\).</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. El área bajo 1/x y el logaritmo natural <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>Define \(A(x)=\displaystyle\int_1^x\frac{dt}t\) para \(x\gt0\). Esta área esconde todas las propiedades del logaritmo. Vas a deducirlas solo con integración, sin suponer de antemano qué es \(\ln\).</p>
+<ol type="a"><li>Calcula \(A(1)\) y explica por qué \(A(x)\gt0\) para \(x\gt1\) y \(A(x)\lt0\) para \(0\lt x\lt1\).</li><li>Prueba que \(A(ab)=A(a)+A(b)\). (Pista: parte \(\int_1^{ab}=\int_1^a+\int_a^{ab}\) y en la segunda usa \(t=au\).)</li><li>Deduce que \(A(x^n)=nA(x)\) y que \(A\!\left(\tfrac1x\right)=-A(x)\).</li><li>Por el teorema fundamental, halla \(A'(x)\). ¿Qué función conocida tiene esa derivada y cumple \(A(1)=0\)?</li><li>Sea \(e\) el número con \(A(e)=1\). Explica por qué \(A(e^n)=n\), es decir, por qué \(A\) es el logaritmo en base \(e\).</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>\(\int_1^1=0\); el signo de \(A\) depende de si se integra hacia la derecha o hacia la izquierda de 1, con \(\tfrac1t\gt0\).</li><li>En \(\int_a^{ab}\tfrac{dt}t\) la sustitución \(t=au\) da \(dt=a\,du\) y los límites \(1\) y \(b\).</li><li>Para \(A(x^n)\) aplica la regla del producto \(n\) veces; para \(A(1/x)\) usa \(x\cdot\tfrac1x=1\).</li><li>\(\tfrac{d}{dx}\int_1^x\tfrac{dt}t=\tfrac1x\).</li><li>\(A(e^n)=nA(e)=n\): \(A\) invierte a \(x\mapsto e^x\).</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>\(A(1)=0\). Para \(x\gt1\) el integrando es positivo y el intervalo va hacia la derecha: \(A\gt0\); para \(x\lt1\), \(A=\int_1^x=-\int_x^1\lt0\).</li><li>\(\int_a^{ab}\tfrac{dt}t=\int_1^b\tfrac{a\,du}{au}=\int_1^b\tfrac{du}u=A(b)\), así que \(A(ab)=A(a)+A(b)\).</li><li>\(A(x^n)=A(x\cdots x)=nA(x)\); y \(A(x)+A(1/x)=A(1)=0\Rightarrow A(1/x)=-A(x)\).</li><li>\(A'(x)=\tfrac1x\), y la función con esa derivada y \(A(1)=0\) es \(\ln x\).</li><li>\(A(e^n)=nA(e)=n\): \(A=\ln\), el logaritmo de base \(e\).</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 15, ecuaciones diferenciales.</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

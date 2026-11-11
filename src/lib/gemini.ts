@@ -35,6 +35,14 @@ export const GEMINI_MODEL: string =
     ? process.env.GEMINI_MODEL
     : "gemini-3.6-flash";
 
+// Modelo avanzado para usuarios premium (configurable via entorno).
+export const GEMINI_PREMIUM_MODEL: string =
+  typeof process !== "undefined" &&
+  process.env &&
+  process.env.GEMINI_PREMIUM_MODEL
+    ? process.env.GEMINI_PREMIUM_MODEL
+    : "gemini-3.6-pro";
+
 export function hasGeminiKey(): boolean {
   return GEMINI_API_KEY.length > 1;
 }
@@ -46,6 +54,10 @@ export interface GenerateGeminiOptions {
   maxOutputTokens?: number;
   topP?: number;
   responseMimeType?: "text/plain" | "application/json";
+  /** Modelo a usar; por defecto GEMINI_MODEL (o GEMINI_PREMIUM_MODEL si premium). */
+  model?: string;
+  /** Usa el modelo avanzado (GEMINI_PREMIUM_MODEL) en lugar del estándar. */
+  premium?: boolean;
 }
 
 export interface GeminiResult {
@@ -56,7 +68,9 @@ export interface GeminiResult {
 export async function generateGeminiText(
   opts: GenerateGeminiOptions
 ): Promise<GeminiResult> {
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+  const model =
+    opts.model ?? (opts.premium ? GEMINI_PREMIUM_MODEL : GEMINI_MODEL);
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
 
   try {
     const res = await fetch(endpoint, {

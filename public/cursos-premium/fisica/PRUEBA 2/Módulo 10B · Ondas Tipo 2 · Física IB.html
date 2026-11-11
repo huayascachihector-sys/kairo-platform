@@ -1,0 +1,787 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 10B · Ondas Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:52px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:26px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:12px 0;overflow-x:auto}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.hl-tag{font-family:"IBM Plex Mono";font-size:10px;letter-spacing:.06em;color:#fff;background:var(--hl);padding:1px 6px;border-radius:3px;vertical-align:middle}
+.pb{border:1px solid var(--line);border-radius:6px;margin:26px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#EFF4F2,#FFFFFF);border-bottom:1px solid var(--line);padding:14px 20px}
+.pb-head .code{font-family:"IBM Plex Mono";font-size:11px;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px;letter-spacing:.05em}
+.pb-head h3{margin:8px 0 0;font-size:19px}
+.pb-body{padding:6px 20px 18px}
+.enun{background:#F4F6F4;border-left:3px solid var(--ink-soft);padding:10px 16px;margin:14px 0;font-size:16.5px}
+.part{margin:16px 0 4px;font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep)}
+.pide{display:inline-block;font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:1px 7px;margin-right:8px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:5px 11px;display:inline-block;margin-top:6px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.note{background:#EEF3F1;border:1px dashed var(--teal);border-radius:5px;padding:14px 18px;margin:16px 0;font-size:16px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<!-- rev 2026-10-31 10b · banco paper2 ondas (3) oficiales 2022-26 -->
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> C.2 + C.3 <span>//</span> MÓDULO 10B · TIPO 2 (PAPER 2)</p>
+  <h1>Ondas en <em>respuesta larga</em></h1>
+  <p class="lede">Refracción y TIR, doble rendija de Young, polarización (Malus), intensidad y ley 1/r², red de difracción con datos, rendija única y sonido. Siete problemas tipo Paper 2 con resolución oculta y verificada, más cinco integradores — todos propuestos para que los resuelvas antes de mirar.</p>
+  <div class="stats">
+    <div class="stat"><b>3</b><span>Paper 2 oficiales 22–26</span></div>
+    <div class="stat"><b>7</b><span>problemas Paper 2</span></div>
+    <div class="stat"><b>5</b><span>integradores</span></div>
+    <div class="stat"><b>oculta</b><span>resolución verificada</span></div>
+    <div class="stat"><b>c = 3×10⁸</b><span>m·s⁻¹</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#estrategia">0 · Método para ondas tipo 2</a>
+  <a href="#p1">1 · Refracción y TIR (vidrio)</a>
+  <a href="#p2">2 · Doble rendija de Young</a>
+  <a href="#p3">3 · Polarización (Malus)</a>
+  <a href="#p4">4 · Intensidad y ley 1/r²</a>
+  <a href="#p5">5 · Red de difracción + datos</a>
+  <a href="#p6">6 · Rendija única (NS)</a>
+  <a href="#p7">7 · Sonido y refracción en agua</a>
+  <a href="#fichas">F · Fichas reales · ondas progresivas</a>
+  <a href="#examenes">★ Banco Paper 2 · 2022–26</a>
+  <a href="#extra-ondas">Extras · ondas progresivas</a>
+  <a href="#extra">Integradores para ti</a>
+  <a href="#practica2">P2 · Práctica extra · todo tipo</a>
+</nav>
+
+<main>
+
+<div class="wrap" style="padding:0"><div class="note"><strong>Nota:</strong> las fichas del proyecto (DMpA 19-20 y 21) están rotuladas como MAS, pero incluyen problemas de <strong>ondas progresivas</strong> que se extraen y resuelven más abajo en «Fichas reales · ondas progresivas». Los 7 problemas tipo Paper 2 y los 5 integradores de esta parte son originales, con el formato y el nivel del Paper 2 del IB (varias partes, "muestre que", análisis de datos). <strong>Todos son propuestos:</strong> resuelve cada apartado por tu cuenta y solo después abre «VER RESOLUCIÓN» (verificada, apartado por apartado) para contrastar.</div></div>
+
+<!-- ESTRATEGIA -->
+<section id="estrategia">
+  <p class="sec-num">SECCIÓN 00 · LO QUE FALTA PARA TIPO 2</p>
+  <h2>Método para ondas de respuesta larga<span class="rule"></span></h2>
+  <p class="sec-intro">La teoría es la del 10A. El tipo 2 encadena Snell paso a paso, aplica Young/redes y Malus con cuidado de unidades y añade el <strong>análisis de datos</strong> (linealizar).</p>
+  <div class="box key"><span class="lbl">Los 6 gestos del tipo 2 de ondas</span>
+    <ol>
+      <li><strong>Snell por pasos:</strong> en cada límite, \(n\sin\theta\) se conserva; en varias capas paralelas, \(n_1\sin\theta_1=n_{\text{final}}\sin\theta_{\text{final}}\) (las intermedias se cancelan).</li>
+      <li><strong>Frecuencia constante al refractar:</strong> calcula λ en cada medio con \(\lambda=v/f=(c/n)/f\).</li>
+      <li><strong>Young con unidades:</strong> pasa todo a metros; \(s=\lambda D/d\). Para hallar λ mide <em>varias</em> franjas y divide (reduce el error). Si el montaje está en un medio, usa \(\lambda_{\text{medio}}=\lambda/n\).</li>
+      <li><strong>Polarización (Malus):</strong> luz no polarizada → tras el 1.ᵉʳ polarizador queda \(I_0/2\); después \(I=I_0\cos^2\theta\) con θ <em>entre ejes consecutivos</em>. Encadena polarizador a polarizador.</li>
+      <li><strong>Intensidad 1/r²:</strong> fuente puntual isótropa, \(I=\dfrac{P}{4\pi r^2}\); como \(I\propto A^2\), la amplitud cae como \(1/r\).</li>
+      <li><strong>Linealizar redes/datos:</strong> \(\sin\theta=\dfrac{n}{d}\lambda\) o \(d\sin\theta=n\lambda\); una gráfica adecuada da una recta cuya pendiente entrega la constante buscada. En "muestre que" llega al valor dado con más cifras.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- P1 -->
+<section id="p1" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 1 · refracción y TIR</span><h3>Luz en un bloque de vidrio</h3></div>
+  <div class="pb-body">
+    <div class="enun">Un rayo de luz de 589 nm (en aire) incide sobre la cara plana de un bloque de vidrio (n = 1,52) con ángulo de incidencia 35°. \(c=3{,}0\times10^{8}\) m·s⁻¹.</div>
+    <p class="part">(a) <span class="pide">calcule</span> el ángulo de refracción dentro del vidrio.</p>
+    <p class="part">(b) <span class="pide">determine</span> la rapidez y la longitud de onda de la luz dentro del vidrio.</p>
+    <p class="part">(c) <span class="pide">muestre que</span> el ángulo crítico del vidrio es ≈ 41°.</p>
+    <p class="part">(d) <span class="pide">explique</span> qué ocurre en la cara interna si el rayo llega a 45°.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>\(n_1\sin\theta_1=n_2\sin\theta_2\Rightarrow\sin\theta_2=\dfrac{1{,}00\sin35^\circ}{1{,}52}=\dfrac{0{,}574}{1{,}52}=0{,}377\Rightarrow\theta_2=22{,}2^\circ\). <span class="ans">θ₂ = 22,2°</span></p>
+      <p class="part">(b)</p>
+      <p>\(v=\dfrac{c}{n}=\dfrac{3{,}0\times10^{8}}{1{,}52}=1{,}97\times10^{8}\) m·s⁻¹. La frecuencia no cambia: \(f=\dfrac{c}{\lambda_{aire}}=\dfrac{3{,}0\times10^{8}}{589\times10^{-9}}=5{,}09\times10^{14}\) Hz. \(\lambda_{vidrio}=\dfrac{v}{f}=\dfrac{1{,}97\times10^{8}}{5{,}09\times10^{14}}=387\) nm (= 589/1,52). <span class="ans">v = 1,97×10⁸ m·s⁻¹ ; λ = 387 nm</span></p>
+      <p class="part">(c)</p>
+      <p>\(\sin\theta_c=\dfrac{n_{aire}}{n_{vidrio}}=\dfrac{1{,}00}{1{,}52}=0{,}658\Rightarrow\theta_c=41{,}1^\circ\). ∎</p>
+      <p class="part">(d)</p>
+      <p>Como \(45^\circ>\theta_c\) y el rayo va de vidrio (más denso) a aire (menos denso), se produce <strong>reflexión total interna</strong>: no sale luz, toda se refleja dentro del bloque.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- P2 -->
+<section id="p2" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 2 · doble rendija</span><h3>Experimento de Young</h3></div>
+  <div class="pb-body">
+    <div class="enun">Un láser de 633 nm ilumina dos rendijas separadas \(d=0{,}30\) mm; la pantalla está a \(D=2{,}5\) m.</div>
+    <p class="part">(a) <span class="pide">explique</span> por qué se necesita una fuente coherente.</p>
+    <p class="part">(b) <span class="pide">calcule</span> la separación entre franjas brillantes.</p>
+    <p class="part">(c) <span class="pide">determine</span> la distancia del centro al tercer máximo brillante.</p>
+    <p class="part">(d) <span class="pide">indique y explique</span> el efecto de acercar la pantalla a la mitad de la distancia.</p>
+    <p class="part">(e) <span class="pide">explique</span> qué pasa con el patrón si se usa luz blanca en vez del láser.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>Para que el patrón sea estable, las dos ondas que salen de las rendijas deben mantener una <strong>diferencia de fase constante</strong> (igual frecuencia): así los máximos y mínimos quedan fijos. Un láser (o una fuente única dividida) lo garantiza.</p>
+      <p class="part">(b)</p>
+      <p>\(s=\dfrac{\lambda D}{d}=\dfrac{(633\times10^{-9})(2{,}5)}{0{,}30\times10^{-3}}=5{,}3\times10^{-3}\) m. <span class="ans">s = 5,3 mm</span></p>
+      <p class="part">(c)</p>
+      <p>El máximo de orden \(n\) está a \(n\,s\) del centro: \(3s=3(5{,}3)=15{,}8\) mm. <span class="ans">≈ 16 mm</span></p>
+      <p class="part">(d)</p>
+      <p>\(s\propto D\), así que al reducir \(D\) a la mitad las franjas se juntan: la nueva separación es \(s/2=2{,}6\) mm (el patrón se comprime).</p>
+      <p class="part">(e)</p>
+      <p>Cada color tiene su propia \(s\) (\(s\propto\lambda\)): el máximo central es blanco (todos coinciden), pero los laterales se dispersan en espectros (violeta más cerca del centro, rojo más lejos).</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- P3 -->
+<section id="p3" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 3 · polarización</span><h3>Ley de Malus con dos y tres polarizadores</h3></div>
+  <div class="pb-body">
+    <div class="enun">Luz <strong>no polarizada</strong> de intensidad \(I_0\) incide sobre un sistema de polarizadores ideales.</div>
+    <p class="part">(a) <span class="pide">determine</span> la intensidad transmitida tras un solo polarizador.</p>
+    <p class="part">(b) <span class="pide">calcule</span> la intensidad final si se añade un segundo polarizador cuyo eje forma 30° con el primero.</p>
+    <p class="part">(c) <span class="pide">determine</span> la intensidad que emerge si entre dos polarizadores cruzados (90°) se inserta un tercero con su eje a 45° del primero.</p>
+    <p class="part">(d) <span class="pide">explique</span> por qué dos polarizadores cruzados bloquean toda la luz, pero al intercalar uno a 45° sí pasa luz.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>La luz no polarizada se reduce a la mitad al pasar el primer polarizador (promedio de \(\cos^2\) sobre todos los ángulos): \(I_1=\tfrac{1}{2}I_0\). <span class="ans">I₁ = I₀/2</span></p>
+      <p class="part">(b)</p>
+      <p>Ley de Malus con θ entre ejes: \(I_2=I_1\cos^2\theta=\tfrac{1}{2}I_0\cos^2 30^\circ=\tfrac{1}{2}I_0(0{,}866)^2=\tfrac{1}{2}I_0(0{,}750)=0{,}375\,I_0\). <span class="ans">I₂ = 0,375 I₀ = 3I₀/8</span></p>
+      <p class="part">(c)</p>
+      <p>Ejes a 0°, 45° y 90°. Tras el 1.º: \(I_0/2\). Tras el 2.º (45° del 1.º): \(\tfrac{I_0}{2}\cos^2 45^\circ=\tfrac{I_0}{2}(0{,}5)=\tfrac{I_0}{4}\). Tras el 3.º (otros 45°): \(\tfrac{I_0}{4}\cos^2 45^\circ=\tfrac{I_0}{4}(0{,}5)=\tfrac{I_0}{8}\). <span class="ans">I = I₀/8 = 0,125 I₀</span></p>
+      <p class="part">(d)</p>
+      <p>Con dos cruzados, θ = 90° y \(\cos^2 90^\circ=0\): nada pasa. Al intercalar uno a 45°, cada etapa gira el plano de polarización solo 45°, y \(\cos^2 45^\circ=\tfrac12\neq0\), de modo que hay transmisión en los dos pasos. El tercer polarizador <strong>reorienta</strong> la luz que el segundo le entrega, así que ya no llega perpendicular al último eje.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- P4 -->
+<section id="p4" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 4 · intensidad</span><h3>Fuente puntual y ley del inverso del cuadrado</h3></div>
+  <div class="pb-body">
+    <div class="enun">Una pequeña fuente luminosa emite con potencia \(P=60\) W por igual en todas las direcciones (isótropa). Supón que no hay absorción en el aire.</div>
+    <p class="part">(a) <span class="pide">muestre que</span> la intensidad a 2,0 m de la fuente es ≈ 1,2 W·m⁻².</p>
+    <p class="part">(b) <span class="pide">determine</span> la intensidad a 6,0 m.</p>
+    <p class="part">(c) <span class="pide">determine</span> la distancia a la que la intensidad vale 0,30 W·m⁻².</p>
+    <p class="part">(d) <span class="pide">deduzca</span> cómo varía la amplitud de la onda con la distancia.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>La potencia se reparte sobre una esfera: \(I=\dfrac{P}{4\pi r^2}=\dfrac{60}{4\pi(2{,}0)^2}=\dfrac{60}{50{,}3}=1{,}19\) W·m⁻² ≈ 1,2 W·m⁻². ∎</p>
+      <p class="part">(b)</p>
+      <p>La distancia se triplica (2,0 → 6,0 m) y \(I\propto 1/r^2\), así que \(I\) se divide entre \(3^2=9\): \(I=\dfrac{1{,}19}{9}=0{,}13\) W·m⁻² (o directamente \(60/(4\pi\cdot36)=0{,}13\)). <span class="ans">I = 0,13 W·m⁻²</span></p>
+      <p class="part">(c)</p>
+      <p>\(r=\sqrt{\dfrac{P}{4\pi I}}=\sqrt{\dfrac{60}{4\pi(0{,}30)}}=\sqrt{15{,}9}=4{,}0\) m. <span class="ans">r ≈ 4,0 m</span></p>
+      <p class="part">(d)</p>
+      <p>Como \(I\propto A^2\) y \(I\propto 1/r^2\), entonces \(A^2\propto 1/r^2\Rightarrow A\propto 1/r\): la amplitud decae como el inverso de la distancia (más lento que la intensidad).</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- P5 -->
+<section id="p5" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 5 · red + análisis de datos <span class="hl-tag">NS</span></span><h3>Red de difracción para medir λ</h3></div>
+  <div class="pb-body">
+    <div class="enun">Una red se ilumina con un láser. Se mide el ángulo \(\theta\) de cada máximo de orden \(n\). Al graficar \(\sin\theta\) frente a \(n\) se obtiene una recta por el origen de pendiente 0,25.</div>
+    <p class="part">(a) <span class="pide">muestre</span> que \(\sin\theta\) frente a \(n\) debe ser una recta por el origen.</p>
+    <p class="part">(b) <span class="pide">determine</span> la longitud de onda si la red tiene 300 líneas·mm⁻¹.</p>
+    <p class="part">(c) <span class="pide">determine</span> el número máximo de órdenes visibles.</p>
+    <p class="part">(d) <span class="pide">explique</span> una ventaja de la red frente a la doble rendija para medir λ.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>De \(d\sin\theta=n\lambda\) se sigue \(\sin\theta=\dfrac{\lambda}{d}\,n\): es \(y=mx\) con \(m=\lambda/d\) constante y sin ordenada al origen. ∎</p>
+      <p class="part">(b)</p>
+      <p>\(d=\dfrac{1}{300\times10^{3}}=3{,}33\times10^{-6}\) m. Pendiente \(=\dfrac{\lambda}{d}\Rightarrow\lambda=0{,}25\times3{,}33\times10^{-6}=8{,}3\times10^{-7}\) m. <span class="ans">λ = 833 nm (infrarrojo cercano)</span></p>
+      <p class="part">(c)</p>
+      <p>\(\sin\theta\le1\Rightarrow n\le\dfrac{d}{\lambda}=\dfrac{1}{0{,}25}=4\). <span class="ans">Órdenes hasta n = 4 (más el central)</span></p>
+      <p class="part">(d)</p>
+      <p>Con muchas rendijas los máximos son <strong>mucho más nítidos y brillantes</strong> y los ángulos, grandes: se miden con menor error, dando una λ más precisa.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- P6 -->
+<section id="p6" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 6 · rendija única <span class="hl-tag">NS</span></span><h3>Difracción por una sola rendija</h3></div>
+  <div class="pb-body">
+    <div class="enun">Luz de 550 nm atraviesa una rendija de anchura \(b=0{,}080\) mm; la pantalla está a \(D=3{,}0\) m.</div>
+    <p class="part">(a) <span class="pide">calcule</span> el ángulo del primer mínimo.</p>
+    <p class="part">(b) <span class="pide">determine</span> el ancho del máximo central en la pantalla.</p>
+    <p class="part">(c) <span class="pide">explique</span> el efecto de reducir la anchura de la rendija a \(b/2\).</p>
+    <p class="part">(d) <span class="pide">describa</span> cómo modula este patrón al de una doble rendija de las mismas rendijas.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>Primer mínimo: \(b\sin\theta=\lambda\); con ángulo pequeño \(\theta\approx\dfrac{\lambda}{b}=\dfrac{550\times10^{-9}}{0{,}080\times10^{-3}}=6{,}875\times10^{-3}\) rad. <span class="ans">θ = 6,9×10⁻³ rad (0,39°)</span></p>
+      <p class="part">(b)</p>
+      <p>El máximo central va de \(-\theta\) a \(+\theta\): ancho \(=2\theta D=2(6{,}875\times10^{-3})(3{,}0)=0{,}041\) m. <span class="ans">≈ 4,1 cm</span></p>
+      <p class="part">(c)</p>
+      <p>\(\theta=\lambda/b\), así que al reducir \(b\) a la mitad, \(\theta\) se duplica y el máximo central se hace <strong>el doble de ancho</strong> (y más tenue). Rendija más estrecha ⇒ más difracción.</p>
+      <p class="part">(d)</p>
+      <p>El patrón de rendija única actúa como <strong>envolvente</strong>: las franjas finas de la doble rendija aparecen solo dentro del máximo central ancho, y su brillo decae siguiendo la curva de la rendija única.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- P7 -->
+<section id="p7" class="pb">
+  <div class="pb-head"><span class="code">TIPO 2 · 7 · sonido y refracción</span><h3>Ondas mecánicas: sonido y agua</h3></div>
+  <div class="pb-body">
+    <div class="enun">(A) Un diapasón de 512 Hz produce sonido que viaja a 340 m·s⁻¹ en aire y a 1500 m·s⁻¹ en agua. (B) Aparte, una onda en la superficie del agua pasa de aguas profundas (v = 0,40 m·s⁻¹) a someras (v = 0,30 m·s⁻¹).</div>
+    <p class="part">(a) <span class="pide">calcule</span> la longitud de onda del sonido en el aire y en el agua.</p>
+    <p class="part">(b) <span class="pide">explique</span> por qué la longitud de onda es mayor en el agua.</p>
+    <p class="part">(c) <span class="pide">determine</span> el ángulo de refracción de la onda de agua si incide a 40° (usa la forma de Snell con velocidades).</p>
+    <p class="part">(d) <span class="pide">describa</span> cómo cambian los frentes de onda al entrar en aguas someras.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>Aire: \(\lambda=\dfrac{340}{512}=0{,}66\) m. Agua: \(\lambda=\dfrac{1500}{512}=2{,}93\) m. (La frecuencia no cambia.) <span class="ans">λ_aire = 0,66 m ; λ_agua = 2,93 m</span></p>
+      <p class="part">(b)</p>
+      <p>La frecuencia la fija la fuente y no cambia al pasar de medio; como \(\lambda=v/f\) y el sonido va más rápido en el agua, su longitud de onda es mayor.</p>
+      <p class="part">(c)</p>
+      <p>\(\dfrac{\sin\theta_2}{\sin\theta_1}=\dfrac{v_2}{v_1}\Rightarrow\sin\theta_2=\sin40^\circ\times\dfrac{0{,}30}{0{,}40}=0{,}643(0{,}75)=0{,}482\Rightarrow\theta_2=28{,}8^\circ\). <span class="ans">θ₂ = 28,8° (se acerca a la normal, medio más lento)</span></p>
+      <p class="part">(d)</p>
+      <p>Los frentes se <strong>juntan</strong> (menor λ) y giran para acercarse a la normal; la dirección de propagación se dobla hacia la normal.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- FICHAS REALES (ONDAS PROGRESIVAS) -->
+<section id="fichas">
+  <p class="sec-num">FICHAS REALES DEL PROYECTO · DMpA 19-20 Y 21 · TIPO 2</p>
+  <h2>Fichas reales tipo 2 — ondas progresivas<span class="rule"></span></h2>
+  <p class="sec-intro">Preguntas de Paper 2 del IB tomadas de las fichas del proyecto (<strong>DMpA 19-20</strong> y <strong>DMpA 21</strong>): onda sonora, onda transversal en un resorte, cuerda de goma, ondas longitudinales y superposición. Resueltas <strong>apartado por apartado y a la vista</strong> (qué pide → ecuación → desarrollo → resultado).</p>
+  <div class="note"><strong>▲ = figura no disponible.</strong> El texto de la ficha se extrajo bien, pero las <em>gráficas</em> de estos problemas son imágenes que no viajan en el PDF. En los apartados marcados con <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span> doy el procedimiento y la ecuación (y, cuando cabe, un control físico), pero <strong>no invento la lectura</strong> del eje: completa el número leyendo tu gráfica. Los apartados conceptuales y los puramente numéricos sí quedan resueltos.</div>
+
+  <!-- F1 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">FICHA · N03/430/S(2)S · onda sonora</span><h3>Onda sonora de 660 Hz</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una onda sonora de frecuencia 660 Hz se propaga por el aire. La gráfica muestra la variación del <strong>desplazamiento de las partículas con la distancia</strong>, en un instante dado.</div>
+      <p class="part">(a) <span class="pide">indique</span> si es longitudinal o transversal.</p>
+      <p>El sonido es una <strong>onda longitudinal</strong>: se propaga por compresiones y rarefacciones, y las partículas oscilan <em>en la misma dirección</em> en que avanza la onda. La gráfica (desplazamiento vs distancia) sale sinusoidal, pero ese eje vertical es el <em>desplazamiento longitudinal</em> de cada partícula, no una "forma" transversal. <span class="ans">Longitudinal</span></p>
+      <p class="part">(b)(i) <span class="pide">deduzca</span> la longitud de onda. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Lee en el eje de <em>distancia</em> la longitud de un ciclo completo (p. ej. de una cresta a la siguiente). <em>Control físico:</em> como en aire \(v\approx340\) m·s⁻¹, se espera \(\lambda=v/f\approx340/660\approx0{,}52\) m — tu lectura debe quedar cerca de ese valor.</p>
+      <p class="part">(b)(ii) <span class="pide">deduzca</span> la amplitud. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Amplitud = desplazamiento máximo (valor pico) en el eje vertical; pásalo de cm a m.</p>
+      <p class="part">(b)(iii) <span class="pide">deduzca</span> la rapidez.</p>
+      <p>\(v=f\lambda=660\cdot\lambda\), con la \(\lambda\) leída en (b)(i). Si \(\lambda\approx0{,}52\) m ⇒ \(v\approx340\) m·s⁻¹ (la rapidez del sonido en aire, úsalo como verificación). <span class="ans">v = 660·λ</span></p>
+    </div>
+  </div>
+
+  <!-- F2 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">FICHA · M99/430/S(2) · onda en resorte</span><h3>Onda transversal en un resorte estirado</h3></div>
+    <div class="pb-body">
+      <div class="enun">La línea gruesa muestra la onda en \(t=0\); la línea fina, la misma onda una décima de segundo después (\(t=0{,}1\) s). Desplazamiento/mm vs distancia/m.</div>
+      <p class="part">(a)(i) <span class="pide">determine</span> la dirección de avance. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Compara las dos curvas: el perfil se ha trasladado (menos de una \(\lambda\) en 0,1 s). La onda viaja en el sentido en que el patrón parece haberse corrido entre \(t=0\) y \(t=0{,}1\) s.</p>
+      <p class="part">(a)(ii) <span class="pide">determine</span> la longitud de onda. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Distancia entre dos crestas consecutivas en el eje horizontal (en m).</p>
+      <p class="part">(a)(iii) <span class="pide">determine</span> la amplitud. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Desplazamiento máximo en el eje vertical (mm → m).</p>
+      <p class="part">(a)(iv) <span class="pide">determine</span> la velocidad. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>\(v=\dfrac{\text{corrimiento del perfil}}{0{,}1\ \text{s}}\) (lee cuánto se movió el patrón), o bien \(v=f\lambda\).</p>
+      <p class="part">(a)(v) <span class="pide">determine</span> la frecuencia. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>\(f=\dfrac{v}{\lambda}\) (con (iv) y (ii)), equivalente a \(f=1/T\).</p>
+      <p class="part">(b)(i) <span class="pide">dibuje</span> la flecha del movimiento de P en \(t=0\). <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>P se mueve <em>transversalmente</em> (perpendicular al avance). Su sentido: P tomará enseguida el valor del punto vecino situado "detrás" según la dirección de avance; si ese vecino está más alto, la flecha va hacia arriba, y viceversa.</p>
+      <p class="part">(b)(ii) <span class="pide">determine</span> la rapidez promedio de P entre \(t=0\) y \(t=0{,}1\) s. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Rapidez media \(=\dfrac{\text{distancia transversal total recorrida por P}}{0{,}1\ \text{s}}\). Lee en la gráfica el desplazamiento vertical de P entre ambos instantes (ojo: <em>camino recorrido</em>, no desplazamiento neto, si cambia de sentido).</p>
+      <p class="part">(b)(iii) <span class="pide">calcule</span> el período de P. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>P oscila con el mismo período que la onda: \(T=\dfrac{\lambda}{v}\) (con (ii) y (iv)), o \(T=1/f\).</p>
+    </div>
+  </div>
+
+  <!-- F3 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">FICHA · M02/430/S(2)S · cuerda de goma</span><h3>Onda en una cuerda de goma</h3></div>
+    <div class="pb-body">
+      <div class="enun">El diagrama muestra parte de una cuerda de goma por la que viaja una onda. Desplazamiento/cm vs distancia a lo largo de la cuerda/cm.</div>
+      <p class="part">(a)(i) <span class="pide">determine</span> la amplitud. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Desplazamiento máximo en el eje vertical (cm → m).</p>
+      <p class="part">(a)(ii) <span class="pide">determine</span> la longitud de onda. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Longitud de un ciclo completo en el eje de distancia (cm → m).</p>
+      <p class="part">(b) <span class="pide">determine</span> la velocidad (período \(T=0{,}2\) s).</p>
+      <p>\(v=\dfrac{\lambda}{T}=\dfrac{\lambda}{0{,}2}\), con la \(\lambda\) leída en (a)(ii). <span class="ans">v = λ / 0,2 s</span></p>
+      <p class="part">(c) <span class="pide">trace e interprete</span> el desplazamiento 0,1 s después.</p>
+      <p>\(0{,}1\ \text{s}=\tfrac{T}{2}\): en medio período el perfil avanza <strong>media longitud de onda</strong> (\(\lambda/2\)). El nuevo trazo es el mismo patrón pero <strong>invertido</strong> (crestas donde había valles). <em>Interpretación:</em> cada punto de la cuerda está ahora en la <strong>fase opuesta</strong>; esto confirma que es una onda <strong>progresiva</strong> (el patrón se ha trasladado \(\lambda/2\)), no estacionaria. <span class="ans">Perfil invertido (avance de λ/2)</span></p>
+    </div>
+  </div>
+
+  <!-- F4 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">FICHA · M11/SP2/TZ1 · onda longitudinal</span><h3>Onda longitudinal y oscilaciones</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una onda longitudinal viaja en un medio de izquierda a derecha. El <strong>Gráfico 1</strong> da el desplazamiento \(x\) de una partícula P frente al tiempo \(t\); el <strong>Gráfico 2</strong> da el desplazamiento frente a la posición \(d\) en un instante.</div>
+      <p class="part">(a)(i) <span class="pide">establezca</span> cómo se ve que las oscilaciones no están amortiguadas.</p>
+      <p>En el Gráfico 1 la <strong>amplitud se mantiene constante</strong> en el tiempo (no decrece ciclo a ciclo); por tanto no hay amortiguamiento. <span class="ans">Amplitud constante en el tiempo</span></p>
+      <p class="part">(a)(ii) <span class="pide">calcule</span> la aceleración máxima. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>MAS (integra el Módulo 9): \(a_{\max}=\omega^2 A=\left(\dfrac{2\pi}{T}\right)^{2}A\). Lee \(T\) y la amplitud \(A\) en el Gráfico 1.</p>
+      <p class="part">(a)(iii) <span class="pide">calcule</span> su rapidez en \(t=0{,}12\) s. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Es la rapidez de la partícula = <strong>pendiente de la tangente</strong> de \(x\)–\(t\) en \(t=0{,}12\) s; o analíticamente \(v=\pm\omega\sqrt{A^2-x^2}\) con la \(x\) de ese instante.</p>
+      <p class="part">(a)(iv) <span class="pide">indique</span> su dirección de movimiento en \(t=0{,}12\) s. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Signo de la pendiente de \(x\)–\(t\) en ese instante: pendiente positiva ⇒ se mueve hacia desplazamiento positivo; negativa ⇒ hacia el negativo.</p>
+      <p class="part">(b)(i) <span class="pide">determine</span> la frecuencia. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Del Gráfico 1 lee el período \(T\); \(f=1/T\).</p>
+      <p class="part">(b)(ii) <span class="pide">determine</span> la rapidez de la onda. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>\(v=f\lambda\): toma \(f\) de (b)(i) y \(\lambda\) del Gráfico 2 (distancia de un ciclo en el eje de posición).</p>
+      <p class="part">(c) <span class="pide">dibuje</span> las posiciones de las 6 partículas y rotule la compresión. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Desplaza cada partícula desde su posición de equilibrio según el valor (y signo) del Gráfico 2. La <strong>compresión</strong> está donde las partículas se <em>agolpan</em> (las vecinas se acercan entre sí); la rarefacción, donde se <em>separan</em>.</p>
+    </div>
+  </div>
+
+  <!-- F5 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">FICHA · M16/SP2/SPA · onda longitudinal</span><h3>Onda longitudinal (dos instantes)</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una onda longitudinal se desplaza de izquierda a derecha. La gráfica da el desplazamiento \(y\) frente a la distancia \(x\): línea sólida en \(t=0\) y línea a trazos en \(t=0{,}882\) ms. El período es <em>mayor</em> que 0,882 ms. Se toma positivo el desplazamiento hacia la derecha.</div>
+      <p class="part">(a) <span class="pide">indique</span> qué es una onda progresiva longitudinal.</p>
+      <p>Perturbación que se propaga por un medio <strong>transportando energía (no materia)</strong>, en la que las partículas oscilan <strong>paralelamente</strong> a la dirección de propagación. <span class="ans">Oscilación paralela al avance; transporta energía</span></p>
+      <p class="part">(b)(i) <span class="pide">calcule</span> la rapidez. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>\(v=\dfrac{\Delta x}{\Delta t}=\dfrac{\text{corrimiento del perfil}}{0{,}882\times10^{-3}\ \text{s}}\). Como \(T>0{,}882\) ms, el perfil avanzó <em>menos</em> de una \(\lambda\), así que el corrimiento que lees en la gráfica es el real (sin ambigüedad de ciclos).</p>
+      <p class="part">(b)(ii) <span class="pide">calcule</span> la frecuencia. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>\(f=\dfrac{v}{\lambda}\): \(v\) de (b)(i) y \(\lambda\) leída en la gráfica.</p>
+      <p class="part">(c)(i) <span class="pide">indique y explique</span> la dirección de la partícula en \(x=0{,}80\) m en \(t=0\). <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Como la onda avanza a la derecha, imagina el perfil un instante \(\delta t\) después (lo trasladas un poco a la derecha) y mira si \(y\) en \(x=0{,}80\) m sube o baja: ese es el sentido del movimiento de la partícula. (Equivale a: la partícula imita lo que hace ahora el punto inmediatamente a su izquierda.)</p>
+      <p class="part">(c)(ii) <span class="pide">indique</span> si está en una compresión o una rarefacción. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Mira el desplazamiento de las partículas vecinas: si las de la izquierda se desplazan a la derecha y las de la derecha a la izquierda (todas <em>hacia</em> el punto), es una <strong>compresión</strong>; si se alejan del punto, una <strong>rarefacción</strong>.</p>
+    </div>
+  </div>
+
+  <!-- F6 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">FICHA · M12/SP2/TZ1 · MAS + superposición</span><h3>MAS y superposición de ondas</h3></div>
+    <div class="pb-body">
+      <div class="enun">Un objeto en un resorte horizontal oscila en MAS entre A y C (equilibrio en B; B→C positivo). Más adelante, un resorte de 10,0 m genera dos ondas transversales: <strong>X</strong> (\(\lambda=2{,}0\) m, izquierda→derecha) e <strong>Y</strong> (\(\lambda=4{,}0\) m, derecha→izquierda), ambas con \(v=10{,}0\) m·s⁻¹.</div>
+      <p class="part">(a) <span class="pide">defina</span> el MAS.</p>
+      <p>Movimiento en el que la <strong>aceleración es proporcional al desplazamiento</strong> desde el equilibrio y está <strong>siempre dirigida hacia él</strong>: \(a=-\omega^2 x\). <span class="ans">a ∝ −x (hacia el equilibrio)</span></p>
+      <p class="part">(b)(i)(ii) <span class="pide">dibuje</span> \(a\) frente a \(x\) y rotule A, B, C. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>\(a=-\omega^2x\): una <strong>recta por el origen de pendiente negativa</strong>. B en el origen (\(x=0\)); A y C en los extremos (\(x=\pm x_{\max}\), aceleración máxima de signo opuesto al desplazamiento).</p>
+      <p class="part">(c)(i)(ii) <span class="pide">dibuje</span> \(v\) frente a \(t\) (de A a A) y rotule A, B, C. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Curva <strong>sinusoidal</strong>: \(v=0\) en A y en C (extremos, reposo instantáneo) y \(|v|\) máximo en B. Al soltar desde A, \(v\) parte de 0, crece hasta el máximo en B, vuelve a 0 en C, y repite al regresar.</p>
+      <p class="part">(d) <span class="pide">determine</span> la velocidad máxima (\(T=0{,}20\) s, A–B = 0,040 m).</p>
+      <p>La amplitud es \(A=0{,}040\) m. \(v_{\max}=\omega A=\dfrac{2\pi}{T}A=\dfrac{2\pi}{0{,}20}(0{,}040)=31{,}4\times0{,}040=1{,}26\) m·s⁻¹. <span class="ans">v_máx = 1,3 m·s⁻¹</span></p>
+      <p class="part">(e)(i) <span class="pide">enuncie</span> el principio de superposición.</p>
+      <p>Cuando dos (o más) ondas coinciden en un punto, el <strong>desplazamiento resultante</strong> es la <strong>suma vectorial (algebraica)</strong> de los desplazamientos que cada onda produciría por separado. <span class="ans">Desplazamientos se suman</span></p>
+      <p class="part">(e)(ii) <span class="pide">calcule</span> la posición del desplazamiento máximo 0,20 s después. <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>En 0,20 s cada onda recorre \(d=v\,t=10{,}0\times0{,}20=2{,}0\) m: X avanza <strong>2,0 m a la derecha</strong> e Y <strong>2,0 m a la izquierda</strong>. Traslada cada perfil esa distancia en el diagrama y localiza el punto donde coinciden dos crestas (o dos valles): ahí la interferencia es <strong>constructiva</strong> y el desplazamiento resultante es máximo (suma de amplitudes). <span class="ans">Cada onda avanza 2,0 m</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- BANCO PAPER 2 OFICIALES -->
+<section id="examenes">
+  <p class="sec-num">SECCIÓN ★ · BANCO DE EXÁMENES OFICIALES · PAPER 2</p>
+  <h2>Paper 2 oficiales del modelo de onda (2022–2026)<span class="rule"></span></h2>
+  <p class="sec-intro">Tres preguntas reales de Paper 2 sobre el <strong>modelo de onda</strong>: onda transversal y aceleración de las partículas (MAS), onda viajera y \(c=f\lambda\), y lectura de gráficas \(d\)–\(x\) y \(d\)–\(t\). Reescritas, resueltas apartado por apartado y verificadas contra el esquema oficial.</p>
+  <div class="box beyond"><span class="lbl">La idea clave</span><p>Dos gráficas, dos lecturas distintas: la de <strong>desplazamiento–posición</strong> (una "foto" en un instante) da la <strong>longitud de onda</strong> \(\lambda\); la de <strong>desplazamiento–tiempo</strong> (un punto a lo largo del tiempo) da el <strong>periodo</strong> \(T\). Con ellas, \(v=\dfrac{\lambda}{T}=f\lambda\). La refracción, la interferencia/difracción y el efecto Doppler se trabajan en los <strong>Módulos 10C/10D</strong>.</p></div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">Nov 2024 · SP2 · Q3 · PLAN NUEVO</span><h3>Onda transversal en una cuerda: aceleración de los puntos y periodo</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una onda transversal avanza hacia la derecha por una cuerda. La gráfica \(y\)–\(x\) (foto instantánea) marca dos puntos: <strong>P</strong> en una cresta (desplazamiento máximo) y <strong>Q</strong> en un cruce por cero. La rapidez de la onda es \(62\) m·s⁻¹ y la longitud de onda es \(1{,}20\) m.</div>
+
+      <p class="part">(a)(i) <span class="pide">indique</span> qué es una onda transversal.</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Una onda en la que las partículas del medio oscilan <strong>perpendicularmente</strong> a la dirección de propagación (de transferencia de energía). ∎</p></div></details>
+
+      <p class="part">(a)(ii) <span class="pide">explique</span> si P o Q tiene mayor aceleración.</p>
+      <p class="ans">P (la cresta)</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Cada punto de la cuerda realiza un <strong>MAS</strong>, en el que \(a=-\omega^2 y\): la aceleración es proporcional al desplazamiento. P está en el <strong>desplazamiento máximo</strong> (cresta) ⇒ aceleración máxima; Q está en \(y=0\) ⇒ aceleración nula. Por tanto <strong>P</strong> tiene mayor aceleración. ∎</p></div></details>
+
+      <p class="part">(a)(iii) <span class="pide">calcule</span> el periodo (con las cifras significativas correctas).</p>
+      <p class="ans">T = 1,9×10⁻² s</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>\(T=\dfrac{\lambda}{v}=\dfrac{1{,}20}{62}=1{,}936\times10^{-2}\) s → a 2 c.s. <span class="ans">1,9×10⁻² s</span> (los datos tienen 2 c.s., así que la respuesta también).</p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2__SL_markscheme_1 (8824–9594M, Nov 2024): (a)(i) oscilación perpendicular a la propagación · (a)(ii) MAS, a ∝ y ⇒ máx en P, cero en Q · (a)(iii) T = 1,20/62 = 1,9×10⁻² s (2 c.s.).</p>
+    </div>
+  </div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">May 2024 · TZ2 · SP2 · Q3 · PLAN NUEVO</span><h3>Onda viajera y tubo con un extremo cerrado</h3></div>
+    <div class="pb-body">
+      <div class="enun">Un altavoz emite sonido de \(210\) Hz hacia un tubo de \(1{,}20\) m con un extremo abierto y otro cerrado, donde se establece una onda estacionaria (primer modo: nodo en el cerrado, antinodo en el abierto).</div>
+
+      <p class="part">(a) <span class="pide">resuma</span> qué es una onda viajera.</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>Es la <strong>transferencia de energía</strong> (y de momento/información) a través de un medio mediante <strong>oscilaciones del medio</strong>, sin transporte neto de materia: crestas y valles se desplazan por el medio. ∎</p></div></details>
+
+      <p class="part">(b)(i) <span class="pide">explique</span> cómo se forma la onda estacionaria en el tubo.</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>La onda incidente se <strong>refleja</strong> en el extremo cerrado y la onda reflejada se <strong>superpone</strong> (interfiere) con la incidente; su suma produce un patrón fijo de nodos y antinodos (onda estacionaria). ∎</p></div></details>
+
+      <p class="part">(b)(ii) <span class="pide">determine</span> la longitud de onda.</p>
+      <p class="ans">λ = 1,6 m</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>En un tubo abierto–cerrado, el primer armónico cumple \(L=\dfrac{\lambda}{4}\Rightarrow\lambda=4L=4(1{,}20)/3\)… cuidado: para el <em>modo mostrado</em> \(L=\tfrac34\lambda\) (hay un nodo intermedio), así que \(\lambda=\dfrac{4L}{3}=\dfrac{4(1{,}20)}{3}=1{,}6\) m. <span class="ans">1,6 m</span></p></div></details>
+
+      <p class="part">(b)(iii) <span class="pide">determine</span> la rapidez del sonido.</p>
+      <p class="ans">c ≈ 340 m·s⁻¹</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>\(c=f\lambda=210(1{,}60)=336\approx340\) m·s⁻¹. <span class="ans">336–340 m·s⁻¹</span></p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2__TZ2_SL_markscheme_3 (2224–6711M, May 2024 TZ2): (a) transferencia de energía por oscilaciones del medio · (b)(i) reflexión en el extremo + superposición · (b)(ii) λ = 4L/3 = 1,6 m · (b)(iii) c = fλ = 336–340 m s⁻¹. (Los armónicos de tubos se amplían en 10C/12.)</p>
+    </div>
+  </div>
+
+  <div class="pb">
+    <div class="pb-head"><span class="code">May 2025 · TZ3 · SP2 · Q2 · PLAN NUEVO</span><h3>Dos gráficas de una onda sonora: λ, T y rapidez</h3></div>
+    <div class="pb-body">
+      <div class="enun">Para una onda sonora progresiva se dan dos gráficas: el <strong>Gráfico 1</strong> es el desplazamiento \(d\) frente a la posición \(x\) (eje hasta 4 m), y el <strong>Gráfico 2</strong> es el desplazamiento \(d\) frente al tiempo \(t\) (eje hasta 0,006 s).</div>
+
+      <p class="part">(a)(i) <span class="pide">indique</span> la longitud de onda y el periodo.</p>
+      <p class="ans">λ = 0,68 m ; T = 0,002 s</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>La <strong>longitud de onda</strong> se lee en la gráfica de posición (Gráfico 1): un ciclo completo ocupa \(\lambda\approx0{,}68\) m. El <strong>periodo</strong> se lee en la gráfica de tiempo (Gráfico 2): un ciclo dura \(T\approx0{,}002\) s. <em>(No confundas los ejes: metros → λ, segundos → T.)</em></p></div></details>
+
+      <p class="part">(a)(ii) <span class="pide">calcule</span> la rapidez de la onda sonora.</p>
+      <p class="ans">v ≈ 340 m·s⁻¹</p>
+      <details class="rev"><summary></summary><div class="rev-inner"><p>\(v=\dfrac{\lambda}{T}=\dfrac{0{,}68}{0{,}002}=340\) m·s⁻¹ (la rapidez del sonido en el aire, coherente). <span class="ans">335–350 m·s⁻¹</span></p></div></details>
+      <p class="srcnote">Verificado contra Physics_paper_2_TZ3_SL_markscheme_1 (2225–6724M, TZ3): (a)(i) λ = 0,68 m (acepta 0,67–0,70), T = 0,002 s · (a)(ii) v = λ/T = 340 m s⁻¹. La parte (b), con el efecto Doppler (coche entre dos fuentes y corrimiento de la luz de una galaxia), se trabaja en 10C.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRAS: ONDAS PROGRESIVAS (ocultos) -->
+<section id="extra-ondas">
+  <p class="sec-num">PARA TI · ONDAS PROGRESIVAS · RESOLUCIÓN OCULTA</p>
+  <h2>Extras de ondas progresivas<span class="rule"></span></h2>
+  <p class="sec-intro">Cuatro problemas <strong>completamente numéricos</strong> (sin figuras perdidas) en la línea de las fichas: ecuación de onda, \(v=f\lambda\) con incertidumbres, Malus y gráfica de doble instante. Resuelve cada apartado y luego abre «VER RESOLUCIÓN».</p>
+
+  <div class="prob"><p class="pn">EO1 · ecuación de una onda viajera</p><p>Una onda transversal en una cuerda se describe por \(y=0{,}018\sin(5{,}0x-40t)\) (SI). (a) Determina amplitud, longitud de onda, frecuencia, período y rapidez de la onda. (b) Halla la rapidez y la aceleración máximas de una partícula del medio. (c) Indica el sentido de propagación y justifícalo.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>Comparando con \(y=A\sin(kx-\omega t)\): \(A=0{,}018\) m; \(k=5{,}0\Rightarrow\lambda=\dfrac{2\pi}{k}=\dfrac{2\pi}{5{,}0}=1{,}26\) m; \(\omega=40\Rightarrow f=\dfrac{\omega}{2\pi}=6{,}37\) Hz; \(T=\dfrac{1}{f}=0{,}157\) s; \(v=\dfrac{\omega}{k}=\dfrac{40}{5{,}0}=8{,}0\) m·s⁻¹ (comprobación \(f\lambda=6{,}37\times1{,}26=8{,}0\)). <span class="ans">A = 0,018 m ; λ = 1,26 m ; f = 6,37 Hz ; T = 0,157 s ; v = 8,0 m·s⁻¹</span></p>
+      <p class="part">(b)</p>
+      <p>MAS de la partícula: \(v_{\max}=\omega A=40(0{,}018)=0{,}72\) m·s⁻¹; \(a_{\max}=\omega^2A=40^2(0{,}018)=1600(0{,}018)=28{,}8\) m·s⁻². <span class="ans">v_máx = 0,72 m·s⁻¹ ; a_máx = 28,8 m·s⁻²</span></p>
+      <p class="part">(c)</p>
+      <p>La fase es \((kx-\omega t)\) (signos opuestos de \(x\) y \(t\)): la onda avanza en el sentido <strong>+x</strong>. <span class="ans">Hacia +x</span></p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">EO2 · v = fλ con incertidumbres (integra Módulo 1)</p><p>Para medir la rapidez del sonido se obtiene \(f=(256\pm1)\) Hz y \(\lambda=(1{,}32\pm0{,}02)\) m. (a) Calcula \(v\). (b) Propaga las incertidumbres y da \(v\pm\Delta v\). (c) Comenta si el resultado es compatible con el valor aceptado (≈340 m·s⁻¹).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>\(v=f\lambda=256\times1{,}32=338\) m·s⁻¹. <span class="ans">v = 338 m·s⁻¹</span></p>
+      <p class="part">(b)</p>
+      <p>Producto ⇒ se suman las incertidumbres relativas: \(\dfrac{\Delta f}{f}=\dfrac{1}{256}=0{,}0039\); \(\dfrac{\Delta\lambda}{\lambda}=\dfrac{0{,}02}{1{,}32}=0{,}0152\). \(\dfrac{\Delta v}{v}=0{,}0039+0{,}0152=0{,}0191\Rightarrow\Delta v=0{,}0191\times338=6{,}4\approx6\) m·s⁻¹. <span class="ans">v = (338 ± 6) m·s⁻¹</span></p>
+      <p class="part">(c)</p>
+      <p>El intervalo es 332–344 m·s⁻¹, que <strong>contiene</strong> 340 m·s⁻¹: el resultado es compatible con el valor aceptado. El término dominante del error es \(\lambda\) (su incertidumbre relativa es casi 4× la de \(f\)).</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">EO3 · polarización (Malus con “muestre que”)</p><p>Luz <strong>no polarizada</strong> de intensidad \(I_0\) incide sobre dos polarizadores ideales. (a) Muestra que la máxima intensidad que puede emerger del par es \(I_0/2\). (b) Se gira el segundo polarizador hasta que la intensidad emergente vale \(0{,}15\,I_0\); determina el ángulo entre ejes. (c) Determina la intensidad cuando el ángulo es 90°.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>Tras el 1.º (luz no polarizada): \(I_1=\tfrac12 I_0\). Tras el 2.º (Malus): \(I_2=\tfrac12 I_0\cos^2\theta\). El máximo es con \(\theta=0\) (ejes paralelos): \(I_{2,\max}=\tfrac12 I_0\cos^2 0=\tfrac12 I_0\). ∎</p>
+      <p class="part">(b)</p>
+      <p>\(\tfrac12 I_0\cos^2\theta=0{,}15\,I_0\Rightarrow\cos^2\theta=0{,}30\Rightarrow\cos\theta=0{,}548\Rightarrow\theta=56{,}8^\circ\). <span class="ans">θ = 56,8°</span></p>
+      <p class="part">(c)</p>
+      <p>\(\theta=90^\circ\Rightarrow\cos^2 90^\circ=0\Rightarrow I=0\) (polarizadores cruzados: no pasa luz). <span class="ans">I = 0</span></p>
+    </div></details>
+  </div>
+
+  <div class="prob jefe"><p class="pn">EO4 · INTEGRADOR · gráfica de doble instante (ambigüedad)</p><p>Una onda transversal avanza por una cuerda. Dos "fotos" consecutivas, separadas \(0{,}050\) s, muestran que una cresta pasó de \(x=0{,}20\) m a \(x=0{,}50\) m. La longitud de onda es \(\lambda=0{,}40\) m. (a) Suponiendo que la onda viaja hacia la derecha, halla su rapidez. (b) Halla la frecuencia y el período. (c) Explica por qué, en rigor, el dato admite <strong>otra</strong> solución y cuál es.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>Corrimiento aparente hacia la derecha: \(\Delta x=0{,}50-0{,}20=0{,}30\) m. \(v=\dfrac{\Delta x}{\Delta t}=\dfrac{0{,}30}{0{,}050}=6{,}0\) m·s⁻¹. <span class="ans">v = 6,0 m·s⁻¹</span></p>
+      <p class="part">(b)</p>
+      <p>\(f=\dfrac{v}{\lambda}=\dfrac{6{,}0}{0{,}40}=15\) Hz; \(T=\dfrac{1}{f}=0{,}067\) s. <span class="ans">f = 15 Hz ; T = 0,067 s</span></p>
+      <p class="part">(c)</p>
+      <p>Como el patrón se repite cada \(\lambda=0{,}40\) m, una cresta en \(x=0{,}50\) m también pudo llegar <strong>moviéndose a la izquierda</strong> un tramo \(0{,}40-0{,}30=0{,}10\) m: entonces \(v=\dfrac{0{,}10}{0{,}050}=2{,}0\) m·s⁻¹ y \(f=\dfrac{2{,}0}{0{,}40}=5{,}0\) Hz. Sin conocer el sentido (o sin garantizar que el corrimiento sea menor que \(\lambda\) en \(0{,}050\) s), <strong>ambas soluciones son válidas</strong>; se decide observando la dirección real o acortando \(\Delta t\). <span class="ans">Alternativa: v = 2,0 m·s⁻¹ (izquierda), f = 5,0 Hz</span></p>
+    </div></details>
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <p class="sec-num">PARA TI · RESUELVE ESTILO PAPER 2 Y ENVÍA EN BLOQUE</p>
+  <h2>5 integradores<span class="rule"></span></h2>
+  <p class="sec-intro">Nuevos y de nivel creciente. Integran cinemática, MAS, medios y propagación de incertidumbre. Intenta cada apartado antes de abrir la resolución. \(c=3{,}0\times10^{8}\) m·s⁻¹.</p>
+
+  <div class="prob"><p class="pn">E1 · prisma y dispersión</p><p>Un rayo de luz blanca entra en un prisma de vidrio con incidencia 40°. El índice para el rojo es 1,51 y para el violeta 1,53. (a) Halla el ángulo de refracción de cada color en la primera cara. (b) Explica por qué el violeta se desvía más. (c) Define el fenómeno observado.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>Rojo: \(\sin\theta=\dfrac{\sin40^\circ}{1{,}51}=\dfrac{0{,}643}{1{,}51}=0{,}426\Rightarrow\theta=25{,}2^\circ\). Violeta: \(\sin\theta=\dfrac{0{,}643}{1{,}53}=0{,}420\Rightarrow\theta=24{,}8^\circ\). <span class="ans">rojo 25,2° ; violeta 24,8°</span></p>
+      <p class="part">(b)</p>
+      <p>El violeta tiene mayor índice (viaja más lento en el vidrio), así que Snell lo acerca más a la normal: se refracta/desvía más que el rojo.</p>
+      <p class="part">(c)</p>
+      <p><strong>Dispersión:</strong> la separación de la luz blanca en sus colores porque el índice de refracción depende de la longitud de onda.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E2 · fibra óptica (TIR + tiempo)</p><p>Una fibra de núcleo n = 1,48 y revestimiento n = 1,46 tiene 500 m de largo. (a) Halla el ángulo crítico. (b) Un pulso de luz que viaja recto por el eje: halla el tiempo que tarda en recorrer la fibra. (c) Explica cualitativamente por qué un rayo que rebota muchas veces tarda más (dispersión modal).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>Para la TIR núcleo→revestimiento: \(\sin\theta_c=\dfrac{n_{rev}}{n_{nucleo}}=\dfrac{1{,}46}{1{,}48}=0{,}9865\Rightarrow\theta_c=80{,}6^\circ\). <span class="ans">θ_c = 80,6°</span></p>
+      <p class="part">(b)</p>
+      <p>\(v=\dfrac{c}{n}=\dfrac{3{,}0\times10^{8}}{1{,}48}=2{,}03\times10^{8}\) m·s⁻¹. \(t=\dfrac{L}{v}=\dfrac{500}{2{,}03\times10^{8}}=2{,}47\times10^{-6}\) s. <span class="ans">t ≈ 2,5 μs</span></p>
+      <p class="part">(c)</p>
+      <p>Un rayo que rebota recorre un <strong>camino en zigzag más largo</strong> que el que va recto por el eje. Como todos viajan a la misma rapidez \(v=c/n\), los que rebotan llegan después: los distintos "modos" se separan en el tiempo (dispersión modal) y el pulso se ensancha.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">E3 · Young con lámina delgada (trampa del medio)</p><p>Un montaje de Young con λ = 600 nm (en aire), d = 0,25 mm y D = 1,8 m. (a) Halla la separación de franjas. (b) Determina el ángulo del quinto máximo. (c) Si todo el aparato se sumerge en agua (n = 1,33), halla la nueva separación de franjas y justifica el cambio con λ.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>\(s=\dfrac{\lambda D}{d}=\dfrac{(600\times10^{-9})(1{,}8)}{0{,}25\times10^{-3}}=4{,}32\times10^{-3}\) m. <span class="ans">s = 4,3 mm</span></p>
+      <p class="part">(b)</p>
+      <p>\(d\sin\theta=n\lambda\Rightarrow\sin\theta=\dfrac{5(600\times10^{-9})}{0{,}25\times10^{-3}}=0{,}012\Rightarrow\theta=0{,}69^\circ\). <span class="ans">θ₅ = 0,69°</span></p>
+      <p class="part">(c)</p>
+      <p>En agua la longitud de onda se reduce: \(\lambda'=\dfrac{\lambda}{n}=\dfrac{600}{1{,}33}=451\) nm. Entonces \(s'=\dfrac{\lambda'D}{d}=\dfrac{s}{1{,}33}=\dfrac{4{,}32}{1{,}33}=3{,}25\) mm: las franjas se <strong>juntan</strong> porque λ es menor en el medio (la frecuencia no cambia). <span class="ans">s' = 3,3 mm</span></p>
+    </div></details>
+  </div>
+
+  <div class="prob jefe"><p class="pn">E4 · INTEGRADOR (onda + MAS de una partícula, supera IB)</p><p>Una onda transversal en una cuerda se describe por \(y=0{,}020\sin(4\pi x - 20\pi t)\) (SI). (a) Determina amplitud, longitud de onda, frecuencia y rapidez de la onda. (b) Halla la rapidez y aceleración máximas de una partícula del medio (MAS). (c) Explica la diferencia entre la rapidez de la onda y la rapidez máxima de una partícula.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>Comparando con \(y=A\sin(kx-\omega t)\): \(A=0{,}020\) m; \(k=4\pi\Rightarrow\lambda=\dfrac{2\pi}{k}=0{,}50\) m; \(\omega=20\pi\Rightarrow f=\dfrac{\omega}{2\pi}=10\) Hz; \(v=f\lambda=10(0{,}50)=5{,}0\) m·s⁻¹ (= ω/k). <span class="ans">A = 0,020 m ; λ = 0,50 m ; f = 10 Hz ; v = 5,0 m·s⁻¹</span></p>
+      <p class="part">(b)</p>
+      <p>MAS de la partícula: \(v_{max}=\omega A=20\pi(0{,}020)=1{,}26\) m·s⁻¹. \(a_{max}=\omega^2 A=(20\pi)^2(0{,}020)=79\) m·s⁻². <span class="ans">v_max = 1,26 m·s⁻¹ ; a_max = 79 m·s⁻²</span></p>
+      <p class="part">(c)</p>
+      <p>La rapidez de la onda (5,0 m·s⁻¹) es la velocidad con que avanza el <strong>patrón/energía</strong> a lo largo de la cuerda y es constante. La rapidez máxima de la partícula (1,26 m·s⁻¹) es su movimiento <strong>transversal</strong> en MAS: varía entre 0 (en los extremos) y su máximo (al pasar por el equilibrio). Son magnitudes distintas.</p>
+    </div></details>
+  </div>
+
+  <div class="prob jefe"><p class="pn">E5 · PROBLEMA JEFE (índice de refracción + Módulo 1, supera IB)</p><p>Para medir el índice de refracción de un vidrio se miden el ángulo de incidencia \(\theta_1=(50{,}0\pm0{,}5)^\circ\) y el de refracción \(\theta_2=(30{,}0\pm0{,}5)^\circ\) (desde el aire). (a) Halla \(n\) con \(n=\dfrac{\sin\theta_1}{\sin\theta_2}\). (b) Propaga las incertidumbres para dar \(n\pm\Delta n\) (recuerda: la incertidumbre de \(\sin\theta\) es \(|\cos\theta|\,\Delta\theta\), con \(\Delta\theta\) en radianes). (c) A partir de \(n\), determina la rapidez de la luz en el vidrio y el ángulo crítico. (d) Señala una fuente de error sistemático del montaje.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>\(n=\dfrac{\sin50{,}0^\circ}{\sin30{,}0^\circ}=\dfrac{0{,}766}{0{,}500}=1{,}53\). <span class="ans">n = 1,53</span></p>
+      <p class="part">(b)</p>
+      <p>\(\Delta\theta=0{,}5^\circ=8{,}73\times10^{-3}\) rad. Incertidumbres de los senos: \(\Delta(\sin\theta_1)=\cos50^\circ\,\Delta\theta=0{,}643(8{,}73\times10^{-3})=5{,}61\times10^{-3}\); \(\Delta(\sin\theta_2)=\cos30^\circ\,\Delta\theta=0{,}866(8{,}73\times10^{-3})=7{,}56\times10^{-3}\). Incertidumbres relativas: \(\dfrac{5{,}61\times10^{-3}}{0{,}766}=0{,}0073\) y \(\dfrac{7{,}56\times10^{-3}}{0{,}500}=0{,}0151\). Suma (cociente): \(0{,}0073+0{,}0151=0{,}0225\Rightarrow\Delta n=0{,}0225(1{,}53)=0{,}034\). <span class="ans">n = 1,53 ± 0,03</span></p>
+      <p class="part">(c)</p>
+      <p>\(v=\dfrac{c}{n}=\dfrac{3{,}0\times10^{8}}{1{,}53}=1{,}96\times10^{8}\) m·s⁻¹. \(\sin\theta_c=\dfrac{1}{1{,}53}=0{,}653\Rightarrow\theta_c=40{,}8^\circ\). <span class="ans">v = 1,96×10⁸ m·s⁻¹ ; θ_c = 40,8°</span></p>
+      <p class="part">(d)</p>
+      <p>Error sistemático posible: la normal mal trazada / cero del transportador descalibrado (se mide el ángulo desde la superficie en lugar de desde la normal), o el grosor del haz láser. Todas desplazan los ángulos siempre en el mismo sentido.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- PRACTICA 2 · TODO TIPO -->
+<section id="practica2">
+  <p class="sec-num">PARA TI · PAPER 2 · SOLO TIPOS QUE SÍ CAEN</p>
+  <h2>Práctica extra · Paper 2 (todo tipo)<span class="rule"></span></h2>
+  <p class="sec-intro">Seis problemas nuevos estilo Paper 2 (varias partes, «muestre que» y bosquejos) centrados en lo que realmente cae: \(v=f\lambda\), lectura de gráficas desplazamiento–tiempo y desplazamiento–distancia, dirección de la velocidad de una partícula, transversal vs longitudinal, \(I\propto A^2\) y Malus. Resuelve cada apartado y luego abre «VER RESOLUCIÓN».</p>
+
+  <!-- PE1 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">P2 · 1 · transversal vs longitudinal · v=fλ</span><h3>Dos ondas, dos tipos</h3></div>
+    <div class="pb-body">
+      <div class="enun">Un altavoz emite un sonido de 170 Hz en aire (\(v=340\) m·s⁻¹). Un estudiante compara esa onda con una onda transversal que viaja por una cuerda tensa con \(f=25\) Hz y \(\lambda=0{,}80\) m.</div>
+      <p class="part">(a) <span class="pide">distinga</span> onda transversal de longitudinal, con un ejemplo de cada una.</p>
+      <p class="part">(b) <span class="pide">calcule</span> la longitud de onda del sonido en el aire.</p>
+      <p class="part">(c) <span class="pide">muestre que</span> la rapidez de la onda en la cuerda es 20 m·s⁻¹.</p>
+      <p class="part">(d) <span class="pide">explique</span> por qué la onda en la cuerda puede polarizarse pero el sonido no.</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <p class="part">(a)</p>
+        <p>En una onda <strong>transversal</strong> las partículas oscilan <strong>perpendicularmente</strong> a la dirección de propagación (p. ej. onda en una cuerda, luz); en una <strong>longitudinal</strong> oscilan <strong>paralelamente</strong> a la propagación, por compresiones y rarefacciones (p. ej. sonido). <span class="ans">Transversal ⟂ ; longitudinal ∥</span></p>
+        <p class="part">(b)</p>
+        <p>\(\lambda=\dfrac{v}{f}=\dfrac{340}{170}=2{,}0\) m. <span class="ans">λ = 2,0 m</span></p>
+        <p class="part">(c)</p>
+        <p>\(v=f\lambda=25\times0{,}80=20\) m·s⁻¹. ∎</p>
+        <p class="part">(d)</p>
+        <p>La polarización solo existe en ondas <strong>transversales</strong>, porque hay un plano de oscilación perpendicular al avance que un polarizador puede restringir. El sonido es <strong>longitudinal</strong>: su oscilación va a lo largo del avance y no hay un plano transversal que seleccionar, así que no puede polarizarse.</p>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- PE2 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">P2 · 2 · gráfica desplazamiento–tiempo</span><h3>Lectura de una gráfica y–t</h3></div>
+    <div class="pb-body">
+      <div class="enun">La gráfica muestra el desplazamiento de <strong>una partícula</strong> del medio en función del <strong>tiempo</strong>. La onda tiene una longitud de onda \(\lambda=1{,}2\) m.</div>
+      <figure class="fig">
+      <svg viewBox="0 0 470 210" width="100%" style="max-width:470px" xmlns="http://www.w3.org/2000/svg" aria-label="Gráfica desplazamiento-tiempo">
+        <line x1="40" y1="120" x2="445" y2="120" stroke="#43525C" stroke-width="1.5"/>
+        <line x1="50" y1="38" x2="50" y2="200" stroke="#43525C" stroke-width="1.5"/>
+        <polygon points="445,120 437,116 437,124" fill="#43525C"/>
+        <polygon points="50,38 46,46 54,46" fill="#43525C"/>
+        <line x1="145" y1="117" x2="145" y2="123" stroke="#43525C"/><text x="145" y="138" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C" text-anchor="middle">0,2</text>
+        <line x1="240" y1="117" x2="240" y2="123" stroke="#43525C"/><text x="240" y="138" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C" text-anchor="middle">0,4</text>
+        <line x1="335" y1="117" x2="335" y2="123" stroke="#43525C"/><text x="335" y="138" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C" text-anchor="middle">0,6</text>
+        <line x1="430" y1="117" x2="430" y2="123" stroke="#43525C"/><text x="430" y="138" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C" text-anchor="middle">0,8</text>
+        <line x1="47" y1="50" x2="53" y2="50" stroke="#43525C"/><text x="42" y="54" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C" text-anchor="end">4</text>
+        <line x1="47" y1="190" x2="53" y2="190" stroke="#43525C"/><text x="42" y="194" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C" text-anchor="end">-4</text>
+        <line x1="50" y1="50" x2="240" y2="50" stroke="#C77B23" stroke-width="0.8" stroke-dasharray="4 3"/>
+        <path d="M50,120 L74,70 L98,50 L121,70 L145,120 L169,170 L193,190 L216,170 L240,120 L264,70 L288,50 L311,70 L335,120 L359,170 L383,190 L406,170 L430,120" fill="none" stroke="#1F6E7C" stroke-width="2"/>
+        <text x="455" y="124" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C">t/s</text>
+        <text x="58" y="46" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C">y/cm</text>
+      </svg>
+      <figcaption>Desplazamiento de una partícula frente al tiempo (y en cm, t en s).</figcaption>
+      </figure>
+      <p class="part">(a) <span class="pide">determine</span> el período y la frecuencia.</p>
+      <p class="part">(b) <span class="pide">determine</span> la amplitud en metros.</p>
+      <p class="part">(c) <span class="pide">muestre que</span> la rapidez de la onda es 3,0 m·s⁻¹.</p>
+      <p class="part">(d) <span class="pide">calcule</span> la rapidez máxima de la partícula.</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <p class="part">(a)</p>
+        <p>Un ciclo completo dura \(T=0{,}40\) s (la curva se repite cada 0,40 s). \(f=\dfrac{1}{T}=\dfrac{1}{0{,}40}=2{,}5\) Hz. <span class="ans">T = 0,40 s ; f = 2,5 Hz</span></p>
+        <p class="part">(b)</p>
+        <p>Pico de la curva = 4,0 cm. \(A=4{,}0\) cm \(=0{,}040\) m. <span class="ans">A = 0,040 m</span></p>
+        <p class="part">(c)</p>
+        <p>\(v=f\lambda=2{,}5\times1{,}2=3{,}0\) m·s⁻¹. ∎</p>
+        <p class="part">(d)</p>
+        <p>La partícula hace MAS: \(v_{\max}=\omega A=\dfrac{2\pi}{T}A=\dfrac{2\pi}{0{,}40}(0{,}040)=15{,}7\times0{,}040=0{,}63\) m·s⁻¹. <span class="ans">v_máx = 0,63 m·s⁻¹</span></p>
+        <div class="box trap"><span class="lbl">No confundir</span> La rapidez de la onda (3,0 m·s⁻¹) ≠ la rapidez máxima de la partícula (0,63 m·s⁻¹): la primera es el avance del patrón, la segunda el movimiento transversal.</div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- PE3 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">P2 · 3 · gráfica desplazamiento–distancia</span><h3>Lectura de una gráfica y–x</h3></div>
+    <div class="pb-body">
+      <div class="enun">Esta gráfica es una <strong>instantánea</strong> (en un instante fijo) del desplazamiento de las partículas de una cuerda frente a la <strong>distancia</strong>. La onda tiene frecuencia \(f=40\) Hz.</div>
+      <figure class="fig">
+      <svg viewBox="0 0 470 210" width="100%" style="max-width:470px" xmlns="http://www.w3.org/2000/svg" aria-label="Gráfica desplazamiento-distancia">
+        <line x1="40" y1="120" x2="445" y2="120" stroke="#43525C" stroke-width="1.5"/>
+        <line x1="50" y1="38" x2="50" y2="200" stroke="#43525C" stroke-width="1.5"/>
+        <polygon points="445,120 437,116 437,124" fill="#43525C"/>
+        <polygon points="50,38 46,46 54,46" fill="#43525C"/>
+        <line x1="240" y1="117" x2="240" y2="123" stroke="#43525C"/><text x="240" y="138" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C" text-anchor="middle">0,50</text>
+        <line x1="430" y1="117" x2="430" y2="123" stroke="#43525C"/><text x="430" y="138" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C" text-anchor="middle">1,0</text>
+        <line x1="47" y1="50" x2="53" y2="50" stroke="#43525C"/><text x="42" y="54" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C" text-anchor="end">2</text>
+        <line x1="47" y1="190" x2="53" y2="190" stroke="#43525C"/><text x="42" y="194" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C" text-anchor="end">-2</text>
+        <path d="M50,120 L74,70 L98,50 L121,70 L145,120 L169,170 L193,190 L216,170 L240,120 L264,70 L288,50 L311,70 L335,120 L359,170 L383,190 L406,170 L430,120" fill="none" stroke="#1F6E7C" stroke-width="2"/>
+        <line x1="98" y1="50" x2="288" y2="50" stroke="#C77B23" stroke-width="0.8" stroke-dasharray="4 3"/>
+        <text x="193" y="44" font-family="IBM Plex Mono,monospace" font-size="10" fill="#C77B23" text-anchor="middle">λ</text>
+        <text x="455" y="124" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C">x/m</text>
+        <text x="58" y="46" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C">y/cm</text>
+      </svg>
+      <figcaption>Instantánea: desplazamiento frente a la distancia (y en cm, x en m).</figcaption>
+      </figure>
+      <p class="part">(a) <span class="pide">explique</span> qué dato se lee en esta gráfica (y–x) que <em>no</em> se lee en una de desplazamiento–tiempo.</p>
+      <p class="part">(b) <span class="pide">determine</span> la longitud de onda y la amplitud.</p>
+      <p class="part">(c) <span class="pide">muestre que</span> la rapidez de la onda es 20 m·s⁻¹.</p>
+      <p class="part">(d) <span class="pide">determine</span> el período.</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <p class="part">(a)</p>
+        <p>En la gráfica y–x el eje horizontal es la <strong>distancia</strong>, así que un ciclo completo da la <strong>longitud de onda</strong> \(\lambda\) (periodo espacial). En una gráfica y–t el eje es el tiempo y un ciclo da el <strong>período</strong> \(T\) (periodo temporal). <span class="ans">y–x → λ ; y–t → T</span></p>
+        <p class="part">(b)</p>
+        <p>Un ciclo ocupa \(\lambda=0{,}50\) m (de cresta a cresta); pico \(=2{,}0\) cm. <span class="ans">λ = 0,50 m ; A = 2,0 cm = 0,020 m</span></p>
+        <p class="part">(c)</p>
+        <p>\(v=f\lambda=40\times0{,}50=20\) m·s⁻¹. ∎</p>
+        <p class="part">(d)</p>
+        <p>\(T=\dfrac{1}{f}=\dfrac{1}{40}=0{,}025\) s. <span class="ans">T = 0,025 s</span></p>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- PE4 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">P2 · 4 · dirección de la velocidad de una partícula</span><h3>¿Sube o baja la partícula?</h3></div>
+    <div class="pb-body">
+      <div class="enun">La instantánea muestra una onda transversal que avanza <strong>hacia la derecha</strong>. P es una partícula de la cuerda situada en un cruce por cero.</div>
+      <figure class="fig">
+      <svg viewBox="0 0 470 200" width="100%" style="max-width:470px" xmlns="http://www.w3.org/2000/svg" aria-label="Instantánea de onda con la partícula P">
+        <line x1="40" y1="110" x2="445" y2="110" stroke="#43525C" stroke-width="1.5"/>
+        <polygon points="445,110 437,106 437,114" fill="#43525C"/>
+        <path d="M50,110 L88,68 L126,50 L164,68 L202,110 L240,152 L278,170 L316,152 L354,110 L392,68 L430,50" fill="none" stroke="#1F6E7C" stroke-width="2"/>
+        <circle cx="202" cy="110" r="4.5" fill="#A8402C"/>
+        <text x="202" y="100" font-family="IBM Plex Mono,monospace" font-size="12" fill="#A8402C" text-anchor="middle">P</text>
+        <line x1="360" y1="30" x2="420" y2="30" stroke="#C77B23" stroke-width="2"/>
+        <polygon points="420,30 412,26 412,34" fill="#C77B23"/>
+        <text x="390" y="22" font-family="IBM Plex Mono,monospace" font-size="10" fill="#C77B23" text-anchor="middle">onda</text>
+        <text x="455" y="114" font-family="IBM Plex Mono,monospace" font-size="10" fill="#43525C">x</text>
+      </svg>
+      <figcaption>Onda transversal que viaja hacia la derecha; P está en un cruce por cero descendente.</figcaption>
+      </figure>
+      <p class="part">(a) <span class="pide">enuncie</span> la regla para hallar el sentido de la velocidad de una partícula a partir de una instantánea y del sentido de avance.</p>
+      <p class="part">(b) <span class="pide">determine</span> el sentido de la velocidad de P (↑ o ↓).</p>
+      <p class="part">(c) <span class="pide">indique</span> dónde la rapidez transversal de una partícula es máxima y dónde es nula.</p>
+      <p class="part">(d) <span class="pide">deduzca</span> cómo cambiaría la respuesta de (b) si la onda viajara hacia la izquierda.</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <p class="part">(a)</p>
+        <p>Desliza mentalmente todo el perfil un instante en el sentido de avance y mira si, en la posición de la partícula, el nuevo desplazamiento sube o baja. (Equivale a: cada partícula <strong>imita lo que hace ahora su vecina situada «detrás»</strong>, es decir, la del lado desde donde llega la onda.)</p>
+        <p class="part">(b)</p>
+        <p>La onda va a la derecha, así que P tomará enseguida el valor del punto inmediatamente a su <strong>izquierda</strong>, que está en la cresta (\(y>0\)). Por tanto P <strong>sube</strong>. <span class="ans">P se mueve hacia arriba ↑</span></p>
+        <p class="part">(c)</p>
+        <p>La rapidez transversal es <strong>máxima</strong> en los cruces por cero (equilibrio, como P) y <strong>nula</strong> en las crestas y los valles (desplazamiento máximo, reposo instantáneo). <span class="ans">Máx en y=0 ; nula en crestas/valles</span></p>
+        <p class="part">(d)</p>
+        <p>Si la onda fuera a la izquierda, P tomaría el valor del punto a su <strong>derecha</strong> (el valle, \(y<0\)): entonces P <strong>bajaría</strong>. El sentido se invierte. <span class="ans">Se invierte: P bajaría ↓</span></p>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- PE5 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">P2 · 5 · intensidad ∝ amplitud²</span><h3>Intensidad y amplitud</h3></div>
+    <div class="pb-body">
+      <div class="enun">Dos ondas sonoras A y B tienen la misma frecuencia. La amplitud de B es el <strong>triple</strong> de la de A.</div>
+      <p class="part">(a) <span class="pide">muestre que</span> la intensidad de B es 9 veces la de A.</p>
+      <p class="part">(b) <span class="pide">determine</span> la intensidad de B si \(I_A=2{,}0\) W·m⁻².</p>
+      <p class="part">(c) <span class="pide">determine</span> la razón \(A_C/A_A\) de una onda C cuya intensidad es la cuarta parte de la de A.</p>
+      <p class="part">(d) <span class="pide">explique</span> por qué duplicar la amplitud no duplica la intensidad.</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <p class="part">(a)</p>
+        <p>Para una onda, \(I\propto A^2\). Entonces \(\dfrac{I_B}{I_A}=\left(\dfrac{A_B}{A_A}\right)^2=3^2=9\). ∎</p>
+        <p class="part">(b)</p>
+        <p>\(I_B=9\,I_A=9\times2{,}0=18\) W·m⁻². <span class="ans">I_B = 18 W·m⁻²</span></p>
+        <p class="part">(c)</p>
+        <p>\(\dfrac{A_C}{A_A}=\sqrt{\dfrac{I_C}{I_A}}=\sqrt{\tfrac14}=0{,}50\). <span class="ans">A_C/A_A = 0,50</span></p>
+        <p class="part">(d)</p>
+        <p>Como \(I\propto A^2\), al duplicar la amplitud la intensidad se multiplica por \(2^2=4\), no por 2: la relación es cuadrática, no lineal.</p>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- PE6 -->
+  <div class="pb">
+    <div class="pb-head"><span class="code">P2 · 6 · polarización · Malus</span><h3>Ley de Malus y el factor ½</h3></div>
+    <div class="pb-body">
+      <div class="enun">Luz <strong>no polarizada</strong> de intensidad \(I_0\) incide sobre dos polarizadores ideales; el eje del segundo forma un ángulo \(\theta\) con el del primero.</div>
+      <p class="part">(a) <span class="pide">determine</span> la intensidad justo tras el primer polarizador y <span class="pide">explique</span> por qué no depende de su orientación.</p>
+      <p class="part">(b) <span class="pide">muestre que</span> para \(\theta=60^\circ\) la intensidad final es \(I_0/8\).</p>
+      <p class="part">(c) <span class="pide">determine</span> el ángulo \(\theta\) para que la intensidad final sea \(I_0/4\).</p>
+      <p class="part">(d) <span class="pide">determine</span> la intensidad final a \(60^\circ\) si la luz incidente estuviera ya polarizada (intensidad \(I_0\)) paralela al primer eje, y compárela con (b).</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <p class="part">(a)</p>
+        <p>\(I_1=\tfrac12 I_0\). La luz no polarizada contiene todas las orientaciones por igual; el promedio de \(\cos^2\) sobre todos los ángulos es \(\tfrac12\), así que pasa la mitad <strong>sea cual sea</strong> la orientación del polarizador. <span class="ans">I₁ = I₀/2</span></p>
+        <p class="part">(b)</p>
+        <p>Malus tras el segundo: \(I=\tfrac12 I_0\cos^2\theta=\tfrac12 I_0\cos^2 60^\circ=\tfrac12 I_0(0{,}5)^2=\tfrac12 I_0(0{,}25)=\dfrac{I_0}{8}\). ∎</p>
+        <p class="part">(c)</p>
+        <p>\(\tfrac12 I_0\cos^2\theta=\dfrac{I_0}{4}\Rightarrow\cos^2\theta=0{,}5\Rightarrow\cos\theta=0{,}707\Rightarrow\theta=45^\circ\). <span class="ans">θ = 45°</span></p>
+        <p class="part">(d)</p>
+        <p>Si ya está polarizada paralela al primer eje, el primer polarizador no quita el factor ½: la atraviesa entera (\(I_0\)) y solo actúa Malus en el segundo: \(I=I_0\cos^2 60^\circ=I_0(0{,}25)=\dfrac{I_0}{4}\). Es el <strong>doble</strong> que en (b): la diferencia es exactamente el factor ½ que impone la luz no polarizada al entrar. <span class="ans">I = I₀/4 (doble que en b)</span></p>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 10B · Ondas Tipo 2 (Paper 2).</strong> Fichas reales de ondas progresivas (DMpA 19-20 y 21) resueltas apartado por apartado, más 7 problemas tipo Paper 2 (refracción/TIR, Young, Malus, intensidad 1/r², red + datos, rendija única, sonido/agua) y 5 integradores, <strong>todos propuestos con resolución oculta y verificada apartado por apartado</strong>. Con esto el tema queda completo (10A + 10B). Sigue el <strong>Módulo 11A — Ondas estacionarias, sonido y Doppler</strong>. Constantes: \(c=3{,}0\times10^{8}\), \(v_{sonido}\approx340\) m·s⁻¹.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

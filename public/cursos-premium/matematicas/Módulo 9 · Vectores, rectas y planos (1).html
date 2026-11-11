@@ -1,0 +1,2973 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 9 · Vectores, rectas y planos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 9</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t1">1.1 Vectores</a>
+  <a class="sub" href="#t2">1.2 Producto escalar</a>
+  <a class="sub" href="#t3">1.3 Producto vectorial</a>
+  <a class="sub" href="#t4">1.4 Rectas</a>
+  <a class="sub" href="#t5">1.5 Planos</a>
+  <a class="sub" href="#t6">1.6 Sistemas 3×3 y tres planos</a>
+  <a class="sub" href="#t7">1.7 Rectas que se cruzan</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos resueltos</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 9 de 17</p>
+  <h1>Vectores, rectas, planos y sistemas 3×3</h1>
+  <p class="formula">\( \mathbf a\cdot\mathbf b=|\mathbf a||\mathbf b|\cos\theta \qquad |\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|\sin\theta \qquad \mathbf r=\mathbf a+\lambda\mathbf b \qquad \mathbf r\cdot\mathbf n=\mathbf a\cdot\mathbf n \)</p>
+  <p>Todo lo necesario para las preguntas de geometría vectorial de la Prueba 1 sin calculadora, al nivel de la banda 7. Aquí las preguntas son largas: 8 a 19 puntos. Los problemas extra integran los Módulos 1–8.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">Los vectores aparecen en 3 de tus 7 pruebas, pero con peso fuerte: 46 puntos en 4 preguntas, dos de ellas de la Sección B (15 y 19 puntos). Cuando salen, suelen ser una pregunta larga de método estándar: se gana con procedimiento ordenado.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2021 TZ2</td><td>5</td><td>4</td><td>Probar \(|\mathbf a\times\mathbf b|^2=|\mathbf a|^2|\mathbf b|^2-(\mathbf a\cdot\mathbf b)^2\)</td></tr>
+<tr><td>Mayo 2021 TZ2</td><td>8</td><td>8</td><td>Rectas paralelas que no se cortan; distancia entre ellas</td></tr>
+<tr><td>Mayo 2022 TZ1</td><td>11</td><td>15</td><td>Tres planos sin punto común; recta de intersección; distancia de una recta a un plano</td></tr>
+<tr><td>Mayo 2021 TZ1</td><td>11</td><td>19</td><td>De forma cartesiana a vectorial; ángulo de 45° con parámetro; intersección en función de \(a\)</td></tr>
+</tbody></table></div>
+
+<h3>Cómo lo pregunta el IB: patrones de tus pruebas</h3>
+<ol>
+<li><b>Cambio de forma:</b> de cartesiana \(\frac{x-x_0}{a}=\frac{y-y_0}{b}=\frac{z-z_0}{c}\) a vectorial. Sin «\(\mathbf r=\)» se pierde la A1.</li>
+<li><b>Ángulo con parámetro:</b> el producto escalar lleva a una cuadrática en el parámetro.</li>
+<li><b>Posición relativa:</b> igualar paramétricas y resolver dos ecuaciones; la tercera decide si se cortan.</li>
+<li><b>Tres planos:</b> eliminar variables hasta una contradicción (\(0=94\)) o un sistema dependiente.</li>
+<li><b>Distancias:</b> entre rectas paralelas, entre rectas que se cruzan, de un punto a un plano, de una recta paralela a un plano.</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA 19 (2026)</td><td>Vectores: área de un triángulo, ángulos, paralelismo, ángulo obtuso según \(t\), \(|\mathbf a-\mathbf b|=|\mathbf a+\mathbf b|\), volumen de un tetraedro</td><td>F1–F4</td></tr>
+<tr><td>DMpA 20 (2026)</td><td>Rectas y planos: punto más cercano al origen, rectas que se cruzan, plano por tres puntos, plano paralelo a una recta, distancia mínima entre móviles</td><td>F5–F8, F10</td></tr>
+<tr><td>DMpA 01 (2026)</td><td>Sistemas 3×3 por eliminación de Gauss; valores de \(k\) sin solución única</td><td>F9 y sección 1.6</td></tr>
+</tbody></table></div>
+<p>En las fichas, los datos numéricos de muchos ítems vienen en imágenes. Los ejemplos reproducen el tipo de cada ítem con valores propios exactos y lo indican.</p>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA NS</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Vectores: módulo, unitarios, posición, paralelismo, colinealidad, razón de división</td><td>1.1</td><td>Transversal</td></tr>
+<tr><td>Producto escalar: ángulo, perpendicularidad, proyección</td><td>1.2</td><td>Alto</td></tr>
+<tr><td>Producto vectorial: normal, área de paralelogramo y triángulo</td><td>1.3</td><td>Alto</td></tr>
+<tr><td>Rectas: formas vectorial, paramétrica y cartesiana; ángulo; posición relativa; distancias</td><td>1.4</td><td>Alto</td></tr>
+<tr><td>Planos: formas vectorial, normal y cartesiana; intersección con rectas y planos (incluida la recta contenida); ángulos; distancia punto–plano y entre planos paralelos</td><td>1.5</td><td>Alto</td></tr>
+<tr><td>Sistemas de hasta 3 ecuaciones con 3 incógnitas; interpretación geométrica</td><td>1.6</td><td>Alto</td></tr>
+<tr><td>Cinemática vectorial (posición \(\mathbf r=\mathbf a+t\mathbf v\))</td><td>F10</td><td>Bajo (sobre todo Prueba 2)</td></tr>
+<tr><td>Rectas que se cruzan; distancia entre rectas y perpendicular común (NS)</td><td>1.7</td><td>Medio</td></tr>
+<tr><td>Otros tipos de pregunta: razón de división, módulos de \(\mathbf a\pm\mathbf b\), distancia punto–recta, bisectriz, plano por recta y punto, recta intersección de dos planos, posición recta–plano con parámetro, distancia mínima entre móviles</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1–1.7 cubren todo el contenido de vectores del programa NS, y cada concepto esencial trae un recuadro «Para practicar». La sección 6 reúne los tipos de pregunta del IB que no salieron en tus 7 pruebas pero que pueden venir. Las cajas «Más allá» añaden el producto mixto (volúmenes) y la reflexión en un plano; ningún problema extra las necesita. El techo es la investigación I1, tipo Prueba 3.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Va de las operaciones con vectores a los sistemas de tres planos. Cada concepto trae un ejemplo resuelto y, los esenciales, un recuadro «Para practicar». Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Vectores</h3>
+<ul>
+<li>\(\mathbf a=\begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix}=a_1\mathbf i+a_2\mathbf j+a_3\mathbf k\); módulo \(|\mathbf a|=\sqrt{a_1^2+a_2^2+a_3^2}\); vector unitario \(\hat{\mathbf a}=\tfrac{\mathbf a}{|\mathbf a|}\).</li>
+<li>Vector de posición \(\mathbf a=\overrightarrow{OA}\). Además \(\overrightarrow{AB}=\mathbf b-\mathbf a\), y el punto medio es \(\tfrac{\mathbf a+\mathbf b}2\).</li>
+<li><b>Paralelos:</b> \(\mathbf b=k\mathbf a\). <b>Colineales:</b> \(A,B,C\) lo son si \(\overrightarrow{AC}=k\overrightarrow{AB}\).</li>
+<li><b>División en razón \(m:n\):</b> el punto \(P\) de \(AB\) con \(AP:PB=m:n\) es \(\mathbf p=\mathbf a+\tfrac{m}{m+n}\overrightarrow{AB}\).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.1. Módulo, unitario y división</p>
+<p>\(A(2,-1,3)\), \(B(4,3,-1)\). Halla \(|\overrightarrow{AB}|\), el vector unitario en su dirección y el punto \(P\) con \(AP:PB=1:2\).</p>
+<p>\(\overrightarrow{AB}=(2,4,-4)\), con módulo 6 y unitario \(\left(\tfrac13,\tfrac23,-\tfrac23\right)\). \(P=A+\tfrac13\overrightarrow{AB}=\left(\tfrac83,\tfrac13,\tfrac53\right)\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(A(2,-1,3)\), \(B(4,3,-1)\). Halla el punto \(P\) con \(AP:PB=3:1\) y el vector unitario en la dirección \(\overrightarrow{BA}\).</li><li>¿Es \(C(5,5,-3)\) colineal con \(A(1,1,1)\) y \(B(3,3,-1)\)?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\overrightarrow{AB}=(2,4,-4)\); \(P=A+\tfrac34\overrightarrow{AB}=\left(\tfrac72,2,0\right)\); unitario de \(\overrightarrow{BA}\): \(\left(-\tfrac13,-\tfrac23,\tfrac23\right)\).</li><li>\(\overrightarrow{AC}=(4,4,-4)=2\overrightarrow{AB}\): sí.</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.2. Colinealidad</p>
+<p>¿Están alineados \(A(1,2,3)\), \(B(3,5,4)\) y \(C(7,11,6)\)?</p>
+<p>\(\overrightarrow{AB}=(2,3,1)\) y \(\overrightarrow{AC}=(6,9,3)=3\overrightarrow{AB}\). Son paralelos con un punto común, así que sí.</p></div>
+
+<h3 id="t2">1.2 Producto escalar</h3>
+\[ \mathbf a\cdot\mathbf b=a_1b_1+a_2b_2+a_3b_3=|\mathbf a||\mathbf b|\cos\theta \]
+<ul>
+<li>\(\mathbf a\perp\mathbf b\iff\mathbf a\cdot\mathbf b=0\) (vectores no nulos). El ángulo es obtuso si \(\mathbf a\cdot\mathbf b\lt0\).</li>
+<li>\(\mathbf a\cdot\mathbf a=|\mathbf a|^2\). Por eso \(|\mathbf a\pm\mathbf b|^2=|\mathbf a|^2+|\mathbf b|^2\pm2\,\mathbf a\cdot\mathbf b\).</li>
+<li>Proyección escalar de \(\mathbf a\) sobre \(\mathbf b\): \(\tfrac{\mathbf a\cdot\mathbf b}{|\mathbf b|}\).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.3. Ángulo y perpendicularidad</p>
+<p>(a) Halla \(\cos\theta\) entre \((1,2,2)\) y \((2,-1,2)\). (b) Halla \(k\) para que \((k,2,-1)\perp(3,k,4)\).</p>
+<p>(a) \(\tfrac{2-2+4}{3\cdot3}=\tfrac49\). (b) \(3k+2k-4=0\Rightarrow k=\tfrac45\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el ángulo entre \((1,1,0)\) y \((1,1,\sqrt2)\).</li><li>Halla \(k\) para que \((2,k,-1)\) y \((k,3,1)\) sean perpendiculares.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\cos\theta=\tfrac{2}{\sqrt2\cdot2}=\tfrac{\sqrt2}2\): 45°.</li><li>\(2k+3k-1=0\Rightarrow k=\tfrac15\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.4. Proyección escalar y vectorial</p>
+<p>Halla la proyección escalar y la vectorial de \(\mathbf a=(3,4,0)\) sobre \(\mathbf b=(1,2,2)\).</p>
+<p>Escalar: \(\frac{\mathbf a\cdot\mathbf b}{|\mathbf b|}=\frac{11}3\). Vectorial: \(\frac{\mathbf a\cdot\mathbf b}{|\mathbf b|^2}\mathbf b=\frac{11}9(1,2,2)\). La escalar es la longitud con signo de la «sombra» de \(\mathbf a\) sobre la recta de \(\mathbf b\).</p></div>
+
+<h3 id="t3">1.3 Producto vectorial</h3>
+\[ \mathbf a\times\mathbf b=\begin{vmatrix}\mathbf i&\mathbf j&\mathbf k\\a_1&a_2&a_3\\b_1&b_2&b_3\end{vmatrix}=\begin{pmatrix}a_2b_3-a_3b_2\\a_3b_1-a_1b_3\\a_1b_2-a_2b_1\end{pmatrix},\qquad |\mathbf a\times\mathbf b|=|\mathbf a||\mathbf b|\sin\theta \]
+<ul>
+<li>\(\mathbf a\times\mathbf b\) es perpendicular a \(\mathbf a\) y a \(\mathbf b\) (regla de la mano derecha). Además \(\mathbf b\times\mathbf a=-\mathbf a\times\mathbf b\).</li>
+<li>\(\mathbf a\times\mathbf b=\mathbf 0\iff\) son paralelos.</li>
+<li>Área del paralelogramo: \(|\mathbf a\times\mathbf b|\). Área del triángulo: \(\tfrac12|\mathbf a\times\mathbf b|\).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.5. Normal y área</p>
+<p>\((1,2,3)\times(2,0,1)=(2-0,\ 6-1,\ 0-4)=(2,5,-4)\). El paralelogramo que forman tiene área \(\sqrt{45}=3\sqrt5\).</p>
+<p>Comprobación: \((2,5,-4)\cdot(1,2,3)=0\) y \((2,5,-4)\cdot(2,0,1)=0\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla un vector perpendicular a \((2,1,0)\) y \((0,1,2)\), y el área del paralelogramo que forman.</li><li>Halla el área del triángulo de vértices \(A(1,0,0)\), \(B(0,2,0)\), \(C(0,0,2)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\((2,1,0)\times(0,1,2)=(2,-4,2)\), de módulo \(2\sqrt6\): área \(2\sqrt6\).</li><li>\(\overrightarrow{AB}\times\overrightarrow{AC}=(4,2,2)\), módulo \(2\sqrt6\): área \(\sqrt6\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.6. Área de un triángulo y su plano</p>
+<p>\(A(1,0,0)\), \(B(0,2,0)\) y \(C(0,0,3)\). Halla el área de \(ABC\) y la ecuación de su plano.</p>
+<p>\(\overrightarrow{AB}=(-1,2,0)\) y \(\overrightarrow{AC}=(-1,0,3)\), con producto vectorial \((6,3,2)\), de módulo 7. Área: \(\frac72\). Plano: \(6x+3y+2z=6\) (con \(A\)). Equivale a \(\frac x1+\frac y2+\frac z3=1\), la forma de los cortes con los ejes.</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ2, P5)</p><p>\(|\mathbf a\times\mathbf b|^2=|\mathbf a|^2|\mathbf b|^2\sin^2\theta=|\mathbf a|^2|\mathbf b|^2(1-\cos^2\theta)=|\mathbf a|^2|\mathbf b|^2-(\mathbf a\cdot\mathbf b)^2\). Son cuatro líneas con una marca cada una: escribe cada paso.</p></div>
+<div class="box beyond"><p class="bt">Más allá del IB: producto mixto</p><p>\(|\mathbf a\cdot(\mathbf b\times\mathbf c)|\) es el volumen del paralelepípedo, y \(\tfrac16\) de ese valor es el del tetraedro. Si vale 0, los tres vectores son coplanares (ejemplo F4).</p></div>
+
+<h3 id="t4">1.4 Rectas</h3>
+\[ \text{Vectorial: }\mathbf r=\mathbf a+\lambda\mathbf u,\qquad \text{paramétrica: }x=a_1+\lambda u_1,\ \dots,\qquad \text{cartesiana: }\frac{x-a_1}{u_1}=\frac{y-a_2}{u_2}=\frac{z-a_3}{u_3} \]
+<ul>
+<li>Si alguna \(u_i=0\), la cartesiana lleva esa coordenada fija (por ejemplo, \(z=5\)).</li>
+<li><b>Ángulo agudo entre rectas:</b> \(\cos\theta=\dfrac{|\mathbf u\cdot\mathbf v|}{|\mathbf u||\mathbf v|}\).</li>
+<li><b>Posición relativa:</b> si los directores son paralelos, las rectas son paralelas o coincidentes. Si no, iguala las paramétricas, resuelve dos ecuaciones y comprueba la tercera: si se cumple, se cortan; si no, <b>se cruzan</b> (alabeadas).</li>
+<li><b>Distancia de un punto a una recta:</b> \(\dfrac{|(\mathbf p-\mathbf a)\times\mathbf u|}{|\mathbf u|}\), o hallando el pie \(F\) con \(\overrightarrow{PF}\cdot\mathbf u=0\).</li>
+<li><b>Distancia entre rectas paralelas:</b> la distancia de un punto de una a la otra.</li>
+<li><b>Distancia entre rectas que se cruzan:</b> \(\dfrac{|(\mathbf b-\mathbf a)\cdot(\mathbf u\times\mathbf v)|}{|\mathbf u\times\mathbf v|}\).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.7. De cartesiana a vectorial</p>
+<p>\(\frac{x-2}3=\frac{y+1}{-2}=\frac z4\Rightarrow\mathbf r=\begin{pmatrix}2\\-1\\0\end{pmatrix}+\lambda\begin{pmatrix}3\\-2\\4\end{pmatrix}\). Cuidado con el signo de \(y+1\): el punto tiene \(y=-1\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.8. Rectas que se cortan y su ángulo</p>
+<p>\(L_1:\ \mathbf r=(1,1,0)+s(1,0,1)\) y \(L_2:\ \mathbf r=(0,3,1)+t(1,-1,0)\).</p>
+<p>\(1+s=t\), \(1=3-t\), \(s=1\): da \(t=2\) y \(s=1\), y la primera se cumple (\(2=2\)). Se cortan en \((2,1,1)\). Ángulo: \(\cos\theta=\tfrac{1}{\sqrt2\sqrt2}=\tfrac12\), es decir 60°.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Estudia si \(L_1:\ \mathbf r=(1,0,1)+s(2,1,0)\) y \(L_2:\ \mathbf r=(0,1,1)+t(1,-1,1)\) se cortan; si lo hacen, da el punto.</li><li>Halla el ángulo agudo entre \((1,0,1)\) y \((0,1,1)\) como directores.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(1+2s=t\), \(s=1-t\), \(1=1+t\Rightarrow t=0\), \(s=1\); la primera: \(3\neq0\). No se cortan: se cruzan.</li><li>\(\cos\theta=\tfrac1{\sqrt2\sqrt2}=\tfrac12\): 60°.</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.9. Distancia de un punto a una recta</p>
+<p>Distancia de \(P(1,0,2)\) a \(\mathbf r=t(1,1,1)\).</p>
+<p>Pie: \(t=\tfrac{\mathbf p\cdot\mathbf u}{|\mathbf u|^2}=1\), así que \(F=(1,1,1)\) y \(|\overrightarrow{FP}|=|(0,-1,1)|=\sqrt2\). Con la fórmula: \(\tfrac{|(-2,1,1)|}{\sqrt3}=\sqrt2\).</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ1, P11 y TZ2, P8)</p><p>Con un ángulo de 45° y un parámetro \(a\), el producto escalar da una cuadrática; hay que elevar al cuadrado con cuidado. En TZ2 los directores \((2,-2,2)\) y \((1,-1,1)\) son paralelos: primero hay que verlo, porque cambia el método de la distancia.</p></div>
+
+<h3 id="t5">1.5 Planos</h3>
+\[ \mathbf r=\mathbf a+\lambda\mathbf b+\mu\mathbf c,\qquad \mathbf r\cdot\mathbf n=\mathbf a\cdot\mathbf n,\qquad ax+by+cz=d\ \ (\mathbf n=(a,b,c)) \]
+<ul>
+<li>Normal de un plano con dos direcciones: \(\mathbf n=\mathbf b\times\mathbf c\). Por tres puntos: \(\mathbf n=\overrightarrow{PQ}\times\overrightarrow{PR}\).</li>
+<li><b>Recta y plano:</b> sustituye la paramétrica en la cartesiana. Si sale una solución, se cortan en un punto. Si sale \(0=k\neq0\), son paralelos. Si sale \(0=0\), la recta está contenida en el plano. La recta es paralela al plano si \(\mathbf u\cdot\mathbf n=0\).</li>
+<li><b>Ángulo entre una recta y un plano:</b> \(\sin\theta=\dfrac{|\mathbf u\cdot\mathbf n|}{|\mathbf u||\mathbf n|}\). <b>Entre dos planos:</b> el ángulo entre sus normales (el agudo).</li>
+<li><b>Distancia de un punto a un plano:</b> \(D=\dfrac{|ax_0+by_0+cz_0-d|}{\sqrt{a^2+b^2+c^2}}\). El pie es \(\mathbf p+t\mathbf n\), sustituido en el plano.</li>
+<li><b>Recta de intersección de dos planos:</b> dirección \(\mathbf n_1\times\mathbf n_2\) y un punto común (con una coordenada fija, por ejemplo \(z=0\)).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.10. Plano, intersección con una recta, ángulo y distancia</p>
+<p>\(\Pi\) pasa por \(A(1,0,1)\) con normal \((2,-1,3)\). (a) Halla su ecuación. (b) Corta con \(\mathbf r=(1,2,0)+t(1,1,1)\). (c) Halla el ángulo entre la recta y el plano. (d) Halla la distancia de \((1,1,1)\) al plano.</p>
+<p>(a) \(2x-y+3z=5\). (b) \(2(1+t)-(2+t)+3t=5\Rightarrow t=\tfrac54\), punto \(\left(\tfrac94,\tfrac{13}4,\tfrac54\right)\).</p>
+<p>(c) \(\sin\theta=\tfrac{|2-1+3|}{\sqrt3\sqrt{14}}=\tfrac4{\sqrt{42}}\). (d) \(\tfrac{|2-1+3-5|}{\sqrt{14}}=\tfrac1{\sqrt{14}}\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 298.839204 291.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 291.6 
+L 298.839204 291.6 
+L 298.839204 0 
+L 0 0 
+L 0 291.6 
+z
+" style="fill: none"/>
+  </g>
+  <g id="patch_2">
+   <path d="M 7.2 284.4 
+L 284.4 284.4 
+L 284.4 7.2 
+L 7.2 7.2 
+L 7.2 284.4 
+z
+" style="fill: none"/>
+  </g>
+  <g id="pane3d_1">
+   <g id="patch_3">
+    <path d="M 27.073837 216.464566 
+L 119.641922 161.462646 
+L 118.781342 43.548792 
+L 23.195213 88.445582 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="pane3d_2">
+   <g id="patch_4">
+    <path d="M 119.641922 161.462646 
+L 267.176294 191.962615 
+L 270.749834 68.414077 
+L 118.781342 43.548792 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="pane3d_3">
+   <g id="patch_5">
+    <path d="M 27.073837 216.464566 
+L 184.31733 253.388636 
+L 267.176294 191.962615 
+L 119.641922 161.462646 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="axis3d_1">
+   <g id="line2d_1">
+    <path d="M 27.073837 216.464566 
+L 184.31733 253.388636 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="xtick_1">
+    <g id="line2d_2">
+     <path d="M 37.359066 218.204164 
+L 34.932649 219.664332 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_1">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="28.740428" y="239.604517" transform="rotate(-0 28.740428 239.604517)">0.0</text>
+    </g>
+   </g>
+   <g id="xtick_2">
+    <g id="line2d_3">
+     <path d="M 53.757973 222.05079 
+L 51.35527 223.52911 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_2">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="45.187077" y="243.570345" transform="rotate(-0 45.187077 243.570345)">0.5</text>
+    </g>
+   </g>
+   <g id="xtick_3">
+    <g id="line2d_4">
+     <path d="M 70.361134 225.945327 
+L 67.982926 227.442139 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_3">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="61.839848" y="247.585876" transform="rotate(-0 61.839848 247.585876)">1.0</text>
+    </g>
+   </g>
+   <g id="xtick_4">
+    <g id="line2d_5">
+     <path d="M 87.172388 229.888676 
+L 84.819481 231.404329 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_4">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="78.702642" y="251.65205" transform="rotate(-0 78.702642 251.65205)">1.5</text>
+    </g>
+   </g>
+   <g id="xtick_5">
+    <g id="line2d_6">
+     <path d="M 104.195673 233.88176 
+L 101.868897 235.416612 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="95.779457" y="255.769831" transform="rotate(-0 95.779457 255.769831)">2.0</text>
+    </g>
+   </g>
+   <g id="xtick_6">
+    <g id="line2d_7">
+     <path d="M 121.435025 237.925525 
+L 119.135237 239.479945 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="113.074392" y="259.940208" transform="rotate(-0 113.074392 259.940208)">2.5</text>
+    </g>
+   </g>
+   <g id="xtick_7">
+    <g id="line2d_8">
+     <path d="M 138.894583 242.020944 
+L 136.622666 243.595307 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="130.591655" y="264.164196" transform="rotate(-0 130.591655 264.164196)">3.0</text>
+    </g>
+   </g>
+   <g id="xtick_8">
+    <g id="line2d_9">
+     <path d="M 156.578595 246.169012 
+L 154.335458 247.763704 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="148.335559" y="268.442835" transform="rotate(-0 148.335559 268.442835)">3.5</text>
+    </g>
+   </g>
+   <g id="xtick_9">
+    <g id="line2d_10">
+     <path d="M 174.491416 250.370751 
+L 172.277999 251.986169 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="166.310532" y="272.777192" transform="rotate(-0 166.310532 272.777192)">4.0</text>
+    </g>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="86.700693" y="270.901489" transform="rotate(-0 86.700693 270.901489)">x</text>
+   </g>
+  </g>
+  <g id="axis3d_2">
+   <g id="line2d_11">
+    <path d="M 267.176294 191.962615 
+L 184.31733 253.388636 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="xtick_10">
+    <g id="line2d_12">
+     <path d="M 188.770022 248.795704 
+L 192.752708 249.722906 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="203.231958" y="268.608484" transform="rotate(-0 203.231958 268.608484)">0</text>
+    </g>
+   </g>
+   <g id="xtick_11">
+    <g id="line2d_13">
+     <path d="M 204.256859 237.337515 
+L 208.1911 238.232396 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="218.503887" y="256.878864" transform="rotate(-0 218.503887 256.878864)">1</text>
+    </g>
+   </g>
+   <g id="xtick_12">
+    <g id="line2d_14">
+     <path d="M 219.208854 226.275037 
+L 223.095592 227.139259 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="233.247061" y="245.555354" transform="rotate(-0 233.247061 245.555354)">2</text>
+    </g>
+   </g>
+   <g id="xtick_13">
+    <g id="line2d_15">
+     <path d="M 233.653244 215.588119 
+L 237.493408 216.423232 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_14">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="247.488476" y="234.617222" transform="rotate(-0 247.488476 234.617222)">3</text>
+    </g>
+   </g>
+   <g id="xtick_14">
+    <g id="line2d_16">
+     <path d="M 247.615446 205.257956 
+L 251.409952 206.065405 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="261.253315" y="224.045123" transform="rotate(-0 261.253315 224.045123)">4</text>
+    </g>
+   </g>
+   <g id="xtick_15">
+    <g id="line2d_17">
+     <path d="M 261.119208 195.266977 
+L 264.86896 196.048115 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="274.565109" y="213.820986" transform="rotate(-0 274.565109 213.820986)">5</text>
+    </g>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="255.344599" y="252.079641" transform="rotate(-0 255.344599 252.079641)">y</text>
+   </g>
+  </g>
+  <g id="axis3d_3">
+   <g id="line2d_18">
+    <path d="M 267.176294 191.962615 
+L 270.749834 68.414077 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="xtick_16">
+    <g id="line2d_19">
+     <path d="M 266.151502 184.063657 
+L 269.892469 184.827042 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_18">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="285.742329" y="188.54856" transform="rotate(-0 285.742329 188.54856)">−1</text>
+    </g>
+   </g>
+   <g id="xtick_17">
+    <g id="line2d_20">
+     <path d="M 266.849053 159.687933 
+L 270.613339 160.42402 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_19">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="286.554851" y="164.229865" transform="rotate(-0 286.554851 164.229865)">0</text>
+    </g>
+   </g>
+   <g id="xtick_18">
+    <g id="line2d_21">
+     <path d="M 267.554999 135.018816 
+L 271.342898 135.726891 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_20">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="287.377125" y="139.619268" transform="rotate(-0 287.377125 139.619268)">1</text>
+    </g>
+   </g>
+   <g id="xtick_19">
+    <g id="line2d_22">
+     <path d="M 268.269494 110.050976 
+L 272.081303 110.730304 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_21">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="288.209329" y="114.711481" transform="rotate(-0 288.209329 114.711481)">2</text>
+    </g>
+   </g>
+   <g id="xtick_20">
+    <g id="line2d_23">
+     <path d="M 268.992694 84.778956 
+L 272.828716 85.428781 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_22">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="289.051644" y="89.501087" transform="rotate(-0 289.051644 89.501087)">3</text>
+    </g>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="309.174538" y="130.46036" transform="rotate(-0 309.174538 130.46036)">z</text>
+   </g>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_24">
+    <path d="M 59.893861 196.757417 
+L 63.460624 194.739229 
+L 67.028134 192.720618 
+L 70.596393 190.701585 
+L 74.165399 188.682127 
+L 77.735154 186.662247 
+L 81.305658 184.641942 
+L 84.87691 182.621214 
+L 88.448911 180.600063 
+L 92.021662 178.578487 
+L 95.595162 176.556487 
+L 99.169413 174.534063 
+L 102.744413 172.511214 
+L 106.320163 170.487941 
+L 109.896664 168.464243 
+L 113.473916 166.440121 
+L 117.051918 164.415573 
+L 120.630672 162.3906 
+L 124.210177 160.365203 
+L 127.790434 158.33938 
+L 131.371443 156.313131 
+L 134.953204 154.286457 
+L 138.535718 152.259357 
+L 142.118984 150.231832 
+L 145.703002 148.20388 
+L 149.287774 146.175502 
+L 152.8733 144.146698 
+L 156.459579 142.117467 
+L 160.046611 140.08781 
+L 163.634398 138.057727 
+L 167.222939 136.027216 
+L 170.812235 133.996279 
+L 174.402285 131.964914 
+L 177.99309 129.933123 
+L 181.584651 127.900904 
+L 185.176967 125.868257 
+L 188.770039 123.835183 
+L 192.363867 121.801681 
+L 195.958451 119.767751 
+L 199.553791 117.733394 
+L 203.149888 115.698608 
+L 206.746742 113.663394 
+L 210.344353 111.627751 
+L 213.942722 109.59168 
+L 217.541848 107.55518 
+L 221.141732 105.518251 
+L 224.742374 103.480894 
+L 228.343775 101.443107 
+L 231.945934 99.404891 
+L 235.548852 97.366246 
+" clip-path="url(#p977f9e555a)" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="Path3DCollection_1">
+    <defs>
+     <path id="m9fa697f273" d="M 0 2.738613 
+C 0.726289 2.738613 1.422928 2.450055 1.936492 1.936492 
+C 2.450055 1.422928 2.738613 0.726289 2.738613 0 
+C 2.738613 -0.726289 2.450055 -1.422928 1.936492 -1.936492 
+C 1.422928 -2.450055 0.726289 -2.738613 0 -2.738613 
+C -0.726289 -2.738613 -1.422928 -2.450055 -1.936492 -1.936492 
+C -2.450055 -1.422928 -2.738613 -0.726289 -2.738613 0 
+C -2.738613 0.726289 -2.450055 1.422928 -1.936492 1.936492 
+C -1.422928 2.450055 -0.726289 2.738613 0 2.738613 
+z
+" style="stroke: #a2530a"/>
+    </defs>
+    <g clip-path="url(#p977f9e555a)">
+     <use xlink:href="#m9fa697f273" x="169.46616" y="134.75793" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="174.574983" y="126.905892" transform="rotate(-0 174.574983 126.905892)">(9/4, 13/4, 5/4)</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="195.489487" y="108.328723" transform="rotate(-0 195.489487 108.328723)">n = (2, −1, 3)</text>
+   </g>
+   <g id="Line3DCollection_1">
+    <path d="M 192.522871 111.34161 
+L 169.46616 134.75793 
+" clip-path="url(#p977f9e555a)" style="fill: none; stroke: #a2530a; stroke-width: 1.6"/>
+    <path d="M 192.522871 111.34161 
+L 190.306401 116.251761 
+" clip-path="url(#p977f9e555a)" style="fill: none; stroke: #a2530a; stroke-width: 1.6"/>
+    <path d="M 192.522871 111.34161 
+L 187.911794 113.369218 
+" clip-path="url(#p977f9e555a)" style="fill: none; stroke: #a2530a; stroke-width: 1.6"/>
+   </g>
+   <g id="Poly3DCollection_1">
+    <path d="M 107.121 71.21864 
+L 132.98186 89.017464 
+L 148.087502 72.899298 
+L 122.4985 55.450767 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 132.98186 89.017464 
+L 159.16968 107.041319 
+L 173.995406 90.565281 
+L 148.087502 72.899298 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 159.16968 107.041319 
+L 185.690701 125.294501 
+L 200.228211 108.452806 
+L 173.995406 90.565281 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 91.297033 87.444314 
+L 117.434849 105.606583 
+L 132.98186 89.017464 
+L 107.121 71.21864 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 185.690701 125.294501 
+L 212.551322 143.781414 
+L 226.792068 126.566067 
+L 200.228211 108.452806 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 117.434849 105.606583 
+L 143.907986 124.001856 
+L 159.16968 107.041319 
+L 132.98186 89.017464 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 212.551322 143.781414 
+L 239.758109 162.506576 
+L 253.693283 144.909365 
+L 226.792068 126.566067 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 143.907986 124.001856 
+L 170.722938 142.634644 
+L 185.690701 125.294501 
+L 159.16968 107.041319 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 75.00687 104.148019 
+L 101.426839 122.687603 
+L 117.434849 105.606583 
+L 91.297033 87.444314 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 170.722938 142.634644 
+L 197.886368 161.509578 
+L 212.551322 143.781414 
+L 185.690701 125.294501 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 101.426839 122.687603 
+L 128.190806 141.46858 
+L 143.907986 124.001856 
+L 117.434849 105.606583 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 197.886368 161.509578 
+L 225.405114 180.631408 
+L 239.758109 162.506576 
+L 212.551322 143.781414 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 128.190806 141.46858 
+L 155.305534 160.495695 
+L 170.722938 142.634644 
+L 143.907986 124.001856 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 58.2296 121.351196 
+L 84.937016 140.282731 
+L 101.426839 122.687603 
+L 75.00687 104.148019 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 155.305534 160.495695 
+L 182.777964 179.773819 
+L 197.886368 161.509578 
+L 170.722938 142.634644 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 84.937016 140.282731 
+L 111.997441 159.464496 
+L 128.190806 141.46858 
+L 101.426839 122.687603 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 182.777964 179.773819 
+L 210.615221 199.307951 
+L 225.405114 180.631408 
+L 197.886368 161.509578 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 111.997441 159.464496 
+L 139.41792 178.901485 
+L 155.305534 160.495695 
+L 128.190806 141.46858 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 40.943043 139.076589 
+L 67.943295 158.415533 
+L 84.937016 140.282731 
+L 58.2296 121.351196 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 139.41792 178.901485 
+L 167.205688 198.598826 
+L 182.777964 179.773819 
+L 155.305534 160.495695 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 67.943295 158.415533 
+L 95.305916 178.014023 
+L 111.997441 159.464496 
+L 84.937016 140.282731 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 167.205688 198.598826 
+L 195.368173 218.561786 
+L 210.615221 199.307951 
+L 182.777964 179.773819 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 95.305916 178.014023 
+L 123.038251 197.87732 
+L 139.41792 178.901485 
+L 111.997441 159.464496 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 123.038251 197.87732 
+L 151.147842 218.010828 
+L 167.205688 198.598826 
+L 139.41792 178.901485 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+    <path d="M 151.147842 218.010828 
+L 179.642441 238.420098 
+L 195.368173 218.561786 
+L 167.205688 198.598826 
+z
+" clip-path="url(#p977f9e555a)" style="fill: #0a4b48; fill-opacity: 0.25; stroke: #0e6e6a; stroke-opacity: 0.25; stroke-width: 0.3"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_25">
+     <path d="M 15.3 18.988594 
+L 24.3 18.988594 
+L 33.3 18.988594 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_26">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="40.5" y="22.138594" transform="rotate(-0 40.5 22.138594)">recta r = (1,2,0) + t(1,1,1)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p977f9e555a">
+   <rect x="7.2" y="7.2" width="277.2" height="277.2"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.10: la recta corta al plano \(2x-y+3z=5\) en \(t=\frac54\). El ángulo con el plano se mide con la normal: \(\sin\theta=\frac{|\mathbf u\cdot\mathbf n|}{|\mathbf u||\mathbf n|}\), porque el ángulo entre la recta y la normal es el complementario.</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>El plano \(\Pi\) pasa por \((2,0,0)\) con normal \((1,2,2)\). Halla su ecuación, el punto donde lo corta \(\mathbf r=t(1,1,1)\) y la distancia de \((0,0,0)\) a \(\Pi\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(x+2y+2z=2\); \(t+2t+2t=2\Rightarrow t=\tfrac25\), punto \(\left(\tfrac25,\tfrac25,\tfrac25\right)\); distancia \(\tfrac{|{-2}|}{3}=\tfrac23\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.11. Recta contenida en un plano y planos paralelos</p>
+<p>(a) Estudia la posición de \(\mathbf r=(1,1,1)+t(1,2,0)\) respecto a \(\Pi_1:\ 2x-y+2z=3\). (b) Halla la distancia entre \(\Pi_1\) y \(\Pi_2:\ 2x-y+2z=9\).</p>
+<p>(a) \(\mathbf u\cdot\mathbf n=2-2+0=0\): la recta es paralela al plano o está contenida en él. Sustituyendo: \(2(1+t)-(1+2t)+2=3\), es decir \(3=3\) para todo \(t\). La recta está contenida en \(\Pi_1\).</p>
+<p>(b) Misma normal: \(d=\dfrac{|9-3|}{\sqrt{4+1+4}}=2\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.12. De forma paramétrica a cartesiana</p>
+<p>Escribe \(\mathbf r=(1,0,2)+\lambda(1,1,0)+\mu(0,1,-1)\) en forma cartesiana.</p>
+<p>\(\mathbf n=(1,1,0)\times(0,1,-1)=(-1,1,1)\), y \(\mathbf n\cdot(1,0,2)=1\). Así \(-x+y+z=1\). Comprobación con \(\lambda=\mu=1\): el punto \((2,2,1)\) cumple \(-2+2+1=1\).</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ1, P11)</p><p>La recta \(L=\Pi_1\cap\Pi_2\) tiene dirección \(\mathbf n_1\times\mathbf n_2\). Si \(\mathbf u\cdot\mathbf n_3=0\), \(L\) es paralela a \(\Pi_3\), y la distancia de \(L\) a \(\Pi_3\) es la de cualquier punto de \(L\) al plano.</p></div>
+
+<h3 id="t6">1.6 Sistemas 3×3 e interpretación con tres planos</h3>
+<p><b>Eliminación de Gauss:</b> con operaciones de fila (sumar a una ecuación un múltiplo de otra) se llega a una forma escalonada. La última fila decide el caso:</p>
+<div class="tbl"><table>
+<thead><tr><th>Última fila</th><th>Soluciones</th><th>Geometría de los tres planos</th></tr></thead>
+<tbody>
+<tr><td>\(cz=d\), con \(c\neq0\)</td><td>Única</td><td>Se cortan en un punto</td></tr>
+<tr><td>\(0=0\)</td><td>Infinitas (recta o plano)</td><td>Haz de planos por una recta, o planos coincidentes</td></tr>
+<tr><td>\(0=d\neq0\)</td><td>Ninguna</td><td>Prisma triangular, o dos o tres planos paralelos</td></tr>
+</tbody></table></div>
+<p>Si no hay solución y ningún par de normales es paralelo, los planos se cortan dos a dos en tres rectas paralelas: es un <b>prisma triangular</b>.</p>
+<div class="ex"><p class="et">Ejemplo 1.13. Solución única</p>
+<p>Resuelve \(x+y+z=6\), \(2x-y+z=3\), \(x+2y-z=2\).</p>
+<p>\(E_2-2E_1\): \(-3y-z=-9\). \(E_3-E_1\): \(y-2z=-4\). De la primera, \(z=9-3y\), y sustituyendo, \(7y=14\): \(y=2\), \(z=3\), \(x=1\). Los planos se cortan en el punto \((1,2,3)\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 437.191861 394.302437" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 394.302437 
+L 437.191861 394.302437 
+L 437.191861 0 
+L 0 0 
+L 0 394.302437 
+z
+" style="fill: none"/>
+  </g>
+  <g id="patch_2">
+   <path d="M 7.2 187.518437 
+L 173.52 187.518437 
+L 173.52 21.198437 
+L 7.2 21.198437 
+L 7.2 187.518437 
+z
+" style="fill: none"/>
+  </g>
+  <g id="pane3d_1">
+   <g id="patch_3">
+    <path d="M 18.069816 144.347143 
+L 80.580155 115.967062 
+L 80.268576 44.647005 
+L 15.954675 67.029399 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="pane3d_2">
+   <g id="patch_4">
+    <path d="M 80.580155 115.967062 
+L 165.128704 135.301374 
+L 167.129406 59.883614 
+L 80.268576 44.647005 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="pane3d_3">
+   <g id="patch_5">
+    <path d="M 18.069816 144.347143 
+L 106.663486 167.570629 
+L 165.128704 135.301374 
+L 80.580155 115.967062 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="axis3d_1">
+   <g id="line2d_1">
+    <path d="M 18.069816 144.347143 
+L 106.663486 167.570629 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="axis3d_2">
+   <g id="line2d_2">
+    <path d="M 165.128704 135.301374 
+L 106.663486 167.570629 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="axis3d_3">
+   <g id="line2d_3">
+    <path d="M 165.128704 135.301374 
+L 167.129406 59.883614 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="axes_1">
+   <g id="Poly3DCollection_1">
+    <path d="M 50.710277 129.528171 
+L 71.328732 134.56455 
+L 71.185276 116.129472 
+L 50.432229 111.347631 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 50.432229 111.347631 
+L 71.185276 116.129472 
+L 71.039872 97.444138 
+L 50.150465 92.924171 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 50.150465 92.924171 
+L 71.039872 97.444138 
+L 70.892481 78.503416 
+L 49.864911 74.252889 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 71.328732 134.56455 
+L 92.607568 139.762236 
+L 92.607568 121.065517 
+L 71.185276 116.129472 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 49.864911 74.252889 
+L 70.892481 78.503416 
+L 70.743061 59.302036 
+L 49.57549 55.328751 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 71.185276 116.129472 
+L 92.607568 121.065517 
+L 92.607568 102.11087 
+L 71.039872 97.444138 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 71.039872 97.444138 
+L 92.607568 102.11087 
+L 92.607568 82.892919 
+L 70.892481 78.503416 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 92.607568 139.762236 
+L 114.579026 145.129107 
+L 114.732007 126.163349 
+L 92.607568 121.065517 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 70.892481 78.503416 
+L 92.607568 82.892919 
+L 92.607568 63.406141 
+L 70.743061 59.302036 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 92.607568 121.065517 
+L 114.732007 126.163349 
+L 114.887133 106.931634 
+L 92.607568 102.11087 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 92.607568 102.11087 
+L 114.887133 106.931634 
+L 115.04445 87.428327 
+L 92.607568 82.892919 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 114.579026 145.129107 
+L 137.277485 150.673558 
+L 137.593691 131.431054 
+L 114.732007 126.163349 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 92.607568 82.892919 
+L 115.04445 87.428327 
+L 115.204005 67.647633 
+L 92.607568 63.406141 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 114.732007 126.163349 
+L 137.593691 131.431054 
+L 137.914405 111.914184 
+L 114.887133 106.931634 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 114.887133 106.931634 
+L 137.914405 111.914184 
+L 138.239725 92.117036 
+L 115.04445 87.428327 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 115.04445 87.428327 
+L 138.239725 92.117036 
+L 138.569751 72.03353 
+L 115.204005 67.647633 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #503688; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="90.36" y="15.198437" transform="rotate(-0 90.36 15.198437)">un punto: solución única</text>
+   </g>
+   <g id="Poly3DCollection_2">
+    <path d="M 107.407294 132.388929 
+L 121.559668 125.338136 
+L 121.74927 107.370121 
+L 107.506396 114.063684 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 107.506396 114.063684 
+L 121.74927 107.370121 
+L 121.941373 89.165216 
+L 107.606835 95.491363 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 107.606835 95.491363 
+L 121.941373 89.165216 
+L 122.136025 70.718704 
+L 107.708637 76.666936 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 107.708637 76.666936 
+L 122.136025 70.718704 
+L 122.333277 52.025744 
+L 107.811831 57.585235 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 92.607568 139.762236 
+L 107.407294 132.388929 
+L 107.506396 114.063684 
+L 92.607568 121.065517 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 92.607568 121.065517 
+L 107.506396 114.063684 
+L 107.606835 95.491363 
+L 92.607568 102.11087 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 92.607568 102.11087 
+L 107.606835 95.491363 
+L 107.708637 76.666936 
+L 92.607568 82.892919 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 92.607568 82.892919 
+L 107.708637 76.666936 
+L 107.811831 57.585235 
+L 92.607568 63.406141 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 77.115033 147.480704 
+L 92.607568 139.762236 
+L 92.607568 121.065517 
+L 77.006401 128.397421 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 77.006401 128.397421 
+L 92.607568 121.065517 
+L 92.607568 102.11087 
+L 76.896235 109.044627 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 76.896235 109.044627 
+L 92.607568 102.11087 
+L 92.607568 82.892919 
+L 76.784501 89.416572 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 76.784501 89.416572 
+L 92.607568 82.892919 
+L 92.607568 63.406141 
+L 76.671167 69.507343 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 60.879877 155.569151 
+L 77.115033 147.480704 
+L 77.006401 128.397421 
+L 60.652035 136.083297 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 60.652035 136.083297 
+L 77.006401 128.397421 
+L 76.896235 109.044627 
+L 60.420897 116.315556 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 60.420897 116.315556 
+L 76.896235 109.044627 
+L 76.784501 89.416572 
+L 60.186391 96.259766 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 60.186391 96.259766 
+L 76.784501 89.416572 
+L 76.671167 69.507343 
+L 59.948442 75.909586 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #062e2c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+   </g>
+   <g id="Poly3DCollection_3">
+    <path d="M 65.620899 86.710046 
+L 86.285968 91.032125 
+L 100.866718 84.899934 
+L 80.426358 80.763026 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 86.285968 91.032125 
+L 107.606835 95.491363 
+L 121.941373 89.165216 
+L 100.866718 84.899934 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 50.150465 92.924171 
+L 71.039872 97.444138 
+L 86.285968 91.032125 
+L 65.620899 86.710046 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 107.606835 95.491363 
+L 129.615222 100.094396 
+L 143.680311 93.564942 
+L 121.941373 89.165216 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 71.039872 97.444138 
+L 92.607568 102.11087 
+L 107.606835 95.491363 
+L 86.285968 91.032125 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 33.969225 99.42381 
+L 55.081826 104.155574 
+L 71.039872 97.444138 
+L 50.150465 92.924171 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 129.615222 100.094396 
+L 152.344927 104.848291 
+L 166.115444 98.10557 
+L 143.680311 93.564942 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 92.607568 102.11087 
+L 114.887133 106.931634 
+L 129.615222 100.094396 
+L 107.606835 95.491363 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 55.081826 104.155574 
+L 76.896235 109.044627 
+L 92.607568 102.11087 
+L 71.039872 97.444138 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 17.02704 106.229104 
+L 38.360768 111.187908 
+L 55.081826 104.155574 
+L 33.969225 99.42381 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 114.887133 106.931634 
+L 137.914405 111.914184 
+L 152.344927 104.848291 
+L 129.615222 100.094396 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 76.896235 109.044627 
+L 99.448036 114.098945 
+L 114.887133 106.931634 
+L 92.607568 102.11087 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 38.360768 111.187908 
+L 60.420897 116.315556 
+L 76.896235 109.044627 
+L 55.081826 104.155574 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 99.448036 114.098945 
+L 122.775263 119.327051 
+L 137.914405 111.914184 
+L 114.887133 106.931634 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 60.420897 116.315556 
+L 83.24517 121.620821 
+L 99.448036 114.098945 
+L 76.896235 109.044627 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 83.24517 121.620821 
+L 106.87399 127.113095 
+L 122.775263 119.327051 
+L 99.448036 114.098945 
+z
+" clip-path="url(#p1d8b1dbbfa)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+   </g>
+  </g>
+  <g id="patch_6">
+   <path d="M 262.865455 187.518437 
+L 429.185455 187.518437 
+L 429.185455 21.198437 
+L 262.865455 21.198437 
+L 262.865455 187.518437 
+z
+" style="fill: none"/>
+  </g>
+  <g id="pane3d_4">
+   <g id="patch_7">
+    <path d="M 273.73527 144.347143 
+L 336.24561 115.967062 
+L 335.934031 44.647005 
+L 271.620129 67.029399 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="pane3d_5">
+   <g id="patch_8">
+    <path d="M 336.24561 115.967062 
+L 420.794158 135.301374 
+L 422.794861 59.883614 
+L 335.934031 44.647005 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="pane3d_6">
+   <g id="patch_9">
+    <path d="M 273.73527 144.347143 
+L 362.32894 167.570629 
+L 420.794158 135.301374 
+L 336.24561 115.967062 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="axis3d_4">
+   <g id="line2d_4">
+    <path d="M 273.73527 144.347143 
+L 362.32894 167.570629 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="axis3d_5">
+   <g id="line2d_5">
+    <path d="M 420.794158 135.301374 
+L 362.32894 167.570629 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="axis3d_6">
+   <g id="line2d_6">
+    <path d="M 420.794158 135.301374 
+L 422.794861 59.883614 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="Poly3DCollection_4">
+    <path d="M 320.92902 49.869019 
+L 341.909191 72.4739 
+L 356.586136 66.709234 
+L 335.934031 44.647005 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 341.909191 72.4739 
+L 363.27229 95.491363 
+L 377.606827 89.165216 
+L 356.586136 66.709234 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 363.27229 95.491363 
+L 385.028895 118.932807 
+L 399.006062 112.025589 
+L 377.606827 89.165216 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 305.240944 55.328751 
+L 326.557935 78.503416 
+L 341.909191 72.4739 
+L 320.92902 49.869019 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 385.028895 118.932807 
+L 407.189982 142.810054 
+L 420.794158 135.301374 
+L 399.006062 112.025589 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 326.557935 78.503416 
+L 348.273022 102.11087 
+L 363.27229 95.491363 
+L 341.909191 72.4739 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 348.273022 102.11087 
+L 370.397462 126.163349 
+L 385.028895 118.932807 
+L 363.27229 95.491363 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 288.822074 61.042813 
+L 310.484804 84.816464 
+L 326.557935 78.503416 
+L 305.240944 55.328751 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 370.397462 126.163349 
+L 392.942939 150.673558 
+L 407.189982 142.810054 
+L 385.028895 118.932807 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 310.484804 84.816464 
+L 332.561689 109.044627 
+L 348.273022 102.11087 
+L 326.557935 78.503416 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 332.561689 109.044627 
+L 355.064721 133.740463 
+L 370.397462 126.163349 
+L 348.273022 102.11087 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 271.620129 67.029399 
+L 293.637654 91.433522 
+L 310.484804 84.816464 
+L 288.822074 61.042813 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 355.064721 133.740463 
+L 378.006359 158.917645 
+L 392.942939 150.673558 
+L 370.397462 126.163349 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 293.637654 91.433522 
+L 316.086352 116.315556 
+L 332.561689 109.044627 
+L 310.484804 84.816464 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 316.086352 116.315556 
+L 338.979013 141.689677 
+L 355.064721 133.740463 
+L 332.561689 109.044627 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 338.979013 141.689677 
+L 362.32894 167.570629 
+L 378.006359 158.917645 
+L 355.064721 133.740463 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #332357; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="346.025455" y="15.198437" transform="rotate(-0 346.025455 15.198437)">una recta: infinitas soluciones</text>
+   </g>
+   <g id="Poly3DCollection_5">
+    <path d="M 321.286354 86.710046 
+L 341.951422 91.032125 
+L 356.532173 84.899934 
+L 336.091812 80.763026 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 341.951422 91.032125 
+L 363.27229 95.491363 
+L 377.606827 89.165216 
+L 356.532173 84.899934 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 305.815919 92.924171 
+L 326.705326 97.444138 
+L 341.951422 91.032125 
+L 321.286354 86.710046 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 363.27229 95.491363 
+L 385.280676 100.094396 
+L 399.345766 93.564942 
+L 377.606827 89.165216 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 326.705326 97.444138 
+L 348.273022 102.11087 
+L 363.27229 95.491363 
+L 341.951422 91.032125 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 289.63468 99.42381 
+L 310.74728 104.155574 
+L 326.705326 97.444138 
+L 305.815919 92.924171 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 385.280676 100.094396 
+L 408.010382 104.848291 
+L 421.780898 98.10557 
+L 399.345766 93.564942 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 348.273022 102.11087 
+L 370.552588 106.931634 
+L 385.280676 100.094396 
+L 363.27229 95.491363 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 310.74728 104.155574 
+L 332.561689 109.044627 
+L 348.273022 102.11087 
+L 326.705326 97.444138 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 272.692495 106.229104 
+L 294.026223 111.187908 
+L 310.74728 104.155574 
+L 289.63468 99.42381 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 370.552588 106.931634 
+L 393.57986 111.914184 
+L 408.010382 104.848291 
+L 385.280676 100.094396 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 332.561689 109.044627 
+L 355.113491 114.098945 
+L 370.552588 106.931634 
+L 348.273022 102.11087 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 294.026223 111.187908 
+L 316.086352 116.315556 
+L 332.561689 109.044627 
+L 310.74728 104.155574 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 355.113491 114.098945 
+L 378.440717 119.327051 
+L 393.57986 111.914184 
+L 370.552588 106.931634 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 316.086352 116.315556 
+L 338.910624 121.620821 
+L 355.113491 114.098945 
+L 332.561689 109.044627 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 338.910624 121.620821 
+L 362.539444 127.113095 
+L 378.440717 119.327051 
+L 355.113491 114.098945 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+   </g>
+   <g id="Poly3DCollection_6">
+    <path d="M 321.634468 122.600611 
+L 341.993097 109.345664 
+L 356.478906 102.855995 
+L 336.24561 115.967062 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 341.993097 109.345664 
+L 363.27229 95.491363 
+L 377.606827 89.165216 
+L 356.478906 102.855995 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 306.375732 129.528171 
+L 326.85073 116.129472 
+L 341.993097 109.345664 
+L 321.634468 122.600611 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 363.27229 95.491363 
+L 385.53593 80.996115 
+L 399.690049 74.855408 
+L 377.606827 89.165216 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 326.85073 116.129472 
+L 348.273022 102.11087 
+L 363.27229 95.491363 
+L 341.993097 109.345664 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 290.42537 136.769734 
+L 311.006136 123.227879 
+L 326.85073 116.129472 
+L 306.375732 129.528171 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 385.53593 80.996115 
+L 408.853952 65.814388 
+L 422.794861 59.883614 
+L 399.690049 74.855408 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 348.273022 102.11087 
+L 370.709905 87.428327 
+L 385.53593 80.996115 
+L 363.27229 95.491363 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 311.006136 123.227879 
+L 332.561689 109.044627 
+L 348.273022 102.11087 
+L 326.85073 116.129472 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 273.73527 144.347143 
+L 294.409304 130.66329 
+L 311.006136 123.227879 
+L 290.42537 136.769734 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 370.709905 87.428327 
+L 394.235206 72.03353 
+L 408.853952 65.814388 
+L 385.53593 80.996115 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 332.561689 109.044627 
+L 355.162966 94.173304 
+L 370.709905 87.428327 
+L 348.273022 102.11087 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 294.409304 130.66329 
+L 316.086352 116.315556 
+L 332.561689 109.044627 
+L 311.006136 123.227879 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 355.162966 94.173304 
+L 378.887954 78.562594 
+L 394.235206 72.03353 
+L 370.709905 87.428327 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 316.086352 116.315556 
+L 338.841221 101.254427 
+L 355.162966 94.173304 
+L 332.561689 109.044627 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 338.841221 101.254427 
+L 362.756349 85.425339 
+L 378.887954 78.562594 
+L 355.162966 94.173304 
+z
+" clip-path="url(#p92b2b2287c)" style="fill: #914a09; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+   </g>
+  </g>
+  <g id="patch_10">
+   <path d="M 7.2 387.102437 
+L 173.52 387.102437 
+L 173.52 220.782437 
+L 7.2 220.782437 
+L 7.2 387.102437 
+z
+" style="fill: none"/>
+  </g>
+  <g id="pane3d_7">
+   <g id="patch_11">
+    <path d="M 34.107863 325.056773 
+L 132.823388 319.310486 
+L 133.878344 247.189751 
+L 32.544046 251.715843 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="pane3d_8">
+   <g id="patch_12">
+    <path d="M 132.823388 319.310486 
+L 156.658226 354.991606 
+L 158.537667 275.365632 
+L 133.878344 247.189751 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="pane3d_9">
+   <g id="patch_13">
+    <path d="M 34.107863 325.056773 
+L 46.828903 362.153426 
+L 156.658226 354.991606 
+L 132.823388 319.310486 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="axis3d_7">
+   <g id="line2d_7">
+    <path d="M 34.107863 325.056773 
+L 46.828903 362.153426 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="axis3d_8">
+   <g id="line2d_8">
+    <path d="M 156.658226 354.991606 
+L 46.828903 362.153426 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="axis3d_9">
+   <g id="line2d_9">
+    <path d="M 156.658226 354.991606 
+L 158.537667 275.365632 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="Poly3DCollection_7">
+    <path d="M 108.585765 302.972789 
+L 113.483059 310.838899 
+L 138.609972 309.421406 
+L 133.082038 301.628189 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 83.862882 304.329828 
+L 88.11744 312.269859 
+L 113.483059 310.838899 
+L 108.585765 302.972789 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 58.910231 305.699479 
+L 62.509699 313.714477 
+L 88.11744 312.269859 
+L 83.862882 304.329828 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 33.724593 307.081919 
+L 36.656352 315.172951 
+L 62.509699 313.714477 
+L 58.910231 305.699479 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 113.483059 310.838899 
+L 118.650191 319.138429 
+L 144.44102 317.64195 
+L 138.609972 309.421406 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 88.11744 312.269859 
+L 92.607568 320.649517 
+L 118.650191 319.138429 
+L 113.483059 310.838899 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 62.509699 313.714477 
+L 66.309443 322.175431 
+L 92.607568 320.649517 
+L 88.11744 312.269859 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 36.656352 315.172951 
+L 39.75204 323.716389 
+L 66.309443 322.175431 
+L 62.509699 313.714477 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 118.650191 319.138429 
+L 124.110097 327.908214 
+L 150.600816 326.32596 
+L 144.44102 317.64195 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 92.607568 320.649517 
+L 97.353385 329.506356 
+L 124.110097 327.908214 
+L 118.650191 319.138429 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 66.309443 322.175431 
+L 70.326655 331.120625 
+L 97.353385 329.506356 
+L 92.607568 320.649517 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 39.75204 323.716389 
+L 43.025799 332.751268 
+L 70.326655 331.120625 
+L 66.309443 322.175431 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 124.110097 327.908214 
+L 129.888383 337.189389 
+L 157.117969 335.513767 
+L 150.600816 326.32596 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 97.353385 329.506356 
+L 102.377374 338.882328 
+L 129.888383 337.189389 
+L 124.110097 327.908214 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 70.326655 331.120625 
+L 74.580555 340.592856 
+L 102.377374 338.882328 
+L 97.353385 329.506356 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 43.025799 332.751268 
+L 46.49345 342.321247 
+L 74.580555 340.592856 
+L 70.326655 331.120625 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #7c4008; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="90.36" y="214.782437" transform="rotate(-0 90.36 214.782437)">prisma triangular: sin solución</text>
+   </g>
+   <g id="Poly3DCollection_8">
+    <path d="M 33.724593 307.081919 
+L 36.656352 315.172951 
+L 62.306753 295.1385 
+L 58.689041 287.563651 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #51378a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 58.689041 287.563651 
+L 62.306753 295.1385 
+L 88.05677 275.026242 
+L 83.747864 267.971597 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #51378a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 83.747864 267.971597 
+L 88.05677 275.026242 
+L 113.906985 254.835724 
+L 108.9016 248.305336 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #51378a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 108.9016 248.305336 
+L 113.906985 254.835724 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #3a2864; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 36.656352 315.172951 
+L 39.75204 323.716389 
+L 66.127151 303.137736 
+L 62.306753 295.1385 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #51378a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 62.306753 295.1385 
+L 66.127151 303.137736 
+L 92.607568 282.476919 
+L 88.05677 275.026242 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #51378a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 88.05677 275.026242 
+L 92.607568 282.476919 
+L 119.193922 261.733447 
+L 113.906985 254.835724 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #51378a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 113.906985 254.835724 
+L 119.193922 261.733447 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #3a2864; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 39.75204 323.716389 
+L 43.025799 332.751268 
+L 70.167758 311.598052 
+L 66.127151 303.137736 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #51378a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 66.127151 303.137736 
+L 70.167758 311.598052 
+L 97.421214 290.357939 
+L 92.607568 282.476919 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #51378a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 92.607568 282.476919 
+L 97.421214 290.357939 
+L 124.786856 269.030394 
+L 119.193922 261.733447 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #51378a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 119.193922 261.733447 
+L 124.786856 269.030394 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #3a2864; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 43.025799 332.751268 
+L 46.49345 342.321247 
+L 74.44818 320.560496 
+L 70.167758 311.598052 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #51378a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 70.167758 311.598052 
+L 74.44818 320.560496 
+L 102.52116 298.707695 
+L 97.421214 290.357939 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #51378a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 97.421214 290.357939 
+L 102.52116 298.707695 
+L 130.713144 276.762259 
+L 124.786856 269.030394 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #51378a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 124.786856 269.030394 
+L 130.713144 276.762259 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #3a2864; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+   </g>
+   <g id="Poly3DCollection_9">
+    <path d="M 108.689674 284.987313 
+L 113.62248 292.420527 
+L 138.609972 309.421406 
+L 133.082038 301.628189 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #083e3c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 83.747864 267.971597 
+L 88.05677 275.026242 
+L 113.62248 292.420527 
+L 108.689674 284.987313 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #083e3c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 58.237834 250.568231 
+L 61.892537 257.224738 
+L 88.05677 275.026242 
+L 83.747864 267.971597 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #083e3c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 113.62248 292.420527 
+L 118.828947 300.266119 
+L 144.44102 317.64195 
+L 138.609972 309.421406 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #083e3c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 61.892537 257.224738 
+L 58.237834 250.568231 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #094845; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 88.05677 275.026242 
+L 92.607568 282.476919 
+L 118.828947 300.266119 
+L 113.62248 292.420527 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #083e3c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 61.892537 257.224738 
+L 65.754877 264.259424 
+L 92.607568 282.476919 
+L 88.05677 275.026242 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #083e3c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 118.828947 300.266119 
+L 124.332498 308.559384 
+L 150.600816 326.32596 
+L 144.44102 317.64195 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #083e3c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 65.754877 264.259424 
+L 61.892537 257.224738 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #094845; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 92.607568 282.476919 
+L 97.421214 290.357939 
+L 124.332498 308.559384 
+L 118.828947 300.266119 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #083e3c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 65.754877 264.259424 
+L 69.843066 271.70546 
+L 97.421214 290.357939 
+L 92.607568 282.476919 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #083e3c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 124.332498 308.559384 
+L 130.159308 317.339766 
+L 157.117969 335.513767 
+L 150.600816 326.32596 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #083e3c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 69.843066 271.70546 
+L 65.754877 264.259424 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #094845; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 97.421214 290.357939 
+L 102.52116 298.707695 
+L 130.159308 317.339766 
+L 124.332498 308.559384 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #083e3c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 69.843066 271.70546 
+L 74.177509 279.600014 
+L 102.52116 298.707695 
+L 97.421214 290.357939 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #083e3c; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 74.177509 279.600014 
+L 69.843066 271.70546 
+z
+" clip-path="url(#p5544c9a99d)" style="fill: #094845; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+   </g>
+  </g>
+  <g id="patch_14">
+   <path d="M 262.865455 387.102437 
+L 429.185455 387.102437 
+L 429.185455 220.782437 
+L 262.865455 220.782437 
+L 262.865455 387.102437 
+z
+" style="fill: none"/>
+  </g>
+  <g id="pane3d_10">
+   <g id="patch_15">
+    <path d="M 273.73527 343.931143 
+L 336.24561 315.551062 
+L 335.934031 244.231005 
+L 271.620129 266.613399 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="pane3d_11">
+   <g id="patch_16">
+    <path d="M 336.24561 315.551062 
+L 420.794158 334.885374 
+L 422.794861 259.467614 
+L 335.934031 244.231005 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="pane3d_12">
+   <g id="patch_17">
+    <path d="M 273.73527 343.931143 
+L 362.32894 367.154629 
+L 420.794158 334.885374 
+L 336.24561 315.551062 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="axis3d_10">
+   <g id="line2d_10">
+    <path d="M 273.73527 343.931143 
+L 362.32894 367.154629 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="axis3d_11">
+   <g id="line2d_11">
+    <path d="M 420.794158 334.885374 
+L 362.32894 367.154629 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="axis3d_12">
+   <g id="line2d_12">
+    <path d="M 420.794158 334.885374 
+L 422.794861 259.467614 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="Poly3DCollection_10">
+    <path d="M 320.92902 249.453019 
+L 341.909191 272.0579 
+L 356.586136 266.293234 
+L 335.934031 244.231005 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 341.909191 272.0579 
+L 363.27229 295.075363 
+L 377.606827 288.749216 
+L 356.586136 266.293234 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 363.27229 295.075363 
+L 385.028895 318.516807 
+L 399.006062 311.609589 
+L 377.606827 288.749216 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 305.240944 254.912751 
+L 326.557935 278.087416 
+L 341.909191 272.0579 
+L 320.92902 249.453019 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 385.028895 318.516807 
+L 407.189982 342.394054 
+L 420.794158 334.885374 
+L 399.006062 311.609589 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 326.557935 278.087416 
+L 348.273022 301.69487 
+L 363.27229 295.075363 
+L 341.909191 272.0579 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 348.273022 301.69487 
+L 370.397462 325.747349 
+L 385.028895 318.516807 
+L 363.27229 295.075363 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 288.822074 260.626813 
+L 310.484804 284.400464 
+L 326.557935 278.087416 
+L 305.240944 254.912751 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 370.397462 325.747349 
+L 392.942939 350.257558 
+L 407.189982 342.394054 
+L 385.028895 318.516807 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 310.484804 284.400464 
+L 332.561689 308.628627 
+L 348.273022 301.69487 
+L 326.557935 278.087416 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 332.561689 308.628627 
+L 355.064721 333.324463 
+L 370.397462 325.747349 
+L 348.273022 301.69487 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 271.620129 266.613399 
+L 293.637654 291.017522 
+L 310.484804 284.400464 
+L 288.822074 260.626813 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 355.064721 333.324463 
+L 378.006359 358.501645 
+L 392.942939 350.257558 
+L 370.397462 325.747349 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 293.637654 291.017522 
+L 316.086352 315.899556 
+L 332.561689 308.628627 
+L 310.484804 284.400464 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 316.086352 315.899556 
+L 338.979013 341.273677 
+L 355.064721 333.324463 
+L 332.561689 308.628627 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 338.979013 341.273677 
+L 362.32894 367.154629 
+L 378.006359 358.501645 
+L 355.064721 333.324463 
+z
+" clip-path="url(#p937c609935)" style="fill: #5c2f06; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="346.025455" y="214.782437" transform="rotate(-0 346.025455 214.782437)">dos planos paralelos: sin solución</text>
+   </g>
+   <g id="Poly3DCollection_11">
+    <path d="M 321.461541 304.355822 
+L 341.993097 308.929664 
+L 356.478906 302.439995 
+L 336.169199 298.06087 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 341.993097 308.929664 
+L 363.171851 313.647684 
+L 377.414725 306.954121 
+L 356.478906 302.439995 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 306.097683 310.931631 
+L 326.85073 315.713472 
+L 341.993097 308.929664 
+L 321.461541 304.355822 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 363.171851 313.647684 
+L 385.028895 318.516807 
+L 399.006062 311.609589 
+L 377.414725 306.954121 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 326.85073 315.713472 
+L 348.273022 320.649517 
+L 363.171851 313.647684 
+L 341.993097 308.929664 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 290.032709 317.807522 
+L 311.006136 322.811879 
+L 326.85073 315.713472 
+L 306.097683 310.931631 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 385.028895 318.516807 
+L 407.597346 323.54441 
+L 421.284194 316.413141 
+L 399.006062 311.609589 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 348.273022 320.649517 
+L 370.397462 325.747349 
+L 385.028895 318.516807 
+L 363.171851 313.647684 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 311.006136 322.811879 
+L 332.671856 327.981421 
+L 348.273022 320.649517 
+L 326.85073 315.713472 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 273.217504 325.004514 
+L 294.409304 330.24729 
+L 311.006136 322.811879 
+L 290.032709 317.807522 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 370.397462 325.747349 
+L 393.259145 331.015054 
+L 407.597346 323.54441 
+L 385.028895 318.516807 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 332.671856 327.981421 
+L 355.064721 333.324463 
+L 370.397462 325.747349 
+L 348.273022 320.649517 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 294.409304 330.24729 
+L 316.31749 335.667297 
+L 332.671856 327.981421 
+L 311.006136 322.811879 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 355.064721 333.324463 
+L 378.221963 338.849889 
+L 393.259145 331.015054 
+L 370.397462 325.747349 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 316.31749 335.667297 
+L 338.979013 341.273677 
+L 355.064721 333.324463 
+L 332.671856 327.981421 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 338.979013 341.273677 
+L 362.43341 347.076211 
+L 378.221963 338.849889 
+L 355.064721 333.324463 
+z
+" clip-path="url(#p937c609935)" style="fill: #0b5451; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+   </g>
+   <g id="Poly3DCollection_12">
+    <path d="M 321.108862 267.994684 
+L 341.909191 272.0579 
+L 356.586136 266.293234 
+L 336.013429 262.405214 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 341.909191 272.0579 
+L 363.374092 276.250936 
+L 377.801479 270.302704 
+L 356.586136 266.293234 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 305.530365 273.836889 
+L 326.557935 278.087416 
+L 341.909191 272.0579 
+L 321.108862 267.994684 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 363.374092 276.250936 
+L 385.53593 280.580115 
+L 399.690049 274.439408 
+L 377.801479 270.302704 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 326.557935 278.087416 
+L 348.273022 282.476919 
+L 363.374092 276.250936 
+L 341.909191 272.0579 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 289.231173 279.949367 
+L 310.484804 284.400464 
+L 326.557935 278.087416 
+L 305.530365 273.836889 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 385.53593 280.580115 
+L 408.42921 285.052176 
+L 422.284407 278.709497 
+L 399.690049 274.439408 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 348.273022 282.476919 
+L 370.709905 287.012327 
+L 385.53593 280.580115 
+L 363.374092 276.250936 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 310.484804 284.400464 
+L 332.449956 289.000572 
+L 348.273022 282.476919 
+L 326.557935 278.087416 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 272.160089 286.351317 
+L 293.637654 291.017522 
+L 310.484804 284.400464 
+L 289.231173 279.949367 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 370.709905 287.012327 
+L 393.90518 291.701036 
+L 408.42921 285.052176 
+L 385.53593 280.580115 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 332.449956 289.000572 
+L 355.162966 293.757304 
+L 370.709905 287.012327 
+L 348.273022 282.476919 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 293.637654 291.017522 
+L 315.851845 295.843766 
+L 332.449956 289.000572 
+L 310.484804 284.400464 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 355.162966 293.757304 
+L 378.66269 298.678794 
+L 393.90518 291.701036 
+L 370.709905 287.012327 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 315.851845 295.843766 
+L 338.841221 300.838427 
+L 355.162966 293.757304 
+L 332.449956 289.000572 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+    <path d="M 338.841221 300.838427 
+L 362.647078 306.010475 
+L 378.66269 298.678794 
+L 355.162966 293.757304 
+z
+" clip-path="url(#p937c609935)" style="fill: #452f76; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-width: 0.3"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p1d8b1dbbfa">
+   <rect x="7.2" y="21.198437" width="166.32" height="166.32"/>
+  </clipPath>
+  <clipPath id="p92b2b2287c">
+   <rect x="262.865455" y="21.198437" width="166.32" height="166.32"/>
+  </clipPath>
+  <clipPath id="p5544c9a99d">
+   <rect x="7.2" y="220.782437" width="166.32" height="166.32"/>
+  </clipPath>
+  <clipPath id="p937c609935">
+   <rect x="262.865455" y="220.782437" width="166.32" height="166.32"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: las configuraciones de tres planos en un sistema 3×3. Solución única: los planos se cortan en un punto (Ejemplo 1.13). Infinitas soluciones: los tres pasan por una recta. Sin solución: forman un prisma (se cortan dos a dos en rectas paralelas) o hay planos paralelos.</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(x+y+z=2\), \(x-y+2z=1\), \(2x+y-z=1\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(E_2-E_1\): \(-2y+z=-1\); \(E_3-2E_1\): \(-y-3z=-3\). Resolviendo: \(x=\tfrac37\), \(y=\tfrac67\), \(z=\tfrac57\). Punto único \(\left(\tfrac37,\tfrac67,\tfrac57\right)\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.14. Infinitas soluciones: una recta</p>
+<p>Resuelve \(x+y+z=2\), \(x-y+2z=1\) y \(2x+3z=3\).</p>
+<p>La tercera ecuación es la suma de las dos primeras: solo hay dos ecuaciones independientes. Restando las dos primeras, \(2y-z=1\). Con \(z=t\): \(y=\frac{1+t}2\) y \(x=2-y-z=\frac{3-3t}2\). Así \((x,y,z)=\left(\frac32,\frac12,0\right)+t\left(-\frac32,\frac12,1\right)\): los tres planos pasan por esa recta.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.15. Sin solución: un prisma</p>
+<p>Cambia la tercera ecuación del ejemplo anterior por \(2x+3z=4\).</p>
+<p>La suma de las dos primeras da \(2x+3z=3\), así que el sistema exige \(3=4\): no hay solución. Ningún par de normales es paralelo, \((1,1,1)\), \((1,-1,2)\) y \((2,0,3)\), así que no hay planos paralelos: se cortan dos a dos en tres rectas paralelas, formando un prisma triangular. En el markscheme, la conclusión geométrica vale su propia marca.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Clasifica el sistema \(x+y+z=1\), \(2x+2y+2z=3\), \(x-y+z=0\) e interprétalo geométricamente.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Las dos primeras ecuaciones son incompatibles (\(1\) y \(\tfrac32\) para \(x+y+z\)): no hay solución; dos de los planos son paralelos.</li></ol></div></details></div>
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Criterio del determinante:</b> la solución es única si y solo si el determinante de los coeficientes es distinto de 0 (problema E9).</li>
+<li><b>Reflexión en un plano:</b> se halla el pie \(F\) y se duplica: \(P'=2F-P\) (problema E7).</li>
+</ul></div>
+
+<h3 id="t7">1.7 Rectas que se cruzan y perpendicular común</h3>
+<p>Dos rectas en el espacio pueden cortarse, ser paralelas o <b>cruzarse</b> (ni se cortan ni son paralelas). Para decidirlo: si las direcciones son proporcionales, son paralelas o coincidentes. Si no, se igualan las ecuaciones paramétricas con parámetros <b>distintos</b> \(\lambda\) y \(\mu\); si el sistema no tiene solución, se cruzan.</p>
+\[ d=\frac{\left|(\mathbf b-\mathbf a)\cdot(\mathbf d_1\times\mathbf d_2)\right|}{\left|\mathbf d_1\times\mathbf d_2\right|} \]
+<p>Es la proyección del vector que une un punto de cada recta sobre la dirección perpendicular a ambas.</p>
+<div class="ex"><p class="et">Ejemplo 1.16. Distancia entre dos rectas que se cruzan</p>
+<p>\(L_1:\ \mathbf r=\lambda\begin{pmatrix}1\\1\\0\end{pmatrix}\) y \(L_2:\ \mathbf r=\begin{pmatrix}1\\0\\1\end{pmatrix}+\mu\begin{pmatrix}0\\1\\1\end{pmatrix}\).</p>
+<p>¿Se cortan? \(\lambda=1\), \(\lambda=\mu\) y \(0=1+\mu\) es incompatible (daría \(\mu=-1\) y \(\mu=1\)), y las direcciones no son proporcionales: se cruzan.</p>
+<p>\(\mathbf d_1\times\mathbf d_2=\begin{pmatrix}1\\-1\\1\end{pmatrix}\) y \(\mathbf b-\mathbf a=\begin{pmatrix}1\\0\\1\end{pmatrix}\), así que \(d=\frac{|1+0+1|}{\sqrt3}=\frac2{\sqrt3}=\frac{2\sqrt3}3\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla la distancia entre \(L_1:\ \mathbf r=t(1,0,0)\) y \(L_2:\ \mathbf r=(0,0,1)+s(0,1,0)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\mathbf u\times\mathbf v=(1,0,0)\times(0,1,0)=(0,0,1)\); \(\mathbf b-\mathbf a=(0,0,1)\); distancia \(\tfrac{|(0,0,1)\cdot(0,0,1)|}{1}=1\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.17. Los pies de la perpendicular común</p>
+<p>Para las rectas del Ejemplo 1.16, el vector \(\mathbf{PQ}=\mathbf r_2(\mu)-\mathbf r_1(\lambda)\) debe ser perpendicular a las dos direcciones:</p>
+<p>\(\mathbf{PQ}\cdot\mathbf d_1=0\) y \(\mathbf{PQ}\cdot\mathbf d_2=0\) dan \(\lambda=\frac13\) y \(\mu=-\frac13\). Los pies son \(P\left(\frac13,\frac13,0\right)\) y \(Q\left(1,-\frac13,\frac23\right)\), con \(|PQ|=\frac{2\sqrt3}3\), igual que con la fórmula. Este método da además los puntos, que la fórmula no da.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 302.497574 291.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 291.6 
+L 302.497574 291.6 
+L 302.497574 0 
+L 0 0 
+L 0 291.6 
+z
+" style="fill: none"/>
+  </g>
+  <g id="patch_2">
+   <path d="M 18.097574 284.4 
+L 295.297574 284.4 
+L 295.297574 7.2 
+L 18.097574 7.2 
+L 18.097574 284.4 
+z
+" style="fill: none"/>
+  </g>
+  <g id="pane3d_1">
+   <g id="patch_3">
+    <path d="M 130.460942 178.882395 
+L 278.661585 198.956019 
+L 280.830046 70.694931 
+L 129.940894 57.250694 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="pane3d_2">
+   <g id="patch_4">
+    <path d="M 130.460942 178.882395 
+L 37.125384 215.150888 
+L 34.763918 81.560624 
+L 129.940894 57.250694 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="pane3d_3">
+   <g id="patch_5">
+    <path d="M 130.460942 178.882395 
+L 37.125384 215.150888 
+L 195.555748 239.673025 
+L 278.661585 198.956019 
+" style="fill: none; opacity: 0.5; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+  </g>
+  <g id="axis3d_1">
+   <g id="line2d_1">
+    <path d="M 278.661585 198.956019 
+L 195.555748 239.673025 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="xtick_1">
+    <g id="line2d_2">
+     <path d="M 264.221446 205.234387 
+L 268.027391 205.761265 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_1">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="278.000382" y="223.469315" transform="rotate(-0 278.000382 223.469315)">−0.5</text>
+    </g>
+   </g>
+   <g id="xtick_2">
+    <g id="line2d_3">
+     <path d="M 249.840525 212.265526 
+L 253.696463 212.81201 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_2">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="263.821659" y="230.750915" transform="rotate(-0 263.821659 230.750915)">0.0</text>
+    </g>
+   </g>
+   <g id="xtick_3">
+    <g id="line2d_4">
+     <path d="M 234.919808 219.560583 
+L 238.826846 220.127786 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_3">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="249.108748" y="238.306851" transform="rotate(-0 249.108748 238.306851)">0.5</text>
+    </g>
+   </g>
+   <g id="xtick_4">
+    <g id="line2d_5">
+     <path d="M 219.428323 227.1347 
+L 223.387584 227.723825 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_4">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="233.830882" y="246.152924" transform="rotate(-0 233.830882 246.152924)">1.0</text>
+    </g>
+   </g>
+   <g id="xtick_5">
+    <g id="line2d_6">
+     <path d="M 203.332679 235.004204 
+L 207.345305 235.616545 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="217.954882" y="254.306174" transform="rotate(-0 217.954882 254.306174)">1.5</text>
+    </g>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="267.285835" y="248.420688" transform="rotate(-0 267.285835 248.420688)">x</text>
+   </g>
+  </g>
+  <g id="axis3d_2">
+   <g id="line2d_7">
+    <path d="M 37.125384 215.150888 
+L 195.555748 239.673025 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="xtick_6">
+    <g id="line2d_8">
+     <path d="M 43.106088 215.628912 
+L 40.643 216.592913 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="34.242077" y="235.777789" transform="rotate(-0 34.242077 235.777789)">−1.5</text>
+    </g>
+   </g>
+   <g id="xtick_7">
+    <g id="line2d_9">
+     <path d="M 65.058659 219.022895 
+L 62.62864 220.003679 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="56.283759" y="239.320226" transform="rotate(-0 56.283759 239.320226)">−1.0</text>
+    </g>
+   </g>
+   <g id="xtick_8">
+    <g id="line2d_10">
+     <path d="M 87.394622 222.476153 
+L 84.999211 223.474162 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="78.713333" y="242.925004" transform="rotate(-0 78.713333 242.925004)">−0.5</text>
+    </g>
+   </g>
+   <g id="xtick_9">
+    <g id="line2d_11">
+     <path d="M 110.124109 225.990251 
+L 107.76491 227.005943 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="101.541129" y="246.593782" transform="rotate(-0 101.541129 246.593782)">0.0</text>
+    </g>
+   </g>
+   <g id="xtick_10">
+    <g id="line2d_12">
+     <path d="M 133.257612 229.566812 
+L 130.9363 230.600662 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="124.777848" y="250.32828" transform="rotate(-0 124.777848 250.32828)">0.5</text>
+    </g>
+   </g>
+   <g id="xtick_11">
+    <g id="line2d_13">
+     <path d="M 156.806 233.207517 
+L 154.524322 234.260015 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="148.434577" y="254.13028" transform="rotate(-0 148.434577 254.13028)">1.0</text>
+    </g>
+   </g>
+   <g id="xtick_12">
+    <g id="line2d_14">
+     <path d="M 180.780535 236.914106 
+L 178.540315 237.985763 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="172.522806" y="258.001629" transform="rotate(-0 172.522806 258.001629)">1.5</text>
+    </g>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="96.884448" y="261.233084" transform="rotate(-0 96.884448 261.233084)">y</text>
+   </g>
+  </g>
+  <g id="axis3d_3">
+   <g id="line2d_15">
+    <path d="M 37.125384 215.150888 
+L 34.763918 81.560624 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="xtick_13">
+    <g id="line2d_16">
+     <path d="M 37.884861 211.257395 
+L 35.412714 212.209192 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="16.913125" y="218.991519" transform="rotate(-0 16.913125 218.991519)">−0.5</text>
+    </g>
+   </g>
+   <g id="xtick_14">
+    <g id="line2d_17">
+     <path d="M 37.464858 187.336893 
+L 34.983184 188.233032 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="16.419146" y="194.974227" transform="rotate(-0 16.419146 194.974227)">0.0</text>
+    </g>
+   </g>
+   <g id="xtick_15">
+    <g id="line2d_18">
+     <path d="M 37.041967 163.251879 
+L 34.550693 164.09157 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_17">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="15.921755" y="170.791047" transform="rotate(-0 15.921755 170.791047)">0.5</text>
+    </g>
+   </g>
+   <g id="xtick_16">
+    <g id="line2d_19">
+     <path d="M 36.616158 139.000649 
+L 34.115209 139.78309 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_18">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="15.420917" y="146.440254" transform="rotate(-0 15.420917 146.440254)">1.0</text>
+    </g>
+   </g>
+   <g id="xtick_17">
+    <g id="line2d_20">
+     <path d="M 36.187399 114.581477 
+L 33.676703 115.305852 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_19">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="14.916595" y="121.920099" transform="rotate(-0 14.916595 121.920099)">1.5</text>
+    </g>
+   </g>
+   <g id="xtick_18">
+    <g id="line2d_21">
+     <path d="M 35.755662 89.992612 
+L 33.235141 90.658093 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_20">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="14.408753" y="97.228809" transform="rotate(-0 14.408753 97.228809)">2.0</text>
+    </g>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="-8.430273" y="154.497287" transform="rotate(-0 -8.430273 154.497287)">z</text>
+   </g>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_22">
+    <path d="M 159.009425 160.086465 
+L 160.493674 162.240592 
+L 161.997047 164.422474 
+L 163.519916 166.632651 
+L 165.062663 168.871677 
+L 166.62568 171.140121 
+L 168.209368 173.438567 
+L 169.814141 175.767613 
+L 171.440423 178.127875 
+L 173.088648 180.519984 
+L 174.759265 182.944591 
+L 176.452731 185.40236 
+L 178.169521 187.893978 
+L 179.910117 190.420148 
+L 181.67502 192.981595 
+L 183.464742 195.579062 
+L 185.27981 198.213314 
+L 187.120767 200.885139 
+L 188.988169 203.595346 
+L 190.882592 206.344768 
+" clip-path="url(#pff6a261819)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_23">
+    <path d="M 74.562514 197.435519 
+L 79.936393 192.315412 
+L 85.342256 187.164832 
+L 90.780387 181.983507 
+L 96.251077 176.77116 
+L 101.754619 171.527514 
+L 107.29131 166.252283 
+L 112.86145 160.945183 
+L 118.465344 155.605924 
+L 124.103298 150.234212 
+L 129.775625 144.829751 
+L 135.482639 139.39224 
+L 141.224661 133.921376 
+L 147.002012 128.41685 
+L 152.815021 122.87835 
+L 158.664018 117.305562 
+L 164.549338 111.698166 
+L 170.471321 106.055838 
+L 176.430311 100.378251 
+L 182.426655 94.665074 
+" clip-path="url(#pff6a261819)" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_24">
+    <path d="M 173.042564 180.453101 
+L 120.966878 153.222521 
+" clip-path="url(#pff6a261819)" style="fill: none; stroke-dasharray: 8.14,3.52; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 2.2"/>
+   </g>
+   <g id="Path3DCollection_1">
+    <defs>
+     <path id="mc1b27a9fbf" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: #a2530a"/>
+    </defs>
+    <g clip-path="url(#pff6a261819)">
+     <use xlink:href="#mc1b27a9fbf" x="173.042564" y="180.453101" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="173.042564" y="180.453101" transform="rotate(-0 173.042564 180.453101)"> P</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="120.966878" y="153.222521" transform="rotate(-0 120.966878 153.222521)"> Q</text>
+   </g>
+   <g id="Path3DCollection_2">
+    <g clip-path="url(#pff6a261819)">
+     <use xlink:href="#mc1b27a9fbf" x="120.966878" y="153.222521" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_25">
+     <path d="M 26.197574 18.988594 
+L 35.197574 18.988594 
+L 44.197574 18.988594 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_24">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="51.397574" y="22.138594" transform="rotate(-0 51.397574 22.138594)">L₁: λ(1, 1, 0)</text>
+    </g>
+    <g id="line2d_26">
+     <path d="M 26.197574 32.198906 
+L 35.197574 32.198906 
+L 44.197574 32.198906 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_25">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="51.397574" y="35.348906" transform="rotate(-0 51.397574 35.348906)">L₂: (1, 0, 1) + μ(0, 1, 1)</text>
+    </g>
+    <g id="line2d_27">
+     <path d="M 26.197574 45.870469 
+L 35.197574 45.870469 
+L 44.197574 45.870469 
+" style="fill: none; stroke-dasharray: 8.14,3.52; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 2.2"/>
+    </g>
+    <g id="text_26">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="51.397574" y="49.020469" transform="rotate(-0 51.397574 49.020469)">perpendicular común, 2√3/3</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pff6a261819">
+   <rect x="18.097574" y="7.2" width="277.2" height="277.2"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplos 1.16 y 1.17: las dos rectas no se cortan ni son paralelas. El segmento más corto entre ellas, \(PQ\), es perpendicular a las dos y mide \(\frac{2\sqrt3}3\).</figcaption></figure>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Vector director</td><td>Vector no nulo paralelo a la recta.</td></tr>
+<tr><td>Vector normal</td><td>Vector no nulo perpendicular a todas las rectas de un plano.</td></tr>
+<tr><td>Rectas que se cruzan (alabeadas)</td><td>No son paralelas y no se cortan; solo existen en 3D.</td></tr>
+<tr><td>Rectas coincidentes</td><td>Directores paralelos y un punto común: son la misma recta.</td></tr>
+<tr><td>Pie de la perpendicular</td><td>Punto de la recta o plano más cercano a un punto dado.</td></tr>
+<tr><td>Coplanares</td><td>Vectores o puntos contenidos en un mismo plano.</td></tr>
+<tr><td>Sistema consistente</td><td>Sistema con al menos una solución.</td></tr>
+<tr><td>Haz de planos</td><td>Planos que comparten una misma recta.</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Halle una ecuación vectorial</td><td>«\(\mathbf r=\)» + punto + parámetro × director.</td><td>Omitir «\(\mathbf r=\)» (A0) o escribir \(L=\).</td></tr>
+<tr><td>Halle la ecuación cartesiana del plano</td><td>\(ax+by+cz=d\) con números.</td><td>Dejarla en forma vectorial.</td></tr>
+<tr><td>Muestre que no se cortan</td><td>Resolver dos ecuaciones y mostrar que la tercera falla, o mostrar paralelismo con puntos distintos.</td><td>Decir «no se cortan» sin la contradicción explícita.</td></tr>
+<tr><td>Muestre que los planos no tienen punto común</td><td>Llegar a una contradicción (\(0=94\), \(-15=32\)).</td><td>Comprobar solo que las normales no son paralelas.</td></tr>
+<tr><td>Verifique que el punto está en…</td><td>Sustituir en cada ecuación.</td><td>Sustituir solo en una.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>El «r =» olvidado.</b> Sin \(\mathbf r=\), la ecuación vectorial vale A0.</li>
+<li><b>El signo en la cartesiana.</b> \(\frac{x+1}2\) corresponde al punto \(x=-1\). Y \(y=3-z\) significa dirección \(-1\) en \(z\).</li>
+<li><b>El parámetro compartido.</b> Al cortar dos rectas, usa parámetros distintos (\(s\) y \(t\)).</li>
+<li><b>La tercera ecuación ignorada.</b> Dos ecuaciones siempre dan \(s\) y \(t\); la tercera decide si se cortan.</li>
+<li><b>El ángulo obtuso.</b> Entre rectas se da el agudo: usa \(|\mathbf u\cdot\mathbf v|\).</li>
+<li><b>El seno por el coseno.</b> Entre una recta y un plano, el producto escalar con la normal da el <b>seno</b> del ángulo.</li>
+<li><b>El producto vectorial con signos cruzados.</b> La componente del medio es \(a_3b_1-a_1b_3\). Comprueba siempre que el resultado es perpendicular a ambos.</li>
+<li><b>Paralelas tratadas como cruzadas.</b> Si \(\mathbf u\times\mathbf v=\mathbf 0\), la fórmula de rectas que se cruzan divide entre 0: usa la de paralelas.</li>
+<li><b>Normales no paralelas no bastan.</b> Tres planos sin normales paralelas aún pueden no tener punto común (prisma).</li>
+<li><b>El valor absoluto en la distancia.</b> Una distancia punto–plano nunca es negativa.</li>
+<li><b>Área del triángulo.</b> Es la mitad de \(|\mathbf a\times\mathbf b|\), no el valor completo.</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">Cada ejemplo reproduce el tipo de un ítem de las fichas DMpA 19, 20 y 01, con valores propios exactos porque los datos de las fichas vienen en imágenes. Se amplía hasta el nivel de la Sección B. Ninguno repite un tipo de la sección 5.</p>
+
+<div class="ex"><p class="et">F1. Triángulo en 3D: ángulo, área y altura <span class="lvl">Sección B</span></p>
+<p class="src">Tipo de DMpA 19 (área del triángulo ABC) y DMpA 20 (distancia más corta de B a AC).</p>
+<p>\(A(1,0,2)\), \(B(3,1,0)\), \(C(2,-1,4)\). Halla (a) \(\cos\angle BAC\); (b) el área de \(ABC\); (c) la distancia de \(B\) a la recta \(AC\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>\(\overrightarrow{AB}=(2,1,-2)\) (módulo 3) y \(\overrightarrow{AC}=(1,-1,2)\) (módulo \(\sqrt6\)).</p>
+<p>(a) \(\tfrac{2-1-4}{3\sqrt6}=-\tfrac1{\sqrt6}\): ángulo obtuso.</p>
+<p>(b) \(\overrightarrow{AB}\times\overrightarrow{AC}=(0,-6,-3)\), con módulo \(3\sqrt5\). Área \(\tfrac{3\sqrt5}2\).</p>
+<p>(c) \(\tfrac{3\sqrt5}{\sqrt6}=\tfrac{\sqrt{30}}2\). Es la altura desde \(B\): \(\text{área}=\tfrac12\cdot AC\cdot h\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Ángulo obtuso según un parámetro <span class="lvl">Sección A alta</span></p>
+<p class="src">Tipo de DMpA 19 («halle \(\mathbf a\cdot\mathbf b\) en función de \(t\)… el ángulo es obtuso»).</p>
+<p>\(\mathbf a=(t,2,-1)\) y \(\mathbf b=(t,t-3,4)\). (a) Halla \(\mathbf a\cdot\mathbf b\). (b) Halla los \(t\) para los que el ángulo es obtuso. (c) Muestra que \(\mathbf a\) y \(\mathbf b\) nunca son paralelos.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(t^2+2t-10\).</p>
+<p>(b) \(t^2+2t-10\lt0\iff-1-\sqrt{11}\lt t\lt-1+\sqrt{11}\).</p>
+<p>(c) Si \(\mathbf a=k\mathbf b\), la tercera componente da \(k=-\tfrac14\), la primera \(t=0\), y la segunda \(2=\tfrac34\): contradicción. Por eso no hay que excluir un ángulo de 180°.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. Condiciones con módulos de sumas y diferencias <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 19, ítem 8, y DMpA 20 (\(|\mathbf a+\mathbf b|=3|\mathbf a-\mathbf b|\)).</p>
+<p>(a) Prueba que si \(|\mathbf a-\mathbf b|=|\mathbf a+\mathbf b|\) (vectores no nulos), entonces \(\mathbf a\perp\mathbf b\). (b) Si \(\mathbf a,\mathbf b\) son unitarios con ángulo \(\alpha\), expresa \(|\mathbf a\pm\mathbf b|\) en función de \(\alpha\) y halla \(\cos\alpha\) si \(|\mathbf a+\mathbf b|=3|\mathbf a-\mathbf b|\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Al elevar al cuadrado: \(|\mathbf a|^2+|\mathbf b|^2-2\mathbf a\cdot\mathbf b=|\mathbf a|^2+|\mathbf b|^2+2\mathbf a\cdot\mathbf b\), así que \(\mathbf a\cdot\mathbf b=0\).</p>
+<p>(b) \(|\mathbf a\pm\mathbf b|=\sqrt{2\pm2\cos\alpha}\). Entonces \(2+2\cos\alpha=9(2-2\cos\alpha)\) y \(\cos\alpha=\tfrac45\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Tetraedro de volumen dado <span class="lvl">Sección B, más allá</span></p>
+<p class="src">Tipo de DMpA 19 («el tetraedro ABCX tiene volumen 12, halle los posibles…»).</p>
+<p>\(A=O\), \(B(2,0,0)\), \(C(0,3,0)\) y \(X(1,1,z)\). Halla los \(z\) para los que el tetraedro \(ABCX\) tiene volumen 12.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>\(\overrightarrow{AC}\times\overrightarrow{AX}=(0,3,0)\times(1,1,z)=(3z,0,-3)\). Así \(\overrightarrow{AB}\cdot(\dots)=6z\) y \(V=\tfrac16|6z|=|z|\). Entonces \(z=\pm12\).</p>
+<p>Comprobación: la base \(ABC\) tiene área 3 y la altura es \(|z|\), así que \(V=\tfrac13\cdot3\cdot12=12\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. Punto de una recta más cercano al origen <span class="lvl">Sección A alta</span></p>
+<p class="src">Tipo de DMpA 20 («halle las coordenadas del punto P de L más cercano al origen»).</p>
+<p>\(L:\ \mathbf r=(1,2,3)+\lambda(1,-1,2)\). Halla el punto \(P\) de \(L\) más cercano a \(O\) y la distancia \(OP\), por dos métodos.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Pie: \((1+\lambda,2-\lambda,3+2\lambda)\cdot(1,-1,2)=0\Rightarrow6\lambda+5=0\Rightarrow\lambda=-\tfrac56\). \(P=\left(\tfrac16,\tfrac{17}6,\tfrac43\right)\) y \(OP=\sqrt{\tfrac{59}6}\).</p>
+<p>Fórmula: \(\mathbf a\times\mathbf u=(7,1,-3)\), así que \(\tfrac{\sqrt{59}}{\sqrt6}\): el mismo valor.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Rectas que se cruzan y su distancia <span class="lvl">Sección B</span></p>
+<p class="src">Tipo de DMpA 20 («muestre que las rectas L1 y L2 son alabeadas»).</p>
+<p>\(L_1:\ \mathbf r=(1,0,-1)+s(1,2,1)\) y \(L_2:\ \mathbf r=(0,1,2)+t(2,1,-1)\). (a) Muestra que se cruzan. (b) Halla la distancia mínima.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Los directores no son paralelos. De \(1+s=2t\) y \(2s=1+t\) sale \(t=1,\ s=1\), pero la tercera da \(0\neq1\). No se cortan, así que se cruzan.</p>
+<p>(b) \(\mathbf n=(1,2,1)\times(2,1,-1)=(-3,3,-3)\), que es paralelo a \((1,-1,1)\). \(\overrightarrow{AB}=(-1,1,3)\). \(d=\tfrac{|-1-1+3|}{\sqrt3}=\tfrac1{\sqrt3}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. Plano por tres puntos: distancia y área <span class="lvl">Sección A alta</span></p>
+<p class="src">Tipo de DMpA 20 («plano que contiene a P, Q y R»; «punto del plano más cercano al origen»).</p>
+<p>\(P(1,0,0)\), \(Q(0,2,0)\), \(R(0,0,3)\). Halla (a) la ecuación cartesiana del plano; (b) el punto del plano más cercano al origen y la distancia; (c) el área de \(PQR\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\overrightarrow{PQ}\times\overrightarrow{PR}=(-1,2,0)\times(-1,0,3)=(6,3,2)\): \(6x+3y+2z=6\).</p>
+<p>(b) \(t(6,3,2)\) con \(49t=6\): \(\left(\tfrac{36}{49},\tfrac{18}{49},\tfrac{12}{49}\right)\), a distancia \(\tfrac67\).</p>
+<p>(c) \(\tfrac12\sqrt{36+9+4}=\tfrac72\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. Plano que contiene una recta y un punto <span class="lvl">Sección A alta</span></p>
+<p class="src">Tipo de DMpA 20 («\(\pi_3\) es paralelo a L, muestre que \(a+2b-5c=0\)»).</p>
+<p>\(L:\ \mathbf r=(1,1,0)+\lambda(1,2,-5)\) y \(A(2,0,1)\). (a) Muestra que todo plano \(ax+by+cz=d\) paralelo a \(L\) cumple \(a+2b-5c=0\). (b) Halla el plano que contiene a \(L\) y a \(A\). (c) Halla el coseno del ángulo entre ese plano y el plano \(z=0\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Si el plano es paralelo a \(L\), \(\mathbf n\cdot\mathbf u=0\), es decir \(a+2b-5c=0\).</p>
+<p>(b) Direcciones \((1,2,-5)\) y \(\overrightarrow{(1,1,0)A}=(1,-1,1)\): \(\mathbf n=(-3,-6,-3)\), paralelo a \((1,2,1)\). Plano: \(x+2y+z=3\).</p>
+<p>(c) \(\cos\theta=\tfrac{|(1,2,1)\cdot(0,0,1)|}{\sqrt6}=\tfrac1{\sqrt6}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. Sistema con dos parámetros <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 01 (sistemas por Gauss; «halle \(k\) para que el determinante sea cero»).</p>
+<p>\(x+y+z=1\), \(x+2y+4z=3\), \(x+3y+kz=m\). (a) Halla los \(k\) con solución única. (b) Para el \(k\) restante, halla \(m\) para que haya infinitas soluciones y escríbelas como recta. (c) Interpreta geométricamente el caso sin solución.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>\(E_2-E_1\): \(y+3z=2\). \(E_3-E_1\): \(2y+(k-1)z=m-1\). Restando dos veces la anterior: \((k-7)z=m-5\).</p>
+<p>(a) Única si \(k\neq7\).</p>
+<p>(b) Con \(k=7\) y \(m=5\): \(z=t\), \(y=2-3t\), \(x=-1+2t\). La recta es \(\mathbf r=(-1,2,0)+t(2,-3,1)\).</p>
+<p>(c) Con \(k=7\), \(m\neq5\): ningún par de normales es paralelo, así que los planos forman un prisma triangular.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. Distancia mínima entre dos móviles <span class="lvl">Sección B, integra Módulo 2</span></p>
+<p class="src">Tipo de DMpA 20 (aviones A y B, «halle el valor mínimo de D(t)»), sin derivadas.</p>
+<p>Dos barcos se mueven según \(\mathbf r_A=(1,2)+t(2,1)\) y \(\mathbf r_B=(7,1)+t(-1,2)\), con \(t\) en horas. Halla (a) \(D(t)^2\); (b) el instante de mínima distancia y la distancia mínima.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\mathbf r_B-\mathbf r_A=(6-3t,\ t-1)\), así que \(D^2=10t^2-38t+37\).</p>
+<p>(b) Vértice en \(t=\tfrac{38}{20}=1{,}9\) h: \(D^2=37-\tfrac{38^2}{40}=0{,}9\), y \(D=\tfrac3{\sqrt{10}}\).</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son las 4 preguntas de vectores de tus pruebas. Las marcas siguen el markscheme oficial, salvo en mayo 2021 TZ2, cuyo markscheme no está en tus archivos: ahí están reconstruidas y se indica. Resuélvelas en tiempo de examen, a 1,1 minutos por punto.</p>
+
+<div class="ex"><p class="et">X1. Mayo 2021 TZ2, pregunta 5 <span class="lvl">4 puntos</span></p>
+<p>Para vectores no nulos \(\mathbf a\) y \(\mathbf b\), muestra que \(|\mathbf a\times\mathbf b|^2=|\mathbf a|^2|\mathbf b|^2-(\mathbf a\cdot\mathbf b)^2\).</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">\(|\mathbf a\times\mathbf b|^2=|\mathbf a|^2|\mathbf b|^2\sin^2\theta\) <span class="m">M1</span> \(=|\mathbf a|^2|\mathbf b|^2(1-\cos^2\theta)\) <span class="m">A1</span></p>
+<p class="step">\(=|\mathbf a|^2|\mathbf b|^2-|\mathbf a|^2|\mathbf b|^2\cos^2\theta\) <span class="m">A1</span> \(=|\mathbf a|^2|\mathbf b|^2-(\mathbf a\cdot\mathbf b)^2\) <span class="m">A1</span> <span class="m">AG</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Mayo 2021 TZ2, pregunta 8 <span class="lvl">8 puntos</span></p>
+<p>\(l_1:\ \mathbf r=(3,2,-1)+\lambda(2,-2,2)\) y \(l_2:\ \mathbf r=(2,0,4)+\mu(1,-1,1)\). (a) Muestra que no se cortan. (b) Halla la distancia mínima entre ellas.</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">(a) \((2,-2,2)=2(1,-1,1)\): son paralelas <span class="m">A1</span>. ¿Está \((2,0,4)\) en \(l_1\)? \(3+2\lambda=2\Rightarrow\lambda=-\tfrac12\), que da \(y=3\neq0\) <span class="m">M1</span>. No es un punto común, así que las rectas son paralelas y distintas <span class="m">R1</span></p>
+<p class="step">(b) \(\overrightarrow{AB}=(-1,-2,5)\) <span class="m">A1</span>. Método de la proyección <span class="m">M1</span>: \(\overrightarrow{AB}\cdot\hat{\mathbf u}=\tfrac{6}{\sqrt3}\) <span class="m">A1</span></p>
+<p class="step">\(d^2=|\overrightarrow{AB}|^2-\tfrac{36}3=30-12=18\) <span class="m">M1</span> \(\Rightarrow d=3\sqrt2\) <span class="m">A1</span></p>
+<p><span class="lbl">Otro método.</span> \(\dfrac{|\overrightarrow{AB}\times\mathbf u|}{|\mathbf u|}=\dfrac{|(3,6,3)|}{\sqrt3}=\dfrac{3\sqrt6}{\sqrt3}=3\sqrt2\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Mayo 2022 TZ1, pregunta 11 <span class="lvl">15 puntos</span></p>
+<p>\(\Pi_1:\ 2x-y+z=4\), \(\Pi_2:\ x-2y+3z=5\), \(\Pi_3:\ -9x+3y-2z=32\). (a) Muestra que los tres planos no tienen punto común. (b) (i) Verifica que \(P(1,-2,0)\) está en \(\Pi_1\) y \(\Pi_2\). (ii) Halla una ecuación vectorial de \(L=\Pi_1\cap\Pi_2\). (c) Halla la distancia entre \(L\) y \(\Pi_3\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Método 2: \(\mathbf n_1\times\mathbf n_2=(-1,-5,-3)\) <span class="m">A1</span>; \(\mathbf r=(1,-2,0)+\lambda(1,5,3)\) <span class="m">A1</span>. Sustituir en \(\Pi_3\) <span class="m">M1</span>: \(-9(1+\lambda)+3(-2+5\lambda)-2(3\lambda)=-15\neq32\): contradicción <span class="m">R1</span> <span class="m">AG</span></p>
+<p class="step">(b)(i) \(2+2+0=4\) y \(1+4+0=5\) <span class="m">A1</span></p>
+<p class="step">(ii) Producto vectorial de las normales <span class="m">M1</span>: \((1,5,3)\) <span class="m">A1</span>; \(\mathbf r=\begin{pmatrix}1\\-2\\0\end{pmatrix}+\lambda\begin{pmatrix}1\\5\\3\end{pmatrix}\) <span class="m">A1A1</span> (sin «\(\mathbf r=\)», A1A0)</p>
+<p class="step">(c) \(L\) es paralela a \(\Pi_3\), porque \((1,5,3)\cdot(-9,3,-2)=0\). Distancia de \(P\) a \(\Pi_3\) con la normal unitaria <span class="m">(M1)</span>: \(\dfrac{|-9+(-6)-0-32|}{\sqrt{94}}\) <span class="m">A1(M1)A1(M1)</span> \(=\dfrac{47}{\sqrt{94}}=\dfrac{\sqrt{94}}2\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X4. Mayo 2021 TZ1, pregunta 11 <span class="lvl">19 puntos</span></p>
+<p>\(L_1:\ \dfrac{x+1}2=y=3-z\). (a) (i) Muestra que \((-1,0,3)\) está en \(L_1\). (ii) Halla una ecuación vectorial de \(L_1\). \(L_2:\ \mathbf r=(0,1,2)+t(a,1,-1)\). (b) Halla los \(a\) para los que el ángulo agudo entre \(L_1\) y \(L_2\) es 45°. (c) \(L_1\) y \(L_2\) se cortan en un único punto \(A\) si \(a\ne k\). Halla \(k\) y las coordenadas de \(A\) en función de \(a\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a)(i) \(\tfrac{-1+1}2=0=0=3-3\) <span class="m">A1</span> <span class="m">AG</span></p>
+<p class="step">(ii) Igualar a un parámetro <span class="m">(M1)</span>; director \((2,1,-1)\) <span class="m">(A1)</span>; \(\mathbf r=(-1,0,3)+\lambda(2,1,-1)\) <span class="m">A1</span></p>
+<p class="step">(b) Producto escalar <span class="m">(M1)</span>: \(\dfrac{2a+1+1}{\sqrt6\sqrt{a^2+2}}=\cos45^\circ\) <span class="m">(A1)(A1)</span></p>
+<p class="step">\(\sqrt2(2a+2)=\sqrt6\sqrt{a^2+2}\) <span class="m">A1A1</span> \(\Rightarrow4a^2+8a+4=3a^2+6\Rightarrow a^2+8a-2=0\) <span class="m">A1</span></p>
+<p class="step">Resolver <span class="m">M1</span>: \(a=-4\pm3\sqrt2\) <span class="m">A1</span></p>
+<p class="step">(c) Igualar paramétricas <span class="m">(M1)</span>: \(-1+2\lambda=ta,\ \lambda=1+t,\ 3-\lambda=2-t\) <span class="m">A1</span></p>
+<p class="step">Eliminar \(\lambda\) <span class="m">(M1)</span>: \(1+2t=ta\Rightarrow t(a-2)=1\). No hay solución única si \(a=2\): \(k=2\) <span class="m">A1</span></p>
+<p class="step">\(t=\tfrac1{a-2}\) <span class="m">A1</span>; \(A=\left(\dfrac a{a-2},\ \dfrac{a-1}{a-2},\ \dfrac{2a-5}{a-2}\right)\) <span class="m">A2</span></p>
+<p><span class="lbl">Idea clave.</span> La segunda y la tercera ecuación son equivalentes (\(\lambda=1+t\)): por eso las rectas siempre son coplanares, y solo \(a=2\), que las hace paralelas, impide el corte.</p>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Estos tipos de pregunta no salieron en tus 7 pruebas, pero el IB los pone en otras convocatorias (algunos vienen de la Prueba 2 y aquí se resuelven con valores exactos). Junto con la teoría y las secciones 4 y 5, cubren todo el programa de vectores, rectas y planos del NS. Cada tipo trae cómo reconocerlo, el método, un ejemplo resuelto y ejercicios para practicar.</p>
+<h3 id="ty1">T1. Razón de división y colinealidad</h3>
+<p><b>Qué reconocer:</b> piden el punto que divide un segmento en una razón dada, o comprobar que tres puntos están alineados. <b>Método:</b> usa \(\mathbf p=\mathbf a+\tfrac{m}{m+n}\overrightarrow{AB}\) para la razón \(m:n\); para colinealidad, comprueba que \(\overrightarrow{AC}=k\overrightarrow{AB}\).</p>
+<div class="ex"><p class="et">Ejemplo T1. <span class="lvl">Tipo IB</span></p>
+<p>Dados \(A(1,2,3)\) y \(B(4,8,0)\), halla el punto \(P\) con \(AP:PB=2:1\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\overrightarrow{AB}=(3,6,-3)\); \(P=A+\tfrac23\overrightarrow{AB}=(1+2,\,2+4,\,3-2)=(3,6,1)\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el punto medio de \(A(1,2,3)\) y \(B(4,8,0)\), y comprueba si \(C(7,14,-3)\) está en la recta \(AB\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Punto medio \(\left(\tfrac52,5,\tfrac32\right)\). \(\overrightarrow{AC}=(6,12,-6)=2\overrightarrow{AB}\): sí, alineado.</li></ol></div></details></div>
+<h3 id="ty2">T2. Módulos de \(\mathbf a+\mathbf b\) y \(\mathbf a-\mathbf b\)</h3>
+<p><b>Qué reconocer:</b> dan módulos o un dato sobre \(|\mathbf a\pm\mathbf b|\) y piden \(\mathbf a\cdot\mathbf b\), un ángulo o el otro módulo. <b>Método:</b> eleva al cuadrado: \(|\mathbf a\pm\mathbf b|^2=|\mathbf a|^2+|\mathbf b|^2\pm2\,\mathbf a\cdot\mathbf b\). \(|\mathbf a+\mathbf b|=|\mathbf a-\mathbf b|\) equivale a \(\mathbf a\perp\mathbf b\).</p>
+<div class="ex"><p class="et">Ejemplo T2. <span class="lvl">Sección A alta</span></p>
+<p>\(|\mathbf a|=3\), \(|\mathbf b|=5\) y \(|\mathbf a+\mathbf b|=7\). Halla \(\mathbf a\cdot\mathbf b\), el ángulo entre ellos y \(|\mathbf a-\mathbf b|\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(49=9+25+2\,\mathbf a\cdot\mathbf b\Rightarrow\mathbf a\cdot\mathbf b=\tfrac{15}2\). \(\cos\theta=\tfrac{15/2}{15}=\tfrac12\): \(\theta=60^\circ\).</p><p>\(|\mathbf a-\mathbf b|^2=34-15=19\Rightarrow|\mathbf a-\mathbf b|=\sqrt{19}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Si \(|\mathbf a|=|\mathbf b|=2\) y el ángulo entre ellos es 60°, halla \(|\mathbf a+\mathbf b|\) y \(|\mathbf a-\mathbf b|\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\mathbf a\cdot\mathbf b=2\). \(|\mathbf a+\mathbf b|=\sqrt{4+4+4}=2\sqrt3\); \(|\mathbf a-\mathbf b|=\sqrt{4+4-4}=2\).</li></ol></div></details></div>
+<h3 id="ty3">T3. Distancia de un punto a una recta</h3>
+<p><b>Qué reconocer:</b> piden la distancia de un punto \(P\) a una recta, o el punto más cercano. <b>Método:</b> halla el pie \(F\) con \(\overrightarrow{FP}\cdot\mathbf u=0\), o usa \(d=\tfrac{|\overrightarrow{AP}\times\mathbf u|}{|\mathbf u|}\).</p>
+<div class="ex"><p class="et">Ejemplo T3. <span class="lvl">Tipo IB</span></p>
+<p>Halla la distancia de \(P(1,2,3)\) a la recta \(\mathbf r=t(1,1,1)\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Pie: \(t=\tfrac{\mathbf p\cdot\mathbf u}{|\mathbf u|^2}=\tfrac63=2\), \(F=(2,2,2)\); \(\overrightarrow{FP}=(-1,0,1)\), distancia \(\sqrt2\).</p><p>Con la fórmula: \(\mathbf p\times\mathbf u=(-1,2,-1)\), \(\tfrac{\sqrt6}{\sqrt3}=\sqrt2\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla la distancia de \(P(2,1,0)\) a la recta \(\mathbf r=t(1,-1,0)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Pie \(t=\tfrac12\), \(F=\left(\tfrac12,-\tfrac12,0\right)\); \(\overrightarrow{FP}=\left(\tfrac32,\tfrac32,0\right)\), distancia \(\tfrac{3\sqrt2}2\).</li></ol></div></details></div>
+<h3 id="ty4">T4. Bisectriz de un ángulo con vectores</h3>
+<p><b>Qué reconocer:</b> piden un vector o una recta que biseque el ángulo entre dos vectores o dos rectas. <b>Método:</b> la bisectriz interior lleva la dirección \(\hat{\mathbf u}+\hat{\mathbf v}\) (suma de unitarios). La exterior, \(\hat{\mathbf u}-\hat{\mathbf v}\).</p>
+<div class="ex"><p class="et">Ejemplo T4. <span class="lvl">Sección B</span></p>
+<p>Halla un vector director de la bisectriz del ángulo entre \(\mathbf u=(3,0,4)\) y \(\mathbf v=(0,5,0)\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\hat{\mathbf u}=\left(\tfrac35,0,\tfrac45\right)\), \(\hat{\mathbf v}=(0,1,0)\). Suma \(\left(\tfrac35,1,\tfrac45\right)\), proporcional a \((3,5,4)\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla un vector director de la bisectriz del ángulo entre \((1,2,2)\) y \((2,-1,2)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Unitarios \(\tfrac13(1,2,2)\) y \(\tfrac13(2,-1,2)\); suma \(\tfrac13(3,1,4)\), proporcional a \((3,1,4)\).</li></ol></div></details></div>
+<h3 id="ty5">T5. Plano que contiene una recta y un punto</h3>
+<p><b>Qué reconocer:</b> piden el plano que contiene una recta dada y pasa por un punto fuera de ella. <b>Método:</b> toma el director de la recta y el vector del punto de la recta al punto dado como las dos direcciones; su producto vectorial es la normal.</p>
+<div class="ex"><p class="et">Ejemplo T5. <span class="lvl">Sección A alta</span></p>
+<p>Halla el plano que contiene la recta \(\mathbf r=(1,0,0)+t(1,1,0)\) y pasa por \((0,0,2)\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Direcciones \((1,1,0)\) y \((0,0,2)-(1,0,0)=(-1,0,2)\). Normal \((1,1,0)\times(-1,0,2)=(2,-2,1)\).</p><p>Plano: \(2x-2y+z=2\) (con el punto \((1,0,0)\)).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el plano que pasa por \(A(1,0,0)\), \(B(0,1,0)\) y \(C(0,0,1)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\overrightarrow{AB}\times\overrightarrow{AC}=(1,1,1)\): plano \(x+y+z=1\).</li></ol></div></details></div>
+<h3 id="ty6">T6. Recta intersección de dos planos y ángulo</h3>
+<p><b>Qué reconocer:</b> piden la recta común a dos planos, o el ángulo entre dos planos. <b>Método:</b> la dirección de la recta es \(\mathbf n_1\times\mathbf n_2\); un punto se halla fijando una coordenada. El ángulo entre planos es el de sus normales (el agudo).</p>
+<div class="ex"><p class="et">Ejemplo T6. <span class="lvl">Tipo IB</span></p>
+<p>Halla la recta intersección de \(x+y+z=1\) y \(x-y+2z=0\), y el ángulo entre los planos.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Dirección \((1,1,1)\times(1,-1,2)=(3,-1,-2)\). Con \(z=0\): \(x+y=1\), \(x-y=0\Rightarrow\left(\tfrac12,\tfrac12,0\right)\).</p><p>\(\cos\theta=\tfrac{|1-1+2|}{\sqrt3\sqrt6}=\tfrac{\sqrt2}3\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el ángulo entre los planos \(x=0\) y \(x+y=0\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\cos\theta=\tfrac{|1|}{1\cdot\sqrt2}=\tfrac{\sqrt2}2\): 45°.</li></ol></div></details></div>
+<h3 id="ty7">T7. Posición de recta y plano según un parámetro</h3>
+<p><b>Qué reconocer:</b> una recta con un parámetro en su director y un plano; piden para qué valor la recta es paralela, está contenida o corta al plano. <b>Método:</b> calcula \(\mathbf u\cdot\mathbf n\): si es \(\neq0\), corta; si es 0, sustituye para distinguir «paralela» (\(0=k\neq0\)) de «contenida» (\(0=0\)).</p>
+<div class="ex"><p class="et">Ejemplo T7. <span class="lvl">Sección B</span></p>
+<p>¿Para qué \(a\) la recta \(\mathbf r=(1,0,0)+t(1,2,a)\) es paralela al plano \(2x-y+z=5\) sin estar contenida?</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\mathbf u\cdot\mathbf n=2-2+a=a\). Para ser paralela, \(a=0\). Sustituyendo con \(a=0\): \(2(1+t)-2t=2\neq5\): paralela, no contenida.</p><p>Si \(a\neq0\), la recta corta al plano en un punto.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>¿Para qué \(a\) la recta \(\mathbf r=(0,0,1)+t(a,1,1)\) es paralela al plano \(x+y-z=4\)? ¿Está contenida?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\mathbf u\cdot\mathbf n=a+1-1=a=0\). Con \(a=0\): \(0+t-(1+t)=-1\neq4\): paralela, no contenida.</li></ol></div></details></div>
+<h3 id="ty8">T8. Distancia mínima entre dos móviles</h3>
+<p><b>Qué reconocer:</b> dos partículas con posición \(\mathbf r=\mathbf a+t\mathbf v\) y piden la distancia mínima y cuándo ocurre. <b>Método:</b> escribe \(\mathbf d(t)=\mathbf r_1-\mathbf r_2\), minimiza \(|\mathbf d|^2\) (una cuadrática en \(t\)): el mínimo está en el vértice.</p>
+<div class="ex"><p class="et">Ejemplo T8. <span class="lvl">Sección A alta</span></p>
+<p>Una partícula va por \(\mathbf r_1=(1,1,0)+t(1,0,0)\) y otra por \(\mathbf r_2=(0,0,3)+t(0,1,0)\). Halla el instante y la distancia mínima entre ellas.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\mathbf d=(1+t,\,1-t,\,-3)\), \(|\mathbf d|^2=(1+t)^2+(1-t)^2+9=2t^2+11\).</p><p>Mínimo en \(t=0\): distancia \(\sqrt{11}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Con \(\mathbf r_1=(2,0,0)+t(0,0,1)\) y \(\mathbf r_2=(0,2,0)+t(0,0,-1)\), halla la distancia mínima.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\mathbf d=(2,-2,2t)\), \(|\mathbf d|^2=8+4t^2\): mínimo en \(t=0\), distancia \(2\sqrt2\).</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo de los Módulos 1–9. Integran sucesiones (Módulo 1), polinomios (Módulo 2), demostración (Módulo 5), complejos (Módulo 6), geometría (Módulo 7) y trigonometría (Módulo 8). El 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la Sección B. Al final, I1 es una investigación tipo Prueba 3 de NS. Cada uno trae una pista y la respuesta final plegadas.</p>
+
+<div class="ex"><p class="et">E1. Vectores del plano como complejos <span class="lvl">Sección B, integra Módulo 6</span></p>
+<p>Sea \(z=a+bi\) y \(w=c+di\). (a) Muestra que \(\mathrm{Re}(\bar zw)=(a,b)\cdot(c,d)\) y que \(\mathrm{Im}(\bar zw)=ad-bc\). (b) Deduce que \((a,b)\perp(c,d)\) si y solo si \(\tfrac wz\) es imaginario puro. (c) Halla el área del triángulo de vértices \(O\), \((3,1)\), \((1,4)\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(c) El área es \(\tfrac12|\mathrm{Im}(\bar zw)|\), que es el producto vectorial de dos dimensiones.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) \(\tfrac12|3\cdot4-1\cdot1|=\tfrac{11}2\).</p></div></details></div>
+
+<div class="ex"><p class="et">E2. Teoremas de geometría con el producto escalar <span class="lvl">Sección B, integra Módulos 5 y 7</span></p>
+<p>(a) Con \(|\mathbf b-\mathbf a|^2\), prueba la ley de cosenos. (b) Prueba que el ángulo inscrito en una semicircunferencia es recto: si \(|\mathbf r|=|\mathbf a|\), entonces \((\mathbf r-\mathbf a)\cdot(\mathbf r+\mathbf a)=0\). (c) Prueba que las diagonales de un rombo son perpendiculares.</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Los extremos del diámetro son \(\pm\mathbf a\). (c) Las diagonales son \(\mathbf a+\mathbf b\) y \(\mathbf a-\mathbf b\), con \(|\mathbf a|=|\mathbf b|\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) y (c) salen de \((\mathbf x+\mathbf y)\cdot(\mathbf x-\mathbf y)=|\mathbf x|^2-|\mathbf y|^2=0\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Sistemas con coeficientes en progresión aritmética <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>(a) Resuelve \(x+2y+3z=4\), \(2x+3y+4z=5\), \(3x+4y+5z=6\) y escribe la solución como recta. (b) Muestra que si las tres ecuaciones, vistas como filas \((a,b,c\,|\,d)\), están en PA (\(E_2-E_1=E_3-E_2\)), el sistema es dependiente: nunca tiene solución única.</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Si las filas \(E_1,E_2,E_3\) están en PA, entonces \(E_1+E_3=2E_2\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\mathbf r=(-2,3,0)+t(1,-2,1)\).</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Recta tangente a una esfera <span class="lvl">Sección B, integra Módulo 2</span></p>
+<p>La esfera tiene centro \(O\) y radio 3; la recta es \(\mathbf r=(5,0,0)+\lambda(-1,k,0)\). (a) Halla los \(k\) para los que la recta es tangente, usando el discriminante. (b) Compruébalo con la distancia del centro a la recta.</p>
+<details><summary>Pista</summary><div class="inner"><p>\(|(5-\lambda,k\lambda,0)|^2=9\) es una cuadrática en \(\lambda\): tangencia significa raíz doble.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \((1+k^2)\lambda^2-10\lambda+16=0\), con \(\Delta=0\Rightarrow k=\pm\tfrac34\). (b) \(\tfrac{5|k|}{\sqrt{1+k^2}}=3\): el mismo resultado.</p></div></details></div>
+
+<div class="ex"><p class="et">E5. Baricentro y diagonales <span class="lvl">Sección B, integra Módulo 5</span></p>
+<p>(a) Prueba que las diagonales de un paralelogramo se bisecan. (b) Prueba que las tres medianas de un triángulo pasan por \(G=\tfrac{\mathbf a+\mathbf b+\mathbf c}{3}\) y que \(G\) divide cada mediana en razón \(2:1\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Toma el punto de la mediana desde \(A\) que está a \(\tfrac23\) del camino hacia el punto medio de \(BC\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(\mathbf a+\tfrac23\left(\tfrac{\mathbf b+\mathbf c}2-\mathbf a\right)=\tfrac{\mathbf a+\mathbf b+\mathbf c}3\), expresión simétrica en \(\mathbf a,\mathbf b,\mathbf c\).</p></div></details></div>
+
+<div class="ex"><p class="et">E6. El ángulo diedro del tetraedro regular <span class="lvl">Sección B, integra Módulo 7</span></p>
+<p>Los puntos \((1,1,1)\), \((1,-1,-1)\), \((-1,1,-1)\), \((-1,-1,1)\) son vértices de un tetraedro regular. (a) Verifica que todas las aristas miden \(2\sqrt2\). (b) Halla el coseno del ángulo entre dos caras (ángulo diedro).</p>
+<details><summary>Pista</summary><div class="inner"><p>Las normales de las caras apuntan hacia los vértices opuestos: son múltiplos de \(-(1,1,1)\), etc. El ángulo diedro es el suplementario del ángulo entre normales exteriores.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(\cos=\tfrac13\) (unos 70,5°).</p></div></details></div>
+
+<div class="ex"><p class="et">E7. Reflejar un punto y una recta en un plano <span class="lvl">Sección B</span></p>
+<p>\(\Pi:\ x+y+z=3\). (a) Halla el pie de la perpendicular desde \(A(1,2,3)\) y el simétrico \(A'\). (b) La recta \(AB\), con \(B(1,1,1)\in\Pi\), se refleja en \(\Pi\). Halla la ecuación de la recta reflejada.</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) \(B\) está en el plano, así que es invariante: la recta reflejada pasa por \(B\) y \(A'\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) Pie \((0,1,2)\); \(A'=(-1,0,1)\). (b) \(\mathbf r=(1,1,1)+s(2,1,0)\).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Una familia de rectas en un cono <span class="lvl">Sección B, integra Módulo 8</span></p>
+<p>\(L_\theta:\ \mathbf r=t(\cos\theta,\sin\theta,1)\). (a) Muestra que todas forman 45° con el eje \(z\). (b) Muestra que el ángulo \(\varphi\) entre \(L_\alpha\) y \(L_\beta\) cumple \(\cos\varphi=\cos^2\tfrac{\alpha-\beta}{2}\). (c) ¿Pueden ser perpendiculares dos de estas rectas?</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) \(\cos(\alpha-\beta)+1=2\cos^2\tfrac{\alpha-\beta}2\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) Sí, pero solo en un caso: \(\cos\varphi=0\) exige \(\cos\tfrac{\alpha-\beta}2=0\), es decir \(\alpha-\beta=\pi\). Son las rectas opuestas del cono.</p></div></details></div>
+
+<div class="ex"><p class="et">E9. Tres planos con un parámetro <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>\(x+y+kz=1\), \(x+ky+z=1\), \(kx+y+z=1\). (a) Muestra que el determinante del sistema es \(-(k-1)^2(k+2)\). (b) Para \(k\neq1,-2\), halla la solución única. (c) Describe geométricamente los casos \(k=1\) y \(k=-2\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Por simetría \(x=y=z\). (c) Con \(k=-2\), suma las tres ecuaciones.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(x=y=z=\tfrac1{k+2}\). (c) \(k=1\): los tres planos coinciden (infinitas soluciones, un plano). \(k=-2\): al sumar sale \(0=3\), sin solución; ninguna normal es paralela a otra, así que forman un prisma triangular.</p></div></details></div>
+
+<div class="ex"><p class="et">E10. La perpendicular común a dos rectas que se cruzan <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>\(L_1:\ \mathbf r=(1,0,0)+s(1,1,0)\) y \(L_2:\ \mathbf r=(0,1,1)+t(0,1,1)\). (a) Halla los puntos \(P\in L_1\) y \(Q\in L_2\) con \(\overrightarrow{PQ}\) perpendicular a ambas. (b) Halla \(PQ\) y compáralo con la fórmula de la distancia. (c) Halla el ángulo entre las rectas. (d) Usando que el volumen del tetraedro con aristas opuestas de longitudes \(p\) y \(q\) sobre \(L_1\) y \(L_2\) es \(\tfrac16pq\,d\sin\theta\), halla ese volumen para \(p=q=2\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Impón \(\overrightarrow{PQ}\cdot\mathbf u_1=0\) y \(\overrightarrow{PQ}\cdot\mathbf u_2=0\): es un sistema 2×2 en \(s,t\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(s=-\tfrac23\), \(t=-\tfrac43\): \(P\left(\tfrac13,-\tfrac23,0\right)\), \(Q\left(0,-\tfrac13,-\tfrac13\right)\). (b) \(\tfrac1{\sqrt3}\), igual que con la fórmula. (c) 60°. (d) \(\tfrac16\cdot4\cdot\tfrac1{\sqrt3}\cdot\tfrac{\sqrt3}2=\tfrac13\).</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. Vectores: el centroide de un triángulo y de un tetraedro <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>El centroide de un triángulo es \(\tfrac{\mathbf a+\mathbf b+\mathbf c}3\). Aquí lo demuestras con vectores y lo generalizas al tetraedro, descubriendo un patrón.</p>
+<ol type="a"><li>En el triángulo \(ABC\), sea \(M\) el punto medio de \(BC\). Escribe \(\overrightarrow{AM}\) y \(\overrightarrow{AG}\), con \(G=\tfrac{\mathbf a+\mathbf b+\mathbf c}3\), y prueba que \(G\) divide la mediana \(AM\) en razón \(2:1\).</li><li>Deduce que las tres medianas se cortan en \(G\) (basta ver que \(G\) está en las tres).</li><li>En el tetraedro \(ABCD\), sea \(G_A\) el centroide de la cara \(BCD\). Prueba que el segmento \(AG_A\) pasa por \(K=\tfrac{\mathbf a+\mathbf b+\mathbf c+\mathbf d}4\) y que \(K\) lo divide en razón \(3:1\).</li><li>Prueba que los tres segmentos que unen los puntos medios de aristas opuestas también pasan por \(K\), y que \(K\) los biseca.</li><li>Conjetura, para un «símplex» de \(n+1\) vértices, en qué razón el centroide divide el segmento de un vértice al centroide de la cara opuesta.</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>\(\overrightarrow{AM}=\tfrac{\mathbf b+\mathbf c}2-\mathbf a\); \(\overrightarrow{AG}=\tfrac{\mathbf b+\mathbf c-2\mathbf a}3\).</li><li>\(G\) es simétrico en \(\mathbf a,\mathbf b,\mathbf c\): el mismo argumento vale para las tres.</li><li>\(G_A=\tfrac{\mathbf b+\mathbf c+\mathbf d}3\); compara \(\overrightarrow{AK}\) con \(\overrightarrow{AG_A}\).</li><li>El punto medio de \(AB\) es \(\tfrac{\mathbf a+\mathbf b}2\); el de \(CD\), \(\tfrac{\mathbf c+\mathbf d}2\).</li><li>El patrón de \(2:1\) y \(3:1\) sugiere \(n:1\).</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>\(\overrightarrow{AG}=\tfrac{\mathbf b+\mathbf c-2\mathbf a}3=\tfrac23\overrightarrow{AM}\): \(AG:GM=2:1\).</li><li>Por simetría \(G\) está también en \(BN\) y \(CP\): es el punto común.</li><li>\(\overrightarrow{AK}=\tfrac{\mathbf b+\mathbf c+\mathbf d-3\mathbf a}4=\tfrac34\overrightarrow{AG_A}\): \(AK:KG_A=3:1\).</li><li>El punto medio de los dos puntos medios es \(\tfrac14(\mathbf a+\mathbf b+\mathbf c+\mathbf d)=K\): los tres segmentos se bisecan en \(K\).</li><li>El centroide divide ese segmento en razón \(n:1\) (triángulo \(n=2\), tetraedro \(n=3\)).</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 10, estadística y probabilidad.</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

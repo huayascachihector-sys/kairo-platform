@@ -1,0 +1,1112 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 3A · Dinámica · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}
+.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:18ch}
+.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}
+@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:56px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}
+h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:30px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;letter-spacing:.02em;color:var(--teal-deep);margin:18px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:14px 0;overflow-x:auto}
+.eqname{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--teal);letter-spacing:.06em;display:block;margin-top:4px}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.ej{border:1px solid var(--line);border-radius:5px;margin:22px 0;background:var(--paper-2);overflow:hidden}
+.ej-head{background:linear-gradient(180deg,#F0F5F3,#FFFFFF);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ej-tag{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal);padding:2px 8px;border-radius:3px}
+.ej-num{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px}
+.ej-src{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);letter-spacing:.05em}
+.ej-body{padding:16px 20px 20px}
+.sepide{display:inline-block;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:2px 8px;margin:2px 0 8px}
+.sol{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:6px 12px;display:inline-block;margin-top:8px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}td.l,th.l{text-align:left}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> A.2 FUERZAS <span>//</span> MÓDULO 3A · TEORÍA + TIPO 1</p>
+  <h1>Dinámica: la <em>causa</em> del movimiento</h1>
+  <p class="lede">Leyes de Newton, diagramas de cuerpo libre, fricción, tensión, planos inclinados, poleas y ascensores. Nivel completo de la guía (A.2, parte de fuerzas) más la profundidad del 7. Reutiliza toda la cinemática del Módulo 2.</p>
+  <div class="stats">
+    <div class="stat"><b>7</b><span>secciones de teoría</span></div>
+    <div class="stat"><b>10</b><span>ficha resueltos</span></div>
+    <div class="stat"><b>10</b><span>propuestos</span></div>
+    <div class="stat"><b>24</b><span>exámenes IB 2022–26</span></div>
+    <div class="stat"><b>g = 10</b><span>m·s⁻² salvo indicación</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#s1">1 · Fuerza, DCL y resultante</a>
+  <a href="#s2">2 · Primera ley (equilibrio)</a>
+  <a href="#s3">3 · Segunda ley · peso vs masa</a>
+  <a href="#s4">4 · Tercera ley</a>
+  <a href="#s5">5 · Catálogo de fuerzas</a>
+  <a href="#s6">6 · Inclinados, poleas, ascensores</a>
+  <a href="#s7">7 · Más allá del IB</a>
+  <a href="#s8">8 · Definiciones (examen)</a>
+  <a href="#traps">Checklist de trampas</a>
+  <a href="#bloque">10 resueltos (ficha)</a>
+  <a href="#resto">Resto de la ficha</a>
+  <a href="#examenes">Banco de exámenes IB · 2022–26</a>
+  <a href="#practica">10 propuestos</a>
+  <a href="#masproblemas">Más problemas · past paper IB</a>
+</nav>
+
+<main>
+<!-- rev 2026-10-25 din · banco examenes IB dinamica tipo 1 2022-2026 (24) v2 -->
+
+<!-- S1 -->
+<section id="s1">
+  <p class="sec-num">SECCIÓN 01</p>
+  <h2>Fuerza, diagrama de cuerpo libre y fuerza resultante<span class="rule"></span></h2>
+  <p class="sec-intro">Una fuerza es una <strong>interacción</strong> entre dos cuerpos (empuje, tirón, contacto o campo). La cinemática decía <em>cómo</em> se mueve algo; la dinámica dice <em>por qué</em>.</p>
+
+  <h3>Diagrama de cuerpo libre (DCL)</h3>
+  <p>Se aísla el cuerpo y se dibujan <strong>solo las fuerzas que actúan sobre él</strong> (no las que él ejerce sobre otros), como vectores desde su centro. Es el paso que decide si el problema sale o no.</p>
+
+  <div class="box key"><span class="lbl">Método: armar el DCL paso a paso</span>
+    <ol>
+      <li><strong>Aísla un solo cuerpo</strong> (o el sistema que trates como uno). Dibújalo como un bloque o un punto.</li>
+      <li><strong>Peso siempre:</strong> una flecha \(W=mg\) hacia abajo desde el centro.</li>
+      <li><strong>Contactos:</strong> por cada superficie que lo toca, una <strong>normal</strong> \(\perp\) a esa superficie y, si hay deslizamiento o tendencia a él, una <strong>fricción</strong> a lo largo de la superficie oponiéndose al movimiento (o a su tendencia).</li>
+      <li><strong>Cuerdas:</strong> una <strong>tensión</strong> por cada cuerda, saliendo del cuerpo <em>a lo largo</em> de la cuerda (siempre tira, nunca empuja).</li>
+      <li><strong>Fuerzas aplicadas</strong> del enunciado (empuje, tirón, resorte…).</li>
+      <li><strong>Elige ejes</strong> (horizontal/vertical, o rotados sobre el plano) y proyecta cada fuerza.</li>
+      <li><strong>Aplica la ley que toca</strong> por eje: \(\sum F=0\) si no acelera en ese eje, \(\sum F=ma\) si acelera.</li>
+    </ol>
+    <p><strong>Regla de oro:</strong> solo fuerzas que <em>otros</em> ejercen <em>sobre</em> el cuerpo. Nunca dibujes \(ma\) (no es una fuerza) ni la fuerza que el cuerpo ejerce sobre otros.</p>
+  </div>
+  <figure class="fig">
+    <svg viewBox="0 0 300 180" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="DCL bloque">
+      <rect x="115" y="80" width="70" height="45" fill="#C9D2CC" stroke="var(--ink)"/>
+      <line x1="150" y1="102" x2="150" y2="165" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#a)"/>
+      <line x1="150" y1="102" x2="150" y2="35" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#a)"/>
+      <line x1="150" y1="102" x2="245" y2="102" stroke="var(--amber)" stroke-width="2.5" marker-end="url(#a)"/>
+      <line x1="150" y1="102" x2="70" y2="102" stroke="var(--hl)" stroke-width="2.5" marker-end="url(#a)"/>
+      <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <text x="156" y="160" font-family="IBM Plex Mono" font-size="12" fill="var(--warn)">W=mg</text>
+      <text x="156" y="45" font-family="IBM Plex Mono" font-size="12" fill="var(--teal)">Fɴ</text>
+      <text x="212" y="96" font-family="IBM Plex Mono" font-size="12" fill="var(--amber)">F</text>
+      <text x="74" y="96" font-family="IBM Plex Mono" font-size="12" fill="var(--hl)">Ff</text>
+    </svg>
+    <figcaption>Bloque empujado: peso ↓, normal ↑, fuerza aplicada →, fricción ←.</figcaption>
+  </figure>
+
+  <div class="eq">\[ \vec F_{\text{neta}}=\sum \vec F \]<span class="eqname">la fuerza resultante es la suma vectorial de todas las fuerzas</span></div>
+  <p>En 2D se trabaja por componentes: \(\sum F_x\) y \(\sum F_y\) por separado. Todo el tema es «arma el DCL → suma por ejes → aplica la ley que toca».</p>
+  <figure class="fig">
+    <svg viewBox="0 0 300 180" width="290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Descomposición de una fuerza aplicada en ángulo sobre un bloque, con sus componentes horizontal y vertical, la normal y el peso">
+      <defs><marker id="ang" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <rect x="98" y="90" width="44" height="30" fill="#C9D2CC" stroke="var(--ink)" stroke-width="1.3"/>
+      <text x="120" y="110" font-family="Space Grotesk" font-size="12" fill="var(--ink)" text-anchor="middle">m</text>
+      <line x1="120" y1="105" x2="190" y2="57" stroke="var(--teal-deep)" stroke-width="2.5" marker-end="url(#ang)"/>
+      <line x1="120" y1="105" x2="190" y2="105" stroke="var(--amber)" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#ang)"/>
+      <line x1="190" y1="105" x2="190" y2="57" stroke="var(--amber)" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#ang)"/>
+      <line x1="120" y1="105" x2="120" y2="158" stroke="var(--warn)" stroke-width="2.2" marker-end="url(#ang)"/>
+      <line x1="120" y1="90" x2="120" y2="52" stroke="var(--teal)" stroke-width="2.2" marker-end="url(#ang)"/>
+      <path d="M152,105 A32,32 0 0,0 144,87" fill="none" stroke="var(--ink)" stroke-width="1.2"/>
+      <text x="150" y="99" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">θ</text>
+      <text x="193" y="54" font-family="IBM Plex Mono" font-size="12" fill="var(--teal-deep)">F</text>
+      <text x="150" y="119" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">Fx=F·cosθ</text>
+      <text x="196" y="86" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">Fy=F·senθ</text>
+      <text x="125" y="150" font-family="IBM Plex Mono" font-size="11" fill="var(--warn)">mg</text>
+      <text x="100" y="58" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">N</text>
+    </svg>
+    <figcaption>Una fuerza \(F\) a ángulo θ se separa en \(F_x=F\cos\theta\) (horizontal) y \(F_y=F\,\mathrm{sen}\,\theta\) (vertical).</figcaption>
+  </figure>
+</section>
+
+<!-- S2 -->
+<section id="s2">
+  <p class="sec-num">SECCIÓN 02</p>
+  <h2>Primera ley: inercia y equilibrio de traslación<span class="rule"></span></h2>
+  <p class="sec-intro">Un cuerpo sigue en reposo o con velocidad constante mientras la fuerza resultante sea cero. «Velocidad constante» incluye rapidez y dirección constantes.</p>
+  <div class="eq">\[ \vec F_{\text{neta}}=0 \iff a=0 \iff v=\text{constante (o reposo)} \]<span class="eqname">condición de equilibrio de traslación</span></div>
+
+  <div class="box key"><span class="lbl">De cero a entenderlo: ¿qué es la inercia?</span>
+    <p><strong>¿Qué dice la ley?</strong> Que un cuerpo "no cambia solo". Si está quieto, sigue quieto; si va a 50 km/h en línea recta, sigue a 50 km/h en línea recta. Para que <em>cambie</em> su movimiento tiene que venir alguien de afuera a empujarlo o frenarlo: eso es una fuerza resultante distinta de cero.</p>
+    <p><strong>El giro que casi nadie tiene claro:</strong> <em>no hace falta fuerza para mantener la velocidad, solo para cambiarla</em>. En la vida diaria parece que sí hace falta empujar sin parar (el carrito del súper se detiene si dejas de empujar), pero eso es porque la fricción lo está frenando: tú empujas solo para <strong>cancelar</strong> esa fricción, no para "mantener" la velocidad. En el espacio, sin fricción ni aire, una sonda apagada viaja millones de kilómetros sin motor encendido. Esa tendencia a seguir igual se llama <strong>inercia</strong>, y es mayor cuanto más masa tiene el cuerpo.</p>
+    <p><strong>¿Por qué ocurre?</strong> Porque la velocidad no necesita "causa" para existir; solo el <em>cambio</em> de velocidad (la aceleración) la necesita. Tener velocidad no consume nada. Piensa en el tirón hacia atrás cuando un bus arranca: tu cuerpo "quería" quedarse quieto (inercia) y el asiento te empuja hacia adelante; o el tirón hacia adelante al frenar de golpe: tu cuerpo "quería" seguir a la velocidad anterior.</p>
+  </div>
+
+  <div class="box key"><span class="lbl">Equilibrio de fuerzas concurrentes (3 fuerzas · triángulo · Lami)</span>
+    <p>Con varias fuerzas que se cortan en un punto, el equilibrio exige \(\sum F_x=0\) y \(\sum F_y=0\) por separado. Geométricamente, los vectores puestos punta-cola <strong>cierran un polígono</strong>; con <strong>tres</strong> fuerzas forman un <strong>triángulo de fuerzas</strong> (si no cierra, hay resultante).</p>
+    <p><strong>Teorema de Lami</strong> (tres fuerzas concurrentes en equilibrio): cada fuerza es proporcional al seno del ángulo <em>opuesto</em>, es decir el formado por las otras dos.</p>
+    <div class="eq">\[ \frac{F_1}{\sin\alpha_1}=\frac{F_2}{\sin\alpha_2}=\frac{F_3}{\sin\alpha_3} \]<span class="eqname">αᵢ = ángulo entre las otras dos fuerzas</span></div>
+    <figure class="fig" style="margin:10px 0">
+      <svg viewBox="0 0 300 120" width="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Triángulo de fuerzas: tres vectores puestos punta a cola que cierran">
+        <defs><marker id="tri" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+        <line x1="40" y1="100" x2="40" y2="30" stroke="var(--warn)" stroke-width="2.4" marker-end="url(#tri)"/>
+        <line x1="40" y1="30" x2="150" y2="30" stroke="var(--teal)" stroke-width="2.4" marker-end="url(#tri)"/>
+        <line x1="150" y1="30" x2="40" y2="100" stroke="var(--amber)" stroke-width="2.4" marker-end="url(#tri)"/>
+        <text x="20" y="68" font-family="IBM Plex Mono" font-size="12" fill="var(--warn)">F₁</text>
+        <text x="90" y="24" font-family="IBM Plex Mono" font-size="12" fill="var(--teal)">F₂</text>
+        <text x="96" y="76" font-family="IBM Plex Mono" font-size="12" fill="var(--amber)">F₃</text>
+      </svg>
+      <figcaption>Tres fuerzas en equilibrio cierran el triángulo: \(\vec F_1+\vec F_2+\vec F_3=0\).</figcaption>
+    </figure>
+    <p><strong>Mini-ejemplo (triángulo):</strong> una lámpara de 100 N cuelga de dos cuerdas simétricas, cada una a 30° sobre la horizontal. Vertical: \(2T\,\mathrm{sen}\,30^\circ=100\Rightarrow T=100\) N; las componentes horizontales se cancelan por simetría.</p>
+    <p><strong>Mini-ejemplo (Lami):</strong> si tres cuerdas tiran del mismo nudo en equilibrio a 120° entre sí, \(\sin120^\circ\) es común a las tres ⇒ las tres tensiones son iguales.</p>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 2.1</span><span class="ej-src">ficha · M99 (auto a velocidad constante)</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Un auto avanza a velocidad constante; el peso total es 1000 N. ¿Cuánto vale la fuerza resultante sobre el auto?</p>
+      <div class="sol">
+        <p>Velocidad constante ⇒ \(a=0\) ⇒ por la 1.ª ley \(\vec F_{\text{neta}}=0\). El empuje del motor y la resistencia se cancelan; el peso y la normal se cancelan.</p>
+        <span class="ans">Resultante = 0 (opción D).</span>
+      </div>
+    </div>
+  </div>
+  <div class="box trap"><span class="lbl">Trampa</span><p>Movimiento ≠ fuerza. Un cuerpo puede moverse (rápido incluso) con fuerza resultante nula. Y en una v–t de fuerza resultante <em>constante</em>, la gráfica es una <strong>recta creciente</strong> (aceleración constante), no una curva.</p></div>
+</section>
+
+<!-- S3 -->
+<section id="s3">
+  <p class="sec-num">SECCIÓN 03</p>
+  <h2>Segunda ley: F = ma · peso frente a masa<span class="rule"></span></h2>
+  <p class="sec-intro">La fuerza resultante es proporcional a la aceleración; la constante es la masa (la inercia).</p>
+  <div class="eq">\[ \vec F_{\text{neta}}=m\,\vec a \qquad\qquad W=mg \]<span class="eqname">segunda ley y peso</span></div>
+  <p><strong>Masa</strong> (kg): cantidad de materia / inercia; no cambia con el lugar. <strong>Peso</strong> (N): fuerza gravitatoria \(W=mg\); cambia si cambia \(g\). La 2.ª ley en la forma \(F=ma\) supone masa constante; la forma general \(F=\Delta p/\Delta t\) (que verás en Cantidad de movimiento) admite masa variable.</p>
+
+  <div class="box key"><span class="lbl">De cero a entenderlo: la fuerza causa ACELERACIÓN, no velocidad</span>
+    <p><strong>El error número uno en todo el tema:</strong> creer que "más fuerza = más velocidad". Falso. <em>Más fuerza = más aceleración</em>, es decir, más <strong>cambio</strong> de velocidad por segundo. Una fuerza constante no te deja en una velocidad fija: te hace ir cada vez más rápido (o más lento, si frena). Mientras haya fuerza resultante, la velocidad no para de cambiar.</p>
+    <p><strong>Analogía del pedal:</strong> el acelerador de un auto no fija la velocidad, fija la aceleración. Si pisas un poco y lo sostienes, el auto va subiendo de velocidad; si pisas el doble, sube el doble de rápido. La velocidad que tengas en un instante es la "acumulación" de toda la aceleración anterior.</p>
+    <p><strong>Por qué doble fuerza ⇒ doble aceleración:</strong> en \(a=F/m\), con la misma masa, \(a\) es proporcional a \(F\). Empujar con el doble de fuerza al mismo cuerpo lo hace ganar velocidad el doble de rápido. Es directo: dos personas empujando un auto averiado lo aceleran el doble que una sola.</p>
+    <p><strong>Por qué doble masa ⇒ mitad de aceleración:</strong> la masa es la "resistencia a acelerar" (la inercia). En \(a=F/m\), al duplicar \(m\) el cociente se parte a la mitad. Con el mismo empujón, un cuerpo el doble de pesado gana velocidad la mitad de rápido: por eso cuesta mucho más arrancar un camión que una bicicleta aunque uses la misma fuerza.</p>
+  </div>
+
+  <div class="box key"><span class="lbl">De cero a entenderlo: peso vs. masa (por qué uno cambia y el otro no)</span>
+    <p><strong>¿Qué es la masa?</strong> Es cuánta materia tienes y cuánto te resistes a acelerar. Es una propiedad tuya que llevas a todas partes: 60 kg en la Tierra, 60 kg en la Luna, 60 kg flotando en el espacio. No depende de dónde estés.</p>
+    <p><strong>¿Qué es el peso?</strong> Es la <em>fuerza</em> con que un astro te jala, \(W=mg\). Depende de dos cosas: tu masa \(m\) (fija) y la gravedad local \(g\) (variable). Por eso el mismo cuerpo pesa distinto en lugares distintos: en la Luna \(g\) es unas 6 veces menor, así que pesas 6 veces menos, aunque tu masa es idéntica.</p>
+    <p><strong>La frase que lo resume:</strong> la masa dice "cuánto hay"; el peso dice "con cuánta fuerza lo jala este planeta". Una balanza de resorte mide peso (fuerza); una balanza de dos platos compara masa. En caída libre tu masa sigue siendo la misma, pero tu peso <em>aparente</em> es cero porque nada te sostiene: por eso los astronautas "flotan" sin haber perdido masa.</p>
+  </div>
+
+  <div class="box key"><span class="lbl">Relación: numérico y proporción</span>
+    <p><strong>Numérico:</strong> una fuerza resultante de 12 N sobre 3,0 kg da \(a=F/m=12/3{,}0=4{,}0\) m·s⁻². Esa masa pesa \(W=mg=3{,}0(10)=30\) N.</p>
+    <p><strong>Proporción:</strong> con la misma masa, si la fuerza resultante se duplica, la aceleración se duplica (\(a\propto F\)); con la misma fuerza, si la masa se duplica, la aceleración se reduce a la mitad (\(a\propto 1/m\)). Y \(W\propto g\): el mismo cuerpo pesa menos donde \(g\) es menor.</p>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 3.1</span><span class="ej-src">ficha · M03 (Tierra → Luna)</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Un objeto se lleva de la Tierra a la Luna (menor \(g\)). ¿Cómo cambian su masa gravitatoria y su peso?</p>
+      <div class="sol"><p>La masa es intrínseca ⇒ no cambia. El peso \(W=mg\) baja porque \(g\) baja.</p>
+      <span class="ans">Masa: sin cambio; peso: disminuye (opción B).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 3.2</span><span class="ej-src">ficha · M00 (Marcella y el carrito)</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Empujando con fuerza constante, el carro pasa de 0 a 2 m·s⁻¹ en 4 m. Con <strong>la mitad</strong> de la fuerza, ¿qué distancia hace falta para llegar a 2 m·s⁻¹? (sin fricción)</p>
+      <div class="sol">
+        <p>\(F=ma\Rightarrow a\propto F\). Con \(v^2=2as\) y misma \(v\): \(s\propto\dfrac1a\propto\dfrac1F\). Mitad de fuerza ⇒ doble distancia: \(s'=2(4)=8\) m.</p>
+        <span class="ans">8 m (opción B). — Enlace con Cinemática (Módulo 2).</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 -->
+<section id="s4">
+  <p class="sec-num">SECCIÓN 04</p>
+  <h2>Tercera ley: pares acción–reacción<span class="rule"></span></h2>
+  <p class="sec-intro">Si A ejerce una fuerza sobre B, B ejerce sobre A una fuerza igual en módulo y opuesta en sentido.</p>
+
+  <div class="box key"><span class="lbl">De cero a entenderlo: ¿por qué las fuerzas vienen en pares?</span>
+    <p><strong>¿Qué dice la ley?</strong> Que no existe una fuerza "solitaria". Una fuerza es siempre una <em>interacción</em> entre dos cuerpos, y toda interacción empuja o jala por igual en ambos sentidos. Si empujas una pared, la pared te empuja a ti con la misma intensidad (por eso sientes la presión en tu mano).</p>
+    <p><strong>¿Por qué ocurre?</strong> Porque "ejercer fuerza" es como darse un apretón de manos: no puedes apretar la mano de alguien sin que su mano apriete la tuya; es una sola cosa vista desde los dos lados. No es que una fuerza "provoque" la otra como respuesta tardía: nacen y mueren juntas, en el mismo instante.</p>
+    <p><strong>La parte crucial — actúan sobre CUERPOS DISTINTOS:</strong> de cada par, una fuerza actúa sobre A y la otra sobre B. Por eso <em>no se cancelan</em>: para que dos fuerzas se anulen tienen que actuar sobre el <strong>mismo</strong> cuerpo, y estas nunca lo hacen. Al nadar, tú empujas el agua hacia atrás y el agua te empuja a ti hacia adelante: la fuerza "hacia atrás" está sobre el agua, la "hacia adelante" está sobre ti, así que tú avanzas. Un cohete empuja gases hacia abajo y los gases empujan el cohete hacia arriba.</p>
+  </div>
+
+  <div class="box key"><span class="lbl">La clave del par</span>
+    <p>Las dos fuerzas del par actúan sobre <strong>cuerpos distintos</strong>, por eso <em>nunca</em> se cancelan entre sí (para cancelarse tendrían que actuar sobre el mismo cuerpo). Ejemplos: la Tierra tira de ti (peso) y tú tiras de la Tierra; el pie empuja el suelo hacia atrás y el suelo te empuja hacia adelante.</p>
+  </div>
+  <div class="box trap"><span class="lbl">Trampa</span><p>Peso y normal sobre un libro en una mesa <strong>no</strong> son un par acción-reacción: actúan sobre el mismo cuerpo (el libro) y son distintas en naturaleza. El par del peso es «el libro atrae a la Tierra»; el par de la normal es «el libro empuja la mesa».</p></div>
+</section>
+
+<!-- S5 -->
+<section id="s5">
+  <p class="sec-num">SECCIÓN 05</p>
+  <h2>Catálogo de fuerzas (A.2)<span class="rule"></span></h2>
+  <p class="sec-intro">La guía pide conocer la naturaleza y el uso de estas fuerzas. Debes saber su fórmula y dirección.</p>
+  <table>
+    <tr><th class="l">Fuerza</th><th>Fórmula</th><th class="l">Dirección / nota</th></tr>
+    <tr><td class="l">Peso \(F_g\)</td><td>\(W=mg\)</td><td class="l">Hacia el centro de la Tierra (abajo).</td></tr>
+    <tr><td class="l">Normal \(F_N\)</td><td>—</td><td class="l">⊥ a la superficie; se ajusta a lo necesario.</td></tr>
+    <tr><td class="l">Fricción estática \(F_f\)</td><td>\(F_f\le\mu_s F_N\)</td><td class="l">Se opone al movimiento inminente; hasta un máximo.</td></tr>
+    <tr><td class="l">Fricción dinámica \(F_f\)</td><td>\(F_f=\mu_d F_N\)</td><td class="l">Se opone al deslizamiento; \(\mu_d<\mu_s\).</td></tr>
+    <tr><td class="l">Tensión \(T\)</td><td>—</td><td class="l">A lo largo de la cuerda, tirando. En cuerda ideal es igual en ambos extremos.</td></tr>
+    <tr><td class="l">Elástica (Hooke) \(F_H\)</td><td>\(F_H=-kx\)</td><td class="l">Restauradora; opuesta a la deformación.</td></tr>
+    <tr><td class="l">Viscosa (Stokes) \(F_d\)</td><td>\(F_d=6\pi\eta r v\)</td><td class="l">Se opone al movimiento en fluido (esfera pequeña). — se profundiza en Hidrostática.</td></tr>
+    <tr><td class="l">Flotación \(F_b\)</td><td>\(F_b=\rho V g\)</td><td class="l">Hacia arriba, por fluido desplazado. — Hidrostática.</td></tr>
+    <tr><td class="l">Eléctrica \(F_e\) / magnética \(F_m\)</td><td>—</td><td class="l">Fuerzas de campo (módulos posteriores).</td></tr>
+  </table>
+
+  <h3>La normal no siempre vale \(mg\)</h3>
+
+  <div class="box key"><span class="lbl">De cero a entenderlo: ¿qué es la fuerza normal?</span>
+    <p><strong>¿Qué es?</strong> Es el empujón que una superficie hace sobre el cuerpo que se apoya en ella, siempre <em>perpendicular</em> ("normal" significa perpendicular) a esa superficie. La mesa empuja al libro hacia arriba; una pared empuja hacia afuera a quien se recarga.</p>
+    <p><strong>¿Por qué existe?</strong> Porque los sólidos no se dejan atravesar. Al poner un peso encima, la superficie se deforma un poquito (como un resorte muy rígido) y responde empujando de vuelta justo lo necesario para que el cuerpo no se hunda. Es una fuerza "reactiva": no tiene un valor propio, aparece como respuesta.</p>
+    <p><strong>Por eso se AJUSTA</strong> (y no siempre vale \(mg\)): la superficie da exactamente la fuerza que haga falta para que el cuerpo no la traspase, ni más ni menos. Si algo más ayuda a sostener el peso, la mesa empuja menos; si algo aprieta el cuerpo contra la mesa, ésta empuja más. Nunca "supongas" \(F_N=mg\): calcúlala con el equilibrio perpendicular.</p>
+    <p><strong>En un ascensor (peso aparente):</strong> la báscula marca la normal que te hace. Si el ascensor sube acelerando, el piso tiene que empujarte más fuerte (además de sostenerte, tiene que acelerarte hacia arriba) ⇒ la balanza marca de más y te sientes "más pesado". Si baja acelerando, el piso te empuja menos ⇒ marca de menos; en caída libre no te empuja nada ⇒ "ingravidez". Tu masa no cambió: cambió la normal.</p>
+    <p><strong>Al empujar o tirar en ángulo:</strong> si tiras hacia arriba en diagonal, ayudas a sostener parte del peso, la mesa empuja menos y la normal baja; si empujas hacia abajo en diagonal, aprietas el cuerpo contra el piso, la normal sube. Esto importa porque la fricción depende de la normal.</p>
+  </div>
+
+  <p>La normal se <strong>ajusta</strong> a lo que haga falta para que el cuerpo no atraviese la superficie; se halla del equilibrio en el eje perpendicular, no se supone igual al peso. En suelo horizontal con una fuerza aplicada a un ángulo \(\theta\), su componente vertical modifica la normal:</p>
+  <div class="eq">\[ F_N=mg - F\,\mathrm{sen}\,\theta \ \text{(tirón hacia arriba)} \qquad F_N=mg + F\,\mathrm{sen}\,\theta \ \text{(empuje hacia abajo)} \]<span class="eqname">la componente vertical de la fuerza aplicada sube o baja la normal</span></div>
+  <figure class="fig">
+    <svg viewBox="0 0 360 158" width="340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dos casos: un tirón en ángulo hacia arriba reduce la normal y un empuje en ángulo hacia abajo la aumenta">
+      <defs><marker id="nrm" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <line x1="20" y1="118" x2="170" y2="118" stroke="var(--ink)" stroke-width="1.5"/>
+      <rect x="58" y="92" width="44" height="26" fill="#C9D2CC" stroke="var(--ink)" stroke-width="1.3"/>
+      <line x1="80" y1="100" x2="140" y2="62" stroke="var(--teal-deep)" stroke-width="2.3" marker-end="url(#nrm)"/>
+      <line x1="80" y1="92" x2="80" y2="58" stroke="var(--teal)" stroke-width="2.3" marker-end="url(#nrm)"/>
+      <line x1="80" y1="100" x2="80" y2="140" stroke="var(--warn)" stroke-width="2" marker-end="url(#nrm)"/>
+      <text x="142" y="60" font-family="IBM Plex Mono" font-size="11" fill="var(--teal-deep)">F</text>
+      <text x="56" y="56" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">N↓</text>
+      <text x="36" y="150" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-soft)">tirón: N baja</text>
+      <line x1="195" y1="118" x2="345" y2="118" stroke="var(--ink)" stroke-width="1.5"/>
+      <rect x="250" y="92" width="44" height="26" fill="#C9D2CC" stroke="var(--ink)" stroke-width="1.3"/>
+      <line x1="272" y1="98" x2="212" y2="60" stroke="var(--teal-deep)" stroke-width="2.3" marker-end="url(#nrm)"/>
+      <line x1="272" y1="92" x2="272" y2="48" stroke="var(--teal)" stroke-width="2.3" marker-end="url(#nrm)"/>
+      <line x1="272" y1="100" x2="272" y2="140" stroke="var(--warn)" stroke-width="2" marker-end="url(#nrm)"/>
+      <text x="200" y="58" font-family="IBM Plex Mono" font-size="11" fill="var(--teal-deep)">F</text>
+      <text x="276" y="46" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">N↑</text>
+      <text x="212" y="150" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-soft)">empuje: N sube</text>
+    </svg>
+    <figcaption>Un tirón con componente hacia arriba descarga la superficie (menor \(N\)); un empuje hacia abajo la carga (mayor \(N\)). Como \(F_f=\mu F_N\), la fricción cambia con ella.</figcaption>
+  </figure>
+  <div class="box key"><span class="lbl">Relación: numérico y proporción</span>
+    <p><strong>Numérico:</strong> bloque de 20 kg, fuerza de 60 N a 30° (\(\mathrm{sen}\,30^\circ=0{,}5\)). Empujando hacia abajo: \(F_N=mg+F\,\mathrm{sen}\,30^\circ=200+30=230\) N. Tirando hacia arriba: \(F_N=mg-F\,\mathrm{sen}\,30^\circ=200-30=170\) N. Con \(\mu_d=0{,}20\) la fricción pasa de 46 N a 34 N: el mismo módulo de fuerza arrastra mejor tirando.</p>
+    <p><strong>Proporción:</strong> como \(F_f=\mu F_N\), reducir la normal reduce la fricción en la misma proporción. Si el tirón llega a \(F\,\mathrm{sen}\,\theta=mg\), la normal se anula y la fricción desaparece (el cuerpo está a punto de despegar).</p>
+  </div>
+
+  <h3>Fricción en detalle</h3>
+
+  <div class="box key"><span class="lbl">De cero a entenderlo: ¿qué es la fricción y por qué se opone?</span>
+    <p><strong>¿Qué es?</strong> Una fuerza de contacto que aparece entre dos superficies que rozan y que <em>siempre apunta en contra</em> del deslizamiento (real o a punto de ocurrir). Nace de las rugosidades microscópicas y de pequeñas "soldaduras" entre las dos superficies: aunque se vean lisas, al microscopio son montañas que se enganchan.</p>
+    <p><strong>¿Por qué se opone al movimiento?</strong> Precisamente porque son esos enganches los que hay que romper o arrastrar para moverse. La fuerza aparece <em>resistiendo</em> ese arrastre, nunca ayudándolo; su trabajo es frenar el deslizamiento relativo, así que su sentido es opuesto a hacia dónde el cuerpo desliza o tiende a deslizar.</p>
+    <p><strong>Por qué la estática es \(\le\mu_s F_N\) (se ajusta hasta un máximo):</strong> mientras el cuerpo <em>no</em> se mueve, la fricción estática no tiene un valor fijo: toma <strong>exactamente</strong> el valor necesario para mantener el equilibrio, igualando a lo que empujas. Si empujas suave con 5 N y no se mueve, la fricción vale 5 N; si subes a 8 N y sigue quieto, vale 8 N. Pero tiene un tope: solo puede llegar hasta \(\mu_s F_N\). En cuanto tu empuje supera ese máximo, los enganches ceden, el cuerpo arranca y la fricción pasa a ser cinética (un valor fijo \(\mu_d F_N\), algo menor). Por eso "cuesta más arrancar que mantener": \(\mu_s>\mu_d\).</p>
+    <p><strong>Analogía:</strong> empujar un mueble pesado. Al principio no se mueve por más que empujes (la fricción estática te iguala), hasta que de golpe "cede" y empieza a deslizar más fácil de lo que esperabas (cae al valor cinético, menor).</p>
+  </div>
+
+  <p>La fricción estática crece con la fuerza aplicada hasta \(\mu_s F_N\); superado ese umbral, el cuerpo desliza y actúa \(\mu_d F_N\) (menor). Por eso «cuesta más arrancar que mantener».</p>
+
+  <div class="box key"><span class="lbl">Estática vs cinética: cuándo usar cada una</span>
+    <p><strong>Si el cuerpo no desliza</strong> (reposo o a punto de moverse), la fricción es <em>estática</em> y vale <strong>exactamente lo necesario</strong> para el equilibrio, \(F_f=F_{\text{aplicada}}\), hasta un tope \(F_{s,\max}=\mu_s F_N\). No pongas \(\mu_s F_N\) salvo en el instante «a punto de deslizar».</p>
+    <p><strong>Si el cuerpo ya desliza,</strong> la fricción es <em>cinética</em> y vale \(F_f=\mu_d F_N\) (constante, menor que el tope estático y sin depender de la velocidad).</p>
+    <p><strong>Mini-ejemplo:</strong> bloque de 5,0 kg, \(\mu_s=0{,}40\), \(\mu_d=0{,}30\) en suelo horizontal (\(F_N=50\) N, tope \(\mu_s F_N=20\) N). Si empujas con 15 N: como \(15<20\), no se mueve y la fricción <em>es</em> 15 N (no 20). Si empujas con 25 N: supera el tope, desliza, y la fricción cae a \(\mu_d F_N=15\) N, de modo que la neta es \(25-15=10\) N.</p>
+  </div>
+
+  <div class="box key"><span class="lbl">Condición de deslizamiento y ángulo de reposo (tan θ = μ_s)</span>
+    <p><strong>Deslizamiento:</strong> un cuerpo en reposo arranca justo cuando la fuerza que lo impulsa iguala al tope estático, \(F_{\text{impulsa}}=\mu_s F_N\). En un plano cuya inclinación \(\theta\) se aumenta poco a poco, ese impulso es \(mg\sin\theta\) y el tope \(\mu_s mg\cos\theta\); igualándolos la masa se cancela:</p>
+    <div class="eq">\[ mg\sin\theta=\mu_s mg\cos\theta \;\Rightarrow\; \tan\theta=\mu_s \]<span class="eqname">ángulo de reposo (el mayor ángulo sin deslizar)</span></div>
+    <p><strong>Mini-ejemplo:</strong> si empieza a resbalar a \(\theta=31^\circ\), entonces \(\mu_s=\tan31^\circ=0{,}60\). Ya en movimiento basta un ángulo menor (\(\tan\theta=\mu_d\)) para mantenerlo, porque \(\mu_d<\mu_s\). Es la forma estándar de medir \(\mu_s\) en el laboratorio.</p>
+  </div>
+
+  <div class="box key"><span class="lbl">Relación: numérico y proporción</span>
+    <p><strong>Numérico:</strong> bloque de 4,0 kg en suelo horizontal con \(\mu_d=0{,}30\): la normal es \(F_N=mg=40\) N y la fricción cinética \(F_f=\mu_d F_N=0{,}30(40)=12\) N.</p>
+    <p><strong>Proporción:</strong> \(F_f\propto F_N\). Si se duplica la carga vertical (otra masa igual encima), \(F_N\) se duplica y la fricción cinética también. En cambio, cambiar la rapidez no altera \(F_f=\mu_d F_N\): no depende de la velocidad.</p>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 5.1</span><span class="ej-src">Hooke</span></div>
+    <div class="ej-body"><span class="sepide">Se pide</span>
+      <p>Un resorte de \(k=200\ \mathrm{N\,m^{-1}}\) sostiene una masa de 2,0 kg en reposo. ¿Cuánto se estira? (\(g=10\))</p>
+      <div class="sol"><p>Equilibrio: \(kx=mg\Rightarrow x=\dfrac{mg}{k}=\dfrac{2{,}0(10)}{200}=0{,}10\) m.</p><span class="ans">x = 0,10 m = 10 cm.</span></div>
+    </div>
+  </div>
+
+  <div class="box key"><span class="lbl">Relación: proporción (Hooke)</span>
+    <p>\(F_H=kx\): la fuerza es proporcional a la deformación. Si el estiramiento se duplica, la fuerza recuperadora se duplica (\(F\propto x\)); para sostener en equilibrio el doble de peso, el resorte se estira el doble (\(x\propto W\)). Con <em>doble</em> constante \(k\) y el mismo peso, el estiramiento se reduce a la mitad (\(x\propto 1/k\)).</p>
+  </div>
+</section>
+
+<!-- S6 -->
+<section id="s6">
+  <p class="sec-num">SECCIÓN 06</p>
+  <h2>Sistemas: inclinados, cuerpos conectados y ascensores<span class="rule"></span></h2>
+  <p class="sec-intro">El 70 % de la ficha es esto. Un método único: DCL de cada cuerpo, ejes convenientes, sumar y (si hay varios) resolver el sistema.</p>
+
+  <h3>Plano inclinado</h3>
+
+  <div class="box key"><span class="lbl">De cero a entenderlo: ¿por qué se parte el peso en mg·senθ y mg·cosθ?</span>
+    <p><strong>El dibujo mental:</strong> el peso \(mg\) siempre apunta <em>recto hacia abajo</em> (hacia el centro de la Tierra), sin importar la inclinación. Pero el bloque no puede moverse "recto hacia abajo": está obligado a quedarse sobre el plano. Entonces conviene mirar el peso como si tuviera dos "intenciones" a la vez: una parte que lo quiere hacer <strong>bajar resbalando a lo largo del plano</strong> y otra que lo aprieta <strong>contra el plano</strong>.</p>
+    <p><strong>Por eso rotamos los ejes:</strong> en lugar de horizontal/vertical, tomamos un eje <em>a lo largo</em> del plano (por donde el bloque sí se puede mover) y otro <em>perpendicular</em> (por donde no se mueve, lo sostiene la normal). Así el movimiento queda en un solo eje y es mucho más fácil.</p>
+    <p><strong>¿Por qué \(mg\sin\theta\) a lo largo y \(mg\cos\theta\) perpendicular?</strong> Es geometría del triángulo rectángulo que forman el peso y sus dos componentes. El ángulo \(\theta\) del plano reaparece entre el peso (vertical) y la dirección perpendicular al plano. La componente <em>pegada</em> a ese ángulo (la perpendicular, que lo aprieta contra la superficie) lleva el <strong>coseno</strong>: \(mg\cos\theta\). La componente <em>opuesta</em> al ángulo (la que lo hace resbalar plano abajo) lleva el <strong>seno</strong>: \(mg\sin\theta\).</p>
+    <p><strong>Comprobación con los extremos (muy útil para no confundir seno y coseno):</strong></p>
+    <ul>
+      <li><strong>Plano casi plano</strong> (\(\theta\to0^\circ\)): casi no resbala, y la superficie aguanta casi todo el peso. En efecto \(\sin0^\circ=0\) (nada lo empuja plano abajo) y \(\cos0^\circ=1\) (la normal soporta todo \(mg\)).</li>
+      <li><strong>Plano casi vertical</strong> (\(\theta\to90^\circ\)): es casi caída libre y apenas toca la pared. En efecto \(\sin90^\circ=1\) (todo el peso lo hace caer a lo largo) y \(\cos90^\circ=0\) (la normal es casi nula).</li>
+    </ul>
+    <p>Como \(N=mg\cos\theta\) (sin fricción), mientras más empinado el plano, menos aprieta el bloque la superficie y más resbala.</p>
+  </div>
+
+  <p>Conviene rotar los ejes: <em>x</em> a lo largo del plano, <em>y</em> perpendicular. El peso se descompone en \(mg\sin\theta\) (baja el plano) y \(mg\cos\theta\) (contra la normal).</p>
+  <figure class="fig">
+    <svg viewBox="0 0 320 180" width="300" xmlns="http://www.w3.org/2000/svg" aria-label="plano inclinado">
+      <polygon points="30,150 290,150 290,60" fill="#EDEFEA" stroke="var(--ink)"/>
+      <rect x="200" y="78" width="34" height="22" fill="#C9D2CC" stroke="var(--ink)" transform="rotate(-19 217 89)"/>
+      <line x1="217" y1="89" x2="217" y2="150" stroke="var(--warn)" stroke-width="2" marker-end="url(#b)"/>
+      <line x1="217" y1="89" x2="250" y2="125" stroke="var(--amber)" stroke-width="2" marker-end="url(#b)"/>
+      <line x1="217" y1="89" x2="185" y2="53" stroke="var(--teal)" stroke-width="2" marker-end="url(#b)"/>
+      <defs><marker id="b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <text x="222" y="145" font-family="IBM Plex Mono" font-size="11" fill="var(--warn)">mg</text>
+      <text x="250" y="120" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">mg·senθ</text>
+      <text x="150" y="55" font-family="IBM Plex Mono" font-size="10" fill="var(--teal)">Fɴ</text>
+      <text x="55" y="146" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">θ</text>
+    </svg>
+    <figcaption>Sin fricción: \(a=g\sin\theta\) (no depende de la masa). Con fricción: \(a=g(\sin\theta-\mu\cos\theta)\).</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <svg viewBox="0 0 340 210" width="320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama de cuerpo libre de un bloque en un plano inclinado con el peso descompuesto en sus componentes paralela y perpendicular, la normal y la fricción">
+      <defs><marker id="inc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <polygon points="40,175 310,175 310,55" fill="#EDEFEA" stroke="var(--ink)" stroke-width="1.5"/>
+      <rect x="153" y="89" width="44" height="26" fill="#C9D2CC" stroke="var(--ink)" stroke-width="1.3" transform="rotate(-24 175 115)"/>
+      <line x1="172" y1="103" x2="172" y2="169" stroke="var(--warn)" stroke-width="2.4" marker-end="url(#inc)"/>
+      <line x1="172" y1="103" x2="147" y2="114" stroke="var(--amber)" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#inc)"/>
+      <line x1="172" y1="103" x2="197" y2="158" stroke="var(--amber)" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#inc)"/>
+      <line x1="172" y1="103" x2="148" y2="48" stroke="var(--teal)" stroke-width="2.4" marker-end="url(#inc)"/>
+      <line x1="172" y1="103" x2="212" y2="85" stroke="var(--hl)" stroke-width="2.4" marker-end="url(#inc)"/>
+      <path d="M74,175 A34,34 0 0,0 71,161" fill="none" stroke="var(--ink)" stroke-width="1.2"/>
+      <text x="54" y="171" font-family="IBM Plex Mono" font-size="12" fill="var(--ink)">θ</text>
+      <text x="176" y="166" font-family="IBM Plex Mono" font-size="11" fill="var(--warn)">mg</text>
+      <text x="112" y="121" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">mg·senθ</text>
+      <text x="200" y="152" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">mg·cosθ</text>
+      <text x="126" y="46" font-family="IBM Plex Mono" font-size="12" fill="var(--teal)">N</text>
+      <text x="214" y="82" font-family="IBM Plex Mono" font-size="12" fill="var(--hl)">f</text>
+    </svg>
+    <figcaption>DCL sobre el plano: el peso \(mg\) se descompone en \(mg\,\mathrm{sen}\,\theta\) (a lo largo) y \(mg\cos\theta\) (perpendicular); \(N\) equilibra la perpendicular y \(f\) se opone al deslizamiento.</figcaption>
+  </figure>
+
+  <div class="box key"><span class="lbl">Relación: numérico y proporción</span>
+    <p><strong>Numérico:</strong> plano liso de 30°: \(a=g\sin30^\circ=10(0{,}5)=5{,}0\) m·s⁻². Con \(\mu_d=0{,}20\): \(a=g(\sin30^\circ-\mu_d\cos30^\circ)=10(0{,}5-0{,}20\cdot0{,}866)=3{,}3\) m·s⁻².</p>
+    <p><strong>Proporción:</strong> en plano liso \(a=g\sin\theta\) <strong>no depende de la masa</strong>: un bloque de \(m\) y otro de \(2m\) bajan con la misma aceleración. Y \(a\) crece con \(\theta\): a 90° (caída libre) \(a=g\).</p>
+  </div>
+
+  <h3>Plano inclinado con fuerza aplicada</h3>
+  <p>El método no cambia: ejes sobre el plano. Si la fuerza \(F\) es <strong>paralela al plano</strong> entra directa en el eje \(x\); si forma un ángulo \(\phi\) con el plano, se descompone y su componente perpendicular <strong>también altera la normal</strong> (y con ella la fricción). Tomando «plano arriba» como positivo:</p>
+  <div class="eq">\[ \text{(x)}\;\; F\cos\phi - mg\sin\theta - f = ma \qquad \text{(y)}\;\; F_N=mg\cos\theta - F\sin\phi \]<span class="eqname">φ respecto al plano; f=μF_N y su signo según hacia dónde desliza</span></div>
+  <div class="box key"><span class="lbl">Relación: numérico y umbral</span>
+    <p><strong>Numérico:</strong> bloque de 10 kg en plano de 30°, \(\mu_d=0{,}20\), con 80 N <em>paralelos</em> al plano (hacia arriba, \(\phi=0\)). \(mg\sin30^\circ=50\) N; \(F_N=mg\cos30^\circ=86{,}6\) N; \(f=\mu_d F_N=17{,}3\) N (apunta plano abajo porque sube). Eje del plano: \(a=\dfrac{80-50-17{,}3}{10}=1{,}3\) m·s⁻² hacia arriba.</p>
+    <p><strong>Umbral:</strong> para que arranque plano arriba hace falta \(F>mg\sin\theta+\mu_s mg\cos\theta\); si \(F<mg\sin\theta-\mu_s mg\cos\theta\) resbala hacia abajo. Entre esos dos valores la fricción estática lo mantiene en reposo.</p>
+  </div>
+
+  <h3>Cuerpos conectados y poleas</h3>
+  <p>Para dos masas unidas: la cuerda ideal transmite la <strong>misma tensión</strong>; ambas tienen la <strong>misma aceleración</strong> (módulo). Se plantea \(F=ma\) para cada una y se resuelve el sistema. Resultados que conviene tener a mano:</p>
+  <div class="eq">\[ \text{Atwood: } a=\frac{(M-m)g}{M+m}\qquad \text{masa en mesa + colgante: } a=\frac{m\,g}{M+m} \]<span class="eqname">poleas ideales, sin fricción</span></div>
+  <figure class="fig">
+    <svg viewBox="0 0 320 215" width="300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sistema de polea: bloque M sobre una mesa unido por una cuerda que pasa por una polea a una masa m colgante, con la tensión igual a ambos lados y los pesos">
+      <defs><marker id="pul" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <line x1="24" y1="86" x2="212" y2="86" stroke="var(--ink)" stroke-width="2"/>
+      <line x1="44" y1="86" x2="44" y2="150" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="190" y1="86" x2="190" y2="150" stroke="var(--ink)" stroke-width="1.5"/>
+      <rect x="70" y="58" width="52" height="28" fill="#C9D2CC" stroke="var(--ink)" stroke-width="1.3"/>
+      <text x="96" y="76" font-family="Space Grotesk" font-size="13" fill="var(--ink)" text-anchor="middle">M</text>
+      <circle cx="224" cy="80" r="11" fill="#fff" stroke="var(--ink)" stroke-width="1.5"/>
+      <circle cx="224" cy="80" r="2.3" fill="var(--ink)"/>
+      <path d="M122,69 L224,69" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
+      <path d="M235,80 L235,150" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
+      <rect x="218" y="150" width="34" height="30" fill="#C9D2CC" stroke="var(--ink)" stroke-width="1.3"/>
+      <text x="235" y="169" font-family="Space Grotesk" font-size="13" fill="var(--ink)" text-anchor="middle">m</text>
+      <line x1="126" y1="69" x2="172" y2="69" stroke="var(--teal)" stroke-width="2.2" marker-end="url(#pul)"/>
+      <line x1="235" y1="132" x2="235" y2="103" stroke="var(--teal)" stroke-width="2.2" marker-end="url(#pul)"/>
+      <line x1="96" y1="74" x2="96" y2="118" stroke="var(--warn)" stroke-width="2.2" marker-end="url(#pul)"/>
+      <line x1="235" y1="182" x2="235" y2="202" stroke="var(--warn)" stroke-width="2.2" marker-end="url(#pul)"/>
+      <line x1="108" y1="58" x2="108" y2="28" stroke="var(--teal-deep)" stroke-width="2.2" marker-end="url(#pul)"/>
+      <text x="142" y="62" font-family="IBM Plex Mono" font-size="12" fill="var(--teal)">T</text>
+      <text x="242" y="120" font-family="IBM Plex Mono" font-size="12" fill="var(--teal)">T</text>
+      <text x="68" y="114" font-family="IBM Plex Mono" font-size="11" fill="var(--warn)">Mg</text>
+      <text x="242" y="198" font-family="IBM Plex Mono" font-size="11" fill="var(--warn)">mg</text>
+      <text x="112" y="34" font-family="IBM Plex Mono" font-size="12" fill="var(--teal-deep)">N</text>
+      <text x="196" y="57" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-soft)">polea</text>
+    </svg>
+    <figcaption>La cuerda ideal transmite la misma tensión \(T\) a ambos lados; el colgante baja por su peso \(mg\) y arrastra a \(M\) sobre la mesa.</figcaption>
+  </figure>
+
+  <h3>Ascensores: peso aparente</h3>
+  <p>La báscula marca la <strong>normal</strong>, no el peso real: \(F_N=m(g+a)\) (acelera hacia arriba ⇒ pesas más; hacia abajo ⇒ menos; caída libre ⇒ 0).</p>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 6.1</span><span class="ej-src">ficha · M02 y M04/431</span></div>
+    <div class="ej-body"><span class="sepide">Se pide</span>
+      <p>(a) Dos bloques idénticos unidos; se empuja a uno con \(F\). Tensión sobre el segundo. (b) Saco de 10 kg marca 12 kg en la báscula del ascensor. Aceleración.</p>
+      <div class="sol">
+        <p>(a) \(a=\dfrac{F}{2m}\); sobre el segundo bloque \(T=m\,a=\dfrac{F}{2}\) → opción B.</p>
+        <p>(b) \(F_N=12g=120\) N; \(F_N-mg=ma\Rightarrow120-100=10a\Rightarrow a=2{,}0\) m·s⁻² hacia arriba → opción B.</p>
+        <span class="ans">(a) F/2 &nbsp;·&nbsp; (b) 2,0 m·s⁻² hacia arriba.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 -->
+<section id="s7">
+  <p class="sec-num">SECCIÓN 07</p>
+  <h2>Más allá del IB (grounded en A.2)<span class="rule"></span></h2>
+  <div class="box beyond"><span class="lbl">Profundidad para el 7</span>
+    <ul>
+      <li><strong>Sistemas de ecuaciones</strong> para cadenas de cuerpos: con \(n\) cuerpos salen \(n\) ecuaciones \(F=ma\); la aceleración común se obtiene tratando el sistema completo (\(a=\frac{F_{\text{ext}}}{\sum m}\)) y cada tensión, aislando el subsistema que arrastra.</li>
+      <li><strong>Ángulo de fricción:</strong> un bloque empieza a deslizar en un plano cuando \(\tan\theta=\mu_s\). Es una forma elegante de medir \(\mu_s\).</li>
+      <li><strong>Velocidad terminal por Stokes:</strong> igualando \(mg=6\pi\eta r v_t\) (con flotación, \(mg-F_b=6\pi\eta r v_t\)) se obtiene \(v_t\). Es exactamente el experimento de la bola en aceite del tipo 2.</li>
+      <li><strong>Marcos no inerciales:</strong> dentro del ascensor acelerado, todo ocurre «como si» \(g\to g+a\); esa es la fuerza ficticia que explica el peso aparente.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- S8 -->
+<section id="s8">
+  <p class="sec-num">SECCIÓN 08</p>
+  <h2>Definiciones para el examen<span class="rule"></span></h2>
+  <div class="box def"><span class="lbl">Glosario</span>
+    <ul>
+      <li><strong>Fuerza:</strong> interacción entre dos cuerpos que tiende a cambiar su estado de movimiento (vector, en N).</li>
+      <li><strong>Primera ley:</strong> un cuerpo permanece en reposo o con velocidad constante si la fuerza resultante sobre él es cero.</li>
+      <li><strong>Segunda ley:</strong> la fuerza resultante es igual a la razón de cambio de la cantidad de movimiento; con masa constante, \(F=ma\).</li>
+      <li><strong>Tercera ley:</strong> a toda fuerza de A sobre B corresponde una de B sobre A, igual y opuesta, sobre cuerpos distintos.</li>
+      <li><strong>Masa (inercial):</strong> medida de la resistencia de un cuerpo a acelerar.</li>
+      <li><strong>Peso:</strong> fuerza gravitatoria sobre un cuerpo, \(W=mg\).</li>
+      <li><strong>Fuerza normal:</strong> componente de la fuerza de contacto perpendicular a la superficie.</li>
+      <li><strong>Coeficiente de fricción:</strong> razón entre la fuerza de fricción y la normal (\(\mu_s\) estático, \(\mu_d\) dinámico).</li>
+      <li><strong>Equilibrio de traslación:</strong> estado en que la fuerza resultante es cero.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRAPS -->
+<section id="traps">
+  <p class="sec-num">CHECKLIST</p>
+  <h2>Trampas típicas del Paper 1<span class="rule"></span></h2>
+  <div class="box trap"><span class="lbl">Antes de marcar, revisa</span>
+    <ul>
+      <li>Velocidad constante ⇒ resultante = 0 (no «hay una fuerza hacia adelante»).</li>
+      <li>La <strong>normal ≠ peso</strong> si hay aceleración vertical, plano inclinado o una fuerza con componente vertical.</li>
+      <li>«Fuerza neta» ≠ «fuerza aplicada/motriz»: la neta es \(ma\); la motriz vence además la resistencia.</li>
+      <li>La tensión que la cuerda ejerce sobre un bloque arrastrado es \(<F\) (nunca igual a \(F\) si arrastra masa).</li>
+      <li>En plano inclinado sin fricción, \(a=g\sin\theta\) <strong>no depende de la masa</strong>.</li>
+      <li>Peso aparente en ascensor: usa \(F_N=m(g\pm a)\); el signo depende del sentido de \(a\), no del movimiento.</li>
+      <li>Acción y reacción actúan sobre cuerpos distintos: no se cancelan.</li>
+      <li>La masa no cambia con el lugar; el peso sí.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BLOQUE -->
+<section id="bloque">
+  <p class="sec-num">BLOQUE DE 10 EJEMPLOS RESUELTOS · TIPO 1</p>
+  <h2>Los 10 de la ficha que cubren todos los tipos<span class="rule"></span></h2>
+  <p class="sec-intro">Cada uno con planteo, ecuación, desarrollo y resultado. Cubren: equilibrio, 2.ª ley, fuerza neta vs. motriz, conectados, poleas, Atwood, peso aparente, fuerza en ángulo, fuerza variable e inclinado.</p>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">1</span><span class="ej-tag">peso aparente</span><span class="ej-src">N00/430</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la aceleración del ascensor</span>
+      <p>En reposo la báscula marca 50 kg; acelerando hacia arriba marca 60 kg. \(g=10\).</p>
+      <div class="sol"><p>Masa real \(m=50\) kg. Al subir, \(F_N=60g\). DCL: \(F_N-mg=ma\Rightarrow 60(10)-50(10)=50a\Rightarrow 100=50a\).</p><span class="ans">a = 2 m·s⁻² (opción D).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">2</span><span class="ej-tag">conectados · tensión</span><span class="ej-src">M99/430</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la tensión de la cuerda</span>
+      <p>Dos bloques de 10 kg unidos sobre superficie lisa; una fuerza horizontal de 30 N acelera el conjunto.</p>
+      <div class="sol"><p>Sistema: \(a=\dfrac{F}{m_1+m_2}=\dfrac{30}{20}=1{,}5\) m·s⁻². La cuerda solo debe acelerar el segundo bloque: \(T=m_2a=10(1{,}5)=15\) N.</p><span class="ans">T = 15 N (opción b).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">3</span><span class="ej-tag">2.ª ley · proporción</span><span class="ej-src">N99/430</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la aceleración máxima al remolcar</span>
+      <p>Una grúa acelera al máximo a \(a\) sola. Remolca una camioneta del doble de su masa. ¿Nueva aceleración máxima?</p>
+      <div class="sol"><p>La fuerza motriz máxima es la misma: \(F=m\,a\). Ahora la masa total es \(m+2m=3m\): \(a'=\dfrac{F}{3m}=\dfrac{ma}{3m}=\dfrac{a}{3}\).</p><span class="ans">a′ = a/3 (opción b).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">4</span><span class="ej-tag">conectados · álgebra</span><span class="ej-src">N01/430</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza de la cuerda sobre P</span>
+      <p>P y Q sobre superficie lisa, unidos; \(m_P>m_Q\). Se aplica \(F\) a Q, acelerando a la derecha.</p>
+      <div class="sol"><p>\(a=\dfrac{F}{m_P+m_Q}\). La cuerda tira de P: \(T=m_P\,a=\dfrac{m_P}{m_P+m_Q}F\). Como \(0<\dfrac{m_P}{m_P+m_Q}<1\), resulta \(0<T<F\).</p><span class="ans">Inferior a F pero no cero (opción B).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">5</span><span class="ej-tag">polea · mesa + colgante</span><span class="ej-src">M07/SPM</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la aceleración del sistema</span>
+      <p>Bloque \(M\) sobre mesa lisa, unido por cuerda que pasa por polea sin fricción a una masa \(m\) que cuelga.</p>
+      <div class="sol"><p>DCL colgante: \(mg-T=ma\). DCL bloque: \(T=Ma\). Sumando: \(mg=(M+m)a\).</p><span class="ans">\(a=\dfrac{m}{M+m}\,g\) (opción c).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">6</span><span class="ej-tag">máquina de Atwood</span><span class="ej-src">M04/432</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la aceleración de la masa M (hacia abajo)</span>
+      <p>Masas \(M\) y \(m\) (\(m<M\)) colgando de una cuerda sobre una polea sin fricción.</p>
+      <div class="sol"><p>DCL de \(M\): \(Mg-T=Ma\). DCL de \(m\): \(T-mg=ma\). Sumando: \((M-m)g=(M+m)a\).</p><span class="ans">\(a=\dfrac{(M-m)g}{M+m}\) (opción a).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">7</span><span class="ej-tag">fuerza neta vs motriz</span><span class="ej-src">M11/SPM</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza resultante</span>
+      <p>Auto de 1000 kg con \(a=0{,}3\) m·s⁻²; la motriz \(F\) vence una resistencia de 500 N.</p>
+      <div class="sol"><p>Resultante \(=ma=1000(0{,}3)=300\) N. (La motriz sería \(300+500=800\) N: ese es el distractor.)</p><span class="ans">Fₙₑₜₐ = 300 N (opción B).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">8</span><span class="ej-tag">fuerza en ángulo</span><span class="ej-src">N00/430</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la aceleración</span>
+      <p>Bloque de masa \(M\) empujado en superficie lisa por \(F\) a un ángulo \(\theta\) con la horizontal.</p>
+      <div class="sol"><p>Solo la componente horizontal acelera: \(\sum F_x=F\cos\theta=Ma\).</p><span class="ans">\(a=\dfrac{F\cos\theta}{M}\) (opción b).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">9</span><span class="ej-tag">fuerza variable · fases</span><span class="ej-src">N11/SPM</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la rapidez tras 0,60 s</span>
+      <p>Objeto de 2,0 kg en reposo. La fuerza vale 10 N de 0 a 0,20 s y 30 N de 0,20 a 0,60 s.</p>
+      <div class="sol">
+        <p>Fase 1: \(a_1=\dfrac{10}{2{,}0}=5\) m·s⁻²; \(\Delta v_1=5(0{,}20)=1{,}0\).</p>
+        <p>Fase 2: \(a_2=\dfrac{30}{2{,}0}=15\) m·s⁻²; \(\Delta v_2=15(0{,}40)=6{,}0\).</p>
+        <p>\(v=1{,}0+6{,}0=7{,}0\). (Equivale al área de la gráfica F–t dividida entre \(m\).)</p>
+        <span class="ans">v = 7,0 m·s⁻¹ (opción A).</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">10</span><span class="ej-tag">inclinado sin fricción</span><span class="ej-src">M06/SPM</span></div>
+    <div class="ej-body"><span class="sepide">Se pide comparar aceleraciones</span>
+      <p>Un carrito de masa \(m\) baja una pendiente lisa con aceleración \(a\). Un segundo carrito de masa \(2m\), ¿con qué aceleración baja?</p>
+      <div class="sol"><p>Sobre el plano: \(mg\sin\theta=ma\Rightarrow a=g\sin\theta\). La masa se cancela: no interviene.</p><span class="ans">La misma, a (opción B).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTO -->
+<section id="resto">
+  <p class="sec-num">RESTO DE LA FICHA</p>
+  <h2>Ítems de la misma familia (resueltos)<span class="rule"></span></h2>
+  <p class="sec-intro">Cubiertos por los conceptos y ejemplos de arriba; van resueltos en corto para no dejar nada de la ficha.</p>
+  <table>
+    <tr><th>Ítem</th><th>Resp.</th><th class="l">Razón</th></tr>
+    <tr><td>v–t con fuerza resultante constante (M99)</td><td>a</td><td class="l">Fuerza constante ⇒ a constante ⇒ recta creciente.</td></tr>
+    <tr><td>Auto a velocidad constante, resultante (M99)</td><td>D</td><td class="l">Equilibrio ⇒ 0 (Ej. 2.1).</td></tr>
+    <tr><td>Marcella, media fuerza (M00)</td><td>B</td><td class="l">\(s\propto1/F\Rightarrow 8\) m (Ej. 3.2).</td></tr>
+    <tr><td>Manzana en la Luna, \(g/6\) (M01)</td><td>√6×</td><td class="l">\(t\propto1/\sqrt g\) (cae en Cinemática/Gravitación).</td></tr>
+    <tr><td>Masa y peso Tierra→Luna (M03)</td><td>B</td><td class="l">Masa igual; peso disminuye (Ej. 3.1).</td></tr>
+    <tr><td>Dos bloques idénticos, F al primero (M02)</td><td>B</td><td class="l">\(T=F/2\) (Ej. 6.1a).</td></tr>
+    <tr><td>Saco 10 kg marca 12 kg (M04/431)</td><td>B</td><td class="l">\(a=2{,}0\) m·s⁻² arriba (Ej. 6.1b).</td></tr>
+    <tr><td>Persona 600 N, sube a 1,0 m·s⁻² (M13)</td><td>D</td><td class="l">\(F_N=m(g+a)=60(11)=660\) N.</td></tr>
+  </table>
+</section>
+
+<!-- EXAMENES -->
+<section id="examenes">
+  <p class="sec-num">BANCO DE EXÁMENES IB · TIPO 1 (PAPER 1 / 1A)</p>
+  <h2>Dinámica en los exámenes oficiales, 2022–2026<span class="rule"></span></h2>
+  <p class="sec-intro">Todas las preguntas de fuerzas y leyes de Newton de los Paper 1 del IB en este rango, resueltas y con la <strong>respuesta oficial del markscheme</strong>. La dinámica se evalúa <strong>muchísimo</strong>, también en el plan nuevo (Paper 1A). Enunciados reformulados; datos y clave reales. \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+
+  <div class="box key">
+    <span class="lbl">24 preguntas · cobertura</span>
+    <p><strong>Plan nuevo (Paper 1A):</strong> mayo 2025, nov 2025 y 2026 (7 preguntas). <strong>Plan anterior (Paper 1):</strong> 2022–2024 (17 preguntas). Dejé fuera lo que es energía/potencia (irá en 5A), momento (6A) y movimiento circular (7A), aunque usen fuerzas.</p>
+  </div>
+
+  <h4>Índice</h4>
+  <table>
+    <tr><th>#</th><th class="l">Subtema</th><th>Sesión</th><th>Plan</th><th>Resp.</th></tr>
+    <tr><td>F1</td><td class="l">Resultante posible de dos fuerzas (rango)</td><td>May 2022 TZ1</td><td>ant.</td><td>D</td></tr>
+    <tr><td>F2</td><td class="l">Resultante de dos vectores modificados</td><td>Nov 2022</td><td>ant.</td><td>D</td></tr>
+    <tr><td>F3</td><td class="l">¿Qué fórmula es la 2.ª ley?</td><td>May 2022 TZ1</td><td>ant.</td><td>A</td></tr>
+    <tr><td>F4</td><td class="l">Pares acción–reacción (cohete)</td><td>May 2022 TZ2</td><td>ant.</td><td>B</td></tr>
+    <tr><td>F5</td><td class="l">Fuerza neta: circular vs. v constante</td><td>Nov 2023</td><td>ant.</td><td>A</td></tr>
+    <tr><td>F6</td><td class="l">Máquina de Atwood (relación de masas)</td><td>May 2022 TZ1</td><td>ant.</td><td>A</td></tr>
+    <tr><td>F7</td><td class="l">Masa a partir de fuerza neta</td><td>May 2022 TZ2</td><td>ant.</td><td>B</td></tr>
+    <tr><td>F8</td><td class="l">Duplicar la fuerza (con resistencia)</td><td>May 2023 TZ1</td><td>ant.</td><td>B</td></tr>
+    <tr><td>F9</td><td class="l">Rapidez con fricción constante</td><td>May 2023 TZ2</td><td>ant.</td><td>B</td></tr>
+    <tr><td>F10</td><td class="l">Tensión en cuerpos conectados</td><td>May 2025 TZ3</td><td>nuevo</td><td>C</td></tr>
+    <tr><td>F11</td><td class="l">Fuerza media desde gráfica a–t</td><td>Nov 2025</td><td>nuevo</td><td>B</td></tr>
+    <tr><td>F12</td><td class="l">Plano inclinado: rapidez al pie</td><td>Nov 2024</td><td>ant.</td><td>A</td></tr>
+    <tr><td>F13</td><td class="l">Coef. de fricción y aceleración</td><td>May 2022 TZ2</td><td>ant.</td><td>A</td></tr>
+    <tr><td>F14</td><td class="l">Coef. de fricción dinámica</td><td>Nov 2022</td><td>ant.</td><td>B</td></tr>
+    <tr><td>F15</td><td class="l">Fricción en rampa (no desliza) ∝ sen θ</td><td>May 2023 TZ2</td><td>ant.</td><td>D</td></tr>
+    <tr><td>F16</td><td class="l">Bloques apilados: F mínima y tensión</td><td>May 2024 TZ2</td><td>ant.</td><td>A</td></tr>
+    <tr><td>F17</td><td class="l">Objeto en rampa con cuerda (ángulo ↑)</td><td>May 2024 TZ2</td><td>ant.</td><td>B</td></tr>
+    <tr><td>F18</td><td class="l">Cuerpo libre en rampa: ¿qué movimiento?</td><td>May 2026 TZ2</td><td>nuevo</td><td>B</td></tr>
+    <tr><td>F19</td><td class="l">Cuerpo libre a velocidad terminal</td><td>May 2024 TZ2</td><td>ant.</td><td>D</td></tr>
+    <tr><td>F20</td><td class="l">Aceleración inicial de un péndulo</td><td>Nov 2023</td><td>ant.</td><td>B</td></tr>
+    <tr><td>F21</td><td class="l">Tensión de un péndulo al soltarlo</td><td>May 2026 TZ2</td><td>nuevo</td><td>D</td></tr>
+    <tr><td>F22</td><td class="l">Burbuja a velocidad terminal (densidades)</td><td>May 2026 TZ3</td><td>nuevo</td><td>A</td></tr>
+    <tr><td>F23</td><td class="l">Caja en rampa a v constante: resistencia</td><td>May 2026 TZ3</td><td>nuevo</td><td>D</td></tr>
+    <tr><td>F24</td><td class="l">Acróbata en dos cuerdas: potencia</td><td>May 2026 TZ3</td><td>nuevo</td><td>D</td></tr>
+  </table>
+
+  <!-- A -->
+  <h3>A · Fuerza resultante y las tres leyes de Newton</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F1</span><span class="ej-src">Paper 1 · May 2022 TZ1 · Q2 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>La resultante de dos fuerzas sobre un cuerpo es 12 N. ¿Qué par de fuerzas puede producirla?<br>A) 1 N y 2 N &nbsp; B) 1 N y 14 N &nbsp; C) 5 N y 6 N &nbsp; D) 6 N y 7 N</p>
+      <div class="sol"><p>La resultante de dos fuerzas \(a,b\) puede valer entre \(|a-b|\) y \(a+b\) (según el ángulo). Solo D abarca 12: \([1,\,13]\ni 12\). (A: ≤3; B: ≥13; C: ≤11.)</p>
+        <span class="ans">D) 6 N y 7 N ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F2</span><span class="ej-src">Paper 1 · Nov 2022 · Q2 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Dos fuerzas \(\vec F\) y \(\vec G\) actúan sobre un sistema. Se <em>invierte</em> \(\vec F\) y se reduce \(\vec G\) a la mitad. ¿Qué vector representa la nueva resultante? (opciones = diagramas)</p>
+      <div class="sol"><p>Dibuja \(-\vec F\) (misma magnitud, sentido opuesto) y \(\tfrac12\vec G\), y súmalos cola-cabeza. La resultante es la flecha del origen de \(-\vec F\) al extremo de \(\tfrac12\vec G\).</p>
+        <span class="ans">D ✓ (el diagrama con \(-\vec F\) y media \(\vec G\) sumadas vectorialmente)</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F3</span><span class="ej-src">Paper 1 · May 2022 TZ1 · Q6 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>¿Qué expresión representa la segunda ley de Newton? (entre densidad = masa/volumen, trabajo/desplazamiento, cambio de cantidad de movimiento/tiempo, presión × área)</p>
+      <div class="sol"><p>La forma general de la 2.ª ley es \(F=\dfrac{\Delta p}{\Delta t}\): la <strong>razón de cambio de la cantidad de movimiento</strong>. (Con masa constante se reduce a \(F=ma\).)</p>
+        <span class="ans">A) cambio de cantidad de movimiento / tiempo ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F4</span><span class="ej-src">Paper 1 · May 2022 TZ2 · Q7 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un cohete recién lanzado tiene un DCL con \(F_1\) (empuje, mayor) y \(F_2\) (peso). Según la 3.ª ley, ¿cuál es el par de cada una?</p>
+      <div class="sol"><p>El par actúa sobre <em>otro</em> cuerpo y es del mismo tipo. \(F_1\) = fuerza de los gases sobre el cohete ⇒ su par = fuerza del <strong>cohete sobre los gases</strong>. \(F_2\) = fuerza gravitatoria de la Tierra sobre el cohete ⇒ su par = fuerza gravitatoria del <strong>cohete sobre la Tierra</strong>.</p>
+        <span class="ans">B ✓ (cohete→gases ; cohete→Tierra)</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F5</span><span class="ej-src">Paper 1 · Nov 2023 TZ1 y TZ2 · Q3 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>La partícula X gira en un círculo a rapidez constante \(v\) (fuerza neta \(F_X\)); la partícula Y se mueve con velocidad constante de módulo \(v\) (fuerza neta \(F_Y\)). ¿Qué es correcto?</p>
+      <div class="sol"><p>Y con <em>velocidad</em> constante ⇒ 1.ª ley: \(F_Y=0\). X con rapidez constante pero dirección cambiante ⇒ hay fuerza centrípeta: \(F_X\neq0\). Por tanto \(F_X>F_Y\).</p>
+        <span class="ans">A) \(F_X>F_Y\) ✓ — "rapidez constante" no es "velocidad constante".</span></div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <h3>B · Segunda ley: \(F=ma\) (cálculo)</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F6</span><span class="ej-src">Paper 1 · May 2022 TZ1 · Q7 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Dos masas \(m_1\) y \(m_2\) cuelgan de una polea sin fricción. Al soltarlas, \(m_2\) baja con aceleración \(g/2\). ¿Cuánto vale \(m_1/m_2\)?</p>
+      <div class="sol"><p>Atwood: \(a=\dfrac{(m_2-m_1)g}{m_1+m_2}=\dfrac g2\Rightarrow 2(m_2-m_1)=m_1+m_2\Rightarrow m_2=3m_1\).</p>
+        <span class="ans">A) \(m_1/m_2=1/3\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F7</span><span class="ej-src">Paper 1 · May 2022 TZ2 · Q8 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una fuerza neta constante de 100 N parte del reposo a un objeto; tras 2,0 m lleva 10 m s⁻¹. ¿Masa?</p>
+      <div class="sol"><p>\(v^2=2as\Rightarrow a=\dfrac{10^2}{2(2{,}0)}=25\ \mathrm{m\,s^{-2}}\). \(m=\dfrac Fa=\dfrac{100}{25}=4\ \mathrm{kg}\).</p>
+        <span class="ans">B) 4 kg ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F8</span><span class="ej-src">Paper 1 · May 2023 TZ1 · Q8 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un bloque de 2,0 kg acelera a 1,0 m s⁻² cuando una fuerza de 4,0 N actúa sobre él. Se <em>duplica</em> la fuerza y las resistencias no cambian. ¿Nueva aceleración?</p>
+      <div class="sol"><p>Hay resistencia oculta: neta \(=ma=2(1)=2\) N ⇒ resistencia \(=4-2=2\) N. Con \(8\) N: neta \(=8-2=6\) N ⇒ \(a=6/2=3{,}0\) m s⁻².</p>
+        <span class="ans">B) 3,0 m s⁻² ✓ — <em>no</em> se duplica la aceleración (la resistencia no cambió).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F9</span><span class="ej-src">Paper 1 · May 2023 TZ2 · Q2 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un carrito de 2 kg en reposo recibe una fuerza de 30 N en \(t=0\); una fricción de 10 N actúa todo el tiempo. ¿Rapidez en \(t=2\) s?</p>
+      <div class="sol"><p>Neta \(=30-10=20\) N ⇒ \(a=20/2=10\) m s⁻². \(v=at=10(2)=20\) m s⁻¹.</p>
+        <span class="ans">B) 20 m s⁻¹ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F10</span><span class="ej-src">Paper 1A · May 2025 TZ3 · Q3 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Dos bloques idénticos (2,0 kg c/u) conectados por una cuerda son empujados por \(F\) y aceleran a 0,5 m s⁻². La fricción sobre el bloque delantero X es 4,0 N. ¿Tensión en la cuerda?</p>
+      <div class="sol"><p>Analiza solo X (lo jala la cuerda): \(T-f_X=m_X a\Rightarrow T-4{,}0=2{,}0(0{,}5)=1{,}0\Rightarrow T=5{,}0\) N.</p>
+        <span class="ans">C) 5 N ✓ — aislar un bloque evita resolver todo el sistema.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F11</span><span class="ej-src">Paper 1A · Nov 2025 · Q3 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Se aplica una fuerza a una masa de 3 kg; la gráfica muestra \(a\) frente a \(t\). ¿Fuerza <em>media</em>? (A 5 N · B 6 N · C 12 N · D 24 N)</p>
+      <div class="sol"><p>\(F_\text{media}=m\,a_\text{media}\). Leyendo la aceleración media del gráfico (\(\bar a=2\) m s⁻²): \(F=3\times2=6\) N.</p>
+        <span class="ans">B) 6 N ✓ — para una \(a\) variable, usa su <em>promedio</em> (área/tiempo del gráfico a–t).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F12</span><span class="ej-src">Paper 1 · Nov 2024 · Q5 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un objeto de 10 kg parte del reposo en lo alto de una rampa de 50 m. Una fuerza neta constante de 40 N lo empuja rampa abajo. ¿Rapidez al llegar al pie?</p>
+      <div class="sol"><p>\(a=F/m=40/10=4\) m s⁻². \(v^2=2as=2(4)(50)=400\Rightarrow v=20\) m s⁻¹.</p>
+        <span class="ans">A) 20 m s⁻¹ ✓ — "fuerza neta" ya incluye la fricción; no la restes otra vez.</span></div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <h3>C · Fricción</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F13</span><span class="ej-src">Paper 1 · May 2022 TZ2 · Q6 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un objeto de 2,0 kg sobre una superficie rugosa es empujado con 10 N; la fuerza <em>neta</em> es 6,0 N. ¿Coeficiente de fricción \(\mu\) y aceleración \(a\)?</p>
+      <div class="sol"><p>Fricción \(=10-6=4\) N. \(\mu=\dfrac{f}{N}=\dfrac{4}{mg}=\dfrac{4}{2(10)}=0{,}20\). \(a=\dfrac{F_\text{neta}}{m}=\dfrac62=3{,}0\) m s⁻².</p>
+        <span class="ans">A) \(\mu=0{,}20\), \(a=3{,}0\) m s⁻² ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F14</span><span class="ej-src">Paper 1 · Nov 2022 · Q5 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un objeto de 2,0 kg es jalado con 12,0 N y acelera a 2,0 m s⁻². ¿Coeficiente de fricción dinámica?</p>
+      <div class="sol"><p>Neta \(=ma=2(2)=4\) N ⇒ fricción \(=12-4=8\) N. \(\mu=\dfrac{8}{mg}=\dfrac{8}{2(10)}=0{,}4\).</p>
+        <span class="ans">B) 0,4 ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F15</span><span class="ej-src">Paper 1 · May 2023 TZ2 · Q6 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>El ángulo \(\theta\) de una rampa aumenta lentamente desde cero y el objeto <em>no</em> se desliza. ¿Cómo es la fuerza de fricción?<br>A) constante &nbsp; B) despreciable &nbsp; C) ∝ cos θ &nbsp; D) ∝ sen θ</p>
+      <div class="sol"><p>Mientras no desliza, la fricción estática iguala a la componente del peso paralela: \(f=mg\sin\theta\). Al crecer \(\theta\), la fricción crece como \(\sin\theta\).</p>
+        <span class="ans">D) proporcional a sen θ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F16</span><span class="ej-src">Paper 1 · May 2024 TZ2 · Q4 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un bloque X (peso 10 N) está sobre Y (peso 20 N); X se ata a la pared con una cuerda. \(\mu=0{,}2\) entre X–Y y entre Y–suelo. ¿Fuerza mínima \(F\) para mover Y y tensión \(T\) justo antes?</p>
+      <div class="sol"><p>Fricción X–Y: \(0{,}2\times10=2\) N (sobre Y, hacia atrás; la cuerda la sostiene ⇒ \(T=2\) N). Fricción Y–suelo: \(0{,}2\times(10+20)=6\) N. Para mover Y: \(F=2+6=8\) N.</p>
+        <span class="ans">A) \(F=8\) N, \(T=2\) N ✓</span></div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <h3>D · Planos inclinados y diagramas de cuerpo libre</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F17</span><span class="ej-src">Paper 1 · May 2024 TZ2 · Q6 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un objeto se mantiene en una rampa con una cuerda ligera mientras el ángulo \(\theta\) aumenta desde cero. ¿Qué afirmación es correcta?<br>A) la tensión es constante &nbsp; B) la fuerza normal disminuye &nbsp; C) la componente del peso paralela es constante &nbsp; D) el peso disminuye</p>
+      <div class="sol"><p>Normal \(N=mg\cos\theta\): al crecer \(\theta\), \(\cos\theta\) baja ⇒ \(N\) disminuye. (La tensión \(=mg\sin\theta\) crece; la componente paralela crece; el peso no cambia.)</p>
+        <span class="ans">B) la fuerza normal disminuye ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F18</span><span class="ej-src">Paper 1A · May 2026 TZ2 · Q2 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>DCL (dibujado a escala) de una caja en una rampa <em>sin fricción</em>: peso \(W\), normal \(N\) y una fuerza \(F\) rampa arriba. ¿Qué describe su movimiento?</p>
+      <div class="sol"><p>Como el dibujo está a escala, compara \(F\) con la componente del peso paralela (\(W\sin\theta\)). Aquí \(W\sin\theta>F\): hay fuerza neta <em>rampa abajo</em> ⇒ se desliza bajando y <strong>acelerando</strong>.</p>
+        <span class="ans">B) se desliza plano abajo con rapidez creciente ✓ — mide las flechas a escala para decidir.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F19</span><span class="ej-src">Paper 1 · May 2024 TZ2 · Q5 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una pelota lanzada desde un avión alcanza su velocidad terminal. ¿Cuál es el DCL correcto? (opciones = diagramas)</p>
+      <div class="sol"><p>A velocidad terminal \(a=0\) ⇒ fuerzas equilibradas: dos flechas <strong>iguales y opuestas</strong>, el peso hacia abajo y el arrastre hacia arriba, de igual longitud. No hay fuerza neta.</p>
+        <span class="ans">D ✓ (peso ↓ = arrastre ↑, misma magnitud)</span></div>
+    </div>
+  </div>
+
+  <!-- E -->
+  <h3>E · Tensión, péndulo y equilibrio</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F20</span><span class="ej-src">Paper 1 · Nov 2023 TZ1 y TZ2 · Q2 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un péndulo se desplaza un ángulo \(\theta\) y se suelta desde el reposo. ¿Aceleración inicial?<br>A) cero &nbsp; B) \(g\sin\theta\) &nbsp; C) \(g\cos\theta\) &nbsp; D) \(g\)</p>
+      <div class="sol"><p>Al soltar, \(v=0\): no hay aceleración centrípeta. Solo actúa la componente del peso <em>tangente</em> al arco: \(a=g\sin\theta\).</p>
+        <span class="ans">B) \(g\sin\theta\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F21</span><span class="ej-src">Paper 1A · May 2026 TZ2 · Q3 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una esfera de masa \(m\) cuelga como péndulo y se suelta con ángulo inicial \(\theta\) respecto a la vertical. ¿Magnitud de la tensión \(T\) al soltarla?</p>
+      <div class="sol"><p>Al soltar, \(v=0\) ⇒ sin término centrípeto. En la dirección de la cuerda, \(T\) equilibra la componente del peso a lo largo de la cuerda: \(T=mg\cos\theta=mg\,\mathrm{sen}(90^\circ-\theta)\).</p>
+        <span class="ans">D) \(mg\,\mathrm{sen}(90^\circ-\theta)=mg\cos\theta\) ✓ — ojo: \(\cos\theta\), no \(\sin\theta\) (eso es la componente tangencial de F20).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F22</span><span class="ej-src">Paper 1A · May 2026 TZ3 · Q3 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una burbuja de aceite sube en agua a velocidad terminal. Su peso es \(3\times10^{-8}\) N y el arrastre viscoso es \(2\times10^{-8}\) N. ¿Cuánto vale \(\dfrac{\rho_\text{aceite}}{\rho_\text{agua}}\)?</p>
+      <div class="sol"><p>A velocidad terminal, el empuje (arriba) equilibra peso + arrastre (ambos abajo, pues sube): \(E=3+2=5\ (\times10^{-8})\) N. Como \(\text{peso}\propto\rho_\text{aceite}\) y \(E\propto\rho_\text{agua}\) (mismo volumen \(g\)): \(\dfrac{\rho_\text{aceite}}{\rho_\text{agua}}=\dfrac{\text{peso}}{E}=\dfrac35\).</p>
+        <span class="ans">A) 3/5 ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F23</span><span class="ej-src">Paper 1A · May 2026 TZ3 · Q5 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una caja de peso 1,5 kN baja por una rampa a <em>rapidez constante</em>; recorre 30 m sobre la rampa y desciende 14 m en vertical. ¿Fuerza media de resistencia?</p>
+      <div class="sol"><p>A rapidez constante, la fricción iguala la componente del peso paralela: \(f=W\sin\theta=W\dfrac{h}{L}=1{,}5\times\dfrac{14}{30}\approx0{,}70\) kN.</p>
+        <span class="ans">D) \(1{,}5\times\dfrac{14}{30}\) kN ✓ (\(\sin\theta=14/30\))</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">F24</span><span class="ej-src">Paper 1A · May 2026 TZ3 · Q6 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un acróbata sube en vertical a rapidez constante \(v\) sujeto a dos cuerdas, cada una con ángulo \(\theta\) a la vertical y tensión \(F\). ¿Ritmo de cambio de su energía potencial gravitatoria?</p>
+      <div class="sol"><p>A \(v\) constante, equilibrio vertical: \(2F\cos\theta=mg\). El ritmo de cambio de la EPG es la potencia contra la gravedad: \(\dfrac{dE_p}{dt}=mg\,v=2F\cos\theta\cdot v\).</p>
+        <span class="ans">D) \(2Fv\cos\theta\) ✓ — primero resuelve las dos tensiones; su suma vertical es el peso.</span></div>
+    </div>
+  </div>
+
+  <div class="box beyond">
+    <span class="lbl">Qué va en el Módulo 3B (tipo 2)</span>
+    <p>Los problemas de dinámica del <strong>Paper 2</strong> (estructurados: sistemas con varios cuerpos, inclinados con fricción y apartados a–b–c, DCL que hay que dibujar y justificar) se resolverán en el Módulo 3B.</p>
+  </div>
+</section>
+
+<!-- PRACTICA -->
+<section id="practica">
+  <p class="sec-num">PARA TI · RESUELVE Y ENVÍA EN BLOQUE</p>
+  <h2>10 problemas propuestos (nuevos, nivel ascendente)<span class="rule"></span></h2>
+  <p class="sec-intro">Completan lo que la ficha no traía cuantificado (fricción, inclinados con fricción, resortes, sistemas mixtos) y suben de nivel. Los #9 y #10 integran Cinemática (M2) e Incertidumbre (M1) y superan al IB. \(g=10\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">P1 · fricción</p><p>Sobre un bloque de 8,0 kg en suelo horizontal se aplica una fuerza horizontal de 40 N; \(\mu_d=0{,}30\). Halla la fuerza de fricción, la fuerza neta y la aceleración.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>DCL:</strong> peso \(W=mg\), normal \(F_N\), fuerza aplicada 40 N (→), fricción \(F_f\) (←). En el eje vertical: \(F_N=mg=8{,}0(10)=80\) N.</p>
+      <p><strong>Fricción:</strong> \(F_f=\mu_d F_N=0{,}30(80)=24\) N.</p>
+      <p><strong>Fuerza neta (horizontal):</strong> \(F_{\text{neta}}=40-24=16\) N.</p>
+      <p><strong>Aceleración:</strong> \(a=\dfrac{F_{\text{neta}}}{m}=\dfrac{16}{8{,}0}=2{,}0\) m·s⁻².</p>
+      <span class="ans">\(F_f=24\) N · \(F_{\text{neta}}=16\) N · \(a=2{,}0\) m·s⁻²</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P2 · inclinado con fricción</p><p>Un bloque de 5,0 kg baja un plano de 30° con \(\mu_d=0{,}20\). Determina su aceleración a lo largo del plano.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Ejes rotados:</strong> baja el plano, la fricción apunta plano arriba. Normal: \(F_N=mg\cos\theta\). A lo largo del plano: \(mg\sin\theta-\mu_d mg\cos\theta=ma\).</p>
+      <p>La masa se cancela: \(a=g(\sin\theta-\mu_d\cos\theta)=10(\sin30^\circ-0{,}20\cos30^\circ)\).</p>
+      <p>\(a=10(0{,}500-0{,}20\cdot0{,}866)=10(0{,}500-0{,}173)=10(0{,}327)=3{,}3\) m·s⁻².</p>
+      <span class="ans">\(a=3{,}3\) m·s⁻² (plano abajo)</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P3 · sistema mixto con fricción</p><p>Un bloque de 3,0 kg sobre una mesa rugosa (\(\mu_d=0{,}25\)) se une por una cuerda que pasa por una polea a un bloque de 2,0 kg que cuelga. Halla la aceleración del sistema y la tensión.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Fricción</strong> sobre el bloque de la mesa (\(M=3{,}0\) kg): \(F_f=\mu_d Mg=0{,}25(3{,}0)(10)=7{,}5\) N.</p>
+      <p><strong>DCL colgante</strong> (\(m=2{,}0\) kg): \(mg-T=ma\). <strong>DCL mesa:</strong> \(T-F_f=Ma\).</p>
+      <p>Sumando: \(mg-F_f=(M+m)a\Rightarrow 2{,}0(10)-7{,}5=(5{,}0)a\Rightarrow 12{,}5=5{,}0a\Rightarrow a=2{,}5\) m·s⁻².</p>
+      <p><strong>Tensión:</strong> \(T=mg-ma=20-2{,}0(2{,}5)=20-5{,}0=15\) N. (Comprobación en la mesa: \(T-F_f=15-7{,}5=7{,}5=Ma=3{,}0(2{,}5)\) ✓)</p>
+      <span class="ans">\(a=2{,}5\) m·s⁻² · \(T=15\) N</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P4 · fuerza en ángulo + fricción</p><p>Se empuja un bloque de 10 kg con 50 N a 30° <em>por debajo</em> de la horizontal; \(\mu_d=0{,}20\). Halla la normal, la fricción y la aceleración. (Ojo: la componente vertical aumenta la normal.)</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Componentes de la fuerza:</strong> horizontal \(F\cos30^\circ=50(0{,}866)=43{,}3\) N; vertical (hacia abajo) \(F\sin30^\circ=50(0{,}5)=25\) N.</p>
+      <p><strong>Normal</strong> (la fuerza empuja hacia abajo, se suma al peso): \(F_N=mg+F\sin30^\circ=100+25=125\) N.</p>
+      <p><strong>Fricción:</strong> \(F_f=\mu_d F_N=0{,}20(125)=25\) N.</p>
+      <p><strong>Aceleración:</strong> \(a=\dfrac{F\cos30^\circ-F_f}{m}=\dfrac{43{,}3-25}{10}=\dfrac{18{,}3}{10}=1{,}8\) m·s⁻².</p>
+      <span class="ans">\(F_N=125\) N · \(F_f=25\) N · \(a=1{,}8\) m·s⁻²</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P5 · ascensor + tensión</p><p>Una persona de 70 kg viaja en un ascensor que acelera hacia arriba a 2,0 m·s⁻². Del techo cuelga, mediante una cuerda, una lámpara de 2,0 kg. Halla el peso aparente de la persona y la tensión de la cuerda de la lámpara.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Persona</strong> (acelera hacia arriba): la báscula marca la normal. \(F_N-mg=ma\Rightarrow F_N=m(g+a)=70(10+2{,}0)=70(12)=840\) N.</p>
+      <p><strong>Lámpara</strong> (misma aceleración del ascensor): \(T-mg=ma\Rightarrow T=m(g+a)=2{,}0(12)=24\) N.</p>
+      <span class="ans">Peso aparente \(=840\) N · \(T=24\) N</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P6 · tres cuerpos</p><p>Tres bloques (2, 3 y 5 kg, en ese orden) están unidos por cuerdas sobre una superficie lisa y se tira del primero con 40 N. Halla la aceleración y la tensión en cada una de las dos cuerdas.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Sistema completo</strong> (superficie lisa): \(a=\dfrac{F}{\sum m}=\dfrac{40}{2{,}0+3{,}0+5{,}0}=\dfrac{40}{10}=4{,}0\) m·s⁻².</p>
+      <p>Orden de tiro: 2 kg → (cuerda 1) → 3 kg → (cuerda 2) → 5 kg.</p>
+      <p><strong>Cuerda 1</strong> (arrastra los bloques de 3 y 5 kg): \(T_1=(3{,}0+5{,}0)a=8{,}0(4{,}0)=32\) N.</p>
+      <p><strong>Cuerda 2</strong> (arrastra solo el bloque de 5 kg): \(T_2=5{,}0(4{,}0)=20\) N.</p>
+      <span class="ans">\(a=4{,}0\) m·s⁻² · \(T_1=32\) N · \(T_2=20\) N</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P7 · inclinado + polea (dirección)</p><p>Un bloque de 4,0 kg está sobre un plano liso de 37° (\(\sin37^\circ=0{,}6\)), unido por una cuerda sobre una polea a un bloque de 3,0 kg que cuelga verticalmente. Determina el sentido del movimiento y la aceleración del sistema.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>¿Quién gana?</strong> Componente del peso del bloque en el plano: \(m_1 g\sin37^\circ=4{,}0(10)(0{,}6)=24\) N. Peso del colgante: \(m_2 g=3{,}0(10)=30\) N. Como \(30>24\), el colgante baja y el bloque sube el plano.</p>
+      <p><strong>Ecuación del sistema</strong> (plano liso, sin fricción): \(m_2 g-m_1 g\sin37^\circ=(m_1+m_2)a\).</p>
+      <p>\(a=\dfrac{30-24}{4{,}0+3{,}0}=\dfrac{6{,}0}{7{,}0}=0{,}86\) m·s⁻².</p>
+      <span class="ans">El colgante baja (bloque sube el plano) · \(a=0{,}86\) m·s⁻²</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P8 · resorte (Hooke) + dinámica</p><p>Una masa de 0,50 kg cuelga de un resorte \(k=100\ \mathrm{N\,m^{-1}}\). (a) Halla el estiramiento en equilibrio. (b) Si se tira 4,0 cm más y se suelta, ¿cuál es la aceleración inicial (módulo y sentido)?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a) Equilibrio:</strong> \(kx=mg\Rightarrow x=\dfrac{mg}{k}=\dfrac{0{,}50(10)}{100}=0{,}050\) m \(=5{,}0\) cm.</p>
+      <p><strong>(b)</strong> Al tirar \(\Delta x=4{,}0\) cm \(=0{,}040\) m por debajo del equilibrio, la fuerza resultante es la elástica adicional (el peso ya estaba equilibrado): \(F=k\,\Delta x=100(0{,}040)=4{,}0\) N dirigida hacia el equilibrio (hacia arriba).</p>
+      <p>\(a=\dfrac{F}{m}=\dfrac{4{,}0}{0{,}50}=8{,}0\) m·s⁻², hacia arriba.</p>
+      <span class="ans">\(x=5{,}0\) cm · \(a_0=8{,}0\) m·s⁻² (hacia el equilibrio, arriba)</span>
+    </div></details>
+  </div>
+  <div class="prob jefe"><p class="pn">P9 · INTEGRADOR (M1 + M2)</p><p>Un auto de 1200 kg frena y se detiene desde 20 m·s⁻¹ en 40 m sobre suelo horizontal. (a) Halla la desaceleración (usa Cinemática) y la fuerza de fricción. (b) Determina el coeficiente \(\mu_d\). (c) Si \(\mu_d=(0{,}50\pm0{,}03)\), propaga la incertidumbre a la distancia de frenado desde 20 m·s⁻¹ y exprésala como \(d\pm\Delta d\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a) Cinemática</strong> (M2): \(v^2=v_0^2-2as\Rightarrow 0=20^2-2a(40)\Rightarrow 400=80a\Rightarrow a=5{,}0\) m·s⁻². La única fuerza horizontal es la fricción: \(F_f=ma=1200(5{,}0)=6{,}0\times10^3\) N.</p>
+      <p><strong>(b)</strong> \(F_f=\mu_d mg\Rightarrow \mu_d=\dfrac{F_f}{mg}=\dfrac{6000}{1200(10)}=0{,}50\).</p>
+      <p><strong>(c)</strong> Con \(a=\mu_d g\), la distancia de frenado es \(d=\dfrac{v^2}{2a}=\dfrac{v^2}{2\mu_d g}=\dfrac{400}{2(0{,}50)(10)}=40\) m. Como \(d\propto 1/\mu_d\) (una sola relación), la incertidumbre relativa se traslada directa: \(\dfrac{\Delta d}{d}=\dfrac{\Delta\mu_d}{\mu_d}=\dfrac{0{,}03}{0{,}50}=0{,}06\). Entonces \(\Delta d=0{,}06(40)=2{,}4\) m, que a 1 cifra significativa es 2 m.</p>
+      <span class="ans">\(a=5{,}0\) m·s⁻² · \(F_f=6{,}0\) kN · \(\mu_d=0{,}50\) · \(d=(40\pm2)\) m</span>
+    </div></details>
+  </div>
+  <div class="prob jefe"><p class="pn">P10 · PROBLEMA JEFE (supera al IB)</p><p>Dos masas cuelgan de una polea: \(m_1=4{,}0\) kg sobre un plano rugoso de 30° (\(\mu_d=0{,}25\)) y \(m_2=3{,}0\) kg colgando verticalmente. (a) Determina el sentido del movimiento y la aceleración. (b) Halla la tensión de la cuerda. (c) Usando Cinemática, calcula la rapidez del sistema tras desplazarse 1,5 m desde el reposo. (d) ¿Qué valor de \(\mu_s\) haría que el sistema permaneciera en reposo?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a) Sentido:</strong> peso del colgante \(m_2 g=3{,}0(10)=30\) N; componente del peso de \(m_1\) en el plano \(m_1 g\sin30^\circ=4{,}0(10)(0{,}5)=20\) N. Como \(30>20\), el colgante baja y \(m_1\) sube el plano; la fricción cinética actúa plano abajo sobre \(m_1\).</p>
+      <p>Fricción: \(F_f=\mu_d m_1 g\cos30^\circ=0{,}25(4{,}0)(10)(0{,}866)=8{,}66\) N.</p>
+      <p>Ecuación del sistema: \(m_2 g-m_1 g\sin30^\circ-F_f=(m_1+m_2)a\Rightarrow 30-20-8{,}66=7{,}0\,a\Rightarrow a=\dfrac{1{,}34}{7{,}0}=0{,}19\) m·s⁻².</p>
+      <p><strong>(b) Tensión</strong> (DCL del colgante): \(m_2 g-T=m_2 a\Rightarrow T=30-3{,}0(0{,}19)=29{,}4\approx29\) N.</p>
+      <p><strong>(c) Cinemática</strong> (desde el reposo): \(v^2=2as=2(0{,}19)(1{,}5)=0{,}574\Rightarrow v=0{,}76\) m·s⁻¹.</p>
+      <p><strong>(d) En reposo:</strong> la fricción estática (ahora plano arriba, oponiéndose al arranque de \(m_1\)) debe cubrir el desbalance \(m_2 g-m_1 g\sin30^\circ=30-20=10\) N. Se requiere \(\mu_s m_1 g\cos30^\circ\ge10\Rightarrow \mu_s\ge\dfrac{10}{4{,}0(10)(0{,}866)}=\dfrac{10}{34{,}6}=0{,}29\).</p>
+      <span class="ans">(a) \(a=0{,}19\) m·s⁻² (colgante baja) · (b) \(T\approx29\) N · (c) \(v=0{,}76\) m·s⁻¹ · (d) \(\mu_s\ge0{,}29\)</span>
+    </div></details>
+  </div>
+</section>
+
+<!-- MASPROBLEMAS -->
+<section id="masproblemas">
+  <p class="sec-num">MÁS PRÁCTICA · RESUELVE ANTES DE ABRIR LA RESOLUCIÓN</p>
+  <h2>Más problemas · estilo past paper IB<span class="rule"></span></h2>
+  <p class="sec-intro">Seis problemas nuevos con el formato de examen, uno por cada mecanismo central del tema: 2.ª ley, fricción, plano inclinado, poleas/conectados, ascensor y fuerza en ángulo. Intenta cada uno completo antes de ver la resolución. \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">MP1 · segunda ley (F = ma)</p><p>Sobre una caja de 6,0 kg, en un suelo horizontal sin fricción, actúan dos fuerzas horizontales opuestas: 50 N hacia la derecha y 20 N hacia la izquierda. (a) Halla la fuerza resultante y la aceleración. (b) Si parte del reposo, ¿qué rapidez tiene a los 4,0 s?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>DCL en el eje horizontal:</strong> las dos fuerzas van en sentidos opuestos, así que la resultante es su resta: \(F_{\text{neta}}=50-20=30\) N (hacia la derecha). En el eje vertical peso y normal se cancelan (no acelera verticalmente).</p>
+      <p><strong>(a) Aceleración:</strong> \(a=\dfrac{F_{\text{neta}}}{m}=\dfrac{30}{6{,}0}=5{,}0\) m·s⁻².</p>
+      <p><strong>(b) Cinemática</strong> (parte del reposo, \(a\) constante): \(v=v_0+at=0+5{,}0(4{,}0)=20\) m·s⁻¹.</p>
+      <span class="ans">\(F_{\text{neta}}=30\) N · \(a=5{,}0\) m·s⁻² · \(v=20\) m·s⁻¹</span>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">MP2 · fricción (estática vs cinética)</p><p>Un bloque de 12 kg está en reposo sobre suelo horizontal; \(\mu_s=0{,}50\) y \(\mu_d=0{,}40\). (a) ¿Cuál es la fuerza horizontal mínima que lo hace arrancar? (b) Una vez en movimiento, manteniendo esa misma fuerza, ¿cuál es su aceleración?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Normal:</strong> en suelo horizontal sin fuerzas verticales extra, \(F_N=mg=12(10)=120\) N.</p>
+      <p><strong>(a)</strong> La fricción estática aguanta hasta su tope \(F_{s,\max}=\mu_s F_N=0{,}50(120)=60\) N. El bloque arranca justo cuando la fuerza aplicada supera ese tope: fuerza mínima \(\approx 60\) N.</p>
+      <p><strong>(b)</strong> Ya deslizando, actúa la fricción cinética \(F_f=\mu_d F_N=0{,}40(120)=48\) N (menor que la estática máxima). Con la fuerza de 60 N: \(F_{\text{neta}}=60-48=12\) N, de modo que \(a=\dfrac{12}{12}=1{,}0\) m·s⁻².</p>
+      <span class="ans">(a) \(F_{\min}=60\) N · (b) \(a=1{,}0\) m·s⁻²</span>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">MP3 · plano inclinado (lanzado hacia arriba)</p><p>Un bloque se lanza hacia arriba por un plano inclinado de 30° con una rapidez inicial de 8,0 m·s⁻¹; \(\mu_d=0{,}25\) (\(\cos30^\circ=0{,}866\)). (a) Halla la aceleración mientras sube. (b) ¿Qué distancia recorre a lo largo del plano hasta detenerse?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Mientras sube</strong>, dos fuerzas lo frenan a la vez: la componente del peso \(mg\sin\theta\) (siempre plano abajo) y la fricción cinética \(\mu_d mg\cos\theta\) (opuesta al movimiento, también plano abajo mientras sube). La masa se cancela:</p>
+      <p>\(a=g(\sin\theta+\mu_d\cos\theta)=10(\sin30^\circ+0{,}25\cos30^\circ)=10(0{,}500+0{,}25\cdot0{,}866)=10(0{,}500+0{,}217)=7{,}2\) m·s⁻² (desacelerando).</p>
+      <p><strong>(b) Cinemática</strong> (se detiene, \(v=0\)): \(v^2=v_0^2-2as\Rightarrow 0=8{,}0^2-2(7{,}2)s\Rightarrow s=\dfrac{64}{14{,}3}=4{,}5\) m.</p>
+      <span class="ans">\(a=7{,}2\) m·s⁻² (frenando) · \(s=4{,}5\) m</span>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">MP4 · poleas · máquina de Atwood</p><p>De una polea ideal (sin fricción ni masa) cuelgan dos masas: \(M=5{,}0\) kg y \(m=3{,}0\) kg. (a) Halla la aceleración del sistema. (b) Halla la tensión de la cuerda. (c) Comprueba que la tensión queda entre los dos pesos.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>DCL de \(M\)</strong> (baja): \(Mg-T=Ma\). <strong>DCL de \(m\)</strong> (sube): \(T-mg=ma\). Sumando se elimina \(T\): \((M-m)g=(M+m)a\).</p>
+      <p><strong>(a)</strong> \(a=\dfrac{(M-m)g}{M+m}=\dfrac{(5{,}0-3{,}0)(10)}{5{,}0+3{,}0}=\dfrac{20}{8{,}0}=2{,}5\) m·s⁻².</p>
+      <p><strong>(b)</strong> De la masa que baja: \(T=M(g-a)=5{,}0(10-2{,}5)=37{,}5\) N. (Comprobación con la que sube: \(T=m(g+a)=3{,}0(12{,}5)=37{,}5\) N ✓)</p>
+      <p><strong>(c)</strong> \(mg=30\) N \(<\) \(T=37{,}5\) N \(<\) \(Mg=50\) N: la tensión siempre queda entre los dos pesos (si no, ninguna masa aceleraría en el sentido correcto).</p>
+      <span class="ans">\(a=2{,}5\) m·s⁻² · \(T=37{,}5\) N</span>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">MP5 · ascensor · peso aparente</p><p>Una persona de 60 kg está de pie sobre una báscula dentro de un ascensor. La báscula marca 540 N. (a) ¿El ascensor acelera hacia arriba o hacia abajo, y con qué aceleración? (b) ¿Qué marcaría la báscula si el cable se cortara y el ascensor cayera libremente?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>La báscula marca la normal</strong> \(F_N\), no el peso real. El peso real es \(mg=60(10)=600\) N.</p>
+      <p><strong>(a)</strong> Como \(F_N=540\) N \(<600\) N, la persona se siente más liviana ⇒ el ascensor acelera <strong>hacia abajo</strong>. Tomando "arriba" como positivo: \(F_N-mg=ma\Rightarrow 540-600=60a\Rightarrow a=\dfrac{-60}{60}=-1{,}0\) m·s⁻², es decir \(1{,}0\) m·s⁻² hacia abajo.</p>
+      <p><strong>(b) Caída libre:</strong> todo el conjunto acelera con \(a=g\) hacia abajo, así que \(F_N=m(g-g)=0\). La báscula marca <strong>cero</strong> (ingravidez aparente); la masa de la persona no cambió.</p>
+      <span class="ans">(a) \(1{,}0\) m·s⁻² hacia abajo · (b) marca 0 N</span>
+    </div></details>
+  </div>
+
+  <div class="prob jefe"><p class="pn">MP6 · fuerza en ángulo + fricción</p><p>Se tira de una maleta de 20 kg con una correa que forma 40° sobre la horizontal, aplicando 80 N; \(\mu_d=0{,}30\) (\(\sin40^\circ=0{,}643\), \(\cos40^\circ=0{,}766\)). Halla (a) la fuerza normal, (b) la fuerza de fricción y (c) la aceleración horizontal.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Componentes de la fuerza aplicada:</strong> horizontal \(F\cos40^\circ=80(0{,}766)=61{,}3\) N; vertical hacia arriba \(F\sin40^\circ=80(0{,}643)=51{,}4\) N.</p>
+      <p><strong>(a) Normal:</strong> el tirón levanta parte del peso, así que la normal baja: \(F_N=mg-F\sin40^\circ=200-51{,}4=148{,}6\approx149\) N (no vale \(mg=200\) N).</p>
+      <p><strong>(b) Fricción:</strong> \(F_f=\mu_d F_N=0{,}30(148{,}6)=44{,}6\approx45\) N.</p>
+      <p><strong>(c) Eje horizontal:</strong> \(F_{\text{neta}}=F\cos40^\circ-F_f=61{,}3-44{,}6=16{,}7\) N, de donde \(a=\dfrac{16{,}7}{20}=0{,}84\) m·s⁻².</p>
+      <span class="ans">\(F_N\approx149\) N · \(F_f\approx45\) N · \(a=0{,}84\) m·s⁻²</span>
+    </div></details>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 3A · Dinámica (A.2, fuerzas y leyes de Newton).</strong> Ficha completa resuelta (10 en bloque + resto). Cantidad de movimiento, dinámica circunferencial y estática/torque se tratan en sus propios módulos y no se adelantan aquí. Sigue el <strong>Módulo 3B</strong> (Dinámica tipo 2). Convención: \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

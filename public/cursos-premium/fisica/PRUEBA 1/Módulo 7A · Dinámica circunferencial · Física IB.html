@@ -1,0 +1,730 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 7A · Dinámica circunferencial · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:54px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:28px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:14px 0;overflow-x:auto}
+.eqname{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--teal);letter-spacing:.06em;display:block;margin-top:4px}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.ej{border:1px solid var(--line);border-radius:5px;margin:22px 0;background:var(--paper-2);overflow:hidden}
+.ej-head{background:linear-gradient(180deg,#F0F5F3,#FFFFFF);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ej-tag{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal);padding:2px 8px;border-radius:3px}
+.ej-num{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px}
+.ej-src{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);letter-spacing:.05em}
+.ej-body{padding:16px 20px 20px}
+.sepide{display:inline-block;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:2px 8px;margin:2px 0 8px}
+.sol{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:6px 12px;display:inline-block;margin-top:8px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}td.l,th.l{text-align:left}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> A.2 <span>//</span> MÓDULO 7A · TEORÍA + TIPO 1</p>
+  <h1>Dinámica <em>circunferencial</em></h1>
+  <p class="lede">Movimiento circular uniforme: velocidad angular, aceleración y fuerza centrípeta, círculos horizontales y verticales, péndulo cónico y curvas. Reutiliza fuerzas, energía y las SUVAT.</p>
+  <div class="stats">
+    <div class="stat"><b>5</b><span>secciones de teoría</span></div>
+    <div class="stat"><b>A.2</b><span>syllabus IB</span></div>
+    <div class="stat"><b>10 + 10</b><span>resueltos · retos</span></div>
+    <div class="stat"><b>10</b><span>exámenes IB 2022–26</span></div>
+    <div class="stat"><b>g = 10</b><span>m·s⁻² salvo indicación</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#s1">1 · Cinemática circular</a>
+  <a href="#s2">2 · Aceleración centrípeta</a>
+  <a href="#s3">3 · Fuerza centrípeta</a>
+  <a href="#s4">4 · Círculo vertical y cónico</a>
+  <a href="#s5">5 · Más allá del IB</a>
+  <a href="#s6">6 · Definiciones (examen)</a>
+  <a href="#traps">Checklist de trampas</a>
+  <a href="#bloque">10 resueltos (ficha)</a>
+  <a href="#resto">Resto de la ficha</a>
+  <a href="#examenes">Banco de exámenes IB · 2022–26</a>
+  <a href="#practica">10 retos</a>
+  <a href="#masproblemas">Más problemas (IB)</a>
+</nav>
+
+<main>
+<!-- rev 2026-10-25 cir · banco examenes IB circular (10) v2 -->
+
+<!-- S1 -->
+<section id="s1">
+  <p class="sec-num">SECCIÓN 01</p>
+  <h2>Cinemática circular<span class="rule"></span></h2>
+  <p class="sec-intro">En un círculo, el ángulo \(\theta\) (en radianes) cambia de forma uniforme. La <strong>velocidad angular</strong> \(\omega\) mide qué tan rápido se barre ese ángulo.</p>
+  <h4>Qué es ω y de dónde sale ω = 2π/T</h4>
+  <p>La velocidad angular es el <strong>ángulo barrido por segundo</strong>: \(\omega=\dfrac{\Delta\theta}{\Delta t}\), en rad·s⁻¹. En <strong>una vuelta completa</strong> el radio barre un ángulo de \(2\pi\) rad y tarda un periodo \(T\); de ahí sale directamente la fórmula:</p>
+  <div class="eq">\[ \omega=\frac{\text{ángulo de una vuelta}}{\text{tiempo de una vuelta}}=\frac{2\pi}{T}=2\pi f \qquad v=\omega r=\frac{2\pi r}{T} \]<span class="eqname">periodo, velocidad angular y velocidad lineal</span></div>
+  <p>donde \(f=1/T\) es la frecuencia (vueltas por segundo). La relación \(v=\omega r\) viene de la propia definición de radián: un arco mide \(s=\theta\,r\); al dividir entre el tiempo, \(v=\dfrac{s}{t}=r\,\dfrac{\theta}{t}=\omega r\).</p>
+  <div class="box key"><span class="lbl">Número + proporción</span><p>Si \(T=0{,}50\) s: \(f=1/T=2\) Hz y \(\omega=2\pi/0{,}50=4\pi\approx12{,}6\) rad·s⁻¹. Con \(r=0{,}30\) m: \(v=\omega r=4\pi(0{,}30)\approx3{,}8\) m·s⁻¹. <strong>Proporción:</strong> a \(\omega\) fija, \(v\propto r\) (doble radio ⇒ doble rapidez); a \(v\) fija, \(T\propto r\).</p></div>
+  <h4>Por qué ω es IGUAL para todo el disco, pero v NO</h4>
+  <p>En un cuerpo <strong>rígido</strong> que gira, todos los puntos completan <strong>una vuelta en el mismo tiempo</strong> \(T\): un punto cercano al eje y otro en la orilla pasan juntos por cada posición angular, no se adelantan ni se atrasan. Como \(\omega=2\pi/T\) y ese \(T\) es común, <strong>todos comparten la misma \(\omega\)</strong>. En cambio \(v=\omega r\) depende del radio: el punto de la orilla recorre una circunferencia <strong>más larga</strong> (camino \(2\pi r\) mayor) en ese mismo \(T\), así que va <strong>más rápido</strong>. Doble radio ⇒ doble camino en el mismo tiempo ⇒ doble \(v\), pese a que \(\omega\) no cambia. La velocidad \(\vec v\) es siempre <strong>tangente</strong> al círculo: apunta hacia donde "saldría disparado" el punto si se soltara.</p>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 1.1</span><span class="ej-src">ficha · N13 y M06 (disco)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide relacionar v en puntos a distinto radio</span>
+      <p>En un disco que gira, el punto P está a \(R\) y Q a \(2R\). Si P tiene rapidez \(v\), ¿la de Q?</p>
+      <div class="sol"><p>Igual \(\omega\): \(v=\omega r\Rightarrow v_Q=\omega(2R)=2v\). (Y la rapidez con periodo T es \(v=2\pi r/T\).)</p><span class="ans">v_Q = 2v.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S2 -->
+<section id="s2">
+  <p class="sec-num">SECCIÓN 02</p>
+  <h2>Aceleración centrípeta<span class="rule"></span></h2>
+  <p class="sec-intro">Aunque la rapidez sea constante, la <strong>dirección</strong> de \(\vec v\) cambia: hay aceleración, dirigida siempre hacia el centro.</p>
+  <h4>Por qué hay aceleración aunque la rapidez no cambie</h4>
+  <p>La velocidad es un <strong>vector</strong>: tiene módulo (la rapidez) y dirección. Acelerar significa cambiar la velocidad, y <strong>cambiar solo su dirección ya es acelerar</strong>, aunque el módulo no varíe. En el MCU \(v\) es constante pero la dirección gira sin parar; por eso <em>siempre</em> hay aceleración, y apunta <strong>hacia el centro</strong> (de ahí "centrípeta", que significa "que busca el centro").</p>
+  <div class="eq">\[ a=\frac{v^2}{r}=\omega^2 r=\frac{4\pi^2 r}{T^2}\quad(\text{hacia el centro}) \]<span class="eqname">aceleración centrípeta (tres formas)</span></div>
+  <h4>De dónde sale a = v²/r</h4>
+  <p>Toma dos instantes muy próximos separados \(\Delta t\). El radio gira un ángulo \(\Delta\theta\); como \(\vec v\) es siempre perpendicular al radio, el <strong>vector velocidad gira exactamente ese mismo ángulo</strong> \(\Delta\theta\). Los vectores \(\vec v_1\) y \(\vec v_2\) (de igual módulo \(v\)) forman un triángulo isósceles <strong>semejante</strong> al que forman los dos radios. De la semejanza, el cambio de velocidad \(\Delta v\) guarda con \(v\) la misma proporción que el arco \(\Delta s\) con el radio \(r\):</p>
+  <div class="eq">\[ \frac{\Delta v}{v}=\frac{\Delta s}{r}\;\Rightarrow\;\Delta v=\frac{v\,\Delta s}{r}\;\Rightarrow\;a=\frac{\Delta v}{\Delta t}=\frac{v}{r}\,\frac{\Delta s}{\Delta t}=\frac{v}{r}\,v=\frac{v^2}{r} \]<span class="eqname">deducción geométrica (Δs = v·Δt es el arco recorrido)</span></div>
+  <p>Al hacer \(\Delta t\to 0\), el vector \(\Delta\vec v\) queda <strong>apuntando al centro</strong>: por eso la aceleración es centrípeta. Sustituyendo \(v=\omega r\) se obtiene además \(a=\omega^2 r\). <strong>Qué representa:</strong> el ritmo al que la velocidad "gira" (cambia de dirección), no al que cambia de tamaño.</p>
+  <div class="box key"><span class="lbl">Número + proporción</span><p>Con \(v=4\) m·s⁻¹ y \(r=0{,}50\) m: \(a=v^2/r=16/0{,}50=32\) m·s⁻². <strong>Proporción:</strong> a \(r\) fijo, \(a\propto v^2\) ⇒ <strong>doble \(v\) ⇒ cuádruple \(a\)</strong>. A \(\omega\) fija, \(a=\omega^2 r\propto r\) ⇒ doble radio ⇒ doble \(a\).</p></div>
+  <figure class="fig">
+    <svg viewBox="0 0 240 160" width="220" xmlns="http://www.w3.org/2000/svg" aria-label="v y a en círculo">
+      <circle cx="120" cy="85" r="60" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+      <circle cx="120" cy="25" r="5" fill="var(--ink)"/>
+      <line x1="120" y1="25" x2="195" y2="25" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#v)"/>
+      <line x1="120" y1="25" x2="120" y2="70" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#v)"/>
+      <defs><marker id="v" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <text x="170" y="20" font-family="IBM Plex Mono" font-size="12" fill="var(--teal)">v (tangente)</text>
+      <text x="126" y="55" font-family="IBM Plex Mono" font-size="12" fill="var(--warn)">a (al centro)</text>
+    </svg>
+    <figcaption>v es tangente; a apunta al centro. Son perpendiculares.</figcaption>
+  </figure>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 2.1</span><span class="ej-src">ficha · M06 y M13 (a ∝ r)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide comparar aceleraciones</span>
+      <p>P a \(r\) tiene aceleración \(a\); Q a \(2r\) en el mismo disco.</p>
+      <div class="sol"><p>Igual \(\omega\): \(a=\omega^2 r\Rightarrow a\propto r\Rightarrow a_Q=2a\). (Y \(a_P/a_Q=r/2r=1/2\).)</p><span class="ans">a_Q = 2a.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S3 -->
+<section id="s3">
+  <p class="sec-num">SECCIÓN 03</p>
+  <h2>Fuerza centrípeta<span class="rule"></span></h2>
+  <p class="sec-intro">La fuerza centrípeta <strong>no es una fuerza nueva</strong>: es el nombre de la fuerza resultante que apunta al centro y curva la trayectoria.</p>
+  <div class="eq">\[ F_c=\frac{mv^2}{r}=m\omega^2 r \]<span class="eqname">fuerza centrípeta = fuerza resultante hacia el centro</span></div>
+  <h4>De dónde sale F = mv²/r (y por qué NO es una fuerza aparte)</h4>
+  <p>No existe ningún "motor" oculto que empuje hacia el centro. \(F_c\) es simplemente la <strong>segunda ley de Newton aplicada en la dirección radial</strong>: la suma de las fuerzas <em>reales</em> que ya actúan (tensión, gravedad, normal, fricción…), proyectada hacia el centro, tiene que valer \(m\,a\). Como la aceleración centrípeta es \(a=v^2/r\):</p>
+  <div class="eq">\[ \sum F_{\text{radial}}=m\,a=\frac{mv^2}{r}=m\omega^2 r \]<span class="eqname">F centrípeta = resultante radial (2.ª ley de Newton)</span></div>
+  <p>Por eso "fuerza centrípeta" es un <strong>rol</strong>, no un tipo de fuerza nueva: lo cumple la fuerza (o combinación) que apunte al centro en cada caso. Si el examen pregunta "¿cuál es la fuerza centrípeta aquí?", la respuesta es siempre <em>otra</em> fuerza concreta de la lista:</p>
+  <div class="box key"><span class="lbl">Número + proporción</span><p>Con \(m=2\) kg, \(v=3\) m·s⁻¹, \(r=1{,}5\) m: \(F_c=mv^2/r=2(9)/1{,}5=12\) N. <strong>Proporción:</strong> a \(m\) y \(r\) fijos, <strong>doble \(v\) ⇒ cuádruple \(F_c\)</strong>; a \(v\) y \(m\) fijos, doble \(r\) ⇒ mitad de \(F_c\).</p></div>
+  <table>
+    <tr><th class="l">Situación</th><th class="l">¿Quién hace de fuerza centrípeta?</th></tr>
+    <tr><td class="l">Auto en curva plana</td><td class="l">fricción lateral entre neumáticos y pista</td></tr>
+    <tr><td class="l">Objeto en cuerda (horizontal)</td><td class="l">tensión de la cuerda</td></tr>
+    <tr><td class="l">Ladrillo / niño en disco giratorio</td><td class="l">fricción (o normal en el caso peraltado)</td></tr>
+    <tr><td class="l">Satélite / planeta</td><td class="l">gravedad</td></tr>
+    <tr><td class="l">Carga en campo magnético</td><td class="l">fuerza magnética</td></tr>
+  </table>
+  <div class="box key"><span class="lbl">Caso · auto en curva plana</span><p>La <strong>fricción</strong> hace de centrípeta; su máximo \(\mu mg\) limita la rapidez: \(\mu mg=\dfrac{mv^2}{r}\Rightarrow v_{\max}=\sqrt{\mu g r}\) (la masa se cancela). <strong>Número:</strong> \(\mu=0{,}6\), \(r=50\) m ⇒ \(v_{\max}=\sqrt{0{,}6(10)(50)}\approx17\) m·s⁻¹. <strong>Proporción:</strong> \(v_{\max}\propto\sqrt r\) ⇒ cuádruple radio ⇒ doble rapidez. Si \(v>v_{\max}\), derrapa hacia afuera.</p></div>
+  <div class="box key"><span class="lbl">Nota conceptual</span><p>Como \(\vec F_c\perp\vec v\), la fuerza centrípeta <strong>no realiza trabajo</strong>: la rapidez (y la energía cinética) no cambian en el movimiento circular uniforme. La resultante <em>a lo largo</em> del movimiento es cero; <em>normal</em> a él, no.</p></div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 3.1</span><span class="ej-src">ficha · N20 (masa en un tubo)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la masa colgante M</span>
+      <p>Una masa \(m\) gira en un círculo horizontal de radio \(r\) a rapidez \(v\); la cuerda pasa por un tubo y sostiene una masa \(M\) que cuelga en equilibrio.</p>
+      <div class="sol"><p>La tensión sostiene a \(M\): \(T=Mg\). Esa misma tensión es la centrípeta de \(m\): \(T=\dfrac{mv^2}{r}\). Igualando: \(Mg=\dfrac{mv^2}{r}\).</p><span class="ans">M = mv²/(rg) (opción B).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 -->
+<section id="s4">
+  <p class="sec-num">SECCIÓN 04</p>
+  <h2>Círculo vertical y péndulo cónico<span class="rule"></span></h2>
+  <p class="sec-intro">Cuando la gravedad participa, la tensión (o la normal) cambia según la posición.</p>
+  <h4>Círculo vertical (cuerda)</h4>
+  <p>En el <strong>punto más alto</strong>: \(T+mg=\dfrac{mv^2}{r}\Rightarrow T=\dfrac{mv^2}{r}-mg\). En el <strong>más bajo</strong>: \(T-mg=\dfrac{mv^2}{r}\Rightarrow T=\dfrac{mv^2}{r}+mg\). La tensión es <strong>máxima abajo</strong>. Para que la cuerda no se afloje arriba: \(v_{\min}=\sqrt{gr}\).</p>
+  <figure class="fig">
+    <svg viewBox="0 0 200 180" width="180" xmlns="http://www.w3.org/2000/svg" aria-label="circulo vertical">
+      <circle cx="100" cy="90" r="60" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+      <circle cx="100" cy="30" r="7" fill="#C9D2CC" stroke="var(--ink)"/>
+      <circle cx="100" cy="150" r="7" fill="#C9D2CC" stroke="var(--ink)"/>
+      <line x1="100" y1="30" x2="100" y2="8" stroke="var(--warn)" stroke-width="2" marker-end="url(#w)"/>
+      <line x1="100" y1="30" x2="100" y2="52" stroke="var(--teal)" stroke-width="2" marker-end="url(#w)"/>
+      <line x1="100" y1="150" x2="100" y2="172" stroke="var(--warn)" stroke-width="2" marker-end="url(#w)"/>
+      <line x1="100" y1="150" x2="100" y2="128" stroke="var(--teal)" stroke-width="2" marker-end="url(#w)"/>
+      <defs><marker id="w" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <text x="110" y="20" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">mg</text>
+      <text x="110" y="50" font-family="IBM Plex Mono" font-size="9" fill="var(--teal)">T</text>
+      <text x="110" y="168" font-family="IBM Plex Mono" font-size="9" fill="var(--warn)">mg</text>
+      <text x="110" y="130" font-family="IBM Plex Mono" font-size="9" fill="var(--teal)">T</text>
+    </svg>
+    <figcaption>Arriba: T y mg apuntan al centro. Abajo: T al centro, mg en contra.</figcaption>
+  </figure>
+  <h4>Caso general: en un ángulo θ cualquiera</h4>
+  <p>Cima y fondo son solo dos posiciones; conviene saber resolver <strong>cualquier punto</strong>. Mide \(\theta\) desde el <strong>punto más bajo</strong> del círculo. La cuerda (tensión \(T\)) apunta hacia el centro, pero el <strong>peso \(mg\) sigue apuntando verticalmente hacia abajo</strong>, así que ya no es ni puramente radial ni puramente tangencial: hay que <strong>descomponerlo</strong> respecto a la cuerda, en una componente <strong>radial</strong> (a lo largo de la cuerda) y otra <strong>tangencial</strong> (perpendicular a ella).</p>
+  <ul>
+    <li><strong>Componente radial del peso:</strong> \(mg\cos\theta\), dirigida <em>hacia afuera</em> del centro (se opone a \(T\)).</li>
+    <li><strong>Componente tangencial del peso:</strong> \(mg\sin\theta\), a lo largo de la trayectoria.</li>
+  </ul>
+  <p>Se escribe la 2.ª ley por separado en cada dirección: la <strong>radial</strong> gobierna la tensión; la <strong>tangencial</strong> gobierna cómo cambia la rapidez.</p>
+  <div class="eq">\[ \underbrace{T-mg\cos\theta=\frac{mv^2}{r}}_{\text{radial: fija }T}\qquad\qquad \underbrace{mg\sin\theta=m\,a_t}_{\text{tangencial: cambia la rapidez}} \]<span class="eqname">círculo vertical a un ángulo θ (θ medido desde el fondo)</span></div>
+  <p>La ecuación tangencial muestra por qué este movimiento circular <strong>no es uniforme</strong>: la gravedad <strong>frena</strong> a la bola mientras sube (\(0<\theta<180^\circ\)) y la <strong>acelera</strong> al bajar, de modo que \(v\) cambia con la altura (coherente con la conservación de energía del Módulo 6).</p>
+  <p><strong>Cima y fondo son casos particulares</strong> (solo hay que sustituir \(\theta\)):</p>
+  <ul>
+    <li><strong>Fondo</strong> (\(\theta=0,\ \cos\theta=1\)): \(T-mg=\dfrac{mv^2}{r}\Rightarrow T=\dfrac{mv^2}{r}+mg\). Tensión <strong>máxima</strong>; aquí \(mg\) tira en contra del centro. Además \(\sin0=0\): no hay fuerza tangencial, la rapidez es momentáneamente estacionaria.</li>
+    <li><strong>Lado</strong> (\(\theta=90^\circ,\ \cos\theta=0\)): \(T=\dfrac{mv^2}{r}\). El peso es puramente tangencial, no estira la cuerda; es donde más rápido cambia la rapidez.</li>
+    <li><strong>Cima</strong> (\(\theta=180^\circ,\ \cos\theta=-1\)): \(T+mg=\dfrac{mv^2}{r}\Rightarrow T=\dfrac{mv^2}{r}-mg\). Tensión <strong>mínima</strong>; aquí \(mg\) ayuda como centrípeta, y por eso basta menos tensión.</li>
+  </ul>
+  <div class="box key"><span class="lbl">Energía cima ↔ fondo</span><p>Sin rozamiento, entre cima y fondo baja \(2r\): \(v_{\text{fondo}}^2=v_{\text{cima}}^2+2g(2r)=v_{\text{cima}}^2+4gr\). <strong>Número:</strong> si arriba va al mínimo \(v_{\text{cima}}^2=gr\), abajo \(v_{\text{fondo}}^2=5gr\Rightarrow v_{\text{fondo}}=\sqrt{5gr}\); luego \(T_{\text{fondo}}=\dfrac{mv_{\text{fondo}}^2}{r}+mg=5mg+mg=6mg\) (reutiliza energía del Módulo 6).</p></div>
+  <h4>Colina convexa / cresta</h4>
+  <p>En la cima de una colina <strong>convexa</strong> el peso apunta al centro (abajo) y la normal hacia afuera: \(mg-N=\dfrac{mv^2}{r}\Rightarrow N=m\!\left(g-\dfrac{v^2}{r}\right)\). La normal (peso aparente) <strong>disminuye</strong> al crecer \(v\); el auto <strong>pierde contacto</strong> cuando \(N=0\), es decir \(v=\sqrt{gr}\). <strong>Número:</strong> \(r=40\) m ⇒ despega a \(\sqrt{10(40)}=20\) m·s⁻¹; a \(15\) m·s⁻¹, \(N/mg=1-\dfrac{v^2}{gr}=1-\dfrac{225}{400}\approx0{,}44\) (siente 44 % de su peso). Es el caso <em>espejo</em> del fondo del círculo (allí \(N>mg\)).</p>
+  <h4>Barra rígida vs. cuerda</h4>
+  <p>Una <strong>barra</strong> puede empujar además de tirar: arriba puede sostener la masa (fuerza hacia afuera) si \(v\) es baja, así que no exige \(v_{\min}\). Su fuerza es <strong>mínima arriba</strong> y máxima abajo.</p>
+  <h4>Péndulo cónico</h4>
+  <p>Masa en cuerda que describe un círculo horizontal, cuerda a ángulo \(\theta\) de la vertical: \(T\cos\theta=mg\) (vertical) y \(T\sin\theta=\dfrac{mv^2}{r}\) (centrípeta) ⇒ \(\tan\theta=\dfrac{v^2}{rg}\). Con \(r=L\sin\theta\), el periodo es \(T_{\text{p}}=2\pi\sqrt{\dfrac{L\cos\theta}{g}}\).</p>
+  <figure class="fig">
+    <svg viewBox="0 0 220 180" width="200" xmlns="http://www.w3.org/2000/svg" aria-label="pendulo conico">
+      <defs><marker id="cp" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <line x1="40" y1="22" x2="180" y2="22" stroke="var(--ink)" stroke-width="2"/>
+      <circle cx="110" cy="22" r="3" fill="var(--ink)"/>
+      <line x1="110" y1="22" x2="160" y2="122" stroke="var(--ink-soft)" stroke-width="1.5"/>
+      <line x1="110" y1="22" x2="110" y2="134" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 3"/>
+      <path d="M110,62 A40,40 0 0 0 128,70" fill="none" stroke="var(--teal)" stroke-width="1.2"/>
+      <text x="113" y="54" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">θ</text>
+      <circle cx="160" cy="122" r="8" fill="#C9D2CC" stroke="var(--ink)"/>
+      <line x1="160" y1="122" x2="131" y2="64" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#cp)"/>
+      <text x="133" y="96" font-family="IBM Plex Mono" font-size="10" fill="var(--teal)">T</text>
+      <line x1="160" y1="122" x2="160" y2="162" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#cp)"/>
+      <text x="165" y="152" font-family="IBM Plex Mono" font-size="10" fill="var(--warn)">mg</text>
+      <line x1="110" y1="134" x2="160" y2="134" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="2 2"/>
+      <text x="128" y="147" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">r</text>
+    </svg>
+    <figcaption>Péndulo cónico: \(T\cos\theta\) equilibra \(mg\); \(T\sin\theta\) es la centrípeta (hacia el eje). No hay fuerza «hacia afuera».</figcaption>
+  </figure>
+  <div class="box key"><span class="lbl">Número</span><p>Con \(L=1{,}0\) m, \(\theta=30^\circ\), \(g=10\): \(r=L\sin\theta=0{,}50\) m, \(v=\sqrt{rg\tan\theta}=\sqrt{0{,}50\cdot10\cdot0{,}577}\approx1{,}70\) m·s⁻¹ y \(T_{\text{p}}=2\pi\sqrt{1{,}0\cdot0{,}866/10}\approx1{,}85\) s.</p></div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 4.1</span><span class="ej-src">ficha · M08 (círculo vertical, cima)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la tensión en la cima</span>
+      <p>Piedra de masa \(m\) en la parte más alta de un círculo vertical de radio \(r\), con rapidez \(v\).</p>
+      <div class="sol"><p>Al centro (hacia abajo) actúan \(T\) y \(mg\): \(T+mg=\dfrac{mv^2}{r}\Rightarrow T=\dfrac{mv^2}{r}-mg\).</p><span class="ans">T = mv²/r − mg (opción C).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 -->
+<section id="s5">
+  <p class="sec-num">SECCIÓN 05</p>
+  <h2>Más allá del IB (grounded en A.2)<span class="rule"></span></h2>
+  <div class="box beyond"><span class="lbl">Profundidad para el 7 / HL</span>
+    <ul>
+      <li><strong>Curvas peraltadas:</strong> la guía dice que no se exige el tratamiento cuantitativo; el ángulo ideal (sin fricción) cumple \(\tan\theta=\dfrac{v^2}{rg}\) — la componente horizontal de la normal aporta la centrípeta.</li>
+      <li><strong>Movimiento circular no uniforme</strong> (círculo vertical con gravedad): hay aceleración <em>radial</em> (\(v^2/r\)) y <em>tangencial</em> (\(g\sin\phi\)); la rapidez cambia con la altura (usa energía).</li>
+      <li><strong>Por qué no hay trabajo:</strong> \(W=\vec F\cdot\vec s\) y \(\vec F_c\perp\vec v\Rightarrow W=0\); por eso la energía cinética se conserva en el circular uniforme.</li>
+      <li><strong>Carga en campo magnético:</strong> \(qvB=\dfrac{mv^2}{r}\Rightarrow r=\dfrac{mv}{qB}\) — mismo principio, otra fuerza (se retoma en Electromagnetismo).</li>
+      <li><strong>Enlace con órbitas:</strong> igualar la gravedad a la centrípeta da la velocidad orbital (Módulo 8).</li>
+    </ul>
+  </div>
+  <figure class="fig">
+    <svg viewBox="0 0 240 160" width="220" xmlns="http://www.w3.org/2000/svg" aria-label="curva peraltada">
+      <defs><marker id="bk" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <polygon points="30,142 212,142 212,72" fill="#EEF3F1" stroke="var(--line)" stroke-width="1.5"/>
+      <path d="M72,142 A42,42 0 0 0 58,124" fill="none" stroke="var(--teal)" stroke-width="1.2"/>
+      <text x="74" y="135" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">θ</text>
+      <rect x="135" y="90" width="28" height="15" fill="#C9D2CC" stroke="var(--ink)" transform="rotate(-21 149 98)"/>
+      <line x1="149" y1="98" x2="117" y2="66" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#bk)"/>
+      <text x="96" y="66" font-family="IBM Plex Mono" font-size="10" fill="var(--teal)">N</text>
+      <line x1="149" y1="98" x2="149" y2="140" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#bk)"/>
+      <text x="153" y="131" font-family="IBM Plex Mono" font-size="10" fill="var(--warn)">mg</text>
+      <line x1="149" y1="98" x2="107" y2="98" stroke="var(--amber)" stroke-width="2" stroke-dasharray="3 2" marker-end="url(#bk)"/>
+      <text x="100" y="91" font-family="IBM Plex Mono" font-size="9" fill="var(--amber)">al centro</text>
+    </svg>
+    <figcaption>Curva peraltada (ideal, sin fricción): la componente horizontal de la normal, \(N\sin\theta\), aporta la centrípeta y \(N\cos\theta=mg\) ⇒ \(\tan\theta=v^2/(rg)\).</figcaption>
+  </figure>
+</section>
+
+<!-- S6 -->
+<section id="s6">
+  <p class="sec-num">SECCIÓN 06</p>
+  <h2>Definiciones para el examen<span class="rule"></span></h2>
+  <div class="box def"><span class="lbl">Glosario</span>
+    <ul>
+      <li><strong>Movimiento circular uniforme:</strong> movimiento en un círculo con rapidez constante (velocidad de dirección cambiante).</li>
+      <li><strong>Velocidad angular ω:</strong> ángulo barrido por unidad de tiempo, \(\omega=2\pi/T\).</li>
+      <li><strong>Aceleración centrípeta:</strong> aceleración dirigida al centro por el cambio de dirección de la velocidad, \(a=v^2/r\).</li>
+      <li><strong>Fuerza centrípeta:</strong> fuerza resultante dirigida al centro que mantiene el movimiento circular, \(F=mv^2/r\).</li>
+      <li><strong>Periodo T:</strong> tiempo de una vuelta completa.</li>
+      <li><strong>Péndulo cónico:</strong> masa en cuerda que describe un círculo horizontal formando un cono.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRAPS -->
+<section id="traps">
+  <p class="sec-num">CHECKLIST</p>
+  <h2>Trampas típicas del Paper 1<span class="rule"></span></h2>
+  <div class="box trap"><span class="lbl">Antes de marcar, revisa</span>
+    <ul>
+      <li>La fuerza centrípeta apunta <strong>al centro</strong>, no hacia afuera (no existe «fuerza centrífuga» real en el marco inercial).</li>
+      <li>La velocidad es <strong>tangente</strong>; la aceleración, perpendicular a ella (al centro).</li>
+      <li>Al romperse la cuerda, el objeto sale <strong>por la tangente</strong> (y luego cae si hay gravedad → parábola).</li>
+      <li>Mismo disco ⇒ misma \(\omega\): \(v\propto r\) y \(a\propto r\). No confundas con «igual v».</li>
+      <li>La fuerza centrípeta no hace trabajo ⇒ la energía cinética no cambia en el circular uniforme.</li>
+      <li>Círculo vertical: tensión <strong>máxima abajo</strong>, mínima arriba; \(v_{\min}=\sqrt{gr}\) arriba (cuerda).</li>
+      <li>En círculo vertical a un ángulo \(\theta\), descompón el <strong>peso</strong>: radial \(mg\cos\theta\) (va en la ecuación de \(T\)) y tangencial \(mg\sin\theta\) (cambia la rapidez). No metas todo \(mg\) en la ecuación radial salvo en el fondo o la cima.</li>
+      <li>En <strong>péndulo cónico</strong> y <strong>curva peraltada</strong> no hay ninguna fuerza "hacia afuera": la centrípeta es la componente <em>horizontal</em> de \(T\) (o de \(N\)); la componente <em>vertical</em> equilibra \(mg\). De dividir ambas sale \(\tan\theta=v^2/(rg)\).</li>
+      <li>\(a=v^2/r\) usa la rapidez <strong>en ese punto</strong>: en el círculo vertical \(v\) cambia con la altura, así que casi siempre toca hallarla antes con energía.</li>
+      <li>\(F=mv^2/r=m\omega^2 r\): para linealizar, \(T\) vs \(v^2\) (o \(\sqrt F\) vs \(\omega\)) da recta.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BLOQUE -->
+<section id="bloque">
+  <p class="sec-num">BLOQUE DE 10 EJEMPLOS RESUELTOS · TIPO 1</p>
+  <h2>Los 10 de la ficha que cubren todos los tipos<span class="rule"></span></h2>
+  <p class="sec-intro">Cubren: círculo vertical, escalado en curvas, F–energía, cálculo con ω, tubo, gravedad-satélites, disco, linealización (×2) y barra vs cuerda.</p>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">1</span><span class="ej-tag">círculo vertical (cima)</span><span class="ej-src">M08</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la tensión en la cima</span>
+      <p>Ver Ejemplo 4.1.</p>
+      <div class="sol"><p>\(T+mg=\dfrac{mv^2}{r}\).</p><span class="ans">T = mv²/r − mg (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">2</span><span class="ej-tag">escalado en curva</span><span class="ej-src">M14</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la rapidez máxima al duplicar el radio</span>
+      <p>La rapidez máxima en una curva de radio \(R\) es \(v\). ¿Y en radio \(2R\), iguales condiciones?</p>
+      <div class="sol"><p>Fricción máxima: \(\mu mg=\dfrac{mv^2}{R}\Rightarrow v^2=\mu gR\Rightarrow v\propto\sqrt R\). Al duplicar \(R\): \(v'=\sqrt2\,v\).</p><span class="ans">v√2 (opción B).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">3</span><span class="ej-tag">F ↔ energía</span><span class="ej-src">N14</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la nueva fuerza centrípeta</span>
+      <p>Un objeto gira con fuerza \(F\). Se duplica el radio y se reduce a la mitad su energía cinética.</p>
+      <div class="sol"><p>\(F=\dfrac{mv^2}{r}=\dfrac{2E_k}{r}\). Nuevo: \(F'=\dfrac{2(E_k/2)}{2r}=\dfrac{E_k}{2r}\). Cociente \(\dfrac{F'}{F}=\dfrac{E_k/2r}{2E_k/r}=\dfrac14\).</p><span class="ans">F/4 (opción A).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">4</span><span class="ej-tag">cálculo con ω</span><span class="ej-src">M19</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza y su sentido</span>
+      <p>Partícula 0,02 kg, círculo horizontal de diámetro 1 m (\(r=0{,}5\) m), \(\omega=3\pi\) rad·s⁻¹.</p>
+      <div class="sol"><p>\(F=m\omega^2 r=0{,}02(3\pi)^2(0{,}5)=0{,}02(9\pi^2)(0{,}5)=0{,}09\pi^2\), hacia el centro.</p><span class="ans">0,09π² N hacia el centro (opción D).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">5</span><span class="ej-tag">masa en un tubo</span><span class="ej-src">N20</span></div>
+    <div class="ej-body"><span class="sepide">Se pide M</span>
+      <p>Ver Ejemplo 3.1.</p>
+      <div class="sol"><p>\(Mg=\dfrac{mv^2}{r}\).</p><span class="ans">M = mv²/(rg) (opción B).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">6</span><span class="ej-tag">satélites (gravedad)</span><span class="ej-src">M17</span></div>
+    <div class="ej-body"><span class="sepide">Se piden F y a para 2m</span>
+      <p>Satélites \(m\) y \(2m\) en órbitas del mismo radio; para \(m\), fuerza \(F\) y aceleración \(a\).</p>
+      <div class="sol"><p>Gravedad \(F\propto\) masa ⇒ \(F'=2F\). Pero \(a=F/m=GM/r^2\) no depende de la masa del satélite ⇒ \(a'=a\).</p><span class="ans">2F y a (opción A).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">7</span><span class="ej-tag">disco: v y a en Q</span><span class="ej-src">M06</span></div>
+    <div class="ej-body"><span class="sepide">Se piden v y a en Q (a 2R)</span>
+      <p>P a \(R\) tiene \(v\) y \(a\); Q a \(2R\).</p>
+      <div class="sol"><p>Igual \(\omega\): \(v_Q=2v\) y \(a_Q=\omega^2(2R)=2a\).</p><span class="ans">2v y 2a (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">8</span><span class="ej-tag">linealización T–v</span><span class="ej-src">N11</span></div>
+    <div class="ej-body"><span class="sepide">Se pide qué gráfica da una recta</span>
+      <p>Se mide la tensión \(T\) para distintas rapideces \(v\) (radio fijo).</p>
+      <div class="sol"><p>\(T=\dfrac{mv^2}{r}\Rightarrow T\propto v^2\): la recta es \(T\) frente a \(v^2\).</p><span class="ans">T contra v² (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">9</span><span class="ej-tag">linealización F–ω</span><span class="ej-src">M21</span></div>
+    <div class="ej-body"><span class="sepide">Se pide qué eje y da una recta frente a ω</span>
+      <p>Se mide \(F\) para distintas \(\omega\).</p>
+      <div class="sol"><p>\(F=m r\,\omega^2\Rightarrow \sqrt F\propto\omega\): la recta es \(\sqrt F\) frente a \(\omega\).</p><span class="ans">√F (opción A).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">10</span><span class="ej-tag">barra vs cuerda (vertical)</span><span class="ej-src">N16 y M16</span></div>
+    <div class="ej-body"><span class="sepide">Se pide dónde es máxima la fuerza de la barra</span>
+      <p>Un objeto en una barra rígida gira en un círculo vertical a rapidez constante.</p>
+      <div class="sol"><p>Abajo la barra tira hacia arriba (al centro): \(F=\dfrac{mv^2}{r}+mg\) (máxima). Arriba puede empujar y su fuerza es mínima. La fuerza <strong>no</strong> apunta siempre al centro (a diferencia de una cuerda ideal).</p><span class="ans">Máxima en el punto más bajo (N16: A); fuerza mínima arriba (M16: D).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTO -->
+<section id="resto">
+  <p class="sec-num">RESTO DE LA FICHA</p>
+  <h2>Ítems conceptuales / de dirección (resueltos)<span class="rule"></span></h2>
+  <table>
+    <tr><th>Ítem</th><th>Resp.</th><th class="l">Razón</th></tr>
+    <tr><td>Cuerda se rompe (N99)</td><td>tangente</td><td class="l">Sale por la tangente al círculo.</td></tr>
+    <tr><td>▲ Objeto en círculo horizontal (M00)</td><td>D</td><td class="l">Figura perdida; método: la resultante apunta a O (centro).</td></tr>
+    <tr><td>Fórmula F_c (N04)</td><td>D</td><td class="l">\(F=mv^2/r\).</td></tr>
+    <tr><td>▲ Dirección de a y v (M04, M10, M15)</td><td>c / c / b</td><td class="l">Figura perdida; método: v tangente, a al centro.</td></tr>
+    <tr><td>▲ Δv de P a Q (M05, M11)</td><td>c / d</td><td class="l">Figura perdida; método: Δv = v_Q − v_P apunta al centro.</td></tr>
+    <tr><td>Dirección de F_c en auto (M05)</td><td>b</td><td class="l">Hacia el centro.</td></tr>
+    <tr><td>Ladrillo en disco (N06)</td><td>d</td><td class="l">Fricción hacia el centro.</td></tr>
+    <tr><td>Curva: origen de F_c (N08, M12, M13)</td><td>D / B / D</td><td class="l">Fricción neumático–pista, hacia el centro.</td></tr>
+    <tr><td>Fuerza neta abajo (N10)</td><td>a</td><td class="l">Hacia arriba (al centro).</td></tr>
+    <tr><td>Fuerza neta ciclista (M11)</td><td>B</td><td class="l">0 a lo largo, ≠0 normal (al centro).</td></tr>
+    <tr><td>No se trabaja (M12)</td><td>A</td><td class="l">Solo el circular uniforme (I).</td></tr>
+    <tr><td>Aceleración circular (N12)</td><td>B</td><td class="l">\(v^2/r\) hacia el centro.</td></tr>
+    <tr><td>a en Q a 2R (M13)</td><td>C</td><td class="l">\(a\propto r\Rightarrow 2a\).</td></tr>
+    <tr><td>v con periodo T (N13)</td><td>A</td><td class="l">\(v=2\pi r/T\).</td></tr>
+    <tr><td>v y a de Y (más lejos) (M14)</td><td>D</td><td class="l">Mayor r ⇒ mayor v y mayor a (igual ω).</td></tr>
+    <tr><td>▲ Cuerda se rompe, trayectoria (M18)</td><td>D</td><td class="l">Figura perdida; método: sale por la tangente + caída ⇒ parábola.</td></tr>
+    <tr><td>Tensión y KE en P y Q, periodo cte (N17)</td><td>C</td><td class="l">Tensión mayor abajo (P); KE igual (v constante).</td></tr>
+    <tr><td>▲ FBD esfera en cónico (M21)</td><td>D</td><td class="l">Figura perdida; método: solo peso (abajo) + tensión (a lo largo de la cuerda).</td></tr>
+    <tr><td>Niño en plataforma (M21)</td><td>B</td><td class="l">Fricción en los pies.</td></tr>
+  </table>
+</section>
+
+<!-- EXAMENES -->
+<section id="examenes">
+  <p class="sec-num">BANCO DE EXÁMENES IB · TIPO 1 (PAPER 1 / 1A)</p>
+  <h2>Movimiento circular en los exámenes, 2022–2026<span class="rule"></span></h2>
+  <p class="sec-intro">Todas las preguntas de dinámica circunferencial de los Paper 1 del IB en este rango, resueltas y con la <strong>respuesta oficial del markscheme</strong>. Cae en ambos planes. Enunciados reformulados; datos y clave reales. \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+
+  <div class="box key">
+    <span class="lbl">10 preguntas · idea rectora</span>
+    <p><strong>Plan nuevo (Paper 1A):</strong> mayo 2025 y 2026 (3). <strong>Plan anterior (Paper 1):</strong> 2022–2024 (7). La clave siempre es la misma: la <strong>fuerza neta apunta al centro</strong> y vale \(F_c=\dfrac{mv^2}{r}=m\omega^2 r\); identifica <em>qué</em> fuerza la provee (tensión, fricción, normal, peso o una combinación).</p>
+  </div>
+
+  <h4>Índice</h4>
+  <table>
+    <tr><th>#</th><th class="l">Subtema</th><th>Sesión</th><th>Plan</th><th>Resp.</th></tr>
+    <tr><td>C1</td><td class="l">Direcciones de fuerza neta y velocidad</td><td>Nov 2022</td><td>ant.</td><td>C</td></tr>
+    <tr><td>C2</td><td class="l">Péndulo cónico: componentes de la fuerza</td><td>May 2023 TZ1</td><td>ant.</td><td>D</td></tr>
+    <tr><td>C3</td><td class="l">Curva peraltada a máx. velocidad (DCL)</td><td>May 2025 TZ2</td><td>nuevo</td><td>D</td></tr>
+    <tr><td>C4</td><td class="l">Máx. velocidad en curva con fricción</td><td>May 2026 TZ2</td><td>nuevo</td><td>D</td></tr>
+    <tr><td>C5</td><td class="l">Círculo vertical: tensión en la horizontal</td><td>May 2022 TZ1</td><td>ant.</td><td>B</td></tr>
+    <tr><td>C6</td><td class="l">Círculo vertical: tensión abajo</td><td>May 2025 TZ3</td><td>nuevo</td><td>D</td></tr>
+    <tr><td>C7</td><td class="l">Círculo vertical: comparar P y Q</td><td>Nov 2022</td><td>ant.</td><td>D</td></tr>
+    <tr><td>C8</td><td class="l">Tensión constante: cambia \(\omega\) y el radio</td><td>May 2023 TZ2</td><td>ant.</td><td>A</td></tr>
+    <tr><td>C9</td><td class="l">Disco: razones de \(v\) y \(a\) con el radio</td><td>Nov 2023</td><td>ant.</td><td>B</td></tr>
+    <tr><td>C10</td><td class="l">Cuerda que se rompe: masa y \(\omega\)</td><td>May 2024 TZ1</td><td>ant.</td><td>D</td></tr>
+  </table>
+
+  <!-- A -->
+  <h3>A · La fuerza centrípeta: dirección, componentes y fricción</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">C1</span><span class="ej-src">Paper 1 · Nov 2022 · Q20 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un auto recorre una trayectoria circular horizontal a rapidez constante. ¿Direcciones de la fuerza neta y de la velocidad instantánea?</p>
+      <div class="sol"><p>La fuerza neta (centrípeta) apunta <strong>hacia el centro</strong>; la velocidad es siempre <strong>tangente</strong> al círculo (perpendicular a la fuerza). Por eso la rapidez no cambia aunque haya fuerza.</p>
+        <span class="ans">C) fuerza hacia el centro · velocidad tangente ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">C2</span><span class="ej-src">Paper 1 · May 2023 TZ1 · Q7 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una bola gira a rapidez constante en un círculo <em>horizontal</em>, colgada del techo con una cuerda que forma un ángulo \(\theta\) con la vertical (tensión \(T\)). ¿Componentes horizontal y vertical de la <strong>fuerza neta</strong>?</p>
+      <div class="sol"><p>El movimiento es horizontal y uniforme ⇒ la fuerza neta es <strong>puramente horizontal</strong> (centrípeta): \(T\sin\theta\). Verticalmente hay equilibrio (\(T\cos\theta=mg\)), así que la componente vertical de la neta es <strong>0</strong>.</p>
+        <span class="ans">D) horizontal \(T\sin\theta\) · vertical \(0\) ✓ — error común: creer que la neta sigue la cuerda.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">C3</span><span class="ej-src">Paper 1A · May 2025 TZ2 · Q4 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un auto de peso \(W\) va a su velocidad máxima por una curva <em>peraltada</em>; la superficie ejerce normal \(N\) y fricción \(F_f\). ¿Cuál es el DCL correcto? (opciones = diagramas)</p>
+      <div class="sol"><p>Tres fuerzas: peso \(W\) <strong>vertical hacia abajo</strong>; normal \(N\) <strong>perpendicular a la superficie peraltada</strong>; a velocidad <em>máxima</em> el auto tiende a salir/subir, así que la fricción \(F_f\) apunta <strong>hacia abajo a lo largo del plano</strong>. La resultante de las tres es horizontal, hacia el centro.</p>
+        <span class="ans">D ✓ (W ↓, N ⊥ al plano, Ff bajando por el plano)</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">C4</span><span class="ej-src">Paper 1A · May 2026 TZ2 · Q5 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un auto va a rapidez \(v\) por una carretera circular horizontal de radio \(R\); el coeficiente de fricción estática es \(\mu\). ¿Mayor \(v\) sin deslizar?</p>
+      <div class="sol"><p>La fricción provee la fuerza centrípeta; su máximo es \(\mu mg\): \(\mu mg=\dfrac{mv^2}{R}\Rightarrow v_\text{máx}=\sqrt{\mu g R}\).</p>
+        <span class="ans">D) \(\sqrt{\mu g R}\) ✓ (independiente de la masa)</span></div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <h3>B · Círculo vertical (tensión y peso)</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">C5</span><span class="ej-src">Paper 1 · May 2022 TZ1 · Q23 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una bola de 0,3 kg en una cuerda de 0,6 m gira en un círculo <em>vertical</em> a 4 m s⁻¹. ¿Tensión cuando la cuerda está <strong>horizontal</strong>?</p>
+      <div class="sol"><p>Con la cuerda horizontal, el peso es tangencial (perpendicular a la cuerda): toda la fuerza centrípeta la da la tensión. \(T=\dfrac{mv^2}{r}=\dfrac{0{,}3(16)}{0{,}6}=8\) N.</p>
+        <span class="ans">B) 8 N ✓ — el peso no entra en la dirección radial aquí.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">C6</span><span class="ej-src">Paper 1A · May 2025 TZ3 · Q6 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una pelota de 0,4 kg en una cuerda de 0,8 m gira en un círculo vertical; abajo lleva 6,0 m s⁻¹. ¿Tensión en el punto <strong>más bajo</strong>?</p>
+      <div class="sol"><p>Abajo, la tensión apunta arriba (al centro) y el peso abajo: \(T-mg=\dfrac{mv^2}{r}\Rightarrow T=mg+\dfrac{mv^2}{r}=0{,}4(10)+\dfrac{0{,}4(36)}{0{,}8}=4+18=22\) N.</p>
+        <span class="ans">D) 22 N ✓ — abajo la tensión es máxima (suma peso + centrípeta).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">C7</span><span class="ej-src">Paper 1 · Nov 2022 · Q21 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una masa en una cuerda gira en un plano <em>vertical</em>. ¿Cómo comparan la rapidez y la tensión en el punto alto (P) y el bajo (Q)?</p>
+      <div class="sol"><p>Por conservación de energía la masa va <strong>más rápido abajo</strong> (Q). Y la tensión también es mayor en Q: \(T_Q=mg+\dfrac{mv_Q^2}{r}\) frente a \(T_P=\dfrac{mv_P^2}{r}-mg\).</p>
+        <span class="ans">D) rapidez mayor en Q · tensión mayor en Q ✓</span></div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <h3>C · Relaciones entre \(v\), \(a\), \(\omega\) y \(r\)</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">C8</span><span class="ej-src">Paper 1 · May 2023 TZ2 · Q23 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una masa gira en una mesa sin fricción (radio \(R_1\)) y barre un ángulo \(\theta\) en un tiempo \(t\). Con la <strong>misma tensión</strong>, ahora barre \(2\theta\) en el mismo \(t\) (radio \(R_2\)). ¿\(R_2\)?</p>
+      <div class="sol"><p>Barrer \(2\theta\) en el mismo \(t\) ⇒ \(\omega\) se duplica. Tensión centrípeta \(T=m\omega^2R\) constante ⇒ \(\omega^2R\) constante: \((2\omega)^2R_2=\omega^2R_1\Rightarrow R_2=\dfrac{R_1}{4}\).</p>
+        <span class="ans">A) \(R_1/4\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">C9</span><span class="ej-src">Paper 1 · Nov 2023 TZ1 y TZ2 · Q22 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un disco gira con velocidad angular \(\omega\). X está a \(R/2\) del centro; Y en el borde (\(R\)). ¿Razones \(v_X/v_Y\) y \(a_X/a_Y\)?</p>
+      <div class="sol"><p>Mismo \(\omega\): \(v=\omega r\Rightarrow \dfrac{v_X}{v_Y}=\dfrac{R/2}{R}=\tfrac12\). \(a=\omega^2 r\Rightarrow \dfrac{a_X}{a_Y}=\dfrac{R/2}{R}=\tfrac12\).</p>
+        <span class="ans">B) \(\tfrac12\) y \(\tfrac12\) ✓ — ambas escalan lineal con \(r\) (el \(\omega\) es común).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">C10</span><span class="ej-src">Paper 1 · May 2024 TZ1 · Q22 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un objeto de masa \(m\) gira en un círculo horizontal con rapidez creciente; la cuerda se rompe al llegar a \(\omega\). ¿Con qué otra combinación (masa, \(\omega\)) se rompe?</p>
+      <div class="sol"><p>Se rompe a una tensión máxima fija: \(T=m\omega^2 r\) (con \(r\) = longitud, constante) ⇒ se rompe cuando \(m\omega^2\) alcanza ese valor. La combinación con el <em>mismo</em> producto es \(4m\) y \(\dfrac{\omega}{2}\): \(4m(\tfrac{\omega}{2})^2=m\omega^2\).</p>
+        <span class="ans">D) \(4m\) y \(\omega/2\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="box beyond">
+    <span class="lbl">Qué va en el Módulo 7B (tipo 2)</span>
+    <p>Los problemas circulares del <strong>Paper 2</strong> (montaña rusa con looping y varios apartados, curva peraltada con ángulo a calcular, satélites que enlazan con gravitación) se resolverán en el Módulo 7B.</p>
+  </div>
+</section>
+
+<!-- PRACTICA -->
+<section id="practica">
+  <p class="sec-num">PARA TI · RESUELVE Y ENVÍA EN BLOQUE</p>
+  <h2>10 retos (nuevos, ninguno fácil, nivel ascendente)<span class="rule"></span></h2>
+  <p class="sec-intro">Ninguno repite los ejemplos. Integran fuerzas, energía, cinemática e incertidumbre. Los #9 y #10 combinan energía con círculo vertical y propagación de incertidumbre, superando el IB. \(g=10\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">C1 · círculo horizontal</p><p>Una masa de 0,50 kg gira en un círculo horizontal de radio 0,80 m con periodo 0,40 s. Halla la rapidez, la aceleración centrípeta y la tensión de la cuerda.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>\(v=\dfrac{2\pi r}{T}=\dfrac{2\pi(0{,}80)}{0{,}40}=4\pi\approx12{,}6\) m·s⁻¹.</p>
+      <p>\(a=\dfrac{v^2}{r}=\dfrac{(4\pi)^2}{0{,}80}=20\pi^2\approx197\) m·s⁻² (hacia el centro).</p>
+      <p>Círculo horizontal ⇒ la tensión es toda la centrípeta: \(T=ma=0{,}50(197)\approx99\) N.</p>
+      <span class="ans">v ≈ 12,6 m·s⁻¹; a ≈ 197 m·s⁻²; T ≈ 99 N.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">C2 · auto en curva plana</p><p>Un auto de 1200 kg toma una curva plana de radio 50 m con \(\mu_s=0{,}60\). (a) Determina la rapidez máxima sin derrapar. (b) Explica qué ocurre si intenta ir más rápido.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> La fricción estática aporta la centrípeta; su máximo es \(\mu_s mg\): \(\mu_s mg=\dfrac{mv^2}{r}\Rightarrow v_{\max}=\sqrt{\mu_s g r}=\sqrt{0{,}60(10)(50)}=\sqrt{300}\approx17{,}3\) m·s⁻¹. (La masa se cancela.)</p>
+      <p><strong>(b)</strong> Si \(v>v_{\max}\), la centrípeta requerida \(mv^2/r\) supera la fricción estática máxima disponible; el auto no puede curvar lo suficiente y <strong>derrapa hacia afuera</strong> (sigue una trayectoria de mayor radio).</p>
+      <span class="ans">v_máx = √(μgr) ≈ 17,3 m·s⁻¹; por encima, derrapa hacia afuera.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">C3 · péndulo cónico</p><p>Una masa de 0,20 kg cuelga de una cuerda de 1,5 m y describe un círculo horizontal con la cuerda a 30° de la vertical. (\(g=9{,}8\)) Halla el radio del círculo, la rapidez, la tensión y el periodo.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Radio: \(r=L\sin\theta=1{,}5\sin30^\circ=0{,}75\) m.</p>
+      <p>Vertical: \(T\cos\theta=mg\Rightarrow T=\dfrac{mg}{\cos\theta}=\dfrac{0{,}20(9{,}8)}{\cos30^\circ}=\dfrac{1{,}96}{0{,}866}\approx2{,}26\) N.</p>
+      <p>Rapidez: \(v=\sqrt{rg\tan\theta}=\sqrt{0{,}75(9{,}8)\tan30^\circ}=\sqrt{4{,}24}\approx2{,}06\) m·s⁻¹.</p>
+      <p>Periodo: \(T_{\text{p}}=\dfrac{2\pi r}{v}=\dfrac{2\pi(0{,}75)}{2{,}06}\approx2{,}29\) s (equivale a \(2\pi\sqrt{L\cos\theta/g}\)).</p>
+      <span class="ans">r = 0,75 m; T = 2,26 N; v ≈ 2,06 m·s⁻¹; T_p ≈ 2,29 s.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">C4 · círculo vertical (cuerda)</p><p>Una bola de 0,30 kg gira en un círculo vertical de radio 0,60 m. (a) Halla la rapidez mínima en la cima para que la cuerda no se afloje. (b) Con esa rapidez mínima arriba, usa energía para hallar la rapidez abajo y la tensión de la cuerda en el punto más bajo.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> En la cima, en el mínimo \(T=0\) y la gravedad es toda la centrípeta: \(mg=\dfrac{mv^2}{r}\Rightarrow v_{\text{cima}}=\sqrt{gr}=\sqrt{10(0{,}60)}=\sqrt6\approx2{,}45\) m·s⁻¹.</p>
+      <p><strong>(b)</strong> De cima a fondo baja \(2r=1{,}20\) m: \(v_{\text{fondo}}^2=v_{\text{cima}}^2+2g(2r)=6+2(10)(1{,}20)=30\Rightarrow v_{\text{fondo}}=\sqrt{30}\approx5{,}48\) m·s⁻¹.</p>
+      <p>Abajo: \(T-mg=\dfrac{mv^2}{r}\Rightarrow T=m\!\left(\dfrac{v^2}{r}+g\right)=0{,}30\!\left(\dfrac{30}{0{,}60}+10\right)=0{,}30(60)=18\) N.</p>
+      <span class="ans">v_cima ≈ 2,45 m·s⁻¹; v_fondo ≈ 5,48 m·s⁻¹; T_fondo = 18 N.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">C5 · moneda en un tocadiscos</p><p>Una moneda descansa a 0,15 m del centro de un disco horizontal con \(\mu_s=0{,}30\). Determina la máxima frecuencia de giro (en revoluciones por minuto) antes de que la moneda resbale.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>La fricción estática aporta la centrípeta: \(\mu_s mg=m\omega^2 r\Rightarrow \omega=\sqrt{\dfrac{\mu_s g}{r}}=\sqrt{\dfrac{0{,}30(10)}{0{,}15}}=\sqrt{20}\approx4{,}47\) rad·s⁻¹.</p>
+      <p>Frecuencia: \(f=\dfrac{\omega}{2\pi}=\dfrac{4{,}47}{2\pi}\approx0{,}712\) Hz \(=0{,}712\times60\approx43\) rpm.</p>
+      <span class="ans">f_máx ≈ 0,71 Hz ≈ 43 rpm.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">C6 · rizo (loop-the-loop)</p><p>Un carrito parte del reposo por una pista lisa y recorre un rizo vertical de radio \(R\). Determina, con métodos de energía, la altura mínima desde la que debe partir para completar el rizo sin caerse en la cima.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Condición en la cima (mínimo): \(v_{\text{cima}}^2=gR\).</p>
+      <p>Energía (pista lisa), de la salida a la cima (altura \(2R\)): \(mgh=mg(2R)+\tfrac12 mv_{\text{cima}}^2=2mgR+\tfrac12 m(gR)\).</p>
+      <p>Dividiendo entre \(mg\): \(h=2R+\tfrac12 R=\tfrac{5}{2}R\).</p>
+      <span class="ans">h_mín = 2,5 R.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">C7 · curva peraltada (más allá del IB)</p><p>Una curva de radio 80 m debe tomarse a 25 m·s⁻¹ sin depender de la fricción. Determina el ángulo de peralte necesario. (\(g=9{,}8\))</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Sin fricción, la normal es la única fuerza con componente horizontal. Vertical: \(N\cos\theta=mg\). Horizontal (centrípeta): \(N\sin\theta=\dfrac{mv^2}{r}\). Dividiendo: \(\tan\theta=\dfrac{v^2}{rg}\).</p>
+      <p>\(\tan\theta=\dfrac{25^2}{80(9{,}8)}=\dfrac{625}{784}=0{,}797\Rightarrow\theta=\arctan(0{,}797)\approx38{,}6^\circ\).</p>
+      <span class="ans">θ ≈ 38,6°.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">C8 · colina convexa (normal y peso aparente)</p><p>Un auto de 900 kg pasa por la cima de una colina circular convexa de radio 40 m. (a) Halla la rapidez a la que el auto quedaría a punto de perder contacto con la pista. (b) Si la cruza a 15 m·s⁻¹, ¿qué fuerza normal ejerce la pista y qué fracción de su peso representa?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>En la cima el peso apunta al centro (hacia abajo) y la normal hacia afuera, de modo que la resultante centrípeta es \(mg-N\): \(mg-N=\dfrac{mv^2}{r}\Rightarrow N=m\!\left(g-\dfrac{v^2}{r}\right)\).</p>
+      <p><strong>(a)</strong> Pierde contacto cuando \(N=0\) (la gravedad sola basta como centrípeta): \(g=\dfrac{v^2}{r}\Rightarrow v=\sqrt{gr}=\sqrt{10(40)}=20\) m·s⁻¹.</p>
+      <p><strong>(b)</strong> A \(v=15\) m·s⁻¹: \(N=900\!\left(10-\dfrac{15^2}{40}\right)=900(10-5{,}625)=900(4{,}375)\approx3{,}9\times10^{3}\) N. Fracción del peso: \(\dfrac{N}{mg}=\dfrac{g-v^2/r}{g}=\dfrac{4{,}375}{10}\approx0{,}44\) (44 %) ⇒ el conductor siente menos peso (peso aparente reducido).</p>
+      <span class="ans">(a) v = √(gr) = 20 m·s⁻¹; (b) N ≈ 3,9×10³ N ≈ 0,44 del peso.</span>
+    </div></details>
+  </div>
+  <div class="prob jefe"><p class="pn">C9 · INTEGRADOR (energía + círculo vertical, supera IB)</p><p>Una cuenta de 0,10 kg baja desde una altura \(h\) por una pista lisa que termina en un rizo vertical de radio 0,50 m. (a) Si \(h=1{,}5\) m, halla la rapidez y la fuerza normal de la pista sobre la cuenta en el punto más alto del rizo. (b) Halla la fuerza normal en el punto más bajo. (c) Determina la \(h\) mínima para completar el rizo.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Cima a altura \(2R=1{,}0\) m: \(v_{\text{cima}}^2=2g(h-2R)=2(10)(1{,}5-1{,}0)=10\Rightarrow v_{\text{cima}}=\sqrt{10}\approx3{,}16\) m·s⁻¹. En la cima \(N+mg=\dfrac{mv^2}{r}\Rightarrow N=m\!\left(\dfrac{v^2}{r}-g\right)=0{,}10\!\left(\dfrac{10}{0{,}50}-10\right)=0{,}10(10)=1{,}0\) N.</p>
+      <p><strong>(b)</strong> Fondo: \(v_{\text{fondo}}^2=2gh=2(10)(1{,}5)=30\). \(N-mg=\dfrac{mv^2}{r}\Rightarrow N=0{,}10\!\left(\dfrac{30}{0{,}50}+10\right)=0{,}10(70)=7{,}0\) N.</p>
+      <p><strong>(c)</strong> Mínimo en la cima \(v^2=gR=5\): \(h_{\min}=2R+\dfrac{v^2}{2g}=1{,}0+\dfrac{5}{20}=1{,}25\) m (\(=2{,}5R\)).</p>
+      <span class="ans">(a) v ≈ 3,16 m·s⁻¹, N = 1,0 N; (b) N = 7,0 N; (c) h_mín = 1,25 m.</span>
+    </div></details>
+  </div>
+  <div class="prob jefe"><p class="pn">C10 · PROBLEMA JEFE (péndulo cónico + Módulo 1, supera IB)</p><p>Se usa un péndulo cónico para medir \(g\). Se miden la longitud \(L=(0{,}950\pm0{,}005)\ \mathrm m\), el ángulo \(\theta=(28\pm1)^\circ\) con la vertical y el periodo \(T=(1{,}80\pm0{,}02)\ \mathrm s\). (a) Deduce una expresión de \(g\) en función de \(L\), \(\theta\) y \(T\) usando \(T=2\pi\sqrt{L\cos\theta/g}\). (b) Calcula \(g\). (c) Propaga las incertidumbres para dar \(g\pm\Delta g\) y compara con 9,8 m·s⁻².</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Elevando al cuadrado: \(T^2=\dfrac{4\pi^2 L\cos\theta}{g}\Rightarrow g=\dfrac{4\pi^2 L\cos\theta}{T^2}\).</p>
+      <p><strong>(b)</strong> \(g=\dfrac{4\pi^2(0{,}950)\cos28^\circ}{1{,}80^2}=\dfrac{39{,}48(0{,}950)(0{,}883)}{3{,}24}\approx10{,}2\) m·s⁻².</p>
+      <p><strong>(c)</strong> Incertidumbres relativas (suma, pues es producto/cociente; el ángulo entra por \(\cos\theta\)):</p>
+      <p>\(\dfrac{\Delta L}{L}=\dfrac{0{,}005}{0{,}950}=0{,}0053\); \(\dfrac{\Delta(\cos\theta)}{\cos\theta}=\tan\theta\,\Delta\theta_{\text{rad}}=\tan28^\circ(1\cdot\tfrac{\pi}{180})=0{,}532(0{,}0175)=0{,}0093\); \(2\dfrac{\Delta T}{T}=2\dfrac{0{,}02}{1{,}80}=0{,}0222\).</p>
+      <p>\(\dfrac{\Delta g}{g}=0{,}0053+0{,}0093+0{,}0222=0{,}037\) (3,7 %) ⇒ \(\Delta g=0{,}037(10{,}2)\approx0{,}4\) m·s⁻².</p>
+      <p><strong>Comparación:</strong> \(g=(10{,}2\pm0{,}4)\) m·s⁻², rango \([9{,}8;\,10{,}6]\). El valor aceptado 9,8 cae justo en el borde inferior ⇒ concordancia marginal; probable error sistemático (p. ej. \(\theta\) o fricción del aire).</p>
+      <span class="ans">g = 4π²L cosθ/T² ≈ (10,2 ± 0,4) m·s⁻²; concuerda con 9,8 solo en el borde.</span>
+    </div></details>
+  </div>
+</section>
+
+<!-- MASPROBLEMAS -->
+<section id="masproblemas">
+  <p class="sec-num">MÁS PROBLEMAS</p>
+  <h2>Más problemas · estilo past paper IB<span class="rule"></span></h2>
+  <p class="sec-intro">Seis problemas nuevos, nivel IB, con resolución oculta. Cubren MCU (T, f, v, a), curva peraltada, rizo mínimo, colina convexa, círculo vertical en un ángulo intermedio y péndulo cónico. \(g=10\) m·s⁻² salvo que se indique.</p>
+
+  <div class="prob"><p class="pn">P1 · MCU — periodo, frecuencia, v y a</p><p>La pala de un ventilador gira a 1200 rev/min. Un punto de la pala está a 0,12 m del eje. Halla (a) el periodo y la frecuencia, (b) la velocidad angular, (c) la rapidez lineal del punto y (d) su aceleración centrípeta.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> \(f=\dfrac{1200}{60}=20\) Hz; \(T=\dfrac1f=0{,}050\) s.</p>
+      <p><strong>(b)</strong> \(\omega=2\pi f=2\pi(20)=40\pi\approx125{,}7\) rad·s⁻¹.</p>
+      <p><strong>(c)</strong> \(v=\omega r=40\pi(0{,}12)=4{,}8\pi\approx15{,}1\) m·s⁻¹.</p>
+      <p><strong>(d)</strong> \(a=\omega^2 r=(40\pi)^2(0{,}12)=192\pi^2\approx1{,}9\times10^{3}\) m·s⁻² (hacia el eje). Comprobación: \(a=v^2/r=15{,}1^2/0{,}12\approx1{,}9\times10^{3}\). ✓</p>
+      <span class="ans">f = 20 Hz, T = 0,050 s; ω = 40π ≈ 125,7 rad·s⁻¹; v ≈ 15,1 m·s⁻¹; a ≈ 1,9×10³ m·s⁻².</span>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">P2 · curva peraltada</p><p>Una curva de radio 150 m está peraltada a 20° para tomarse sin ayuda de la fricción a la "rapidez de diseño". (\(g=9{,}8\)) (a) Deduce \(\tan\theta=v^2/(rg)\) y halla la rapidez de diseño. (b) Explica qué fuerza aparece si un auto la toma más despacio.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Sin fricción, la normal \(N\) es la única fuerza con componente horizontal. Vertical (no hay aceleración vertical): \(N\cos\theta=mg\). Horizontal (es la centrípeta): \(N\sin\theta=\dfrac{mv^2}{r}\). Dividiendo una entre otra se cancela \(N\): \(\tan\theta=\dfrac{v^2}{rg}\Rightarrow v=\sqrt{rg\tan\theta}=\sqrt{150(9{,}8)\tan20^\circ}=\sqrt{535}\approx23{,}1\) m·s⁻¹.</p>
+      <p><strong>(b)</strong> Más lento ⇒ se necesita menos centrípeta que la que aporta \(N\sin\theta\); el auto tiende a <strong>resbalar hacia adentro/abajo</strong> del peralte, y aparece una <strong>fricción dirigida hacia arriba del plano</strong> que lo mantiene en el radio correcto.</p>
+      <span class="ans">(a) v = √(rg·tanθ) ≈ 23,1 m·s⁻¹; (b) fricción hacia arriba del peralte (tiende a resbalar hacia adentro).</span>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">P3 · rizo mínimo</p><p>Un pequeño bloque de 0,50 kg recorre por dentro un rizo circular liso de radio 1,2 m. (a) Halla la rapidez mínima en la cima para no despegarse de la pista. (b) Si pasa por la cima un 20 % más rápido que esa mínima, halla la fuerza normal que la pista ejerce sobre él allí.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> En el mínimo la pista deja de empujar (\(N=0\)) y la gravedad es toda la centrípeta: \(mg=\dfrac{mv^2}{r}\Rightarrow v_{\min}=\sqrt{gr}=\sqrt{10(1{,}2)}=\sqrt{12}\approx3{,}46\) m·s⁻¹.</p>
+      <p><strong>(b)</strong> \(v=1{,}20\,v_{\min}\Rightarrow v^2=1{,}20^2(12)=17{,}28\) m²·s⁻². En la cima \(N\) y \(mg\) apuntan al centro: \(N+mg=\dfrac{mv^2}{r}\Rightarrow N=m\!\left(\dfrac{v^2}{r}-g\right)=0{,}50\!\left(\dfrac{17{,}28}{1{,}2}-10\right)=0{,}50(14{,}4-10)=2{,}2\) N.</p>
+      <span class="ans">(a) v_mín = √(gr) ≈ 3,46 m·s⁻¹; (b) N = 2,2 N.</span>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">P4 · colina convexa</p><p>Una moto con su conductor (masa total 250 kg) pasa por la cima de un puente convexo de radio 25 m a 12 m·s⁻¹. (a) Halla la fuerza normal que el puente ejerce sobre la moto. (b) ¿A qué rapidez sentirían "ingravidez" (\(N=0\)) en la cima?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> En la cima el peso apunta al centro (abajo) y la normal hacia afuera, así que la resultante centrípeta es \(mg-N\): \(mg-N=\dfrac{mv^2}{r}\Rightarrow N=m\!\left(g-\dfrac{v^2}{r}\right)=250\!\left(10-\dfrac{12^2}{25}\right)=250(10-5{,}76)=1{,}06\times10^{3}\) N.</p>
+      <p><strong>(b)</strong> \(N=0\Rightarrow g=\dfrac{v^2}{r}\Rightarrow v=\sqrt{gr}=\sqrt{10(25)}=\sqrt{250}\approx15{,}8\) m·s⁻¹. (Por encima de esa rapidez el puente ya no puede empujar y la moto despega.)</p>
+      <span class="ans">(a) N ≈ 1,06×10³ N; (b) v = √(gr) ≈ 15,8 m·s⁻¹.</span>
+    </div></details>
+  </div>
+
+  <div class="prob jefe"><p class="pn">P5 · círculo vertical en un ángulo INTERMEDIO</p><p>Una piedra de 0,40 kg atada a una cuerda de 0,70 m describe un círculo vertical. En el instante en que la cuerda forma \(\theta=60^\circ\) con la vertical (medido desde el punto más bajo) y la piedra va subiendo, su rapidez es 3,0 m·s⁻¹. Halla (a) las componentes radial y tangencial del peso, (b) la tensión de la cuerda y (c) la aceleración tangencial en ese instante.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Peso \(mg=0{,}40(10)=4{,}0\) N. Lo descomponemos respecto a la cuerda.</p>
+      <p><strong>(a)</strong> Radial (hacia afuera): \(mg\cos\theta=4{,}0\cos60^\circ=2{,}0\) N. Tangencial: \(mg\sin\theta=4{,}0\sin60^\circ\approx3{,}46\) N.</p>
+      <p><strong>(b)</strong> Ecuación radial (hacia el centro): \(T-mg\cos\theta=\dfrac{mv^2}{r}\Rightarrow T=\dfrac{mv^2}{r}+mg\cos\theta=\dfrac{0{,}40(3{,}0)^2}{0{,}70}+2{,}0=5{,}14+2{,}0\approx7{,}1\) N.</p>
+      <p><strong>(c)</strong> Ecuación tangencial: \(mg\sin\theta=m\,a_t\Rightarrow a_t=g\sin\theta=10\sin60^\circ\approx8{,}7\) m·s⁻² (frena la piedra, porque va subiendo).</p>
+      <span class="ans">(a) radial 2,0 N, tangencial 3,46 N; (b) T ≈ 7,1 N; (c) a_t ≈ 8,7 m·s⁻² (desaceleración).</span>
+    </div></details>
+  </div>
+
+  <div class="prob jefe"><p class="pn">P6 · péndulo cónico</p><p>Una bola de 0,25 kg cuelga de una cuerda de 1,20 m y describe un péndulo cónico dando una vuelta cada 2,0 s. (\(g=9{,}8\)) Halla (a) el ángulo que forma la cuerda con la vertical, (b) el radio del círculo y la rapidez de la bola, y (c) la tensión de la cuerda.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Ecuaciones: vertical \(T\cos\theta=mg\); centrípeta \(T\sin\theta=\dfrac{mv^2}{r}\), con \(r=L\sin\theta\). Combinándolas se llega a \(T_{\text{p}}=2\pi\sqrt{\dfrac{L\cos\theta}{g}}\).</p>
+      <p><strong>(a)</strong> Despejando el coseno: \(\cos\theta=\dfrac{g\,T_{\text{p}}^2}{4\pi^2 L}=\dfrac{9{,}8(2{,}0)^2}{4\pi^2(1{,}20)}=\dfrac{39{,}2}{47{,}4}=0{,}827\Rightarrow\theta\approx34^\circ\).</p>
+      <p><strong>(b)</strong> \(r=L\sin\theta=1{,}20\sin34^\circ\approx0{,}67\) m; \(v=\dfrac{2\pi r}{T_{\text{p}}}=\dfrac{2\pi(0{,}67)}{2{,}0}\approx2{,}1\) m·s⁻¹ (equivale a \(\sqrt{rg\tan\theta}\)).</p>
+      <p><strong>(c)</strong> \(T=\dfrac{mg}{\cos\theta}=\dfrac{0{,}25(9{,}8)}{0{,}827}\approx2{,}96\) N.</p>
+      <span class="ans">(a) θ ≈ 34°; (b) r ≈ 0,67 m, v ≈ 2,1 m·s⁻¹; (c) T ≈ 3,0 N.</span>
+    </div></details>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 7A · Dinámica circunferencial (A.2).</strong> Ficha completa resuelta (10 en bloque + resto) e integración con Fuerzas, Energía y Cinemática. Sigue el <strong>Módulo 7B</strong> (tipo 2). Convención: \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

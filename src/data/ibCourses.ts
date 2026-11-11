@@ -96,7 +96,7 @@ export const IB_COURSES: IbCourseDef[] = [
     name: 'Digital Society',
     icon: '🌐',
     color: 'from-violet-500 to-violet-700',
-    patterns: ['digital society', 'digital', '53-dp'],
+    patterns: ['digital society', 'digital', 'sociedad digital', 'sociedad-digital', '53-dp'],
   },
   {
     id: 'environmental-systems-and-societies',

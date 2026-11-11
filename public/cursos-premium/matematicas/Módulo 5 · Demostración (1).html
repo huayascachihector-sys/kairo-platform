@@ -1,0 +1,638 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 5 · Demostración</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 5</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t1">1.1 Lenguaje y herramientas</a>
+  <a class="sub" href="#t2">1.2 Prueba directa</a>
+  <a class="sub" href="#t3">1.3 Contraejemplo</a>
+  <a class="sub" href="#t4">1.4 Contradicción y contrarrecíproco</a>
+  <a class="sub" href="#t5">1.5 Inducción matemática</a>
+  <a class="sub" href="#t6">1.6 Redacción para el markscheme</a>
+  <a class="sub" href="#t7">1.7 Más allá del IB</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos resueltos</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 5 de 17</p>
+  <h1>Demostración: directa, contraejemplo, contradicción e inducción</h1>
+  <p class="formula">\( P(1)\ \wedge\ \big(P(k)\Rightarrow P(k+1)\big)\ \Longrightarrow\ P(n)\ \ \forall n\in\mathbb Z^+ \)</p>
+  <p>Todo lo necesario para las preguntas de demostración de la Prueba 1, al nivel de la banda 7. Aquí el puntaje depende tanto de la matemática como de la redacción: cada paso lleva la frase que el markscheme exige. Los problemas extra integran los Módulos 1–4.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">Hay una demostración en las 7 pruebas. En este módulo se resuelven 28 puntos de Sección A. Además, la inducción aparece en la Sección B en 4 de 7 pruebas, dentro de preguntas de derivadas, trigonometría y complejos. Es el tema donde más marcas R1 se pierden por redacción.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Tipo de prueba</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2021 TZ2</td><td>1</td><td>4</td><td>Directa: diferencia de cuadrados de consecutivos</td></tr>
+<tr><td>Mayo 2022 TZ2</td><td>2</td><td>6</td><td>Directa: divisibilidad por 3 de sumas de consecutivos</td></tr>
+<tr><td>Mayo 2022 TZ2</td><td>9</td><td>5</td><td>Contradicción: \(2x^3+6x+1=0\) no tiene raíces enteras</td></tr>
+<tr><td>Mayo 2022 TZ1</td><td>8</td><td>6</td><td>Contradicción: \(a,b\) no pueden ser ambos impares</td></tr>
+<tr><td>Mayo 2026 TZ2</td><td>7</td><td>7</td><td>Inducción: \(n^3+5n\) múltiplo de 6</td></tr>
+</tbody></table></div>
+<p><b>Inducción dentro de otras preguntas</b> (resueltas en su módulo): mayo 2021 TZ1 P12 y noviembre 2021 P11 (derivada \(n\)-ésima, Módulo 12); mayo 2021 TZ2 P12 (arctan, Módulo 8); noviembre 2022 P12 (argumento de un producto de complejos, Módulo 6).</p>
+
+<h3>Cómo lo pregunta el IB: patrones de tus 7 pruebas</h3>
+<ol>
+<li><b>Directa con enteros consecutivos</b> (\(n-1,n,n+1\)): se desarrolla y se factoriza el número buscado.</li>
+<li><b>Contradicción con paridad:</b> «supón que…» y se llega a «par = impar» o «entero = no entero». La M1 exige la palabra <i>supón</i>; «sea» o «consideremos» dan M0.</li>
+<li><b>Inducción de divisibilidad:</b> se escribe la hipótesis como \(k^3+5k=6p\), se reescribe \(P(k+1)\) usándola, y se justifica que lo que sobra es múltiplo (por ejemplo, \(k(k+1)\) es par).</li>
+<li><b>Conclusión obligatoria.</b> En inducción, la última R1 solo se da si hay al menos 4 de las marcas anteriores y la frase completa de cierre.</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA 22 (2026)</td><td>Inducción para series, divisibilidad, desigualdades y derivadas; banco de 17 preguntas IB</td><td>Ejemplos F1–F8. Los ítems con derivadas, trigonometría o complejos van a los Módulos 6, 8, 12 y 17.</td></tr>
+</tbody></table></div>
+<p>Las fichas no traen prueba directa, contraejemplo ni contradicción, que el examen pregunta en 4 de 7 pruebas. Las secciones 1.2–1.4 las cubren completas, y los ejemplos F9 y F10 cubren tipos sin ítem en las fichas.</p>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA NS</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Lenguaje: implicación, equivalencia, «para todo», «existe», notación \(\mathbb Z,\mathbb Q\)</td><td>1.1</td><td>Transversal</td></tr>
+<tr><td>Prueba deductiva directa (NM): LHS a RHS, paridad, divisibilidad, desigualdades, «si y solo si»</td><td>1.2</td><td>Alto</td></tr>
+<tr><td>Contraejemplo</td><td>1.3</td><td>Medio</td></tr>
+<tr><td>Prueba por contradicción</td><td>1.4</td><td>Alto</td></tr>
+<tr><td>Inducción: sumas, divisibilidad, desigualdades, sucesiones, productos</td><td>1.5</td><td>Alto (A y B)</td></tr>
+<tr><td>Redacción que exige el markscheme</td><td>1.6</td><td>Decide las R1</td></tr>
+<tr><td>Otros tipos de pregunta: irracionalidad de un logaritmo, imposibilidad por paridad, verdadero o falso con contraejemplo, inducción con derivadas y con trigonometría, desigualdad de sumas, prueba directa por restos, hallar el error de una «demostración»</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+<tr><td>Palomar, buen orden, descenso infinito, inducción fuerte (fuera del programa)</td><td>1.7 y cajas moradas</td><td>Solo como herramienta</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1 a 1.6 cubren todo lo evaluable de demostración, incluida la inducción que aparece dentro de otros temas (derivadas, trigonometría, complejos), que se practica en la sección 6. Cada método trae ejemplos de nivel de examen y un recuadro «Para practicar». Lo que va más allá del programa está en la sección 1.7 y en las cajas moradas, y ningún problema extra lo necesita. El techo es la investigación I1, tipo Prueba 3.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Cuatro métodos de prueba y cómo escribirlos para ganar todas las marcas. Cada método trae ejemplos resueltos y un recuadro «Para practicar». Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Lenguaje y herramientas</h3>
+<ul>
+<li><b>Implicación</b> \(P\Rightarrow Q\): si \(P\) es cierta, \(Q\) también. <b>Equivalencia</b> \(P\iff Q\): hay que probar las dos direcciones.</li>
+<li><b>Contrarrecíproco:</b> \(P\Rightarrow Q\) equivale a \(\neg Q\Rightarrow\neg P\). El <b>recíproco</b> \(Q\Rightarrow P\) no equivale: es otra afirmación.</li>
+<li><b>Cuantificadores:</b> la negación de «para todo \(n\), \(P(n)\)» es «existe \(n\) con \(\neg P(n)\)». Por eso un solo contraejemplo refuta un «para todo».</li>
+<li><b>Conjuntos:</b> \(\mathbb Z^+\) (enteros positivos), \(\mathbb Z\), \(\mathbb Q\) (cocientes \(p/q\) con \(q\neq0\)), \(\mathbb R\).</li>
+<li><b>Paridad:</b> par \(=2k\), impar \(=2k+1\), con \(k\in\mathbb Z\). Dos números cualesquiera se escriben con letras distintas: \(2m+1\) y \(2n+1\).</li>
+<li><b>Restos:</b> todo entero es \(3k\), \(3k+1\) o \(3k+2\) (o \(3k-1\)). Esto permite hacer una prueba por casos.</li>
+<li><b>Hechos útiles:</b> de dos enteros consecutivos, uno es par, así que \(k(k+1)\) es par. De tres consecutivos, uno es múltiplo de 3, así que su producto es múltiplo de 6.</li>
+</ul>
+
+<h3 id="t2">1.2 Prueba directa</h3>
+<p>Se parte de lo conocido y, con pasos válidos, se llega a lo pedido. Para una identidad: se desarrolla un solo lado (LHS) hasta obtener el otro (RHS). Para una divisibilidad: se escribe la expresión como \(d\times(\text{entero})\).</p>
+
+<div class="ex"><p class="et">Ejemplo 1.1. Cuadrado de un impar</p>
+<p>Prueba que el cuadrado de todo entero impar es de la forma \(8m+1\).</p>
+<p>Sea \(n=2k+1\), \(k\in\mathbb Z\). Entonces \(n^2=4k^2+4k+1=4k(k+1)+1\). Como \(k(k+1)\) es par, \(k(k+1)=2m\) con \(m\in\mathbb Z\), y \(n^2=8m+1\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.2. Prueba por casos (restos módulo 3)</p>
+<p>Prueba que \(n^2+1\) nunca es múltiplo de 3.</p>
+<p>Si \(n=3k\): \(n^2+1=3(3k^2)+1\). Si \(n=3k\pm1\): \(n^2+1=9k^2\pm6k+2=3(3k^2\pm2k)+2\). En ningún caso el resto es 0.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba que todo cuadrado perfecto es de la forma \(4k\) o \(4k+1\).</li><li>Prueba que \(n^2+n+1\) es impar para todo entero \(n\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(n=2m\Rightarrow n^2=4m^2\); \(n=2m+1\Rightarrow n^2=4(m^2+m)+1\).</li><li>\(n^2+n=n(n+1)\) es par (consecutivos), así que \(n^2+n+1\) es impar.</li></ol></div></details></div>
+
+<div class="ex"><p class="et">Ejemplo 1.3. Desigualdad directa: media aritmética y geométrica</p>
+<p>Prueba que \(\dfrac{a+b}{2}\ge\sqrt{ab}\) para \(a,b\ge0\), con igualdad si y solo si \(a=b\). Deduce que \(x+\dfrac1x\ge2\) para \(x\gt0\).</p>
+<p>Se parte de algo que siempre es cierto: \(\left(\sqrt a-\sqrt b\right)^2\ge0\), así que \(a-2\sqrt{ab}+b\ge0\), es decir \(\tfrac{a+b}2\ge\sqrt{ab}\). La igualdad se da solo si \(\sqrt a=\sqrt b\).</p>
+<p>Con \(a=x\), \(b=\tfrac1x\): \(\tfrac12\left(x+\tfrac1x\right)\ge1\).</p>
+<p><b>Regla de redacción:</b> no empieces por la desigualdad que quieres probar para «llegar» a algo cierto. Si razonas así en borrador, escribe la prueba en sentido inverso.</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.4. «Si y solo si»: las dos direcciones</p>
+<p>Prueba que, para \(n\in\mathbb Z\), \(n^2\) es par si y solo si \(n\) es par.</p>
+<p>(\(\Leftarrow\)) Si \(n=2k\), entonces \(n^2=2(2k^2)\) es par.</p>
+<p>(\(\Rightarrow\)) Por contrarrecíproco: si \(n=2k+1\), entonces \(n^2=2(2k^2+2k)+1\) es impar. Así, si \(n^2\) es par, \(n\) no puede ser impar.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba que \(3\mid n^2\) si y solo si \(3\mid n\).</li><li>Prueba que, para \(a,b\gt0\), \(a^2\gt b^2\iff a\gt b\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>(\(\Leftarrow\)) \(n=3k\Rightarrow n^2=3(3k^2)\). (\(\Rightarrow\)) Contrarrecíproco: \(n=3k\pm1\Rightarrow n^2=3(3k^2\pm2k)+1\).</li><li>\(a^2-b^2=(a-b)(a+b)\) con \(a+b\gt0\): tiene el signo de \(a-b\). Eso da las dos direcciones a la vez.</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ2, P2 b)</p><p>Sumar los cuadrados de \(n-1,n,n+1\) da \(3n^2+2\). La R1 exige decir explícitamente que \(3n^2\) es múltiplo de 3 y que 2 no lo es. Escribir solo «\(3n^2+2\)» no basta.</p></div>
+
+<h3 id="t3">1.3 Contraejemplo</h3>
+<p>Para refutar «para todo \(n\), \(P(n)\)» basta un caso concreto en el que falle, <b>verificado con cálculos explícitos</b>.</p>
+<div class="ex"><p class="et">Ejemplo 1.5. La fórmula que casi siempre da primos</p>
+<p>Refuta: «\(n^2+n+41\) es primo para todo \(n\in\mathbb Z^+\)».</p>
+<p>Con \(n=40\): \(40^2+40+41=40\cdot41+41=41^2\), que no es primo. Es falso aunque se cumple de \(n=1\) a \(n=39\): comprobar muchos casos no demuestra nada.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.6. Dos afirmaciones falsas</p>
+<p>Refuta: (a) «si \(a\mid bc\), entonces \(a\mid b\) o \(a\mid c\)»; (b) «\(\sin2x=2\sin x\) para todo \(x\)».</p>
+<p>(a) \(a=6\), \(b=2\), \(c=3\): \(6\mid6\), pero \(6\nmid2\) y \(6\nmid3\). (Es cierta si \(a\) es primo.) (b) \(x=\frac\pi2\): \(\sin\pi=0\ne2\). Un contraejemplo debe ser concreto y comprobarse por completo: dar solo los valores, sin verificar la afirmación, no vale.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Refuta: «\(2^n+1\) es primo para todo \(n\in\mathbb Z^+\)».</li><li>Refuta: «si \(x^2\gt4\), entonces \(x\gt2\)».</li><li>Refuta: «\((a+b)^2=a^2+b^2\) para todos los reales».</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(n=3\): \(9=3\cdot3\).</li><li>\(x=-3\): \(9\gt4\) pero \(-3\lt2\).</li><li>\(a=b=1\): \(4\ne2\).</li></ol></div></details></div>
+
+<h3 id="t4">1.4 Contradicción y contrarrecíproco</h3>
+<p><b>Estructura de la contradicción:</b></p>
+<ol>
+<li>«Supón, para llegar a una contradicción, que [negación de lo que se quiere probar].»</li>
+<li>Razona hasta obtener algo imposible (par = impar, entero = no entero, una fracción irreducible que se puede simplificar).</li>
+<li>«Esto es una contradicción; por lo tanto [enunciado original].»</li>
+</ol>
+<p><b>Contrarrecíproco:</b> para probar \(P\Rightarrow Q\), prueba \(\neg Q\Rightarrow\neg P\). Por ejemplo, «si \(n^2\) es par, \(n\) es par» sale de «si \(n\) es impar, \(n^2\) es impar».</p>
+
+<div class="ex"><p class="et">Ejemplo 1.7. \(\sqrt3\) es irracional</p>
+<p><b>Lema:</b> si \(3\mid p^2\), entonces \(3\mid p\). Por contrarrecíproco: si \(p=3k\pm1\), entonces \(p^2=3(3k^2\pm2k)+1\) no es múltiplo de 3.</p>
+<p>Supón que \(\sqrt3=\tfrac pq\), con \(p,q\in\mathbb Z^+\) sin factores comunes. Entonces \(p^2=3q^2\), así que \(3\mid p^2\) y, por el lema, \(p=3r\). Queda \(9r^2=3q^2\), es decir \(q^2=3r^2\), así que \(3\mid q\). Entonces \(p\) y \(q\) comparten el factor 3: contradicción. Por lo tanto \(\sqrt3\) es irracional.</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.8. Infinitos primos</p>
+<p>Supón que hay un número finito de primos \(p_1,\dots,p_m\). Sea \(N=p_1p_2\cdots p_m+1\). Al dividir \(N\) entre cualquier \(p_i\) queda resto 1. Pero \(N\gt1\) tiene algún factor primo, que no puede ser ninguno de la lista: contradicción.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba que \(\sqrt5\) es irracional.</li><li>Prueba por contradicción que no existen enteros \(a,b\) con \(6a+9b=1\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Como con \(\sqrt3\): \(p^2=5q^2\Rightarrow5\mid p\Rightarrow p=5r\Rightarrow q^2=5r^2\Rightarrow5\mid q\): contradicción con la forma irreducible. (El lema: si \(5\nmid p\), \(p^2\) deja resto 1 o 4.)</li><li>Supón que existen. \(6a+9b=3(2a+3b)\) es múltiplo de 3 y 1 no lo es: contradicción.</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ1, P8 y TZ2, P9)</p><p>La M1 inicial es por la suposición escrita correctamente: «supón que \(a\) y \(b\) son ambos impares», o «supón que existe \(\alpha\in\mathbb Z\) con \(2\alpha^3+6\alpha+1=0\)». Las marcas siguientes se dan aunque falte esa M1. Usar dos impares iguales o consecutivos en vez de genéricos (\(2m+1\), \(2n+1\)) limita la nota.</p></div>
+
+<h3 id="t5">1.5 Inducción matemática</h3>
+<p><b>Principio:</b> si \(P(n_0)\) es cierta y, para todo \(k\ge n_0\), \(P(k)\Rightarrow P(k+1)\), entonces \(P(n)\) es cierta para todo \(n\ge n_0\). Es el efecto dominó de la ficha DMpA 22.</p>
+<h4>Plantilla que da todas las marcas</h4>
+<ol>
+<li><b>Paso base:</b> «Para \(n=1\): LHS = …, RHS = …; así \(P(1)\) es cierta».</li>
+<li><b>Hipótesis:</b> «Supón que \(P(k)\) es cierta para algún \(k\in\mathbb Z^+\): [escribe la fórmula con \(k\)]».</li>
+<li><b>Paso inductivo:</b> «Considera \(n=k+1\)». Parte de la expresión de \(P(k+1)\), <b>usa la hipótesis</b> y llega a la forma pedida.</li>
+<li><b>Conclusión:</b> «Como \(P(1)\) es cierta y \(P(k)\) cierta implica \(P(k+1)\) cierta, por inducción matemática \(P(n)\) es cierta para todo \(n\in\mathbb Z^+\)».</li>
+</ol>
+<h4>Estrategias por tipo</h4>
+<div class="tbl"><table>
+<thead><tr><th>Tipo</th><th>Cómo usar la hipótesis</th></tr></thead>
+<tbody>
+<tr><td>Suma \(\sum_{r=1}^{n}u_r=S(n)\)</td><td>\(\sum_{r=1}^{k+1}u_r=S(k)+u_{k+1}\); factoriza el término común para llegar a \(S(k+1)\).</td></tr>
+<tr><td>Divisibilidad \(d\mid f(n)\)</td><td>Escribe \(f(k)=dp\) y despeja la potencia más alta. O bien muestra que \(f(k+1)-f(k)\) es múltiplo de \(d\).</td></tr>
+<tr><td>Desigualdad</td><td>Encadena: \(f(k+1)=(\dots)f(k)\gt(\dots)g(k)\ge g(k+1)\). El último paso suele usar \(k\ge n_0\).</td></tr>
+<tr><td>Sucesión recursiva</td><td>Sustituye la hipótesis en \(u_{k+1}=F(u_k)\).</td></tr>
+<tr><td>Producto \(\prod\)</td><td>\(\prod_{r=1}^{k+1}=\left(\prod_{r=1}^{k}\right)\cdot a_{k+1}\).</td></tr>
+<tr><td>Derivada \(n\)-ésima</td><td>\(f^{(k+1)}=\frac{d}{dx}f^{(k)}\) (Módulo 12).</td></tr>
+</tbody></table></div>
+
+<div class="ex"><p class="et">Ejemplo 1.9. Suma de cuadrados</p>
+<p>Prueba que \(\sum_{r=1}^{n}r^2=\tfrac{n(n+1)(2n+1)}{6}\).</p>
+<p>Base: \(1=\tfrac{1\cdot2\cdot3}{6}\). Hipótesis: \(\sum_{r=1}^{k}r^2=\tfrac{k(k+1)(2k+1)}{6}\).</p>
+<p>Paso: \(\sum_{r=1}^{k+1}r^2=\tfrac{k(k+1)(2k+1)}{6}+(k+1)^2=\tfrac{(k+1)\left[2k^2+k+6k+6\right]}{6}=\tfrac{(k+1)(k+2)(2k+3)}{6}\), que es la fórmula con \(n=k+1\). Conclusión como en la plantilla.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba por inducción que \(\displaystyle\sum_{r=1}^{n}r(r+1)=\frac{n(n+1)(n+2)}{3}\).</li><li>Prueba por inducción que \(\displaystyle\sum_{r=1}^{n}\frac1{r(r+1)}=\frac n{n+1}\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Paso: \(\tfrac{k(k+1)(k+2)}3+(k+1)(k+2)=\tfrac{(k+1)(k+2)(k+3)}3\).</li><li>Paso: \(\tfrac k{k+1}+\tfrac1{(k+1)(k+2)}=\tfrac{k^2+2k+1}{(k+1)(k+2)}=\tfrac{k+1}{k+2}\).</li></ol></div></details></div>
+
+<div class="ex"><p class="et">Ejemplo 1.10. Divisibilidad despejando la potencia</p>
+<p>Prueba que \(8\mid3^{2n}-1\) para \(n\in\mathbb Z^+\).</p>
+<p>Base: \(9-1=8\). Hipótesis: \(3^{2k}-1=8p\), es decir \(3^{2k}=8p+1\).</p>
+<p>Paso: \(3^{2k+2}-1=9\cdot3^{2k}-1=9(8p+1)-1=72p+8=8(9p+1)\), múltiplo de 8.</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.11. Divisibilidad por el método de la diferencia</p>
+<p>Prueba que \(6\mid n^3-n\) para \(n\in\mathbb Z^+\).</p>
+<p>Base: \(0=6\cdot0\). Supón que \(k^3-k=6p\). Entonces \(f(k+1)-f(k)=(k+1)^3-(k+1)-(k^3-k)=3k^2+3k=3k(k+1)\), que es múltiplo de 6 porque \(k(k+1)\) es par. Así \(f(k+1)=6p+3k(k+1)\) es múltiplo de 6.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba por inducción que \(3\mid4^n-1\).</li><li>Prueba por inducción que \(3\mid n^3+2n\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Hipótesis \(4^k=3p+1\): \(4^{k+1}-1=12p+3=3(4p+1)\).</li><li>Diferencia: \((k+1)^3+2(k+1)-(k^3+2k)=3k^2+3k+3=3(k^2+k+1)\).</li></ol></div></details></div>
+
+<div class="ex"><p class="et">Ejemplo 1.12. Desigualdad con base distinta de 1</p>
+<p>Prueba que \(2^n\gt n^2\) para todo \(n\ge5\).</p>
+<p>Base: \(32\gt25\). Hipótesis: \(2^k\gt k^2\), con \(k\ge5\).</p>
+<p>Paso: \(2^{k+1}=2\cdot2^k\gt2k^2=(k+1)^2+(k^2-2k-1)\gt(k+1)^2\), porque \(k^2-2k-1=(k-1)^2-2\gt0\) para \(k\ge5\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba que \(3^n\gt2n+1\) para \(n\ge2\).</li><li>Prueba que \(n!\gt2^n\) para \(n\ge4\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Base \(9\gt5\). Paso: \(3^{k+1}\gt3(2k+1)=6k+3\gt2k+3\).</li><li>Base \(24\gt16\). Paso: \((k+1)!\gt(k+1)2^k\gt2\cdot2^k\), porque \(k+1\gt2\).</li></ol></div></details></div>
+
+<div class="ex"><p class="et">Ejemplo 1.13. Sucesión recursiva</p>
+<p>\(u_1=1\), \(u_{n+1}=2u_n+1\). Prueba que \(u_n=2^n-1\).</p>
+<p>Base: \(2^1-1=1\). Paso: si \(u_k=2^k-1\), entonces \(u_{k+1}=2(2^k-1)+1=2^{k+1}-1\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(u_1=3\), \(u_{n+1}=3u_n-2\). Prueba que \(u_n=2\cdot3^{n-1}+1\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Base: \(2+1=3\). Paso: \(3(2\cdot3^{k-1}+1)-2=2\cdot3^k+1\).</li></ol></div></details></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2026, P7)</p><p>En «\(n^3+5n\) es múltiplo de 6», la hipótesis se escribe \(k^3+5k=6p\). Al desarrollar \((k+1)^3+5(k+1)\) queda \(6p+3k(k+1)+6\), y la R1 exige justificar que \(k(k+1)\) es par. «Sea \(n=k\)» no gana la M1 de la hipótesis; «supón que es cierto para \(n=k\)» sí.</p></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Inducción fuerte:</b> se supone \(P(1),\dots,P(k)\) y se prueba \(P(k+1)\). Hace falta cuando \(u_{k+1}\) depende de varios términos anteriores (Fibonacci), y requiere tantos casos base como términos anteriores se usan.</li>
+<li><b>Reforzar la hipótesis:</b> a veces \(P(n)\) no se puede probar por inducción, pero una afirmación más fuerte sí. Por ejemplo, \(\sum\frac1{k^2}\le2\) no avanza, pero \(\sum\frac1{k^2}\le2-\frac1n\) sí (problema E9).</li>
+<li><b>El error del caballo:</b> si el paso inductivo no funciona para algún \(k\) (por ejemplo, de \(k=1\) a \(k=2\)), la cadena se rompe. Revisa que el paso valga para todo \(k\ge n_0\).</li>
+</ul></div>
+
+<h3 id="t6">1.6 Redacción para el markscheme</h3>
+<div class="tbl"><table>
+<thead><tr><th>Momento</th><th>Frase que gana la marca</th><th>Frase que la pierde</th></tr></thead>
+<tbody>
+<tr><td>Contradicción, inicio</td><td>«Supón que \(\alpha\in\mathbb Z\) es raíz…»</td><td>«Sea \(\alpha\) una raíz…», «consideremos…»</td></tr>
+<tr><td>Contradicción, cierre</td><td>«…que es impar, contradicción; por lo tanto no hay raíces enteras.»</td><td>Terminar en la cuenta, sin concluir.</td></tr>
+<tr><td>Inducción, hipótesis</td><td>«Supón que \(P(k)\) es cierta: \(k^3+5k=6p,\ p\in\mathbb Z\).»</td><td>«Sea \(n=k\).», «\(n=k\) es cierta.»</td></tr>
+<tr><td>Inducción, cierre</td><td>«\(P(1)\) cierta y \(P(k)\Rightarrow P(k+1)\); por inducción, cierta para todo \(n\in\mathbb Z^+\).»</td><td>«Queda demostrado.»</td></tr>
+<tr><td>Directa, divisibilidad</td><td>«\(=3(n^2)+2\): el primer sumando es múltiplo de 3 y 2 no lo es.»</td><td>Dejar la expresión sin interpretar.</td></tr>
+</tbody></table></div>
+
+<h3 id="t7">1.7 Más allá del IB: palomar y buen orden</h3>
+<p>Dos técnicas que no están en el programa pero resuelven en pocas líneas preguntas que parecen imposibles.</p>
+<ul>
+<li><b>Principio del palomar:</b> si se reparten \(n+1\) objetos en \(n\) cajas, alguna caja recibe al menos dos.</li>
+<li><b>Principio del buen orden:</b> todo conjunto no vacío de enteros positivos tiene un mínimo. Permite demostrar por «mínimo contraejemplo»: si la afirmación fallara, habría un contraejemplo mínimo, y se llega a una contradicción construyendo otro menor.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.14. Seis enteros y el resto módulo 5</p>
+<p>Demuestra que entre 6 enteros cualesquiera hay dos cuya diferencia es múltiplo de 5.</p>
+<p>Hay 5 restos posibles al dividir por 5 (0, 1, 2, 3, 4) y 6 enteros. Por el palomar, dos enteros \(a\) y \(b\) tienen el mismo resto \(r\): \(a=5p+r\) y \(b=5q+r\). Entonces \(a-b=5(p-q)\), que es múltiplo de 5.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.15. Todo entero mayor que 1 tiene un factor primo</p>
+<p>Supón que no. Por el buen orden, existe un mínimo \(n\ge2\) sin factores primos. \(n\) no es primo (sería su propio factor primo), así que \(n=ab\) con \(1\lt a\lt n\). Como \(a\lt n\), \(a\) tiene un factor primo \(p\), y \(p\) divide a \(n\). Contradicción. Es la pieza que falta en la demostración de que hay infinitos primos (Ejemplo 1.8).</p></div>
+<div class="box beyond"><p class="bt">Más allá del IB: descenso infinito</p><p>Fermat usaba una variante del buen orden: si de una solución en enteros positivos se puede construir otra estrictamente menor, se obtendría una cadena infinita decreciente de enteros positivos, que no existe. Así demostró que \(x^4+y^4=z^2\) no tiene soluciones en enteros positivos. La irracionalidad de \(\sqrt2\) también sale así: si \(\sqrt2=\frac pq\), entonces \(\sqrt2=\frac{2q-p}{p-q}\) con denominador menor.</p></div>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Proposición</td><td>Afirmación que es verdadera o falsa, no ambas.</td></tr>
+<tr><td>Divisible</td><td>\(d\mid a\) si \(a=dk\) para algún \(k\in\mathbb Z\).</td></tr>
+<tr><td>Número racional</td><td>\(\tfrac pq\) con \(p,q\in\mathbb Z\), \(q\neq0\); se puede tomar en forma irreducible.</td></tr>
+<tr><td>Contraejemplo</td><td>Caso concreto que cumple las hipótesis y no la conclusión.</td></tr>
+<tr><td>Contrarrecíproco</td><td>\(\neg Q\Rightarrow\neg P\); equivale a \(P\Rightarrow Q\).</td></tr>
+<tr><td>Recíproco</td><td>\(Q\Rightarrow P\); no equivale a \(P\Rightarrow Q\).</td></tr>
+<tr><td>Paso base</td><td>Verificación de \(P(n_0)\), el primer valor.</td></tr>
+<tr><td>Hipótesis de inducción</td><td>Suposición de que \(P(k)\) es cierta para algún \(k\ge n_0\).</td></tr>
+<tr><td>Paso inductivo</td><td>Demostración de que \(P(k)\) implica \(P(k+1)\).</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Pruebe / Demuestre</td><td>Argumento general, válido para todos los casos.</td><td>Verificar con ejemplos.</td></tr>
+<tr><td>Pruebe por contradicción</td><td>Suposición explícita de la negación, contradicción identificada y conclusión.</td><td>Hacer prueba directa: no gana las marcas de método.</td></tr>
+<tr><td>Utilice la inducción matemática</td><td>Base, hipótesis, paso que la usa, y conclusión.</td><td>Omitir la frase final (pierdes la última R1) o no usar la hipótesis.</td></tr>
+<tr><td>Muestre que</td><td>Del LHS al RHS, sin saltos.</td><td>Trabajar los dos lados a la vez.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>El «sea» que no es «supón».</b> En contradicción y en la hipótesis de inducción, escribe «supón que…».</li>
+<li><b>La misma letra para dos impares.</b> \(a=2k+1\) y \(b=2k+1\) hace \(a=b\). Usa \(2m+1\) y \(2n+1\).</li>
+<li><b>Probar con ejemplos.</b> Verificar casos nunca prueba un «para todo». Solo sirve para refutar (contraejemplo).</li>
+<li><b>El contraejemplo sin cuentas.</b> Muestra explícitamente que el caso falla.</li>
+<li><b>La hipótesis no usada.</b> Si el paso inductivo no usa \(P(k)\), no es inducción y pierde las marcas del paso.</li>
+<li><b>Suponer lo que se quiere probar.</b> En el paso, no escribas \(P(k+1)\) como cierto y «llegues» a algo verdadero. Parte de un lado de \(P(k+1)\).</li>
+<li><b>La base equivocada.</b> Si el enunciado dice \(n\ge5\), la base es \(n=5\), no \(n=1\).</li>
+<li><b>La desigualdad sin justificar.</b> Cada \(\gt\) o \(\ge\) del paso necesita una razón (por ejemplo, «porque \(k\ge5\)»).</li>
+<li><b>El «par» sin razón.</b> «\(k(k+1)\) es par» necesita «porque uno de dos consecutivos es par».</li>
+<li><b>El cierre ausente.</b> Sin la frase final de la inducción no hay R1, y esa R1 exige al menos 4 marcas previas.</li>
+<li><b>La equivalencia a medias.</b> Un «si y solo si» exige probar las dos direcciones.</li>
+<li><b>Partir de la conclusión.</b> En una desigualdad, empezar por lo que se quiere probar y «llegar» a algo cierto no es una prueba, salvo que cada paso sea reversible y se diga.</li>
+<li><b>Confundir recíproco y contrarrecíproco.</b> Probar \(Q\Rightarrow P\) no prueba \(P\Rightarrow Q\).</li>
+<li><b>La fracción no irreducible.</b> En una prueba de irracionalidad, sin «\(p,q\) sin factores comunes» no hay contradicción.</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">F1–F8 son preguntas IB del banco de la ficha DMpA 22, resueltas con la plantilla completa y ampliadas con una parte que integra otros módulos. F9 y F10 cubren contradicción, casos y contraejemplo, que la ficha no trae. Ninguno repite un tipo de la sección 5.</p>
+
+<div class="ex"><p class="et">F1. Suma de una PG por inducción <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p class="src">DMpA 22, ítem 1 (IB mayo 2008), ampliado.</p>
+<p>(a) Halla la suma infinita de \(27,-9,3,-1,\dots\) (b) Prueba por inducción que \(a+ar+\dots+ar^{n-1}=\dfrac{a(1-r^n)}{1-r}\) (\(r\ne1\)). (c) Para la serie de (a), halla el menor \(n\) con \(|S_\infty-S_n|\lt0{,}01\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(r=-\tfrac13\): \(S_\infty=\dfrac{27}{4/3}=\dfrac{81}4\).</p>
+<p>(b) Base: \(n=1\) da \(a=\tfrac{a(1-r)}{1-r}\). Supón que es cierto para \(n=k\). Entonces \(S_{k+1}=\dfrac{a(1-r^k)}{1-r}+ar^k=\dfrac{a(1-r^k+r^k-r^{k+1})}{1-r}=\dfrac{a(1-r^{k+1})}{1-r}\). Conclusión con la frase completa.</p>
+<p>(c) \(|S_\infty-S_n|=\tfrac{81}4\left(\tfrac13\right)^n\lt\tfrac1{100}\iff3^n\gt2025\). Como \(3^6=729\) y \(3^7=2187\), \(n=7\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Suma con factoriales: inducción y telescópica <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 22, ítem 3 (IB mayo 2009), ampliado.</p>
+<p>(a) Prueba por inducción que \(\sum_{r=1}^{n}r\cdot r!=(n+1)!-1\). (b) Pruébalo de nuevo con una suma telescópica. (c) Halla \(n\) si la suma vale 5039.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Base: \(1=2!-1\). Supón que es cierto para \(n=k\). Entonces \((k+1)!-1+(k+1)(k+1)!=(k+1)!\,(k+2)-1=(k+2)!-1\).</p>
+<p>(b) \(r\cdot r!=(r+1)!-r!\), así que la suma telescopa a \((n+1)!-1!\).</p>
+<p>(c) \((n+1)!=5040=7!\Rightarrow n=6\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. Suma que tiende a 1 <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 22, ítem 5 (IB mayo 2023), ampliado.</p>
+<p>(a) Prueba que \(\sum_{r=1}^{n}\dfrac{r}{(r+1)!}=1-\dfrac1{(n+1)!}\). (b) Deduce el valor de la serie infinita. (c) Explica la fórmula escribiendo \(\dfrac r{(r+1)!}\) como diferencia de dos términos.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Base: \(\tfrac12=1-\tfrac12\). Supón que es cierto para \(n=k\). Entonces \(1-\tfrac1{(k+1)!}+\tfrac{k+1}{(k+2)!}=1-\tfrac{(k+2)-(k+1)}{(k+2)!}=1-\tfrac1{(k+2)!}\).</p>
+<p>(b) \(\tfrac1{(n+1)!}\to0\), así que la serie vale 1.</p>
+<p>(c) \(\dfrac{r}{(r+1)!}=\dfrac{(r+1)-1}{(r+1)!}=\dfrac1{r!}-\dfrac1{(r+1)!}\), que es telescópica.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Divisible por 6 siempre, por 12 solo a veces <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 22, ítem 4 (IB mayo 2010), ampliado.</p>
+<p>(a) Prueba que \(6\mid5\cdot7^n+1\) para \(n\in\mathbb Z^+\). (b) Prueba que \(12\mid5\cdot7^n+1\) si \(n\) es impar, y que el resto es 6 si \(n\) es par.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Base: 36. Hipótesis: \(5\cdot7^k+1=6p\). Paso: \(5\cdot7^{k+1}+1=7(5\cdot7^k+1)-6=42p-6=6(7p-1)\).</p>
+<p>(b) Inducción de dos en dos: \(5\cdot7^{k+2}+1=49(5\cdot7^k+1)-48\). Impares: base \(n=1\), 36; si \(5\cdot7^k+1=12q\), el siguiente es \(12(49q-4)\). Pares: base \(n=2\), \(246=12\cdot20+6\); si \(5\cdot7^k+1=12q+6\), el siguiente es \(12(49q+20)+6\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. Divisible por 576 <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 22, ítem 8 (IB mayo 2013).</p>
+<p>Prueba que \(576\mid5^{2n}-24n-1\) para \(n\in\mathbb Z^+\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Base: \(25-24-1=0=576\cdot0\). Hipótesis: \(5^{2k}=576p+24k+1\).</p>
+<p>Paso: \(5^{2k+2}-24(k+1)-1=25(576p+24k+1)-24k-25=25\cdot576p+576k=576(25p+k)\).</p>
+<p><span class="lbl">Idea clave.</span> Despejar la potencia de la hipótesis y sustituirla; el resto se ordena solo.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Suma de binomiales y suma de cuadrados <span class="lvl">Sección B, integra Módulos 1 y 4</span></p>
+<p class="src">DMpA 22, ítem 9 (IB mayo 2017), ampliado.</p>
+<p>(a) Prueba que \(\binom22+\binom32+\dots+\binom{n-1}2=\binom n3\) para \(n\ge3\). (b) Usando \(k^2=2\binom k2+k\), deduce \(\sum_{k=1}^{m}k^2\) sin volver a hacer inducción.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Base \(n=3\): \(1=1\). Supón que es cierto para \(n=k\). Sumando \(\binom k2\): \(\binom k3+\binom k2=\binom{k+1}3\) por la regla de Pascal.</p>
+<p>(b) \(\sum_{k=1}^{m}k^2=2\binom{m+1}3+\tfrac{m(m+1)}2=\tfrac{(m+1)m(m-1)}3+\tfrac{m(m+1)}2=\tfrac{m(m+1)(2m+1)}6\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. Desigualdad de Bernoulli <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 22, ítem 10 (IB mayo 2018), ampliado.</p>
+<p>(a) Prueba que \((1-a)^n\gt1-na\) para \(n\ge2\) y \(0\lt a\lt1\). (b) Deduce sin calculadora que \(0{,}99^{50}\gt\tfrac12\) y que \(0{,}98^{30}\gt0{,}4\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Base \(n=2\): \(1-2a+a^2\gt1-2a\). Paso: como \(1-a\gt0\), \((1-a)^{k+1}\gt(1-ka)(1-a)=1-(k+1)a+ka^2\gt1-(k+1)a\).</p>
+<p>(b) \(0{,}99^{50}\gt1-50(0{,}01)=0{,}5\). \(0{,}98^{30}\gt1-30(0{,}02)=0{,}4\).</p>
+<p><span class="lbl">Idea clave.</span> Multiplicar una desigualdad por \(1-a\) exige \(1-a\gt0\), y hay que decirlo.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. Factoriales contra potencias <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p class="src">DMpA 22, ítems 12(a) y 15(a) (IB, Prueba 3), ampliados.</p>
+<p>(a) Prueba que \(n!\ge2^{n-1}\) para \(n\ge1\). (b) Prueba que \(n!\gt3^n\) para \(n\ge7\). (c) Deduce que \(\sum_{n=1}^{N}\tfrac1{n!}\lt2\) para todo \(N\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Base \(1\ge1\). Paso: \((k+1)!=(k+1)k!\ge2\cdot2^{k-1}=2^k\), porque \(k+1\ge2\).</p>
+<p>(b) Base: \(7!=5040\gt2187=3^7\). Paso: \((k+1)!\gt(k+1)3^k\gt3^{k+1}\), porque \(k+1\gt3\).</p>
+<p>(c) \(\tfrac1{n!}\le\tfrac1{2^{n-1}}\), así que la suma es menor o igual que \(\sum_{n=1}^{N}\tfrac1{2^{n-1}}\lt2\) (serie geométrica del Módulo 1).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. Irracionalidad en dos capas <span class="lvl">Sección B</span></p>
+<p class="src">Tipo de examen sin ítem equivalente en las fichas.</p>
+<p>(a) Prueba que \(\sqrt6\) es irracional. (b) Deduce por contradicción que \(\sqrt2+\sqrt3\) es irracional.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Supón que \(\sqrt6=\tfrac pq\), irreducible. Entonces \(p^2=6q^2\) es par, así que \(p=2s\). Queda \(4s^2=6q^2\), es decir \(2s^2=3q^2\): \(q^2\) es par y \(q\) también. Así \(p,q\) comparten el 2: contradicción.</p>
+<p>(b) Supón que \(\sqrt2+\sqrt3=r\in\mathbb Q\). Entonces \(r^2=5+2\sqrt6\), y \(\sqrt6=\tfrac{r^2-5}{2}\in\mathbb Q\): contradicción con (a).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. Prueba por casos y un contraejemplo <span class="lvl">Sección B</span></p>
+<p class="src">Tipo de examen sin ítem equivalente en las fichas.</p>
+<p>(a) Prueba que \(30\mid n^5-n\) para todo \(n\in\mathbb Z\). (b) Refuta: «\(4\mid n^4-n\) para todo \(n\in\mathbb Z\)».</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(n^5-n=(n-1)n(n+1)(n^2+1)\). Tres consecutivos: múltiplo de 2 y de 3. Para 5, por casos: si \(n=5k\) o \(5k\pm1\), uno de \(n-1,n,n+1\) es múltiplo de 5. Si \(n=5k\pm2\), \(n^2+1=25k^2\pm20k+5\) es múltiplo de 5. Como 2, 3 y 5 no tienen factores comunes, \(30\mid n^5-n\).</p>
+<p>(b) \(n=2\): \(16-2=14\), que no es múltiplo de 4.</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son todas las preguntas de demostración de Sección A de tus 7 pruebas. Las marcas siguen el markscheme oficial, salvo en mayo 2021 TZ2, cuyo markscheme no está en tus archivos: ahí están reconstruidas y se indica. En este tema, copia la redacción tal cual: es lo que gana las R1.</p>
+
+<div class="ex"><p class="et">X1. Mayo 2021 TZ2, pregunta 1 <span class="lvl">4 puntos</span></p>
+<p>Considera dos enteros positivos consecutivos, \(n\) y \(n+1\). Muestra que la diferencia de sus cuadrados es igual a la suma de los dos enteros.</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">\((n+1)^2-n^2\) <span class="m">M1</span> \(=n^2+2n+1-n^2\) <span class="m">A1</span></p>
+<p class="step">\(=2n+1\) <span class="m">A1</span> \(=n+(n+1)\) <span class="m">A1</span>, que es la suma de los dos enteros <span class="m">AG</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Mayo 2022 TZ2, pregunta 9 <span class="lvl">5 puntos</span></p>
+<p>Prueba por contradicción que \(2x^3+6x+1=0\) no tiene raíces enteras.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">Supón que existe \(\alpha\in\mathbb Z\) con \(2\alpha^3+6\alpha+1=0\) <span class="m">M1</span></p>
+<p class="step">Reordena <span class="m">M1</span>: \(2\alpha^3+6\alpha=-1\) <span class="m">A1</span></p>
+<p class="step">\(2\alpha^3+6\alpha=2(\alpha^3+3\alpha)\) es par <span class="m">R1</span>; \(-1\) no es par: contradicción, así que \(\alpha\) no puede ser entero <span class="m">R1</span></p>
+<p class="step">Por lo tanto la ecuación no tiene raíces enteras <span class="m">AG</span></p>
+<p><span class="lbl">Otras formas aceptadas.</span> \(\alpha^3+3\alpha=-\tfrac12\), donde el lado izquierdo es entero y el derecho no. También \(\alpha(2\alpha^2+6)=-1\), que obligaría a \(\alpha=\pm1\), y ninguno funciona.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Mayo 2022 TZ2, pregunta 2 <span class="lvl">6 puntos</span></p>
+<p>Para tres enteros consecutivos \(n-1,\ n,\ n+1\): (a) prueba que su suma siempre es divisible por 3; (b) prueba que la suma de sus cuadrados nunca es divisible por 3.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \((n-1)+n+(n+1)\) <span class="m">(A1)</span> \(=3n\) <span class="m">A1</span>, que siempre es divisible por 3 <span class="m">AG</span></p>
+<p class="step">(b) \((n-1)^2+n^2+(n+1)^2\) <span class="m">A1</span>; desarrollar \((n\pm1)^2\) <span class="m">(M1)</span></p>
+<p class="step">\(=3n^2+2\) <span class="m">A1</span></p>
+<p class="step">\(3n^2\) es divisible por 3 y 2 no lo es <span class="m">R1</span>; por lo tanto la suma nunca es divisible por 3 <span class="m">AG</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X4. Mayo 2022 TZ1, pregunta 8 <span class="lvl">6 puntos</span></p>
+<p>\(a,b\in\mathbb Z\) y \(4\mid a^2+b^2\). Prueba por contradicción que \(a\) y \(b\) no pueden ser ambos impares.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">Supón que \(a\) y \(b\) son ambos impares <span class="m">M1</span> (con «sea» sería M0)</p>
+<p class="step">\(a=2m+1,\ b=2n+1\) con \(m,n\in\mathbb Z\) <span class="m">A1</span></p>
+<p class="step">\(a^2+b^2=4m^2+4m+1+4n^2+4n+1\) <span class="m">A1</span> \(=4(m^2+m+n^2+n)+2\) <span class="m">(A1)</span></p>
+<p class="step">\(4(\dots)\) es divisible por 4 y 2 no lo es <span class="m">R1</span>; así \(a^2+b^2\) no es divisible por 4: contradicción <span class="m">R1</span></p>
+<p class="step">Por lo tanto \(a\) y \(b\) no pueden ser ambos impares <span class="m">AG</span></p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> Usar dos impares iguales o consecutivos: como máximo M1A0A0(A0)R1R1.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X5. Mayo 2026 TZ2, pregunta 7 <span class="lvl">7 puntos</span></p>
+<p>Prueba por inducción matemática que \(n^3+5n\) es múltiplo de 6 para \(n\in\mathbb Z^+\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">Para \(n=1\): \(1+5=6\), así que es cierto para \(n=1\) <span class="m">A1</span></p>
+<p class="step">Supón que es cierto para \(n=k\): \(k^3+5k=6p,\ p\in\mathbb Z\) <span class="m">M1</span></p>
+<p class="step">Considera \(n=k+1\): \((k+1)^3+5(k+1)=k^3+3k^2+3k+1+5k+5\) <span class="m">M1</span></p>
+<p class="step">\(=(k^3+5k)+3k^2+3k+6=6p+3k(k+1)+6\) <span class="m">A1A1</span></p>
+<p class="step">\(k\) o \(k+1\) es par, así que \(3k(k+1)\) es múltiplo de 6 <span class="m">R1</span></p>
+<p class="step">Como es cierto para \(n=1\) y ser cierto para \(n=k\) implica serlo para \(n=k+1\), por inducción es cierto para todo \(n\in\mathbb Z^+\) <span class="m">R1</span></p>
+<p><span class="lbl">Nota del markscheme.</span> La última R1 solo se da si hay al menos 4 de las 6 marcas anteriores.</p>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Estos tipos de pregunta no salieron en tus 7 pruebas, pero el IB los pone en otras convocatorias (algunos dentro de preguntas de otros temas). Junto con la teoría y las secciones 4 y 5, cubren todo el programa de demostración. Cada tipo trae cómo reconocerlo, el método, un ejemplo resuelto y ejercicios para practicar.</p>
+<h3 id="ty1">T1. Irracionalidad de un logaritmo</h3>
+<p><b>Qué reconocer:</b> «prueba por contradicción que \(\log_23\) es irracional». <b>Método:</b> supón \(\log_23=\tfrac pq\) con \(p,q\in\mathbb Z^+\). Pasa a potencias: \(2^p=3^q\). Un lado es par y el otro impar.</p>
+<div class="ex"><p class="et">Ejemplo T1. <span class="lvl">Tipo IB</span></p>
+<p>Prueba por contradicción que \(\log_23\) es irracional.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Supón que \(\log_23=\tfrac pq\), con \(p,q\in\mathbb Z^+\) (es positivo porque \(3\gt1\)). Entonces \(2^{p/q}=3\), así que \(2^p=3^q\).</p><p>\(2^p\) es par y \(3^q\) es impar: contradicción. Por lo tanto \(\log_23\) es irracional.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba que \(\log_35\) es irracional.</li><li>Prueba que \(\log_{10}2\) es irracional.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(3^p=5^q\): el primero es múltiplo de 3 y el segundo no.</li><li>\(10^p=2^q\): \(10^p\) es múltiplo de 5 y \(2^q\) no.</li></ol></div></details></div>
+<h3 id="ty2">T2. Imposibilidad por paridad o restos</h3>
+<p><b>Qué reconocer:</b> «prueba que no existen enteros \(x,y\) tales que…». <b>Método:</b> supón que existen, factoriza o mira la paridad o el resto de cada lado, y llega a «par = impar» o a un resto imposible.</p>
+<div class="ex"><p class="et">Ejemplo T2. <span class="lvl">Sección A alta</span></p>
+<p>Prueba que ningún entero de la forma \(4k+2\) es diferencia de dos cuadrados.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Supón que \(4k+2=x^2-y^2=(x-y)(x+y)\). Los factores \(x-y\) y \(x+y\) tienen la misma paridad (suman \(2x\)).</p><p>Si ambos son impares, el producto es impar; si ambos son pares, es múltiplo de 4. Pero \(4k+2\) es par y no es múltiplo de 4: contradicción.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba que no hay enteros \(x,y\) con \(x^2-y^2=10\).</li><li>Prueba que \(x^2+y^2=4z+3\) no tiene soluciones enteras.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(10=4\cdot2+2\): es el caso del ejemplo.</li><li>Los cuadrados dejan resto 0 o 1 al dividir por 4, así que \(x^2+y^2\) deja resto 0, 1 o 2, nunca 3.</li></ol></div></details></div>
+<h3 id="ty3">T3. Verdadero o falso</h3>
+<p><b>Qué reconocer:</b> «determina si la afirmación es verdadera o falsa y justifica». <b>Método:</b> prueba unos casos. Si encuentras uno que falla, es falsa y basta ese contraejemplo verificado. Si no, intenta una prueba general.</p>
+<div class="ex"><p class="et">Ejemplo T3. <span class="lvl">Sección A</span></p>
+<p>Decide si son verdaderas: (a) «\(n^2+n+1\) es primo para todo \(n\in\mathbb Z^+\)»; (b) «la suma de tres enteros consecutivos es múltiplo de 3».</p>
+<details><summary>Ver solución</summary><div class="inner"><p>(a) Falsa: \(n=4\) da \(21=3\cdot7\).</p><p>(b) Verdadera: \((n-1)+n+(n+1)=3n\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>«El producto de dos irracionales es irracional.»</li><li>«Si \(n\) es impar, \(n^2-1\) es múltiplo de 8.»</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Falsa: \(\sqrt2\cdot\sqrt2=2\).</li><li>Verdadera: \(n^2-1=(n-1)(n+1)\), producto de dos pares consecutivos; uno de ellos es múltiplo de 4.</li></ol></div></details></div>
+<h3 id="ty4">T4. Inducción con derivadas</h3>
+<p><b>Qué reconocer:</b> «prueba por inducción que \(\dfrac{d^n}{dx^n}\left(xe^{2x}\right)=2^{n-1}(2x+n)e^{2x}\)». Usa la derivada del producto (Módulo 12). <b>Método:</b> el paso es derivar la hipótesis: \(f^{(k+1)}=\frac{d}{dx}f^{(k)}\). Saca factor común y reordena hasta la forma con \(n=k+1\).</p>
+<div class="ex"><p class="et">Ejemplo T4. <span class="lvl">Sección B</span></p>
+<p class="src">Lo encontrarás también en el Módulo 12.</p>
+<p>Prueba que \(\dfrac{d^n}{dx^n}\left(xe^{2x}\right)=2^{n-1}(2x+n)e^{2x}\) para \(n\in\mathbb Z^+\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Base: \((xe^{2x})'=e^{2x}+2xe^{2x}=(2x+1)e^{2x}\). Cierto.</p><p>Supón que \(f^{(k)}=2^{k-1}(2x+k)e^{2x}\). Entonces \(f^{(k+1)}=2^{k-1}\left[2e^{2x}+2(2x+k)e^{2x}\right]=2^k(2x+k+1)e^{2x}\). Conclusión con la frase completa.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba que \(\dfrac{d^n}{dx^n}\left(\dfrac1{1-x}\right)=\dfrac{n!}{(1-x)^{n+1}}\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Paso: \(\frac{d}{dx}\,k!\,(1-x)^{-(k+1)}=k!\,(k+1)(1-x)^{-(k+2)}=\frac{(k+1)!}{(1-x)^{k+2}}\).</li></ol></div></details></div>
+<h3 id="ty5">T5. Inducción con trigonometría</h3>
+<p><b>Qué reconocer:</b> un producto o una suma de senos y cosenos con ángulos que se duplican o crecen. Usa las fórmulas de ángulo doble (Módulo 8). <b>Método:</b> escribe el caso \(k+1\) como el caso \(k\) por un factor nuevo, y usa \(2\sin A\cos A=\sin2A\).</p>
+<div class="ex"><p class="et">Ejemplo T5. <span class="lvl">Sección B</span></p>
+<p>Prueba que \(\cos x\cos2x\cos4x\cdots\cos(2^{n-1}x)=\dfrac{\sin(2^nx)}{2^n\sin x}\) para \(\sin x\ne0\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Base: \(\dfrac{\sin2x}{2\sin x}=\cos x\). Cierto.</p><p>Paso: \(\dfrac{\sin(2^kx)}{2^k\sin x}\cos(2^kx)=\dfrac{2\sin(2^kx)\cos(2^kx)}{2^{k+1}\sin x}=\dfrac{\sin(2^{k+1}x)}{2^{k+1}\sin x}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba que \((\cos\theta+i\sin\theta)^n=\cos n\theta+i\sin n\theta\) (De Moivre, Módulo 6).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Paso: multiplica por \(\cos\theta+i\sin\theta\) y usa las fórmulas de \(\cos(A+B)\) y \(\sin(A+B)\).</li></ol></div></details></div>
+<h3 id="ty6">T6. Desigualdad entre una suma y una función</h3>
+<p><b>Qué reconocer:</b> «prueba que \(\sum_{k=1}^{n}\frac1{\sqrt k}\ge\sqrt n\)». <b>Método:</b> en el paso basta probar que \(g(k)+(\text{término nuevo})\ge g(k+1)\); esa desigualdad se reduce, operando hacia atrás, a algo evidentemente cierto. Escríbela en el orden correcto.</p>
+<div class="ex"><p class="et">Ejemplo T6. <span class="lvl">Sección B</span></p>
+<p>Prueba que \(\displaystyle\sum_{k=1}^{n}\frac1{\sqrt k}\ge\sqrt n\) para \(n\in\mathbb Z^+\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Base: \(1\ge1\). Supón la desigualdad para \(k\). Entonces la suma hasta \(k+1\) es \(\ge\sqrt k+\frac1{\sqrt{k+1}}=\frac{\sqrt{k(k+1)}+1}{\sqrt{k+1}}\).</p><p>Como \(\sqrt{k(k+1)}\gt\sqrt{k^2}=k\), esto es \(\gt\frac{k+1}{\sqrt{k+1}}=\sqrt{k+1}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba que \(\displaystyle\sum_{k=1}^{n}\frac1{k^2}\le2-\frac1n\).</li><li>Prueba que \(2^n\ge n+1\) para \(n\in\mathbb Z^+\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Paso: \(2-\tfrac1k+\tfrac1{(k+1)^2}\le2-\tfrac1{k+1}\), porque \(\tfrac1{(k+1)^2}\lt\tfrac1{k(k+1)}=\tfrac1k-\tfrac1{k+1}\).</li><li>Paso: \(2^{k+1}\ge2(k+1)=2k+2\ge k+2\).</li></ol></div></details></div>
+<h3 id="ty7">T7. Prueba directa por restos</h3>
+<p><b>Qué reconocer:</b> «prueba que la suma de los cubos de tres enteros consecutivos es múltiplo de 9». <b>Método:</b> simplifica la expresión, saca el factor obvio y analiza el factor restante por casos de restos.</p>
+<div class="ex"><p class="et">Ejemplo T7. <span class="lvl">Sección A alta</span></p>
+<p>Prueba que \((n-1)^3+n^3+(n+1)^3\) es múltiplo de 9 para todo \(n\in\mathbb Z\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>La suma es \(3n^3+6n=3n(n^2+2)\). Basta ver que \(3\mid n(n^2+2)\).</p><p>Si \(n=3k\), es claro. Si \(n=3k\pm1\), \(n^2+2=9k^2\pm6k+3\) es múltiplo de 3.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba que \(n(n+1)(2n+1)\) es múltiplo de 6.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(n(n+1)\) es par. Para el 3: si \(n=3k\) o \(3k+2\), lo es \(n\) o \(n+1\); si \(n=3k+1\), \(2n+1=6k+3\).</li></ol></div></details></div>
+<h3 id="ty8">T8. Encontrar el error de una «demostración»</h3>
+<p><b>Qué reconocer:</b> «explica el error en el siguiente argumento». <b>Método:</b> revisa cada paso: división por cero, raíz cuadrada de ambos lados sin \(\pm\), un caso base que falta, o un paso inductivo que no vale para todo \(k\).</p>
+<div class="ex"><p class="et">Ejemplo T8. <span class="lvl">Sección A</span></p>
+<p>«Sea \(a=b\). Entonces \(a^2=ab\), \(a^2-b^2=ab-b^2\), \((a+b)(a-b)=b(a-b)\), \(a+b=b\), \(2b=b\), \(2=1\).» ¿Dónde está el error?</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Al pasar de \((a+b)(a-b)=b(a-b)\) a \(a+b=b\) se divide por \(a-b=0\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>«Si \(k^2+k\) es impar, \((k+1)^2+(k+1)=(k^2+k)+2(k+1)\) también lo es. Por inducción, \(n^2+n\) es impar para todo \(n\).» ¿Qué falla?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>El paso es correcto, pero no hay caso base: \(1^2+1=2\) es par. De hecho, \(n^2+n\) siempre es par.</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo de los Módulos 1–5. Integran sucesiones y series (Módulo 1), polinomios (Módulo 2), funciones (Módulo 3) y combinatoria (Módulo 4). El 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la Sección B. Al final, I1 es una investigación tipo Prueba 3 de NS. Cada uno trae una pista y la respuesta final plegadas.</p>
+
+<div class="ex"><p class="et">E1. Recurrencia racional <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>\(u_1=2\), \(u_{n+1}=2-\dfrac1{u_n}\). (a) Prueba por inducción que \(u_n=\dfrac{n+1}{n}\). (b) Prueba por inducción que \(u_1u_2\cdots u_n=n+1\). (c) ¿A qué tiende \(u_n\)? ¿Converge el producto?</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(2-\tfrac{k}{k+1}\). (b) Multiplica la hipótesis por \(u_{k+1}=\tfrac{k+2}{k+1}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) \(u_n\to1\), pero el producto \(n+1\to\infty\): que los factores tiendan a 1 no basta.</p></div></details></div>
+
+<div class="ex"><p class="et">E2. La regla del palo de hockey <span class="lvl">Sección B, integra Módulo 4</span></p>
+<p>(a) Prueba por inducción sobre \(n\) que \(\sum_{k=r}^{n}\binom kr=\binom{n+1}{r+1}\) para \(n\ge r\). (b) Usando \(k(k+1)(k+2)=6\binom{k+2}3\), deduce \(\sum_{k=1}^{n}k(k+1)(k+2)\).</p>
+<details><summary>Pista</summary><div class="inner"><p>El paso es la regla de Pascal. En (b), el índice va de \(\binom33\) a \(\binom{n+2}3\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(6\binom{n+3}4=\dfrac{n(n+1)(n+2)(n+3)}{4}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Una raíz real que no es racional <span class="lvl">Sección B, integra Módulos 2 y 3</span></p>
+<p>(a) Prueba por contradicción que \(x^3+x+1=0\) no tiene raíces racionales. (b) Muestra que tiene exactamente una raíz real, entre \(-1\) y 0. (c) Concluye que esa raíz es irracional.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Con \(x=\tfrac pq\) irreducible: \(p^3+pq^2+q^3=0\), así que \(p\mid q^3\) y \(q\mid p^3\). (b) \(x^3+x\) es creciente.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) Solo quedan \(x=\pm1\), y ninguno es raíz. (b) \(f(-1)=-1\lt0\lt1=f(0)\), y \(f\) es creciente. (c) Es real pero no racional.</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Una cota binomial por inducción <span class="lvl">Sección B, integra Módulos 1 y 4</span></p>
+<p>(a) Prueba que \((1+x)^n\ge1+nx+\tfrac{n(n-1)}2x^2\) para \(x\ge0\) y \(n\in\mathbb Z^+\). (b) Deduce que \(\tfrac n{2^n}\lt\tfrac2{n-1}\) para \(n\ge2\), y a qué tiende \(\tfrac n{2^n}\). (c) Muestra que \(1{,}01^{100}\gt2{,}49\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Multiplica la hipótesis por \(1+x\ge1\) y descarta el término en \(x^3\), que es \(\ge0\). (b) Usa \(x=1\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(2^n\gt\tfrac{n(n-1)}2\), y \(\tfrac n{2^n}\to0\). (c) \(1+1+0{,}495=2{,}495\).</p></div></details></div>
+
+<div class="ex"><p class="et">E5. Divisibilidad con dos potencias <span class="lvl">Sección A alta</span></p>
+<p>(a) Prueba que \(7\mid3^{2n+1}+2^{n+2}\) para \(n\in\mathbb Z^+\). (b) Prueba que nunca es divisible por 14.</p>
+<details><summary>Pista</summary><div class="inner"><p>\(3^{2k+3}+2^{k+3}=9\cdot3^{2k+1}+2\cdot2^{k+2}=9(\dots)-7\cdot2^{k+2}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) Es impar + par = impar, así que no es múltiplo de 2.</p></div></details></div>
+
+<div class="ex"><p class="et">E6. Un producto que duplica exponentes <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>(a) Prueba que \((1+x)(1+x^2)(1+x^4)\cdots(1+x^{2^{n-1}})=\dfrac{1-x^{2^n}}{1-x}\) para \(x\ne1\). (b) Halla el límite del producto con \(x=\tfrac12\). (c) Explica por qué, al desarrollar el producto, cada potencia \(x^m\) con \(0\le m\lt2^n\) aparece exactamente una vez.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \((1-x^{2^k})(1+x^{2^k})=1-x^{2^{k+1}}\). (c) Compara con \(1+x+\dots+x^{2^n-1}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) 2. (c) Porque el resultado es la serie geométrica \(\sum_{m=0}^{2^n-1}x^m\): cada entero tiene una única escritura en base 2.</p></div></details></div>
+
+<div class="ex"><p class="et">E7. Una suma aritmético-geométrica por inducción <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>(a) Prueba por inducción que \(\displaystyle\sum_{r=1}^{n}r\,2^r=(n-1)2^{n+1}+2\). (b) Halla el menor \(n\) para el que la suma supera 1000.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Paso: \((k-1)2^{k+1}+2+(k+1)2^{k+1}=2k\cdot2^{k+1}+2\). (b) Prueba \(n=6\) y \(n=7\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(2k\cdot2^{k+1}+2=k\,2^{k+2}+2\), que es la fórmula con \(n=k+1\). (b) \(n=6\): 642; \(n=7\): 1538. Así, \(n=7\).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Coeficientes impares, raíces irracionales <span class="lvl">Sección B, integra Módulo 2</span></p>
+<p>(a) Prueba por contradicción que si \(a,b,c\) son enteros impares, \(ax^2+bx+c=0\) no tiene raíces racionales. (b) Muestra con un ejemplo que la conclusión falla si \(c\) es par.</p>
+<details><summary>Pista</summary><div class="inner"><p>Supón una raíz \(\tfrac pq\) irreducible: \(ap^2+bpq+cq^2=0\). Como \(p,q\) no son ambos pares, hay tres casos de paridad.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(p,q\) impares: impar + impar + impar = impar. \(p\) par, \(q\) impar: par + par + impar = impar. \(p\) impar, \(q\) par: impar + par + par = impar. En todos los casos el lado izquierdo es impar y no puede valer 0. (b) \(3x^2+5x+2=0\) tiene raíces \(-1\) y \(-\tfrac23\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. Reforzar la hipótesis <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>(a) Explica por qué no se puede probar directamente por inducción que \(\sum_{k=1}^{n}\tfrac1{k^2}\le2\). (b) Prueba por inducción que \(\sum_{k=1}^{n}\tfrac1{k^2}\le2-\tfrac1n\). (c) Usando \(\tfrac1{k^2}\gt\tfrac1{k(k+1)}\) y una suma telescópica, muestra que \(\sum_{k=1}^{n}\tfrac1{k^2}\gt\tfrac32-\tfrac1{n+1}\) para \(n\ge2\), y acota el valor de la serie infinita.</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Necesitas \(\tfrac1{(k+1)^2}\le\tfrac1k-\tfrac1{k+1}=\tfrac1{k(k+1)}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) De «\(\le2\)» no se deduce «\(\le2\)» al sumar un término positivo. (c) La serie está entre \(\tfrac32\) y 2 (su valor es \(\tfrac{\pi^2}{6}\approx1{,}645\)).</p></div></details></div>
+
+<div class="ex"><p class="et">E10. Teorema del binomio por inducción y el número e <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>(a) Prueba por inducción el teorema del binomio \((1+x)^n=\sum_{r=0}^{n}\binom nrx^r\), usando la regla de Pascal. (b) Muestra que \(\binom nr\dfrac1{n^r}\le\dfrac1{r!}\le\dfrac1{2^{r-1}}\) para \(1\le r\le n\). (c) Deduce que \(2\le\left(1+\tfrac1n\right)^n\lt3\) para todo \(n\in\mathbb Z^+\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \((1+x)^{k+1}=(1+x)^k+x(1+x)^k\), y agrupa coeficientes. (b) \(\tfrac{n(n-1)\cdots(n-r+1)}{n^r}\le1\), y usa F8(a). (c) Serie geométrica.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) \(\left(1+\tfrac1n\right)^n\le1+\sum_{r=1}^{n}\tfrac1{2^{r-1}}\lt3\); los dos primeros términos dan \(\ge2\). El límite es \(e\) (Módulo 17).</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. ¿Cuándo divide \(p\) a \(n^p-n\)? <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>En el Ejemplo 1.11 viste que \(6\mid n^3-n\), y en F10 que \(30\mid n^5-n\). Vas a descubrir qué hay detrás, demostrarlo con el binomio y la inducción, y ver dónde falla.</p>
+<ol type="a"><li>Comprueba con \(n=1,\dots,6\) si \(2\mid n^2-n\), \(3\mid n^3-n\), \(4\mid n^4-n\) y \(5\mid n^5-n\). Formula una conjetura sobre qué exponentes \(p\) cumplen \(p\mid n^p-n\) para todo \(n\).</li><li>Sea \(p\) primo y \(1\le r\le p-1\). Usando \(r!\,(p-r)!\binom pr=p!\), muestra que \(p\mid\binom pr\).</li><li>Desarrolla \((k+1)^p-(k+1)\) y escríbelo como \((k^p-k)\) más una suma de términos con \(\binom pr\), \(1\le r\le p-1\).</li><li>Demuestra por inducción que \(p\mid n^p-n\) para todo \(n\in\mathbb Z^+\) cuando \(p\) es primo.</li><li>Da un contraejemplo que muestre que la afirmación es falsa para \(p=4\), y explica qué paso de la demostración falla.</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>Haz una tabla con los restos.</li><li>\(p\) divide al lado derecho, pero no divide a \(r!\) ni a \((p-r)!\), porque todos sus factores son menores que \(p\).</li><li>Teorema del binomio: \((k+1)^p=k^p+\sum_{r=1}^{p-1}\binom pr k^r+1\).</li><li>Base \(n=1\): \(0\). Usa (b) y (c) en el paso.</li><li>Mira \(\binom42\).</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>Se cumple para 2, 3 y 5; falla para 4 (\(2^4-2=14\)). Conjetura: se cumple cuando \(p\) es primo.</li><li>Como \(p\) es primo y divide a \(r!\,(p-r)!\binom pr\) sin dividir a \(r!\,(p-r)!\), divide a \(\binom pr\).</li><li>\((k+1)^p-(k+1)=(k^p-k)+\sum_{r=1}^{p-1}\binom pr k^r\).</li><li>Si \(p\mid k^p-k\), cada \(\binom pr\) es múltiplo de \(p\), así que \(p\mid(k+1)^p-(k+1)\). Con la base y la frase de cierre, queda probado.</li><li>\(n=2\): \(16-2=14\), no múltiplo de 4. Falla (b): \(\binom42=6\) no es múltiplo de 4, porque 4 no es primo.</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 6, números complejos.</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

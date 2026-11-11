@@ -1,0 +1,2213 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 8 · Trigonometría II</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 8</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t1">1.1 Circunferencia unitaria</a>
+  <a class="sub" href="#t2">1.2 Funciones y gráficas</a>
+  <a class="sub" href="#t3">1.3 Identidades</a>
+  <a class="sub" href="#t4">1.4 Ecuaciones</a>
+  <a class="sub" href="#t5">1.5 Inecuaciones</a>
+  <a class="sub" href="#t6">1.6 Recíprocas</a>
+  <a class="sub" href="#t7">1.7 Inversas</a>
+  <a class="sub" href="#t8">1.8 Forma armónica</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos resueltos</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 8 de 17</p>
+  <h1>Trigonometría II: funciones, identidades, ecuaciones, recíprocas e inversas</h1>
+  <p class="formula">\( \sin^2x+\cos^2x=1 \qquad \cos2x=1-2\sin^2x \qquad \tan(A+B)=\dfrac{\tan A+\tan B}{1-\tan A\tan B} \qquad \arctan:\mathbb R\to\left(-\tfrac\pi2,\tfrac\pi2\right) \)</p>
+  <p>Todo lo necesario para las preguntas de trigonometría de la Prueba 1 sin calculadora, al nivel de la banda 7. Los problemas extra integran los Módulos 1–7.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">La trigonometría II aparece en las 7 pruebas y en este módulo se resuelven 85 puntos: 11 % del total, segundo solo detrás de los complejos. Casi siempre hay una ecuación trigonométrica en la Sección A, y en dos pruebas es la base de una pregunta de 19–20 puntos.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2021 TZ1</td><td>6</td><td>4</td><td>Cosecante dada, cotangente exacta en el cuadrante II</td></tr>
+<tr><td>Mayo 2021 TZ2</td><td>10(a)</td><td>3</td><td>Ceros de \(6+6\cos x\) en \([0,4\pi]\)</td></tr>
+<tr><td>Mayo 2022 TZ2</td><td>4</td><td>5</td><td>Menor solución positiva de \(\cos\left(\tfrac x2+\tfrac\pi3\right)=\tfrac1{\sqrt2}\)</td></tr>
+<tr><td>Noviembre 2022</td><td>8</td><td>5</td><td>Mayor dominio para que \(\cos(x-k)\) tenga inversa</td></tr>
+<tr><td>Mayo 2021 TZ2</td><td>2</td><td>7</td><td>Ecuación cuadrática en \(\sin x\)</td></tr>
+<tr><td>Noviembre 2021</td><td>6</td><td>7</td><td>Identidad algebraica; ecuación en \(\sin2\theta\)</td></tr>
+<tr><td>Mayo 2022 TZ1</td><td>3</td><td>7</td><td>Composición; ecuación que se reduce a \(\tan2x\)</td></tr>
+<tr><td>Mayo 2022 TZ1</td><td>5</td><td>7</td><td>Transformaciones de \(4\sin x+2{,}5\); mínimo con parámetro</td></tr>
+<tr><td>Mayo 2021 TZ1</td><td>5</td><td>8</td><td>Identidad de ángulo doble; ecuación factorizable</td></tr>
+<tr><td>Noviembre 2022</td><td>10(a)(c)(d)</td><td>13</td><td>\(\cos^2x-3\sin^2x\): raíces, gráfica de \(|f|\), inecuación \(|f|\gt1\)</td></tr>
+<tr><td>Mayo 2021 TZ2</td><td>12</td><td>19</td><td>Transformaciones de arctan, fórmula de \(\arctan p+\arctan q\), inducción</td></tr>
+</tbody></table></div>
+<p>Noviembre 2022 P10(b), que pide \(f'(x)\), se resuelve en el Módulo 12; aquí se obtienen los mismos puntos con identidades. Noviembre 2022 P12 (arctan con complejos) ya se resolvió en el Módulo 6.</p>
+
+<h3>Cómo lo pregunta el IB: patrones de tus 7 pruebas</h3>
+<ol>
+<li><b>Muestre la identidad y, a partir de lo anterior, resuelva.</b> La identidad de ángulo doble convierte la ecuación en un producto de factores.</li>
+<li><b>Cuadrática disfrazada:</b> \(\cos^2x\to1-\sin^2x\), y se resuelve en \(\sin x\), descartando valores fuera de \([-1,1]\).</li>
+<li><b>Argumento transformado:</b> \(\tfrac x2+\tfrac\pi3\) o \(2\theta\). Hay que ajustar el intervalo antes de listar soluciones.</li>
+<li><b>Signo por cuadrante:</b> dada una razón y el cuadrante, se pide otra razón exacta. La R1 exige justificar el signo.</li>
+<li><b>Inversas y dominios:</b> el mayor intervalo donde la función es inyectiva; transformaciones y asíntotas de arctan.</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA N°19 (2025)</td><td>Circunferencia trigonométrica, reducción al primer cuadrante, ángulos de más de una vuelta</td><td>F10 y sección 1.1</td></tr>
+<tr><td>DMpA N°20 (2025)</td><td>Identidades, simplificación, eliminación de variables, valores exactos (IB mayo 2015)</td><td>F4, F5 y sección 1.3</td></tr>
+<tr><td>DMpA 22 (2025)</td><td>Funciones trigonométricas: 11 preguntas IB (parámetros desde la gráfica, noria, mareas, desigualdades)</td><td>F1–F3, F9</td></tr>
+<tr><td>DMpA 23 y MATERIAL (2025)</td><td>Ecuaciones trigonométricas, solución general, ecuaciones con cosecante, «no perder soluciones»</td><td>F6–F8 y sección 1.4</td></tr>
+</tbody></table></div>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA NS</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Circunferencia unitaria; valores exactos; razones de cualquier ángulo</td><td>1.1</td><td>Alto</td></tr>
+<tr><td>Funciones circulares: amplitud, periodo, transformaciones, modelos</td><td>1.2</td><td>Alto</td></tr>
+<tr><td>Identidad pitagórica; ángulo doble; ángulo compuesto (NS); \(\tan2A\)</td><td>1.3</td><td>Alto</td></tr>
+<tr><td>Ecuaciones: básicas, cuadráticas, con identidades, argumento transformado</td><td>1.4</td><td>Alto</td></tr>
+<tr><td>Inecuaciones trigonométricas desde la gráfica</td><td>1.5</td><td>Medio</td></tr>
+<tr><td>Recíprocas \(\sec,\csc,\cot\): gráficas, identidades y pruebas (NS)</td><td>1.6</td><td>Medio</td></tr>
+<tr><td>Inversas \(\arcsin,\arccos,\arctan\): dominios, recorridos, gráficas, composiciones y ecuaciones (NS)</td><td>1.7</td><td>Alto en la Sección B</td></tr>
+<tr><td>Forma armónica \(R\sin(x+\alpha)\) (técnica de apoyo)</td><td>1.8</td><td>Medio</td></tr>
+<tr><td>Otros tipos de pregunta: suma a producto, solución general y conteo, triple ángulo, valores por ángulo mitad, modelo armónico, ecuación con recíprocas, composición con inversas, identidad condicional en un triángulo</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1–1.8 cubren todo el Tema 3 de trigonometría que no está en el Módulo 7, y cada concepto esencial trae un recuadro «Para practicar». La sección 6 reúne los tipos de pregunta del IB que no salieron en tus 7 pruebas pero que pueden venir. Las cajas «Más allá» añaden la solución general, la sustitución \(t=\tan\tfrac x2\), las fórmulas de suma a producto y el acotamiento con \(|\sin|,|\cos|\le1\); ningún problema extra las necesita. El techo es la investigación I1, tipo Prueba 3.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Va de la definición en la circunferencia unitaria a las funciones inversas. Cada concepto trae un ejemplo resuelto y, los esenciales, un recuadro «Para practicar». Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Circunferencia unitaria y razones de cualquier ángulo</h3>
+<p>Para un ángulo \(\theta\) medido desde el eje \(x\) positivo, el punto de la circunferencia unitaria es \((\cos\theta,\sin\theta)\), y \(\tan\theta=\tfrac{\sin\theta}{\cos\theta}\). Así se definen las razones de cualquier ángulo real.</p>
+<p><b>Signos por cuadrante:</b> I, todas positivas; II, solo \(\sin\); III, solo \(\tan\); IV, solo \(\cos\).</p>
+<p><b>Reducción al primer cuadrante</b> (ángulo de referencia \(\alpha\)):</p>
+\[ \sin(\pi-\alpha)=\sin\alpha,\quad \cos(\pi-\alpha)=-\cos\alpha,\quad \sin(\pi+\alpha)=-\sin\alpha,\quad \cos(\pi+\alpha)=-\cos\alpha \]
+\[ \sin(-\alpha)=-\sin\alpha,\quad \cos(-\alpha)=\cos\alpha,\quad \sin\left(\tfrac\pi2-\alpha\right)=\cos\alpha,\quad \tan(\alpha+k\pi)=\tan\alpha \]
+<div class="ex"><p class="et">Ejemplo 1.1. Una razón dada con su cuadrante</p>
+<p>\(\cos\theta=-\tfrac5{13}\) y \(\pi\lt\theta\lt\tfrac{3\pi}2\). Halla \(\sin\theta\) y \(\tan\theta\).</p>
+<p>\(\sin^2\theta=1-\tfrac{25}{169}\), y en el cuadrante III el seno es negativo: \(\sin\theta=-\tfrac{12}{13}\). Así \(\tan\theta=\tfrac{12}5\) (positiva en III).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(\sin\theta=\tfrac35\) y \(\tfrac\pi2\lt\theta\lt\pi\). Halla \(\cos\theta\) y \(\tan\theta\).</li><li>\(\tan\theta=\tfrac43\) y \(\pi\lt\theta\lt\tfrac{3\pi}2\). Halla \(\sin\theta\) y \(\cos\theta\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\cos\theta=-\tfrac45\) (II), \(\tan\theta=-\tfrac34\).</li><li>En III, ambos negativos: \(\sin\theta=-\tfrac45\), \(\cos\theta=-\tfrac35\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.2. Reducción</p>
+<p>\(\sin\tfrac{11\pi}6=-\sin\tfrac\pi6=-\tfrac12\); \(\cos\tfrac{3\pi}4=-\tfrac{\sqrt2}2\); \(\tan\left(-\tfrac{5\pi}3\right)=\tan\tfrac\pi3=\sqrt3\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 304.56 265.872" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 265.872 
+L 304.56 265.872 
+L 304.56 0 
+L 0 0 
+L 0 265.872 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 258.672 
+L 297.36 258.672 
+L 297.36 7.2 
+L 7.2 7.2 
+L 7.2 258.672 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 152.28 229.656 
+C 177.930444 229.656 202.533765 219.464971 220.671368 201.327368 
+C 238.808971 183.189765 249 158.586444 249 132.936 
+C 249 107.285556 238.808971 82.682235 220.671368 64.544632 
+C 202.533765 46.407029 177.930444 36.216 152.28 36.216 
+C 126.629556 36.216 102.026235 46.407029 83.888632 64.544632 
+C 65.751029 82.682235 55.56 107.285556 55.56 132.936 
+C 55.56 158.586444 65.751029 183.189765 83.888632 201.327368 
+C 102.026235 219.464971 126.629556 229.656 152.28 229.656 
+L 152.28 229.656 
+z
+" clip-path="url(#p2d835427d7)" style="fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 176.46 132.936 
+C 176.46 128.691839 175.342575 124.521551 173.220494 120.846 
+C 171.098414 117.170449 168.045551 114.117586 164.37 111.995506 
+C 160.694449 109.873425 156.524161 108.756 152.28 108.756 
+C 148.035839 108.756 143.865551 109.873425 140.19 111.995506 
+" clip-path="url(#p2d835427d7)" style="fill: none; stroke: #0e6e6a; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m00a5375185" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m00a5375185" x="55.56" y="132.936" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="55.56" y="148.294281" transform="rotate(-0 55.56 148.294281)">−1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m00a5375185" x="249" y="132.936" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="249" y="148.294281" transform="rotate(-0 249 148.294281)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path id="mca9124c3d3" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mca9124c3d3" x="152.28" y="229.656" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="145.28" y="233.835141" transform="rotate(-0 145.28 233.835141)">−1</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mca9124c3d3" x="152.28" y="36.216" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="145.28" y="40.395141" transform="rotate(-0 145.28 40.395141)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_5">
+    <path d="M 152.28 132.936 
+L 103.92 49.174023 
+" clip-path="url(#p2d835427d7)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 103.92 132.936 
+L 103.92 49.174023 
+" clip-path="url(#p2d835427d7)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.5"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 152.28 49.174023 
+L 103.92 49.174023 
+" clip-path="url(#p2d835427d7)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.5"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 152.28 258.672 
+L 152.28 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 7.2 132.936 
+L 297.36 132.936 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0e6e6a" x="12.036" y="31.38" transform="rotate(-0 12.036 31.38)">P(cos θ, sin θ)</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0e6e6a" x="163.8864" y="103.92" transform="rotate(-0 163.8864 103.92)">θ</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="205.476" y="79.74" transform="rotate(-0 205.476 79.74)">I: todas +</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="70.068" y="89.412" transform="rotate(-0 70.068 89.412)">II: sin +</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="70.068" y="186.132" transform="rotate(-0 70.068 186.132)">III: tan +</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="200.64" y="186.132" transform="rotate(-0 200.64 186.132)">IV: cos +</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p2d835427d7">
+   <rect x="7.2" y="7.2" width="290.16" height="251.472"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: circunferencia unitaria: el punto de ángulo \(\theta\) tiene coordenadas \((\cos\theta,\sin\theta)\). En cada cuadrante se indica qué razones son positivas; el ángulo de referencia da el valor y el cuadrante da el signo.</figcaption></figure>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ1, P6)</p><p>Se da \(\csc\theta=\tfrac32\) con \(\tfrac\pi2\lt\theta\lt\tfrac{3\pi}2\). La R1 es por justificar que \(\theta\) está en el cuadrante II (porque \(\csc\theta\gt0\)), y por eso \(\cot\theta\lt0\). Dar \(\tfrac{\sqrt5}2\) positivo deja M1A1R0A0.</p></div>
+
+<h3 id="t2">1.2 Funciones circulares y sus gráficas</h3>
+<ul>
+<li>\(\sin\) y \(\cos\): dominio \(\mathbb R\), recorrido \([-1,1]\), periodo \(2\pi\). \(\tan\): periodo \(\pi\), con asíntotas en \(x=\tfrac\pi2+k\pi\).</li>
+<li>\(y=a\sin\big(b(x-c)\big)+d\): amplitud \(|a|\), periodo \(\tfrac{2\pi}{|b|}\), traslación horizontal \(c\), eje central \(y=d\). Máximo \(d+|a|\), mínimo \(d-|a|\).</li>
+<li><b>Desde la gráfica:</b> \(a=\tfrac{\max-\min}2\), \(d=\tfrac{\max+\min}2\), periodo = 2 × (distancia entre un máximo y el mínimo siguiente). \(c\) sale de la posición de un punto conocido.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.3. Leer los parámetros</p>
+<p>Describe \(f(x)=3\cos\big(2(x-\tfrac\pi4)\big)+1\).</p>
+<p>Amplitud 3, periodo \(\pi\), eje \(y=1\), recorrido \([-2,4]\). El máximo \((0,4)\) de \(3\cos2x+1\) se traslada a \(\left(\tfrac\pi4,4\right)\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 382.68 263.469979" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 263.469979 
+L 382.68 263.469979 
+L 382.68 0 
+L 0 0 
+L 0 263.469979 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 217.872 
+L 375.48 217.872 
+L 375.48 7.2 
+L 7.2 7.2 
+L 7.2 217.872 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m30392c038c" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m30392c038c" x="124.38" y="149.4036" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="124.38" y="164.761881" transform="rotate(-0 124.38 164.761881)">π/4</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m30392c038c" x="157.86" y="149.4036" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="157.86" y="164.761881" transform="rotate(-0 157.86 164.761881)">π/2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m30392c038c" x="224.82" y="149.4036" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="224.82" y="164.761881" transform="rotate(-0 224.82 164.761881)">π</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m30392c038c" x="291.78" y="149.4036" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="291.78" y="164.761881" transform="rotate(-0 291.78 164.761881)">3π/2</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m30392c038c" x="358.74" y="149.4036" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="358.74" y="164.761881" transform="rotate(-0 358.74 164.761881)">2π</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6">
+      <defs>
+       <path id="m754d19eba9" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m754d19eba9" x="90.9" y="202.0716" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="83.9" y="206.250741" transform="rotate(-0 83.9 206.250741)">−2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m754d19eba9" x="90.9" y="123.0696" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="83.9" y="127.248741" transform="rotate(-0 83.9 127.248741)">1</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m754d19eba9" x="90.9" y="44.0676" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="83.9" y="48.246741" transform="rotate(-0 83.9 48.246741)">4</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_9">
+    <path d="M 23.94 123.0696 
+L 30.649419 147.529859 
+L 34.004128 159.002217 
+L 36.687896 167.55344 
+L 39.371663 175.400316 
+L 41.384489 180.748027 
+L 43.397315 185.581728 
+L 45.41014 189.858342 
+L 47.422966 193.539758 
+L 48.76485 195.646941 
+L 50.106733 197.466546 
+L 51.448617 198.991362 
+L 52.790501 200.215348 
+L 54.132385 201.133654 
+L 55.474269 201.742641 
+L 56.816152 202.039897 
+L 58.158036 202.024243 
+L 59.49992 201.695741 
+L 60.841804 201.055693 
+L 62.183687 200.106635 
+L 63.525571 198.852328 
+L 64.867455 197.297741 
+L 66.209339 195.449035 
+L 67.551222 193.313535 
+L 69.564048 189.591358 
+L 71.576874 185.276362 
+L 73.589699 180.407001 
+L 75.602525 175.026668 
+L 78.286293 167.141523 
+L 80.97006 158.558553 
+L 84.32477 147.056439 
+L 89.021363 130.023893 
+L 97.743607 98.13689 
+L 101.098317 86.694744 
+L 103.782084 78.175607 
+L 106.465852 70.367311 
+L 108.478677 65.052433 
+L 110.491503 60.254584 
+L 112.504329 56.016521 
+L 114.517154 52.376012 
+L 115.859038 50.297229 
+L 117.200922 48.506798 
+L 118.542806 47.011812 
+L 119.884689 45.818196 
+L 121.226573 44.930678 
+L 122.568457 44.352776 
+L 123.910341 44.086779 
+L 125.252224 44.133741 
+L 126.594108 44.493477 
+L 127.935992 45.16456 
+L 129.277876 46.144332 
+L 130.61976 47.428911 
+L 131.961643 49.013206 
+L 133.303527 50.89094 
+L 134.645411 53.054673 
+L 136.658236 56.817463 
+L 138.671062 61.17067 
+L 140.683888 66.075498 
+L 142.696713 71.488239 
+L 145.380481 79.41134 
+L 148.064248 88.025717 
+L 151.418958 99.557132 
+L 156.115551 116.61089 
+L 164.837796 148.473773 
+L 168.192505 159.885254 
+L 170.876273 168.371967 
+L 173.56004 176.141373 
+L 175.572866 181.423207 
+L 177.585691 186.185014 
+L 179.598517 190.384358 
+L 181.611343 193.983817 
+L 182.953226 196.034116 
+L 184.29511 197.795303 
+L 185.636994 199.260398 
+L 186.978878 200.423598 
+L 188.320762 201.280292 
+L 189.662645 201.827087 
+L 191.004529 202.061815 
+L 192.346413 201.983546 
+L 193.688297 201.592591 
+L 195.03018 200.890499 
+L 196.372064 199.880052 
+L 197.713948 198.565253 
+L 199.055832 196.951312 
+L 200.397715 195.044624 
+L 201.739599 192.852745 
+L 203.752425 189.04949 
+L 205.765251 184.658245 
+L 207.778076 179.718144 
+L 209.790902 174.27321 
+L 212.474669 166.312466 
+L 215.158437 157.667023 
+L 218.513146 146.106765 
+L 223.209739 129.032471 
+L 231.261042 99.557132 
+L 234.615752 88.025717 
+L 237.299519 79.41134 
+L 239.983287 71.488239 
+L 242.667054 64.381865 
+L 244.67988 59.656289 
+L 246.692705 55.49583 
+L 248.705531 51.937566 
+L 250.047415 49.915831 
+L 251.389299 48.183959 
+L 252.731182 46.748811 
+L 254.073066 45.616074 
+L 255.41495 44.790237 
+L 256.756834 44.274573 
+L 258.098717 44.071123 
+L 259.440601 44.180694 
+L 260.782485 44.602853 
+L 262.124369 45.335926 
+L 263.466253 46.377009 
+L 264.808136 47.721976 
+L 266.15002 49.365499 
+L 267.491904 51.301065 
+L 269.504729 54.734908 
+L 271.517555 58.777727 
+L 273.530381 63.393492 
+L 275.543206 68.541071 
+L 278.226974 76.151854 
+L 280.910741 84.505522 
+L 284.265451 95.789833 
+L 288.291102 110.19542 
+L 300.368056 154.047478 
+L 303.722766 165.056066 
+L 306.406533 173.127839 
+L 309.090301 180.407001 
+L 311.103126 185.276362 
+L 313.115952 189.591358 
+L 315.128778 193.313535 
+L 317.141603 196.409722 
+L 318.483487 198.112212 
+L 319.825371 199.517355 
+L 321.167255 200.619583 
+L 322.509138 201.41453 
+L 323.851022 201.899045 
+L 325.192906 202.071209 
+L 326.53479 201.930338 
+L 327.876673 201.476992 
+L 329.218557 200.712967 
+L 330.560441 199.64129 
+L 331.902325 198.266208 
+L 333.244208 196.593169 
+L 334.586092 194.628802 
+L 336.598918 191.153346 
+L 338.611743 187.071152 
+L 340.624569 182.418598 
+L 342.637395 177.237146 
+L 345.321162 169.586251 
+L 348.00493 161.198821 
+L 351.359639 149.882044 
+L 355.385291 135.452798 
+L 358.74 123.0696 
+L 358.74 123.0696 
+" clip-path="url(#p99d45188a5)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 7.2 123.0696 
+L 375.48 123.0696 
+" clip-path="url(#p99d45188a5)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 7.2 44.0676 
+L 375.48 44.0676 
+" clip-path="url(#p99d45188a5)" style="fill: none; stroke-dasharray: 0.7,1.155; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.7"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 7.2 202.0716 
+L 375.48 202.0716 
+" clip-path="url(#p99d45188a5)" style="fill: none; stroke-dasharray: 0.7,1.155; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.7"/>
+   </g>
+   <g id="line2d_13">
+    <defs>
+     <path id="m7726ef57cf" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#p99d45188a5)">
+     <use xlink:href="#m7726ef57cf" x="124.38" y="44.0676" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 90.9 217.872 
+L 90.9 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 149.4036 
+L 375.48 149.4036 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 124.38 119.950478 
+Q 124.38 83.566755 124.38 47.183033 
+" style="fill: none; stroke: #5a3d9a; stroke-linecap: round"/>
+    <path d="M 126.58 115.550478 
+L 124.38 119.950478 
+L 122.18 115.550478 
+" style="fill: none; stroke: #5a3d9a; stroke-linecap: round"/>
+    <path d="M 122.18 51.583033 
+L 124.38 47.183033 
+L 126.58 51.583033 
+" style="fill: none; stroke: #5a3d9a; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="127.790245" y="86.202" transform="rotate(-0 127.790245 86.202)">amplitud 3</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 127.496535 33.534 
+Q 191.338808 33.534 255.181081 33.534 
+" style="fill: none; stroke: #5a3d9a; stroke-linecap: round"/>
+    <path d="M 131.896535 35.734 
+L 127.496535 33.534 
+L 131.896535 31.334 
+" style="fill: none; stroke: #5a3d9a; stroke-linecap: round"/>
+    <path d="M 250.781081 31.334 
+L 255.181081 33.534 
+L 250.781081 35.734 
+" style="fill: none; stroke: #5a3d9a; stroke-linecap: round"/>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="166.385612" y="28.2672" transform="rotate(-0 166.385612 28.2672)">periodo π</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_14">
+     <path d="M 69.777852 247.169276 
+L 79.277852 247.169276 
+L 88.777852 247.169276 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="96.377852" y="250.494276" transform="rotate(-0 96.377852 250.494276)">f(x) = 3cos(2(x − π/4)) + 1</text>
+    </g>
+    <g id="line2d_15">
+     <path d="M 243.286445 247.169276 
+L 252.786445 247.169276 
+L 262.286445 247.169276 
+" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="269.886445" y="250.494276" transform="rotate(-0 269.886445 250.494276)">eje y = 1</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p99d45188a5">
+   <rect x="7.2" y="7.2" width="368.28" height="210.672"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.3: amplitud 3, periodo \(\frac{2\pi}2=\pi\), eje \(y=1\) y recorrido \([-2,4]\). El máximo se traslada de \(x=0\) a \(x=\frac\pi4\).</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.4. Hallar la ecuación desde un máximo y un mínimo</p>
+<p>Una función \(y=a\cos(b(x-c))+d\) tiene un máximo en \(\left(\frac\pi6,5\right)\) y el mínimo siguiente en \(\left(\frac{2\pi}3,-1\right)\). Halla \(a,b,c,d\).</p>
+<p>Amplitud \(a=\frac{5-(-1)}2=3\); eje \(d=\frac{5+(-1)}2=2\). Del máximo al mínimo hay medio periodo: \(\frac{2\pi}3-\frac\pi6=\frac\pi2\), así que el periodo es \(\pi\) y \(b=2\). El coseno empieza en un máximo: \(c=\frac\pi6\). Resultado: \(y=3\cos\left(2\left(x-\frac\pi6\right)\right)+2\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Una función \(y=a\sin(b(x-c))+d\) tiene máximo en \(\left(\tfrac\pi4,7\right)\) y el mínimo siguiente en \(\left(\tfrac{3\pi}4,1\right)\). Halla \(a,b,c,d\).</li><li>Da el recorrido y el periodo de \(f(x)=-2\cos(3x)+1\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(a=3\), \(d=4\); medio periodo \(\tfrac\pi2\Rightarrow\) periodo \(\pi\), \(b=2\); el seno empieza en el eje subiendo un cuarto de periodo antes del máximo, \(c=\tfrac\pi4-\tfrac\pi4=0\): \(y=3\sin(2x)+4\).</li><li>Recorrido \([-1,3]\), periodo \(\tfrac{2\pi}3\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ1, P5)</p><p>\(g(x)=4\sin\left(x-\tfrac{3\pi}2\right)+2{,}5+q\): hay que nombrar las dos traslaciones con la palabra «traslación» o «desplazamiento» y con su vector. «Mover» no se acepta. Para \(g\ge7\) se usa el mínimo \(-4+2{,}5+q\).</p></div>
+
+<h3 id="t3">1.3 Identidades</h3>
+\[ \sin^2x+\cos^2x=1,\qquad 1+\tan^2x=\sec^2x,\qquad 1+\cot^2x=\csc^2x \]
+\[ \sin(A\pm B)=\sin A\cos B\pm\cos A\sin B,\qquad \cos(A\pm B)=\cos A\cos B\mp\sin A\sin B,\qquad \tan(A\pm B)=\frac{\tan A\pm\tan B}{1\mp\tan A\tan B} \]
+\[ \sin2A=2\sin A\cos A,\qquad \cos2A=\cos^2A-\sin^2A=2\cos^2A-1=1-2\sin^2A,\qquad \tan2A=\frac{2\tan A}{1-\tan^2A} \]
+<p><b>Cómo probar una identidad:</b> parte del lado más complicado. Pasa todo a \(\sin\) y \(\cos\), usa el ángulo doble para igualar argumentos, factoriza, y termina exactamente en el otro lado.</p>
+<div class="ex"><p class="et">Ejemplo 1.5. Identidad con ángulo doble</p>
+<p>Prueba que \(\dfrac{1-\cos2x}{\sin2x}=\tan x\).</p>
+<p>LHS \(=\dfrac{2\sin^2x}{2\sin x\cos x}=\dfrac{\sin x}{\cos x}=\tan x\) = RHS.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.6. Ángulo compuesto y tangente doble</p>
+<p>(a) Halla \(\sin75^\circ\). (b) Si \(\tan A=\tfrac12\), halla \(\tan2A\).</p>
+<p>(a) \(\sin(45^\circ+30^\circ)=\tfrac{\sqrt2}2\cdot\tfrac{\sqrt3}2+\tfrac{\sqrt2}2\cdot\tfrac12=\tfrac{\sqrt6+\sqrt2}4\). (b) \(\tfrac{1}{1-\frac14}=\tfrac43\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(\cos15^\circ\) con un ángulo compuesto.</li><li>Si \(\sin\theta=\tfrac35\) y \(\theta\) es agudo, halla \(\sin2\theta\) y \(\cos2\theta\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\cos(45^\circ-30^\circ)=\tfrac{\sqrt2}2\cdot\tfrac{\sqrt3}2+\tfrac{\sqrt2}2\cdot\tfrac12=\tfrac{\sqrt6+\sqrt2}4\).</li><li>\(\cos\theta=\tfrac45\): \(\sin2\theta=2\cdot\tfrac35\cdot\tfrac45=\tfrac{24}{25}\), \(\cos2\theta=1-2\cdot\tfrac9{25}=\tfrac7{25}\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ1, P5 a)</p><p>Una prueba que trabaja los dos lados hasta una expresión común no gana la A1 final, salvo que esa expresión sea exactamente la dada.</p></div>
+
+<h3 id="t4">1.4 Ecuaciones trigonométricas</h3>
+<h4>Método general</h4>
+<ol>
+<li>Reduce a una sola razón y un solo argumento, usando identidades.</li>
+<li>Si el argumento es \(bx+c\), pon \(u=bx+c\) y <b>transforma el intervalo</b>.</li>
+<li>Halla el ángulo de referencia y ubica las soluciones en los cuadrantes correctos.</li>
+<li>Recorre todo el intervalo de \(u\), sumando periodos, y vuelve a \(x\).</li>
+</ol>
+<ul>
+<li><b>No dividas por una expresión que puede ser 0</b> (\(\cos x\), \(\sin x\)): factoriza. Así no pierdes soluciones.</li>
+<li>\(a\sin x=b\cos x\) (con \(\cos x\neq0\) comprobado) se convierte en \(\tan x=\tfrac ba\).</li>
+<li>En una cuadrática en \(\sin x\) o \(\cos x\), descarta las raíces fuera de \([-1,1]\).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.7. Argumento transformado</p>
+<p>Resuelve \(\sin\left(2x-\tfrac\pi3\right)=\tfrac{\sqrt3}2\) para \(0\le x\le\pi\).</p>
+<p>\(u=2x-\tfrac\pi3\in\left[-\tfrac\pi3,\tfrac{5\pi}3\right]\). En ese intervalo, \(u=\tfrac\pi3\) o \(u=\tfrac{2\pi}3\), así que \(x=\tfrac\pi3\) o \(x=\tfrac\pi2\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.8. Cuadrática con ángulo doble</p>
+<p>Resuelve \(\cos2x+\cos x=0\) para \(0\le x\lt2\pi\).</p>
+<p>\(2\cos^2x+\cos x-1=0\Rightarrow(2\cos x-1)(\cos x+1)=0\). Así \(\cos x=\tfrac12\) o \(\cos x=-1\): \(x=\tfrac\pi3,\ \pi,\ \tfrac{5\pi}3\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(2\cos^2x=\sin x+1\) para \(0\le x\lt2\pi\).</li><li>Resuelve \(\sin2x=\cos x\) para \(0\le x\lt2\pi\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(2-2\sin^2x=\sin x+1\Rightarrow2\sin^2x+\sin x-1=0\Rightarrow\sin x=\tfrac12\) o \(-1\): \(x=\tfrac\pi6,\tfrac{5\pi}6,\tfrac{3\pi}2\).</li><li>\(\cos x(2\sin x-1)=0\): \(x=\tfrac\pi2,\tfrac{3\pi}2,\tfrac\pi6,\tfrac{5\pi}6\).</li></ol></div></details></div>
+<div class="box beyond"><p class="bt">Más allá del IB: solución general</p>
+<p>\(\sin x=k\Rightarrow x=n\pi+(-1)^n\arcsin k\). \(\cos x=k\Rightarrow x=2n\pi\pm\arccos k\). \(\tan x=k\Rightarrow x=n\pi+\arctan k\), con \(n\in\mathbb Z\). Es útil cuando el intervalo es grande o cuando hay que contar soluciones.</p></div>
+
+<h3 id="t5">1.5 Inecuaciones trigonométricas</h3>
+<p>Resuelve primero la igualdad para hallar los puntos frontera. Después decide por la gráfica, o probando un valor, en qué tramos se cumple la desigualdad.</p>
+<div class="ex"><p class="et">Ejemplo 1.9. Con argumento doble</p>
+<p>Resuelve \(\cos2x\le\tfrac12\) para \(0\le x\le\pi\).</p>
+<p>\(2x\in[0,2\pi]\), y \(\cos u\le\tfrac12\) para \(u\in\left[\tfrac\pi3,\tfrac{5\pi}3\right]\). Así \(\tfrac\pi6\le x\le\tfrac{5\pi}6\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 379.990398 202.896" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 202.896 
+L 379.990398 202.896 
+L 379.990398 -0 
+L 0 -0 
+L 0 202.896 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 15.670398 195.696 
+L 372.790398 195.696 
+L 372.790398 7.2 
+L 15.670398 7.2 
+L 15.670398 195.696 
+z
+" style="fill: none"/>
+   </g>
+   <g id="FillBetweenPolyCollection_1">
+    <defs>
+     <path id="m87f638b480" d="M 86.012216 -144.286818 
+L 86.012216 -144.286818 
+L 88.198442 -141.109804 
+L 90.384668 -137.861793 
+L 92.570894 -134.548599 
+L 94.757119 -131.176152 
+L 96.943345 -127.750489 
+L 99.129571 -124.277742 
+L 101.315797 -120.764126 
+L 103.502023 -117.21593 
+L 105.688249 -113.639507 
+L 107.874475 -110.041257 
+L 110.060701 -106.427622 
+L 112.246927 -102.805069 
+L 114.433153 -99.180082 
+L 116.619378 -95.559151 
+L 118.805604 -91.948756 
+L 120.99183 -88.35536 
+L 123.178056 -84.785396 
+L 125.364282 -81.245252 
+L 127.550508 -77.741266 
+L 129.736734 -74.27971 
+L 131.92296 -70.86678 
+L 134.109186 -67.508584 
+L 136.295412 -64.211134 
+L 138.481637 -60.980333 
+L 140.667863 -57.821962 
+L 142.854089 -54.741676 
+L 145.040315 -51.744988 
+L 147.226541 -48.837261 
+L 149.412767 -46.023701 
+L 151.598993 -43.309344 
+L 153.785219 -40.699049 
+L 155.971445 -38.197487 
+L 158.15767 -35.809136 
+L 160.343896 -33.538271 
+L 162.530122 -31.388958 
+L 164.716348 -29.365043 
+L 166.902574 -27.470149 
+L 169.0888 -25.707668 
+L 171.275026 -24.080754 
+L 173.461252 -22.59232 
+L 175.647478 -21.24503 
+L 177.833704 -20.041295 
+L 180.019929 -18.983271 
+L 182.206155 -18.07285 
+L 184.392381 -17.311662 
+L 186.578607 -16.701071 
+L 188.764833 -16.242169 
+L 190.951059 -15.935777 
+L 193.137285 -15.782444 
+L 195.323511 -15.782444 
+L 197.509737 -15.935777 
+L 199.695962 -16.242169 
+L 201.882188 -16.701071 
+L 204.068414 -17.311662 
+L 206.25464 -18.07285 
+L 208.440866 -18.983271 
+L 210.627092 -20.041295 
+L 212.813318 -21.24503 
+L 214.999544 -22.59232 
+L 217.18577 -24.080754 
+L 219.371996 -25.707668 
+L 221.558221 -27.470149 
+L 223.744447 -29.365043 
+L 225.930673 -31.388958 
+L 228.116899 -33.538271 
+L 230.303125 -35.809136 
+L 232.489351 -38.197487 
+L 234.675577 -40.699049 
+L 236.861803 -43.309344 
+L 239.048029 -46.023701 
+L 241.234254 -48.837261 
+L 243.42048 -51.744988 
+L 245.606706 -54.741676 
+L 247.792932 -57.821962 
+L 249.979158 -60.980333 
+L 252.165384 -64.211134 
+L 254.35161 -67.508584 
+L 256.537836 -70.86678 
+L 258.724062 -74.27971 
+L 260.910288 -77.741266 
+L 263.096513 -81.245252 
+L 265.282739 -84.785396 
+L 267.468965 -88.35536 
+L 269.655191 -91.948756 
+L 271.841417 -95.559151 
+L 274.027643 -99.180082 
+L 276.213869 -102.805069 
+L 278.400095 -106.427622 
+L 280.586321 -110.041257 
+L 282.772546 -113.639507 
+L 284.958772 -117.21593 
+L 287.144998 -120.764126 
+L 289.331224 -124.277742 
+L 291.51745 -127.750489 
+L 293.703676 -131.176152 
+L 295.889902 -134.548599 
+L 298.076128 -137.861793 
+L 300.262354 -141.109804 
+L 302.44858 -144.286818 
+L 302.44858 -144.286818 
+L 302.44858 -144.286818 
+L 300.262354 -144.286818 
+L 298.076128 -144.286818 
+L 295.889902 -144.286818 
+L 293.703676 -144.286818 
+L 291.51745 -144.286818 
+L 289.331224 -144.286818 
+L 287.144998 -144.286818 
+L 284.958772 -144.286818 
+L 282.772546 -144.286818 
+L 280.586321 -144.286818 
+L 278.400095 -144.286818 
+L 276.213869 -144.286818 
+L 274.027643 -144.286818 
+L 271.841417 -144.286818 
+L 269.655191 -144.286818 
+L 267.468965 -144.286818 
+L 265.282739 -144.286818 
+L 263.096513 -144.286818 
+L 260.910288 -144.286818 
+L 258.724062 -144.286818 
+L 256.537836 -144.286818 
+L 254.35161 -144.286818 
+L 252.165384 -144.286818 
+L 249.979158 -144.286818 
+L 247.792932 -144.286818 
+L 245.606706 -144.286818 
+L 243.42048 -144.286818 
+L 241.234254 -144.286818 
+L 239.048029 -144.286818 
+L 236.861803 -144.286818 
+L 234.675577 -144.286818 
+L 232.489351 -144.286818 
+L 230.303125 -144.286818 
+L 228.116899 -144.286818 
+L 225.930673 -144.286818 
+L 223.744447 -144.286818 
+L 221.558221 -144.286818 
+L 219.371996 -144.286818 
+L 217.18577 -144.286818 
+L 214.999544 -144.286818 
+L 212.813318 -144.286818 
+L 210.627092 -144.286818 
+L 208.440866 -144.286818 
+L 206.25464 -144.286818 
+L 204.068414 -144.286818 
+L 201.882188 -144.286818 
+L 199.695962 -144.286818 
+L 197.509737 -144.286818 
+L 195.323511 -144.286818 
+L 193.137285 -144.286818 
+L 190.951059 -144.286818 
+L 188.764833 -144.286818 
+L 186.578607 -144.286818 
+L 184.392381 -144.286818 
+L 182.206155 -144.286818 
+L 180.019929 -144.286818 
+L 177.833704 -144.286818 
+L 175.647478 -144.286818 
+L 173.461252 -144.286818 
+L 171.275026 -144.286818 
+L 169.0888 -144.286818 
+L 166.902574 -144.286818 
+L 164.716348 -144.286818 
+L 162.530122 -144.286818 
+L 160.343896 -144.286818 
+L 158.15767 -144.286818 
+L 155.971445 -144.286818 
+L 153.785219 -144.286818 
+L 151.598993 -144.286818 
+L 149.412767 -144.286818 
+L 147.226541 -144.286818 
+L 145.040315 -144.286818 
+L 142.854089 -144.286818 
+L 140.667863 -144.286818 
+L 138.481637 -144.286818 
+L 136.295412 -144.286818 
+L 134.109186 -144.286818 
+L 131.92296 -144.286818 
+L 129.736734 -144.286818 
+L 127.550508 -144.286818 
+L 125.364282 -144.286818 
+L 123.178056 -144.286818 
+L 120.99183 -144.286818 
+L 118.805604 -144.286818 
+L 116.619378 -144.286818 
+L 114.433153 -144.286818 
+L 112.246927 -144.286818 
+L 110.060701 -144.286818 
+L 107.874475 -144.286818 
+L 105.688249 -144.286818 
+L 103.502023 -144.286818 
+L 101.315797 -144.286818 
+L 99.129571 -144.286818 
+L 96.943345 -144.286818 
+L 94.757119 -144.286818 
+L 92.570894 -144.286818 
+L 90.384668 -144.286818 
+L 88.198442 -144.286818 
+L 86.012216 -144.286818 
+z
+" style="stroke: #a2530a; stroke-opacity: 0.35"/>
+    </defs>
+    <g clip-path="url(#p55473c64f4)">
+     <use xlink:href="#m87f638b480" x="0" y="202.896" style="fill: #a2530a; fill-opacity: 0.35; stroke: #a2530a; stroke-opacity: 0.35"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="me5de922ffc" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#me5de922ffc" x="86.012216" y="101.450365" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="86.012216" y="116.808646" transform="rotate(-0 86.012216 116.808646)">π/6</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#me5de922ffc" x="194.230398" y="101.450365" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="194.230398" y="116.808646" transform="rotate(-0 194.230398 116.808646)">π/2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#me5de922ffc" x="302.44858" y="101.450365" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="302.44858" y="116.808646" transform="rotate(-0 302.44858 116.808646)">5π/6</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#me5de922ffc" x="356.55767" y="101.450365" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="356.55767" y="116.808646" transform="rotate(-0 356.55767 116.808646)">π</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="mc5d049a483" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mc5d049a483" x="31.903125" y="187.132729" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="24.903125" y="191.31187" transform="rotate(-0 24.903125 191.31187)">−1</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mc5d049a483" x="31.903125" y="58.609182" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="24.903125" y="62.788323" transform="rotate(-0 24.903125 62.788323)">1/2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#mc5d049a483" x="31.903125" y="15.768" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="24.903125" y="19.947141" transform="rotate(-0 24.903125 19.947141)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_8">
+    <path d="M 31.903125 15.768 
+L 34.074727 15.843661 
+L 36.24633 16.070512 
+L 38.417932 16.448152 
+L 41.675335 17.295809 
+L 44.932739 18.477809 
+L 48.190142 19.989458 
+L 51.447546 21.824749 
+L 54.704949 23.976391 
+L 57.962353 26.435835 
+L 61.219756 29.19331 
+L 64.47716 32.237861 
+L 67.734563 35.557391 
+L 70.991967 39.138713 
+L 75.335171 44.296304 
+L 79.678376 49.857474 
+L 84.02158 55.782955 
+L 89.450586 63.638153 
+L 94.879592 71.910403 
+L 101.394399 82.258882 
+L 111.166609 98.300149 
+L 125.282024 121.518164 
+L 131.796831 131.83375 
+L 137.225837 140.068332 
+L 142.654843 147.876976 
+L 146.998047 153.759156 
+L 151.341252 159.27197 
+L 155.684457 164.376492 
+L 158.94186 167.915142 
+L 162.199264 171.18973 
+L 165.456667 174.187244 
+L 168.714071 176.895777 
+L 171.971474 179.304567 
+L 175.228878 181.404044 
+L 178.486281 183.185866 
+L 181.743684 184.642956 
+L 185.001088 185.769523 
+L 188.258491 186.561092 
+L 190.430094 186.901087 
+L 192.601696 187.090167 
+L 194.773298 187.128 
+L 196.944901 187.014518 
+L 199.116503 186.749922 
+L 202.373906 186.070784 
+L 205.63131 185.055451 
+L 208.888713 183.707957 
+L 212.146117 182.033655 
+L 215.40352 180.039198 
+L 218.660924 177.732509 
+L 221.918327 175.122753 
+L 225.175731 172.220299 
+L 228.433134 169.036677 
+L 231.690538 165.584536 
+L 236.033742 160.587838 
+L 240.376947 155.173555 
+L 244.720151 149.379919 
+L 249.063356 143.247841 
+L 254.492362 135.172977 
+L 261.007169 125.000309 
+L 268.607777 112.671347 
+L 291.409601 75.315772 
+L 297.924408 65.262099 
+L 303.353414 57.316398 
+L 307.696618 51.306283 
+L 312.039823 45.650248 
+L 316.383028 40.388232 
+L 320.726232 35.557391 
+L 323.983636 32.237861 
+L 327.241039 29.19331 
+L 330.498443 26.435835 
+L 333.755846 23.976391 
+L 337.01325 21.824749 
+L 340.270653 19.989458 
+L 343.528057 18.477809 
+L 346.78546 17.295809 
+L 350.042864 16.448152 
+L 353.300267 15.938207 
+L 355.471869 15.786917 
+L 356.55767 15.768 
+L 356.55767 15.768 
+" clip-path="url(#p55473c64f4)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 15.670398 58.609182 
+L 372.790398 58.609182 
+" clip-path="url(#p55473c64f4)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.3"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 31.903125 195.696 
+L 31.903125 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 15.670398 101.450365 
+L 372.790398 101.450365 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_10">
+     <path d="M 277.680554 153.956859 
+L 287.180554 153.956859 
+L 296.680554 153.956859 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="304.280554" y="157.281859" transform="rotate(-0 304.280554 157.281859)">y = cos 2x</text>
+    </g>
+    <g id="line2d_11">
+     <path d="M 277.680554 167.901078 
+L 287.180554 167.901078 
+L 296.680554 167.901078 
+" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.3"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="304.280554" y="171.226078" transform="rotate(-0 304.280554 171.226078)">y = 1/2</text>
+    </g>
+    <g id="patch_5">
+     <path d="M 277.680554 185.170297 
+L 296.680554 185.170297 
+L 296.680554 178.520297 
+L 277.680554 178.520297 
+z
+" style="fill: #a2530a; fill-opacity: 0.35; stroke: #a2530a; stroke-opacity: 0.35; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="304.280554" y="185.170297" transform="rotate(-0 304.280554 185.170297)">cos 2x ≤ 1/2</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p55473c64f4">
+   <rect x="15.670398" y="7.2" width="357.12" height="188.496"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.9: la inecuación se lee en la gráfica. \(\cos2x\) queda por debajo de \(\frac12\) entre los dos cortes, \(x=\frac\pi6\) y \(x=\frac{5\pi}6\), dentro de \([0,\pi]\).</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(2\sin x\gt1\) para \(0\le x\lt2\pi\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\sin x\gt\tfrac12\) entre las soluciones \(\tfrac\pi6\) y \(\tfrac{5\pi}6\): \(\tfrac\pi6\lt x\lt\tfrac{5\pi}6\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.10. Inecuaciones con tangente y con factor común</p>
+<p>(a) Resuelve \(\tan x\gt\sqrt3\) en \([0,\pi)\). (b) Resuelve \(2\sin^2x\gt\sin x\) en \([0,2\pi]\).</p>
+<p>(a) \(\tan\) crece en \(\left[0,\frac\pi2\right)\) y vale \(\sqrt3\) en \(\frac\pi3\): \(\frac\pi3\lt x\lt\frac\pi2\). En \(\left(\frac\pi2,\pi\right)\), \(\tan x\lt0\).</p>
+<p>(b) No se divide entre \(\sin x\): se factoriza. \(\sin x(2\sin x-1)\gt0\) se cumple si \(\sin x\gt\frac12\) (en \(\left(\frac\pi6,\frac{5\pi}6\right)\)) o si \(\sin x\lt0\) (en \((\pi,2\pi)\)).</p></div>
+
+<h3 id="t6">1.6 Funciones recíprocas</h3>
+<p>\(\sec x=\tfrac1{\cos x}\), \(\csc x=\tfrac1{\sin x}\), \(\cot x=\tfrac{\cos x}{\sin x}\). Sus asíntotas están en los ceros del denominador. \(|\sec x|,|\csc x|\ge1\). La gráfica de \(\sec\) toca la de \(\cos\) en sus máximos y mínimos (valores \(\pm1\)).</p>
+<div class="ex"><p class="et">Ejemplo 1.11. Ecuación con secante</p>
+<p>Resuelve \(\sec^2x=2\tan x\) para \(0\le x\lt2\pi\).</p>
+<p>\(1+\tan^2x=2\tan x\Rightarrow(\tan x-1)^2=0\Rightarrow\tan x=1\): \(x=\tfrac\pi4,\ \tfrac{5\pi}4\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.12. Gráfica de la cosecante</p>
+<p>Describe \(y=\csc x\) para \(0\lt x\lt2\pi\), \(x\neq\pi\).</p>
+<p>Asíntotas donde \(\sin x=0\): \(x=0,\ \pi,\ 2\pi\). Mínimo local \(\left(\tfrac\pi2,1\right)\) y máximo local \(\left(\tfrac{3\pi}2,-1\right)\), justo donde \(\sin x=\pm1\). Rama positiva en \((0,\pi)\), negativa en \((\pi,2\pi)\). Recorrido \(|y|\ge1\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 378.503679 225.072" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 225.072 
+L 378.503679 225.072 
+L 378.503679 -0 
+L 0 -0 
+L 0 225.072 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 14.183679 217.872 
+L 371.303679 217.872 
+L 371.303679 7.2 
+L 14.183679 7.2 
+L 14.183679 217.872 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mfbe2ddfb25" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mfbe2ddfb25" x="111.580043" y="112.536" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="111.580043" y="127.894281" transform="rotate(-0 111.580043 127.894281)">π/2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mfbe2ddfb25" x="192.743679" y="112.536" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="192.743679" y="127.894281" transform="rotate(-0 192.743679 127.894281)">π</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mfbe2ddfb25" x="273.907315" y="112.536" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="273.907315" y="127.894281" transform="rotate(-0 273.907315 127.894281)">3π/2</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mfbe2ddfb25" x="355.070952" y="112.536" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="355.070952" y="127.894281" transform="rotate(-0 355.070952 127.894281)">2π</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="m84f04f3ae2" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m84f04f3ae2" x="30.416406" y="133.6032" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="23.416406" y="137.782341" transform="rotate(-0 23.416406 137.782341)">−1</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m84f04f3ae2" x="30.416406" y="91.4688" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="23.416406" y="95.647941" transform="rotate(-0 23.416406 95.647941)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M 30.416406 112.536 
+L 46.689817 106.010103 
+L 55.640193 102.655314 
+L 62.963228 100.126187 
+L 69.472592 98.085515 
+L 75.981956 96.273878 
+L 81.67765 94.899246 
+L 87.373344 93.738702 
+L 93.069038 92.80633 
+L 98.764732 92.113451 
+L 104.460425 91.668473 
+L 110.156119 91.476799 
+L 115.851813 91.540755 
+L 121.547507 91.859565 
+L 127.243201 92.429359 
+L 132.938894 93.24322 
+L 138.634588 94.29127 
+L 144.330282 95.560785 
+L 150.839646 97.262959 
+L 157.34901 99.207206 
+L 164.672045 101.645332 
+L 172.808751 104.608215 
+L 182.572797 108.415826 
+L 215.933289 121.676716 
+L 224.069995 124.54026 
+L 231.39303 126.865335 
+L 237.902394 128.692168 
+L 243.598088 130.081482 
+L 249.293782 131.257818 
+L 254.989475 132.206896 
+L 260.685169 132.917196 
+L 266.380863 133.380097 
+L 272.076557 133.589978 
+L 277.77225 133.544292 
+L 283.467944 133.243594 
+L 289.163638 132.691534 
+L 294.859332 131.894813 
+L 300.555026 130.863102 
+L 306.250719 129.608925 
+L 311.946413 128.147506 
+L 318.455777 126.24641 
+L 325.778812 123.849569 
+L 333.915518 120.92258 
+L 343.679564 117.142998 
+L 355.070952 112.536 
+L 355.070952 112.536 
+" clip-path="url(#pe0be03f718)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.4"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 40.065887 -1 
+L 40.733047 6.317658 
+L 41.763549 15.828903 
+L 42.79405 23.744369 
+L 43.824552 30.431924 
+L 45.370305 38.716071 
+L 46.916057 45.427172 
+L 48.46181 50.969222 
+L 50.007563 55.618691 
+L 51.553315 59.571153 
+L 53.099068 62.968848 
+L 54.644821 65.917694 
+L 56.705824 69.287667 
+L 58.766828 72.143341 
+L 60.827831 74.588627 
+L 62.888835 76.700995 
+L 64.949838 78.539361 
+L 67.526093 80.520472 
+L 70.102347 82.212185 
+L 72.678601 83.665935 
+L 75.770107 85.151236 
+L 78.861612 86.402235 
+L 82.468368 87.617323 
+L 86.590375 88.739587 
+L 90.712382 89.625676 
+L 95.34964 90.384959 
+L 99.986898 90.927176 
+L 105.139407 91.304071 
+L 110.291915 91.462252 
+L 115.444424 91.409744 
+L 120.596933 91.143899 
+L 125.749442 90.651067 
+L 130.3867 89.991929 
+L 135.023958 89.097335 
+L 139.145965 88.068691 
+L 142.752721 86.952506 
+L 146.359477 85.592111 
+L 149.450982 84.189965 
+L 152.542487 82.520561 
+L 155.118742 80.880115 
+L 157.694996 78.961718 
+L 159.756 77.184298 
+L 161.817003 75.145359 
+L 163.878007 72.78973 
+L 165.93901 70.045195 
+L 167.484763 67.67479 
+L 169.030516 64.979216 
+L 170.576268 61.890777 
+L 172.122021 58.321453 
+L 173.667773 54.154666 
+L 175.213526 49.232693 
+L 176.759279 43.336767 
+L 178.305031 36.154407 
+L 179.335533 30.431924 
+L 180.366035 23.744369 
+L 181.396537 15.828903 
+L 182.427038 6.317658 
+L 183.094198 -1 
+L 183.094198 -1 
+" clip-path="url(#pe0be03f718)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 202.39316 226.072 
+L 203.06032 218.754342 
+L 204.090821 209.243097 
+L 205.121323 201.327631 
+L 206.151825 194.640076 
+L 207.697577 186.355929 
+L 209.24333 179.644828 
+L 210.789083 174.102778 
+L 212.334835 169.453309 
+L 213.880588 165.500847 
+L 215.426341 162.103152 
+L 216.972093 159.154306 
+L 219.033097 155.784333 
+L 221.0941 152.928659 
+L 223.155104 150.483373 
+L 225.216107 148.371005 
+L 227.277111 146.532639 
+L 229.853365 144.551528 
+L 232.42962 142.859815 
+L 235.005874 141.406065 
+L 238.097379 139.920764 
+L 241.188885 138.669765 
+L 244.795641 137.454677 
+L 248.917648 136.332413 
+L 253.039655 135.446324 
+L 257.676913 134.687041 
+L 262.314171 134.144824 
+L 267.466679 133.767929 
+L 272.619188 133.609748 
+L 277.771697 133.662256 
+L 282.924206 133.928101 
+L 288.076714 134.420933 
+L 292.713972 135.080071 
+L 297.35123 135.974665 
+L 301.473237 137.003309 
+L 305.079993 138.119494 
+L 308.68675 139.479889 
+L 311.778255 140.882035 
+L 314.86976 142.551439 
+L 317.446015 144.191885 
+L 320.022269 146.110282 
+L 322.083272 147.887702 
+L 324.144276 149.926641 
+L 326.205279 152.28227 
+L 328.266283 155.026805 
+L 329.812036 157.39721 
+L 331.357788 160.092784 
+L 332.903541 163.181223 
+L 334.449294 166.750547 
+L 335.995046 170.917334 
+L 337.540799 175.839307 
+L 339.086551 181.735233 
+L 340.632304 188.917593 
+L 341.662806 194.640076 
+L 342.693308 201.327631 
+L 343.723809 209.243097 
+L 344.754311 218.754342 
+L 345.421471 226.072 
+L 345.421471 226.072 
+" clip-path="url(#pe0be03f718)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 192.743679 217.872 
+L 192.743679 7.2 
+" clip-path="url(#pe0be03f718)" style="fill: none; stroke-dasharray: 1.2,1.98; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 355.070952 217.872 
+L 355.070952 7.2 
+" clip-path="url(#pe0be03f718)" style="fill: none; stroke-dasharray: 1.2,1.98; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_12">
+    <defs>
+     <path id="mce196d7183" d="M 0 2 
+C 0.530406 2 1.03916 1.789267 1.414214 1.414214 
+C 1.789267 1.03916 2 0.530406 2 0 
+C 2 -0.530406 1.789267 -1.03916 1.414214 -1.414214 
+C 1.03916 -1.789267 0.530406 -2 0 -2 
+C -0.530406 -2 -1.03916 -1.789267 -1.414214 -1.414214 
+C -1.789267 -1.03916 -2 -0.530406 -2 0 
+C -2 0.530406 -1.789267 1.03916 -1.414214 1.414214 
+C -1.03916 1.789267 -0.530406 2 0 2 
+z
+" style="stroke: currentColor"/>
+    </defs>
+    <g clip-path="url(#pe0be03f718)">
+     <use xlink:href="#mce196d7183" x="111.580043" y="91.4688" style="stroke: currentColor"/>
+     <use xlink:href="#mce196d7183" x="273.907315" y="133.6032" style="stroke: currentColor"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 30.416406 217.872 
+L 30.416406 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 14.183679 112.536 
+L 371.303679 112.536 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_13">
+     <path d="M 292.493757 19.643516 
+L 301.993757 19.643516 
+L 311.493757 19.643516 
+" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.4"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="319.093757" y="22.968516" transform="rotate(-0 319.093757 22.968516)">y = sin x</text>
+    </g>
+    <g id="line2d_14">
+     <path d="M 292.493757 33.587734 
+L 301.993757 33.587734 
+L 311.493757 33.587734 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="319.093757" y="36.912734" transform="rotate(-0 319.093757 36.912734)">y = csc x</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe0be03f718">
+   <rect x="14.183679" y="7.2" width="357.12" height="210.672"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.12: \(\csc x=\frac1{\sin x}\). Donde \(\sin x=0\) hay asíntotas, y donde \(\sin x=\pm1\) las dos gráficas se tocan: el máximo del seno es un mínimo local de la cosecante. Recorrido: \(|y|\ge1\).</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.13. Identidad con recíprocas</p>
+<p>Prueba que \(\sec x-\cos x=\sin x\tan x\).</p>
+<p>LHS \(=\dfrac1{\cos x}-\cos x=\dfrac{1-\cos^2x}{\cos x}=\dfrac{\sin^2x}{\cos x}=\sin x\cdot\dfrac{\sin x}{\cos x}=\sin x\tan x\) = RHS. Estrategia: pasar todo a \(\sin\) y \(\cos\) y usar la identidad pitagórica.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba que \(\sec^2x+\csc^2x=\sec^2x\,\csc^2x\).</li><li>Prueba que \(\dfrac{\cos x}{1-\sin x}=\sec x+\tan x\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>LHS \(=\tfrac1{\cos^2x}+\tfrac1{\sin^2x}=\tfrac{\sin^2x+\cos^2x}{\sin^2x\cos^2x}=\tfrac1{\sin^2x\cos^2x}\) = RHS.</li><li>Multiplica por \(\tfrac{1+\sin x}{1+\sin x}\): \(\tfrac{\cos x(1+\sin x)}{\cos^2x}=\tfrac{1+\sin x}{\cos x}=\sec x+\tan x\).</li></ol></div></details></div>
+
+<h3 id="t7">1.7 Funciones inversas</h3>
+<div class="tbl"><table>
+<thead><tr><th>Función</th><th>Dominio</th><th>Recorrido</th></tr></thead>
+<tbody>
+<tr><td>\(\arcsin x\)</td><td>\([-1,1]\)</td><td>\(\left[-\tfrac\pi2,\tfrac\pi2\right]\)</td></tr>
+<tr><td>\(\arccos x\)</td><td>\([-1,1]\)</td><td>\([0,\pi]\)</td></tr>
+<tr><td>\(\arctan x\)</td><td>\(\mathbb R\)</td><td>\(\left(-\tfrac\pi2,\tfrac\pi2\right)\), con asíntotas \(y=\pm\tfrac\pi2\)</td></tr>
+</tbody></table></div>
+<ul>
+<li>\(\sin(\arcsin x)=x\) siempre, pero \(\arcsin(\sin x)=x\) solo si \(x\in\left[-\tfrac\pi2,\tfrac\pi2\right]\).</li>
+<li>Composiciones con un triángulo: \(\sin(\arccos x)=\sqrt{1-x^2}\) y \(\cos(\arctan x)=\tfrac1{\sqrt{1+x^2}}\).</li>
+<li>\(\arctan p+\arctan q=\arctan\tfrac{p+q}{1-pq}\) si \(p,q\gt0\) y \(pq\lt1\).</li>
+<li>Para que una trigonométrica tenga inversa, se restringe a un intervalo donde sea monótona.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.14. Composiciones</p>
+<p>(a) \(\sin\left(\arccos\tfrac35\right)=\tfrac45\). (b) \(\cos\left(2\arcsin\tfrac13\right)=1-2\cdot\tfrac19=\tfrac79\). (c) \(\arcsin\left(\sin\tfrac{5\pi}6\right)=\tfrac\pi6\), no \(\tfrac{5\pi}6\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 371.52 202.896" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 202.896 
+L 371.52 202.896 
+L 371.52 -0 
+L 0 -0 
+L 0 202.896 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 195.696 
+L 364.32 195.696 
+L 364.32 7.2 
+L 7.2 7.2 
+L 7.2 195.696 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="ma184bec763" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#ma184bec763" x="64.014545" y="101.448" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="64.014545" y="116.806281" transform="rotate(-0 64.014545 116.806281)">−6</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#ma184bec763" x="124.887273" y="101.448" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="124.887273" y="116.806281" transform="rotate(-0 124.887273 116.806281)">−3</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#ma184bec763" x="246.632727" y="101.448" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="246.632727" y="116.806281" transform="rotate(-0 246.632727 116.806281)">3</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#ma184bec763" x="307.505455" y="101.448" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="307.505455" y="116.806281" transform="rotate(-0 307.505455 116.806281)">6</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="m630405cba0" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m630405cba0" x="185.76" y="171.945339" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="178.76" y="176.12448" transform="rotate(-0 178.76 176.12448)">−π/2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m630405cba0" x="185.76" y="30.950661" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="178.76" y="35.129801" transform="rotate(-0 178.76 35.129801)">π/2</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M 23.432727 166.364287 
+L 45.401832 165.501892 
+L 63.302584 164.575786 
+L 77.948653 163.596251 
+L 90.153712 162.559544 
+L 100.731429 161.431965 
+L 109.681805 160.247637 
+L 117.004839 159.066026 
+L 123.514204 157.802826 
+L 129.209897 156.483985 
+L 134.091921 155.150713 
+L 138.973944 153.579867 
+L 143.042297 152.043378 
+L 147.110649 150.248238 
+L 150.365332 148.583613 
+L 153.620014 146.671722 
+L 156.874696 144.461802 
+L 159.315707 142.571993 
+L 161.756719 140.449369 
+L 164.197731 138.059555 
+L 166.638742 135.365138 
+L 169.079754 132.327472 
+L 171.520766 128.910181 
+L 173.961777 125.084987 
+L 176.402789 120.840193 
+L 178.8438 116.191176 
+L 182.098483 109.460421 
+L 193.48987 85.112624 
+L 195.930882 80.594525 
+L 198.371893 76.489452 
+L 200.812905 72.802547 
+L 203.253917 69.515489 
+L 205.694928 66.596488 
+L 208.13594 64.007891 
+L 210.576951 61.711173 
+L 213.017963 59.669794 
+L 216.272645 57.288393 
+L 219.527327 55.234495 
+L 222.78201 53.451947 
+L 226.036692 51.894959 
+L 230.105044 50.210028 
+L 234.173397 48.762532 
+L 239.05542 47.277132 
+L 243.937444 46.011679 
+L 249.633137 44.755418 
+L 256.142502 43.547749 
+L 263.465537 42.414007 
+L 272.415913 41.273553 
+L 282.179959 40.259513 
+L 293.571347 39.299749 
+L 307.403746 38.368619 
+L 323.677157 37.506549 
+L 343.205249 36.702908 
+L 348.087273 36.531713 
+L 348.087273 36.531713 
+" clip-path="url(#p4224f7bf8f)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 7.2 30.950661 
+L 364.32 30.950661 
+" clip-path="url(#p4224f7bf8f)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 7.2 171.945339 
+L 364.32 171.945339 
+" clip-path="url(#p4224f7bf8f)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 185.76 195.696 
+L 185.76 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 7.2 101.448 
+L 364.32 101.448 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_10">
+     <path d="M 220.534531 163.072406 
+L 231.534531 163.072406 
+L 242.534531 163.072406 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="251.334531" y="166.922406" transform="rotate(-0 251.334531 166.922406)">y = arctan x</text>
+    </g>
+    <g id="line2d_11">
+     <path d="M 220.534531 179.658344 
+L 231.534531 179.658344 
+L 242.534531 179.658344 
+" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="251.334531" y="183.508344" transform="rotate(-0 251.334531 183.508344)">asíntotas y = ±π/2</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4224f7bf8f">
+   <rect x="7.2" y="7.2" width="357.12" height="188.496"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: \(\arctan x\) está definida en todo \(\mathbb R\), es creciente e impar, y su recorrido es \(\left]-\frac\pi2,\frac\pi2\right[\): las rectas \(y=\pm\frac\pi2\) son asíntotas horizontales y nunca se alcanzan.</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.15. Inversa transformada</p>
+<p>Halla el dominio, el recorrido y los extremos de \(y=2\arccos(x-1)\).</p>
+<p>\(-1\le x-1\le1\), así que el dominio es \([0,2]\). El recorrido de \(\arccos\) es \([0,\pi]\), y el de la función, \([0,2\pi]\). Es decreciente, de \((0,2\pi)\) a \((2,0)\), y pasa por \((1,\pi)\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.16. Ecuación con inversas</p>
+<p>Resuelve \(\arcsin(2x)=\arccos x\).</p>
+<p>El lado derecho está en \([0,\pi]\) y el izquierdo en \(\left[-\tfrac\pi2,\tfrac\pi2\right]\): ambos deben estar en \(\left[0,\tfrac\pi2\right]\), así que \(x\ge0\). Aplicando \(\sin\): \(2x=\sin(\arccos x)=\sqrt{1-x^2}\). Entonces \(4x^2=1-x^2\), y \(x=\tfrac1{\sqrt5}\) (se descarta la raíz negativa).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(\arcsin x=\arccos\tfrac35\).</li><li>Resuelve \(2\arctan x=\tfrac\pi2\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\arccos\tfrac35\) es el ángulo agudo con coseno \(\tfrac35\) y seno \(\tfrac45\): \(x=\tfrac45\).</li><li>\(\arctan x=\tfrac\pi4\Rightarrow x=1\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2022, P8 y mayo 2021 TZ2, P12)</p><p>El mayor \(a\) para que \(\cos(x-k)\) tenga inversa en \([0,a]\) se lee de la gráfica: hasta el siguiente máximo o mínimo. Las asíntotas de \(\arctan(2x+1)+\tfrac\pi4\) son las de arctan, desplazadas \(\tfrac\pi4\) hacia arriba.</p></div>
+
+<h3 id="t8">1.8 Forma armónica \(R\sin(x+\alpha)\)</h3>
+\[ a\sin x+b\cos x=R\sin(x+\alpha),\qquad R=\sqrt{a^2+b^2},\quad \cos\alpha=\tfrac aR,\ \sin\alpha=\tfrac bR \]
+<p>Da de inmediato el máximo (\(R\)), el mínimo (\(-R\)) y permite resolver \(a\sin x+b\cos x=k\): tiene solución si y solo si \(|k|\le R\).</p>
+<div class="ex"><p class="et">Ejemplo 1.17. Máximo y ecuación</p>
+<p>Para \(\sin x+\sqrt3\cos x\), halla el máximo y resuelve la ecuación \(=1\) en \([0,2\pi)\).</p>
+<p>\(R=2\), \(\alpha=\tfrac\pi3\): la expresión es \(2\sin\left(x+\tfrac\pi3\right)\), con máximo 2 en \(x=\tfrac\pi6\).</p>
+<p>\(\sin\left(x+\tfrac\pi3\right)=\tfrac12\) con \(x+\tfrac\pi3\in\left[\tfrac\pi3,\tfrac{7\pi}3\right)\): \(\tfrac{5\pi}6\) o \(\tfrac{13\pi}6\). Así \(x=\tfrac\pi2\) o \(x=\tfrac{11\pi}6\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.18. Forma armónica para resolver y acotar</p>
+<p>(a) Escribe \(\sqrt3\sin x+\cos x\) como \(R\sin(x+\alpha)\). (b) Resuelve \(\sqrt3\sin x+\cos x=1\) en \([0,2\pi]\). (c) Halla el recorrido de \(\frac1{3+\sqrt3\sin x+\cos x}\).</p>
+<p>(a) \(R=2\) y \(\tan\alpha=\frac1{\sqrt3}\): \(2\sin\left(x+\frac\pi6\right)\). (b) \(\sin\left(x+\frac\pi6\right)=\frac12\), con \(x+\frac\pi6\in\left[\frac\pi6,\frac{13\pi}6\right]\): da \(\frac\pi6\), \(\frac{5\pi}6\) o \(\frac{13\pi}6\), así que \(x=0,\frac{2\pi}3,2\pi\). (c) El denominador va de 1 a 5, así que el recorrido es \(\left[\frac15,1\right]\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Expresa \(\sin x+\sqrt3\cos x\) como \(R\sin(x+\alpha)\) y resuelve \(\sin x+\sqrt3\cos x=1\) en \([0,2\pi)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(R=2\), \(\alpha=\tfrac\pi3\): \(2\sin\left(x+\tfrac\pi3\right)=1\Rightarrow x+\tfrac\pi3=\tfrac\pi6\) (no) o \(\tfrac{5\pi}6\) o \(\tfrac{13\pi}6\): \(x=\tfrac\pi2\) o \(x=\tfrac{11\pi}6\).</li></ol></div></details></div>
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Suma a producto:</b> \(\sin A+\sin B=2\sin\tfrac{A+B}2\cos\tfrac{A-B}2\) y \(\cos A+\cos B=2\cos\tfrac{A+B}2\cos\tfrac{A-B}2\).</li>
+<li><b>Sustitución \(t=\tan\tfrac x2\):</b> \(\sin x=\tfrac{2t}{1+t^2}\) y \(\cos x=\tfrac{1-t^2}{1+t^2}\). Convierte cualquier ecuación en \(\sin\) y \(\cos\) en una algebraica (problema E9).</li>
+<li><b>Acotar:</b> como \(|\sin|,|\cos|\le1\), ecuaciones como \(\cos x\cos2x=1\) se resuelven exigiendo valores extremos (ejemplo F8).</li>
+</ul></div>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Circunferencia unitaria</td><td>Circunferencia de radio 1 centrada en el origen; el punto de ángulo \(\theta\) es \((\cos\theta,\sin\theta)\).</td></tr>
+<tr><td>Ángulo de referencia</td><td>Ángulo agudo entre el lado terminal y el eje \(x\).</td></tr>
+<tr><td>Amplitud</td><td>Mitad de la diferencia entre el máximo y el mínimo: \(|a|\).</td></tr>
+<tr><td>Periodo</td><td>Menor \(T\gt0\) con \(f(x+T)=f(x)\) para todo \(x\).</td></tr>
+<tr><td>Identidad</td><td>Igualdad cierta para todos los valores del dominio (\(\equiv\)).</td></tr>
+<tr><td>Ecuación trigonométrica</td><td>Igualdad que se cumple solo para ciertos valores del ángulo.</td></tr>
+<tr><td>Función recíproca</td><td>\(\sec=\tfrac1\cos\), \(\csc=\tfrac1\sin\), \(\cot=\tfrac1\tan\). No son las inversas.</td></tr>
+<tr><td>Función inversa</td><td>\(\arcsin\), \(\arccos\), \(\arctan\): dan el ángulo en un recorrido restringido.</td></tr>
+<tr><td>Valor principal</td><td>El ángulo que devuelve la función inversa, dentro de su recorrido.</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Resuelva para \(0\le x\le2\pi\)</td><td>Todas las soluciones del intervalo, en radianes y sin extras.</td><td>Dar grados, olvidar una solución o añadir una fuera del intervalo.</td></tr>
+<tr><td>Halle el valor exacto</td><td>Fracciones y radicales, con el signo justificado por el cuadrante.</td><td>Dar el valor sin signo o sin razón (R0).</td></tr>
+<tr><td>Muestre la identidad</td><td>Desarrollo de un lado hasta el otro.</td><td>Trabajar los dos lados hacia una expresión intermedia.</td></tr>
+<tr><td>Describa la transformación</td><td>Nombre técnico (traslación, estiramiento, reflexión) con su vector o factor.</td><td>Decir «mover» o no dar el valor.</td></tr>
+<tr><td>Menor valor positivo</td><td>Revisar todas las candidatas y justificar el descarte de las no positivas.</td><td>Dar la primera solución de la calculadora mental.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>La solución perdida al dividir.</b> Dividir por \(\cos x\) o \(\sin x\) elimina las soluciones en que valen 0. Factoriza.</li>
+<li><b>El intervalo sin transformar.</b> Si el argumento es \(2x\), recorre \(u\in[0,4\pi]\), no \([0,2\pi]\).</li>
+<li><b>La solución en grados.</b> Si el intervalo está en radianes, las soluciones en grados valen A0.</li>
+<li><b>La solución extra.</b> Una solución fuera del intervalo quita la A1 final.</li>
+<li><b>El valor imposible.</b> \(\sin x=3\) no tiene solución: descártalo por escrito.</li>
+<li><b>El signo sin justificar.</b> Al hallar una razón desde otra, escribe el cuadrante y por qué el signo es positivo o negativo.</li>
+<li><b>El \(\pm\) olvidado.</b> \(\tan^2x=\tfrac13\) da \(\tan x=\pm\tfrac1{\sqrt3}\): son dos familias de soluciones.</li>
+<li><b>Recíproca confundida con inversa.</b> \(\sin^{-1}x=\arcsin x\), no \(\tfrac1{\sin x}=\csc x\).</li>
+<li><b>El arcsin fuera de rango.</b> \(\arcsin(\sin x)\) solo es \(x\) si \(x\in\left[-\tfrac\pi2,\tfrac\pi2\right]\).</li>
+<li><b>La inversa sin rango.</b> En ecuaciones como \(\arcsin(2x)=\arccos x\), primero fija en qué intervalo pueden estar ambos lados; si no, aparecen soluciones falsas.</li>
+<li><b>El periodo de la tangente.</b> Es \(\pi\), no \(2\pi\): en \([0,2\pi)\), \(\tan x=k\) tiene dos soluciones.</li>
+<li><b>El \(\cos2x\) equivocado.</b> Elige la forma de \(\cos2x\) que deje una sola razón: \(1-2\sin^2x\) si el resto está en \(\sin\).</li>
+<li><b>«Mover».</b> En transformaciones, escribe «traslación» y da el vector.</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">Todos parten de preguntas IB o ítems de las fichas DMpA 22, 23, N°19 y N°20, ampliados hasta la Sección B. Los de calculadora se reformulan con valores exactos. Ninguno repite un tipo de la sección 5.</p>
+
+<div class="ex"><p class="et">F1. Modelo senoidal a partir de un máximo y un mínimo <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 22, ítem 4 (IB NM, noviembre 2011), ampliado.</p>
+<p>\(f(x)=a\sin\big(b(x-c)\big)+d\), \(2\le x\le10\), tiene un máximo en \(P(4,12)\) y un mínimo en \(Q(8,-4)\). (a) Halla \(a,b,c,d\), con \(0\lt c\lt4\). (b) Halla los \(x\) del intervalo con \(f(x)=8\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(a=\tfrac{12-(-4)}2=8\) y \(d=4\). El semiperiodo es 4, así que el periodo es 8 y \(b=\tfrac\pi4\). El máximo exige \(\tfrac\pi4(4-c)=\tfrac\pi2\), así que \(c=2\).</p>
+<p>(b) \(\sin\left(\tfrac\pi4(x-2)\right)=\tfrac12\), con \(\tfrac\pi4(x-2)\in[0,2\pi]\). Da \(\tfrac\pi6\) o \(\tfrac{5\pi}6\), es decir \(x=\tfrac83\) o \(x=\tfrac{16}3\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Cuándo una senoide no alcanza un valor <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 22, ítem 3 (IB Prueba 1, mayo 2019).</p>
+<p>(a) Halla los \(x\) de \([0,2\pi)\) con \(2\sin x=-1\). (b) \(g(x)=2\sin px\), con \(0\le x\lt2\pi\) y \(p\gt0\). Halla el mayor \(p\) para el que la gráfica de \(g\) no corta la recta \(y=-1\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\sin x=-\tfrac12\): \(x=\tfrac{7\pi}6\) o \(x=\tfrac{11\pi}6\).</p>
+<p>(b) \(px\) recorre \([0,2\pi p)\). El primer valor con \(\sin=-\tfrac12\) es \(\tfrac{7\pi}6\), así que no hay corte si \(2\pi p\le\tfrac{7\pi}6\). El mayor es \(p=\tfrac7{12}\) (el intervalo es abierto en \(2\pi\)).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. La noria con tiempos exactos <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 22, ítem 9 (IB Prueba 1, mayo 2011), ampliado.</p>
+<p>Una noria de 100 m de diámetro da una vuelta cada 20 minutos; \(P\) empieza en el punto más bajo, a nivel del suelo. (a) Muestra que \(h(t)=50-50\cos\tfrac{\pi t}{10}\). (b) Halla \(h(10)\), \(h(15)\) y \(h(21)\). (c) Halla los tiempos exactos de la primera vuelta en que \(h=75\) y qué fracción de cada vuelta pasa \(P\) por encima de 75 m.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Amplitud 50, eje 50, periodo 20, así que \(b=\tfrac\pi{10}\). En \(t=0\) está en el mínimo: \(-\cos\).</p>
+<p>(b) \(h(10)=100\), \(h(15)=50\), \(h(21)=h(1)=50-50\cos\tfrac\pi{10}\).</p>
+<p>(c) \(\cos\tfrac{\pi t}{10}=-\tfrac12\Rightarrow\tfrac{\pi t}{10}=\tfrac{2\pi}3,\tfrac{4\pi}3\), es decir \(t=\tfrac{20}3\) o \(t=\tfrac{40}3\). Fracción: \(\tfrac{40/3-20/3}{20}=\tfrac13\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Valores exactos con ángulo doble y mitad <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA N°20, ítem 19 (IB NM, mayo 2015), ampliado.</p>
+<p>\(\sin\theta=\tfrac34\) y \(0\lt\theta\lt\tfrac\pi2\). Halla los valores exactos de \(\cos\theta\), \(\sin2\theta\), \(\cos2\theta\), \(\tan2\theta\) y \(\sin\tfrac\theta2\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>\(\cos\theta=\tfrac{\sqrt7}4\). \(\sin2\theta=2\cdot\tfrac34\cdot\tfrac{\sqrt7}4=\tfrac{3\sqrt7}8\). \(\cos2\theta=1-2\cdot\tfrac9{16}=-\tfrac18\). \(\tan2\theta=-3\sqrt7\).</p>
+<p>\(\cos\theta=1-2\sin^2\tfrac\theta2\Rightarrow\sin\tfrac\theta2=\sqrt{\tfrac{4-\sqrt7}{8}}\), positivo porque \(\tfrac\theta2\) es agudo.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. Eliminar el parámetro <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA N°20 («demuestre que al eliminar la variable…»), ampliada.</p>
+<p>(a) Si \(x=2\cos\theta+1\) e \(y=3\sin\theta-2\), elimina \(\theta\). ¿Qué curva describe? (b) Si \(\sin\theta+\cos\theta=p\) y \(\sin\theta\cos\theta=q\), muestra que \(p^2=1+2q\) y deduce que \(|p|\le\sqrt2\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\left(\tfrac{x-1}2\right)^2+\left(\tfrac{y+2}3\right)^2=1\): una elipse de centro \((1,-2)\).</p>
+<p>(b) \(p^2=\sin^2\theta+\cos^2\theta+2\sin\theta\cos\theta=1+2q\). Como \(q=\tfrac12\sin2\theta\le\tfrac12\), \(p^2\le2\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Ecuación con cosecante <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 23 (\(2\sin x-\csc x=1\)).</p>
+<p>Resuelve \(2\sin x-\csc x=1\) para \(0\le x\lt2\pi\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Con \(\sin x\neq0\), multiplica por \(\sin x\): \(2\sin^2x-\sin x-1=0\Rightarrow(2\sin x+1)(\sin x-1)=0\).</p>
+<p>\(\sin x=1\) o \(\sin x=-\tfrac12\): \(x=\tfrac\pi2,\ \tfrac{7\pi}6,\ \tfrac{11\pi}6\). Ninguna anula \(\sin x\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. No perder soluciones: ángulo doble y triple <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 23 (\(\sin2x=\cos x\), «para no perder soluciones»), ampliada.</p>
+<p>Resuelve en \([0,2\pi)\): (a) \(\sin2x=\cos x\); (b) \(\sin3x=\sin x\), usando \(\sin3x=3\sin x-4\sin^3x\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\cos x(2\sin x-1)=0\): \(x=\tfrac\pi2,\tfrac{3\pi}2,\tfrac\pi6,\tfrac{5\pi}6\). Dividir por \(\cos x\) habría perdido dos soluciones.</p>
+<p>(b) \(2\sin x-4\sin^3x=0\Rightarrow2\sin x(1-2\sin^2x)=0\): \(\sin x=0\) o \(\sin^2x=\tfrac12\). Así \(x=0,\pi,\tfrac\pi4,\tfrac{3\pi}4,\tfrac{5\pi}4,\tfrac{7\pi}4\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. Resolver acotando <span class="lvl">Sección B, más allá</span></p>
+<p class="src">MATERIAL de ecuaciones trigonométricas (\(\cos x\cos2x=1\)).</p>
+<p>Resuelve \(\cos x\cos2x=1\) para \(x\in\mathbb R\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Como \(|\cos x|,|\cos2x|\le1\), el producto vale 1 solo si ambos son 1 o ambos son \(-1\).</p>
+<p>Si \(\cos x=-1\), entonces \(\cos2x=2\cos^2x-1=1\), que no es \(-1\): imposible. Si \(\cos x=1\), entonces \(\cos2x=1\). Solución: \(x=2k\pi\), \(k\in\mathbb Z\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. Inecuación en un intervalo largo <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 22 y 23, ítem 11/15 (IB Prueba 1, noviembre 2019).</p>
+<p>\(f(x)=4\cos\tfrac x2+1\) para \(0\le x\le6\pi\). Halla los \(x\) con \(f(x)\lt2\sqrt2+1\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>\(\cos\tfrac x2\lt\tfrac{\sqrt2}2\), con \(u=\tfrac x2\in[0,3\pi]\). Se cumple para \(u\in\left(\tfrac\pi4,\tfrac{7\pi}4\right)\cup\left(\tfrac{9\pi}4,3\pi\right]\).</p>
+<p>Así \(\tfrac\pi2\lt x\lt\tfrac{7\pi}2\) o \(\tfrac{9\pi}2\lt x\le6\pi\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. Reducción de ángulos grandes <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA N°19 (reducción al primer cuadrante; ángulos de más de una vuelta), ampliada.</p>
+<p>(a) Simplifica \(E=\dfrac{\sin(\pi-\theta)\cos\left(\frac{3\pi}2+\theta\right)\tan(\pi+\theta)}{\cos(-\theta)\sin\left(\frac\pi2+\theta\right)}\). (b) Calcula \(E\) para \(\theta=\tfrac{2025\pi}4\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\sin(\pi-\theta)=\sin\theta\), \(\cos\left(\tfrac{3\pi}2+\theta\right)=\sin\theta\), \(\tan(\pi+\theta)=\tan\theta\), \(\cos(-\theta)=\cos\theta\), \(\sin\left(\tfrac\pi2+\theta\right)=\cos\theta\). Así \(E=\tan^3\theta\).</p>
+<p>(b) \(\tfrac{2025\pi}4=506\pi+\tfrac\pi4\), y la tangente tiene periodo \(\pi\): \(E=1\).</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son las 11 preguntas de trigonometría II de tus 7 pruebas, de la más corta a la más larga. Las marcas siguen el markscheme oficial, salvo en mayo 2021 TZ2, cuyo markscheme no está en tus archivos: ahí están reconstruidas y se indica. Resuélvelas en tiempo de examen, a 1,1 minutos por punto.</p>
+
+<div class="ex"><p class="et">X1. Mayo 2021 TZ2, pregunta 10(a) <span class="lvl">3 puntos</span></p>
+<p>\(f(x)=6+6\cos x\), \(0\le x\le4\pi\), toca el eje \(x\) en \(A\) y \(B\). Halla sus coordenadas \(x\).</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">\(6+6\cos x=0\) <span class="m">(M1)</span> \(\Rightarrow\cos x=-1\) <span class="m">A1</span> \(\Rightarrow x=\pi,\ 3\pi\) <span class="m">A1</span></p>
+<p>El resto de la pregunta (el área bajo la curva) se resuelve en el Módulo 14.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Mayo 2021 TZ1, pregunta 6 <span class="lvl">4 puntos</span></p>
+<p>\(\csc\theta=\tfrac32\), con \(\tfrac\pi2\lt\theta\lt\tfrac{3\pi}2\). Halla el valor exacto de \(\cot\theta\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">\(1+\cot^2\theta=\csc^2\theta\) <span class="m">M1</span>: \(\cot^2\theta=\tfrac94-1=\tfrac54\) <span class="m">(A1)</span></p>
+<p class="step">\(\csc\theta\gt0\) sitúa \(\theta\) en el cuadrante II, donde \(\cot\theta\lt0\) <span class="m">R1</span></p>
+<p class="step">\(\cot\theta=-\tfrac{\sqrt5}2\) <span class="m">A1</span></p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> Dar \(+\tfrac{\sqrt5}2\) queda en M1A1R0A0.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Mayo 2022 TZ2, pregunta 4 <span class="lvl">5 puntos</span></p>
+<p>Halla el menor valor positivo de \(x\) con \(\cos\left(\tfrac x2+\tfrac\pi3\right)=\tfrac1{\sqrt2}\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">Ángulo de referencia \(\tfrac\pi4\) <span class="m">(A1)</span>. Plantear \(\tfrac x2+\tfrac\pi3=\tfrac\pi4,\ \tfrac{7\pi}4,\dots\) <span class="m">(M1)</span></p>
+<p class="step">\(\tfrac\pi4\) da \(x\lt0\), así que se rechaza <span class="m">R1</span></p>
+<p class="step">\(\tfrac x2=\tfrac{7\pi}4-\tfrac\pi3=\tfrac{17\pi}{12}\) <span class="m">A1</span> \(\Rightarrow x=\tfrac{17\pi}6\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X4. Noviembre 2022, pregunta 8 <span class="lvl">5 puntos</span></p>
+<p>\(f(x)=\cos(x-k)\), \(0\le x\le a\). Halla el mayor \(a\) para el que existe \(f^{-1}\): (a) si \(k=\tfrac\pi2\); (b) si \(k=\pi\); (c) si \(\pi\lt k\lt2\pi\), en función de \(k\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(\cos\left(x-\tfrac\pi2\right)=\sin x\), creciente hasta \(\tfrac\pi2\): \(a=\tfrac\pi2\) <span class="m">A2</span></p>
+<p class="step">(b) \(\cos(x-\pi)=-\cos x\), creciente en \([0,\pi]\): \(a=\pi\) <span class="m">A1</span></p>
+<p class="step">(c) El boceto muestra una senoide decreciente al cruzar el eje \(y\) <span class="m">(A1)</span>. Es monótona hasta que \(x-k=-\pi\): \(a=k-\pi\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X5. Mayo 2021 TZ2, pregunta 2 <span class="lvl">7 puntos</span></p>
+<p>Resuelve \(2\cos^2x+5\sin x=4\), \(0\le x\le2\pi\).</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">\(\cos^2x=1-\sin^2x\) <span class="m">(M1)</span> \(\Rightarrow2\sin^2x-5\sin x+2=0\) <span class="m">A1</span></p>
+<p class="step">Factorizar <span class="m">(M1)</span>: \((2\sin x-1)(\sin x-2)=0\) <span class="m">A1</span></p>
+<p class="step">\(\sin x=2\) es imposible <span class="m">R1</span>; \(\sin x=\tfrac12\Rightarrow x=\tfrac\pi6,\ \tfrac{5\pi}6\) <span class="m">A1A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X6. Noviembre 2021, pregunta 6 <span class="lvl">7 puntos</span></p>
+<p>(a) Muestra que \(2x-3-\dfrac6{x-1}=\dfrac{2x^2-5x-3}{x-1}\), \(x\ne1\). (b) A partir de lo anterior o de otro modo, resuelve \(2\sin2\theta-3-\dfrac6{\sin2\theta-1}=0\) para \(0\le\theta\le\pi\), \(\theta\ne\tfrac\pi4\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Denominador común <span class="m">(M1)</span>: \(\dfrac{(2x-3)(x-1)-6}{x-1}=\dfrac{2x^2-5x-3}{x-1}\) <span class="m">A1</span> <span class="m">AG</span></p>
+<p class="step">(b) Con \(x=\sin2\theta\): \(2\sin^22\theta-5\sin2\theta-3=0\) <span class="m">(M1)</span>; factorizar <span class="m">(M1)</span>: \((2\sin2\theta+1)(\sin2\theta-3)=0\)</p>
+<p class="step">\(\sin2\theta=-\tfrac12\) (se descarta 3) <span class="m">(A1)</span>; \(2\theta=\tfrac{7\pi}6\) o \(\tfrac{11\pi}6\) <span class="m">(A1)</span></p>
+<p class="step">\(\theta=\tfrac{7\pi}{12},\ \tfrac{11\pi}{12}\) <span class="m">A1</span> (con soluciones extra, A0)</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X7. Mayo 2022 TZ1, pregunta 3 <span class="lvl">7 puntos</span></p>
+<p>\(f(x)=\sqrt3\sin x+\cos x\) (\(0\le x\le\pi\)) y \(g(x)=2x\). (a) Halla \((f\circ g)(x)\). (b) Resuelve \((f\circ g)(x)=2\cos2x\), \(0\le x\le\pi\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(f(2x)\) <span class="m">(A1)</span> \(=\sqrt3\sin2x+\cos2x\) <span class="m">A1</span></p>
+<p class="step">(b) \(\sqrt3\sin2x=\cos2x\): usar tangente <span class="m">M1</span>, \(\tan2x=\tfrac1{\sqrt3}\) <span class="m">(A1)</span>; \(\arctan\tfrac1{\sqrt3}=\tfrac\pi6\) <span class="m">(A1)</span></p>
+<p class="step">\(2x=\tfrac\pi6,\tfrac{7\pi}6\Rightarrow x=\tfrac\pi{12},\ \tfrac{7\pi}{12}\) <span class="m">A1A1</span></p>
+<p><span class="lbl">Otro camino.</span> Forma armónica: \(2\sin\left(2x+\tfrac\pi6\right)=2\cos2x\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X8. Mayo 2022 TZ1, pregunta 5 <span class="lvl">7 puntos</span></p>
+<p>\(f(x)=4\sin x+2{,}5\) y \(g(x)=4\sin\left(x-\tfrac{3\pi}2\right)+2{,}5+q\), con \(q\gt0\). (a) Describe las dos transformaciones que llevan \(f\) a \(g\). (b) El corte de \(g\) con el eje \(y\) es \((0,r)\). Si \(g(x)\ge7\), halla el menor valor de \(r\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Traslación de \(\tfrac{3\pi}2\) hacia la derecha <span class="m">A1</span>; traslación de \(q\) hacia arriba <span class="m">A1</span></p>
+<p class="step">(b) El mínimo de \(4\sin\left(x-\tfrac{3\pi}2\right)\) es \(-4\) <span class="m">(M1)</span>: \(-4+2{,}5+q\ge7\Rightarrow q\ge8{,}5\) <span class="m">A1</span></p>
+<p class="step">\(x=0\) <span class="m">(M1)</span>: \(r=4\sin\left(-\tfrac{3\pi}2\right)+2{,}5+q=6{,}5+q\) <span class="m">(A1)</span>. El menor \(r\) es 15 <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X9. Mayo 2021 TZ1, pregunta 5 <span class="lvl">8 puntos</span></p>
+<p>(a) Muestra que \(\sin2x+\cos2x-1=2\sin x(\cos x-\sin x)\). (b) A partir de lo anterior o de otro modo, resuelve \(\sin2x+\cos2x-1+\cos x-\sin x=0\) para \(0\lt x\lt2\pi\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Ángulo doble <span class="m">M1</span>: \(2\sin x\cos x+(1-2\sin^2x)-1=2\sin x\cos x-2\sin^2x\) <span class="m">A1</span> \(=2\sin x(\cos x-\sin x)\) <span class="m">AG</span></p>
+<p class="step">(b) Factorizar <span class="m">M1</span>: \((\cos x-\sin x)(2\sin x+1)=0\) <span class="m">A1</span></p>
+<p class="step">\(\tan x=1\) o \(\sin x=-\tfrac12\) <span class="m">(M1)</span>; ángulos de referencia \(\tfrac\pi4\), \(\tfrac\pi6\) <span class="m">(A1)</span></p>
+<p class="step">\(x=\tfrac\pi4,\tfrac{5\pi}4,\tfrac{7\pi}6,\tfrac{11\pi}6\) <span class="m">A2</span> (dos correctas: A1; con extras: A1A0)</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X10. Noviembre 2022, pregunta 10(a)(c)(d) <span class="lvl">13 puntos</span></p>
+<p>\(f(x)=\cos^2x-3\sin^2x\), \(0\le x\le\pi\). (a) Halla las raíces de \(f(x)=0\). (c) Dibuja \(y=|f(x)|\), con los puntos donde \(f'(x)=0\) y los cortes con los ejes. (d) Resuelve \(|f(x)|\gt1\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Reducir a una razón <span class="m">(M1)</span>: \(\tan^2x=\tfrac13\) <span class="m">(A1)</span>; \(\tan x=\pm\tfrac1{\sqrt3}\) <span class="m">(A1)</span>; \(x=\tfrac\pi6,\ \tfrac{5\pi}6\) <span class="m">A1A1</span></p>
+<p class="step">Puntos estacionarios sin derivar: \(f=1-4\sin^2x=2\cos2x-1\), con extremos en \((0,1)\), \(\left(\tfrac\pi2,-3\right)\) y \((\pi,1)\). La parte (b) los obtiene con \(f'(x)=-4\sin2x\) (Módulo 12).</p>
+<p class="step">(c) Reflejar la parte negativa <span class="m">M1</span>; extremos \((0,1)\) y \((\pi,1)\) <span class="m">A1</span>; máximo suave en \(\left(\tfrac\pi2,3\right)\) <span class="m">A1</span>; picos en \(\tfrac\pi6\) y \(\tfrac{5\pi}6\) <span class="m">A1</span></p>
+<p class="step">(d) Cortes con \(y=1\): \(-(1-4\sin^2x)=1\) <span class="m">(M1)</span>, \(\sin^2x=\tfrac12\) <span class="m">(A1)</span>, \(x=\tfrac\pi4,\tfrac{3\pi}4\) <span class="m">(A1)</span>. Así \(\tfrac\pi4\lt x\lt\tfrac{3\pi}4\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X11. Mayo 2021 TZ2, pregunta 12 <span class="lvl">19 puntos</span></p>
+<p>La gráfica de \(y=\arctan(2x+1)+\tfrac\pi4\) tiene asíntotas \(y=-\tfrac\pi4\) e \(y=\tfrac{3\pi}4\). (a) Describe una secuencia de transformaciones que lleve \(y=\arctan x\) a esta gráfica. (b) Muestra que \(\arctan p+\arctan q\equiv\arctan\tfrac{p+q}{1-pq}\) para \(p,q\gt0\), \(pq\lt1\). (c) Verifica que \(\arctan(2x+1)=\arctan\tfrac x{x+1}+\tfrac\pi4\) para \(x\gt0\). (d) Usando inducción y (b), prueba que \(\sum_{r=1}^{n}\arctan\tfrac1{2r^2}=\arctan\tfrac n{n+1}\).</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">(a) Estiramiento horizontal de factor \(\tfrac12\) <span class="m">A1</span>; después, traslación \(\tfrac12\) a la izquierda <span class="m">A1</span>; traslación \(\tfrac\pi4\) hacia arriba <span class="m">A1</span>. El orden importa: \(\arctan\big(2(x+\tfrac12)\big)\). También vale trasladar primero 1 a la izquierda y después estirar con factor \(\tfrac12\).</p>
+<p class="step">(b) Sea \(\alpha=\arctan p\), \(\beta=\arctan q\) <span class="m">M1</span>; \(\tan(\alpha+\beta)=\tfrac{p+q}{1-pq}\) <span class="m">M1A1</span>. Como \(\alpha,\beta\in\left(0,\tfrac\pi2\right)\) y \(\tan(\alpha+\beta)\gt0\) (por \(pq\lt1\)), \(\alpha+\beta\in\left(0,\tfrac\pi2\right)\) y se puede aplicar arctan <span class="m">R1</span></p>
+<p class="step">(c) \(\tfrac\pi4=\arctan1\), con \(p=\tfrac x{x+1}\lt1\) <span class="m">M1</span>: \(\dfrac{\frac x{x+1}+1}{1-\frac x{x+1}}\) <span class="m">A1</span> \(=\dfrac{(2x+1)/(x+1)}{1/(x+1)}=2x+1\) <span class="m">A1</span></p>
+<p class="step">(d) \(n=1\): \(\arctan\tfrac12\) a ambos lados <span class="m">A1</span>. Supón que es cierto para \(n=k\) <span class="m">M1</span>. Sumar el término \(k+1\) <span class="m">M1</span> y aplicar (b) <span class="m">M1</span>:</p>
+<p class="step">\(\arctan\dfrac{\frac k{k+1}+\frac1{2(k+1)^2}}{1-\frac{k}{2(k+1)^3}}\) <span class="m">A1</span> \(=\arctan\dfrac{(2k^2+2k+1)(k+1)}{2(k+1)^3-k}\) <span class="m">A1</span></p>
+<p class="step">\(2(k+1)^3-k=(k+2)(2k^2+2k+1)\) <span class="m">A1</span>, así que queda \(\arctan\tfrac{k+1}{k+2}\) <span class="m">A1</span>. Cierre de la inducción <span class="m">R1</span></p>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Estos tipos de pregunta no salieron en tus 7 pruebas, pero el IB los pone en otras convocatorias. Junto con la teoría y las secciones 4 y 5, cubren todo el programa de trigonometría (Tema 3) que se evalúa en la Prueba 1. Cada tipo trae cómo reconocerlo, el método, un ejemplo resuelto y ejercicios para practicar.</p>
+<h3 id="ty1">T1. Suma a producto para resolver una ecuación</h3>
+<p><b>Qué reconocer:</b> una ecuación del tipo \(\sin px\pm\sin qx=0\) o \(\cos px\pm\cos qx=0\). <b>Método:</b> usa \(\sin A+\sin B=2\sin\tfrac{A+B}2\cos\tfrac{A-B}2\) (y sus análogas) para convertir la suma en un producto, y luego iguala cada factor a 0. No pierdas el factor que se anula.</p>
+<div class="ex"><p class="et">Ejemplo T1. <span class="lvl">Tipo IB</span></p>
+<p>Resuelve \(\sin5x+\sin x=0\) para \(0\le x\lt\pi\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(2\sin3x\cos2x=0\). \(\sin3x=0\Rightarrow x=0,\tfrac\pi3,\tfrac{2\pi}3\); \(\cos2x=0\Rightarrow x=\tfrac\pi4,\tfrac{3\pi}4\).</p><p>Soluciones: \(x=0,\ \tfrac\pi4,\ \tfrac\pi3,\ \tfrac{2\pi}3,\ \tfrac{3\pi}4\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(\sin3x=\sin x\) para \(0\le x\lt2\pi\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(2\cos2x\sin x=0\): \(x=0,\pi\) (de \(\sin x\)) y \(x=\tfrac\pi4,\tfrac{3\pi}4,\tfrac{5\pi}4,\tfrac{7\pi}4\) (de \(\cos2x\)).</li></ol></div></details></div>
+<h3 id="ty2">T2. Solución general y conteo en un intervalo grande</h3>
+<p><b>Qué reconocer:</b> «escribe la solución general» o «¿cuántas soluciones hay en \([0,2\pi]\)?» con un argumento \(bx\). <b>Método:</b> resuelve la básica, escribe la familia (\(\cos u=k\Rightarrow u=2n\pi\pm\arccos k\)) y sustituye \(u=bx\); recorre \(n\) mientras \(x\) siga en el intervalo.</p>
+<div class="ex"><p class="et">Ejemplo T2. <span class="lvl">Tipo IB</span></p>
+<p>Halla todas las soluciones de \(\sin2x=\tfrac12\) en \([0,2\pi]\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(2x\in[0,4\pi]\) y \(\sin u=\tfrac12\Rightarrow u=\tfrac\pi6,\tfrac{5\pi}6,\tfrac{13\pi}6,\tfrac{17\pi}6\).</p><p>\(x=\tfrac\pi{12},\ \tfrac{5\pi}{12},\ \tfrac{13\pi}{12},\ \tfrac{17\pi}{12}\): cuatro soluciones.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Escribe la solución general de \(\cos x=-\tfrac12\) y cuenta las soluciones de \(\cos3x=-\tfrac12\) en \([0,2\pi]\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(x=2n\pi\pm\tfrac{2\pi}3\). Para \(\cos3x\): \(3x\in[0,6\pi]\), seis soluciones.</li></ol></div></details></div>
+<h3 id="ty3">T3. Identidad de triple ángulo</h3>
+<p><b>Qué reconocer:</b> «muestra que \(\cos3\theta=4\cos^3\theta-3\cos\theta\)» y, a partir de lo anterior, resuelve una cúbica o halla un valor exacto. <b>Método:</b> desarrolla \(\cos(2\theta+\theta)\) con la fórmula de suma y el ángulo doble. Para la cúbica, elige \(\theta\) tal que \(\cos3\theta\) sea notable.</p>
+<div class="ex"><p class="et">Ejemplo T3. <span class="lvl">Sección B</span></p>
+<p>Prueba que \(\cos3\theta=4\cos^3\theta-3\cos\theta\) y úsalo para mostrar que \(c=\cos20^\circ\) satisface \(8c^3-6c-1=0\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\cos3\theta=\cos2\theta\cos\theta-\sin2\theta\sin\theta=(2\cos^2\theta-1)\cos\theta-2\sin^2\theta\cos\theta=4\cos^3\theta-3\cos\theta\).</p><p>Con \(\theta=20^\circ\): \(\cos60^\circ=\tfrac12=4c^3-3c\), luego \(8c^3-6c-1=0\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba que \(\sin3\theta=3\sin\theta-4\sin^3\theta\) y deduce que \(s=\sin10^\circ\) cumple \(8s^3-6s+1=0\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\sin3\theta=\sin2\theta\cos\theta+\cos2\theta\sin\theta=3\sin\theta-4\sin^3\theta\). Con \(\theta=10^\circ\): \(\sin30^\circ=\tfrac12=3s-4s^3\), luego \(8s^3-6s+1=0\).</li></ol></div></details></div>
+<h3 id="ty4">T4. Valores exactos por ángulo mitad</h3>
+<p><b>Qué reconocer:</b> piden \(\cos22{,}5^\circ\), \(\sin\tfrac\pi{12}\), \(\tan\tfrac\pi8\) u otro ángulo que es la mitad de uno notable. <b>Método:</b> usa \(\cos^2\tfrac\theta2=\tfrac{1+\cos\theta}2\) y \(\sin^2\tfrac\theta2=\tfrac{1-\cos\theta}2\); el signo lo da el cuadrante. Para la tangente, \(\tan\tfrac\theta2=\tfrac{1-\cos\theta}{\sin\theta}\).</p>
+<div class="ex"><p class="et">Ejemplo T4. <span class="lvl">Tipo IB</span></p>
+<p>Halla el valor exacto de \(\cos22{,}5^\circ\) y de \(\tan22{,}5^\circ\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\cos^222{,}5^\circ=\tfrac{1+\cos45^\circ}2=\tfrac{2+\sqrt2}4\), así que \(\cos22{,}5^\circ=\tfrac{\sqrt{2+\sqrt2}}2\) (positivo).</p><p>\(\tan22{,}5^\circ=\tfrac{1-\cos45^\circ}{\sin45^\circ}=\tfrac{1-\frac{\sqrt2}2}{\frac{\sqrt2}2}=\sqrt2-1\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(\sin\tfrac\pi{12}\) y \(\cos\tfrac\pi{12}\) con la fórmula del ángulo mitad.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\sin^2\tfrac\pi{12}=\tfrac{1-\cos\frac\pi6}2=\tfrac{2-\sqrt3}4\Rightarrow\sin\tfrac\pi{12}=\tfrac{\sqrt{2-\sqrt3}}2=\tfrac{\sqrt6-\sqrt2}4\); análogamente \(\cos\tfrac\pi{12}=\tfrac{\sqrt6+\sqrt2}4\).</li></ol></div></details></div>
+<h3 id="ty5">T5. Modelo con la forma armónica</h3>
+<p><b>Qué reconocer:</b> un modelo (noria, marea, temperatura) del tipo \(a\sin t+b\cos t\) y piden el máximo, el mínimo o cuándo ocurren. <b>Método:</b> escribe \(a\sin t+b\cos t=R\sin(t+\alpha)\) con \(R=\sqrt{a^2+b^2}\) y \(\tan\alpha=\tfrac ba\). El máximo es \(R\) cuando \(t+\alpha=\tfrac\pi2\).</p>
+<div class="ex"><p class="et">Ejemplo T5. <span class="lvl">Sección A alta</span></p>
+<p>La altura de una cabina es \(h(t)=8\sin t+6\cos t+10\). Halla la altura máxima y el primer \(t\gt0\) en que ocurre.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(8\sin t+6\cos t=10\sin(t+\alpha)\) con \(\tan\alpha=\tfrac68=\tfrac34\). Máximo \(h=20\).</p><p>Ocurre cuando \(t+\alpha=\tfrac\pi2\), es decir \(t=\tfrac\pi2-\arctan\tfrac34\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Expresa \(\cos t-\sqrt3\sin t\) como \(R\cos(t+\alpha)\) y halla su valor máximo y dónde lo alcanza en \([0,2\pi)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(R=2\), \(\alpha=\tfrac\pi3\): \(2\cos\left(t+\tfrac\pi3\right)\). Máximo 2 cuando \(t+\tfrac\pi3=2\pi\), es decir \(t=\tfrac{5\pi}3\).</li></ol></div></details></div>
+<h3 id="ty6">T6. Ecuación con recíprocas</h3>
+<p><b>Qué reconocer:</b> una ecuación con \(\sec\), \(\csc\) o \(\cot\), a veces cuadrática. <b>Método:</b> pasa a \(\sin\), \(\cos\) o \(\tan\) con \(1+\tan^2x=\sec^2x\) y \(1+\cot^2x=\csc^2x\); resuelve y descarta los valores donde la recíproca no existe.</p>
+<div class="ex"><p class="et">Ejemplo T6. <span class="lvl">Tipo IB</span></p>
+<p>Resuelve \(\sec^2x=2\tan x\) para \(0\le x\lt2\pi\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(1+\tan^2x=2\tan x\Rightarrow(\tan x-1)^2=0\Rightarrow\tan x=1\).</p><p>\(x=\tfrac\pi4,\ \tfrac{5\pi}4\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Resuelve \(\cot x=\sqrt3\) para \(0\le x\lt2\pi\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\tan x=\tfrac1{\sqrt3}\): \(x=\tfrac\pi6,\ \tfrac{7\pi}6\).</li></ol></div></details></div>
+<h3 id="ty7">T7. Composición y ecuación con inversas</h3>
+<p><b>Qué reconocer:</b> una ecuación con \(\arcsin\), \(\arccos\) o \(\arctan\), o una composición \(\sin(\arccos x)\). <b>Método:</b> para una composición, dibuja un triángulo rectángulo con la razón dada. Para \(\arctan p+\arctan q\), toma tangente a los dos lados y comprueba el cuadrante del resultado.</p>
+<div class="ex"><p class="et">Ejemplo T7. <span class="lvl">Sección B</span></p>
+<p>Resuelve \(\arctan x+\arctan2x=\tfrac\pi4\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Tomando tangente: \(\tfrac{x+2x}{1-2x^2}=1\Rightarrow2x^2+3x-1=0\Rightarrow x=\tfrac{-3+\sqrt{17}}4\) (la otra raíz es negativa y daría suma negativa).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Simplifica \(\sin(\arccos x)\) para \(-1\le x\le1\) y halla \(\cos\left(\arcsin\tfrac35\right)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\sin(\arccos x)=\sqrt{1-x^2}\); \(\cos\left(\arcsin\tfrac35\right)=\tfrac45\).</li></ol></div></details></div>
+<h3 id="ty8">T8. Identidad condicional en un triángulo</h3>
+<p><b>Qué reconocer:</b> en un triángulo (\(A+B+C=\pi\)) piden probar o usar una identidad que combina sus ángulos. <b>Método:</b> sustituye \(C=\pi-(A+B)\) y aplica las fórmulas de suma. La más pedida: \(\tan A+\tan B+\tan C=\tan A\tan B\tan C\).</p>
+<div class="ex"><p class="et">Ejemplo T8. <span class="lvl">Sección B</span></p>
+<p>En un triángulo, \(\tan A=1\) y \(\tan B=2\). Usando que \(\tan A+\tan B+\tan C=\tan A\tan B\tan C\), halla \(\tan C\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(1+2+\tan C=2\tan C\Rightarrow\tan C=3\).</p><p>(Se comprueba: \(\arctan1+\arctan2+\arctan3=\pi\).)</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Prueba que si \(A+B+C=\pi\) entonces \(\tan A+\tan B+\tan C=\tan A\tan B\tan C\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\tan(A+B)=\tan(\pi-C)=-\tan C\Rightarrow\tfrac{\tan A+\tan B}{1-\tan A\tan B}=-\tan C\). Multiplica en cruz y reordena.</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo de los Módulos 1–8. Integran series (Módulo 1), polinomios (Módulo 2), inversas (Módulo 3), triángulos (Módulo 7), inducción (Módulo 5) y complejos (Módulo 6). El 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la Sección B. Al final, I1 es una investigación tipo Prueba 3 de NS. Cada uno trae una pista y la respuesta final plegadas.</p>
+
+<div class="ex"><p class="et">E1. Una serie geométrica de cosenos <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>(a) Para \(x\neq k\pi\), muestra que \(\sum_{k=0}^{\infty}\cos^{2k}x=\csc^2x\). (b) Resuelve \(\sum_{k=0}^{\infty}\cos^{2k}x=4\) para \(0\le x\lt2\pi\).</p>
+<details><summary>Pista</summary><div class="inner"><p>La razón es \(\cos^2x\), que es menor que 1 si \(x\neq k\pi\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\tfrac1{1-\cos^2x}=\tfrac1{\sin^2x}\). (b) \(\sin^2x=\tfrac14\): \(x=\tfrac\pi6,\tfrac{5\pi}6,\tfrac{7\pi}6,\tfrac{11\pi}6\).</p></div></details></div>
+
+<div class="ex"><p class="et">E2. Una cúbica con raíces coseno <span class="lvl">Sección B, integra Módulo 2</span></p>
+<p>(a) Muestra que \(\cos3x=4\cos^3x-3\cos x\). (b) Deduce que las raíces de \(8c^3-6c+1=0\) son \(\cos\tfrac{2\pi}9\), \(\cos\tfrac{4\pi}9\) y \(\cos\tfrac{8\pi}9\). (c) Halla su suma y su producto.</p>
+<details><summary>Pista</summary><div class="inner"><p>Con \(c=\cos x\), la ecuación es \(2\cos3x+1=0\). Busca soluciones con \(x\in[0,\pi]\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(\cos3x=-\tfrac12\Rightarrow3x=\tfrac{2\pi}3,\tfrac{4\pi}3,\tfrac{8\pi}3\). (c) Por Vieta: suma 0, producto \(-\tfrac18\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Inversas compuestas y una ecuación con arctan <span class="lvl">Sección B, integra Módulo 3</span></p>
+<p>(a) Prueba que \(\arcsin x+\arccos x=\tfrac\pi2\) para \(|x|\le1\). (b) Muestra que \(\sin(\arctan x)=\dfrac{x}{\sqrt{1+x^2}}\). (c) Resuelve \(\arctan x+\arctan2x=\tfrac\pi4\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(\sin\left(\tfrac\pi2-\arccos x\right)=x\), y el ángulo está en el recorrido de arcsin. (c) Aplica la fórmula de suma y descarta la raíz negativa.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) \(2x^2+3x-1=0\Rightarrow x=\tfrac{-3+\sqrt{17}}4\).</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Tangentes de los ángulos de un triángulo <span class="lvl">Sección B, integra Módulo 7</span></p>
+<p>(a) Prueba que si \(A+B+C=\pi\) (ningún ángulo recto), entonces \(\tan A+\tan B+\tan C=\tan A\tan B\tan C\). (b) Compruébalo con \(A=B=C=\tfrac\pi3\). (c) Si \(\tan A=1\) y \(\tan B=2\), halla \(\tan C\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(\tan C=-\tan(A+B)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(3\sqrt3=(\sqrt3)^3\). (c) \(\tan C=3\), y se cumple \(1+2+3=1\cdot2\cdot3\).</p></div></details></div>
+
+<div class="ex"><p class="et">E5. Producto de cosenos por inducción <span class="lvl">Sección B, integra Módulo 5</span></p>
+<p>(a) Prueba por inducción que \(\prod_{k=0}^{n-1}\cos(2^kx)=\dfrac{\sin(2^nx)}{2^n\sin x}\), para \(\sin x\neq0\). (b) Deduce que \(\cos\tfrac\pi7\cos\tfrac{2\pi}7\cos\tfrac{4\pi}7=-\tfrac18\).</p>
+<details><summary>Pista</summary><div class="inner"><p>El paso usa \(\sin(2^{k+1}x)=2\sin(2^kx)\cos(2^kx)\). En (b), \(\sin\tfrac{8\pi}7=-\sin\tfrac\pi7\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) Con \(n=3\), \(x=\tfrac\pi7\): \(\tfrac{-\sin(\pi/7)}{8\sin(\pi/7)}=-\tfrac18\).</p></div></details></div>
+
+<div class="ex"><p class="et">E6. Identidades desde la exponencial compleja <span class="lvl">Sección B, integra Módulo 6</span></p>
+<p>(a) Deduce \(\cos(A+B)\) y \(\sin(A+B)\) desarrollando \(e^{iA}e^{iB}\). (b) Muestra que \(\cos x+\cos3x=2\cos2x\cos x\). (c) Resuelve \(\cos x+\cos2x+\cos3x=0\) para \(0\le x\lt2\pi\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(c) Agrupa \(\cos x+\cos3x\) y saca factor común \(\cos2x\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) \(\cos2x(2\cos x+1)=0\): \(x=\tfrac\pi4,\tfrac{3\pi}4,\tfrac{5\pi}4,\tfrac{7\pi}4,\tfrac{2\pi}3,\tfrac{4\pi}3\).</p></div></details></div>
+
+<div class="ex"><p class="et">E7. Optimizar sin derivadas <span class="lvl">Sección B, integra Módulo 7</span></p>
+<p>Un rectángulo tiene un vértice en el origen y el opuesto en el arco de la circunferencia unitaria del primer cuadrante, en el ángulo \(\theta\). (a) Halla el área máxima y el \(\theta\) en que se alcanza. (b) Halla el perímetro máximo.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(\sin\theta\cos\theta=\tfrac12\sin2\theta\). (b) Forma armónica de \(\cos\theta+\sin\theta\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\tfrac12\), en \(\theta=\tfrac\pi4\). (b) \(2\sqrt2\sin\left(\theta+\tfrac\pi4\right)\le2\sqrt2\).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Número de soluciones según un parámetro <span class="lvl">Sección B</span></p>
+<p>(a) ¿Para qué \(k\) tiene solución \(\sqrt3\sin x+\cos x=k\)? (b) Resuélvela en \([0,2\pi)\) para \(k=\sqrt2\). (c) ¿Cuántas soluciones hay en \([0,2\pi)\) según \(k\)?</p>
+<details><summary>Pista</summary><div class="inner"><p>\(\sqrt3\sin x+\cos x=2\sin\left(x+\tfrac\pi6\right)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(|k|\le2\). (b) \(x=\tfrac\pi{12},\tfrac{7\pi}{12}\). (c) Dos si \(|k|\lt2\); una si \(k=\pm2\); ninguna si \(|k|\gt2\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. La sustitución del ángulo medio <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>(a) Con \(t=\tan\tfrac x2\), prueba que \(\sin x=\tfrac{2t}{1+t^2}\) y \(\cos x=\tfrac{1-t^2}{1+t^2}\). (b) Resuelve \(3\sin x+4\cos x=5\) y comprueba que \(\tan x=\tfrac34\). (c) Prueba que \(\arctan\tfrac12+\arctan\tfrac13=\tfrac\pi4\) y que \(\arctan1+\arctan2+\arctan3=\pi\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Queda \(9t^2-6t+1=0\): una raíz doble, porque 5 es el máximo \(R\). (c) En la segunda, \(\tfrac{1+2}{1-2}=-3\): cuidado con el cuadrante.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(t=\tfrac13\Rightarrow x=2\arctan\tfrac13+2k\pi\), y \(\tan x=\tfrac{2/3}{8/9}=\tfrac34\). (c) \(\arctan1+\arctan2=\pi-\arctan3\).</p></div></details></div>
+
+<div class="ex"><p class="et">E10. Una suma telescópica de productos de tangentes <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>(a) Usando \(\tan(A-B)\), muestra que \(\tan((k+1)x)-\tan(kx)=\tan x\,\big(1+\tan(kx)\tan((k+1)x)\big)\). (b) Deduce que \(\sum_{k=1}^{n}\tan(kx)\tan((k+1)x)=\dfrac{\tan((n+1)x)}{\tan x}-(n+1)\). (c) Compruébalo con \(x=\tfrac\pi{12}\) y \(n=2\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Despeja el producto en (a) y suma: los términos \(\tan\) forman una telescópica (Módulo 1).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) \(\tan15^\circ\tan30^\circ+\tan30^\circ\tan45^\circ=\tfrac{3-\sqrt3}{\sqrt3}=\sqrt3-1\), y la fórmula da \(\tfrac1{2-\sqrt3}-3=\sqrt3-1\).</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. Los polinomios de Chebyshev: \(\cos n\theta\) como polinomio en \(\cos\theta\) <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>Ya viste que \(\cos2\theta\) y \(\cos3\theta\) se escriben como polinomios en \(c=\cos\theta\). Aquí descubres que esto pasa siempre, hallas la regla que los genera y la usas para obtener un valor exacto.</p>
+<ol type="a"><li>Escribe \(T_1(c)=\cos\theta\), \(T_2(c)=\cos2\theta\) y \(T_3(c)=\cos3\theta\) como polinomios en \(c\).</li><li>Usando \(\cos((n+1)\theta)+\cos((n-1)\theta)=2\cos\theta\cos n\theta\), demuestra la recurrencia \(T_{n+1}(c)=2c\,T_n(c)-T_{n-1}(c)\).</li><li>Con la recurrencia, halla \(T_4(c)\) y \(T_5(c)\).</li><li>El grado de \(T_n\) es \(n\) y su coeficiente principal es \(2^{n-1}\) (para \(n\ge1\)). Pruébalo por inducción fuerte.</li><li>Como \(\cos(5\cdot36^\circ)=\cos180^\circ=-1\), \(c=\cos36^\circ\) es raíz de \(T_5(c)+1=0\). Factoriza y halla el valor exacto de \(\cos36^\circ\).</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>Ángulo doble y triple ya trabajados en la sección 1.3.</li><li>Despeja \(\cos((n+1)\theta)\) de la fórmula de suma a producto.</li><li>\(T_4=2c\,T_3-T_2\), \(T_5=2c\,T_4-T_3\).</li><li>La recurrencia baja de \(n+1\) a \(n\) y \(n-1\): necesitas dos casos base.</li><li>\(16c^5-20c^3+5c+1=(c+1)(4c^2-2c-1)^2\); \(\cos36^\circ\gt0\).</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>\(T_1=c\), \(T_2=2c^2-1\), \(T_3=4c^3-3c\).</li><li>\(2\cos\theta\cos n\theta-\cos((n-1)\theta)=\cos((n+1)\theta)\), es decir \(T_{n+1}=2c\,T_n-T_{n-1}\).</li><li>\(T_4=8c^4-8c^2+1\), \(T_5=16c^5-20c^3+5c\).</li><li>Si \(T_n\) y \(T_{n-1}\) tienen grados \(n\), \(n-1\) y coeficientes \(2^{n-1}\), \(2^{n-2}\), entonces \(2c\,T_n\) aporta grado \(n+1\) con coeficiente \(2^n\); \(T_{n-1}\) es de grado menor. Casos base \(T_1,T_2\).</li><li>\(4c^2-2c-1=0\) con \(c\gt0\): \(c=\tfrac{1+\sqrt5}4\), es decir \(\cos36^\circ=\tfrac{1+\sqrt5}4\).</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 9, vectores, rectas y planos (con sistemas 3×3).</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

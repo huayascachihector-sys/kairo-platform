@@ -8,6 +8,7 @@ import { Toaster } from "./components/ui/toaster";
 const MathPractice = lazy(() => import("./pages/MathPractice"));
 const Recursos = lazy(() => import("./pages/Recursos"));
 const Cursos = lazy(() => import("./pages/Cursos"));
+const CursoPremiumViewer = lazy(() => import("./pages/CursoPremiumViewer"));
 const Blog = lazy(() => import("./pages/Blog"));
 const About = lazy(() => import("./pages/About"));
 const Registro = lazy(() => import("./pages/Registro"));
@@ -37,6 +38,7 @@ type Route =
   | "matematicas"
   | "recursos"
   | "cursos"
+  | "cursos-premium"
   | "blog"
   | "about"
   | "registro"
@@ -52,6 +54,7 @@ function getRoute(): Route {
     "matematicas",
     "recursos",
     "cursos",
+    "cursos-premium",
     "blog",
     "about",
     "registro",
@@ -131,6 +134,8 @@ export default function App() {
         return <Recursos />;
       case "cursos":
         return <Cursos />;
+      case "cursos-premium":
+        return <CursoPremiumViewer />;
       case "blog":
         return <Blog />;
       case "about":

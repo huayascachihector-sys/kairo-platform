@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 17 · Límites, L’Hôpital y series de Maclaurin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido"><div class="nt">Módulo 17</div>
+<a href="#mapa">0. Mapa y evaluación</a>
+<a href="#teoria">1. Teoría completa</a>
+<a class="sub" href="#t1">1.1 Límites y continuidad</a>
+<a class="sub" href="#t2">1.2 Límites especiales</a>
+<a class="sub" href="#t3">1.3 Regla de L'Hôpital</a>
+<a class="sub" href="#t4">1.4 Series infinitas</a>
+<a class="sub" href="#t5">1.5 Series de Maclaurin</a>
+<a class="sub" href="#t6">1.6 Construir series</a>
+<a class="sub" href="#t7">1.7 Aplicaciones</a>
+<a class="sub" href="#t8">1.8 Más allá del IB</a>
+<a href="#glosario">2. Glosario</a>
+<a href="#trampas">3. Trampas de Prueba 1</a>
+<a href="#fichas">4. Ejemplos resueltos</a>
+<a href="#examenes">5. Preguntas de examen</a>
+<a href="#extra">6. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+<p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 17 de 17</p>
+<h1>Límites, L'Hôpital y series de Maclaurin</h1>
+<p class="formula">\( \lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a}\frac{f'(x)}{g'(x)}\qquad f(x)=\sum_{n=0}^{\infty}\frac{f^{(n)}(0)}{n!}x^n \)</p>
+<p>Es el último tema del programa NS de análisis y el que más conecta con los demás: usa derivadas (Módulo 12), inducción (Módulo 5), series geométricas (Módulo 1), integrales (Módulo 14) y ecuaciones diferenciales (Módulo 15). En tus pruebas aparece al final de la Sección B, con preguntas de hasta 21 puntos. Los problemas extra llegan hasta la irracionalidad de \(e\).</p>
+</header>
+
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">Límites y Maclaurin aparecen en 3 de tus 7 pruebas y suman 41 puntos en 4 preguntas o partes. Una de ellas, mayo 2022 TZ1 P12, vale 21 puntos y es la más larga de la prueba. En los tres casos el tema cierra la prueba: hay que llegar con tiempo.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2021 TZ1</td><td>8</td><td>5</td><td>L'Hôpital con \(\frac{\arctan2x}{\tan3x}\)</td></tr>
+<tr><td>Noviembre 2021</td><td>11(b)(c)</td><td>7</td><td>Maclaurin de \(x^2e^x\) a partir de la derivada \(n\)-ésima; límite \(\frac{(x^2e^x-x^2)^3}{x^9}\)</td></tr>
+<tr><td>Mayo 2021 TZ1</td><td>12(c)</td><td>8</td><td>Coeficiente de \(x^2\) en \(\sqrt{1+x}\,e^{mx}\): hallar \(m\)</td></tr>
+<tr><td>Mayo 2022 TZ1</td><td>12</td><td>21</td><td>Maclaurin de \(e^x\sin x\) y \(e^x\cos x\), integral aproximada, ecuación para \(g''\), límite</td></tr>
+</tbody></table></div>
+<p>La parte (a) de noviembre 2021 P11 es una inducción (Módulo 5). Las partes (a) y (b) de mayo 2021 TZ1 P12 son la segunda derivada de \(\sqrt{1+x}\) y una inducción sobre \(f^{(n)}\) (Módulos 12 y 5). Aquí se usan sus resultados.</p>
+
+<h3>Cómo lo pregunta el IB: patrones de tus pruebas</h3>
+<ol>
+<li><b>Serie por producto de series conocidas:</b> \(e^x\sin x\), \(x^2e^x\), \(\sqrt{1+x}\,e^{mx}\). Se multiplican los desarrollos y se recoge hasta el término pedido.</li>
+<li><b>Serie a partir de derivadas:</b> una fórmula para \(f^{(n)}\) (por inducción) o una ecuación como \(g''=2(g'-g)\) da los valores \(f^{(n)}(0)\).</li>
+<li><b>«A partir de lo anterior», un límite:</b> se sustituye la serie y se simplifica. El markscheme acepta también L'Hôpital.</li>
+<li><b>L'Hôpital directo:</b> con derivadas de funciones trigonométricas inversas. Exige escribir «\(\lim\)» en cada línea.</li>
+<li><b>Aproximar una integral imposible:</b> se integra la serie término a término (\(\int_0^1e^{x^2}\sin x^2\,dx\)).</li>
+</ol>
+
+<h3>Qué aportan las fichas</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>Trabajo grupal 3 (límites)</td><td>Límites a partir de gráficos, funciones a trozos, factorizar, fracciones compuestas y racionalizar</td><td>Ejemplo 1.1, F1</td></tr>
+<tr><td>DMPA 15 (series infinitas)</td><td>Convergencia y sumas parciales; comparación, razón e integral; series de potencias e intervalo de convergencia; 23 ejercicios de convergencia y de Maclaurin</td><td>F2, F3, F5, F6</td></tr>
+<tr><td>Banco «Series de potencias» (Exercise 5B)</td><td>Radio e intervalo de convergencia con extremos; hallar \(k\) a partir del intervalo</td><td>F4</td></tr>
+<tr><td>DMPA 22, ítems 2 y 7</td><td>Derivada \(n\)-ésima de \(xe^{2x}\) por inducción; noviembre 2021 P11 completa</td><td>F7, X2</td></tr>
+</tbody></table></div>
+<p><b>Lo que las fichas no cubren</b>, y cómo se compensa: la regla de L'Hôpital (Ejemplos 1.6 a 1.8, F8, X1), los límites especiales con acotación (Ejemplo 1.4 y la figura de la sección 1.2), construir series por composición y cociente (Ejemplos 1.14 y 1.15, F9, F10), la serie de una solución de una ecuación diferencial (Ejemplo 1.16, E3) y la aproximación de integrales (Ejemplo 1.17). Los criterios de convergencia y el radio de convergencia de la ficha DMPA 15 no están en el programa AA: van marcados como «más allá».</p>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Idea de límite, límites laterales y en el infinito, continuidad (NM 5.1, NS 5.12)</td><td>1.1</td><td>Medio</td></tr>
+<tr><td>\(\frac{\sin x}x\to1\), \(\left(1+\frac1n\right)^n\to e\) y órdenes de crecimiento</td><td>1.2</td><td>Medio</td></tr>
+<tr><td>Regla de L'Hôpital, incluida la aplicación repetida (NS 5.13)</td><td>1.3</td><td>Alto</td></tr>
+<tr><td>Series infinitas, convergencia, serie geométrica (NM 1.8)</td><td>1.4</td><td>Bajo</td></tr>
+<tr><td>Series de Maclaurin a partir de derivadas; series del cuadernillo (NS 5.19)</td><td>1.5</td><td>Alto</td></tr>
+<tr><td>Sustitución, productos, integración y derivación de series, serie de una ecuación diferencial (NS 5.19)</td><td>1.6</td><td>Alto</td></tr>
+<tr><td>Límites con Maclaurin, aproximaciones, integrales (NS 5.13, 5.19)</td><td>1.7</td><td>Alto</td></tr>
+<tr><td>Taylor en \(x=a\), cota de error, criterios de convergencia, fórmula de Euler (fuera del programa)</td><td>1.8</td><td>Solo como herramienta</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1 a 1.7 cubren NS 5.12, 5.13 y 5.19 con un ejemplo por concepto. Las cuatro preguntas de examen están resueltas con el markscheme oficial, cada una con todos sus métodos alternativos. La sección 1.8 y las cajas moradas recogen lo que trae la ficha DMPA 15 fuera del programa (criterios de convergencia, radio, Taylor en \(x=a\)), porque ayuda a entender la validez de cada serie.</p></div>
+</section>
+
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Cada sección va de la definición a las variantes de Sección B. Cada concepto trae un ejemplo con valores exactos. Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Límites y continuidad</h3>
+<p>\(\lim_{x\to a}f(x)=L\) significa que \(f(x)\) se acerca tanto como se quiera a \(L\) si \(x\) está suficientemente cerca de \(a\), con \(x\ne a\). El valor \(f(a)\) no interviene: puede no existir o ser otro.</p>
+<ul>
+<li><b>Límites laterales:</b> \(\lim_{x\to a^-}\) y \(\lim_{x\to a^+}\). El límite existe si y solo si ambos existen y son iguales.</li>
+<li><b>Límites en el infinito:</b> \(\lim_{x\to\pm\infty}\) da las asíntotas horizontales. Un límite infinito en \(a\) da una asíntota vertical.</li>
+<li><b>Técnicas algebraicas para \(\frac00\):</b> factorizar y simplificar; racionalizar con el conjugado; reducir fracciones compuestas a común denominador. Para \(\frac\infty\infty\): dividir por la mayor potencia del denominador.</li>
+<li><b>Continuidad en \(a\):</b> \(f(a)\) existe, el límite existe y \(\lim_{x\to a}f(x)=f(a)\). Los polinomios, las exponenciales, los logaritmos y las trigonométricas son continuos en su dominio.</li>
+<li><b>Derivabilidad implica continuidad</b>, pero no al revés: \(|x|\) es continua y no derivable en 0.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.1. El valor en el punto no importa</p>
+<p class="src">Trabajo grupal 3, ítems 1 y 5.</p>
+<p>(a) \(f(x)=-x^2+2\) si \(x\ne2\), y \(f(2)=-5\). Entonces \(\lim_{x\to2}f(x)=-2\), aunque \(f(2)=-5\). En la gráfica hay un círculo vacío en \((2,-2)\) y un punto lleno en \((2,-5)\). La función no es continua en 2.</p>
+<p>(b) \(f(x)=x+1\) si \(x\ne0\), y \(f(0)=2\). El límite en 0 es 1. Redefinir \(f(0)=1\) hace a \(f\) continua: la discontinuidad es <b>evitable</b>.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.2. Racionalizar y dividir por la mayor potencia</p>
+<p>(a) \(\lim_{x\to0}\frac{\sqrt{x+1}-1}x=\lim_{x\to0}\frac{(x+1)-1}{x\left(\sqrt{x+1}+1\right)}=\lim_{x\to0}\frac1{\sqrt{x+1}+1}=\frac12\).</p>
+<p>(b) \(\lim_{x\to\infty}\frac{3x^2-x}{2x^2+5}=\lim_{x\to\infty}\frac{3-\frac1x}{2+\frac5{x^2}}=\frac32\).</p>
+<p>(c) \(\lim_{x\to\infty}\left(\sqrt{x^2+x}-x\right)=\lim_{x\to\infty}\frac{x}{\sqrt{x^2+x}+x}=\lim_{x\to\infty}\frac1{\sqrt{1+\frac1x}+1}=\frac12\). Es una forma \(\infty-\infty\): no da 0.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.3. Continuidad con un parámetro</p>
+<p>\(f(x)=\frac{x^2-4}{x-2}\) si \(x\ne2\), y \(f(2)=k\). Como \(\frac{x^2-4}{x-2}=x+2\) para \(x\ne2\), el límite es 4: \(f\) es continua si y solo si \(k=4\). En cambio, \(\frac{|x|}x\) tiene límites laterales \(-1\) y \(1\) en 0: ningún valor la hace continua (discontinuidad de salto).</p></div>
+
+<h3 id="t2">1.2 Límites especiales</h3>
+\[ \lim_{x\to0}\frac{\sin x}x=1,\qquad \lim_{n\to\infty}\left(1+\frac1n\right)^n=e,\qquad \lim_{x\to\infty}\frac{x^k}{e^x}=0,\qquad \lim_{x\to\infty}\frac{\ln x}{x^k}=0\ (k\gt0) \]
+<ul>
+<li><b>\(\frac{\sin x}x\) por acotación:</b> en el sector de la circunferencia unidad con ángulo \(0\lt x\lt\frac\pi2\), el triángulo \(OAP\), el sector y el triángulo tangente \(OAT\) cumplen \(\frac12\sin x\lt\frac12x\lt\frac12\tan x\) (Módulo 7). Dividiendo por \(\frac12\sin x\) queda \(1\lt\frac x{\sin x}\lt\frac1{\cos x}\), e invirtiendo: \(\cos x\lt\frac{\sin x}x\lt1\). Como \(\cos x\to1\), el cociente queda atrapado (teorema del sándwich). Es la razón por la que \(\frac{d}{dx}\sin x=\cos x\).</li>
+<li><b>El número \(e\):</b> \(\left(1+\frac1n\right)^n\) crece y está acotada (problema E9); su límite define \(e\). En general, \(\left(1+\frac an\right)^n\to e^a\).</li>
+<li><b>Órdenes de crecimiento:</b> cuando \(x\to\infty\), \(\ln x\ll x^k\ll e^x\ll x!\) (aquí \(\ll\) significa «mucho menor que»). La exponencial vence a cualquier potencia, y la potencia a cualquier logaritmo.</li>
+</ul>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 373.896377 253.805937" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 253.805937 
+L 373.896377 253.805937 
+L 373.896377 0 
+L 0 0 
+L 0 253.805937 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 9.576377 228.96 
+L 366.696377 228.96 
+L 366.696377 7.2 
+L 9.576377 7.2 
+L 9.576377 228.96 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="me806921517" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#me806921517" x="20.472188" y="228.96" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="20.472188" y="244.318281" transform="rotate(-0 20.472188 244.318281)">−π/2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#me806921517" x="355.800567" y="228.96" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="355.800567" y="244.318281" transform="rotate(-0 355.800567 244.318281)">π/2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path id="m813dd2fc72" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m813dd2fc72" x="188.136377" y="140.256" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="181.136377" y="144.435141" transform="rotate(-0 181.136377 144.435141)">0,5</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m813dd2fc72" x="188.136377" y="51.552" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="181.136377" y="55.731141" transform="rotate(-0 181.136377 55.731141)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_5">
+    <path d="M 25.809104 220.093296 
+L 42.082515 193.286718 
+L 52.660232 176.26797 
+L 61.610608 162.264785 
+L 69.747314 149.9388 
+L 77.070348 139.235851 
+L 83.579713 130.075005 
+L 90.089077 121.281807 
+L 96.598441 112.888949 
+L 102.294135 105.898172 
+L 107.989829 99.257721 
+L 113.685523 92.9865 
+L 118.567546 87.918607 
+L 123.449569 83.145719 
+L 128.331592 78.677819 
+L 133.213616 74.524253 
+L 138.095639 70.693708 
+L 142.163992 67.75414 
+L 146.232344 65.048739 
+L 150.300697 62.581434 
+L 154.36905 60.355809 
+L 158.437402 58.375098 
+L 162.505755 56.642176 
+L 166.574108 55.159562 
+L 170.642461 53.92941 
+L 174.710813 52.953505 
+L 178.779166 52.233267 
+L 182.847519 51.76974 
+L 186.915871 51.563598 
+L 190.984224 51.615141 
+L 195.052577 51.924293 
+L 199.120929 52.490607 
+L 203.189282 53.313258 
+L 207.257635 54.391053 
+L 211.325988 55.722425 
+L 215.39434 57.305441 
+L 219.462693 59.1378 
+L 223.531046 61.216843 
+L 227.599398 63.539547 
+L 231.667751 66.10254 
+L 235.736104 68.902099 
+L 239.804456 71.934156 
+L 244.68648 75.873299 
+L 249.568503 80.132641 
+L 254.450526 84.703274 
+L 259.332549 89.575637 
+L 264.214573 94.73954 
+L 269.910266 101.118123 
+L 275.60596 107.860641 
+L 281.301654 114.947898 
+L 286.997348 122.35972 
+L 293.506712 131.200691 
+L 300.016076 140.405125 
+L 307.339111 151.151907 
+L 315.475817 163.519892 
+L 324.426193 177.560849 
+L 335.00391 194.612507 
+L 348.836309 217.393035 
+L 350.46365 220.093296 
+L 350.46365 220.093296 
+" clip-path="url(#pe4c226deaa)" style="fill: none; stroke: #5a3d9a; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 25.809104 112.451114 
+L 37.200492 105.038805 
+L 47.778209 98.437017 
+L 57.542255 92.616506 
+L 66.492631 87.536501 
+L 75.443007 82.722317 
+L 83.579713 78.593147 
+L 91.716418 74.714143 
+L 99.853124 71.098586 
+L 107.176158 68.080113 
+L 114.499193 65.293517 
+L 121.822228 62.746587 
+L 129.145263 60.446453 
+L 136.468298 58.399565 
+L 142.977662 56.797375 
+L 149.487026 55.403394 
+L 155.996391 54.220723 
+L 162.505755 53.251993 
+L 169.015119 52.499364 
+L 175.524484 51.964514 
+L 182.033848 51.648634 
+L 188.543212 51.55243 
+L 195.052577 51.676115 
+L 201.561941 52.019415 
+L 208.071305 52.581563 
+L 214.58067 53.361306 
+L 221.090034 54.356906 
+L 227.599398 55.566145 
+L 234.108763 56.986331 
+L 240.618127 58.614306 
+L 247.941162 60.689629 
+L 255.264197 63.017517 
+L 262.587232 65.591441 
+L 269.910266 68.404196 
+L 277.233301 71.447926 
+L 284.556336 74.714143 
+L 292.693042 78.593147 
+L 300.829747 82.722317 
+L 308.966452 87.087558 
+L 317.916828 92.144244 
+L 326.867204 97.447868 
+L 336.631251 103.489822 
+L 347.208968 110.303955 
+L 350.46365 112.451114 
+L 350.46365 112.451114 
+" clip-path="url(#pe4c226deaa)" style="fill: none; stroke: #0e6e6a; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 25.809104 51.552 
+L 350.46365 51.552 
+L 350.46365 51.552 
+" clip-path="url(#pe4c226deaa)" style="fill: none; stroke-dasharray: 6.66,2.88; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.8"/>
+   </g>
+   <g id="line2d_8">
+    <defs>
+     <path id="m018285d572" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #0e6e6a"/>
+    </defs>
+    <g clip-path="url(#pe4c226deaa)">
+     <use xlink:href="#m018285d572" x="188.136377" y="51.552" style="fill: #ffffff; stroke: #0e6e6a"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 188.136377 228.96 
+L 188.136377 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 9.576377 228.96 
+L 366.696377 228.96 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_9">
+     <path d="M 154.603565 185.024063 
+L 164.603565 185.024063 
+L 174.603565 185.024063 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 1.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="182.603565" y="188.524063" transform="rotate(-0 182.603565 188.524063)">cos x</text>
+    </g>
+    <g id="line2d_10">
+     <path d="M 154.603565 199.702188 
+L 164.603565 199.702188 
+L 174.603565 199.702188 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2.2; stroke-linecap: square"/>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="182.603565" y="203.202188" transform="rotate(-0 182.603565 203.202188)">sin x / x</text>
+    </g>
+    <g id="line2d_11">
+     <path d="M 154.603565 214.380313 
+L 164.603565 214.380313 
+L 174.603565 214.380313 
+" style="fill: none; stroke-dasharray: 6.66,2.88; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.8"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="182.603565" y="217.880313" transform="rotate(-0 182.603565 217.880313)">1</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe4c226deaa">
+   <rect x="9.576377" y="7.2" width="357.12" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: para \(0\lt|x|\lt\tfrac\pi2\), \(\cos x\lt\tfrac{\sin x}x\lt1\). Como \(\cos x\to1\), el cociente queda atrapado y su límite en 0 es 1, aunque no esté definido en \(x=0\).</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.4. Usar \(\frac{\sin x}x\to1\) sin L'Hôpital</p>
+<p>(a) \(\lim_{x\to0}\frac{\sin3x}{\sin5x}=\lim_{x\to0}\frac{\sin3x}{3x}\cdot\frac{5x}{\sin5x}\cdot\frac35=\frac35\).</p>
+<p>(b) \(\lim_{x\to0}\frac{1-\cos x}{x^2}=\lim_{x\to0}\frac{2\sin^2\frac x2}{x^2}=\lim_{x\to0}\frac12\left(\frac{\sin\frac x2}{\frac x2}\right)^2=\frac12\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.5. Variantes de \(e\)</p>
+<p>\(\lim_{x\to\infty}\left(1+\frac2x\right)^x\). Con \(n=\frac x2\): \(\left[\left(1+\frac1n\right)^n\right]^2\to e^2\). Otra vía: el logaritmo es \(x\ln\left(1+\frac2x\right)=\frac{\ln(1+2/x)}{1/x}\), una forma \(\frac00\) que tiende a 2 (sección 1.3). Entonces el límite es \(e^2\).</p></div>
+
+<h3 id="t3">1.3 La regla de L'Hôpital (NS)</h3>
+<p>Si \(f\) y \(g\) son derivables cerca de \(a\), \(g'(x)\ne0\) cerca de \(a\) (salvo quizá en \(a\)), y \(\frac{f(x)}{g(x)}\) es una forma <b>indeterminada</b> \(\frac00\) o \(\frac\infty\infty\), entonces</p>
+\[ \lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a}\frac{f'(x)}{g'(x)}\quad\text{si el segundo límite existe.} \]
+<p>También vale con \(a=\pm\infty\) y con límites laterales.</p>
+<ul>
+<li><b>Se derivan por separado</b> numerador y denominador. No es la derivada del cociente.</li>
+<li><b>Comprueba la forma antes de cada aplicación.</b> Si ya no es indeterminada, se sustituye.</li>
+<li><b>Aplicación repetida:</b> si \(\frac{f'}{g'}\) vuelve a ser \(\frac00\), se aplica otra vez.</li>
+<li><b>Cuándo no sirve:</b> si el límite de \(\frac{f'}{g'}\) no existe, la regla no dice nada. Ejemplo: \(\lim_{x\to\infty}\frac{x+\sin x}x=1\), pero \(\frac{1+\cos x}1\) oscila. A veces es más largo que el álgebra o que Maclaurin.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.6. Dos aplicaciones seguidas</p>
+<p>\(\lim_{x\to0}\frac{e^x-1-x}{x^2}\), forma \(\frac00\). Primera aplicación: \(\lim_{x\to0}\frac{e^x-1}{2x}\), otra vez \(\frac00\). Segunda: \(\lim_{x\to0}\frac{e^x}2=\frac12\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.7. Formas \(\frac\infty\infty\): órdenes de crecimiento</p>
+<p>\(\lim_{x\to\infty}\frac{x^2}{e^x}\): dos aplicaciones dan \(\lim_{x\to\infty}\frac2{e^x}=0\).</p>
+<p>\(\lim_{x\to\infty}\frac{\ln x}{\sqrt x}\): una aplicación da \(\lim_{x\to\infty}\frac{1/x}{1/(2\sqrt x)}=\lim_{x\to\infty}\frac2{\sqrt x}=0\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.8. Formas \(0\cdot\infty\), \(\infty-\infty\), \(0^0\) y \(1^\infty\)</p>
+<p>(a) \(\lim_{x\to0^+}x\ln x=\lim_{x\to0^+}\frac{\ln x}{1/x}\), forma \(\frac{-\infty}\infty\). Con L'Hôpital: \(\lim_{x\to0^+}\frac{1/x}{-1/x^2}=\lim_{x\to0^+}(-x)=0\).</p>
+<p>(b) \(\lim_{x\to0^+}x^x=\lim_{x\to0^+}e^{x\ln x}=e^0=1\).</p>
+<p>(c) \(\lim_{x\to0}\left(\frac1x-\frac1{\sin x}\right)=\lim_{x\to0}\frac{\sin x-x}{x\sin x}\). Con L'Hôpital: \(\lim_{x\to0}\frac{\cos x-1}{\sin x+x\cos x}\), otra vez \(\frac00\); de nuevo: \(\lim_{x\to0}\frac{-\sin x}{2\cos x-x\sin x}=0\).</p>
+<p>(d) \(\lim_{x\to0}(\cos x)^{1/x^2}\): el logaritmo es \(\frac{\ln\cos x}{x^2}\to-\frac12\) (F10), así que el límite es \(e^{-1/2}\).</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ1, P8)</p><p>«Use la regla de L'Hôpital para hallar \(\lim_{x\to0}\frac{\arctan2x}{\tan3x}\)». Las marcas son: M1 por derivar numerador y denominador, A1A1 por \(\frac{2/(1+4x^2)}{3\sec^23x}\), (M1) por sustituir y A1 por \(\frac23\). El markscheme avisa: «no se tolera la ausencia de límites». Si no se escribe \(\lim\) en cada línea, la nota máxima es M1A1A0M1A1.</p></div>
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Por qué funciona L'Hôpital (caso simple):</b> si \(f(a)=g(a)=0\) y \(g'(a)\ne0\), entonces \(\frac{f(x)}{g(x)}=\frac{(f(x)-f(a))/(x-a)}{(g(x)-g(a))/(x-a)}\to\frac{f'(a)}{g'(a)}\). El caso general usa el teorema del valor medio de Cauchy.</li>
+<li><b>Las siete formas indeterminadas:</b> \(\frac00,\ \frac\infty\infty,\ 0\cdot\infty,\ \infty-\infty,\ 0^0,\ 1^\infty,\ \infty^0\). Las tres potencias se resuelven con \(f^g=e^{g\ln f}\).</li>
+</ul></div>
+
+<h3 id="t4">1.4 Series infinitas</h3>
+<p>Una serie \(\sum_{n=1}^\infty a_n\) es el límite de sus sumas parciales \(S_N=a_1+\cdots+a_N\). <b>Converge</b> si \(S_N\to S\in\mathbb R\), y entonces \(S\) es su suma. Si no, <b>diverge</b>.</p>
+<ul>
+<li><b>Condición necesaria:</b> si la serie converge, entonces \(a_n\to0\). Lo contrario es falso. Si \(a_n\not\to0\), diverge.</li>
+<li><b>Serie geométrica</b> (Módulo 1): \(\sum ar^{n-1}=\frac a{1-r}\) si \(|r|\lt1\). Es la referencia para comparar.</li>
+<li><b>La serie armónica diverge,</b> aunque \(\frac1n\to0\): \(1+\frac12+\left(\frac13+\frac14\right)+\left(\frac15+\cdots+\frac18\right)+\cdots\ge1+\frac12+\frac12+\frac12+\cdots\).</li>
+<li><b>Telescópicas:</b> \(\sum\frac1{n(n+1)}=\sum\left(\frac1n-\frac1{n+1}\right)\). Se cancelan los términos intermedios: \(S_N=1-\frac1{N+1}\to1\).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.9. Términos que no tienden a cero</p>
+<p class="src">DMPA 15, ítem 10.</p>
+<p>\(\sum_{n=0}^\infty\left(\frac n{n+4}\right)^n\). El término es \(\left(1-\frac4{n+4}\right)^n\to e^{-4}\ne0\) (sección 1.2). Por tanto la serie diverge. No hace falta ningún criterio más.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.10. Una telescópica que pasa por fracciones parciales</p>
+<p>Halla \(\sum_{n\ge1}\frac1{n^2+3n+2}\).</p>
+<p>\(\frac1{(n+1)(n+2)}=\frac1{n+1}-\frac1{n+2}\), así que \(S_N=\frac12-\frac1{N+2}\to\frac12\). La serie converge, y su término es del orden de \(\frac1{n^2}\).</p></div>
+<div class="box beyond"><p class="bt">Más allá del IB: criterios de la ficha DMPA 15</p>
+<ul>
+<li><b>Comparación:</b> si \(0\le a_n\le b_n\) y \(\sum b_n\) converge, \(\sum a_n\) converge. Si \(\sum a_n\) diverge, \(\sum b_n\) diverge.</li>
+<li><b>Razón (d'Alembert):</b> si \(\left|\frac{a_{n+1}}{a_n}\right|\to L\), la serie converge si \(L\lt1\), diverge si \(L\gt1\), y no se sabe si \(L=1\).</li>
+<li><b>Radio de convergencia:</b> \(\sum c_nx^n\) converge si \(|x|\lt R\) con \(R=\lim\left|\frac{c_n}{c_{n+1}}\right|\). En \(|x|=R\) hay que estudiar los extremos por separado (F4).</li>
+<li><b>Series \(p\):</b> \(\sum\frac1{n^p}\) converge si y solo si \(p\gt1\) (criterio de la integral, Módulo 14).</li>
+</ul></div>
+
+<h3 id="t5">1.5 Series de Maclaurin (NS)</h3>
+<p>Si \(f\) tiene derivadas de todos los órdenes en 0, su <b>serie de Maclaurin</b> es</p>
+\[ f(x)=f(0)+f'(0)\,x+\frac{f''(0)}{2!}x^2+\frac{f'''(0)}{3!}x^3+\cdots=\sum_{n=0}^\infty\frac{f^{(n)}(0)}{n!}x^n \]
+<p><b>De dónde sale.</b> Si \(f(x)=c_0+c_1x+c_2x^2+\cdots\), derivar \(n\) veces y poner \(x=0\) deja solo \(n!\,c_n\). Por tanto \(c_n=\frac{f^{(n)}(0)}{n!}\). El polinomio de grado \(n\) es el que mejor imita a \(f\) cerca de 0: coincide con ella en el valor y en las \(n\) primeras derivadas.</p>
+<div class="tbl"><table><thead><tr><th>Serie del cuadernillo</th><th>Desarrollo</th><th>Validez</th></tr></thead><tbody>
+<tr><td>\(e^x\)</td><td>\(1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\)</td><td>todo \(x\)</td></tr>
+<tr><td>\(\ln(1+x)\)</td><td>\(x-\frac{x^2}2+\frac{x^3}3-\cdots\)</td><td>\(-1\lt x\le1\)</td></tr>
+<tr><td>\(\sin x\)</td><td>\(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots\)</td><td>todo \(x\)</td></tr>
+<tr><td>\(\cos x\)</td><td>\(1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots\)</td><td>todo \(x\)</td></tr>
+<tr><td>\(\arctan x\)</td><td>\(x-\frac{x^3}3+\frac{x^5}5-\cdots\)</td><td>\(-1\le x\le1\)</td></tr>
+<tr><td>\((1+x)^p\)</td><td>\(1+px+\frac{p(p-1)}{2!}x^2+\cdots\)</td><td>\(|x|\lt1\) (si \(p\notin\mathbb N\))</td></tr>
+</tbody></table></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 420.203125 272.143725" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 272.143725 
+L 420.203125 272.143725 
+L 420.203125 0 
+L 0 0 
+L 0 272.143725 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 31.541563 228.96 
+L 388.661563 228.96 
+L 388.661563 7.2 
+L 31.541563 7.2 
+L 31.541563 228.96 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mff7309b1d2" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mff7309b1d2" x="31.541563" y="118.08" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="31.541563" y="133.438281" transform="rotate(-0 31.541563 133.438281)">−2π</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mff7309b1d2" x="120.821563" y="118.08" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="120.821563" y="133.438281" transform="rotate(-0 120.821563 133.438281)">−π</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mff7309b1d2" x="299.381563" y="118.08" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="299.381563" y="133.438281" transform="rotate(-0 299.381563 133.438281)">π</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mff7309b1d2" x="388.661563" y="118.08" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="388.661563" y="133.438281" transform="rotate(-0 388.661563 133.438281)">2π</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="ma261213f3a" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#ma261213f3a" x="210.101563" y="218.88" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="203.101563" y="223.059141" transform="rotate(-0 203.101563 223.059141)">−2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#ma261213f3a" x="210.101563" y="168.48" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="203.101563" y="172.659141" transform="rotate(-0 203.101563 172.659141)">−1</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#ma261213f3a" x="210.101563" y="67.68" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="203.101563" y="71.859141" transform="rotate(-0 203.101563 71.859141)">1</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#ma261213f3a" x="210.101563" y="17.28" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="203.101563" y="21.459141" transform="rotate(-0 203.101563 21.459141)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_9">
+    <path d="M 31.541563 118.08 
+L 39.413947 104.296362 
+L 43.707975 97.156204 
+L 47.286332 91.56369 
+L 50.864689 86.39103 
+L 53.727374 82.610492 
+L 56.590059 79.18956 
+L 59.452745 76.162917 
+L 61.599759 74.170305 
+L 63.746773 72.428197 
+L 65.893787 70.946532 
+L 68.040801 69.733762 
+L 70.187815 68.796808 
+L 72.334829 68.141013 
+L 74.481843 67.770119 
+L 76.628857 67.686243 
+L 78.775871 67.889862 
+L 80.922885 68.379815 
+L 83.069899 69.153307 
+L 85.216913 70.205925 
+L 87.363927 71.531665 
+L 89.510941 73.122961 
+L 91.657955 74.970737 
+L 93.804969 77.064451 
+L 96.667655 80.2178 
+L 99.53034 83.755013 
+L 102.393025 87.640229 
+L 105.971382 92.925813 
+L 109.549739 98.609684 
+L 113.843767 105.82899 
+L 121.00048 118.397305 
+L 128.872865 132.168573 
+L 133.166893 139.29205 
+L 136.74525 144.865624 
+L 140.323607 150.015081 
+L 143.186292 153.77423 
+L 146.048977 157.171495 
+L 148.911663 160.172434 
+L 151.058677 162.144586 
+L 153.205691 163.865349 
+L 155.352705 165.324909 
+L 157.499719 166.514936 
+L 159.646733 167.428643 
+L 161.793747 168.060817 
+L 163.940761 168.40785 
+L 166.087775 168.467765 
+L 168.234789 168.240217 
+L 170.381803 167.726507 
+L 172.528817 166.929563 
+L 174.675831 165.853934 
+L 176.822845 164.505755 
+L 178.969859 162.892718 
+L 181.116873 161.024025 
+L 183.263887 158.910336 
+L 186.126573 155.732017 
+L 188.989258 152.171964 
+L 191.851943 148.266272 
+L 195.4303 142.958728 
+L 199.008657 137.257259 
+L 204.018356 128.786244 
+L 212.606412 113.64345 
+L 219.047454 102.475369 
+L 223.341482 95.43952 
+L 226.919839 89.96394 
+L 230.498196 84.933545 
+L 233.360881 81.283555 
+L 236.223567 78.006625 
+L 239.086252 75.135975 
+L 241.233266 73.267282 
+L 243.38028 71.654245 
+L 245.527294 70.306066 
+L 247.674308 69.230437 
+L 249.821322 68.433493 
+L 251.968336 67.919783 
+L 254.11535 67.692235 
+L 256.262364 67.75215 
+L 258.409378 68.099183 
+L 260.556392 68.731357 
+L 262.703406 69.645064 
+L 264.85042 70.835091 
+L 266.997434 72.294651 
+L 269.144448 74.015414 
+L 271.291462 75.987566 
+L 274.154148 78.988505 
+L 277.016833 82.38577 
+L 279.879518 86.144919 
+L 283.457875 91.294376 
+L 287.036232 96.86795 
+L 291.33026 103.991427 
+L 297.055631 113.959611 
+L 307.790701 132.776756 
+L 312.084729 139.866024 
+L 315.663086 145.401058 
+L 319.241442 150.503496 
+L 322.104128 154.219422 
+L 324.966813 157.568951 
+L 327.829498 160.518123 
+L 329.976512 162.44912 
+L 332.123526 164.126992 
+L 334.27054 165.542167 
+L 336.417554 166.68657 
+L 338.564569 167.553674 
+L 340.711583 168.138531 
+L 342.858597 168.437805 
+L 345.005611 168.449788 
+L 347.152625 168.174412 
+L 349.299639 167.613249 
+L 351.446653 166.769499 
+L 353.593667 165.647976 
+L 355.740681 164.255078 
+L 357.887695 162.598753 
+L 360.034709 160.688448 
+L 362.181723 158.535063 
+L 365.044408 155.307182 
+L 367.907094 151.701875 
+L 370.769779 147.755695 
+L 374.348136 142.404862 
+L 378.642164 135.48336 
+L 383.651863 126.918657 
+L 388.661563 118.08 
+L 388.661563 118.08 
+" clip-path="url(#pfa1632ca5f)" style="fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 122.66683 273.143725 
+L 277.246396 -1 
+L 277.246396 -1 
+" clip-path="url(#pfa1632ca5f)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 118.470805 -1 
+L 121.00048 17.208951 
+L 123.863166 36.292165 
+L 126.725851 53.823474 
+L 129.588536 69.854391 
+L 132.451222 84.436433 
+L 135.313907 97.621116 
+L 137.460921 106.6236 
+L 139.607935 114.89078 
+L 141.754949 122.444389 
+L 143.901963 129.306161 
+L 146.048977 135.497827 
+L 148.195991 141.041122 
+L 150.343005 145.957778 
+L 152.490019 150.269529 
+L 154.637033 153.998107 
+L 156.784047 157.165246 
+L 158.931061 159.79268 
+L 160.362404 161.255197 
+L 161.793747 162.493945 
+L 163.22509 163.51536 
+L 164.656432 164.325885 
+L 166.087775 164.931956 
+L 167.519118 165.340015 
+L 168.95046 165.5565 
+L 170.381803 165.587851 
+L 171.813146 165.440508 
+L 173.244488 165.120909 
+L 174.675831 164.635495 
+L 176.822845 163.610555 
+L 178.969859 162.248751 
+L 181.116873 160.571818 
+L 183.263887 158.601487 
+L 185.410901 156.359492 
+L 188.273587 152.98514 
+L 191.136272 149.217982 
+L 193.998957 145.109533 
+L 197.577314 139.572513 
+L 201.871342 132.472096 
+L 207.596713 122.516548 
+L 219.047454 102.476664 
+L 223.341482 95.448691 
+L 226.919839 89.994176 
+L 229.782524 85.96622 
+L 232.64521 82.292434 
+L 235.507895 79.024333 
+L 237.654909 76.870478 
+L 239.801923 74.995531 
+L 241.948937 73.421226 
+L 244.095951 72.169296 
+L 246.242965 71.261474 
+L 247.674308 70.858162 
+L 249.105651 70.623886 
+L 250.536993 70.565085 
+L 251.968336 70.688198 
+L 253.399679 70.999665 
+L 254.831021 71.505926 
+L 256.262364 72.213418 
+L 257.693707 73.128583 
+L 259.125049 74.25786 
+L 260.556392 75.607688 
+L 261.987735 77.184506 
+L 263.419078 78.994754 
+L 265.566092 82.161893 
+L 267.713106 85.890471 
+L 269.86012 90.202222 
+L 272.007134 95.118878 
+L 274.154148 100.662173 
+L 276.301162 106.853839 
+L 278.448176 113.715611 
+L 280.59519 121.26922 
+L 282.742204 129.5364 
+L 284.889218 138.538884 
+L 287.036232 148.298406 
+L 289.898917 162.526279 
+L 292.761603 178.190148 
+L 295.624288 195.341529 
+L 298.486973 214.031937 
+L 301.349659 234.312889 
+L 304.212344 256.235899 
+L 306.282112 273.143725 
+L 306.282112 273.143725 
+" clip-path="url(#pfa1632ca5f)" style="fill: none; stroke-dasharray: 10.24,2.56,1.6,2.56; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 88.990086 273.143725 
+L 90.942284 254.515482 
+L 93.089298 236.276404 
+L 95.236312 220.200172 
+L 97.383326 206.127643 
+L 99.53034 193.906313 
+L 101.677354 183.390189 
+L 103.108697 177.257576 
+L 104.540039 171.780845 
+L 105.971382 166.921403 
+L 107.402725 162.641866 
+L 108.834068 158.906033 
+L 110.26541 155.678879 
+L 111.696753 152.926534 
+L 113.128096 150.616267 
+L 114.559438 148.716469 
+L 115.990781 147.196639 
+L 117.422124 146.027367 
+L 118.853466 145.180314 
+L 120.284809 144.628203 
+L 121.716152 144.344796 
+L 123.147494 144.304879 
+L 124.578837 144.484249 
+L 126.01018 144.859693 
+L 127.441522 145.408977 
+L 129.588536 146.512569 
+L 131.73555 147.891806 
+L 134.598236 150.051004 
+L 138.176593 153.073981 
+L 146.764649 160.511255 
+L 149.627334 162.713673 
+L 152.490019 164.650072 
+L 154.637033 165.891462 
+L 156.784047 166.92811 
+L 158.931061 167.741928 
+L 161.078076 168.317909 
+L 163.22509 168.644002 
+L 165.372104 168.71099 
+L 167.519118 168.512362 
+L 169.666132 168.044193 
+L 171.813146 167.305018 
+L 173.96016 166.295708 
+L 176.107174 165.019345 
+L 178.254188 163.481102 
+L 180.401202 161.688113 
+L 182.548216 159.649354 
+L 185.410901 156.567409 
+L 188.273587 153.097418 
+L 191.136272 149.273576 
+L 194.714629 144.054674 
+L 198.292985 138.424833 
+L 202.587013 131.252142 
+L 209.028055 119.98339 
+L 218.331783 103.687048 
+L 222.625811 96.580505 
+L 226.204168 91.025936 
+L 229.782524 85.899315 
+L 232.64521 82.160503 
+L 235.507895 78.784484 
+L 238.370581 75.804378 
+L 240.517595 73.846437 
+L 242.664609 72.137454 
+L 244.811623 70.685806 
+L 246.958637 69.497987 
+L 249.105651 68.578486 
+L 251.252665 67.929662 
+L 253.399679 67.551622 
+L 255.546693 67.442093 
+L 257.693707 67.596304 
+L 259.840721 68.006855 
+L 261.987735 68.663597 
+L 264.134749 69.553509 
+L 266.281763 70.66057 
+L 269.144448 72.440889 
+L 272.007134 74.518442 
+L 275.58549 77.432988 
+L 287.751903 87.758247 
+L 289.898917 89.215097 
+L 292.045931 90.417877 
+L 294.192945 91.300307 
+L 295.624288 91.675751 
+L 297.055631 91.855121 
+L 298.486973 91.815204 
+L 299.918316 91.531797 
+L 301.349659 90.979686 
+L 302.781001 90.132633 
+L 304.212344 88.963361 
+L 305.643687 87.443531 
+L 307.075029 85.543733 
+L 308.506372 83.233466 
+L 309.937715 80.481121 
+L 311.369057 77.253967 
+L 312.8004 73.518134 
+L 314.231743 69.238597 
+L 315.663086 64.379155 
+L 317.094428 58.902424 
+L 318.525771 52.769811 
+L 319.957114 45.941505 
+L 322.104128 34.30448 
+L 324.251142 20.865638 
+L 326.398156 5.474659 
+L 327.22227 -1 
+L 327.22227 -1 
+" clip-path="url(#pfa1632ca5f)" style="fill: none; stroke-dasharray: 1.6,2.64; stroke-dashoffset: 0; stroke: #0e6e6a; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 85.301383 -1 
+L 87.363927 9.879787 
+L 89.510941 20.2361 
+L 91.657955 29.735792 
+L 94.520641 41.26284 
+L 97.383326 51.698545 
+L 100.246011 61.238045 
+L 103.108697 70.043063 
+L 106.687053 80.214657 
+L 110.26541 89.642283 
+L 113.843767 98.469867 
+L 118.137795 108.404316 
+L 122.431823 117.705967 
+L 126.725851 126.405124 
+L 130.304208 133.182657 
+L 133.882565 139.501613 
+L 137.460921 145.32211 
+L 140.323607 149.588346 
+L 143.186292 153.480267 
+L 146.048977 156.97234 
+L 148.911663 160.039938 
+L 151.058677 162.04824 
+L 153.205691 163.796127 
+L 155.352705 165.275812 
+L 157.499719 166.480596 
+L 159.646733 167.404985 
+L 161.793747 168.044783 
+L 163.940761 168.397177 
+L 166.087775 168.460797 
+L 168.234789 168.235766 
+L 170.381803 167.723729 
+L 172.528817 166.927876 
+L 174.675831 165.852939 
+L 176.822845 164.505187 
+L 178.969859 162.892406 
+L 181.116873 161.02386 
+L 183.263887 158.910254 
+L 186.126573 155.731987 
+L 188.989258 152.171955 
+L 191.851943 148.26627 
+L 195.4303 142.958727 
+L 199.008657 137.257259 
+L 204.018356 128.786244 
+L 212.606412 113.64345 
+L 219.047454 102.475369 
+L 223.341482 95.43952 
+L 226.919839 89.963942 
+L 230.498196 84.933552 
+L 233.360881 81.283578 
+L 236.223567 78.006689 
+L 239.086252 75.13614 
+L 241.233266 73.267594 
+L 243.38028 71.654813 
+L 245.527294 70.307061 
+L 247.674308 69.232124 
+L 249.821322 68.436271 
+L 251.968336 67.924234 
+L 254.11535 67.699203 
+L 256.262364 67.762823 
+L 258.409378 68.115217 
+L 260.556392 68.755015 
+L 262.703406 69.679404 
+L 264.85042 70.884188 
+L 266.997434 72.363873 
+L 269.144448 74.11176 
+L 271.291462 76.120062 
+L 273.438476 78.380037 
+L 276.301162 81.768244 
+L 279.163847 85.562578 
+L 282.026532 89.737642 
+L 284.889218 94.267866 
+L 288.467575 100.3927 
+L 292.045931 106.990972 
+L 295.624288 114.028996 
+L 299.918316 123.02895 
+L 304.212344 132.639627 
+L 307.790701 141.156316 
+L 311.369057 150.209848 
+L 314.947414 159.914868 
+L 317.8101 168.257021 
+L 320.672785 177.232192 
+L 323.53547 186.979338 
+L 326.398156 197.668199 
+L 328.54517 206.424208 
+L 330.692184 215.9239 
+L 332.839198 226.280213 
+L 334.986212 237.620034 
+L 337.133226 250.085208 
+L 339.28024 263.833598 
+L 340.619197 273.143725 
+L 340.619197 273.143725 
+" clip-path="url(#pfa1632ca5f)" style="fill: none; stroke: #0e6e6a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 210.101563 228.96 
+L 210.101563 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 31.541563 118.08 
+L 388.661563 118.08 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_14">
+     <path d="M 11.2 255.364037 
+L 21.2 255.364037 
+L 31.2 255.364037 
+" style="fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: square"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="39.2" y="258.864037" transform="rotate(-0 39.2 258.864037)">sin x</text>
+    </g>
+    <g id="line2d_15">
+     <path d="M 82.621875 255.364037 
+L 92.621875 255.364037 
+L 102.621875 255.364037 
+" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.6"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="110.621875" y="258.864037" transform="rotate(-0 110.621875 258.864037)">grado 1</text>
+    </g>
+    <g id="line2d_16">
+     <path d="M 169.217188 255.364037 
+L 179.217188 255.364037 
+L 189.217188 255.364037 
+" style="fill: none; stroke-dasharray: 10.24,2.56,1.6,2.56; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.6"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="197.217188" y="258.864037" transform="rotate(-0 197.217188 258.864037)">grado 3</text>
+    </g>
+    <g id="line2d_17">
+     <path d="M 255.8125 255.364037 
+L 265.8125 255.364037 
+L 275.8125 255.364037 
+" style="fill: none; stroke-dasharray: 1.6,2.64; stroke-dashoffset: 0; stroke: #0e6e6a; stroke-width: 1.6"/>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="283.8125" y="258.864037" transform="rotate(-0 283.8125 258.864037)">grado 5</text>
+    </g>
+    <g id="line2d_18">
+     <path d="M 342.407813 255.364037 
+L 352.407813 255.364037 
+L 362.407813 255.364037 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 1.6; stroke-linecap: square"/>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="370.407813" y="258.864037" transform="rotate(-0 370.407813 258.864037)">grado 7</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pfa1632ca5f">
+   <rect x="31.541563" y="7.2" width="357.12" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: polinomios de Maclaurin de \(\sin x\) de grado 1, 3, 5 y 7. Cada término nuevo amplía el intervalo donde el polinomio sigue a la función; la serie completa converge para todo \(x\).</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.11. El coseno desde sus derivadas</p>
+<p>Las derivadas de \(\cos x\) se repiten cada cuatro: \(\cos,\ -\sin,\ -\cos,\ \sin\). En 0 valen \(1,0,-1,0,1,\ldots\) Solo sobreviven las potencias pares, con signos alternos: \(\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots\). Es una función par y su serie solo tiene potencias pares; la de \(\sin x\), impar, solo impares. La de \(\cos x\) también sale derivando la de \(\sin x\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.12. Serie binomial con exponente fraccionario</p>
+<p>\(\sqrt{1+x}=(1+x)^{1/2}\). Los coeficientes son \(\binom{1/2}{2}=\frac{\frac12\left(-\frac12\right)}2=-\frac18\) y \(\binom{1/2}{3}=\frac{\frac12\left(-\frac12\right)\left(-\frac32\right)}6=\frac1{16}\). Por tanto \(\sqrt{1+x}=1+\frac x2-\frac{x^2}8+\frac{x^3}{16}-\cdots\), válida para \(|x|\lt1\). Es la serie de \(f\) en mayo 2021 TZ1 P12 (X3).</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ1, P12(d))</p><p>Sabiendo que \(g''=2(g'-g)\) y \(g^{(4)}=2(g'''-g'')\) para \(g=e^x\cos x\), «utilizando el resultado de (c)» halla la serie hasta \(x^4\). Con \(g(0)=1\) y \(g'(0)=1\), la relación da \(g''(0)=0\), \(g'''(0)=-2\) y \(g^{(4)}(0)=-4\). El markscheme dice: <b>no dar ninguna marca</b> a métodos que no usen (c). Multiplicar las series de \(e^x\) y \(\cos x\), aunque dé el resultado correcto, vale 0.</p></div>
+
+<h3 id="t6">1.6 Construir series a partir de las conocidas</h3>
+<p>Casi nunca hace falta derivar \(n\) veces. Se parte de las series del cuadernillo y se opera:</p>
+<ul>
+<li><b>Sustitución:</b> se cambia \(x\) por \(-x^2\), \(2x\), \(x^3\)… y la validez cambia con ella. Por ejemplo, \(\ln(1+2x)\) vale para \(-\frac12\lt x\le\frac12\).</li>
+<li><b>Producto:</b> se multiplican las series y se recogen los términos hasta el grado pedido. Basta conservar en cada factor los términos de grado menor o igual que ese.</li>
+<li><b>Composición:</b> en \(e^{u}\) con \(u=\sin x\), se sustituye la serie de \(u\) y se desarrollan las potencias. Hace falta \(u(0)=0\) para que las potencias de \(u\) empiecen en grado alto.</li>
+<li><b>Cociente:</b> se plantea \(\frac fg=c_0+c_1x+\cdots\), se multiplica por \(g\) y se igualan coeficientes. O bien \(\frac1{1-u}=1+u+u^2+\cdots\).</li>
+<li><b>Derivar o integrar término a término</b> dentro del intervalo de convergencia. Al integrar, la constante se fija con \(f(0)\).</li>
+<li><b>A partir de una ecuación diferencial (NS 5.19):</b> la ecuación da \(y'(0)\). Derivándola de forma implícita se obtienen \(y''(0)\), \(y'''(0)\)… sin resolverla.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.13. Sustituir, integrar y derivar</p>
+<p>(a) \(\frac1{1+t^2}=1-t^2+t^4-\cdots\) (geométrica con \(r=-t^2\)). Integrando de 0 a \(x\): \(\arctan x=x-\frac{x^3}3+\frac{x^5}5-\cdots\). Así se obtiene la serie del cuadernillo.</p>
+<p>(b) \(e^{-x^2}=1-x^2+\frac{x^4}{2!}-\frac{x^6}{3!}+\cdots\), válida para todo \(x\).</p>
+<p>(c) Derivando \(\frac1{1-x}=\sum x^n\): \(\frac1{(1-x)^2}=1+2x+3x^2+\cdots=\sum(n+1)x^n\), para \(|x|\lt1\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.14. Producto y composición</p>
+<p>(a) \(e^x\ln(1+x)\) hasta \(x^3\): \(\left(1+x+\frac{x^2}2\right)\left(x-\frac{x^2}2+\frac{x^3}3\right)\). Grado 1: \(x\). Grado 2: \(-\frac12+1=\frac12\). Grado 3: \(\frac13-\frac12+\frac12=\frac13\). Resultado: \(x+\frac{x^2}2+\frac{x^3}3+\cdots\)</p>
+<p>(b) \(e^{\sin x}\) hasta \(x^4\): con \(u=x-\frac{x^3}6\), \(e^u=1+u+\frac{u^2}2+\frac{u^3}6+\frac{u^4}{24}\). Recogiendo: \(1+x+\frac{x^2}2+\left(-\frac16+\frac16\right)x^3+\left(-\frac16+\frac1{24}\right)x^4=1+x+\frac{x^2}2-\frac{x^4}8+\cdots\). El término en \(x^3\) se anula.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.15. Un cociente: la tangente</p>
+<p>\(\tan x=\frac{\sin x}{\cos x}=c_1x+c_3x^3+c_5x^5+\cdots\) (es impar). De \(\left(1-\frac{x^2}2+\frac{x^4}{24}\right)(c_1x+c_3x^3+c_5x^5)=x-\frac{x^3}6+\frac{x^5}{120}\), igualando coeficientes: \(c_1=1\); \(c_3-\frac12=-\frac16\), así que \(c_3=\frac13\); \(c_5-\frac16+\frac1{24}=\frac1{120}\), así que \(c_5=\frac2{15}\). Resultado: \(\tan x=x+\frac{x^3}3+\frac{2x^5}{15}+\cdots\)</p></div>
+<div class="ex"><p class="et">Ejemplo 1.16. La serie de una solución que no se sabe escribir</p>
+<p>\(y'=x+y^2\), \(y(0)=1\). Entonces \(y'(0)=0+1=1\). Derivando: \(y''=1+2yy'\), así que \(y''(0)=3\). Otra vez: \(y'''=2(y')^2+2yy''\), así que \(y'''(0)=2+6=8\). Por tanto \(y\approx1+x+\frac32x^2+\frac43x^3\) e \(y(0{,}1)\approx1{,}1163\). Esta ecuación no se puede resolver con los métodos del Módulo 15.</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ1, P12(c))</p><p>Para el coeficiente de \(x^2\) en \(\sqrt{1+x}\,e^{mx}\), el markscheme acepta tres métodos con 8 marcas cada uno: derivar el producto dos veces, multiplicar las dos series, o usar \(h''(0)=f(0)g''(0)+2f'(0)g'(0)+f''(0)g(0)\). El producto de series es el más corto: \(\frac{m^2}2+\frac m2-\frac18=\frac74\) da \(4m^2+4m-15=0\), con \(m=\frac32\) o \(m=-\frac52\).</p></div>
+
+<h3 id="t7">1.7 Aplicaciones</h3>
+<ul>
+<li><b>Aproximar valores:</b> se sustituye un \(x\) pequeño en el polinomio. Si la serie es alternada con términos decrecientes, el error es menor que el primer término omitido.</li>
+<li><b>Límites con Maclaurin:</b> se sustituyen las series y se cancela el término dominante. Suele ser más rápido que aplicar L'Hôpital tres veces y muestra el comportamiento cerca de 0.</li>
+<li><b>Integrales no elementales:</b> \(\int e^{-x^2}dx\), \(\int\frac{\sin x}x dx\) o \(\int e^{x^2}\sin x^2\,dx\) no tienen primitiva elemental, pero su serie se integra término a término.</li>
+</ul>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 379.628203 240.339141" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 240.339141 
+L 379.628203 240.339141 
+L 379.628203 0 
+L 0 0 
+L 0 240.339141 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 15.308203 233.139141 
+L 372.428203 233.139141 
+L 372.428203 11.379141 
+L 15.308203 11.379141 
+L 15.308203 233.139141 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 15.308203 233.139141 
+L 290.015895 233.139141 
+L 290.015895 11.379141 
+L 15.308203 11.379141 
+z
+" clip-path="url(#pcf2814a007)" style="fill: #0e6e6a; opacity: 0.08; stroke: #0e6e6a; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m64627a76e8" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m64627a76e8" x="15.308203" y="100.083141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="15.308203" y="115.441422" transform="rotate(-0 15.308203 115.441422)">−1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m64627a76e8" x="290.015895" y="100.083141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="290.015895" y="115.441422" transform="rotate(-0 290.015895 115.441422)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path id="mb52873ada9" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mb52873ada9" x="152.662049" y="188.787141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="145.662049" y="192.966281" transform="rotate(-0 145.662049 192.966281)">−2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mb52873ada9" x="152.662049" y="144.435141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="145.662049" y="148.614281" transform="rotate(-0 145.662049 148.614281)">−1</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mb52873ada9" x="152.662049" y="55.731141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="145.662049" y="59.910281" transform="rotate(-0 145.662049 59.910281)">1</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mb52873ada9" x="152.662049" y="11.379141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="145.662049" y="15.558281" transform="rotate(-0 145.662049 15.558281)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M 22.175895 232.949858 
+L 23.931546 222.853361 
+L 25.687197 214.634444 
+L 27.442847 207.703086 
+L 29.198498 201.709984 
+L 30.954149 196.431146 
+L 32.709799 191.714305 
+L 34.46545 187.451229 
+L 37.098926 181.738547 
+L 39.732402 176.678424 
+L 42.365878 172.136944 
+L 44.999354 168.017603 
+L 47.63283 164.248555 
+L 51.144131 159.674907 
+L 54.655433 155.529121 
+L 58.166734 151.73795 
+L 61.678035 148.24548 
+L 66.067162 144.234327 
+L 70.456289 140.556043 
+L 74.845415 137.159589 
+L 80.112367 133.399944 
+L 85.379319 129.934243 
+L 90.646271 126.719837 
+L 96.791049 123.242331 
+L 102.935826 120.017774 
+L 109.958429 116.59859 
+L 116.981031 113.424237 
+L 124.881459 110.105233 
+L 132.781887 107.017402 
+L 141.560141 103.821172 
+L 151.216219 100.552478 
+L 161.750123 97.241575 
+L 172.284027 94.160756 
+L 183.695757 91.048293 
+L 195.985311 87.923991 
+L 209.152691 84.804062 
+L 223.197897 81.701578 
+L 238.120927 78.62692 
+L 254.799609 75.425331 
+L 272.356115 72.28765 
+L 290.790447 69.2158 
+L 310.98043 66.078858 
+L 332.926063 62.903367 
+L 355.749522 59.825613 
+L 372.428203 57.704297 
+L 372.428203 57.704297 
+" clip-path="url(#pcf2814a007)" style="fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 22.175895 162.231381 
+L 32.709799 155.72902 
+L 43.243703 149.487521 
+L 53.777607 143.506883 
+L 64.311511 137.787108 
+L 74.845415 132.328194 
+L 85.379319 127.130141 
+L 95.913223 122.19295 
+L 106.447127 117.516621 
+L 116.981031 113.101154 
+L 127.514935 108.946548 
+L 137.171014 105.367319 
+L 146.827093 102.007287 
+L 156.483171 98.866451 
+L 166.13925 95.944811 
+L 175.795329 93.242367 
+L 185.451407 90.759119 
+L 195.107486 88.495068 
+L 204.763565 86.450213 
+L 214.419643 84.624554 
+L 224.075722 83.018092 
+L 233.731801 81.630826 
+L 243.387879 80.462756 
+L 253.043958 79.513882 
+L 262.700037 78.784205 
+L 272.356115 78.273723 
+L 282.012194 77.982439 
+L 291.668273 77.91035 
+L 301.324351 78.057458 
+L 310.98043 78.423762 
+L 320.636509 79.009262 
+L 330.292587 79.813958 
+L 339.948666 80.837851 
+L 349.604744 82.08094 
+L 359.260823 83.543225 
+L 368.916902 85.224707 
+L 372.428203 85.890501 
+L 372.428203 85.890501 
+" clip-path="url(#pcf2814a007)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 22.175895 190.801804 
+L 26.565022 184.589787 
+L 30.954149 178.760994 
+L 35.343275 173.290561 
+L 39.732402 168.154887 
+L 44.121529 163.331595 
+L 48.510655 158.799499 
+L 52.899782 154.538566 
+L 58.166734 149.756829 
+L 63.433686 145.307761 
+L 68.700638 141.162892 
+L 73.96759 137.295822 
+L 79.234542 133.682134 
+L 85.379319 129.756463 
+L 91.524097 126.112416 
+L 97.668874 122.720475 
+L 104.691477 119.118737 
+L 111.714079 115.776463 
+L 119.614507 112.288271 
+L 127.514935 109.051557 
+L 136.293189 105.711118 
+L 145.071442 102.604501 
+L 154.727521 99.421158 
+L 165.261425 96.190673 
+L 176.673154 92.937488 
+L 188.962709 89.680217 
+L 202.130089 86.428334 
+L 217.053119 82.976219 
+L 239.876578 77.96423 
+L 259.188735 73.650046 
+L 270.600465 70.8781 
+L 279.378718 68.535813 
+L 287.279146 66.207301 
+L 294.301749 63.911814 
+L 300.446526 61.689858 
+L 306.591303 59.231389 
+L 311.858255 56.906208 
+L 317.125207 54.351565 
+L 322.392159 51.538468 
+L 327.659111 48.435746 
+L 332.048238 45.604848 
+L 336.437364 42.529043 
+L 340.826491 39.186561 
+L 345.215618 35.554424 
+L 349.604744 31.608412 
+L 353.993871 27.323025 
+L 358.382998 22.67145 
+L 362.772124 17.625525 
+L 366.283426 13.285045 
+L 369.794727 8.657517 
+L 372.428203 4.988668 
+L 372.428203 4.988668 
+" clip-path="url(#pcf2814a007)" style="fill: none; stroke-dasharray: 10.24,2.56,1.6,2.56; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 22.175895 210.099659 
+L 24.809371 203.546845 
+L 27.442847 197.501566 
+L 30.076323 191.914496 
+L 32.709799 186.741195 
+L 35.343275 181.94166 
+L 38.854577 176.062021 
+L 42.365878 170.707871 
+L 45.877179 165.813827 
+L 49.388481 161.323262 
+L 52.899782 157.187159 
+L 56.411083 153.363111 
+L 59.922385 149.81444 
+L 64.311511 145.717934 
+L 68.700638 141.949717 
+L 73.089765 138.465746 
+L 78.356717 134.608742 
+L 83.623669 131.055766 
+L 88.890621 127.76411 
+L 95.035398 124.207931 
+L 101.180175 120.915278 
+L 108.202778 117.42897 
+L 115.225381 114.196777 
+L 123.125809 110.821622 
+L 131.026237 107.685248 
+L 139.80449 104.442256 
+L 149.460569 101.129147 
+L 159.116647 98.046419 
+L 169.650551 94.911131 
+L 181.062281 91.747412 
+L 193.351835 88.575211 
+L 206.519215 85.410837 
+L 220.564421 82.2682 
+L 235.487451 79.164212 
+L 249.532657 76.464256 
+L 260.944386 74.473025 
+L 269.722639 73.134946 
+L 276.745242 72.259129 
+L 282.890019 71.708849 
+L 288.156971 71.467535 
+L 292.546098 71.48748 
+L 296.057399 71.689816 
+L 299.568701 72.097943 
+L 303.080002 72.756817 
+L 305.713478 73.447469 
+L 308.346954 74.335524 
+L 310.98043 75.450928 
+L 313.613906 76.827637 
+L 316.247382 78.50407 
+L 318.880858 80.523599 
+L 321.514334 82.935094 
+L 324.14781 85.793505 
+L 325.90346 87.977557 
+L 327.659111 90.40757 
+L 329.414762 93.105181 
+L 331.170412 96.09369 
+L 332.926063 99.398173 
+L 334.681714 103.045592 
+L 336.437364 107.064923 
+L 338.193015 111.487275 
+L 339.948666 116.34603 
+L 341.704316 121.676984 
+L 343.459967 127.51849 
+L 345.215618 133.911622 
+L 346.971268 140.900332 
+L 348.726919 148.531623 
+L 350.48257 156.855732 
+L 352.23822 165.92632 
+L 353.993871 175.800666 
+L 355.749522 186.539878 
+L 358.382998 204.414006 
+L 361.016474 224.619863 
+L 362.974795 241.339141 
+L 362.974795 241.339141 
+" clip-path="url(#pcf2814a007)" style="fill: none; stroke: #0e6e6a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 290.015895 233.139141 
+L 290.015895 11.379141 
+" clip-path="url(#pcf2814a007)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #0e6e6a; stroke-width: 0.8"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 152.662049 233.139141 
+L 152.662049 11.379141 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 15.308203 100.083141 
+L 372.428203 100.083141 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_12">
+     <path d="M 237.032891 159.846953 
+L 247.032891 159.846953 
+L 257.032891 159.846953 
+" style="fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: square"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="265.032891" y="163.346953" transform="rotate(-0 265.032891 163.346953)">ln(1 + x)</text>
+    </g>
+    <g id="line2d_13">
+     <path d="M 237.032891 174.525078 
+L 247.032891 174.525078 
+L 257.032891 174.525078 
+" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.6"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="265.032891" y="178.025078" transform="rotate(-0 265.032891 178.025078)">grado 2</text>
+    </g>
+    <g id="line2d_14">
+     <path d="M 237.032891 189.203203 
+L 247.032891 189.203203 
+L 257.032891 189.203203 
+" style="fill: none; stroke-dasharray: 10.24,2.56,1.6,2.56; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.6"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="265.032891" y="192.703203" transform="rotate(-0 265.032891 192.703203)">grado 5</text>
+    </g>
+    <g id="line2d_15">
+     <path d="M 237.032891 203.881328 
+L 247.032891 203.881328 
+L 257.032891 203.881328 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 1.6; stroke-linecap: square"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="265.032891" y="207.381328" transform="rotate(-0 265.032891 207.381328)">grado 10</text>
+    </g>
+    <g id="patch_6">
+     <path d="M 237.032891 222.059453 
+L 257.032891 222.059453 
+L 257.032891 215.059453 
+L 237.032891 215.059453 
+z
+" style="fill: #0e6e6a; opacity: 0.08; stroke: #0e6e6a; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="265.032891" y="222.059453" transform="rotate(-0 265.032891 222.059453)">validez: −1 &lt; x ≤ 1</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pcf2814a007">
+   <rect x="15.308203" y="11.379141" width="357.12" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: polinomios de Maclaurin de \(\ln(1+x)\). Dentro de \(-1\lt x\le1\) se acercan a la función; para \(x\gt1\), añadir términos empeora la aproximación, porque la serie diverge.</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.17. Un valor, un límite y una integral</p>
+<p>(a) \(\ln1{,}2\approx0{,}2-\frac{0{,}04}2+\frac{0{,}008}3=0{,}18267\). El error es menor que \(\frac{0{,}2^4}4=0{,}0004\); el valor real es \(0{,}18232\).</p>
+<p>(b) \(\lim_{x\to0}\frac{\sin x-x}{x^3}=\lim_{x\to0}\frac{-\frac{x^3}6+\frac{x^5}{120}-\cdots}{x^3}=-\frac16\). Con L'Hôpital harían falta tres aplicaciones.</p>
+<p>(c) \(\int_0^1e^{-x^2}dx=\left[x-\frac{x^3}3+\frac{x^5}{10}-\frac{x^7}{42}+\cdots\right]_0^1\approx1-\frac13+\frac1{10}-\frac1{42}=\frac{26}{35}\approx0{,}7429\). El error es menor que \(\frac1{216}\); el valor real es \(0{,}7468\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.18. Aproximar \(\sqrt e\) con una cota del error</p>
+<p>Aproxima \(e^{1/2}\) con cuatro términos de su serie y acota el error.</p>
+<p>\(1+\frac12+\frac18+\frac1{48}=\frac{79}{48}\approx1{,}6458\). La serie no es alternada; el resto es \(\sum_{k\ge4}\frac{(1/2)^k}{k!}\lt\frac{(1/2)^4}{4!}\cdot\frac1{1-1/2}=\frac1{192}\approx0{,}0052\). El valor real es \(1{,}6487\), con error 0,0029, dentro de la cota.</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2021, P11(c))</p><p>\(\lim_{x\to0}\frac{(x^2e^x-x^2)^3}{x^9}\) después de hallar \(x^2e^x=x^2+x^3+\frac12x^4+\cdots\). Hay dos métodos con 4 marcas cada uno. Con la serie: \(\frac{(x^3+\frac12x^4+\cdots)^3}{x^9}\to1\). Con álgebra y L'Hôpital: \(\left(\frac{x^2e^x-x^2}{x^3}\right)^3=\left(\frac{e^x-1}x\right)^3\), y \(\frac{e^x-1}x\to1\). Aplicar L'Hôpital directamente al cociente original exigiría nueve derivadas: hay que simplificar antes.</p></div>
+
+<h3 id="t8">1.8 Más allá del IB: Taylor, el error y la fórmula de Euler</h3>
+<ul>
+<li><b>Serie de Taylor en \(x=a\):</b> \(f(x)=\sum\frac{f^{(n)}(a)}{n!}(x-a)^n\). Por ejemplo, \(\ln x=(x-1)-\frac{(x-1)^2}2+\cdots\) para \(0\lt x\le2\) (ficha DMPA 15, ítem 20). Sirve cuando \(f\) o sus derivadas no existen en 0.</li>
+<li><b>Cota de error de Lagrange:</b> si \(|f^{(n+1)}|\le M\) entre 0 y \(x\), el polinomio de grado \(n\) tiene un error de a lo sumo \(\frac{M|x|^{n+1}}{(n+1)!}\). Para \(e^x\) en \([0,1]\), con \(M=e\lt3\), el polinomio de grado 7 ya tiene un error menor que \(\frac3{8!}\lt10^{-4}\).</li>
+<li><b>No toda función es su serie:</b> \(e^{-1/x^2}\) (con valor 0 en 0) tiene todas sus derivadas nulas en 0 y su serie de Maclaurin es 0, pero la función no lo es.</li>
+</ul>
+<div class="box beyond"><p class="bt">Más allá del IB: la fórmula de Euler con series</p><p>Sustituyendo \(x=i\theta\) en la serie de \(e^x\) y separando las potencias pares e impares de \(i\): \(e^{i\theta}=\left(1-\frac{\theta^2}{2!}+\cdots\right)+i\left(\theta-\frac{\theta^3}{3!}+\cdots\right)=\cos\theta+i\sin\theta\). Es la demostración de la forma \(re^{i\theta}\) del Módulo 6. Con \(\theta=\pi\) se obtiene \(e^{i\pi}+1=0\). El problema E4 usa esta idea para sumar series trigonométricas.</p></div>
+</section>
+
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Límite</td><td>\(\lim_{x\to a}f(x)=L\): \(f(x)\) se acerca a \(L\) cuando \(x\to a\), con \(x\ne a\).</td></tr>
+<tr><td>Límites laterales</td><td>Los límites por la izquierda (\(x\to a^-\)) y por la derecha (\(x\to a^+\)). El límite existe si coinciden.</td></tr>
+<tr><td>Continuidad en \(a\)</td><td>\(\lim_{x\to a}f(x)=f(a)\), con ambos lados definidos.</td></tr>
+<tr><td>Forma indeterminada</td><td>Expresión del tipo \(\frac00,\ \frac\infty\infty,\ 0\cdot\infty,\ \infty-\infty,\ 1^\infty,\ 0^0,\ \infty^0\), cuyo límite no está determinado por los límites de sus partes.</td></tr>
+<tr><td>Regla de L'Hôpital</td><td>Para \(\frac00\) o \(\frac\infty\infty\), \(\lim\frac fg=\lim\frac{f'}{g'}\) si este último existe.</td></tr>
+<tr><td>Serie convergente</td><td>Serie cuyas sumas parciales tienen un límite finito, que es su suma.</td></tr>
+<tr><td>Serie de Maclaurin</td><td>\(\sum\frac{f^{(n)}(0)}{n!}x^n\): la serie de potencias de \(f\) centrada en 0.</td></tr>
+<tr><td>Polinomio de Maclaurin de grado \(n\)</td><td>La suma de la serie hasta \(x^n\): coincide con \(f\) en 0 en valor y en sus \(n\) primeras derivadas.</td></tr>
+<tr><td>Intervalo de validez</td><td>Conjunto de \(x\) para los que la serie converge a \(f(x)\).</td></tr>
+<tr><td>Serie de Taylor</td><td>\(\sum\frac{f^{(n)}(a)}{n!}(x-a)^n\), centrada en \(a\) (fuera del programa).</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Use la regla de L'Hôpital</td><td>Indicar la forma \(\frac00\), derivar arriba y abajo, escribir \(\lim\) en cada línea.</td><td>Omitir «\(\lim\)»: el markscheme lo penaliza expresamente.</td></tr>
+<tr><td>Halle la serie de Maclaurin hasta el término en \(x^n\)</td><td>Todos los términos hasta grado \(n\), incluidos los nulos si los piden.</td><td>Cortar antes, o arrastrar términos de grado mayor mal calculados.</td></tr>
+<tr><td>Utilizando el resultado de (c)</td><td>Ese camino concreto (por ejemplo, la ecuación para \(g''\)).</td><td>Usar otro método: vale 0 aunque el resultado sea correcto.</td></tr>
+<tr><td>A partir de lo anterior o de cualquier otro modo</td><td>Cualquier método válido; lo anterior suele ser el más corto.</td><td>Elegir un método mucho más largo y quedarse sin tiempo.</td></tr>
+<tr><td>Halle un valor aproximado</td><td>Sustituir o integrar la serie truncada y dar el valor exacto de esa aproximación.</td><td>Integrar mal los límites o dar solo decimales sin la fracción.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>L'Hôpital sin indeterminación.</b> \(\lim_{x\to0}\frac{x+1}{x+2}=\frac12\) por sustitución; derivar daría 1, que es falso.</li>
+<li><b>Derivar el cociente.</b> L'Hôpital deriva numerador y denominador por separado, no con la regla del cociente.</li>
+<li><b>Escribir sin \(\lim\).</b> «\(=\frac{2/(1+4x^2)}{3\sec^23x}\)» sin \(\lim\) pierde una A1 en mayo 2021.</li>
+<li><b>La cadena olvidada.</b> \(\frac{d}{dx}\arctan2x=\frac2{1+4x^2}\), no \(\frac1{1+4x^2}\). \(\frac{d}{dx}\tan3x=3\sec^23x\).</li>
+<li><b>El factorial del denominador.</b> El coeficiente es \(\frac{f^{(n)}(0)}{n!}\), no \(f^{(n)}(0)\).</li>
+<li><b>Sustituir sin cambiar la validez.</b> \(\ln(1+2x)\) solo vale para \(-\frac12\lt x\le\frac12\), no para \(|x|\lt1\).</li>
+<li><b>Productos incompletos.</b> En el término \(x^3\) de \(e^x\sin x\) entran \(1\cdot\left(-\frac{x^3}6\right)\) y \(\frac{x^2}2\cdot x\). Escribe una tabla de pares de grados que sumen 3.</li>
+<li><b>El signo de \(\binom{1/2}{2}\).</b> \(\frac{\frac12\cdot(-\frac12)}2=-\frac18\). El término en \(x^2\) de \(\sqrt{1+x}\) es negativo.</li>
+<li><b>La constante al integrar una serie.</b> \(\int\frac1{1+x}dx=\ln(1+x)\) tiene constante 0 porque \(\ln1=0\). Para \(\arcsin\) o \(\arctan\), también; en otros casos no.</li>
+<li><b>«Utilizando (c)» ignorado.</b> Otro método vale 0 marcas, aunque llegue al resultado.</li>
+<li><b>La serie fuera de su intervalo.</b> \(\ln3=\ln(1+2)\) no se puede calcular con la serie en \(x=2\). Usa \(\ln\frac{1+x}{1-x}\) con \(x=\frac12\) (F6).</li>
+<li><b>Límites con series truncadas demasiado pronto.</b> Si el denominador es \(x^3\), hacen falta los términos del numerador hasta \(x^3\) como mínimo.</li>
+<li><b>\(a_n\to0\) no basta.</b> \(\sum\frac1n\) diverge aunque \(\frac1n\to0\).</li>
+<li><b>Laterales distintos.</b> \(\lim_{x\to0}\frac{|x|}x\) no existe. No es 1 ni 0.</li>
+</ul>
+</section>
+
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">Son 10 ejemplos del trabajo grupal de límites, de la ficha DMPA 15, del banco «Series de potencias» y de la ficha DMPA 22. Los tres últimos cubren tipos de examen que las fichas no traen. Los que van más allá del programa lo indican. Resuélvelos antes de abrir la solución.</p>
+
+<div class="ex"><p class="et">F1. Límites algebraicos y un valor que no cuenta <span class="lvl">Sección A</span></p>
+<p class="src">Trabajo grupal 3, ítems 6, 11, 13 y 14.</p>
+<p>Halla (a) \(\lim_{x\to3}f(x)\), con \(f(x)=2+\frac x2\) si \(x\ne3\) y \(f(3)=2\); (b) \(\lim_{x\to0}\dfrac{\frac1{x-4}+\frac14}x\); (c) \(\lim_{x\to5}\dfrac{x-5}{\sqrt{x+4}-3}\); (d) \(\lim_{x\to3}\dfrac{\sqrt{x+6}-3}{x-3}\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(2+\frac32=\frac72\). El valor \(f(3)=2\) no interviene; \(f\) no es continua en 3.</p>
+<p>(b) Común denominador: \(\frac1{x-4}+\frac14=\frac{x}{4(x-4)}\). Dividido por \(x\): \(\frac1{4(x-4)}\to-\frac1{16}\).</p>
+<p>(c) Multiplica por el conjugado: \(\frac{(x-5)(\sqrt{x+4}+3)}{x-5}=\sqrt{x+4}+3\to6\).</p>
+<p>(d) \(\frac{x-3}{(x-3)(\sqrt{x+6}+3)}\to\frac16\). (c) y (d) son recíprocos en estructura: \(6\) y \(\frac16\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. ¿Converge o diverge? <span class="lvl">Sección B, parte más allá del IB</span></p>
+<p class="src">DMPA 15, ítems 1, 3, 11, 12 y 13.</p>
+<p>Estudia la convergencia y, cuando se pueda, halla la suma: (a) \(\sum_{n\ge1}\frac6{n!}\); (b) \(\sum_{n\ge1}e^{-n}\); (c) \(\sum_{n\ge1}\sin\frac1n\); (d) \(\sum_{n\ge2}\frac1{\ln n}\); (e) \(\sum_{n\ge1}\frac n{e^n}\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Por la serie de \(e^x\) en \(x=1\): \(\sum_{n\ge0}\frac1{n!}=e\). Entonces la suma es \(6(e-1)\).</p>
+<p>(b) Geométrica con \(r=\frac1e\): \(\frac{1/e}{1-1/e}=\frac1{e-1}\).</p>
+<p>(c) Diverge. Para \(0\le t\le\frac\pi2\), \(\sin t\ge\frac{2t}\pi\) (la gráfica está sobre la cuerda), así que \(\sin\frac1n\ge\frac2\pi\cdot\frac1n\). Por comparación con la armónica, diverge.</p>
+<p>(d) Diverge: \(\ln n\lt n\), así que \(\frac1{\ln n}\gt\frac1n\).</p>
+<p>(e) Converge por el criterio de la razón: \(\frac{(n+1)/e^{n+1}}{n/e^n}\to\frac1e\lt1\). Suma: derivando \(\sum r^n=\frac1{1-r}\) se obtiene \(\sum nr^n=\frac r{(1-r)^2}\); con \(r=\frac1e\), la suma es \(\frac{e}{(e-1)^2}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. Una serie alternada con su suma acotada <span class="lvl">Más allá del IB</span></p>
+<p class="src">DMPA 15, ítem 15.</p>
+<p>Muestra que \(\sum_{n\ge1}(-1)^{n+1}\frac n{2n^2+1}\) converge y que su suma es menor que \(0{,}25\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p><span class="lbl">Criterio de Leibniz.</span> Si \(b_n\) decrece a 0, \(\sum(-1)^{n+1}b_n\) converge, y su suma \(S\) está entre dos sumas parciales consecutivas cualesquiera.</p>
+<p>\(b(x)=\frac x{2x^2+1}\) tiene \(b'=\frac{1-2x^2}{(2x^2+1)^2}\lt0\) para \(x\ge1\): decrece. Y \(b_n\to0\). Por tanto la serie converge.</p>
+<p>\(S_4=\frac13-\frac29+\frac3{19}-\frac4{33}\approx0{,}1478\) y \(S_5=S_4+\frac5{51}\approx0{,}2458\). Entonces \(S_4\lt S\lt S_5\lt0{,}25\). (El valor real es \(\approx0{,}2014\).)</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Intervalos de convergencia <span class="lvl">Más allá del IB</span></p>
+<p class="src">Banco «Series de potencias», Exercise 5B, ítems 1(a), 1(f), 1(k), 2(a) y 2(b).</p>
+<p>Halla el intervalo de convergencia de (a) \(\sum_{n\ge1}(-1)^n\frac{x^n}n\), (b) \(\sum_{n\ge0}\frac{x^{2n+1}}{(2n+1)!}\) y (c) \(\sum_{n\ge1}\frac{(x+1)^n}{3^n}\). (d) Halla \(k\) si \(\sum\frac{(kx)^n}{n^2}\) converge en \(\left[-\frac12,\frac12\right]\). (e) Halla \(k\) si \(\sum\frac{(x-k)^{2n}}{n^4}\) converge en \([2,4]\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Por la razón, \(R=1\). En \(x=1\): \(\sum\frac{(-1)^n}n\) converge (Leibniz). En \(x=-1\): \(\sum\frac1n\) diverge. Intervalo: \((-1,1]\). Es \(-\ln(1+x)\), con la validez del cuadernillo.</p>
+<p>(b) La razón da \(\frac{x^2}{(2n+2)(2n+3)}\to0\): converge para todo \(x\).</p>
+<p>(c) Geométrica con \(r=\frac{x+1}3\): \(|x+1|\lt3\). En los extremos el término no tiende a 0. Intervalo: \((-4,2)\).</p>
+<p>(d) Converge si \(|kx|\le1\) (en los extremos, \(\sum\frac1{n^2}\) converge): \(R=\frac1{|k|}=\frac12\), así que \(k=\pm2\).</p>
+<p>(e) Converge si \((x-k)^2\le1\), es decir, en \([k-1,k+1]\). Así \(k=3\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. Maclaurin sin derivar <span class="lvl">Sección A alta</span></p>
+<p class="src">DMPA 15, ítems 16, 17, 19 y 21.</p>
+<p>Halla los primeros términos de la serie de Maclaurin y la validez de (a) \(\frac2{1-x^2}\); (b) \(-\frac1{(x+1)^2}\); (c) \(\sin^2x\); (d) \(\sqrt{\frac{1+x}{1-x}}\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Geométrica con \(r=x^2\): \(2+2x^2+2x^4+\cdots\), para \(|x|\lt1\).</p>
+<p>(b) Es la derivada de \(\frac1{1+x}=1-x+x^2-\cdots\): \(-1+2x-3x^2+4x^3-\cdots\), para \(|x|\lt1\).</p>
+<p>(c) \(\sin^2x=\frac{1-\cos2x}2=x^2-\frac{x^4}3+\frac{2x^6}{45}-\cdots\), para todo \(x\). Sin la identidad habría que multiplicar \(\sin x\) por sí misma.</p>
+<p>(d) \(\sqrt{\frac{1+x}{1-x}}=\frac{1+x}{\sqrt{1-x^2}}=(1+x)\left(1+\frac{x^2}2+\cdots\right)=1+x+\frac{x^2}2+\frac{x^3}2+\cdots\), para \(|x|\lt1\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Logaritmos fuera del intervalo <span class="lvl">Sección B, parte más allá del IB</span></p>
+<p class="src">DMPA 15, ítems 20, 22 y 23, ampliados con (d).</p>
+<p>(a) Escribe la serie de \(e^{3x}\) y la de \(\ln(1-x)\) con su validez. (b) Halla la serie de Taylor de \(\ln x\) centrada en 1. (c) Muestra que \(\ln\frac{1+x}{1-x}=2\left(x+\frac{x^3}3+\frac{x^5}5+\cdots\right)\) para \(|x|\lt1\). (d) Elige \(x\) para aproximar \(\ln2\) con tres términos, y compara con la serie de \(\ln(1+x)\) en \(x=1\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(e^{3x}=\sum\frac{3^nx^n}{n!}\), para todo \(x\). \(\ln(1-x)=-x-\frac{x^2}2-\frac{x^3}3-\cdots\), para \(-1\le x\lt1\).</p>
+<p>(b) Con \(u=x-1\): \(\ln x=\ln(1+u)=(x-1)-\frac{(x-1)^2}2+\frac{(x-1)^3}3-\cdots\), para \(0\lt x\le2\).</p>
+<p>(c) \(\ln(1+x)-\ln(1-x)\): las potencias pares se cancelan y las impares se duplican.</p>
+<p>(d) \(\frac{1+x}{1-x}=2\) da \(x=\frac13\): \(2\left(\frac13+\frac1{81}+\frac1{1215}\right)\approx0{,}69300\), frente a \(\ln2=0{,}69315\). Con \(1-\frac12+\frac13=0{,}833\) el error es enorme: la serie en \(x=1\) converge, pero muy despacio.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. Derivada \(n\)-ésima, serie y suma de una serie numérica <span class="lvl">Sección B, integra Módulo 5</span></p>
+<p class="src">DMPA 22, ítem 2 (IB mayo 2008 TZ1, Prueba 1 NS), ampliado con (b) a (d).</p>
+<p>\(f(x)=xe^{2x}\). (a) Demuestra por inducción que \(f^{(n)}(x)=\left(2^nx+n2^{n-1}\right)e^{2x}\). (b) Deduce la serie de Maclaurin de \(f\). (c) Halla \(\lim_{x\to0}\frac{xe^{2x}-x}{x^2}\). (d) Halla \(\sum_{n\ge1}\frac{2^n}{(n-1)!}\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Con \(n=1\): \(f'=(1+2x)e^{2x}=(2x+1)e^{2x}\). Si vale para \(k\), derivando: \(\left[2^k+2\left(2^kx+k2^{k-1}\right)\right]e^{2x}=\left(2^{k+1}x+(k+1)2^k\right)e^{2x}\). Como vale para \(n=1\), y si vale para \(n=k\) vale para \(n=k+1\), vale para todo \(n\in\mathbb Z^+\).</p>
+<p>(b) \(f^{(n)}(0)=n2^{n-1}\), así que el coeficiente es \(\frac{n2^{n-1}}{n!}=\frac{2^{n-1}}{(n-1)!}\). Resultado: \(xe^{2x}=x+2x^2+2x^3+\frac43x^4+\cdots\). También sale de \(x\cdot e^{2x}\).</p>
+<p>(c) \(\frac{2x^2+2x^3+\cdots}{x^2}\to2\).</p>
+<p>(d) En \(x=1\), (b) da \(\sum\frac{2^{n-1}}{(n-1)!}=e^2\). Por tanto \(\sum\frac{2^n}{(n-1)!}=2e^2\). Reconocer una serie numérica como una serie de Maclaurin evaluada es una técnica de nivel 7.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. L'Hôpital en todas sus formas <span class="lvl">Tipo de examen sin ítem equivalente en las fichas</span></p>
+<p>Halla (a) \(\lim_{x\to\infty}\frac{x^3}{e^{x/2}}\); (b) \(\lim_{x\to\infty}\frac{(\ln x)^2}x\); (c) \(\lim_{x\to0}\frac{1-\cos3x}{x\sin x}\); (d) \(\lim_{x\to0}\frac{2^x-1}x\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Tres aplicaciones: \(\frac{3x^2}{\frac12e^{x/2}}\to\frac{6x}{\frac14e^{x/2}}\to\frac6{\frac18e^{x/2}}\to0\).</p>
+<p>(b) \(\frac{2\ln x\cdot\frac1x}1=\frac{2\ln x}x\to\frac{2/x}1\to0\).</p>
+<p>(c) Primera aplicación: \(\frac{3\sin3x}{\sin x+x\cos x}\), otra vez \(\frac00\). Segunda: \(\frac{9\cos3x}{2\cos x-x\sin x}\to\frac92\). Con Maclaurin: \(\frac{\frac92x^2}{x^2}\).</p>
+<p>(d) \(\frac{2^x\ln2}1\to\ln2\). Es la derivada de \(2^x\) en 0, escrita como límite.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. arcsin integrando una binomial <span class="lvl">Tipo de examen sin ítem equivalente en las fichas, integra Módulo 14</span></p>
+<p>(a) Halla la serie de \((1-x^2)^{-1/2}\) hasta \(x^4\). (b) Deduce la de \(\arcsin x\) hasta \(x^5\). (c) Halla \(\lim_{x\to0}\frac{\arcsin x-x}{x^3}\). (d) Usa \(\arcsin\frac12=\frac\pi6\) para aproximar \(\pi\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Binomial con \(p=-\frac12\) y \(u=-x^2\): \(1+\frac12x^2+\frac{\left(-\frac12\right)\left(-\frac32\right)}2x^4=1+\frac{x^2}2+\frac{3x^4}8\).</p>
+<p>(b) Integrando de 0 a \(x\) (la constante es 0 porque \(\arcsin0=0\)): \(\arcsin x=x+\frac{x^3}6+\frac{3x^5}{40}+\cdots\)</p>
+<p>(c) \(\frac16\).</p>
+<p>(d) \(\frac\pi6\approx\frac12+\frac1{48}+\frac3{1280}=\frac{2009}{3840}\), así que \(\pi\approx3{,}139\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. El logaritmo del coseno <span class="lvl">Tipo de examen sin ítem equivalente en las fichas</span></p>
+<p>(a) Halla la serie de \(\ln(\cos x)\) hasta \(x^4\). (b) Comprueba el resultado derivando y comparando con la serie de \(\tan x\). (c) Halla \(\lim_{x\to0}\frac{\ln\cos x}{x^2}\) y \(\lim_{x\to0}(\cos x)^{1/x^2}\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\cos x=1+u\) con \(u=-\frac{x^2}2+\frac{x^4}{24}\). Entonces \(\ln(1+u)=u-\frac{u^2}2+\cdots=-\frac{x^2}2+\frac{x^4}{24}-\frac{x^4}8=-\frac{x^2}2-\frac{x^4}{12}\).</p>
+<p>(b) \(\frac{d}{dx}\ln\cos x=-\tan x\). Derivando (a): \(-x-\frac{x^3}3\), que es \(-\left(x+\frac{x^3}3\right)\). Coincide con el Ejemplo 1.15.</p>
+<p>(c) \(-\frac12\), y entonces \((\cos x)^{1/x^2}=e^{\ln\cos x/x^2}\to e^{-1/2}\).</p>
+</div></details></div>
+</section>
+
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son todas las preguntas del tema en tus 7 pruebas, con las marcas del markscheme oficial y sus métodos alternativos. Las de mayo 2021 TZ1 y mayo 2022 TZ1 están en inglés en tu carpeta; aquí van traducidas.</p>
+
+<div class="ex"><p class="et">X1. Mayo 2021 TZ1, pregunta 8 <span class="lvl">5 puntos</span></p>
+<p>Use la regla de L'Hôpital para hallar \(\lim_{x\to0}\dfrac{\arctan2x}{\tan3x}\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">Intentar derivar numerador y denominador <span class="m">M1</span></p>
+<p class="step">\(\displaystyle\lim_{x\to0}\frac{\arctan2x}{\tan3x}=\lim_{x\to0}\frac{\frac2{1+4x^2}}{3\sec^23x}\) <span class="m">A1A1</span> (una A1 por el numerador y otra por el denominador)</p>
+<p class="step">Intentar sustituir \(x=0\) <span class="m">(M1)</span>: \(=\frac23\) <span class="m">A1</span></p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> Sin «\(\lim\)» en las líneas, la nota máxima es M1A1A0M1A1. Olvidar los factores 2 y 3 de la regla de la cadena da \(\frac13\). Conviene indicar que la forma es \(\frac00\) antes de aplicar la regla.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Noviembre 2021, pregunta 11(b)(c) <span class="lvl">7 puntos</span></p>
+<p>Sabiendo (de (a)) que \(\frac{d^n}{dx^n}(x^2e^x)=\left[x^2+2nx+n(n-1)\right]e^x\): (b) Halla la serie de Maclaurin de \(f(x)=x^2e^x\) hasta \(x^4\). [3] (c) Halla \(\lim_{x\to0}\dfrac{(x^2e^x-x^2)^3}{x^9}\). [4]</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p><span class="lbl">(b) Método 1.</span></p>
+<p class="step">Intentar usar la fórmula: en \(x=0\), \(f^{(n)}(0)=n(n-1)\) <span class="m">(M1)</span>. Así \(f(0)=0\), \(f'(0)=0\), \(f''(0)=2\), \(f'''(0)=6\) y \(f^{(4)}(0)=12\).</p>
+<p class="step">Usar \(f(0)+xf'(0)+\frac{x^2}{2!}f''(0)+\cdots\) <span class="m">(M1)</span>: \(f(x)\approx x^2+x^3+\frac12x^4\) <span class="m">A1</span></p>
+<p><span class="lbl">(b) Método 2.</span> \(x^2\) por la serie de \(e^x\) <span class="m">(M1)</span>: \(x^2\left(1+x+\frac{x^2}{2!}+\cdots\right)\) <span class="m">(A1)</span>, así que \(x^2+x^3+\frac12x^4\) <span class="m">A1</span>.</p>
+<p><span class="lbl">(c) Método 1.</span></p>
+<p class="step">Sustituir la serie en el límite <span class="m">M1</span>: \(\frac{\left(x^2+x^3+\frac12x^4+\cdots-x^2\right)^3}{x^9}\) <span class="m">(A1)</span></p>
+<p class="step">\(=\frac{\left(x^3+\frac12x^4+\cdots\right)^3}{x^9}=\left(1+\frac12x+\cdots\right)^3\) <span class="m">A1</span>, así que el límite es 1 <span class="m">A1</span></p>
+<p><span class="lbl">(c) Método 2.</span> \(\left(\frac{x^2e^x-x^2}{x^3}\right)^3\) <span class="m">M1</span> \(=\left(\frac{e^x-1}x\right)^3\) <span class="m">(A1)</span>; L'Hôpital <span class="m">M1</span> da \(\left(\frac{e^x}1\right)^3\to1\) <span class="m">A1</span>.</p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> En (b), escribir \(f^{(n)}(0)\) como coeficiente sin dividir por \(n!\) (daría \(2x^2+6x^3+\ldots\)). En (c), aplicar L'Hôpital al cociente original, que necesitaría nueve derivadas.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Mayo 2021 TZ1, pregunta 12(c) <span class="lvl">8 puntos</span></p>
+<p>\(f(x)=\sqrt{1+x}\), \(g(x)=e^{mx}\) con \(m\in\mathbb Q\), y \(h=f\cdot g\) para \(x\gt-1\). El coeficiente de \(x^2\) en la serie de Maclaurin de \(h\) es \(\frac74\). Halla los posibles valores de \(m\).</p>
+<details><summary>Ver solución con marcas (método 2, el más corto)</summary><div class="inner">
+<p class="step">Intentar hallar \(f(0),f'(0),f''(0)\), o usar la binomial <span class="m">(M1)</span>: \(f(x)=1+\frac12x-\frac18x^2+\cdots\) <span class="m">A1</span></p>
+<p class="step">\(g(x)=1+mx+\frac{m^2}2x^2+\cdots\) <span class="m">(A1)</span></p>
+<p class="step">\(h=\left(1+\frac12x-\frac18x^2\right)\left(1+mx+\frac{m^2}2x^2\right)\) <span class="m">(M1)</span></p>
+<p class="step">Coeficiente de \(x^2\): \(\frac{m^2}2+\frac m2-\frac18\) <span class="m">A1</span></p>
+<p class="step">Igualar a \(\frac74\) y resolver <span class="m">M1</span>: \(4m^2+4m-15=0\) <span class="m">A1</span>, así que \((2m+5)(2m-3)=0\) y \(m=-\frac52\) o \(m=\frac32\) <span class="m">A1</span></p>
+<p><span class="lbl">Métodos 1 y 3.</span> Derivar \(h\) dos veces con la regla del producto, o usar \(h''(0)=f(0)g''(0)+2f'(0)g'(0)+f''(0)g(0)=m^2+m-\frac14\), e igualar \(\frac{h''(0)}{2!}=\frac74\). Llegan a la misma ecuación con 8 marcas.</p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> El signo de \(-\frac18\) (o de \(f''(0)=-\frac14\)), olvidar el término cruzado \(\frac12x\cdot mx\), o igualar \(h''(0)\) a \(\frac74\) sin dividir por \(2!\). Las dos raíces son racionales, así que valen ambas.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X4. Mayo 2022 TZ1, pregunta 12 <span class="lvl">21 puntos</span></p>
+<p>\(f(x)=e^x\sin x\). (a) Halla la serie de Maclaurin de \(f\) hasta \(x^3\). [4] (b) A partir de lo anterior, aproxima \(\int_0^1e^{x^2}\sin(x^2)\,dx\). [4] \(g(x)=e^x\cos x\). (c) (i) Muestra que \(g''=2(g'-g)\). (ii) Deduce que \(g^{(4)}=2(g'''-g'')\). [5] (d) Usando (c), halla la serie de Maclaurin de \(g\) hasta \(x^4\). [5] (e) Halla \(\lim_{x\to0}\dfrac{e^x\cos x-1-x}{x^3}\). [3]</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Método 1: reconocer las dos series conocidas <span class="m">(M1)</span>; intentar multiplicar hasta \(x^3\) <span class="m">(M1)</span>: \(\left(1+x+\frac{x^2}2\right)\left(x-\frac{x^3}6\right)=x-\frac{x^3}6+x^2+\frac{x^3}2\) <span class="m">(A1)</span>; \(e^x\sin x=x+x^2+\frac13x^3+\cdots\) <span class="m">A1</span></p>
+<p class="step">(Método 2: \(f'=e^x(\sin x+\cos x)\) A1, \(f'''=2e^x(\cos x-\sin x)\) A1, sustituir 0 (M1) y obtener el resultado A1.)</p>
+<p class="step">(b) \(e^{x^2}\sin(x^2)=x^2+x^4+\frac13x^6+\cdots\) <span class="m">(A1)</span>; sustituir e intentar integrar <span class="m">M1</span></p>
+<p class="step">\(\left[\frac{x^3}3+\frac{x^5}5+\frac{x^7}{21}\right]_0^1\) <span class="m">A1</span> \(=\frac{61}{105}\) <span class="m">A1</span> (se tolera omitir los límites hasta este paso)</p>
+<p class="step">(c)(i) Intentar la regla del producto al menos una vez <span class="m">M1</span>: \(g'=e^x\cos x-e^x\sin x\) <span class="m">A1</span>; \(g''=-2e^x\sin x\) <span class="m">A1</span></p>
+<p class="step">\(2(g'-g)=2\left(e^x\cos x-e^x\sin x-e^x\cos x\right)=-2e^x\sin x\) <span class="m">A1</span>, así que \(g''=2(g'-g)\) <span class="m">AG</span></p>
+<p class="step">(ii) Derivando: \(g'''=2(g''-g')\) <span class="m">A1</span>, y otra vez \(g^{(4)}=2(g'''-g'')\) <span class="m">AG</span></p>
+<p class="step">(d) Intentar sustituir \(x=0\) en una derivada <span class="m">(M1)</span>: \(g(0)=1\), \(g'(0)=1\), \(g''(0)=0\) <span class="m">A1</span>; \(g'''(0)=-2\), \(g^{(4)}(0)=-4\) <span class="m">(A1)</span></p>
+<p class="step">Sustituir en la fórmula de Maclaurin <span class="m">(M1)</span>: \(g(x)=1+x-\frac13x^3-\frac16x^4+\cdots\) <span class="m">A1</span></p>
+<p class="step">(e) Método 1: \(\lim_{x\to0}\frac{\left(1+x-\frac13x^3-\cdots\right)-1-x}{x^3}\) <span class="m">M1</span> \(=\lim_{x\to0}\left(-\frac13-\frac16x+\cdots\right)\) <span class="m">(A1)</span> \(=-\frac13\) <span class="m">A1</span></p>
+<p><span class="lbl">(e) Método 2.</span> L'Hôpital tres veces, usando \(g''=-2e^x\sin x\) y \(g'''=-2e^x\sin x-2e^x\cos x\) <span class="m">M1</span>; \(\lim_{x\to0}\frac{g'''(x)}6\) <span class="m">A1</span> \(=-\frac13\) <span class="m">A1</span>.</p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> En (b), sustituir \(x^2\) solo en una parte de la serie. En (d), el markscheme no da marcas a métodos que no usen (c). En (e), cortar la serie antes de \(x^3\).</p>
+</div></details></div>
+</section>
+
+<section id="extra">
+<h2>6. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos, más difíciles que las preguntas de examen del tema, y ninguno repite un tipo de este módulo ni de los anteriores. Integran series geométricas y sucesiones (Módulo 1), polinomios (Módulo 2), binomio y probabilidad (Módulo 4), inducción (Módulo 5), complejos (Módulo 6), trigonometría (Módulo 8), integración (Módulo 14) y ecuaciones diferenciales (Módulo 15). El 9 y el 10 son problemas jefe; el 10 va más allá del programa.</p>
+
+<div class="ex"><p class="et">E1. Calcular \(\pi\) a mano <span class="lvl">Sección B, integra Módulos 1 y 8</span></p>
+<p>(a) Integrando la serie geométrica de \(\frac1{1+t^2}\), obtén la serie de \(\arctan x\). (b) Muestra que \(\arctan\frac12+\arctan\frac13=\frac\pi4\). (c) Con tres términos de cada serie, aproxima \(\pi\). (d) La serie con \(x=1\), \(\frac\pi4=1-\frac13+\frac15-\cdots\), también converge. ¿Cuántos términos harían falta para un error menor que \(0{,}001\) en \(\frac\pi4\)?</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Calcula \(\tan(A+B)\) con \(\tan A=\frac12\) y \(\tan B=\frac13\). (d) En una serie alternada, el error es menor que el primer término omitido.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(\tan(A+B)=\frac{5/6}{1-1/6}=1\), y \(A+B\in\left(0,\frac\pi2\right)\). (c) \(4\left[\left(\frac12-\frac1{24}+\frac1{160}\right)+\left(\frac13-\frac1{81}+\frac1{1215}\right)\right]=\frac{6115}{1944}\approx3{,}1456\). (d) Hace falta \(\frac1{2n+1}\lt0{,}001\), es decir, unos 500 términos. Las series con \(x\) pequeño convergen mucho más rápido: así calculaba Machin \(\pi\) en 1706.</p></div></details></div>
+
+<div class="ex"><p class="et">E2. Límites con parámetro <span class="lvl">Sección B</span></p>
+<p>(a) Halla \(a\) y \(b\) tales que \(\lim_{x\to0}\frac{\sin(ax)-bx}{x^3}=-36\). (b) Halla \(k\) para que \(\lim_{x\to0}\frac{e^{kx}-1-2x}{x^2}\) sea finito, y halla el límite. (c) Halla \(c\) para que \(\lim_{x\to0}\frac{\sqrt{1+cx}-1-x}{x^2}\) exista, y halla su valor.</p>
+<details><summary>Pista</summary><div class="inner"><p>Desarrolla el numerador. Para que el cociente no explote, los coeficientes de grado menor que el del denominador deben ser 0.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\sin ax-bx=(a-b)x-\frac{a^3}6x^3+\cdots\). Hace falta \(a=b\) y \(-\frac{a^3}6=-36\), así que \(a=b=6\). (b) \((k-2)x+\frac{k^2}2x^2+\cdots\): \(k=2\) y el límite es 2. (c) \(\left(\frac c2-1\right)x-\frac{c^2}8x^2\): \(c=2\) y el límite es \(-\frac12\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Una ecuación diferencial cuya solución es una serie <span class="lvl">Sección B, integra Módulos 1 y 15</span></p>
+<p>\(y'=1+xy\), \(y(0)=0\). (a) Halla \(y(0)\), \(y'(0)\), \(y''(0)\), \(y'''(0)\), \(y^{(4)}(0)\) e \(y^{(5)}(0)\), y la serie hasta \(x^5\). (b) Con \(y=\sum a_nx^n\), muestra que \((n+1)a_{n+1}=a_{n-1}\) para \(n\ge1\), y deduce la serie entera. (c) Con el factor integrante del Módulo 15, muestra que \(y=e^{x^2/2}\int_0^xe^{-t^2/2}dt\). ¿Por qué no basta para hallar \(y(1)\) a mano?</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Deriva \(y'=1+xy\) varias veces: \(y''=y+xy'\), \(y'''=2y'+xy''\)… (b) Iguala los coeficientes de \(x^n\) en \(\sum(n+1)a_{n+1}x^n=1+\sum a_{n-1}x^n\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) Los valores son \(0,1,0,2,0,8\), así que \(y=x+\frac{x^3}3+\frac{x^5}{15}+\cdots\) (b) \(a_0=0\) y \(a_1=1\). Los pares son 0 y \(a_{2k+1}=\frac{a_{2k-1}}{2k+1}\): \(y=x+\frac{x^3}3+\frac{x^5}{15}+\frac{x^7}{105}+\cdots=\sum\frac{x^{2k+1}}{1\cdot3\cdot5\cdots(2k+1)}\). (c) \(\int e^{-t^2/2}dt\) no es elemental: la serie es la forma práctica de la solución.</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Sumar series trigonométricas con complejos <span class="lvl">Sección B, integra Módulo 6</span></p>
+<p>(a) Usando \(e^z=\sum\frac{z^n}{n!}\) con \(z=e^{i\theta}\), muestra que \(\sum_{n\ge0}\frac{\cos n\theta}{n!}=e^{\cos\theta}\cos(\sin\theta)\). (b) Halla \(\sum_{n\ge0}\frac{\sin n\theta}{n!}\). (c) Evalúa (a) en \(\theta=\frac\pi3\) y en \(\theta=\pi\), y comprueba el segundo con la serie de \(e^{-1}\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\((e^{i\theta})^n=e^{in\theta}\) (De Moivre). Además, \(e^{e^{i\theta}}=e^{\cos\theta}e^{i\sin\theta}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\sum\frac{e^{in\theta}}{n!}=e^{\cos\theta}\left(\cos(\sin\theta)+i\sin(\sin\theta)\right)\); se toma la parte real. (b) La parte imaginaria: \(e^{\cos\theta}\sin(\sin\theta)\). (c) \(\theta=\frac\pi3\): \(\sqrt e\cos\frac{\sqrt3}2\approx1{,}068\). \(\theta=\pi\): \(\cos n\pi=(-1)^n\), y la suma es \(\sum\frac{(-1)^n}{n!}=e^{-1}\), que coincide con \(e^{-1}\cos0\).</p></div></details></div>
+
+<div class="ex"><p class="et">E5. Sumas de Riemann y \(\ln2\) <span class="lvl">Sección B, integra Módulo 14</span></p>
+<p>(a) Muestra que \(\sum_{k=1}^n\frac1{n+k}=\frac1n\sum_{k=1}^n\frac1{1+k/n}\) y deduce su límite con una integral. (b) Muestra que \(1-\frac12+\frac13-\cdots-\frac1{2n}=\frac1{n+1}+\cdots+\frac1{2n}\). (c) Concluye el valor de la serie armónica alternada y compáralo con la serie de \(\ln(1+x)\) en \(x=1\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Rectángulos de ancho \(\frac1n\) bajo \(\frac1{1+x}\) en \([0,1]\). (b) Suma y resta \(2\left(\frac12+\frac14+\cdots+\frac1{2n}\right)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\int_0^1\frac{dx}{1+x}=\ln2\). (b) Es \(H_{2n}-H_n\), con \(H_m=1+\frac12+\cdots+\frac1m\). (c) La suma es \(\ln2\), lo mismo que da \(\ln(1+x)\) en el extremo \(x=1\) de su intervalo de validez. Con \(n=1000\), la suma vale \(\approx0{,}69290\).</p></div></details></div>
+
+<div class="ex"><p class="et">E6. La probabilidad \(\frac1e\) <span class="lvl">Sección B, integra Módulo 4</span></p>
+<p>(a) Un evento tiene probabilidad \(\frac1n\) en cada uno de \(n\) intentos independientes. Muestra que la probabilidad de que no ocurra nunca tiende a \(\frac1e\), usando logaritmos y L'Hôpital. (b) \(n\) cartas se meten al azar en \(n\) sobres. Por el principio de inclusión y exclusión, la probabilidad de que ninguna acierte es \(p_n=\sum_{k=0}^n\frac{(-1)^k}{k!}\). Halla \(p_4\) y \(\lim p_n\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(n\ln\left(1-\frac1n\right)=\frac{\ln(1-h)}h\) con \(h=\frac1n\to0\). (b) Es la serie de \(e^x\) en \(x=-1\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\lim_{h\to0}\frac{\ln(1-h)}h=\lim_{h\to0}\frac{-1/(1-h)}1=-1\), así que \(\left(1-\frac1n\right)^n\to e^{-1}\approx0{,}368\). (b) \(p_4=1-1+\frac12-\frac16+\frac1{24}=\frac38\), y \(p_n\to\frac1e\). Los dos problemas, distintos, tienen la misma respuesta límite.</p></div></details></div>
+
+<div class="ex"><p class="et">E7. La serie que genera Fibonacci <span class="lvl">Sección B, integra Módulos 1 y 2</span></p>
+<p>Sea \(G(x)=\sum_{n\ge1}F_nx^n\), con \(F_1=F_2=1\) y \(F_{n+1}=F_n+F_{n-1}\). (a) Muestra que \(G(x)-xG(x)-x^2G(x)=x\), así que \(G=\frac x{1-x-x^2}\). (b) Con fracciones parciales y series geométricas, deduce la fórmula de Binet \(F_n=\frac{\varphi^n-\psi^n}{\sqrt5}\), con \(\varphi=\frac{1+\sqrt5}2\) y \(\psi=\frac{1-\sqrt5}2\). (c) ¿Para qué \(x\) converge \(G\)?</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) \(1-x-x^2=(1-\varphi x)(1-\psi x)\), porque \(\varphi+\psi=1\) y \(\varphi\psi=-1\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(\frac x{(1-\varphi x)(1-\psi x)}=\frac1{\sqrt5}\left(\frac1{1-\varphi x}-\frac1{1-\psi x}\right)=\frac1{\sqrt5}\sum(\varphi^n-\psi^n)x^n\). (c) Para \(|x|\lt\frac1\varphi=\frac{\sqrt5-1}2\approx0{,}618\), el radio de la geométrica de razón \(\varphi x\).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. La tangente desde su ecuación diferencial <span class="lvl">Sección B, integra Módulos 8 y 15</span></p>
+<p>\(y=\tan x\) cumple \(y'=1+y^2\), con \(y(0)=0\). (a) Usando solo esa ecuación, halla \(y^{(n)}(0)\) para \(n\le5\) y la serie hasta \(x^5\). Compárala con el Ejemplo 1.15. (b) Halla \(\lim_{x\to0}\frac{\tan x-\sin x}{x^3}\). (c) ¿Por qué la serie de \(\tan x\) no puede converger para \(|x|\ge\frac\pi2\)?</p>
+<details><summary>Pista</summary><div class="inner"><p>\(y''=2yy'\), \(y'''=2(y')^2+2yy''\), \(y^{(4)}=6y'y''+2yy'''\), \(y^{(5)}=6(y'')^2+8y'y'''+2yy^{(4)}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) Los valores son \(0,1,0,2,0,16\), así que \(\tan x=x+\frac{x^3}3+\frac{2x^5}{15}+\cdots\). Coincide. (b) \(\left(x+\frac{x^3}3\right)-\left(x-\frac{x^3}6\right)=\frac{x^3}2\), así que el límite es \(\frac12\). (c) \(\tan x\to\infty\) cuando \(x\to\frac\pi2\), y una serie de potencias convergente es continua dentro de su intervalo: el radio no puede pasar de \(\frac\pi2\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. \(\left(1+\frac1n\right)^n\) está acotada y converge <span class="lvl boss">Problema jefe, integra Módulos 4 y 5</span></p>
+<p>Sea \(a_n=\left(1+\frac1n\right)^n\). (a) Con el binomio, muestra que \(a_n=\sum_{k=0}^n\frac1{k!}\left(1-\frac1n\right)\left(1-\frac2n\right)\cdots\left(1-\frac{k-1}n\right)\). (b) Demuestra por inducción que \(k!\ge2^{k-1}\) para \(k\ge1\). (c) Deduce que \(a_n\lt3\) para todo \(n\). (d) Muestra que \(a_n\lt a_{n+1}\). (e) Concluye que \(a_n\) converge, y que su límite \(e\) cumple \(2\lt e\le3\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(\binom nk\frac1{n^k}=\frac{n(n-1)\cdots(n-k+1)}{k!\,n^k}\). (c) Cada producto es menor que 1; acota por \(1+\sum\frac1{2^{k-1}}\). (d) Al pasar de \(n\) a \(n+1\), cada factor \(1-\frac jn\) crece y aparece un término positivo más.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) Con \(k=1\): \(1\ge1\). Si \(k!\ge2^{k-1}\), entonces \((k+1)!=(k+1)k!\ge2\cdot2^{k-1}=2^k\). (c) \(a_n\le1+\sum_{k=1}^n\frac1{k!}\le1+\sum_{k\ge1}\frac1{2^{k-1}}=1+2=3\). La desigualdad es estricta para \(n\ge2\); \(a_1=2\). (e) Una sucesión creciente y acotada converge: \(a_2=2{,}25\gt2\), y el límite es \(\le3\). En efecto, \(e\approx2{,}718\).</p></div></details></div>
+
+<div class="ex"><p class="et">E10. \(e\) es irracional <span class="lvl boss">Problema jefe, más allá del IB</span></p>
+<p>Supón que \(e=\frac pq\), con \(p,q\in\mathbb Z^+\). Sea \(N=q!\left(e-\sum_{k=0}^q\frac1{k!}\right)\). (a) Muestra que \(N\) es un entero. (b) Muestra que \(N=\frac1{q+1}+\frac1{(q+1)(q+2)}+\cdots\) y que \(0\lt N\lt\frac1q\le1\). (c) Concluye que \(e\) es irracional. (d) ¿En qué punto falla el argumento si se intenta con \(\pi\)?</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(q!\,e=(q-1)!\,p\) y \(\frac{q!}{k!}\) es entero para \(k\le q\). (b) Acota por la geométrica \(\sum\frac1{(q+1)^j}=\frac1q\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(N=\sum_{k\gt q}\frac{q!}{k!}\), y \(\frac{q!}{k!}\le\frac1{(q+1)^{k-q}}\), con desigualdad estricta desde el segundo término. Así \(0\lt N\lt\frac1q\le1\). (c) No hay ningún entero estrictamente entre 0 y 1: contradicción, así que \(e\notin\mathbb Q\). (d) La serie de \(e\) tiene términos \(\frac1{k!}\) que se hacen pequeños muy deprisa, y por eso el resto multiplicado por \(q!\) queda en \((0,1)\). Las series de \(\pi\) (como la de E1) no tienen esa estructura: la irracionalidad de \(\pi\) (Lambert, 1761) necesita otra idea.</p></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Con este módulo se completa la serie de 17. El siguiente paso del plan es la pasada de figuras por los módulos publicados (3, 6, 7, 8, 10, 11 y 13).</p>
+</section>
+</main>
+</div>
+</body>
+</html>

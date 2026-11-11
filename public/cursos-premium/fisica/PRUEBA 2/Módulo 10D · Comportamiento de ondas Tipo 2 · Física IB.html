@@ -1,0 +1,517 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 10D · Comportamiento de ondas Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:52px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:26px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:12px 0;overflow-x:auto}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.hl-tag{font-family:"IBM Plex Mono";font-size:10px;letter-spacing:.06em;color:#fff;background:var(--hl);padding:1px 6px;border-radius:3px;vertical-align:middle}
+.pb{border:1px solid var(--line);border-radius:6px;margin:26px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#EFF4F2,#FFFFFF);border-bottom:1px solid var(--line);padding:14px 20px}
+.pb-head .code{font-family:"IBM Plex Mono";font-size:11px;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px;letter-spacing:.05em}
+.pb-head h3{margin:8px 0 0;font-size:19px}
+.pb-body{padding:6px 20px 18px}
+.enun{background:#F4F6F4;border-left:3px solid var(--ink-soft);padding:10px 16px;margin:14px 0;font-size:16.5px}
+.part{margin:16px 0 4px;font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep)}
+.pide{display:inline-block;font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:1px 7px;margin-right:8px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:5px 11px;display:inline-block;margin-top:6px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.note{background:#EEF3F1;border:1px dashed var(--teal);border-radius:5px;padding:14px 18px;margin:16px 0;font-size:16px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<!-- rev 2026-10-31 10d · banco paper2 comportamiento (3) oficiales 2022-26 -->
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> C.2 · COMPORTAMIENTO DE ONDAS <span>//</span> MÓDULO 10D · TIPO 2 (PAPER 2)</p>
+  <h1>Comportamiento de <em>ondas</em> · Tipo 2</h1>
+  <p class="lede">Reflexión, refracción con la ley de Snell, reflexión total interna (TIR), difracción e interferencia de doble rendija — en formato Paper 2. Resuelve la ficha real <strong>DMpA 22</strong> apartado por apartado y cinco integradores con resolución oculta y verificada.</p>
+  <div class="stats">
+    <div class="stat"><b>4</b><span>problemas ficha DMpA 22</span></div>
+    <div class="stat"><b>3</b><span>Paper 2 oficiales 22–26</span></div>
+    <div class="stat"><b>5</b><span>integradores</span></div>
+    <div class="stat"><b>oculta</b><span>resolución verificada</span></div>
+    <div class="stat"><b>c = 3×10⁸</b><span>m·s⁻¹</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#estrategia">0 · Método para tipo 2</a>
+  <a href="#fichas">F · Ficha real DMpA 22</a>
+  <a href="#f1">F1 · Frentes de onda (refracción)</a>
+  <a href="#f2">F2 · Microondas y doble rendija</a>
+  <a href="#f3">F3 · Ondas de agua</a>
+  <a href="#f4">F4 · MAS + refracción de frentes</a>
+  <a href="#examenes">★ Banco Paper 2 · 2022–26</a>
+  <a href="#extra">Integradores para ti</a>
+  <a href="#practica2">P · Práctica extra · Paper 2</a>
+</nav>
+
+<main>
+
+<div class="wrap" style="padding:0"><div class="note"><strong>Cómo usar este módulo.</strong> Los cuatro problemas de la ficha <strong>DMpA 22</strong> están resueltos <strong>a la vista</strong>, apartado por apartado (qué pide → ecuación → desarrollo → resultado). Los cinco integradores del final llevan la resolución <strong>oculta</strong>: resuélvelos tú y luego abre «VER RESOLUCIÓN». Integra hacia atrás solo hasta los Módulos 10–1 (ondas, MAS e incertidumbres). \(c=3{,}0\times10^{8}\) m·s⁻¹.</div></div>
+
+<!-- ESTRATEGIA -->
+<section id="estrategia">
+  <p class="sec-num">SECCIÓN 00 · LO QUE DECIDE EL TIPO 2</p>
+  <h2>Método para comportamiento de ondas<span class="rule"></span></h2>
+  <p class="sec-intro">El Paper 2 de este tema encadena Snell paso a paso, exige el criterio de TIR, lee geometría de frentes de onda y aplica interferencia de dos fuentes con diferencia de camino. Estos seis gestos cubren casi todo.</p>
+  <div class="box key"><span class="lbl">Los 6 gestos del tipo 2 de comportamiento de ondas</span>
+    <ol>
+      <li><strong>Snell con índices o con velocidades:</strong> \(n_1\sin\theta_1=n_2\sin\theta_2\), equivalente a \(\dfrac{\sin\theta_1}{\sin\theta_2}=\dfrac{v_1}{v_2}=\dfrac{\lambda_1}{\lambda_2}=\,_1n_2\). Los ángulos se miden <em>desde la normal</em>. La frecuencia <strong>no</strong> cambia al refractar; sí cambian \(v\) y \(\lambda\).</li>
+      <li><strong>Criterio de TIR:</strong> solo al pasar de medio más lento/denso a uno más rápido/menos denso. Ángulo crítico \(\sin\theta_c=\dfrac{n_2}{n_1}\) (con \(n_1>n_2\)). Si \(\theta>\theta_c\) ⇒ reflexión total interna; si \(\theta=\theta_c\) ⇒ el rayo sale rasante (90°).</li>
+      <li><strong>Frentes de onda y rayos:</strong> el rayo es perpendicular al frente. El ángulo entre el <em>frente</em> y la frontera es igual al ángulo entre el <em>rayo</em> y la normal. En el medio más lento los frentes se <em>juntan</em> (menor \(\lambda\)) y giran acercándose a la normal.</li>
+      <li><strong>Dos fuentes / doble rendija:</strong> máximo (constructiva) si la diferencia de camino es \(\Delta=n\lambda\); mínimo (destructiva) si \(\Delta=\left(n+\tfrac12\right)\lambda\). En pantalla lejana, \(s=\dfrac{\lambda D}{d}\).</li>
+      <li><strong>Diferencia de camino explícita:</strong> cuando te dan \(r_1\) y \(r_2\) a las dos fuentes, \(\Delta=|r_1-r_2|\). Identifica el orden del máximo (el central es \(n=0\)) para saber cuántas \(\lambda\) vale \(\Delta\), despeja \(\lambda\) y luego \(f=c/\lambda\).</li>
+      <li><strong>Difracción:</strong> una abertura comparable a \(\lambda\) difracta más. Más difracción si \(\lambda\) aumenta o la abertura disminuye. Al subir \(f\) baja \(\lambda\) (v constante) y las franjas/líneas de interferencia se <em>juntan</em>.</li>
+    </ol>
+  </div>
+  <div class="box trap"><span class="lbl">Trampas que cuestan marcas</span>
+    <ul>
+      <li>Medir ángulos desde la <strong>superficie</strong> en vez de desde la normal (ángulo frente-interfaz ≠ ángulo rayo-superficie; sí = ángulo rayo-normal).</li>
+      <li>Olvidar que \(f\) es constante al refractar y "recalcularla" en el nuevo medio.</li>
+      <li>Confundir el orden del máximo: en \(\Delta=n\lambda\), el máximo <em>central</em> es \(n=0\); el primero lateral, \(n=1\).</li>
+      <li>Invocar TIR en el sentido equivocado (solo de denso a menos denso).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FICHA REAL DMpA 22 -->
+<section id="fichas">
+  <p class="sec-num">FICHA REAL DEL PROYECTO · DMpA 22 · TIPO 2</p>
+  <h2>Ficha real tipo 2 — comportamiento de ondas<span class="rule"></span></h2>
+  <p class="sec-intro">Cuatro preguntas de Paper 2 del IB tomadas de la ficha <strong>DMpA 22</strong> del proyecto: refracción de frentes de onda, interferencia de microondas por doble rendija, ondas de agua (refracción + interferencia) y MAS combinado con refracción de frentes. Resueltas <strong>apartado por apartado y a la vista</strong>.</p>
+  <div class="note"><strong>▲ = figura no disponible.</strong> El texto de la ficha se extrajo bien, pero varios apartados dependen de un <em>diagrama a escala</em> o de <em>leer una gráfica</em> que no viaja en el PDF. En esos apartados (<span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span>) doy el procedimiento y la ecuación exacta, y cuando cabe un control físico, pero <strong>no invento la medición</strong>: completa el número leyendo tu diagrama. Los apartados conceptuales y los que traen los datos en el texto quedan totalmente resueltos.</div>
+
+  <!-- F1 -->
+  <div id="f1" class="pb">
+    <div class="pb-head"><span class="code">FICHA · M06/SP2/SPA · refracción de frentes</span><h3>Frentes de onda de un medio a otro</h3></div>
+    <div class="pb-body">
+      <div class="enun">En un diagrama a escala, unos frentes de onda planos pasan del <strong>medio 1</strong> al <strong>medio 2</strong> a través de una frontera AB.</div>
+      <p class="part">(a) <span class="pide">indique y explique</span> en qué medio los frentes tienen mayor velocidad. [3] <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>La frecuencia es la misma en ambos medios (la fija la fuente), así que \(v=f\lambda\Rightarrow v\propto\lambda\): <strong>la onda es más rápida en el medio donde los frentes están más separados</strong> (mayor longitud de onda). En el diagrama a escala, mide la separación entre frentes consecutivos a cada lado de AB; el medio con mayor separación es el de mayor velocidad. (Geométricamente, en el medio más rápido los frentes forman <em>mayor</em> ángulo con la frontera, es decir, se alejan más de ella.)</p>
+      <p class="part">(b) <span class="pide">determine</span> el cociente \(v_1/v_2\) midiendo del diagrama. [3] <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Como \(f\) es constante, \(\dfrac{v_1}{v_2}=\dfrac{\lambda_1}{\lambda_2}\): mide con la regla la separación entre frentes a cada lado y divide. De forma equivalente, mide los ángulos \(\theta_1,\theta_2\) de los frentes respecto de AB (o de los rayos respecto de la normal) y usa \(\dfrac{v_1}{v_2}=\dfrac{\sin\theta_1}{\sin\theta_2}\). <em>Control:</em> si en el diagrama los frentes se juntan al pasar a 2, saldrá \(v_1/v_2>1\) (el medio 2 es el lento). <span class="ans">v₁/v₂ = λ₁/λ₂ = sen θ₁ / sen θ₂ (medido del diagrama)</span></p>
+    </div>
+  </div>
+
+  <!-- F2 -->
+  <div id="f2" class="pb">
+    <div class="pb-head"><span class="code">FICHA · M19/SP2/TZ1 · interferencia de microondas</span><h3>Doble rendija con microondas</h3></div>
+    <div class="pb-body">
+      <div class="enun">Un haz de microondas incide sobre dos rendijas idénticas \(S_1\) y \(S_2\). Un receptor colocado en W (equidistante de las rendijas) registra un máximo. Al moverlo paralelamente a las rendijas aparecen máximos en X e Y con un mínimo entre ellos; <strong>W, X e Y son máximos consecutivos</strong>. Además: \(S_1Y=1{,}243\) m y \(S_2Y=1{,}181\) m.</div>
+      <p class="part">(a) <span class="pide">explique</span> por qué se observan máximos en X e Y. [2]</p>
+      <p>En X e Y las dos microondas, procedentes de \(S_1\) y \(S_2\), llegan con una <strong>diferencia de camino igual a un número entero de longitudes de onda</strong> (\(\Delta=n\lambda\)). Entonces llegan <strong>en fase</strong> y se produce <strong>interferencia constructiva</strong>: las amplitudes se suman y resulta un máximo de intensidad. <span class="ans">Δcamino = nλ ⇒ en fase ⇒ constructiva</span></p>
+      <p class="part">(b) <span class="pide">determine</span> la frecuencia de las microondas. [3]</p>
+      <p>W es el máximo central (\(n=0\), equidistante), X el primero (\(n=1\)) e Y el segundo (\(n=2\)). Por tanto en Y la diferencia de camino vale \(2\lambda\):</p>
+      <div class="eq">\(\Delta=S_1Y-S_2Y=1{,}243-1{,}181=0{,}062\ \text{m}=2\lambda\ \Rightarrow\ \lambda=0{,}031\ \text{m}\)</div>
+      <p>\(f=\dfrac{c}{\lambda}=\dfrac{3{,}0\times10^{8}}{0{,}031}=9{,}7\times10^{9}\ \text{Hz}\). <span class="ans">λ = 0,031 m ; f = 9,7×10⁹ Hz ≈ 9,7 GHz</span></p>
+      <p class="part">(c) <span class="pide">resuma</span> por qué W, X e Y tienen intensidades distintas. [1]</p>
+      <p>Porque la intensidad que llega al receptor <strong>disminuye con la distancia</strong> a las rendijas (y por la envolvente de difracción de cada rendija): X e Y están más lejos y fuera del eje central, de modo que su amplitud es menor que en W. <span class="ans">La amplitud decae al alejarse del eje / de las rendijas</span></p>
+    </div>
+  </div>
+
+  <!-- F3 -->
+  <div id="f3" class="pb">
+    <div class="pb-head"><span class="code">FICHA · M10/SP2/TZ1 · ondas de agua</span><h3>Ondas de agua: refracción e interferencia</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una esfera oscila verticalmente y genera ondas viajeras en agua poco profunda. El diagrama (desplazamiento vs distancia, en un instante) acompaña al dato <strong>período \(T=0{,}027\) s</strong>.</div>
+      <p class="part">(a)(i) <span class="pide">calcule</span> la amplitud. [1] <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Amplitud = desplazamiento máximo (valor pico) en el eje vertical del diagrama; pásalo a metros.</p>
+      <p class="part">(a)(ii) <span class="pide">calcule</span> la longitud de onda. [1] <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Longitud de un ciclo completo (de una cresta a la siguiente) leída en el eje de distancia.</p>
+      <p class="part">(a)(iii) <span class="pide">calcule</span> la frecuencia. [1]</p>
+      <p>\(f=\dfrac{1}{T}=\dfrac{1}{0{,}027}=37\ \text{Hz}\). <span class="ans">f = 37 Hz</span></p>
+      <p class="part">(a)(iv) <span class="pide">calcule</span> la velocidad. [1] <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>\(v=f\lambda=\dfrac{\lambda}{T}=\dfrac{\lambda}{0{,}027}\), con la \(\lambda\) leída en (a)(ii). Equivale a \(v=37\,\lambda\).</p>
+      <p class="part">(b)(i) <span class="pide">distinga</span> rayo y frente de onda. [2]</p>
+      <p>Un <strong>frente de onda</strong> es una línea (o superficie) que une puntos que oscilan <strong>en la misma fase</strong> (p. ej. todas las crestas). Un <strong>rayo</strong> es una línea que indica la <strong>dirección de propagación</strong> de la energía y es <strong>perpendicular</strong> a los frentes. <span class="ans">Frente = puntos en fase; rayo = dirección de avance (⊥ al frente)</span></p>
+      <p class="part">(b)(ii) <span class="pide">determine</span> el ángulo de los frentes con la interfaz en la región B. [2]</p>
+      <p>El ángulo entre el frente y la interfaz es igual al ángulo de incidencia (frente/rayo), así que \(\theta_A=60^\circ\). Con \(_An_B=1{,}4=\dfrac{\sin\theta_A}{\sin\theta_B}\):</p>
+      <div class="eq">\(\sin\theta_B=\dfrac{\sin 60^\circ}{1{,}4}=\dfrac{0{,}866}{1{,}4}=0{,}619\ \Rightarrow\ \theta_B=38{,}2^\circ\)</div>
+      <p>Coherente: B es más lento (más somero), la onda se acerca a la normal y el ángulo baja de 60° a 38°. <span class="ans">θ_B = 38° (frente-interfaz)</span></p>
+      <p class="part">(b)(iii) <span class="pide">construya</span> tres frentes de onda en la región B. [2] <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Dibuja frentes <strong>más juntos</strong> que en A (menor \(\lambda\), porque B es más lento) y <strong>girados</strong> para formar 38° con la interfaz (más cerca de la normal que en A). Deben ser paralelos entre sí y continuos con los de A en la frontera.</p>
+      <p class="part">(c)(i) <span class="pide">resuma</span> cómo surgen las líneas de mínima perturbación. [3]</p>
+      <p>Las dos esferas son fuentes <strong>coherentes en fase</strong>. En los puntos donde la <strong>diferencia de camino</strong> a las dos fuentes es un número impar de semilongitudes de onda, \(\Delta=\left(n+\tfrac12\right)\lambda\), las ondas llegan <strong>en antifase</strong> y se produce <strong>interferencia destructiva</strong>: el agua apenas se mueve. El lugar geométrico de esos puntos forma las líneas de mínima perturbación. <span class="ans">Δcamino = (n+½)λ ⇒ antifase ⇒ destructiva</span></p>
+      <p class="part">(c)(ii) <span class="pide">indique y explique</span> el efecto de aumentar la frecuencia. [2]</p>
+      <p>Al subir \(f\) con \(v\) fija, \(\lambda=v/f\) <strong>disminuye</strong>. Como la separación entre líneas de mínima crece con \(\lambda\), al reducirse \(\lambda\) las líneas de mínima perturbación se <strong>juntan</strong> (hay más y más próximas entre sí). <span class="ans">Mayor f ⇒ menor λ ⇒ líneas más juntas</span></p>
+    </div>
+  </div>
+
+  <!-- F4 -->
+  <div id="f4" class="pb">
+    <div class="pb-head"><span class="code">FICHA · M09/SP2/TZ1 · MAS + refracción de frentes</span><h3>MAS, onda transversal y frentes que refractan</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una partícula de masa \(m\) unida a un resorte ligero ejecuta MAS horizontal. Después, una onda transversal viaja por un medio M1 (misma \(f\) y amplitud que la partícula) e incide en la frontera XY con M2.</div>
+      <p class="part">(a) <span class="pide">indique</span> la condición sobre la fuerza neta para que haya MAS. [2]</p>
+      <p>La fuerza neta (restauradora) debe ser <strong>proporcional al desplazamiento</strong> desde el equilibrio y estar <strong>siempre dirigida hacia el equilibrio</strong>: \(F=-kx\) (de ahí \(a=-\omega^2 x\)). <span class="ans">F ∝ −x (hacia el equilibrio)</span></p>
+      <p class="part">(b)(i) <span class="pide">dibuje</span> \(E_P\) frente a \(x\) sobre la gráfica de \(E_K\). [2] <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Como \(E_P+E_K=E_{\text{total}}=\) constante, la curva de \(E_P\) es la <strong>imagen reflejada</strong> de la de \(E_K\): una parábola que vale <strong>0 en \(x=0\)</strong> y alcanza el <strong>máximo (= \(E_{\text{total}}\)) en los extremos</strong> \(x=\pm x_0\). En cada \(x\), la suma de ambas curvas da la misma altura constante.</p>
+      <p class="part">(b)(ii) <span class="pide">muestre que</span> \(f=2{,}0\) Hz, con \(m=0{,}30\) kg. [4] <span class="pide" style="color:var(--warn);border-color:var(--warn)">▲ solo método</span></p>
+      <p>Lee en la gráfica \(E_{\text{total}}\) (el valor de \(E_K\) en \(x=0\)) y la amplitud \(x_0\) (donde \(E_K=0\)). La energía total de un MAS es \(E_{\text{total}}=\tfrac12 k x_0^2\), de donde \(k=\dfrac{2E_{\text{total}}}{x_0^2}\). Entonces:</p>
+      <div class="eq">\(f=\dfrac{1}{2\pi}\sqrt{\dfrac{k}{m}}=\dfrac{1}{2\pi}\sqrt{\dfrac{2E_{\text{total}}}{m\,x_0^{2}}}\)</div>
+      <p>Sustituyendo las lecturas de la gráfica y \(m=0{,}30\) kg se obtiene \(f\approx2{,}0\) Hz. (Da el resultado con una cifra extra para "mostrar que" llega a 2,0.)</p>
+      <p class="part">(c)(i) <span class="pide">describa</span> qué es una onda transversal (con la propagación de energía). [2]</p>
+      <p>Es una onda en la que la energía se propaga por el medio mientras las partículas oscilan en dirección <strong>perpendicular</strong> a la dirección de propagación de la energía. <span class="ans">Oscilación ⊥ a la propagación de la energía</span></p>
+      <p class="part">(c)(ii) <span class="pide">calcule</span> la longitud de onda si \(v=0{,}80\) m·s⁻¹. [2]</p>
+      <p>La frecuencia es la del MAS, \(f=2{,}0\) Hz: \(\lambda=\dfrac{v}{f}=\dfrac{0{,}80}{2{,}0}=0{,}40\ \text{m}\). <span class="ans">λ = 0,40 m</span></p>
+      <p class="part">(d)(i) <span class="pide">calcule</span> el ángulo de los frentes en M2 respecto de la normal (dirección de viaje). [3]</p>
+      <p>El ángulo de incidencia (dirección de viaje de los frentes respecto de la normal) es \(\theta_1=30^\circ\). Con velocidades \(v_1=0{,}80\) y \(v_2=1{,}2\) m·s⁻¹:</p>
+      <div class="eq">\(\dfrac{\sin\theta_1}{\sin\theta_2}=\dfrac{v_1}{v_2}\ \Rightarrow\ \sin\theta_2=\sin30^\circ\cdot\dfrac{v_2}{v_1}=0{,}500\cdot\dfrac{1{,}2}{0{,}80}=0{,}750\ \Rightarrow\ \theta_2=48{,}6^\circ\)</div>
+      <p>Coherente: M2 es más rápido, el rayo se aleja de la normal (30° → 48,6°). <span class="ans">θ₂ = 48,6° (dirección de viaje vs normal)</span></p>
+      <p class="part">(d)(ii) <span class="pide">calcule</span> el ángulo de los frentes en M2 respecto de la normal (orientación del frente). [1]</p>
+      <p>El <strong>frente de onda es perpendicular al rayo</strong> (a la dirección de viaje). Por tanto la línea del frente forma con la normal el complementario del ángulo de (d)(i): \(90^\circ-48{,}6^\circ=41{,}4^\circ\). <span class="ans">41,4° (frente ⊥ rayo)</span></p>
+      <div class="note"><strong>Nota de traducción.</strong> En esta ficha (d)(i) y (d)(ii) usan palabras casi iguales ("dirección de viaje" / "dirección de desplazamiento de los frentes"). La distinción del original IB es: (i) ángulo del <em>rayo</em> (propagación) = 48,6°; (ii) ángulo de la <em>línea del frente</em>, que por ser perpendicular al rayo vale 41,4°. Si tu versión pidiera literalmente la misma dirección de propagación en ambos, la respuesta de (ii) coincidiría con (i) = 48,6°. Lee bien el enunciado que te den.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BANCO PAPER 2 OFICIALES -->
+<section id="examenes">
+  <p class="sec-num">SECCIÓN ★ · BANCO DE EXÁMENES OFICIALES · PAPER 2 (2022–2026)</p>
+  <h2>Paper 2 oficiales de comportamiento de ondas<span class="rule"></span></h2>
+  <p class="sec-intro">Tres preguntas reales del banco 2022–2026, distintas de las de 10C: refracción a través de varias capas (dirección del rayo y Snell), doble rendija con coherencia y separación angular, e interferencia de dos fuentes de olas. Reescritas, resueltas apartado por apartado y <strong>verificadas contra el esquema oficial</strong> (sin ▲: no dependen de figuras a escala).</p>
+
+  <div class="pb"><div class="pb-head"><span class="code">Nov 2023 · TZ1 · SP2 · Q2 · PLAN ANTIGUO</span><h3>Refracción a través de capas: ¿hacia dónde se desvía el rayo?</h3></div>
+    <div class="pb-body">
+      <div class="enun">Luz monocromática entra por la base de un vaso y atraviesa, en orden, plástico (\(n=1{,}60\)), agua (\(n=1{,}33\)) y una capa de aceite (\(n=1{,}47\)) encima. Al entrar en el plástico se refracta a \(32^\circ\) de la normal. Un estudiante dibujó el recorrido con <strong>un error en A</strong> (plástico–agua) y <strong>otro en B</strong> (agua–aceite).</div>
+      <figure class="fig"><svg viewBox="0 0 300 180" width="270" xmlns="http://www.w3.org/2000/svg" aria-label="capas plástico agua aceite">
+        <rect x="20" y="130" width="260" height="40" fill="#E7E2D6"/><rect x="20" y="80" width="260" height="50" fill="#DCEAF2"/><rect x="20" y="40" width="260" height="40" fill="#F3ECD9"/>
+        <line x1="20" y1="130" x2="280" y2="130" stroke="var(--ink)"/><line x1="20" y1="80" x2="280" y2="80" stroke="var(--ink)"/><line x1="20" y1="40" x2="280" y2="40" stroke="var(--ink)"/>
+        <text x="26" y="155" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-soft)">plástico 1,60</text>
+        <text x="26" y="108" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-soft)">agua 1,33</text>
+        <text x="26" y="58" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-soft)">aceite 1,47</text>
+        <text x="150" y="126" font-family="IBM Plex Mono" font-size="10" fill="var(--warn)">A</text>
+        <text x="150" y="76" font-family="IBM Plex Mono" font-size="10" fill="var(--warn)">B</text>
+      </svg><figcaption>La luz sube: plástico → agua → aceite. En cada frontera decide la relación de índices.</figcaption></figure>
+
+      <p class="part">(a)(i) <span class="pide">identifique</span>, con razón, el error en A (plástico–agua). [2]</p>
+      <p class="part">(a)(ii) <span class="pide">identifique</span>, con razón, el error en B (agua–aceite). [2]</p>
+      <p class="part">(b) <span class="pide">calcule</span> el ángulo de incidencia en la base del plástico (aire–plástico) que produce los \(32^\circ\). [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <p><strong>(a)(i) Error en A.</strong> El rayo pasa de plástico (\(n=1{,}60\), más denso ópticamente) a agua (\(n=1{,}33\), menos denso): debe <strong>alejarse de la normal</strong>, es decir el ángulo de refracción <em>mayor</em> que el de incidencia. El estudiante lo dibujó al revés. <span class="ans">Debe refractarse alejándose de la normal (θ aumenta).</span></p>
+        <p><strong>(a)(ii) Error en B.</strong> De agua (\(1{,}33\)) a aceite (\(1{,}47\), más denso): no puede haber reflexión total (solo ocurre de más denso a menos denso); <strong>debe haber un rayo transmitido en el aceite</strong>, acercándose a la normal. <span class="ans">Sí hay rayo transmitido (no hay TIR de menos a más denso).</span></p>
+        <p><strong>(b)</strong> En la base (aire \(n=1{,}00\) → plástico): \(\dfrac{\sin i}{\sin32^\circ}=\dfrac{1{,}60}{1{,}00}\Rightarrow \sin i=1{,}60\sin32^\circ=1{,}60(0{,}530)=0{,}848\Rightarrow i=58^\circ\). <span class="ans">i = 58°</span></p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:6px"><b>Verificado</b> · Physics_paper_2__TZ1_SL_markscheme_2 (8823–6511M, Nov 2023 TZ1): (a)(i) alejarse de la normal (alto→bajo n) · (a)(ii) debe transmitir, TIR imposible (bajo→alto n) · (b) i = 58°.</p>
+      </div></details>
+    </div>
+  </div>
+
+  <div class="pb"><div class="pb-head"><span class="code">May 2025 · TZ2 · SP2 · Q4 · PLAN NUEVO</span><h3>Doble rendija: coherencia, separación angular y energía</h3></div>
+    <div class="pb-body">
+      <div class="enun">Dos fuentes de luz producen un patrón de interferencia. Luego, luz de \(\lambda=720\) nm incide sobre dos rendijas separadas \(d=0{,}12\) mm. \(P_1\) y \(P_2\) son los dos puntos de interferencia <strong>destructiva</strong> más próximos al máximo central \(M\).</div>
+
+      <p class="part">(a) <span class="pide">explique</span> por qué las fuentes deben ser coherentes para ver el patrón. [2]</p>
+      <p class="part">(b)(i) <span class="pide">calcule</span>, en radianes, la separación angular \(\phi\) entre \(P_1\) y \(P_2\). [2]</p>
+      <p class="part">(b)(ii) <span class="pide">sugiera</span> cómo la conservación de energía es coherente con que la energía en \(P_1\) y \(P_2\) sea nula. [1]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <p><strong>(a)</strong> Fuentes <strong>coherentes</strong> = con una <strong>diferencia de fase constante</strong> en el tiempo (en la práctica, derivadas de una sola fuente). Solo así las franjas se mantienen <strong>fijas/estables</strong> y el patrón es visible; con fases que varían al azar el patrón se emborrona y desaparece. ∎</p>
+        <p><strong>(b)(i)</strong> \(P_1\) y \(P_2\) son los primeros mínimos a cada lado de \(M\); cada uno está a un ángulo \(\lambda/2d\) del centro, así que su separación es \(\phi=\dfrac{\lambda}{d}=\dfrac{720\times10^{-9}}{0{,}12\times10^{-3}}=6{,}0\times10^{-3}\) rad. <span class="ans">φ = 6,0×10⁻³ rad</span></p>
+        <p><strong>(b)(ii)</strong> La energía no desaparece: la que <strong>falta</strong> en los mínimos \(P_1,P_2\) se <strong>redistribuye hacia los máximos</strong> (donde la intensidad es mayor que la suma simple). El promedio se conserva. ∎</p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:6px"><b>Verificado</b> · Physics_paper_2_TZ2_SL_markscheme_1 (2225–6718M, TZ2): (a) diferencia de fase constante → patrón fijo · (b)(i) φ = λ/d = 6,0×10⁻³ rad · (b)(ii) la energía ausente en P₁,P₂ aparece en los máximos.</p>
+      </div></details>
+    </div>
+  </div>
+
+  <div class="pb"><div class="pb-head"><span class="code">May 2026 · TZ3 · SP2 · Q5(c) · PLAN NUEVO</span><h3>Dos fuentes de olas: longitud de onda e interferencia en P</h3></div>
+    <div class="pb-body">
+      <div class="enun">Dos cuñas idénticas en \(S_1\) y \(S_2\) oscilan <strong>en fase</strong> a \(f=8{,}0\) Hz y generan olas en el agua. La rapidez de las olas es \(1{,}6\) m·s⁻¹. El punto \(P\) está a \(1{,}8\) m de \(S_1\) y a \(1{,}4\) m de \(S_2\).</div>
+      <figure class="fig"><svg viewBox="0 0 280 150" width="260" xmlns="http://www.w3.org/2000/svg" aria-label="dos fuentes de olas">
+        <circle cx="60" cy="115" r="5" fill="var(--teal-deep)"/><circle cx="130" cy="115" r="5" fill="var(--teal-deep)"/>
+        <circle cx="210" cy="40" r="5" fill="var(--amber)"/>
+        <line x1="60" y1="115" x2="210" y2="40" stroke="var(--teal)" stroke-dasharray="4 3"/>
+        <line x1="130" y1="115" x2="210" y2="40" stroke="var(--teal)" stroke-dasharray="4 3"/>
+        <text x="46" y="132" font-family="IBM Plex Mono" font-size="10" fill="var(--teal-deep)">S₁</text>
+        <text x="120" y="132" font-family="IBM Plex Mono" font-size="10" fill="var(--teal-deep)">S₂</text>
+        <text x="216" y="40" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">P</text>
+        <text x="120" y="72" font-family="IBM Plex Mono" font-size="9" fill="var(--teal)">1,8 m</text>
+        <text x="170" y="90" font-family="IBM Plex Mono" font-size="9" fill="var(--teal)">1,4 m</text>
+      </svg><figcaption>Diferencia de camino S₁P − S₂P = 0,40 m.</figcaption></figure>
+
+      <p class="part">(c)(ii) <span class="pide">muestre que</span> la longitud de onda de las olas es \(0{,}20\) m. [1]</p>
+      <p class="part">(c)(iii) <span class="pide">explique</span> por qué la amplitud de las oscilaciones es máxima en \(P\). [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <p><strong>(c)(ii)</strong> \(\lambda=\dfrac{v}{f}=\dfrac{1{,}6}{8{,}0}=0{,}20\) m. ∎</p>
+        <p><strong>(c)(iii)</strong> Diferencia de camino \(=S_1P-S_2P=1{,}8-1{,}4=0{,}40\) m \(=2\lambda\) (un número <strong>entero</strong> de longitudes de onda). Como las fuentes oscilan en fase, las olas llegan a \(P\) <strong>en fase</strong> → interferencia <strong>constructiva</strong> → amplitud máxima. ∎ <span class="ans">dif. de camino = 2λ → en fase → máximo</span></p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:6px"><b>Verificado</b> · Physics_paper_2_TZ3_SL_markscheme (2226–4733M, TZ3): (c)(ii) λ = v/f = 0,20 m · (c)(iii) diferencia de camino = número entero de λ (2λ) → en fase en P. La frecuencia de las cuñas (MAS, f = 8 Hz) se resuelve en el Módulo 9B.</p>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <p class="sec-num">PARA TI · RESUELVE ESTILO PAPER 2 Y CONTRASTA</p>
+  <h2>5 integradores<span class="rule"></span></h2>
+  <p class="sec-intro">Nivel creciente, realistas (fibra óptica, láseres, resolución del ojo, medición de \(n\) con incertidumbre, prisma). Integran refracción, TIR, interferencia, difracción y propagación de incertidumbre (Módulo 1). Resuelve cada apartado y luego abre «VER RESOLUCIÓN». \(c=3{,}0\times10^{8}\) m·s⁻¹.</p>
+
+  <!-- E1 -->
+  <div class="prob"><p class="pn">E1 · fibra óptica (refracción + TIR)</p><p>Una fibra tiene núcleo de índice \(n_1=1{,}50\) y revestimiento \(n_2=1{,}46\); su longitud es 1,2 km. (a) Halla el ángulo crítico núcleo→revestimiento. (b) Calcula el tiempo que tarda un pulso que viaja recto por el eje. (c) Determina el máximo ángulo de incidencia en la cara de entrada (desde el aire) para que el rayo sufra TIR en la pared. (d) Explica cualitativamente por qué un rayo que rebota llega después (dispersión modal).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>\(\sin\theta_c=\dfrac{n_2}{n_1}=\dfrac{1{,}46}{1{,}50}=0{,}9733\Rightarrow\theta_c=76{,}8^\circ\). <span class="ans">θ_c = 76,8°</span></p>
+      <p class="part">(b)</p>
+      <p>\(v=\dfrac{c}{n_1}=\dfrac{3{,}0\times10^{8}}{1{,}50}=2{,}0\times10^{8}\) m·s⁻¹. \(t=\dfrac{L}{v}=\dfrac{1200}{2{,}0\times10^{8}}=6{,}0\times10^{-6}\) s. <span class="ans">t = 6,0 μs</span></p>
+      <p class="part">(c)</p>
+      <p>Para que haya TIR en la pared, el ángulo en la pared debe ser \(\ge\theta_c\); el ángulo de refracción dentro, medido desde el eje, cumple \(\theta_r\le 90^\circ-\theta_c=13{,}2^\circ\). En la cara de entrada (aire→núcleo): \(\sin\theta_{in}=n_1\sin\theta_r=1{,}50\sin13{,}2^\circ=1{,}50(0{,}228)=0{,}342\Rightarrow\theta_{in}=20{,}0^\circ\). <span class="ans">θ_in,máx ≈ 20° (ángulo de aceptación)</span></p>
+      <p class="part">(d)</p>
+      <p>Un rayo que rebota recorre un <strong>camino en zigzag más largo</strong> que el axial; como todos viajan a la misma rapidez \(v=c/n_1\), los que rebotan llegan más tarde. Los distintos "modos" se desfasan en el tiempo (dispersión modal) y el pulso de salida se <strong>ensancha</strong>, limitando la velocidad de datos.</p>
+    </div></details>
+  </div>
+
+  <!-- E2 -->
+  <div class="prob"><p class="pn">E2 · doble rendija para medir λ</p><p>Un láser ilumina dos rendijas separadas \(d=0{,}25\) mm; la pantalla está a \(D=2{,}0\) m. Se mide la distancia entre el 1.er y el 11.º máximo brillante (10 interfranjas): 52 mm. (a) Explica por qué se miden varias franjas y no una. (b) Determina la longitud de onda del láser. (c) Calcula el ángulo del quinto máximo. (d) Indica qué le pasa al patrón si se duplica \(D\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>Medir 10 interfranjas y dividir reduce la <strong>incertidumbre relativa</strong> de la separación \(s\): el error absoluto de la regla se reparte entre 10, así \(s\) (y por tanto \(\lambda\)) queda mucho más preciso.</p>
+      <p class="part">(b)</p>
+      <p>\(s=\dfrac{52\ \text{mm}}{10}=5{,}2\) mm \(=5{,}2\times10^{-3}\) m. De \(s=\dfrac{\lambda D}{d}\): \(\lambda=\dfrac{s\,d}{D}=\dfrac{(5{,}2\times10^{-3})(0{,}25\times10^{-3})}{2{,}0}=6{,}5\times10^{-7}\) m. <span class="ans">λ = 650 nm (rojo)</span></p>
+      <p class="part">(c)</p>
+      <p>\(d\sin\theta=n\lambda\Rightarrow\sin\theta=\dfrac{5(6{,}5\times10^{-7})}{0{,}25\times10^{-3}}=0{,}013\Rightarrow\theta=0{,}74^\circ\). <span class="ans">θ₅ = 0,74°</span></p>
+      <p class="part">(d)</p>
+      <p>Como \(s\propto D\), al duplicar \(D\) la separación de franjas se <strong>duplica</strong> (\(s=10{,}4\) mm): el patrón se ensancha, pero cada franja es algo más tenue.</p>
+    </div></details>
+  </div>
+
+  <!-- E3 -->
+  <div class="prob"><p class="pn">E3 · difracción y resolución <span class="hl-tag">NS</span></p><p>De noche observas dos faros de un coche separados 1,4 m. Tu pupila tiene diámetro \(D=3{,}0\) mm y la luz es de \(\lambda=550\) nm. (a) Aplica el criterio de Rayleigh para hallar la mínima separación angular resoluble. (b) Determina la distancia máxima a la que distinguirías los dos faros por separado. (c) Explica el efecto de una pupila mayor. (d) Da una razón física por la que, en la práctica, no los resolverías tan lejos.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>Criterio de Rayleigh (abertura circular): \(\theta_{\min}=1{,}22\dfrac{\lambda}{D}=1{,}22\dfrac{550\times10^{-9}}{3{,}0\times10^{-3}}=2{,}2\times10^{-4}\) rad. <span class="ans">θ_mín = 2,2×10⁻⁴ rad</span></p>
+      <p class="part">(b)</p>
+      <p>Para pequeños ángulos, \(\theta_{\min}=\dfrac{\text{separación}}{\text{distancia}}\Rightarrow L=\dfrac{1{,}4}{2{,}2\times10^{-4}}=6{,}3\times10^{3}\) m. <span class="ans">L ≈ 6,3 km (límite por difracción)</span></p>
+      <p class="part">(c)</p>
+      <p>\(\theta_{\min}\propto 1/D\): una pupila (o lente) mayor da un \(\theta_{\min}\) menor, es decir, <strong>mejor resolución</strong> (por eso los telescopios tienen aberturas grandes). También mejora con menor \(\lambda\).</p>
+      <p class="part">(d)</p>
+      <p>El límite real es peor por: <strong>turbulencia atmosférica</strong>, <strong>aberraciones</strong> del ojo y el <strong>espaciado finito de los fotorreceptores</strong> de la retina. Cualquiera de ellas reduce la resolución muy por debajo del límite de difracción.</p>
+    </div></details>
+  </div>
+
+  <!-- E4 -->
+  <div class="prob"><p class="pn">E4 · medición de n con incertidumbre (integra Módulo 1)</p><p>Para medir el índice de refracción de un vidrio se mide, desde el aire, el ángulo de incidencia \(\theta_1=(45{,}0\pm0{,}5)^\circ\) y el de refracción \(\theta_2=(28{,}0\pm0{,}5)^\circ\). (a) Calcula \(n\) con \(n=\dfrac{\sin\theta_1}{\sin\theta_2}\). (b) Propaga las incertidumbres y da \(n\pm\Delta n\) (recuerda: \(\Delta(\sin\theta)=|\cos\theta|\,\Delta\theta\), con \(\Delta\theta\) en radianes). (c) A partir de \(n\), halla la rapidez de la luz en el vidrio y el ángulo crítico. (d) Señala una fuente de error sistemático del montaje.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>\(n=\dfrac{\sin45{,}0^\circ}{\sin28{,}0^\circ}=\dfrac{0{,}7071}{0{,}4695}=1{,}51\). <span class="ans">n = 1,51</span></p>
+      <p class="part">(b)</p>
+      <p>\(\Delta\theta=0{,}5^\circ=8{,}73\times10^{-3}\) rad. \(\Delta(\sin\theta_1)=\cos45^\circ\,\Delta\theta=0{,}707(8{,}73\times10^{-3})=6{,}17\times10^{-3}\); \(\Delta(\sin\theta_2)=\cos28^\circ\,\Delta\theta=0{,}883(8{,}73\times10^{-3})=7{,}71\times10^{-3}\). Incertidumbres relativas: \(\dfrac{6{,}17\times10^{-3}}{0{,}7071}=0{,}0087\) y \(\dfrac{7{,}71\times10^{-3}}{0{,}4695}=0{,}0164\). Cociente ⇒ se suman: \(0{,}0087+0{,}0164=0{,}0251\Rightarrow\Delta n=0{,}0251(1{,}51)=0{,}038\). <span class="ans">n = 1,51 ± 0,04</span></p>
+      <p class="part">(c)</p>
+      <p>\(v=\dfrac{c}{n}=\dfrac{3{,}0\times10^{8}}{1{,}51}=2{,}0\times10^{8}\) m·s⁻¹. \(\sin\theta_c=\dfrac{1}{1{,}51}=0{,}664\Rightarrow\theta_c=41{,}6^\circ\). <span class="ans">v = 2,0×10⁸ m·s⁻¹ ; θ_c = 41,6°</span></p>
+      <p class="part">(d)</p>
+      <p>Error sistemático típico: la <strong>normal mal trazada</strong> o el <strong>cero del transportador descalibrado</strong> (medir desde la superficie en vez de desde la normal). Desplaza todos los ángulos en el mismo sentido, sesgando \(n\). También el grosor del haz y el paralaje de lectura.</p>
+    </div></details>
+  </div>
+
+  <!-- E5 -->
+  <div class="prob jefe"><p class="pn">E5 · PROBLEMA JEFE · prisma (Snell ×2 + criterio de TIR)</p><p>Un rayo monocromático incide a \(45^\circ\) sobre la primera cara de un prisma equilátero (ángulo apical \(A=60^\circ\)) de vidrio \(n=1{,}52\). (a) Halla el ángulo de refracción en la primera cara. (b) Determina el ángulo de incidencia en la segunda cara. (c) Comprueba si hay TIR en la segunda cara. (d) Si no la hay, halla el ángulo con que el rayo emerge.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>Aire→vidrio en la cara 1: \(\sin\theta_{r1}=\dfrac{\sin45^\circ}{1{,}52}=\dfrac{0{,}7071}{1{,}52}=0{,}4652\Rightarrow\theta_{r1}=27{,}7^\circ\). <span class="ans">θ_r1 = 27,7°</span></p>
+      <p class="part">(b)</p>
+      <p>Geometría del prisma: los dos ángulos de refracción interna suman el ángulo apical, \(\theta_{r1}+\theta_{i2}=A=60^\circ\Rightarrow\theta_{i2}=60^\circ-27{,}7^\circ=32{,}3^\circ\). <span class="ans">θ_i2 = 32,3°</span></p>
+      <p class="part">(c)</p>
+      <p>Ángulo crítico del vidrio: \(\sin\theta_c=\dfrac{1}{1{,}52}=0{,}6579\Rightarrow\theta_c=41{,}1^\circ\). Como \(\theta_{i2}=32{,}3^\circ<41{,}1^\circ\), <strong>no hay TIR</strong>: el rayo sale por la segunda cara. <span class="ans">No hay TIR (32,3° &lt; θ_c = 41,1°)</span></p>
+      <p class="part">(d)</p>
+      <p>Vidrio→aire en la cara 2: \(\sin\theta_{exit}=1{,}52\sin32{,}3^\circ=1{,}52(0{,}5344)=0{,}812\Rightarrow\theta_{exit}=54{,}3^\circ\). El rayo emerge a 54,3° de la normal de la segunda cara. <span class="ans">θ_salida = 54,3°</span></p>
+    </div></details>
+  </div>
+</section>
+
+<!-- PRACTICA 2 -->
+<section id="practica2">
+  <p class="sec-num">PRÁCTICA EXTRA · PAPER 2 · TODOS LOS TIPOS QUE CAEN</p>
+  <h2>Práctica extra · Paper 2 (todo tipo)<span class="rule"></span></h2>
+  <p class="sec-intro">Seis problemas nuevos estilo Paper 2 (multiapartado, «muestre que», bosquejos de rayos y frentes) que recorren solo lo que sí aparece en este tema: reflexión en una cuerda, refracción con Snell, reflexión total interna, difracción e interferencia de doble rendija con diferencia de camino. Resuelve cada apartado y abre «VER RESOLUCIÓN». \(c=3{,}0\times10^{8}\) m·s⁻¹; \(v_\text{sonido}=340\) m·s⁻¹.</p>
+
+  <!-- P1 reflexión en cuerda -->
+  <div class="prob"><p class="pn">P1 · reflexión en una cuerda (ondas estacionarias)</p><p>Una cuerda de longitud \(L=1{,}2\) m está fija en sus dos extremos. Al vibrar forma una onda estacionaria con <strong>tres vientres</strong> (tercer armónico). La velocidad de las ondas en la cuerda es \(v=40\) m·s⁻¹. (a) Describa qué le ocurre a la fase de un pulso al reflejarse en el extremo <em>fijo</em>, y en qué cambiaría si el extremo fuera <em>libre</em>. (b) <strong>Muestre que</strong> la longitud de onda del tercer armónico es \(0{,}80\) m. (c) Determine la frecuencia de vibración. (d) Indique cuántos nodos (incluidos los extremos) tiene este modo y esboce el patrón.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>En un extremo <strong>fijo</strong> el pulso se refleja <strong>invertido</strong> (cambio de fase de \(\pi\)): la cuerda no puede moverse allí, así que se forma un <strong>nodo</strong>. En un extremo <strong>libre</strong> el pulso se refleja <strong>sin invertirse</strong> (sin cambio de fase) y allí se forma un <strong>vientre</strong>.</p>
+      <p class="part">(b)</p>
+      <p>Con dos extremos fijos, \(L=n\dfrac{\lambda}{2}\). Para el tercer armónico \(n=3\): \(\lambda=\dfrac{2L}{n}=\dfrac{2(1{,}2)}{3}=0{,}80\) m. <span class="ans">λ = 0,80 m</span></p>
+      <p class="part">(c)</p>
+      <p>\(f=\dfrac{v}{\lambda}=\dfrac{40}{0{,}80}=50\) Hz. <span class="ans">f = 50 Hz</span></p>
+      <p class="part">(d)</p>
+      <p>Tercer armónico ⇒ <strong>3 vientres</strong> y <strong>4 nodos</strong> (los dos extremos más dos interiores). Patrón: N–V–N–V–N–V–N. <span class="ans">4 nodos, 3 vientres</span></p>
+    </div></details>
+  </div>
+
+  <!-- P2 refracción -->
+  <div class="prob"><p class="pn">P2 · refracción aire→vidrio (Snell, n=c/v, λ=λ₀/n)</p><p>Luz monocromática de longitud de onda \(\lambda_0=600\) nm en el aire incide sobre una lámina de vidrio (\(n=1{,}50\)) con un ángulo de incidencia de \(40^\circ\) medido desde la normal (ver figura). (a) <strong>Muestre que</strong> la rapidez de la luz en el vidrio es \(2{,}0\times10^{8}\) m·s⁻¹. (b) Calcule el ángulo de refracción. (c) Calcule la longitud de onda dentro del vidrio. (d) Indique qué ocurre con la frecuencia al entrar al vidrio y calcule su valor.</p>
+    <figure class="fig">
+      <svg viewBox="0 0 320 210" width="100%" style="max-width:340px" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="110" x2="300" y2="110" stroke="#16222B" stroke-width="1.5"/>
+        <line x1="160" y1="22" x2="160" y2="198" stroke="#43525C" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="93" y1="30" x2="160" y2="110" stroke="#1F6E7C" stroke-width="2.2"/>
+        <line x1="160" y1="110" x2="203" y2="198" stroke="#1F6E7C" stroke-width="2.2"/>
+        <text x="134" y="74" font-size="13" fill="#134B55">θ₁</text>
+        <text x="166" y="166" font-size="13" fill="#134B55">θ₂</text>
+        <text x="26" y="100" font-size="11" fill="#43525C">aire (n = 1)</text>
+        <text x="26" y="128" font-size="11" fill="#43525C">vidrio (n = 1,5)</text>
+        <text x="120" y="18" font-size="10" fill="#43525C">normal</text>
+      </svg>
+      <figcaption>Refracción con la normal; el rayo se acerca a la normal al pasar al medio más lento.</figcaption>
+    </figure>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>\(n=\dfrac{c}{v}\Rightarrow v=\dfrac{c}{n}=\dfrac{3{,}0\times10^{8}}{1{,}50}=2{,}0\times10^{8}\) m·s⁻¹. <span class="ans">v = 2,0×10⁸ m·s⁻¹</span></p>
+      <p class="part">(b)</p>
+      <p>\(n_1\sin\theta_1=n_2\sin\theta_2\Rightarrow\sin\theta_2=\dfrac{1\cdot\sin40^\circ}{1{,}50}=\dfrac{0{,}643}{1{,}50}=0{,}4285\Rightarrow\theta_2=25{,}4^\circ\). <span class="ans">θ₂ = 25,4°</span></p>
+      <p class="part">(c)</p>
+      <p>\(\lambda=\dfrac{\lambda_0}{n}=\dfrac{600}{1{,}50}=400\) nm. <span class="ans">λ = 400 nm</span></p>
+      <p class="part">(d)</p>
+      <p>La frecuencia <strong>no cambia</strong> (la fija la fuente): \(f=\dfrac{c}{\lambda_0}=\dfrac{3{,}0\times10^{8}}{600\times10^{-9}}=5{,}0\times10^{14}\) Hz, igual en aire y en vidrio. <span class="ans">f = 5,0×10¹⁴ Hz (constante)</span></p>
+    </div></details>
+  </div>
+
+  <!-- P3 TIR -->
+  <div class="prob"><p class="pn">P3 · reflexión total interna · fibra óptica</p><p>El núcleo de una fibra óptica tiene índice \(n_1=1{,}50\) y el revestimiento \(n_2=1{,}48\). Un rayo viaja por el núcleo e incide sobre la frontera núcleo–revestimiento (ver figura). (a) <strong>Muestre que</strong> el ángulo crítico vale aproximadamente \(80{,}6^\circ\). (b) El rayo incide a \(82^\circ\) respecto de la normal: indique y justifique qué ocurre. (c) Otro rayo incide a \(78^\circ\): explique su comportamiento. (d) Explique por qué la reflexión total interna solo puede darse en el sentido núcleo→revestimiento y no al revés.</p>
+    <figure class="fig">
+      <svg viewBox="0 0 320 170" width="100%" style="max-width:340px" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="60" x2="300" y2="60" stroke="#16222B" stroke-width="1.5"/>
+        <line x1="160" y1="20" x2="160" y2="150" stroke="#43525C" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="20" y1="85" x2="160" y2="60" stroke="#1F6E7C" stroke-width="2.2"/>
+        <line x1="160" y1="60" x2="300" y2="85" stroke="#1F6E7C" stroke-width="2.2"/>
+        <text x="40" y="44" font-size="11" fill="#43525C">revestimiento n₂ = 1,48</text>
+        <text x="40" y="112" font-size="11" fill="#43525C">núcleo n₁ = 1,50</text>
+        <text x="126" y="80" font-size="13" fill="#134B55">θ</text>
+        <text x="178" y="80" font-size="13" fill="#134B55">θ</text>
+        <text x="120" y="16" font-size="10" fill="#43525C">normal</text>
+      </svg>
+      <figcaption>TIR: el rayo del núcleo se refleja íntegramente en la pared (θ &gt; θ_c).</figcaption>
+    </figure>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>\(\sin\theta_c=\dfrac{n_2}{n_1}=\dfrac{1{,}48}{1{,}50}=0{,}9867\Rightarrow\theta_c=80{,}6^\circ\). <span class="ans">θ_c = 80,6°</span></p>
+      <p class="part">(b)</p>
+      <p>\(82^\circ>\theta_c=80{,}6^\circ\): hay <strong>reflexión total interna</strong>. Toda la luz se refleja de vuelta al núcleo; no pasa energía al revestimiento. <span class="ans">82° &gt; θ_c ⇒ TIR</span></p>
+      <p class="part">(c)</p>
+      <p>\(78^\circ<\theta_c\): el rayo <strong>no</strong> sufre TIR; se refracta y pasa al revestimiento (con una reflexión parcial débil), por lo que esa luz se <strong>pierde</strong> de la fibra. <span class="ans">78° &lt; θ_c ⇒ se refracta/escapa</span></p>
+      <p class="part">(d)</p>
+      <p>La TIR solo ocurre al pasar de un medio de mayor índice a otro de <strong>menor</strong> índice (\(n_1>n_2\)), porque solo entonces existe un ángulo crítico (\(\sin\theta_c=n_2/n_1<1\)). En el sentido inverso (\(n_2\to n_1\)) el rayo siempre puede refractar acercándose a la normal, así que no hay ángulo crítico.</p>
+    </div></details>
+  </div>
+
+  <!-- P4 difracción -->
+  <div class="prob"><p class="pn">P4 · difracción (abertura ≈ λ)</p><p>Un emisor produce microondas de frecuencia \(f=1{,}0\times10^{10}\) Hz que atraviesan una ranura de \(4{,}0\) cm de ancho entre dos placas metálicas. (a) <strong>Muestre que</strong> la longitud de onda es aproximadamente \(3{,}0\) cm. (b) Explique por qué se observa una difracción apreciable al pasar por esta ranura. (c) Indique y explique qué le ocurre a la difracción si se <em>ensancha</em> la ranura a \(20\) cm. (d) Indique qué le ocurre a la difracción si, con la ranura original, se <em>duplica</em> la frecuencia.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>\(\lambda=\dfrac{c}{f}=\dfrac{3{,}0\times10^{8}}{1{,}0\times10^{10}}=0{,}030\) m \(=3{,}0\) cm. <span class="ans">λ = 3,0 cm</span></p>
+      <p class="part">(b)</p>
+      <p>La difracción es notable cuando el ancho de la abertura es <strong>comparable a la longitud de onda</strong>. Aquí la ranura (4,0 cm) es del mismo orden que \(\lambda\) (3,0 cm), así que las ondas se abren mucho al pasar. <span class="ans">abertura ≈ λ ⇒ mucha difracción</span></p>
+      <p class="part">(c)</p>
+      <p>Al ensanchar a 20 cm la abertura es \(\gg\lambda\), de modo que la difracción <strong>disminuye</strong>: el haz se abre menos y queda más direccional.</p>
+      <p class="part">(d)</p>
+      <p>Al duplicar \(f\), \(\lambda=c/f\) se reduce a \(1{,}5\) cm. La abertura (4,0 cm) queda relativamente mayor frente a \(\lambda\), así que la difracción también <strong>disminuye</strong>. <span class="ans">mayor f ⇒ menor λ ⇒ menos difracción</span></p>
+    </div></details>
+  </div>
+
+  <!-- P5 doble rendija s=λD/d -->
+  <div class="prob"><p class="pn">P5 · doble rendija (s = λD/d)</p><p>Un láser de longitud de onda \(\lambda=633\) nm ilumina dos rendijas separadas \(d=0{,}40\) mm. En una pantalla a \(D=2{,}5\) m se forma un patrón de franjas (ver figura). (a) Explique cómo se forma una franja brillante. (b) <strong>Muestre que</strong> la separación entre franjas vale aproximadamente \(4{,}0\) mm. (c) Determine la diferencia de camino en la tercera franja brillante contada desde el centro. (d) Indique y explique el efecto de usar rendijas <em>más juntas</em> (menor \(d\)).</p>
+    <figure class="fig">
+      <svg viewBox="0 0 340 200" width="100%" style="max-width:360px" xmlns="http://www.w3.org/2000/svg">
+        <line x1="70" y1="20" x2="70" y2="180" stroke="#16222B" stroke-width="2"/>
+        <circle cx="70" cy="86" r="3.5" fill="#C77B23"/>
+        <circle cx="70" cy="114" r="3.5" fill="#C77B23"/>
+        <line x1="290" y1="20" x2="290" y2="180" stroke="#16222B" stroke-width="2"/>
+        <line x1="20" y1="100" x2="62" y2="100" stroke="#43525C" stroke-width="1.5"/>
+        <line x1="70" y1="86" x2="290" y2="72" stroke="#1F6E7C" stroke-width="1.4"/>
+        <line x1="70" y1="114" x2="290" y2="72" stroke="#1F6E7C" stroke-width="1.4"/>
+        <line x1="70" y1="100" x2="290" y2="100" stroke="#43525C" stroke-width="1" stroke-dasharray="4 4"/>
+        <text x="48" y="104" font-size="12" fill="#134B55">d</text>
+        <text x="180" y="150" font-size="12" fill="#43525C">D</text>
+        <text x="296" y="76" font-size="12" fill="#134B55">P</text>
+        <text x="296" y="90" font-size="11" fill="#43525C">s</text>
+        <text x="24" y="94" font-size="10" fill="#43525C">haz</text>
+      </svg>
+      <figcaption>Doble rendija: separación de fuentes d, distancia a pantalla D, franja en P.</figcaption>
+    </figure>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>En la posición de una franja brillante, las ondas de las dos rendijas llegan con una diferencia de camino igual a un número entero de longitudes de onda (\(\Delta=n\lambda\)): llegan <strong>en fase</strong> ⇒ <strong>interferencia constructiva</strong> ⇒ máximo de intensidad. <span class="ans">Δ = nλ ⇒ constructiva</span></p>
+      <p class="part">(b)</p>
+      <p>\(s=\dfrac{\lambda D}{d}=\dfrac{(633\times10^{-9})(2{,}5)}{0{,}40\times10^{-3}}=3{,}96\times10^{-3}\) m \(\approx4{,}0\) mm. <span class="ans">s ≈ 4,0 mm</span></p>
+      <p class="part">(c)</p>
+      <p>Tercera franja brillante ⇒ \(n=3\): \(\Delta=3\lambda=3(633)=1{,}90\times10^{3}\) nm \(=1{,}9\) μm. <span class="ans">Δ = 1,9 μm</span></p>
+      <p class="part">(d)</p>
+      <p>Como \(s=\dfrac{\lambda D}{d}\), al disminuir \(d\) la separación \(s\) <strong>aumenta</strong>: las franjas se <strong>separan</strong> más en la pantalla. <span class="ans">menor d ⇒ franjas más separadas</span></p>
+    </div></details>
+  </div>
+
+  <!-- P6 diferencia de camino -->
+  <div class="prob jefe"><p class="pn">P6 · PROBLEMA JEFE · diferencia de camino (dos altavoces)</p><p>Dos altavoces coherentes, <strong>en fase</strong>, emiten sonido de frecuencia \(f=680\) Hz (rapidez del sonido \(340\) m·s⁻¹). Un oyente en el punto P está a \(S_1P=5{,}00\) m de un altavoz y \(S_2P=5{,}75\) m del otro. (a) <strong>Muestre que</strong> la longitud de onda es \(0{,}50\) m. (b) Determine la diferencia de camino en P. (c) Indique y explique si en P el oyente percibe un máximo o un mínimo de sonido. (d) Determine la menor frecuencia por encima de \(680\) Hz para la cual P sería un máximo.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p class="part">(a)</p>
+      <p>\(\lambda=\dfrac{v}{f}=\dfrac{340}{680}=0{,}50\) m. <span class="ans">λ = 0,50 m</span></p>
+      <p class="part">(b)</p>
+      <p>\(\Delta=|S_2P-S_1P|=5{,}75-5{,}00=0{,}75\) m. <span class="ans">Δ = 0,75 m</span></p>
+      <p class="part">(c)</p>
+      <p>\(\dfrac{\Delta}{\lambda}=\dfrac{0{,}75}{0{,}50}=1{,}5=\left(1+\tfrac12\right)\): la diferencia de camino es un número impar de semilongitudes de onda, así que las ondas llegan <strong>en antifase</strong> ⇒ <strong>interferencia destructiva</strong> ⇒ <strong>mínimo</strong> (sonido débil). <span class="ans">Δ = 1,5 λ ⇒ mínimo</span></p>
+      <p class="part">(d)</p>
+      <p>Para un máximo hace falta \(\Delta=n\lambda\), es decir \(\lambda=\dfrac{0{,}75}{n}\) y \(f=\dfrac{v}{\lambda}=\dfrac{340\,n}{0{,}75}=453{,}3\,n\) Hz. Los máximos ocurren a \(453\) Hz (\(n=1\)), \(907\) Hz (\(n=2\)), … El primero por encima de \(680\) Hz es \(n=2\): \(f=907\) Hz (allí \(\lambda=0{,}375\) m y \(\Delta=2\lambda\)). <span class="ans">f = 907 Hz</span></p>
+    </div></details>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 10D · Comportamiento de ondas Tipo 2 (Paper 2).</strong> Ficha real <strong>DMpA 22</strong> resuelta apartado por apartado (refracción de frentes, interferencia de microondas, ondas de agua, MAS + refracción) y 5 integradores con resolución oculta y verificada (fibra óptica, doble rendija, resolución, medición de \(n\) con incertidumbre, prisma). Los apartados con figura perdida (▲) traen el método exacto, sin inventar lecturas. Sigue el <strong>Módulo 11</strong>. Constantes: \(c=3{,}0\times10^{8}\) m·s⁻¹; \(g=10\) m·s⁻².</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

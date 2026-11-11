@@ -1,0 +1,753 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 4A · Estática y torque · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:18ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:54px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:28px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:14px 0;overflow-x:auto}
+.eqname{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--teal);letter-spacing:.06em;display:block;margin-top:4px}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.ej{border:1px solid var(--line);border-radius:5px;margin:22px 0;background:var(--paper-2);overflow:hidden}
+.ej-head{background:linear-gradient(180deg,#F0F5F3,#FFFFFF);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ej-tag{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal);padding:2px 8px;border-radius:3px}
+.ej-num{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px}
+.ej-src{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);letter-spacing:.05em}
+.ej-body{padding:16px 20px 20px}
+.sepide{display:inline-block;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:2px 8px;margin:2px 0 8px}
+.sol{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:6px 12px;display:inline-block;margin-top:8px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}td.l,th.l{text-align:left}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> EQUILIBRIO · A.4 (HL) <span>//</span> MÓDULO 4A · TEORÍA + TIPO 1</p>
+  <h1>Estática: <em>equilibrio</em> y torque</h1>
+  <p class="lede">Equilibrio de fuerzas concurrentes (tensiones, resortes, planos, ángulo de fricción) y equilibrio rotacional (momentos, vigas, palancas, escaleras). La ficha resuelta al completo, más torque para completar el tema.</p>
+  <div class="stats">
+    <div class="stat"><b>8</b><span>secciones de teoría</span></div>
+    <div class="stat"><b>10</b><span>ficha resueltos</span></div>
+    <div class="stat"><b>10</b><span>retos (torque)</span></div>
+    <div class="stat"><b>7</b><span>exámenes IB 2022–26</span></div>
+    <div class="stat"><b>g = 10</b><span>m·s⁻² salvo indicación</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#s1">1 · Equilibrio de traslación</a>
+  <a href="#s2">2 · Fuerzas concurrentes</a>
+  <a href="#s3">3 · Cuerpos colgados</a>
+  <a href="#s4">4 · Resortes (Hooke)</a>
+  <a href="#s5">5 · Plano inclinado · ángulo de fricción</a>
+  <a href="#s6">6 · Torque y equilibrio rotacional</a>
+  <a href="#s7">7 · Más allá del IB</a>
+  <a href="#s8">8 · Definiciones (examen)</a>
+  <a href="#traps">Checklist de trampas</a>
+  <a href="#bloque">10 resueltos (ficha)</a>
+  <a href="#resto">Resto de la ficha</a>
+  <a href="#examenes">Banco de exámenes IB · 2022–26</a>
+  <a href="#practica">10 retos</a>
+  <a href="#masproblemas">6 más · estilo IB</a>
+</nav>
+
+<main>
+<!-- rev 2026-10-25 est · banco examenes IB estatica (7) v2 -->
+
+<!-- S1 -->
+<section id="s1">
+  <p class="sec-num">SECCIÓN 01</p>
+  <h2>Equilibrio de traslación<span class="rule"></span></h2>
+  <p class="sec-intro">La estática estudia cuerpos con aceleración nula: en reposo o a velocidad constante. Es la primera ley de Newton aplicada con cuidado.</p>
+  <div class="eq">\[ \sum \vec F=0 \iff \sum F_x=0 \;\text{ y }\; \sum F_y=0 \]<span class="eqname">condición de equilibrio de traslación (por componentes)</span></div>
+  <p>Método invariable: <strong>DCL → elegir ejes → sumar por componentes → resolver</strong>. «Velocidad constante» también es equilibrio (un pez que nada, un auto en crucero, un paracaidista en velocidad terminal): la resultante es cero.</p>
+  <div class="box key"><span class="lbl">En palabras llanas</span>
+    <p><strong>«Equilibrio» aquí no significa quieto, sino <em>sin aceleración</em>.</strong> Las fuerzas que actúan sobre el cuerpo se cancelan entre sí: unas tiran, otras empujan, pero el resultado neto es cero — como un pulso entre dos personas de igual fuerza, en el que la mano no se mueve. \(\sum F=0\) es la forma corta de decir «todo lo que empuja hacia la derecha lo compensa algo que empuja hacia la izquierda, y lo que sube lo compensa lo que baja».</p>
+    <p>¿Por qué lo partimos en dos cuentas, \(\sum F_x=0\) y \(\sum F_y=0\)? Porque los tirones horizontales y los verticales son <strong>independientes</strong>: un empujón lateral no cancela un tirón hacia arriba. Así que se equilibran por separado, como dos balanzas distintas que deben quedar ambas en cero.</p>
+  </div>
+</section>
+
+<!-- S2 -->
+<section id="s2">
+  <p class="sec-num">SECCIÓN 02</p>
+  <h2>Fuerzas concurrentes: descomposición y triángulo<span class="rule"></span></h2>
+  <p class="sec-intro">Cuando varias fuerzas se cruzan en un punto, el equilibrio se resuelve por componentes o con el polígono de fuerzas (que debe cerrar).</p>
+  <p>Toda fuerza \(F\) a un ángulo \(\alpha\) se parte en \(F\cos\alpha\) y \(F\sin\alpha\). Con tres fuerzas en equilibrio, sus vectores forman un <strong>triángulo cerrado</strong> (útil para usar el teorema del seno).</p>
+  <div class="box key"><span class="lbl">Numérico + proporción</span><p>Una fuerza de 50 N a 30° da \(F_x=50\cos30^\circ=43\) N y \(F_y=50\sin30^\circ=25\) N. <strong>Proporción:</strong> al duplicar el módulo a 100 N (mismo ángulo), ambas componentes se duplican (86 N y 50 N); el ángulo fija el <em>reparto</em>, el módulo la <em>escala</em>.</p></div>
+
+  <figure class="fig">
+    <svg viewBox="0 0 230 160" width="210" role="img" aria-label="Triángulo de fuerzas: los vectores de tres fuerzas en equilibrio, puestos cola con punta, cierran un triángulo">
+      <defs><marker id="tf" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <line x1="150" y1="28" x2="150" y2="118" stroke="var(--warn)" stroke-width="2.6" marker-end="url(#tf)"/>
+      <line x1="150" y1="122" x2="56" y2="83" stroke="var(--teal)" stroke-width="2.6" marker-end="url(#tf)"/>
+      <line x1="50" y1="80" x2="146" y2="30" stroke="var(--amber)" stroke-width="2.6" marker-end="url(#tf)"/>
+      <text x="156" y="80" font-family="IBM Plex Mono" font-size="12" fill="var(--warn)">W</text>
+      <text x="95" y="116" font-family="IBM Plex Mono" font-size="12" fill="var(--teal)">T₂</text>
+      <text x="86" y="44" font-family="IBM Plex Mono" font-size="12" fill="var(--amber)">T₁</text>
+    </svg>
+    <figcaption>Tres fuerzas en equilibrio: sus vectores, puestos cola con punta, cierran el triángulo (teorema del seno).</figcaption>
+  </figure>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 2.1</span><span class="ej-src">ficha · M00 (lámpara y viento)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza horizontal F</span>
+      <p>Una corriente de aire empuja una lámpara colgada de un cable; el cable forma un ángulo \(\theta\) con la vertical y su tensión es \(T\).</p>
+      <figure class="fig">
+        <svg viewBox="0 0 240 150" width="220" xmlns="http://www.w3.org/2000/svg" aria-label="lampara viento">
+          <line x1="30" y1="20" x2="210" y2="20" stroke="var(--ink)" stroke-width="3"/>
+          <line x1="120" y1="20" x2="165" y2="110" stroke="var(--teal)" stroke-width="2"/>
+          <line x1="120" y1="20" x2="120" y2="110" stroke="var(--ink-soft)" stroke-dasharray="4 3"/>
+          <circle cx="165" cy="115" r="9" fill="#C9D2CC" stroke="var(--ink)"/>
+          <line x1="165" y1="115" x2="210" y2="115" stroke="var(--amber)" stroke-width="2.5" marker-end="url(#m)"/>
+          <line x1="165" y1="115" x2="165" y2="145" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#m)"/>
+          <defs><marker id="m" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+          <text x="127" y="45" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">θ</text>
+          <text x="140" y="70" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">T</text>
+          <text x="200" y="108" font-family="IBM Plex Mono" font-size="11" fill="var(--amber)">F</text>
+          <text x="170" y="140" font-family="IBM Plex Mono" font-size="11" fill="var(--warn)">W</text>
+        </svg>
+        <figcaption>Cable a θ de la vertical; F horizontal, W vertical.</figcaption>
+      </figure>
+      <div class="sol">
+        <p>Horizontal: \(F=T\sin\theta\). Vertical: \(T\cos\theta=W\). (De ahí también \(F=W\tan\theta\) y \(T=W/\cos\theta\).)</p>
+        <span class="ans">F = T·senθ (opción B).</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 2.2</span><span class="ej-src">ficha · M02 (tres balanzas)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la relación entre P, Q y R</span>
+      <p>Un cuerpo en equilibrio es tirado por tres balanzas: P (vertical, arriba), Q (horizontal, izquierda) y R (abajo-derecha, a 45° de la horizontal).</p>
+      <div class="sol">
+        <p>\(\sum F_x=0:\ R\cos45^\circ-Q=0\Rightarrow Q=R\cos45^\circ=\tfrac{R}{\sqrt2}\).</p>
+        <p>\(\sum F_y=0:\ P-R\sin45^\circ=0\Rightarrow P=\tfrac{R}{\sqrt2}\).</p>
+        <p>Entonces \(P=Q=\tfrac{R}{\sqrt2}\approx0{,}71R\), es decir \(R>P=Q\).</p>
+        <span class="ans">F_R > F_P = F_Q (opción b).</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S3 -->
+<section id="s3">
+  <p class="sec-num">SECCIÓN 03</p>
+  <h2>Cuerpos colgados de cables<span class="rule"></span></h2>
+  <p class="sec-intro">El caso más frecuente: un peso sostenido por dos cables. Si son simétricos, cada uno lleva la mitad de la carga vertical.</p>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 3.1</span><span class="ej-src">ficha · M07 (barra en dos alambres)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la tensión T en un alambre</span>
+      <p>Una barra uniforme de peso \(W\) cuelga de un punto por dos alambres simétricos, cada uno a \(\theta\) de la vertical.</p>
+      <div class="sol">
+        <p>Vertical: \(2T\cos\theta=W\Rightarrow T=\dfrac{W}{2\cos\theta}\). (Las componentes horizontales se cancelan por simetría.)</p>
+        <span class="ans">T = W / (2·cosθ) (opción b).</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 3.2</span><span class="ej-src">ficha · M11 (paracaidista, velocidad terminal)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza hacia arriba</span>
+      <p>Un paracaidista de 80 kg cae a rapidez constante de 50 m·s⁻¹.</p>
+      <div class="sol"><p>Rapidez constante ⇒ equilibrio ⇒ fuerza hacia arriba = peso \(=mg=80(10)=800\) N.</p><span class="ans">≈ 800 N (opción C).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 -->
+<section id="s4">
+  <p class="sec-num">SECCIÓN 04</p>
+  <h2>Resortes y ley de Hooke<span class="rule"></span></h2>
+  <p class="sec-intro">Un resorte ideal cumple \(F_H=-kx\): la fuerza restauradora es proporcional a la deformación y se opone a ella.</p>
+  <div class="eq">\[ F=kx \qquad k=\frac{\Delta F}{\Delta x}=\text{pendiente de la gráfica fuerza–extensión} \]<span class="eqname">ley de Hooke</span></div>
+  <div class="box key"><span class="lbl">Numérico + proporción</span><p>Con \(k=200\ \mathrm{N\,m^{-1}}\): una extensión de 0,05 m exige \(F=200(0{,}05)=10\) N. <strong>Proporción:</strong> como \(F\propto x\), <em>doble extensión ⇒ doble fuerza</em> (0,10 m ⇒ 20 N); la gráfica \(F\!-\!x\) es una recta por el origen de pendiente \(k\).</p></div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 4.1</span><span class="ej-src">ficha · M05 (constante desde la gráfica) · enlaza con Módulo 1</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la constante del resorte</span>
+      <p>La gráfica longitud–peso pasa por (0 N, 12 cm) y (6 N, 15 cm).</p>
+      <div class="sol">
+        <p>Extensión a 6 N: \(15-12=3\) cm. \(k=\dfrac{F}{x}=\dfrac{6\ \mathrm N}{3\ \mathrm{cm}}=2{,}0\ \mathrm{N\,cm^{-1}}\).</p>
+        <p>(Cuidado: la pendiente de <em>longitud vs peso</em> es \(0{,}5\ \mathrm{cm\,N^{-1}}=1/k\), que es el distractor B.)</p>
+        <span class="ans">k = 2,0 N·cm⁻¹ (opción C).</span>
+      </div>
+    </div>
+  </div>
+  <div class="box beyond"><span class="lbl">Más allá del IB</span>
+    <p>Resortes en <strong>serie</strong>: \(\frac{1}{k_{eq}}=\frac{1}{k_1}+\frac{1}{k_2}\) (más blando). En <strong>paralelo</strong>: \(k_{eq}=k_1+k_2\) (más rígido). La energía almacenada es \(E=\tfrac12kx^2\) (se usará en Trabajo y energía).</p>
+  </div>
+</section>
+
+<!-- S5 -->
+<section id="s5">
+  <p class="sec-num">SECCIÓN 05</p>
+  <h2>Plano inclinado y ángulo de fricción<span class="rule"></span></h2>
+  <p class="sec-intro">En equilibrio sobre un plano, se descompone el peso en las direcciones del plano.</p>
+  <figure class="fig">
+    <svg viewBox="0 0 300 165" width="280" xmlns="http://www.w3.org/2000/svg" aria-label="equilibrio en plano">
+      <polygon points="20,145 280,145 280,55" fill="#EDEFEA" stroke="var(--ink)"/>
+      <rect x="188" y="78" width="32" height="20" fill="#C9D2CC" stroke="var(--ink)" transform="rotate(-19 204 88)"/>
+      <line x1="204" y1="88" x2="204" y2="145" stroke="var(--warn)" stroke-width="2.3" marker-end="url(#n)"/>
+      <line x1="204" y1="88" x2="234" y2="122" stroke="var(--amber)" stroke-width="2" marker-end="url(#n)"/>
+      <line x1="204" y1="88" x2="172" y2="52" stroke="var(--teal)" stroke-width="2" marker-end="url(#n)"/>
+      <defs><marker id="n" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <text x="208" y="140" font-family="IBM Plex Mono" font-size="11" fill="var(--warn)">W</text>
+      <text x="235" y="118" font-family="IBM Plex Mono" font-size="9" fill="var(--amber)">Wsenθ</text>
+      <text x="142" y="52" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">N</text>
+      <text x="42" y="141" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">θ</text>
+    </svg>
+    <figcaption>Perpendicular: N = W·cosθ. A lo largo: la fricción equilibra W·senθ.</figcaption>
+  </figure>
+  <div class="box key"><span class="lbl">Numérico + proporción</span><p>Para \(W=100\) N a \(\theta=30^\circ\): \(N=100\cos30^\circ=87\) N y la componente a lo largo \(=100\sin30^\circ=50\) N. <strong>Proporción:</strong> al aplanar el plano (\(\theta\!\to\!0\)) \(N\!\to\!W\) y la componente de arrastre \(\to 0\); al empinarlo (\(\theta\!\to\!90^\circ\)) se invierte.</p></div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 5.1</span><span class="ej-src">ficha · N12 (N y F en función de W)</span></div>
+    <div class="ej-body"><span class="sepide">Se piden N y F</span>
+      <p>Un bloque en reposo sobre un plano a \(\theta\). Relaciona la normal \(N\) y la fricción \(F\) con el peso \(W\).</p>
+      <div class="sol"><p>⊥ al plano: \(N=W\cos\theta\). A lo largo: \(F=W\sin\theta\).</p><span class="ans">N = W·cosθ, F = W·senθ (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 5.2</span><span class="ej-src">ficha · N17 (ángulo de fricción)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el coeficiente máximo de fricción estática</span>
+      <p>Se aumenta \(\theta\) hasta que el bloque está a punto de deslizar.</p>
+      <div class="sol">
+        <p>En ese instante \(F_{\max}=\mu_s N\): con \(W\sin\theta=\mu_s(W\cos\theta)\) queda \(\mu_s=\tan\theta\).</p>
+        <span class="ans">μ_s = tanθ (opción C). — el «ángulo de fricción».</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 -->
+<section id="s6">
+  <p class="sec-num">SECCIÓN 06</p>
+  <h2>Torque y equilibrio rotacional<span class="rule"></span></h2>
+  <p class="sec-intro">Un cuerpo extendido puede tener \(\sum F=0\) y aun así girar. Falta la segunda condición: el momento de fuerza resultante también debe ser cero.</p>
+  <div class="box key"><span class="lbl">¿Qué es el torque? · la puerta</span>
+    <p><strong>El torque (o momento de una fuerza) mide el «efecto de giro» de esa fuerza.</strong> No todas las fuerzas hacen girar por igual: importa no solo <em>cuánto</em> empujas, sino <em>dónde</em> y <em>en qué dirección</em>. Piensa en una puerta. Si la empujas pegado a la bisagra, apenas se mueve; si la empujas en el borde más lejano (donde está el pomo), se abre con facilidad usando la misma fuerza.</p>
+    <p>Esa distancia de la fuerza al eje de giro es el <strong>brazo de palanca</strong>. <strong>Cuanto más lejos del pivote actúa la fuerza, más momento produce</strong>, porque desde más lejos tiene más «palanca» para hacer girar — como quien levanta una piedra metiendo una barra larga por debajo. Por eso el pomo está en el extremo opuesto a la bisagra, y por eso una llave larga afloja un perno que una corta no puede. En fórmula, con la fuerza perpendicular, \(\tau=F\,r\): el giro crece con la fuerza <em>y</em> con la distancia; doblar cualquiera de los dos dobla el torque.</p>
+  </div>
+  <div class="eq">\[ \tau=F\,r\sin\theta=F\times(\text{brazo de palanca}) \qquad \sum\tau=0 \]<span class="eqname">momento de una fuerza y equilibrio rotacional · unidad SI: N·m (guía A.4)</span></div>
+  <figure class="fig">
+    <svg viewBox="0 0 300 160" width="280" role="img" aria-label="Momento de una fuerza: fuerza F aplicada a distancia d de un pivote, con brazo de palanca perpendicular y sentido de giro">
+      <defs><marker id="tq" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <line x1="45" y1="70" x2="250" y2="70" stroke="var(--ink)" stroke-width="3"/>
+      <circle cx="45" cy="70" r="6" fill="var(--teal-deep)" stroke="var(--ink)"/>
+      <line x1="45" y1="104" x2="220" y2="104" stroke="var(--ink-soft)" stroke-width="1"/>
+      <line x1="45" y1="98" x2="45" y2="110" stroke="var(--ink-soft)" stroke-width="1"/>
+      <line x1="220" y1="98" x2="220" y2="110" stroke="var(--ink-soft)" stroke-width="1"/>
+      <text x="120" y="122" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-soft)">d (brazo)</text>
+      <line x1="220" y1="70" x2="220" y2="140" stroke="var(--amber)" stroke-width="2.6" marker-end="url(#tq)"/>
+      <text x="226" y="118" font-family="IBM Plex Mono" font-size="12" fill="var(--amber)">F</text>
+      <path d="M78,48 A26,26 0 0 1 92,76" fill="none" stroke="var(--teal)" stroke-width="2" marker-end="url(#tq)"/>
+      <text x="74" y="42" font-family="IBM Plex Mono" font-size="12" fill="var(--teal)">τ</text>
+    </svg>
+    <figcaption>Momento τ = F·d: fuerza perpendicular F a distancia d del pivote; el sentido de giro es horario.</figcaption>
+  </figure>
+  <p>El <strong>brazo de palanca</strong> es la distancia perpendicular de la línea de acción de la fuerza al eje. Se asigna un sentido (horario / antihorario). Un cuerpo rígido está en equilibrio completo si <strong>\(\sum F=0\) y \(\sum\tau=0\)</strong>. El peso de un cuerpo se considera aplicado en su <strong>centro de gravedad</strong> (centro para un cuerpo uniforme).</p>
+  <div class="box key"><span class="lbl">¿Por qué solo cuenta la componente perpendicular?</span>
+    <p>Vuelve a la puerta: si en vez de empujarla de frente la empujas <em>hacia</em> la bisagra (a lo largo de la hoja), no gira nada — por fuerte que sea, esa fuerza solo aprieta la puerta contra su eje. <strong>Solo la parte de la fuerza perpendicular a la hoja la hace girar.</strong> Por eso en \(\tau=F\,r\sin\theta\) aparece el \(\sin\theta\): descompone la fuerza y se queda con la parte que «tira de verdad» para rotar.</p>
+    <p>Cuando empujas perpendicular (\(\theta=90^\circ,\ \sin90^\circ=1\)) el giro es máximo; cuando empujas en línea con el brazo (\(\theta=0^\circ,\ \sin0^\circ=0\)) el giro es cero. Da lo mismo pensarlo como «fuerza perpendicular × distancia» o como «fuerza × brazo perpendicular»: son dos formas de mirar la misma cuenta.</p>
+  </div>
+  <div class="box key"><span class="lbl">Centro de gravedad: por qué el peso «actúa» ahí</span>
+    <p>La gravedad no tira de un solo punto: jala <em>cada</em> pedacito del cuerpo. Pero sumar millones de tironcitos es incómodo, así que se demuestra que todos ellos equivalen a <strong>una sola fuerza</strong> (el peso total) aplicada en un punto especial, el <strong>centro de gravedad (CG)</strong>: el «punto de equilibrio promedio» de toda la masa. En un cuerpo uniforme y simétrico (una regla o una viga pareja) cae en el centro geométrico; si hay más masa de un lado, el CG se corre hacia ahí.</p>
+    <p>Esto lo simplifica todo: dibujas una única flecha de peso desde el CG, y para los torques usas la distancia del CG al pivote. Es también la razón de que una regla uniforme apoyada en su centro no aporte torque — su peso pasa justo por el pivote, con brazo cero.</p>
+  </div>
+  <div class="box key"><span class="lbl">Las dos condiciones · por qué hacen falta las dos</span>
+    <p>Un cuerpo puede moverse de dos maneras distintas e independientes: <strong>trasladarse</strong> (desplazarse en bloque de un lado a otro) y <strong>rotar</strong> (girar sobre sí mismo). Cada condición apaga una de ellas.</p>
+    <p><strong>\(\sum F=0\) impide que se traslade:</strong> si las fuerzas no se cancelan, queda una resultante que, por la 2.ª ley (\(F=ma\)), acelera el cuerpo entero en esa dirección. Anularla deja su centro de masa quieto (o a velocidad constante).</p>
+    <p><strong>\(\sum\tau=0\) impide que gire:</strong> aunque las fuerzas se cancelen como vectores, pueden estar <em>descolocadas</em> y provocar giro igualmente. El caso limpio es el <em>par de fuerzas</em>: dos empujes iguales y opuestos en lados distintos de un volante — la fuerza neta es cero (no se traslada), pero el volante gira. Para frenar también ese giro necesitas que los momentos se equilibren.</p>
+    <p>Por eso <strong>hacen falta las dos</strong>: \(\sum F=0\) sin \(\sum\tau=0\) deja un cuerpo que gira sin desplazarse; \(\sum\tau=0\) sin \(\sum F=0\) deja uno que se desplaza sin girar. Solo juntas garantizan reposo completo.</p>
+  </div>
+  <div class="box key"><span class="lbl">Numérico + proporción</span><p>Una fuerza de 20 N aplicada \(\perp\) a 0,30 m del eje da \(\tau=20(0{,}30)=6{,}0\) N·m. <strong>Proporción:</strong> como \(\tau\propto r\), <em>doble brazo ⇒ doble momento</em> (a 0,60 m serían 12 N·m); y si la fuerza llega a 60° del brazo, solo cuenta \(\sin60^\circ\): \(\tau=20(0{,}30)\sin60^\circ=5{,}2\) N·m.</p></div>
+
+  <figure class="fig">
+    <svg viewBox="0 0 360 130" width="340" xmlns="http://www.w3.org/2000/svg" aria-label="viga apoyos">
+      <rect x="40" y="60" width="280" height="12" fill="#C9D2CC" stroke="var(--ink)"/>
+      <polygon points="55,72 45,92 65,92" fill="var(--teal-deep)"/><polygon points="305,72 295,92 315,92" fill="var(--teal-deep)"/>
+      <line x1="180" y1="72" x2="180" y2="108" stroke="var(--warn)" stroke-width="2.5" marker-end="url(#o)"/>
+      <line x1="120" y1="72" x2="120" y2="115" stroke="var(--amber)" stroke-width="2.5" marker-end="url(#o)"/>
+      <defs><marker id="o" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <text x="185" y="105" font-family="IBM Plex Mono" font-size="10" fill="var(--warn)">W (centro)</text>
+      <text x="100" y="110" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">carga</text>
+      <text x="40" y="105" font-family="IBM Plex Mono" font-size="10" fill="var(--teal-deep)">R₁</text>
+      <text x="300" y="105" font-family="IBM Plex Mono" font-size="10" fill="var(--teal-deep)">R₂</text>
+    </svg>
+    <figcaption>Viga sobre dos apoyos: se toman momentos respecto de un apoyo para hallar la reacción del otro.</figcaption>
+  </figure>
+
+  <div class="box key"><span class="lbl">¿Por qué vale cualquier pivote?</span>
+    <p>Cuando un cuerpo está <em>de verdad</em> en equilibrio, no gira respecto de <strong>ningún</strong> punto — ni de un eje físico ni de uno imaginario en el aire. Por eso la condición \(\sum\tau=0\) se cumple elijas donde elijas el punto para medir los brazos. (Se prueba así: si \(\sum F=0\), cambiar el punto de referencia añade a cada momento el mismo término extra, y como las fuerzas ya suman cero, ese término también suma cero y no altera nada.)</p>
+    <p>Esa libertad conviene explotarla: <strong>eliges como pivote el punto por donde pasa una fuerza que no conoces.</strong> Al pasar por ahí, esa fuerza tiene brazo cero, su torque desaparece de la ecuación y te queda una sola incógnita, que despejas de un paso. Es el atajo que convierte un sistema de ecuaciones en una cuenta directa.</p>
+  </div>
+  <div class="box key"><span class="lbl">Truco de examen</span><p>Toma momentos respecto del punto donde actúa una fuerza <em>desconocida</em>: su torque se anula (brazo cero) y la ecuación queda con una sola incógnita.</p></div>
+
+  <div class="box key"><span class="lbl">Reacciones: apoyo vs. articulación</span><p>Un <strong>apoyo o rodillo</strong> da una sola reacción (⊥ a la superficie). Una <strong>articulación / pasador</strong> da <strong>dos componentes</strong>, \(H_x\) y \(H_y\), porque puede empujar en cualquier dirección; su módulo es \(H=\sqrt{H_x^2+H_y^2}\). Por eso conviene tomar momentos <em>en la articulación</em>: \(H_x,H_y\) tienen brazo cero y se eliminan. <strong>Numérico:</strong> con \(H_x=57\) N y \(H_y=40\) N, \(H=\sqrt{57^2+40^2}=70\) N a \(\arctan(40/57)=35^\circ\).</p></div>
+
+  <div class="box def"><span class="lbl">Par de fuerzas (couple)</span><p>Dos fuerzas iguales y opuestas pero <em>no colineales</em>: su resultante es cero (\(\sum F=0\)) pero su momento neto no — \(\tau=F\,d\), con \(d\) la separación perpendicular entre sus líneas de acción, e <strong>igual respecto de cualquier punto</strong>. Solo produce rotación, nunca traslación (girar un volante, destapar un frasco). <strong>Numérico:</strong> \(F=15\) N separadas \(d=0{,}20\) m ⇒ \(\tau=15(0{,}20)=3{,}0\) N·m. <strong>Proporción:</strong> doble separación ⇒ doble momento.</p></div>
+
+  <figure class="fig">
+    <svg viewBox="0 0 250 205" width="250" role="img" aria-label="Escalera apoyada en una pared lisa: normal de la pared horizontal en el tope, normal del suelo y fricción en la base, y peso en el centro">
+      <defs><marker id="es" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="context-stroke"/></marker></defs>
+      <line x1="55" y1="25" x2="55" y2="175" stroke="var(--ink)" stroke-width="3"/>
+      <line x1="55" y1="175" x2="235" y2="175" stroke="var(--ink)" stroke-width="3"/>
+      <line x1="55" y1="55" x2="175" y2="175" stroke="var(--ink-soft)" stroke-width="4"/>
+      <line x1="55" y1="55" x2="102" y2="55" stroke="var(--teal)" stroke-width="2.4" marker-end="url(#es)"/>
+      <text x="78" y="48" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">N(pared)</text>
+      <line x1="175" y1="175" x2="175" y2="123" stroke="var(--teal-deep)" stroke-width="2.4" marker-end="url(#es)"/>
+      <text x="181" y="140" font-family="IBM Plex Mono" font-size="10" fill="var(--teal-deep)">N(suelo)</text>
+      <line x1="175" y1="175" x2="128" y2="175" stroke="var(--amber)" stroke-width="2.4" marker-end="url(#es)"/>
+      <text x="132" y="192" font-family="IBM Plex Mono" font-size="11" fill="var(--amber)">f</text>
+      <line x1="115" y1="115" x2="115" y2="160" stroke="var(--warn)" stroke-width="2.4" marker-end="url(#es)"/>
+      <text x="120" y="140" font-family="IBM Plex Mono" font-size="11" fill="var(--warn)">W</text>
+      <text x="148" y="170" font-family="IBM Plex Mono" font-size="12" fill="var(--ink)">θ</text>
+    </svg>
+    <figcaption>Pared lisa: N_pared es horizontal; en la base actúan N_suelo (vertical) y f (horizontal); W en el centro.</figcaption>
+  </figure>
+
+  <div class="box key"><span class="lbl">Escalera: pared lisa + suelo rugoso</span><p>Pared <em>lisa</em> ⇒ solo normal horizontal \(N_p\) (sin fricción arriba). Suelo <em>rugoso</em> ⇒ normal \(N_s\) y fricción \(f\). De \(\sum F_y=0\): \(N_s=W\); momentos en la base dan \(N_p=\dfrac{W}{2\tan\theta}\), y \(\sum F_x=0\Rightarrow f=N_p\). <strong>No resbala si</strong> \(f\le\mu_s N_s\). <strong>Numérico:</strong> \(W=120\) N, \(\theta=60^\circ\) ⇒ \(N_p=f=\tfrac{120}{2\tan60^\circ}=34{,}6\) N; con \(\mu_s=0{,}40\), \(f_{\max}=0{,}40(120)=48\) N ⇒ estable. <strong>Proporción:</strong> al tumbar la escalera (\(\theta\) menor) \(f\) crece como \(1/\tan\theta\) ⇒ resbala antes.</p></div>
+
+  <div class="box key"><span class="lbl">¿Por qué vuelca un cuerpo? · la caja inclinada</span>
+    <p>Pon una caja alta sobre el suelo e inclínala poco a poco. Mientras la <strong>vertical que baja desde su centro de gravedad</strong> caiga <em>dentro</em> de la base de apoyo, el peso genera un torque que la devuelve al suelo: la caja se reendereza sola. Pero en cuanto esa vertical cruza el <strong>borde</strong> de la base y queda por fuera, el mismo peso pasa a girarla hacia afuera en lugar de hacia dentro — y ya nada la detiene: <strong>vuelca</strong>.</p>
+    <p>El punto de no retorno es justo cuando la vertical del CG pasa por el borde de apoyo; de ahí sale \(\tan\theta_{\text v}=b/h\). Por eso un objeto bajo y ancho (base grande, CG bajo) cuesta mucho voltearlo y uno alto y estrecho cae con casi nada — la misma razón por la que separas los pies para no perder el equilibrio en un bus.</p>
+  </div>
+  <div class="box key"><span class="lbl">Vuelco (toppling) vs. deslizamiento</span><p>Un cuerpo <strong>desliza</strong> si la fuerza vence la fricción (\(F>\mu_s N\)); <strong>vuelca</strong> cuando la vertical que pasa por el centro de gravedad se sale de la base de apoyo. Para un bloque de ancho \(b\) y altura \(h\), el ángulo de vuelco cumple \(\tan\theta_{\text{v}}=\dfrac{b}{h}\) (el CG queda justo sobre el borde). <strong>Numérico:</strong> \(b=0{,}4\) m, \(h=1{,}0\) m ⇒ \(\theta_{\text{v}}=\arctan0{,}4=22^\circ\). <strong>Cuál gana:</strong> si \(\mu_s<b/h\) desliza primero; si \(\mu_s>b/h\) vuelca primero. <strong>Proporción:</strong> más alto y estrecho (\(h\uparrow,\ b\downarrow\)) ⇒ vuelca antes.</p></div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 6.1</span><span class="ej-src">refuerzo (la ficha no trae torque)</span></div>
+    <div class="ej-body"><span class="sepide">Se piden las reacciones de los apoyos</span>
+      <p>Una viga uniforme de 4,0 m y 200 N descansa sobre dos apoyos en sus extremos. Una carga de 300 N se coloca a 1,0 m del apoyo izquierdo. Halla \(R_1\) (izq.) y \(R_2\) (der.).</p>
+      <div class="sol">
+        <p>Momentos respecto del apoyo izquierdo (antihorario +): \(R_2(4{,}0)=200(2{,}0)+300(1{,}0)=700\Rightarrow R_2=175\) N.</p>
+        <p>\(\sum F=0:\ R_1+R_2=200+300=500\Rightarrow R_1=325\) N.</p>
+        <span class="ans">R₁ = 325 N, R₂ = 175 N.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 6.2</span><span class="ej-src">refuerzo · barra articulada</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la tensión del cable</span>
+      <p>Una barra uniforme de 2,0 m y 60 N está articulada a una pared y se mantiene horizontal por un cable atado a su extremo libre, que sube a 30° respecto a la barra.</p>
+      <div class="sol">
+        <p>Momentos respecto de la articulación: \(T\sin30^\circ(2{,}0)=60(1{,}0)\Rightarrow T(0{,}5)(2{,}0)=60\).</p>
+        <span class="ans">T = 60 N.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 -->
+<section id="s7">
+  <p class="sec-num">SECCIÓN 07</p>
+  <h2>Más allá del IB (A.4 HL y extensión)<span class="rule"></span></h2>
+  <div class="box beyond"><span class="lbl">Profundidad para el 7 / HL</span>
+    <ul>
+      <li><strong>Nota IB:</strong> el momento de fuerza y el equilibrio rotacional pertenecen al tema A.4 (Nivel Superior). Para NM son «más allá», pero tu curso los pide y elevan tu dominio del equilibrio.</li>
+      <li><strong>Cuerpo rígido rotando:</strong> un torque neto produce aceleración angular, \(\tau=I\alpha\), donde \(I=\sum m r^2\) es el momento de inercia.</li>
+      <li><strong>Momento angular:</strong> \(L=I\omega\) se conserva si el torque externo es cero (patinador que cierra los brazos gira más rápido).</li>
+      <li><strong>Par de fuerzas (couple):</strong> dos fuerzas iguales y opuestas no colineales; su torque neto es \(F\times d\) y no depende del punto elegido.</li>
+      <li><strong>Vuelco vs. deslizamiento:</strong> un cuerpo vuelca cuando la línea de acción del peso sale de la base de apoyo; se compara el ángulo de vuelco con el de deslizamiento (\(\tan\theta=\mu\)).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- S8 -->
+<section id="s8">
+  <p class="sec-num">SECCIÓN 08</p>
+  <h2>Definiciones para el examen<span class="rule"></span></h2>
+  <div class="box def"><span class="lbl">Glosario</span>
+    <ul>
+      <li><strong>Equilibrio de traslación:</strong> estado en que la fuerza resultante es cero.</li>
+      <li><strong>Equilibrio rotacional:</strong> estado en que el momento de fuerza resultante es cero.</li>
+      <li><strong>Momento (torque) de una fuerza:</strong> \(\tau=Fr\sin\theta\); producto de la fuerza por el brazo de palanca perpendicular.</li>
+      <li><strong>Brazo de palanca:</strong> distancia perpendicular de la línea de acción de la fuerza al eje de giro.</li>
+      <li><strong>Centro de gravedad:</strong> punto donde puede considerarse aplicado todo el peso del cuerpo.</li>
+      <li><strong>Ángulo de fricción:</strong> inclinación a la que un cuerpo está a punto de deslizar; \(\tan\theta=\mu_s\).</li>
+      <li><strong>Constante elástica (k):</strong> fuerza necesaria por unidad de deformación de un resorte.</li>
+      <li><strong>Par de fuerzas:</strong> dos fuerzas iguales, opuestas y no colineales que producen solo rotación; momento neto \(\tau=Fd\).</li>
+      <li><strong>Vuelco:</strong> pérdida de equilibrio por giro, cuando la vertical del centro de gravedad sale de la base de apoyo (\(\tan\theta_{\text v}=b/h\)).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRAPS -->
+<section id="traps">
+  <p class="sec-num">CHECKLIST</p>
+  <h2>Trampas típicas del Paper 1<span class="rule"></span></h2>
+  <div class="box trap"><span class="lbl">Antes de marcar, revisa</span>
+    <ul>
+      <li>Velocidad constante ⇒ equilibrio (resultante 0), aunque el cuerpo se mueva.</li>
+      <li>En la cima de un tiro vertical la velocidad es cero pero <strong>el peso sigue actuando</strong> (aceleración = g).</li>
+      <li>Dos cables simétricos: cada uno lleva \(W/(2\cos\theta)\), no \(W/2\).</li>
+      <li>La constante del resorte es \(k=\Delta F/\Delta x\); la pendiente de <em>longitud vs fuerza</em> es \(1/k\).</li>
+      <li>\(\sum F=0\) no basta para un cuerpo extendido: falta \(\sum\tau=0\).</li>
+      <li>Toma momentos respecto de una incógnita para eliminarla del cálculo.</li>
+      <li>Acción y reacción: la reacción a «la persona empuja el auto» es «el auto empuja a la persona» (no la fricción ni el peso).</li>
+      <li>El peso actúa en el centro de gravedad, no en el punto de apoyo.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BLOQUE -->
+<section id="bloque">
+  <p class="sec-num">BLOQUE DE 10 EJEMPLOS RESUELTOS · TIPO 1</p>
+  <h2>Los ítems de la ficha, resueltos<span class="rule"></span></h2>
+  <p class="sec-intro">Los ocho de arriba (Ej. 2.1, 2.2, 3.1, 3.2, 4.1, 5.1, 5.2) ya cubren tensiones, tres fuerzas, resortes, plano y ángulo de fricción. Van los dos conceptuales clave completos; el resto de la ficha, en la tabla siguiente.</p>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">9</span><span class="ej-tag">3.ª ley · identificar el par</span><span class="ej-src">N01/430</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la reacción a F</span>
+      <p>Un hombre empuja un vehículo con fuerza \(F\). ¿Cuál es la reacción (3.ª ley) a \(F\)?</p>
+      <div class="sol">
+        <p>El par acción–reacción actúa sobre <strong>cuerpos distintos</strong> y es de la <em>misma naturaleza</em>: si el hombre empuja al vehículo, el vehículo empuja al hombre con fuerza igual y opuesta. No es la fricción de la carretera ni el peso (son otros pares).</p>
+        <span class="ans">La fuerza que el vehículo ejerce sobre la persona (opción A).</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">10</span><span class="ej-tag">fuerza en la cima</span><span class="ej-src">N99/430</span></div>
+    <div class="ej-body"><span class="sepide">Se piden las fuerzas sobre la pelota en la cima</span>
+      <p>Una pelota lanzada verticalmente hacia arriba, en la parte más alta de su trayectoria.</p>
+      <div class="sol">
+        <p>En la cima \(v=0\) por un instante, pero <strong>seguir en reposo momentáneo no significa ausencia de fuerza</strong>: la gravedad actúa siempre. La única fuerza es el peso (hacia abajo), y por eso \(a=g\) ahí también.</p>
+        <span class="ans">Solo una fuerza hacia abajo (opción b).</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTO -->
+<section id="resto">
+  <p class="sec-num">RESTO DE LA FICHA</p>
+  <h2>Ítems conceptuales / de diagrama<span class="rule"></span></h2>
+  <table>
+    <tr><th>Ítem</th><th>Resp.</th><th class="l">Razón</th></tr>
+    <tr><td>Auto a velocidad constante (M99)</td><td>d</td><td class="l">Equilibrio ⇒ resultante = 0.</td></tr>
+    <tr><td>Pez nadando a velocidad constante (M00)</td><td>A</td><td class="l">Equilibrio ⇒ resultante = 0.</td></tr>
+    <tr><td>Pelota ascendiendo, DCL (N01)</td><td>B</td><td class="l">Única fuerza: el peso (hacia abajo).</td></tr>
+    <tr><td>Vehículo v constante, resistencia ≠ 0, DCL (M02)</td><td>A</td><td class="l">Las cuatro fuerzas balanceadas (motriz = resistencia, N = W).</td></tr>
+    <tr><td>Caballo–barca, DCL (N05)</td><td>△ cerrado</td><td class="l">\(F\cos\theta=L\), \(F\sin\theta=P\): los tres vectores cierran (diagrama A).</td></tr>
+    <tr><td>Fuerza en ángulo, v constante, DCL (M12)</td><td>D</td><td class="l">\(F\cos\theta=\)resistencia; \(N=W-F\sin\theta\); fricción opuesta al movimiento.</td></tr>
+  </table>
+</section>
+
+<!-- EXAMENES -->
+<section id="examenes">
+  <p class="sec-num">BANCO DE EXÁMENES IB · TIPO 1 (PAPER 1 / 1A)</p>
+  <h2>Estática y equilibrio en los exámenes, 2022–2026<span class="rule"></span></h2>
+  <p class="sec-intro">Las preguntas de <em>equilibrio de fuerzas</em> de los Paper 1 del IB, resueltas con el método de estática (\(\sum\vec F=0\), descomposición y triángulo de fuerzas) y con la <strong>respuesta oficial del markscheme</strong>. \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+
+  <div class="box key">
+    <span class="lbl">Lee esto · por qué son pocas</span>
+    <p>Dos cosas que conviene que sepas de este tema en el examen:</p>
+    <ul>
+      <li><strong>El torque y el equilibrio rotacional son contenido de Nivel Superior (A.4 HL).</strong> En los Paper 1A de NM (plan vigente, 2025–2026) <strong>no</strong> hay preguntas de momentos/torque. Por eso la Sección 6 de este módulo es tu ventaja para HL o para exámenes propios, pero no cae como MCQ en NM.</li>
+      <li><strong>La estática "pura" rara vez es una pregunta aparte:</strong> el IB la integra en problemas de <em>dinámica</em> (cuerpo en reposo o a velocidad constante ⇒ \(\sum\vec F=0\)) y de <em>fluidos</em> (velocidad terminal). Abajo están esas preguntas, resueltas desde el equilibrio. Varias también aparecen en el <strong>Módulo 3A</strong>; aquí el enfoque es distinto: resolver por componentes igualando a cero.</li>
+      <li>Las preguntas de <strong>resortes</strong> del banco piden la <em>energía elástica</em> (½\(Fx\)), no la ley de Hooke como fuerza: van en el <strong>Módulo 5A</strong>.</li>
+    </ul>
+  </div>
+
+  <h4>Índice</h4>
+  <table>
+    <tr><th>#</th><th class="l">Subtema</th><th>Sesión</th><th>Plan</th><th>Resp.</th></tr>
+    <tr><td>E1</td><td class="l">Resultante posible de dos fuerzas (rango)</td><td>May 2022 TZ1</td><td>ant.</td><td>D</td></tr>
+    <tr><td>E2</td><td class="l">Resultante de dos vectores modificados</td><td>Nov 2022</td><td>ant.</td><td>D</td></tr>
+    <tr><td>E3</td><td class="l">Objeto en rampa con cuerda (ángulo ↑)</td><td>May 2024 TZ2</td><td>ant.</td><td>B</td></tr>
+    <tr><td>E4</td><td class="l">Fricción estática en rampa (no desliza)</td><td>May 2023 TZ2</td><td>ant.</td><td>D</td></tr>
+    <tr><td>E5</td><td class="l">Acróbata en dos cuerdas (concurrentes)</td><td>May 2026 TZ3</td><td>nuevo</td><td>D</td></tr>
+    <tr><td>E6</td><td class="l">Cuerpo libre a velocidad terminal</td><td>May 2024 TZ2</td><td>ant.</td><td>D</td></tr>
+    <tr><td>E7</td><td class="l">Equilibrio de 3 fuerzas (burbuja, fluido)</td><td>May 2026 TZ3</td><td>nuevo</td><td>A</td></tr>
+  </table>
+
+  <!-- A -->
+  <h3>A · Fuerzas concurrentes: combinar y descomponer</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">E1</span><span class="ej-src">Paper 1 · May 2022 TZ1 · Q2 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>La resultante de dos fuerzas sobre un cuerpo es 12 N. ¿Qué par puede producirla?<br>A) 1 y 2 N &nbsp; B) 1 y 14 N &nbsp; C) 5 y 6 N &nbsp; D) 6 y 7 N</p>
+      <div class="sol"><p>Al sumar dos vectores, la resultante va de \(|a-b|\) (opuestos) a \(a+b\) (mismo sentido). Solo D contiene 12: \([1,\,13]\ni12\).</p>
+        <span class="ans">D) 6 N y 7 N ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">E2</span><span class="ej-src">Paper 1 · Nov 2022 · Q2 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Dos fuerzas \(\vec F\) y \(\vec G\) actúan sobre un sistema. Se <em>invierte</em> \(\vec F\) y se reduce \(\vec G\) a la mitad. ¿Qué vector es la nueva resultante? (opciones = diagramas)</p>
+      <div class="sol"><p>Suma cola-cabeza \(-\vec F\) y \(\tfrac12\vec G\): la resultante va del inicio al final de la cadena. (Descomponer por componentes también funciona.)</p>
+        <span class="ans">D ✓</span></div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <h3>B · Equilibrio sobre un plano inclinado</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">E3</span><span class="ej-src">Paper 1 · May 2024 TZ2 · Q6 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un objeto en reposo se mantiene en una rampa con una cuerda ligera mientras el ángulo \(\theta\) crece. ¿Qué afirmación es correcta? (tensión constante / normal disminuye / componente paralela constante / peso disminuye)</p>
+      <div class="sol"><p>Descompón en ejes del plano con \(\sum F=0\): perpendicular \(N=mg\cos\theta\) ⇒ al crecer \(\theta\), \(N\) <strong>disminuye</strong>. Paralelo \(T=mg\sin\theta\) ⇒ la tensión <em>crece</em>. El peso \(mg\) no cambia.</p>
+        <span class="ans">B) la fuerza normal disminuye ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">E4</span><span class="ej-src">Paper 1 · May 2023 TZ2 · Q6 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>El ángulo \(\theta\) de una rampa crece desde cero y el objeto <em>no</em> desliza. ¿Cómo es la fuerza de fricción? (constante / despreciable / ∝ cos θ / ∝ sen θ)</p>
+      <div class="sol"><p>Equilibrio a lo largo del plano: la fricción estática iguala la componente del peso paralela, \(f=mg\sin\theta\). Crece como \(\sin\theta\) (no es \(\mu N\): eso es solo el <em>máximo</em> antes de deslizar).</p>
+        <span class="ans">D) proporcional a sen θ ✓</span></div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <h3>C · Fuerzas concurrentes en ángulo y en fluidos</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">E5</span><span class="ej-src">Paper 1A · May 2026 TZ3 · Q6 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un acróbata sube en vertical a rapidez constante \(v\) sujeto a <em>dos</em> cuerdas, cada una a un ángulo \(\theta\) de la vertical y con tensión \(F\). ¿Ritmo de cambio de su energía potencial gravitatoria?</p>
+      <div class="sol"><p>Rapidez constante ⇒ equilibrio. Las componentes horizontales de las dos tensiones se cancelan; las verticales sostienen el peso: \(2F\cos\theta=mg\). El ritmo de EPG es \(\dfrac{dE_p}{dt}=mg\,v=2F\cos\theta\,v\).</p>
+        <span class="ans">D) \(2Fv\cos\theta\) ✓ — el equilibrio de las tensiones da el peso; lo demás es potencia.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">E6</span><span class="ej-src">Paper 1 · May 2024 TZ2 · Q5 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una pelota lanzada desde un avión alcanza su velocidad terminal. ¿Cuál es el diagrama de cuerpo libre correcto? (opciones = diagramas)</p>
+      <div class="sol"><p>Velocidad terminal ⇒ \(a=0\) ⇒ equilibrio: dos fuerzas <strong>iguales y opuestas</strong>, peso hacia abajo y arrastre hacia arriba, de igual longitud.</p>
+        <span class="ans">D ✓ (peso ↓ = arrastre ↑)</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">E7</span><span class="ej-src">Paper 1A · May 2026 TZ3 · Q3 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una burbuja de aceite sube en agua a velocidad terminal. Peso \(=3\times10^{-8}\) N, arrastre viscoso \(=2\times10^{-8}\) N. ¿Cuánto vale \(\dfrac{\rho_\text{aceite}}{\rho_\text{agua}}\)?</p>
+      <div class="sol"><p>Tres fuerzas en equilibrio: empuje (arriba) = peso + arrastre (abajo, porque sube): \(E=3+2=5\ (\times10^{-8})\) N. Con \(\text{peso}=\rho_\text{aceite}Vg\) y \(E=\rho_\text{agua}Vg\): \(\dfrac{\rho_\text{aceite}}{\rho_\text{agua}}=\dfrac35\).</p>
+        <span class="ans">A) 3/5 ✓ — el equilibrio de tres fuerzas convierte un problema de fluidos en estática.</span></div>
+    </div>
+  </div>
+
+  <div class="box beyond">
+    <span class="lbl">Qué va en el Módulo 4B (tipo 2)</span>
+    <p>Los problemas de Paper 2 con <strong>torque y equilibrio rotacional</strong> (vigas, señales colgadas, escaleras apoyadas — típicos de HL) y los de equilibrio con varios apartados se resolverán en el Módulo 4B.</p>
+  </div>
+</section>
+
+<!-- PRACTICA -->
+<section id="practica">
+  <p class="sec-num">PARA TI · RESUELVE Y ENVÍA EN BLOQUE</p>
+  <h2>10 retos (nuevos, ninguno fácil, nivel ascendente)<span class="rule"></span></h2>
+  <p class="sec-intro">Ninguno repite los ejemplos. Empiezan en equilibrio asimétrico y suben hacia el torque (lo que la ficha no traía). Los #9 y #10 integran Dinámica, Fricción e Incertidumbre y superan el IB. \(g=10\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">C1 · dos cables asimétricos</p><p>Un letrero de 150 N cuelga de un punto sostenido por dos cables: uno horizontal fijado a la pared y otro que sube al techo formando 40° con la horizontal. Halla la tensión en cada cable.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>DCL del nudo: peso \(W=150\) N abajo; cable inclinado \(T_2\) a 40° (sube hacia el techo); cable horizontal \(T_1\) (hacia la pared). Solo el cable inclinado tiene componente vertical, así que él sostiene todo el peso.</p>
+      <p>\(\sum F_y=0:\ T_2\sin40^\circ=150\Rightarrow T_2=\dfrac{150}{0{,}643}=233\) N.</p>
+      <p>\(\sum F_x=0:\ T_1=T_2\cos40^\circ=233(0{,}766)=179\) N (también \(T_1=W/\tan40^\circ\)).</p>
+      <span class="ans">T₂ (inclinado) ≈ 233 N; T₁ (horizontal) ≈ 179 N.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C2 · fuerza horizontal en un plano</p><p>Un bloque de 12 kg se mantiene en reposo sobre un plano liso de 25° mediante una fuerza <strong>horizontal</strong> (no paralela al plano). Halla el módulo de esa fuerza y la fuerza normal.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>\(W=mg=12(10)=120\) N. Tres fuerzas: \(W\) (abajo), \(N\) (\(\perp\) al plano), \(F\) (horizontal). Como solo hay tres, conviene usar ejes horizontal/vertical y proyectar \(N\).</p>
+      <p>\(\sum F_y=0:\ N\cos25^\circ=W\Rightarrow N=\dfrac{120}{0{,}906}=132\) N.</p>
+      <p>\(\sum F_x=0:\ N\sin25^\circ=F\Rightarrow F=132(0{,}423)=56\) N \(\;(=W\tan25^\circ)\).</p>
+      <span class="ans">F ≈ 56 N; N ≈ 132 N.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C3 · semáforo, dos cables al techo</p><p>Un semáforo de 200 N cuelga del punto de unión de dos cables anclados al techo horizontal, que forman 30° y 50° con el techo. Determina la tensión en cada cable.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Nudo con \(W=200\) N abajo, \(T_1\) a 30° y \(T_2\) a 50° (a lados opuestos). Dos ecuaciones, dos incógnitas.</p>
+      <p>\(\sum F_x=0:\ T_1\cos30^\circ=T_2\cos50^\circ\Rightarrow T_1=0{,}742\,T_2\).</p>
+      <p>\(\sum F_y=0:\ T_1\sin30^\circ+T_2\sin50^\circ=200\). Sustituyo: \(0{,}742T_2(0{,}5)+T_2(0{,}766)=1{,}137\,T_2=200\Rightarrow T_2=176\) N.</p>
+      <p>\(T_1=0{,}742(176)=131\) N. (Comprobación \(\sum F_x\): \(131\cos30^\circ=113=176\cos50^\circ\) ✓.)</p>
+      <span class="ans">T(30°) ≈ 131 N; T(50°) ≈ 176 N.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C4 · viga sobre dos apoyos</p><p>Una viga uniforme de 5,0 m y 400 N descansa sobre dos apoyos, uno en cada extremo. Se coloca una carga de 600 N a 1,5 m del apoyo izquierdo. Halla la reacción en cada apoyo.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>El peso de la viga (400 N) actúa en su centro, a 2,5 m del extremo izquierdo. Tomo momentos respecto del apoyo izquierdo (así \(R_1\) tiene brazo cero).</p>
+      <p>\(\sum\tau=0:\ R_2(5{,}0)=400(2{,}5)+600(1{,}5)=1000+900=1900\Rightarrow R_2=380\) N.</p>
+      <p>\(\sum F=0:\ R_1+R_2=400+600=1000\Rightarrow R_1=620\) N. (Comprobación por el otro apoyo: \(R_1(5{,}0)=400(2{,}5)+600(3{,}5)=3100\Rightarrow R_1=620\) ✓.)</p>
+      <span class="ans">R₁ (izq) = 620 N; R₂ (der) = 380 N.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C5 · palanca (con giro)</p><p>Una barra de 1,0 m se apoya en su centro. A 20 cm a la izquierda del apoyo cuelga un peso de 30 N. (a) ¿A qué distancia a la derecha debe colgarse un peso de 25 N para equilibrar? (b) Si la barra no fuera ligera sino uniforme de 10 N, ¿cambia tu respuesta? Justifica.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> \(\sum\tau=0\) respecto del apoyo: momento horario = momento antihorario. \(30(0{,}20)=25\,d\Rightarrow 6{,}0=25\,d\Rightarrow d=0{,}24\) m \(=24\) cm.</p>
+      <p><strong>(b)</strong> Si la barra es uniforme, su peso (10 N) se aplica en su centro, que coincide con el apoyo: brazo cero \(\Rightarrow\) torque nulo. <strong>No cambia</strong>: \(d=24\) cm.</p>
+      <span class="ans">(a) d = 24 cm a la derecha. (b) Igual, 24 cm — el peso de la barra pasa por el pivote.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C6 · barra articulada + cable</p><p>Una barra uniforme de 2,0 m y 80 N está articulada a una pared y se mantiene horizontal por un cable atado a su extremo libre que forma 35° con la barra. Halla (a) la tensión del cable y (b) el módulo y la dirección de la fuerza en la articulación.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Momentos respecto de la articulación (así la fuerza del pasador se elimina). Solo la componente perpendicular del cable, \(T\sin35^\circ\), hace torque:</p>
+      <p>\(T\sin35^\circ(2{,}0)=80(1{,}0)\Rightarrow T=\dfrac{80}{2{,}0(0{,}574)}=70\) N.</p>
+      <p><strong>(b)</strong> Componentes del cable sobre el extremo: \(T\cos35^\circ=70(0{,}819)=57\) N (hacia la pared) y \(T\sin35^\circ=70(0{,}574)=40\) N (arriba).</p>
+      <p>\(\sum F_x=0:\ H_x=T\cos35^\circ=57\) N (hacia afuera). \(\sum F_y=0:\ H_y=W-T\sin35^\circ=80-40=40\) N (arriba).</p>
+      <p>\(H=\sqrt{57^2+40^2}=70\) N, a \(\arctan(40/57)=35^\circ\) sobre la horizontal.</p>
+      <span class="ans">(a) T = 70 N. (b) H ≈ 70 N a 35° sobre la horizontal (hacia afuera y arriba).</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C7 · escalera contra pared</p><p>Una escalera uniforme de 12 kg y 4,0 m se apoya en una pared lisa formando 60° con el suelo rugoso (\(\mu_s=0{,}40\)). (a) Halla las fuerzas que ejercen la pared y el suelo. (b) Comprueba si la escalera resbala o no.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>\(W=mg=120\) N. Pared lisa: solo normal horizontal \(N_p\) arriba. Suelo: normal \(N_s\) (arriba) y fricción \(f\) (horizontal).</p>
+      <p><strong>(a)</strong> \(\sum F_y=0:\ N_s=W=120\) N. Momentos respecto de la base (\(N_p\) con brazo \(L\sin60^\circ\); \(W\) con brazo \(\tfrac{L}{2}\cos60^\circ\)):</p>
+      <p>\(N_p(4{,}0\sin60^\circ)=120(2{,}0\cos60^\circ)\Rightarrow N_p=\dfrac{120(2{,}0)(0{,}5)}{4{,}0(0{,}866)}=\dfrac{W}{2\tan60^\circ}=34{,}6\) N.</p>
+      <p>\(\sum F_x=0:\ f=N_p=34{,}6\) N. Suelo: \(N_s=120\) N y \(f=34{,}6\) N.</p>
+      <p><strong>(b)</strong> Fricción máxima \(=\mu_s N_s=0{,}40(120)=48\) N. Como \(f=34{,}6\ \mathrm N<48\) N, <strong>no resbala</strong>.</p>
+      <span class="ans">Pared: 34,6 N horizontal. Suelo: N = 120 N, f = 34,6 N. No resbala (34,6 < 48 N).</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C8 · ménsula (barra + puntal)</p><p>Un cartel de 500 N cuelga del extremo libre de una barra horizontal articulada a la pared; un puntal diagonal, a 30° sobre la horizontal, une ese extremo con un punto más bajo de la pared. Despreciando el peso de la barra, halla la fuerza en el puntal y la fuerza en la articulación.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Sea \(d\) la longitud de la barra. En el extremo libre actúan: carga 500 N abajo y empuje del puntal \(S\) a 30° (el puntal, comprimido, empuja el extremo hacia arriba-afuera). Momentos respecto de la articulación: solo la componente vertical del puntal hace torque.</p>
+      <p>\(\sum\tau=0:\ S\sin30^\circ\,(d)=500\,(d)\Rightarrow S=\dfrac{500}{0{,}5}=1000\) N (compresión).</p>
+      <p>\(\sum F_y=0:\ H_y=500-S\sin30^\circ=500-500=0\). \(\sum F_x=0:\ H_x=S\cos30^\circ=1000(0{,}866)=866\) N (hacia la pared).</p>
+      <span class="ans">Puntal: 1000 N (compresión). Articulación: 866 N horizontal (hacia la pared).</span>
+    </div></details></div>
+  <div class="prob jefe"><p class="pn">C9 · INTEGRADOR (torque + fricción, supera IB)</p><p>Una escalera uniforme de peso \(W\) y largo \(L\) se apoya a un ángulo \(\theta\) en una pared lisa, con el suelo rugoso de coeficiente \(\mu_s\). Una persona de peso \(W_p\) sube. (a) Deduce, en función de los datos, hasta qué fracción \(x\) de la escalera puede subir antes de que esta resbale. (b) Evalúa \(x\) para \(\theta=60^\circ\), \(\mu_s=0{,}40\) y \(W_p=W\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Verticales: \(N_s=W+W_p\). Horizontales: \(f=N_p\) (normal de la pared lisa). Momentos respecto de la base (persona a distancia \(xL\) por la escalera; \(W\) en \(L/2\)):</p>
+      <p>\(N_p(L\sin\theta)=W\left(\tfrac{L}{2}\cos\theta\right)+W_p(xL\cos\theta)\Rightarrow N_p=\dfrac{\left(\tfrac{W}{2}+W_p x\right)}{\tan\theta}\).</p>
+      <p>Al borde de resbalar \(f=\mu_s N_s\), es decir \(N_p=\mu_s(W+W_p)\). Igualando:</p>
+      <p>\(\mu_s(W+W_p)\tan\theta=\tfrac{W}{2}+W_p x\Rightarrow \boxed{\,x=\dfrac{\mu_s(W+W_p)\tan\theta-\tfrac{W}{2}}{W_p}\,}\)</p>
+      <p><strong>(b)</strong> Con \(W_p=W\): \(x=\dfrac{0{,}40(2W)\tan60^\circ-0{,}5W}{W}=0{,}40(2)(1{,}732)-0{,}5=1{,}386-0{,}5=0{,}89\).</p>
+      <span class="ans">(a) x = [μₛ(W+Wₚ)tanθ − W/2]/Wₚ. (b) x ≈ 0,89 (sube ~89% de la escalera).</span>
+    </div></details></div>
+  <div class="prob jefe"><p class="pn">C10 · PROBLEMA JEFE (torque + Módulo 1, supera IB)</p><p>Para medir una masa desconocida se equilibra una regla uniforme sobre un pivote en su centro. Una masa conocida de \((100{,}0\pm0{,}5)\ \mathrm g\) se coloca a \((20{,}0\pm0{,}2)\ \mathrm{cm}\) del pivote; la masa desconocida equilibra a \((33{,}0\pm0{,}2)\ \mathrm{cm}\) al otro lado. (a) Halla la masa desconocida por equilibrio de torques. (b) Propaga las incertidumbres y da \(m\pm\Delta m\). (c) Si la regla no fuera perfectamente uniforme, ¿qué tipo de error introduciría y en qué sentido?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> El peso de la regla uniforme pasa por el pivote (torque nulo), así que \(m_1 d_1=m_2 d_2\):</p>
+      <p>\(m_2=\dfrac{m_1 d_1}{d_2}=\dfrac{100{,}0(20{,}0)}{33{,}0}=60{,}6\ \mathrm g\).</p>
+      <p><strong>(b)</strong> Producto/cociente ⇒ se suman incertidumbres relativas: \(\dfrac{\Delta m_2}{m_2}=\dfrac{0{,}5}{100}+\dfrac{0{,}2}{20}+\dfrac{0{,}2}{33}=0{,}005+0{,}010+0{,}006=0{,}021\).</p>
+      <p>\(\Delta m_2=0{,}021(60{,}6)=1{,}3\ \mathrm g\). Luego \(m_2=(60{,}6\pm1{,}3)\ \mathrm g\) \(\;\big[\approx(61\pm1)\ \mathrm g\big]\).</p>
+      <p><strong>(c)</strong> Si la regla no es uniforme, su centro de gravedad no cae en el pivote: su peso aporta un torque constante ⇒ <strong>error sistemático</strong> (sesgo fijo), que sube o baja el resultado según hacia qué lado esté desplazado el CG; no es aleatorio.</p>
+      <span class="ans">(a) m ≈ 60,6 g. (b) m = (60,6 ± 1,3) g. (c) Error sistemático (CG fuera del pivote).</span>
+    </div></details></div>
+</section>
+
+<!-- MAS PROBLEMAS -->
+<section id="masproblemas">
+  <p class="sec-num">MÁS PROBLEMAS · PRACTICA CON RESOLUCIÓN OCULTA</p>
+  <h2>Más problemas · estilo past paper IB<span class="rule"></span></h2>
+  <p class="sec-intro">Seis problemas nuevos con el formato y el nivel de un examen IB. Intenta cada uno antes de abrir la resolución. Cubren partícula (2 y 3 fuerzas), momentos, viga con reacciones, centro de gravedad, escalera y vuelco. \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">P1 · partícula: de dos a tres fuerzas</p><p>Una lámpara de 40 N cuelga inmóvil. <strong>(a)</strong> Cuando pende de un único cable vertical, enuncia las fuerzas que actúan sobre ella y halla la tensión. <strong>(b)</strong> Luego se la aparta de lado tirando con una fuerza horizontal \(H\) hasta que el cable forma 20° con la vertical. Halla \(H\) y la nueva tensión del cable.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Con un solo cable hay <strong>dos fuerzas</strong>: el peso (40 N abajo) y la tensión (arriba). Dos fuerzas en equilibrio deben ser iguales, opuestas y colineales, así que \(T=W=40\) N.</p>
+      <p><strong>(b)</strong> Ahora son <strong>tres fuerzas concurrentes</strong>: peso \(W\) (abajo), tensión \(T\) (a 20° de la vertical) y \(H\) (horizontal). Por componentes:</p>
+      <p>\(\sum F_y=0:\ T\cos20^\circ=W\Rightarrow T=\dfrac{40}{0{,}940}=42{,}6\) N.</p>
+      <p>\(\sum F_x=0:\ H=T\sin20^\circ=42{,}6(0{,}342)=14{,}6\) N \(\;(=W\tan20^\circ)\).</p>
+      <span class="ans">(a) T = 40 N (dos fuerzas iguales y opuestas). (b) T ≈ 42,6 N; H ≈ 14,6 N.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">P2 · momentos: llave y perno</p><p>Para aflojar un perno se empuja el mango de una llave con una fuerza de 120 N, perpendicular al mango, a 0,25 m del perno. <strong>(a)</strong> Halla el torque aplicado. <strong>(b)</strong> El perno solo cede con un torque de 36 N·m; ¿se afloja? <strong>(c)</strong> Manteniendo la misma fuerza, ¿qué longitud mínima de mango se necesitaría?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Fuerza perpendicular al brazo: \(\tau=F\,r=120(0{,}25)=30\) N·m.</p>
+      <p><strong>(b)</strong> \(30\ \mathrm{N\cdot m}<36\ \mathrm{N\cdot m}\): <strong>no se afloja</strong>, falta momento.</p>
+      <p><strong>(c)</strong> Con \(\tau\propto r\), se necesita \(r=\dfrac{\tau}{F}=\dfrac{36}{120}=0{,}30\) m (una llave más larga, o un tubo que la prolongue, da más torque con la misma mano).</p>
+      <span class="ans">(a) 30 N·m. (b) No (30 < 36). (c) 0,30 m de mango.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">P3 · viga con reacciones</p><p>Un tablón uniforme de 6,0 m y 240 N descansa sobre dos soportes: A en el extremo izquierdo y B en el extremo derecho. Una persona de 600 N se para a 2,0 m de A. Halla las reacciones \(R_A\) y \(R_B\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>El peso del tablón (240 N) actúa en su centro, a 3,0 m de A. Tomo momentos respecto de A (así \(R_A\) tiene brazo cero):</p>
+      <p>\(\sum\tau_A=0:\ R_B(6{,}0)=240(3{,}0)+600(2{,}0)=720+1200=1920\Rightarrow R_B=320\) N.</p>
+      <p>\(\sum F=0:\ R_A+R_B=240+600=840\Rightarrow R_A=520\) N.</p>
+      <p>Comprobación (momentos respecto de B): \(R_A(6{,}0)=240(3{,}0)+600(4{,}0)=720+2400=3120\Rightarrow R_A=520\) ✓.</p>
+      <span class="ans">R_A = 520 N; R_B = 320 N.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">P4 · centro de gravedad de una barra no uniforme</p><p>Una barra no uniforme de 1,0 m y peso 8,0 N se equilibra horizontalmente sobre un pivote situado a 0,40 m de su extremo izquierdo. <strong>(a)</strong> ¿Dónde está su centro de gravedad? <strong>(b)</strong> Se cuelga ahora un peso de 2,0 N del extremo izquierdo; ¿a qué nuevo punto hay que mover el pivote para reequilibrarla?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Un cuerpo solo apoyado que se equilibra tiene su <strong>CG justo encima del pivote</strong> (si no, su peso daría un torque y caería). Por tanto el CG está a <strong>0,40 m</strong> del extremo izquierdo.</p>
+      <p><strong>(b)</strong> Ahora el peso de la barra (8,0 N en \(x=0{,}40\)) y la carga (2,0 N en \(x=0\)) deben equilibrarse sobre el nuevo pivote en \(x=p\). Momentos respecto del pivote:</p>
+      <p>\(2{,}0\,(p)=8{,}0\,(0{,}40-p)\Rightarrow 2p=3{,}2-8p\Rightarrow 10p=3{,}2\Rightarrow p=0{,}32\) m.</p>
+      <p>Tiene sentido: el pivote se corre hacia la carga añadida (de 0,40 a 0,32 m). Verificación: izquierda \(2{,}0(0{,}32)=0{,}64\); derecha \(8{,}0(0{,}08)=0{,}64\) ✓.</p>
+      <span class="ans">(a) CG a 0,40 m del extremo izquierdo. (b) Pivote a 0,32 m del extremo izquierdo.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">P5 · escalera contra pared lisa</p><p>Una escalera uniforme de 5,0 m y 180 N se apoya en una pared lisa formando 65° con el suelo. <strong>(a)</strong> Halla la fuerza de la pared y las fuerzas (normal y fricción) en la base. <strong>(b)</strong> ¿Cuál es el coeficiente de rozamiento estático mínimo del suelo para que no resbale?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Pared lisa ⇒ solo normal horizontal \(N_p\) arriba. Suelo ⇒ normal \(N_s\) (vertical) y fricción \(f\) (horizontal). El peso \(W=180\) N actúa en el centro.</p>
+      <p><strong>(a)</strong> \(\sum F_y=0:\ N_s=W=180\) N. Momentos respecto de la base (brazo de \(N_p\): \(L\sin65^\circ\); brazo de \(W\): \(\tfrac{L}{2}\cos65^\circ\)):</p>
+      <p>\(N_p(5{,}0\sin65^\circ)=180(2{,}5\cos65^\circ)\Rightarrow N_p=\dfrac{W}{2\tan65^\circ}=\dfrac{180}{2(2{,}145)}=42{,}0\) N.</p>
+      <p>\(\sum F_x=0:\ f=N_p=42{,}0\) N.</p>
+      <p><strong>(b)</strong> No resbala si \(f\le\mu_s N_s\), es decir \(\mu_s\ge\dfrac{f}{N_s}=\dfrac{42{,}0}{180}=0{,}23\). Mínimo \(\mu_s=0{,}23\).</p>
+      <span class="ans">(a) Pared: 42,0 N horizontal. Suelo: N = 180 N, f = 42,0 N. (b) μ_s mínimo ≈ 0,23.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">P6 · vuelco vs. deslizamiento en rampa</p><p>Una caja uniforme de 0,50 m de ancho y 1,2 m de alto se coloca sobre una rampa cuya inclinación \(\theta\) aumenta lentamente. El coeficiente de rozamiento estático es \(\mu_s=0{,}30\). <strong>(a)</strong> ¿A qué ángulo volcaría? <strong>(b)</strong> ¿A qué ángulo empezaría a deslizar? <strong>(c)</strong> ¿Qué ocurre primero?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Vuelca cuando la vertical del CG sale por el borde inferior de la base: \(\tan\theta_{\text v}=\dfrac{b}{h}=\dfrac{0{,}50}{1{,}2}=0{,}417\Rightarrow\theta_{\text v}=22{,}6^\circ\). (Se usa el ancho completo \(b\) y la altura \(h\) del bloque; el CG está en el centro.)</p>
+      <p><strong>(b)</strong> Desliza cuando \(W\sin\theta\) vence a la fricción máxima \(\mu_s W\cos\theta\): \(\tan\theta_s=\mu_s=0{,}30\Rightarrow\theta_s=16{,}7^\circ\).</p>
+      <p><strong>(c)</strong> Como \(\theta_s=16{,}7^\circ<\theta_{\text v}=22{,}6^\circ\), se alcanza antes el de deslizamiento: la caja <strong>resbala primero</strong>. (Regla: desliza antes si \(\mu_s<b/h\); aquí \(0{,}30<0{,}417\).)</p>
+      <span class="ans">(a) θ_vuelco ≈ 22,6°. (b) θ_desliz ≈ 16,7°. (c) Desliza primero (16,7° < 22,6°).</span>
+    </div></details></div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 4A · Estática y torque.</strong> Ficha completa resuelta (equilibrio de fuerzas) + torque como profundidad A.4/HL. Los retos son nuevos y torque-intensivos para completar el tema. Sigue el <strong>Módulo 4B</strong> (tipo 2). Convención: \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

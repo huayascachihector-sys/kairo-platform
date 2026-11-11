@@ -1,0 +1,940 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Ensayo anotado de la prueba 2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#F6F7F4; --papel-2:#ECEEEA; --tinta:#172033; --grafito:#566072; --regla:#D5DAE1;
+  --azul:#2446A8; --rojo:#B83227; --rojo-suave:#FBE9E6;
+  --hl-contenido:rgba(255,222,70,.62); --hl-contexto:rgba(120,220,150,.55); --hl-concepto:rgba(196,160,255,.55);
+  --hl-juicio:rgba(255,160,120,.5);
+  --ok:#1F7A4A;
+  --serif:"Literata", Georgia, "Times New Roman", serif;
+  --sans:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --papel:#11151D; --papel-2:#191F2A; --tinta:#E4E7EC; --grafito:#A3ABB8; --regla:#2B3342;
+    --azul:#8FB0FF; --rojo:#FF8A7A; --rojo-suave:#2E1B1B;
+    --hl-contenido:rgba(255,210,0,.30); --hl-contexto:rgba(60,200,120,.28); --hl-concepto:rgba(160,110,255,.34);
+    --hl-juicio:rgba(255,120,80,.30); --ok:#6FD39C; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --papel:#11151D; --papel-2:#191F2A; --tinta:#E4E7EC; --grafito:#A3ABB8; --regla:#2B3342;
+  --azul:#8FB0FF; --rojo:#FF8A7A; --rojo-suave:#2E1B1B;
+  --hl-contenido:rgba(255,210,0,.30); --hl-contexto:rgba(60,200,120,.28); --hl-concepto:rgba(160,110,255,.34);
+  --hl-juicio:rgba(255,120,80,.30); --ok:#6FD39C; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px); scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--serif);font-size:1.0625rem;line-height:1.68;
+  font-optical-sizing:auto; -webkit-text-size-adjust:100%}
+a{color:var(--azul);text-underline-offset:.18em}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,label:focus-within{outline:3px solid var(--azul);outline-offset:2px;border-radius:3px}
+img{max-width:100%}
+
+.layout{display:grid;grid-template-columns:17.5rem minmax(0,1fr);min-height:100vh}
+nav.lateral{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:2rem 1.25rem 2rem 1.75rem;
+  border-right:1px solid var(--regla);font-family:var(--sans);font-size:.93rem}
+nav.lateral .marca{font-weight:800;font-stretch:80%;font-size:1.25rem;line-height:1.1;margin:0 0 1.5rem}
+nav.lateral .marca span{display:block;font-weight:500;font-stretch:100%;font-size:.85rem;color:var(--grafito);margin-top:.35rem}
+nav.lateral ol{list-style:none;margin:0;padding:0;counter-reset:m -1}
+nav.lateral li{counter-increment:m}
+nav.lateral li a{display:grid;grid-template-columns:1.9rem 1fr;gap:.2rem;padding:.42rem .5rem;border-radius:6px;color:var(--tinta);text-decoration:none;line-height:1.3}
+nav.lateral li a::before{content:counter(m);font-weight:700;color:var(--grafito);font-variant-numeric:tabular-nums}
+nav.lateral li a:hover{background:var(--papel-2)}
+nav.lateral li a.activo{background:var(--papel-2);font-weight:650}
+nav.lateral .herramientas{margin-top:1.75rem;padding-top:1.25rem;border-top:1px solid var(--regla);display:grid;gap:.6rem}
+.interruptor{display:flex;align-items:center;gap:.55rem;cursor:pointer;color:var(--tinta);font-size:.9rem}
+.interruptor input{width:1.05rem;height:1.05rem;accent-color:var(--azul)}
+button.tema{font:inherit;font-size:.88rem;background:none;border:1px solid var(--regla);color:var(--tinta);padding:.35rem .6rem;border-radius:6px;cursor:pointer;justify-self:start}
+
+.menu-movil{display:none}
+main{padding:3rem clamp(1.25rem,4vw,4rem) 6rem;max-width:62rem}
+.texto{max-width:44rem}
+
+/* Portada */
+.portada{padding:1rem 0 2.5rem;border-bottom:2px solid var(--tinta);margin-bottom:3rem}
+.portada h1{font-family:var(--sans);font-weight:800;font-stretch:78%;font-size:clamp(2.6rem,6.4vw,4.6rem);line-height:.98;letter-spacing:-.015em;margin:0 0 1.2rem;max-width:14ch}
+.portada p.bajada{font-size:1.2rem;line-height:1.55;max-width:40rem;margin:0 0 1.75rem;color:var(--tinta)}
+.pesos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--tinta);max-width:40rem;font-family:var(--sans)}
+.pesos div{padding:.8rem 1rem;border-right:1px solid var(--tinta)}
+.pesos div:last-child{border-right:0}
+.pesos b{display:block;font-size:2rem;font-weight:800;font-stretch:80%;line-height:1}
+.pesos span{display:block;font-size:.88rem;line-height:1.35;margin-top:.4rem;color:var(--grafito)}
+
+/* Secciones */
+section.modulo{padding-top:1rem;margin-bottom:4.5rem}
+.modulo > header{margin-bottom:1.5rem}
+.modulo > header .num{font-family:var(--sans);font-weight:700;color:var(--grafito);font-size:.95rem;margin:0 0 .2rem}
+h2{font-family:var(--sans);font-weight:800;font-stretch:82%;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1.05;margin:0;letter-spacing:-.01em}
+h3{font-family:var(--sans);font-weight:750;font-stretch:88%;font-size:1.4rem;line-height:1.2;margin:2.6rem 0 .7rem}
+h4{font-family:var(--sans);font-weight:700;font-size:1.08rem;line-height:1.3;margin:1.8rem 0 .5rem}
+p{margin:0 0 1rem}
+ul,ol{padding-left:1.3rem;margin:0 0 1rem}
+li{margin-bottom:.35rem}
+strong{font-weight:650}
+.nota{font-size:.95rem;color:var(--grafito)}
+
+/* Corchete de puntuación: el recurso visual de la guía */
+.pregunta-h{display:flex;align-items:baseline;gap:.75rem;flex-wrap:wrap}
+.pts{font-family:var(--sans);font-weight:800;font-stretch:80%;color:var(--rojo);font-size:1.5em;line-height:1;white-space:nowrap}
+
+/* Resaltadores (código de colores de las 3C) */
+.hl{padding:.05em .15em;border-radius:.2em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hc{background:var(--hl-contenido)} .hx{background:var(--hl-contexto)} .hk{background:var(--hl-concepto)} .hj{background:var(--hl-juicio)}
+.leyenda{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;font-family:var(--sans);font-size:.9rem;margin:0 0 1rem}
+
+/* Tablas */
+.tabla{overflow-x:auto;margin:0 0 1.5rem;border-top:2px solid var(--tinta)}
+table{border-collapse:collapse;width:100%;font-size:.95rem;line-height:1.5}
+th,td{text-align:left;vertical-align:top;padding:.65rem .75rem;border-bottom:1px solid var(--regla)}
+th{font-family:var(--sans);font-weight:700;font-size:.88rem;background:var(--papel-2)}
+td:first-child{font-weight:600}
+table.min td:first-child{white-space:nowrap}
+
+/* Bloques */
+.caja{border-left:4px solid var(--tinta);padding:.9rem 1.2rem;margin:0 0 1.5rem;background:var(--papel-2)}
+.caja.roja{border-color:var(--rojo);background:var(--rojo-suave)}
+.caja > :last-child{margin-bottom:0}
+.caja .t{font-family:var(--sans);font-weight:750;margin:0 0 .4rem}
+.modelo{border:1px solid var(--regla);border-top:3px solid var(--tinta);padding:1.1rem 1.3rem;margin:0 0 1.5rem;background:var(--papel)}
+.modelo .t{font-family:var(--sans);font-weight:750;margin:0 0 .6rem}
+.modelo p{margin-bottom:.8rem}
+.modelo .anot{font-family:var(--sans);font-size:.85rem;color:var(--grafito)}
+.plantilla{font-family:var(--serif);border:1px dashed var(--grafito);padding:1rem 1.2rem;margin:0 0 1.5rem;border-radius:4px}
+.plantilla p{margin:.3rem 0}
+.plantilla .hueco{border-bottom:1px solid var(--grafito);color:var(--grafito);font-style:italic}
+.cadena{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:0;margin:0 0 1.5rem;border:1px solid var(--tinta);font-family:var(--sans);font-size:.9rem}
+.cadena div{padding:.75rem .8rem;border-right:1px solid var(--tinta);line-height:1.35}
+.cadena div:last-child{border-right:0}
+.cadena b{display:block;font-size:1rem;margin-bottom:.25rem}
+
+/* Glosario */
+.buscador{position:sticky;top:0;z-index:5;background:var(--papel);padding:.75rem 0;margin-bottom:.5rem;border-bottom:1px solid var(--regla)}
+.buscador label{font-family:var(--sans);font-size:.9rem;font-weight:600;display:block;margin-bottom:.3rem}
+.buscador input{width:100%;max-width:30rem;font:inherit;font-size:1rem;padding:.55rem .75rem;border:1px solid var(--grafito);border-radius:6px;background:var(--papel);color:var(--tinta)}
+.buscador .conteo{font-family:var(--sans);font-size:.85rem;color:var(--grafito);margin-top:.3rem}
+details.area{border-top:1px solid var(--regla);padding:.2rem 0}
+details.area > summary{cursor:pointer;font-family:var(--sans);font-weight:750;font-size:1.12rem;padding:.8rem 0;list-style:none;display:flex;gap:.6rem;align-items:baseline}
+details.area > summary::-webkit-details-marker{display:none}
+details.area > summary::before{content:"+";font-weight:800;width:1rem;color:var(--grafito)}
+details.area[open] > summary::before{content:"\2212"}
+details.area > summary small{font-weight:500;color:var(--grafito);font-size:.88rem}
+dl.gl{margin:0 0 1.2rem}
+dl.gl dt{font-family:var(--sans);font-weight:700;margin-top:.85rem}
+dl.gl dd{margin:.15rem 0 0 0;padding-left:.9rem;border-left:2px solid var(--regla)}
+dl.gl dd .uso{display:block;font-size:.93rem;color:var(--grafito);margin-top:.25rem}
+.oculto{display:none !important}
+body.repaso dl.gl dd{filter:blur(5px);cursor:pointer;transition:filter .15s}
+body.repaso dl.gl dd.visto{filter:none}
+@media (prefers-reduced-motion:reduce){body.repaso dl.gl dd{transition:none}}
+
+/* Ejemplos */
+.ejemplo{border-top:1px solid var(--regla);padding:1rem 0 .4rem}
+.ejemplo h4{margin:0 0 .35rem}
+.etiquetas{display:flex;flex-wrap:wrap;gap:.35rem;margin:.2rem 0 .6rem;font-family:var(--sans);font-size:.8rem}
+.etiquetas span{padding:.1rem .45rem;border-radius:3px}
+
+/* Listas de control */
+.control{list-style:none;padding:0}
+.control li{margin:0;border-bottom:1px solid var(--regla)}
+.control label{display:flex;gap:.7rem;align-items:flex-start;padding:.55rem 0;cursor:pointer}
+.control input{margin-top:.35rem;width:1.1rem;height:1.1rem;flex:none;accent-color:var(--ok)}
+.control input:checked + span{color:var(--grafito);text-decoration:line-through;text-decoration-color:var(--grafito)}
+.progreso{font-family:var(--sans);font-size:.9rem;color:var(--grafito);margin:.5rem 0 1rem}
+.error{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border:1px solid var(--regla);margin:0 0 1rem}
+.error > div{padding:.8rem 1rem}
+.error > div:first-child{border-right:1px solid var(--regla);background:var(--rojo-suave)}
+.error .t{font-family:var(--sans);font-weight:700;font-size:.85rem;margin:0 0 .3rem}
+.error .t.mal{color:var(--rojo)} .error .t.bien{color:var(--ok)}
+.error p{margin:0;font-size:.97rem}
+
+footer.pie{border-top:2px solid var(--tinta);padding-top:1.2rem;font-family:var(--sans);font-size:.88rem;color:var(--grafito);max-width:44rem}
+
+@media (max-width:900px){
+  .layout{display:block}
+  nav.lateral{display:none}
+  .menu-movil{display:block;position:sticky;top:0;z-index:20;background:var(--papel);border-bottom:1px solid var(--regla);
+    padding:calc(env(safe-area-inset-top,0px) + .6rem) 1.25rem .6rem;font-family:var(--sans)}
+  .menu-movil summary{cursor:pointer;font-weight:750}
+  .menu-movil ol{margin:.6rem 0 .4rem;padding-left:1.4rem}
+  .menu-movil li{margin:.25rem 0}
+  .menu-movil a{color:var(--tinta)}
+  .menu-movil .herr{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin:.4rem 0}
+  main{padding-top:1.5rem}
+  .buscador{top:3rem}
+  .pesos{grid-template-columns:1fr}
+  .pesos div{border-right:0;border-bottom:1px solid var(--tinta)}
+  .pesos div:last-child{border-bottom:0}
+  .error{grid-template-columns:1fr}
+  .error > div:first-child{border-right:0;border-bottom:1px solid var(--regla)}
+}
+@media print{
+  nav.lateral,.menu-movil,.buscador,.herramientas{display:none !important}
+  .layout{display:block} details.area{display:block} details.area > *{display:block}
+  body.repaso dl.gl dd{filter:none}
+}
+</style>
+<style>
+.fuentes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:52rem;gap:0;border:1px solid var(--regla);margin:0 0 1.5rem;font-size:.95rem}
+.fuentes > div{padding:.8rem 1rem;border-right:1px solid var(--regla);border-bottom:1px solid var(--regla)}
+.fuentes .t{font-family:var(--sans);font-weight:750;margin:0 0 .3rem}
+.fuentes p{margin:0 0 .4rem}
+.banda{border-left:4px solid var(--regla);padding:.6rem 1rem;margin:0 0 1rem}
+.banda .t{font-family:var(--sans);font-weight:750;margin:0 0 .3rem}
+.banda.b1{border-color:#9AA3B1}.banda.b2{border-color:var(--azul)}.banda.b3{border-color:var(--ok)}
+.inventado{font-family:var(--sans);font-size:.85rem;color:var(--rojo);font-weight:650;margin:0 0 .6rem}
+@media (max-width:700px){.fuentes{grid-template-columns:1fr}}
+table.sub td:first-child{white-space:normal;min-width:8.5rem}
+body.repaso td.resp{filter:blur(5px);cursor:pointer}
+body.repaso td.resp.visto{filter:none}
+@media print{body.repaso td.resp{filter:none}}
+</style>
+
+<style>
+.fu{text-decoration:underline;text-decoration-color:var(--azul);text-decoration-thickness:2px;text-underline-offset:.22em}
+.cp{text-decoration:underline;text-decoration-style:dashed;text-decoration-color:var(--rojo);text-decoration-thickness:2px;text-underline-offset:.22em}
+sup.n{font-family:var(--sans);font-size:.68em;font-weight:800;color:var(--grafito);margin-left:.12em;font-variant-numeric:tabular-nums}
+body.sin-color .hl{background:none !important}
+body.sin-color .fu,body.sin-color .cp{text-decoration:none}
+.anotado{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,19rem);gap:1.5rem;border-top:1px solid var(--regla);padding-top:1.1rem;margin-bottom:1.6rem}
+.anotado .texto-ens{font-size:1.04rem;line-height:1.85;min-width:0}
+.anotado .texto-ens .rol{font-family:var(--sans);font-weight:750;font-size:.8rem;color:var(--grafito);display:block;margin-bottom:.3rem}
+ol.notas{margin:0;padding-left:0;list-style:none;font-size:.9rem;line-height:1.5;min-width:0}
+ol.notas li{display:grid;grid-template-columns:1.6rem minmax(0,1fr);gap:.2rem;margin-bottom:.7rem}
+ol.notas li b.k{font-family:var(--sans);font-weight:800;color:var(--grafito);font-variant-numeric:tabular-nums}
+ol.notas .tag{font-family:var(--sans);font-weight:700;font-size:.78rem}
+.leyenda span.l{display:inline-flex;align-items:center;gap:.35rem}
+.ensayo-limpio{max-width:44rem;border:1px solid var(--regla);border-top:3px solid var(--tinta);padding:1.3rem 1.5rem;background:var(--papel)}
+.ensayo-limpio p{text-indent:1.5em;margin-bottom:.8rem}
+.ensayo-limpio p:first-child{text-indent:0}
+.conteo-pal{font-family:var(--sans);font-size:.85rem;color:var(--grafito);margin:.4rem 0 1.4rem}
+details.extra{border:1px solid var(--regla);padding:.2rem 1rem;margin:0 0 1.5rem;max-width:44rem}
+details.extra > summary{cursor:pointer;font-family:var(--sans);font-weight:750;padding:.6rem 0}
+.versiones{display:grid;gap:0;margin:0 0 1.5rem;max-width:46rem}
+.version{border-left:4px solid var(--regla);padding:.7rem 1rem .5rem;margin-bottom:.9rem;background:var(--papel-2)}
+.version .t{font-family:var(--sans);font-weight:750;margin:0 0 .35rem}
+.version.v1{border-color:var(--rojo)} .version.v2{border-color:#C9922A} .version.v3{border-color:var(--ok)}
+.version .diag{font-family:var(--sans);font-size:.86rem;color:var(--grafito);margin:.4rem 0 0}
+.puntaje{font-family:var(--sans);font-weight:800;font-stretch:80%;font-size:1.25rem;white-space:nowrap}
+@media (max-width:900px){.anotado{grid-template-columns:1fr}.buscador{top:3rem}}
+</style>
+
+<details class="menu-movil">
+  <summary>Módulos de la guía</summary>
+  <ol start="0">
+    <li><a href="#m0">La pregunta y las fuentes</a></li>
+    <li><a href="#m1">El ensayo completo</a></li>
+    <li><a href="#m2">El ensayo anotado</a></li>
+    <li><a href="#m3">Evaluación detallada</a></li>
+    <li><a href="#m4">La introducción</a></li>
+    <li><a href="#m5">Argumento y contrapeso</a></li>
+    <li><a href="#m6">Cómo señalar fuentes</a></li>
+    <li><a href="#m7">Términos de los DMPA</a></li>
+    <li><a href="#m8">La conclusión</a></li>
+    <li><a href="#m9">Plantilla y práctica</a></li>
+  </ol>
+  <div class="herr">
+    <label class="interruptor"><input type="checkbox" class="toggle-color" checked> Colores de las 3C</label>
+    <label class="interruptor"><input type="checkbox" class="toggle-repaso"> Modo repaso</label>
+    <button class="tema" type="button">Cambiar tema</button>
+  </div>
+</details>
+<div class="layout">
+<nav class="lateral" aria-label="Módulos">
+  <p class="marca">Ensayo anotado<span>Prueba 2, pregunta 4 [12]</span></p>
+  <ol>
+    <li><a href="#m0">La pregunta y las fuentes</a></li>
+    <li><a href="#m1">El ensayo completo</a></li>
+    <li><a href="#m2">El ensayo anotado</a></li>
+    <li><a href="#m3">Evaluación detallada</a></li>
+    <li><a href="#m4">La introducción</a></li>
+    <li><a href="#m5">Argumento y contrapeso</a></li>
+    <li><a href="#m6">Cómo señalar fuentes</a></li>
+    <li><a href="#m7">Términos de los DMPA</a></li>
+    <li><a href="#m8">La conclusión</a></li>
+    <li><a href="#m9">Plantilla y práctica</a></li>
+  </ol>
+  <div class="herramientas">
+    <label class="interruptor"><input type="checkbox" class="toggle-color" checked> Mostrar colores de las 3C y marcas de fuentes</label>
+    <label class="interruptor"><input type="checkbox" class="toggle-repaso"> Modo repaso: ocultar definiciones de los términos</label>
+    <button class="tema" type="button">Cambiar tema claro/oscuro</button>
+  </div>
+</nav>
+<main>
+<header class="portada">
+  <h1>Ensayo anotado de la prueba 2</h1>
+  <p class="bajada">Un ensayo modelo de la pregunta 4, corregido frase por frase: qué hace cada oración, cómo se amarran conceptos, contenidos y contextos, cómo se señalan las fuentes y el conocimiento propio, qué debe llevar la introducción y la conclusión, y el vocabulario académico de tus DMPA de clase. El tema es el comercio de datos de ubicación del DMPA 22. Es la tercera guía de la serie, después de <a href="https://claude.ai/artifact/KMjBoLAqaSrxrJG1ii11uS">Ruta al 7</a> y <a href="https://claude.ai/artifact/VcNY7RWU3Jq24NABqv5e83">Prueba 2 a fondo</a>.</p>
+  <div class="pesos" role="list">
+    <div role="listitem"><b>12 pts</b><span>La mitad de la prueba 2: se corrige con bandas</span></div>
+    <div role="listitem"><b>30–35 min</b><span>Incluye 3–4 min de plan con la matriz de síntesis</span></div>
+    <div role="listitem"><b>3 + 3 + 1</b><span>Tres párrafos, tres criterios, un juicio que atraviesa todo</span></div>
+  </div>
+</header>
+
+<section class="modulo" id="m0">
+<header><p class="num">Módulo 0</p><h2>La pregunta y las fuentes</h2></header>
+<div class="texto">
+<p class="inventado">Simulacro elaborado para esta guía con el formato de la prueba 2. Las fuentes A–D, la aplicación ClimaYa, la encuesta y el reportaje son inventados. Los casos reales que usa el ensayo (estudios, leyes, demandas) sí son reales y están identificados.</p>
+<div class="caja"><p class="t">Pregunta 4</p><p>Haciendo referencia a las Fuentes A–D y a sus propios conocimientos, ¿en qué medida los beneficios de que las aplicaciones móviles vendan los datos de ubicación de sus usuarios a intermediarios de datos superan sus riesgos? <strong>[12]</strong></p></div>
+</div>
+<div class="fuentes">
+<div><p class="t">Fuente A. Infografía «El viaje de tu ubicación»</p><p>1. Instalas ClimaYa, gratuita, y aceptas el permiso de ubicación «para mostrarte el clima de tu zona». 2. Un kit de software publicitario integrado en la app registra tus coordenadas GPS cada 5 minutos, incluso con la app cerrada. 3. Cada registro viaja con tu identificador publicitario (un código como 38af-…-91c2), la hora y el modelo del celular. No incluye tu nombre. 4. Un intermediario de datos combina estos registros con los de otras 300 apps. 5. Compradores: agencias de publicidad, aseguradoras, inmobiliarias, municipalidades y empresas de seguridad.</p></div>
+<div><p class="t">Fuente B. Encuesta a 1 200 usuarios de 15 a 29 años en Lima</p><p>Acepta permisos de ubicación sin leer las condiciones: 74 %.</p><p>Sabe que algunas apps venden su ubicación: 31 %.</p><p>Le preocupa que se venda su ubicación: 68 %.</p><p>Pagaría S/ 5 al mes por una versión sin publicidad ni venta de datos: 19 %.</p></div>
+<div><p class="t">Fuente C. Comunicado de una asociación de empresas de publicidad digital</p><p>«Los datos de ubicación sostienen la economía de las aplicaciones gratuitas. Gracias a ellos, una bodega puede mostrar ofertas a quienes pasan por su calle y una municipalidad puede saber qué rutas usan los vecinos para rediseñar el transporte. Todos los datos que comercializan nuestros miembros son anónimos: nunca vendemos nombres.»</p></div>
+<div><p class="t">Fuente D. Fragmento de un reportaje periodístico</p><p>«Por 300 dólares compramos a un intermediario una muestra de tres meses de datos “anónimos” de una ciudad. Un mismo identificador pasaba cada noche en una casa de un barrio residencial y cada mañana en una fiscalía anticorrupción. Con esos dos puntos encontramos el nombre de la fiscal en diez minutos. Los datos también mostraban sus visitas semanales a una clínica y el colegio de sus hijos.»</p></div>
+</div>
+
+<div class="texto">
+<h3>Antes de escribir: codificación de las 3C (método del DMPA 22)</h3>
+<p>Tu DMPA 22 pide codificar las 3C antes de discutir. Hazlo en 90 segundos en el margen: una línea por C, con el número del programa y la razón concreta. Esta tabla es tu brújula para no escribir nada fuera del foco.</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>C</th><th>Código</th><th>Por qué se relaciona con este caso</th></tr></thead>
+<tbody>
+<tr><td>Contenido</td><td>3.1 Datos (3.1I dilemas)</td><td>Metadatos de ubicación, falsa anonimización, reidentificación, perfiles.</td></tr>
+<tr><td>Contenido</td><td>3.4 Redes (3.4G dilemas)</td><td>El celular emite su ubicación de forma continua por la red; un kit de software la reenvía.</td></tr>
+<tr><td>Contexto</td><td>4.2C Económico</td><td>Gratuidad de las apps, publicidad dirigida, mercado de intermediarios de datos.</td></tr>
+<tr><td>Contexto</td><td>4.7 Social y 4.6D Político</td><td>Exposición de rutinas e intimidad; leyes de protección de datos y vigilancia.</td></tr>
+<tr><td>Concepto</td><td>2.4 Poder</td><td>Asimetría: empresas invisibles deciden sobre datos que el usuario genera.</td></tr>
+<tr><td>Concepto</td><td>2.3 Identidad</td><td>Dos puntos recurrentes reconstruyen quién es una persona.</td></tr>
+<tr><td>Concepto</td><td>2.7 Valores y ética</td><td>Consentimiento, privacidad, finalidad del dato.</td></tr>
+</tbody></table></div>
+
+<div class="texto">
+<h3>Matriz de síntesis (el plan de 3 minutos)</h3>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Criterio</th><th>A</th><th>B</th><th>C</th><th>D</th><th>Conocimiento propio</th><th>Juicio</th></tr></thead>
+<tbody>
+<tr><td>Valor económico y colectivo</td><td>—</td><td>19 % pagaría</td><td>gratuidad, bodega, transporte</td><td>—</td><td>informes de movilidad de Google</td><td>Sólido si es agregado</td></tr>
+<tr><td>Anonimización</td><td>identificador fijo</td><td>—</td><td>«nunca vendemos nombres»</td><td>fiscal identificada</td><td>de Montjoye 2013</td><td>Riesgo más grave: irreversible</td></tr>
+<tr><td>Consentimiento y poder</td><td>«para mostrarte el clima»</td><td>74 % sin leer; 31 % sabe</td><td>—</td><td>—</td><td>Nissenbaum; Kochava; Ley 29733</td><td>Formal, no real; corregible</td></tr>
+</tbody></table></div>
+<div class="texto"><p class="nota">Cada fila tiene al menos dos fuentes y un conocimiento propio: cada fila será un párrafo de banda alta. Las celdas vacías son normales; lo que no puede faltar es la combinación.</p></div>
+</section>
+
+<section class="modulo" id="m1">
+<header><p class="num">Módulo 1</p><h2>El ensayo completo</h2></header>
+<div class="texto">
+<p>Léelo primero de corrido, como lo leería el examinador. En el módulo siguiente está desmontado frase por frase.</p>
+</div>
+<div class="ensayo-limpio"><p>Las aplicaciones gratuitas, como ClimaYa (Fuente A), integran un kit de software publicitario que registra las coordenadas GPS del celular cada cinco minutos y las envía, junto con un identificador publicitario, a intermediarios de datos (data brokers), que las combinan con las de cientos de aplicaciones para construir perfiles de movimiento. Este comercio de datos financia servicios digitales y a la vez expone las rutinas de millones de usuarios, por lo que enfrenta a empresas, usuarios y Estados en los contextos económico, social y político. Sus beneficios superan a sus riesgos solo en una medida limitada: son reales cuando la ubicación se usa agregada para fines colectivos, pero no cuando se venden trayectorias individuales, porque su supuesto anonimato puede revertirse y porque el poder sobre esos datos queda en manos de empresas que el usuario ni conoce. Lo demuestran tres criterios: el valor económico de los datos, la solidez de su anonimización y la calidad del consentimiento.</p><p>El principal beneficio es económico y colectivo, aunque depende de que los datos se usen agregados. La Fuente C sostiene que la ubicación permite que las aplicaciones sean gratuitas, que una bodega llegue a quienes pasan por su calle y que una municipalidad rediseñe sus rutas de transporte; la Fuente B lo respalda de forma indirecta, pues solo el 19 % de los jóvenes pagaría S/ 5 al mes por una versión sin venta de datos. En conjunto, la venta de ubicación funciona como el precio oculto de un servicio que la mayoría no quiere pagar con dinero. Su uso colectivo tiene precedentes valiosos: durante la pandemia, los informes de movilidad de Google, elaborados con datos agregados y anonimizados, ayudaron a los gobiernos a medir cómo cambiaban los desplazamientos en las cuarentenas. Sin embargo, ni la bodega ni la municipalidad necesitan saber quién es cada persona: les bastan conteos por zona y hora. Por eso este beneficio es sólido para la planificación urbana, pero no justifica vender trayectorias individuales.</p><p>El riesgo más grave es que la anonimización que promete la industria es, en realidad, una seudonimización reversible. La Fuente C asegura que los datos son anónimos porque «nunca vendemos nombres», pero la Fuente A muestra que cada registro lleva un identificador publicitario fijo, de modo que todos los puntos de una persona quedan enlazados en una sola trayectoria. La Fuente D demuestra la consecuencia: con solo dos lugares recurrentes, el hogar y el trabajo, unos periodistas identificaron a una fiscal anticorrupción y conocieron sus visitas a una clínica y el colegio de sus hijos. No es un caso aislado: un estudio publicado en Scientific Reports (de Montjoye y colaboradores, 2013) mostró que cuatro puntos de lugar y hora bastaban para identificar al 95 % de 1,5 millones de usuarios de telefonía móvil. Así, desde la perspectiva de la identidad, el sistema reconstruye quién es una persona a partir de dónde está. Este riesgo pesa más que el beneficio económico porque es irreversible, ya que una rutina expuesta no se cambia como una contraseña, y porque recae sobre quienes más tienen que perder: fiscales, periodistas, activistas o víctimas de violencia.</p><p>Además, el consentimiento que legitima este comercio es más formal que real, lo que desplaza el poder hacia empresas invisibles para el usuario. Según la Fuente B, el 74 % de los jóvenes acepta los permisos sin leer y solo el 31 % sabe que algunas aplicaciones venden su ubicación; a su vez, la Fuente A muestra que el permiso se pide «para mostrarte el clima de tu zona», no para vender la ubicación a aseguradoras. La filósofa Helen Nissenbaum describe esto como una violación de la integridad contextual: un dato compartido con un fin legítimo pasa a circular en otro contexto, con reglas que el usuario nunca aceptó. El problema es corregible: en 2022 la Comisión Federal de Comercio de EE. UU. demandó al intermediario Kochava por vender ubicaciones que permitían rastrear visitas a clínicas y lugares de culto, y en el Perú la Ley 29733 exige un consentimiento previo, informado, expreso e inequívoco, que un permiso genérico difícilmente cumple. Este riesgo afecta a todos, pero sobre todo a los jóvenes de la Fuente B, que aceptan permisos con más facilidad.</p><p>En conclusión, los beneficios de vender datos de ubicación superan a sus riesgos solo en una medida limitada. Cuando la ubicación se agrega para planificar el transporte o apoyar el comercio local, el beneficio colectivo es real; pero cuando se venden trayectorias individuales, la falsa anonimización y un consentimiento meramente formal trasladan el costo a los usuarios más expuestos. El equilibrio se inclinaría a favor solo si se vendieran únicamente datos agregados, se prohibiera comerciar ubicaciones precisas ligadas a un identificador persistente y se exigiera un consentimiento específico para la venta. Como el Internet de las cosas registrará la ubicación de forma cada vez más continua, la cuestión no será si estos datos se usan, sino quién decide cómo y para qué.</p></div>
+<p class="conteo-pal">Unas 820 palabras. Es el techo de lo que cabe en 35 minutos escritos a mano. En el examen del IB no hay límite de palabras; en las tareas de clase (400–550 palabras, rúbrica del DMPA 13) usa la versión compacta.</p>
+<details class="extra"><summary>Versión compacta de unas 460 palabras (tareas de clase y examen con poco tiempo)</summary>
+<div class="ensayo-limpio"><p>Las aplicaciones gratuitas, como ClimaYa (Fuente A), registran la ubicación GPS del celular y la venden, junto con un identificador publicitario, a intermediarios de datos que construyen perfiles de movimiento, lo que enfrenta a empresas, usuarios y Estados en los contextos económico y social. Sus beneficios superan a sus riesgos solo en una medida limitada: son reales cuando los datos se usan agregados para fines colectivos, pero no cuando se venden trayectorias individuales, porque su anonimato es reversible y el usuario no controla quién los compra.</p><p>El principal beneficio es económico y colectivo. La Fuente C sostiene que la ubicación mantiene gratuitas las aplicaciones y permite a una municipalidad rediseñar el transporte, y la Fuente B lo respalda: solo el 19 % de los jóvenes pagaría por una versión sin venta de datos. En conjunto, la ubicación funciona como el precio oculto del servicio. Durante la pandemia, los informes de movilidad de Google, elaborados con datos agregados, ayudaron a medir los desplazamientos en las cuarentenas. Sin embargo, ninguno de estos usos necesita identificar a nadie, por lo que el beneficio no justifica vender trayectorias individuales.</p><p>El riesgo más grave es que la anonimización es, en realidad, una seudonimización reversible. La Fuente C asegura que «nunca vendemos nombres», pero la Fuente A muestra que cada registro lleva un identificador fijo que enlaza todos los puntos de una persona, y la Fuente D demuestra que con el hogar y el trabajo se identificó a una fiscal y sus visitas a una clínica. Un estudio de de Montjoye y colaboradores (2013) confirmó que cuatro puntos de lugar y hora bastaban para identificar al 95 % de los usuarios analizados. Desde la perspectiva de la identidad, el sistema deduce quién eres por dónde estás, y este daño pesa más que el ahorro porque es irreversible y golpea a los más expuestos.</p><p>Además, el consentimiento es más formal que real. Según la Fuente B, el 74 % de los jóvenes acepta los permisos sin leer, y la Fuente A muestra que el permiso se pide «para mostrarte el clima de tu zona», no para vender la ubicación a aseguradoras. Esto viola lo que Helen Nissenbaum llama integridad contextual y desplaza el poder hacia empresas invisibles para el usuario. Por su parte, la Ley 29733 del Perú exige un consentimiento previo, informado, expreso e inequívoco, que un permiso genérico difícilmente cumple.</p><p>En conclusión, los beneficios superan a los riesgos solo cuando la ubicación se agrega para fines colectivos; la venta de trayectorias individuales traslada el costo a los usuarios más expuestos. El balance cambiaría si solo se vendieran datos agregados y se exigiera un consentimiento específico para la venta. Con el Internet de las cosas, la cuestión no será si se usan estos datos, sino quién decide cómo.</p></div>
+<p class="nota">Qué se sacrificó: la hoja de ruta de la introducción, el desarrollo del contrapeso en el primer párrafo, la demanda a Kochava y la cita de la fiscal completa. Qué no se tocó: la tesis graduada, las cuatro fuentes combinadas, un conocimiento propio por párrafo, un concepto como explicación y un juicio al final de cada párrafo. Eso es lo mínimo que sostiene la banda alta.</p>
+</details>
+</section>
+
+<section class="modulo" id="m2">
+<header><p class="num">Módulo 2</p><h2>El ensayo anotado</h2></header>
+<div class="texto">
+<p>Cada frase lleva un número; a la derecha (o debajo, en el celular) está qué hace y por qué suma. Los colores muestran cómo se reparten las 3C y el juicio; los subrayados, dónde entran las fuentes y el conocimiento propio. Puedes apagarlos en el menú.</p>
+</div>
+<div class="leyenda">
+<span class="l"><span class="hl hc">Contenido</span></span>
+<span class="l"><span class="hl hx">Contexto</span></span>
+<span class="l"><span class="hl hk">Concepto</span></span>
+<span class="l"><span class="hl hj">Juicio o evaluación</span></span>
+<span class="l"><span class="fu">Fuente del cuadernillo</span></span>
+<span class="l"><span class="cp">Conocimiento propio</span></span>
+</div>
+
+<div class="anotado">
+<div class="texto-ens"><span class="rol">Introducción</span>
+<p>Las aplicaciones gratuitas, como ClimaYa (<span class="fu">Fuente A</span>), integran <span class="hl hc">un kit de software publicitario que registra las coordenadas GPS del celular cada cinco minutos y las envía, junto con un identificador publicitario, a intermediarios de datos (data brokers)</span>, que las combinan con las de cientos de aplicaciones para <span class="hl hc">construir perfiles de movimiento</span>.<sup class="n">1</sup> Este comercio de datos financia servicios digitales y a la vez expone las rutinas de millones de usuarios, por lo que enfrenta a <span class="hl hx">empresas, usuarios y Estados en los contextos económico, social y político</span>.<sup class="n">2</sup> <span class="hl hj">Sus beneficios superan a sus riesgos solo en una medida limitada: son reales cuando la ubicación se usa agregada para fines colectivos, pero no cuando se venden trayectorias individuales</span>, porque su supuesto anonimato puede revertirse y porque <span class="hl hk">el poder sobre esos datos queda en manos de empresas que el usuario ni conoce</span>.<sup class="n">3</sup> Lo demuestran tres criterios: el valor económico de los datos, la solidez de su anonimización y la calidad del consentimiento.<sup class="n">4</sup></p>
+</div>
+<ol class="notas">
+<li><b class="k">1</b><span><span class="tag">Contenido anclado en una fuente.</span> Define el sistema por cómo funciona (kit de software, identificador, intermediario, perfil), no con una definición de diccionario. Citar la Fuente A desde la primera línea muestra integración desde el inicio.</span></li>
+<li><b class="k">2</b><span><span class="tag">Contexto y partes interesadas.</span> Nombra actores y contextos y además dice por qué (financia frente a expone). Así ya aparece la tensión.</span></li>
+<li><b class="k">3</b><span><span class="tag">Tesis graduada con condición.</span> Responde al “¿en qué medida?” con un grado, separa dos escenarios y adelanta las razones. El poder aparece como explicación (quién decide), no como etiqueta.</span></li>
+<li><b class="k">4</b><span><span class="tag">Hoja de ruta.</span> Tres criterios en el mismo orden que los párrafos. Es la marca visible de “bien estructurada”.</span></li>
+</ol>
+</div>
+
+<div class="anotado">
+<div class="texto-ens"><span class="rol">Párrafo 1: argumento a favor con su límite</span>
+<p><span class="hl hj">El principal beneficio es económico y colectivo, aunque depende de que los datos se usen agregados.</span><sup class="n">5</sup> <span class="fu">La Fuente C sostiene</span> que la ubicación permite que las aplicaciones sean gratuitas, que una bodega llegue a quienes pasan por su calle y que <span class="hl hx">una municipalidad rediseñe sus rutas de transporte</span>; <span class="fu">la Fuente B lo respalda</span> de forma indirecta, pues solo el 19 % de los jóvenes pagaría S/ 5 al mes por una versión sin venta de datos.<sup class="n">6</sup> En conjunto, la venta de ubicación funciona como <span class="hl hx">el precio oculto de un servicio</span> que la mayoría no quiere pagar con dinero.<sup class="n">7</sup> Su uso colectivo tiene precedentes valiosos: <span class="cp">durante la pandemia, los informes de movilidad de Google, elaborados con <span class="hl hc">datos agregados y anonimizados</span>, ayudaron a los gobiernos a medir cómo cambiaban los desplazamientos en las cuarentenas</span>.<sup class="n">8</sup> Sin embargo, ni la bodega ni la municipalidad necesitan saber quién es cada persona: les bastan conteos por zona y hora.<sup class="n">9</sup> <span class="hl hj">Por eso este beneficio es sólido para la planificación urbana, pero no justifica vender trayectorias individuales.</span><sup class="n">10</sup></p>
+</div>
+<ol class="notas">
+<li><b class="k">5</b><span><span class="tag">Frase temática.</span> Responde a la pregunta e incluye ya el límite. Un argumento a favor de banda alta nunca es ingenuo.</span></li>
+<li><b class="k">6</b><span><span class="tag">Evidencia combinada.</span> Dos fuentes en una sola frase. “Sostiene” es el verbo adecuado para una fuente interesada; la cifra de B se cita exacta.</span></li>
+<li><b class="k">7</b><span><span class="tag">Síntesis.</span> “En conjunto” crea una idea que ninguna fuente dice sola. Es la operación que separa la banda 7–9 de la 10–12.</span></li>
+<li><b class="k">8</b><span><span class="tag">Conocimiento propio que confirma.</span> Qué, quién, cuándo y qué demuestra, en una frase. “Datos agregados” es el término técnico que sostiene todo el párrafo.</span></li>
+<li><b class="k">9</b><span><span class="tag">Análisis y contrapeso.</span> Explica por qué el beneficio no requiere identificar a nadie. Prepara el puente al párrafo siguiente.</span></li>
+<li><b class="k">10</b><span><span class="tag">Comentario evaluativo.</span> Dice para qué es sólido el beneficio y dónde deja de serlo. El párrafo termina en juicio, no en un dato.</span></li>
+</ol>
+</div>
+
+<div class="anotado">
+<div class="texto-ens"><span class="rol">Párrafo 2: el riesgo decisivo</span>
+<p><span class="hl hj">El riesgo más grave</span> es que <span class="hl hc">la anonimización que promete la industria es, en realidad, una seudonimización reversible</span>.<sup class="n">11</sup> <span class="fu">La Fuente C asegura</span> que los datos son anónimos porque «nunca vendemos nombres», pero <span class="fu">la Fuente A muestra</span> que cada registro lleva <span class="hl hc">un identificador publicitario fijo</span>, de modo que todos los puntos de una persona quedan enlazados en una sola trayectoria.<sup class="n">12</sup> <span class="fu">La Fuente D demuestra</span> la consecuencia: con solo dos lugares recurrentes, el hogar y el trabajo, unos periodistas identificaron a una fiscal anticorrupción y conocieron sus visitas a una clínica y el colegio de sus hijos.<sup class="n">13</sup> No es un caso aislado: <span class="cp">un estudio publicado en Scientific Reports (de Montjoye y colaboradores, 2013) mostró que cuatro puntos de lugar y hora bastaban para identificar al 95 % de 1,5 millones de usuarios de telefonía móvil</span>.<sup class="n">14</sup> Así, desde la perspectiva de la <span class="hl hk">identidad, el sistema reconstruye quién es una persona a partir de dónde está</span>.<sup class="n">15</sup> <span class="hl hj">Este riesgo pesa más que el beneficio económico porque es irreversible, ya que una rutina expuesta no se cambia como una contraseña, y porque recae sobre quienes más tienen que perder: fiscales, periodistas, activistas o víctimas de violencia.</span><sup class="n">16</sup></p>
+</div>
+<ol class="notas">
+<li><b class="k">11</b><span><span class="tag">Frase temática con jerarquía.</span> “El más grave” anuncia el peso relativo. La distinción anonimización frente a seudonimización es precisión técnica del contenido 3.1.</span></li>
+<li><b class="k">12</b><span><span class="tag">Fuentes enfrentadas.</span> La promesa de C se desmonta con un dato técnico de A. “Asegura” marca distancia crítica ante una fuente interesada sin decirlo explícitamente.</span></li>
+<li><b class="k">13</b><span><span class="tag">Evidencia del mecanismo.</span> Paráfrasis de D que muestra cómo funciona la reidentificación por dos puntos recurrentes, el mismo mecanismo que estudiaron en el DMPA 22.</span></li>
+<li><b class="k">14</b><span><span class="tag">Conocimiento propio académico.</span> Revista, autores, año y resultado. Convierte un caso anecdótico (D) en una tendencia demostrada.</span></li>
+<li><b class="k">15</b><span><span class="tag">Concepto como explicación.</span> Identidad en una sola frase que dice qué hace el sistema con ella.</span></li>
+<li><b class="k">16</b><span><span class="tag">Evaluación comparativa.</span> “Pesa más que” con dos razones y destinatarios concretos. Aquí se gana la evaluación.</span></li>
+</ol>
+</div>
+
+<div class="anotado">
+<div class="texto-ens"><span class="rol">Párrafo 3: consentimiento y poder</span>
+<p>Además, <span class="hl hj">el consentimiento que legitima este comercio es más formal que real</span>, lo que <span class="hl hk">desplaza el poder hacia empresas invisibles para el usuario</span>.<sup class="n">17</sup> <span class="fu">Según la Fuente B</span>, el 74 % de los jóvenes acepta los permisos sin leer y solo el 31 % sabe que algunas aplicaciones venden su ubicación; a su vez, <span class="fu">la Fuente A muestra</span> que el permiso se pide «para mostrarte el clima de tu zona», no para vender la ubicación a aseguradoras.<sup class="n">18</sup> <span class="cp">La filósofa Helen Nissenbaum</span> describe esto como <span class="hl hk">una violación de la integridad contextual</span>: un dato compartido con un fin legítimo pasa a circular en otro contexto, con reglas que el usuario nunca aceptó.<sup class="n">19</sup> El problema es corregible: <span class="cp">en 2022 la Comisión Federal de Comercio de EE. UU. demandó al intermediario Kochava por vender ubicaciones que permitían rastrear visitas a clínicas y lugares de culto</span>, y en el Perú <span class="cp"><span class="hl hx">la Ley 29733 exige un consentimiento previo, informado, expreso e inequívoco</span></span>, que un permiso genérico difícilmente cumple.<sup class="n">20</sup> <span class="hl hj">Este riesgo afecta a todos, pero sobre todo a los jóvenes de la Fuente B, que aceptan permisos con más facilidad.</span><sup class="n">21</sup></p>
+</div>
+<ol class="notas">
+<li><b class="k">17</b><span><span class="tag">Frase temática con concepto.</span> El conector “Además” marca progresión; el poder aparece como mecanismo (quién gana control).</span></li>
+<li><b class="k">18</b><span><span class="tag">Dato y cita breve.</span> Una cifra de B y una cita corta de A entre comillas que revela el cambio de finalidad del dato.</span></li>
+<li><b class="k">19</b><span><span class="tag">Teoría como lente.</span> Nombra a la autora, explica la idea en la misma frase y la aplica al caso. Esto es “conocimiento que aporta perspectiva”.</span></li>
+<li><b class="k">20</b><span><span class="tag">Dos conocimientos regulatorios.</span> Uno internacional y uno peruano (contexto político, 4.6D). No solo los menciona: evalúa la ley frente al caso (“difícilmente cumple”).</span></li>
+<li><b class="k">21</b><span><span class="tag">Juicio diferenciado.</span> Para quién es más grave, enlazado otra vez a una fuente.</span></li>
+</ol>
+</div>
+
+<div class="anotado">
+<div class="texto-ens"><span class="rol">Conclusión</span>
+<p><span class="hl hj">En conclusión, los beneficios de vender datos de ubicación superan a sus riesgos solo en una medida limitada.</span><sup class="n">22</sup> Cuando la ubicación se agrega para planificar el transporte o apoyar el comercio local, el beneficio colectivo es real; pero cuando se venden trayectorias individuales, la falsa anonimización y un consentimiento meramente formal trasladan el costo a los usuarios más expuestos.<sup class="n">23</sup> <span class="hl hj">El equilibrio se inclinaría a favor solo si</span> se vendieran únicamente datos agregados, se prohibiera comerciar ubicaciones precisas ligadas a un identificador persistente y se exigiera un consentimiento específico para la venta.<sup class="n">24</sup> Como <span class="hl hc">el Internet de las cosas</span> registrará la ubicación de forma cada vez más continua, la cuestión no será si estos datos se usan, sino <span class="hl hk">quién decide cómo y para qué</span>.<sup class="n">25</sup></p>
+</div>
+<ol class="notas">
+<li><b class="k">22</b><span><span class="tag">Respuesta directa.</span> El mismo grado de la introducción, con las palabras del enunciado. Coherencia de principio a fin.</span></li>
+<li><b class="k">23</b><span><span class="tag">Síntesis, no resumen.</span> Explica por qué ese grado con los dos escenarios, sin repetir párrafo por párrafo.</span></li>
+<li><b class="k">24</b><span><span class="tag">Condiciones verificables.</span> Tres medidas concretas que cambiarían el juicio, no un “hay que concienciar”.</span></li>
+<li><b class="k">25</b><span><span class="tag">Proyección.</span> Una tendencia emergente (objetivo del curso) que cierra con el concepto de poder, sin pruebas nuevas.</span></li>
+</ol>
+</div>
+</section>
+
+<section class="modulo" id="m3">
+<header><p class="num">Módulo 3</p><h2>Evaluación detallada</h2></header>
+<div class="texto">
+<p>El ensayo se evalúa aquí con tres instrumentos: las bandas oficiales de la pregunta 4, las tres operaciones que el esquema de noviembre de 2025 exige explícitamente y la rúbrica de ensayo de tus DMPA 10 y 13.</p>
+<h3>1. Bandas oficiales de la pregunta 4</h3>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Descriptor de la banda 10–12</th><th>Dónde se cumple</th><th>Veredicto</th></tr></thead>
+<tbody>
+<tr><td>Centrada; comprensión profunda de las exigencias</td><td>La tesis (3) responde al “¿en qué medida?” con un grado y dos escenarios; cada frase temática (5, 11, 17) habla de beneficios o riesgos de vender ubicación; la conclusión (22) repite el grado.</td><td>Cumple</td></tr>
+<tr><td>Conocimientos pertinentes y precisos de forma continua, que aportan perspectiva</td><td>Un conocimiento propio por párrafo (8, 14, 19, 20) de cuatro tipos distintos: caso, estudio, teoría y ley. Términos integrados: seudonimización, identificador publicitario, datos agregados, integridad contextual.</td><td>Cumple</td></tr>
+<tr><td>Integración coherente y eficaz de las fuentes</td><td>Las cuatro fuentes aparecen nueve veces; en cuatro frases se combinan dos fuentes (6, 12, 18 y la conclusión las resume). Nunca se analiza una fuente aislada en bloque.</td><td>Cumple</td></tr>
+<tr><td>Bien estructurada y organizada eficazmente</td><td>Hoja de ruta (4) y párrafos en ese orden; conectores de progresión (“Además”, “Sin embargo”, “Por eso”); conclusión sin ideas nuevas.</td><td>Cumple</td></tr>
+</tbody></table></div>
+<div class="texto"><p>Nota estimada: <span class="puntaje">11–12 / 12</span>. El punto de duda está en lo que un examinador exigente podría pedir más (ver abajo).</p>
+<h3>2. Las tres operaciones del esquema de noviembre de 2025</h3>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Operación</th><th>Definición del esquema</th><th>Frases del ensayo</th></tr></thead>
+<tbody>
+<tr><td>Análisis</td><td>Explicar por qué o en qué medida importa un aspecto.</td><td>9 (por qué no hace falta identificar), 12 (por qué el identificador anula el anonimato), 15 (qué hace el sistema con la identidad).</td></tr>
+<tr><td>Síntesis</td><td>Vincular fuentes y conocimiento propio para mostrar una comprensión mayor.</td><td>6–7 (C + B → precio oculto), 12–13 (C frente a A, y D como prueba), 14 (D + estudio → tendencia), 18–19 (B + A + Nissenbaum).</td></tr>
+<tr><td>Comentario evaluativo</td><td>Juzgar cuánto importa, para quién o en qué condiciones.</td><td>10, 16, 21 (cierre de cada párrafo) y 24 (condiciones de la conclusión).</td></tr>
+</tbody></table></div>
+
+<div class="texto"><h3>3. Rúbrica de ensayo de tus DMPA 10 y 13 (máximo 28)</h3>
+<p>Esta rúbrica pide 400–550 palabras, así que se aplica a la versión compacta. La versión larga perdería en el criterio 7 por extensión.</p></div>
+<div class="tabla"><table>
+<thead><tr><th>Criterio</th><th>Nivel</th><th>Por qué</th></tr></thead>
+<tbody>
+<tr><td>1. Postura y argumento central</td><td>4</td><td>Postura matizada (“solo en una medida limitada”) que se mantiene igual en la introducción, en cada párrafo y en la conclusión.</td></tr>
+<tr><td>2. Conceptos del IB</td><td>4</td><td>Poder, identidad y valores y ética usados como explicación del mecanismo, no como etiquetas.</td></tr>
+<tr><td>3. Evidencias y fuentes</td><td>4</td><td>Las cuatro fuentes con datos concretos y combinadas de forma estratégica.</td></tr>
+<tr><td>4. Reconocimiento del contrapeso</td><td>4</td><td>El beneficio económico se reconoce con evidencia y se refuta con un argumento (no hace falta identificar a nadie), no con una negación.</td></tr>
+<tr><td>5. Terminología técnica</td><td>4</td><td>Más de tres términos del glosario y del DMPA 22 bien usados: intermediario de datos, identificador publicitario, seudonimización, datos agregados, integridad contextual.</td></tr>
+<tr><td>6. Respuesta a la pregunta</td><td>4</td><td>Grado explícito y condiciones concretas que cambiarían el juicio.</td></tr>
+<tr><td>7. Estructura y extensión</td><td>4 (compacta) / 2 (larga)</td><td>La compacta está en el rango; la larga supera las 650 palabras que la rúbrica penaliza.</td></tr>
+</tbody></table></div>
+
+<div class="texto">
+<h3>Dónde un examinador exigente podría restar</h3>
+<ul>
+<li><strong>El lado a favor podría ser más fuerte.</strong> La Fuente C se usa sobre todo para refutarla. Para blindar el contrapeso, añade una frase sobre qué pasaría con las apps gratuitas si se prohibiera la venta, por ejemplo con la función de Transparencia de Seguimiento de Apps que Apple introdujo en 2021: obligó a pedir permiso explícito para rastrear y las aplicaciones gratuitas siguieron existiendo.</li>
+<li><strong>Las cifras de memoria son un riesgo.</strong> Si en el examen no estás seguro del 95 % o del año, escribe la idea sin la cifra: “un estudio de 2013 mostró que unos pocos puntos de ubicación bastan para identificar a casi todas las personas”. Una cifra equivocada es un error de precisión; la idea correcta sin cifra no lo es.</li>
+<li><strong>Extensión.</strong> 820 palabras es el límite superior de lo que cabe en 35 minutos. Si escribes más lento, recorta primero la hoja de ruta (frase 4), luego uno de los dos conocimientos del párrafo 3. Nunca recortes la frase de síntesis ni la de juicio de cada párrafo.</li>
+</ul>
+</div>
+</section>
+
+<section class="modulo" id="m4">
+<header><p class="num">Módulo 4</p><h2>La introducción</h2></header>
+<div class="texto">
+<p>La introducción vale poco por sí misma, pero decide cómo lee el examinador todo lo demás: si en cuatro frases ve el sistema bien definido, las partes interesadas y una tesis graduada, empieza a buscar la banda alta. Extensión ideal: 3–5 frases, 80–150 palabras, 3–4 minutos.</p>
+<h3>Los cinco elementos, en este orden</h3>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Elemento</th><th>Qué hace</th><th>C que ancla</th><th>Cómo suena</th></tr></thead>
+<tbody>
+<tr><td>1. Definición operativa del sistema</td><td>Dice qué es el sistema y cómo funciona, con términos técnicos y apoyándose en una fuente.</td><td>Contenido</td><td>“X, como el de la Fuente A, es un [tipo técnico] que [entrada → proceso → salida].”</td></tr>
+<tr><td>2. Alcance</td><td>Nombra las partes interesadas del foco y el contexto donde ocurre el efecto.</td><td>Contexto</td><td>“Esto afecta a [actores] en el contexto [económico/social…], porque…”</td></tr>
+<tr><td>3. Tensión central</td><td>Formula el dilema con una lente conceptual: quién gana y quién pierde, qué valores chocan.</td><td>Concepto</td><td>“La cuestión es quién controla…” / “Aquí chocan la eficiencia y la privacidad…”</td></tr>
+<tr><td>4. Tesis graduada</td><td>Responde al término de instrucción con grado y condición.</td><td>Juicio</td><td>“Solo en una medida limitada: …cuando…, pero no cuando…”</td></tr>
+<tr><td>5. Criterios u hoja de ruta</td><td>Anuncia los temas de los párrafos en su orden.</td><td>Estructura</td><td>“Lo demuestran tres criterios: A, B y C.”</td></tr>
+</tbody></table></div>
+<div class="texto">
+<p>Los elementos 2 y 3 pueden ir en la misma frase, y el 3 puede ir dentro de la tesis, como en el ensayo modelo (“porque el poder sobre esos datos queda en manos de…”). Lo que no puede faltar es el orden: sistema, alcance, juicio.</p>
+
+<h3>Cómo amarrar las 3C en la introducción sin forzarlas</h3>
+<p>No hace falta escribir la palabra “concepto” ni el número del programa. Cada C entra con su función:</p>
+<ul>
+<li><strong>Contenido</strong> entra como mecanismo: verbos técnicos (registra, transmite, agrega, clasifica, predice) y sustantivos técnicos (sensor, identificador, algoritmo, nube).</li>
+<li><strong>Contexto</strong> entra como lugar y actores: el ámbito de la vida (salud, trabajo, educación, política) y quién está ahí.</li>
+<li><strong>Concepto</strong> entra como pregunta implícita: quién decide (poder), quién eres para el sistema (identidad), dónde se reparten beneficios y costos (espacio), qué valores chocan (valores y ética), qué falla en cadena (sistemas), qué cambió (cambio).</li>
+</ul>
+<div class="plantilla">
+<p><strong>Fórmula de introducción</strong></p>
+<p>[Sistema], como el de la Fuente <span class="hueco">X</span>, <span class="hueco">mecanismo técnico</span>. Esto afecta a <span class="hueco">partes interesadas</span> en el contexto <span class="hueco">…</span>, porque <span class="hueco">efecto doble</span>. <span class="hueco">Tesis con grado</span>: <span class="hueco">cuándo sí</span>, pero <span class="hueco">cuándo no</span>, porque <span class="hueco">razón vista con un concepto</span>. Lo demuestran <span class="hueco">criterio 1</span>, <span class="hueco">criterio 2</span> y <span class="hueco">criterio 3</span>.</p>
+</div>
+
+<h3>Lo que suma para la banda alta</h3>
+<ul>
+<li><strong>Una fuente desde la primera frase.</strong> Señala al examinador que vas a integrar fuentes, no a decorarlas.</li>
+<li><strong>Las palabras exactas del enunciado.</strong> Si dice “beneficios… superan sus riesgos”, la tesis usa “beneficios” y “riesgos”, no “ventajas” y “problemas”.</li>
+<li><strong>Dos escenarios en la tesis</strong> cuando el grado cambia según el caso (agregado frente a individual; zona rural frente a urbana; uso sanitario frente a policial).</li>
+<li><strong>La razón principal adelantada.</strong> “Porque su anonimato puede revertirse” anuncia el argumento decisivo.</li>
+<li><strong>Una precisión técnica que las fuentes no dan</strong> (“kit de software publicitario”, “identificador publicitario”): demuestra conocimiento propio desde el inicio.</li>
+</ul>
+
+<h3>Lo que resta</h3>
+<ul>
+<li>Preguntas retóricas (“¿Alguna vez te has preguntado…?”).</li>
+<li>Preámbulos históricos o generales (“Hoy en día la tecnología avanza a pasos agigantados”).</li>
+<li>Anunciar en vez de afirmar (“En este ensayo se hablará de…”).</li>
+<li>Listar las fuentes (“Las Fuentes A, B, C y D tratan sobre…”).</li>
+<li>Tesis neutras (“Tiene ventajas y desventajas”).</li>
+<li>Listar conceptos (“Esto se relaciona con el poder, la identidad y los sistemas”).</li>
+</ul>
+
+<h3>La misma introducción en tres niveles</h3>
+</div>
+<div class="versiones">
+<div class="version v1"><p class="t">Banda 4–6</p><p>Hoy en día, la tecnología avanza muy rápido y las aplicaciones forman parte de nuestra vida. Muchas apps venden nuestros datos de ubicación, como muestran las Fuentes A, B, C y D. Esto tiene ventajas y desventajas que se analizarán en este ensayo, relacionadas con los conceptos de poder e identidad.</p><p class="diag">Preámbulo vacío, fuentes listadas, sin mecanismo técnico, tesis neutra y conceptos como etiquetas.</p></div>
+<div class="version v2"><p class="t">Banda 7–9</p><p>Las aplicaciones gratuitas como ClimaYa recogen la ubicación GPS de los usuarios y la venden a intermediarios de datos, que crean perfiles para anunciantes y aseguradoras. Esto genera ingresos para las empresas, pero también afecta la privacidad de los usuarios. En mi opinión, los riesgos son mayores que los beneficios.</p><p class="diag">Hay sistema y partes interesadas, pero la tesis no tiene grado ni condición, no anuncia criterios y la tensión no se formula con un concepto.</p></div>
+<div class="version v3"><p class="t">Banda 10–12</p><p>La del ensayo modelo (frases 1 a 4): mecanismo técnico anclado en la Fuente A, actores y contextos con la tensión explicada, tesis con grado y dos escenarios que adelanta la razón conceptual, y tres criterios en orden.</p></div>
+</div>
+
+<div class="texto">
+<h3>Tesis según el término de instrucción</h3>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Enunciado</th><th>Forma de la tesis</th></tr></thead>
+<tbody>
+<tr><td>¿En qué medida X supera a Y?</td><td>“X supera a Y [en gran medida / solo parcialmente / en una medida limitada]: …cuando…, pero no cuando…”</td></tr>
+<tr><td>Discuta las ventajas y desventajas de X para Y</td><td>“X ofrece a Y [ventaja principal], pero su valor depende de [condición], porque [desventaja decisiva].”</td></tr>
+<tr><td>Discuta los efectos y repercusiones para X</td><td>“A corto plazo, X obtiene [efecto]; a mediano plazo, su éxito depende de [riesgo u oportunidad].”</td></tr>
+<tr><td>Discuta oportunidades y dilemas</td><td>“Cada oportunidad de X abre un dilema equivalente; la cuestión es quién decide [cómo se resuelve].”</td></tr>
+<tr><td>Evalúe X</td><td>“X es eficaz para [fortaleza], pero su principal limitación es [debilidad], que pesa más cuando…”</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="modulo" id="m5">
+<header><p class="num">Módulo 5</p><h2>Argumento a favor y contrapeso</h2></header>
+<div class="texto">
+<p>Tu rúbrica de clase da un criterio entero al “reconocimiento del contrapeso” y pide una refutación sólida. Las bandas oficiales lo llaman evaluación. En la práctica significa que <strong>ningún argumento, a favor o en contra, termina sin su límite</strong>.</p>
+<h3>Anatomía de un párrafo de argumento</h3>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Paso</th><th>Función</th><th>En el párrafo 1 del modelo</th></tr></thead>
+<tbody>
+<tr><td>Punto</td><td>Frase temática que responde a la pregunta y ya trae su límite.</td><td>“El principal beneficio es económico y colectivo, aunque depende de que los datos se usen agregados.”</td></tr>
+<tr><td>Evidencia</td><td>Dos fuentes combinadas, con dato o cita breve.</td><td>Fuente C (gratuidad, bodega, municipalidad) + Fuente B (19 %).</td></tr>
+<tr><td>Análisis</td><td>Por qué o cómo ocurre, con un término técnico.</td><td>“La venta de ubicación funciona como el precio oculto del servicio.”</td></tr>
+<tr><td>Síntesis</td><td>Conocimiento propio que confirma, matiza o contradice.</td><td>Informes de movilidad de Google con datos agregados.</td></tr>
+<tr><td>Concesión y refutación</td><td>Reconoce el otro lado y explica por qué no cambia o limita tu punto.</td><td>“Sin embargo, ni la bodega ni la municipalidad necesitan saber quién es cada persona.”</td></tr>
+<tr><td>Evaluación</td><td>Cuánto importa, para quién, en qué condiciones.</td><td>“Sólido para la planificación urbana, pero no justifica vender trayectorias individuales.”</td></tr>
+</tbody></table></div>
+
+<div class="texto">
+<h3>Tipos de argumento a favor y cómo limitarlos</h3>
+<p>Para generar el lado a favor en cualquier sistema, recorre estas seis preguntas. La columna derecha es la refutación que convierte el argumento en evaluación.</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Tipo</th><th>Pregunta que lo genera</th><th>Límite que lo vuelve de banda alta</th></tr></thead>
+<tbody>
+<tr><td>Económico</td><td>¿Abarata, financia o crea valor?</td><td>¿Quién paga el costo oculto? ¿El ahorro de unos es pérdida de otros?</td></tr>
+<tr><td>Eficiencia</td><td>¿Hace algo más rápido o preciso?</td><td>¿Con qué fiabilidad? ¿Qué pasa cuando falla un elemento del sistema?</td></tr>
+<tr><td>Acceso</td><td>¿Llega a quien antes no llegaba?</td><td>¿Exige conectividad, dinero o habilidades que excluyen a otros?</td></tr>
+<tr><td>Seguridad</td><td>¿Protege a personas o bienes?</td><td>¿Quién vigila a quien vigila? ¿Puede usarse con el fin contrario?</td></tr>
+<tr><td>Bien colectivo</td><td>¿Mejora decisiones públicas (salud, transporte, ambiente)?</td><td>¿Necesita datos individuales o bastan los agregados?</td></tr>
+<tr><td>Innovación</td><td>¿Abre nuevas posibilidades o empleos?</td><td>¿Para quién? ¿A qué velocidad se adaptan los que quedan fuera?</td></tr>
+</tbody></table></div>
+
+<div class="texto">
+<h3>Frases de concesión y refutación</h3>
+<ul>
+<li><strong>Para conceder:</strong> “Es cierto que…”, “Si bien…”, “No puede negarse que…”, “La Fuente C tiene razón en que…”.</li>
+<li><strong>Para refutar con argumento:</strong> “Sin embargo, este beneficio no requiere…”, “No obstante, esto solo se cumple si…”, “Aun así, el costo recae sobre…”.</li>
+<li><strong>Para limitar sin negar:</strong> “Este beneficio es real, pero se reduce a…”, “Es decisivo para…, aunque marginal para…”.</li>
+</ul>
+<p>Refutar no es negar (“eso es falso”). Es mostrar que el argumento contrario es verdadero pero limitado, o que depende de una condición que no se cumple.</p>
+
+<h3>¿Cómo ordenar los párrafos?</h3>
+<p>Hay dos estructuras válidas. Elige según el término de instrucción.</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Estructura</th><th>Orden</th><th>Cuándo usarla</th></tr></thead>
+<tbody>
+<tr><td>Dialéctica (la del modelo)</td><td>Lado más débil para tu tesis → lado más fuerte → criterio que decide.</td><td>“¿En qué medida…?”, “¿Hasta qué punto…?”. El ensayo termina inclinado hacia tu juicio.</td></tr>
+<tr><td>Temática</td><td>Un criterio por párrafo, con las dos caras dentro de cada uno.</td><td>“Discuta…”, “Evalúe…”, “oportunidades y dilemas”. Evita que parezca una lista de ventajas y otra de desventajas.</td></tr>
+</tbody></table></div>
+<div class="texto"><p>En ambas, cada párrafo lleva su propio límite. Nunca escribas un párrafo entero “a favor” y otro entero “en contra” sin ninguna evaluación dentro: es el patrón típico de la banda 4–6.</p></div>
+</section>
+
+<section class="modulo" id="m6">
+<header><p class="num">Módulo 6</p><h2>Cómo señalar fuentes y conocimiento propio</h2></header>
+<div class="texto">
+<p>La pregunta 4 pide dos cosas distintas: las Fuentes A–D <em>y</em> tus propios conocimientos. Las dos se señalan de forma diferente.</p>
+<h3>A. Las fuentes del cuadernillo</h3>
+<p>No hace falta cita formal ni número de página: basta con nombrar la fuente. Lo que cambia la banda es <em>cómo</em> la integras.</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Forma</th><th>Ejemplo</th><th>Cuándo usarla</th></tr></thead>
+<tbody>
+<tr><td>Referencia con paráfrasis</td><td>“La Fuente A muestra que cada registro lleva un identificador fijo.”</td><td>La forma por defecto. Demuestra comprensión.</td></tr>
+<tr><td>Cita breve entre comillas</td><td>“…el permiso se pide «para mostrarte el clima de tu zona».”</td><td>Solo cuando la palabra exacta es la prueba. Máximo una línea.</td></tr>
+<tr><td>Dato exacto</td><td>“Según la Fuente B, el 74 % acepta sin leer.”</td><td>Gráficos, encuestas, mapas. Copia la cifra y la unidad sin redondear.</td></tr>
+<tr><td>Combinación</td><td>“La Fuente C sostiene…; la Fuente B lo respalda…”</td><td>Al menos una vez por párrafo. Es la integración que piden las bandas.</td></tr>
+<tr><td>Enfrentamiento</td><td>“La Fuente C asegura…, pero la Fuente A muestra…”</td><td>Para el contrapeso y para evaluar fuentes interesadas.</td></tr>
+<tr><td>Origen y propósito</td><td>“Al ser un comunicado de la industria, la Fuente C omite…”</td><td>Una vez en el ensayo basta; suma mucho cuando una fuente es publicidad o institucional.</td></tr>
+<tr><td>Referencia implícita</td><td>“…los jóvenes encuestados, que aceptan permisos con más facilidad.”</td><td>Cuando ya nombraste la fuente; el esquema acepta referencias implícitas si son claras.</td></tr>
+</tbody></table></div>
+
+<div class="texto">
+<h4>El verbo también evalúa</h4>
+<p>El verbo con que introduces una fuente comunica tu juicio sobre ella sin gastar una frase. Elige con intención:</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Lo que quieres comunicar</th><th>Verbos</th></tr></thead>
+<tbody>
+<tr><td>Neutralidad</td><td>indica, muestra, señala, describe, presenta</td></tr>
+<tr><td>Afirmación de una fuente interesada (distancia crítica)</td><td>sostiene, asegura, afirma, promete, presenta como</td></tr>
+<tr><td>Prueba sólida</td><td>demuestra, revela, confirma, evidencia</td></tr>
+<tr><td>Matiz o concesión</td><td>reconoce, admite, matiza, sugiere</td></tr>
+<tr><td>Contraste u omisión</td><td>contradice, cuestiona, omite, no menciona, pasa por alto</td></tr>
+</tbody></table></div>
+
+<div class="texto">
+<h3>B. Tus propios conocimientos</h3>
+<p>Seis tipos, de menor a mayor perspectiva. Lo ideal son dos o tres tipos distintos en el ensayo.</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Tipo</th><th>Cómo señalarlo</th><th>Ejemplo</th></tr></thead>
+<tbody>
+<tr><td>Término técnico que la fuente no explica</td><td>Úsalo dentro de la explicación.</td><td>“…una seudonimización reversible.”</td></tr>
+<tr><td>Caso real paralelo</td><td>Qué + quién + cuándo o dónde + qué demuestra.</td><td>“Durante la pandemia, los informes de movilidad de Google…”</td></tr>
+<tr><td>Dato o estudio</td><td>Autor o institución + año + resultado.</td><td>“de Montjoye y colaboradores (2013) mostraron que…”</td></tr>
+<tr><td>Ley o regulación</td><td>Nombre + país + qué exige + si se cumple en el caso.</td><td>“La Ley 29733 exige… que un permiso genérico difícilmente cumple.”</td></tr>
+<tr><td>Teoría o autor académico</td><td>Autor + nombre de la idea + explicación + aplicación al caso, en una o dos frases.</td><td>“Helen Nissenbaum llama a esto integridad contextual: …”</td></tr>
+<tr><td>Parte interesada que las fuentes ignoran</td><td>“Las fuentes no consideran a…, que…”</td><td>“…fiscales, periodistas o víctimas de violencia.”</td></tr>
+</tbody></table></div>
+<div class="texto">
+<div class="caja roja"><p class="t">Dos reglas de honestidad que también protegen tu nota</p>
+<ul>
+<li><strong>Nunca inventes una cifra, una fecha o una cita textual.</strong> Si dudas, escribe la idea sin el número. Una precisión falsa cuenta como conocimiento impreciso; una idea correcta sin número, no.</li>
+<li><strong>No hace falta bibliografía en el examen.</strong> El nombre del autor, el caso o la ley basta. Lo que puntúa es que expliques qué demuestra.</li>
+</ul></div>
+<h3>C. Banco de autores y teorías para dar perspectiva</h3>
+<p>Ninguno es obligatorio. Úsalos solo si puedes explicar la idea en una frase y aplicarla al caso; nombrar a un autor sin explicarlo no suma.</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Autor y obra</th><th>Idea central</th><th>Úsala cuando…</th><th>Frase modelo</th></tr></thead>
+<tbody>
+<tr><td>Shoshana Zuboff, <em>La era del capitalismo de la vigilancia</em> (2019)</td><td>Las plataformas convierten la experiencia humana en datos de comportamiento para vender predicciones.</td><td>Publicidad dirigida, comercio de datos, apps gratuitas.</td><td>“Es lo que Zuboff llama capitalismo de la vigilancia: el usuario no es el cliente, sino la materia prima.”</td></tr>
+<tr><td>Helen Nissenbaum, integridad contextual (2004, 2010)</td><td>La privacidad se viola cuando un dato sale del contexto y de las normas con que se compartió.</td><td>Datos usados para otro fin (salud → aseguradora, clima → venta).</td><td>“Viola la integridad contextual: el dato se compartió para X y circula para Y.”</td></tr>
+<tr><td>Daniel Solove, <em>Nothing to Hide</em> (2011)</td><td>Critica el argumento “si no tienes nada que ocultar, no temas”: la privacidad protege contra el abuso de poder, no solo secretos.</td><td>Vigilancia estatal o policial; cámaras; drones.</td><td>“El argumento de ‘nada que ocultar’ ignora, como señala Solove, que…”</td></tr>
+<tr><td>Michel Foucault, <em>Vigilar y castigar</em> (1975)</td><td>El panóptico: quien se sabe posiblemente observado se autocontrola.</td><td>Monitoreo de empleados, cámaras, vigilancia escolar.</td><td>“Funciona como un panóptico: el empleado se disciplina aunque nadie lo mire.”</td></tr>
+<tr><td>Manuel Castells, <em>La sociedad red</em> (1996)</td><td>La sociedad se organiza en redes de información; quien controla los nodos y flujos tiene poder.</td><td>Plataformas, conectividad, brecha digital.</td><td>“En la sociedad red de Castells, quedar fuera de la red es quedar fuera del poder.”</td></tr>
+<tr><td>Melvin Kranzberg, primera ley (1986)</td><td>“La tecnología no es buena ni mala; tampoco es neutral.”</td><td>Para matizar una tesis sobre doble uso.</td><td>“Como advierte la primera ley de Kranzberg, el sistema no es neutral: su diseño favorece a…”</td></tr>
+<tr><td>Langdon Winner, “¿Tienen política los artefactos?” (1980)</td><td>Los diseños técnicos incorporan decisiones de poder.</td><td>Diseño que excluye o favorece a grupos.</td><td>“El diseño mismo es político, en el sentido de Winner: …”</td></tr>
+<tr><td>David Collingridge, <em>The Social Control of Technology</em> (1980)</td><td>Dilema de Collingridge: al principio una tecnología es fácil de regular pero sus efectos son inciertos; cuando se conocen, ya es difícil cambiarla.</td><td>Preguntas sobre regulación de IA, robots, drones.</td><td>“Es el dilema de Collingridge: cuando los daños sean evidentes, la tecnología ya estará arraigada.”</td></tr>
+<tr><td>Cathy O’Neil, <em>Armas de destrucción matemática</em> (2016)</td><td>Algoritmos opacos, a gran escala y dañinos que castigan a los más pobres.</td><td>Puntuaciones de crédito, contratación, justicia.</td><td>“Cumple los rasgos que O’Neil atribuye a un arma de destrucción matemática: opacidad, escala y daño.”</td></tr>
+<tr><td>Safiya Noble, <em>Algorithms of Oppression</em> (2018)</td><td>Los buscadores reproducen estereotipos raciales y de género.</td><td>Sesgo en buscadores, recomendaciones, IA generativa.</td><td>“Como mostró Noble con los buscadores, los resultados ‘neutrales’ reproducen estereotipos.”</td></tr>
+<tr><td>Virginia Eubanks, <em>La automatización de la desigualdad</em> (2018)</td><td>Los sistemas automatizados de servicios públicos vigilan y castigan más a los pobres.</td><td>Gobierno digital, ayudas sociales, decisiones automáticas.</td><td>“Eubanks muestra que los más pobres son los primeros en ser gestionados por algoritmos.”</td></tr>
+<tr><td>Evgeny Morozov, solucionismo tecnológico (2013)</td><td>Creer que todo problema social se resuelve con una aplicación.</td><td>Soluciones tecnológicas a problemas estructurales (educación, salud).</td><td>“Es un caso de solucionismo: la app no resuelve la falta de médicos rurales.”</td></tr>
+<tr><td>Nick Couldry y Ulises Mejías, colonialismo de datos (2019)</td><td>La extracción de datos de la vida cotidiana repite lógicas coloniales de apropiación.</td><td>Empresas del Norte que extraen datos del Sur global.</td><td>“Couldry y Mejías lo llaman colonialismo de datos: la vida cotidiana se convierte en recurso extraído.”</td></tr>
+<tr><td>Kate Crawford, <em>Atlas de IA</em> (2021)</td><td>La IA tiene costos materiales: minerales, energía, agua y trabajo humano oculto.</td><td>IA y ambiente; trabajo de etiquetado de datos.</td><td>“Como muestra Crawford, la IA ‘en la nube’ tiene un costo material en minas y centros de datos.”</td></tr>
+<tr><td>Eli Pariser, <em>El filtro burbuja</em> (2011)</td><td>Los algoritmos de personalización nos muestran solo lo afín.</td><td>Redes sociales, polarización, desinformación.</td><td>“La recomendación crea una burbuja de filtro en el sentido de Pariser.”</td></tr>
+</tbody></table></div>
+
+<div class="texto">
+<h3>D. Casos reales sobre datos de ubicación (el tema del DMPA 22)</h3>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Caso</th><th>Qué pasó</th><th>Qué demuestra</th></tr></thead>
+<tbody>
+<tr><td>The New York Times, “One Nation, Tracked” (2019)</td><td>El diario obtuvo un archivo con más de 50 000 millones de registros de ubicación de más de 12 millones de teléfonos en EE. UU. y pudo seguir a personas concretas.</td><td>La escala del mercado y la facilidad de reidentificar.</td></tr>
+<tr><td>de Montjoye y colaboradores, <em>Scientific Reports</em> (2013)</td><td>Cuatro puntos de lugar y hora bastaron para identificar al 95 % de 1,5 millones de usuarios de telefonía móvil.</td><td>Que los datos de ubicación “anónimos” rara vez lo son.</td></tr>
+<tr><td>Mapa de calor de Strava (2018)</td><td>Un mapa público de rutas de ejercicio reveló la ubicación de bases militares en el extranjero.</td><td>Que los datos agregados también pueden exponer información sensible.</td></tr>
+<tr><td>FTC contra Kochava (2022)</td><td>La autoridad de comercio de EE. UU. demandó a este intermediario por vender ubicaciones que permitían rastrear visitas a clínicas, lugares de culto y refugios.</td><td>Que el riesgo es real y que los reguladores empiezan a actuar.</td></tr>
+<tr><td>FTC y X-Mode Social (2024)</td><td>Primer acuerdo de la FTC que prohibió a un intermediario vender datos de ubicación sensibles.</td><td>Una intervención regulatoria concreta.</td></tr>
+<tr><td>Databroker Files (Alemania, 2024)</td><td>Una investigación periodística obtuvo de un intermediario miles de millones de puntos de ubicación de celulares en Alemania y pudo seguir a personas en lugares sensibles, como instalaciones militares y de inteligencia (el caso que menciona tu DMPA 22).</td><td>La dimensión política y de seguridad nacional del comercio de datos.</td></tr>
+<tr><td>Transparencia de Seguimiento de Apps de Apple (2021)</td><td>iOS empezó a exigir permiso explícito para que las apps rastreen al usuario entre aplicaciones.</td><td>Que se puede diseñar un consentimiento real sin eliminar las apps gratuitas.</td></tr>
+<tr><td>Informes de movilidad de Google (2020)</td><td>Datos agregados y anonimizados que mostraban cambios de desplazamiento durante la pandemia.</td><td>El uso colectivo legítimo de la ubicación.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="modulo" id="m7">
+<header><p class="num">Módulo 7</p><h2>Términos académicos de tus DMPA</h2></header>
+<div class="texto">
+<p>Vocabulario sacado de tus diseños metodológicos de clase, con su definición y una frase para usarlo en un ensayo. Activa el modo repaso para ocultar las definiciones y probarte. Al final hay un bloque de vocabulario académico transversal que no está en los DMPA pero sirve en cualquier pregunta.</p>
+</div>
+
+<details class="area" open><summary>DMPA 22 · El comercio de datos en Internet <small>datos y redes</small></summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Término</th><th>Definición</th><th>Úsalo así</th></tr></thead>
+<tbody>
+<tr><td>Mercantilización de datos personales</td><td class="resp">Convertir información personal en un bien que se compra y se vende.</td><td>“La mercantilización de la ubicación convierte la rutina del usuario en mercancía.”</td></tr>
+<tr><td>Intermediario o corredor de datos (data broker)</td><td class="resp">Empresa que recopila datos de muchas fuentes, construye perfiles y los vende a terceros con los que la persona no tiene relación directa.</td><td>“El usuario nunca interactúa con el intermediario que vende su perfil.”</td></tr>
+<tr><td>Mercado B2B invisible</td><td class="resp">Comercio entre empresas que el usuario final no ve.</td><td>“Al ser un mercado B2B invisible, el usuario no sabe a quién reclamar.”</td></tr>
+<tr><td>Agregación e identificación cruzada</td><td class="resp">Unir bases de datos fragmentadas cruzando identificadores (ID del dispositivo, correo cifrado, IP) para formar un expediente único.</td><td>“La identificación cruzada une datos inocuos en un perfil revelador.”</td></tr>
+<tr><td>Resolución de identidades</td><td class="resp">Algoritmos que determinan que registros distintos pertenecen a la misma persona.</td><td>“La resolución de identidades anula el anonimato de cada base por separado.”</td></tr>
+<tr><td>Perfilamiento inferencial</td><td class="resp">Clasificar a las personas en categorías (ingresos, salud, política) deducidas por algoritmos, no declaradas.</td><td>“El perfil infiere una condición de salud que el usuario nunca reveló.”</td></tr>
+<tr><td>Segmentos de audiencia</td><td class="resp">Etiquetas comerciales que agrupan personas para venderlas (“padres primerizos de bajos ingresos”).</td><td>“Los segmentos de audiencia pueden discriminar a grupos vulnerables.”</td></tr>
+<tr><td>Falsa anonimización y reidentificación</td><td class="resp">Datos presentados como anónimos que pueden volver a vincularse a una persona, por ejemplo cruzando dos puntos recurrentes.</td><td>“La falsa anonimización traslada el riesgo al usuario.”</td></tr>
+<tr><td>Metadatos de ubicación</td><td class="resp">Datos sobre dónde y cuándo está un dispositivo, distintos del contenido de una comunicación.</td><td>“Los metadatos de ubicación revelan más que el contenido de un mensaje.”</td></tr>
+<tr><td>Identificador publicitario</td><td class="resp">Código único del sistema operativo móvil (Android, iOS) que vincula las interacciones y posiciones de un usuario.</td><td>“El identificador publicitario enlaza todos los puntos en una trayectoria.”</td></tr>
+<tr><td>Raspado masivo (scraping)</td><td class="resp">Extracción automatizada de datos de sitios web, a menudo sin permiso.</td><td>“El raspado masivo alimenta mercados informales de datos.”</td></tr>
+<tr><td>Revocación del consentimiento (opt-out)</td><td class="resp">Mecanismo para retirar el permiso; en un modelo de exclusión, el usuario debe actuar para no ser incluido.</td><td>“Un modelo de exclusión invierte la carga: protegerse depende del usuario.”</td></tr>
+</tbody></table></div></details>
+
+<details class="area"><summary>DMPA 10, 11 y 13 · Robots y tecnologías autónomas <small>sistemas y dilemas</small></summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Término</th><th>Definición</th><th>Úsalo así</th></tr></thead>
+<tbody>
+<tr><td>Sistema autónomo</td><td class="resp">Sistema físico o digital que decide y actúa sin intervención humana constante, integrando percepción, procesamiento y actuación.</td><td>“Es un sistema autónomo porque percibe, decide y actúa sin un operador.”</td></tr>
+<tr><td>Ciclo Sentir–Pensar–Actuar</td><td class="resp">Modelo de funcionamiento: sensores perciben, algoritmos deciden y actuadores ejecutan.</td><td>“El error ocurrió en la fase de percepción del ciclo Sentir–Pensar–Actuar.”</td></tr>
+<tr><td>Fusión de sensores</td><td class="resp">Algoritmos que combinan datos de cámaras, LiDAR y radar para compensar las fallas de cada uno.</td><td>“Sin fusión de sensores, la niebla dejaría ciego al LiDAR.”</td></tr>
+<tr><td>Procesamiento en el borde (edge computing)</td><td class="resp">Cálculos hechos en el propio dispositivo para evitar la latencia y la dependencia de la red.</td><td>“El procesamiento en el borde permite decidir en milisegundos aunque falle la conexión.”</td></tr>
+<tr><td>Bucle cerrado</td><td class="resp">Los sensores internos miden el resultado de la acción y realimentan el sistema para corregirla.</td><td>“El bucle cerrado corrige el movimiento en tiempo real.”</td></tr>
+<tr><td>Opacidad algorítmica</td><td class="resp">El proceso interno de decisión no es comprensible ni auditable para los afectados.</td><td>“La opacidad algorítmica impide al afectado impugnar la decisión.”</td></tr>
+<tr><td>Sesgo de entrenamiento</td><td class="resp">Error sistemático que la IA aprende de datos históricos con desigualdades y luego amplifica.</td><td>“El sesgo de entrenamiento reproduce discriminaciones pasadas.”</td></tr>
+<tr><td>Responsabilidad distribuida</td><td class="resp">La cadena fabricante–programador–operador–Estado dificulta saber quién responde por un daño.</td><td>“La responsabilidad distribuida diluye la rendición de cuentas.”</td></tr>
+<tr><td>Impunidad algorítmica</td><td class="resp">Daño causado por un sistema autónomo sin que nadie rinda cuentas.</td><td>“Sin un marco legal, la autonomía se convierte en impunidad algorítmica.”</td></tr>
+<tr><td>Amplificador humano</td><td class="resp">Visión de la robótica en la que la máquina potencia al humano sin reemplazar su criterio ni su responsabilidad.</td><td>“El robot quirúrgico funciona como amplificador humano: el médico decide.”</td></tr>
+<tr><td>Desplazamiento laboral y reconversión</td><td class="resp">La automatización elimina puestos y obliga a recalificarse o enfrentar desempleo estructural.</td><td>“El beneficio de la eficiencia exige políticas de reconversión laboral.”</td></tr>
+<tr><td>Autonomía humana</td><td class="resp">Capacidad de decidir de forma libre e independiente, que se erosiona cuando un sistema condiciona o reemplaza el juicio.</td><td>“Si el médico siempre sigue la recomendación, la autonomía humana es solo formal.”</td></tr>
+<tr><td>Armas autónomas letales (LAWS)</td><td class="resp">Sistemas que seleccionan y atacan objetivos sin control humano directo.</td><td>“Las LAWS plantean si puede delegarse la decisión de matar.”</td></tr>
+<tr><td>Personalidad electrónica</td><td class="resp">Propuesta debatida en el Parlamento Europeo de dar a robots avanzados un estatus legal propio.</td><td>“La personalidad electrónica podría servir para eludir la responsabilidad del fabricante.”</td></tr>
+</tbody></table></div></details>
+
+<details class="area"><summary>DMPA 09 y 10 · Datos, macrodatos y cadena de bloques</summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Término</th><th>Definición</th><th>Úsalo así</th></tr></thead>
+<tbody>
+<tr><td>Privacidad frente a transparencia</td><td class="resp">Tensión entre la visibilidad de todas las transacciones de una cadena de bloques pública y la protección de datos personales.</td><td>“La transparencia que da confianza también expone a los usuarios.”</td></tr>
+<tr><td>Inmutabilidad</td><td class="resp">Imposibilidad práctica de alterar un registro ya validado en la cadena.</td><td>“La inmutabilidad choca con el derecho al olvido.”</td></tr>
+<tr><td>Descentralización</td><td class="resp">Sin autoridad central: los nodos comparten y validan el registro.</td><td>“Sin autoridad central, ¿quién responde por un error?”</td></tr>
+<tr><td>Seudonimato</td><td class="resp">Las identidades se representan con códigos, no con nombres, pero pueden vincularse a personas.</td><td>“El seudonimato no equivale a anonimato.”</td></tr>
+<tr><td>Soberanía del usuario sobre su identidad</td><td class="resp">Control de la persona sobre quién accede a sus datos de identidad.</td><td>“El sistema promete soberanía, pero la gestión real la tiene la plataforma.”</td></tr>
+<tr><td>Contrato inteligente</td><td class="resp">Programa que se ejecuta automáticamente en la cadena de bloques cuando se cumplen condiciones.</td><td>“Si el contrato inteligente tiene un error, nadie puede revertirlo.”</td></tr>
+<tr><td>Gobernanza</td><td class="resp">Cómo y quién toma decisiones sobre las reglas y el futuro de un sistema.</td><td>“La gobernanza de la red queda en manos de quienes más recursos tienen.”</td></tr>
+<tr><td>Prueba de trabajo</td><td class="resp">Mecanismo de consenso que exige cálculos intensivos, con alto consumo energético.</td><td>“La prueba de trabajo traslada un costo ambiental fuera de la red.”</td></tr>
+<tr><td>Las 4 V de los macrodatos</td><td class="resp">Volumen, variedad, velocidad y veracidad.</td><td>“La velocidad permite alertas en tiempo real, pero la veracidad depende del sensor.”</td></tr>
+</tbody></table></div></details>
+
+<details class="area"><summary>DMPA 12–15 · Algoritmos y sus dilemas</summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Término</th><th>Definición</th><th>Úsalo así</th></tr></thead>
+<tbody>
+<tr><td>Algoritmo de caja negra</td><td class="resp">Algoritmo que da resultados sin claridad sobre cómo llegó a ellos.</td><td>“Al ser una caja negra, el sistema no puede justificar su decisión.”</td></tr>
+<tr><td>Transparencia algorítmica</td><td class="resp">Capacidad de comprender y explicar el funcionamiento interno del algoritmo.</td><td>“Sin transparencia algorítmica, la apelación es imposible.”</td></tr>
+<tr><td>Sesgo incorporado</td><td class="resp">Sesgo con dos orígenes: decisiones de los desarrolladores y datos de entrenamiento sesgados o incompletos.</td><td>“El sesgo no está programado a propósito: está en los datos de entrenamiento.”</td></tr>
+<tr><td>Consecuencias no intencionales</td><td class="resp">Efectos negativos de algoritmos diseñados con buenas intenciones.</td><td>“El algoritmo cumplió su objetivo, pero con una consecuencia no intencional.”</td></tr>
+<tr><td>Reemplazo del juicio humano</td><td class="resp">Delegar en algoritmos decisiones que antes tomaban personas (jueces, médicos).</td><td>“El caso Loomis muestra los límites de reemplazar el juicio humano.”</td></tr>
+<tr><td>Argumento razonado</td><td class="resp">Opinión sostenida con argumentos claros y ejemplos reales.</td><td>Es la estructura que sigue cada párrafo de tu ensayo.</td></tr>
+</tbody></table></div></details>
+
+<details class="area"><summary>DMPA 03–07 (5.º) · Inteligencia artificial</summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Término</th><th>Definición</th><th>Úsalo así</th></tr></thead>
+<tbody>
+<tr><td>Escalera de autonomía</td><td class="resp">Clasificación de la IA de la automatización simple a la autonomía alta (débil, dominio específico, general, singularidad).</td><td>“En la escalera de autonomía, este sistema está en el peldaño de dominio específico.”</td></tr>
+<tr><td>IA débil o de dominio específico</td><td class="resp">IA diseñada para una tarea concreta; toda la IA existente es de este tipo.</td><td>“Pese a la publicidad, es una IA de dominio específico.”</td></tr>
+<tr><td>Singularidad y multiplicidad</td><td class="resp">Singularidad: punto hipotético en que la IA supera al humano. Multiplicidad: colaboración entre humanos y máquinas diversas.</td><td>“Más realista que la singularidad es la multiplicidad: humanos y máquinas colaborando.”</td></tr>
+<tr><td>Porcentaje de confianza</td><td class="resp">Probabilidad que un modelo asigna a su predicción; no es certeza.</td><td>“Un 98 % de confianza sigue dejando errores a gran escala.”</td></tr>
+<tr><td>Alucinación</td><td class="resp">Respuesta falsa que la IA generativa presenta con seguridad.</td><td>“El riesgo no es que se equivoque, sino que lo haga con aparente certeza.”</td></tr>
+<tr><td>Trabajo invisible de entrenamiento</td><td class="resp">Tareas humanas (como resolver un reCAPTCHA) que entrenan sistemas de IA sin que el usuario lo note.</td><td>“Al resolver un reCAPTCHA, el usuario entrena gratis a la IA.”</td></tr>
+<tr><td>Verbos no antropomórficos</td><td class="resp">Consejo del DMPA 03: decir que la IA procesa, calcula u optimiza, no que piensa, siente o quiere.</td><td>“El algoritmo optimiza el tiempo de visualización”, no “el algoritmo quiere que mires más”.</td></tr>
+</tbody></table></div></details>
+
+<details class="area"><summary>DMPA 05, 28 y 31 · Huella digital, redes y medios inmersivos</summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Término</th><th>Definición</th><th>Úsalo así</th></tr></thead>
+<tbody>
+<tr><td>Huella digital activa y pasiva</td><td class="resp">Activa: lo que publicas a propósito. Pasiva: lo que se registra sin que lo decidas (ubicación, cookies).</td><td>“La ubicación vendida forma parte de la huella pasiva, que el usuario no controla.”</td></tr>
+<tr><td>Muestreo y cuantificación</td><td class="resp">Pasos de la digitalización: medir una señal a intervalos y asignar a cada medida un valor binario.</td><td>“La precisión del sensor depende del muestreo.”</td></tr>
+<tr><td>Ingeniería social</td><td class="resp">Engañar a una persona para que entregue credenciales o información.</td><td>“El eslabón más débil del sistema es humano: la ingeniería social.”</td></tr>
+<tr><td>Derecho al olvido</td><td class="resp">Derecho a pedir que se eliminen o desindexen datos personales obsoletos o irrelevantes.</td><td>“Una rutina vendida no admite derecho al olvido en la práctica.”</td></tr>
+<tr><td>Medios inmersivos y metaverso</td><td class="resp">Entornos de RV, RA y RM que simulan presencia; el metaverso es un espacio virtual persistente compartido.</td><td>“La inmersión aumenta el aprendizaje, pero también la recolección de datos biométricos.”</td></tr>
+</tbody></table></div></details>
+
+<details class="area"><summary>Vocabulario académico transversal <small>fuera de los DMPA, útil en cualquier pregunta</small></summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Término</th><th>Definición</th><th>Úsalo así</th></tr></thead>
+<tbody>
+<tr><td>Asimetría de información</td><td class="resp">Una parte sabe mucho más que la otra sobre una transacción.</td><td>“La empresa conoce la rutina del usuario; el usuario no conoce a la empresa.”</td></tr>
+<tr><td>Externalidad negativa</td><td class="resp">Costo que una actividad impone a terceros que no participan en ella.</td><td>“La filtración es una externalidad negativa del modelo publicitario.”</td></tr>
+<tr><td>Compensación (trade-off)</td><td class="resp">Ganar en una dimensión exige perder en otra.</td><td>“Es una compensación entre gratuidad y privacidad.”</td></tr>
+<tr><td>Doble uso</td><td class="resp">La misma tecnología sirve a fines beneficiosos y dañinos.</td><td>“Las imágenes de vista de calles son de doble uso.”</td></tr>
+<tr><td>Desviación de la finalidad</td><td class="resp">Usar un dato o un sistema para un fin distinto del original.</td><td>“El dron contra incendios podría derivar en vigilancia general.”</td></tr>
+<tr><td>Proporcionalidad</td><td class="resp">La intromisión debe ser la mínima necesaria para el fin legítimo.</td><td>“Grabar a todo un barrio no es proporcional para investigar un incendio.”</td></tr>
+<tr><td>Minimización de datos</td><td class="resp">Recoger solo los datos estrictamente necesarios.</td><td>“Para el clima basta la ciudad, no las coordenadas cada cinco minutos.”</td></tr>
+<tr><td>Privacidad desde el diseño</td><td class="resp">Incorporar la protección de datos desde la creación del sistema, no después.</td><td>“Con privacidad desde el diseño, el dato se agregaría antes de salir del celular.”</td></tr>
+<tr><td>Opt-in frente a opt-out</td><td class="resp">Inclusión solo si aceptas expresamente, frente a inclusión por defecto salvo que te excluyas.</td><td>“Un modelo opt-out convierte la inacción en consentimiento.”</td></tr>
+<tr><td>Rendición de cuentas</td><td class="resp">Obligación de responder por decisiones y daños.</td><td>“Sin rendición de cuentas, nadie responde por el error del algoritmo.”</td></tr>
+<tr><td>Principio de precaución</td><td class="resp">Ante riesgos graves e inciertos, actuar para prevenirlos aunque falte certeza total.</td><td>“El principio de precaución justifica limitar la venta de ubicaciones precisas.”</td></tr>
+<tr><td>Dependencia tecnológica (lock-in)</td><td class="resp">Costo tan alto de cambiar de proveedor que el usuario queda atado.</td><td>“El colegio queda atado a la plataforma por dependencia tecnológica.”</td></tr>
+<tr><td>Efecto de red</td><td class="resp">Un servicio vale más cuantos más usuarios tiene, lo que favorece monopolios.</td><td>“El efecto de red explica por qué una sola app domina el mercado.”</td></tr>
+<tr><td>Economía de la atención</td><td class="resp">Modelo de negocio que compite por el tiempo y la atención del usuario.</td><td>“El diseño persuasivo responde a la economía de la atención.”</td></tr>
+<tr><td>Brecha de responsabilidad</td><td class="resp">Vacío en el que nadie es claramente responsable del daño de un sistema autónomo.</td><td>“El accidente revela una brecha de responsabilidad.”</td></tr>
+</tbody></table></div></details>
+</section>
+
+<section class="modulo" id="m8">
+<header><p class="num">Módulo 8</p><h2>La conclusión</h2></header>
+<div class="texto">
+<p>La conclusión es donde la guía exige que las opiniones se presenten “de forma clara” y “justificadas”. No es un resumen: es la respuesta final, con su grado y sus condiciones. Extensión: 3–4 frases, 70–130 palabras, 3–4 minutos. Si vas mal de tiempo, sacrifica un conocimiento propio del último párrafo, nunca la conclusión.</p>
+<h3>Los cuatro movimientos</h3>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Movimiento</th><th>Qué hace</th><th>En el modelo</th></tr></thead>
+<tbody>
+<tr><td>1. Respuesta directa</td><td>Contesta el enunciado con el mismo grado de la tesis y sus mismas palabras.</td><td>“…superan a sus riesgos solo en una medida limitada.”</td></tr>
+<tr><td>2. Síntesis del criterio decisivo</td><td>Explica por qué ese grado, uniendo los argumentos en una idea; no repite párrafo por párrafo.</td><td>“Cuando la ubicación se agrega… es real; pero cuando se venden trayectorias individuales…”</td></tr>
+<tr><td>3. Para quién y bajo qué condiciones</td><td>Dice qué tendría que cambiar para que el juicio cambie. Condiciones concretas y verificables.</td><td>“Solo si se vendieran únicamente datos agregados, se prohibiera… y se exigiera…”</td></tr>
+<tr><td>4. Proyección</td><td>Una tendencia emergente o implicación futura, vinculada a un concepto. Es uno de los objetivos de evaluación del curso.</td><td>“Como el Internet de las cosas registrará la ubicación…, la cuestión será quién decide.”</td></tr>
+</tbody></table></div>
+<div class="texto">
+<h3>Lo que no debe tener</h3>
+<ul>
+<li><strong>Pruebas nuevas.</strong> Ni fuentes, ni casos, ni cifras que no aparecieron antes. La proyección es una implicación, no un argumento nuevo.</li>
+<li><strong>Un “depende” sin contenido.</strong> Tu rúbrica de clase lo dice explícitamente: si depende, di de qué y por qué.</li>
+<li><strong>Un cambio de postura.</strong> Si la introducción dijo “en una medida limitada”, la conclusión no puede decir “claramente superan”.</li>
+<li><strong>Recomendaciones vagas</strong> como “hay que concienciar a la población” o “se debe usar la tecnología con responsabilidad”.</li>
+<li><strong>Frases de relleno</strong> como “En resumen, como hemos visto a lo largo de este ensayo…”.</li>
+</ul>
+
+<h3>La misma conclusión en tres niveles</h3>
+</div>
+<div class="versiones">
+<div class="version v1"><p class="t">Banda 4–6</p><p>En conclusión, el comercio de datos tiene ventajas y desventajas. Es importante que las personas tengan cuidado con sus datos y que las empresas usen la tecnología de forma responsable.</p><p class="diag">No responde al “¿en qué medida?”, no sintetiza, la recomendación es vaga y no hay proyección.</p></div>
+<div class="version v2"><p class="t">Banda 7–9</p><p>En conclusión, los riesgos de vender datos de ubicación son mayores que los beneficios, porque los datos no son realmente anónimos y los usuarios no saben que se venden, como muestran las Fuentes B y D. Los gobiernos deberían regular más a los intermediarios de datos.</p><p class="diag">Hay respuesta y razones, pero sin grado ni escenarios; resume en vez de sintetizar; la condición es general (“regular más”) y no hay proyección.</p></div>
+<div class="version v3"><p class="t">Banda 10–12</p><p>La del ensayo modelo (frases 22 a 25): mismo grado que la tesis, síntesis de los dos escenarios, tres condiciones concretas y una proyección que cierra con el concepto de poder.</p></div>
+</div>
+<div class="texto">
+<h3>Conclusión según el término de instrucción</h3>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Enunciado</th><th>Primera frase de la conclusión</th></tr></thead>
+<tbody>
+<tr><td>¿En qué medida…?</td><td>“En conclusión, X [supera/no supera] a Y [en gran medida/solo parcialmente], porque…”</td></tr>
+<tr><td>Discuta ventajas y desventajas</td><td>“En conclusión, las ventajas de X pesan más para [grupo] mientras que las desventajas dominan cuando…”</td></tr>
+<tr><td>Discuta efectos y repercusiones</td><td>“En conclusión, los efectos inmediatos de X son…, pero su repercusión decisiva será…”</td></tr>
+<tr><td>Evalúe</td><td>“En conclusión, X es eficaz para…, aunque su limitación principal, …, la vuelve insuficiente cuando…”</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="modulo" id="m9">
+<header><p class="num">Módulo 9</p><h2>Plantilla y práctica</h2></header>
+<div class="texto">
+<h3>Plantilla de la pregunta 4</h3>
+<div class="plantilla">
+<p><strong>Introducción.</strong> [Sistema], como el de la Fuente <span class="hueco">X</span>, <span class="hueco">mecanismo técnico</span>. Afecta a <span class="hueco">partes interesadas</span> en el contexto <span class="hueco">…</span>, porque <span class="hueco">efecto doble</span>. <span class="hueco">Tesis con grado</span>: <span class="hueco">cuándo sí</span>, pero <span class="hueco">cuándo no</span>, porque <span class="hueco">razón conceptual</span>. Lo demuestran <span class="hueco">criterios 1, 2 y 3</span>.</p>
+<p><strong>Párrafo 1 (lado más débil para tu tesis).</strong> <span class="hueco">Frase temática con su límite</span>. La Fuente <span class="hueco">X</span> sostiene…; la Fuente <span class="hueco">Y</span> lo respalda… En conjunto, <span class="hueco">síntesis</span>. <span class="hueco">Conocimiento propio</span>. Sin embargo, <span class="hueco">refutación</span>. Por eso <span class="hueco">juicio: para quién y hasta dónde</span>.</p>
+<p><strong>Párrafo 2 (argumento decisivo).</strong> <span class="hueco">El riesgo/beneficio más importante es…</span> La Fuente <span class="hueco">X</span> asegura…, pero la Fuente <span class="hueco">Y</span> muestra… <span class="hueco">Conocimiento propio que generaliza</span>. Desde la perspectiva de <span class="hueco">concepto</span>, … <span class="hueco">Pesa más que… porque…</span></p>
+<p><strong>Párrafo 3 (tercer criterio).</strong> Además, <span class="hueco">frase temática con concepto</span>. Según la Fuente <span class="hueco">X</span>…; a su vez, la Fuente <span class="hueco">Y</span>… <span class="hueco">Teoría o ley aplicada</span>. <span class="hueco">Juicio diferenciado</span>.</p>
+<p><strong>Conclusión.</strong> En conclusión, <span class="hueco">mismo grado</span>. Cuando…, …; pero cuando…, … El equilibrio cambiaría solo si <span class="hueco">condiciones</span>. Como <span class="hueco">tendencia</span>, la cuestión será <span class="hueco">concepto</span>.</p>
+</div>
+
+<h3>Practica con las mismas fuentes</h3>
+<p>Cambiar el enunciado con las mismas fuentes es el mejor entrenamiento: te obliga a cambiar el foco, la tesis y el orden de los párrafos. Escribe cada una en 35 minutos y corrígela con el módulo 3.</p>
+<ol>
+<li>Haciendo referencia a las Fuentes A–D y a sus propios conocimientos, discuta las oportunidades y dilemas para las municipalidades que compran datos de ubicación a intermediarios. [12]</li>
+<li>Haciendo referencia a las Fuentes A–D y a sus propios conocimientos, evalúe la afirmación de la Fuente C de que los datos que se comercializan «son anónimos». [12]</li>
+<li>Haciendo referencia a las Fuentes A–D y a sus propios conocimientos, discuta los efectos y repercusiones para los usuarios jóvenes de aceptar permisos de ubicación en aplicaciones gratuitas. [12]</li>
+</ol>
+<p class="nota">Pista para la 1: el foco cambia a la municipalidad; los hijos de la fiscal ya no son partes interesadas centrales, pero sí la confianza de los vecinos y el riesgo legal del municipio. Pista para la 2: “evalúe” pide fortalezas y debilidades de la afirmación; empieza por lo que tiene de cierto (no vende nombres).</p>
+
+<h3>Lista de control antes de entregar</h3>
+<ul class="control" data-grupo="ens">
+<li><label><input type="checkbox"><span>La introducción define el sistema por su mecanismo y cita una fuente desde la primera frase.</span></label></li>
+<li><label><input type="checkbox"><span>La tesis responde al término de instrucción con grado y condición, y usa las palabras del enunciado.</span></label></li>
+<li><label><input type="checkbox"><span>Anuncié los criterios y los párrafos siguen ese orden.</span></label></li>
+<li><label><input type="checkbox"><span>Cada párrafo combina al menos dos fuentes en una misma frase.</span></label></li>
+<li><label><input type="checkbox"><span>Cada párrafo tiene un conocimiento propio explicado (qué, quién, cuándo, qué demuestra).</span></label></li>
+<li><label><input type="checkbox"><span>Hay al menos una concesión con refutación argumentada.</span></label></li>
+<li><label><input type="checkbox"><span>Uso al menos tres términos técnicos dentro de explicaciones, no sueltos.</span></label></li>
+<li><label><input type="checkbox"><span>Dos o tres conceptos aparecen como explicación (quién decide, quién eres para el sistema, qué valores chocan).</span></label></li>
+<li><label><input type="checkbox"><span>Cada párrafo termina con un juicio: cuánto importa, para quién, en qué condiciones.</span></label></li>
+<li><label><input type="checkbox"><span>La conclusión repite el grado, sintetiza, da condiciones concretas y proyecta, sin pruebas nuevas.</span></label></li>
+<li><label><input type="checkbox"><span>No escribí ninguna cifra, fecha o cita de la que no esté seguro.</span></label></li>
+</ul>
+<p class="progreso" data-progreso="ens"></p>
+</div>
+<footer class="pie">
+<p>Fuentes: Guía de Sociedad Digital (IB, 2025), bandas de puntuación de la prueba 2, pregunta 4, y esquema de calificación de noviembre de 2025; DMPA de Sociedad Digital del curso (4.º y 5.º: n.º 05, 09, 10, 11, 12–15, 22, 28, 31 y 03–07), incluida la rúbrica de ensayo de los DMPA 10 y 13. El simulacro (fuentes A–D, ClimaYa, encuesta y reportaje) y el ensayo modelo son de elaboración propia y no son materiales del IB. Los casos, estudios, leyes y autores citados son reales; verifica cualquier cifra antes de usarla de memoria.</p>
+</footer>
+</section>
+</main>
+</div>
+<script>
+(function(){
+  var raiz=document.documentElement;
+  function guardar(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function leer(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  var t=leer('sd3-tema'); if(t==='light'||t==='dark'){raiz.setAttribute('data-theme',t)}
+  document.querySelectorAll('button.tema').forEach(function(b){
+    b.addEventListener('click',function(){
+      var a=raiz.getAttribute('data-theme');
+      if(!a){a=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+      var n=a==='dark'?'light':'dark'; raiz.setAttribute('data-theme',n); guardar('sd3-tema',n);
+    });
+  });
+  var colores=document.querySelectorAll('.toggle-color');
+  function aplicarColor(on){document.body.classList.toggle('sin-color',!on); colores.forEach(function(x){x.checked=on}); guardar('sd3-color',on?'1':'0')}
+  colores.forEach(function(x){x.addEventListener('change',function(){aplicarColor(x.checked)})});
+  if(leer('sd3-color')==='0'){aplicarColor(false)}
+  var toggles=document.querySelectorAll('.toggle-repaso');
+  function aplicar(on){
+    document.body.classList.toggle('repaso',on);
+    toggles.forEach(function(x){x.checked=on});
+    if(!on){document.querySelectorAll('td.resp.visto').forEach(function(d){d.classList.remove('visto')})}
+    guardar('sd3-repaso',on?'1':'0');
+  }
+  toggles.forEach(function(x){x.addEventListener('change',function(){aplicar(x.checked)})});
+  if(leer('sd3-repaso')==='1'){aplicar(true)}
+  document.querySelectorAll('td.resp').forEach(function(d){
+    d.setAttribute('tabindex','0');
+    function ver(){if(document.body.classList.contains('repaso')){d.classList.toggle('visto')}}
+    d.addEventListener('click',ver);
+    d.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();ver()}});
+  });
+  document.querySelectorAll('ul.control').forEach(function(ul){
+    var g=ul.getAttribute('data-grupo'), cajas=ul.querySelectorAll('input[type=checkbox]');
+    var p=document.querySelector('[data-progreso="'+g+'"]');
+    var est=[]; try{est=JSON.parse(leer('sd3-lista-'+g)||'[]')}catch(e){est=[]}
+    function pintar(){var c=0;cajas.forEach(function(x){if(x.checked)c++}); if(p){p.textContent=c+' de '+cajas.length+' comprobados'}}
+    cajas.forEach(function(x,i){
+      x.checked=!!est[i];
+      x.addEventListener('change',function(){var v=[];cajas.forEach(function(y){v.push(y.checked)});guardar('sd3-lista-'+g,JSON.stringify(v));pintar()});
+    });
+    pintar();
+  });
+  var enlaces=document.querySelectorAll('nav.lateral li a'), secciones=document.querySelectorAll('section.modulo');
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(ents){
+      ents.forEach(function(e){if(e.isIntersecting){enlaces.forEach(function(a){a.classList.toggle('activo',a.getAttribute('href')==='#'+e.target.id)})}});
+    },{rootMargin:'-20% 0px -70% 0px'});
+    secciones.forEach(function(s){obs.observe(s)});
+  }
+  document.querySelectorAll('.menu-movil a').forEach(function(a){a.addEventListener('click',function(){a.closest('details').open=false})});
+})();
+</script>
+
+</body></html>

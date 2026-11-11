@@ -1,0 +1,2806 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 16 · Cinemática</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido"><div class="nt">Módulo 16</div>
+<a href="#mapa">0. Mapa y evaluación</a>
+<a href="#teoria">1. Teoría completa</a>
+<a class="sub" href="#t1">1.1 Magnitudes del movimiento</a>
+<a class="sub" href="#t2">1.2 Integrar hacia atrás</a>
+<a class="sub" href="#t3">1.3 Desplazamiento y distancia</a>
+<a class="sub" href="#t4">1.4 Análisis del movimiento</a>
+<a class="sub" href="#t5">1.5 Aceleración según v o s</a>
+<a class="sub" href="#t6">1.6 Cinemática vectorial</a>
+<a class="sub" href="#t7">1.7 Gráficas s, v y a</a>
+<a class="sub" href="#t8">1.8 Más allá del IB</a>
+<a href="#glosario">2. Glosario</a>
+<a href="#trampas">3. Trampas de Prueba 1</a>
+<a href="#fichas">4. Ejemplos resueltos</a>
+<a href="#examenes">5. Preguntas de examen</a>
+<a href="#extra">6. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+<p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 16 de 17</p>
+<h1>Cinemática</h1>
+<p class="formula">\( v=\frac{ds}{dt}\qquad a=\frac{dv}{dt}=v\frac{dv}{ds}\qquad \text{desplazamiento}=\int_{t_1}^{t_2}v\,dt\qquad \text{distancia}=\int_{t_1}^{t_2}|v|\,dt \)</p>
+<p>La cinemática es derivación e integración con un significado físico. En la Prueba 1 vale tanto el cálculo exacto como la interpretación: cuándo se detiene la partícula, cuándo cambia de sentido, cuándo acelera y cuánto recorre. Este módulo cubre el movimiento en una recta, la aceleración que depende de \(v\) o de \(s\) (con el Módulo 15) y el movimiento vectorial (con el Módulo 9). Los problemas extra integran series, optimización, vectores, probabilidad y ecuaciones diferenciales.</p>
+</header>
+
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">La cinemática aparece en 3 de tus 7 pruebas y suma 43 puntos. Son dos preguntas largas de Sección B (16 y 20 puntos) y una de 7 puntos. Con tan pocas preguntas pero tan largas, una sola puede valer un tercio de la Sección B.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2026 TZ2</td><td>8</td><td>7</td><td>Partícula sobre una curva implícita: razón de cambio de \(x\) a partir de la de \(y\)</td></tr>
+<tr><td>Noviembre 2021</td><td>10 (Sección B)</td><td>16</td><td>\(v=4+4t-3t^2\): velocidad máxima, posición, gráfico y distancia total</td></tr>
+<tr><td>Mayo 2021 TZ2</td><td>11 (Sección B)</td><td>20</td><td>\(a=-(1+v)\): ecuación diferencial, desplazamiento máximo y simetría de la velocidad</td></tr>
+</tbody></table></div>
+<p>La parte (a) de mayo 2021 TZ2 P11 ya está en el Módulo 15 como ecuación diferencial. Aquí se repite dentro de la pregunta completa. La parte (a) de mayo 2026 P8 es derivación implícita (tema del Módulo 12) y se incluye porque es la mitad de la pregunta.</p>
+
+<h3>Cómo lo pregunta el IB: patrones de tus pruebas</h3>
+<ol>
+<li><b>Velocidad dada como polinomio o exponencial:</b> la velocidad máxima sale de \(a=0\); la posición, de integrar con \(s(0)\).</li>
+<li><b>Distancia total frente a desplazamiento:</b> se separa la integral donde \(v\) cambia de signo y se suman los valores absolutos (M1 por «sumar las dos áreas»).</li>
+<li><b>Bosquejo del gráfico de \(v\):</b> cortes con los ejes, vértice y dominio marcados; cada uno vale una marca.</li>
+<li><b>Aceleración en función de \(v\):</b> se resuelve una ecuación diferencial en \(t\) o en \(s\) (con \(a=v\frac{dv}{ds}\)).</li>
+<li><b>Razones de cambio:</b> una partícula sobre una curva, \(\frac{dx}{dt}=\frac{dx}{dy}\cdot\frac{dy}{dt}\).</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA 8 (2026)</td><td>Definiciones, signos de \(v\) y \(a\), acelerar o frenar; ítems de Awada (posición, pelota lanzada, gráfico de velocidad, resorte) y del IB: \(v=3t^2-4t+2\); \(a=-\frac1{1+t^2}\); \(s=2\sin\pi t+\sin2\pi t\); \(v=2t+\cos2t\); \(v=6e^{2t}+t\); \(a=\frac{60-v}{40}\); varios con calculadora</td><td>Ejemplo 1.13, F1–F5, F10</td></tr>
+<tr><td>Banco «Cinemática» (imágenes)</td><td>Desplazamiento amortiguado \(2^{1-t/5}\sin\frac{2\pi t}3\) con progresión geométrica; dos partículas que se encuentran; \(a=2t-1\) con dos datos de \(s\); \(v=1{,}4^t-2{,}7\). Todos con calculadora</td><td>Ejemplo 1.4, F6–F8, con valores exactos propios</td></tr>
+</tbody></table></div>
+<p><b>Lo que las fichas no cubren</b>, y cómo se compensa: aceleración en función de \(s\) (Ejemplo 1.10, E8), cinemática vectorial (Ejemplos 1.11 y 1.12, F9, E3, E6), velocidad máxima frente a rapidez máxima (Ejemplo 1.8) y movimiento armónico y proyectiles (sección 1.8, E10). Los ítems de calculadora están adaptados a la Prueba 1 con valores exactos, y así se indica en cada fuente.</p>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Posición, desplazamiento, velocidad, rapidez, aceleración (NM 5.9)</td><td>1.1</td><td>Alto</td></tr>
+<tr><td>Obtener \(v\) y \(s\) integrando, con condiciones (NM 5.9, 5.11)</td><td>1.2</td><td>Alto</td></tr>
+<tr><td>Distancia total \(\int|v|\,dt\) frente a desplazamiento (NM 5.9)</td><td>1.3</td><td>Alto</td></tr>
+<tr><td>Reposo, cambio de sentido, velocidad máxima, acelerar o frenar</td><td>1.4</td><td>Alto</td></tr>
+<tr><td>\(a=v\frac{dv}{ds}\), aceleración en función de \(v\) o \(s\) (NS 5.18)</td><td>1.5</td><td>Medio</td></tr>
+<tr><td>Movimiento vectorial, velocidad constante, distancia mínima (NS 3.12, 3.13)</td><td>1.6</td><td>Medio</td></tr>
+<tr><td>Gráficas \(s\)–\(t\), \(v\)–\(t\), \(a\)–\(t\): pendientes y áreas</td><td>1.7</td><td>Medio</td></tr>
+<tr><td>Movimiento armónico simple, proyectiles, resistencia del aire (fuera del programa)</td><td>1.8</td><td>Solo como herramienta</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1 a 1.7 cubren la cinemática de NM y de NS, incluida la versión vectorial que el programa pone en el tema de vectores. Las tres preguntas de examen están resueltas con marcas: noviembre 2021 y mayo 2026 con el markscheme oficial, y mayo 2021 TZ2 con marcas reconstruidas porque no hay markscheme. La sección 1.8 añade el movimiento armónico y los proyectiles, que resuelven problemas fuera del programa.</p></div>
+</section>
+
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Cada sección va de la definición a las variantes de Sección B. Cada concepto trae un ejemplo resuelto con valores exactos. Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Las magnitudes del movimiento</h3>
+<p>Una partícula se mueve sobre una recta con un origen fijo \(O\) y un sentido positivo.</p>
+<ul>
+<li><b>Desplazamiento (o posición)</b> \(s(t)\): distancia con signo a \(O\). Si \(s\gt0\), está del lado positivo.</li>
+<li><b>Velocidad</b> \(v=\frac{ds}{dt}\): con signo. \(v\gt0\), se mueve en sentido positivo; \(v\lt0\), en sentido negativo; \(v=0\), está en reposo instantáneo.</li>
+<li><b>Rapidez (o celeridad)</b> \(|v|\): sin signo.</li>
+<li><b>Aceleración</b> \(a=\frac{dv}{dt}=\frac{d^2s}{dt^2}\): la tasa de cambio de la velocidad, no de la rapidez.</li>
+<li><b>Velocidad media</b> en \([t_1,t_2]\): \(\frac{s(t_2)-s(t_1)}{t_2-t_1}\). <b>Rapidez media:</b> distancia total dividida por el tiempo.</li>
+<li><b>Acelerar y frenar:</b> la rapidez aumenta si \(v\) y \(a\) tienen el mismo signo, y disminuye si tienen signos opuestos. Una aceleración negativa no significa «frenar».</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.1. Un polinomio que vuelve</p>
+<p>\(s=t^3-6t^2+9t\) metros, \(0\le t\le5\). Halla \(v\), \(a\), los instantes de reposo, el desplazamiento y la distancia total.</p>
+<p>\(v=3t^2-12t+9=3(t-1)(t-3)\) y \(a=6t-12\). Está en reposo en \(t=1\) y \(t=3\), y en ambos cambia de sentido porque \(v\) cambia de signo.</p>
+<p>Posiciones: \(s(0)=0\), \(s(1)=4\), \(s(3)=0\), \(s(5)=20\). El desplazamiento es \(s(5)-s(0)=20\). La distancia es \(4+4+20=28\): va a 4, vuelve a \(O\) y sigue hasta 20.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.2. ¿Cuándo acelera?</p>
+<p>Con los datos del Ejemplo 1.1, ¿en qué intervalos aumenta la rapidez?</p>
+<div class="tbl"><table><thead><tr><th>Intervalo</th><th>\([0,1)\)</th><th>\((1,2)\)</th><th>\((2,3)\)</th><th>\((3,5]\)</th></tr></thead><tbody>
+<tr><td>Signo de \(v\)</td><td>\(+\)</td><td>\(-\)</td><td>\(-\)</td><td>\(+\)</td></tr>
+<tr><td>Signo de \(a\)</td><td>\(-\)</td><td>\(-\)</td><td>\(+\)</td><td>\(+\)</td></tr>
+<tr><td>Rapidez</td><td>disminuye</td><td><b>aumenta</b></td><td>disminuye</td><td><b>aumenta</b></td></tr></tbody></table></div>
+<p>En \((1,2)\) la aceleración es negativa y aun así la partícula va cada vez más rápido, porque se mueve en sentido negativo.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 401.735156 412.595875" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 412.595875 
+L 401.735156 412.595875 
+L 401.735156 0 
+L 0 0 
+L 0 412.595875 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 37.415156 114.818824 
+L 394.535156 114.818824 
+L 394.535156 7.2 
+L 37.415156 7.2 
+L 37.415156 114.818824 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="maa9d215e06" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#maa9d215e06" x="53.647884" y="114.818824" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#maa9d215e06" x="118.578793" y="114.818824" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#maa9d215e06" x="183.509702" y="114.818824" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#maa9d215e06" x="248.440611" y="114.818824" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#maa9d215e06" x="313.37152" y="114.818824" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#maa9d215e06" x="378.302429" y="114.818824" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_7">
+      <defs>
+       <path id="mf2b4954646" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mf2b4954646" x="37.415156" y="105.850588" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="110.029729" transform="rotate(-0 30.415156 110.029729)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#mf2b4954646" x="37.415156" y="61.009412" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="65.188552" transform="rotate(-0 30.415156 65.188552)">10</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#mf2b4954646" x="37.415156" y="16.168235" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="20.347376" transform="rotate(-0 30.415156 20.347376)">20</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_10">
+    <path d="M 53.647884 105.850588 
+L 57.991088 103.270155 
+L 62.334293 100.922425 
+L 66.677497 98.799347 
+L 71.020702 96.892867 
+L 75.363907 95.194935 
+L 79.707111 93.697498 
+L 84.050316 92.392504 
+L 89.479322 91.019619 
+L 94.908327 89.919118 
+L 100.337333 89.075275 
+L 105.766339 88.472363 
+L 111.195345 88.094657 
+L 116.624351 87.926428 
+L 122.053356 87.951951 
+L 128.568163 88.216188 
+L 135.08297 88.709606 
+L 142.683578 89.538663 
+L 150.284186 90.599518 
+L 158.970596 92.0404 
+L 169.828607 94.089856 
+L 188.287227 97.870372 
+L 203.488443 100.890913 
+L 213.260653 102.614795 
+L 221.947063 103.915571 
+L 229.547671 104.822129 
+L 236.062478 105.392771 
+L 242.577285 105.744196 
+L 249.092091 105.849229 
+L 254.521097 105.728936 
+L 259.950103 105.402938 
+L 265.379109 104.85551 
+L 270.808115 104.070925 
+L 276.23712 103.033456 
+L 281.666126 101.727377 
+L 286.009331 100.478546 
+L 290.352535 99.039688 
+L 294.69574 97.402749 
+L 299.038945 95.55968 
+L 303.382149 93.502426 
+L 307.725354 91.222937 
+L 312.068558 88.713161 
+L 316.411763 85.965044 
+L 320.754968 82.970536 
+L 325.098172 79.721584 
+L 329.441377 76.210137 
+L 333.784582 72.428141 
+L 338.127786 68.367546 
+L 342.470991 64.020299 
+L 346.814195 59.378348 
+L 351.1574 54.433642 
+L 355.500605 49.178127 
+L 359.843809 43.603753 
+L 364.187014 37.702467 
+L 368.530219 31.466217 
+L 372.873423 24.886951 
+L 377.216628 17.956617 
+L 378.302429 16.168235 
+L 378.302429 16.168235 
+" clip-path="url(#pe6e64893f6)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 37.415156 105.850588 
+L 394.535156 105.850588 
+" clip-path="url(#pe6e64893f6)" style="fill: none; stroke: currentColor; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 118.578793 114.818824 
+L 118.578793 7.2 
+" clip-path="url(#pe6e64893f6)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 183.509702 114.818824 
+L 183.509702 7.2 
+" clip-path="url(#pe6e64893f6)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_14">
+    <path d="M 248.440611 114.818824 
+L 248.440611 7.2 
+" clip-path="url(#pe6e64893f6)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 37.415156 114.818824 
+L 37.415156 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 37.415156 114.818824 
+L 394.535156 114.818824 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="138.058065" y="65.493529" transform="rotate(-0 138.058065 65.493529)">máximo local (1, 4)</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_15">
+     <path d="M 46.415156 20.298437 
+L 56.415156 20.298437 
+L 66.415156 20.298437 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="74.415156" y="23.798437" transform="rotate(-0 74.415156 23.798437)">s(t) = t³ − 6t² + 9t</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 37.415156 243.961412 
+L 394.535156 243.961412 
+L 394.535156 136.342588 
+L 37.415156 136.342588 
+L 37.415156 243.961412 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_7">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#maa9d215e06" x="53.647884" y="243.961412" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#maa9d215e06" x="118.578793" y="243.961412" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#maa9d215e06" x="183.509702" y="243.961412" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#maa9d215e06" x="248.440611" y="243.961412" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#maa9d215e06" x="313.37152" y="243.961412" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#maa9d215e06" x="378.302429" y="243.961412" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_4">
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#mf2b4954646" x="37.415156" y="226.024941" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="230.204082" transform="rotate(-0 30.415156 230.204082)">0</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#mf2b4954646" x="37.415156" y="190.152" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="194.331141" transform="rotate(-0 30.415156 194.331141)">10</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#mf2b4954646" x="37.415156" y="154.279059" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="158.458199" transform="rotate(-0 30.415156 158.458199)">20</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_25">
+    <path d="M 53.647884 193.739294 
+L 61.248492 198.63084 
+L 68.8491 203.227461 
+L 76.449708 207.529156 
+L 84.050316 211.535926 
+L 90.565123 214.735564 
+L 97.07993 217.718522 
+L 103.594737 220.484801 
+L 110.109544 223.034399 
+L 116.624351 225.367318 
+L 123.139157 227.483557 
+L 129.653964 229.383116 
+L 136.168771 231.065996 
+L 142.683578 232.532196 
+L 149.198385 233.781716 
+L 155.713192 234.814556 
+L 162.227999 235.630717 
+L 168.742806 236.230197 
+L 175.257613 236.612998 
+L 181.77242 236.779119 
+L 188.287227 236.728561 
+L 194.802034 236.461322 
+L 201.316841 235.977404 
+L 207.831648 235.276806 
+L 214.346455 234.359529 
+L 220.861261 233.225571 
+L 227.376068 231.874934 
+L 233.890875 230.307617 
+L 240.405682 228.52362 
+L 246.920489 226.522944 
+L 253.435296 224.305587 
+L 259.950103 221.871551 
+L 266.46491 219.220835 
+L 272.979717 216.35344 
+L 279.494524 213.269364 
+L 286.009331 209.968609 
+L 292.524138 206.451174 
+L 300.124746 202.073641 
+L 307.725354 197.401182 
+L 315.325962 192.433798 
+L 322.92657 187.171489 
+L 330.527178 181.614255 
+L 338.127786 175.762096 
+L 345.728394 169.615011 
+L 353.329002 163.173001 
+L 360.92961 156.436066 
+L 368.530219 149.404205 
+L 376.130827 142.07742 
+L 378.302429 139.929882 
+L 378.302429 139.929882 
+" clip-path="url(#p5a4c03b5c7)" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_26">
+    <path d="M 37.415156 226.024941 
+L 394.535156 226.024941 
+" clip-path="url(#p5a4c03b5c7)" style="fill: none; stroke: currentColor; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_27">
+    <path d="M 118.578793 243.961412 
+L 118.578793 136.342588 
+" clip-path="url(#p5a4c03b5c7)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_28">
+    <path d="M 183.509702 243.961412 
+L 183.509702 136.342588 
+" clip-path="url(#p5a4c03b5c7)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_29">
+    <path d="M 248.440611 243.961412 
+L 248.440611 136.342588 
+" clip-path="url(#p5a4c03b5c7)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 37.415156 243.961412 
+L 37.415156 136.342588 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 37.415156 243.961412 
+L 394.535156 243.961412 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="202.988974" y="204.501176" transform="rotate(-0 202.988974 204.501176)">mínimo de v: a = 0</text>
+   </g>
+   <g id="legend_2">
+    <g id="line2d_30">
+     <path d="M 46.415156 149.441026 
+L 56.415156 149.441026 
+L 66.415156 149.441026 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="74.415156" y="152.941026" transform="rotate(-0 74.415156 152.941026)">v(t) = 3t² − 12t + 9</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_8">
+    <path d="M 37.415156 373.104 
+L 394.535156 373.104 
+L 394.535156 265.485176 
+L 37.415156 265.485176 
+L 37.415156 373.104 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_5">
+    <g id="xtick_13">
+     <g id="line2d_31">
+      <g>
+       <use xlink:href="#maa9d215e06" x="53.647884" y="373.104" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="53.647884" y="388.462281" transform="rotate(-0 53.647884 388.462281)">0</text>
+     </g>
+    </g>
+    <g id="xtick_14">
+     <g id="line2d_32">
+      <g>
+       <use xlink:href="#maa9d215e06" x="118.578793" y="373.104" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="118.578793" y="388.462281" transform="rotate(-0 118.578793 388.462281)">1</text>
+     </g>
+    </g>
+    <g id="xtick_15">
+     <g id="line2d_33">
+      <g>
+       <use xlink:href="#maa9d215e06" x="183.509702" y="373.104" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="183.509702" y="388.462281" transform="rotate(-0 183.509702 388.462281)">2</text>
+     </g>
+    </g>
+    <g id="xtick_16">
+     <g id="line2d_34">
+      <g>
+       <use xlink:href="#maa9d215e06" x="248.440611" y="373.104" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="248.440611" y="388.462281" transform="rotate(-0 248.440611 388.462281)">3</text>
+     </g>
+    </g>
+    <g id="xtick_17">
+     <g id="line2d_35">
+      <g>
+       <use xlink:href="#maa9d215e06" x="313.37152" y="373.104" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="313.37152" y="388.462281" transform="rotate(-0 313.37152 388.462281)">4</text>
+     </g>
+    </g>
+    <g id="xtick_18">
+     <g id="line2d_36">
+      <g>
+       <use xlink:href="#maa9d215e06" x="378.302429" y="373.104" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="378.302429" y="388.462281" transform="rotate(-0 378.302429 388.462281)">5</text>
+     </g>
+    </g>
+    <g id="text_17">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="215.975156" y="403.108219" transform="rotate(-0 215.975156 403.108219)">t</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_6">
+    <g id="ytick_7">
+     <g id="line2d_37">
+      <g>
+       <use xlink:href="#mf2b4954646" x="37.415156" y="360.442962" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="364.622103" transform="rotate(-0 30.415156 364.622103)">−10</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_38">
+      <g>
+       <use xlink:href="#mf2b4954646" x="37.415156" y="328.790367" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="332.969507" transform="rotate(-0 30.415156 332.969507)">0</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_39">
+      <g>
+       <use xlink:href="#mf2b4954646" x="37.415156" y="297.137772" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="301.316912" transform="rotate(-0 30.415156 301.316912)">10</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_40">
+      <g>
+       <use xlink:href="#mf2b4954646" x="37.415156" y="265.485176" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="269.664317" transform="rotate(-0 30.415156 269.664317)">20</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_41">
+    <path d="M 53.647884 366.773481 
+L 378.302429 271.815696 
+L 378.302429 271.815696 
+" clip-path="url(#p79171c3776)" style="fill: none; stroke: #a2530a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_42">
+    <path d="M 37.415156 328.790367 
+L 394.535156 328.790367 
+" clip-path="url(#p79171c3776)" style="fill: none; stroke: currentColor; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_43">
+    <path d="M 118.578793 373.104 
+L 118.578793 265.485176 
+" clip-path="url(#p79171c3776)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_44">
+    <path d="M 183.509702 373.104 
+L 183.509702 265.485176 
+" clip-path="url(#p79171c3776)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_45">
+    <path d="M 248.440611 373.104 
+L 248.440611 265.485176 
+" clip-path="url(#p79171c3776)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: currentColor; stroke-width: 0.6"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 37.415156 373.104 
+L 37.415156 265.485176 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 37.415156 373.104 
+L 394.535156 373.104 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_3">
+    <g id="line2d_46">
+     <path d="M 46.415156 278.583614 
+L 56.415156 278.583614 
+L 66.415156 278.583614 
+" style="fill: none; stroke: #a2530a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_22">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="74.415156" y="282.083614" transform="rotate(-0 74.415156 282.083614)">a(t) = 6t − 12</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe6e64893f6">
+   <rect x="37.415156" y="7.2" width="357.12" height="107.618824"/>
+  </clipPath>
+  <clipPath id="p5a4c03b5c7">
+   <rect x="37.415156" y="136.342588" width="357.12" height="107.618824"/>
+  </clipPath>
+  <clipPath id="p79171c3776">
+   <rect x="37.415156" y="265.485176" width="357.12" height="107.618824"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: las tres gráficas alineadas. Donde \(s\) tiene un extremo, \(v=0\) (\(t=1\) y \(t=3\)); donde \(v\) tiene un extremo, \(a=0\) (\(t=2\)). La pendiente de cada gráfica es la altura de la siguiente.</figcaption></figure>
+
+<h3 id="t2">1.2 Integrar hacia atrás: de \(a\) a \(v\) y de \(v\) a \(s\)</h3>
+\[ v(t)=v(0)+\int_0^ta(u)\,du,\qquad s(t)=s(0)+\int_0^tv(u)\,du \]
+<p>Cada integración trae una constante, que se fija con un dato. Si los dos datos son sobre \(s\) (y ninguno sobre \(v\)), se integra dos veces con \(c\) y \(d\) y se resuelve un sistema.</p>
+<div class="ex"><p class="et">Ejemplo 1.3. Desde el reposo en el origen</p>
+<p>\(a=6-6t\), con \(v(0)=0\) y \(s(0)=0\). Entonces \(v=6t-3t^2\) y \(s=3t^2-t^3\). Vuelve a \(O\) cuando \(t^2(3-t)=0\), es decir, en \(t=3\). El desplazamiento máximo se da cuando \(v=0\), en \(t=2\), con \(s=4\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.4. Dos datos de posición</p>
+<p class="src">Banco «Cinemática», pregunta 6 (IB, 6 puntos), resuelta sin calculadora.</p>
+<p>\(a=2t-1\); \(s(6)=18{,}25\) y \(s(15)=922{,}75\). Halla \(s(t)\).</p>
+<p>\(v=t^2-t+c\) y \(s=\frac{t^3}3-\frac{t^2}2+ct+d\). Con los datos: \(54+6c+d=18{,}25\) y \(1012{,}5+15c+d=922{,}75\). Restando, \(9c=-54\), así que \(c=-6\) y \(d=\frac14\). Por tanto \(s=\frac{t^3}3-\frac{t^2}2-6t+\frac14\).</p></div>
+
+<h3 id="t3">1.3 Desplazamiento frente a distancia total</h3>
+\[ \text{desplazamiento}=\int_{t_1}^{t_2}v\,dt=s(t_2)-s(t_1),\qquad \text{distancia}=\int_{t_1}^{t_2}|v|\,dt \]
+<p>Para la distancia: halla dónde \(v=0\) en el intervalo, integra entre esos ceros y suma los valores absolutos. Alternativa: halla \(s\) en los extremos y en los ceros, y suma las diferencias \(|s(t_{k+1})-s(t_k)|\), como en el Ejemplo 1.1.</p>
+<div class="ex"><p class="et">Ejemplo 1.5. Áreas con signo</p>
+<p>\(v=t^2-4t+3\) en \([0,4]\). Los ceros son \(t=1\) y \(t=3\). Las tres integrales valen \(\int_0^1v=\frac43\), \(\int_1^3v=-\frac43\) e \(\int_3^4v=\frac43\). El desplazamiento es \(\frac43\) y la distancia es \(4\).</p>
+<p>Comparación: \(v=\sin t\) en \([0,2\pi]\) da desplazamiento \(0\) y distancia \(4\). Que el desplazamiento sea nulo no dice nada de la distancia.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 378.503679 236.16" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 236.16 
+L 378.503679 236.16 
+L 378.503679 0 
+L 0 0 
+L 0 236.16 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 14.183679 228.96 
+L 371.303679 228.96 
+L 371.303679 7.2 
+L 14.183679 7.2 
+L 14.183679 228.96 
+z
+" style="fill: none"/>
+   </g>
+   <g id="FillBetweenPolyCollection_1">
+    <defs>
+     <path id="m4e6a81b31f" d="M 30.416406 -65.557895 
+L 30.416406 -182.273684 
+L 31.236241 -180.705724 
+L 32.056076 -179.145703 
+L 32.87591 -177.59362 
+L 33.695745 -176.049477 
+L 34.51558 -174.513273 
+L 35.335415 -172.985008 
+L 36.155249 -171.464682 
+L 36.975084 -169.952295 
+L 37.794919 -168.447847 
+L 38.614753 -166.951338 
+L 39.434588 -165.462768 
+L 40.254423 -163.982137 
+L 41.074257 -162.509445 
+L 41.894092 -161.044693 
+L 42.713927 -159.587879 
+L 43.533762 -158.139004 
+L 44.353596 -156.698068 
+L 45.173431 -155.265072 
+L 45.993266 -153.840014 
+L 46.8131 -152.422896 
+L 47.632935 -151.013716 
+L 48.45277 -149.612476 
+L 49.272605 -148.219174 
+L 50.092439 -146.833812 
+L 50.912274 -145.456388 
+L 51.732109 -144.086904 
+L 52.551943 -142.725359 
+L 53.371778 -141.371753 
+L 54.191613 -140.026085 
+L 55.011448 -138.688357 
+L 55.831282 -137.358568 
+L 56.651117 -136.036718 
+L 57.470952 -134.722807 
+L 58.290786 -133.416835 
+L 59.110621 -132.118802 
+L 59.930456 -130.828708 
+L 60.750291 -129.546553 
+L 61.570125 -128.272337 
+L 62.38996 -127.006061 
+L 63.209795 -125.747723 
+L 64.029629 -124.497324 
+L 64.849464 -123.254864 
+L 65.669299 -122.020344 
+L 66.489134 -120.793762 
+L 67.308968 -119.57512 
+L 68.128803 -118.364416 
+L 68.948638 -117.161652 
+L 69.768472 -115.966826 
+L 70.588307 -114.77994 
+L 71.408142 -113.600992 
+L 72.227976 -112.429984 
+L 73.047811 -111.266915 
+L 73.867646 -110.111785 
+L 74.687481 -108.964593 
+L 75.507315 -107.825341 
+L 76.32715 -106.694028 
+L 77.146985 -105.570654 
+L 77.966819 -104.455219 
+L 78.786654 -103.347723 
+L 79.606489 -102.248166 
+L 80.426324 -101.156548 
+L 81.246158 -100.072869 
+L 82.065993 -98.997129 
+L 82.885828 -97.929328 
+L 83.705662 -96.869467 
+L 84.525497 -95.817544 
+L 85.345332 -94.77356 
+L 86.165167 -93.737516 
+L 86.985001 -92.70941 
+L 87.804836 -91.689243 
+L 88.624671 -90.677016 
+L 89.444505 -89.672727 
+L 90.26434 -88.676378 
+L 91.084175 -87.687967 
+L 91.90401 -86.707496 
+L 92.723844 -85.734964 
+L 93.543679 -84.77037 
+L 94.363514 -83.813716 
+L 95.183348 -82.865001 
+L 96.003183 -81.924225 
+L 96.823018 -80.991388 
+L 97.642853 -80.066489 
+L 98.462687 -79.14953 
+L 99.282522 -78.24051 
+L 100.102357 -77.339429 
+L 100.922191 -76.446287 
+L 101.742026 -75.561085 
+L 102.561861 -74.683821 
+L 103.381696 -73.814496 
+L 104.20153 -72.95311 
+L 105.021365 -72.099663 
+L 105.8412 -71.254156 
+L 106.661034 -70.416587 
+L 107.480869 -69.586957 
+L 108.300704 -68.765267 
+L 109.120538 -67.951515 
+L 109.940373 -67.145703 
+L 110.760208 -66.347829 
+L 111.580043 -65.557895 
+L 111.580043 -65.557895 
+L 111.580043 -65.557895 
+L 110.760208 -65.557895 
+L 109.940373 -65.557895 
+L 109.120538 -65.557895 
+L 108.300704 -65.557895 
+L 107.480869 -65.557895 
+L 106.661034 -65.557895 
+L 105.8412 -65.557895 
+L 105.021365 -65.557895 
+L 104.20153 -65.557895 
+L 103.381696 -65.557895 
+L 102.561861 -65.557895 
+L 101.742026 -65.557895 
+L 100.922191 -65.557895 
+L 100.102357 -65.557895 
+L 99.282522 -65.557895 
+L 98.462687 -65.557895 
+L 97.642853 -65.557895 
+L 96.823018 -65.557895 
+L 96.003183 -65.557895 
+L 95.183348 -65.557895 
+L 94.363514 -65.557895 
+L 93.543679 -65.557895 
+L 92.723844 -65.557895 
+L 91.90401 -65.557895 
+L 91.084175 -65.557895 
+L 90.26434 -65.557895 
+L 89.444505 -65.557895 
+L 88.624671 -65.557895 
+L 87.804836 -65.557895 
+L 86.985001 -65.557895 
+L 86.165167 -65.557895 
+L 85.345332 -65.557895 
+L 84.525497 -65.557895 
+L 83.705662 -65.557895 
+L 82.885828 -65.557895 
+L 82.065993 -65.557895 
+L 81.246158 -65.557895 
+L 80.426324 -65.557895 
+L 79.606489 -65.557895 
+L 78.786654 -65.557895 
+L 77.966819 -65.557895 
+L 77.146985 -65.557895 
+L 76.32715 -65.557895 
+L 75.507315 -65.557895 
+L 74.687481 -65.557895 
+L 73.867646 -65.557895 
+L 73.047811 -65.557895 
+L 72.227976 -65.557895 
+L 71.408142 -65.557895 
+L 70.588307 -65.557895 
+L 69.768472 -65.557895 
+L 68.948638 -65.557895 
+L 68.128803 -65.557895 
+L 67.308968 -65.557895 
+L 66.489134 -65.557895 
+L 65.669299 -65.557895 
+L 64.849464 -65.557895 
+L 64.029629 -65.557895 
+L 63.209795 -65.557895 
+L 62.38996 -65.557895 
+L 61.570125 -65.557895 
+L 60.750291 -65.557895 
+L 59.930456 -65.557895 
+L 59.110621 -65.557895 
+L 58.290786 -65.557895 
+L 57.470952 -65.557895 
+L 56.651117 -65.557895 
+L 55.831282 -65.557895 
+L 55.011448 -65.557895 
+L 54.191613 -65.557895 
+L 53.371778 -65.557895 
+L 52.551943 -65.557895 
+L 51.732109 -65.557895 
+L 50.912274 -65.557895 
+L 50.092439 -65.557895 
+L 49.272605 -65.557895 
+L 48.45277 -65.557895 
+L 47.632935 -65.557895 
+L 46.8131 -65.557895 
+L 45.993266 -65.557895 
+L 45.173431 -65.557895 
+L 44.353596 -65.557895 
+L 43.533762 -65.557895 
+L 42.713927 -65.557895 
+L 41.894092 -65.557895 
+L 41.074257 -65.557895 
+L 40.254423 -65.557895 
+L 39.434588 -65.557895 
+L 38.614753 -65.557895 
+L 37.794919 -65.557895 
+L 36.975084 -65.557895 
+L 36.155249 -65.557895 
+L 35.335415 -65.557895 
+L 34.51558 -65.557895 
+L 33.695745 -65.557895 
+L 32.87591 -65.557895 
+L 32.056076 -65.557895 
+L 31.236241 -65.557895 
+L 30.416406 -65.557895 
+z
+" style="stroke: #0e6e6a; stroke-opacity: 0.3"/>
+    </defs>
+    <g clip-path="url(#p1d211bf33a)">
+     <use xlink:href="#m4e6a81b31f" x="0" y="236.16" style="fill: #0e6e6a; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3"/>
+    </g>
+   </g>
+   <g id="FillBetweenPolyCollection_2">
+    <defs>
+     <path id="m6c63ae9735" d="M 111.580043 -65.557895 
+L 111.580043 -65.557895 
+L 113.219712 -64.001843 
+L 114.859381 -62.477547 
+L 116.499051 -60.985008 
+L 118.13872 -59.524225 
+L 119.77839 -58.095198 
+L 121.418059 -56.697927 
+L 123.057729 -55.332412 
+L 124.697398 -53.998653 
+L 126.337067 -52.696651 
+L 127.976737 -51.426404 
+L 129.616406 -50.187914 
+L 131.256076 -48.98118 
+L 132.895745 -47.806202 
+L 134.535415 -46.662981 
+L 136.175084 -45.551515 
+L 137.814753 -44.471806 
+L 139.454423 -43.423853 
+L 141.094092 -42.407656 
+L 142.733762 -41.423215 
+L 144.373431 -40.47053 
+L 146.0131 -39.549601 
+L 147.65277 -38.660429 
+L 149.292439 -37.803013 
+L 150.932109 -36.977352 
+L 152.571778 -36.183449 
+L 154.211448 -35.421301 
+L 155.851117 -34.690909 
+L 157.490786 -33.992274 
+L 159.130456 -33.325394 
+L 160.770125 -32.690271 
+L 162.409795 -32.086904 
+L 164.049464 -31.515293 
+L 165.689134 -30.975439 
+L 167.328803 -30.46734 
+L 168.968472 -29.990998 
+L 170.608142 -29.546411 
+L 172.247811 -29.133581 
+L 173.887481 -28.752508 
+L 175.52715 -28.40319 
+L 177.166819 -28.085628 
+L 178.806489 -27.799823 
+L 180.446158 -27.545774 
+L 182.085828 -27.32348 
+L 183.725497 -27.132943 
+L 185.365167 -26.974163 
+L 187.004836 -26.847138 
+L 188.644505 -26.75187 
+L 190.284175 -26.688357 
+L 191.923844 -26.656601 
+L 193.563514 -26.656601 
+L 195.203183 -26.688357 
+L 196.842853 -26.75187 
+L 198.482522 -26.847138 
+L 200.122191 -26.974163 
+L 201.761861 -27.132943 
+L 203.40153 -27.32348 
+L 205.0412 -27.545774 
+L 206.680869 -27.799823 
+L 208.320538 -28.085628 
+L 209.960208 -28.40319 
+L 211.599877 -28.752508 
+L 213.239547 -29.133581 
+L 214.879216 -29.546411 
+L 216.518886 -29.990998 
+L 218.158555 -30.46734 
+L 219.798224 -30.975439 
+L 221.437894 -31.515293 
+L 223.077563 -32.086904 
+L 224.717233 -32.690271 
+L 226.356902 -33.325394 
+L 227.996572 -33.992274 
+L 229.636241 -34.690909 
+L 231.27591 -35.421301 
+L 232.91558 -36.183449 
+L 234.555249 -36.977352 
+L 236.194919 -37.803013 
+L 237.834588 -38.660429 
+L 239.474257 -39.549601 
+L 241.113927 -40.47053 
+L 242.753596 -41.423215 
+L 244.393266 -42.407656 
+L 246.032935 -43.423853 
+L 247.672605 -44.471806 
+L 249.312274 -45.551515 
+L 250.951943 -46.662981 
+L 252.591613 -47.806202 
+L 254.231282 -48.98118 
+L 255.870952 -50.187914 
+L 257.510621 -51.426404 
+L 259.150291 -52.696651 
+L 260.78996 -53.998653 
+L 262.429629 -55.332412 
+L 264.069299 -56.697927 
+L 265.708968 -58.095198 
+L 267.348638 -59.524225 
+L 268.988307 -60.985008 
+L 270.627976 -62.477547 
+L 272.267646 -64.001843 
+L 273.907315 -65.557895 
+L 273.907315 -65.557895 
+L 273.907315 -65.557895 
+L 272.267646 -65.557895 
+L 270.627976 -65.557895 
+L 268.988307 -65.557895 
+L 267.348638 -65.557895 
+L 265.708968 -65.557895 
+L 264.069299 -65.557895 
+L 262.429629 -65.557895 
+L 260.78996 -65.557895 
+L 259.150291 -65.557895 
+L 257.510621 -65.557895 
+L 255.870952 -65.557895 
+L 254.231282 -65.557895 
+L 252.591613 -65.557895 
+L 250.951943 -65.557895 
+L 249.312274 -65.557895 
+L 247.672605 -65.557895 
+L 246.032935 -65.557895 
+L 244.393266 -65.557895 
+L 242.753596 -65.557895 
+L 241.113927 -65.557895 
+L 239.474257 -65.557895 
+L 237.834588 -65.557895 
+L 236.194919 -65.557895 
+L 234.555249 -65.557895 
+L 232.91558 -65.557895 
+L 231.27591 -65.557895 
+L 229.636241 -65.557895 
+L 227.996572 -65.557895 
+L 226.356902 -65.557895 
+L 224.717233 -65.557895 
+L 223.077563 -65.557895 
+L 221.437894 -65.557895 
+L 219.798224 -65.557895 
+L 218.158555 -65.557895 
+L 216.518886 -65.557895 
+L 214.879216 -65.557895 
+L 213.239547 -65.557895 
+L 211.599877 -65.557895 
+L 209.960208 -65.557895 
+L 208.320538 -65.557895 
+L 206.680869 -65.557895 
+L 205.0412 -65.557895 
+L 203.40153 -65.557895 
+L 201.761861 -65.557895 
+L 200.122191 -65.557895 
+L 198.482522 -65.557895 
+L 196.842853 -65.557895 
+L 195.203183 -65.557895 
+L 193.563514 -65.557895 
+L 191.923844 -65.557895 
+L 190.284175 -65.557895 
+L 188.644505 -65.557895 
+L 187.004836 -65.557895 
+L 185.365167 -65.557895 
+L 183.725497 -65.557895 
+L 182.085828 -65.557895 
+L 180.446158 -65.557895 
+L 178.806489 -65.557895 
+L 177.166819 -65.557895 
+L 175.52715 -65.557895 
+L 173.887481 -65.557895 
+L 172.247811 -65.557895 
+L 170.608142 -65.557895 
+L 168.968472 -65.557895 
+L 167.328803 -65.557895 
+L 165.689134 -65.557895 
+L 164.049464 -65.557895 
+L 162.409795 -65.557895 
+L 160.770125 -65.557895 
+L 159.130456 -65.557895 
+L 157.490786 -65.557895 
+L 155.851117 -65.557895 
+L 154.211448 -65.557895 
+L 152.571778 -65.557895 
+L 150.932109 -65.557895 
+L 149.292439 -65.557895 
+L 147.65277 -65.557895 
+L 146.0131 -65.557895 
+L 144.373431 -65.557895 
+L 142.733762 -65.557895 
+L 141.094092 -65.557895 
+L 139.454423 -65.557895 
+L 137.814753 -65.557895 
+L 136.175084 -65.557895 
+L 134.535415 -65.557895 
+L 132.895745 -65.557895 
+L 131.256076 -65.557895 
+L 129.616406 -65.557895 
+L 127.976737 -65.557895 
+L 126.337067 -65.557895 
+L 124.697398 -65.557895 
+L 123.057729 -65.557895 
+L 121.418059 -65.557895 
+L 119.77839 -65.557895 
+L 118.13872 -65.557895 
+L 116.499051 -65.557895 
+L 114.859381 -65.557895 
+L 113.219712 -65.557895 
+L 111.580043 -65.557895 
+z
+" style="stroke: #a2530a; stroke-opacity: 0.3"/>
+    </defs>
+    <g clip-path="url(#p1d211bf33a)">
+     <use xlink:href="#m6c63ae9735" x="0" y="236.16" style="fill: #a2530a; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3"/>
+    </g>
+   </g>
+   <g id="FillBetweenPolyCollection_3">
+    <defs>
+     <path id="m86cd549689" d="M 273.907315 -65.557895 
+L 273.907315 -65.557895 
+L 274.72715 -66.347829 
+L 275.546985 -67.145703 
+L 276.366819 -67.951515 
+L 277.186654 -68.765267 
+L 278.006489 -69.586957 
+L 278.826324 -70.416587 
+L 279.646158 -71.254156 
+L 280.465993 -72.099663 
+L 281.285828 -72.95311 
+L 282.105662 -73.814496 
+L 282.925497 -74.683821 
+L 283.745332 -75.561085 
+L 284.565167 -76.446287 
+L 285.385001 -77.339429 
+L 286.204836 -78.24051 
+L 287.024671 -79.14953 
+L 287.844505 -80.066489 
+L 288.66434 -80.991388 
+L 289.484175 -81.924225 
+L 290.30401 -82.865001 
+L 291.123844 -83.813716 
+L 291.943679 -84.77037 
+L 292.763514 -85.734964 
+L 293.583348 -86.707496 
+L 294.403183 -87.687967 
+L 295.223018 -88.676378 
+L 296.042853 -89.672727 
+L 296.862687 -90.677016 
+L 297.682522 -91.689243 
+L 298.502357 -92.70941 
+L 299.322191 -93.737516 
+L 300.142026 -94.77356 
+L 300.961861 -95.817544 
+L 301.781696 -96.869467 
+L 302.60153 -97.929328 
+L 303.421365 -98.997129 
+L 304.2412 -100.072869 
+L 305.061034 -101.156548 
+L 305.880869 -102.248166 
+L 306.700704 -103.347723 
+L 307.520538 -104.455219 
+L 308.340373 -105.570654 
+L 309.160208 -106.694028 
+L 309.980043 -107.825341 
+L 310.799877 -108.964593 
+L 311.619712 -110.111785 
+L 312.439547 -111.266915 
+L 313.259381 -112.429984 
+L 314.079216 -113.600992 
+L 314.899051 -114.77994 
+L 315.718886 -115.966826 
+L 316.53872 -117.161652 
+L 317.358555 -118.364416 
+L 318.17839 -119.57512 
+L 318.998224 -120.793762 
+L 319.818059 -122.020344 
+L 320.637894 -123.254864 
+L 321.457729 -124.497324 
+L 322.277563 -125.747723 
+L 323.097398 -127.006061 
+L 323.917233 -128.272337 
+L 324.737067 -129.546553 
+L 325.556902 -130.828708 
+L 326.376737 -132.118802 
+L 327.196572 -133.416835 
+L 328.016406 -134.722807 
+L 328.836241 -136.036718 
+L 329.656076 -137.358568 
+L 330.47591 -138.688357 
+L 331.295745 -140.026085 
+L 332.11558 -141.371753 
+L 332.935415 -142.725359 
+L 333.755249 -144.086904 
+L 334.575084 -145.456388 
+L 335.394919 -146.833812 
+L 336.214753 -148.219174 
+L 337.034588 -149.612476 
+L 337.854423 -151.013716 
+L 338.674257 -152.422896 
+L 339.494092 -153.840014 
+L 340.313927 -155.265072 
+L 341.133762 -156.698068 
+L 341.953596 -158.139004 
+L 342.773431 -159.587879 
+L 343.593266 -161.044693 
+L 344.4131 -162.509445 
+L 345.232935 -163.982137 
+L 346.05277 -165.462768 
+L 346.872605 -166.951338 
+L 347.692439 -168.447847 
+L 348.512274 -169.952295 
+L 349.332109 -171.464682 
+L 350.151943 -172.985008 
+L 350.971778 -174.513273 
+L 351.791613 -176.049477 
+L 352.611448 -177.59362 
+L 353.431282 -179.145703 
+L 354.251117 -180.705724 
+L 355.070952 -182.273684 
+L 355.070952 -65.557895 
+L 355.070952 -65.557895 
+L 354.251117 -65.557895 
+L 353.431282 -65.557895 
+L 352.611448 -65.557895 
+L 351.791613 -65.557895 
+L 350.971778 -65.557895 
+L 350.151943 -65.557895 
+L 349.332109 -65.557895 
+L 348.512274 -65.557895 
+L 347.692439 -65.557895 
+L 346.872605 -65.557895 
+L 346.05277 -65.557895 
+L 345.232935 -65.557895 
+L 344.4131 -65.557895 
+L 343.593266 -65.557895 
+L 342.773431 -65.557895 
+L 341.953596 -65.557895 
+L 341.133762 -65.557895 
+L 340.313927 -65.557895 
+L 339.494092 -65.557895 
+L 338.674257 -65.557895 
+L 337.854423 -65.557895 
+L 337.034588 -65.557895 
+L 336.214753 -65.557895 
+L 335.394919 -65.557895 
+L 334.575084 -65.557895 
+L 333.755249 -65.557895 
+L 332.935415 -65.557895 
+L 332.11558 -65.557895 
+L 331.295745 -65.557895 
+L 330.47591 -65.557895 
+L 329.656076 -65.557895 
+L 328.836241 -65.557895 
+L 328.016406 -65.557895 
+L 327.196572 -65.557895 
+L 326.376737 -65.557895 
+L 325.556902 -65.557895 
+L 324.737067 -65.557895 
+L 323.917233 -65.557895 
+L 323.097398 -65.557895 
+L 322.277563 -65.557895 
+L 321.457729 -65.557895 
+L 320.637894 -65.557895 
+L 319.818059 -65.557895 
+L 318.998224 -65.557895 
+L 318.17839 -65.557895 
+L 317.358555 -65.557895 
+L 316.53872 -65.557895 
+L 315.718886 -65.557895 
+L 314.899051 -65.557895 
+L 314.079216 -65.557895 
+L 313.259381 -65.557895 
+L 312.439547 -65.557895 
+L 311.619712 -65.557895 
+L 310.799877 -65.557895 
+L 309.980043 -65.557895 
+L 309.160208 -65.557895 
+L 308.340373 -65.557895 
+L 307.520538 -65.557895 
+L 306.700704 -65.557895 
+L 305.880869 -65.557895 
+L 305.061034 -65.557895 
+L 304.2412 -65.557895 
+L 303.421365 -65.557895 
+L 302.60153 -65.557895 
+L 301.781696 -65.557895 
+L 300.961861 -65.557895 
+L 300.142026 -65.557895 
+L 299.322191 -65.557895 
+L 298.502357 -65.557895 
+L 297.682522 -65.557895 
+L 296.862687 -65.557895 
+L 296.042853 -65.557895 
+L 295.223018 -65.557895 
+L 294.403183 -65.557895 
+L 293.583348 -65.557895 
+L 292.763514 -65.557895 
+L 291.943679 -65.557895 
+L 291.123844 -65.557895 
+L 290.30401 -65.557895 
+L 289.484175 -65.557895 
+L 288.66434 -65.557895 
+L 287.844505 -65.557895 
+L 287.024671 -65.557895 
+L 286.204836 -65.557895 
+L 285.385001 -65.557895 
+L 284.565167 -65.557895 
+L 283.745332 -65.557895 
+L 282.925497 -65.557895 
+L 282.105662 -65.557895 
+L 281.285828 -65.557895 
+L 280.465993 -65.557895 
+L 279.646158 -65.557895 
+L 278.826324 -65.557895 
+L 278.006489 -65.557895 
+L 277.186654 -65.557895 
+L 276.366819 -65.557895 
+L 275.546985 -65.557895 
+L 274.72715 -65.557895 
+L 273.907315 -65.557895 
+z
+" style="stroke: #5a3d9a; stroke-opacity: 0.3"/>
+    </defs>
+    <g clip-path="url(#p1d211bf33a)">
+     <use xlink:href="#m86cd549689" x="0" y="236.16" style="fill: #5a3d9a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m77c1ccaa8e" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m77c1ccaa8e" x="111.580043" y="170.602105" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="111.580043" y="185.960387" transform="rotate(-0 111.580043 185.960387)">1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m77c1ccaa8e" x="192.743679" y="170.602105" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="192.743679" y="185.960387" transform="rotate(-0 192.743679 185.960387)">2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m77c1ccaa8e" x="273.907315" y="170.602105" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="273.907315" y="185.960387" transform="rotate(-0 273.907315 185.960387)">3</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m77c1ccaa8e" x="355.070952" y="170.602105" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="355.070952" y="185.960387" transform="rotate(-0 355.070952 185.960387)">4</text>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="371.303679" y="200.606324" transform="rotate(-0 371.303679 200.606324)">t</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="m57e3cdab32" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m57e3cdab32" x="30.416406" y="209.507368" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="23.416406" y="213.686509" transform="rotate(-0 23.416406 213.686509)">−1</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m57e3cdab32" x="30.416406" y="131.696842" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="23.416406" y="135.875983" transform="rotate(-0 23.416406 135.875983)">1</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m57e3cdab32" x="30.416406" y="92.791579" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="23.416406" y="96.97072" transform="rotate(-0 23.416406 96.97072)">2</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m57e3cdab32" x="30.416406" y="53.886316" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="23.416406" y="58.065456" transform="rotate(-0 23.416406 58.065456)">3</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_9">
+    <path d="M 30.416406 53.886316 
+L 36.931213 66.126976 
+L 43.44602 77.866312 
+L 49.960827 89.104324 
+L 56.475634 99.841012 
+L 62.990441 110.076376 
+L 68.419447 118.22289 
+L 73.848452 126.021263 
+L 79.277458 133.471494 
+L 84.706464 140.573584 
+L 90.13547 147.327531 
+L 95.564476 153.733337 
+L 100.993481 159.791002 
+L 106.422487 165.500525 
+L 111.851493 170.861906 
+L 117.280499 175.875146 
+L 122.709504 180.540243 
+L 128.13851 184.8572 
+L 133.567516 188.826014 
+L 137.910721 191.750404 
+L 142.253925 194.451983 
+L 146.59713 196.930752 
+L 150.940334 199.18671 
+L 155.283539 201.219857 
+L 159.626744 203.030193 
+L 163.969948 204.617719 
+L 168.313153 205.982434 
+L 172.656358 207.124339 
+L 176.999562 208.043433 
+L 181.342767 208.739716 
+L 185.685971 209.213189 
+L 190.029176 209.463851 
+L 194.372381 209.491702 
+L 198.715585 209.296743 
+L 203.05879 208.878973 
+L 207.401995 208.238392 
+L 211.745199 207.375001 
+L 216.088404 206.288799 
+L 220.431608 204.979786 
+L 224.774813 203.447963 
+L 229.118018 201.693329 
+L 233.461222 199.715885 
+L 237.804427 197.51563 
+L 242.147632 195.092564 
+L 246.490836 192.446687 
+L 250.834041 189.578 
+L 255.177245 186.486503 
+L 259.52045 183.172194 
+L 264.949456 178.715981 
+L 270.378462 173.911627 
+L 275.807467 168.75913 
+L 281.236473 163.258493 
+L 286.665479 157.409713 
+L 292.094485 151.212792 
+L 297.52349 144.667729 
+L 302.952496 137.774525 
+L 308.381502 130.533179 
+L 313.810508 122.943691 
+L 319.239514 115.006062 
+L 324.668519 106.720291 
+L 330.097525 98.086378 
+L 336.612332 87.266136 
+L 343.127139 75.94457 
+L 349.641946 64.12168 
+L 355.070952 53.886316 
+L 355.070952 53.886316 
+" clip-path="url(#p1d211bf33a)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 30.416406 228.96 
+L 30.416406 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 14.183679 170.602105 
+L 371.303679 170.602105 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_10">
+     <path d="M 92.722585 20.298438 
+L 102.722585 20.298438 
+L 112.722585 20.298438 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="120.722585" y="23.798438" transform="rotate(-0 120.722585 23.798438)">v(t) = t² − 4t + 3</text>
+    </g>
+    <g id="patch_5">
+     <path d="M 92.722585 38.476562 
+L 112.722585 38.476562 
+L 112.722585 31.476562 
+L 92.722585 31.476562 
+z
+" style="fill: #0e6e6a; fill-opacity: 0.3; stroke: #0e6e6a; stroke-opacity: 0.3; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="120.722585" y="38.476562" transform="rotate(-0 120.722585 38.476562)">+4/3 (se aleja en sentido positivo)</text>
+    </g>
+    <g id="patch_6">
+     <path d="M 92.722585 53.154687 
+L 112.722585 53.154687 
+L 112.722585 46.154687 
+L 92.722585 46.154687 
+z
+" style="fill: #a2530a; fill-opacity: 0.3; stroke: #a2530a; stroke-opacity: 0.3; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="120.722585" y="53.154687" transform="rotate(-0 120.722585 53.154687)">−4/3 (vuelve)</text>
+    </g>
+    <g id="patch_7">
+     <path d="M 92.722585 67.832813 
+L 112.722585 67.832813 
+L 112.722585 60.832813 
+L 92.722585 60.832813 
+z
+" style="fill: #5a3d9a; fill-opacity: 0.3; stroke: #5a3d9a; stroke-opacity: 0.3; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="120.722585" y="67.832813" transform="rotate(-0 120.722585 67.832813)">+4/3</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p1d211bf33a">
+   <rect x="14.183679" y="7.2" width="357.12" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: gráfico velocidad–tiempo de \(v=t^2-4t+3\) en \([0,4]\). El desplazamiento es la suma con signo, \(\tfrac43-\tfrac43+\tfrac43=\tfrac43\); la distancia es la suma de los valores absolutos, \(4\).</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.6. Una distancia que no depende de \(\ln2\)</p>
+<p>\(v=e^{-t}-\frac12\) en \([0,\ln4]\). Halla el desplazamiento y la distancia.</p>
+<p>\(v=0\) en \(t=\ln2\). Desplazamiento: \(\left[-e^{-t}-\frac t2\right]_0^{\ln4}=\frac34-\ln2\). Por tramos: \(\int_0^{\ln2}v=\frac12-\frac{\ln2}2\gt0\) e \(\int_{\ln2}^{\ln4}v=\frac14-\frac{\ln2}2\lt0\). Distancia: \(\frac12-\frac{\ln2}2+\frac{\ln2}2-\frac14=\frac14\).</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2021, P10(c))</p><p>Con \(v=4+4t-3t^2\) en \([0,3]\), el markscheme da (M1) por separar en \(t=2\) (o por escribir \(\int_0^3|v|\,dt\)), A1 por \(\int_0^2v=8\), A1 por \(\int_2^3v=-5\), (M1) por sumar los valores absolutos y A1 por \(13\). Dar \(\int_0^3v\,dt=3\) como distancia solo gana la primera marca, y eso si se ve el método.</p></div>
+
+<h3 id="t4">1.4 Análisis del movimiento</h3>
+<ul>
+<li><b>En reposo:</b> \(v=0\).</li>
+<li><b>Cambio de sentido:</b> \(v\) <b>cambia de signo</b>. No basta \(v=0\): con \(v=(t-2)^2\) se detiene en \(t=2\) pero sigue en el mismo sentido.</li>
+<li><b>Velocidad máxima:</b> se busca el máximo de \(v\) (con \(a=0\) o en los extremos del intervalo).</li>
+<li><b>Rapidez máxima:</b> se busca el máximo de \(|v|\). Puede estar en un mínimo negativo de \(v\).</li>
+<li><b>Desplazamiento máximo:</b> donde \(v=0\) y cambia de \(+\) a \(-\), o en un extremo del intervalo.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.7. Reposo sin cambio de sentido y dos máximos</p>
+<p>\(v=t(t-3)^2\), \(0\le t\le4\). Está en reposo en \(t=0\) y \(t=3\), pero en \(t=3\) no cambia de sentido, porque \(v\ge0\) siempre.</p>
+<p>\(a=(t-3)(3t-3)=3(t-1)(t-3)\). En \(t=1\), \(v=4\), y en el extremo \(t=4\), \(v=4\). La velocidad máxima vale 4 y se alcanza dos veces. El extremo del intervalo cuenta.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.8. Velocidad máxima frente a rapidez máxima</p>
+<p>\(v=3t^2-12t\), \(0\le t\le\frac92\). El mínimo de \(v\) está en \(t=2\), con \(v=-12\). En el extremo, \(v\!\left(\frac92\right)=\frac{27}4\).</p>
+<p>La velocidad máxima es \(\frac{27}4\) (en \(t=\frac92\)). La rapidez máxima es \(12\) (en \(t=2\)), cuando se mueve en sentido negativo.</p></div>
+
+<h3 id="t5">1.5 Aceleración en función de \(v\) o de \(s\) (NS)</h3>
+<p>Si \(a\) depende de \(v\) o de \(s\), no se puede integrar directamente respecto de \(t\). Por la regla de la cadena:</p>
+\[ a=\frac{dv}{dt}=\frac{dv}{ds}\cdot\frac{ds}{dt}=v\frac{dv}{ds} \]
+<ul>
+<li><b>Si piden \(v\) en función de \(t\)</b> (o el tiempo para detenerse): \(\frac{dv}{dt}=a(v)\), así que \(\int\frac{dv}{a(v)}=\int dt\).</li>
+<li><b>Si piden \(v\) en función de \(s\)</b> (o la distancia para detenerse): \(v\frac{dv}{ds}=a(v)\), así que \(\int\frac{v\,dv}{a(v)}=\int ds\). Si \(a=a(s)\): \(\int v\,dv=\int a(s)\,ds\), es decir, \(\frac{v^2}2=\int a\,ds\).</li>
+<li><b>Velocidad límite (terminal):</b> la \(v\) que anula \(a(v)\). Las soluciones se acercan a ella sin alcanzarla.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.9. Tiempo y distancia de frenado</p>
+<p>Un objeto frena con \(a=-\frac{v^2+4}{10}\) desde \(v_0=2\). ¿Cuánto tarda en detenerse y cuánto recorre?</p>
+<p><b>Tiempo:</b> \(\int_2^0\frac{dv}{v^2+4}=-\frac T{10}\), así que \(T=10\cdot\frac12\arctan1=\frac{5\pi}4\).</p>
+<p><b>Distancia:</b> \(v\frac{dv}{ds}=-\frac{v^2+4}{10}\), así que \(\int_0^2\frac{v\,dv}{v^2+4}=\frac D{10}\), y \(D=5\ln\frac84=5\ln2\).</p>
+<p>Con la misma ecuación se obtienen las dos respuestas, pero cada una con una forma distinta de \(a\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.10. Aceleración que depende de la posición</p>
+<p>\(a=2s+1\), con \(v=1\) en \(s=0\). \(\int_1^vv\,dv=\int_0^s(2s+1)\,ds\), así que \(\frac{v^2-1}2=s^2+s\), es decir, \(v^2=2s^2+2s+1\). En \(s=2\), \(v^2=13\) y la rapidez es \(\sqrt{13}\). Para \(v(t)\) haría falta resolver otra ecuación, \(\frac{ds}{dt}=\sqrt{2s^2+2s+1}\), que no es del programa.</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ2, P11(b))</p><p>Con \(v=(1+v_0)e^{-t}-1\), el desplazamiento máximo ocurre cuando \(v=0\): \(e^T=1+v_0\). Para \(s_{\max}\) piden «resolviendo una ecuación diferencial adecuada»: \(\frac{ds}{dt}=v\), integrada entre 0 y \(T\), o bien \(v\frac{dv}{ds}=-(1+v)\) entre \(v_0\) y 0. Las dos dan \(s_{\max}=v_0-\ln(1+v_0)\). No hay markscheme de esta prueba; las marcas de X3 están reconstruidas.</p></div>
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Energía:</b> \(\int v\,dv=\int a\,ds\) dice que \(\frac12v^2\) cambia según \(\int a\,ds\). Es el teorema del trabajo y la energía: si \(a=-g\), entonces \(v^2=v_0^2-2gs\), la fórmula de la física sin el tiempo.</li>
+<li><b>Gravedad variable:</b> con \(a=-\frac{gR^2}{s^2}\), la velocidad de escape es \(\sqrt{2gR}\) (problema E8).</li>
+</ul></div>
+
+<h3 id="t6">1.6 Cinemática vectorial (NS)</h3>
+<p>En el plano o el espacio, la posición es un vector \(\mathbf r(t)\). Entonces:</p>
+\[ \mathbf v=\frac{d\mathbf r}{dt},\qquad \mathbf a=\frac{d\mathbf v}{dt},\qquad \text{rapidez}=|\mathbf v|,\qquad \mathbf r(t)=\mathbf r_0+t\,\mathbf v\ \text{(velocidad constante)} \]
+<ul>
+<li>Se deriva e integra componente a componente.</li>
+<li><b>Velocidad constante:</b> la trayectoria es la recta \(\mathbf r=\mathbf r_0+t\mathbf v\) del Módulo 9, con \(t\) como parámetro.</li>
+<li><b>Distancia mínima entre dos móviles:</b> \(\mathbf d(t)=\mathbf r_A-\mathbf r_B\). Se minimiza \(|\mathbf d|^2\), que es una cuadrática en \(t\). En el instante mínimo, \(\mathbf d\perp(\mathbf v_A-\mathbf v_B)\).</li>
+<li><b>Rapidez creciente o decreciente:</b> \(\frac{d}{dt}|\mathbf v|^2=2\,\mathbf v\cdot\mathbf a\). Si \(\mathbf v\cdot\mathbf a\gt0\), acelera.</li>
+<li><b>Razones de cambio sobre una curva:</b> si la partícula sigue \(y=f(x)\), entonces \(\frac{dy}{dt}=\frac{dy}{dx}\cdot\frac{dx}{dt}\), y \(\mathbf v=\left(\frac{dx}{dt},\frac{dy}{dt}\right)\) es tangente a la curva.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.11. Una trayectoria elíptica</p>
+<p>\(\mathbf r=\begin{pmatrix}3\cos t\\2\sin t\end{pmatrix}\). Entonces \(\mathbf v=\begin{pmatrix}-3\sin t\\2\cos t\end{pmatrix}\) y \(\mathbf a=-\mathbf r\): la aceleración apunta siempre al centro.</p>
+<p>\(|\mathbf v|^2=9\sin^2t+4\cos^2t=4+5\sin^2t\). La rapidez máxima es 3 (en \(t=\frac\pi2\), en los extremos del eje menor) y la mínima es 2 (en los del eje mayor). La trayectoria es \(\frac{x^2}9+\frac{y^2}4=1\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.12. La distancia mínima entre dos barcos</p>
+<p>\(\mathbf r_A=\begin{pmatrix}1\\2\end{pmatrix}+t\begin{pmatrix}2\\1\end{pmatrix}\) y \(\mathbf r_B=\begin{pmatrix}8\\-3\end{pmatrix}+t\begin{pmatrix}-1\\3\end{pmatrix}\).</p>
+<p>\(\mathbf r_B-\mathbf r_A=\begin{pmatrix}7-3t\\-5+2t\end{pmatrix}\), así que \(|\mathbf d|^2=13t^2-62t+74\). Su mínimo está en \(t=\frac{31}{13}\), con \(|\mathbf d|^2=74-\frac{961}{13}=\frac1{13}\). La distancia mínima es \(\frac1{\sqrt{13}}\): casi chocan.</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2026 TZ2, P8(b))</p><p>Una partícula recorre \(2y+3xy^2-2x^2+4=0\). En \(P(2,-1)\), \(\frac{dy}{dt}=-6\), y piden \(\frac{dx}{dt}\). Las marcas son: (M1) por una relación de razones de cambio, (M1) por sustituir \(x=2\), \(y=-1\) y \(\frac{dy}{dt}=-6\), y A1 por \(\frac{dx}{dt}=12\). También se acepta derivar la ecuación directamente respecto de \(t\).</p></div>
+
+<h3 id="t7">1.7 Gráficas \(s\)–\(t\), \(v\)–\(t\) y \(a\)–\(t\)</h3>
+<ul>
+<li><b>Pendientes:</b> la pendiente de \(s\)–\(t\) es \(v\); la de \(v\)–\(t\) es \(a\).</li>
+<li><b>Áreas:</b> el área con signo bajo \(v\)–\(t\) es el desplazamiento; el área total (sin signo) es la distancia. El área bajo \(a\)–\(t\) es el cambio de velocidad.</li>
+<li><b>Lectura cruzada:</b> los extremos de \(s\) están donde \(v\) corta el eje; los extremos de \(v\), donde \(a\) corta el eje. La rapidez aumenta cuando el gráfico de \(v\) se aleja del eje.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.13. Un paseo leído en el gráfico de velocidad</p>
+<p class="src">DMpA 8, ítem 3 (Awada 2022, pág. 268), con valores propios.</p>
+<p>Caminas hacia el este (sentido positivo). Tu velocidad, en m/s, sube de 0 a 4 entre \(t=0\) y \(t=2\), se mantiene en 4 hasta \(t=5\) y baja linealmente hasta \(-2\) en \(t=8\). (a) ¿Cuándo estás quieto? (b) ¿Cuándo vas más rápido hacia el oeste? (c) Halla el desplazamiento y la distancia. (d) ¿Cuándo aumenta tu rapidez?</p>
+<p>(a) En \(t=0\) y en \(t=7\) (la recta de 4 a \(-2\) corta el eje en \(t=5+\frac{4}{2}=7\)).</p>
+<p>(b) En \(t=8\), a 2 m/s.</p>
+<p>(c) Áreas: \(4+12+4-1\). El desplazamiento es 19 m (al este) y la distancia es 21 m.</p>
+<p>(d) En \((0,2)\) y en \((7,8)\), donde el gráfico se aleja del eje. En \((5,7)\) frena aunque \(a\) sea constante.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 378.503679 202.896" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 202.896 
+L 378.503679 202.896 
+L 378.503679 -0 
+L 0 -0 
+L 0 202.896 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 14.183679 195.696 
+L 371.303679 195.696 
+L 371.303679 7.2 
+L 14.183679 7.2 
+L 14.183679 195.696 
+z
+" style="fill: none"/>
+   </g>
+   <g id="FillBetweenPolyCollection_1">
+    <defs>
+     <path id="mcaef23795d" d="M 30.416406 -72.888 
+L 30.416406 -72.888 
+L 111.580043 -187.128 
+L 233.325497 -187.128 
+L 314.489134 -72.888 
+L 314.489134 -72.888 
+L 314.489134 -72.888 
+L 233.325497 -72.888 
+L 111.580043 -72.888 
+L 30.416406 -72.888 
+z
+" style="stroke: #0e6e6a; stroke-opacity: 0.2"/>
+    </defs>
+    <g clip-path="url(#p96c2603dc8)">
+     <use xlink:href="#mcaef23795d" x="0" y="202.896" style="fill: #0e6e6a; fill-opacity: 0.2; stroke: #0e6e6a; stroke-opacity: 0.2"/>
+    </g>
+   </g>
+   <g id="FillBetweenPolyCollection_2">
+    <defs>
+     <path id="m54cd71b500" d="M 314.489134 -72.888 
+L 314.489134 -72.888 
+L 355.070952 -15.768 
+L 355.070952 -72.888 
+L 355.070952 -72.888 
+L 314.489134 -72.888 
+z
+" style="stroke: #a2530a; stroke-opacity: 0.35"/>
+    </defs>
+    <g clip-path="url(#p96c2603dc8)">
+     <use xlink:href="#m54cd71b500" x="0" y="202.896" style="fill: #a2530a; fill-opacity: 0.35; stroke: #a2530a; stroke-opacity: 0.35"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m12b5d51657" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m12b5d51657" x="111.580043" y="130.008" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="111.580043" y="145.366281" transform="rotate(-0 111.580043 145.366281)">2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m12b5d51657" x="233.325497" y="130.008" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="233.325497" y="145.366281" transform="rotate(-0 233.325497 145.366281)">5</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m12b5d51657" x="314.489134" y="130.008" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="314.489134" y="145.366281" transform="rotate(-0 314.489134 145.366281)">7</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m12b5d51657" x="355.070952" y="130.008" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="355.070952" y="145.366281" transform="rotate(-0 355.070952 145.366281)">8</text>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="371.303679" y="160.012219" transform="rotate(-0 371.303679 160.012219)">t (s)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="mb7a1cca69f" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mb7a1cca69f" x="30.416406" y="187.128" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="23.416406" y="191.307141" transform="rotate(-0 23.416406 191.307141)">−2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mb7a1cca69f" x="30.416406" y="15.768" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="23.416406" y="19.947141" transform="rotate(-0 23.416406 19.947141)">4</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M 30.416406 130.008 
+L 111.580043 15.768 
+L 233.325497 15.768 
+L 314.489134 130.008 
+L 355.070952 187.128 
+" clip-path="url(#p96c2603dc8)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 30.416406 195.696 
+L 30.416406 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 14.183679 130.008 
+L 371.303679 130.008 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_8">
+     <path d="M 245.158523 19.643516 
+L 254.658523 19.643516 
+L 264.158523 19.643516 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="271.758523" y="22.968516" transform="rotate(-0 271.758523 22.968516)">v (m/s)</text>
+    </g>
+    <g id="patch_5">
+     <path d="M 245.158523 36.912734 
+L 264.158523 36.912734 
+L 264.158523 30.262734 
+L 245.158523 30.262734 
+z
+" style="fill: #0e6e6a; fill-opacity: 0.2; stroke: #0e6e6a; stroke-opacity: 0.2; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="271.758523" y="36.912734" transform="rotate(-0 271.758523 36.912734)">hacia el este: 20 m</text>
+    </g>
+    <g id="patch_6">
+     <path d="M 245.158523 50.856953 
+L 264.158523 50.856953 
+L 264.158523 44.206953 
+L 245.158523 44.206953 
+z
+" style="fill: #a2530a; fill-opacity: 0.35; stroke: #a2530a; stroke-opacity: 0.35; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="271.758523" y="50.856953" transform="rotate(-0 271.758523 50.856953)">hacia el oeste: 1 m</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p96c2603dc8">
+   <rect x="14.183679" y="7.2" width="357.12" height="188.496"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.13: el área sobre el eje (20 m) menos la de debajo (1 m) da el desplazamiento de 19 m; su suma da la distancia de 21 m. Se va más rápido cuando la gráfica se aleja del eje: en \((0,2)\) y en \((7,8)\).</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.14. Del gráfico de \(a\) al de \(v\)</p>
+<p>Partiendo del reposo, \(a=2\) m/s² en \([0,3]\) y \(a=-1\) m/s² en \([3,7]\). Halla \(v(3)\), \(v(7)\) y el desplazamiento.</p>
+<p>El área bajo \(a\)–\(t\) es el cambio de velocidad: \(v(3)=6\) y \(v(7)=6-4=2\) m/s. Como \(v\ge0\), la distancia coincide con el desplazamiento: \(\frac12\cdot3\cdot6+\frac{6+2}2\cdot4=9+16=25\) m.</p></div>
+
+<h3 id="t8">1.8 Más allá del IB: movimiento armónico y proyectiles</h3>
+<p><b>Movimiento armónico simple (MAS).</b> Es el de una masa en un resorte: \(a=-\omega^2s\). Las soluciones son \(s=A\cos(\omega t)+B\sin(\omega t)=R\cos(\omega t-\varphi)\), con amplitud \(R=\sqrt{A^2+B^2}\) y periodo \(\frac{2\pi}\omega\). Con \(v\frac{dv}{ds}=-\omega^2s\) se obtiene \(v^2=\omega^2(R^2-s^2)\): la rapidez es máxima en el centro y nula en los extremos.</p>
+<div class="ex"><p class="et">Ejemplo 1.15. Un resorte</p>
+<p class="src">DMpA 8, ítem 4 (Awada 2022, pág. 555), con valores propios.</p>
+<p>\(s=3\cos2t+4\sin2t\). Comprueba que \(a=-4s\). Da la amplitud y la rapidez máxima.</p>
+<p>\(a=-12\cos2t-16\sin2t=-4s\). La amplitud es \(R=\sqrt{9+16}=5\) y la rapidez máxima es \(\omega R=2\cdot5=10\). Comprobación con \(v^2=4(25-s^2)\): en \(s=0\), \(v^2=100\).</p></div>
+<p><b>Proyectiles.</b> Con \(\mathbf a=\begin{pmatrix}0\\-g\end{pmatrix}\) y \(\mathbf v(0)=\begin{pmatrix}u\cos\theta\\u\sin\theta\end{pmatrix}\), integrando: \(x=ut\cos\theta\), \(y=ut\sin\theta-\frac12gt^2\). La trayectoria es una parábola y el alcance es \(\frac{u^2\sin2\theta}g\), máximo a \(45^\circ\).</p>
+<div class="ex"><p class="et">Ejemplo 1.16. Un tiro oblicuo</p>
+<p>\(u=20\), \(\theta=30^\circ\), \(g=10\). Vuelve al suelo cuando \(10t-5t^2=0\), es decir, en \(t=2\). El alcance es \(20\cdot\frac{\sqrt3}2\cdot2=20\sqrt3\) y la altura máxima, en \(t=1\), es \(5\). A \(45^\circ\), el alcance sería \(\frac{400}{10}=40\).</p></div>
+<div class="box beyond"><p class="bt">Más allá del IB: resistencia del aire</p>
+<ul>
+<li><b>Lineal:</b> \(\mathbf a=-k\mathbf v-g\mathbf j\). Cada componente es una ecuación lineal del Módulo 15: \(v_x=u_xe^{-kt}\) y \(v_y=\left(u_y+\frac gk\right)e^{-kt}-\frac gk\). La velocidad terminal es \(\frac gk\) hacia abajo, y el alcance nunca pasa de \(\frac{u_x}k\) (problema E10).</li>
+<li><b>Cuadrática:</b> \(a=-g-cv^2\) al subir. Con \(v\frac{dv}{ds}\) se halla la altura máxima en forma de logaritmo (problema E4).</li>
+</ul></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 407.163437 250.455016" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M -0 250.455016 
+L 407.163437 250.455016 
+L 407.163437 0 
+L -0 0 
+L -0 250.455016 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 42.843438 210.963141 
+L 399.963438 210.963141 
+L 399.963438 11.379141 
+L 42.843438 11.379141 
+L 42.843438 210.963141 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m94f862b049" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m94f862b049" x="42.843438" y="210.963141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="42.843438" y="226.321422" transform="rotate(-0 42.843438 226.321422)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m94f862b049" x="111.520361" y="210.963141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="111.520361" y="226.321422" transform="rotate(-0 111.520361 226.321422)">10</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m94f862b049" x="180.197284" y="210.963141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="180.197284" y="226.321422" transform="rotate(-0 180.197284 226.321422)">20</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m94f862b049" x="248.874207" y="210.963141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="248.874207" y="226.321422" transform="rotate(-0 248.874207 226.321422)">30</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m94f862b049" x="317.55113" y="210.963141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="317.55113" y="226.321422" transform="rotate(-0 317.55113 226.321422)">40</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m94f862b049" x="386.228053" y="210.963141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="386.228053" y="226.321422" transform="rotate(-0 386.228053 226.321422)">50</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="221.403438" y="240.967359" transform="rotate(-0 221.403438 240.967359)">x</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_7">
+      <defs>
+       <path id="m167818053a" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m167818053a" x="42.843438" y="210.963141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="215.142281" transform="rotate(-0 35.843438 215.142281)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m167818053a" x="42.843438" y="177.699141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="181.878281" transform="rotate(-0 35.843438 181.878281)">2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m167818053a" x="42.843438" y="144.435141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="148.614281" transform="rotate(-0 35.843438 148.614281)">4</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m167818053a" x="42.843438" y="111.171141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="115.350281" transform="rotate(-0 35.843438 115.350281)">6</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m167818053a" x="42.843438" y="77.907141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="82.086281" transform="rotate(-0 35.843438 82.086281)">8</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m167818053a" x="42.843438" y="44.643141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="48.822281" transform="rotate(-0 35.843438 48.822281)">10</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m167818053a" x="42.843438" y="11.379141" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="15.558281" transform="rotate(-0 35.843438 15.558281)">12</text>
+     </g>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="15.558281" y="111.171141" transform="rotate(-90 15.558281 111.171141)">y</text>
+    </g>
+   </g>
+   <g id="line2d_14">
+    <path d="M 42.843438 210.963141 
+L 48.3652 197.859472 
+L 53.886963 185.293389 
+L 59.408725 173.264893 
+L 64.930488 161.773983 
+L 70.452251 150.820659 
+L 75.974013 140.404922 
+L 81.495776 130.526772 
+L 87.017539 121.186208 
+L 92.539301 112.38323 
+L 98.061064 104.117839 
+L 102.202386 98.271586 
+L 106.343708 92.727726 
+L 110.48503 87.486259 
+L 114.626352 82.547183 
+L 118.767674 77.910501 
+L 122.908996 73.57621 
+L 127.050318 69.544312 
+L 131.19164 65.814806 
+L 135.332962 62.387693 
+L 139.474284 59.262971 
+L 143.615606 56.440643 
+L 147.756928 53.920706 
+L 151.89825 51.703162 
+L 156.039572 49.788011 
+L 160.180894 48.175251 
+L 164.322216 46.864885 
+L 168.463538 45.85691 
+L 172.60486 45.151328 
+L 176.746182 44.748138 
+L 180.887504 44.647341 
+L 185.028826 44.848935 
+L 189.170148 45.352923 
+L 193.31147 46.159302 
+L 197.452792 47.268074 
+L 201.594114 48.679239 
+L 205.735436 50.392795 
+L 209.876758 52.408745 
+L 214.01808 54.727086 
+L 218.159402 57.34782 
+L 222.300724 60.270946 
+L 226.442046 63.496465 
+L 230.583368 67.024375 
+L 234.72469 70.854679 
+L 238.866012 74.987374 
+L 243.007334 79.422462 
+L 247.148656 84.159943 
+L 251.289978 89.199815 
+L 255.4313 94.542081 
+L 259.572622 100.186738 
+L 263.713944 106.133788 
+L 267.855266 112.38323 
+L 273.377029 121.186208 
+L 278.898791 130.526772 
+L 284.420554 140.404922 
+L 289.942317 150.820659 
+L 295.464079 161.773983 
+L 300.985842 173.264893 
+L 306.507604 185.293389 
+L 312.029367 197.859472 
+L 317.55113 210.963141 
+L 317.55113 210.963141 
+" clip-path="url(#pc66826487b)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_15">
+    <path d="M 42.843438 210.963141 
+L 48.633078 197.241015 
+L 54.319181 184.360646 
+L 59.903598 172.30698 
+L 64.707979 162.426549 
+L 69.437097 153.158001 
+L 74.092131 144.491752 
+L 78.674241 136.418365 
+L 83.184571 128.928554 
+L 87.624245 122.013176 
+L 91.994368 115.663233 
+L 95.685659 110.663747 
+L 99.327329 106.067675 
+L 102.920046 101.869594 
+L 106.464466 98.064156 
+L 109.96124 94.64608 
+L 113.411009 91.61016 
+L 116.814403 88.95126 
+L 119.61559 87.019852 
+L 122.385362 85.343845 
+L 125.124072 83.920374 
+L 127.832068 82.746609 
+L 130.509694 81.819748 
+L 133.15729 81.137022 
+L 135.775195 80.695694 
+L 138.36374 80.493056 
+L 140.923255 80.526431 
+L 143.454065 80.793173 
+L 145.956493 81.290664 
+L 148.430856 82.016316 
+L 150.87747 82.967571 
+L 153.296645 84.141899 
+L 155.68869 85.536798 
+L 158.053909 87.149794 
+L 160.392602 88.978441 
+L 163.164438 91.454074 
+L 165.899014 94.232636 
+L 168.596829 97.310055 
+L 171.258379 100.682313 
+L 173.88415 104.345447 
+L 176.902972 108.981525 
+L 179.874502 114.002079 
+L 182.799482 119.401085 
+L 185.67864 125.172615 
+L 188.512695 131.310834 
+L 191.697293 138.767582 
+L 194.824939 146.687339 
+L 197.896653 155.061825 
+L 200.913435 163.882909 
+L 204.242875 174.330511 
+L 207.505407 185.322078 
+L 210.702374 196.846678 
+L 214.179266 210.26393 
+L 214.179266 210.26393 
+" clip-path="url(#pc66826487b)" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_16">
+    <path d="M 366.589558 210.963141 
+L 366.589558 11.379141 
+" clip-path="url(#pc66826487b)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #5a3d9a"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 42.843438 210.963141 
+L 42.843438 11.379141 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 42.843438 210.963141 
+L 399.963438 210.963141 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_17">
+     <path d="M 190.990156 24.202656 
+L 200.490156 24.202656 
+L 209.990156 24.202656 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="217.590156" y="27.527656" transform="rotate(-0 217.590156 27.527656)">sin resistencia: parábola, alcance 40</text>
+    </g>
+    <g id="line2d_18">
+     <path d="M 190.990156 38.146875 
+L 200.490156 38.146875 
+L 209.990156 38.146875 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_17">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="217.590156" y="41.471875" transform="rotate(-0 217.590156 41.471875)">resistencia lineal (k = 0,3)</text>
+    </g>
+    <g id="line2d_19">
+     <path d="M 190.990156 52.091094 
+L 200.490156 52.091094 
+L 209.990156 52.091094 
+" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #5a3d9a"/>
+    </g>
+    <g id="text_18">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="217.590156" y="55.416094" transform="rotate(-0 217.590156 55.416094)">asíntota x = uₓ/k</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pc66826487b">
+   <rect x="42.843438" y="11.379141" width="357.12" height="199.584"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: proyectil con \(u=20\) a \(45^\circ\) y \(g=10\). Con resistencia proporcional a la velocidad la trayectoria deja de ser simétrica: baja más empinada y nunca pasa de \(x=\tfrac{u_x}k\).</figcaption></figure>
+</section>
+
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Desplazamiento</td><td>Posición con signo respecto a \(O\), \(s(t)\); o su cambio, \(s(t_2)-s(t_1)=\int v\,dt\).</td></tr>
+<tr><td>Distancia total recorrida</td><td>\(\int_{t_1}^{t_2}|v|\,dt\): la longitud del camino, sin signo.</td></tr>
+<tr><td>Velocidad</td><td>\(v=\frac{ds}{dt}\), con signo según el sentido del movimiento.</td></tr>
+<tr><td>Rapidez (celeridad)</td><td>\(|v|\), o \(|\mathbf v|\) en el caso vectorial.</td></tr>
+<tr><td>Aceleración</td><td>\(a=\frac{dv}{dt}=\frac{d^2s}{dt^2}=v\frac{dv}{ds}\).</td></tr>
+<tr><td>Reposo instantáneo</td><td>Instante con \(v=0\).</td></tr>
+<tr><td>Cambio de sentido</td><td>Instante en que \(v\) cambia de signo.</td></tr>
+<tr><td>Velocidad terminal</td><td>Valor límite de \(v\) cuando \(t\to\infty\); anula a \(a(v)\).</td></tr>
+<tr><td>Velocidad media</td><td>\(\frac{\Delta s}{\Delta t}\), con signo. La rapidez media es la distancia dividida por \(\Delta t\).</td></tr>
+<tr><td>Movimiento armónico simple</td><td>Movimiento con \(a=-\omega^2s\): oscila con periodo \(\frac{2\pi}\omega\).</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Halle la distancia total</td><td>Separar la integral en los ceros de \(v\) y sumar valores absolutos.</td><td>Dar \(\int v\,dt\) sin separar, cuando \(v\) cambia de signo.</td></tr>
+<tr><td>Muestre que la distancia a \(O\) es…</td><td>Integrar \(v\) con la constante (o con límites desde 0) y sustituir el instante.</td><td>Integrar sin justificar que \(s(0)=0\); llegar al valor sin escribir la sustitución.</td></tr>
+<tr><td>Dibuje aproximadamente el gráfico</td><td>Forma correcta, cortes con los ejes, vértice y dominio marcados.</td><td>No marcar el extremo del dominio (\(t=3\)) o los cortes.</td></tr>
+<tr><td>Halle la velocidad máxima</td><td>\(a=0\) con justificación del máximo, y comprobar los extremos del intervalo.</td><td>Dar el instante cuando piden el valor, o al revés.</td></tr>
+<tr><td>Resolviendo una ecuación diferencial adecuada</td><td>Escribir \(\frac{dv}{dt}=\ldots\) o \(v\frac{dv}{ds}=\ldots\) y separar.</td><td>Usar fórmulas de aceleración constante: \(a\) no es constante.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>Distancia igual a desplazamiento.</b> Solo es cierto si \(v\) no cambia de signo. Antes de integrar, busca los ceros de \(v\).</li>
+<li><b>El cero fuera del intervalo.</b> Las raíces de \(v\) que no están en el dominio dado no separan nada. En noviembre 2021, \(t=-\frac23\) se descarta.</li>
+<li><b>Reposo no es cambio de sentido.</b> \(v=0\) con un cero doble, como \((t-3)^2\), no cambia el sentido.</li>
+<li><b>Aceleración negativa no es frenar.</b> Frenar es que \(v\) y \(a\) tengan signos opuestos.</li>
+<li><b>Velocidad máxima frente a rapidez máxima.</b> La rapidez máxima puede estar en un mínimo negativo de \(v\) o en un extremo del intervalo.</li>
+<li><b>Instante frente a valor.</b> «Halle el valor de \(t\)» pide el instante; «halle la velocidad máxima» pide \(v\).</li>
+<li><b>La constante de \(s\).</b> Si la partícula no parte del origen, \(s(0)\ne0\) y hay que usarlo.</li>
+<li><b>«Distancia de \(P\) a \(O\)».</b> Es \(|s(t)|\), un valor en un instante, no la distancia recorrida.</li>
+<li><b>Fórmulas de aceleración constante.</b> \(v=u+at\) solo vale con \(a\) constante; con \(a(t)\) se integra.</li>
+<li><b>Mezclar \(\frac{dv}{dt}\) y \(v\frac{dv}{ds}\).</b> Para el tiempo se usa \(t\); para la distancia, \(s\). Con la forma equivocada no se puede despejar lo pedido.</li>
+<li><b>Las unidades del área.</b> El área bajo \(v\)–\(t\) son metros; bajo \(a\)–\(t\), m/s.</li>
+<li><b>El dominio del bosquejo.</b> El gráfico empieza y termina donde dice el enunciado. Una parábola completa fuera de \([0,3]\) pierde la A1 del dominio.</li>
+<li><b>Rapidez vectorial.</b> \(|\mathbf v|=\sqrt{v_x^2+v_y^2}\), no \(v_x+v_y\). Para su mínimo, minimiza \(|\mathbf v|^2\), sin la raíz.</li>
+</ul>
+</section>
+
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">Son 10 ejemplos de la ficha DMpA 8 y del banco «Cinemática». Casi todos los originales eran con calculadora y aquí están adaptados a la Prueba 1 con valores exactos; la línea de fuente lo indica. Resuélvelos antes de abrir la solución.</p>
+
+<div class="ex"><p class="et">F1. ¿Cuántas veces pasa por el origen? <span class="lvl">Sección A alta, integra Módulo 2</span></p>
+<p class="src">DMpA 8, ítem 5 (IB mayo 2007, Prueba 1 NS), con \(s(0)=-1\) en lugar de \(-3\) para que la raíz sea exacta.</p>
+<p>\(v=3t^2-4t+2\), \(t\ge0\), con \(s(0)=-1\). (a) Halla \(s(t)\) y muestra que la partícula pasa por \(O\) una sola vez. (b) Muestra que nunca está en reposo y deduce la distancia recorrida en \([0,2]\). (c) Halla la rapidez mínima.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(s=t^3-2t^2+2t-1=(t-1)(t^2-t+1)\). El factor \(t^2-t+1\) tiene discriminante \(-3\lt0\), así que solo \(t=1\).</p>
+<p>(b) \(3t^2-4t+2\) tiene discriminante \(16-24\lt0\) y coeficiente principal positivo, así que \(v\gt0\) siempre. Entonces la distancia es igual al desplazamiento: \(s(2)-s(0)=3-(-1)=4\).</p>
+<p>(c) \(v\) es mínima en \(t=\frac23\), con \(v=\frac23\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Aceleración arctan <span class="lvl">Sección B, integra Módulo 14</span></p>
+<p class="src">DMpA 8, ítem 6 (IB noviembre 2007, Prueba 2 NS, 11 puntos), resuelta en forma exacta. La fórmula de la ficha está mal transcrita; se lee como \(a=-\frac1{1+t^2}\).</p>
+<p>\(a=-\frac1{1+t^2}\), \(t\gt0\), con \(v(1)=8\). (a) Halla \(v(3)\). (b) Halla \(\lim_{t\to\infty}v\). (c) Halla la distancia exacta recorrida entre \(t=1\) y \(t=3\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(v=-\arctan t+c\), con \(8=-\frac\pi4+c\). Así \(v=8+\frac\pi4-\arctan t\), y \(v(3)=8+\frac\pi4-\arctan3\).</p>
+<p>(b) \(8+\frac\pi4-\frac\pi2=8-\frac\pi4\).</p>
+<p>(c) \(v\gt8-\frac\pi4\gt0\), así que no cambia de sentido y la distancia es \(\int_1^3v\,dt\). Por partes, \(\int\arctan t\,dt=t\arctan t-\frac12\ln(1+t^2)\). Por tanto \(d=2\left(8+\frac\pi4\right)-\left[3\arctan3-\frac12\ln10-\frac\pi4+\frac12\ln2\right]=16+\frac{3\pi}4-3\arctan3+\frac12\ln5\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. Un cero que no cambia el sentido <span class="lvl">Sección B, integra Módulo 8</span></p>
+<p class="src">DMpA 8, ítem 8 (IB noviembre 2010, Prueba 1 NS, 10 puntos), ampliado con (d).</p>
+<p>\(s=2\sin\pi t+\sin2\pi t\), \(t\ge0\), en cm. (a) Da el periodo de \(s\). (b) Halla \(v\) y \(a\). (c) Resuelve \(v=0\) en \([0,4]\). (d) ¿En cuáles de esos instantes cambia de sentido? Halla la distancia recorrida en un periodo.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Los periodos son 2 y 1; el de la suma es 2.</p>
+<p>(b) \(v=2\pi(\cos\pi t+\cos2\pi t)\) y \(a=-2\pi^2(\sin\pi t+2\sin2\pi t)\).</p>
+<p>(c) Con \(c=\cos\pi t\): \(2c^2+c-1=(2c-1)(c+1)=0\). Si \(c=\frac12\): \(t=\frac13,\frac53,\frac73,\frac{11}3\). Si \(c=-1\): \(t=1,3\).</p>
+<p>(d) \(v=2\pi(2c-1)(c+1)\) y \(c+1\ge0\): en \(t=1\) y \(t=3\), \(v\) no cambia de signo. Solo cambia de sentido en \(t=\frac13,\frac53,\ldots\) Posiciones: \(s\!\left(\frac13\right)=\frac{3\sqrt3}2\) y \(s\!\left(\frac53\right)=-\frac{3\sqrt3}2\), y vuelve a 0 en \(t=2\). La distancia en un periodo es \(\frac{3\sqrt3}2+3\sqrt3+\frac{3\sqrt3}2=6\sqrt3\) cm.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Aceleración nula sin máximo <span class="lvl">Sección B, integra Módulo 13</span></p>
+<p class="src">DMpA 8, ítem 10 (IB mayo 2011 TZ1, Prueba 1 NM, 16 puntos), ampliado con (e).</p>
+<p>\(v=2t+\cos2t\), \(0\le t\le2\). (a) Halla \(v(0)\). (b) Muestra que \(a=0\) en \(k=\frac\pi4\) y halla \(v(k)\). (c) Describe la gráfica de \(v\). (d) Halla la distancia recorrida en \([0,1]\). (e) ¿Es \(t=\frac\pi4\) un máximo de \(v\)? Justifícalo.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(v(0)=1\). (b) \(a=2-2\sin2t=0\) da \(\sin2t=1\), así que \(t=\frac\pi4\) en \([0,2]\), con \(v=\frac\pi2\).</p>
+<p>(c) \(a\ge0\) siempre: \(v\) es creciente, con un tramo casi horizontal en \(\frac\pi4\).</p>
+<p>(d) \(v\gt0\), así que la distancia es \(\int_0^1(2t+\cos2t)\,dt=1+\frac{\sin2}2\).</p>
+<p>(e) No. \(a\) no cambia de signo en \(\frac\pi4\): es un punto de inflexión de \(v\) con tangente horizontal. «\(a=0\)» no basta para hablar de velocidad máxima.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. Velocidad terminal de un coche <span class="lvl">Sección B, integra Módulo 15</span></p>
+<p class="src">DMpA 8, ítem 12 (IB mayo 2013, Prueba 2 NS, 6 puntos), ampliado con (c) a (e). La ficha transcribe la aceleración como «14060-v»; se lee como \(a=\frac1{40}(60-v)\).</p>
+<p>\(a=\frac{60-v}{40}\) m/s², partiendo del reposo. (a) Halla \(v(30)\). (b) Halla la velocidad terminal. (c) ¿Cuándo alcanza 30 m/s? (d) Halla la distancia recorrida en los primeros 40 s. (e) Halla la distancia recorrida hasta alcanzar 30 m/s, de dos maneras.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\int_0^v\frac{dv}{60-v}=\frac t{40}\), así que \(v=60\left(1-e^{-t/40}\right)\), y \(v(30)=60\left(1-e^{-3/4}\right)\).</p>
+<p>(b) 60 m/s. (c) \(e^{-t/40}=\frac12\), así que \(t=40\ln2\).</p>
+<p>(d) \(s=60t+2400\left(e^{-t/40}-1\right)\), y \(s(40)=\frac{2400}e\) m.</p>
+<p>(e) Con \(t\): \(s(40\ln2)=2400\ln2-1200\). Con \(v\frac{dv}{ds}=\frac{60-v}{40}\): \(s=40\int_0^{30}\frac v{60-v}dv=40\int_0^{30}\left(\frac{60}{60-v}-1\right)dv=2400\ln2-1200\). Coinciden.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Oscilación amortiguada y progresión geométrica <span class="lvl">Sección B, integra Módulos 1 y 8</span></p>
+<p class="src">Banco «Cinemática», pregunta 10 (IB, 17 puntos), adaptada a Prueba 1: sin calcular el primer máximo.</p>
+<p>\(s=2^{1-t/5}\sin\frac{2\pi t}3\) cm, \(t\ge0\). (a) Halla el instante \(T\) en que vuelve a pasar por \(O\) por primera vez. (b) Muestra que \(s\!\left(t+\frac32\right)=-2^{-3/10}\,s(t)\). (c) Sea \(u_n\) la máxima distancia a \(O\) en el intervalo \(n\)-ésimo entre pasos por \(O\). Deduce que \((u_n)\) es geométrica y da su razón. (d) Si se moviera así indefinidamente, ¿qué distancia total recorrería, en función de \(u_1\)?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\sin\frac{2\pi t}3=0\) da \(t=\frac32k\); la primera vez es \(T=\frac32\).</p>
+<p>(b) \(2^{1-(t+3/2)/5}=2^{1-t/5}\cdot2^{-3/10}\) y \(\sin\left(\frac{2\pi t}3+\pi\right)=-\sin\frac{2\pi t}3\).</p>
+<p>(c) Por (b), la gráfica en cada intervalo es la anterior reflejada y multiplicada por \(2^{-3/10}\). Así \(u_{n+1}=2^{-3/10}u_n\), con razón \(r=2^{-3/10}\).</p>
+<p>(d) En cada intervalo va hasta \(u_n\) y vuelve: recorre \(2u_n\). El total es \(\sum2u_n=\dfrac{2u_1}{1-2^{-3/10}}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. Velocidad exponencial <span class="lvl">Sección A alta</span></p>
+<p class="src">Banco «Cinemática», pregunta 4 (IB, 7 puntos), con \(v=2^t-4\) en lugar de \(1{,}4^t-2{,}7\).</p>
+<p>\(v=2^t-4\), \(0\le t\le5\). (a) ¿Cuándo está en reposo? (b) Halla \(a(2)\). (c) Halla la distancia total.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(t=2\). (b) \(a=2^t\ln2\), así que \(a(2)=4\ln2\).</p>
+<p>(c) \(\int_0^2(4-2^t)\,dt+\int_2^5(2^t-4)\,dt=\left(8-\tfrac3{\ln2}\right)+\left(\tfrac{28}{\ln2}-12\right)=\dfrac{25}{\ln2}-4\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. Dos partículas que se encuentran en reposo <span class="lvl">Sección B, integra Módulo 2</span></p>
+<p class="src">Banco «Cinemática», pregunta 8 (IB mayo 2019, Prueba 2 NS, 16 puntos), con funciones propias exactas.</p>
+<p>\(s_A=t^3-9t^2+24t-16\) cm respecto a un punto \(P\), \(0\le t\le5\). (a) Da el desplazamiento inicial. (b) ¿Cuándo llega a \(P\) por primera vez? (c) ¿Cuándo cambia de sentido por primera vez? (d) Halla la distancia recorrida en los primeros 3 s. (e) \(B\) parte del mismo punto que \(A\) con \(v_B=8-2t\). Halla \(s_B\) y el otro instante en que se encuentran.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(-16\) cm. (b) \(s_A=(t-1)(t-4)^2\), así que \(t=1\).</p>
+<p>(c) \(v_A=3(t-2)(t-4)\), así que \(t=2\).</p>
+<p>(d) De \(-16\) a \(s(2)=4\) son 20 cm; de 4 a \(s(3)=2\), 2 cm. Total: 22 cm.</p>
+<p>(e) \(s_B=-16+8t-t^2\). Se encuentran si \(s_A-s_B=t^3-8t^2+16t=t(t-4)^2=0\), es decir, en \(t=4\). La raíz es doble: en \(t=4\), \(v_A=v_B=0\). Se encuentran en \(P\), los dos en reposo, y sus gráficas \(s\)–\(t\) son tangentes ahí.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. Movimiento en el plano <span class="lvl">Tipo de examen sin ítem equivalente en las fichas, integra Módulo 9</span></p>
+<p>\(\mathbf a=\begin{pmatrix}0\\2\end{pmatrix}\), \(\mathbf v(0)=\begin{pmatrix}2\\-4\end{pmatrix}\) y \(\mathbf r(0)=\mathbf 0\). (a) Halla \(\mathbf v(t)\) y \(\mathbf r(t)\), y la ecuación cartesiana de la trayectoria. (b) Halla la rapidez mínima y muestra que en ese instante \(\mathbf v\perp\mathbf a\). (c) Halla el ángulo entre \(\mathbf v\) y \(\mathbf a\) en \(t=0\) y decide si la rapidez aumenta. (d) ¿Cuándo se mueve paralela a la recta \(y=x\)?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\mathbf v=\begin{pmatrix}2\\2t-4\end{pmatrix}\) y \(\mathbf r=\begin{pmatrix}2t\\t^2-4t\end{pmatrix}\). Con \(t=\frac x2\): \(y=\frac{x^2}4-2x\), una parábola.</p>
+<p>(b) \(|\mathbf v|^2=4t^2-16t+20\), mínima en \(t=2\), con rapidez 2. En ese instante, \(\mathbf v\cdot\mathbf a=2(2t-4)=0\).</p>
+<p>(c) \(\cos\theta=\frac{-8}{\sqrt{20}\cdot2}=-\frac2{\sqrt5}\), un ángulo obtuso: \(\mathbf v\cdot\mathbf a\lt0\) y la rapidez disminuye.</p>
+<p>(d) \(\mathbf v\parallel\begin{pmatrix}1\\1\end{pmatrix}\) si \(2t-4=2\), es decir, en \(t=3\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. La pelota lanzada hacia arriba <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 8, ítem 2 (Awada 2022, pág. 268), con valores propios.</p>
+<p>\(h=1+20t-5t^2\) m. (a) ¿Desde qué altura se lanza? (b) Halla la altura máxima. (c) Halla el instante y la velocidad con que llega al suelo. (d) Halla la distancia total recorrida. (e) ¿Durante cuánto tiempo está por encima de 16 m?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) 1 m. (b) \(v=20-10t=0\) en \(t=2\), con \(h=21\) m.</p>
+<p>(c) \(5t^2-20t-1=0\), así que \(t=2+\frac{\sqrt{105}}5\). Entonces \(v=-10\cdot\frac{\sqrt{105}}5=-2\sqrt{105}\) m/s, hacia abajo.</p>
+<p>(d) Sube 20 m y baja 21 m: 41 m.</p>
+<p>(e) \(5t^2-20t+15\lt0\) da \(1\lt t\lt3\): 2 s.</p>
+</div></details></div>
+</section>
+
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son todas las preguntas de cinemática de tus 7 pruebas. Las marcas de noviembre 2021 y mayo 2026 son las del markscheme oficial. Las de mayo 2021 TZ2 están reconstruidas, porque no hay markscheme, y suman los 20 puntos de la pregunta.</p>
+
+<div class="ex"><p class="et">X1. Mayo 2026 TZ2, pregunta 8 <span class="lvl">7 puntos</span></p>
+<p>La curva \(C\) es \(2y+3xy^2-2x^2+4=0\), con \(x\ge2\). (a) Halla \(\frac{dy}{dx}\) en función de \(x\) e \(y\). [4] Una partícula se mueve sobre \(C\); en \(P(2,-1)\), \(\frac{dy}{dt}=-6\) unidades por segundo. (b) Halla \(\frac{dx}{dt}\) en \(P\). [3]</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Intentar la derivación implícita <span class="m">(M1)</span>: \(2\frac{dy}{dx}+3y^2+6xy\frac{dy}{dx}-4x=0\) <span class="m">A1A1</span></p>
+<p class="step">(Una A1 por \(3y^2\), \(-4x\) y el 0; otra por \(2\frac{dy}{dx}\) y \(6xy\frac{dy}{dx}\).) Así \(\dfrac{dy}{dx}=\dfrac{4x-3y^2}{2+6xy}\) <span class="m">A1</span></p>
+<p class="step">(b) Formar una relación de razones de cambio <span class="m">(M1)</span>: \(\frac{dx}{dt}=\frac{dy}{dt}\div\frac{dy}{dx}\)</p>
+<p class="step">Sustituir \(x=2\), \(y=-1\), \(\frac{dy}{dt}=-6\) <span class="m">(M1)</span>: \(\frac{dy}{dx}=\frac{8-3}{2-12}=-\frac12\), así que \(\frac{dx}{dt}=\frac{-6}{-1/2}=12\) unidades por segundo <span class="m">A1</span></p>
+<p><span class="lbl">Método alternativo.</span> Derivar \(C\) respecto de \(t\): \(2\dot y+3y^2\dot x+6xy\dot y-4x\dot x=0\), y sustituir los valores. El markscheme da las mismas marcas.</p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> En (a), si no se ve la derivación implícita, no hay marcas. Un error de signo en \(\frac{dy}{dx}\) arrastra el resultado de (b), pero las dos (M1) de (b) se conservan.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Noviembre 2021, pregunta 10 (Sección B) <span class="lvl">16 puntos</span></p>
+<p>\(v(t)=4+4t-3t^2\) m/s, \(0\le t\le3\); en \(t=0\) la partícula está en \(O\). (a) (i) Halla el \(t\) de la velocidad máxima. (ii) Muestra que en ese instante la distancia a \(O\) es \(\frac{88}{27}\) m. [7] (b) Dibuja el gráfico de \(v\) con todos los cortes con los ejes. [4] (c) Halla la distancia total recorrida. [5]</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a)(i) Método válido (\(v'=0\), \(-\frac b{2a}\) o el promedio de las raíces) <span class="m">(M1)</span>: \(4-6t=0\), así que \(t=\frac23\) s <span class="m">A1</span></p>
+<p class="step">(ii) Intentar integrar \(v\) <span class="m">(M1)</span>: \(s=4t+2t^2-t^3\ (+c)\) <span class="m">A1A1</span> (una A1 por \(4t+2t^2\), otra por \(-t^3\))</p>
+<p class="step">Sustituir su \(t\) <span class="m">(M1)</span>: \(\frac83+\frac89-\frac8{27}\) <span class="m">A1</span> \(=\frac{88}{27}\) m <span class="m">AG</span></p>
+<p class="step">(b) Resolver \(4+4t-3t^2=0\) <span class="m">(M1)</span>: \((2-t)(2+3t)=0\); corte con el eje \(t\) en \(t=2\) <span class="m">A1</span></p>
+<p class="step">Parábola cóncava hacia abajo, con dominio de 0 a 3 empezando en \((0,4)\) <span class="m">A1</span>; vértice cerca de \(\left(\frac23,\frac{16}3\right)\), con \(v\gt4\) <span class="m">A1</span>. Termina en \((3,-11)\).</p>
+<p class="step">(c) Separar en \([0,2]\) y \([2,3]\) <span class="m">(M1)</span>: \(\int_0^2v\,dt=8\) <span class="m">A1</span>; \(\int_2^3v\,dt=-5\) <span class="m">A1</span></p>
+<p class="step">Sumar las dos áreas como valores absolutos <span class="m">(M1)</span>: distancia \(=13\) m <span class="m">A1</span></p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> En (a)(ii) hay que justificar \(c=0\) (parte de \(O\)); escribir \(\frac{88}{27}\) sin la sustitución visible pierde la A1. En (b), las dos A1 de forma solo se dan si la parábola es cóncava hacia abajo, y el 3 debe estar marcado. En (c), la raíz \(t=-\frac23\) está fuera del dominio y no separa nada.</p>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 381.895156 236.16" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 236.16 
+L 381.895156 236.16 
+L 381.895156 0 
+L 0 0 
+L 0 236.16 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 17.575156 228.96 
+L 374.695156 228.96 
+L 374.695156 7.2 
+L 17.575156 7.2 
+L 17.575156 228.96 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="meb0366c4f4" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#meb0366c4f4" x="136.615156" y="90.36" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="136.615156" y="105.718281" transform="rotate(-0 136.615156 105.718281)">1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#meb0366c4f4" x="235.815156" y="90.36" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="235.815156" y="105.718281" transform="rotate(-0 235.815156 105.718281)">2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#meb0366c4f4" x="335.015156" y="90.36" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="335.015156" y="105.718281" transform="rotate(-0 335.015156 105.718281)">3</text>
+     </g>
+    </g>
+    <g id="text_4">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="374.695156" y="120.364219" transform="rotate(-0 374.695156 120.364219)">t</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <defs>
+       <path id="mbb0d7ce987" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mbb0d7ce987" x="37.415156" y="201.24" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="205.419141" transform="rotate(-0 30.415156 205.419141)">−10</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mbb0d7ce987" x="37.415156" y="145.8" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="149.979141" transform="rotate(-0 30.415156 149.979141)">−5</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mbb0d7ce987" x="37.415156" y="34.92" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="30.415156" y="39.099141" transform="rotate(-0 30.415156 39.099141)">5</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M 37.415156 46.008 
+L 43.387063 43.458533 
+L 49.358969 41.150171 
+L 55.330875 39.082915 
+L 61.302782 37.256764 
+L 67.274688 35.671718 
+L 73.246594 34.327778 
+L 79.218501 33.224944 
+L 85.190407 32.363215 
+L 91.162313 31.742592 
+L 97.13422 31.363074 
+L 103.106126 31.224661 
+L 109.078033 31.327355 
+L 115.049939 31.671153 
+L 121.021845 32.256057 
+L 126.993752 33.082067 
+L 132.965658 34.149182 
+L 138.937564 35.457402 
+L 144.909471 37.006728 
+L 150.881377 38.79716 
+L 156.853283 40.828697 
+L 162.82519 43.101339 
+L 168.797096 45.615087 
+L 174.769002 48.369941 
+L 180.740909 51.3659 
+L 186.712815 54.602964 
+L 192.684721 58.081134 
+L 198.656628 61.80041 
+L 204.628534 65.760791 
+L 210.600441 69.962277 
+L 216.572347 74.404869 
+L 222.544253 79.088566 
+L 229.511477 84.857611 
+L 236.478701 90.954826 
+L 243.445925 97.380213 
+L 250.41315 104.133771 
+L 257.380374 111.215501 
+L 264.347598 118.625402 
+L 271.314822 126.363474 
+L 278.282046 134.429718 
+L 285.24927 142.824133 
+L 292.216494 151.54672 
+L 299.183718 160.597477 
+L 306.150942 169.976407 
+L 314.113484 181.097025 
+L 322.076026 192.646276 
+L 330.038568 204.624159 
+L 335.015156 212.328 
+L 335.015156 212.328 
+" clip-path="url(#p47e357af98)" style="fill: none; stroke: #0e6e6a; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <defs>
+     <path id="m5a4658ff4f" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: #a2530a"/>
+    </defs>
+    <g clip-path="url(#p47e357af98)">
+     <use xlink:href="#m5a4658ff4f" x="37.415156" y="46.008" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="line2d_9">
+    <g clip-path="url(#p47e357af98)">
+     <use xlink:href="#m5a4658ff4f" x="103.54849" y="31.224" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="line2d_10">
+    <g clip-path="url(#p47e357af98)">
+     <use xlink:href="#m5a4658ff4f" x="235.815156" y="90.36" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="line2d_11">
+    <g clip-path="url(#p47e357af98)">
+     <use xlink:href="#m5a4658ff4f" x="335.015156" y="212.328" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 37.415156 228.96 
+L 37.415156 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 17.575156 90.36 
+L 374.695156 90.36 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="45.351156" y="61.5312" transform="rotate(-0 45.351156 61.5312)">(0, 4)</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="108.50849" y="24.5712" transform="rotate(-0 108.50849 24.5712)">vértice (2/3, 16/3)</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="243.751156" y="83.7072" transform="rotate(-0 243.751156 83.7072)">(2, 0)</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="260.615156" y="210.1104" transform="rotate(-0 260.615156 210.1104)">(3, −11)</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_12">
+     <path d="M 26.575156 214.380313 
+L 36.575156 214.380313 
+L 46.575156 214.380313 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2.2; stroke-linecap: square"/>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="54.575156" y="217.880313" transform="rotate(-0 54.575156 217.880313)">v(t) = 4 + 4t − 3t², 0 ≤ t ≤ 3</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p47e357af98">
+   <rect x="17.575156" y="7.2" width="357.12" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: X2(b), el bosquejo que da las 4 marcas: parábola cóncava hacia abajo, empezando en \((0,4)\), con el vértice marcado por encima de 4, el corte en \(t=2\) y el final del dominio en \((3,-11)\). La rama de la izquierda de \(t=0\) no se dibuja.</figcaption></figure>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Mayo 2021 TZ2, pregunta 11 (Sección B) <span class="lvl">20 puntos</span></p>
+<p>\(a=-(1+v)\), con \(v\gt-1\); en \(t=0\) la partícula está en \(O\) con velocidad \(v_0\gt0\). (a) Resolviendo una ecuación diferencial, muestra que \(v=(1+v_0)e^{-t}-1\). [6] (b) La partícula se aleja hasta \(s_{\max}\) y vuelve. (i) Muestra que el instante \(T\) de \(s_{\max}\) cumple \(e^T=1+v_0\). (ii) Resolviendo una ecuación diferencial adecuada, halla \(s_{\max}\) en función de \(v_0\). [7] (c) Muestra que \(v(T-k)=e^k-1\). [2] (d) Halla una expresión análoga para \(v(T+k)\). [2] (e) Muestra que \(v(T-k)+v(T+k)\ge0\). [3]</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">(a) \(\frac{dv}{dt}=-(1+v)\), así que \(\int\frac{dv}{1+v}=-\int dt\) <span class="m">M1</span>; \(\ln(1+v)=-t+c\) <span class="m">A1A1</span></p>
+<p class="step">\(t=0\), \(v=v_0\) <span class="m">M1</span>: \(c=\ln(1+v_0)\) <span class="m">A1</span>; \(1+v=(1+v_0)e^{-t}\) <span class="m">A1</span> <span class="m">AG</span></p>
+<p class="step">(b)(i) En \(s_{\max}\), \(v=0\) <span class="m">M1</span>: \((1+v_0)e^{-T}=1\) <span class="m">A1</span>, así que \(e^T=1+v_0\) <span class="m">AG</span></p>
+<p class="step">(ii) \(\frac{ds}{dt}=(1+v_0)e^{-t}-1\) <span class="m">M1</span>; \(s=-(1+v_0)e^{-t}-t+c\) <span class="m">A1</span>; \(s(0)=0\) <span class="m">M1</span> da \(c=1+v_0\)</p>
+<p class="step">Sustituir \(T\), con \(e^{-T}=\frac1{1+v_0}\) y \(T=\ln(1+v_0)\) <span class="m">M1</span>: \(s_{\max}=-1-\ln(1+v_0)+1+v_0=v_0-\ln(1+v_0)\) <span class="m">A1</span></p>
+<p class="step">(c) \(v(T-k)=(1+v_0)e^{-T}e^k-1\) <span class="m">M1</span> \(=\frac{1+v_0}{1+v_0}e^k-1\) <span class="m">A1</span> \(=e^k-1\) <span class="m">AG</span></p>
+<p class="step">(d) \(v(T+k)=(1+v_0)e^{-T}e^{-k}-1\) <span class="m">(M1)</span> \(=e^{-k}-1\) <span class="m">A1</span></p>
+<p class="step">(e) Sumar <span class="m">M1</span>: \(e^k+e^{-k}-2\) <span class="m">A1</span> \(=\left(e^{k/2}-e^{-k/2}\right)^2\ge0\) <span class="m">R1</span> <span class="m">AG</span></p>
+<p><span class="lbl">Método alternativo para (b)(ii).</span> \(v\frac{dv}{ds}=-(1+v)\), así que \(\int_{v_0}^0\frac v{1+v}dv=-s_{\max}\), y \(\big[v-\ln(1+v)\big]_{v_0}^0=-s_{\max}\). Esta forma no usa (b)(i), así que si el enunciado exige «utilizando (b)(i)», conviene la vía con \(t\).</p>
+<p><span class="lbl">Interpretación.</span> (e) compara la rapidez \(k\) segundos antes de \(T\), \(e^k-1\), con la rapidez \(k\) segundos después, \(1-e^{-k}\): la de ida es siempre mayor o igual. La partícula se acerca a \(s_{\max}\) más deprisa de lo que se aleja de él. (Para (e) también vale la desigualdad \(e^k+e^{-k}\ge2\) entre media aritmética y geométrica, del Módulo 5.)</p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> Usar \(v=u+at\), que no vale porque \(a\) no es constante. En (e), escribir «\(\ge0\)» sin razón pierde la R1.</p>
+</div></details></div>
+</section>
+
+<section id="extra">
+<h2>6. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos, más difíciles que las preguntas de examen del tema, y ninguno repite un tipo de este módulo ni de los anteriores. Integran series (Módulo 1), polinomios (Módulo 2), trigonometría (Módulo 8), vectores (Módulo 9), probabilidad (Módulo 11), optimización (Módulo 13), integración (Módulo 14), ecuaciones diferenciales (Módulo 15) y Maclaurin (Módulo 17). El 9 y el 10 son problemas jefe; el 10 va más allá del programa.</p>
+
+<div class="ex"><p class="et">E1. El tren más rápido entre dos estaciones <span class="lvl">Sección A alta, integra Módulo 13</span></p>
+<p>Un tren parte del reposo, acelera a \(1\) m/s² y frena a \(2\) m/s² hasta detenerse en la estación siguiente, a 300 m. (a) Con el gráfico \(v\)–\(t\), explica por qué el tiempo mínimo se logra sin tramo de velocidad constante. (b) Halla el tiempo mínimo y la velocidad máxima. (c) Generaliza: para aceleración \(\alpha\), frenado \(\beta\) y distancia \(D\), muestra que \(T_{\min}=\sqrt{\frac{2D(\alpha+\beta)}{\alpha\beta}}\).</p>
+<details><summary>Pista</summary><div class="inner"><p>El área bajo \(v\)–\(t\) es la distancia. Con pendientes fijas, el triángulo es la figura que cubre 300 m² en menos tiempo.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) Si acelera \(t_1\) s y frena \(t_2\) s, entonces \(t_1=2t_2\) y \(v_{\max}=t_1\). El área es \(\frac12(t_1+t_2)t_1=\frac34t_1^2=300\), así que \(t_1=20\), con \(T=30\) s y \(v_{\max}=20\) m/s. (c) \(t_1=\frac{\beta T}{\alpha+\beta}\) y \(D=\frac12T\cdot\alpha t_1=\frac{\alpha\beta T^2}{2(\alpha+\beta)}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E2. La pelota que rebota <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>Se suelta una pelota desde 5 m (con \(g=10\)). Tras cada rebote sube hasta \(\frac49\) de la altura anterior. (a) Halla la distancia total recorrida. (b) Muestra que el tiempo de subida y bajada para una altura \(h\) es \(2\sqrt{\frac{2h}g}\). (c) Halla el tiempo total hasta que se detiene. (d) ¿Por qué la pelota rebota infinitas veces en un tiempo finito?</p>
+<details><summary>Pista</summary><div class="inner"><p>Las alturas forman una progresión de razón \(\frac49\); los tiempos, una de razón \(\sqrt{\frac49}=\frac23\). La primera caída se cuenta una sola vez.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(5+2\cdot\frac{5\cdot4/9}{1-4/9}=5+8=13\) m. (b) Caer desde \(h\) cuesta \(\sqrt{2h/g}\) (con \(h=\frac12gt^2\)), y subir lo mismo. (c) La primera caída dura 1 s; después, \(\sum_{n\ge1}2\left(\frac23\right)^n=4\). Total: 5 s. (d) Los tiempos forman una serie geométrica convergente: es la paradoja de Zenón resuelta.</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Dos drones en el espacio <span class="lvl">Sección B, integra Módulo 9</span></p>
+<p>\(\mathbf r_A=\begin{pmatrix}1\\0\\2\end{pmatrix}+t\begin{pmatrix}1\\2\\-1\end{pmatrix}\) y \(\mathbf r_B=\begin{pmatrix}4\\1\\0\end{pmatrix}+t\begin{pmatrix}0\\1\\1\end{pmatrix}\). (a) ¿Se cortan sus trayectorias? (b) Halla la distancia mínima entre los drones y cuándo ocurre. (c) Compara con la distancia mínima entre las dos rectas (que ignora el tiempo).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Usa parámetros distintos, \(\lambda\) y \(\mu\). (b) \(|\mathbf r_A(t)-\mathbf r_B(t)|^2\) con el mismo \(t\). (c) \(\frac{|(\mathbf b-\mathbf a)\cdot(\mathbf d_1\times\mathbf d_2)|}{|\mathbf d_1\times\mathbf d_2|}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(1+\lambda=4\) da \(\lambda=3\); \(2\lambda=1+\mu\) da \(\mu=5\); pero \(2-\lambda=-1\ne5\). No se cortan: son rectas que se cruzan. (b) \(|\mathbf d|^2=6t^2-16t+14\), mínima en \(t=\frac43\), con distancia \(\sqrt{\frac{10}3}=\frac{\sqrt{30}}3\). (c) \(\mathbf d_1\times\mathbf d_2=(3,-1,1)\) y \((\mathbf b-\mathbf a)\cdot(3,-1,1)=(3,1,-2)\cdot(3,-1,1)=6\), así que la distancia entre rectas es \(\frac6{\sqrt{11}}\lt\frac{\sqrt{30}}3\). Los drones nunca pasan por los puntos más cercanos de sus rutas a la vez.</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Tiro vertical con resistencia cuadrática <span class="lvl">Sección B, integra Módulo 15</span></p>
+<p>Al subir, una piedra cumple \(a=-\frac{100+v^2}{10}\), con \(v_0=10\) m/s. (a) Halla el tiempo hasta la altura máxima. (b) Halla la altura máxima. (c) Compara con el caso sin aire (\(a=-10\)) y explica por qué las dos son menores.</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(\frac{dv}{dt}\) y un arctan. (b) \(v\frac{dv}{ds}\) y un logaritmo.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(T=10\int_0^{10}\frac{dv}{100+v^2}=\arctan1=\frac\pi4\approx0{,}79\) s. (b) \(H=10\int_0^{10}\frac{v\,dv}{100+v^2}=5\ln2\approx3{,}47\) m. (c) Sin aire: 1 s y 5 m. La resistencia se suma a la gravedad al subir (\(|a|\ge10\)): frena antes y sube menos.</p></div></details></div>
+
+<div class="ex"><p class="et">E5. Un instante al azar <span class="lvl">Sección B, integra Módulos 2 y 11</span></p>
+<p>\(s=t(t-3)^2\), \(0\le t\le4\). Se elige un instante \(T\) uniformemente al azar en \([0,4]\). (a) Halla la probabilidad de que la partícula se aleje de \(O\). (b) Halla la probabilidad de que su rapidez aumente. (c) Halla \(P(|v|\gt3\mid\text{se aleja de }O)\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(s\ge0\), así que alejarse equivale a \(v\gt0\). Usa \(v=3(t-1)(t-3)\) y \(a=6t-12\). En (c), resuelve \(3(t-1)(t-3)\gt3\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(v\gt0\) en \([0,1)\cup(3,4]\): \(\frac12\). (b) \(va\gt0\) en \((1,2)\cup(3,4]\): \(\frac12\). (c) \(t^2-4t+2\gt0\) da \(t\lt2-\sqrt2\) o \(t\gt2+\sqrt2\). Dentro de \(v\gt0\) son dos intervalos de longitud \(2-\sqrt2\) cada uno, sobre una longitud total de 2: \(P=2-\sqrt2\).</p></div></details></div>
+
+<div class="ex"><p class="et">E6. Cruzar un río con corriente <span class="lvl">Sección B, integra Módulos 8, 9 y 13</span></p>
+<p>Un río de 60 m de ancho tiene una corriente de 3 m/s. (a) Un bote va a 5 m/s respecto al agua. ¿Hacia dónde debe apuntar para cruzar en el menor tiempo? ¿Cuánto deriva? (b) ¿Hacia dónde debe apuntar para llegar justo enfrente, y cuánto tarda? (c) Si el bote va a 2 m/s, no puede llegar enfrente. Halla el rumbo que minimiza la deriva y la deriva mínima.</p>
+<details><summary>Pista</summary><div class="inner"><p>Con un ángulo \(\alpha\) río arriba respecto de la perpendicular, la velocidad es \((u\cos\alpha,\ 3-u\sin\alpha)\). La deriva es \(60\cdot\frac{3-u\sin\alpha}{u\cos\alpha}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) Perpendicular a la orilla: 12 s y 36 m de deriva. (b) \(\sin\alpha=\frac35\): la componente perpendicular es 4 m/s y tarda 15 s. (c) \(f(\alpha)=\frac{3-2\sin\alpha}{\cos\alpha}\) cumple \(f'=0\iff\sin\alpha=\frac23\). Entonces \(f=\frac{5/3}{\sqrt5/3}=\sqrt5\) y la deriva mínima es \(60\cdot\frac{\sqrt5}2=30\sqrt5\) m. No es apuntar recto río arriba (\(\alpha=90^\circ\) no cruza nunca).</p></div></details></div>
+
+<div class="ex"><p class="et">E7. El retraso asintótico <span class="lvl">Sección B, integra Módulo 14</span></p>
+<p>\(a=te^{-t}\), con la partícula en reposo en \(O\) en \(t=0\). (a) Halla \(v(t)\) y su límite. (b) Halla \(s(t)\). (c) Otra partícula sale de \(O\) en \(t=0\) con la velocidad límite constante. Muestra que la distancia entre ambas tiende a un valor finito y hállalo.</p>
+<details><summary>Pista</summary><div class="inner"><p>Por partes dos veces. En (c), calcula \(\lim(t-s)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(v=1-(t+1)e^{-t}\to1\). (b) \(s=t-2+(t+2)e^{-t}\). (c) \(t-s=2-(t+2)e^{-t}\to2\): la primera partícula acaba siempre 2 m por detrás.</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Velocidad de escape <span class="lvl">Sección B, integra Módulo 15</span></p>
+<p>Lejos de la superficie, la gravedad es \(a=-\frac{gR^2}{s^2}\), donde \(s\) es la distancia al centro de un planeta de radio \(R\). Se lanza un objeto hacia arriba desde \(s=R\) con rapidez \(u\). (a) Muestra que \(v^2=u^2-2gR^2\left(\frac1R-\frac1s\right)\). (b) Halla la altura máxima desde el centro si \(u^2\lt2gR\). (c) Halla la velocidad de escape. (d) Muestra que, si \(u\) es pequeña, la altura máxima sobre la superficie es aproximadamente \(\frac{u^2}{2g}\), la fórmula de gravedad constante.</p>
+<details><summary>Pista</summary><div class="inner"><p>\(\int v\,dv=\int a\,ds\). En (d), escribe \(s_{\max}-R\) y usa \(\frac{1}{1-x}\approx1+x\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(s_{\max}=\dfrac{2gR^2}{2gR-u^2}\). (c) \(u=\sqrt{2gR}\): con ella \(v^2\gt0\) para todo \(s\). (d) \(s_{\max}-R=\frac{Ru^2}{2gR-u^2}=\frac{u^2}{2g}\cdot\frac1{1-u^2/(2gR)}\approx\frac{u^2}{2g}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. La partícula que nunca deja de oscilar <span class="lvl boss">Problema jefe</span></p>
+<p>\(v=e^{-t}\sin t\), \(t\ge0\), con \(s(0)=0\). (a) Halla los instantes en que cambia de sentido. (b) Halla la velocidad máxima y cuándo ocurre. (c) Halla el desplazamiento límite \(\lim_{t\to\infty}s(t)\). (d) Muestra que la distancia recorrida en \([n\pi,(n+1)\pi]\) es \(e^{-n\pi}\cdot\frac{1+e^{-\pi}}2\), y halla la distancia total recorrida.</p>
+<details><summary>Pista</summary><div class="inner"><p>\(\int e^{-t}\sin t\,dt=-\frac12e^{-t}(\sin t+\cos t)\) (partes cíclica, Módulo 14). En (d), sustituye \(t=u+n\pi\): \(\sin(u+n\pi)=(-1)^n\sin u\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(t=n\pi\), \(n\ge1\). (b) \(v'=e^{-t}(\cos t-\sin t)=0\) en \(t=\frac\pi4\), con \(v=\frac{e^{-\pi/4}}{\sqrt2}\). Los máximos posteriores son menores por el factor \(e^{-2\pi}\). (c) \(\frac12\). (d) \(\int_0^\pi e^{-t}\sin t\,dt=\frac{1+e^{-\pi}}2\), y cada intervalo multiplica por \(e^{-\pi}\). Total: \(\dfrac{1+e^{-\pi}}{2(1-e^{-\pi})}=\frac12\coth\frac\pi2\approx0{,}545\). La distancia es solo un 9 % mayor que el desplazamiento.</p></div></details></div>
+
+<div class="ex"><p class="et">E10. Proyectil con resistencia lineal <span class="lvl boss">Problema jefe, más allá del IB</span></p>
+<p>Un proyectil cumple \(\mathbf a=-k\mathbf v-g\mathbf j\), con \(\mathbf v(0)=(u_x,u_y)\) y \(\mathbf r(0)=\mathbf 0\). (a) Resuelve las ecuaciones de cada componente y muestra que \(x=\frac{u_x}k\left(1-e^{-kt}\right)\) e \(y=\frac1k\left(u_y+\frac gk\right)\left(1-e^{-kt}\right)-\frac{gt}k\). (b) Muestra que la trayectoria es \(y=\left(\frac{u_y}{u_x}+\frac g{ku_x}\right)x+\frac g{k^2}\ln\left(1-\frac{kx}{u_x}\right)\). (c) Halla la asíntota vertical y la velocidad terminal. (d) Con el desarrollo de Maclaurin de \(\ln(1-z)\), muestra que, cuando \(k\to0\), la trayectoria tiende a la parábola \(y=\frac{u_y}{u_x}x-\frac{g}{2u_x^2}x^2\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(v_x'=-kv_x\) y \(v_y'+kv_y=-g\) (factor integrante \(e^{kt}\)). (b) Despeja \(e^{-kt}=1-\frac{kx}{u_x}\) y \(t=-\frac1k\ln\left(1-\frac{kx}{u_x}\right)\). (d) \(\ln(1-z)=-z-\frac{z^2}2-\frac{z^3}3-\cdots\) con \(z=\frac{kx}{u_x}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) \(x\to\frac{u_x}k\) y \(\mathbf v\to\left(0,-\frac gk\right)\): el proyectil acaba cayendo en vertical a rapidez constante. (d) \(\frac g{k^2}\ln(1-z)=-\frac{gx}{ku_x}-\frac{gx^2}{2u_x^2}-\frac{gkx^3}{3u_x^3}-\cdots\). El primer término cancela \(\frac g{ku_x}x\), y con \(k\to0\) queda \(y=\frac{u_y}{u_x}x-\frac{gx^2}{2u_x^2}\). Es la parábola de la sección 1.8.</p></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 17, límites, L'Hôpital y series de Maclaurin.</p>
+</section>
+</main>
+</div>
+</body>
+</html>

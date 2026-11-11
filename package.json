@@ -13,6 +13,8 @@
     "test": "vitest",
     "test:run": "vitest run",
     "parse-ib": "set NODE_OPTIONS=--max-old-space-size=8192 && npx tsx scripts/parse-ib-zip.ts",
+    "premium:add": "node scripts/add-premium-course.mjs",
+    "premium:scan": "node scripts/generate-premium-manifest.mjs",
     "build:exe": "npm run build && electron-builder --win nsis --publish never"
   },
   "main": "electron/main.cjs",

@@ -1,0 +1,1556 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 10 · Estadística y probabilidad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 10</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t1">1.1 Datos y muestreo</a>
+  <a class="sub" href="#t2">1.2 Medidas de centralización y dispersión</a>
+  <a class="sub" href="#t3">1.3 Gráficos y valores atípicos</a>
+  <a class="sub" href="#t4">1.4 Correlación y regresión</a>
+  <a class="sub" href="#t5">1.5 Probabilidad básica</a>
+  <a class="sub" href="#t6">1.6 Diagramas de Venn y de árbol</a>
+  <a class="sub" href="#t7">1.7 Condicional e independencia</a>
+  <a class="sub" href="#t8">1.8 Teorema de Bayes</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos resueltos</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 10 de 17</p>
+  <h1>Estadística y probabilidad</h1>
+  <p class="formula">\( P(A\cup B)=P(A)+P(B)-P(A\cap B) \qquad P(A\mid B)=\dfrac{P(A\cap B)}{P(B)} \qquad P(B\mid A)=\dfrac{P(B)P(A\mid B)}{P(A)} \)</p>
+  <p>Todo lo necesario para las preguntas de estadística y probabilidad de la Prueba 1 sin calculadora, al nivel de la banda 7. En la Prueba 1 se evalúa el razonamiento, no el cálculo: fracciones exactas, diagramas y fórmulas bien elegidas. Los problemas extra integran los Módulos 1–9.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">La estadística descriptiva y la probabilidad aparecen en 4 de tus 7 pruebas, casi siempre como preguntas de 5–7 puntos en la Sección A. En este módulo se resuelven 23 puntos, y la probabilidad vuelve a aparecer dentro de dos preguntas largas de variables aleatorias (Módulo 11). Son puntos que se pueden asegurar con método y un buen diagrama.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2021 TZ1</td><td>3</td><td>5</td><td>Diagrama de caja, RIC y criterio de valores atípicos al revés</td></tr>
+<tr><td>Noviembre 2021</td><td>4</td><td>5</td><td>Probabilidad total con dos cajas; independencia</td></tr>
+<tr><td>Noviembre 2022</td><td>6</td><td>6</td><td>Valores mínimo y máximo de \(P(A\cap B)\)</td></tr>
+<tr><td>Mayo 2022 TZ1</td><td>2</td><td>7</td><td>Atípicos en un diagrama de caja; elegir la recta de regresión; medias</td></tr>
+</tbody></table></div>
+<p>Mayo 2021 TZ1 P10 y mayo 2022 TZ2 P10, que combinan probabilidad con variables aleatorias, se resuelven en el Módulo 11.</p>
+
+<h3>Cómo lo pregunta el IB: patrones de tus pruebas</h3>
+<ol>
+<li><b>Criterio de atípicos \(Q_3+1{,}5\,\mathrm{RIC}\) usado al revés:</b> dada la condición «no hay atípicos», se despeja un cuartil.</li>
+<li><b>Elegir la recta correcta:</b> para estimar \(c\) dado \(a\) se usa la recta de \(c\) sobre \(a\). Las dos rectas se cortan en \((\bar a,\bar c)\).</li>
+<li><b>Probabilidad total y test de independencia:</b> hay que comparar \(P(A\cap R)\) con \(P(A)P(R)\), o \(P(R\mid A)\) con \(P(R)\). Se exige conclusión <b>y</b> razón.</li>
+<li><b>Cotas de \(P(A\cap B)\):</b> el mínimo cuando \(P(A\cup B)=1\); el máximo cuando un suceso está contenido en el otro.</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA N°29 y su separata (2025)</td><td>Probabilidad clásica y experimental, número esperado; preguntas IB con bolsas y extracciones</td><td>F5 y sección 1.5</td></tr>
+<tr><td>DMpA N°30 (2025)</td><td>Regla de la suma, excluyentes, regla del producto; preguntas IB 2018–2022</td><td>F6 y sección 1.6</td></tr>
+<tr><td>DMpA 07 (2026)</td><td>Condicional, independencia, Venn, sin reposición, parámetro \(n\)</td><td>F1–F4, F7</td></tr>
+<tr><td>Separatas 13 y 14 y DMpA N°10 (2025)</td><td>Medidas de centralización y dispersión, tablas de frecuencias, muestreo</td><td>F8–F10 y secciones 1.1–1.3</td></tr>
+</tbody></table></div>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA (Tema 4)</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Población, muestra, tipos de datos, métodos de muestreo, sesgo</td><td>1.1</td><td>Bajo</td></tr>
+<tr><td>Media, mediana, moda, cuartiles, rango, RIC, varianza y desviación típica; efecto de transformaciones lineales</td><td>1.2</td><td>Medio</td></tr>
+<tr><td>Diagramas de caja, frecuencia acumulada, histogramas; atípicos</td><td>1.3</td><td>Medio</td></tr>
+<tr><td>Correlación de Pearson; rectas de regresión; predicción</td><td>1.4</td><td>Medio</td></tr>
+<tr><td>Probabilidad, número esperado, complementario, unión, excluyentes</td><td>1.5</td><td>Alto</td></tr>
+<tr><td>Diagramas de Venn, de árbol, tablas y espacios muestrales</td><td>1.6</td><td>Alto</td></tr>
+<tr><td>Probabilidad condicional e independencia</td><td>1.7</td><td>Alto</td></tr>
+<tr><td>Teorema de Bayes (NS)</td><td>1.8</td><td>Medio (Sección B)</td></tr>
+<tr><td>Otros tipos de pregunta: desviación típica con \(\sum x,\sum x^2\), codificación lineal, añadir/quitar un dato, Venn de tres conjuntos, «al menos uno», independencia con parámetro, tabla de contingencia, conteo combinatorio</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1–1.8 cubren todo el Tema 4 hasta la probabilidad condicional y Bayes, y cada concepto esencial trae un recuadro «Para practicar». La sección 6 reúne los tipos de pregunta del IB que no salieron en tus 7 pruebas pero que pueden venir. Las variables aleatorias, la binomial y la normal forman el Módulo 11. Las cajas «Más allá» añaden las cotas de \(P(A\cap B)\), la probabilidad geométrica y juegos que se resuelven con series; ningún problema extra las necesita. El techo es la investigación I1, tipo Prueba 3.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Va de la descripción de datos al teorema de Bayes. Cada concepto trae un ejemplo resuelto con valores exactos y, los esenciales, un recuadro «Para practicar». Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Datos y muestreo</h3>
+<ul>
+<li><b>Población</b> (todos los individuos) y <b>muestra</b> (subconjunto observado). Datos <b>discretos</b> (se cuentan) o <b>continuos</b> (se miden).</li>
+<li><b>Muestreo:</b> aleatorio simple (todos tienen la misma probabilidad), sistemático (cada \(k\)-ésimo), estratificado (proporcional a subgrupos), por cuotas (tamaño fijo por grupo, sin azar) y por conveniencia (los disponibles). Los dos últimos producen <b>sesgo</b>.</li>
+<li>La fiabilidad de los datos depende del método de recogida, del tamaño de la muestra y de posibles errores de medida.</li>
+</ul>
+
+<div class="ex"><p class="et">Ejemplo 1.1. Clasificar datos y muestrear por estratos</p>
+<p>Un colegio tiene 600 alumnos: 240 de primero, 200 de segundo y 160 de tercero. (a) ¿Cuántos de cada curso hay en una muestra estratificada de 30? (b) Clasifica: número de hermanos, estatura y color favorito.</p>
+<p>(a) Proporcional al tamaño: \(30\cdot\frac{240}{600}=12\), \(30\cdot\frac{200}{600}=10\) y \(30\cdot\frac{160}{600}=8\). (b) Número de hermanos: discreto (se cuenta). Estatura: continuo (se mide). Color: cualitativo. Una muestra aleatoria simple podría dejar un curso infrarrepresentado; la estratificada lo evita.</p></div>
+<h3 id="t2">1.2 Medidas de centralización y dispersión</h3>
+\[ \bar x=\frac{\sum f_ix_i}{n},\qquad \sigma^2=\frac{\sum f_i(x_i-\bar x)^2}{n}=\frac{\sum f_ix_i^2}{n}-\bar x^2,\qquad \mathrm{RIC}=Q_3-Q_1 \]
+<ul>
+<li><b>Mediana:</b> el valor en la posición \(\tfrac{n+1}{2}\) de los datos ordenados. \(Q_1\) y \(Q_3\) son las medianas de las mitades inferior y superior.</li>
+<li><b>Datos agrupados:</b> se usa la marca de clase (punto medio) de cada intervalo; la media es una estimación.</li>
+<li><b>Transformación lineal</b> \(y=ax+b\): \(\bar y=a\bar x+b\), \(\sigma_y=|a|\sigma_x\), \(\mathrm{RIC}_y=|a|\,\mathrm{RIC}_x\). Sumar una constante no cambia la dispersión.</li>
+<li><b>Media combinada:</b> \(\bar x=\dfrac{n_1\bar x_1+n_2\bar x_2}{n_1+n_2}\).</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.2. Frecuencia desconocida a partir de la media</p>
+<p>Los valores \(0,1,2,3\) tienen frecuencias \(4,k,6,2\) y la media es 1,4. Halla \(k\).</p>
+<p>\(\dfrac{k+12+6}{12+k}=1{,}4\Rightarrow k+18=16{,}8+1{,}4k\Rightarrow k=3\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Los valores \(1,2,3,4\) tienen frecuencias \(3,k,4,1\) y la media es \(2{,}5\). Halla \(k\).</li><li>Diez datos cumplen \(\sum x=70\) y \(\sum x^2=560\). Halla la media y la desviación típica.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\dfrac{3+2k+12+4}{8+k}=2{,}5\Rightarrow19+2k=20+2{,}5k\Rightarrow k=2\).</li><li>\(\bar x=7\); \(\sigma^2=56-49=7\), \(\sigma=\sqrt7\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.3. Efecto de una transformación</p>
+<p>Unas notas tienen media 20 y desviación típica 3. Se transforman con \(y=2x-5\). Halla la nueva media, desviación típica y varianza.</p>
+<p>Media \(2\cdot20-5=35\); desviación típica \(2\cdot3=6\); varianza 36. El \(-5\) no afecta a la dispersión.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.4. Datos agrupados</p>
+<p>Las clases \([0,10)\), \([10,20)\) y \([20,30)\) tienen frecuencias 4, 10 y 6. Estima la media e indica la clase modal y la clase de la mediana.</p>
+<p>Marcas de clase 5, 15, 25: \(\bar x\approx\tfrac{20+150+150}{20}=16\). Clase modal \([10,20)\). La mediana está entre los datos 10.º y 11.º, que caen en \([10,20)\) (frecuencia acumulada: 4, 14, 20).</p></div>
+
+<h3 id="t3">1.3 Gráficos y valores atípicos</h3>
+<ul>
+<li><b>Diagrama de caja:</b> mínimo, \(Q_1\), mediana, \(Q_3\), máximo. Los bigotes llegan al último dato que no es atípico.</li>
+<li><b>Atípico:</b> dato menor que \(Q_1-1{,}5\,\mathrm{RIC}\) o mayor que \(Q_3+1{,}5\,\mathrm{RIC}\).</li>
+<li><b>Frecuencia acumulada:</b> la mediana se lee en \(\tfrac n2\), \(Q_1\) en \(\tfrac n4\) y \(Q_3\) en \(\tfrac{3n}4\). Un percentil \(p\) se lee en \(\tfrac{p}{100}n\).</li>
+<li><b>Asimetría:</b> si la cola es larga a la derecha, en general la media es mayor que la mediana.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.5. Límites de atípicos</p>
+<p>\(Q_1=12\) y \(Q_3=20\). ¿Es 35 un atípico? ¿Y 0?</p>
+<p>\(\mathrm{RIC}=8\), así que los límites son \(12-12=0\) y \(20+12=32\). 35 es atípico; 0 no lo es (el criterio es estrictamente menor que 0).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 406.104516 176.189938" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 176.189938 
+L 406.104516 176.189938 
+L 406.104516 0 
+L 0 0 
+L 0 176.189938 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 19.999792 151.344 
+L 388.279792 151.344 
+L 388.279792 7.2 
+L 19.999792 7.2 
+L 19.999792 151.344 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 154.736378 118.3968 
+L 226.59589 118.3968 
+L 226.59589 68.976 
+L 154.736378 68.976 
+z
+" clip-path="url(#pfc5c936a4e)" style="fill: #0e6e6a; opacity: 0.25; stroke: #0e6e6a; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mac475e6e54" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mac475e6e54" x="46.947109" y="151.344" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="46.947109" y="166.702281" transform="rotate(-0 46.947109 166.702281)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mac475e6e54" x="73.894426" y="151.344" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="73.894426" y="166.702281" transform="rotate(-0 73.894426 166.702281)">3</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mac475e6e54" x="154.736378" y="151.344" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="154.736378" y="166.702281" transform="rotate(-0 154.736378 166.702281)">12</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mac475e6e54" x="181.683695" y="151.344" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="181.683695" y="166.702281" transform="rotate(-0 181.683695 166.702281)">15</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mac475e6e54" x="226.59589" y="151.344" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="226.59589" y="166.702281" transform="rotate(-0 226.59589 166.702281)">20</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mac475e6e54" x="298.455402" y="151.344" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="298.455402" y="166.702281" transform="rotate(-0 298.455402 166.702281)">28</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#mac475e6e54" x="334.385158" y="151.344" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="334.385158" y="166.702281" transform="rotate(-0 334.385158 166.702281)">32</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#mac475e6e54" x="361.332475" y="151.344" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="361.332475" y="166.702281" transform="rotate(-0 361.332475 166.702281)">35</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_9">
+    <path d="M 154.736378 118.3968 
+L 154.736378 68.976 
+L 226.59589 68.976 
+L 226.59589 118.3968 
+L 154.736378 118.3968 
+" clip-path="url(#pfc5c936a4e)" style="fill: none; stroke: #0e6e6a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 181.683695 118.3968 
+L 181.683695 68.976 
+" clip-path="url(#pfc5c936a4e)" style="fill: none; stroke: #0e6e6a; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 73.894426 93.6864 
+L 154.736378 93.6864 
+" clip-path="url(#pfc5c936a4e)" style="fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 226.59589 93.6864 
+L 298.455402 93.6864 
+" clip-path="url(#pfc5c936a4e)" style="fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 73.894426 106.0416 
+L 73.894426 81.3312 
+" clip-path="url(#pfc5c936a4e)" style="fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_14">
+    <path d="M 298.455402 106.0416 
+L 298.455402 81.3312 
+" clip-path="url(#pfc5c936a4e)" style="fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_15">
+    <defs>
+     <path id="m47345eabbf" d="M -4.5 4.5 
+L 4.5 -4.5 
+M -4.5 -4.5 
+L 4.5 4.5 
+" style="stroke: #a2530a; stroke-width: 2"/>
+    </defs>
+    <g clip-path="url(#pfc5c936a4e)">
+     <use xlink:href="#m47345eabbf" x="361.332475" y="93.6864" style="fill: #a2530a; stroke: #a2530a; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="line2d_16">
+    <path d="M 46.947109 151.344 
+L 46.947109 7.2 
+" clip-path="url(#pfc5c936a4e)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_17">
+    <path d="M 334.385158 151.344 
+L 334.385158 7.2 
+" clip-path="url(#pfc5c936a4e)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.2"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 19.999792 151.344 
+L 388.279792 151.344 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #5a3d9a" transform="translate(15.010781 45.982878)">límite inferior</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #5a3d9a" transform="translate(7.2 56.6208)">Q₁ − 1,5·RIC = 0</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #5a3d9a" transform="translate(299.950627 45.982878)">límite superior</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #5a3d9a" transform="translate(291.615861 56.6208)">Q₃ + 1,5·RIC = 32</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="346.062329" y="134.8704" transform="rotate(-0 346.062329 134.8704)">35: atípico</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pfc5c936a4e">
+   <rect x="19.999792" y="7.2" width="368.28" height="144.144"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.5: con \(Q_1=12\) y \(Q_3=20\), \(\mathrm{RIC}=8\) y los límites son 0 y 32. El bigote llega hasta el mayor dato que no es atípico; el 35 se marca aparte. (La mediana, el mínimo y el máximo no atípico de la figura son ilustrativos.)</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(Q_1=15\) y \(Q_3=27\). ¿Es 48 un atípico? ¿Y −4?</li><li>Un conjunto no tiene atípicos y su máximo es 40, con \(Q_3=30\). ¿Qué dice eso de \(Q_1\)?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\mathrm{RIC}=12\), límites \(15-18=-3\) y \(27+18=45\). 48 es atípico; −4 también (es menor que −3).</li><li>\(40\le30+1{,}5\,\mathrm{RIC}\Rightarrow\mathrm{RIC}\ge\tfrac{20}3\Rightarrow Q_1\le30-\tfrac{20}3=\tfrac{70}3\approx23{,}3\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.6. Frecuencia acumulada con interpolación</p>
+<p>Para 80 datos, la frecuencia acumulada es 12 hasta 10, 36 hasta 20, 64 hasta 30 y 80 hasta 40. Estima la mediana y el percentil 90.</p>
+<p>Mediana en la posición 40, que cae en \([20,30]\): \(20+\tfrac{40-36}{64-36}\cdot10=20+\tfrac{10}7\approx21{,}4\).</p>
+<p>Percentil 90 en la posición 72, que cae en \([30,40]\): \(30+\tfrac{72-64}{80-64}\cdot10=35\). Es lo mismo que se lee en la gráfica al unir los puntos con segmentos.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 384.843438 257.363875" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 257.363875 
+L 384.843438 257.363875 
+L 384.843438 0 
+L 0 0 
+L 0 257.363875 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 42.843438 217.872 
+L 377.643438 217.872 
+L 377.643438 7.2 
+L 42.843438 7.2 
+L 42.843438 217.872 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="ma2a2b6fd9a" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#ma2a2b6fd9a" x="58.061619" y="217.872" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="58.061619" y="233.230281" transform="rotate(-0 58.061619 233.230281)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#ma2a2b6fd9a" x="134.152528" y="217.872" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="134.152528" y="233.230281" transform="rotate(-0 134.152528 233.230281)">10</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#ma2a2b6fd9a" x="210.243438" y="217.872" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="210.243438" y="233.230281" transform="rotate(-0 210.243438 233.230281)">20</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#ma2a2b6fd9a" x="286.334347" y="217.872" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="286.334347" y="233.230281" transform="rotate(-0 286.334347 233.230281)">30</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#ma2a2b6fd9a" x="362.425256" y="217.872" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="362.425256" y="233.230281" transform="rotate(-0 362.425256 233.230281)">40</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="210.243438" y="247.876219" transform="rotate(-0 210.243438 247.876219)">valor</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6">
+      <defs>
+       <path id="m20c0a28843" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m20c0a28843" x="42.843438" y="179.568" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="183.747141" transform="rotate(-0 35.843438 183.747141)">12</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m20c0a28843" x="42.843438" y="122.112" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="126.291141" transform="rotate(-0 35.843438 126.291141)">36</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m20c0a28843" x="42.843438" y="112.536" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="116.715141" transform="rotate(-0 35.843438 116.715141)">40</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m20c0a28843" x="42.843438" y="55.08" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="59.259141" transform="rotate(-0 35.843438 59.259141)">64</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m20c0a28843" x="42.843438" y="35.928" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="40.107141" transform="rotate(-0 35.843438 40.107141)">72</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m20c0a28843" x="42.843438" y="16.776" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="20.955141" transform="rotate(-0 35.843438 20.955141)">80</text>
+     </g>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="15.558281" y="112.536" transform="rotate(-90 15.558281 112.536)">frecuencia acumulada</text>
+    </g>
+   </g>
+   <g id="line2d_12">
+    <path d="M 58.061619 208.296 
+L 134.152528 179.568 
+L 210.243438 122.112 
+L 286.334347 55.08 
+L 362.425256 16.776 
+" clip-path="url(#pdc9aea6f92)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    <defs>
+     <path id="mb6f7838d0c" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #0e6e6a"/>
+    </defs>
+    <g clip-path="url(#pdc9aea6f92)">
+     <use xlink:href="#mb6f7838d0c" x="58.061619" y="208.296" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#mb6f7838d0c" x="134.152528" y="179.568" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#mb6f7838d0c" x="210.243438" y="122.112" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#mb6f7838d0c" x="286.334347" y="55.08" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     <use xlink:href="#mb6f7838d0c" x="362.425256" y="16.776" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+    </g>
+   </g>
+   <g id="line2d_13">
+    <path d="M 58.061619 112.536 
+L 221.113567 112.536 
+" clip-path="url(#pdc9aea6f92)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_14">
+    <path d="M 221.113567 208.296 
+L 221.113567 112.536 
+" clip-path="url(#pdc9aea6f92)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_15">
+    <path d="M 58.061619 35.928 
+L 324.379801 35.928 
+" clip-path="url(#pdc9aea6f92)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_16">
+    <path d="M 324.379801 208.296 
+L 324.379801 35.928 
+" clip-path="url(#pdc9aea6f92)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 42.843438 217.872 
+L 42.843438 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 42.843438 217.872 
+L 377.643438 217.872 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="225.679022" y="160.416" transform="rotate(-0 225.679022 160.416)">mediana ≈ 21,4</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="328.945256" y="122.112" transform="rotate(-0 328.945256 122.112)">P90 = 35</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_17">
+     <path d="M 51.843438 20.298438 
+L 61.843438 20.298438 
+L 71.843438 20.298438 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#mb6f7838d0c" x="61.843438" y="20.298438" style="fill: #0e6e6a; stroke: #0e6e6a"/>
+     </g>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="79.843438" y="23.798438" transform="rotate(-0 79.843438 23.798438)">frecuencia acumulada</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pdc9aea6f92">
+   <rect x="42.843438" y="7.2" width="334.8" height="210.672"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.6: la mediana está en la posición 40 de 80 y el percentil 90 en la 72. Uniendo los puntos con segmentos, la interpolación lineal es leer el valor en esa altura.</figcaption></figure>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ1, P3 y mayo 2022 TZ1, P2)</p><p>Si el máximo es 75 y no hay atípicos, entonces \(75\le U+1{,}5\cdot20\), es decir \(U\ge45\). Plantea la desigualdad escrita: así ganas la M1.</p></div>
+
+<h3 id="t4">1.4 Correlación y regresión</h3>
+<ul>
+<li>El coeficiente de Pearson \(r\in[-1,1]\) mide la relación <b>lineal</b>: su signo es la dirección y \(|r|\) cercano a 1 indica una relación fuerte. Correlación no implica causalidad.</li>
+<li>La recta de regresión de \(y\) sobre \(x\) sirve para <b>estimar \(y\) dado \(x\)</b>. La de \(x\) sobre \(y\), para estimar \(x\) dado \(y\).</li>
+<li>Ambas rectas pasan por \((\bar x,\bar y)\), y su intersección da las dos medias.</li>
+<li>Interpolar (dentro del rango de datos) es fiable si \(|r|\) es alto. Extrapolar no lo es.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.7. La recta pasa por las medias</p>
+<p>La recta de \(y\) sobre \(x\) es \(y=1{,}5x+2\), con \(\bar x=4\). Halla \(\bar y\) y estima \(y\) cuando \(x=6\).</p>
+<p>\(\bar y=1{,}5\cdot4+2=8\). Estimación: \(1{,}5\cdot6+2=11\), válida si 6 está dentro del rango de los datos.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 374.769531 268.451875" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 268.451875 
+L 374.769531 268.451875 
+L 374.769531 0 
+L 0 0 
+L 0 268.451875 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 42.843438 228.96 
+L 355.323438 228.96 
+L 355.323438 7.2 
+L 42.843438 7.2 
+L 42.843438 228.96 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m5c8f84a504" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m5c8f84a504" x="42.843438" y="228.96" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="42.843438" y="244.318281" transform="rotate(-0 42.843438 244.318281)">0.0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m5c8f84a504" x="81.903438" y="228.96" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="81.903438" y="244.318281" transform="rotate(-0 81.903438 244.318281)">2.5</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m5c8f84a504" x="120.963438" y="228.96" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="120.963438" y="244.318281" transform="rotate(-0 120.963438 244.318281)">5.0</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m5c8f84a504" x="160.023438" y="228.96" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="160.023438" y="244.318281" transform="rotate(-0 160.023438 244.318281)">7.5</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m5c8f84a504" x="199.083438" y="228.96" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="199.083438" y="244.318281" transform="rotate(-0 199.083438 244.318281)">10.0</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m5c8f84a504" x="238.143438" y="228.96" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="238.143438" y="244.318281" transform="rotate(-0 238.143438 244.318281)">12.5</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m5c8f84a504" x="277.203438" y="228.96" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="277.203438" y="244.318281" transform="rotate(-0 277.203438 244.318281)">15.0</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m5c8f84a504" x="316.263438" y="228.96" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="316.263438" y="244.318281" transform="rotate(-0 316.263438 244.318281)">17.5</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m5c8f84a504" x="355.323438" y="228.96" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="355.323438" y="244.318281" transform="rotate(-0 355.323438 244.318281)">20.0</text>
+     </g>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="199.083438" y="258.964219" transform="rotate(-0 199.083438 258.964219)">c (edad del hijo)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_10">
+      <defs>
+       <path id="mc5f817309a" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mc5f817309a" x="42.843438" y="217.872" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="222.051141" transform="rotate(-0 35.843438 222.051141)">20</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#mc5f817309a" x="42.843438" y="190.152" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="194.331141" transform="rotate(-0 35.843438 194.331141)">25</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#mc5f817309a" x="42.843438" y="162.432" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="166.611141" transform="rotate(-0 35.843438 166.611141)">30</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#mc5f817309a" x="42.843438" y="134.712" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="138.891141" transform="rotate(-0 35.843438 138.891141)">35</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#mc5f817309a" x="42.843438" y="106.992" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="111.171141" transform="rotate(-0 35.843438 111.171141)">40</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#mc5f817309a" x="42.843438" y="79.272" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="83.451141" transform="rotate(-0 35.843438 83.451141)">45</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#mc5f817309a" x="42.843438" y="51.552" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="55.731141" transform="rotate(-0 35.843438 55.731141)">50</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#mc5f817309a" x="42.843438" y="23.832" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="35.843438" y="28.011141" transform="rotate(-0 35.843438 28.011141)">55</text>
+     </g>
+    </g>
+    <g id="text_19">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="15.558281" y="118.08" transform="rotate(-90 15.558281 118.08)">a (edad del adulto)</text>
+    </g>
+   </g>
+   <g id="line2d_18">
+    <path d="M 42.843438 217.872 
+L 77.563438 196.312 
+L 112.283438 174.752 
+L 147.003438 153.192 
+L 181.723438 131.632 
+L 216.443438 110.072 
+L 251.163438 88.512 
+L 285.883438 66.952 
+L 320.603438 45.392 
+L 355.323438 23.832 
+" clip-path="url(#p7b379bac38)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_19">
+    <path d="M 42.843438 228.96 
+L 77.563437 204.32 
+L 112.283438 179.68 
+L 147.003438 155.04 
+L 181.723438 130.4 
+L 216.443438 105.76 
+L 251.163438 81.12 
+L 285.883438 56.48 
+L 320.603438 31.84 
+L 355.323438 7.2 
+" clip-path="url(#p7b379bac38)" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_20">
+    <defs>
+     <path id="m7a7d67de05" d="M 0 3.5 
+C 0.928211 3.5 1.81853 3.131218 2.474874 2.474874 
+C 3.131218 1.81853 3.5 0.928211 3.5 0 
+C 3.5 -0.928211 3.131218 -1.81853 2.474874 -2.474874 
+C 1.81853 -3.131218 0.928211 -3.5 0 -3.5 
+C -0.928211 -3.5 -1.81853 -3.131218 -2.474874 -2.474874 
+C -3.131218 -1.81853 -3.5 -0.928211 -3.5 0 
+C -3.5 0.928211 -3.131218 1.81853 -2.474874 2.474874 
+C -1.81853 3.131218 -0.928211 3.5 0 3.5 
+z
+" style="stroke: #a2530a"/>
+    </defs>
+    <g clip-path="url(#p7b379bac38)">
+     <use xlink:href="#m7a7d67de05" x="167.835438" y="140.256" style="fill: #a2530a; stroke: #a2530a"/>
+    </g>
+   </g>
+   <g id="line2d_21">
+    <defs>
+     <path id="mf29e8c575a" d="M -2.5 2.5 
+L 2.5 2.5 
+L 2.5 -2.5 
+L -2.5 -2.5 
+z
+" style="stroke: currentColor; stroke-linejoin: miter"/>
+    </defs>
+    <g clip-path="url(#p7b379bac38)">
+     <use xlink:href="#mf29e8c575a" x="230.331438" y="95.904" style="stroke: currentColor; stroke-linejoin: miter"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 42.843438 228.96 
+L 42.843438 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 42.843438 228.96 
+L 355.323438 228.96 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="177.209838" y="162.432" transform="rotate(-0 177.209838 162.432)">(c̄, ā) = (8, 34)</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="50.655438" y="34.92" transform="rotate(-0 50.655438 34.92)">a = 42 → c = 12 con la recta de c sobre a</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_22">
+     <path d="M 196.706094 201.165078 
+L 206.206094 201.165078 
+L 215.706094 201.165078 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_22">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="223.306094" y="204.490078" transform="rotate(-0 223.306094 204.490078)">a sobre c: a = (7/4)c + 20</text>
+    </g>
+    <g id="line2d_23">
+     <path d="M 196.706094 215.109297 
+L 206.206094 215.109297 
+L 215.706094 215.109297 
+" style="fill: none; stroke: #5a3d9a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_23">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="223.306094" y="218.434297" transform="rotate(-0 223.306094 218.434297)">c sobre a: c = a/2 − 9</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p7b379bac38">
+   <rect x="42.843438" y="7.2" width="312.48" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: mayo 2022 TZ1 P2 (X4): las dos rectas de regresión son distintas y se cortan en el punto de medias \((\bar c,\bar a)\). Para estimar \(c\) desde \(a\) se usa la recta de \(c\) sobre \(a\).</figcaption></figure>
+<div class="ex"><p class="et">Ejemplo 1.8. Medias y \(r\) a partir de las dos rectas</p>
+<p>La recta de \(y\) sobre \(x\) es \(y=3x-1\) y la de \(x\) sobre \(y\) es \(x=0{,}25y+1\). Halla \(\bar x\), \(\bar y\) y \(r\).</p>
+<p>Las dos rectas pasan por \((\bar x,\bar y)\): \(x=0{,}25(3x-1)+1\), así que \(\bar x=3\) e \(\bar y=8\). Además, el producto de las dos pendientes es \(r^2\): \(3\cdot0{,}25=0{,}75\), y \(r=\frac{\sqrt3}2\), positivo porque las pendientes lo son.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>La recta de \(y\) sobre \(x\) es \(y=0{,}8x+3\) y la de \(x\) sobre \(y\) es \(x=0{,}9y-1\). Halla \(\bar x\) y \(\bar y\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Se cortan en \((\bar x,\bar y)\): \(x=0{,}9(0{,}8x+3)-1=0{,}72x+1{,}7\Rightarrow0{,}28x=1{,}7\Rightarrow\bar x\approx6{,}07\), \(\bar y=0{,}8\bar x+3\approx7{,}86\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ1, P2(b))</p><p>Con las dos rectas de regresión, para estimar \(c\) a partir de \(a=42\) hay que usar la de \(c\) sobre \(a\): elegirla vale (M1). Para la media de \(a\), las dos rectas se cortan en \((\bar c,\bar a)\): resolver el sistema vale (M1) y da \(\bar a=34\). Usar la recta de \(a\) sobre \(c\) despejada al revés da otro número y pierde las dos marcas del apartado (i).</p></div>
+
+<h3 id="t5">1.5 Probabilidad básica</h3>
+\[ P(A)=\frac{n(A)}{n(U)},\qquad P(A')=1-P(A),\qquad P(A\cup B)=P(A)+P(B)-P(A\cap B) \]
+<ul>
+<li><b>Excluyentes:</b> \(P(A\cap B)=0\), así que \(P(A\cup B)=P(A)+P(B)\).</li>
+<li><b>Número esperado</b> de veces en \(n\) ensayos: \(np\).</li>
+<li>La probabilidad experimental (frecuencia relativa) se acerca a la teórica al aumentar los ensayos.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.9. Espacio muestral y número esperado</p>
+<p>Se lanzan dos dados. Halla \(P(\text{suma}=8)\) y cuántas veces se espera en 180 lanzamientos.</p>
+<p>Casos \((2,6),(3,5),(4,4),(5,3),(6,2)\): \(P=\tfrac5{36}\). Esperado: \(180\cdot\tfrac5{36}=25\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.10. Dos dados: espacio muestral en cuadrícula</p>
+<p>Se lanzan dos dados. Halla \(P(\text{suma }8)\), \(P(\text{al menos un }6)\) y \(P(\text{suma }8\mid\text{al menos un }6)\).</p>
+<p>En la cuadrícula de 36 casos: suma 8 son \((2,6),(3,5),(4,4),(5,3),(6,2)\), así que \(\frac5{36}\). Al menos un 6: \(1-\frac{25}{36}=\frac{11}{36}\). Con ambas condiciones solo quedan \((2,6)\) y \((6,2)\): \(\frac{2/36}{11/36}=\frac2{11}\).</p></div>
+
+<h3 id="t6">1.6 Diagramas de Venn y de árbol</h3>
+<ul>
+<li><b>Venn:</b> se rellena desde la intersección hacia fuera. No olvides la región exterior (ninguno).</li>
+<li><b>Árbol:</b> en cada rama va la probabilidad condicionada a lo anterior. Se multiplica a lo largo de un camino y se suman los caminos que cumplen el suceso.</li>
+<li><b>Sin reposición:</b> numeradores y denominadores bajan en cada extracción.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.11. Sin reposición</p>
+<p>Una bolsa tiene 5 rojas y 3 azules. Se sacan dos sin reposición. Halla \(P(\text{colores distintos})\).</p>
+<p>\(P(RA)+P(AR)=\tfrac58\cdot\tfrac37+\tfrac38\cdot\tfrac57=\tfrac{30}{56}=\tfrac{15}{28}\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 376.345312 225.072" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 225.072 
+L 376.345312 225.072 
+L 376.345312 -0 
+L 0 -0 
+L 0 225.072 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 15.702857 102.96 
+L 100.731429 55.08 
+" clip-path="url(#p0d8c857a65)" style="fill: none; stroke: #0e6e6a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 15.702857 102.96 
+L 100.731429 150.84 
+" clip-path="url(#p0d8c857a65)" style="fill: none; stroke: #5a3d9a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 113.485714 55.08 
+L 198.514286 26.352 
+" clip-path="url(#p0d8c857a65)" style="fill: none; stroke: #0e6e6a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 113.485714 55.08 
+L 198.514286 83.808 
+" clip-path="url(#p0d8c857a65)" style="fill: none; stroke: #5a3d9a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 113.485714 150.84 
+L 198.514286 122.112 
+" clip-path="url(#p0d8c857a65)" style="fill: none; stroke: #0e6e6a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 113.485714 150.84 
+L 198.514286 179.568 
+" clip-path="url(#p0d8c857a65)" style="fill: none; stroke: #5a3d9a; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #0e6e6a" x="58.217143" y="73.2744" transform="rotate(-0 58.217143 73.2744)">5/8</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5a3d9a" x="58.217143" y="121.1544" transform="rotate(-0 58.217143 121.1544)">3/8</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="102.857143" y="58.115312" transform="rotate(-0 102.857143 58.115312)">R</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="102.857143" y="153.875312" transform="rotate(-0 102.857143 153.875312)">A</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #0e6e6a" x="156" y="34.9704" transform="rotate(-0 156 34.9704)">4/7</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5a3d9a" x="156" y="63.6984" transform="rotate(-0 156 63.6984)">3/7</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #0e6e6a" x="156" y="130.7304" transform="rotate(-0 156 130.7304)">5/7</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5a3d9a" x="156" y="159.4584" transform="rotate(-0 156 159.4584)">2/7</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="200.64" y="29.387312" transform="rotate(-0 200.64 29.387312)">R R</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="200.64" y="86.843312" transform="rotate(-0 200.64 86.843312)">R A   5/8 · 3/7 = 15/56</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="200.64" y="125.147312" transform="rotate(-0 200.64 125.147312)">A R   3/8 · 5/7 = 15/56</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="200.64" y="182.603312" transform="rotate(-0 200.64 182.603312)">A A</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="200.64" y="205.902" transform="rotate(-0 200.64 205.902)">colores distintos: 30/56 = 15/28</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p0d8c857a65">
+   <rect x="7.2" y="7.2" width="357.12" height="210.672"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.11: sin reposición, las probabilidades de la segunda rama cambian (el denominador pasa de 8 a 7). Se multiplica a lo largo de cada camino y se suman los caminos que cumplen el suceso.</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Una bolsa tiene 4 rojas y 3 verdes. Se extraen 2 sin reposición. Halla \(P(\text{las dos del mismo color})\).</li><li>Con la misma bolsa, halla \(P(\text{al menos una verde})\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\tfrac47\cdot\tfrac36+\tfrac37\cdot\tfrac26=\tfrac{12+6}{42}=\tfrac37\).</li><li>\(1-\tfrac47\cdot\tfrac36=1-\tfrac27=\tfrac57\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.12. Venn con una región desconocida</p>
+<p>En un grupo de 40, 25 estudian Matemáticas, 18 Física y 5 ninguna. Se elige uno al azar que no estudia Matemáticas. ¿Probabilidad de que estudie Física?</p>
+<p>Intersección: \(25+18+5-40=8\). Solo Física: \(18-8=10\). Los que no estudian Matemáticas son \(40-25=15\). Por tanto \(P=\frac{10}{15}=\frac23\). Se rellena el diagrama desde la intersección hacia fuera.</p></div>
+
+<h3 id="t7">1.7 Probabilidad condicional e independencia</h3>
+\[ P(A\mid B)=\frac{P(A\cap B)}{P(B)},\qquad A,B\text{ independientes}\iff P(A\cap B)=P(A)P(B)\iff P(A\mid B)=P(A) \]
+<ul>
+<li>Independientes y excluyentes <b>no</b> son lo mismo. Si \(P(A),P(B)\gt0\) y son excluyentes, no pueden ser independientes.</li>
+<li>Si \(A,B\) son independientes, también lo son \(A',B\) y \(A',B'\).</li>
+<li>Para justificar (in)dependencia: un cálculo concreto + la conclusión. Solo la conclusión no puntúa.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.13. Independencia a partir de la unión</p>
+<p>\(P(A)=0{,}5\), \(P(B)=0{,}4\), \(P(A\cup B)=0{,}7\). ¿Son independientes? Halla \(P(A\mid B)\).</p>
+<p>\(P(A\cap B)=0{,}5+0{,}4-0{,}7=0{,}2=0{,}5\cdot0{,}4\): sí, son independientes. \(P(A\mid B)=\tfrac{0{,}2}{0{,}4}=0{,}5=P(A)\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 305.712 202.896" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 202.896 
+L 305.712 202.896 
+L 305.712 -0 
+L 0 -0 
+L 0 202.896 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 15.768 187.128 
+L 289.944 187.128 
+L 289.944 15.768 
+L 15.768 15.768 
+L 15.768 187.128 
+z
+" clip-path="url(#paea6954084)" style="fill: none; stroke: currentColor; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 118.584 169.992 
+C 136.762081 169.992 154.198083 162.769772 167.051927 149.915927 
+C 179.905772 137.062083 187.128 119.626081 187.128 101.448 
+C 187.128 83.269919 179.905772 65.833917 167.051927 52.980073 
+C 154.198083 40.126228 136.762081 32.904 118.584 32.904 
+C 100.405919 32.904 82.969917 40.126228 70.116073 52.980073 
+C 57.262228 65.833917 50.04 83.269919 50.04 101.448 
+C 50.04 119.626081 57.262228 137.062083 70.116073 149.915927 
+C 82.969917 162.769772 100.405919 169.992 118.584 169.992 
+z
+" clip-path="url(#paea6954084)" style="fill: #0e6e6a; opacity: 0.25; stroke: #0e6e6a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 187.128 169.992 
+C 205.306081 169.992 222.742083 162.769772 235.595927 149.915927 
+C 248.449772 137.062083 255.672 119.626081 255.672 101.448 
+C 255.672 83.269919 248.449772 65.833917 235.595927 52.980073 
+C 222.742083 40.126228 205.306081 32.904 187.128 32.904 
+C 168.949919 32.904 151.513917 40.126228 138.660073 52.980073 
+C 125.806228 65.833917 118.584 83.269919 118.584 101.448 
+C 118.584 119.626081 125.806228 137.062083 138.660073 149.915927 
+C 151.513917 162.769772 168.949919 169.992 187.128 169.992 
+z
+" clip-path="url(#paea6954084)" style="fill: #5a3d9a; opacity: 0.25; stroke: #5a3d9a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 118.584 169.992 
+C 136.762081 169.992 154.198083 162.769772 167.051927 149.915927 
+C 179.905772 137.062083 187.128 119.626081 187.128 101.448 
+C 187.128 83.269919 179.905772 65.833917 167.051927 52.980073 
+C 154.198083 40.126228 136.762081 32.904 118.584 32.904 
+C 100.405919 32.904 82.969917 40.126228 70.116073 52.980073 
+C 57.262228 65.833917 50.04 83.269919 50.04 101.448 
+C 50.04 119.626081 57.262228 137.062083 70.116073 149.915927 
+C 82.969917 162.769772 100.405919 169.992 118.584 169.992 
+L 118.584 169.992 
+z
+" clip-path="url(#paea6954084)" style="fill: none; stroke: #0e6e6a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 187.128 169.992 
+C 205.306081 169.992 222.742083 162.769772 235.595927 149.915927 
+C 248.449772 137.062083 255.672 119.626081 255.672 101.448 
+C 255.672 83.269919 248.449772 65.833917 235.595927 52.980073 
+C 222.742083 40.126228 205.306081 32.904 187.128 32.904 
+C 168.949919 32.904 151.513917 40.126228 138.660073 52.980073 
+C 125.806228 65.833917 118.584 83.269919 118.584 101.448 
+C 118.584 119.626081 125.806228 137.062083 138.660073 149.915927 
+C 151.513917 162.769772 168.949919 169.992 187.128 169.992 
+L 187.128 169.992 
+z
+" clip-path="url(#paea6954084)" style="fill: none; stroke: #5a3d9a; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="22.194" y="32.904" transform="rotate(-0 22.194 32.904)">U</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="88.596" y="105.732" transform="rotate(-0 88.596 105.732)">0,3</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="152.856" y="105.732" transform="rotate(-0 152.856 105.732)">0,2</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="212.832" y="105.732" transform="rotate(-0 212.832 105.732)">0,2</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="262.098" y="172.134" transform="rotate(-0 262.098 172.134)">0,3</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0e6e6a" x="62.892" y="50.04" transform="rotate(-0 62.892 50.04)">A</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="238.536" y="50.04" transform="rotate(-0 238.536 50.04)">B</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="paea6954084">
+   <rect x="7.2" y="7.2" width="291.312" height="188.496"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.13: con \(P(A)=0{,}5\), \(P(B)=0{,}4\) y \(P(A\cup B)=0{,}7\), la intersección vale 0,2. Las cuatro regiones suman 1. Se rellena siempre de dentro hacia fuera: primero la intersección.</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(P(A)=0{,}6\), \(P(B)=0{,}5\) y \(P(A\cup B)=0{,}8\). ¿Son independientes \(A\) y \(B\)?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(P(A\cap B)=0{,}6+0{,}5-0{,}8=0{,}3=P(A)P(B)=0{,}3\): sí, son independientes.</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.14. Excluyentes no es lo mismo que independientes</p>
+<p>\(P(A)=0{,}4\), \(P(B)=0{,}5\) y \(P(A\mid B)=0{,}3\). Halla \(P(A\cap B)\), \(P(A\cup B)\) y \(P(B\mid A)\). ¿Son independientes? ¿Son mutuamente excluyentes?</p>
+<p>\(P(A\cap B)=0{,}3\cdot0{,}5=0{,}15\), \(P(A\cup B)=0{,}75\) y \(P(B\mid A)=\frac{0{,}15}{0{,}4}=0{,}375\). No son independientes (\(0{,}15\ne0{,}2\)) ni excluyentes (\(0{,}15\ne0\)). Dos sucesos excluyentes con probabilidades positivas nunca son independientes.</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2021, P4(b))</p><p>«Determine si \(A\) y \(R\) son independientes». El markscheme da A2 a la comparación numérica <b>con</b> conclusión, por ejemplo \(P(A\cap R)=\frac5{14}\ne P(A)P(R)=\frac9{28}\), así que no son independientes. La A2 no se divide: un cálculo correcto sin la frase final, o una conclusión sin números, vale 0.</p></div>
+<div class="box beyond"><p class="bt">Cotas de \(P(A\cap B)\) (noviembre 2022, P6)</p>
+\[ \max\{0,\ P(A)+P(B)-1\}\le P(A\cap B)\le\min\{P(A),P(B)\} \]
+<p>El mínimo se alcanza cuando \(P(A\cup B)=1\) (o cuando la intersección es vacía, si es posible). El máximo, cuando un suceso está contenido en el otro. Con 0,3 y 0,8: entre 0,1 y 0,3.</p></div>
+
+<h3 id="t8">1.8 Teorema de Bayes</h3>
+\[ P(B\mid A)=\frac{P(B)P(A\mid B)}{P(B)P(A\mid B)+P(B')P(A\mid B')},\qquad P(B_i\mid A)=\frac{P(B_i)P(A\mid B_i)}{\sum_jP(B_j)P(A\mid B_j)} \]
+<p>Sirve para «invertir» la condición: conoces \(P(\text{efecto}\mid\text{causa})\) y quieres \(P(\text{causa}\mid\text{efecto})\). El denominador es la probabilidad total del efecto.</p>
+<div class="ex"><p class="et">Ejemplo 1.15. ¿De qué máquina vino la pieza defectuosa?</p>
+<p>La máquina A hace el 60 % de las piezas (2 % defectuosas) y la B el 40 % (5 % defectuosas). Si una pieza es defectuosa, ¿qué probabilidad hay de que venga de A?</p>
+<p>\(P(D)=0{,}6\cdot0{,}02+0{,}4\cdot0{,}05=0{,}032\). Así \(P(A\mid D)=\tfrac{0{,}012}{0{,}032}=\tfrac38\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.16. Bayes con tres causas</p>
+<p>Tres proveedores entregan el 50 %, 30 % y 20 % de las piezas, con defectos del 1 %, 2 % y 5 %. Una pieza es defectuosa: ¿qué probabilidad hay de que sea del tercero?</p>
+<p>\(P(D)=0{,}005+0{,}006+0{,}010=0{,}021\). Así \(P(S_3\mid D)=\tfrac{0{,}010}{0{,}021}=\tfrac{10}{21}\): casi la mitad, aunque solo aporta el 20 % de las piezas.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Dos máquinas producen el 70% y el 30% de las piezas, con tasas de defecto del 2% y del 5%. Si una pieza es defectuosa, ¿cuál es la probabilidad de que venga de la segunda máquina?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(P=\dfrac{0{,}3\cdot0{,}05}{0{,}7\cdot0{,}02+0{,}3\cdot0{,}05}=\dfrac{0{,}015}{0{,}029}=\dfrac{15}{29}\).</li></ol></div></details></div>
+<div class="box beyond"><p class="bt">Más allá del IB: la falacia de la tasa base</p><p>Una prueba detecta una enfermedad con 99 % de sensibilidad y 95 % de especificidad, y la enfermedad la tiene el 1 % de la población. Por Bayes, \(P(\text{enfermo}\mid+)=\frac{0{,}01\cdot0{,}99}{0{,}01\cdot0{,}99+0{,}99\cdot0{,}05}=\frac{0{,}0099}{0{,}0594}=\frac16\). Un positivo solo da un 17 % de probabilidad de estar enfermo, porque los falsos positivos de la mayoría sana superan a los verdaderos positivos. En forma de razones: las probabilidades a favor se multiplican por \(\frac{0{,}99}{0{,}05}=19{,}8\).</p></div>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Espacio muestral</td><td>Conjunto \(U\) de todos los resultados posibles de un experimento.</td></tr>
+<tr><td>Suceso</td><td>Subconjunto del espacio muestral.</td></tr>
+<tr><td>Sucesos excluyentes</td><td>No pueden ocurrir a la vez: \(P(A\cap B)=0\).</td></tr>
+<tr><td>Sucesos independientes</td><td>La ocurrencia de uno no cambia la probabilidad del otro: \(P(A\cap B)=P(A)P(B)\).</td></tr>
+<tr><td>Probabilidad condicional</td><td>\(P(A\mid B)\): probabilidad de \(A\) sabiendo que ocurrió \(B\).</td></tr>
+<tr><td>Rango intercuartílico</td><td>\(Q_3-Q_1\): amplitud del 50 % central de los datos.</td></tr>
+<tr><td>Valor atípico</td><td>Dato fuera de \([Q_1-1{,}5\,\mathrm{RIC},\ Q_3+1{,}5\,\mathrm{RIC}]\).</td></tr>
+<tr><td>Desviación típica</td><td>Raíz cuadrada de la varianza; mide la dispersión respecto a la media.</td></tr>
+<tr><td>Sesgo (en muestreo)</td><td>Tendencia sistemática de la muestra a no representar a la población.</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Determine si son independientes</td><td>Comparación numérica y conclusión (A2 indivisible).</td><td>Solo «no son independientes», sin cálculo.</td></tr>
+<tr><td>Justifique su respuesta</td><td>La razón: diagrama, desigualdad o frase precisa (R1).</td><td>Dar el valor sin explicar por qué es el máximo.</td></tr>
+<tr><td>Estime</td><td>Usar la recta de regresión correcta para esa dirección.</td><td>Despejar en la recta equivocada.</td></tr>
+<tr><td>Halle la probabilidad</td><td>Un valor entre 0 y 1, en fracción exacta o decimal exacto.</td><td>Dar porcentajes sin convertir, o un resultado mayor que 1.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>Excluyente contra independiente.</b> Son ideas distintas: excluyentes significa \(P(A\cap B)=0\); independientes, \(P(A\cap B)=P(A)P(B)\).</li>
+<li><b>La condicional invertida.</b> \(P(A\mid B)\neq P(B\mid A)\). Escribe cuál es la condición antes de calcular.</li>
+<li><b>El denominador fijo sin reposición.</b> Sin reposición, la segunda extracción tiene un objeto menos.</li>
+<li><b>Los dos órdenes olvidados.</b> «Una roja y una azul» son dos caminos: \(RA\) y \(AR\).</li>
+<li><b>La región exterior del Venn.</b> Los que no están en ningún conjunto también cuentan en el total.</li>
+<li><b>La recta equivocada.</b> Para estimar \(c\) dado \(a\), usa la recta de \(c\) sobre \(a\). No despejes la otra.</li>
+<li><b>El atípico con \(\le\).</b> El criterio es estricto: un dato igual al límite no es atípico.</li>
+<li><b>La dispersión que cambia al sumar.</b> Sumar una constante no cambia ni la desviación típica ni el RIC.</li>
+<li><b>La varianza escalada.</b> Si \(y=ax+b\), la varianza se multiplica por \(a^2\), no por \(a\).</li>
+<li><b>El «al menos uno» directo.</b> Casi siempre es más fácil como \(1-P(\text{ninguno})\).</li>
+<li><b>La conclusión sin razón.</b> En «determine si…», el markscheme no divide la A2: hacen falta el cálculo y la conclusión.</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">Parten de ítems de DMpA 07, N°29, N°30 y de las separatas 13 y 14, ampliados hasta la Sección B. Donde la ficha no da los números completos, se usan valores propios exactos y se indica. Ninguno repite un tipo de la sección 5.</p>
+
+<div class="ex"><p class="et">F1. Parámetro en una bolsa <span class="lvl">Sección B, integra Módulo 2</span></p>
+<p class="src">DMpA 07 («una bolsa contiene 10 caramelos rojos y \(n\) amarillos… mismo color 0,5»).</p>
+<p>Una bolsa tiene 10 caramelos rojos y \(n\) amarillos. Se sacan dos sin reposición, y la probabilidad de que sean del mismo color es \(\tfrac12\). Halla los valores posibles de \(n\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>\(\dfrac{10\cdot9+n(n-1)}{(n+10)(n+9)}=\dfrac12\Rightarrow2(n^2-n+90)=n^2+19n+90\Rightarrow n^2-21n+90=0\).</p>
+<p><span class="lbl">Resultado.</span> \((n-6)(n-15)=0\): \(n=6\) o \(n=15\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Condicional, unión y complementarios <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 07 («\(P(A)=0{,}4\), \(P(A\mid B)=0{,}25\), \(P(A\cup B)=0{,}55\). Halle \(P(B)\)»), ampliado.</p>
+<p>Con esos datos: (a) halla \(P(B)\); (b) halla \(P(A'\mid B')\); (c) ¿son \(A\) y \(B\) independientes?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(P(A\cap B)=0{,}25P(B)\). Entonces \(0{,}55=0{,}4+P(B)-0{,}25P(B)\) y \(P(B)=0{,}2\).</p>
+<p>(b) \(P(A'\cap B')=1-P(A\cup B)=0{,}45\). Así \(P(A'\mid B')=\tfrac{0{,}45}{0{,}8}=\tfrac9{16}\).</p>
+<p>(c) \(P(A\cap B)=0{,}05\) y \(P(A)P(B)=0{,}08\): no son independientes (o bien, \(P(A\mid B)=0{,}25\neq P(A)=0{,}4\)).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. Idiomas en un diagrama de Venn <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 07 («de 25 estudiantes, 18 hablan francés, 9 alemán y 5 ambos»), ampliado.</p>
+<p>(a) Halla la probabilidad de que un estudiante al azar hable al menos un idioma y la de que hable exactamente uno. (b) Halla \(P(\text{alemán}\mid\text{francés})\). (c) Se eligen dos estudiantes sin reposición: halla la probabilidad de que ambos hablen los dos idiomas. (d) ¿Son independientes «francés» y «alemán»?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Regiones del Venn: solo francés 13, ambos 5, solo alemán 4, ninguno 3.</p>
+<p>(a) \(\tfrac{22}{25}\) y \(\tfrac{17}{25}\). (b) \(\tfrac5{18}\). (c) \(\tfrac5{25}\cdot\tfrac4{24}=\tfrac1{30}\).</p>
+<p>(d) \(\tfrac5{25}=0{,}2\) frente a \(\tfrac{18}{25}\cdot\tfrac9{25}=\tfrac{162}{625}\approx0{,}26\): no son independientes.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Días de lluvia independientes <span class="lvl">Sección A alta, integra Módulo 1</span></p>
+<p class="src">DMpA 07 («la probabilidad de que llueva es 0,12, independientemente de cualquier otro día»), ampliado.</p>
+<p>(a) Halla la probabilidad de que llueva al menos uno de dos días y la de que llueva exactamente uno. (b) Halla el menor número de días \(n\) para el que la probabilidad de al menos un día de lluvia supera 0,5. Usa \(\ln2\approx0{,}693\) y \(\ln0{,}88\approx-0{,}128\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(1-0{,}88^2=0{,}2256\); exactamente uno: \(2\cdot0{,}12\cdot0{,}88=0{,}2112\).</p>
+<p>(b) \(1-0{,}88^n\gt0{,}5\iff n\ln0{,}88\lt-\ln2\). Al dividir por un número negativo se invierte: \(n\gt\tfrac{0{,}693}{0{,}128}\approx5{,}4\), así que \(n=6\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. Extracciones con un número desconocido de bolas <span class="lvl">Sección B</span></p>
+<p class="src">Separata DMpA N°29, ítem 12 («muestre que la probabilidad de que las dos primeras bolas sean rojas es 0,3»), con valores propios.</p>
+<p>Una bolsa tiene 3 bolas rojas y \(n\) verdes. Se sacan sin reposición. (a) Si \(P(\text{las dos primeras rojas})=0{,}3\), muestra que \(n=2\). (b) Halla la probabilidad de que las tres primeras sean rojas. (c) Halla la de que al menos una de las tres primeras sea verde.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\dfrac{3\cdot2}{(n+3)(n+2)}=\dfrac3{10}\Rightarrow(n+3)(n+2)=20\Rightarrow n=2\) (se descarta la raíz negativa).</p>
+<p>(b) \(\tfrac35\cdot\tfrac24\cdot\tfrac13=\tfrac1{10}\). (c) \(1-\tfrac1{10}=\tfrac9{10}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Árbol con dependencia y Bayes <span class="lvl">Sección B</span></p>
+<p class="src">DMpA N°30 («Liz contesta dos preguntas… solo una… al menos una»), con probabilidades condicionadas.</p>
+<p>Liz acierta la primera pregunta con probabilidad 0,6. Si acierta la primera, acierta la segunda con 0,8; si falla, con 0,3. Halla (a) \(P(\text{exactamente una})\); (b) \(P(\text{al menos una})\); (c) \(P(\text{acertó la 1.ª}\mid\text{exactamente una})\); (d) \(P(\text{acertó la 1.ª}\mid\text{acertó la 2.ª})\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(0{,}6\cdot0{,}2+0{,}4\cdot0{,}3=0{,}24\). (b) \(1-0{,}4\cdot0{,}7=0{,}72\).</p>
+<p>(c) \(\tfrac{0{,}12}{0{,}24}=\tfrac12\). (d) \(\tfrac{0{,}48}{0{,}48+0{,}12}=0{,}8\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. Encuesta: independencia que «casi» se cumple <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 07 (padres a favor de una biblioteca o un comedor), con valores propios.</p>
+<p>De 200 padres, 110 apoyan una biblioteca (\(L\)), 90 un comedor (\(C\)) y 50 ambos. Halla (a) \(P(\text{ninguno})\); (b) \(P(L\mid C')\); (c) decide si \(L\) y \(C\) son independientes.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(200-150=50\): \(\tfrac14\). (b) \(\tfrac{110-50}{200-90}=\tfrac{60}{110}=\tfrac6{11}\).</p>
+<p>(c) \(P(L\cap C)=\tfrac14=0{,}25\) frente a \(P(L)P(C)=0{,}55\cdot0{,}45=0{,}2475\). Están muy cerca pero no son iguales: no son independientes. En la Prueba 1 no se redondea para decidir.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. Tabla de frecuencias completa <span class="lvl">Sección A alta</span></p>
+<p class="src">Separata DMpA 14 («halle la cantidad media de cachorros… desviación típica»), con valores propios.</p>
+<p>Número de cachorros por camada: 1, 2, 3, 4, 5, con frecuencias 2, 5, 8, 3, 2. Halla (a) la media, la varianza y la desviación típica; (b) la mediana, los cuartiles y si hay atípicos; (c) la media y la varianza de \(y=3x-2\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(n=20\), \(\sum fx=58\), así que \(\bar x=2{,}9\). \(\sum fx^2=192\), así que \(\sigma^2=9{,}6-8{,}41=1{,}19\) y \(\sigma=\sqrt{1{,}19}\).</p>
+<p>(b) Los datos 10.º y 11.º son 3: mediana 3. \(Q_1\) (datos 5.º y 6.º) = 2; \(Q_3\) (datos 15.º y 16.º) \(=\tfrac{3+4}2=3{,}5\). \(\mathrm{RIC}=1{,}5\) y el límite superior es 5,75: no hay atípicos.</p>
+<p>(c) \(\bar y=6{,}7\) y \(\sigma_y^2=9\cdot1{,}19=10{,}71\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. Dato desconocido, mediana y media combinada <span class="lvl">Sección A alta</span></p>
+<p class="src">Separata DMpA 13 (medidas de centralización; pregunta de Prueba 1, 2017), con valores propios.</p>
+<p>(a) Los datos \(3,7,x,12,x+2\) tienen media 8. Halla \(x\) y la mediana. (b) Se añade un sexto dato \(y\) y la media pasa a ser 9. Halla \(y\) y la nueva mediana. (c) Un grupo A de 20 alumnos tiene media 60 y un grupo B de 30, media 70. Halla la media conjunta.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(24+2x=40\Rightarrow x=8\). Datos ordenados \(3,7,8,10,12\): mediana 8.</p>
+<p>(b) \(40+y=54\Rightarrow y=14\). Datos \(3,7,8,10,12,14\): mediana \(\tfrac{8+10}{2}=9\).</p>
+<p>(c) \(\tfrac{20\cdot60+30\cdot70}{50}=66\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. Las dos rectas de regresión <span class="lvl">Sección B</span></p>
+<p class="src">Tipo de examen sin ítem equivalente en las fichas (DMpA N°10 trae tablas, pero no regresión).</p>
+<p>La recta de \(y\) sobre \(x\) es \(y=2x+3\) y la de \(x\) sobre \(y\) es \(x=0{,}4y-0{,}2\). (a) Halla \(\bar x\) y \(\bar y\). (b) Estima \(x\) cuando \(y=20\). (c) Usando \(r^2=b_{yx}\,b_{xy}\) (producto de las pendientes), halla \(r\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Intersección: \(x=0{,}4(2x+3)-0{,}2=0{,}8x+1\), así que \(\bar x=5\) e \(\bar y=13\).</p>
+<p>(b) Con la recta de \(x\) sobre \(y\): \(0{,}4\cdot20-0{,}2=7{,}8\).</p>
+<p>(c) \(r^2=2\cdot0{,}4=0{,}8\). Las pendientes son positivas, así que \(r=\sqrt{0{,}8}\approx0{,}894\).</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son las 4 preguntas de este módulo en tus pruebas, con las marcas del markscheme oficial. Resuélvelas en tiempo de examen, a 1,1 minutos por punto.</p>
+
+<div class="ex"><p class="et">X1. Mayo 2021 TZ1, pregunta 3 <span class="lvl">5 puntos</span></p>
+<p>Un diagrama de caja de pesos de huevos (g) tiene mínimo 10, \(Q_1=L\), mediana 40, \(Q_3=U\) y máximo 75. El RIC es 20 y no hay valores atípicos. (a) Halla el mínimo valor posible de \(U\). (b) A partir de lo anterior, halla el mínimo valor posible de \(L\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Definición de atípico <span class="m">(M1)</span>: \(U+1{,}5\cdot20\ge75\) <span class="m">A1</span> \(\Rightarrow U\ge45\): mínimo 45 <span class="m">A1</span></p>
+<p class="step">(b) \(U-L=20\) <span class="m">(M1)</span> \(\Rightarrow L\ge25\): mínimo 25 <span class="m">A1</span></p>
+<p><span class="lbl">Comprobación.</span> Con \(L=25\), el límite inferior es \(25-30=-5\lt10\): tampoco hay atípicos por abajo.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Noviembre 2021, pregunta 4 <span class="lvl">5 puntos</span></p>
+<p>La caja 1 tiene 5 bolas rojas y 2 blancas; la caja 2, 4 rojas y 3 blancas. (a) Se elige una caja al azar y se saca una bola. Halla la probabilidad de que sea roja. (b) \(A\) = «se elige la caja 1» y \(R\) = «la bola es roja». Determina si son independientes.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Árbol o probabilidad total <span class="m">(M1)</span>: \(\tfrac12\cdot\tfrac57+\tfrac12\cdot\tfrac47\) <span class="m">(A1)</span> \(=\tfrac9{14}\) <span class="m">A1</span></p>
+<p class="step">(b) \(P(A\cap R)=\tfrac5{14}\neq P(A)P(R)=\tfrac12\cdot\tfrac9{14}\). No son independientes <span class="m">A2</span></p>
+<p><span class="lbl">Nota del markscheme.</span> La A2 exige razón y conclusión, y no se divide. También vale \(P(R\mid A)=\tfrac57\neq\tfrac9{14}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Noviembre 2022, pregunta 6 <span class="lvl">6 puntos</span></p>
+<p>\(P(A)=0{,}3\) y \(P(B)=0{,}8\). Determina (a) \(P(A\cap B)\) si son independientes; (b) el mínimo valor posible de \(P(A\cap B)\); (c) el máximo, justificando.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(0{,}24\) <span class="m">A1</span></p>
+<p class="step">(b) \(P(A\cup B)=1{,}1-P(A\cap B)\) <span class="m">(A1)</span>; como \(P(A\cup B)\le1\) <span class="m">(M1)</span>, el mínimo es 0,1 <span class="m">A1</span></p>
+<p class="step">(c) \(A\subseteq B\), así que \(P(A\cap B)=P(A)\) <span class="m">R1</span>; el máximo es 0,3 <span class="m">A1</span> (sin la R1 no se da la A1)</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X4. Mayo 2022 TZ1, pregunta 2 <span class="lvl">7 puntos</span></p>
+<p>Edades \(c\) del hijo mayor: diagrama de caja con mínimo 2, \(Q_1=6\), mediana 7, \(Q_3=10\) y máximo 18. (a) Halla el mayor valor de \(c\) que no sería atípico. La recta de \(a\) sobre \(c\) es \(a=\tfrac74c+20\) y la de \(c\) sobre \(a\) es \(c=\tfrac12a-9\). (b) (i) Un adulto tiene 42 años: estima la edad de su hijo mayor. (ii) Halla la edad media de los adultos.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(\mathrm{RIC}=4\) <span class="m">(A1)</span>; \(Q_3+1{,}5\,\mathrm{RIC}\) <span class="m">(M1)</span> \(=16\) <span class="m">A1</span></p>
+<p class="step">(b)(i) Elegir \(c=\tfrac12a-9\) <span class="m">(M1)</span>: \(21-9=12\) años <span class="m">A1</span></p>
+<p class="step">(ii) Resolver el sistema <span class="m">(M1)</span>: \(a=\tfrac74\left(\tfrac a2-9\right)+20\Rightarrow\tfrac18a=\tfrac{17}4\Rightarrow\bar a=34\) años <span class="m">A1</span></p>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Estos tipos de pregunta no salieron en tus 7 pruebas, pero el IB los pone en otras convocatorias (algunos vienen de la Prueba 2 y aquí se resuelven con valores exactos). Junto con la teoría y las secciones 4 y 5, cubren todo el Tema 4 de estadística y probabilidad del NS. Cada tipo trae cómo reconocerlo, el método, un ejemplo resuelto y ejercicios para practicar.</p>
+<h3 id="ty1">T1. Desviación típica a partir de \(\sum x\) y \(\sum x^2\)</h3>
+<p><b>Qué reconocer:</b> te dan \(n\), \(\sum x\) y \(\sum x^2\) (o una tabla de frecuencias) y piden la media y la desviación típica. <b>Método:</b> usa \(\bar x=\tfrac{\sum x}n\) y \(\sigma^2=\tfrac{\sum x^2}n-\bar x^2\). No olvides restar \(\bar x^2\).</p>
+<div class="ex"><p class="et">Ejemplo T1. <span class="lvl">Tipo IB</span></p>
+<p>Diez datos cumplen \(\sum x=50\) y \(\sum x^2=310\). Halla la media y la desviación típica.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\bar x=5\); \(\sigma^2=\tfrac{310}{10}-25=6\), así que \(\sigma=\sqrt6\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Ocho datos cumplen \(\sum x=40\) y \(\sum x^2=240\). Halla la media y la varianza.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\bar x=5\); \(\sigma^2=\tfrac{240}8-25=5\).</li></ol></div></details></div>
+<h3 id="ty2">T2. Media y desviación típica bajo codificación</h3>
+<p><b>Qué reconocer:</b> los datos se codifican con \(y=ax+b\) (restar un valor, dividir por el ancho) y piden la media o la desviación en la escala original. <b>Método:</b> aplica \(\bar y=a\bar x+b\) y \(\sigma_y=|a|\sigma_x\); para volver, despeja. Sumar una constante no cambia la dispersión.</p>
+<div class="ex"><p class="et">Ejemplo T2. <span class="lvl">Sección A alta</span></p>
+<p>Con \(y=\tfrac{x-100}{10}\), los datos codificados tienen media 2 y desviación típica \(0{,}5\). Halla la media y la desviación de los datos originales.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(x=10y+100\): media \(10\cdot2+100=120\); desviación \(10\cdot0{,}5=5\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Unos datos tienen media 30 y desviación típica 4. Se codifican con \(y=2x-10\). Halla la media y la desviación de \(y\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Media \(2\cdot30-10=50\); desviación \(2\cdot4=8\).</li></ol></div></details></div>
+<h3 id="ty3">T3. Añadir o quitar un dato</h3>
+<p><b>Qué reconocer:</b> te dan una media (y a veces la desviación) y piden el valor de un dato que se añade o se quita para que la media cambie a un valor dado. <b>Método:</b> trabaja con sumas: \(\sum x=n\bar x\). La nueva suma menos la vieja da el dato que entra o sale.</p>
+<div class="ex"><p class="et">Ejemplo T3. <span class="lvl">Tipo IB</span></p>
+<p>Cinco números tienen media 8. Se añade un sexto y la media pasa a 10. Halla el número añadido.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Suma inicial \(5\cdot8=40\); suma final \(6\cdot10=60\). El número es \(60-40=20\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Seis datos tienen media 12. Se elimina uno y la media baja a 11. ¿Qué dato se quitó?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Suma inicial \(72\); final \(5\cdot11=55\). Se quitó \(72-55=17\).</li></ol></div></details></div>
+<h3 id="ty4">T4. Diagrama de Venn de tres conjuntos</h3>
+<p><b>Qué reconocer:</b> tres sucesos con datos de intersecciones y piden una región, una unión o una probabilidad condicional. <b>Método:</b> rellena de dentro hacia fuera: primero la triple intersección, luego las dobles (restando la triple) y al final las simples. Comprueba que todo suma el total.</p>
+<div class="ex"><p class="et">Ejemplo T4. <span class="lvl">Sección A alta</span></p>
+<p>En un grupo de 30, 18 estudian Física, 17 Química y 14 Biología; 9 Física y Química, 7 Química y Biología, 8 Física y Biología, y 5 las tres. ¿Cuántos no estudian ninguna?</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Inclusión–exclusión: \(|F\cup Q\cup B|=18+17+14-9-7-8+5=30\). No estudian ninguna: \(30-30=0\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Con \(|A|=|B|=|C|=10\), cada intersección doble 4 y la triple 1, halla \(|A\cup B\cup C|\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(30-12+1=19\).</li></ol></div></details></div>
+<h3 id="ty5">T5. «Al menos uno» por el complementario</h3>
+<p><b>Qué reconocer:</b> «halla la probabilidad de al menos un(a)…», a menudo sin reposición. <b>Método:</b> usa \(P(\text{al menos uno})=1-P(\text{ninguno})\). Sin reposición, \(P(\text{ninguno})\) es un producto de fracciones que decrecen.</p>
+<div class="ex"><p class="et">Ejemplo T5. <span class="lvl">Tipo IB</span></p>
+<p>Una bolsa tiene 3 bolas rojas y 2 azules. Se extraen 2 sin reposición. Halla la probabilidad de sacar al menos una roja.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(P(\text{ninguna roja})=\tfrac25\cdot\tfrac14=\tfrac1{10}\). Así \(P(\text{al menos una})=1-\tfrac1{10}=\tfrac9{10}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Se lanza una moneda 3 veces. Halla la probabilidad de obtener al menos una cara.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(1-\left(\tfrac12\right)^3=\tfrac78\).</li></ol></div></details></div>
+<h3 id="ty6">T6. Independencia para hallar un parámetro</h3>
+<p><b>Qué reconocer:</b> dos sucesos independientes con una probabilidad desconocida, y un dato sobre su unión o intersección. <b>Método:</b> usa \(P(A\cap B)=P(A)P(B)\) junto con \(P(A\cup B)=P(A)+P(B)-P(A\cap B)\); queda una ecuación en el parámetro.</p>
+<div class="ex"><p class="et">Ejemplo T6. <span class="lvl">Sección A alta</span></p>
+<p>\(A\) y \(B\) son independientes, \(P(A)=0{,}5\) y \(P(A\cup B)=0{,}65\). Halla \(P(B)\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(0{,}65=0{,}5+p-0{,}5p\Rightarrow0{,}5p=0{,}15\Rightarrow p=0{,}3\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(A\) y \(B\) son independientes, \(P(A)=0{,}4\) y \(P(A\cap B)=0{,}1\). Halla \(P(B)\) y \(P(A\cup B)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(P(B)=\tfrac{0{,}1}{0{,}4}=0{,}25\); \(P(A\cup B)=0{,}4+0{,}25-0{,}1=0{,}55\).</li></ol></div></details></div>
+<h3 id="ty7">T7. Tabla de contingencia y condicional</h3>
+<p><b>Qué reconocer:</b> una tabla de doble entrada (dos categorías cruzadas) y piden una probabilidad condicional o un test de independencia. <b>Método:</b> completa los totales de filas y columnas; \(P(A\mid B)\) es la celda \(A\cap B\) dividida por el total de la fila o columna \(B\).</p>
+<div class="ex"><p class="et">Ejemplo T7. <span class="lvl">Tipo IB</span></p>
+<p>De 50 personas, 30 son adultos y 20 niños; 24 adultos y 8 niños prefieren té. Si se elige al azar alguien que prefiere té, ¿cuál es la probabilidad de que sea niño?</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Total que prefieren té: \(24+8=32\). \(P(\text{niño}\mid\text{té})=\tfrac8{32}=\tfrac14\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>En la misma tabla, halla \(P(\text{adulto}\mid\text{no té})\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>No té: adultos \(30-24=6\), niños \(20-8=12\), total 18. \(P=\tfrac6{18}=\tfrac13\).</li></ol></div></details></div>
+<h3 id="ty8">T8. Probabilidad por conteo combinatorio</h3>
+<p><b>Qué reconocer:</b> se eligen objetos de un grupo (manos de cartas, comités) y piden la probabilidad de cierta composición. <b>Método:</b> cuenta casos favorables y totales con combinaciones: \(P=\dfrac{\text{favorables}}{\binom nr}\). Reparte por grupos con el producto de combinaciones.</p>
+<div class="ex"><p class="et">Ejemplo T8. <span class="lvl">Sección A alta</span></p>
+<p>De un grupo de 5 hombres y 4 mujeres se elige un comité de 3 al azar. Halla la probabilidad de que tenga exactamente 2 mujeres.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(P=\dfrac{\binom42\binom51}{\binom93}=\dfrac{6\cdot5}{84}=\dfrac5{14}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>De 4 rojas y 3 verdes se eligen 3 fichas al azar. Halla la probabilidad de que las 3 sean rojas.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\dfrac{\binom43}{\binom73}=\dfrac4{35}\).</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo de los Módulos 1–10. Integran series (Módulo 1), cuadráticas (Módulo 2), funciones (Módulo 3), combinatoria (Módulo 4), recurrencias (Módulo 5) y geometría (Módulo 7). El 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la Sección B. Al final, I1 es una investigación tipo Prueba 3 de NS. Cada uno trae una pista y la respuesta final plegadas.</p>
+
+<div class="ex"><p class="et">E1. Gana el primero que saque un 6 <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>Ana y Beto lanzan un dado por turnos, empezando Ana. Gana el primero que saque un 6. (a) Halla la probabilidad de que Ana gane en su \(k\)-ésimo lanzamiento. (b) Halla la probabilidad de que gane Ana. (c) Halla la probabilidad de que el juego termine en un número par de lanzamientos.</p>
+<details><summary>Pista</summary><div class="inner"><p>Antes del \(k\)-ésimo lanzamiento de Ana hubo \(2(k-1)\) fallos. Suma una serie geométrica de razón \(\tfrac{25}{36}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\left(\tfrac{25}{36}\right)^{k-1}\tfrac16\). (b) \(\tfrac{1/6}{1-25/36}=\tfrac6{11}\). (c) \(\tfrac5{11}\) (gana Beto).</p></div></details></div>
+
+<div class="ex"><p class="et">E2. Independencia con una cuadrática <span class="lvl">Sección A alta, integra Módulo 2</span></p>
+<p>\(A\) y \(B\) son independientes, con \(P(A)=p\), \(P(B)=2p\) y \(P(A\cup B)=0{,}72\). Halla \(p\) y \(P(A\mid B')\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(p+2p-2p^2=0{,}72\). Descarta la raíz que hace \(2p\gt1\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(p=0{,}3\) (la otra raíz, 1,2, es imposible). \(P(A\mid B')=P(A)=0{,}3\), por independencia.</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Cumpleaños por meses <span class="lvl">Sección A alta, integra Módulo 4</span></p>
+<p>Cinco personas tienen su cumpleaños en un mes al azar (12 meses equiprobables). Halla la probabilidad de que al menos dos cumplan en el mismo mes.</p>
+<details><summary>Pista</summary><div class="inner"><p>Complemento: todos en meses distintos, \(\dfrac{{}^{12}P_5}{12^5}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(1-\tfrac{95\,040}{248\,832}=1-\tfrac{55}{144}=\tfrac{89}{144}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Comités y condición <span class="lvl">Sección A alta, integra Módulo 4</span></p>
+<p>Se elige al azar un comité de 3 entre 4 chicos y 5 chicas. Sabiendo que hay al menos una chica, halla la probabilidad de que las tres sean chicas.</p>
+<details><summary>Pista</summary><div class="inner"><p>\(P(\text{al menos una chica})=1-\tfrac{\binom43}{\binom93}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(\dfrac{10/84}{80/84}=\dfrac18\).</p></div></details></div>
+
+<div class="ex"><p class="et">E5. Un test médico y la paradoja de la base <span class="lvl">Sección B</span></p>
+<p>Una enfermedad afecta al 1 % de la población. El test da positivo en el 99 % de los enfermos y en el 5 % de los sanos. (a) Si alguien da positivo, halla la probabilidad de que esté enfermo. (b) Se repite un test independiente y vuelve a dar positivo. Halla la nueva probabilidad. (c) Explica por qué (a) es tan baja.</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Usa como probabilidad previa el resultado de (a).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\tfrac{0{,}0099}{0{,}0099+0{,}0495}=\tfrac16\). (b) \(\tfrac{0{,}99}{0{,}99+0{,}25}=\tfrac{99}{124}\approx0{,}80\). (c) Hay muchos más sanos, y el 5 % de ellos genera más positivos que todos los enfermos.</p></div></details></div>
+
+<div class="ex"><p class="et">E6. Datos desconocidos con media y varianza <span class="lvl">Sección B, integra Módulo 2</span></p>
+<p>Los datos \(2,4,a,b\) tienen media 5 y varianza 5. Halla \(a\) y \(b\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(a+b=14\) y \(\sum x^2=n(\sigma^2+\bar x^2)=120\). Obtén \(ab\) y resuelve la cuadrática.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(a^2+b^2=100\), así que \(ab=48\): \(\{a,b\}=\{6,8\}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E7. Transformar datos a una escala deseada <span class="lvl">Sección A alta, integra Módulo 3</span></p>
+<p>Unas puntuaciones \(x\) tienen media 10 y desviación típica 2. Se quiere \(y=ax+b\) con media 50 y desviación típica 10. (a) Halla todas las parejas \((a,b)\). (b) ¿Qué diferencia hay entre ellas en el orden de los datos?</p>
+<details><summary>Pista</summary><div class="inner"><p>\(|a|\cdot2=10\) y \(10a+b=50\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \((5,0)\) y \((-5,100)\). (b) Con \(a\lt0\) se invierte el orden: la mayor \(x\) pasa a ser la menor \(y\).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Probabilidad geométrica <span class="lvl">Sección B, integra Módulo 7</span></p>
+<p>Se elige un punto \((x,y)\) al azar en el cuadrado \([0,1]^2\). Halla (a) \(P(x^2+y^2\lt1)\); (b) \(P(|x-y|\lt\tfrac12)\); (c) \(P\left(x^2+y^2\lt1\mid x\gt y\right)\).</p>
+<details><summary>Pista</summary><div class="inner"><p>La probabilidad es el área de la región favorable (el cuadrado tiene área 1). En (b), resta los dos triángulos de las esquinas.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\tfrac\pi4\). (b) \(1-2\cdot\tfrac12\cdot\tfrac14=\tfrac34\). (c) Por simetría, \(\tfrac{\pi/8}{1/2}=\tfrac\pi4\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. El problema de Monty Hall con \(n\) puertas <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>Hay \(n\ge3\) puertas; detrás de una hay un premio. Eliges una; el presentador, que sabe dónde está el premio, abre una puerta vacía distinta de la tuya. (a) Con \(n=3\), usa Bayes para mostrar que cambiar de puerta gana con probabilidad \(\tfrac23\). (b) Muestra que, en general, cambiar a otra puerta cerrada al azar gana con probabilidad \(\tfrac{n-1}{n(n-2)}\), y que esto es mayor que \(\tfrac1n\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Con probabilidad \(\tfrac{n-1}n\) tu primera elección es mala. En ese caso, el premio está entre las \(n-2\) puertas a las que puedes cambiar.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(\tfrac{n-1}n\cdot\tfrac1{n-2}\gt\tfrac1n\iff n-1\gt n-2\), que siempre es cierto. Con \(n=4\), \(\tfrac38\gt\tfrac14\).</p></div></details></div>
+
+<div class="ex"><p class="et">E10. Sin dos caras seguidas: probabilidad y Fibonacci <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>Sea \(a_n\) el número de secuencias de \(n\) lanzamientos de moneda sin dos caras consecutivas. (a) Muestra que \(a_1=2\), \(a_2=3\) y \(a_n=a_{n-1}+a_{n-2}\). (b) Halla la probabilidad de que 5 lanzamientos no tengan dos caras seguidas. (c) Explica por qué esa probabilidad tiende a 0 cuando \(n\to\infty\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) Mira el primer lanzamiento. Si es cruz, sigue una secuencia válida de \(n-1\). Si es cara, el siguiente es cruz y sigue una de \(n-2\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(a_5=13\), así que \(\tfrac{13}{32}\). (c) \(a_n\) crece como \(\varphi^n\) con \(\varphi=\tfrac{1+\sqrt5}2\lt2\), y \(\left(\tfrac\varphi2\right)^n\to0\) (Módulos 2 y 6).</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. El número esperado de intentos hasta el primer éxito <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>Lanzas un dado hasta sacar el primer 6. ¿Cuántos lanzamientos esperas necesitar? Vas a construir la distribución, comprobar que suma 1 y hallar la media con una serie aritmético-geométrica (Módulo 1).</p>
+<ol type="a"><li>Sea \(X\) el número del lanzamiento en que sale el primer 6, con \(p=\tfrac16\) y \(q=\tfrac56\). Escribe \(P(X=1)\), \(P(X=2)\), \(P(X=3)\) y conjetura \(P(X=k)\).</li><li>Comprueba que \(\sum_{k=1}^{\infty}P(X=k)=1\) usando la serie geométrica.</li><li>La media es \(E(X)=\sum_{k=1}^{\infty}k\,q^{k-1}p\). Usando que \(\sum_{k=1}^{\infty}k\,x^{k-1}=\dfrac1{(1-x)^2}\) para \(|x|\lt1\), prueba que \(E(X)=\dfrac1p\).</li><li>Deduce el número esperado de lanzamientos para el primer 6, y el de monedas para la primera cara.</li><li>Prueba la identidad \(\sum_{k=1}^{\infty}k\,x^{k-1}=\dfrac1{(1-x)^2}\) derivando término a término la serie geométrica \(\sum_{k=0}^{\infty}x^{k}=\dfrac1{1-x}\), o con la técnica de \(S-xS\).</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>\(P(X=k)\) exige \(k-1\) fallos seguidos y luego un éxito.</li><li>Es una geométrica de razón \(q\) y primer término \(p\).</li><li>Saca \(p\) como factor y aplica la fórmula con \(x=q\).</li><li>\(p=\tfrac16\) y \(p=\tfrac12\).</li><li>\(S=\sum k x^{k-1}\); \(S-xS=\sum x^{k-1}=\tfrac1{1-x}\), así que \(S(1-x)=\tfrac1{1-x}\).</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>\(P(X=k)=q^{k-1}p=\left(\tfrac56\right)^{k-1}\tfrac16\).</li><li>\(\sum_{k=1}^{\infty}q^{k-1}p=\dfrac{p}{1-q}=\dfrac pp=1\).</li><li>\(E(X)=p\sum k q^{k-1}=p\cdot\dfrac1{(1-q)^2}=\dfrac p{p^2}=\dfrac1p\).</li><li>Dado: \(E(X)=6\). Moneda: \(E(X)=2\).</li><li>\(S-xS=\dfrac1{1-x}\Rightarrow S=\dfrac1{(1-x)^2}\).</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 11, variables aleatorias (discretas y continuas, binomial y normal).</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

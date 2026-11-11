@@ -1,0 +1,847 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 13A · Calorimetría · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:54px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:28px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:14px 0;overflow-x:auto}
+.eqname{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--teal);letter-spacing:.06em;display:block;margin-top:4px}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.ej{border:1px solid var(--line);border-radius:5px;margin:22px 0;background:var(--paper-2);overflow:hidden}
+.ej-head{background:linear-gradient(180deg,#F0F5F3,#FFFFFF);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ej-num{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px}
+.ej-tag{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal);padding:2px 8px;border-radius:3px}
+.ej-src{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);letter-spacing:.05em}
+.ej-body{padding:16px 20px 20px}
+.sepide{display:inline-block;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:2px 8px;margin:2px 0 8px}
+.sol{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:6px 12px;display:inline-block;margin-top:8px}
+details.rev{margin-top:12px;border-top:1px dashed var(--amber);padding-top:8px}
+details.rev summary{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);cursor:pointer;list-style:none;font-weight:600}
+details.rev summary::-webkit-details-marker{display:none}
+details.rev summary::before{content:"\25B8  ";color:var(--amber)}
+details.rev[open] summary::before{content:"\25BE  "}
+details.rev[open] summary{margin-bottom:8px}
+details.rev .sol{border-top:none;padding-top:0;margin-top:0}
+details.rev p{margin:.45em 0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}td.l,th.l{text-align:left}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:14px;margin:16px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:8px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> B.1 <span>//</span> MÓDULO 13A · TEORÍA + TIPO 1</p>
+  <h1>Calorimetría y <em>energía térmica</em></h1>
+  <p class="lede">Modelo molecular, temperatura y energía interna, calor específico y latente, calorimetría de mezclas, cambios de fase y los tres mecanismos de transferencia (conducción, convección, radiación). Ficha completa resuelta.</p>
+  <div class="stats">
+    <div class="stat"><b>8</b><span>secciones de teoría</span></div>
+    <div class="stat"><b>B.1</b><span>syllabus IB</span></div>
+    <div class="stat"><b>10 + 10</b><span>resueltos · retos</span></div>
+    <div class="stat"><b>16</b><span>exámenes IB 2022–26</span></div>
+    <div class="stat"><b>c_agua</b><span>4,2×10³ J·kg⁻¹·K⁻¹</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#s1">1 · Modelo molecular</a>
+  <a href="#s2">2 · Temperatura y escalas</a>
+  <a href="#s3">3 · Energía interna</a>
+  <a href="#s4">4 · Calor específico</a>
+  <a href="#s5">5 · Calorimetría (mezclas)</a>
+  <a href="#s6">6 · Cambios de fase · latente</a>
+  <a href="#s7">7 · Conducción, convección, radiación</a>
+  <a href="#s8">8 · Más allá del IB</a>
+  <a href="#s9">9 · Definiciones (examen)</a>
+  <a href="#traps">Checklist de trampas</a>
+  <a href="#bloque">10 resueltos (ficha)</a>
+  <a href="#resto">Resto de la ficha</a>
+  <a href="#examenes">Banco de exámenes IB · 2022–26</a>
+  <a href="#practica">10 retos</a>
+  <a href="#practica2">Práctica extra · todo tipo</a>
+</nav>
+
+<main>
+<!-- rev 2026-10-27 calor · banco examenes IB calor (16) v2 -->
+
+<!-- S1 -->
+<section id="s1">
+  <p class="sec-num">SECCIÓN 01</p>
+  <h2>Modelo molecular de la materia<span class="rule"></span></h2>
+  <table>
+    <tr><th class="l"></th><th class="l">Sólido</th><th class="l">Líquido</th><th class="l">Gas</th></tr>
+    <tr><td class="l">Separación</td><td class="l">muy juntas, ordenadas</td><td class="l">juntas, desordenadas</td><td class="l">muy separadas</td></tr>
+    <tr><td class="l">Fuerzas</td><td class="l">fuertes (posición fija)</td><td class="l">moderadas (deslizan)</td><td class="l">despreciables</td></tr>
+    <tr><td class="l">Movimiento</td><td class="l">vibran en su sitio</td><td class="l">vibran y se trasladan</td><td class="l">libre, rápido</td></tr>
+  </table>
+  <p>Por eso la mayoría de los sólidos son <strong>más densos</strong> que sus líquidos (partículas más empaquetadas). El agua es la excepción: el hielo es menos denso (estructura hexagonal abierta) — la anomalía que ya vimos en Hidrostática.</p>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJ</span><span class="ej-tag" style="background:var(--amber)">modelo molecular</span><span class="ej-src">estilo IB · conceptual</span></div>
+    <div class="ej-body"><span class="sepide">Se pide explicar la compresibilidad con el modelo</span>
+      <p>Un gas se comprime con facilidad, pero un líquido casi no. Explícalo con el modelo molecular.</p>
+      <div class="sol"><p>En el <strong>gas</strong> las moléculas están muy separadas (grandes espacios vacíos), así que un pistón puede acercarlas → se reduce el volumen. En el <strong>líquido</strong> ya están prácticamente en contacto, con fuerzas apreciables entre ellas: casi no queda espacio que reducir.</p><span class="ans">El gas tiene espacios vacíos entre moléculas; el líquido no.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S2 -->
+<section id="s2">
+  <p class="sec-num">SECCIÓN 02</p>
+  <h2>Temperatura y escalas<span class="rule"></span></h2>
+  <div class="eq">\[ T(\mathrm{K})=\theta(^\circ\mathrm C)+273\qquad\qquad \bar{E_k}=\tfrac{3}{2}k_B T \]<span class="eqname">conversión y temperatura como energía cinética media</span></div>
+  <div class="box key"><span class="lbl">Claves de la temperatura</span>
+    <ul>
+      <li>La temperatura absoluta (Kelvin) es proporcional a la <strong>energía cinética media</strong> de las partículas. ¿De dónde sale \(\bar{E_k}=\tfrac32 k_B T\)? De la teoría cinética: cada grado de libertad de traslación guarda \(\tfrac12 k_B T\) de energía cinética, y en 3 dimensiones hay 3, luego \(\bar{E_k}=3\cdot\tfrac12 k_B T=\tfrac32 k_B T\). Lo que esto <em>representa</em> es que medir temperatura es medir, de forma indirecta, lo rápido que se agitan las moléculas. El cero absoluto (0 K = −273 °C) es donde esa energía cinética es mínima (no hay temperatura más baja).</li>
+      <li>Un <strong>cambio</strong> de temperatura es igual en K y en °C. ¿De dónde sale? De la conversión misma: \(\Delta T=T_2-T_1=(\theta_2+273)-(\theta_1+273)=\theta_2-\theta_1=\Delta\theta\) — el \(+273\) se <strong>cancela</strong> al restar. Por eso en \(Q=mc\Delta T\) da igual usar la escala K o °C <em>para el intervalo</em> (pero una temperatura absoluta aislada, no: ahí sí hay que convertir).</li>
+      <li>Pero una temperatura <em>absoluta</em> sí cambia de valor: 500 K = 227 °C.</li>
+    </ul>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJ</span><span class="ej-tag" style="background:var(--amber)">escalas</span><span class="ej-src">ficha P4</span></div>
+    <div class="ej-body"><span class="sepide">Se piden T inicial y ΔT en °C</span>
+      <p>Un sólido a 500 K se calienta subiendo 50 K.</p>
+      <div class="sol"><p>T inicial \(=500-273=227\) °C. El aumento es el mismo en ambas escalas: \(\Delta T=50\) °C.</p><span class="ans">227 °C ; ΔT = 50 °C (opción A).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S3 -->
+<section id="s3">
+  <p class="sec-num">SECCIÓN 03</p>
+  <h2>Energía interna<span class="rule"></span></h2>
+  <div class="box def"><span class="lbl">Definición</span>
+    <p><strong>Energía interna U:</strong> suma de la energía cinética aleatoria total (por el movimiento de las moléculas) y la energía potencial intermolecular total (por las fuerzas entre ellas). Subir la temperatura aumenta la parte cinética; un cambio de fase cambia la parte potencial (a temperatura constante).</p>
+  </div>
+  <p>No confundas <strong>calor</strong> (energía en tránsito por diferencia de temperatura) con <strong>temperatura</strong> (medida de la energía cinética media) ni con <strong>energía interna</strong> (el total almacenado).</p>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">U: cinética vs potencial</span><span class="ej-src">ficha P6</span></div>
+    <div class="ej-body"><span class="sepide">Se pide qué parte de U cambia en cada caso</span>
+      <p>Se aportan 500 J a 0,10 kg de agua. Compara: (a) agua líquida a 20 °C (\(c=4200\) J·kg⁻¹·K⁻¹); (b) agua hirviendo a 100 °C (\(L_v=2{,}26\times10^{6}\) J·kg⁻¹).</p>
+      <div class="sol"><p>(a) \(\Delta T=\dfrac{Q}{mc}=\dfrac{500}{0{,}10(4200)}=1{,}2\) K: sube la temperatura, así que crece la energía <strong>cinética</strong> media. (b) \(m=\dfrac{Q}{L_v}=\dfrac{500}{2{,}26\times10^{6}}=2{,}2\times10^{-4}\) kg se evaporan a 100 °C constantes: el calor aumenta la energía <strong>potencial</strong> (rompe enlaces), no la cinética.</p><span class="ans">(a) ΔU como energía cinética, +1,2 K ; (b) ΔU como energía potencial, T constante.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 -->
+<section id="s4">
+  <p class="sec-num">SECCIÓN 04</p>
+  <h2>Calor específico y capacidad térmica<span class="rule"></span></h2>
+  <div class="eq">\[ Q=mc\,\Delta T\qquad\qquad C=mc\ \ (\text{capacidad térmica, J·K}^{-1}) \]<span class="eqname">calor específico c (J·kg⁻¹·K⁻¹) y capacidad térmica C</span></div>
+  <div class="box key"><span class="lbl">Diferencia clave</span>
+    <p><strong>Calor específico c:</strong> energía para subir 1 K <em>un kilogramo</em> (propiedad del material). <strong>Capacidad térmica C = mc:</strong> energía para subir 1 K <em>ese cuerpo concreto</em> (depende de su masa). Con potencia constante P durante un tiempo t: \(Q=Pt=mc\Delta T\).</p>
+    <p>¿De dónde sale \(Q=mc\Delta T\)? Se <em>construye</em> desde la definición de \(c\): si \(c\) es la energía por cada 1 kg y por cada 1 K, entonces para \(m\) kg hay que multiplicar por \(m\), y para subir \(\Delta T\) kelvin, por \(\Delta T\). Así \(Q=c\cdot m\cdot\Delta T\). Experimentalmente se comprueba que, mientras no haya cambio de fase, la energía es proporcional a la masa y al salto de temperatura — eso es lo que resume la fórmula.</p>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">Q = mcΔT · potencia</span><span class="ej-src">ficha P8</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el tiempo de calentamiento</span>
+      <p>Calentador de 700 W sobre 1 kg de agua (c = 4200 J·kg⁻¹·K⁻¹), de 25 °C a 95 °C, sin pérdidas.</p>
+      <div class="sol"><p>\(Q=mc\Delta T=1(4200)(70)=2{,}94\times10^{5}\) J. \(t=\dfrac{Q}{P}=\dfrac{2{,}94\times10^{5}}{700}=420\) s = 7 min.</p><span class="ans">7 minutos (opción C).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 -->
+<section id="s5">
+  <p class="sec-num">SECCIÓN 05</p>
+  <h2>Calorimetría: equilibrio térmico<span class="rule"></span></h2>
+  <p class="sec-intro">Cuando dos cuerpos a distinta temperatura se ponen en contacto (sistema aislado), el calor que pierde el caliente es igual al que gana el frío, hasta llegar a una temperatura común.</p>
+  <div class="eq">\[ Q_{\text{perdido}}=Q_{\text{ganado}}\ \Rightarrow\ \sum m_i c_i (T_f-T_i)=0 \]<span class="eqname">principio de la calorimetría (mezclas)</span></div>
+  <div class="box key"><span class="lbl">¿De dónde sale el balance?</span>
+    <p>Sale de la <strong>conservación de la energía</strong>. Si el sistema está aislado (no entra ni sale energía), la energía térmica total no cambia, luego la suma de todos los intercambios es cero: \(\sum Q_i=0\). Para cada cuerpo \(Q_i=m_i c_i(T_f-T_i)\); el cuerpo caliente tiene \(T_f<T_i\) (su \(Q\) sale <strong>negativo</strong>: cede) y el frío \(T_f>T_i\) (su \(Q\) sale <strong>positivo</strong>: gana). Al imponer \(\sum m_i c_i(T_f-T_i)=0\), lo negativo cancela lo positivo: eso es exactamente decir \(|Q_{\text{cedido}}|=|Q_{\text{ganado}}|\). Si prefieres trabajar con magnitudes, escribe \(Q_{\text{perdido}}=Q_{\text{ganado}}\) y pon cada \(\Delta T\) como (mayor − menor) para que ambos lados sean positivos.</p>
+    <p><strong>El recipiente también cuenta (equivalente en agua).</strong> En un calorímetro real el vaso/recipiente parte de la temperatura del cuerpo frío y también absorbe calor. Hay que sumarlo al lado que gana: \(Q_{\text{caliente}}=Q_{\text{agua}}+Q_{\text{recipiente}}\), donde \(Q_{\text{recipiente}}=m_{\text{rec}}c_{\text{rec}}(T_f-T_i)=C_{\text{rec}}(T_f-T_i)\). Omitirlo es la causa típica de error en los problemas de laboratorio (y en el Paper 2).</p>
+  </div>
+  <figure class="fig">
+    <svg viewBox="0 0 440 180" width="420" xmlns="http://www.w3.org/2000/svg" aria-label="equilibrio térmico: el cuerpo caliente cede y el frío gana">
+      <rect x="22" y="40" width="120" height="78" rx="6" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.4"/>
+      <rect x="298" y="40" width="120" height="78" rx="6" fill="#E3EEF4" stroke="var(--teal)" stroke-width="1.4"/>
+      <text x="82" y="34" text-anchor="middle" font-family="Space Grotesk" font-size="12" font-weight="600" fill="var(--warn)">CALIENTE</text>
+      <text x="358" y="34" text-anchor="middle" font-family="Space Grotesk" font-size="12" font-weight="600" fill="var(--teal-deep)">FRÍO</text>
+      <text x="82" y="75" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" fill="var(--ink)">m₁ , c₁</text>
+      <text x="82" y="97" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" fill="var(--warn)">T₁ alta</text>
+      <text x="358" y="75" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" fill="var(--ink)">m₂ , c₂</text>
+      <text x="358" y="97" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" fill="var(--teal-deep)">T₂ baja</text>
+      <defs><marker id="arH" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--amber)"/></marker></defs>
+      <line x1="150" y1="79" x2="290" y2="79" stroke="var(--amber)" stroke-width="2.6" marker-end="url(#arH)"/>
+      <text x="220" y="70" text-anchor="middle" font-family="Space Grotesk" font-size="11" font-weight="600" fill="var(--amber)">calor Q</text>
+      <text x="152" y="115" font-family="Space Grotesk" font-size="10" fill="var(--warn)">cede: m₁c₁(T₁−T_f)</text>
+      <text x="356" y="115" text-anchor="end" font-family="Space Grotesk" font-size="10" fill="var(--teal-deep)">gana: m₂c₂(T_f−T₂)</text>
+      <text x="220" y="150" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" fill="var(--ink)">equilibrio: m₁c₁(T₁−T_f) = m₂c₂(T_f−T₂)</text>
+      <text x="220" y="169" text-anchor="middle" font-family="Space Grotesk" font-size="10" fill="var(--ink-soft)">el calor fluye solo caliente → frío, hasta una T_f común</text>
+    </svg>
+    <figcaption>Equilibrio térmico: en un sistema aislado el calor cedido por el cuerpo caliente iguala al ganado por el frío. Ejemplo: 0,20 kg a 20 °C con 0,40 kg a 80 °C (mismo c) → promedio ponderado por masa → T_f = 60 °C (el doble de masa «pesa» el doble).</figcaption>
+  </figure>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">mezcla de aguas</span><span class="ej-src">ficha P12</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la temperatura final</span>
+      <p>0,20 kg de agua a 20 °C con 0,40 kg de agua a 80 °C, sin pérdidas.</p>
+      <div class="sol"><p>Mismo \(c\): promedio ponderado por la masa. \(T_f=\dfrac{0{,}20(20)+0{,}40(80)}{0{,}60}=\dfrac{4+32}{0{,}60}=60\) °C.</p><span class="ans">60 °C (opción D).</span></div>
+    </div>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">equilibrio con calorímetro</span><span class="ej-src">estilo Paper 2</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la T final incluyendo el recipiente</span>
+      <p>Calorímetro de cobre de 0,10 kg (c = 385) con 0,20 kg de agua, ambos a 20 °C; se añade 0,050 kg de metal a 90 °C (c = 900).</p>
+      <div class="sol"><p>El metal cede; agua <em>y</em> recipiente ganan: \(0{,}050(900)(90-T)=[0{,}20(4200)+0{,}10(385)](T-20)\Rightarrow 45(90-T)=878{,}5(T-20)\Rightarrow 4050-45T=878{,}5T-17570\Rightarrow T=\dfrac{21620}{923{,}5}\approx23{,}4\) °C.</p><span class="ans">T_f ≈ 23,4 °C (incluir C del recipiente baja la respuesta).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 -->
+<section id="s6">
+  <p class="sec-num">SECCIÓN 06</p>
+  <h2>Cambios de fase y calor latente<span class="rule"></span></h2>
+  <p class="sec-intro">Durante un cambio de fase, la temperatura <strong>no cambia</strong> aunque se suministre energía: esa energía rompe (o forma) enlaces entre moléculas — cambia la energía potencial, no la cinética.</p>
+  <div class="eq">\[ Q=mL \]<span class="eqname">calor latente (L de fusión o de vaporización, J·kg⁻¹)</span></div>
+  <div class="box key"><span class="lbl">¿De dónde sale Q = mL y por qué T no cambia?</span>
+    <p><strong>De dónde sale:</strong> \(L\) se define como la energía necesaria para cambiar de fase <em>1 kg</em> de sustancia a temperatura constante; para \(m\) kg solo hay que multiplicar por la masa, de ahí \(Q=mL\). Fíjate que aquí <strong>no</strong> aparece \(\Delta T\): no hay salto de temperatura durante el cambio de fase.</p>
+    <p><strong>Por qué T no cambia:</strong> recuerda que \(U=\) energía cinética \(+\) energía potencial. Durante la fusión o la ebullición, toda la energía entrante se invierte en <strong>romper los enlaces</strong> entre moléculas (sube la energía potencial), no en acelerarlas (la energía cinética media se mantiene). Como la temperatura solo mide la energía cinética media, el termómetro no se mueve hasta que la fase termina de cambiar.</p>
+  </div>
+  <figure class="fig">
+    <svg viewBox="0 0 380 150" width="360" xmlns="http://www.w3.org/2000/svg" aria-label="curva de calentamiento">
+      <line x1="30" y1="125" x2="370" y2="125" stroke="var(--ink)" stroke-width="1.2"/>
+      <line x1="30" y1="125" x2="30" y2="15" stroke="var(--ink)" stroke-width="1.2"/>
+      <polyline points="30,110 90,80 90,80 170,80 170,45 280,45 280,20 360,10" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+      <line x1="90" y1="80" x2="170" y2="80" stroke="var(--amber)" stroke-width="3"/>
+      <line x1="170" y1="45" x2="280" y2="45" stroke="var(--amber)" stroke-width="3"/>
+      <text x="16" y="20" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">T</text>
+      <text x="355" y="140" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">Q (o t)</text>
+      <text x="100" y="74" font-family="Space Grotesk" font-size="9" fill="var(--amber)">fusión (mL)</text>
+      <text x="195" y="39" font-family="Space Grotesk" font-size="9" fill="var(--amber)">ebullición (mL)</text>
+      <text x="45" y="105" font-family="Space Grotesk" font-size="9" fill="var(--teal-deep)">sólido</text>
+    </svg>
+    <figcaption>Curva de calentamiento: las mesetas horizontales son los cambios de fase (T constante); las rampas, calentamiento (Q=mcΔT). Pendiente menor = calor específico mayor.</figcaption>
+  </figure>
+  <div class="box key"><span class="lbl">Leer la curva</span>
+    <ul>
+      <li>Tramos <strong>inclinados</strong>: una sola fase, \(Q=mc\Delta T\); a menor pendiente, mayor \(c\).</li>
+      <li><strong>Mesetas</strong> horizontales: cambio de fase, \(Q=mL\); meseta más larga = mayor \(L\) (a igual potencia).</li>
+      <li>En una meseta coexisten <strong>dos fases</strong>.</li>
+    </ul>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">energía total (fases)</span><span class="ej-src">ficha P21</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la energía para hielo −5 °C → agua 50 °C</span>
+      <p>Masa \(m\) de hielo a −5 °C a agua a 50 °C. \(c_i\), \(c_w\), \(L\) (fusión).</p>
+      <div class="sol"><p>Tres etapas: calentar hielo de −5 a 0 (\(5mc_i\)) + fundir (\(mL\)) + calentar agua de 0 a 50 (\(50mc_w\)).</p><span class="ans">5mc_i + 50mc_w + mL (opción C).</span></div>
+    </div>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">leer la curva T–t</span><span class="ej-src">estilo Paper 2</span></div>
+    <div class="ej-body"><span class="sepide">Se piden c del sólido y L de fusión</span>
+      <p>A potencia constante 200 W sobre 0,40 kg: la rampa sólida sube 30 K en 60 s y la meseta de fusión dura 100 s.</p>
+      <div class="sol"><p>Rampa (una fase, \(Q=Pt=mc\Delta T\)): \(c=\dfrac{200(60)}{0{,}40(30)}=\dfrac{12000}{12}=1{,}0\times10^{3}\). Meseta (fase, \(Q=Pt=mL\)): \(L=\dfrac{200(100)}{0{,}40}=5{,}0\times10^{4}\).</p><span class="ans">c = 1,0×10³ J·kg⁻¹·K⁻¹ ; L_f = 5,0×10⁴ J·kg⁻¹.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 -->
+<section id="s7">
+  <p class="sec-num">SECCIÓN 07</p>
+  <h2>Conducción, convección y radiación<span class="rule"></span></h2>
+  <p class="sec-intro">La energía térmica fluye siempre del cuerpo caliente al frío por tres mecanismos.</p>
+  <div class="eq">\[ \text{conducción: }\frac{\Delta Q}{\Delta t}=kA\frac{\Delta T}{\Delta x}\qquad\qquad \text{radiación (cuerpo negro): }L=\sigma A T^4 \]<span class="eqname">tasa de conducción y ley de Stefan-Boltzmann</span></div>
+  <ul>
+    <li><strong>Conducción:</strong> transferencia por colisiones entre partículas vecinas (dominante en sólidos, sobre todo metales). La tasa crece con \(k\), el área \(A\) y el gradiente \(\Delta T/\Delta x\); disminuye con el espesor.</li>
+    <li><strong>Convección:</strong> transporte por movimiento de un fluido; el fluido caliente (menos denso) sube y el frío baja (solo en fluidos, cualitativo).</li>
+    <li><strong>Radiación:</strong> emisión de ondas electromagnéticas; ocurre incluso en el vacío. Un cuerpo negro emite \(L=\sigma A T^4\) (muy sensible a la temperatura: al doblar T, la potencia ×16).</li>
+  </ul>
+  <div class="box beyond"><span class="lbl">Radiación: brillo y color (B.1)</span>
+    <p><strong>Brillo aparente:</strong> \(b=\dfrac{L}{4\pi d^2}\) (la intensidad recibida cae con \(1/d^2\)). <strong>Ley de Wien:</strong> \(\lambda_{máx}T=2{,}9\times10^{-3}\) m·K — a mayor temperatura, el pico de emisión se corre a menor longitud de onda (más azul). Así se mide la temperatura de las estrellas.</p>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">conducción</span><span class="ej-src">tipo lago (M12B)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la tasa de conducción por unidad de área</span>
+      <p>Capa de hielo de 1,9 cm, k = 2,3 W·m⁻¹·K⁻¹, ΔT = 6,0 °C.</p>
+      <div class="sol"><p>\(\dfrac{\Delta Q/\Delta t}{A}=\dfrac{k\,\Delta T}{\Delta x}=\dfrac{2{,}3(6{,}0)}{0{,}019}=726\) W·m⁻².</p><span class="ans">≈ 730 W·m⁻².</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S8 -->
+<section id="s8">
+  <p class="sec-num">SECCIÓN 08</p>
+  <h2>Más allá del IB<span class="rule"></span></h2>
+  <div class="box beyond"><span class="lbl">Profundidad para el 7</span>
+    <ul>
+      <li><strong>Equivalente mecánico del calor:</strong> el trabajo (fricción, agitación) puede subir la temperatura; \(1\) cal \(=4{,}18\) J (experimento de Joule).</li>
+      <li><strong>Ley de enfriamiento de Newton:</strong> la tasa de enfriamiento es proporcional a la diferencia de temperatura con el ambiente → decaimiento exponencial.</li>
+      <li><strong>Capacidad calorífica del calorímetro:</strong> en la práctica el recipiente absorbe calor; se corrige añadiendo su \(C\) al balance.</li>
+      <li><strong>Emisividad:</strong> un cuerpo real emite \(L=e\sigma A T^4\) con \(0<e<1\); el cuerpo negro es \(e=1\).</li>
+      <li><strong>Enlace con gases (M14):</strong> para un gas ideal monoatómico \(U=\tfrac32 N k_B T=\tfrac32 nRT\); ahí la energía interna es solo cinética.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- S9 -->
+<section id="s9">
+  <p class="sec-num">SECCIÓN 09</p>
+  <h2>Definiciones para el examen<span class="rule"></span></h2>
+  <div class="box def"><span class="lbl">Glosario</span>
+    <ul>
+      <li><strong>Capacidad calorífica (térmica) C:</strong> energía térmica necesaria para elevar 1 K la temperatura del cuerpo (J·K⁻¹).</li>
+      <li><strong>Calor específico c:</strong> energía para elevar 1 K la temperatura de 1 kg de la sustancia (J·kg⁻¹·K⁻¹).</li>
+      <li><strong>Calor latente específico L:</strong> energía para cambiar de fase 1 kg de sustancia a temperatura constante (J·kg⁻¹); de fusión o de vaporización.</li>
+      <li><strong>Energía interna:</strong> suma de la energía cinética aleatoria total y la energía potencial intermolecular total.</li>
+      <li><strong>Temperatura absoluta:</strong> medida proporcional a la energía cinética media de las partículas.</li>
+      <li><strong>Cambio de fase:</strong> cambio de estado a temperatura constante en el que varía la energía potencial de las moléculas.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRAPS -->
+<section id="traps">
+  <p class="sec-num">CHECKLIST</p>
+  <h2>Trampas típicas del Paper 1<span class="rule"></span></h2>
+  <div class="box trap"><span class="lbl">Antes de marcar, revisa</span>
+    <ul>
+      <li>Un <strong>cambio</strong> de temperatura es igual en K y °C; una temperatura absoluta, no (500 K = 227 °C).</li>
+      <li>Durante un cambio de fase la temperatura <strong>no cambia</strong> (la energía va a la energía potencial).</li>
+      <li>Distingue calor específico \(c\) (por kg) de capacidad térmica \(C=mc\) (del cuerpo).</li>
+      <li>En mezclas, el de mayor \(mc\) domina la temperatura final; iguala \(Q_{perdido}=Q_{ganado}\).</li>
+      <li>Al fundir: la energía potencial aumenta, la cinética (temperatura) no cambia.</li>
+      <li>Meseta más larga en la curva = mayor calor latente; rampa menos inclinada = mayor calor específico.</li>
+      <li>Conducción \(\propto1/\)espesor: una capa más gruesa aísla más.</li>
+      <li>Radiación \(\propto T^4\): muy sensible a la temperatura absoluta (usa K, no °C).</li>
+      <li><strong>En el cambio de fase usa \(Q=mL\), NUNCA \(Q=mc\Delta T\):</strong> como \(\Delta T=0\), \(mc\Delta T\) daría cero. Y en un calentamiento completo (p. ej. hielo→agua→vapor) suma por tramos: \(mc\Delta T\) en las rampas y \(mL\) en cada meseta, sin mezclarlos.</li>
+      <li><strong>Verifica el ESTADO FINAL antes de resolver:</strong> compara la energía disponible con la necesaria. ¿Se funde <em>todo</em> el hielo? Si la energía que cede el agua caliente al bajar a 0 °C es menor que \(m_{hielo}L_f\), <strong>no</strong> se funde todo y la T final es 0 °C (quedan hielo y agua). Igual al revés: puede que el agua solo se congele en parte y quede a 0 °C. No des por hecho que la fase cambia por completo.</li>
+      <li><strong>No confundas \(C\) (capacidad térmica, J·K⁻¹) con \(c\) (calor específico, J·kg⁻¹·K⁻¹):</strong> \(C=mc\) es de un cuerpo concreto; \(c\) es del material. Sus unidades delatan cuál es cuál.</li>
+      <li><strong>Unidades coherentes (SI):</strong> masa en kg (¡no g!), \(T\) absoluta en K para \(T^4\), tiempo en s. Pasar de g a kg o usar °C donde se pide K cambia el resultado por factores de 1000 o más.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BLOQUE -->
+<section id="bloque">
+  <p class="sec-num">BLOQUE DE 10 EJEMPLOS RESUELTOS · TIPO 1</p>
+  <h2>La ficha resuelta (calorimetría)<span class="rule"></span></h2>
+  <p class="sec-intro">Los 10 que cubren todos los tipos, resueltos por completo. Los ejemplos de arriba (P4, P8, P12, P21) ya cubren escalas, potencia, mezcla y fases; aquí van los demás tipos.</p>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">1</span><span class="ej-tag">definiciones</span><span class="ej-src">ficha P1, P2</span></div>
+    <div class="ej-body"><span class="sepide">Se piden las definiciones correctas</span>
+      <p>(P1) Capacidad calorífica de un sólido. (P2) Energía interna.</p>
+      <div class="sol"><p>P1: energía térmica para aumentar la temperatura del cuerpo en un grado → <strong>A</strong>. P2: energía cinética <em>y</em> potencial aleatoria total de sus moléculas → <strong>A</strong>.</p><span class="ans">P1 = A ; P2 = A.</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">2</span><span class="ej-tag">escalas K/°C</span><span class="ej-src">ficha P3</span></div>
+    <div class="ej-body"><span class="sepide">Se piden ΔT y T final en °C</span>
+      <p>Un sólido se calienta de 285 K a 298 K.</p>
+      <div class="sol"><p>\(\Delta T=298-285=13\) (igual en K y °C). T final \(=298-273=25\) °C.</p><span class="ans">ΔT = 13 °C ; T_f = 25 °C (opción B).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">3</span><span class="ej-tag">razón Q = mcΔT</span><span class="ej-src">ficha P6</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la razón Q_P/Q_Q</span>
+      <p>Objetos P (\(m_P,c_P\)) y Q (\(m_Q,c_Q\)) suben la misma temperatura.</p>
+      <div class="sol"><p>\(Q=mc\Delta T\), con \(\Delta T\) igual: \(\dfrac{Q_P}{Q_Q}=\dfrac{m_P c_P}{m_Q c_Q}\).</p><span class="ans">m_P c_P / m_Q c_Q (opción B).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">4</span><span class="ej-tag">masa desde gráfica</span><span class="ej-src">ficha P7</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la masa del líquido</span>
+      <p>Potencia constante P; la gráfica T–t tiene pendiente K; calor específico c.</p>
+      <div class="sol"><p>\(P=\dfrac{Q}{t}=mc\dfrac{\Delta T}{t}=mcK\) (pendiente \(K=\Delta T/t\)). Despejando \(m=\dfrac{P}{cK}\).</p><span class="ans">m = P/(cK) (opción A).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">5</span><span class="ej-tag">mezcla desigual</span><span class="ej-src">ficha P10</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la temperatura final del baño</span>
+      <p>Se añade agua caliente a 80 °C a un baño con 9 veces esa cantidad a 30 °C.</p>
+      <div class="sol"><p>Proporción caliente:frío = 1:9. \(T_f=\dfrac{1(80)+9(30)}{10}=\dfrac{80+270}{10}=35\) °C.</p><span class="ans">≈ 35 °C (opción A).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">6</span><span class="ej-tag">razón de calores específicos</span><span class="ej-src">ficha P11</span></div>
+    <div class="ej-body"><span class="sepide">Se pide c_agua/c_metal</span>
+      <p>Metal a 90 °C en agua a 0 °C, masas iguales, equilibrio a 9 °C.</p>
+      <div class="sol"><p>\(Q_{perdido}=Q_{ganado}\): \(m c_m(90-9)=m c_w(9-0)\Rightarrow c_m(81)=c_w(9)\Rightarrow\dfrac{c_w}{c_m}=\dfrac{81}{9}=9\).</p><span class="ans">9 (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">7</span><span class="ej-tag">mezcla con c distintos</span><span class="ej-src">ficha P14</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la temperatura final</span>
+      <p>Metal a 100 °C en masa igual de agua a 15 °C; \(c_w=4c_m\).</p>
+      <div class="sol"><p>\(m c_m(100-T)=m c_w(T-15)\), con \(c_w=4c_m\): \((100-T)=4(T-15)\Rightarrow100-T=4T-60\Rightarrow160=5T\Rightarrow T=32\) °C.</p><span class="ans">32 °C (opción D).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">8</span><span class="ej-tag">hielo fundido</span><span class="ej-src">ficha P19</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la masa de hielo derretido</span>
+      <p>Masa pequeña \(m\) de agua a \(\theta\) °C sobre un gran bloque de hielo a 0 °C; calor específico del agua \(S\), latente \(L\).</p>
+      <div class="sol"><p>El agua se enfría hasta 0 °C y ese calor funde hielo: \(mS\theta=m_{fund}L\Rightarrow m_{fund}=\dfrac{mS\theta}{L}\).</p><span class="ans">mSθ/L (opción B).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">9</span><span class="ej-tag">razón L/c</span><span class="ej-src">ficha P22</span></div>
+    <div class="ej-body"><span class="sepide">Se pide L_vaporización / c_líquido</span>
+      <p>40 kJ suben 20 K una cantidad de líquido; 600 kJ la vaporizan por completo.</p>
+      <div class="sol"><p>\(mc=\dfrac{40\,000}{20}=2000\) J·K⁻¹; \(mL=600\,000\) J. \(\dfrac{L}{c}=\dfrac{mL}{mc}=\dfrac{600\,000}{2000}=300\) K.</p><span class="ans">300 K (opción D).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">10</span><span class="ej-tag">energía total (fusión)</span><span class="ej-src">ficha P20</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la energía para fundir por completo</span>
+      <p>Sólido de masa \(m\), a \(\Delta T\) bajo su punto de fusión, calor específico \(c\), latente \(L\).</p>
+      <div class="sol"><p>Calentar hasta el punto de fusión (\(mc\Delta T\)) + fundir (\(mL\)): \(Q=mc\Delta T+mL\).</p><span class="ans">mcΔT + mL (opción D).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTO -->
+<section id="resto">
+  <p class="sec-num">RESTO DE LA FICHA</p>
+  <h2>Ítems de la misma familia (resueltos)<span class="rule"></span></h2>
+  <table>
+    <tr><th>Ítem</th><th>Resp.</th><th class="l">Razón</th></tr>
+    <tr><td>Unidad de C/c (P5)</td><td>D</td><td class="l">C/c = (J·K⁻¹)/(J·kg⁻¹·K⁻¹) = kg.</td></tr>
+    <tr><td>K↔°C inicial y ΔT (P4)</td><td>A</td><td class="l">227 °C ; 50 °C (Ej. teoría).</td></tr>
+    <tr><td>Capacidad térmica desde P,t (P9)</td><td>C</td><td class="l">\(C=\dfrac{Q}{\Delta\theta}=\dfrac{Pt}{\Delta\theta}\).</td></tr>
+    <tr><td>Mezcla parafina-agua (P13)</td><td>D</td><td class="l">c_w=2c_p: \(2(80-T)=(T-20)\Rightarrow T=60\) °C.</td></tr>
+    <tr><td>½ masa, misma tasa (P15)</td><td>A</td><td class="l">Menos masa ⇒ calienta más rápido y funde antes (rampas y meseta más cortas).</td></tr>
+    <tr><td>▲ Comparar L y c de X,Y (P16)</td><td>—</td><td class="l">Meseta más larga = mayor L; rampa líquida menos inclinada = mayor c (según la gráfica).</td></tr>
+    <tr><td>▲ Orden de c_s,c_l,c_g (P17)</td><td>—</td><td class="l">Menor pendiente ⇒ mayor c; se lee de las tres rampas de la gráfica.</td></tr>
+    <tr><td>▲ Región con dos fases (P18)</td><td>D</td><td class="l">Solo en la meseta XY coexisten dos fases.</td></tr>
+  </table>
+  <p class="sec-intro" style="font-size:14px">▲ = el enunciado original trae una gráfica que no se conserva; se da el <strong>método</strong> de lectura, no la cifra exacta (depende de esa curva). Para practicar la lectura de curvas, usa el reto C5 y la curva de calentamiento de la Sección 06.</p>
+</section>
+
+<!-- EXAMENES -->
+<section id="examenes">
+  <p class="sec-num">BANCO DE EXÁMENES IB · TIPO 1 (PAPER 1 / 1A)</p>
+  <h2>Calor y calorimetría en los exámenes, 2022–2026<span class="rule"></span></h2>
+  <p class="sec-intro">Todas las preguntas de temperatura, calor específico, calorimetría, cambios de fase y transferencia (conducción/radiación) de los Paper 1 del IB en este rango, resueltas y con la <strong>respuesta oficial del markscheme</strong>. Es de los temas <strong>más evaluados</strong> en ambos planes — y el que sustenta tu EI de química. Enunciados reformulados; datos y clave reales.</p>
+
+  <div class="box key">
+    <span class="lbl">16 preguntas · herramientas</span>
+    <p><strong>Plan nuevo (Paper 1A):</strong> mayo 2025, nov 2025 y 2026 (8). <strong>Plan anterior (Paper 1):</strong> 2022–2024 (8). Las claves: \(Q=mc\Delta T\) (calentar) y \(Q=mL\) (cambiar de fase, a \(T\) constante); en una mezcla aislada \(\sum Q=0\); conducción \(\dfrac{\Delta Q}{\Delta t}=kA\dfrac{\Delta T}{\Delta x}\); radiación \(L=\sigma A T^4\).</p>
+  </div>
+
+  <h4>Índice</h4>
+  <table>
+    <tr><th>#</th><th class="l">Subtema</th><th>Sesión</th><th>Plan</th><th>Resp.</th></tr>
+    <tr><td>CA1</td><td class="l">Escala: cambio de \(T\) en kelvin</td><td>May 2023 TZ1</td><td>ant.</td><td>A</td></tr>
+    <tr><td>CA2</td><td class="l">Cambio de \(T\) (100 K→330 K) en °C</td><td>May 2023 TZ2</td><td>ant.</td><td>B</td></tr>
+    <tr><td>CA3</td><td class="l">Mezcla vidrio–asfalto: \(T\) final</td><td>Nov 2022</td><td>ant.</td><td>D</td></tr>
+    <tr><td>CA4</td><td class="l">Equilibrio térmico: \(\Delta T\) y \(\Delta U\)</td><td>May 2023 TZ1</td><td>ant.</td><td>D</td></tr>
+    <tr><td>CA5</td><td class="l">Flujo de líquido en panel solar</td><td>May 2024 TZ1</td><td>ant.</td><td>B</td></tr>
+    <tr><td>CA6</td><td class="l">Calor específico (80 g, 100 W, 60 s)</td><td>Nov 2025</td><td>nuevo</td><td>D</td></tr>
+    <tr><td>CA7</td><td class="l">Razón c/L de una gráfica de calentamiento</td><td>May 2025 TZ3</td><td>nuevo</td><td>—</td></tr>
+    <tr><td>CA8</td><td class="l">Gráfica T–t: \(c\) sólido > \(c\) líquido</td><td>Nov 2022</td><td>ant.</td><td>B</td></tr>
+    <tr><td>CA9</td><td class="l">Meseta QR: ¿qué es constante?</td><td>May 2023 TZ1</td><td>ant.</td><td>B</td></tr>
+    <tr><td>CA10</td><td class="l">Gráfica: \(L_\text{vap}\) vs \(L_\text{fus}\)</td><td>Nov 2023</td><td>ant.</td><td>A</td></tr>
+    <tr><td>CA11</td><td class="l">Energía al entorno al evaporar</td><td>Nov 2024</td><td>ant.</td><td>B</td></tr>
+    <tr><td>CA12</td><td class="l">Hielo derritiéndose: energía interna</td><td>May 2026 TZ2</td><td>nuevo</td><td>A</td></tr>
+    <tr><td>CA13</td><td class="l">Conducción: dos barras unidas, \(T\) en M</td><td>May 2026 TZ3</td><td>nuevo</td><td>A</td></tr>
+    <tr><td>CA14</td><td class="l">Conducción: tasa frente al diámetro</td><td>Nov 2025</td><td>nuevo</td><td>D</td></tr>
+    <tr><td>CA15</td><td class="l">Cuerpos negros: radio de Y (Stefan)</td><td>May 2025 TZ2</td><td>nuevo</td><td>C</td></tr>
+    <tr><td>CA16</td><td class="l">Cuerpos negros: razón \(P_2/P_1\) (Stefan)</td><td>May 2026 TZ3</td><td>nuevo</td><td>C</td></tr>
+  </table>
+
+  <!-- A -->
+  <h3>A · Temperatura y escalas</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA1</span><span class="ej-src">Paper 1 · May 2023 TZ1 · Q11 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>La temperatura cambia de \(\theta_1\) °C a \(\theta_2\) °C. ¿Cuál es el cambio de temperatura en kelvin?</p>
+      <div class="sol"><p>Un <em>cambio</em> de temperatura es idéntico en °C y en K (ambas escalas tienen el mismo tamaño de grado): \(\Delta T=\theta_2-\theta_1\). El \(+273\) solo aplica a un valor absoluto, no a una diferencia.</p>
+        <span class="ans">A) \((\theta_2-\theta_1)\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA2</span><span class="ej-src">Paper 1 · May 2023 TZ2 · Q9 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>La temperatura de un gas sube de 100 K a 330 K. ¿Cambio de temperatura en grados Celsius?</p>
+      <div class="sol"><p>El cambio es \(330-100=230\) K, y un cambio de 230 K equivale a un cambio de <strong>230 °C</strong> (mismo tamaño de grado).</p>
+        <span class="ans">B) 230 ✓ — no restes 273 a una <em>diferencia</em>.</span></div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <h3>B · Calor específico y calorimetría (\(Q=mc\Delta T\), \(\sum Q=0\))</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA3</span><span class="ej-src">Paper 1 · Nov 2022 · Q8 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un bloque de vidrio (5 kg, 30 °C) se pone en contacto con asfalto (20 kg, 75 °C); \(c_\text{asf}=2c_\text{vid}\), sin pérdidas. ¿Temperatura final común?</p>
+      <div class="sol"><p>\(\sum Q=0\): \(m_v c_v(T-30)+m_a(2c_v)(T-75)=0\). Divide por \(c_v\): \(5(T-30)+40(T-75)=0\Rightarrow 45T=3150\Rightarrow T=70\) °C.</p>
+        <span class="ans">D) 70 °C ✓ — queda cerca del asfalto por su mayor \(mc\) (capacidad térmica).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA4</span><span class="ej-src">Paper 1 · May 2023 TZ1 · Q13 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Bloques X e Y del <em>mismo material</em> en contacto hasta el equilibrio; la masa de Y es la mitad de la de X. X cambia \(\Delta T\) de temperatura y \(\Delta U\) de energía interna. ¿Cuál es el cambio de temperatura y de energía interna de Y?</p>
+      <div class="sol"><p>Energía: \(|\Delta U_Y|=|\Delta U_X|=\Delta U\) (lo que pierde uno lo gana el otro). Pero \(\Delta U=mc\Delta T\): con la mitad de masa, \(\Delta T_Y=2\Delta T\).</p>
+        <span class="ans">D) \(\Delta T_Y=2\Delta T\) y \(\Delta U_Y=\Delta U\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA5</span><span class="ej-src">Paper 1 · May 2024 TZ1 · Q12 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un panel solar transfiere 2,4 kW a un líquido (\(c=4000\) J kg⁻¹ K⁻¹) que lo atraviesa; su temperatura sube 6,0 K. ¿Caudal másico del líquido?</p>
+      <div class="sol"><p>Potencia \(=\dfrac{\Delta Q}{\Delta t}=\dot m\,c\,\Delta T\Rightarrow \dot m=\dfrac{2400}{4000(6{,}0)}=0{,}10\) kg s⁻¹.</p>
+        <span class="ans">B) 0,1 kg s⁻¹ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA6</span><span class="ej-src">Paper 1A · Nov 2025 · Q7 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>80 g de un líquido se calientan con 100 W constantes (toda al líquido); tras 60 s la temperatura sube 50 K. ¿Calor específico (J kg⁻¹ K⁻¹)?</p>
+      <div class="sol"><p>\(Q=Pt=100(60)=6000\) J. \(c=\dfrac{Q}{m\Delta T}=\dfrac{6000}{0{,}080(50)}=1500\) J kg⁻¹ K⁻¹.</p>
+        <span class="ans">D) 1500 ✓ — pasa 80 g a 0,080 kg.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA7</span><span class="ej-src">Paper 1A · May 2025 TZ3 · Q7 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un líquido se calienta a ritmo constante: su temperatura sube 0,50 °C por segundo hasta hervir; luego, en 10 min de ebullición, se evapora la mitad de la masa. ¿Cuánto vale \(\dfrac{c}{L}\) (calor específico / calor latente de vaporización)?</p>
+      <div class="sol"><p>Misma potencia \(P\) en ambas fases. Calentar: \(P=\dot m\,c\,(0{,}50)\)… mejor por energía para una masa \(m\): subir 1 °C cuesta \(mc(0{,}50)\) por segundo; evaporar \(m/2\) en 600 s cuesta \(P\cdot600=\tfrac m2 L\). Igualando \(P\) en las dos etapas y despejando: \(\dfrac{c}{L}=\dfrac{\text{(ritmo de evaporación)}}{\text{(ritmo de }\Delta T)}\). Con los números, \(\dfrac cL=\dfrac{1}{(0{,}50)(600)\cdot2}=\dfrac{1}{600}\ \mathrm{K^{-1}}\).</p>
+        <span class="ans">\(\dfrac cL=\dfrac{1}{600}\ \mathrm{K^{-1}}\) — iguala la potencia constante en las dos fases y despeja.</span></div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <h3>C · Cambios de fase y calor latente</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA8</span><span class="ej-src">Paper 1 · Nov 2022 · Q9 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una masa sólida gana energía a ritmo constante hasta volverse líquida. El calor específico en fase sólida es <em>mayor</em> que en líquida. ¿Qué gráfica T–t la describe?</p>
+      <div class="sol"><p>A ritmo constante, la pendiente \(\dfrac{dT}{dt}\propto\dfrac{1}{c}\). Mayor \(c\) (sólido) ⇒ <strong>pendiente menor</strong>; menor \(c\) (líquido) ⇒ pendiente mayor. Entre medias, una <strong>meseta</strong> horizontal (fusión). La gráfica sube poco, se aplana, y luego sube más empinada.</p>
+        <span class="ans">B ✓ (tramo sólido poco inclinado → meseta → líquido más inclinado)</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA9</span><span class="ej-src">Paper 1 · May 2023 TZ1 · Q12 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Se calienta un sólido a potencia constante; en el tramo QR la temperatura es constante. ¿Por qué? (A: EP intermolecular constante · B: EC de las moléculas constante · C: energía interna constante · D: …)</p>
+      <div class="sol"><p>En un cambio de fase la energía entra como <strong>energía potencial</strong> (rompe enlaces), no cinética: la \(T\) (que mide la EC media) <strong>no cambia</strong>. Así que la EC molecular es constante, pero la energía interna <em>sí</em> aumenta (sube la EP).</p>
+        <span class="ans">B) la energía cinética de las moléculas es constante ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA10</span><span class="ej-src">Paper 1 · Nov 2023 TZ1 y TZ2 · Q9 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Se suministra energía a ritmo constante a una masa fija (gráfica T–t con dos mesetas). ¿Qué afirmación es correcta?</p>
+      <div class="sol"><p>A ritmo constante, la <em>longitud</em> de cada meseta \(\propto L\) (más energía = más tiempo). La meseta de vaporización es mucho más larga que la de fusión ⇒ \(L_\text{vap}>L_\text{fus}\) (cierto para casi toda sustancia).</p>
+        <span class="ans">A) \(L_\text{vap}>L_\text{fus}\) ✓ — mide el ancho de las mesetas.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA11</span><span class="ej-src">Paper 1 · Nov 2024 · Q10 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un calentador de potencia \(P\) suministra energía a un líquido en ebullición; en un tiempo \(t\) se evapora una masa \(m\), con calor latente de vaporización \(L\). ¿Energía transferida al <em>entorno</em> en ese tiempo?</p>
+      <div class="sol"><p>El calentador entrega \(Pt\). De eso, \(mL\) se usa en evaporar; el resto se pierde al entorno: \(Pt-mL\).</p>
+        <span class="ans">B) \(Pt-mL\) ✓ — balance de energía: entra \(Pt\), se usa \(mL\), sobra la pérdida.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA12</span><span class="ej-src">Paper 1A · May 2026 TZ2 · Q7 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>En un recipiente aislado con agua a 20 °C se derrite hielo por completo. Durante el cambio de fase, ¿qué afirmación es correcta?</p>
+      <div class="sol"><p>Al fundirse, el hielo <strong>absorbe energía</strong> (del agua): la energía interna de las moléculas de hielo <strong>aumenta</strong> (sube su energía potencial al romperse la red cristalina), aunque su temperatura siga a 0 °C hasta fundir del todo.</p>
+        <span class="ans">A) la energía interna de las moléculas de hielo aumenta ✓</span></div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <h3>D · Conducción térmica (\(\tfrac{\Delta Q}{\Delta t}=kA\tfrac{\Delta T}{\Delta x}\))</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA13</span><span class="ej-src">Paper 1A · May 2026 TZ3 · Q8 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Dos barras de iguales dimensiones, con conductividades \(k_1\) y \(k_2\), se unen en M; los extremos libres están a \(T_1\) y \(T_2\) (lados aislados). ¿Temperatura en M en estado estacionario?</p>
+      <div class="sol"><p>En estado estacionario la tasa de conducción es la misma en ambas barras: \(k_1 A\dfrac{T_1-T_M}{L}=k_2 A\dfrac{T_M-T_2}{L}\). Despejando: \(T_M=\dfrac{k_1T_1+k_2T_2}{k_1+k_2}\).</p>
+        <span class="ans">A) \(\dfrac{k_1T_1+k_2T_2}{k_1+k_2}\) ✓ — es un promedio <em>ponderado por la conductividad</em>.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA14</span><span class="ej-src">Paper 1A · Nov 2025 · Q6 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Barras de cobre de distinto diámetro y longitud fija conducen calor entre dos objetos a \(T_X\) y \(T_Y\). ¿Qué gráfica muestra la tasa de conducción frente al <em>diámetro</em>?</p>
+      <div class="sol"><p>Tasa \(\propto A=\pi(d/2)^2\propto d^2\): es una <strong>parábola por el origen</strong> (crece con el cuadrado del diámetro), no una recta.</p>
+        <span class="ans">D ✓ (curva \(\propto d^2\))</span></div>
+    </div>
+  </div>
+
+  <!-- E -->
+  <h3>E · Radiación de cuerpo negro (ley de Stefan, \(L=\sigma A T^4\))</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA15</span><span class="ej-src">Paper 1A · May 2025 TZ2 · Q6 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>X e Y son cuerpos negros esféricos. X tiene radio \(R\) y emite la mitad de la potencia total de Y. La temperatura absoluta de X es el doble de la de Y. ¿Radio de Y?</p>
+      <div class="sol"><p>\(P=\sigma(4\pi r^2)T^4\). \(\dfrac{P_X}{P_Y}=\dfrac12=\dfrac{R^2(2T_Y)^4}{r_Y^2T_Y^4}=\dfrac{16R^2}{r_Y^2}\Rightarrow r_Y^2=32R^2\Rightarrow r_Y=\sqrt{32}\,R=4\sqrt2\,R\).</p>
+        <span class="ans">C) \(4\sqrt2\,R\) ✓ — ojo: \(T\) entra a la <em>cuarta</em> y el área con \(r^2\).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">CA16</span><span class="ej-src">Paper 1A · May 2026 TZ3 · Q7 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un cuerpo negro de área \(A\) y temperatura \(T\) radia \(P_1\). Otro cuerpo de área \(A/4\), temperatura \(2T\) y <em>emisividad</em> \(\varepsilon\) radia \(P_2\). ¿Cuánto vale \(\dfrac{P_2}{P_1}\)?</p>
+      <div class="sol"><p>\(P=\varepsilon\sigma A T^4\). \(\dfrac{P_2}{P_1}=\varepsilon\cdot\dfrac{A/4}{A}\cdot\dfrac{(2T)^4}{T^4}=\varepsilon\cdot\dfrac14\cdot16=4\varepsilon\).</p>
+        <span class="ans">C) \(4\varepsilon\) ✓ — el cuerpo negro tiene \(\varepsilon=1\); el segundo lleva su \(\varepsilon\).</span></div>
+    </div>
+  </div>
+
+  <div class="box beyond">
+    <span class="lbl">Conexión con tu EI de química · Módulo 13B</span>
+    <p>Tu Evaluación Interna (poder calorífico del etanol por calorimetría) vive justo aquí: \(Q=mc\Delta T\) con el agua como calorímetro y el balance de energía. Los problemas de <strong>Paper 2</strong> (calorímetro con pérdidas, mezclas de varias fases, método de las mezclas con incertidumbre, Stefan con flujo neto) se resolverán en el Módulo 13B.</p>
+  </div>
+</section>
+
+<!-- PRACTICA -->
+<section id="practica">
+  <p class="sec-num">PARA TI · RESUELVE Y ENVÍA EN BLOQUE</p>
+  <h2>10 retos (nuevos, ninguno fácil, nivel ascendente)<span class="rule"></span></h2>
+  <p class="sec-intro">Ninguno repite los ejemplos. Integran energía, potencia, conducción, radiación e incertidumbre. Los #9 y #10 combinan varias etapas y propagación de incertidumbre, superando el nivel. c_agua = 4,2×10³, c_hielo = 2,1×10³, L_fusión = 3,3×10⁵, L_vaporización = 2,3×10⁶ (J·kg⁻¹) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">C1 · calentar y hervir</p><p>Un hervidor de 2,0 kW calienta 0,50 kg de agua de 20 °C a 100 °C y luego evapora 0,10 kg. (a) Halla la energía para llegar a 100 °C y el tiempo. (b) Halla la energía extra para evaporar 0,10 kg. (c) Determina el tiempo total.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>(a) Calentar (una sola fase, \(Q=mc\Delta T\)): \(Q_1=0{,}50(4200)(80)=1{,}68\times10^{5}\) J. Tiempo con \(P\) constante: \(t_1=\dfrac{Q_1}{P}=\dfrac{1{,}68\times10^{5}}{2000}=84\) s.</p>
+      <p>(b) Evaporar (cambio de fase, \(Q=mL_v\)): \(Q_2=0{,}10(2{,}3\times10^{6})=2{,}3\times10^{5}\) J.</p>
+      <p>(c) \(t_2=\dfrac{Q_2}{P}=\dfrac{2{,}3\times10^{5}}{2000}=115\) s. Total \(t=84+115=199\) s \(\approx 3{,}3\) min.</p>
+      <span class="ans">Q₁ = 1,68×10⁵ J (84 s) ; Q₂ = 2,3×10⁵ J ; t_total ≈ 199 s.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C2 · mezcla de tres cuerpos</p><p>Se mezclan 0,30 kg de agua a 15 °C, 0,20 kg de agua a 60 °C y 0,10 kg de agua a 90 °C. Halla la temperatura final de equilibrio.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>Toda es agua (mismo \(c\)), así que \(T_f\) es el promedio ponderado por la masa: \(T_f=\dfrac{\sum m_i T_i}{\sum m_i}\).</p>
+      <p>\(T_f=\dfrac{0{,}30(15)+0{,}20(60)+0{,}10(90)}{0{,}30+0{,}20+0{,}10}=\dfrac{4{,}5+12+9}{0{,}60}=\dfrac{25{,}5}{0{,}60}=42{,}5\) °C.</p>
+      <p>Comprobación de signo: cae entre 15 y 90 °C y se inclina hacia la masa mayor (la de 15 °C). ✔</p>
+      <span class="ans">T_f = 42,5 °C.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C3 · calorímetro con recipiente</p><p>Un calorímetro de aluminio de 0,15 kg (c_Al = 900 J·kg⁻¹·K⁻¹) contiene 0,25 kg de agua a 18 °C. Se añade un bloque de cobre de 0,20 kg (c_Cu = 385) a 95 °C. Halla la temperatura final (incluye el recipiente en el balance).</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>El cobre cede; el agua <em>y</em> el recipiente de aluminio (que parten de 18 °C) ganan: \(Q_{\text{Cu}}=Q_{\text{agua}}+Q_{\text{Al}}\).</p>
+      <p>\(0{,}20(385)(95-T)=\big[0{,}25(4200)+0{,}15(900)\big](T-18)\)</p>
+      <p>\(77(95-T)=(1050+135)(T-18)=1185(T-18)\)</p>
+      <p>\(7315-77T=1185T-21330\Rightarrow 28645=1262\,T\Rightarrow T=22{,}7\) °C.</p>
+      <p>Omitir el recipiente daría \(T\approx23{,}3\) °C: por eso en un calorímetro real hay que incluir su \(C=mc\). ✔</p>
+      <span class="ans">T_f ≈ 22,7 °C.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C4 · hielo en agua</p><p>Se echan 0,050 kg de hielo a 0 °C en 0,30 kg de agua a 25 °C. (a) ¿Se derrite todo el hielo? Justifica con un balance de energía. (b) Halla la temperatura final.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>(a) Energía para fundir TODO el hielo: \(Q_{fus}=mL=0{,}050(3{,}3\times10^{5})=1{,}65\times10^{4}\) J. Energía máxima que puede ceder el agua al enfriarse hasta 0 °C: \(Q_{disp}=0{,}30(4200)(25)=3{,}15\times10^{4}\) J. Como \(3{,}15\times10^{4}>1{,}65\times10^{4}\), <strong>sí se funde todo</strong> (y sobra energía para subir por encima de 0 °C).</p>
+      <p>(b) Balance completo: funde el hielo y luego el agua de deshielo (0 °C) se calienta hasta \(T\); todo lo paga el agua inicial al enfriarse de 25 a \(T\):</p>
+      <p>\(\underbrace{1{,}65\times10^{4}}_{\text{fundir}}+0{,}050(4200)T=0{,}30(4200)(25-T)\)</p>
+      <p>\(16500+210T=1260(25-T)=31500-1260T\Rightarrow 1470T=15000\Rightarrow T=10{,}2\) °C.</p>
+      <span class="ans">(a) Sí, se funde todo. (b) T_f ≈ 10,2 °C.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C5 · curva de calentamiento (lectura)</p><p>A 0,40 kg de una sustancia sólida se le suministran 500 W. Tarda 60 s en subir 50 K en fase sólida y luego 200 s en fundirse a T constante. Halla (a) el calor específico del sólido y (b) el calor latente de fusión.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>Con \(P\) constante, \(Q=Pt\) en cada tramo. La rampa (sólido) usa \(Q=mc\Delta T\); la meseta (fusión) usa \(Q=mL\).</p>
+      <p>(a) Rampa: \(Q=500(60)=3{,}0\times10^{4}\) J \(=mc\Delta T\Rightarrow c=\dfrac{3{,}0\times10^{4}}{0{,}40(50)}=1{,}5\times10^{3}\) J·kg⁻¹·K⁻¹.</p>
+      <p>(b) Meseta: \(Q=500(200)=1{,}0\times10^{5}\) J \(=mL\Rightarrow L=\dfrac{1{,}0\times10^{5}}{0{,}40}=2{,}5\times10^{5}\) J·kg⁻¹.</p>
+      <span class="ans">c = 1,5×10³ J·kg⁻¹·K⁻¹ ; L_f = 2,5×10⁵ J·kg⁻¹.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C6 · conducción por una pared</p><p>Una ventana de vidrio de 1,2 m × 0,80 m y 4,0 mm de espesor (k = 0,80 W·m⁻¹·K⁻¹) tiene 20 °C dentro y 5 °C fuera. Halla la tasa de pérdida de calor por conducción.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>Área \(A=1{,}2\times0{,}80=0{,}96\) m²; espesor \(\Delta x=4{,}0\times10^{-3}\) m; \(\Delta T=20-5=15\) K (un intervalo, igual en °C y K).</p>
+      <p>\(\dfrac{\Delta Q}{\Delta t}=kA\dfrac{\Delta T}{\Delta x}=0{,}80(0{,}96)\dfrac{15}{4{,}0\times10^{-3}}=\dfrac{11{,}52}{0{,}0040}=2{,}9\times10^{3}\) W.</p>
+      <p>Nota: el vidrio fino conduce mucho; el doble acristalamiento aísla gracias a la capa de aire (k bajo) y a un \(\Delta x\) mayor. ✔</p>
+      <span class="ans">≈ 2,9×10³ W (2880 W).</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C7 · radiación (Stefan-Boltzmann)</p><p>Una esfera metálica de 0,10 m de radio se comporta como cuerpo negro a 500 K. (a) Halla su área y la potencia radiada (σ = 5,67×10⁻⁸). (b) ¿Cuánto cambia la potencia si la temperatura sube a 1000 K?</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>(a) Área de la esfera: \(A=4\pi r^2=4\pi(0{,}10)^2=0{,}126\) m². Stefan-Boltzmann (cuerpo negro): \(L=\sigma A T^4\).</p>
+      <p>\(L=5{,}67\times10^{-8}(0{,}126)(500)^4=5{,}67\times10^{-8}(0{,}126)(6{,}25\times10^{10})\approx4{,}5\times10^{2}\) W.</p>
+      <p>(b) Al doblar \(T\), como \(L\propto T^4\), la potencia se multiplica por \(2^4=16\): \(L'=16(445)\approx7{,}1\times10^{3}\) W. (Usa siempre T en kelvin.)</p>
+      <span class="ans">(a) A ≈ 0,126 m², L ≈ 4,5×10² W. (b) ×16 → ≈ 7,1×10³ W.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C8 · Wien (temperatura de una estrella)</p><p>Una estrella emite con un máximo en λ = 480 nm. (a) Usa la ley de Wien para hallar su temperatura superficial. (b) ¿De qué color se ve, comparada con el Sol (≈500 nm)?</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>(a) Ley de Wien: \(\lambda_{máx}T=2{,}9\times10^{-3}\) m·K \(\Rightarrow T=\dfrac{2{,}9\times10^{-3}}{480\times10^{-9}}=\dfrac{2{,}9\times10^{-3}}{4{,}8\times10^{-7}}\approx6{,}0\times10^{3}\) K.</p>
+      <p>(b) Su \(\lambda_{máx}\) es menor que la del Sol (480 nm &lt; 500 nm), luego es algo más caliente y su pico está más hacia el azul: se ve algo más blanca-azulada que el Sol. ✔</p>
+      <span class="ans">(a) T ≈ 6,0×10³ K. (b) Más caliente que el Sol → más blanca-azulada.</span>
+    </div></details></div>
+  <div class="prob jefe"><p class="pn">C9 · INTEGRADOR (vapor + calorimetría, supera IB)</p><p>Se inyectan 0,020 kg de vapor a 100 °C en 0,25 kg de agua a 20 °C en un recipiente aislado. (a) Halla la energía que libera el vapor al condensarse y enfriarse hasta la temperatura final. (b) Determina la temperatura final de equilibrio. (c) Verifica que todo el vapor se condensa.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>(a) El vapor libera energía en DOS etapas: primero condensa a 100 °C (\(mL_v\)) y después el agua condensada se enfría de 100 °C a \(T\) (\(mc(100-T)\)):</p>
+      <p>\(Q_{lib}=0{,}020(2{,}3\times10^{6})+0{,}020(4200)(100-T)=46000+84(100-T)\).</p>
+      <p>(b) Esa energía la gana el agua fría (de 20 °C a \(T\)): \(Q_{gan}=0{,}25(4200)(T-20)=1050(T-20)\). Igualando:</p>
+      <p>\(46000+84(100-T)=1050(T-20)\Rightarrow 54400-84T=1050T-21000\)</p>
+      <p>\(75400=1134\,T\Rightarrow T\approx66{,}5\) °C.</p>
+      <p>(c) Comprobación: solo con la condensación (46000 J) el agua fría subiría \(\Delta T=\dfrac{46000}{1050}=43{,}8\) K, es decir a 63,8 °C &lt; 100 °C. Como no alcanza 100 °C, no queda vapor sin condensar: <strong>todo el vapor condensa</strong> y \(T_f=66{,}5\) °C &lt; 100 °C es coherente. ✔</p>
+      <span class="ans">(a) Q_lib = 46000 + 84(100−T) J. (b) T_f ≈ 66,5 °C. (c) Todo el vapor condensa.</span>
+    </div></details></div>
+  <div class="prob jefe"><p class="pn">C10 · PROBLEMA JEFE (medir c + Módulo 1, supera IB)</p><p>Para medir el calor específico de un metal se calienta un bloque de \(m=(0{,}200\pm0{,}002)\ \mathrm{kg}\) con un calentador de \(P=(50{,}0\pm0{,}5)\ \mathrm W\) durante \(t=(120\pm1)\ \mathrm s\); su temperatura sube \(\Delta T=(18{,}0\pm0{,}5)\ \mathrm K\). (a) Deduce \(c=\dfrac{Pt}{m\,\Delta T}\) y calcúlalo. (b) Propaga las incertidumbres porcentuales para dar \(c\pm\Delta c\). (c) Explica por qué el valor medido tiende a ser mayor que el real (pérdidas de calor) — un error sistemático.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>(a) La energía eléctrica \(Q=Pt\) calienta el bloque: \(Pt=mc\Delta T\Rightarrow c=\dfrac{Pt}{m\,\Delta T}\). Numéricamente \(c=\dfrac{50{,}0(120)}{0{,}200(18{,}0)}=\dfrac{6000}{3{,}60}=1{,}67\times10^{3}\) J·kg⁻¹·K⁻¹.</p>
+      <p>(b) Como \(c\) es un producto/cociente, se suman las incertidumbres relativas (Módulo 1): \(\dfrac{\Delta c}{c}=\dfrac{\Delta P}{P}+\dfrac{\Delta t}{t}+\dfrac{\Delta m}{m}+\dfrac{\Delta(\Delta T)}{\Delta T}=\dfrac{0{,}5}{50}+\dfrac{1}{120}+\dfrac{0{,}002}{0{,}200}+\dfrac{0{,}5}{18}\).</p>
+      <p>\(=0{,}010+0{,}0083+0{,}010+0{,}0278=0{,}056=5{,}6\%\). Entonces \(\Delta c=0{,}056(1667)\approx90\) J·kg⁻¹·K⁻¹.</p>
+      <p>Resultado: \(c=(1{,}67\pm0{,}09)\times10^{3}\) J·kg⁻¹·K⁻¹ (el término dominante es \(\Delta T\)). </p>
+      <p>(c) En realidad parte de \(Pt\) se pierde al ambiente, así que el bloque recibe menos energía y el \(\Delta T\) medido es menor del que daría la energía total; al dividir por un \(\Delta T\) demasiado pequeño, \(c=\dfrac{Pt}{m\,\Delta T}\) sale <strong>mayor</strong> que el real. Es un error <em>sistemático</em> (no se reduce repitiendo): se corrige aislando el bloque o extrapolando el enfriamiento.</p>
+      <span class="ans">(a) c = 1,67×10³ J·kg⁻¹·K⁻¹. (b) c = (1,67±0,09)×10³ (5,6 %). (c) Las pérdidas reducen ΔT → c medido sobreestimado (error sistemático).</span>
+    </div></details></div>
+</section>
+
+<!-- PRACTICA 2 -->
+<section id="practica2">
+  <p class="sec-num">PRÁCTICA EXTRA · RESUELVE Y COMPRUEBA</p>
+  <h2>Práctica extra · todo tipo (Paper 1 y 2)<span class="rule"></span></h2>
+  <p class="sec-intro">Ocho problemas nuevos, nivel IB, que cubren todos los subtipos del tema: \(Q=mc\Delta T\), potencia×tiempo, calor latente de fusión y de vaporización, equilibrio térmico (con y sin calorímetro), lectura de curvas de calentamiento y el combinado hielo→agua→vapor. Resolución oculta en cada uno. Constantes: c_agua = 4,2×10³, c_hielo = 2,1×10³, L_f = 3,3×10⁵, L_v = 2,3×10⁶ (J·kg⁻¹) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">E1 · Paper 1 · Q = mcΔT</p><p>¿Qué energía se necesita para elevar la temperatura de 2,0 kg de agua de 20 °C a 80 °C?</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>Una sola fase: \(Q=mc\Delta T\), con \(\Delta T=80-20=60\) K (igual en °C y K).</p>
+      <p>\(Q=2{,}0(4200)(60)=5{,}04\times10^{5}\) J.</p>
+      <span class="ans">Q ≈ 5,0×10⁵ J.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E2 · Paper 2 · potencia × tiempo (calentador)</p><p>Un calentador de inmersión de 60 W se sumerge en 0,50 kg de un aceite, cuya temperatura sube de 20 °C a 68 °C en 4,0 min, sin pérdidas. (a) Energía suministrada. (b) Calor específico del aceite. (c) Si hubiera pérdidas de calor, ¿el c calculado así sería mayor o menor que el real?</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>(a) Energía eléctrica con \(P\) constante: \(Q=Pt=60(4{,}0\times60)=60(240)=1{,}44\times10^{4}\) J.</p>
+      <p>(b) Esa energía calienta el aceite: \(Q=mc\Delta T\), con \(\Delta T=68-20=48\) K. \(c=\dfrac{Q}{m\,\Delta T}=\dfrac{14400}{0{,}50(48)}=\dfrac{14400}{24}=6{,}0\times10^{2}\) J·kg⁻¹·K⁻¹.</p>
+      <p>(c) Con pérdidas, parte de \(Pt\) escapa y el aceite recibe menos de 14400 J; al usar todo \(Pt\) en \(c=\dfrac{Pt}{m\Delta T}\) el valor sale <strong>mayor</strong> que el real (error sistemático). ✔</p>
+      <span class="ans">(a) 1,44×10⁴ J. (b) c = 600 J·kg⁻¹·K⁻¹. (c) Mayor (sobreestimado).</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E3 · Paper 1 · calor latente (fusión y vaporización)</p><p>(a) ¿Qué energía funde 0,25 kg de hielo a 0 °C? (b) ¿Qué energía vaporiza 0,25 kg de agua a 100 °C? Comenta la diferencia.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>Cambio de fase a temperatura constante: \(Q=mL\).</p>
+      <p>(a) Fusión: \(Q=mL_f=0{,}25(3{,}3\times10^{5})=8{,}25\times10^{4}\) J.</p>
+      <p>(b) Vaporización: \(Q=mL_v=0{,}25(2{,}3\times10^{6})=5{,}75\times10^{5}\) J.</p>
+      <p>Vaporizar cuesta ~7 veces más que fundir (hay que separar por completo las moléculas, no solo romper la red). ✔</p>
+      <span class="ans">(a) 8,25×10⁴ J. (b) 5,75×10⁵ J.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E4 · Paper 2 · equilibrio con calorímetro</p><p>Un calorímetro de cobre de 0,080 kg (c_Cu = 385 J·kg⁻¹·K⁻¹) contiene 0,20 kg de agua a 16 °C. Se introduce un bloque de hierro de 0,10 kg (c_Fe = 450) a 85 °C. Halla la temperatura de equilibrio incluyendo el recipiente.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>El hierro cede; el agua <em>y</em> el calorímetro de cobre (ambos a 16 °C) ganan: \(Q_{\text{Fe}}=Q_{\text{agua}}+Q_{\text{Cu}}\).</p>
+      <p>\(0{,}10(450)(85-T)=\big[0{,}20(4200)+0{,}080(385)\big](T-16)\)</p>
+      <p>\(45(85-T)=(840+30{,}8)(T-16)=870{,}8(T-16)\)</p>
+      <p>\(3825-45T=870{,}8T-13932{,}8\Rightarrow 17757{,}8=915{,}8\,T\Rightarrow T\approx19{,}4\) °C.</p>
+      <p>Queda cerca de 16 °C porque el hierro aporta poco \(mc\) (45 J·K⁻¹) frente al agua+recipiente (870,8 J·K⁻¹). ✔</p>
+      <span class="ans">T_f ≈ 19,4 °C.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E5 · Paper 1 · mezcla simple (cedido = ganado)</p><p>Se mezclan 0,10 kg de agua a 80 °C con 0,30 kg de agua a 20 °C, sin pérdidas. Halla la temperatura final.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>Mismo \(c\): \(Q_{perdido}=Q_{ganado}\) se reduce al promedio ponderado por la masa.</p>
+      <p>\(T_f=\dfrac{0{,}10(80)+0{,}30(20)}{0{,}40}=\dfrac{8+6}{0{,}40}=\dfrac{14}{0{,}40}=35\) °C.</p>
+      <p>Se inclina hacia la masa mayor (la de 20 °C), como debe. ✔</p>
+      <span class="ans">T_f = 35 °C.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E6 · Paper 2 · curva de calentamiento (lectura)</p><p>Se calienta a potencia constante de 250 W una masa de 0,50 kg de una sustancia sólida. En la gráfica T–t: de 0 a 40 s sube de 10 °C a 50 °C (sólido); de 40 a 140 s permanece a 50 °C (meseta); de 140 a 220 s sube de 50 °C a 90 °C (líquido). Halla (a) c del sólido, (b) el calor latente de fusión, (c) c del líquido y (d) justifica, por las pendientes, cuál c es mayor.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>Con \(P\) constante, \(Q=Pt\) en cada tramo. Rampas: \(Q=mc\Delta T\); meseta: \(Q=mL\).</p>
+      <p>(a) Sólido (0–40 s, ΔT = 40 K): \(Q=250(40)=1{,}0\times10^{4}\) J \(\Rightarrow c_s=\dfrac{10000}{0{,}50(40)}=5{,}0\times10^{2}\) J·kg⁻¹·K⁻¹.</p>
+      <p>(b) Meseta (40–140 s = 100 s): \(Q=250(100)=2{,}5\times10^{4}\) J \(=mL_f\Rightarrow L_f=\dfrac{25000}{0{,}50}=5{,}0\times10^{4}\) J·kg⁻¹.</p>
+      <p>(c) Líquido (140–220 s = 80 s, ΔT = 40 K): \(Q=250(80)=2{,}0\times10^{4}\) J \(\Rightarrow c_l=\dfrac{20000}{0{,}50(40)}=1{,}0\times10^{3}\) J·kg⁻¹·K⁻¹.</p>
+      <p>(d) La rampa líquida es menos inclinada (tarda 80 s frente a 40 s para la misma ΔT = 40 K): menor pendiente ⇒ mayor \(c\). Por eso \(c_l=1000>c_s=500\). ✔</p>
+      <span class="ans">(a) c_s = 500. (b) L_f = 5,0×10⁴. (c) c_l = 1,0×10³ (J, SI). (d) c_l &gt; c_s (pendiente líquida menor).</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E7 · Paper 2 · hielo → agua → vapor (combinado)</p><p>Halla la energía total para convertir 0,030 kg de hielo a −10 °C en vapor a 100 °C. Usa c_hielo = 2100, c_agua = 4200, L_f = 3,3×10⁵, L_v = 2,3×10⁶.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>Cuatro etapas (dos rampas con \(mc\Delta T\) y dos mesetas con \(mL\)):</p>
+      <p>1) Calentar hielo −10→0 °C: \(Q_1=mc_i\Delta T=0{,}030(2100)(10)=630\) J.</p>
+      <p>2) Fundir a 0 °C: \(Q_2=mL_f=0{,}030(3{,}3\times10^{5})=9900\) J.</p>
+      <p>3) Calentar agua 0→100 °C: \(Q_3=mc_w\Delta T=0{,}030(4200)(100)=12600\) J.</p>
+      <p>4) Vaporizar a 100 °C: \(Q_4=mL_v=0{,}030(2{,}3\times10^{6})=69000\) J.</p>
+      <p>Total: \(Q=630+9900+12600+69000=9{,}21\times10^{4}\) J. La vaporización domina (~75 %). ✔</p>
+      <span class="ans">Q ≈ 9,2×10⁴ J.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E8 · Paper 2 · hielo en agua (latente + equilibrio)</p><p>¿Qué masa de hielo a 0 °C hay que añadir a 0,40 kg de agua a 30 °C para que la temperatura final sea 10 °C? Sin pérdidas; el hielo se funde y el agua de deshielo se calienta hasta 10 °C.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>El agua caliente, al enfriarse de 30 a 10 °C, cede: \(Q_{ced}=0{,}40(4200)(30-10)=3{,}36\times10^{4}\) J.</p>
+      <p>Esa energía funde el hielo y luego calienta el deshielo de 0 a 10 °C: \(Q_{gan}=m L_f+m c_w(10)\).</p>
+      <p>\(m(3{,}3\times10^{5})+m(4200)(10)=33600\Rightarrow m(330000+42000)=33600\)</p>
+      <p>\(m=\dfrac{33600}{372000}\approx0{,}090\) kg.</p>
+      <span class="ans">m ≈ 0,090 kg (90 g).</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E9 · Paper 2 · determinar c por el método de mezclas (estilo IB)</p><p>Para medir el calor específico de un metal se calienta un bloque de 0,100 kg a 100 °C y se introduce en 0,300 kg de agua a 20 °C en un calorímetro de capacidad despreciable. El equilibrio se alcanza a 25 °C. (a) Halla el calor específico del metal. (b) ¿Cómo cambiaría la respuesta si el calorímetro NO fuera despreciable?</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>(a) Calorímetro despreciable: el metal cede y solo el agua gana. \(Q_{ced}=Q_{gan}\):</p>
+      <p>\(0{,}100\,c(100-25)=0{,}300(4200)(25-20)\Rightarrow 7{,}5\,c=6300\Rightarrow c=\dfrac{6300}{7{,}5}=8{,}4\times10^{2}\) J·kg⁻¹·K⁻¹.</p>
+      <p>(b) Si el recipiente absorbiera calor, el lado que gana sería mayor (\(Q_{agua}+Q_{rec}\)) para la misma subida, de modo que el metal habría cedido más energía por cada grado: el \(c\) real del metal saldría <strong>algo mayor</strong> que 840. ✔</p>
+      <span class="ans">(a) c = 8,4×10² J·kg⁻¹·K⁻¹. (b) Incluir el recipiente sube el valor calculado.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E10 · Paper 1/2 · ¿por qué el vapor quema más? (latente)</p><p>Compara la energía que cede a la piel (a 37 °C) 1,0 g de agua a 100 °C frente a 1,0 g de vapor a 100 °C. L_v = 2,3×10⁶, c_agua = 4200.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p>Agua líquida: solo se enfría (una fase), \(Q=mc\Delta T=0{,}0010(4200)(100-37)=0{,}0010(4200)(63)=2{,}6\times10^{2}\) J.</p>
+      <p>Vapor: primero <strong>condensa</strong> a 100 °C (\(mL_v\)) y luego el agua se enfría a 37 °C (\(mc\Delta T\)): \(Q=0{,}0010(2{,}3\times10^{6})+2{,}6\times10^{2}=2300+265=2{,}6\times10^{3}\) J.</p>
+      <p>El vapor entrega unas <strong>10 veces</strong> más energía (2565/265 ≈ 9,7): casi toda es el calor latente de condensación. Por eso una quemadura de vapor es mucho peor que la de agua hirviendo. ✔</p>
+      <span class="ans">Agua ≈ 2,6×10² J ; vapor ≈ 2,6×10³ J (≈ ×10, por el L_v).</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E11 · Paper 2 · hielo en agua: ¿se funde todo? (verificar estado final)</p><p>Se añaden 0,20 kg de hielo a 0 °C a 0,15 kg de agua a 20 °C en un recipiente aislado. Determina el estado y la temperatura finales. L_f = 3,3×10⁵, c_agua = 4200.</p>
+    <details class="rev"><summary>Ver resolución</summary><div class="sol">
+      <p><strong>Primero comprueba el estado final.</strong> Energía máxima que puede ceder el agua al enfriarse hasta 0 °C: \(Q_{disp}=0{,}15(4200)(20)=1{,}26\times10^{4}\) J. Energía para fundir TODO el hielo: \(Q_{fund}=m L_f=0{,}20(3{,}3\times10^{5})=6{,}6\times10^{4}\) J.</p>
+      <p>Como \(1{,}26\times10^{4}<6{,}6\times10^{4}\), <strong>no se funde todo el hielo</strong>: el deshielo se detiene y la mezcla queda a <strong>0 °C</strong> con hielo y agua coexistiendo (si asumieras que todo funde, obtendrías un absurdo T &lt; 0 °C).</p>
+      <p>Masa de hielo que sí se funde: \(m_{fund}=\dfrac{Q_{disp}}{L_f}=\dfrac{1{,}26\times10^{4}}{3{,}3\times10^{5}}=0{,}038\) kg. Quedan \(0{,}20-0{,}038\approx0{,}16\) kg de hielo sin fundir. ✔</p>
+      <span class="ans">T_f = 0 °C ; se funden ≈ 0,038 kg de hielo (quedan ≈ 0,16 kg de hielo).</span>
+    </div></details></div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 13A · Calorimetría (B.1).</strong> Ficha completa resuelta (calorimetría, ítems 1–22) e integración con hidrostática, energía e incertidumbre. Los ítems 23–38 de la ficha son de <strong>gases (Módulo 14)</strong>. Sigue el <strong>Módulo 13B</strong> (tipo 2). Constantes: c_agua = 4,2×10³ J·kg⁻¹·K⁻¹; L_f(agua) = 3,3×10⁵; L_v(agua) = 2,3×10⁶ J·kg⁻¹; σ = 5,67×10⁻⁸ W·m⁻²·K⁻⁴.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

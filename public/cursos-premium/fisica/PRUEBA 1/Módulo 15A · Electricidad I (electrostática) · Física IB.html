@@ -1,0 +1,1009 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 15A · Electricidad I (electrostática) · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:62ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:54px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:28px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:14px 0;overflow-x:auto}
+.eqname{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--teal);letter-spacing:.06em;display:block;margin-top:4px}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.ej{border:1px solid var(--line);border-radius:5px;margin:22px 0;background:var(--paper-2);overflow:hidden}
+.ej-head{background:linear-gradient(180deg,#F0F5F3,#FFFFFF);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ej-num{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px}
+.ej-tag{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal);padding:2px 8px;border-radius:3px}
+.ej-src{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);letter-spacing:.05em}
+.ej-body{padding:16px 20px 20px}
+.sepide{display:inline-block;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:2px 8px;margin:2px 0 8px}
+.sol{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:6px 12px;display:inline-block;margin-top:8px}
+.flag{color:var(--warn);font-weight:600}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}td.l,th.l{text-align:left}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:16px;margin:16px 0;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:8px}
+.figrow{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}@media(max-width:620px){.figrow{grid-template-columns:1fr}}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:14px 16px;border-top:1px solid var(--line)}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> ELECTROSTÁTICA <span>//</span> MÓDULO 15A · TEORÍA + TIPO 1</p>
+  <h1>Electricidad I: <em>carga, fuerza y campo</em></h1>
+  <p class="lede">Carga eléctrica y electrización, conductores y aislantes, ley de Coulomb, campo eléctrico, líneas de campo y puntos nulos. La fuerza de Coulomb se trata como cualquier fuerza (reutiliza dinámica y estática) y el campo como el de gravitación.</p>
+  <div class="stats">
+    <div class="stat"><b>8</b><span>secciones de teoría</span></div>
+    <div class="stat"><b>k</b><span>8,99×10⁹ N·m²·C⁻²</span></div>
+    <div class="stat"><b>10 + 10</b><span>resueltos · retos</span></div>
+    <div class="stat"><b>11</b><span>exámenes IB 2022–26</span></div>
+    <div class="stat"><b>e</b><span>1,60×10⁻¹⁹ C</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#s1">1 · Carga y electrización</a>
+  <a href="#s2">2 · Conductores y aislantes</a>
+  <a href="#s3">3 · Ley de Coulomb</a>
+  <a href="#s4">4 · Campo eléctrico</a>
+  <a href="#s5">5 · Líneas de campo</a>
+  <a href="#s6">6 · Puntos nulos</a>
+  <a href="#s7">7 · Más allá del IB</a>
+  <a href="#s8">8 · Definiciones (examen)</a>
+  <a href="#traps">Checklist de trampas</a>
+  <a href="#bloque">10 resueltos (ficha)</a>
+  <a href="#resto">Resto de la ficha</a>
+  <a href="#examenes">Banco de exámenes IB · 2022–26</a>
+  <a href="#practica">10 retos (resolución oculta)</a>
+  <a href="#practica2">Práctica extra · todo tipo</a>
+</nav>
+
+<main>
+<!-- rev 2026-10-27 elec1 · banco examenes IB electrostatica (11) v2 -->
+
+<!-- S1 -->
+<section id="s1">
+  <p class="sec-num">SECCIÓN 01</p>
+  <h2>Carga eléctrica y electrización<span class="rule"></span></h2>
+  <p class="sec-intro">La carga es una propiedad de la materia, como la masa. Hay dos tipos (+ y −); cargas iguales se repelen, opuestas se atraen.</p>
+  <div class="box key"><span class="lbl">Principios fundamentales</span>
+    <ul>
+      <li><strong>Dos signos:</strong> positivo (déficit de electrones) y negativo (exceso de electrones). El portador móvil en los sólidos es el <strong>electrón</strong>; el núcleo (protones) no se mueve.</li>
+      <li><strong>Cuantización:</strong> toda carga es múltiplo entero de la carga elemental: \(q=\pm n e\), con \(e=1{,}60\times10^{-19}\) C. No existe media carga.</li>
+      <li><strong>Conservación:</strong> la carga total de un sistema aislado no cambia; electrizar es <em>transferir</em> electrones, no crearlos.</li>
+    </ul>
+  </div>
+  <div class="eq">\[ q=ne\qquad e=1{,}60\times10^{-19}\ \mathrm{C} \]<span class="eqname">carga cuantizada (n = número entero de electrones transferidos)</span></div>
+  <div class="box"><span class="lbl">¿De dónde sale \(q=ne\)?</span>
+    <p>No se "deduce" de otra fórmula: es un <strong>hecho experimental</strong>. La carga no es un fluido continuo que puedas partir sin fin; viene en <strong>paquetes indivisibles</strong>, y el paquete más pequeño que existe libre es la carga del electrón, \(e=1{,}60\times10^{-19}\) C. Por eso toda carga que midas es forzosamente "tantos electrones de más o de menos": un número entero \(n\) de esos paquetes. Si transfieres \(n\) electrones, la carga total es la suma de \(n\) cargas iguales, \(q=ne\) — como el dinero viene en céntimos y no puedes tener 1,5 céntimos. Quien lo midió fue Millikan (ver "Más allá").</p>
+    <p>La <strong>conservación</strong> nace de la misma idea: electrizar nunca <em>crea</em> carga, solo <em>mueve</em> electrones de un cuerpo a otro. Si uno gana \(n\) electrones (\(-ne\)), el otro los perdió (\(+ne\)); la suma del sistema aislado no cambia.</p>
+  </div>
+
+  <h3>Tres formas de electrizar</h3>
+  <ul>
+    <li><strong>Fricción (frotamiento):</strong> al frotar dos materiales, uno arranca electrones del otro. Quedan con cargas iguales y opuestas (p. ej. vidrio + / seda −).</li>
+    <li><strong>Contacto:</strong> un cuerpo cargado toca a otro conductor; comparten carga. Si son <em>idénticos</em>, la carga se reparte por igual: \(q'=\dfrac{q_1+q_2}{2}\) en cada uno.</li>
+    <li><strong>Inducción:</strong> se acerca (sin tocar) un cuerpo cargado a un conductor; las cargas del conductor se redistribuyen. Si se separa o se pone a tierra mientras el inductor está presente, el conductor queda cargado con <em>signo opuesto</em> al inductor.</li>
+  </ul>
+
+  <div class="fig">
+    <svg viewBox="0 0 560 170" role="img" aria-label="Inducción en dos esferas conductoras en contacto">
+      <!-- barra negativa -->
+      <rect x="24" y="60" width="70" height="26" rx="4" fill="#E7F0ED" stroke="#134B55"/>
+      <text x="59" y="78" font-family="IBM Plex Mono" font-size="13" text-anchor="middle" fill="#A8402C">− − − −</text>
+      <text x="59" y="104" font-family="IBM Plex Mono" font-size="10" text-anchor="middle" fill="#43525C">barra (−)</text>
+      <!-- esfera R -->
+      <circle cx="210" cy="73" r="40" fill="#FFF" stroke="#134B55" stroke-width="1.5"/>
+      <text x="210" y="60" font-family="IBM Plex Mono" font-size="15" text-anchor="middle" fill="#C77B23">+ +</text>
+      <text x="210" y="80" font-family="IBM Plex Mono" font-size="15" text-anchor="middle" fill="#C77B23">+ +</text>
+      <text x="210" y="128" font-family="Space Grotesk" font-size="13" text-anchor="middle" fill="#16222B">R</text>
+      <!-- contacto -->
+      <line x1="250" y1="73" x2="300" y2="73" stroke="#134B55" stroke-width="2"/>
+      <!-- esfera S -->
+      <circle cx="340" cy="73" r="40" fill="#FFF" stroke="#134B55" stroke-width="1.5"/>
+      <text x="340" y="60" font-family="IBM Plex Mono" font-size="15" text-anchor="middle" fill="#A8402C">− −</text>
+      <text x="340" y="80" font-family="IBM Plex Mono" font-size="15" text-anchor="middle" fill="#A8402C">− −</text>
+      <text x="340" y="128" font-family="Space Grotesk" font-size="13" text-anchor="middle" fill="#16222B">S</text>
+      <!-- flecha electrones -->
+      <line x1="245" y1="40" x2="305" y2="40" stroke="#2E7D5B" stroke-width="1.5" marker-end="url(#ah)"/>
+      <text x="275" y="33" font-family="IBM Plex Mono" font-size="10" text-anchor="middle" fill="#2E7D5B">e⁻ repelidos</text>
+      <!-- leyenda -->
+      <text x="470" y="55" font-family="Newsreader" font-size="13" text-anchor="middle" fill="#43525C">La barra (−)</text>
+      <text x="470" y="73" font-family="Newsreader" font-size="13" text-anchor="middle" fill="#43525C">empuja los e⁻</text>
+      <text x="470" y="91" font-family="Newsreader" font-size="13" text-anchor="middle" fill="#43525C">hacia S.</text>
+      <text x="470" y="113" font-family="Newsreader" font-size="13" text-anchor="middle" fill="#16222B">R→(+)  S→(−)</text>
+      <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2E7D5B"/></marker></defs>
+    </svg>
+    <figcaption>Inducción: al separar R y S con la barra presente, R queda + y S queda − (ítem 1 de la ficha).</figcaption>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">cuantización</span><span class="ej-src">concepto q = ne</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el número de electrones</span>
+      <p>Un cuerpo adquiere una carga de \(-4{,}8\) nC. ¿Cuántos electrones ganó?</p>
+      <div class="sol"><p>Es exceso de electrones (carga −). \(n=\dfrac{|q|}{e}=\dfrac{4{,}8\times10^{-9}}{1{,}60\times10^{-19}}=3{,}0\times10^{10}\) electrones.</p><span class="ans">3,0×10¹⁰ electrones.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S2 -->
+<section id="s2">
+  <p class="sec-num">SECCIÓN 02</p>
+  <h2>Conductores, aislantes y puesta a tierra<span class="rule"></span></h2>
+  <ul>
+    <li><strong>Conductor:</strong> tiene electrones libres que se mueven por todo el material (metales). La carga se distribuye en la <strong>superficie</strong> y el campo en su interior (en equilibrio) es <strong>cero</strong>.</li>
+    <li><strong>Aislante (dieléctrico):</strong> los electrones están ligados; la carga queda localizada donde se depositó (plástico, vidrio).</li>
+    <li><strong>Puesta a tierra:</strong> conectar un conductor a la Tierra (reservorio infinito de carga) permite que electrones entren o salgan hasta neutralizarlo o dejarlo con el signo deseado.</li>
+  </ul>
+  <div class="box"><span class="lbl">¿Por qué la tierra neutraliza (o carga)?</span>
+    <p>La Tierra es tan enorme que actúa como un <strong>reservorio infinito</strong>: cede o absorbe cualquier cantidad de electrones sin que su propio estado cambie de forma apreciable. Al conectar a tierra un conductor cargado, los electrones sobrantes "se van" al suelo (si estaba negativo) o suben del suelo a rellenar el déficit (si estaba positivo), hasta que queda <strong>neutro</strong>. En cambio, si pones tierra <em>mientras</em> un inductor está cerca, es el campo del inductor el que decide en qué sentido fluyen los electrones; al cortar la tierra, el conductor queda cargado con el <strong>signo opuesto al inductor</strong>.</p>
+  </div>
+  <div class="box key"><span class="lbl">Idea clave para la ficha</span><p>Dos esferas conductoras <strong>idénticas</strong> que se tocan reparten la carga total por igual. Si tenían \(q_1\) y \(q_2\), cada una queda con \(\dfrac{q_1+q_2}{2}\) (con su signo). Esto cambia la fuerza entre ellas (ítems 3 y 8).</p></div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">reparto por contacto</span><span class="ej-src">concepto conductores</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la carga final de cada esfera</span>
+      <p>Una esfera A con \(+12\) nC toca a una esfera idéntica B que está neutra; luego se separan.</p>
+      <div class="sol"><p>Carga total \(=+12+0=+12\) nC; al ser idénticas se reparte: \(q'=\dfrac{+12}{2}=+6\) nC en cada una.</p><span class="ans">+6 nC en A y +6 nC en B.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S3 -->
+<section id="s3">
+  <p class="sec-num">SECCIÓN 03</p>
+  <h2>Ley de Coulomb<span class="rule"></span></h2>
+  <p class="sec-intro">La fuerza eléctrica entre dos <strong>cargas puntuales</strong> es directamente proporcional al producto de las cargas e inversamente proporcional al cuadrado de la distancia.</p>
+  <div class="eq">\[ F=k\frac{|q_1||q_2|}{r^2}=\frac{1}{4\pi\varepsilon_0}\frac{|q_1||q_2|}{r^2} \]<span class="eqname">ley de Coulomb · k = 8,99×10⁹ N·m²·C⁻² · ε₀ = 8,85×10⁻¹² C²·N⁻¹·m⁻²</span></div>
+  <div class="box"><span class="lbl">¿De dónde sale el \(1/r^2\)?</span>
+    <p>Misma idea geométrica que en gravitación. Imagina la "influencia" que una carga emite repartiéndose por igual en todas las direcciones. A una distancia \(r\) esa influencia está extendida sobre la superficie de una <strong>esfera de área \(4\pi r^2\)</strong>. Como la cantidad total que se reparte es fija, lo que llega por unidad de área cae con el área: \(\propto 1/(4\pi r^2)\). De ahí el inverso del cuadrado y, literalmente, de ahí sale el \(4\pi\) de la constante: escribir \(k=\dfrac{1}{4\pi\varepsilon_0}\) deja ese \(4\pi\) (el área de la esfera) a la vista, y \(\varepsilon_0\) (permitividad del vacío) fija cuánto "cuesta" montar el campo en el vacío. Por eso duplicar \(r\) reparte la misma influencia sobre \(2^2=4\) veces más área y \(F\) baja a la cuarta parte — exactamente como \(g=GM/r^2\) en gravedad.</p>
+  </div>
+  <div class="box key"><span class="lbl">Cómo se comporta</span>
+    <ul>
+      <li>Es una fuerza <strong>central</strong> (sobre la recta que une las cargas) y cumple la <strong>3.ª ley de Newton</strong>: las dos cargas sienten fuerzas iguales y opuestas, aunque tengan cargas o masas distintas.</li>
+      <li><strong>Ley del inverso del cuadrado</strong> (igual forma que la gravitación): si \(r\) se duplica, \(F\) baja a la cuarta parte.</li>
+      <li><strong>Principio de superposición:</strong> con varias cargas, la fuerza neta sobre una es la <em>suma vectorial</em> de las fuerzas de cada una por separado.</li>
+      <li>El signo solo dice atracción (opuestas) o repulsión (iguales); en los cálculos se usa el valor absoluto y la dirección se razona aparte.</li>
+    </ul>
+  </div>
+  <div class="box trap"><span class="lbl">Cuidado al aplicar Coulomb</span>
+    <ul>
+      <li><strong>Suma vectorial, no escalar:</strong> con tres o más cargas, calcula cada fuerza de a pares con Coulomb y súmalas <em>como vectores</em> (por componentes \(x,y\)), nunca sumando los números a secas. Dos fuerzas de 3 N perpendiculares dan \(\sqrt{3^2+3^2}=4{,}2\) N, no 6 N.</li>
+      <li><strong>\(r\) es de centro a centro,</strong> no la separación entre superficies ni el radio de una esfera.</li>
+      <li><strong>Usa \(k\) o \(1/4\pi\varepsilon_0\) de forma coherente:</strong> son lo mismo (\(k=8{,}99\times10^9\)); no mezcles las dos en un cálculo ni olvides el \(4\pi\) si partes de \(\varepsilon_0\).</li>
+      <li><strong>Signo:</strong> en la magnitud usa \(|q_1||q_2|\); el signo solo decide atracción/repulsión y la dirección, no entra dentro del cuadrado ni de la raíz.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <svg viewBox="0 0 520 120" role="img" aria-label="Fuerza de Coulomb entre dos cargas iguales">
+      <circle cx="120" cy="60" r="22" fill="#F6ECDB" stroke="#C77B23" stroke-width="1.5"/>
+      <text x="120" y="66" font-family="Space Grotesk" font-size="16" text-anchor="middle" fill="#C77B23">+q₁</text>
+      <circle cx="400" cy="60" r="22" fill="#F6ECDB" stroke="#C77B23" stroke-width="1.5"/>
+      <text x="400" y="66" font-family="Space Grotesk" font-size="16" text-anchor="middle" fill="#C77B23">+q₂</text>
+      <line x1="142" y1="100" x2="378" y2="100" stroke="#43525C" stroke-width="1" marker-start="url(#t)" marker-end="url(#t)"/>
+      <text x="260" y="94" font-family="IBM Plex Mono" font-size="12" text-anchor="middle" fill="#43525C">r</text>
+      <line x1="98" y1="60" x2="40" y2="60" stroke="#A8402C" stroke-width="2.5" marker-end="url(#r)"/>
+      <line x1="422" y1="60" x2="480" y2="60" stroke="#A8402C" stroke-width="2.5" marker-end="url(#r)"/>
+      <text x="55" y="48" font-family="Space Grotesk" font-size="13" fill="#A8402C">F</text>
+      <text x="458" y="48" font-family="Space Grotesk" font-size="13" fill="#A8402C">F</text>
+      <defs>
+        <marker id="r" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#A8402C"/></marker>
+        <marker id="t" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,4 L8,0 L8,8 z" fill="#43525C"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Cargas iguales se repelen con fuerzas de igual magnitud (3.ª ley): duplicar una carga duplica F en <em>ambas</em>.</figcaption>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">Coulomb numérico</span><span class="ej-src">concepto ley de Coulomb</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la magnitud de la fuerza</span>
+      <p>Dos cargas de \(+2{,}0\) µC están separadas 3,0 cm en el vacío.</p>
+      <div class="sol"><p>\(F=k\dfrac{q_1q_2}{r^2}=9{,}0\times10^9\dfrac{(2{,}0\times10^{-6})^2}{(0{,}030)^2}=9{,}0\times10^9\dfrac{4{,}0\times10^{-12}}{9{,}0\times10^{-4}}=40\) N (repulsiva).</p><span class="ans">F = 40 N, repulsiva.</span></div>
+    </div>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">superposición vectorial</span><span class="ej-src">concepto suma de fuerzas</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza neta sobre una carga</span>
+      <p>Sobre una carga \(q\), una vecina la repele con \(3{,}0\) N hacia \(+x\) y otra la atrae con \(4{,}0\) N hacia \(+y\). ¿Fuerza neta?</p>
+      <div class="sol"><p>Son perpendiculares ⇒ se suman como <strong>vectores</strong>: \(F=\sqrt{3{,}0^2+4{,}0^2}=5{,}0\) N, en dirección \(\theta=\arctan\dfrac{4{,}0}{3{,}0}=53°\) sobre \(+x\). Sumar escalarmente (\(7\) N) es el error típico.</p><span class="ans">5,0 N a 53° de +x.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 -->
+<section id="s4">
+  <p class="sec-num">SECCIÓN 04</p>
+  <h2>Campo eléctrico<span class="rule"></span></h2>
+  <p class="sec-intro">El campo eléctrico es la fuerza por unidad de carga positiva de prueba. Es una propiedad del espacio alrededor de una carga, exista o no una carga de prueba allí.</p>
+  <div class="eq">\[ \vec{E}=\frac{\vec{F}}{q}\qquad [\,\mathrm{N\,C^{-1}=V\,m^{-1}}\,]\qquad\qquad E=k\frac{|Q|}{r^2} \]<span class="eqname">definición (E = F/q) y campo de una carga puntual Q</span></div>
+  <div class="box"><span class="lbl">¿De dónde salen \(E=F/q\) y \(E=kQ/r^2\)?</span>
+    <p><strong>\(E=F/q\)</strong> es una <em>definición</em>: para describir el espacio alrededor de una carga sin importar qué pongamos allí, medimos la fuerza \(F\) sobre una pequeña carga de prueba positiva \(q\) y la dividimos entre \(q\). Queda la fuerza "por cada culombio", una propiedad solo del espacio, no de la carga de prueba.</p>
+    <p><strong>\(E=kQ/r^2\)</strong> sale de meter la ley de Coulomb en esa definición. La fuerza que una carga fuente \(Q\) ejerce sobre la de prueba \(q\) es \(F=\dfrac{kQq}{r^2}\); al dividir entre \(q\), <strong>la \(q\) de prueba se cancela</strong> y queda \(E=\dfrac{kQ}{r^2}\). Por eso el campo no depende de con qué lo midas — igual que \(g=GM/r^2\) sale de \(F=GMm/r^2\) al cancelar \(m\).</p>
+    <p><strong>\(\vec F=q\vec E\)</strong> es la misma definición despejada: una carga \(q\) en un campo \(\vec E\) siente \(\vec F=q\vec E\). Si \(q>0\), la fuerza va <em>con</em> el campo; si \(q<0\), multiplicar por un número negativo invierte el vector y la fuerza apunta <strong>en contra</strong> del campo.</p>
+  </div>
+  <div class="box key"><span class="lbl">Lo esencial</span>
+    <ul>
+      <li>\(\vec{E}\) es un <strong>vector</strong>: apunta en la dirección de la fuerza sobre una carga <strong>positiva</strong> de prueba. Sale de las cargas + y entra a las cargas −.</li>
+      <li>La fuerza sobre una carga \(q\) en el campo es \(\vec{F}=q\vec{E}\): si \(q\) es positiva, va con \(\vec{E}\); si es negativa, en sentido opuesto.</li>
+      <li>La carga de prueba debe ser <strong>pequeña</strong> para no perturbar el campo que mide (por eso el ítem 14 elige la opción con "pequeña carga de prueba").</li>
+      <li><strong>Superposición:</strong> el campo de varias cargas es la suma vectorial de los campos individuales.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <svg viewBox="0 0 320 150" role="img" aria-label="Fuerza sobre carga positiva y negativa en un campo">
+      <line x1="20" y1="75" x2="300" y2="75" stroke="#1F6E7C" stroke-width="1.5" marker-end="url(#e)"/>
+      <text x="300" y="66" font-family="Space Grotesk" font-size="13" fill="#1F6E7C">E</text>
+      <circle cx="110" cy="45" r="15" fill="#F6ECDB" stroke="#C77B23"/><text x="110" y="50" font-family="Space Grotesk" font-size="13" text-anchor="middle" fill="#C77B23">+q</text>
+      <line x1="125" y1="45" x2="175" y2="45" stroke="#A8402C" stroke-width="2.5" marker-end="url(#r2)"/><text x="150" y="36" font-family="Space Grotesk" font-size="11" text-anchor="middle" fill="#A8402C">F</text>
+      <circle cx="110" cy="115" r="15" fill="#E7F0ED" stroke="#134B55"/><text x="110" y="120" font-family="Space Grotesk" font-size="13" text-anchor="middle" fill="#134B55">−q</text>
+      <line x1="95" y1="115" x2="45" y2="115" stroke="#A8402C" stroke-width="2.5" marker-end="url(#r2)"/><text x="68" y="106" font-family="Space Grotesk" font-size="11" text-anchor="middle" fill="#A8402C">F</text>
+      <defs>
+        <marker id="e" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#1F6E7C"/></marker>
+        <marker id="r2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#A8402C"/></marker>
+      </defs>
+    </svg>
+    <figcaption>F = qE. La carga + se mueve con el campo; la carga − en contra.</figcaption>
+  </div>
+  <div class="box trap"><span class="lbl">Trampa clásica: dirección de \(\vec F\) vs \(\vec E\)</span>
+    <p>El campo \(\vec E\) <strong>no</strong> cambia de dirección según el signo de la carga que coloques: lo define siempre una carga de prueba <em>positiva</em> (sale de +, entra a −). Lo que cambia es la <strong>fuerza</strong>: sobre una carga negativa \(\vec F=q\vec E\) apunta <strong>en sentido opuesto</strong> a \(\vec E\). Error típico del Paper 1: girar la flecha del <em>campo</em> al ver una carga negativa. Gira la de la fuerza, no la del campo.</p>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">E = kQ/r² y F = qE</span><span class="ej-src">concepto campo eléctrico</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el campo y la fuerza sobre otra carga</span>
+      <p>Carga puntual \(+5{,}0\) nC. (a) Campo a 10 cm. (b) Fuerza sobre una carga \(-2{,}0\) nC colocada allí.</p>
+      <div class="sol"><p>(a) \(E=k\dfrac{Q}{r^2}=9{,}0\times10^9\dfrac{5{,}0\times10^{-9}}{(0{,}10)^2}=\dfrac{45}{0{,}010}=4{,}5\times10^{3}\) N·C⁻¹, radial hacia afuera.</p>
+      <p>(b) \(F=|q|E=2{,}0\times10^{-9}\cdot4{,}5\times10^{3}=9{,}0\times10^{-6}\) N; como \(q<0\), apunta hacia la carga +5,0 nC (atractiva).</p><span class="ans">E = 4,5×10³ N·C⁻¹ · F = 9,0×10⁻⁶ N (atractiva).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 -->
+<section id="s5">
+  <p class="sec-num">SECCIÓN 05</p>
+  <h2>Líneas de campo<span class="rule"></span></h2>
+  <p class="sec-intro">Las líneas de campo son la herramienta visual del Paper 1. Dibujarlas bien resuelve la mitad de los ítems de este tema.</p>
+  <div class="box def"><span class="lbl">Reglas de las líneas de campo</span>
+    <ul>
+      <li>Salen de las cargas <strong>positivas</strong> y entran a las <strong>negativas</strong> (o van al infinito).</li>
+      <li>La tangente a la línea da la <strong>dirección</strong> de \(\vec{E}\) en ese punto; su densidad (qué tan juntas están) da la <strong>intensidad</strong>.</li>
+      <li><strong>Nunca se cruzan</strong> (el campo tiene una sola dirección en cada punto).</li>
+      <li>Salen y llegan <strong>perpendiculares</strong> a la superficie de un conductor.</li>
+      <li>El número de líneas es proporcional a la magnitud de la carga.</li>
+    </ul>
+  </div>
+  <div class="figrow">
+    <div class="fig">
+      <svg viewBox="0 0 220 180" role="img" aria-label="Campo de una carga positiva">
+        <g stroke="#1F6E7C" stroke-width="1.3" fill="none">
+          <line x1="110" y1="90" x2="110" y2="20" marker-end="url(#a1)"/>
+          <line x1="110" y1="90" x2="110" y2="160" marker-end="url(#a1)"/>
+          <line x1="110" y1="90" x2="40" y2="90" marker-end="url(#a1)"/>
+          <line x1="110" y1="90" x2="180" y2="90" marker-end="url(#a1)"/>
+          <line x1="110" y1="90" x2="60" y2="40" marker-end="url(#a1)"/>
+          <line x1="110" y1="90" x2="160" y2="40" marker-end="url(#a1)"/>
+          <line x1="110" y1="90" x2="60" y2="140" marker-end="url(#a1)"/>
+          <line x1="110" y1="90" x2="160" y2="140" marker-end="url(#a1)"/>
+        </g>
+        <circle cx="110" cy="90" r="16" fill="#F6ECDB" stroke="#C77B23" stroke-width="1.5"/>
+        <text x="110" y="95" font-family="Space Grotesk" font-size="16" text-anchor="middle" fill="#C77B23">+</text>
+        <defs><marker id="a1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1F6E7C"/></marker></defs>
+      </svg>
+      <figcaption>Carga + : líneas radiales hacia afuera.</figcaption>
+    </div>
+    <div class="fig">
+      <svg viewBox="0 0 220 180" role="img" aria-label="Campo de una carga negativa">
+        <g stroke="#1F6E7C" stroke-width="1.3" fill="none">
+          <line x1="110" y1="20" x2="110" y2="74" marker-end="url(#a2)"/>
+          <line x1="110" y1="160" x2="110" y2="106" marker-end="url(#a2)"/>
+          <line x1="40" y1="90" x2="94" y2="90" marker-end="url(#a2)"/>
+          <line x1="180" y1="90" x2="126" y2="90" marker-end="url(#a2)"/>
+          <line x1="60" y1="40" x2="98" y2="78" marker-end="url(#a2)"/>
+          <line x1="160" y1="40" x2="122" y2="78" marker-end="url(#a2)"/>
+          <line x1="60" y1="140" x2="98" y2="102" marker-end="url(#a2)"/>
+          <line x1="160" y1="140" x2="122" y2="102" marker-end="url(#a2)"/>
+        </g>
+        <circle cx="110" cy="90" r="16" fill="#E7F0ED" stroke="#134B55" stroke-width="1.5"/>
+        <text x="110" y="95" font-family="Space Grotesk" font-size="16" text-anchor="middle" fill="#134B55">−</text>
+        <defs><marker id="a2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1F6E7C"/></marker></defs>
+      </svg>
+      <figcaption>Carga − : líneas radiales hacia adentro (ítem 15).</figcaption>
+    </div>
+    <div class="fig">
+      <svg viewBox="0 0 260 180" role="img" aria-label="Dipolo: una carga positiva y una negativa">
+        <g stroke="#1F6E7C" stroke-width="1.3" fill="none">
+          <path d="M80,90 C100,60 160,60 180,90" marker-end="url(#a3)"/>
+          <path d="M80,90 C100,120 160,120 180,90" marker-end="url(#a3)"/>
+          <path d="M80,90 C110,35 150,35 180,90" marker-end="url(#a3)"/>
+          <path d="M80,90 C110,145 150,145 180,90" marker-end="url(#a3)"/>
+          <path d="M72,78 C60,40 40,40 34,70" marker-end="url(#a3)"/>
+          <path d="M188,70 C182,40 200,40 188,78" marker-end="url(#a3)"/>
+        </g>
+        <circle cx="80" cy="90" r="15" fill="#F6ECDB" stroke="#C77B23" stroke-width="1.5"/><text x="80" y="95" font-family="Space Grotesk" font-size="15" text-anchor="middle" fill="#C77B23">+</text>
+        <circle cx="180" cy="90" r="15" fill="#E7F0ED" stroke="#134B55" stroke-width="1.5"/><text x="180" y="95" font-family="Space Grotesk" font-size="15" text-anchor="middle" fill="#134B55">−</text>
+        <defs><marker id="a3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1F6E7C"/></marker></defs>
+      </svg>
+      <figcaption>Dipolo (+ y −): las líneas van de + a − (ítem 16).</figcaption>
+    </div>
+    <div class="fig">
+      <svg viewBox="0 0 260 180" role="img" aria-label="Dos cargas positivas con punto neutro">
+        <g stroke="#1F6E7C" stroke-width="1.3" fill="none">
+          <path d="M80,90 C95,60 95,40 85,25" marker-end="url(#a4)"/>
+          <path d="M80,90 C95,120 95,140 85,155" marker-end="url(#a4)"/>
+          <path d="M180,90 C165,60 165,40 175,25" marker-end="url(#a4)"/>
+          <path d="M180,90 C165,120 165,140 175,155" marker-end="url(#a4)"/>
+          <line x1="65" y1="90" x2="25" y2="90" marker-end="url(#a4)"/>
+          <line x1="195" y1="90" x2="235" y2="90" marker-end="url(#a4)"/>
+        </g>
+        <circle cx="130" cy="90" r="3.5" fill="#A8402C"/><text x="130" y="112" font-family="IBM Plex Mono" font-size="10" text-anchor="middle" fill="#A8402C">E=0</text>
+        <circle cx="80" cy="90" r="15" fill="#F6ECDB" stroke="#C77B23" stroke-width="1.5"/><text x="80" y="95" font-family="Space Grotesk" font-size="15" text-anchor="middle" fill="#C77B23">+</text>
+        <circle cx="180" cy="90" r="15" fill="#F6ECDB" stroke="#C77B23" stroke-width="1.5"/><text x="180" y="95" font-family="Space Grotesk" font-size="15" text-anchor="middle" fill="#C77B23">+</text>
+        <defs><marker id="a4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1F6E7C"/></marker></defs>
+      </svg>
+      <figcaption>Dos cargas + iguales: punto neutro (E=0) en el medio (ítem 17).</figcaption>
+    </div>
+  </div>
+  <div class="fig">
+    <svg viewBox="0 0 420 130" role="img" aria-label="Campo uniforme entre placas paralelas">
+      <rect x="40" y="25" width="340" height="7" fill="#C77B23"/><text x="20" y="34" font-family="Space Grotesk" font-size="14" fill="#C77B23">+</text>
+      <rect x="40" y="98" width="340" height="7" fill="#134B55"/><text x="20" y="108" font-family="Space Grotesk" font-size="14" fill="#134B55">−</text>
+      <g stroke="#1F6E7C" stroke-width="1.3">
+        <line x1="80" y1="34" x2="80" y2="96" marker-end="url(#a5)"/>
+        <line x1="150" y1="34" x2="150" y2="96" marker-end="url(#a5)"/>
+        <line x1="220" y1="34" x2="220" y2="96" marker-end="url(#a5)"/>
+        <line x1="290" y1="34" x2="290" y2="96" marker-end="url(#a5)"/>
+        <line x1="350" y1="34" x2="350" y2="96" marker-end="url(#a5)"/>
+      </g>
+      <text x="398" y="68" font-family="Space Grotesk" font-size="13" fill="#1F6E7C">E</text>
+      <defs><marker id="a5" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1F6E7C"/></marker></defs>
+    </svg>
+    <figcaption>Entre dos placas paralelas con carga opuesta el campo es <strong>uniforme</strong> (líneas paralelas y equidistantes). Lo usarás en Electricidad II.</figcaption>
+  </div>
+  <div class="box"><span class="lbl">Subconcepto: campo uniforme \(E=V/d\)</span>
+    <p>Entre dos placas paralelas el campo es el mismo en todas partes (líneas paralelas y equiespaciadas). Su valor sale de la <strong>energía</strong>: llevar una carga \(q\) de una placa a la otra cuesta un trabajo \(W=qV\), con \(V\) la diferencia de potencial. Pero como la fuerza \(F=qE\) es constante y recorre una distancia \(d\), ese mismo trabajo es \(W=Fd=qEd\). Igualando \(qV=qEd\) y <strong>cancelando \(q\)</strong>: \(E=\dfrac{V}{d}\). De ahí que el campo se mida también en <strong>V·m⁻¹</strong>: es cuántos voltios "caen" por cada metro.</p>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">leer un patrón</span><span class="ej-src">ficha 15</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el patrón de campo de una esfera conductora negativa</span>
+      <p>¿Cómo son las líneas de campo de una esfera conductora cargada negativamente?</p>
+      <div class="sol"><p>Las líneas <strong>entran</strong> a la carga negativa: son radiales <strong>hacia el centro</strong>, perpendiculares a la superficie, y nacen en la superficie (dentro del conductor \(E=0\), así que no hay líneas internas).</p><span class="ans">Radiales hacia adentro, perpendiculares a la superficie → opción c) del ítem 15.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 -->
+<section id="s6">
+  <p class="sec-num">SECCIÓN 06</p>
+  <h2>Puntos de campo (o fuerza) nulos<span class="rule"></span></h2>
+  <p class="sec-intro">"¿Dónde el campo es cero?" es la pregunta tipo 1 más frecuente. Hay una regla rápida y un cálculo exacto.</p>
+  <div class="box key"><span class="lbl">Regla rápida (¿dónde buscar?)</span>
+    <ul>
+      <li><strong>Dos cargas del mismo signo</strong> → el punto nulo está <strong>entre</strong> ellas, más cerca de la <em>menor</em>.</li>
+      <li><strong>Dos cargas de signo opuesto</strong> → el punto nulo está <strong>fuera</strong> del segmento, del lado de la carga de <em>menor magnitud</em> (nunca entre ellas).</li>
+      <li>Siempre más cerca de la carga pequeña, porque allí su campo (que decae con \(1/r^2\)) puede igualar al de la carga grande.</li>
+    </ul>
+  </div>
+  <div class="box def"><span class="lbl">Cálculo exacto</span><p>Se igualan las magnitudes de los campos: \(\dfrac{k|Q_1|}{r_1^{\,2}}=\dfrac{k|Q_2|}{r_2^{\,2}}\Rightarrow \dfrac{r_1}{r_2}=\sqrt{\dfrac{|Q_1|}{|Q_2|}}\). Con la geometría (relación entre \(r_1\) y \(r_2\)) se despeja la posición.</p></div>
+  <div class="box"><span class="lbl">¿De dónde sale \(r_1/r_2=\sqrt{|Q_1|/|Q_2|}\) y por qué cerca de la menor?</span>
+    <p>En el punto nulo los dos campos tienen igual magnitud y sentidos opuestos, así que se cancelan. Al igualar magnitudes, \(\dfrac{k|Q_1|}{r_1^2}=\dfrac{k|Q_2|}{r_2^2}\), <strong>la \(k\) se cancela</strong> y queda \(\dfrac{r_1^2}{r_2^2}=\dfrac{|Q_1|}{|Q_2|}\Rightarrow \dfrac{r_1}{r_2}=\sqrt{\dfrac{|Q_1|}{|Q_2|}}\). La raíz dice que la distancia a cada carga va con la raíz de su magnitud: la carga <strong>grande</strong> debe quedar <em>más lejos</em> del punto para que su campo (que decae con \(1/r^2\)) baje hasta igualar al de la pequeña. Por eso el nulo siempre cae <strong>más cerca de la carga menor</strong>. Que sea <em>entre</em> ellas (signos iguales) o <em>fuera</em> (signos opuestos) depende de en qué región los dos campos pueden apuntar en sentidos contrarios.</p>
+  </div>
+  <div class="fig">
+    <svg viewBox="0 0 460 110" role="img" aria-label="Punto nulo para cargas de signo opuesto">
+      <line x1="30" y1="70" x2="440" y2="70" stroke="#D7DDD6" stroke-width="1"/>
+      <circle cx="180" cy="70" r="18" fill="#F6ECDB" stroke="#C77B23" stroke-width="1.5"/><text x="180" y="75" font-family="Space Grotesk" font-size="13" text-anchor="middle" fill="#C77B23">+4e</text>
+      <circle cx="320" cy="70" r="15" fill="#E7F0ED" stroke="#134B55" stroke-width="1.5"/><text x="320" y="75" font-family="Space Grotesk" font-size="12" text-anchor="middle" fill="#134B55">−e</text>
+      <circle cx="405" cy="70" r="4" fill="#A8402C"/><text x="405" y="52" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#A8402C">E=0</text>
+      <text x="405" y="95" font-family="IBM Plex Mono" font-size="10" text-anchor="middle" fill="#43525C">fuera, lado de −e</text>
+    </svg>
+    <figcaption>Signos opuestos (ítem 24): el nulo cae fuera, del lado de la carga menor (−e), nunca entre ellas.</figcaption>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag">localizar el nulo</span><span class="ej-src">concepto punto nulo</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la posición donde E = 0</span>
+      <p>\(+Q\) en \(x=0\) y \(+4Q\) en \(x=0{,}30\) m. ¿Dónde se anula el campo?</p>
+      <div class="sol"><p>Mismo signo → <strong>entre</strong> ellas. Igualo magnitudes con \(r_1=x\) (desde \(+Q\)) y \(r_2=0{,}30-x\): \(\dfrac{Q}{x^2}=\dfrac{4Q}{(0{,}30-x)^2}\Rightarrow \dfrac{1}{x}=\dfrac{2}{0{,}30-x}\Rightarrow 0{,}30-x=2x\Rightarrow x=0{,}10\) m.</p><span class="ans">A 0,10 m de \(+Q\) (más cerca de la carga menor, como dice la regla).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 -->
+<section id="s7">
+  <p class="sec-num">SECCIÓN 07</p>
+  <h2>Más allá del IB<span class="rule"></span></h2>
+  <div class="box beyond"><span class="lbl">Profundidad NS / para el 7 — Potencial y energía</span>
+    <ul>
+      <li><strong>Energía potencial eléctrica</strong> de dos cargas puntuales: \(E_p=\dfrac{kq_1q_2}{r}\) (con signo: positiva si se repelen, negativa si se atraen). Ojo: la fuerza va con \(1/r^2\), pero la energía con \(1/r\).</li>
+      <li><strong>Potencial eléctrico:</strong> energía potencial por unidad de carga, \(V=\dfrac{kQ}{r}\) (escalar, en voltios). El campo es su "pendiente": \(E=-\dfrac{dV}{dr}\).</li>
+      <li><strong>Trabajo</strong> para mover una carga entre dos puntos: \(W=q\,\Delta V\), independiente del camino (fuerza conservativa, como la gravedad).</li>
+      <li><strong>Electronvoltio:</strong> \(1\ \mathrm{eV}=1{,}60\times10^{-19}\) J, energía que gana un electrón al atravesar 1 V.</li>
+    </ul>
+  </div>
+  <div class="box beyond"><span class="lbl">Profundidad NS / para el 7 — Conductores y Gauss</span>
+    <ul>
+      <li><strong>Campo dentro de un conductor en equilibrio = 0</strong>: las cargas libres se reacomodan hasta anularlo (base de la jaula de Faraday). Toda la carga neta queda en la superficie.</li>
+      <li><strong>Ley de Gauss:</strong> el flujo eléctrico a través de una superficie cerrada es \(\Phi=\dfrac{Q_{enc}}{\varepsilon_0}\). Explica por qué el campo de una esfera cargada, visto desde fuera, es idéntico al de una carga puntual en su centro.</li>
+      <li><strong>Capacidad:</strong> \(C=\dfrac{Q}{V}\); un condensador de placas paralelas almacena energía \(U=\tfrac12 CV^2\). Es el puente hacia Electricidad II.</li>
+      <li><strong>Experimento de Millikan:</strong> midiendo la gota de aceite en equilibrio (\(qE=mg\)) se demostró que la carga está cuantizada en múltiplos de \(e\).</li>
+    </ul>
+  </div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-num">EJ</span><span class="ej-tag" style="background:var(--hl)">más allá · eV</span><span class="ej-src">concepto potencial</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la energía ganada por un electrón</span>
+      <p>Un electrón se acelera a través de una diferencia de potencial de 500 V. ¿Cuánta energía cinética gana, en joules y en eV?</p>
+      <div class="sol"><p>\(W=q\,\Delta V=(1{,}60\times10^{-19})(500)=8{,}0\times10^{-17}\) J. En electronvoltios, por definición \(=500\) eV.</p><span class="ans">8,0×10⁻¹⁷ J = 500 eV.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S8 -->
+<section id="s8">
+  <p class="sec-num">SECCIÓN 08</p>
+  <h2>Definiciones para el examen<span class="rule"></span></h2>
+  <div class="box def"><span class="lbl">Glosario</span>
+    <ul>
+      <li><strong>Carga eléctrica:</strong> propiedad de la materia responsable de las interacciones eléctricas; cuantizada en múltiplos de \(e\) y conservada.</li>
+      <li><strong>Carga puntual:</strong> cuerpo cargado cuyo tamaño es despreciable frente a las distancias en juego (condición para aplicar la ley de Coulomb).</li>
+      <li><strong>Ley de Coulomb:</strong> la fuerza entre dos cargas puntuales es proporcional al producto de las cargas e inversamente proporcional al cuadrado de su separación.</li>
+      <li><strong>Campo eléctrico (intensidad):</strong> fuerza por unidad de carga positiva que experimentaría una pequeña carga de prueba colocada en ese punto. \(\vec E=\vec F/q\).</li>
+      <li><strong>Línea de campo:</strong> curva cuya tangente da la dirección del campo eléctrico; sale de + y entra a −.</li>
+      <li><strong>Conductor / aislante:</strong> material con / sin electrones libres para moverse.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRAPS -->
+<section id="traps">
+  <p class="sec-num">CHECKLIST</p>
+  <h2>Trampas típicas del Paper 1<span class="rule"></span></h2>
+  <div class="box trap"><span class="lbl">Antes de marcar, revisa</span>
+    <ul>
+      <li>La fuerza de Coulomb va con \(1/r^2\); la energía potencial con \(1/r\). No las confundas.</li>
+      <li>Al duplicar <strong>una</strong> carga, la fuerza se duplica en <strong>ambas</strong> (3.ª ley): no "solo en la que cambió".</li>
+      <li>Esferas idénticas que se tocan: reparten la carga total \(\dfrac{q_1+q_2}{2}\) (con signos). Recalcula la fuerza con las cargas nuevas.</li>
+      <li>Punto nulo: signos <strong>iguales</strong> → entre ellas; signos <strong>opuestos</strong> → fuera, lado de la menor. Nunca al revés.</li>
+      <li>El campo \(\vec E\) apunta según una carga <strong>positiva</strong> de prueba; sobre una carga negativa la fuerza es opuesta a \(\vec E\).</li>
+      <li>Las líneas de campo <strong>no se cruzan</strong> y salen perpendiculares a los conductores.</li>
+      <li>Convierte siempre: nC = 10⁻⁹ C, µC = 10⁻⁶ C. Y usa \(k=8{,}99\times10^9\) (≈ 9,0×10⁹).</li>
+      <li>"Carga puntual" es la condición de la ley de Coulomb (ítem 7): no vale para distribuciones cercanas.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BLOQUE -->
+<section id="bloque">
+  <p class="sec-num">BLOQUE DE 10 EJEMPLOS RESUELTOS · TIPO 1</p>
+  <h2>La ficha resuelta (electricidad I)<span class="rule"></span></h2>
+  <p class="sec-intro">Los 10 que cubren todos los tipos de cálculo, resueltos por completo (planteo → razonamiento → resultado). Los puramente gráficos van después en la tabla.</p>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">1</span><span class="ej-tag">inducción</span><span class="ej-src">ficha 1 · N99</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el estado final de R y S</span>
+      <p>Esferas R y S neutras en contacto; se acerca una barra (−) a R; se separan; se retira la barra.</p>
+      <div class="sol"><p>La barra negativa <strong>repele</strong> los electrones libres de R hacia S (la más alejada). Mientras la barra está cerca, R queda con déficit de electrones (+) y S con exceso (−). Al <strong>separarlas con la barra presente</strong>, cada esfera "atrapa" su carga. Retirar la barra ya no cambia nada.</p><span class="ans">R positiva y S negativa → opción B.</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">2</span><span class="ej-tag">contacto · reparto</span><span class="ej-src">ficha 3 · N07</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la carga final de cada conductor</span>
+      <p>X = +8,0 nC, Y = −2,0 nC, idénticos, se tocan y se separan.</p>
+      <div class="sol"><p>Carga total \(=+8{,}0-2{,}0=+6{,}0\) nC. Al ser idénticos se reparte por igual: \(q'=\dfrac{+6{,}0}{2}=+3{,}0\) nC en cada uno.</p><span class="ans">+3,0 nC y +3,0 nC → opción D.</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">3</span><span class="ej-tag">Coulomb · escalado</span><span class="ej-src">ficha 5 · M99</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la nueva fuerza</span>
+      <p>Dos cargas se atraen con fuerza \(F\). Se duplica cada carga y se duplica la separación.</p>
+      <div class="sol"><p>\(F'=k\dfrac{(2q_1)(2q_2)}{(2r)^2}=k\dfrac{4q_1q_2}{4r^2}=k\dfrac{q_1q_2}{r^2}=F\). El factor 4 del numerador y el 4 del denominador se cancelan.</p><span class="ans">F (igual) → opción C.</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">4</span><span class="ej-tag">contacto + fuerza</span><span class="ej-src">ficha 8 · N06</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza tras tocarse</span>
+      <p>X = +6 µC, Y = −2 µC a distancia \(d\); fuerza inicial \(+F\) (atractiva). Se tocan y vuelven a \(d\).</p>
+      <div class="sol"><p>Tras el contacto: \(q'=\dfrac{+6-2}{2}=+2\) µC cada una (ahora ambas positivas → repulsión). La fuerza \(\propto|q_1q_2|\): inicial \(\propto 6\times2=12\); final \(\propto 2\times2=4\). Razón \(=\dfrac{4}{12}=\dfrac13\). Como ahora es repulsiva (signo opuesto a la atractiva \(+F\)):</p><span class="ans">−F/3 → opción D.</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">5</span><span class="ej-tag">fuerza nula · posición</span><span class="ej-src">ficha 9 · M00</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la región del punto de fuerza nula</span>
+      <p>+2 nC y −1 nC fijas en una línea; se coloca +1 nC donde la fuerza neta sea cero. Regiones I (izq. de +2), II (entre), III (der. de −1).</p>
+      <div class="sol"><p>Signos <strong>opuestos</strong> ⇒ el punto nulo va <strong>fuera</strong> del segmento, del lado de la carga menor (−1 nC). Entre ellas, ambas fuerzas sobre la +1 apuntan en el mismo sentido (no se cancelan). A la izquierda de +2, la carga grande siempre domina. Queda la región III.</p><span class="ans">Región III → opción C.</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">6</span><span class="ej-tag">equilibrio en tubo</span><span class="ej-src">ficha 10 · M02</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la nueva separación</span>
+      <p>Dos esferas cargadas en equilibrio a distancia \(d\) en un tubo vertical. Se duplica la carga de cada una.</p>
+      <div class="sol"><p>En equilibrio la fuerza eléctrica sostiene el peso (constante): \(k\dfrac{q^2}{r^2}=mg\). Al duplicar cada carga, numerador \(\to(2q)^2=4q^2\). Para que \(mg\) siga igual, \(r^2\) debe cuadruplicarse: \(r'^2=4r^2\Rightarrow r'=2r\).</p><span class="ans">2d → opción B.</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">7</span><span class="ej-tag">campo nulo · iguales</span><span class="ej-src">ficha 23 · N00</span></div>
+    <div class="ej-body"><span class="sepide">Se pide dónde E = 0</span>
+      <p>Dos cargas positivas P y Q, con P > Q. M es el punto medio.</p>
+      <div class="sol"><p>Signos <strong>iguales</strong> ⇒ el nulo está <strong>entre</strong> las cargas. Como P es mayor, su campo domina en el medio; hay que alejarse de P y acercarse a Q para igualar magnitudes. El punto cae entre M y Q.</p><span class="ans">Entre M y Q → opción C.</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">8</span><span class="ej-tag">campo nulo · opuestas</span><span class="ej-src">ficha 24 · N03</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la posición de E = 0</span>
+      <p>Cargas −e y +4e sobre la línea XY.</p>
+      <div class="sol"><p>Signos <strong>opuestos</strong> ⇒ nulo <strong>fuera</strong> del segmento, del lado de la carga menor (−e). Allí: \(\dfrac{k(e)}{r_1^2}=\dfrac{k(4e)}{r_2^2}\Rightarrow \dfrac{r_2}{r_1}=\sqrt{4}=2\), es decir el punto está al doble de distancia de la carga grande que de la pequeña, en el exterior del lado de −e.</p><span class="ans">Del lado de −e, fuera del segmento → opción a) de la ficha.</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">9</span><span class="ej-tag">campo · cálculo</span><span class="ej-src">ficha 29 · N15</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el módulo de E en P</span>
+      <p>+3 C y −4 C separadas \(x\). P está a distancia \(x\) de la carga +3 C, sobre la recta, al lado opuesto de −4 C (así \(r_{+3}=x\), \(r_{-4}=2x\)).</p>
+      <div class="sol"><p>\(E_{+3}=\dfrac{k(3)}{x^2}\) apunta alejándose de +3 (hacia la izquierda); \(E_{-4}=\dfrac{k(4)}{(2x)^2}=\dfrac{k}{x^2}\) apunta hacia −4 (a la derecha). Se oponen:</p>
+      <p>\(E=\dfrac{3k}{x^2}-\dfrac{k}{x^2}=\dfrac{2k}{x^2}=\dfrac{2}{4\pi\varepsilon_0 x^2}=\dfrac{1}{2\pi\varepsilon_0 x^2}\).</p><span class="ans">1 / (2πε₀x²) → opción B.</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">10</span><span class="ej-tag">F y E · numérico</span><span class="ej-src">ficha 30 · M21</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza sobre Q₂ y el campo de Q₁ en Q₂</span>
+      <p>\(Q_1=Q_2=2\) nC, separación 3 m, en el vacío.</p>
+      <div class="sol"><p>Fuerza: \(F=k\dfrac{Q_1Q_2}{r^2}=9{,}0\times10^9\cdot\dfrac{(2\times10^{-9})^2}{3^2}=9{,}0\times10^9\cdot\dfrac{4\times10^{-18}}{9}=4\times10^{-9}\) N.</p>
+      <p>Campo de Q₁ en Q₂: \(E=k\dfrac{Q_1}{r^2}=9{,}0\times10^9\cdot\dfrac{2\times10^{-9}}{9}=2\) N·C⁻¹. (Comprobación: \(F=Q_2E=2\times10^{-9}\cdot2=4\times10^{-9}\) N ✓.)</p><span class="ans">4×10⁻⁹ N y 2 N·C⁻¹ → opción A.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTO -->
+<section id="resto">
+  <p class="sec-num">RESTO DE LA FICHA</p>
+  <h2>Los ítems gráficos / conceptuales<span class="rule"></span></h2>
+  <p class="sec-intro">Ítems que dependen de una figura (líneas de campo, direcciones, diagramas de cuerpo libre). <span class="flag">▲</span> = la figura se perdió al extraer el PDF: se da el método y la respuesta de la ficha cuando existe, sin inventar la geometría.</p>
+  <table>
+    <tr><th>Ítem</th><th class="l">Qué pide</th><th class="l">Método / respuesta</th></tr>
+    <tr><td>2</td><td class="l">Varilla + y paño neutro: ¿qué se movió?</td><td class="l">La varilla queda + (perdió e⁻); para que el paño quede neutro, esos electrones siguen hasta tierra → <strong>carga negativa de la varilla a la tierra (C)</strong>.</td></tr>
+    <tr><td>4</td><td class="l">Se duplica la carga izquierda: diagrama de fuerzas</td><td class="l">\(F\propto q_1q_2\): al duplicar una, F se duplica en <strong>ambas</strong> (iguales y opuestas) → opción c) de la ficha.</td></tr>
+    <tr><td>6</td><td class="l">FBD de esfera a 45° junto a varilla opuesta</td><td class="l">Tres fuerzas: peso (↓), tensión (a lo largo del hilo) y fuerza eléctrica horizontal (atractiva) → opción d). Equilibrio: \(T\cos45=mg\), \(T\sin45=F_e\).</td></tr>
+    <tr><td>7</td><td class="l">La ley de Coulomb se refiere a…</td><td class="l"><strong>Cargas puntuales (D)</strong>.</td></tr>
+    <tr><td>11 <span class="flag">▲</span></td><td class="l">Fuerza X–Z frente a F (X–Y)</td><td class="l">\(F\propto1/r^2\). Si la geometría da \(r_{XZ}=\sqrt2\,r_{XY}\) → \(F_{XZ}=F/2\) (opción A). Colineal (r = 2) daría F/4; depende de la figura.</td></tr>
+    <tr><td>13 <span class="flag">▲</span></td><td class="l">Fuerza neta sobre un electrón en el centro de +Q, −Q, −2Q</td><td class="l">Campo de cada carga en el centro (igual distancia), suma vectorial; fuerza \(=-e\vec E\) (opuesta a \(\vec E\)). Respuesta de la ficha: b). Dirección exacta requiere la figura.</td></tr>
+    <tr><td>14</td><td class="l">Definición de intensidad de campo</td><td class="l">Fuerza por unidad de carga + sobre una <strong>pequeña carga de prueba</strong> → opción B (la más precisa).</td></tr>
+    <tr><td>15 <span class="flag">▲</span></td><td class="l">Campo de esfera conductora negativa</td><td class="l">Radial <strong>hacia adentro</strong>, nace en la superficie, nulo dentro → opción c).</td></tr>
+    <tr><td>16 <span class="flag">▲</span></td><td class="l">Patrón de dos cargas puntuales</td><td class="l">Dipolo: líneas de + a − (ver figura de la Sección 5) → opción c).</td></tr>
+    <tr><td>17 <span class="flag">▲</span></td><td class="l">Dos cargas + pequeñas: líneas de campo</td><td class="l">Líneas que se "repelen" con punto neutro en el medio → opción b).</td></tr>
+    <tr><td>18 <span class="flag">▲</span></td><td class="l">E en P (medio de dos +Q, triángulo isósceles)</td><td class="l">Las dos cargas que flanquean P se cancelan sobre su eje; queda el campo de la tercera carga, <strong>alejándose</strong> de ella a través de P. Flecha según la figura.</td></tr>
+    <tr><td>19 <span class="flag">▲</span></td><td class="l">Disposición que da E = 0 en el centro</td><td class="l">Tres cargas <strong>iguales y del mismo signo</strong> en los vértices: por simetría los campos se cancelan → opción a).</td></tr>
+    <tr><td>20 <span class="flag">▲</span></td><td class="l">Dirección de E en X (dipolo +Q, −Q)</td><td class="l">Suma vectorial de los dos campos; en la región externa predomina la carga más cercana. Flecha según la figura.</td></tr>
+    <tr><td>21 <span class="flag">▲</span></td><td class="l">Signos de Y y Z (4 cargas en cuadrado)</td><td class="l">Cada campo en el centro va a lo largo de la diagonal (+ aleja, − acerca). Se eligen signos que den la resultante dibujada.</td></tr>
+    <tr><td>22 <span class="flag">▲</span></td><td class="l">Sentido de E en X, Y, Z (P+ y Q−)</td><td class="l">Entre cargas opuestas el campo apunta de + a − en todo el segmento; en Y (medio) ambos campos se suman en ese sentido.</td></tr>
+    <tr><td>25 <span class="flag">▲</span></td><td class="l">Dónde puede ser E = 0 (dos cargas +)</td><td class="l">Signos iguales → nulo <strong>entre</strong> ellas (punto Y) → opción B.</td></tr>
+    <tr><td>26 <span class="flag">▲</span></td><td class="l">E = 0 con +2Q y −Q</td><td class="l">Opuestas → fuera, lado de la menor (−Q) → opción D.</td></tr>
+    <tr><td>27 <span class="flag">▲</span></td><td class="l">E = 0 con −7 µC y +2 µC</td><td class="l">Opuestas → fuera, lado de la menor (+2 µC) → opción d).</td></tr>
+    <tr><td>28 <span class="flag">▲</span></td><td class="l">E = 0 con +2q y −q (regiones II, III)</td><td class="l">Opuestas → fuera, lado de −q (región III) → opción C.</td></tr>
+  </table>
+</section>
+
+<!-- EXAMENES -->
+<section id="examenes">
+  <p class="sec-num">BANCO DE EXÁMENES IB · TIPO 1 (PAPER 1 / 1A)</p>
+  <h2>Electrostática en los exámenes, 2022–2026<span class="rule"></span></h2>
+  <p class="sec-intro">Todas las preguntas de carga, ley de Coulomb, campo eléctrico y líneas de campo de los Paper 1 del IB en este rango, resueltas y con la <strong>respuesta oficial del markscheme</strong>. Las de <em>circuitos</em> van en el Módulo 16A y las de <em>magnetismo</em> en el 17A. Enunciados reformulados; datos y clave reales.</p>
+
+  <div class="box key">
+    <span class="lbl">11 preguntas · herramientas</span>
+    <p><strong>Plan nuevo (Paper 1A):</strong> mayo 2025 y 2026 (6). <strong>Plan anterior (Paper 1):</strong> 2022–2024 (5). Lo esencial: Coulomb \(F=\dfrac{kq_1q_2}{r^2}\) y campo \(E=\dfrac{kQ}{r^2}\) (ambos \(\propto 1/r^2\)); el campo apunta <em>saliendo</em> de cargas \(+\) y <em>hacia</em> las \(-\); la fuerza sobre una carga es \(\vec F=q\vec E\) (opuesta a \(E\) si \(q<0\)); y en la 3.ª ley de Newton las dos cargas sienten fuerzas <strong>iguales y opuestas</strong> aunque tengan distinto valor.</p>
+  </div>
+
+  <h4>Índice</h4>
+  <table>
+    <tr><th>#</th><th class="l">Subtema</th><th>Sesión</th><th>Plan</th><th>Resp.</th></tr>
+    <tr><td>EL1</td><td class="l">Fuerza y campo sobre la otra carga (3.ª ley)</td><td>May 2022 TZ1</td><td>ant.</td><td>B</td></tr>
+    <tr><td>EL2</td><td class="l">Campo resultante en triángulo equilátero</td><td>May 2022 TZ1</td><td>ant.</td><td>C</td></tr>
+    <tr><td>EL3</td><td class="l">Punto de fuerza nula entre dos cargas</td><td>May 2022 TZ2</td><td>ant.</td><td>A</td></tr>
+    <tr><td>EL4</td><td class="l">Campo en la esquina de un cuadrado</td><td>May 2023 TZ2</td><td>ant.</td><td>B</td></tr>
+    <tr><td>EL5</td><td class="l">Líneas de campo: fuerza sobre carga −</td><td>Nov 2024</td><td>ant.</td><td>D</td></tr>
+    <tr><td>EL6</td><td class="l">Coulomb: reducir Q₁ a la mitad (3.ª ley)</td><td>May 2025 TZ3</td><td>nuevo</td><td>C</td></tr>
+    <tr><td>EL7</td><td class="l">Líneas de campo de q y 3q</td><td>May 2026 TZ2</td><td>nuevo</td><td>D</td></tr>
+    <tr><td>EL8</td><td class="l">Razón de campos E₂/E₁ (carga y distancia)</td><td>May 2026 TZ2</td><td>nuevo</td><td>A</td></tr>
+    <tr><td>EL9</td><td class="l">Esferas conductoras en contacto: nueva F</td><td>May 2026 TZ3</td><td>nuevo</td><td>B</td></tr>
+    <tr><td>EL10</td><td class="l">Trayectorias posibles de un electrón</td><td>May 2026 TZ3</td><td>nuevo</td><td>A</td></tr>
+    <tr><td>EL11</td><td class="l">Inducción y puesta a tierra: carga en placa</td><td>Nov 2025</td><td>nuevo</td><td>D</td></tr>
+  </table>
+
+  <!-- A -->
+  <h3>A · Ley de Coulomb y la tercera ley de Newton</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EL1</span><span class="ej-src">Paper 1 · May 2022 TZ1 · Q19 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>P y Q son dos cargas puntuales <em>opuestas</em>. Se muestran la fuerza \(F\) sobre P (debida a Q) y el campo \(E\) en P. ¿Qué diagrama muestra la fuerza sobre Q (debida a P) y el campo en Q? (opciones = diagramas)</p>
+      <div class="sol"><p>Por la 3.ª ley, la fuerza sobre Q es <strong>igual y opuesta</strong> a la fuerza sobre P. El campo en Q lo crea P: como P y Q tienen signos opuestos, el campo en Q (debido a P) y la fuerza sobre Q apuntan en sentidos relacionados por el signo de Q. El diagrama correcto invierte \(F\) y orienta \(E\) según el signo.</p>
+        <span class="ans">B ✓ (fuerza sobre Q opuesta a la de P; campo según el signo de Q)</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EL6</span><span class="ej-src">Paper 1A · May 2025 TZ3 · Q19 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Dos cargas puntuales idénticas \(Q_1\) y \(Q_2\) separadas \(d\) sienten una fuerza \(F\) cada una. Se reduce \(Q_1\) a la mitad. ¿Fuerza sobre cada una ahora?</p>
+      <div class="sol"><p>\(F=\dfrac{kQ_1Q_2}{d^2}\): al halvar \(Q_1\), el producto \(Q_1Q_2\) se reduce a la mitad ⇒ la fuerza es \(F/2\). Y por la <strong>3.ª ley</strong>, ambas cargas sienten la <em>misma</em> fuerza: \(F/2\) sobre cada una.</p>
+        <span class="ans">C) \(F/2\) sobre \(Q_1\) y \(F/2\) sobre \(Q_2\) ✓ — la fuerza de Coulomb es siempre mutua e igual.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EL9</span><span class="ej-src">Paper 1A · May 2026 TZ3 · Q18 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Dos esferas conductoras idénticas con cargas \(Q\) y \(-2Q\) se atraen con fuerza \(F\). Se tocan y se separan a su posición original. ¿Nueva magnitud y sentido de la fuerza?</p>
+      <div class="sol"><p>Al tocarse, la carga se reparte por igual: cada una queda con \(\dfrac{Q+(-2Q)}{2}=-\dfrac Q2\). Fuerza inicial \(\propto |Q\cdot2Q|=2Q^2\); final \(\propto\left|\dfrac Q2\cdot\dfrac Q2\right|=\dfrac{Q^2}{4}\). Razón \(=\dfrac{Q^2/4}{2Q^2}=\dfrac18\Rightarrow \dfrac F8\). Ahora <strong>ambas negativas</strong> ⇒ se <em>repelen</em>.</p>
+        <span class="ans">B) \(F/8\), alejándose (repulsión) ✓</span></div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <h3>B · Campo eléctrico: magnitud y superposición</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EL8</span><span class="ej-src">Paper 1A · May 2026 TZ2 · Q19 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una carga de 2 C produce un campo \(E_1\) a 5 cm. Otra de 1 C produce \(E_2\) a 50 cm. ¿Cuánto vale \(\dfrac{E_2}{E_1}\)?</p>
+      <div class="sol"><p>\(E=\dfrac{kQ}{r^2}\). \(\dfrac{E_2}{E_1}=\dfrac{Q_2/r_2^2}{Q_1/r_1^2}=\dfrac{1/0{,}50^2}{2/0{,}05^2}=\dfrac{1/0{,}25}{2/0{,}0025}=\dfrac{4}{800}=0{,}005\).</p>
+        <span class="ans">A) 0,005 ✓ — domina la distancia (al cuadrado): 10× más lejos ⇒ 100× menos campo.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EL2</span><span class="ej-src">Paper 1 · May 2022 TZ1 · Q20 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Tres cargas de igual magnitud (dos \(+\), una \(-\)) en los vértices de un triángulo equilátero; P equidista de los tres. ¿Dirección del campo resultante en P?</p>
+      <div class="sol"><p>Cada carga aporta un campo de igual magnitud en P. Sumando vectorialmente los tres (el campo sale de las \(+\) y entra a la \(-\)), las componentes se combinan dando una resultante que apunta <strong>hacia la carga negativa</strong> (sobre la bisectriz, alejándose de las dos positivas).</p>
+        <span class="ans">C ✓ (resultante hacia el vértice negativo)</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EL4</span><span class="ej-src">Paper 1 · May 2023 TZ2 · Q19 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Tres cargas puntuales \(+Q\), \(+Q\) y \(-Q\) en tres esquinas de un cuadrado. ¿Dirección del campo en la cuarta esquina? (opciones = diagramas)</p>
+      <div class="sol"><p>Suma los tres vectores en la esquina libre: cada \(+Q\) empuja <em>alejándose</em> de sí misma y la \(-Q\) atrae <em>hacia</em> ella. Componiendo (ojo con la \(-Q\) diagonal, a distancia \(\sqrt2\) veces mayor ⇒ campo la mitad), la resultante apunta en la dirección del diagrama B.</p>
+        <span class="ans">B ✓ — recuerda que la carga diagonal está más lejos (campo \(/2\)).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EL3</span><span class="ej-src">Paper 1 · May 2022 TZ2 · Q19 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una carga \(Q\) está entre \(Q_1\) y \(Q_2\); la fuerza neta sobre \(Q\) es cero. \(Q_1\) está <em>más lejos</em> de \(Q\) que \(Q_2\). ¿Signos y magnitudes de \(Q_1\) y \(Q_2\)?</p>
+      <div class="sol"><p>Para que las dos fuerzas sobre \(Q\) se cancelen estando \(Q\) <em>entre</em> ellas, \(Q_1\) y \(Q_2\) deben tener el <strong>mismo signo</strong> (ambas empujan o ambas tiran de \(Q\) en sentidos opuestos). Como \(F\propto\dfrac{Q_i}{r_i^2}\) y \(Q_1\) está más lejos, para igualar fuerzas \(Q_1\) debe ser <strong>mayor</strong>: \(Q_1>Q_2\).</p>
+        <span class="ans">A) mismo signo, \(Q_1>Q_2\) ✓</span></div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <h3>C · Líneas de campo y fuerza sobre cargas</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EL7</span><span class="ej-src">Paper 1A · May 2026 TZ2 · Q18 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Dos cargas positivas, \(q\) y \(3q\), se acercan una a otra. ¿Qué diagrama representa mejor las líneas de campo? (opciones = diagramas)</p>
+      <div class="sol"><p>Dos cargas del mismo signo ⇒ las líneas <strong>salen de ambas</strong> y se <em>repelen</em> entre sí, con un <strong>punto nulo</strong> entre ellas (más cerca de la carga menor \(q\)). De la \(3q\) salen <em>tres veces más</em> líneas que de la \(q\).</p>
+        <span class="ans">D ✓ (líneas salientes, punto nulo desplazado hacia q, triple densidad en 3q)</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EL5</span><span class="ej-src">Paper 1 · Nov 2024 · Q18 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Se muestran líneas de un campo electrostático (sin la fuente). ¿En qué posición una carga puntual <em>negativa</em> sentiría la mayor fuerza <em>hacia la derecha</em>?</p>
+      <div class="sol"><p>Sobre una carga negativa, \(\vec F=q\vec E\) apunta <strong>opuesto</strong> al campo. La fuerza es mayor donde las líneas están <em>más juntas</em> (campo intenso). Se busca el punto donde el campo apunta a la <em>izquierda</em> y es denso, para que la fuerza sobre la carga − sea hacia la derecha y máxima.</p>
+        <span class="ans">D ✓ (campo intenso apuntando a la izquierda)</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EL10</span><span class="ej-src">Paper 1A · May 2026 TZ3 · Q19 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Trayectorias posibles de un electrón en un campo eléctrico <em>uniforme</em> en el vacío: I) recta; II) parábola; III) círculo. ¿Cuáles son posibles?</p>
+      <div class="sol"><p>Fuerza constante (campo uniforme): si el electrón entra <em>paralelo</em> al campo → recta; si entra <em>perpendicular</em> → parábola (como un proyectil). Un círculo exige fuerza siempre perpendicular a la velocidad (eso es un campo magnético, no uno eléctrico uniforme) → imposible.</p>
+        <span class="ans">A) I y II solamente ✓</span></div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <h3>D · Carga por inducción y puesta a tierra</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">EL11</span><span class="ej-src">Paper 1A · Nov 2025 · Q19 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una barra con carga positiva se acerca a una placa metálica conectada a tierra. Se quita primero el cable de tierra y luego la barra. ¿Carga total de la placa antes y después?</p>
+      <div class="sol"><p>Con la barra \(+\) cerca y la placa a tierra, llegan electrones del suelo: la placa queda con carga <strong>negativa</strong> inducida. Al quitar <em>primero</em> la tierra, esa carga negativa queda atrapada; al retirar la barra, la placa conserva su <strong>carga negativa</strong> (antes era 0 mientras estaba a tierra en equilibrio neto, después queda negativa).</p>
+        <span class="ans">D ✓ (queda con carga negativa tras la inducción) — el orden "tierra primero, barra después" es la clave.</span></div>
+    </div>
+  </div>
+
+  <div class="box beyond">
+    <span class="lbl">Qué va en el Módulo 15B (tipo 2)</span>
+    <p>Los problemas de electrostática del <strong>Paper 2</strong> (fuerza y campo resultante con cálculo vectorial, potencial y energía potencial eléctrica, movimiento de cargas entre placas, campo de distribuciones) se resolverán en el Módulo 15B.</p>
+  </div>
+</section>
+
+<!-- PRACTICA -->
+<section id="practica">
+  <p class="sec-num">10 RETOS · NINGUNO FÁCIL · NIVEL ASCENDENTE</p>
+  <h2>Practica tú — resolución oculta<span class="rule"></span></h2>
+  <p class="sec-intro">Nuevos, cubren los tipos que la ficha no toca con cálculo. Intenta cada uno; luego abre <strong>"Ver resolución"</strong>. El 9 y el 10 superan el nivel IB e integran módulos anteriores (dinámica, estática, incertidumbre). g = 10 m·s⁻².</p>
+
+  <div class="prob"><p class="pn">RETO 1 · Coulomb numérico</p>
+    <p>Dos cargas puntuales de \(+3{,}0\) µC y \(+5{,}0\) µC están separadas 20 cm en el vacío. Halla la magnitud de la fuerza entre ellas y di si es atractiva o repulsiva.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>\(F=k\dfrac{q_1q_2}{r^2}=9{,}0\times10^9\cdot\dfrac{(3{,}0\times10^{-6})(5{,}0\times10^{-6})}{(0{,}20)^2}\).</p>
+      <p>Numerador: \(9{,}0\times10^9\cdot15\times10^{-12}=0{,}135\). Dividido entre \(0{,}04\): \(F=3{,}4\) N.</p>
+      <p class="ans">F ≈ 3,4 N, repulsiva (ambas positivas).</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">RETO 2 · superposición 1D</p>
+    <p>Tres cargas sobre una recta: \(q_A=+2{,}0\) µC en \(x=0\), \(q_B=+4{,}0\) µC en \(x=0{,}30\) m y \(q_C=-3{,}0\) µC en \(x=0{,}50\) m. Halla la fuerza neta (magnitud y sentido) sobre \(q_B\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Fuerza de A sobre B (ambas +, repulsión → B empujada a la derecha, +x):<br>\(F_{AB}=9{,}0\times10^9\dfrac{(2{,}0)(4{,}0)\times10^{-12}}{(0{,}30)^2}=\dfrac{9{,}0\times10^9\cdot8{,}0\times10^{-12}}{0{,}09}=0{,}80\) N.</p>
+      <p>Fuerza de C sobre B (B+ y C−, atracción → B jalada a la derecha, hacia C, +x):<br>\(F_{CB}=9{,}0\times10^9\dfrac{(4{,}0)(3{,}0)\times10^{-12}}{(0{,}20)^2}=\dfrac{9{,}0\times10^9\cdot12\times10^{-12}}{0{,}04}=2{,}7\) N.</p>
+      <p>Ambas hacia +x: \(F_{neta}=0{,}80+2{,}7=3{,}5\) N.</p>
+      <p class="ans">≈ 3,5 N hacia +x (hacia C).</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">RETO 3 · punto de fuerza nula (cálculo exacto)</p>
+    <p>\(q_1=+9{,}0\) µC en \(x=0\) y \(q_2=+4{,}0\) µC en \(x=1{,}0\) m. ¿Dónde sobre el eje la fuerza sobre una tercera carga es cero?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Signos iguales → punto <strong>entre</strong> ambas. Sea \(r_1=x\) desde \(q_1\) y \(r_2=1{,}0-x\). Igualo campos:</p>
+      <p>\(\dfrac{9}{x^2}=\dfrac{4}{(1-x)^2}\Rightarrow \dfrac{3}{x}=\dfrac{2}{1-x}\Rightarrow 3(1-x)=2x\Rightarrow 3=5x\Rightarrow x=0{,}60\) m.</p>
+      <p class="ans">A 0,60 m de la carga de 9,0 µC (0,40 m de la de 4,0 µC).</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">RETO 4 · péndulo electrostático (integra estática)</p>
+    <p>Una esfera de masa \(0{,}50\) g cuelga de un hilo aislante. Una carga fija cercana ejerce sobre ella una fuerza horizontal, y el hilo queda a 30° de la vertical en equilibrio. Halla la fuerza eléctrica y la tensión. (g = 10 m·s⁻²)</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Peso: \(W=mg=0{,}50\times10^{-3}\cdot10=5{,}0\times10^{-3}\) N. Equilibrio (descomposición H/V, como en estática):</p>
+      <p>Vertical: \(T\cos30=W\Rightarrow T=\dfrac{5{,}0\times10^{-3}}{\cos30}=\dfrac{5{,}0\times10^{-3}}{0{,}866}=5{,}8\times10^{-3}\) N.</p>
+      <p>Horizontal: \(F_e=T\sin30=5{,}8\times10^{-3}\cdot0{,}5=2{,}9\times10^{-3}\) N. (También \(F_e=W\tan30=5{,}0\times10^{-3}\cdot0{,}577\).)</p>
+      <p class="ans">F_e ≈ 2,9×10⁻³ N; T ≈ 5,8×10⁻³ N.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">RETO 5 · campo en 2D (vector)</p>
+    <p>Dos cargas: \(+5{,}0\) nC en el origen y \(+5{,}0\) nC en \((0{,}80\ \mathrm m,0)\). Halla el campo eléctrico en el punto \((0{,}40\ \mathrm m,\,0{,}30\ \mathrm m)\) (justo encima del punto medio).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Cada carga está a \(r=\sqrt{0{,}40^2+0{,}30^2}=0{,}50\) m del punto. Campo de cada una:<br>\(E=9{,}0\times10^9\dfrac{5{,}0\times10^{-9}}{0{,}50^2}=\dfrac{45}{0{,}25}=180\) N·C⁻¹.</p>
+      <p>Por simetría, las componentes horizontales (±x) se cancelan y quedan solo las verticales. Cada campo forma con la vertical un coseno \(=\dfrac{0{,}30}{0{,}50}=0{,}60\):</p>
+      <p>\(E_y=2\cdot180\cdot0{,}60=216\approx2{,}2\times10^2\) N·C⁻¹, hacia arriba (+y).</p>
+      <p class="ans">E ≈ 2,2×10² N·C⁻¹, vertical hacia arriba.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">RETO 6 · campo nulo con cargas desiguales</p>
+    <p>\(q_1=+16\) µC en \(x=0\) y \(q_2=+4{,}0\) µC en \(x=0{,}60\) m. Halla el punto donde \(E=0\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Iguales → entre ellas. \(\dfrac{16}{x^2}=\dfrac{4}{(0{,}60-x)^2}\Rightarrow \dfrac{4}{x}=\dfrac{2}{0{,}60-x}\) (raíces) \(\Rightarrow 4(0{,}60-x)=2x\).</p>
+      <p>\(2{,}40-4x=2x\Rightarrow 2{,}40=6x\Rightarrow x=0{,}40\) m.</p>
+      <p class="ans">A 0,40 m de la carga de 16 µC (0,20 m de la de 4,0 µC) — más cerca de la menor, como anticipa la regla.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">RETO 7 · equilibrio en un campo (tipo Millikan)</p>
+    <p>Una gotita de masa \(3{,}2\times10^{-15}\) kg queda suspendida (en reposo) en un campo eléctrico vertical uniforme de \(2{,}0\times10^{4}\) N·C⁻¹ dirigido hacia abajo. (a) ¿Qué signo tiene su carga? (b) Halla su carga y cuántos electrones de exceso tiene. (g = 10 m·s⁻²)</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) El peso es hacia abajo; para equilibrarlo la fuerza eléctrica debe ir hacia arriba. Con \(\vec E\) hacia abajo, \(\vec F=q\vec E\) va hacia arriba solo si \(q<0\): carga <strong>negativa</strong>.</p>
+      <p>(b) Equilibrio: \(|q|E=mg\Rightarrow |q|=\dfrac{mg}{E}=\dfrac{3{,}2\times10^{-15}\cdot10}{2{,}0\times10^{4}}=\dfrac{3{,}2\times10^{-14}}{2{,}0\times10^{4}}=1{,}6\times10^{-18}\) C.</p>
+      <p>Número de electrones: \(n=\dfrac{1{,}6\times10^{-18}}{1{,}6\times10^{-19}}=10\).</p>
+      <p class="ans">Carga negativa, q = −1,6×10⁻¹⁸ C, 10 electrones de exceso.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">RETO 8 · tres cargas en ángulo recto (2D)</p>
+    <p>\(q_1=+4{,}0\) µC en el origen, \(q_2=+4{,}0\) µC en \((0{,}30\ \mathrm m,0)\) y \(q_3=-3{,}0\) µC en \((0,\,0{,}40\ \mathrm m)\). Halla la fuerza neta sobre \(q_1\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>\(q_2\) sobre \(q_1\) (ambas +, repulsión): a 0,30 m, en −x.<br>\(F_2=9{,}0\times10^9\dfrac{(4{,}0)(4{,}0)\times10^{-12}}{0{,}30^2}=\dfrac{9{,}0\times10^9\cdot16\times10^{-12}}{0{,}09}=1{,}6\) N en −x.</p>
+      <p>\(q_3\) sobre \(q_1\) (+ y −, atracción): a 0,40 m, hacia \(q_3\) = +y.<br>\(F_3=9{,}0\times10^9\dfrac{(4{,}0)(3{,}0)\times10^{-12}}{0{,}40^2}=\dfrac{9{,}0\times10^9\cdot12\times10^{-12}}{0{,}16}=0{,}675\) N en +y.</p>
+      <p>Resultante: \(F=\sqrt{1{,}6^2+0{,}675^2}=\sqrt{2{,}56+0{,}456}=\sqrt{3{,}02}=1{,}74\) N; ángulo \(\theta=\arctan\dfrac{0{,}675}{1{,}6}=23°\) sobre el −x.</p>
+      <p class="ans">≈ 1,7 N a 23° del eje −x (hacia +y).</p>
+    </div></details>
+  </div>
+
+  <div class="prob jefe"><p class="pn">RETO 9 · INTEGRADOR (Coulomb + estática + geometría · supera IB)</p>
+    <p>Dos esferas idénticas de masa \(2{,}0\) g cuelgan del mismo punto con hilos de \(1{,}0\) m. Tienen cargas iguales \(q\) y en equilibrio los hilos forman <strong>cada uno</strong> 10° con la vertical. (a) Halla la separación entre las esferas. (b) Halla la carga \(q\) de cada una. (c) Si el aire fuera un poco conductor y la carga se fugara lentamente, ¿el ángulo aumentaría o disminuiría? Justifica. (g = 10 m·s⁻²)</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Cada hilo a 10° de la vertical: la separación horizontal de cada esfera respecto al eje es \(L\sin10°=1{,}0\cdot0{,}1736=0{,}1736\) m. Separación total \(d=2\cdot0{,}1736=0{,}347\) m.</p>
+      <p><strong>(b)</strong> Equilibrio de una esfera (peso ↓, tensión por el hilo, Coulomb horizontal). Igual que un péndulo con fuerza horizontal:</p>
+      <p>\(F_e=mg\tan10°=2{,}0\times10^{-3}\cdot10\cdot0{,}1763=3{,}53\times10^{-3}\) N.</p>
+      <p>Coulomb: \(F_e=k\dfrac{q^2}{d^2}\Rightarrow q^2=\dfrac{F_e\,d^2}{k}=\dfrac{3{,}53\times10^{-3}\cdot(0{,}347)^2}{9{,}0\times10^9}=\dfrac{3{,}53\times10^{-3}\cdot0{,}1204}{9{,}0\times10^9}\).</p>
+      <p>\(q^2=\dfrac{4{,}25\times10^{-4}}{9{,}0\times10^9}=4{,}72\times10^{-14}\Rightarrow q=2{,}2\times10^{-7}\) C \(=0{,}22\) µC.</p>
+      <p><strong>(c)</strong> Al fugarse la carga, \(F_e=kq^2/d^2\) <strong>disminuye</strong>; la componente que separa las esferas se debilita, así que el ángulo <strong>disminuye</strong> (las esferas caen hacia la vertical). En el límite \(q\to0\), ambas cuelgan juntas (ángulo → 0).</p>
+      <p class="ans">(a) d ≈ 0,35 m · (b) q ≈ 0,22 µC · (c) el ángulo disminuye.</p>
+    </div></details>
+  </div>
+
+  <div class="prob jefe"><p class="pn">RETO 10 · PROBLEMA JEFE (Coulomb + incertidumbre + comparación con gravedad · muy por encima del IB)</p>
+    <p>En un laboratorio mides la fuerza entre dos cargas puntuales iguales. Datos: \(q=(0{,}50\pm0{,}02)\) µC cada una, separación \(r=(0{,}100\pm0{,}002)\) m. (a) Calcula \(F\) y su incertidumbre absoluta propagada. (b) Expresa \(F\) con su incertidumbre y porcentaje. (c) Compara esta fuerza eléctrica con la atracción gravitatoria entre las esferas si cada una tiene masa \(5{,}0\) g (\(G=6{,}67\times10^{-11}\)): ¿cuántas veces mayor es la eléctrica? Comenta.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a) Valor:</strong> \(F=k\dfrac{q^2}{r^2}=9{,}0\times10^9\dfrac{(0{,}50\times10^{-6})^2}{(0{,}100)^2}=9{,}0\times10^9\dfrac{2{,}5\times10^{-13}}{0{,}010}=0{,}225\) N.</p>
+      <p><strong>Propagación</strong> (fórmula de potencias, \(F\propto q^2 r^{-2}\)): la incertidumbre relativa suma las relativas, cada una por su exponente:</p>
+      <p>\(\dfrac{\Delta F}{F}=2\dfrac{\Delta q}{q}+2\dfrac{\Delta r}{r}=2\cdot\dfrac{0{,}02}{0{,}50}+2\cdot\dfrac{0{,}002}{0{,}100}=2(0{,}04)+2(0{,}02)=0{,}08+0{,}04=0{,}12\).</p>
+      <p>\(\Delta F=0{,}12\cdot0{,}225=0{,}027\) N.</p>
+      <p><strong>(b)</strong> \(F=(0{,}23\pm0{,}03)\) N, o \(0{,}23\) N \(\pm\,12\%\).</p>
+      <p><strong>(c) Gravedad:</strong> \(F_g=G\dfrac{m^2}{r^2}=6{,}67\times10^{-11}\dfrac{(5{,}0\times10^{-3})^2}{0{,}010}=6{,}67\times10^{-11}\dfrac{2{,}5\times10^{-5}}{0{,}010}=1{,}67\times10^{-13}\) N.</p>
+      <p>Razón: \(\dfrac{F_e}{F_g}=\dfrac{0{,}225}{1{,}67\times10^{-13}}\approx1{,}3\times10^{12}\).</p>
+      <p><strong>Comentario:</strong> la fuerza eléctrica es ~\(10^{12}\) veces la gravitatoria para estos objetos; por eso en electrostática la gravedad es despreciable. Además, el término que más incertidumbre aporta es \(q\) (0,08 de los 0,12), porque entra al cuadrado y su error relativo (4%) es mayor que el de \(r\) (2%): para mejorar la medida conviene primero afinar la carga.</p>
+      <p class="ans">(a,b) F = (0,23 ± 0,03) N (±12%) · (c) F_e ≈ 1,3×10¹² · F_g; domina la carga en la incertidumbre.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- PRACTICA 2 -->
+<section id="practica2">
+  <p class="sec-num">PRÁCTICA EXTRA · TODO TIPO · PAPER 1 Y 2</p>
+  <h2>Práctica extra · todo tipo (Paper 1 y 2)<span class="rule"></span></h2>
+  <p class="sec-intro">Once problemas nuevos de nivel IB que recorren <strong>todos</strong> los subtipos del módulo: carga y conservación, las tres electrizaciones y el reparto en esferas idénticas, Coulomb y su escalado, superposición en 1D y 2D, campo eléctrico, puntos nulos, el campo uniforme entre placas (\(E=V/d\)) y el equilibrio en un campo (tipo Millikan). Mezcla de respuesta rápida (Paper 1) y cálculo estructurado (Paper 2). Intenta cada uno antes de abrir la resolución. k = 9,0×10⁹ N·m²·C⁻², e = 1,6×10⁻¹⁹ C, g = 10 m·s⁻².</p>
+
+  <div class="prob"><p class="pn">EXTRA 1 · Paper 1 · q = ne, fricción y conservación</p>
+    <p>Al frotar una barra de ebonita con un paño de lana, la barra adquiere una carga de \(-0{,}40\) µC. (a) ¿Cuántos electrones se transfirieron y en qué sentido? (b) ¿Cuál es la carga final del paño? Justifica.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> La barra queda negativa ⇒ <em>ganó</em> electrones. \(n=\dfrac{|q|}{e}=\dfrac{0{,}40\times10^{-6}}{1{,}6\times10^{-19}}=\dfrac{4{,}0\times10^{-7}}{1{,}6\times10^{-19}}=2{,}5\times10^{12}\) electrones, transferidos <strong>del paño a la barra</strong>.</p>
+      <p><strong>(b)</strong> El sistema barra+paño estaba neutro y aislado; la carga total se conserva (\(=0\)). Si la barra quedó en \(-0{,}40\) µC, el paño debe quedar en \(+0{,}40\) µC.</p>
+      <p class="ans">(a) 2,5×10¹² electrones, del paño a la barra · (b) paño +0,40 µC (conservación).</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">EXTRA 2 · Paper 1 · electrización por inducción con puesta a tierra</p>
+    <p>Una esfera conductora sobre soporte aislante está neutra. Se hace, en orden: (1) acercar una barra <strong>positiva</strong> sin tocarla; (2) conectar la esfera a tierra un instante; (3) desconectar la tierra; (4) retirar la barra. ¿Con qué signo queda la esfera? Explica cada paso.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(1)</strong> La barra + atrae los electrones libres hacia la cara próxima; la esfera sigue neutra pero polarizada.</p>
+      <p><strong>(2)</strong> Al conectar a tierra, la barra sigue atrayendo: entran electrones <em>desde la tierra</em> hacia la esfera, que acumula carga negativa neta.</p>
+      <p><strong>(3)</strong> Se corta la tierra con la barra aún presente: esos electrones de más quedan "atrapados" en la esfera.</p>
+      <p><strong>(4)</strong> Al retirar la barra, la carga negativa se redistribuye por la superficie.</p>
+      <p class="ans">Queda <strong>negativa</strong> (signo opuesto al inductor), regla típica de la inducción con tierra.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">EXTRA 3 · Paper 1 · reparto en esferas idénticas (secuencia)</p>
+    <p>Tres esferas conductoras idénticas: A con carga \(+Q\), B y C neutras. Se hace, en orden: A toca B y se separan; luego B toca C y se separan; por último A toca C y se separan. Halla la carga final de cada esfera en función de \(Q\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Dos esferas idénticas en contacto reparten por igual la carga total.</p>
+      <p><strong>A–B:</strong> \((+Q+0)/2\Rightarrow\) A \(=Q/2\), B \(=Q/2\), C \(=0\).</p>
+      <p><strong>B–C:</strong> \((Q/2+0)/2\Rightarrow\) B \(=Q/4\), C \(=Q/4\) (A sigue en \(Q/2\)).</p>
+      <p><strong>A–C:</strong> \((Q/2+Q/4)/2=(3Q/4)/2=3Q/8\Rightarrow\) A \(=3Q/8\), C \(=3Q/8\) (B sigue en \(Q/4\)).</p>
+      <p>Comprobación: \(3Q/8+2Q/8+3Q/8=Q\) ✓ (se conserva).</p>
+      <p class="ans">A = 3Q/8 · B = Q/4 · C = 3Q/8.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">EXTRA 4 · Paper 2 · ley de Coulomb y escalado</p>
+    <p>Dos esferitas con cargas \(+2{,}0\) µC y \(-3{,}0\) µC están separadas 15 cm en el aire. (a) Calcula la fuerza entre ellas e indica si es atractiva o repulsiva. (b) Sin recalcular desde cero, determina la fuerza si la separación se reduce a 5,0 cm.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> \(F=k\dfrac{|q_1||q_2|}{r^2}=9{,}0\times10^9\dfrac{(2{,}0\times10^{-6})(3{,}0\times10^{-6})}{(0{,}15)^2}=\dfrac{9{,}0\times10^9\cdot6{,}0\times10^{-12}}{0{,}0225}=\dfrac{0{,}054}{0{,}0225}=2{,}4\) N, <strong>atractiva</strong> (signos opuestos).</p>
+      <p><strong>(b)</strong> La distancia pasa a un tercio (\(15\to5\) cm). Como \(F\propto1/r^2\), la fuerza se multiplica por \(3^2=9\): \(F'=9\cdot2{,}4=21{,}6\approx22\) N (atractiva).</p>
+      <p class="ans">(a) 2,4 N atractiva · (b) ≈ 22 N atractiva.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">EXTRA 5 · Paper 2 · superposición de fuerzas (1D)</p>
+    <p>Sobre el eje x: \(q_1=+5{,}0\) µC en \(x=0\), \(q_2=-2{,}0\) µC en \(x=0{,}20\) m y \(q_3=+3{,}0\) µC en \(x=0{,}40\) m. Halla la fuerza neta (magnitud y sentido) sobre \(q_2\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Fuerza de \(q_1\) sobre \(q_2\) (+ y −, atracción ⇒ \(q_2\) jalada hacia \(q_1\), \(-x\)):<br>\(F_{12}=9{,}0\times10^9\dfrac{(5{,}0)(2{,}0)\times10^{-12}}{(0{,}20)^2}=\dfrac{9{,}0\times10^9\cdot10\times10^{-12}}{0{,}04}=2{,}25\) N en \(-x\).</p>
+      <p>Fuerza de \(q_3\) sobre \(q_2\) (+ y −, atracción ⇒ \(q_2\) jalada hacia \(q_3\), \(+x\)):<br>\(F_{32}=9{,}0\times10^9\dfrac{(3{,}0)(2{,}0)\times10^{-12}}{(0{,}20)^2}=\dfrac{9{,}0\times10^9\cdot6{,}0\times10^{-12}}{0{,}04}=1{,}35\) N en \(+x\).</p>
+      <p>Neta: \(2{,}25-1{,}35=0{,}90\) N en \(-x\).</p>
+      <p class="ans">≈ 0,90 N hacia −x (hacia q₁).</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">EXTRA 6 · Paper 2 · campo eléctrico en 2D (E = kQ/r² y F = qE)</p>
+    <p>\(Q_1=+6{,}0\) nC en \((-0{,}30\ \mathrm m,0)\) y \(Q_2=-6{,}0\) nC en \((+0{,}30\ \mathrm m,0)\). (a) Halla el campo eléctrico en \(P=(0,\,0{,}40\ \mathrm m)\). (b) Halla la fuerza sobre un electrón colocado en \(P\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Cada carga dista \(r=\sqrt{0{,}30^2+0{,}40^2}=0{,}50\) m de \(P\). Módulo de cada campo:<br>\(E=9{,}0\times10^9\dfrac{6{,}0\times10^{-9}}{0{,}50^2}=\dfrac{54}{0{,}25}=216\) N·C⁻¹.</p>
+      <p>\(Q_1\) (+) da un campo que <em>se aleja</em> de \(Q_1\); \(Q_2\) (−) da uno que <em>apunta hacia</em> \(Q_2\). Por simetría las componentes verticales (\(\pm y\)) se cancelan y las horizontales se suman (\(\cos\theta=0{,}30/0{,}50=0{,}60\)):</p>
+      <p>\(E_x=2\cdot216\cdot0{,}60=259\approx2{,}6\times10^{2}\) N·C⁻¹, dirigido en \(+x\) (de la carga + a la −).</p>
+      <p><strong>(b)</strong> \(F=|q|E=(1{,}6\times10^{-19})(259)=4{,}1\times10^{-17}\) N. Como el electrón es negativo, la fuerza es opuesta a \(\vec E\): hacia \(-x\).</p>
+      <p class="ans">(a) E ≈ 2,6×10² N·C⁻¹ en +x · (b) F ≈ 4,1×10⁻¹⁷ N en −x.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">EXTRA 7 · Paper 1 · puntos de campo nulo (los dos casos)</p>
+    <p>(a) \(q_1=+9{,}0\) µC en \(x=0\) y \(q_2=+1{,}0\) µC en \(x=0{,}40\) m. Halla el punto donde \(E=0\). (b) Si \(q_2\) se reemplazara por \(-1{,}0\) µC, ¿en qué región quedaría el punto nulo? (sin cálculo, con la regla).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Signos iguales ⇒ el nulo está <strong>entre</strong> las cargas. Con \(r_1=x\) y \(r_2=0{,}40-x\):<br>\(\dfrac{9}{x^2}=\dfrac{1}{(0{,}40-x)^2}\Rightarrow\dfrac{3}{x}=\dfrac{1}{0{,}40-x}\Rightarrow 3(0{,}40-x)=x\Rightarrow 1{,}20=4x\Rightarrow x=0{,}30\) m.</p>
+      <p>Está a 0,30 m de la carga grande y a 0,10 m de la pequeña: más cerca de la menor, como anticipa la regla. ✓</p>
+      <p><strong>(b)</strong> Signos opuestos ⇒ el nulo cae <strong>fuera</strong> del segmento, del lado de la carga de <em>menor</em> magnitud (la \(-1{,}0\) µC), es decir en la región a la <strong>derecha</strong> de \(x=0{,}40\) m. Nunca entre ellas.</p>
+      <p class="ans">(a) x = 0,30 m (entre, cerca de la menor) · (b) fuera del segmento, a la derecha de la carga −1,0 µC.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">EXTRA 8 · Paper 2 · equilibrio en un campo (tipo Millikan)</p>
+    <p>En un montaje tipo Millikan, una gota de aceite de masa \(4{,}8\times10^{-15}\) kg permanece en reposo entre dos placas horizontales. El campo entre las placas es \(3{,}0\times10^{4}\) N·C⁻¹ y apunta <strong>hacia arriba</strong>. (a) ¿Qué signo tiene la carga de la gota? (b) Halla la carga y el número de electrones en exceso o defecto. (g = 10 m·s⁻²)</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> El peso va hacia abajo; para el equilibrio la fuerza eléctrica debe ir hacia arriba. Con \(\vec E\) hacia arriba, \(\vec F=q\vec E\) va hacia arriba solo si \(q>0\): carga <strong>positiva</strong> (defecto de electrones).</p>
+      <p><strong>(b)</strong> Equilibrio: \(|q|E=mg\Rightarrow|q|=\dfrac{mg}{E}=\dfrac{(4{,}8\times10^{-15})(10)}{3{,}0\times10^{4}}=\dfrac{4{,}8\times10^{-14}}{3{,}0\times10^{4}}=1{,}6\times10^{-18}\) C.</p>
+      <p>\(n=\dfrac{1{,}6\times10^{-18}}{1{,}6\times10^{-19}}=10\). Al ser positiva, le <em>faltan</em> 10 electrones.</p>
+      <p class="ans">(a) positiva · (b) q = +1,6×10⁻¹⁸ C, defecto de 10 electrones.</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">EXTRA 9 · Paper 1 · punto nulo con cargas opuestas (numérico)</p>
+    <p>\(q_1=+1{,}0\) µC en \(x=0\) y \(q_2=-4{,}0\) µC en \(x=2{,}0\) m. Halla el punto del eje donde \(E=0\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Signos <strong>opuestos</strong> ⇒ el nulo está <strong>fuera</strong> del segmento, del lado de la carga de <em>menor</em> magnitud (la \(+1{,}0\) µC), es decir a la izquierda de \(x=0\). Sea \(s\) la distancia del punto a \(q_1\); entonces dista \(s+2{,}0\) de \(q_2\). Igualo magnitudes:</p>
+      <p>\(\dfrac{1}{s^2}=\dfrac{4}{(s+2{,}0)^2}\Rightarrow (s+2{,}0)^2=4s^2\Rightarrow s+2{,}0=2s\Rightarrow s=2{,}0\) m.</p>
+      <p>El punto está a 2,0 m a la izquierda de \(q_1\), es decir en \(x=-2{,}0\) m (a 4,0 m de \(q_2\)). Comprobación: \(E_1=k(1\mu)/2{,}0^2=k(1\mu)/4\) y \(E_2=k(4\mu)/4{,}0^2=k(1\mu)/4\): iguales, y en sentidos opuestos ✓.</p>
+      <p class="ans">x = −2,0 m (fuera del segmento, lado de la carga menor +1,0 µC).</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">EXTRA 10 · Paper 2 · campo uniforme entre placas (E = V/d)</p>
+    <p>Dos placas horizontales paralelas están separadas \(d=2{,}0\) cm y entre ellas hay una diferencia de potencial \(V=600\) V. (a) Halla el campo entre las placas. (b) Halla la fuerza sobre un electrón allí. (c) Halla su aceleración. (\(m_e=9{,}1\times10^{-31}\) kg)</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>(a)</strong> Campo uniforme: \(E=\dfrac{V}{d}=\dfrac{600}{0{,}020}=3{,}0\times10^{4}\) N·C⁻¹ (= V·m⁻¹).</p>
+      <p><strong>(b)</strong> \(F=|q|E=(1{,}6\times10^{-19})(3{,}0\times10^{4})=4{,}8\times10^{-15}\) N (hacia la placa positiva, por ser el electrón negativo).</p>
+      <p><strong>(c)</strong> \(a=\dfrac{F}{m_e}=\dfrac{4{,}8\times10^{-15}}{9{,}1\times10^{-31}}=5{,}3\times10^{15}\) m·s⁻².</p>
+      <p class="ans">(a) 3,0×10⁴ N·C⁻¹ · (b) 4,8×10⁻¹⁵ N · (c) 5,3×10¹⁵ m·s⁻².</p>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">EXTRA 11 · Paper 1 · escalado de la ley de Coulomb</p>
+    <p>Dos cargas puntuales se atraen con una fuerza \(F\). Se <strong>triplica</strong> una de las cargas y se <strong>duplica</strong> la distancia entre ellas. ¿Cuál es la nueva fuerza en función de \(F\)?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>\(F\propto\dfrac{q_1q_2}{r^2}\). Triplicar una carga multiplica el numerador por 3; duplicar la distancia multiplica el denominador por \(2^2=4\):</p>
+      <p>\(F'=k\dfrac{(3q_1)q_2}{(2r)^2}=\dfrac{3}{4}\,k\dfrac{q_1q_2}{r^2}=\dfrac{3}{4}F=0{,}75\,F\) (sigue siendo atractiva).</p>
+      <p class="ans">F′ = 3F/4 = 0,75 F.</p>
+    </div></details>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  Módulo 15A · Electricidad I (electrostática) · Física IB NM · g = 10 m·s⁻² salvo indicación · k = 8,99×10⁹ N·m²·C⁻² · e = 1,60×10⁻¹⁹ C.<br>
+  Siguiente: <strong>Módulo 15B — Electricidad I · Tipo 2 (Paper 2)</strong>, con la ficha resuelta en toggles ocultos.
+</div></footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

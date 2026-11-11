@@ -1,0 +1,907 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 5A · Trabajo, energía y potencia · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:54px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:28px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:14px 0;overflow-x:auto}
+.eqname{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--teal);letter-spacing:.06em;display:block;margin-top:4px}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.ej{border:1px solid var(--line);border-radius:5px;margin:22px 0;background:var(--paper-2);overflow:hidden}
+.ej-head{background:linear-gradient(180deg,#F0F5F3,#FFFFFF);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ej-tag{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal);padding:2px 8px;border-radius:3px}
+.ej-num{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px}
+.ej-src{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);letter-spacing:.05em}
+.ej-body{padding:16px 20px 20px}
+.sepide{display:inline-block;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:2px 8px;margin:2px 0 8px}
+.sol{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:6px 12px;display:inline-block;margin-top:8px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}td.l,th.l{text-align:left}
+.flag{color:var(--warn);font-weight:600}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> A.3 <span>//</span> MÓDULO 5A · TEORÍA + TIPO 1</p>
+  <h1>Trabajo, energía y <em>potencia</em></h1>
+  <p class="lede">Trabajo (incluida fuerza variable), teorema trabajo–energía, conservación de la energía mecánica, fricción como fuerza no conservativa, potencia y rendimiento. Reutiliza fuerzas, cinemática y resortes.</p>
+  <div class="stats">
+    <div class="stat"><b>6</b><span>secciones de teoría</span></div>
+    <div class="stat"><b>A.3</b><span>syllabus IB · 8 h</span></div>
+    <div class="stat"><b>10 + 10</b><span>resueltos · retos</span></div>
+    <div class="stat"><b>21</b><span>exámenes IB 2022–26</span></div>
+    <div class="stat"><b>g = 10</b><span>m·s⁻² salvo indicación</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#s1">1 · Trabajo</a>
+  <a href="#s2">2 · Fuerza variable (área)</a>
+  <a href="#s3">3 · Energía cinética · W = ΔEk</a>
+  <a href="#s4">4 · Energías potenciales</a>
+  <a href="#s5">5 · Conservación · no conservativas</a>
+  <a href="#s6">6 · Potencia y rendimiento</a>
+  <a href="#s7">7 · Más allá del IB</a>
+  <a href="#s8">8 · Definiciones (examen)</a>
+  <a href="#traps">Checklist de trampas</a>
+  <a href="#bloque">10 resueltos (ficha)</a>
+  <a href="#resto">Resto de la ficha</a>
+  <a href="#examenes">Banco de exámenes IB · 2022–26</a>
+  <a href="#practica">10 retos</a>
+  <a href="#masproblemas">Más problemas · past paper</a>
+</nav>
+
+<main>
+<!-- rev 2026-10-25 ene · banco examenes IB energia (21) v2 -->
+
+<!-- S1 -->
+<section id="s1">
+  <p class="sec-num">SECCIÓN 01</p>
+  <h2>Trabajo de una fuerza<span class="rule"></span></h2>
+  <p class="sec-intro">Trabajo es transferencia de energía mediante una fuerza. Solo la componente de la fuerza <em>en la dirección del desplazamiento</em> hace trabajo.</p>
+  <div class="eq">\[ W=F\,s\cos\theta \]<span class="eqname">trabajo de una fuerza constante (θ = ángulo entre F y el desplazamiento)</span></div>
+  <ul>
+    <li>\(\theta=0^\circ\): trabajo máximo \(W=Fs\).</li>
+    <li>\(\theta=90^\circ\): \(W=0\) (la normal, la centrípeta y el peso en horizontal no trabajan).</li>
+    <li>\(\theta=180^\circ\): trabajo <strong>negativo</strong> (fricción que frena).</li>
+  </ul>
+  <p><strong>¿De dónde sale el cosθ?</strong> Trabajar significa transferir energía <em>moviendo</em> algo en la dirección en que se empuja. Si tiras de un trineo con una cuerda inclinada, tu fuerza \(F\) tiene dos partes: una horizontal, \(F\cos\theta\), que apunta hacia donde el trineo avanza, y una vertical, \(F\sin\theta\), que apunta hacia arriba. El trineo solo se mueve en horizontal, así que únicamente la parte horizontal «acompaña» al movimiento y entrega energía: por eso \(W=(F\cos\theta)\,d\). La parte vertical no desplaza nada en su propia dirección, de modo que no aporta trabajo. En una frase: <em>solo la componente de la fuerza paralela al desplazamiento hace trabajo</em>.</p>
+  <p><strong>¿Por qué una fuerza perpendicular no trabaja?</strong> Si \(\theta=90^\circ\), \(\cos90^\circ=0\) y \(W=0\). La intuición: una fuerza perpendicular al movimiento solo puede <em>curvar</em> la trayectoria, nunca acelerar ni frenar al cuerpo a lo largo de su camino, así que no cambia su rapidez ni, por tanto, su energía cinética. Por eso la normal (perpendicular al piso), la tensión centrípeta (perpendicular a la velocidad en un giro) y el peso cuando el cuerpo avanza en horizontal no transfieren energía: empujan «de lado», no «a favor» ni «en contra» del avance, y de lado no se transfiere nada.</p>
+  <h4>Trabajo del peso, de la normal y de la fricción</h4>
+  <div class="box"><span class="lbl">Tres fuerzas que siempre aparecen</span>
+    <ul>
+      <li><strong>Peso:</strong> \(W_{peso}=-mg\,\Delta h\) (positivo al bajar, negativo al subir). No depende del camino: la gravedad es <strong>conservativa</strong>.</li>
+      <li><strong>Normal:</strong> es perpendicular al desplazamiento sobre la superficie ⇒ \(W_N=0\) (salvo que la propia superficie se mueva, p. ej. el piso de un ascensor).</li>
+      <li><strong>Fricción cinética:</strong> siempre opuesta al movimiento ⇒ \(W_f=-f\,d\) (siempre negativa y <strong>sí</strong> depende del camino recorrido).</li>
+    </ul>
+    <p><strong>Numérico:</strong> un bloque de \(m=3{,}0\) kg baja \(\Delta h=2{,}0\) m: \(W_{peso}=+mg\Delta h=+60\) J. Si la fricción es \(f=5{,}0\) N sobre un recorrido \(d=4{,}0\) m: \(W_f=-20\) J.</p>
+    <p><strong>Proporción:</strong> alargar el camino (rampa más tendida para la misma altura) no cambia \(W_{peso}\), pero aumenta \(|W_f|\propto d\): por eso un recorrido más largo disipa más.</p>
+  </div>
+  <figure class="fig">
+    <svg viewBox="0 0 340 175" width="320" role="img" aria-label="Bloque desplazado una distancia d con una fuerza F aplicada a un ángulo theta; se marca la componente horizontal F cos theta">
+      <defs>
+        <marker id="aF" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--amber)"/></marker>
+        <marker id="aC" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--teal)"/></marker>
+        <marker id="aD" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--ink-soft)"/></marker>
+      </defs>
+      <line x1="20" y1="125" x2="320" y2="125" stroke="var(--ink)" stroke-width="1.3"/>
+      <rect x="55" y="97" width="54" height="28" fill="var(--teal)" opacity="0.16" stroke="var(--teal-deep)" stroke-width="1.2"/>
+      <line x1="202" y1="111" x2="202" y2="51" stroke="var(--teal-deep)" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="206" y="80" font-family="IBM Plex Mono" font-size="10" fill="var(--teal-deep)">F sen θ</text>
+      <line x1="82" y1="111" x2="200" y2="111" stroke="var(--teal)" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#aC)"/>
+      <text x="108" y="106" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">F cos θ</text>
+      <line x1="82" y1="111" x2="200" y2="52" stroke="var(--amber)" stroke-width="2.6" marker-end="url(#aF)"/>
+      <text x="188" y="46" font-family="IBM Plex Mono" font-size="13" fill="var(--amber)">F</text>
+      <path d="M108,111 A26,26 0 0,0 105,99" fill="none" stroke="var(--ink)" stroke-width="1"/>
+      <text x="112" y="105" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-soft)">θ</text>
+      <line x1="82" y1="150" x2="230" y2="150" stroke="var(--ink-soft)" stroke-width="1.3" marker-end="url(#aD)"/>
+      <line x1="82" y1="127" x2="82" y2="152" stroke="var(--ink-soft)" stroke-width="0.7" stroke-dasharray="2 2"/>
+      <text x="150" y="165" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-soft)">d</text>
+      <text x="210" y="24" font-family="Space Grotesk" font-size="12" fill="var(--ink)" font-weight="600">W = F cos θ · d</text>
+    </svg>
+    <figcaption>Solo la componente en la dirección del movimiento (F cos θ) realiza trabajo: W = F cos θ · d.</figcaption>
+  </figure>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 1.1</span><span class="ej-src">ficha · M05</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la expresión del trabajo</span>
+      <p>Una fuerza constante \(F\) desplaza su punto de aplicación una distancia \(d\), a un ángulo \(\theta\) con el desplazamiento.</p>
+      <div class="sol"><p>Por definición \(W=Fd\cos\theta\).</p><span class="ans">Fd·cosθ (opción C).</span></div>
+    </div>
+  </div>
+  <div class="box"><span class="lbl">Números y proporción</span>
+    <p><strong>Numérico:</strong> \(F=20\ \mathrm N\), \(d=3{,}0\ \mathrm m\), \(\theta=60^\circ\Rightarrow W=20(3{,}0)(0{,}5)=30\ \mathrm J\).</p>
+    <p><strong>Proporción:</strong> a \(\theta\) fijo, \(W\propto F\) y \(W\propto d\); si \(\theta\) pasa de \(0^\circ\) a \(60^\circ\), \(\cos\theta\) cae de 1 a 0,5 y el trabajo se reduce a la mitad.</p></div>
+</section>
+
+<!-- S2 -->
+<section id="s2">
+  <p class="sec-num">SECCIÓN 02</p>
+  <h2>Fuerza variable: el trabajo es el área bajo F–x<span class="rule"></span></h2>
+  <p class="sec-intro">Cuando la fuerza cambia con la posición (un resorte, un cable), el trabajo ya no es \(Fs\): es el <strong>área bajo la gráfica fuerza–desplazamiento</strong>.</p>
+  <p><strong>¿Por qué el área <em>es</em> el trabajo?</strong> Parte el recorrido en trocitos tan pequeños que, dentro de cada uno, la fuerza casi no cambia. En un trocito de ancho \(\Delta x\) la fuerza vale aproximadamente \(F\), así que su trabajo es \(F\,\Delta x\): justo el área de una franja delgada de altura \(F\) y base \(\Delta x\) bajo la gráfica. Sumar el trabajo de todas las franjas equivale a sumar sus áreas, y esa suma es el área total bajo la curva F–x. Por eso con fuerza constante el área es un rectángulo (\(W=Fd\), el caso de la Sección 1) y con fuerza variable es la figura que haya: triángulo, trapecio o curva. El área sigue siendo trabajo; solo cambia la forma que hay que calcular.</p>
+  <p><strong>Deducción de \(\tfrac12kx^2\):</strong> en un resorte la fuerza crece como una recta, \(F=kx\), desde \(0\) (sin deformar) hasta \(kx\) (deformado una distancia \(x\)). El área bajo esa recta es un triángulo de base \(x\) y altura \(kx\): \(\ \text{área}=\tfrac12(\text{base})(\text{altura})=\tfrac12\,x\,(kx)=\tfrac12kx^2\). Esa es la energía que acumulas al comprimir o estirar el resorte y la que devuelve al soltarlo. Observa que <em>no</em> es \(F\cdot x=kx\cdot x=kx^2\): usar la fuerza final duplicaría el trabajo real, porque al principio la fuerza era pequeña. Lo correcto es la fuerza <em>media</em>, \(\tfrac12kx\), por la distancia \(x\), y eso da de nuevo \(\tfrac12kx^2\).</p>
+  <figure class="fig">
+    <svg viewBox="0 0 320 150" width="300" xmlns="http://www.w3.org/2000/svg" aria-label="area F-x">
+      <line x1="40" y1="120" x2="300" y2="120" stroke="var(--ink)" stroke-width="1.3"/>
+      <line x1="40" y1="120" x2="40" y2="20" stroke="var(--ink)" stroke-width="1.3"/>
+      <text x="24" y="28" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">F</text>
+      <text x="292" y="138" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">x</text>
+      <polyline points="40,40 260,100" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+      <polygon points="40,120 40,40 260,100 260,120" fill="var(--teal)" opacity="0.12"/>
+      <text x="120" y="100" font-family="Space Grotesk" font-size="11" fill="var(--teal-deep)">W = área</text>
+    </svg>
+    <figcaption>Para un resorte (F = kx) el área es un triángulo → W = ½kx².</figcaption>
+  </figure>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 2.1</span><span class="ej-src">ficha · M03 (resorte, área)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el trabajo para mover 2 cm</span>
+      <p>La fuerza del resorte cae linealmente de 5 N (en \(d=0\)) a 0 N (en \(d=2\) cm). Halla el trabajo al mover el carrito 2 cm.</p>
+      <div class="sol"><p>Trabajo = área bajo F–d = triángulo \(=\tfrac12(\text{base})(\text{altura})=\tfrac12(2\times10^{-2}\ \mathrm m)(5\ \mathrm N)\).</p><span class="ans">W = 5×10⁻² J (opción C).</span></div>
+    </div>
+  </div>
+  <div class="box beyond"><span class="lbl">Más allá del IB</span>
+    <p>El «área bajo la curva» es, formalmente, una integral: \(\ W=\displaystyle\int_{x_1}^{x_2}F\,dx\). Para el resorte \(F=kx\Rightarrow W=\int_0^{x}kx\,dx=\tfrac12kx^2\). Y a la inversa, una fuerza conservativa deriva de una energía potencial: \(\ F=-\dfrac{dU}{dx}\).</p>
+  </div>
+  <div class="box"><span class="lbl">Números y proporción</span>
+    <p><strong>Numérico:</strong> resorte \(k=200\ \mathrm{N\,m^{-1}}\) estirado 0,10 m: \(W=\tfrac12(200)(0{,}10)^2=1{,}0\ \mathrm J\).</p>
+    <p><strong>Proporción:</strong> \(W\propto x^2\); al duplicar la deformación, el trabajo (y la energía elástica almacenada) se <strong>cuadruplica</strong>.</p></div>
+
+  <h3>Ley de Hooke y combinación de resortes</h3>
+  <p>Mientras no se pase del límite elástico, la fuerza de un resorte es proporcional a la deformación.</p>
+  <div class="eq">\[ F=k\,x \qquad(\text{fuerza restauradora: } \vec F=-k\vec x) \]<span class="eqname">ley de Hooke · k = constante elástica (N·m⁻¹)</span></div>
+  <ul>
+    <li>\(F=kx\) es la fuerza que hay que <em>aplicar</em>; el signo menos en \(\vec F=-k\vec x\) indica que la fuerza del resorte <strong>se opone</strong> a la deformación (apunta al equilibrio).</li>
+    <li>La <strong>pendiente</strong> de la gráfica \(F\!-\!x\) es \(k\); el <strong>área</strong> bajo ella es la energía elástica \(\tfrac12kx^2\).</li>
+  </ul>
+  <figure class="fig">
+    <svg viewBox="0 0 320 150" width="300" role="img" aria-label="Gráfica fuerza frente a deformación de un resorte: recta de pendiente k; el área bajo ella es la energía elástica">
+      <line x1="40" y1="120" x2="300" y2="120" stroke="var(--ink)" stroke-width="1.3"/>
+      <line x1="40" y1="120" x2="40" y2="20" stroke="var(--ink)" stroke-width="1.3"/>
+      <text x="22" y="28" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">F</text>
+      <text x="292" y="138" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">x</text>
+      <polygon points="40,120 250,45 250,120" fill="var(--teal)" opacity="0.12"/>
+      <line x1="40" y1="120" x2="250" y2="45" stroke="var(--teal)" stroke-width="2.5"/>
+      <text x="118" y="112" font-family="Space Grotesk" font-size="11" fill="var(--teal-deep)">área = ½kx²</text>
+      <text x="150" y="74" font-family="IBM Plex Mono" font-size="11" fill="var(--teal)">pend. = k</text>
+    </svg>
+    <figcaption>Pendiente de F–x = k; área bajo la recta = energía elástica ½kx².</figcaption>
+  </figure>
+  <div class="box beyond"><span class="lbl">Combinación de resortes</span>
+    <p><strong>En paralelo</strong> (lado a lado, comparten el estiramiento): las fuerzas se suman ⇒ el conjunto es más rígido.</p>
+    <div class="eq">\[ k_{\text{eq}}=k_1+k_2 \]<span class="eqname">resortes en paralelo (más rígido)</span></div>
+    <p><strong>En serie</strong> (uno tras otro, comparten la misma fuerza): los estiramientos se suman ⇒ el conjunto es más blando.</p>
+    <div class="eq">\[ \frac{1}{k_{\text{eq}}}=\frac{1}{k_1}+\frac{1}{k_2} \]<span class="eqname">resortes en serie (más blando)</span></div>
+    <p><strong>Numérico:</strong> dos resortes de \(k=200\) N·m⁻¹. En paralelo \(k_{eq}=400\) N·m⁻¹; en serie \(k_{eq}=100\) N·m⁻¹.</p>
+    <p><strong>Proporción:</strong> \(n\) resortes iguales en paralelo dan \(nk\); en serie dan \(k/n\).</p>
+  </div>
+</section>
+
+<!-- S3 -->
+<section id="s3">
+  <p class="sec-num">SECCIÓN 03</p>
+  <h2>Energía cinética y teorema trabajo–energía<span class="rule"></span></h2>
+  <p class="sec-intro">El trabajo de la fuerza <em>resultante</em> sobre un cuerpo es igual al cambio de su energía cinética.</p>
+  <div class="eq">\[ E_k=\tfrac12 mv^2=\frac{p^2}{2m} \qquad W_{\text{neto}}=\Delta E_k \]<span class="eqname">energía cinética y teorema trabajo–energía</span></div>
+  <p><strong>¿De dónde sale \(W_{\text{neto}}=\Delta E_k\)?</strong> Toma un cuerpo bajo una fuerza neta constante que recorre una distancia \(s\). Su trabajo neto es \(W_{\text{neto}}=F_{\text{neta}}\,s\). Por la segunda ley de Newton, \(F_{\text{neta}}=ma\), así que \(W_{\text{neto}}=m\,a\,s\). Ahora usa la ecuación de cinemática \(v^2=u^2+2as\), que despejada da \(as=\tfrac12(v^2-u^2)\). Sustituye: \[ W_{\text{neto}}=m\cdot\tfrac12\,(v^2-u^2)=\tfrac12mv^2-\tfrac12mu^2=E_{k,f}-E_{k,i}=\Delta E_k. \] Lo que la fuerza neta «mete» como trabajo aparece exactamente como aumento de energía cinética. Si \(W_{\text{neto}}\) es negativo (una frenada), \(\Delta E_k<0\) y el cuerpo se ralentiza.</p>
+  <p><strong>Qué representa y cuándo usarlo:</strong> es el puente entre fuerzas y energía. Te permite resolver <em>sin</em> tocar el tiempo: con la fuerza neta y la distancia obtienes el cambio de rapidez, y a la inversa. Úsalo siempre que el problema mezcle fuerza y distancia (o rapidez inicial y final) y no pregunte por el tiempo; si el tiempo importa, vuelve a SUVAT. Ojo: es el trabajo <strong>neto</strong> (de la resultante), no el de una sola fuerza.</p>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 3.1</span><span class="ej-src">ficha · M01 (Anna frena a la mitad)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la energía cinética final</span>
+      <p>La rapidez de Anna baja a la mitad; su energía cinética inicial era \(K_0\).</p>
+      <div class="sol"><p>\(E_k\propto v^2\); al pasar a \(v/2\): \(E_k'=(\tfrac12)^2K_0=K_0/4\).</p><span class="ans">K₀/4 (opción B).</span></div>
+    </div>
+  </div>
+  <div class="box"><span class="lbl">Números y proporción</span>
+    <p><strong>Numérico:</strong> \(m=2{,}0\ \mathrm{kg}\), \(v=3{,}0\ \mathrm{m\,s^{-1}}\Rightarrow E_k=\tfrac12(2{,}0)(3{,}0)^2=9{,}0\ \mathrm J\).</p>
+    <p><strong>Proporción:</strong> \(E_k\propto v^2\); triplicar la rapidez multiplica la energía cinética por 9 (y la frenada \(W=\Delta E_k\) también).</p></div>
+</section>
+
+<!-- S4 -->
+<section id="s4">
+  <p class="sec-num">SECCIÓN 04</p>
+  <h2>Energías potenciales y energía mecánica<span class="rule"></span></h2>
+  <div class="eq">\[ \Delta E_p=mg\Delta h \qquad E_H=\tfrac12 k(\Delta x)^2 \qquad E_{\text{mec}}=E_k+E_p+E_H \]<span class="eqname">gravitatoria, elástica y energía mecánica total</span></div>
+  <p><strong>¿De dónde sale \(E_p=mgh\)?</strong> Para subir un cuerpo a velocidad constante una altura \(h\) tienes que aplicar una fuerza hacia arriba igual a su peso, \(mg\), a lo largo de la distancia \(h\). El trabajo que haces <em>contra</em> la gravedad es \(W=(\text{fuerza})(\text{distancia})=mg\cdot h\). Esa energía no se pierde: queda almacenada por la posición del cuerpo y la recuperas íntegra si lo dejas caer (la gravedad hará entonces ese mismo trabajo sobre él). A esa energía guardada la llamamos energía potencial gravitatoria, \(E_p=mgh\).</p>
+  <p><strong>¿Por qué solo importa \(\Delta h\)?</strong> La gravedad apunta siempre hacia abajo, así que su trabajo solo cuenta cuánto <em>bajas o subes en vertical</em>; el avance horizontal es perpendicular al peso y no aporta trabajo (\(\cos90^\circ=0\)). Por eso da igual el camino: subas por una escalera recta, una rampa larga y tendida o en zigzag, mientras llegues a la misma altura el cambio de energía potencial es el mismo, \(\Delta E_p=mg\Delta h\). Esto es precisamente lo que hace a la gravedad una fuerza <strong>conservativa</strong>. Y por eso el «cero» de altura lo eliges tú (el suelo, la mesa…): solo las <em>diferencias</em> \(\Delta h\) tienen significado físico.</p>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 4.1</span><span class="ej-src">ficha · M19 (ΔEp) · enlaza con Módulo 1</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el cambio de energía potencial</span>
+      <p>Un objeto de peso \(6{,}10\times10^{2}\) N sube 8,0 m en vertical.</p>
+      <div class="sol">
+        <p>\(\Delta E_p=W\,\Delta h=610\times8{,}0=4880\ \mathrm J\). Cifras significativas: 8,0 tiene 2 c.s. ⇒ \(4{,}9\ \mathrm{kJ}\).</p>
+        <span class="ans">4,9 kJ (opción B, por cifras significativas).</span>
+      </div>
+    </div>
+  </div>
+  <div class="box"><span class="lbl">Números y proporción</span>
+    <p><strong>Numérico:</strong> \(m=2{,}0\ \mathrm{kg}\) sube 3,0 m: \(\Delta E_p=2{,}0(10)(3{,}0)=60\ \mathrm J\).</p>
+    <p><strong>Proporción:</strong> \(\Delta E_p\propto h\) (lineal) y \(\propto m\); en cambio la elástica \(E_H\propto x^2\): duplicar \(x\) cuadruplica \(E_H\).</p></div>
+</section>
+
+<!-- S5 -->
+<section id="s5">
+  <p class="sec-num">SECCIÓN 05</p>
+  <h2>Conservación de la energía · fuerzas no conservativas<span class="rule"></span></h2>
+  <p class="sec-intro">Sin fricción ni arrastre, la energía mecánica total se conserva. La fricción convierte energía mecánica en térmica.</p>
+  <div class="eq">\[ E_{k,i}+E_{p,i}=E_{k,f}+E_{p,f}\ \ (\text{sin fricción}) \qquad \Delta E_{\text{mec}}=W_{\text{no conservativo}} \]<span class="eqname">conservación y balance con fuerzas no conservativas</span></div>
+  <p><strong>¿Por qué se conserva (sin fricción)?</strong> El teorema trabajo–energía dice \(W_{\text{neto}}=\Delta E_k\). Si las únicas fuerzas que trabajan son conservativas (gravedad, resorte), su trabajo puede escribirse como \(W=-\Delta E_p\) (la gravedad hace trabajo positivo justo cuando la \(E_p\) baja). Igualando ambas expresiones: \(-\Delta E_p=\Delta E_k\), es decir \(\Delta E_k+\Delta E_p=0\): lo que una gana, la otra lo pierde, y la suma \(E_k+E_p\) no cambia. La energía solo se <em>transforma</em> de potencial a cinética y de vuelta, como en la montaña rusa del esquema.</p>
+  <p><strong>¿Por qué la fricción «rompe» esa conservación?</strong> La fricción es <em>no</em> conservativa: su trabajo \(W_f=-f\,d\) depende del camino recorrido y es siempre negativo (se opone al movimiento). Ese trabajo negativo extrae energía mecánica del sistema, pero la energía total no desaparece: se convierte en calor (las superficies se calientan) y algo de sonido. Por eso el balance general es \(\Delta E_{\text{mec}}=W_{\text{no cons}}=-f\,d\): la energía mecánica que «falta» es exactamente el calor que generó la fricción. En un ciclo cerrado la gravedad devuelve todo (\(W_{\text{cons}}=0\)), pero la fricción ya disipó energía en cada tramo y <strong>nunca</strong> la devuelve; de ahí que los objetos reales terminen siempre por detenerse.</p>
+  <div class="box key"><span class="lbl">Idea clave (guía A.3)</span><p>«La energía como método para resolver cinemática»: si solo importan rapideces y alturas (no el tiempo), la conservación de energía es más rápida que SUVAT. Y el <strong>cambio</strong> de energía mecánica es exactamente el trabajo de la fricción (negativo).</p></div>
+  <div class="box"><span class="lbl">Fuerza conservativa: W = −ΔEp</span>
+    <p><strong>Concepto:</strong> una fuerza conservativa (gravedad, elástica) define una energía potencial; su trabajo <em>no</em> depende del camino, solo de los puntos inicial y final.</p>
+    <div class="eq">\[ W_{\text{cons}}=-\Delta E_p \qquad W_{\text{cons}}=0\ \text{(en un ciclo cerrado)} \]<span class="eqname">trabajo de una fuerza conservativa</span></div>
+    <p><strong>Numérico:</strong> bajar 2,0 m un cuerpo de 3,0 kg da \(W_{peso}=-\Delta E_p=+mg\Delta h=+60\) J; al volver a subirlo, \(-60\) J ⇒ el ciclo suma 0. La fricción (\(f=5{,}0\) N sobre 8,0 m de ida y vuelta) disipa \(-40\) J y <strong>no</strong> se anula en el ciclo.</p>
+    <p><strong>Proporción:</strong> \(W_{\text{cons}}\) solo cambia con \(\Delta h\) (o \(\Delta x\)); \(|W_f|\propto\) distancia recorrida, por eso crece con cada tramo.</p></div>
+  <figure class="fig">
+    <svg viewBox="0 0 360 185" width="330" role="img" aria-label="Montaña rusa sin fricción: el carro en lo alto tiene energía potencial máxima y cinética nula; abajo, cinética máxima y potencial nula">
+      <line x1="20" y1="162" x2="345" y2="162" stroke="var(--ink)" stroke-width="1"/>
+      <line x1="55" y1="45" x2="20" y2="45" stroke="var(--ink-soft)" stroke-width="0.8" stroke-dasharray="3 3"/>
+      <text x="22" y="42" font-family="IBM Plex Mono" font-size="9" fill="var(--ink-soft)">h</text>
+      <path d="M55,45 C145,50 150,152 305,152" fill="none" stroke="var(--teal-deep)" stroke-width="3"/>
+      <circle cx="55" cy="39" r="6.5" fill="var(--amber)" stroke="var(--teal-deep)" stroke-width="1"/>
+      <circle cx="305" cy="146" r="6.5" fill="var(--teal)" stroke="var(--teal-deep)" stroke-width="1"/>
+      <text x="68" y="38" font-family="Space Grotesk" font-size="11" fill="var(--amber)" font-weight="600">Ep = máx</text>
+      <text x="68" y="52" font-family="Space Grotesk" font-size="11" fill="var(--teal)">Ec = 0</text>
+      <text x="212" y="128" font-family="Space Grotesk" font-size="11" fill="var(--amber)">Ep = 0</text>
+      <text x="212" y="142" font-family="Space Grotesk" font-size="11" fill="var(--teal)" font-weight="600">Ec = máx</text>
+    </svg>
+    <figcaption>Sin fricción la Ep de lo alto se transforma íntegramente en Ec abajo; la suma Ep + Ec se conserva.</figcaption>
+  </figure>
+  <figure class="fig">
+    <svg viewBox="0 0 340 200" width="320" role="img" aria-label="Barras de energía potencial, cinética y total en dos instantes; la energía total es la misma, mostrando conservación">
+      <line x1="30" y1="150" x2="325" y2="150" stroke="var(--ink)" stroke-width="1.2"/>
+      <line x1="30" y1="150" x2="30" y2="38" stroke="var(--ink)" stroke-width="1.2"/>
+      <text x="14" y="44" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">E</text>
+      <rect x="52" y="50" width="26" height="100" fill="var(--amber)" opacity="0.85"/>
+      <rect x="84" y="148" width="26" height="2" fill="var(--teal)"/>
+      <rect x="116" y="50" width="26" height="100" fill="none" stroke="var(--teal-deep)" stroke-width="2"/>
+      <text x="65" y="163" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)" text-anchor="middle">Ep</text>
+      <text x="97" y="163" font-family="IBM Plex Mono" font-size="10" fill="var(--teal)" text-anchor="middle">Ec</text>
+      <text x="129" y="163" font-family="IBM Plex Mono" font-size="10" fill="var(--teal-deep)" text-anchor="middle">Σ</text>
+      <text x="97" y="182" font-family="Space Grotesk" font-size="11" fill="var(--ink-soft)" text-anchor="middle">Instante 1 · arriba</text>
+      <rect x="202" y="148" width="26" height="2" fill="var(--amber)"/>
+      <rect x="234" y="50" width="26" height="100" fill="var(--teal)" opacity="0.85"/>
+      <rect x="266" y="50" width="26" height="100" fill="none" stroke="var(--teal-deep)" stroke-width="2"/>
+      <text x="215" y="163" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)" text-anchor="middle">Ep</text>
+      <text x="247" y="163" font-family="IBM Plex Mono" font-size="10" fill="var(--teal)" text-anchor="middle">Ec</text>
+      <text x="279" y="163" font-family="IBM Plex Mono" font-size="10" fill="var(--teal-deep)" text-anchor="middle">Σ</text>
+      <text x="247" y="182" font-family="Space Grotesk" font-size="11" fill="var(--ink-soft)" text-anchor="middle">Instante 2 · abajo</text>
+      <line x1="30" y1="50" x2="325" y2="50" stroke="var(--teal-deep)" stroke-width="0.7" stroke-dasharray="4 3"/>
+    </svg>
+    <figcaption>La energía se reparte entre Ep y Ec, pero el total (Σ) es idéntico en ambos instantes: energía mecánica conservada.</figcaption>
+  </figure>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 5.1</span><span class="ej-src">ficha · N99 (dos caminos)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide comparar la rapidez en Q</span>
+      <p>Un carro parte del reposo en P y llega a Q (más bajo) por dos caminos distintos, sin fricción.</p>
+      <div class="sol"><p>Sin fricción, \(\tfrac12mv^2=mg\Delta h\Rightarrow v=\sqrt{2g\Delta h}\): la rapidez solo depende de la <strong>caída de altura</strong>, no del camino.</p><span class="ans">La misma por ambos caminos (opción C).</span></div>
+    </div>
+  </div>
+  <div class="box"><span class="lbl">Números y proporción</span>
+    <p><strong>Numérico:</strong> caída libre desde 5,0 m: \(v=\sqrt{2(10)(5{,}0)}=10\ \mathrm{m\,s^{-1}}\).</p>
+    <p><strong>Proporción:</strong> \(v=\sqrt{2gh}\Rightarrow v\propto\sqrt h\); para duplicar la rapidez al pie hace falta <strong>cuádruple</strong> altura.</p></div>
+</section>
+
+<!-- S6 -->
+<section id="s6">
+  <p class="sec-num">SECCIÓN 06</p>
+  <h2>Potencia y rendimiento<span class="rule"></span></h2>
+  <div class="eq">\[ P=\frac{\Delta W}{\Delta t}=Fv \qquad \eta=\frac{E_{\text{salida}}}{E_{\text{entrada}}}=\frac{P_{\text{salida}}}{P_{\text{entrada}}} \]<span class="eqname">potencia y rendimiento</span></div>
+  <p><strong>¿De dónde sale \(P=\dfrac{W}{t}\)?</strong> Potencia es la rapidez con que se transfiere energía: no basta con cuánto trabajo haces, sino en cuánto tiempo. Subir 100 escalones cuesta la misma energía despacio o deprisa, pero hacerlo en 10 s exige mucha más potencia que en 2 minutos. Por eso \(P=\dfrac{\text{energía transferida}}{\text{tiempo}}=\dfrac{W}{t}\), medida en vatios (1 W = 1 J·s⁻¹).</p>
+  <p><strong>¿Por qué \(P=Fv\)?</strong> Parte de \(P=\dfrac{W}{t}\) con una fuerza \(F\) en la dirección del movimiento: \(W=F\,d\), así que \(P=\dfrac{F\,d}{t}\). Pero \(\dfrac{d}{t}\) es la rapidez \(v\), luego \(P=F\,v\). Es la misma idea vista «por instante»: la potencia que entrega un motor es su fuerza impulsora por lo rápido que avanza. De aquí sale una consecuencia clave: a potencia fija, cuanto más rápido vas menos fuerza te queda (\(F=P/v\)); por eso un auto empuja con mucha fuerza al arrancar y cada vez menos a alta velocidad.</p>
+  <p><strong>Rendimiento (de dónde viene el \(\eta<1\)):</strong> ninguna máquina real entrega toda la energía que recibe; parte se disipa como calor, sonido o fricción interna. El rendimiento \(\eta=\dfrac{E_{\text{útil}}}{E_{\text{entrada}}}=\dfrac{P_{\text{útil}}}{P_{\text{entrada}}}\) mide qué fracción aprovechas. Es adimensional, va de 0 a 1 (0–100 %) y <strong>nunca</strong> llega a 1, porque siempre hay pérdidas; la energía «perdida» no se destruye, solo deja de ser útil.</p>
+  <p><strong>P = Fv</strong> es potentísima: a rapidez constante, la potencia motriz es fuerza × velocidad. El rendimiento \(\eta<1\) siempre; el resto se disipa (calor, sonido). Los flujos de energía se dibujan en un <strong>diagrama de Sankey</strong> (el ancho de cada flecha ∝ energía).</p>
+  <div class="box"><span class="lbl">Potencia media vs. instantánea</span>
+    <p><strong>Concepto:</strong> la <em>media</em> es la energía total entre el tiempo total de un intervalo; la <em>instantánea</em> usa la velocidad de ese instante concreto.</p>
+    <div class="eq">\[ \bar P=\frac{\Delta W}{\Delta t}=F\,\bar v \qquad P_{\text{inst}}=Fv \]<span class="eqname">media (sobre Δt) e instantánea (en un instante)</span></div>
+    <p><strong>Numérico:</strong> con fuerza motriz \(F=500\) N, a \(v=10\) m·s⁻¹ \(P_{\text{inst}}=5{,}0\) kW y a \(v=20\) m·s⁻¹ \(P_{\text{inst}}=10\) kW; si \(v\) sube uniforme de 0 a 20, \(\bar v=10\) m·s⁻¹ ⇒ \(\bar P=5{,}0\) kW.</p>
+    <p><strong>Proporción:</strong> a \(F\) fija, \(P_{\text{inst}}\propto v\): al duplicar la rapidez se duplica la potencia desarrollada en ese instante.</p></div>
+  <div class="box"><span class="lbl">Potencia en un plano inclinado</span>
+    <p><strong>Concepto:</strong> para subir a velocidad constante por un plano de ángulo \(\alpha\), el motor vence la componente del peso a lo largo del plano (\(mg\sin\alpha\)) más la fricción.</p>
+    <div class="eq">\[ P=Fv=(mg\sin\alpha+f)\,v \qquad(\text{sin fricción: } P=mg\sin\alpha\,v) \]<span class="eqname">potencia para ascender un plano inclinado a v constante</span></div>
+    <p><strong>Numérico:</strong> \(m=1000\) kg, \(\alpha=30^\circ\), \(v=5{,}0\) m·s⁻¹, sin fricción: \(P=1000(10)(0{,}5)(5{,}0)=2{,}5\times10^4\) W \(=25\) kW.</p>
+    <p><strong>Proporción:</strong> \(P\propto\sin\alpha\); el caso vertical (\(\alpha=90^\circ\)) da el máximo \(P=mgv\), y un plano horizontal (\(\alpha=0\)) solo exige potencia contra la fricción.</p></div>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 6.1</span><span class="ej-src">ficha · M05 (rendimiento de un motor)</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el rendimiento</span>
+      <p>Un motor eléctrico recibe 250 W y entrega 200 W de potencia mecánica.</p>
+      <div class="sol"><p>\(\eta=\dfrac{P_{\text{salida}}}{P_{\text{entrada}}}=\dfrac{200}{250}=0{,}80\).</p><span class="ans">80 % (opción D).</span></div>
+    </div>
+  </div>
+  <div class="box"><span class="lbl">Números y proporción</span>
+    <p><strong>Numérico:</strong> \(F=300\ \mathrm N\) a \(v=20\ \mathrm{m\,s^{-1}}\Rightarrow P=Fv=6{,}0\times10^3\ \mathrm W\).</p>
+    <p><strong>Proporción:</strong> a potencia constante, \(F\propto 1/v\); al doblar la rapidez, la fuerza motriz disponible cae a la mitad. El rendimiento \(\eta\) es adimensional y siempre \(<1\).</p></div>
+</section>
+
+<!-- S7 -->
+<section id="s7">
+  <p class="sec-num">SECCIÓN 07</p>
+  <h2>Más allá del IB (grounded en A.3)<span class="rule"></span></h2>
+  <div class="box beyond"><span class="lbl">Profundidad para el 7</span>
+    <ul>
+      <li><strong>Trabajo como integral:</strong> \(W=\int F\,dx\); explica por qué el resorte da \(\tfrac12kx^2\) y no \(kx\cdot x\).</li>
+      <li><strong>Fuerza a partir de la energía:</strong> \(F=-\dfrac{dU}{dx}\) (la fuerza apunta hacia menor energía potencial).</li>
+      <li><strong>Potencia instantánea:</strong> \(P=\dfrac{dW}{dt}=\vec F\cdot\vec v\); para arrancar con potencia constante, la fuerza cae al subir \(v\).</li>
+      <li><strong>Sankey y densidad energética:</strong> comparar combustibles por energía por kg o por m³ es clave en energía y ambiente.</li>
+      <li><strong>Energía cinética y cantidad de movimiento:</strong> \(E_k=\dfrac{p^2}{2m}\) conecta este tema con el Módulo 6.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- S8 -->
+<section id="s8">
+  <p class="sec-num">SECCIÓN 08</p>
+  <h2>Definiciones para el examen<span class="rule"></span></h2>
+  <div class="box def"><span class="lbl">Glosario</span>
+    <ul>
+      <li><strong>Trabajo:</strong> energía transferida por una fuerza; \(W=Fs\cos\theta\).</li>
+      <li><strong>Energía cinética:</strong> energía por el movimiento; \(E_k=\tfrac12mv^2\).</li>
+      <li><strong>Energía potencial gravitatoria:</strong> energía por la posición en un campo gravitatorio; \(\Delta E_p=mg\Delta h\).</li>
+      <li><strong>Energía potencial elástica:</strong> energía almacenada en un cuerpo deformado; \(E_H=\tfrac12k(\Delta x)^2\).</li>
+      <li><strong>Principio de conservación de la energía:</strong> la energía no se crea ni se destruye, solo se transforma.</li>
+      <li><strong>Fuerza conservativa:</strong> aquella cuyo trabajo no depende del camino (gravedad, elástica).</li>
+      <li><strong>Potencia:</strong> rapidez de transferencia de energía o de realización de trabajo; \(P=\Delta W/\Delta t=Fv\).</li>
+      <li><strong>Rendimiento:</strong> razón entre la energía (o potencia) útil de salida y la de entrada.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRAPS -->
+<section id="traps">
+  <p class="sec-num">CHECKLIST</p>
+  <h2>Trampas típicas del Paper 1<span class="rule"></span></h2>
+  <div class="box trap"><span class="lbl">Antes de marcar, revisa</span>
+    <ul>
+      <li>Solo la componente \(F\cos\theta\) trabaja; una fuerza perpendicular al movimiento hace trabajo cero.</li>
+      <li>A velocidad constante, el <strong>trabajo neto es cero</strong> (ΔEk = 0), aunque cada fuerza haga su trabajo.</li>
+      <li>Con fuerza variable, \(W=\) área bajo F–x (no \(Fs\)); el resorte da \(\tfrac12kx^2\), <strong>no</strong> \(kx^2\) (usa la fuerza <em>media</em>, no la final).</li>
+      <li>\(E_k\propto v^2\): al duplicar \(v\), la energía cinética se cuadruplica.</li>
+      <li>El teorema \(W_{\text{neto}}=\Delta E_k\) usa el trabajo <strong>neto</strong> (de la resultante), no el de una sola fuerza.</li>
+      <li>\(\Delta E_p=mg\Delta h\) usa la altura <strong>vertical</strong>, nunca la longitud de la rampa; elige tú el cero de altura.</li>
+      <li>Si una fuerza aplicada va inclinada, su componente vertical cambia la normal y, con ella, la fricción (\(f=\mu N\)): no supongas \(N=mg\).</li>
+      <li>La rapidez al pie de una rampa lisa no depende del camino, solo de la altura.</li>
+      <li>\(P=Fv\): a mayor rapidez, para la misma potencia se dispone de menos fuerza. No confundas potencia <em>media</em> (energía total ÷ tiempo total) con la <em>instantánea</em> (\(Fv\) en ese instante).</li>
+      <li>Rendimiento \(=\dfrac{\text{salida útil}}{\text{entrada}}\) (no al revés) y siempre < 100 %; la energía «perdida» se disipa como calor/sonido.</li>
+      <li>Trabajo del peso: positivo al <em>bajar</em>, negativo al <em>subir</em>; la fricción cinética siempre hace trabajo negativo.</li>
+      <li>Cifras significativas: \(610\times8{,}0\) se reporta con 2 c.s. → 4,9 kJ.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BLOQUE -->
+<section id="bloque">
+  <p class="sec-num">BLOQUE DE 10 EJEMPLOS RESUELTOS · TIPO 1</p>
+  <h2>Los 10 de la ficha que cubren todos los tipos<span class="rule"></span></h2>
+  <p class="sec-intro">Cubren: trabajo contra fricción, fuerza variable (área), gráfica a–x, teorema W=ΔEk, conservación con y sin pérdidas, potencia, potencia+altura y rendimiento.</p>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">1</span><span class="ej-tag">trabajo contra fricción</span><span class="ej-src">M07</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el trabajo contra la fricción</span>
+      <p>Un objeto de 50 N se arrastra por un plano a velocidad constante, subiendo una altura vertical de 12 m; el trabajo total es 1500 J.</p>
+      <div class="sol"><p>Trabajo total = trabajo contra la gravedad + contra la fricción. Contra gravedad: \(mgh=50(12)=600\) J. Fricción: \(1500-600=900\) J.</p><span class="ans">900 J (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">2</span><span class="ej-tag">fuerza variable · área</span><span class="ej-src">N13</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el trabajo</span>
+      <p>La fuerza crece de 0 a \(F\); el objeto no se mueve hasta que supera \(0{,}5F\); de \(0{,}5F\) a \(F\) se mueve una distancia \(x\).</p>
+      <div class="sol"><p>Trabajo = área bajo F–x durante el movimiento = fuerza media × distancia \(=\dfrac{0{,}5F+F}{2}\,x=0{,}75Fx\).</p><span class="ans">0,75 Fx (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">3</span><span class="ej-tag">gráfica a–x</span><span class="ej-src">M16</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el trabajo total</span>
+      <p>Gráfica a–x: \(a=20\ \mathrm{m\,s^{-2}}\) constante de \(x=0\) a 15 m, luego baja linealmente a 0 en \(x=25\) m. Masa 3,0 kg.</p>
+      <div class="sol"><p>\(W=F\,\Delta x=m\!\int a\,dx=m\times(\text{área bajo a–x})\). Área \(=\underbrace{20(15)}_{300}+\underbrace{\tfrac12(20)(10)}_{100}=400\). \(W=3{,}0(400)\).</p><span class="ans">1200 J (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">4</span><span class="ej-tag">trabajo neto = ΔEk</span><span class="ej-src">M05</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el trabajo sobre la caja</span>
+      <p>Una caja se mueve horizontalmente contra una fricción \(f\), a lo largo de \(s\), a <strong>velocidad constante</strong> \(v\).</p>
+      <div class="sol"><p>Velocidad constante ⇒ \(\Delta E_k=0\) ⇒ trabajo <strong>neto</strong> sobre la caja \(=0\). (El trabajo de la fuerza aplicada, \(+fs\), lo cancela el de la fricción, \(-fs\).)</p><span class="ans">0 (opción A).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">5</span><span class="ej-tag">W = ΔEk · frenado</span><span class="ej-src">N06</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la distancia hasta detenerse</span>
+      <p>Un cuerpo de 3,0 kg con \(E_k=24\) J es frenado por una fuerza neta de 4,0 N.</p>
+      <div class="sol"><p>\(|W_{\text{neto}}|=\Delta E_k\Rightarrow F\,d=E_k\Rightarrow 4{,}0\,d=24\).</p><span class="ans">d = 6,0 m (opción B).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">6</span><span class="ej-tag">conservación con pérdida</span><span class="ej-src">N20</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la energía transferida al aire</span>
+      <p>Objeto de 1 kg lanzado hacia abajo desde 20 m a 6 m·s⁻¹; llega al suelo a 20 m·s⁻¹. \(g=10\).</p>
+      <div class="sol">
+        <p>Energía mecánica inicial \(=\tfrac12(1)(6^2)+1(10)(20)=18+200=218\) J. Final \(=\tfrac12(1)(20^2)=200\) J.</p>
+        <p>Energía al aire \(=218-200=18\) J.</p>
+        <span class="ans">18 J (opción B).</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">7</span><span class="ej-tag">conservación · caminos</span><span class="ej-src">N99</span></div>
+    <div class="ej-body"><span class="sepide">Se pide comparar la rapidez en Q</span>
+      <p>Carro desde el reposo en P a Q por dos caminos, sin fricción.</p>
+      <div class="sol"><p>\(v=\sqrt{2g\Delta h}\): solo depende de la caída de altura.</p><span class="ans">La misma (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">8</span><span class="ej-tag">potencia P = Fv</span><span class="ej-src">M19</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la fuerza de resistencia</span>
+      <p>Un barco con potencia de salida 15 kW navega a 10 m·s⁻¹ (rapidez constante).</p>
+      <div class="sol"><p>A velocidad constante, empuje = resistencia. \(P=Fv\Rightarrow F=\dfrac{15000}{10}=1500\) N.</p><span class="ans">1,5 kN (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">9</span><span class="ej-tag">potencia + altura</span><span class="ej-src">M21</span></div>
+    <div class="ej-body"><span class="sepide">Se pide la altura de la colina</span>
+      <p>Un auto de 1200 kg sube en 20 min a velocidad constante, ganando \(E_p\) a 6,0 kW. \(g=10\).</p>
+      <div class="sol"><p>\(E_p=P\,t=6000(20\times60)=7{,}2\times10^{6}\) J. \(h=\dfrac{E_p}{mg}=\dfrac{7{,}2\times10^{6}}{1200(10)}\).</p><span class="ans">h = 600 m (opción C).</span></div>
+    </div>
+  </div>
+
+  <div class="ej"><div class="ej-head"><span class="ej-num">10</span><span class="ej-tag">rendimiento + P = Fv</span><span class="ej-src">tipo ficha</span></div>
+    <div class="ej-body"><span class="sepide">Se pide el rendimiento</span>
+      <p>Un motor con potencia de entrada 160 W levanta 8,0 kg a velocidad constante de 0,50 m·s⁻¹.</p>
+      <div class="sol"><p>Potencia útil \(=mgv=8{,}0(10)(0{,}50)=40\) W. \(\eta=\dfrac{40}{160}=0{,}25\).</p><span class="ans">25 % (opción B).</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTO -->
+<section id="resto">
+  <p class="sec-num">RESTO DE LA FICHA</p>
+  <h2>Ítems de la misma familia (resueltos)<span class="rule"></span></h2>
+  <table>
+    <tr><th>Ítem</th><th>Resp.</th><th class="l">Razón</th></tr>
+    <tr><td>Área de trabajo x₁→x₂ (N03)</td><td>D</td><td class="l">Área bajo F–x entre x₁ y x₂ = trapecio VQRT.</td></tr>
+    <tr><td>Cable: carga y descarga (M06)</td><td>Área Q <span class="flag">▲</span></td><td class="l">Trabajo neto = área encerrada (histéresis); si fuera elástico ideal sería 0.</td></tr>
+    <tr><td>Ascensor a v constante, trabajo (N07)</td><td>B</td><td class="l">\(W=F\cdot d=mg\cdot(vt)=mgvt\).</td></tr>
+    <tr><td>Cuerpo desde reposo, rapidez en d/2 (N06)</td><td>C</td><td class="l">\(\tfrac12mv^2=Fd\Rightarrow v\propto\sqrt d\Rightarrow v/\sqrt2\).</td></tr>
+    <tr><td>Potencia del insecto (M14)</td><td>c</td><td class="l">\(P=\dfrac{mgh}{\Delta t}\) (energía para subir h entre el tiempo).</td></tr>
+    <tr><td>Rendimiento motor 250→200 W (M05)</td><td>D</td><td class="l">\(\eta=200/250=80\%\) (Ej. 6.1).</td></tr>
+    <tr><td>Tren: potencia vs tiempo (M16)</td><td>d</td><td class="l">\(P=Fv\); al crecer v con resistencia creciente, P sube (forma d).</td></tr>
+  </table>
+</section>
+
+<!-- EXAMENES -->
+<section id="examenes">
+  <p class="sec-num">BANCO DE EXÁMENES IB · TIPO 1 (PAPER 1 / 1A)</p>
+  <h2>Trabajo, energía y potencia en los exámenes, 2022–2026<span class="rule"></span></h2>
+  <p class="sec-intro">Todas las preguntas de energía mecánica de los Paper 1 del IB en este rango, resueltas y con la <strong>respuesta oficial del markscheme</strong>. Es uno de los temas <strong>más evaluados</strong>, en ambos planes. Enunciados reformulados; datos y clave reales. \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+
+  <div class="box key">
+    <span class="lbl">21 preguntas · cobertura</span>
+    <p><strong>Plan nuevo (Paper 1A):</strong> mayo 2025, nov 2025 y 2026 (3). <strong>Plan anterior (Paper 1):</strong> 2022–2024 (18). No incluí aquí lo puramente térmico (calorimetría va en 13A) ni lo nuclear.</p>
+  </div>
+
+  <h4>Índice</h4>
+  <table>
+    <tr><th>#</th><th class="l">Subtema</th><th>Sesión</th><th>Plan</th><th>Resp.</th></tr>
+    <tr><td>W1</td><td class="l">Frenado por fricción (\(W=\tfrac12mv^2\))</td><td>May 2022 TZ1</td><td>ant.</td><td>B</td></tr>
+    <tr><td>W2</td><td class="l">Gráfica \(E_k\) vs distancia</td><td>May 2022 TZ1</td><td>ant.</td><td>D</td></tr>
+    <tr><td>W3</td><td class="l">Energía elástica → velocidad</td><td>May 2022 TZ2</td><td>ant.</td><td>C</td></tr>
+    <tr><td>W4</td><td class="l">Repetir una elevación \(n\) veces</td><td>Nov 2022</td><td>ant.</td><td>C</td></tr>
+    <tr><td>W5</td><td class="l">Velocidad terminal: \(E_k\) y energía total</td><td>May 2023 TZ1</td><td>ant.</td><td>A</td></tr>
+    <tr><td>W6</td><td class="l">Motor con eficiencia: altura elevada</td><td>May 2023 TZ1</td><td>ant.</td><td>B</td></tr>
+    <tr><td>W7</td><td class="l">20 % de EPG perdido: rapidez</td><td>May 2023 TZ2</td><td>ant.</td><td>C</td></tr>
+    <tr><td>W8</td><td class="l">\(E_k\) de un proyectil en la cima</td><td>Nov 2023</td><td>ant.</td><td>C</td></tr>
+    <tr><td>W9</td><td class="l">Ritmo de cambio de \(E_k\) al caer</td><td>Nov 2023</td><td>ant.</td><td>A</td></tr>
+    <tr><td>W10</td><td class="l">Trabajo del resorte al reducir extensión</td><td>May 2024 TZ1</td><td>ant.</td><td>D</td></tr>
+    <tr><td>W11</td><td class="l">Rampa lisa + superficie rugosa: altura</td><td>May 2024 TZ1</td><td>ant.</td><td>D</td></tr>
+    <tr><td>W12</td><td class="l">Trabajo sobre el aire (velocidad terminal)</td><td>May 2024 TZ1</td><td>ant.</td><td>A</td></tr>
+    <tr><td>W13</td><td class="l">Potencia útil de un motor (eficiencia)</td><td>May 2024 TZ1</td><td>ant.</td><td>B</td></tr>
+    <tr><td>W14</td><td class="l">Energía transferida por fuerza constante</td><td>May 2024 TZ1</td><td>ant.</td><td>C</td></tr>
+    <tr><td>W15</td><td class="l">Rapidez máx. de gráfica fuerza–distancia</td><td>May 2024 TZ2</td><td>ant.</td><td>B</td></tr>
+    <tr><td>W16</td><td class="l">Potencia media subiendo escaleras</td><td>May 2024 TZ2</td><td>ant.</td><td>B</td></tr>
+    <tr><td>W17</td><td class="l">Energía almacenada en un resorte</td><td>Nov 2024</td><td>ant.</td><td>C</td></tr>
+    <tr><td>W18</td><td class="l">Potencia media de una aceleración</td><td>Nov 2024</td><td>ant.</td><td>C</td></tr>
+    <tr><td>W19</td><td class="l">% de \(E_k\) perdido en colisión inelástica</td><td>May 2025 TZ3</td><td>nuevo</td><td>D</td></tr>
+    <tr><td>W20</td><td class="l">Potencia de entrada de una bomba</td><td>Nov 2025</td><td>nuevo</td><td>D</td></tr>
+    <tr><td>W21</td><td class="l">Energía disipada de gráfica \(a\)–\(d\)</td><td>May 2026 TZ2</td><td>nuevo</td><td>C</td></tr>
+  </table>
+
+  <!-- A -->
+  <h3>A · Teorema trabajo–energía (\(W=\Delta E_k\))</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W1</span><span class="ej-src">Paper 1 · May 2022 TZ1 · Q4 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un bloque con rapidez \(v\) se detiene en una distancia \(d\) por una fricción \(f\). Un segundo bloque idéntico con rapidez \(u\) se detiene en la <em>misma</em> \(d\) por una fricción \(f/2\). ¿Cuánto vale \(u\)?</p>
+      <div class="sol"><p>El trabajo de la fricción iguala la \(E_k\) inicial: \(\tfrac12mv^2=f\,d\) y \(\tfrac12mu^2=\tfrac f2\,d=\tfrac12(f d)\). Dividiendo: \(u^2=\tfrac12 v^2\Rightarrow u=\dfrac{v}{\sqrt2}\).</p>
+        <span class="ans">B) \(v/\sqrt2\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W2</span><span class="ej-src">Paper 1 · May 2022 TZ1 · Q8 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un carrito parte del reposo con aceleración constante. ¿Cómo varía su energía cinética \(E_k\) con la distancia \(s\)? (opciones = gráficas)</p>
+      <div class="sol"><p>\(E_k=\tfrac12mv^2\) y \(v^2=2as\Rightarrow E_k=mas\): \(E_k\) es <strong>proporcional a \(s\)</strong> (recta por el origen). Equivale a decir que la fuerza neta constante hace trabajo \(W=Fs\) lineal en \(s\).</p>
+        <span class="ans">D) recta por el origen ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W14</span><span class="ej-src">Paper 1 · May 2024 TZ1 · Q8 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una fuerza resultante constante \(F\) acelera desde el reposo a una masa \(m\) hasta una velocidad \(v\). ¿Qué energía se transfiere al objeto?</p>
+      <div class="sol"><p>La energía transferida es su energía cinética final: \(E_k=\tfrac12mv^2\). (También \(=Fs\), pero piden en términos de \(m\) y \(v\).)</p>
+        <span class="ans">C) \(\tfrac12 mv^2\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W15</span><span class="ej-src">Paper 1 · May 2024 TZ2 · Q7 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una masa de 4,0 kg que va a 1,0 m s⁻¹ recibe una fuerza neta que varía con la distancia (gráfica fuerza–distancia, toda positiva). ¿Rapidez máxima?</p>
+      <div class="sol"><p>El <strong>área</strong> bajo la gráfica fuerza–distancia es el trabajo \(=\Delta E_k\). Aquí el área vale ≈70 J: \(\tfrac12(4)v_\text{máx}^2=\tfrac12(4)(1{,}0)^2+70\Rightarrow v_\text{máx}^2=36\Rightarrow v_\text{máx}=6{,}0\) m s⁻¹.</p>
+        <span class="ans">B) 6 m s⁻¹ ✓ — mide el área del gráfico; es el trabajo neto.</span></div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <h3>B · Conservación de la energía mecánica</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W5</span><span class="ej-src">Paper 1 · May 2023 TZ1 · Q6 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una pelota cae a velocidad terminal por el aire. ¿Qué es correcto sobre su energía cinética y su energía total?</p>
+      <div class="sol"><p>Velocidad constante ⇒ \(E_k\) <strong>constante</strong>. La energía mecánica total \(=E_k+E_p\): como pierde altura (baja \(E_p\)) con \(E_k\) fija, la total <strong>disminuye</strong> (se disipa en el aire).</p>
+        <span class="ans">A) \(E_k\) constante · energía total disminuye ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W7</span><span class="ej-src">Paper 1 · May 2023 TZ2 · Q8 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un objeto se suelta en X y baja a Y (caída vertical 10 m). El 20 % de la EPG inicial se pierde por fricción. ¿Rapidez en Y?</p>
+      <div class="sol"><p>\(E_k=80\%\,E_p=0{,}8\,mgh\Rightarrow\tfrac12mv^2=0{,}8\,mg(10)=8mg\Rightarrow v^2=16g\Rightarrow v=4\sqrt g\).</p>
+        <span class="ans">C) \(4\sqrt g\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W8</span><span class="ej-src">Paper 1 · Nov 2023 TZ1 y TZ2 · Q4 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un proyectil se lanza con energía cinética inicial \(E\); las componentes horizontal y vertical de la velocidad son iguales. ¿Energía cinética en el punto más alto?</p>
+      <div class="sol"><p>En la cima solo queda la componente horizontal. Como \(v_x=v_y\), cada una aporta la mitad de la \(E_k\): \(E_k^\text{cima}=\tfrac12E\).</p>
+        <span class="ans">C) \(E/2\) ✓ — no es cero: el proyectil sigue avanzando en horizontal.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W11</span><span class="ej-src">Paper 1 · May 2024 TZ1 · Q5 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un objeto baja desde el reposo por una rampa lisa y luego se desliza por una superficie rugosa (coef. \(\mu\)), deteniéndose tras una distancia \(s\). ¿Altura de la rampa?</p>
+      <div class="sol"><p>Toda la EPG se gasta en fricción sobre el tramo rugoso: \(mgh=\mu mg\,s\Rightarrow h=\mu s\).</p>
+        <span class="ans">D) \(\mu s\) ✓ (la masa y \(g\) se cancelan)</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W4</span><span class="ej-src">Paper 1 · Nov 2022 · Q6 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una persona eleva 20 kg una altura de 0,60 m y repite la elevación \(n\) veces para transferir \(6{,}0\times10^4\) J en total. ¿Cuánto vale \(n\)?</p>
+      <div class="sol"><p>Cada elevación: \(mgh=20(10)(0{,}60)=120\) J. \(n=\dfrac{6{,}0\times10^4}{120}=500\).</p>
+        <span class="ans">C) 500 ✓</span></div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <h3>C · Energía elástica (resortes)</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W3</span><span class="ej-src">Paper 1 · May 2022 TZ2 · Q9 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Dos bloques salen disparados de resortes idénticos (\(k=100\) N m⁻¹) comprimidos \(\Delta x=0{,}1\) m. X tiene 1 kg y Y tiene 0,25 kg. ¿Velocidades al dejar el resorte?</p>
+      <div class="sol"><p>Energía elástica \(=\tfrac12k\Delta x^2=\tfrac12(100)(0{,}1)^2=0{,}5\) J (igual para ambos). \(\tfrac12mv^2=0{,}5\): X \(\Rightarrow v=1{,}0\); Y (menor masa) \(\Rightarrow v=2{,}0\) m s⁻¹.</p>
+        <span class="ans">C) X: 1,0 m s⁻¹ · Y: 2,0 m s⁻¹ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W10</span><span class="ej-src">Paper 1 · May 2024 TZ1 · Q3 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>La energía para estirar un resorte una distancia \(x\) es \(E\). ¿Qué trabajo hace el resorte cuando la extensión se reduce en \(x/3\)? (A \(2E/9\) · B \(E/3\) · C \(4E/9\) · D \(5E/9\))</p>
+      <div class="sol"><p>\(E_\text{el}=\tfrac12kx^2\propto(\text{extensión})^2\). De \(x\) a \(\tfrac{2x}{3}\): el trabajo del resorte es la pérdida de energía elástica \(=E\big(1-(\tfrac23)^2\big)=E\big(1-\tfrac49\big)=\tfrac59E\).</p>
+        <span class="ans">D) \(5E/9\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W17</span><span class="ej-src">Paper 1 · Nov 2024 · Q6 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Al extender un resorte una distancia \(x\), la fuerza es \(F\) (fuerza ∝ extensión). ¿Energía almacenada?</p>
+      <div class="sol"><p>Área del triángulo fuerza–extensión: \(E=\tfrac12 F x\) (la mitad de \(Fx\), porque la fuerza crece de 0 a \(F\)).</p>
+        <span class="ans">C) \(Fx/2\) ✓ — error común: poner \(Fx\) (eso sería fuerza constante).</span></div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <h3>D · Potencia y eficiencia</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W6</span><span class="ej-src">Paper 1 · May 2023 TZ1 · Q9 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un motor de potencia de entrada 200 W y eficiencia 40 % eleva 10 kg a rapidez constante. ¿Qué altura sube en 1 s?</p>
+      <div class="sol"><p>Potencia útil \(=0{,}40(200)=80\) W. \(P=\dfrac{mgh}{t}\Rightarrow h=\dfrac{Pt}{mg}=\dfrac{80(1)}{10(10)}=0{,}8\) m.</p>
+        <span class="ans">B) 0,8 m ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W13</span><span class="ej-src">Paper 1 · May 2024 TZ1 · Q7 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>A un motor se le transfieren 1,8 kJ en 0,50 minutos; su eficiencia es 40 %. ¿Potencia útil de salida?</p>
+      <div class="sol"><p>Potencia de entrada \(=\dfrac{1800}{30}=60\) W. Útil \(=0{,}40(60)=24\) W.</p>
+        <span class="ans">B) 24 W ✓ — convierte 0,50 min a 30 s.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W16</span><span class="ej-src">Paper 1 · May 2024 TZ2 · Q8 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un estudiante de masa \(m\) parte del reposo y sube unas escaleras de altura \(h\) en \(t\) s; arriba lleva velocidad \(v\). ¿Potencia media que entrega?</p>
+      <div class="sol"><p>Entrega energía potencial <em>y</em> cinética: \(W=mgh+\tfrac12mv^2\). Potencia media \(=\dfrac{m(gh+\tfrac12v^2)}{t}\).</p>
+        <span class="ans">B) \(\dfrac{m(gh+\tfrac12v^2)}{t}\) ✓ — no olvides la \(E_k\) final.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W18</span><span class="ej-src">Paper 1 · Nov 2024 · Q7 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un objeto de 6,0 kg acelera desde el reposo durante 4,0 s hasta 10 m s⁻¹. ¿Potencia media suministrada?</p>
+      <div class="sol"><p>\(W=\Delta E_k=\tfrac12(6)(10)^2=300\) J. \(P=\dfrac{300}{4}=75\) W.</p>
+        <span class="ans">C) 75 W ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W20</span><span class="ej-src">Paper 1A · Nov 2025 · Q5 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una bomba de rendimiento \(\eta\) eleva agua de un pozo de profundidad \(d\); extrae una masa \(R\) por segundo (desprecia cambios de \(E_k\)). ¿Potencia de entrada necesaria?</p>
+      <div class="sol"><p>Potencia útil \(=\) ritmo de ganancia de EPG \(=R\,g\,d\). Entrada \(=\dfrac{\text{útil}}{\eta}=\dfrac{Rgd}{\eta}\).</p>
+        <span class="ans">D) \(Rdg/\eta\) ✓</span></div>
+    </div>
+  </div>
+
+  <!-- E -->
+  <h3>E · Disipación, tasas y colisiones (energía)</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W9</span><span class="ej-src">Paper 1 · Nov 2023 TZ1 y TZ2 · Q5 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un objeto cae desde el reposo en el vacío. \(R\) = ritmo de cambio de la energía cinética con el tiempo. ¿Cómo varía \(R\) con \(t\)? (opciones = gráficas)</p>
+      <div class="sol"><p>\(E_k=\tfrac12m(gt)^2=\tfrac12mg^2t^2\Rightarrow R=\dfrac{dE_k}{dt}=mg^2t\): <strong>proporcional a \(t\)</strong> (recta por el origen). También \(R=P=Fv=mg\cdot gt\).</p>
+        <span class="ans">A) recta por el origen ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W12</span><span class="ej-src">Paper 1 · May 2024 TZ1 · Q6 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un objeto de masa \(m\) cae a velocidad terminal \(v\) durante un tiempo corto \(t\). ¿Trabajo hecho <em>sobre el aire</em> por el objeto?</p>
+      <div class="sol"><p>A velocidad terminal el arrastre \(=mg\) y el objeto recorre \(vt\). Trabajo contra el aire \(=\) fuerza \(\times\) distancia \(=mg\cdot vt=mgvt\).</p>
+        <span class="ans">A) \(mgvt\) ✓ (es también la EPG perdida, que se disipa toda)</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W21</span><span class="ej-src">Paper 1A · May 2026 TZ2 · Q6 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>La gráfica de aceleración frente a distancia de un auto de 1500 kg que frena hasta detenerse en 40 m. ¿Energía disipada?</p>
+      <div class="sol"><p>La energía disipada es la \(E_k\) inicial: \(\tfrac12v^2=\int a\,ds=\) área bajo la gráfica \(|a|\)–\(d\) (≈80 m²s⁻²). Energía \(=m\cdot\tfrac12v^2=1500\times80=1{,}2\times10^5\) J.</p>
+        <span class="ans">C) 120 kJ ✓ — \(\tfrac12v^2\) es el área bajo la curva \(a\)–\(d\).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">W19</span><span class="ej-src">Paper 1A · May 2025 TZ3 · Q5 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una pelota de masa \(m\) choca con otra de masa \(3m\) en reposo y quedan unidas. ¿Qué porcentaje de energía cinética pierde el sistema?</p>
+      <div class="sol"><p>Momento: \(mv=(4m)v'\Rightarrow v'=\tfrac v4\). \(E_k^i=\tfrac12mv^2\); \(E_k^f=\tfrac12(4m)(\tfrac v4)^2=\tfrac14E_k^i\). Pérdida \(=1-\tfrac14=75\%\).</p>
+        <span class="ans">D) 75 % ✓ — toda colisión perfectamente inelástica pierde \(E_k\) (se conserva el momento, no la energía).</span></div>
+    </div>
+  </div>
+
+  <div class="box beyond">
+    <span class="lbl">Qué va en el Módulo 5B (tipo 2)</span>
+    <p>Los problemas de energía del <strong>Paper 2</strong> (montañas rusas con fricción, resortes + rampas, potencia de máquinas con varios apartados, gráficas de energía) se resolverán en el Módulo 5B.</p>
+  </div>
+</section>
+
+<!-- PRACTICA -->
+<section id="practica">
+  <p class="sec-num">PARA TI · RESUELVE Y ENVÍA EN BLOQUE</p>
+  <h2>10 retos (nuevos, ninguno fácil, nivel ascendente)<span class="rule"></span></h2>
+  <p class="sec-intro">Ninguno repite los ejemplos. Combinan trabajo, energía y potencia con fuerzas, cinemática y resortes. Los #9 y #10 integran Dinámica, Cinemática e Incertidumbre y superan el IB. \(g=10\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">C1 · trabajo, fricción y ΔEk</p><p>Un bloque de 4,0 kg, inicialmente en reposo, es empujado 6,0 m por una fuerza de 50 N a 37° sobre la horizontal (\(\sin37^\circ=0{,}6\), \(\cos37^\circ=0{,}8\)) sobre suelo rugoso (\(\mu_d=0{,}25\)). Halla el trabajo de la fuerza aplicada, el de la fricción, el trabajo neto y la rapidez final.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p><strong>Datos:</strong> \(m=4{,}0\) kg, \(F=50\) N, \(\theta=37^\circ\), \(d=6{,}0\) m, \(\mu_d=0{,}25\). La fuerza está \(37^\circ\) <em>sobre</em> la horizontal ⇒ su componente vertical apunta hacia arriba.</p>
+      <p><strong>Trabajo de F</strong> (solo la componente horizontal): \(W_F=F\cos\theta\,d=50(0{,}8)(6{,}0)=240\ \mathrm J\).</p>
+      <p><strong>Normal y fricción:</strong> en vertical \(N=mg-F\sin\theta=40-50(0{,}6)=10\ \mathrm N\); \(f=\mu_d N=0{,}25(10)=2{,}5\ \mathrm N\); \(W_f=-f\,d=-2{,}5(6{,}0)=-15\ \mathrm J\).</p>
+      <p><strong>Trabajo neto</strong> (peso y normal no trabajan): \(W_{\text{neto}}=240-15=225\ \mathrm J\).</p>
+      <p><strong>Rapidez final:</strong> \(\tfrac12mv^2=W_{\text{neto}}\Rightarrow v=\sqrt{2(225)/4{,}0}=\sqrt{112{,}5}\approx10{,}6\ \mathrm{m\,s^{-1}}\).</p>
+      <span class="ans">W_F = 240 J; W_f = −15 J; W_neto = 225 J; v ≈ 11 m·s⁻¹.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C2 · montaña rusa con pérdidas</p><p>Un carro de 300 kg parte del reposo a 25 m de altura (vía sin fricción hasta el fondo). (a) Halla su rapidez al pie. (b) Halla su rapidez al pasar por una loma de 10 m. (c) Si en realidad la fricción disipa 2,0×10⁴ J entre el inicio y el fondo, ¿cuál es la rapidez real al pie?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Sin fricción toda la \(E_p\) pasa a \(E_k\): \(\tfrac12v^2=gh\Rightarrow v=\sqrt{2(10)(25)}=\sqrt{500}\approx22{,}4\ \mathrm{m\,s^{-1}}\).</p>
+      <p>(b) En la loma de 10 m la caída efectiva es \(25-10=15\) m: \(v=\sqrt{2(10)(15)}=\sqrt{300}\approx17{,}3\ \mathrm{m\,s^{-1}}\).</p>
+      <p>(c) Con pérdida: \(\tfrac12mv^2=mgh-2{,}0\times10^4=300(10)(25)-20000=55000\ \mathrm J\Rightarrow v=\sqrt{2(55000)/300}=\sqrt{366{,}7}\approx19{,}1\ \mathrm{m\,s^{-1}}\).</p>
+      <span class="ans">(a) ≈22 m·s⁻¹ (b) ≈17 m·s⁻¹ (c) ≈19 m·s⁻¹.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C3 · lanzador de resorte</p><p>Un resorte de \(k=800\ \mathrm{N\,m^{-1}}\) se comprime 0,15 m y lanza horizontalmente un bloque de 0,30 kg. (a) Halla la rapidez de lanzamiento (superficie lisa). (b) Si luego el bloque entra en una zona rugosa con \(\mu_d=0{,}25\), ¿qué distancia recorre hasta detenerse?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Energía elástica: \(E=\tfrac12kx^2=\tfrac12(800)(0{,}15)^2=9{,}0\ \mathrm J\). Toda pasa a cinética: \(\tfrac12mv^2=9{,}0\Rightarrow v=\sqrt{18/0{,}30}=\sqrt{60}\approx7{,}7\ \mathrm{m\,s^{-1}}\).</p>
+      <p>(b) La fricción disipa toda la \(E_k\): \(\mu_d mg\,d=9{,}0\Rightarrow d=\dfrac{9{,}0}{0{,}25(0{,}30)(10)}=\dfrac{9{,}0}{0{,}75}=12\ \mathrm m\).</p>
+      <span class="ans">(a) v ≈ 7,7 m·s⁻¹ (b) d = 12 m.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C4 · bomba de agua y rendimiento</p><p>Una bomba eleva 500 kg de agua por minuto hasta 20 m y le da una rapidez de salida de 4,0 m·s⁻¹. (a) Halla la potencia útil de salida. (b) Si la bomba tiene un rendimiento del 70 %, halla la potencia eléctrica de entrada.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Caudal másico: \(500\ \mathrm{kg}/60\ \mathrm s=8{,}33\ \mathrm{kg\,s^{-1}}\). Energía entregada a cada kg: \(gh+\tfrac12v^2=10(20)+\tfrac12(4{,}0)^2=200+8=208\ \mathrm{J\,kg^{-1}}\).</p>
+      <p>(a) \(P_{\text{útil}}=8{,}33(208)\approx1{,}7\times10^3\ \mathrm W\).</p>
+      <p>(b) \(P_{\text{entrada}}=P_{\text{útil}}/\eta=1733/0{,}70\approx2{,}5\times10^3\ \mathrm W\).</p>
+      <span class="ans">(a) ≈1,7 kW (b) ≈2,5 kW.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C5 · potencia media de un motor</p><p>Un auto de 1000 kg acelera de 0 a 25 m·s⁻¹ en 8,0 s por una vía horizontal, contra una resistencia constante de 400 N. Determina la potencia media desarrollada por el motor durante ese intervalo.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Ganancia de energía cinética: \(\Delta E_k=\tfrac12(1000)(25)^2=3{,}13\times10^5\ \mathrm J\).</p>
+      <p>Distancia (aceleración uniforme): \(d=\bar v\,t=\dfrac{0+25}{2}(8{,}0)=100\ \mathrm m\); trabajo contra la resistencia \(=400(100)=4{,}0\times10^4\ \mathrm J\).</p>
+      <p>Trabajo del motor \(=\Delta E_k+W_{\text{res}}=312500+40000=352500\ \mathrm J\); \(\bar P=\dfrac{352500}{8{,}0}\approx4{,}4\times10^4\ \mathrm W\).</p>
+      <span class="ans">P̄ ≈ 44 kW.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C6 · energía en un plano rugoso</p><p>Un bloque de 2,0 kg se suelta desde el reposo en lo alto de una rampa rugosa de 30°, 5,0 m de longitud, con \(\mu_d=0{,}20\). Usa métodos de energía para hallar su rapidez al pie de la rampa y la energía disipada por fricción.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Altura descendida: \(h=L\sin30^\circ=5{,}0(0{,}5)=2{,}5\ \mathrm m\). La normal es \(N=mg\cos30^\circ\), así que \(f=\mu_d mg\cos30^\circ\).</p>
+      <p><strong>Energía disipada:</strong> \(W_f=\mu_d mg\cos30^\circ\,L=0{,}20(2{,}0)(10)(0{,}866)(5{,}0)\approx17{,}3\ \mathrm J\).</p>
+      <p><strong>Rapidez</strong> (la masa se cancela): \(\tfrac12mv^2=mgh-W_f\Rightarrow\tfrac12v^2=g h-\mu_d g\cos30^\circ L=25-8{,}66=16{,}3\Rightarrow v=\sqrt{32{,}7}\approx5{,}7\ \mathrm{m\,s^{-1}}\).</p>
+      <span class="ans">v ≈ 5,7 m·s⁻¹; energía disipada ≈ 17 J.</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C7 · péndulo con pérdida</p><p>Una esfera de 0,50 kg atada a una cuerda se suelta desde una altura de 0,80 m sobre el punto más bajo. (a) Halla su rapidez en el punto más bajo (sin pérdidas). (b) Si en la subida al otro lado solo alcanza 0,68 m, ¿cuánta energía se perdió y a qué se debe?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Toda la \(E_p\) pasa a \(E_k\) en el punto más bajo: \(v=\sqrt{2gh}=\sqrt{2(10)(0{,}80)}=\sqrt{16}=4{,}0\ \mathrm{m\,s^{-1}}\).</p>
+      <p>(b) La altura que no recupera mide la energía perdida: \(\Delta E=mg\Delta h=0{,}50(10)(0{,}80-0{,}68)=0{,}50(10)(0{,}12)=0{,}60\ \mathrm J\). Se disipa por la resistencia del aire y el rozamiento en el pivote.</p>
+      <span class="ans">(a) 4,0 m·s⁻¹ (b) 0,60 J (arrastre y rozamiento).</span>
+    </div></details></div>
+  <div class="prob"><p class="pn">C8 · ascensor con fricción</p><p>Un motor sube una cabina de 800 kg a velocidad constante de 2,0 m·s⁻¹ venciendo, además del peso, una fricción de 500 N. (a) Halla la potencia útil del motor. (b) Si además la cabina acelera a 1,0 m·s⁻² en el instante en que va a 2,0 m·s⁻¹, halla la potencia en ese instante.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) A velocidad constante la fuerza del motor equilibra peso + fricción: \(F=mg+f=8000+500=8500\ \mathrm N\); \(P=Fv=8500(2{,}0)=1{,}7\times10^4\ \mathrm W\).</p>
+      <p>(b) Al acelerar \(a=1{,}0\ \mathrm{m\,s^{-2}}\) se suma \(ma\): \(F=mg+f+ma=8000+500+800(1{,}0)=9300\ \mathrm N\); \(P=Fv=9300(2{,}0)=1{,}86\times10^4\ \mathrm W\).</p>
+      <span class="ans">(a) 17 kW (b) ≈18,6 kW (potencia instantánea).</span>
+    </div></details></div>
+  <div class="prob jefe"><p class="pn">C9 · INTEGRADOR (Cinemática + Dinámica + energía, supera IB)</p><p>Un bloque de 2,0 kg se lanza rampa arriba a 8,0 m·s⁻¹ por un plano de 30° con \(\mu_d=0{,}30\). Con métodos de energía: (a) halla la distancia que sube. (b) Determina si vuelve a bajar y, si lo hace, su rapidez al regresar al punto de lanzamiento. (c) Calcula la energía total disipada por fricción en el viaje de ida y vuelta y compárala con la energía cinética inicial.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Con \(\sin30^\circ=0{,}5\), \(\cos30^\circ=0{,}866\), la fricción vale \(f=\mu_d mg\cos\theta=0{,}30(2{,}0)(10)(0{,}866)=5{,}20\ \mathrm N\).</p>
+      <p>(a) Subida (gravedad y fricción frenan): \(\tfrac12v^2=g d(\sin\theta+\mu_d\cos\theta)\Rightarrow d=\dfrac{8{,}0^2}{2(10)(0{,}5+0{,}260)}=\dfrac{64}{15{,}2}\approx4{,}2\ \mathrm m\).</p>
+      <p>(b) Como \(\tan30^\circ=0{,}58>\mu_d=0{,}30\), el peso vence a la fricción y el bloque vuelve a bajar. Bajada: \(v'^2=2g d(\sin\theta-\mu_d\cos\theta)=2(10)(4{,}2)(0{,}240)\approx20{,}2\Rightarrow v'\approx4{,}5\ \mathrm{m\,s^{-1}}\).</p>
+      <p>(c) Recorrido total \(2d=8{,}4\) m; energía disipada \(W_f=5{,}20(8{,}4)\approx44\ \mathrm J\). La \(E_k\) inicial era \(\tfrac12(2{,}0)(8{,}0)^2=64\ \mathrm J\): la fricción se lleva \(\approx 68\%\) (y \(64-44=20\) J quedan como \(E_k\) al regresar, lo que confirma \(v'\)).</p>
+      <span class="ans">(a) d ≈ 4,2 m (b) sí baja; v′ ≈ 4,5 m·s⁻¹ (c) ≈44 J ≈ 68 % de 64 J.</span>
+    </div></details></div>
+  <div class="prob jefe"><p class="pn">C10 · PROBLEMA JEFE (resorte + proyectil + Módulo 1, supera IB)</p><p>Para medir la constante de un resorte se comprime una distancia \(x=(8{,}0\pm0{,}2)\ \mathrm{cm}\) y se lanza horizontalmente un bloque de \(m=(0{,}200\pm0{,}005)\ \mathrm{kg}\) desde una mesa de altura \(h=(0{,}90\pm0{,}02)\ \mathrm m\); el bloque cae a un alcance \(R=(1{,}60\pm0{,}04)\ \mathrm m\). (a) Halla la rapidez de lanzamiento a partir del movimiento de proyectil (usa \(g=9{,}8\)). (b) Usando \(\tfrac12kx^2=\tfrac12mv^2\), determina \(k\). (c) Propaga las incertidumbres para dar \(k\pm\Delta k\). (d) Si en la práctica \(k\) real fuera mayor que tu valor, ¿qué te diría eso sobre la energía en el lanzamiento?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Caída del borde de la mesa: \(t=\sqrt{2h/g}=\sqrt{2(0{,}90)/9{,}8}=0{,}429\ \mathrm s\); \(v=R/t=1{,}60/0{,}429\approx3{,}73\ \mathrm{m\,s^{-1}}\).</p>
+      <p>(b) \(\tfrac12kx^2=\tfrac12mv^2\Rightarrow k=\dfrac{mv^2}{x^2}=\dfrac{0{,}200(3{,}73)^2}{(0{,}080)^2}\approx4{,}4\times10^2\ \mathrm{N\,m^{-1}}\).</p>
+      <p>(c) Como \(k=\dfrac{mR^2g}{2hx^2}\), las incertidumbres relativas se suman: \(\dfrac{\Delta k}{k}=\dfrac{\Delta m}{m}+2\dfrac{\Delta R}{R}+\dfrac{\Delta h}{h}+2\dfrac{\Delta x}{x}=0{,}025+0{,}050+0{,}022+0{,}050\approx0{,}15\). Entonces \(\Delta k\approx0{,}15(436)\approx64\ \mathrm{N\,m^{-1}}\).</p>
+      <p>(d) Si el \(k\) real es mayor, tu \(v\) medida salió baja: parte de la energía elástica se perdió (fricción/calor) entre el resorte y la salida, es decir, el lanzamiento no fue ideal y no todo \(\tfrac12kx^2\) se convirtió en \(\tfrac12mv^2\).</p>
+      <span class="ans">(a) v ≈ 3,7 m·s⁻¹ (b) k ≈ 4,4×10² N·m⁻¹ (c) k = (4,4 ± 0,6)×10² N·m⁻¹ (d) hubo pérdidas de energía.</span>
+    </div></details></div>
+</section>
+
+<!-- MAS PROBLEMAS -->
+<section id="masproblemas">
+  <p class="sec-num">MÁS PRÁCTICA</p>
+  <h2>Más problemas · estilo past paper IB<span class="rule"></span></h2>
+  <p class="sec-intro">Seis problemas nuevos con el formato de un examen real: enunciado corto, apartados (a), (b)… y la resolución oculta. Cubren trabajo con ángulo, teorema trabajo–energía, conservación con y sin fricción, potencia media e instantánea, rendimiento y resorte. \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">P1 · trabajo con fuerza inclinada</p><p>Un trabajador arrastra una maleta de 15 kg a lo largo de 20 m por un suelo horizontal, tirando del asa con 50 N dirigidos 30° sobre la horizontal (\(\cos30^\circ=0{,}866\)). (a) Calcula el trabajo de la fuerza aplicada. (b) Indica el trabajo del peso y el de la normal, justificando. (c) Si el suelo fuera liso, halla la rapidez final partiendo del reposo.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Solo trabaja la componente horizontal: \(W_F=F\cos\theta\,d=50(0{,}866)(20)=866\ \mathrm J\approx8{,}7\times10^2\ \mathrm J\).</p>
+      <p>(b) El peso es vertical y el movimiento horizontal (\(\theta=90^\circ\)) ⇒ \(W_{peso}=0\). La normal también es perpendicular al desplazamiento ⇒ \(W_N=0\). Ninguna de las dos transfiere energía al avance.</p>
+      <p>(c) Suelo liso ⇒ el único trabajo neto es el de \(F\): \(W_{\text{neto}}=866\ \mathrm J=\tfrac12mv^2\Rightarrow v=\sqrt{2(866)/15}=\sqrt{115{,}5}\approx10{,}7\ \mathrm{m\,s^{-1}}\).</p>
+      <span class="ans">(a) W_F ≈ 8,7×10² J (b) ambos 0 (c) v ≈ 11 m·s⁻¹.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">P2 · teorema trabajo–energía</p><p>Una pelota de 0,50 kg que viaja a 12 m·s⁻¹ se incrusta en un cajón de arena y se detiene tras penetrar 0,30 m. Determina la fuerza resistiva media que ejerce la arena.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>El trabajo neto (solo la resistencia) iguala el cambio de energía cinética: \(W_{\text{neto}}=\Delta E_k=0-\tfrac12(0{,}50)(12)^2=-36\ \mathrm J\).</p>
+      <p>Como \(W_{\text{neto}}=-F\,d\): \(F=\dfrac{36}{0{,}30}=1{,}2\times10^2\ \mathrm N\). El signo negativo indica que la fuerza se opone al movimiento.</p>
+      <span class="ans">F = 120 N.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">P3 · conservación sin fricción</p><p>Un carro parte del reposo en lo alto de una vía lisa a 1,8 m de altura; después remonta una pequeña loma. (a) Halla su rapidez al pie de la vía. (b) Halla su rapidez al pasar por la cima de una loma de 0,80 m de altura.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Sin fricción toda la \(E_p\) pasa a \(E_k\): \(\tfrac12v^2=gh\Rightarrow v=\sqrt{2(10)(1{,}8)}=\sqrt{36}=6{,}0\ \mathrm{m\,s^{-1}}\).</p>
+      <p>(b) En la loma la caída <em>efectiva</em> desde el inicio es \(1{,}8-0{,}80=1{,}0\) m: \(v=\sqrt{2(10)(1{,}0)}=\sqrt{20}\approx4{,}5\ \mathrm{m\,s^{-1}}\).</p>
+      <span class="ans">(a) 6,0 m·s⁻¹ (b) ≈4,5 m·s⁻¹.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">P4 · conservación con fricción</p><p>Un carrito de 1,5 kg parte del reposo en lo alto de una rampa de 3,0 m de altura y 5,0 m de longitud, y llega al pie a 6,0 m·s⁻¹. (a) Halla la energía disipada por la fricción. (b) Determina la fuerza de fricción media.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Balance de energía: \(E_{p,\text{inicial}}=E_{k,\text{final}}+E_{\text{disipada}}\). Con \(E_p=mgh=1{,}5(10)(3{,}0)=45\ \mathrm J\) y \(E_k=\tfrac12(1{,}5)(6{,}0)^2=27\ \mathrm J\): \(E_{\text{disipada}}=45-27=18\ \mathrm J\).</p>
+      <p>(b) La fricción actúa a lo largo de los 5,0 m de rampa: \(f=\dfrac{18}{5{,}0}=3{,}6\ \mathrm N\).</p>
+      <span class="ans">(a) 18 J (b) 3,6 N.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">P5 · potencia media e instantánea</p><p>Un auto de 1200 kg acelera uniformemente desde el reposo hasta 30 m·s⁻¹ en 12 s por una vía horizontal; la resistencia es despreciable. (a) Halla la potencia media del motor durante el intervalo. (b) Suponiendo fuerza motriz constante, halla la potencia instantánea justo cuando alcanza 30 m·s⁻¹ y comenta la relación con (a).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) \(\Delta E_k=\tfrac12(1200)(30)^2=5{,}4\times10^5\ \mathrm J\); \(\bar P=\dfrac{\Delta E_k}{t}=\dfrac{5{,}4\times10^5}{12}=4{,}5\times10^4\ \mathrm W=45\ \mathrm{kW}\).</p>
+      <p>(b) Aceleración \(a=\dfrac{30}{12}=2{,}5\ \mathrm{m\,s^{-2}}\); fuerza \(F=ma=1200(2{,}5)=3000\ \mathrm N\); \(P_{\text{inst}}=Fv=3000(30)=9{,}0\times10^4\ \mathrm W=90\ \mathrm{kW}\). Es justo el doble de la media: con fuerza constante la potencia crece de 0 a \(Fv_{\max}\), y su promedio es la mitad del valor máximo.</p>
+      <span class="ans">(a) P̄ = 45 kW (b) P_inst = 90 kW (el doble de la media).</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">P6 · resorte y rendimiento</p><p>Un resorte de \(k=500\ \mathrm{N\,m^{-1}}\) se comprime 0,12 m y lanza un carrito de 0,40 kg por una vía lisa. (a) Halla la altura máxima que alcanza. (b) Para recomprimir el mismo resorte se usa un motor que consume 9,0 W durante 0,80 s. Halla el rendimiento del proceso de compresión.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Energía elástica almacenada: \(E=\tfrac12kx^2=\tfrac12(500)(0{,}12)^2=3{,}6\ \mathrm J\). Toda pasa a potencial gravitatoria en el punto más alto: \(mgh=3{,}6\Rightarrow h=\dfrac{3{,}6}{0{,}40(10)}=0{,}90\ \mathrm m\).</p>
+      <p>(b) Energía de entrada: \(E_{\text{ent}}=Pt=9{,}0(0{,}80)=7{,}2\ \mathrm J\). Energía útil almacenada en el resorte: 3,6 J. Rendimiento: \(\eta=\dfrac{3{,}6}{7{,}2}=0{,}50\).</p>
+      <span class="ans">(a) h = 0,90 m (b) η = 50 %.</span>
+    </div></details></div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 5A · Trabajo, energía y potencia (A.3).</strong> Ficha completa resuelta (10 en bloque + resto) e integración con Dinámica, Cinemática y resortes. Sigue el <strong>Módulo 5B</strong> (tipo 2). Convención: \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

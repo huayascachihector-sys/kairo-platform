@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inteligencia Artificial y Sociedad — IB Digital Society</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: linear-gradient(160deg, #0f172a 0%, #1e1b3a 100%); color: #e2e8f0; min-height: 100vh; padding: 40px 20px; }
+  .wrap { max-width: 820px; margin: 0 auto; }
+  .badge { display: inline-block; background: linear-gradient(90deg, #f59e0b, #d97706); color: #1c1917; font-size: 12px; font-weight: 800; letter-spacing: 1px; padding: 4px 12px; border-radius: 999px; }
+  h1 { font-size: 34px; margin: 16px 0 8px; color: #fff; }
+  h2 { font-size: 20px; margin: 36px 0 12px; color: #fbbf24; }
+  p { line-height: 1.7; color: #cbd5e1; margin-bottom: 12px; }
+  .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(251,191,36,0.25); border-radius: 16px; padding: 24px; margin: 16px 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+  .concept { background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.35); border-radius: 12px; padding: 16px; }
+  .concept strong { color: #c4b5fd; }
+  .quiz { background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.35); border-radius: 16px; padding: 24px; margin-top: 40px; }
+  .opt { display: block; width: 100%; text-align: left; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 12px 16px; margin: 8px 0; cursor: pointer; font-size: 15px; transition: all 0.2s; }
+  .opt:hover { border-color: #fbbf24; }
+  .opt.correct { background: rgba(34,197,94,0.2); border-color: #22c55e; color: #bbf7d0; }
+  .opt.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #fecaca; }
+  .feedback { margin-top: 12px; font-size: 14px; min-height: 20px; }
+  footer { margin-top: 48px; text-align: center; font-size: 12px; color: #64748b; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">IB · DIGITAL SOCIETY · SL</span>
+  <h1>Inteligencia Artificial y Sociedad</h1>
+  <p>Curso premium generado con IA · KAIRO Platform</p>
+
+  <h2>1. ¿Qué es un algoritmo?</h2>
+  <p>Un algoritmo es una <strong>secuencia finita de instrucciones</strong> para resolver un problema. Cuando una plataforma decide qué video mostrarte, qué candidato ver o qué precio cobrarte, hay un algoritmo detrás tomando (o mediando) esa decisión.</p>
+  <p>En Digital Society no estudias programación: estudias <strong>qué hacen los sistemas computacionales con las personas</strong>.</p>
+
+  <h2>2. Conceptos clave del curso</h2>
+  <div class="grid">
+    <div class="concept"><strong>Datos</strong><br>La "materia prima": qué se recolecta, quién la tiene y con qué propósito.</div>
+    <div class="concept"><strong>Sesgo algorítmico</strong><br>Cuando los datos o el diseño reproducen discriminaciones existentes.</div>
+    <div class="concept"><strong>Opacidad</strong><br>Sistemas "caja negra": decisiones difíciles de explicar o auditar.</div>
+    <div class="concept"><strong>Automatización</strong><br>Tareas humanas delegadas a máquinas: oportunidades y riesgos laborales.</div>
+  </div>
+
+  <h2>3. Caso de estudio: sesgo en reconocimiento facial</h2>
+  <div class="card">
+    <p>Investigaciones (Buolamwini &amp; Gebru, 2018) mostraron que sistemas comerciales de reconocimiento facial erraban más con mujeres de piel oscura que con hombres de piel clara, porque los <strong>conjuntos de entrenamiento</strong> eran poco diversos.</p>
+    <p><strong>Consecuencias:</strong> arrestos erróneos, exclusión de servicios, pérdida de confianza.</p>
+    <p><strong>Pregúntate (enfoque IB):</strong> ¿quién diseñó el sistema?, ¿quién se beneficia?, ¿quién asume el riesgo?, ¿cómo se puede auditar o apelar?</p>
+  </div>
+
+  <h2>4. Marco para tus respuestas</h2>
+  <p>Digital Society evalúa cómo conectas <em>tecnología</em> con <em>personas</em> y <em>poder</em>. Estructura útil (no obligatoria):</p>
+  <div class="card">
+    <ul style="line-height:1.9; color:#cbd5e1; padding-left:20px">
+      <li><strong>Descripción</strong> del sistema (¿qué hace, con qué datos?).</li>
+      <li><strong>Stakeholders</strong> afectados (usuarios, empresas, Estados, grupos vulnerables).</li>
+      <li><strong>Intervención política, jurídica o ética</strong> (regulación, códigos, movimientos).</li>
+      <li><strong>Cambio</strong> que esta tecnología genera en comportamientos y estructuras.</li>
+    </ul>
+  </div>
+
+  <div class="quiz">
+    <h2 style="margin-top:0">Mini quiz de comprensión</h2>
+    <p id="question">Un sistema de contratación automática descarta más CV de mujeres porque fue entrenado con contrataciones históricas de una empresa machista. ¿Cómo se llama este fenómeno?</p>
+    <button class="opt" data-correct="false">Opacidad algorítmica</button>
+    <button class="opt" data-correct="true">Sesgo algorítmico</button>
+    <button class="opt" data-correct="false">Efecto burbuja</button>
+    <button class="opt" data-correct="false">Brecha digital</button>
+    <p class="feedback" id="feedback"></p>
+  </div>
+
+  <footer>KAIRO Premium · Curso demo — reemplázalo con tus HTMLs de Claude</footer>
+</div>
+<script>
+  var answered = false;
+  document.querySelectorAll('.opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (answered) return;
+      answered = true;
+      var ok = btn.dataset.correct === 'true';
+      btn.classList.add(ok ? 'correct' : 'wrong');
+      if (!ok) {
+        document.querySelector('.opt[data-correct="true"]').classList.add('correct');
+      }
+      document.getElementById('feedback').textContent = ok
+        ? '✓ ¡Correcto! El sesgo de los datos de entrenamiento se transfiere a las decisiones del sistema.'
+        : 'Es sesgo algorítmico: los patrones discriminatorios de los datos históricos quedan incrustados en el modelo.';
+    });
+  });
+</script>
+</body>
+</html>

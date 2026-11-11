@@ -1,0 +1,1096 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 2A · Cinemática · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+window.MathJax = { tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}, svg:{fontCache:'global'} };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--grid:#E4E9E2;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.mono{font-family:"Space Grotesk",system-ui,sans-serif}
+.mono,.tag,.eq-ref{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:18ch}
+.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}
+.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}
+@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}
+section{margin-bottom:60px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}
+h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:32px 0 6px;font-weight:600}
+h4{font-family:"Space Grotesk";font-size:14px;letter-spacing:.02em;color:var(--teal-deep);margin:20px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}
+ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:16px 0;overflow-x:auto}
+.eqname{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--teal);letter-spacing:.06em;display:block;margin-top:4px}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.ej{border:1px solid var(--line);border-radius:5px;margin:22px 0;background:var(--paper-2);overflow:hidden}
+.ej-head{background:linear-gradient(180deg,#F0F5F3,#FFFFFF);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ej-tag{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal);padding:2px 8px;border-radius:3px}
+.ej-src{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);letter-spacing:.05em}
+.ej-body{padding:16px 20px 20px}
+.sepide{display:inline-block;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:2px 8px;margin:2px 0 8px}
+.sol{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:6px 12px;display:inline-block;margin-top:8px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:15px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center;vertical-align:top}
+th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}
+td.l,th.l{text-align:left}
+.flag{color:var(--warn);font-weight:600}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+.fig{background:var(--paper-2);border:1px solid var(--line);border-radius:5px;padding:14px;margin:16px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--ink-soft);margin-top:8px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> A.1 CINEMÁTICA <span>//</span> MÓDULO 2A · TEORÍA + TIPO 1</p>
+  <h1>Cinemática: <em>describir</em> el movimiento</h1>
+  <p class="lede">Posición, velocidad y aceleración; gráficas; ecuaciones del movimiento; caída libre; proyectiles; movimiento relativo. Nivel completo de la guía IB (A.1) más la profundidad que da el 7. Reutiliza el análisis de incertidumbre del Módulo 1.</p>
+  <div class="stats">
+    <div class="stat"><b>7</b><span>secciones de teoría</span></div>
+    <div class="stat"><b>A.1</b><span>syllabus IB · 9 h</span></div>
+    <div class="stat"><b>10</b><span>problemas propuestos</span></div>
+    <div class="stat"><b>26</b><span>exámenes IB 2022–26</span></div>
+    <div class="stat"><b>g = 10</b><span>m·s⁻² salvo indicación</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#s1">1 · Magnitudes del movimiento</a>
+  <a href="#s2">2 · Velocidad y aceleración</a>
+  <a href="#s3">3 · Gráficas del movimiento</a>
+  <a href="#s4">4 · Ecuaciones (SUVAT)</a>
+  <a href="#s5">5 · Caída libre</a>
+  <a href="#s6">6 · Movimiento parabólico</a>
+  <a href="#s7">7 · Relativo y v. terminal</a>
+  <a href="#s8">8 · Definiciones (examen)</a>
+  <a href="#traps">Checklist de trampas</a>
+  <a href="#clave">Clave de las fichas</a>
+  <a href="#examenes">Banco de exámenes IB · 2022–26</a>
+  <a href="#practica">10 problemas propuestos</a>
+  <a href="#masproblemas">Más problemas · estilo IB</a>
+</nav>
+
+<main>
+<!-- rev 2026-10-25 · banco de examenes IB cinematica tipo 1 2022-2026 (26 preguntas) · v2 -->
+
+<!-- S1 -->
+<section id="s1">
+  <p class="sec-num">SECCIÓN 01</p>
+  <h2>Magnitudes del movimiento<span class="rule"></span></h2>
+  <p class="sec-intro">La cinemática describe <em>cómo</em> se mueve un cuerpo, sin preguntar por la causa (eso es Dinámica, Módulo 3). Todo se reduce a tres magnitudes y sus relaciones.</p>
+
+  <h3>Escalares y vectores</h3>
+  <ul>
+    <li><strong>Escalar:</strong> solo magnitud (distancia, rapidez, tiempo, masa).</li>
+    <li><strong>Vector:</strong> magnitud y dirección (desplazamiento, velocidad, aceleración, fuerza).</li>
+  </ul>
+
+  <div class="box def"><span class="lbl">Definiciones clave</span>
+    <p><strong>Distancia:</strong> longitud total del camino recorrido (escalar, nunca disminuye).</p>
+    <p><strong>Desplazamiento \(\vec s\):</strong> cambio de posición en línea recta desde el inicio hasta el final, con dirección (vector). Si el cuerpo regresa al inicio, su desplazamiento es cero aunque la distancia no lo sea.</p>
+  </div>
+
+  <div class="box key"><span class="lbl">Entiéndelo sin fórmulas</span>
+    <p><strong>La distancia es «cuánto caminaste»; el desplazamiento es «qué tan lejos del punto de partida terminaste, y en qué dirección».</strong> Son dos preguntas distintas, y por eso dan números distintos.</p>
+    <p>Imagina que sales de tu casa, caminas 100 m hasta la tienda y vuelves. Tus piernas recorrieron 200 m: esa es la <strong>distancia</strong> (siempre suma, nunca baja). Pero terminaste <em>exactamente donde empezaste</em>, así que tu cambio de posición es nulo: ese es el <strong>desplazamiento = 0</strong>. Te moviste, claro, pero no quedaste «desplazado» a ningún lugar nuevo.</p>
+    <p>La idea clave: el desplazamiento solo mira el <em>punto inicial</em> y el <em>punto final</em>, los une con una flecha recta (con dirección) y le da igual el camino que seguiste. Por eso, cada vez que un cuerpo <strong>regresa a su punto de partida</strong> —una vuelta completa a una pista, un ida y vuelta, un péndulo que oscila— su desplazamiento vale cero aunque la distancia recorrida sea enorme. Distancia nunca puede bajar; desplazamiento sí, e incluso puede ser negativo (si tu convención de «positivo» apunta al otro lado).</p>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 1.1</span><span class="ej-src">ficha MRU · M21 (minutero)</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>El minutero \(L=30\ \mathrm{cm}\) pasa de las 12 a las 6 en 30 min. Halla la velocidad media y la rapidez media del extremo P.</p>
+      <div class="sol">
+        <p><strong>Desplazamiento</strong>: de arriba a abajo, en línea recta \(=2L=60\ \mathrm{cm}\) (hacia abajo). <strong>Distancia</strong>: media circunferencia \(=\pi L=30\pi\ \mathrm{cm}\).</p>
+        <p>Velocidad media \(=\dfrac{2L}{t}=\dfrac{60}{30}=2\ \mathrm{cm\,min^{-1}}\) vertical hacia abajo.</p>
+        <p>Rapidez media \(=\dfrac{\pi L}{t}=\dfrac{30\pi}{30}=\pi\ \mathrm{cm\,min^{-1}}\).</p>
+        <span class="ans">Velocidad 2 cm·min⁻¹ hacia abajo; rapidez π cm·min⁻¹ — opción A.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S2 -->
+<section id="s2">
+  <p class="sec-num">SECCIÓN 02</p>
+  <h2>Velocidad, rapidez y aceleración<span class="rule"></span></h2>
+  <p class="sec-intro">La guía IB las define como <em>razones de cambio</em>: esa frase es literalmente una derivada.</p>
+
+  <div class="eq">
+    \[ \bar v=\frac{\Delta s}{\Delta t}\quad(\text{media})\qquad \bar a=\frac{\Delta v}{\Delta t}\qquad \text{rapidez media}=\frac{\text{distancia}}{\Delta t} \]
+    <span class="eqname">valores medios</span>
+  </div>
+  <p><strong>Media vs. instantánea.</strong> El valor <em>medio</em> usa el intervalo completo; el <em>instantáneo</em> es el límite cuando \(\Delta t\to0\) (la pendiente de la tangente en la gráfica). La <strong>rapidez</strong> es el módulo de la velocidad: por eso rapidez media y velocidad media difieren cuando la trayectoria no es recta.</p>
+
+  <div class="box key"><span class="lbl">¿Qué significa «razón de cambio»?</span>
+    <p>«Razón de cambio» suena técnico, pero solo quiere decir <strong>cuánto cambia algo en cada segundo</strong>. Es una tasa, igual que «kilómetros por hora» o «soles por día»: arriba va lo que cambia, abajo el tiempo.</p>
+    <p><strong>Velocidad = cuánto cambia tu posición cada segundo.</strong> Si vas a \(20\ \mathrm{m\,s^{-1}}\), tu posición avanza 20 metros en cada segundo que pasa. Eso es todo lo que dice el número.</p>
+    <p><strong>Aceleración = cuánto cambia tu velocidad cada segundo.</strong> Si tu aceleración es \(3\ \mathrm{m\,s^{-2}}\), tu velocidad sube \(3\ \mathrm{m\,s^{-1}}\) por segundo: ibas a 10, un segundo después 13, luego 16… La aceleración <em>no</em> te dice «qué tan rápido vas», sino «qué tan rápido está <strong>cambiando</strong> lo rápido que vas». Por eso un cuerpo puede ir muy veloz con aceleración cero (velocidad grande pero constante) o ir lentísimo con aceleración enorme (casi quieto pero cambiando de golpe).</p>
+  </div>
+
+  <div class="box key"><span class="lbl">Por qué la aceleración puede apuntar «en contra» del movimiento</span>
+    <p>Un error muy común es pensar que la aceleración siempre apunta hacia donde vas. <strong>No es así.</strong> La aceleración apunta hacia donde <em>cambia</em> la velocidad, y ese cambio puede ir en contra del movimiento.</p>
+    <p><strong>Frenar es acelerar en contra.</strong> Un auto que viaja hacia la derecha y frena tiene su velocidad hacia la derecha, pero esa velocidad <em>disminuye</em>; el cambio (la flecha de «lo que se resta») apunta hacia la izquierda. Por eso su aceleración apunta a la <strong>izquierda</strong>, al revés del movimiento. En física «acelerar» no significa solo ir más rápido: es <em>cualquier</em> cambio de velocidad, y frenar también lo es (se llama aceleración negativa o desaceleración).</p>
+    <p><strong>Una pelota que sube tiene su aceleración hacia abajo.</strong> Mientras sube, la gravedad le quita velocidad segundo a segundo (la va frenando): \(10\to8\to6\dots\) hasta llegar a \(0\) en la cima. Esa resta de velocidad apunta hacia abajo, así que \(a\) está dirigida hacia abajo <em>todo el tiempo</em>: cuando sube, en la cima (donde \(v=0\) pero \(a=g\) sigue tirando) y cuando baja. Precisamente porque la aceleración nunca dejó de apuntar al suelo, la pelota, tras frenarse del todo, empieza a caer.</p>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 2.1</span><span class="ej-src">ficha MRU · N16</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Un auto va al norte a 3 m·s⁻¹ durante 20 s y luego al este a 4 m·s⁻¹ durante 20 s. ¿Rapidez media?</p>
+      <div class="sol">
+        <p>Distancia total \(=3(20)+4(20)=60+80=140\ \mathrm m\); tiempo \(=40\ \mathrm s\).</p>
+        <p>Rapidez media \(=140/40=3{,}5\ \mathrm{m\,s^{-1}}\). (La <em>velocidad</em> media usaría el desplazamiento \(\sqrt{60^2+80^2}=100\ \mathrm m\to2{,}5\), que es el distractor D.)</p>
+        <span class="ans">3,5 m·s⁻¹ — opción C.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="box beyond"><span class="lbl">Más allá del IB · cálculo (grounded en A.1)</span>
+    <p>«Razón de cambio» = derivada: \(\ v=\dfrac{ds}{dt}\), \(\ a=\dfrac{dv}{dt}=\dfrac{d^2s}{dt^2}\). Y a la inversa, \(\ s=\displaystyle\int v\,dt\), \(\ v=\displaystyle\int a\,dt\). Esto es lo que hay <em>detrás</em> de «pendiente» y «área bajo la curva», y es la única forma de tratar la <strong>aceleración no uniforme</strong> que la guía menciona. Ej.: si \(s=3t^3-2t\), entonces \(v=9t^2-2\) y \(a=18t\).</p>
+  </div>
+</section>
+
+<!-- S3 -->
+<section id="s3">
+  <p class="sec-num">SECCIÓN 03</p>
+  <h2>Gráficas del movimiento<span class="rule"></span></h2>
+  <p class="sec-intro">La destreza más evaluada del tema. Regla maestra: <strong>pendiente</strong> baja un nivel (posición→velocidad→aceleración) y <strong>área</strong> sube un nivel.</p>
+
+  <div class="box key"><span class="lbl">¿Por qué la pendiente «baja un nivel» y el área «sube uno»?</span>
+    <p>No es una regla mágica para memorizar: sale directo de lo que <em>significa</em> cada operación.</p>
+    <p><strong>La pendiente mide «cuánto cambia por segundo».</strong> Y «cuánto cambia la posición por segundo» es, palabra por palabra, la definición de velocidad; «cuánto cambia la velocidad por segundo» es la aceleración. Así que al tomar la pendiente obtienes la <em>razón de cambio</em> de lo que tenías, que es siempre el escalón de abajo: de posición sacas velocidad, de velocidad sacas aceleración. La pendiente responde «¿qué tan rápido cambia esto?», y esa respuesta pertenece a un nivel inferior.</p>
+    <p><strong>El área acumula.</strong> Piensa en una v–t: si vas a \(5\ \mathrm{m\,s^{-1}}\) durante \(2\ \mathrm s\), avanzas \(5\times2=10\) m. Eso es «velocidad × tiempo», que geométricamente es justo el <strong>área</strong> de un rectángulo (alto = velocidad, ancho = tiempo). El área va <em>sumando</em> pedacitos de lo que llevas acumulado: sumar trocitos de velocidad a lo largo del tiempo te da el desplazamiento; sumar trocitos de aceleración te da el cambio de velocidad. Por eso el área sube un nivel: de aceleración recuperas velocidad, de velocidad recuperas posición.</p>
+    <p><strong>Son operaciones opuestas.</strong> La pendiente «desarma» (baja un nivel); el área «vuelve a armar» (sube uno). Si a una gráfica le sacas la pendiente y luego el área, regresas a donde empezaste. Por eso una misma situación se puede leer en los dos sentidos, y por eso a partir de la a–t puedes reconstruir la v–t y la s–t, o al revés.</p>
+  </div>
+
+  <table>
+    <tr><th class="l">Gráfica</th><th>La pendiente da…</th><th>El área bajo la curva da…</th></tr>
+    <tr><td class="l">posición \(s\)–tiempo</td><td>velocidad \(v\)</td><td>— (sin significado)</td></tr>
+    <tr><td class="l">velocidad \(v\)–tiempo</td><td>aceleración \(a\)</td><td>desplazamiento \(\Delta s\)</td></tr>
+    <tr><td class="l">aceleración \(a\)–tiempo</td><td>— (jerk)</td><td>cambio de velocidad \(\Delta v\)</td></tr>
+  </table>
+
+  <figure class="fig">
+    <svg viewBox="0 0 420 180" width="400" xmlns="http://www.w3.org/2000/svg" aria-label="gráfica v-t">
+      <line x1="40" y1="150" x2="400" y2="150" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="40" y1="150" x2="40" y2="20" stroke="var(--ink)" stroke-width="1.5"/>
+      <text x="20" y="30" font-family="IBM Plex Mono" font-size="12" fill="var(--ink)">v</text>
+      <text x="392" y="168" font-family="IBM Plex Mono" font-size="12" fill="var(--ink)">t</text>
+      <polyline points="40,150 160,60 300,60 400,120" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+      <polygon points="40,150 160,60 300,60 400,120 400,150" fill="var(--teal)" opacity="0.10"/>
+      <line x1="60" y1="150" x2="140" y2="90" stroke="var(--amber)" stroke-width="2" stroke-dasharray="4 3"/>
+      <text x="150" y="110" font-family="Space Grotesk" font-size="11" fill="var(--amber)">pendiente = a</text>
+      <text x="205" y="120" font-family="Space Grotesk" font-size="11" fill="var(--teal-deep)">área = Δs</text>
+    </svg>
+    <figcaption>En una v–t: la pendiente es la aceleración; el área sombreada es el desplazamiento.</figcaption>
+  </figure>
+
+  <h3>Leer la forma: signo, curvatura y tramos</h3>
+  <p><strong>Signo de la pendiente.</strong> En s–t, pendiente positiva ⇒ se aleja (\(v>0\)); negativa ⇒ regresa (\(v<0\)); horizontal ⇒ en reposo. En v–t, pendiente positiva ⇒ acelera; negativa ⇒ frena (o acelera en sentido −); horizontal ⇒ \(v\) constante (\(a=0\)).</p>
+  <p><strong>Aceleración no uniforme (curvatura).</strong> Cuando la gráfica es <em>curva</em>, la pendiente cambia punto a punto. En s–t: <em>cóncava hacia arriba</em> (pendiente que crece) ⇒ acelera; <em>cóncava hacia abajo</em> ⇒ frena; recta ⇒ \(v\) constante. La aceleración es <strong>mayor donde más se curva</strong> la gráfica (mayor cambio de pendiente). Para un valor instantáneo se traza la <strong>tangente</strong> y se mide su pendiente; es la única manera de leer \(v\) o \(a\) cuando no hay tramos rectos.</p>
+
+  <figure class="fig">
+    <svg viewBox="0 0 440 170" width="420" xmlns="http://www.w3.org/2000/svg" aria-label="curvatura en s-t">
+      <line x1="30" y1="140" x2="200" y2="140" stroke="var(--ink)" stroke-width="1.4"/>
+      <line x1="30" y1="140" x2="30" y2="20" stroke="var(--ink)" stroke-width="1.4"/>
+      <path d="M30,140 Q120,138 180,28" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+      <text x="44" y="38" font-family="Space Grotesk" font-size="11" fill="var(--teal)">cóncava ↑</text>
+      <text x="44" y="53" font-family="IBM Plex Mono" font-size="9.5" fill="var(--ink-soft)">acelera (a&gt;0)</text>
+      <text x="14" y="30" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">s</text>
+      <text x="190" y="157" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">t</text>
+      <line x1="245" y1="140" x2="415" y2="140" stroke="var(--ink)" stroke-width="1.4"/>
+      <line x1="245" y1="140" x2="245" y2="20" stroke="var(--ink)" stroke-width="1.4"/>
+      <path d="M245,140 Q320,32 410,24" fill="none" stroke="var(--warn)" stroke-width="2.5"/>
+      <text x="300" y="118" font-family="Space Grotesk" font-size="11" fill="var(--warn)">cóncava ↓</text>
+      <text x="300" y="133" font-family="IBM Plex Mono" font-size="9.5" fill="var(--ink-soft)">frena (a&lt;0)</text>
+      <text x="229" y="30" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">s</text>
+      <text x="405" y="157" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">t</text>
+    </svg>
+    <figcaption>Curvatura en s–t: cóncava hacia arriba = acelera; cóncava hacia abajo = frena. La aceleración instantánea es la pendiente de la tangente.</figcaption>
+  </figure>
+
+  <div class="box trap"><span class="lbl">Área con signo y por tramos</span>
+    <p>El área se suma <strong>por tramos</strong> (triángulos + rectángulos + trapecios), nunca de un golpe si la gráfica cambia de forma. En v–t, el área <em>por debajo</em> del eje \(t\) (cuando \(v<0\)) cuenta como desplazamiento <strong>negativo</strong>: el <em>desplazamiento neto</em> resta esa parte, mientras que la <em>distancia</em> la suma en valor absoluto.</p>
+    <p><strong>Mini-ejemplo.</strong> Si en 0–2 s el área es \(+6\) m y en 2–3 s es \(-2\) m: desplazamiento neto \(=6-2=4\) m, pero distancia recorrida \(=6+2=8\) m.</p>
+  </div>
+
+  <div class="box key"><span class="lbl">Transformar la gráfica: correspondencia de formas</span>
+    <p><strong>Concepto.</strong> Derivar (tomar pendiente) <em>baja</em> de nivel y simplifica la forma; integrar (tomar área) <em>sube</em> y la suaviza. Sirve para dibujar una gráfica a partir de otra.</p>
+    <p><strong>Relación (con signo).</strong> \(a\) constante ↔ \(v\) recta inclinada ↔ \(s\) parábola. \(a=0\) ↔ \(v\) horizontal ↔ \(s\) recta inclinada. Un <strong>salto</strong> de \(a\) ↔ un <strong>vértice</strong> (pico) en \(v\) ↔ una inflexión en \(s\). El signo se conserva: \(a<0\) ⇒ \(v\) de pendiente negativa ⇒ \(s\) cóncava hacia abajo.</p>
+    <p><strong>Mini-ejemplo.</strong> a–t: \(+2\) m·s⁻² en 0–3 s y luego 0, con \(u=0\). La v–t sube recta hasta \(6\) m·s⁻¹ (área \(=\Delta v\)) y sigue horizontal; la s–t es parábola en 0–3 s y luego recta de pendiente 6.</p>
+    <p><strong>Área no uniforme.</strong> Si la v–t es <em>curva</em>, el desplazamiento sigue siendo el área bajo ella: se estima <strong>contando cuadros</strong> de la cuadrícula (o sumando trapecios finos), nunca con una sola figura.</p>
+  </div>
+
+  <div class="box key"><span class="lbl">Enlace con el Módulo 1</span>
+    <p>Cuando obtienes \(v\) como la <strong>pendiente</strong> de una gráfica \(s\)–\(t\) medida, esa pendiente tiene incertidumbre: trazas las rectas de <em>máxima y mínima pendiente</em> por las barras de error y \(\Delta v=\frac{v_{\max}-v_{\min}}{2}\). Igual para \(a\) como pendiente de \(v\)–\(t\). Toda la Sección 7 del Módulo 1 aplica aquí.</p>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 3.1</span><span class="ej-src">tipo ficha · área de v–t</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Un objeto parte del reposo, acelera a \(v=12\ \mathrm{m\,s^{-1}}\) en 4 s, y sigue a 12 m·s⁻¹ por 2 s más. Halla el desplazamiento en los 6 s usando el área.</p>
+      <div class="sol">
+        <p>Tramo 1 (triángulo): \(\tfrac12(4)(12)=24\ \mathrm m\). Tramo 2 (rectángulo): \(2\times12=24\ \mathrm m\).</p>
+        <span class="ans">\(\Delta s = 24+24 = 48\ \mathrm m\).</span>
+        <p style="font-size:14px;color:var(--ink-soft)">Así resuelves todos los ítems de la ficha del tipo «desplazamiento = área bajo v–t».</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 -->
+<section id="s4">
+  <p class="sec-num">SECCIÓN 04</p>
+  <h2>Ecuaciones del movimiento (SUVAT)<span class="rule"></span></h2>
+  <p class="sec-intro">Válidas <strong>solo</strong> con aceleración constante. Cinco variables: \(s,\ u,\ v,\ a,\ t\). Cada ecuación omite una.</p>
+
+  <div class="eq">
+    \[ v=u+at \qquad s=\Big(\frac{u+v}{2}\Big)t \qquad s=ut+\tfrac12at^2 \qquad v^2=u^2+2as \]
+    <span class="eqname">las cuatro ecuaciones de la guía A.1</span>
+  </div>
+  <p><strong>Estrategia:</strong> lista lo que tienes y lo que buscas; elige la ecuación que <em>no</em> incluye la variable que ni tienes ni buscas. Fija un sentido positivo y respétalo (los signos hacen el trabajo).</p>
+
+  <div class="box beyond"><span class="lbl">De dónde salen (nature of science)</span>
+    <p>De la v–t con pendiente constante: \(v=u+at\) (recta). El área (trapecio) es \(s=\frac{(u+v)}{2}t\). Sustituyendo \(v\) sale \(s=ut+\tfrac12at^2\). Eliminando \(t\) entre la 1.ª y la 2.ª sale \(v^2=u^2+2as\). No memorices cuatro fórmulas sueltas: son una sola gráfica.</p>
+  </div>
+
+  <div class="box key"><span class="lbl">Cómo elegir la ecuación (la variable que falta)</span>
+    <p>Hay 5 cantidades: \(s,\ u,\ v,\ a,\ t\). Cada ecuación usa 4 y <strong>omite una</strong>. Lista lo que tienes y lo que buscas (serán 4) y toma la ecuación que <em>omite</em> la quinta —la única que ni tienes ni buscas.</p>
+    <table>
+      <tr><th class="l">Si la variable ausente es…</th><th class="l">usa la ecuación</th></tr>
+      <tr><td class="l">\(s\) (desplazamiento)</td><td class="l">\(v=u+at\)</td></tr>
+      <tr><td class="l">\(a\) (aceleración)</td><td class="l">\(s=\big(\tfrac{u+v}{2}\big)t\)</td></tr>
+      <tr><td class="l">\(v\) (velocidad final)</td><td class="l">\(s=ut+\tfrac12at^2\)</td></tr>
+      <tr><td class="l">\(t\) (tiempo)</td><td class="l">\(v^2=u^2+2as\)</td></tr>
+    </table>
+    <p><strong>Mini-ejemplo.</strong> Tengo \(u=5\), \(a=2\), \(s=24\) y busco \(v\); el tiempo \(t\) no aparece ⇒ uso \(v^2=u^2+2as=25+2(2)(24)=121\Rightarrow v=11\ \mathrm{m\,s^{-1}}\).</p>
+  </div>
+
+  <div class="box trap"><span class="lbl">Estrategia de signos (hazlo SIEMPRE)</span>
+    <ol>
+      <li>Fija <strong>un</strong> sentido positivo (p. ej. «arriba +» o «derecha +») y anótalo.</li>
+      <li>Escribe con su signo <em>cada</em> dato: lo contrario al + es negativo (cuerpo lanzado hacia arriba ⇒ \(a=-g\); velocidad inicial hacia abajo ⇒ \(u<0\)).</li>
+      <li>Resuelve con álgebra; <strong>no</strong> fuerces signos «a mano» al final. Un resultado negativo ya significa «sentido opuesto al +».</li>
+    </ol>
+    <p>La cuadrática \(s=ut+\tfrac12at^2\) puede dar <strong>dos tiempos</strong>: el positivo con sentido físico es la respuesta; un \(t<0\) se descarta. Si ambos son positivos, corresponden a dos pasos por la misma posición (subida y bajada).</p>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 4.1</span><span class="ej-src">ficha MRUV · N99 (marcadores)</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Desde el reposo con aceleración uniforme, el auto alcanza 140 km·h⁻¹ al pasar el marcador 2 (marcadores igualmente espaciados). ¿Dónde iba a 70 km·h⁻¹?</p>
+      <div class="sol">
+        <p>Con \(u=0\): \(v^2=2as\Rightarrow s\propto v^2\). En el marcador 2, \(s=2\) espacios y \(v=140\). Para \(v=70=\tfrac{140}{2}\): \(s\propto(\tfrac12)^2=\tfrac14\Rightarrow s=\tfrac14(2)=0{,}5\) espacios.</p>
+        <span class="ans">A 0,5 espacios → <strong>antes del marcador 1</strong> (opción A).</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 4.2</span><span class="ej-src">ficha MRUV · N02 (proporcionalidad)</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Un auto frena con fuerza máxima y recorre \(d\) hasta parar desde \(v\). ¿Y desde \(2v\)?</p>
+      <div class="sol">
+        <p>Distancia de frenado: \(0=v^2-2ad\Rightarrow d=\dfrac{v^2}{2a}\Rightarrow d\propto v^2\). Al duplicar \(v\): \(d'=(2)^2 d=4d\).</p>
+        <span class="ans">\(4d\) — opción A.</span>
+        <p style="font-size:14px;color:var(--ink-soft)">Misma lógica: alcanzar \(v\) tras \(d\) ⇒ tras \(2d\) la rapidez es \(\sqrt2\,v\); tras \(d/2\) es \(v/\sqrt2\); recorrer \(16d\) desde reposo tarda \(4t\).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 -->
+<section id="s5">
+  <p class="sec-num">SECCIÓN 05</p>
+  <h2>Caída libre<span class="rule"></span></h2>
+  <p class="sec-intro">Es MRUV con \(a=g\) hacia abajo, igual para todos los cuerpos (sin resistencia). Aquí es donde más trampas de signo caen.</p>
+
+  <ul>
+    <li>Sin resistencia, todos caen con la misma \(g\): la masa no importa (la relación \(F/m=g\) es la misma).</li>
+    <li>Elige un sentido positivo. Con «arriba +»: \(a=-g\). Con «abajo +»: \(a=+g\).</li>
+    <li><strong>Simetría</strong> del tiro vertical: sube y baja tardan lo mismo; vuelve al punto de lanzamiento con rapidez igual a la inicial.</li>
+  </ul>
+  <div class="box key"><span class="lbl">Relación: numérico y proporción</span>
+    <p><strong>Numérico.</strong> Desde el reposo, en \(t=3{,}0\) s cae \(h=\tfrac12gt^2=\tfrac12(10)(9)=45\) m, llegando a \(v=gt=30\) m·s⁻¹.</p>
+    <p><strong>Proporción.</strong> Como \(h=\tfrac12 g t^2\): \(h\propto t^2\) (triplicar el tiempo ⇒ cae ×9) y, a la inversa, \(t\propto\sqrt{h}\) (cuádruple altura ⇒ doble tiempo). La rapidez \(v=gt\propto t\) crece lineal.</p>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 5.1</span><span class="ej-src">ficha caída libre · N20 (globo)</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Un globo sube a 10 m·s⁻¹ constante. A 40 m de altura se suelta un objeto. ¿Cuánto tarda en llegar al suelo? (\(g=10\))</p>
+      <div class="sol">
+        <p>El objeto <em>hereda</em> la velocidad del globo: \(u=+10\) (arriba +), altura inicial 40 m, \(a=-10\). Posición: \(y=40+10t-5t^2\).</p>
+        <p>\(0=40+10t-5t^2\Rightarrow t^2-2t-8=0\Rightarrow(t-4)(t+2)=0\Rightarrow t=4\ \mathrm s\).</p>
+        <span class="ans">4 s — opción C.</span>
+        <p style="font-size:14px;color:var(--ink-soft)">Trampa: el objeto sube un poco antes de caer; su velocidad inicial no es cero.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 5.2</span><span class="ej-src">ficha caída libre · N08 (Luna)</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Una pluma cae desde el reposo 9,0 m en 3,0 s en la Luna. Estima \(g_{\text{Luna}}\).</p>
+      <div class="sol">
+        <p>\(h=\tfrac12 g t^2\Rightarrow 9{,}0=\tfrac12 g(3{,}0)^2=4{,}5g\Rightarrow g=2{,}0\ \mathrm{m\,s^{-2}}\).</p>
+        <span class="ans">2,0 m·s⁻² — opción C.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 -->
+<section id="s6">
+  <p class="sec-num">SECCIÓN 06</p>
+  <h2>Movimiento parabólico (proyectiles)<span class="rule"></span></h2>
+  <p class="sec-intro">La idea central de la guía: los movimientos horizontal y vertical son <strong>independientes</strong> y comparten solo el tiempo.</p>
+
+  <div class="box key"><span class="lbl">¿Por qué el horizontal y el vertical no se afectan?</span>
+    <p><strong>Porque la gravedad solo tira hacia abajo.</strong> No empuja ni frena de lado. Entonces lo que ocurre en la dirección vertical (subir, frenarse, caer) no tiene manera de modificar lo que ocurre en la horizontal, ni al revés: son dos movimientos separados que suceden a la vez en el mismo cuerpo.</p>
+    <p><strong>En horizontal no hay nada que cambie la velocidad</strong> (despreciando el aire): el cuerpo avanza de lado siempre a la misma rapidez, como un MRU, esté subiendo o cayendo. <strong>En vertical actúa la gravedad</strong> exactamente igual que en una caída libre normal, sin importar qué tan rápido se desplace de lado.</p>
+    <p><strong>El experimento que lo demuestra.</strong> Si en el mismo instante <em>dejas caer</em> una moneda y <em>disparas</em> otra horizontalmente desde la misma altura, las dos tocan el suelo <em>al mismo tiempo</em>. La disparada recorre mucho de lado, pero en vertical ambas hicieron lo mismo: cayeron con \(g\). Moverse de lado no adelanta ni retrasa la caída.</p>
+    <p><strong>Lo único que comparten es el reloj.</strong> El tiempo es común a los dos ejes porque es el mismo cuerpo en el mismo vuelo: el instante en que toca el suelo (lo fija el eje vertical) es también el instante en que deja de avanzar de lado. Por eso la estrategia es siempre la misma: resuelve el eje vertical para hallar el <em>tiempo</em> y mete ese tiempo en el eje horizontal (o viceversa). El tiempo es el puente entre los dos movimientos.</p>
+  </div>
+
+  <table>
+    <tr><th class="l">Eje</th><th>Aceleración</th><th>Movimiento</th><th>Ecuaciones</th></tr>
+    <tr><td class="l">Horizontal (x)</td><td>0</td><td>MRU</td><td>\(x=u_x t\), \(u_x=u\cos\theta\)</td></tr>
+    <tr><td class="l">Vertical (y)</td><td>\(-g\)</td><td>caída libre</td><td>\(v_y=u\sin\theta-gt\), \(y=u\sin\theta\,t-\tfrac12gt^2\)</td></tr>
+  </table>
+
+  <figure class="fig">
+    <svg viewBox="0 0 420 190" width="400" xmlns="http://www.w3.org/2000/svg" aria-label="trayectoria parabólica">
+      <line x1="30" y1="160" x2="410" y2="160" stroke="var(--ink)" stroke-width="1.5"/>
+      <path d="M30,160 Q210,-10 390,160" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+      <line x1="30" y1="160" x2="70" y2="120" stroke="var(--amber)" stroke-width="2"/>
+      <line x1="30" y1="160" x2="70" y2="160" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <text x="72" y="140" font-family="Space Grotesk" font-size="11" fill="var(--amber)">u</text>
+      <text x="46" y="155" font-family="IBM Plex Mono" font-size="10" fill="var(--amber)">θ</text>
+      <text x="200" y="20" font-family="Space Grotesk" font-size="11" fill="var(--teal-deep)">v_y=0 en la cima</text>
+    </svg>
+    <figcaption>La velocidad horizontal es constante; la vertical se anula en la cima.</figcaption>
+  </figure>
+
+  <div class="box key"><span class="lbl">Resultados útiles (lanzamiento a nivel del suelo)</span>
+    <p>Tiempo de vuelo \(T=\dfrac{2u\sin\theta}{g}\); altura máxima \(H=\dfrac{(u\sin\theta)^2}{2g}\); alcance \(R=\dfrac{u^2\sin2\theta}{g}\) (máximo en \(\theta=45^\circ\)).</p>
+  </div>
+  <div class="box key"><span class="lbl">Relación: numérico y proporción</span>
+    <p><strong>Numérico.</strong> Con \(u=20\) m·s⁻¹ y \(\theta=30^\circ\): \(u_y=10\), \(T=\dfrac{2(10)}{10}=2{,}0\) s, \(H=\dfrac{10^2}{20}=5{,}0\) m, \(R=\dfrac{20^2\sin60^\circ}{10}=34{,}6\) m.</p>
+    <p><strong>Proporción.</strong> A \(\theta\) fijo, \(R\propto u^2\) y \(H\propto u^2\) (duplicar la rapidez ⇒ alcance y altura ×4), mientras \(T\propto u\) (×2). Los ángulos complementarios \(\theta\) y \(90^\circ-\theta\) dan el <em>mismo</em> alcance.</p>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 6.1</span><span class="ej-src">ficha parabólico · M17 (acantilado)</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>Un proyectil se dispara horizontalmente desde un acantilado; cae 4 s después, a 2 km de la base. ¿Altura del acantilado?</p>
+      <div class="sol">
+        <p>La altura depende <em>solo</em> del movimiento vertical (\(u_y=0\)): \(h=\tfrac12 g t^2=\tfrac12(10)(4)^2=80\ \mathrm m\).</p>
+        <span class="ans">80 m — opción B. (Los 2 km horizontales no afectan la altura.)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="box beyond"><span class="lbl">Más allá del IB · la ecuación de la trayectoria</span>
+    <p>La guía dice que «no se requiere», pero para un 7 conviene saber deducirla eliminando \(t\): \(\ y=x\tan\theta-\dfrac{g\,x^2}{2u^2\cos^2\theta}\). Es una parábola. De ella salen \(R\) y \(H\) sin pasar por el tiempo, y explica por qué \(\theta\) y \(90^\circ-\theta\) dan el mismo alcance.</p>
+  </div>
+
+  <div class="box key"><span class="lbl">Proyectil lanzado en ángulo DESDE una altura (acantilado)</span>
+    <p>Si el punto de lanzamiento y el de caída están a <strong>distinta</strong> altura, la trayectoria <em>no</em> es simétrica: las fórmulas \(T=\dfrac{2u\sin\theta}{g}\) y \(R=\dfrac{u^2\sin2\theta}{g}\) (deducidas para suelo→suelo) <strong>ya no valen</strong> para el vuelo total. El método general:</p>
+    <ol>
+      <li>Componentes con «arriba +»: \(u_x=u\cos\theta\), \(u_y=u\sin\theta\).</li>
+      <li>Pon el suelo de llegada en \(y=-h\) y resuelve la cuadrática \(-h=u_y t-\tfrac12 g t^2\); quédate con la raíz positiva.</li>
+      <li>Alcance \(R=u_x t\) con ese \(t\). Altura máxima sobre el suelo \(=h+\dfrac{u_y^2}{2g}\).</li>
+    </ol>
+    <p><strong>Mini-ejemplo.</strong> \(u=20\), \(\theta=30^\circ\) (\(u_y=10\), \(u_x=17{,}3\)) desde \(h=15\) m: \(-15=10t-5t^2\Rightarrow t^2-2t-3=0\Rightarrow(t-3)(t+1)=0\Rightarrow t=3{,}0\) s; \(R=17{,}3(3{,}0)=52\) m —frente a los 34,6 m que daría a nivel del suelo con la misma rapidez y ángulo.</p>
+  </div>
+
+  <div class="box key"><span class="lbl">Velocidad y ángulo de impacto</span>
+    <p>La velocidad en cualquier instante se recompone de sus ejes: \(v_x=u\cos\theta\) (constante) y \(v_y=u\sin\theta-gt\). Módulo \(v=\sqrt{v_x^2+v_y^2}\); ángulo con la horizontal \(\tan\phi=\dfrac{|v_y|}{v_x}\). En el impacto \(v_y<0\) (va hacia abajo), así que el ángulo es <em>bajo</em> la horizontal.</p>
+    <p><strong>Mini-proporción.</strong> Un lanzamiento horizontal desde altura \(h\) llega con \(v_y=\sqrt{2gh}\propto\sqrt h\) (cuádruple altura ⇒ doble \(v_y\)), mientras \(v_x\) no cambia: por eso al caer de más alto el impacto se <strong>empina</strong> (mayor \(\phi\)) y es más rápido.</p>
+  </div>
+</section>
+
+<!-- S7 -->
+<section id="s7">
+  <p class="sec-num">SECCIÓN 07</p>
+  <h2>Movimiento relativo y velocidad terminal<span class="rule"></span></h2>
+  <p class="sec-intro">Dos temas que la guía toca (movimiento en 2 dimensiones; efecto cualitativo de la resistencia del fluido) y donde la profundidad rinde puntos.</p>
+
+  <h3>Velocidad relativa (1D)</h3>
+  <p>\( \vec v_{A/C}=\vec v_{A/\text{suelo}}-\vec v_{C/\text{suelo}} \). En línea recta, con signos.</p>
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag">EJEMPLO 7.1</span><span class="ej-src">ficha MRUV · M08 (auto y ciclista)</span></div>
+    <div class="ej-body">
+      <span class="sepide">Se pide</span>
+      <p>El auto va a +15 m·s⁻¹ respecto al suelo; respecto al ciclista va a +12 m·s⁻¹. ¿Velocidad del ciclista respecto al suelo?</p>
+      <div class="sol">
+        <p>\(v_{\text{auto/cic}}=v_{\text{auto}}-v_{\text{cic}}\Rightarrow 12=15-v_{\text{cic}}\Rightarrow v_{\text{cic}}=+3{,}0\).</p>
+        <span class="ans">+3,0 m·s⁻¹ — opción D.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="box key"><span class="lbl">Rapidez de acercamiento y de alejamiento (1D)</span>
+    <p><strong>Concepto.</strong> Módulo de la velocidad relativa entre dos móviles sobre la misma recta: cuán rápido se reduce (acercamiento) o crece (alejamiento) la distancia entre ellos.</p>
+    <p><strong>Relación.</strong> Sentidos <em>opuestos</em> (uno hacia el otro): \(v_{\text{rel}}=v_1+v_2\). <em>Mismo</em> sentido: \(v_{\text{rel}}=|v_1-v_2|\). Tiempo hasta encontrarse o separarse una distancia \(d\): \(t=d/v_{\text{rel}}\).</p>
+    <p><strong>Mini-ejemplo.</strong> Dos autos a 20 y 30 m·s⁻¹ separados 500 m: de frente, \(v_{\text{rel}}=50\Rightarrow\) chocan en \(500/50=10\) s; en persecución, \(v_{\text{rel}}=10\Rightarrow\) el de atrás alcanza en \(50\) s.</p>
+  </div>
+
+  <div class="box beyond"><span class="lbl">Más allá del IB · cruce de río (2D) — tu patrón a vigilar</span>
+    <p>Un bote apunta perpendicular a la orilla con \(v_b\) respecto al agua; la corriente \(v_c\) es perpendicular a \(v_b\). La velocidad respecto a tierra es la <strong>suma vectorial</strong>, no escalar: \(\ v=\sqrt{v_b^2+v_c^2}\), con ángulo \(\tan\phi=v_c/v_b\). El <em>tiempo de cruce</em> lo fija solo la componente perpendicular (\(v_b\)); la corriente solo añade deriva río abajo. Restar escalarmente velocidades perpendiculares es el error clásico.</p>
+  </div>
+
+  <div class="box key"><span class="lbl">Dos preguntas distintas del cruce de río</span>
+    <p><strong>(a) «Apunto perpendicular a la orilla».</strong> El tiempo es el <em>mínimo</em>, \(t=\dfrac{d}{v_b}\) (solo cuenta \(v_b\)), pero la corriente arrastra: deriva río abajo \(=v_c\,t\).</p>
+    <p><strong>(b) «Quiero cruzar en línea recta».</strong> Hay que apuntar <em>río arriba</em> un ángulo \(\theta\) que cancele la corriente: \(\sin\theta=\dfrac{v_c}{v_b}\). La velocidad neta a través del río es entonces \(v_b\cos\theta\) y el tiempo \(t=\dfrac{d}{v_b\cos\theta}\) (<em>mayor</em> que en (a)), sin deriva. Requiere \(v_b>v_c\); si no, es imposible cruzar recto.</p>
+    <p><strong>Mini-ejemplo.</strong> \(v_b=4\), \(v_c=3\), ancho \(d=120\) m. Caso (a): \(t=120/4=30\) s, deriva \(=3(30)=90\) m. Caso (b): \(\sin\theta=0{,}75\Rightarrow\theta=49^\circ\), \(v_b\cos\theta=4(0{,}661)=2{,}64\) m·s⁻¹ ⇒ \(t=120/2{,}64=45{,}4\) s, deriva \(0\).</p>
+  </div>
+
+  <h3>Resistencia del fluido y velocidad terminal</h3>
+  <p>Al caer, el arrastre crece con la rapidez. Mientras \(v\) aumenta, la <strong>aceleración disminuye</strong>; cuando el arrastre iguala al peso, \(a=0\) y se alcanza la <strong>velocidad terminal</strong> (constante). Abrir un paracaídas aumenta el arrastre ⇒ nueva velocidad terminal <em>menor</em>.</p>
+  <div class="box beyond"><span class="lbl">Más allá del IB · cuantitativo</span>
+    <p>Con arrastre lineal \(F=bv\): \(ma=mg-bv\Rightarrow v_{\text{term}}=\dfrac{mg}{b}\). Con arrastre cuadrático \(F=\tfrac12\rho C_D A v^2\): \(v_{\text{term}}=\sqrt{\dfrac{2mg}{\rho C_D A}}\). La guía IB solo pide el análisis <em>cualitativo</em>; esto explica el porqué.</p>
+  </div>
+</section>
+
+<!-- S8 -->
+<section id="s8">
+  <p class="sec-num">SECCIÓN 08</p>
+  <h2>Definiciones para el examen<span class="rule"></span></h2>
+  <div class="box def"><span class="lbl">Glosario</span>
+    <ul>
+      <li><strong>Desplazamiento:</strong> cambio de posición (vector).</li>
+      <li><strong>Distancia:</strong> longitud del camino recorrido (escalar).</li>
+      <li><strong>Velocidad:</strong> razón de cambio del desplazamiento respecto al tiempo (vector).</li>
+      <li><strong>Rapidez:</strong> razón de cambio de la distancia; módulo de la velocidad (escalar).</li>
+      <li><strong>Aceleración:</strong> razón de cambio de la velocidad respecto al tiempo (vector).</li>
+      <li><strong>Valor instantáneo:</strong> el valor en un instante (límite \(\Delta t\to0\); pendiente de la tangente).</li>
+      <li><strong>Caída libre:</strong> movimiento bajo la sola acción de la gravedad, con \(a=g\).</li>
+      <li><strong>Velocidad terminal:</strong> rapidez constante que alcanza un cuerpo cuando el arrastre iguala al peso (aceleración nula).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRAPS -->
+<section id="traps">
+  <p class="sec-num">CHECKLIST</p>
+  <h2>Trampas típicas del Paper 1<span class="rule"></span></h2>
+  <div class="box trap"><span class="lbl">Antes de marcar, revisa</span>
+    <ul>
+      <li>Distancia de frenado ∝ \(v^2\): al duplicar la rapidez es <strong>×4</strong>, no ×2.</li>
+      <li>«Durante un intervalo específico» ≠ «acumulado desde el reposo» en problemas proporcionales.</li>
+      <li>Velocidad media ≠ rapidez media cuando la trayectoria no es recta.</li>
+      <li>La <strong>dirección de la aceleración</strong> no es la del movimiento (un cuerpo que sube tiene \(a\) hacia abajo).</li>
+      <li>En proyectiles, la <strong>velocidad horizontal es constante</strong>; la vertical cambia. En la cima \(v_y=0\) pero \(a=g\) sigue.</li>
+      <li>Objeto soltado de un móvil <strong>hereda</strong> su velocidad (globo que sube).</li>
+      <li>Vectores perpendiculares (cruce de río) se combinan con Pitágoras, no restando escalares.</li>
+      <li>Sin resistencia, la masa no afecta la caída; con resistencia, sí (velocidad terminal).</li>
+      <li>Área bajo v–t = desplazamiento; área bajo a–t = cambio de velocidad; pendiente de s–t = velocidad.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CLAVE -->
+<section id="clave">
+  <p class="sec-num">CLAVE DE LAS FICHAS · TIPO 1</p>
+  <h2>Todos los ítems resueltos<span class="rule"></span></h2>
+  <p class="sec-intro">Respuesta y razón de cada ítem de las dos fichas. Los ejemplos completos de arriba resuelven los más instructivos; aquí va el resto. <span class="flag">▲</span> = el ítem depende de un gráfico que llegó sin imagen: te doy el método y la letra si me envías la foto.</p>
+
+  <h4>MRU</h4>
+  <table>
+    <tr><th>Ítem (código)</th><th>Resp.</th><th class="l">Razón</th></tr>
+    <tr><td>Disco de hockey (N11)</td><td>D</td><td class="l">\(d=vt=20(2{,}5)=50\ \mathrm m\).</td></tr>
+    <tr><td>Auto N/E (N16)</td><td>C</td><td class="l">Rapidez media \(=140/40=3{,}5\) (ver Ej. 2.1).</td></tr>
+    <tr><td>Minutero (M21)</td><td>A</td><td class="l">Despl. \(2L\); dist. \(\pi L\) (ver Ej. 1.1).</td></tr>
+  </table>
+
+  <h4>MRUV</h4>
+  <table>
+    <tr><th>Ítem</th><th>Resp.</th><th class="l">Razón</th></tr>
+    <tr><td>Marcadores (N99)</td><td>A</td><td class="l">\(s\propto v^2\Rightarrow0{,}5\) espacios (Ej. 4.1).</td></tr>
+    <tr><td>Frenado \(2v\) (N02)</td><td>A</td><td class="l">\(d\propto v^2\Rightarrow4d\) (Ej. 4.2).</td></tr>
+    <tr><td>Rapidez a \(2d\) (N02)</td><td>B</td><td class="l">\(v\propto\sqrt s\Rightarrow\sqrt2\,v\).</td></tr>
+    <tr><td>Rapidez a \(d/2\) (N06)</td><td>C</td><td class="l">\(v\propto\sqrt s\Rightarrow v/\sqrt2\).</td></tr>
+    <tr><td>Auto y ciclista (M08)</td><td>D</td><td class="l">\(v_{cic}=15-12=+3{,}0\) (Ej. 7.1).</td></tr>
+    <tr><td>Tiempo a \(16d\) (M13)</td><td>C</td><td class="l">\(t\propto\sqrt s\Rightarrow 4t\).</td></tr>
+  </table>
+
+  <h4>Caída libre</h4>
+  <table>
+    <tr><th>Ítem</th><th>Resp.</th><th class="l">Razón</th></tr>
+    <tr><td>Hierro P / madera Q (N99)</td><td>D</td><td class="l">Mismo tiempo: \(F/m=g\) igual para ambos.</td></tr>
+    <tr><td>Dos piedras, alturas ≠ (M02)</td><td>C</td><td class="l">Igual \(v(t)\) en todo instante ⇒ separación constante.</td></tr>
+    <tr><td>P arriba / Q abajo (M02)</td><td>B</td><td class="l">Q parte más rápido hacia abajo ⇒ llega con más velocidad.</td></tr>
+    <tr><td>Globo 40 m (N20)</td><td>C</td><td class="l">\(t=4\ \mathrm s\) (Ej. 5.1).</td></tr>
+    <tr><td>Rapidez/acel. antes terminal (M13)</td><td>B</td><td class="l">Rapidez aumenta; aceleración disminuye (arrastre).</td></tr>
+    <tr><td>Pluma en la Luna (N08)</td><td>C</td><td class="l">\(g=2{,}0\ \mathrm{m\,s^{-2}}\) (Ej. 5.2).</td></tr>
+    <tr><td>Tiempo a \(9h\) (M03)</td><td>A</td><td class="l">\(t\propto\sqrt h\Rightarrow 3t\).</td></tr>
+    <tr><td>Peter/Susan (M04)</td><td>B</td><td class="l">Misma rapidez al mar por energía, sin importar la altura.</td></tr>
+    <tr><td>Dos esferas al suelo (M08)</td><td>B</td><td class="l">Caen hacia el centro de la Tierra ⇒ separación disminuye.</td></tr>
+    <tr><td>Manzana en la Luna, \(g/6\) (M01)</td><td>√6×</td><td class="l">\(t\propto1/\sqrt g\Rightarrow\sqrt6\approx2{,}4\) veces (opciones mal transcritas).</td></tr>
+    <tr><td>Paracaidista, terminal (M09)</td><td>C</td><td class="l">Nueva velocidad terminal menor a 60 m·s⁻¹.</td></tr>
+    <tr><td>Bola a 5,0 m·s⁻¹ (M17)</td><td>B</td><td class="l">\(t=2u/g=2(5)/10=1{,}0\ \mathrm s\).</td></tr>
+  </table>
+
+  <h4>Movimiento parabólico</h4>
+  <table>
+    <tr><th>Ítem</th><th>Resp.</th><th class="l">Razón</th></tr>
+    <tr><td>Cañón horizontal vs. vertical (M99)</td><td>C</td><td class="l">Mismo tiempo: el movimiento vertical es idéntico.</td></tr>
+    <tr><td>P horizontal / Q vertical (N00)</td><td>B</td><td class="l">Mismo tiempo de caída (misma \(y\), \(u_y=0\)).</td></tr>
+    <tr><td>Acantilado 4 s / 2 km (M17)</td><td>B</td><td class="l">\(h=\tfrac12gt^2=80\ \mathrm m\) (Ej. 6.1).</td></tr>
+    <tr><td>Componentes v/h (M02)</td><td>B</td><td class="l">Vertical incrementa; horizontal constante.</td></tr>
+  </table>
+
+  <h4>Gráficas del movimiento <span style="font-size:13px;color:var(--ink-soft)">(las de forma con respuesta dada + método para las ▲)</span></h4>
+  <table>
+    <tr><th>Ítem</th><th>Resp.</th><th class="l">Razón / método</th></tr>
+    <tr><td>Pista inclinada→nivelada (N99)</td><td>a</td><td class="l">v crece linealmente (rampa) y luego constante.</td></tr>
+    <tr><td>Desplaz. accel→const→frena→quieto (N01)</td><td>c</td><td class="l">s: cóncava, luego recta, luego se aplana.</td></tr>
+    <tr><td>Paracaidista v–t (N02)</td><td>c</td><td class="l">Sube rápido, cae al abrir, nueva terminal menor.</td></tr>
+    <tr><td>Fuerza vertical P→Q (M06)</td><td>a</td><td class="l">Constante sobre la mesa, salto al caer (peso).</td></tr>
+    <tr><td>Joseph, 200 m en 25 s (M11)</td><td>C</td><td class="l">v media \(=200/25=8\); instantánea \(=10\) del gráfico.</td></tr>
+    <tr><td>Muchacho, 50 m en 15 s (M18)</td><td>C</td><td class="l">rapidez media \(=50/15=3{,}3\); instantánea \(=5{,}0\).</td></tr>
+    <tr><td>Proyectil horizontal, \(v_y\) (M01)</td><td>recta ↑</td><td class="l">\(v_y=gt\): recta creciente desde el origen.</td></tr>
+    <tr><td>Dos vehículos en T (N99) <span class="flag">▲</span></td><td>—</td><td class="l">Comparar <strong>áreas</strong> bajo cada v–t.</td></tr>
+    <tr><td>Cuatro coches W/X/Y/Z (M05) <span class="flag">▲</span></td><td>—</td><td class="l">Mayor velocidad = mayor <strong>pendiente</strong> de s–t.</td></tr>
+    <tr><td>Áreas S1/S2/S3 al frenar (M05) <span class="flag">▲</span></td><td>—</td><td class="l">Distancia = área bajo v–t en el tramo indicado.</td></tr>
+    <tr><td>Pelota arriba, d–t (M06) <span class="flag">▲</span></td><td>—</td><td class="l">Desplaz. = \(d(T)\); v media \(=\Delta d/T\).</td></tr>
+    <tr><td>a–t → v en \(t\) (M07, N08, M14) <span class="flag">▲</span></td><td>—</td><td class="l">\(v=\)área bajo a–t (con \(u=0\)).</td></tr>
+    <tr><td>a–t → Δv en intervalo (M11, M12) <span class="flag">▲</span></td><td>—</td><td class="l">\(\Delta v=\)área bajo a–t.</td></tr>
+    <tr><td>v–t → desplaz. (M09, M12, N17, otros) <span class="flag">▲</span></td><td>—</td><td class="l">\(\Delta s=\)área bajo v–t.</td></tr>
+    <tr><td>P y Q en \(t=8\) s (N20) <span class="flag">▲</span></td><td>—</td><td class="l">Separación = diferencia de áreas bajo cada v–t.</td></tr>
+    <tr><td>s–t máxima aceleración (N04) <span class="flag">▲</span></td><td>—</td><td class="l">Donde la curvatura (cambio de pendiente) es mayor.</td></tr>
+    <tr><td>Atleta pista circular, |d|–t (N03) <span class="flag">▲</span></td><td>—</td><td class="l">Sube a \(2r\) y baja a 0 al volver (no recta).</td></tr>
+    <tr><td>d–t → v–t (N06); a–t de accel→const→frena (M05) <span class="flag">▲</span></td><td>—</td><td class="l">v = pendiente de d–t; a = tramos ±constante y 0.</td></tr>
+  </table>
+</section>
+
+<!-- EXAMENES -->
+<section id="examenes">
+  <p class="sec-num">BANCO DE EXÁMENES IB · TIPO 1 (PAPER 1 / 1A)</p>
+  <h2>Cinemática en los exámenes oficiales, 2022–2026<span class="rule"></span></h2>
+  <p class="sec-intro">Todas las preguntas de cinemática que aparecieron en los Paper 1 del IB en este rango, resueltas y con la <strong>respuesta oficial del markscheme</strong>. A diferencia de incertidumbre, la cinemática <strong>sí se evalúa con fuerza en el plan nuevo</strong>: cae en las primeras preguntas de cada Paper 1A. Enunciados reformulados; datos y clave reales. \(g=10\ \mathrm{m\,s^{-2}}\) salvo que se indique.</p>
+
+  <div class="box key">
+    <span class="lbl">26 preguntas · cobertura</span>
+    <p><strong>Plan nuevo (Paper 1A):</strong> mayo 2025, noviembre 2025 y 2026 (10 preguntas). <strong>Plan anterior (Paper 1):</strong> mayo/nov 2022–2024 (16 preguntas). Mismo temario; lo etiqueto en cada ítem.</p>
+  </div>
+
+  <h4>Índice</h4>
+  <table>
+    <tr><th>#</th><th class="l">Subtema</th><th>Sesión</th><th>Plan</th><th>Resp.</th></tr>
+    <tr><td>K1</td><td class="l">Distancia vs. desplazamiento (ida y vuelta)</td><td>May 2022 TZ2</td><td>ant.</td><td>D</td></tr>
+    <tr><td>K2</td><td class="l">Desplazamiento en pista circular</td><td>May 2023 TZ1</td><td>ant.</td><td>C</td></tr>
+    <tr><td>K3</td><td class="l">Comparar distancias (prefijos)</td><td>May 2024 TZ1</td><td>ant.</td><td>C</td></tr>
+    <tr><td>K4</td><td class="l">\(a=2d/t^2\) desde el reposo</td><td>May 2026 TZ2</td><td>nuevo</td><td>C</td></tr>
+    <tr><td>K5</td><td class="l">Desplazamiento \(=\tfrac12 vt\) desde el reposo</td><td>May 2026 TZ3</td><td>nuevo</td><td>B</td></tr>
+    <tr><td>K6</td><td class="l">Frenado: ¿cuánto más hasta parar?</td><td>May 2025 TZ3</td><td>nuevo</td><td>B</td></tr>
+    <tr><td>K7</td><td class="l">Expresiones válidas de \(a\) (SUVAT)</td><td>May 2023 TZ1</td><td>ant.</td><td>C</td></tr>
+    <tr><td>K8</td><td class="l">Distancias por segundo (1:3:5)</td><td>May 2025 TZ2</td><td>nuevo</td><td>C</td></tr>
+    <tr><td>K9</td><td class="l">Distancias por segundo (1:3:5)</td><td>May 2022 TZ2</td><td>ant.</td><td>C</td></tr>
+    <tr><td>K10</td><td class="l">Distancia total en gráfica v–t</td><td>May 2022 TZ2</td><td>ant.</td><td>D</td></tr>
+    <tr><td>K11</td><td class="l">Alcance de persecución (relativo)</td><td>May 2024 TZ2</td><td>ant.</td><td>C</td></tr>
+    <tr><td>K12</td><td class="l">Gráfica v–t de lanzamiento vertical</td><td>May 2023 TZ2</td><td>ant.</td><td>A</td></tr>
+    <tr><td>K13</td><td class="l">Gráfica s–t: acelera y luego constante</td><td>Nov 2024</td><td>ant.</td><td>D</td></tr>
+    <tr><td>K14</td><td class="l">Caída libre: ¿qué es constante cada s?</td><td>Nov 2025</td><td>nuevo</td><td>A</td></tr>
+    <tr><td>K15</td><td class="l">Lanzamiento vertical: rapidez inicial</td><td>May 2025 TZ2</td><td>nuevo</td><td>B</td></tr>
+    <tr><td>K16</td><td class="l">Dos pelotas (una cae, otra sube): \(t\)</td><td>Nov 2022</td><td>ant.</td><td>C</td></tr>
+    <tr><td>K17</td><td class="l">Objeto soltado desde globo que asciende</td><td>Nov 2024</td><td>ant.</td><td>C</td></tr>
+    <tr><td>K18</td><td class="l">Proyectil horizontal: desplazamiento</td><td>May 2022 TZ1</td><td>ant.</td><td>B</td></tr>
+    <tr><td>K19</td><td class="l">Tiempo hasta la altura máxima</td><td>Nov 2022</td><td>ant.</td><td>D</td></tr>
+    <tr><td>K20</td><td class="l">Mismo lanzamiento en otro planeta (R, H)</td><td>May 2023 TZ1</td><td>ant.</td><td>A</td></tr>
+    <tr><td>K21</td><td class="l">Soltada vs. lanzada horizontal: impacto</td><td>May 2023 TZ2</td><td>ant.</td><td>D</td></tr>
+    <tr><td>K22</td><td class="l">Componentes de v al volver a su altura</td><td>May 2024 TZ1</td><td>ant.</td><td>B</td></tr>
+    <tr><td>K23</td><td class="l">Proyectil horizontal: altura del acantilado</td><td>Nov 2025</td><td>nuevo</td><td>C</td></tr>
+    <tr><td>K24</td><td class="l">P horizontal vs Q vertical: \(t\) y rapidez</td><td>May 2025 TZ3</td><td>nuevo</td><td>C</td></tr>
+    <tr><td>K25</td><td class="l">Proyectil con/sin resistencia del aire</td><td>May 2026 TZ3</td><td>nuevo</td><td>A</td></tr>
+    <tr><td>K26</td><td class="l">Efecto de la resistencia del aire (Q, a, θ)</td><td>May 2025 TZ2</td><td>nuevo</td><td>D</td></tr>
+  </table>
+
+  <!-- GRUPO A -->
+  <h3>A · Magnitudes: distancia y desplazamiento</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K1</span><span class="ej-src">Paper 1 · May 2022 TZ2 · Q3 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>La carretera X→Y mide 1000 km; el desplazamiento de X a Y es 800 km. ¿Cuánto valen la distancia recorrida y el desplazamiento <em>de Y a X</em>?</p>
+      <div class="sol"><p>La distancia (longitud del camino) no depende del sentido: 1000 km. El desplazamiento invierte su signo: −800 km.</p>
+        <span class="ans">D) distancia 1000 km · desplazamiento −800 km ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K2</span><span class="ej-src">Paper 1 · May 2023 TZ1 · Q3 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un auto recorre una pista circular de radio \(R\). X e Y están separados un cuarto de vuelta. ¿Magnitud del desplazamiento de X a Y?</p>
+      <div class="sol"><p>El desplazamiento es la <em>cuerda</em> recta, no el arco. Para 90°: \(\sqrt{R^2+R^2}=R\sqrt2\).</p>
+        <span class="ans">C) \(\sqrt2\,R\) ✓ — el arco (\(\tfrac{\pi R}{2}\)) es la <em>distancia</em>, no el desplazamiento.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K3</span><span class="ej-src">Paper 1 · May 2024 TZ1 · Q2 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>¿Cuál distancia es la mayor? A) \(10^{-18}\) Gm &nbsp; B) \(10^{-13}\) km &nbsp; C) \(10^{-2}\) mm &nbsp; D) \(10^{-1}\) fm</p>
+      <div class="sol"><p>Pasa todo a metros: A) \(10^{-9}\) m; B) \(10^{-10}\) m; C) \(10^{-5}\) m; D) \(10^{-16}\) m.</p>
+        <span class="ans">C) \(10^{-2}\) mm \(=10^{-5}\) m ✓ — clave: dominar los prefijos (G=10⁹, f=10⁻¹⁵).</span></div>
+    </div>
+  </div>
+
+  <!-- GRUPO B -->
+  <h3>B · Ecuaciones del movimiento (SUVAT) y movimiento relativo</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K4</span><span class="ej-src">Paper 1A · May 2026 TZ2 · Q1 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Desde el reposo, un objeto recorre una distancia \(d\) en un tiempo \(t\) con aceleración uniforme \(a\). ¿Cuánto vale \(a\)?</p>
+      <div class="sol"><p>\(d=ut+\tfrac12at^2\) con \(u=0\Rightarrow d=\tfrac12at^2\Rightarrow a=\dfrac{2d}{t^2}\).</p>
+        <span class="ans">C) \(2d/t^2\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K5</span><span class="ej-src">Paper 1A · May 2026 TZ3 · Q1 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Desde el reposo, con aceleración constante \(a\), en el tiempo \(t\) la rapidez es \(v\). ¿Cuál es el desplazamiento en \(t\)?</p>
+      <div class="sol"><p>Con \(u=0\): \(s=\Big(\dfrac{u+v}{2}\Big)t=\dfrac{v}{2}\,t\) (área del triángulo en la gráfica v–t).</p>
+        <span class="ans">B) \(\tfrac12 vt\) ✓ — \(vt\) sería el rectángulo (velocidad constante), no vale aquí.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K6</span><span class="ej-src">Paper 1A · May 2025 TZ3 · Q1 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un auto decelera uniformemente. De \(v\) a \(v/2\) recorre una distancia \(d\). ¿Cuánto <em>más</em> avanza hasta detenerse?</p>
+      <div class="sol"><p>Usa \(v^2=u^2+2as\). Tramo 1 (\(v\to v/2\)): \((v/2)^2=v^2-2ad\Rightarrow ad=\tfrac{3}{8}v^2\). Tramo 2 (\(v/2\to0\)): \(0=(v/2)^2-2ad'\Rightarrow ad'=\tfrac18 v^2\). Razón \(d'/d=\tfrac18/\tfrac38=\tfrac13\).</p>
+        <span class="ans">B) \(d/3\) ✓ — cuidado: la deceleración "come" más distancia al principio (más rapidez).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K7</span><span class="ej-src">Paper 1 · May 2023 TZ1 · Q4 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un auto acelera uniformemente: pasa por X (\(t_1,v_1\)) y por Y (\(t_2,v_2\)); XY \(=s\). ¿Cuáles expresiones de \(a\) son correctas?<br>
+      I. \(a=\dfrac{2s}{(t_2-t_1)^2}\) &nbsp; II. \(a=\dfrac{v_2^2-v_1^2}{2s}\) &nbsp; III. \(a=\dfrac{v_2-v_1}{t_2-t_1}\)</p>
+      <div class="sol"><p>II sale de \(v^2=u^2+2as\) ✓. III es la definición de aceleración ✓. I solo valdría si partiera del reposo (\(v_1=0\)) → falsa en general.</p>
+        <span class="ans">C) II y III solamente ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K8</span><span class="ej-src">Paper 1A · May 2025 TZ2 · Q2 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un objeto baja desde el reposo por un plano inclinado sin rozamiento. En el primer segundo desciende 1,5 m (vertical). ¿Cuánto desciende en el <em>segundo</em> siguiente?</p>
+      <div class="sol"><p>Desde el reposo con \(a\) constante, las distancias en segundos sucesivos van como \(1:3:5:\dots\) (regla de Galileo). 2.º segundo \(=3\times1{,}5=4{,}5\ \mathrm m\).</p>
+        <span class="ans">C) 4,5 m ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K9</span><span class="ej-src">Paper 1 · May 2022 TZ2 · Q5 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Misma idea con otro número: baja desde el reposo por un plano sin rozamiento; recorre 1,0 m en el primer segundo. ¿Cuánto en el siguiente?</p>
+      <div class="sol"><p>\(1:3:5\Rightarrow 3\times1{,}0=3{,}0\ \mathrm m\). (La opción 4,9 m es la trampa que mete \(g\) donde no toca.)</p>
+        <span class="ans">C) 3,0 m ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K10</span><span class="ej-src">Paper 1 · May 2022 TZ2 · Q4 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un auto acelera uniformemente desde el reposo hasta \(v\) en un tiempo \(t_1\); luego sigue a \(v\) constante hasta \(t_2\). ¿Distancia total en \(t_2\)?</p>
+      <div class="sol"><p>Área bajo v–t = triángulo + rectángulo: \(\tfrac12 v\,t_1 + v\,(t_2-t_1)=v\,t_2-\tfrac12 v\,t_1\).</p>
+        <span class="ans">D) \(v\,t_2-\tfrac12 v\,t_1\) ✓ — es el área total, no \(v t_2\) (eso ignoraría el arranque).</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K11</span><span class="ej-src">Paper 1 · May 2024 TZ2 · Q3 · plan anterior · movimiento relativo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Jim corre con velocidad constante \(v\) y pasa junto a Sally (en reposo). En ese instante Sally lo persigue con aceleración constante \(a\). ¿Cuándo lo alcanza?</p>
+      <div class="sol"><p>Igualar posiciones: \(v\,t=\tfrac12 a\,t^2\Rightarrow t=\dfrac{2v}{a}\).</p>
+        <span class="ans">C) \(2v/a\) ✓</span></div>
+    </div>
+  </div>
+
+  <!-- GRUPO C -->
+  <h3>C · Gráficas del movimiento</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K12</span><span class="ej-src">Paper 1 · May 2023 TZ2 · Q3 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Se lanza una piedra <em>hacia arriba</em> con rapidez \(v\) desde lo alto de un acantilado (\(t=0\)). ¿Qué gráfica v–t la describe hasta que toca el suelo?</p>
+      <div class="sol"><p>La velocidad es una <strong>recta de pendiente \(-g\)</strong> (constante): empieza en \(+v\), cruza el cero (altura máxima) y sigue bajando hasta un valor <strong>más negativo que \(-v\)</strong> (porque cae por debajo del borde del acantilado). No es una curva.</p>
+        <span class="ans">A) recta descendente desde \(+v\), pasando de \(-v\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K13</span><span class="ej-src">Paper 1 · Nov 2024 · Q3 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un corredor acelera desde el reposo y alcanza rapidez constante en \(t=T\). ¿Qué gráfica <em>desplazamiento–tiempo</em> lo describe?</p>
+      <div class="sol"><p>Mientras acelera: \(s\propto t^2\) → <strong>curva cóncava hacia arriba</strong> hasta \(T\). Luego, a \(v\) constante: <strong>recta</strong> (pendiente constante) que arranca tangente a la curva.</p>
+        <span class="ans">D) parábola hasta \(T\), luego recta ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K14</span><span class="ej-src">Paper 1A · Nov 2025 · Q1 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una piedra se suelta desde el reposo y cae (sin resistencia del aire). En cada segundo consecutivo, ¿qué es correcto?<br>A) La variación de su velocidad es constante &nbsp; B) La variación de su desplazamiento es constante &nbsp; C) La variación de su aceleración disminuye &nbsp; D) La variación de su rapidez aumenta</p>
+      <div class="sol"><p>La aceleración es \(g\) constante → el <strong>cambio de velocidad por segundo</strong> es el mismo (\(\Delta v=g\,\Delta t\)). El desplazamiento por segundo <em>aumenta</em> (1:3:5), así que B es falsa.</p>
+        <span class="ans">A) la variación de su velocidad es constante ✓</span></div>
+    </div>
+  </div>
+
+  <!-- GRUPO D -->
+  <h3>D · Caída libre y lanzamiento vertical</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K15</span><span class="ej-src">Paper 1A · May 2025 TZ2 · Q1 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una pelota está a 50 m sobre el suelo. Se lanza <em>verticalmente hacia arriba</em> y tarda 5,0 s en llegar al suelo. ¿Rapidez inicial?</p>
+      <div class="sol"><p>Hacia arriba \(+\); al llegar al suelo \(s=-50\ \mathrm m\). \(s=ut-\tfrac12gt^2\Rightarrow -50=5u-\tfrac12(10)(25)=5u-125\Rightarrow u=15\ \mathrm{m\,s^{-1}}\).</p>
+        <span class="ans">B) 15 m s⁻¹ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K16</span><span class="ej-src">Paper 1 · Nov 2022 · Q3 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>La pelota 1 se suelta desde una altura \(h\); en el mismo instante la pelota 2 se lanza hacia arriba con rapidez inicial \(u\). ¿En qué instante están a la misma altura sobre el suelo?</p>
+      <div class="sol"><p>Alturas: \(y_1=h-\tfrac12gt^2\), \(y_2=ut-\tfrac12gt^2\). Igualar: el término \(\tfrac12gt^2\) se cancela \(\Rightarrow h=ut\Rightarrow t=\dfrac{h}{u}\).</p>
+        <span class="ans">C) \(h/u\) ✓ — las dos caen con la misma \(g\), así que la "diferencia de alturas" se cierra a velocidad \(u\) constante.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K17</span><span class="ej-src">Paper 1 · Nov 2024 · Q4 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un globo asciende a 10 m s⁻¹ constante. Se suelta (en reposo respecto al globo) un objeto cuando está a 120 m del suelo. ¿Tiempo aproximado hasta impactar?</p>
+      <div class="sol"><p>El objeto sale con \(u=+10\) (sube). Hacia arriba \(+\): \(-120=10t-5t^2\Rightarrow t^2-2t-24=0\Rightarrow t=\dfrac{2+\sqrt{100}}{2}=6\ \mathrm s\).</p>
+        <span class="ans">C) 6 s ✓ — ¡no olvides que el objeto <em>primero sube</em> con el globo!</span></div>
+    </div>
+  </div>
+
+  <!-- GRUPO E -->
+  <h3>E · Movimiento de proyectiles</h3>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K18</span><span class="ej-src">Paper 1 · May 2022 TZ1 · Q5 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una piedra se lanza horizontalmente a 1,5 m s⁻¹ desde un acantilado de 4,0 m en una luna de Júpiter; cae 2,0 s después. ¿Magnitud del <strong>desplazamiento</strong>?</p>
+      <div class="sol"><p>Horizontal: \(x=1{,}5\times2{,}0=3{,}0\ \mathrm m\). Vertical: \(4{,}0\ \mathrm m\) (dato). Desplazamiento \(=\sqrt{3^2+4^2}=5{,}0\ \mathrm m\).</p>
+        <span class="ans">B) 5,0 m ✓ — piden <em>desplazamiento</em> (hipotenusa), no la distancia horizontal ni la caída.</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K19</span><span class="ej-src">Paper 1 · Nov 2022 · Q4 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un proyectil se lanza con rapidez \(u\) y ángulo \(\theta\); alcanza una altura máxima \(s\). ¿Tiempo hasta la altura máxima?</p>
+      <div class="sol"><p>En la cima la componente vertical se anula: \(0=u\sin\theta-g\,t\Rightarrow t=\dfrac{u\sin\theta}{g}\). (El dato \(s\) es distractor.)</p>
+        <span class="ans">D) \(u\sin\theta/g\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K20</span><span class="ej-src">Paper 1 · May 2023 TZ1 · Q5 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>En la Tierra un proyectil logra alcance \(R\) y altura máxima \(H\). Con el mismo ángulo y rapidez, en un planeta con \(g'=3g\), ¿cuáles son el alcance y la altura?</p>
+      <div class="sol"><p>\(R=\dfrac{u^2\sin2\theta}{g}\) y \(H=\dfrac{u^2\sin^2\theta}{2g}\): ambos \(\propto 1/g\). Al triplicar \(g\), ambos se dividen entre 3.</p>
+        <span class="ans">A) alcance \(R/3\), altura \(H/3\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K21</span><span class="ej-src">Paper 1 · May 2023 TZ2 · Q4 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>La pelota 1 se suelta desde el reposo; la pelota 2 se lanza horizontalmente desde la misma altura y en el mismo instante (sin resistencia del aire). ¿Qué afirmación es verdadera?</p>
+      <div class="sol"><p>El movimiento <em>vertical</em> es idéntico → <strong>mismo tiempo</strong> de caída (descarta B). La 2 lleva además componente horizontal → su <strong>rapidez</strong> de impacto es mayor y su <strong>velocidad</strong> (vector) también lo es en magnitud; no son iguales (descarta A y C).</p>
+        <span class="ans">D) la velocidad de impacto es mayor para la pelota 2 ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K22</span><span class="ej-src">Paper 1 · May 2024 TZ1 · Q4 · plan anterior</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Se lanza un objeto con rapidez \(u\) y ángulo \(q\). Más tarde su desplazamiento vertical vuelve a ser cero (regresa a la altura de lanzamiento). ¿Componentes horizontal y vertical de la velocidad en ese instante?</p>
+      <div class="sol"><p>Horizontal: constante, \(u\cos q\). Vertical: por simetría, misma magnitud pero <em>hacia abajo</em>: \(-u\sin q\).</p>
+        <span class="ans">B) \(u\cos q\) · \(-u\sin q\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K23</span><span class="ej-src">Paper 1A · Nov 2025 · Q2 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Un proyectil se lanza horizontalmente a 10 m s⁻¹ desde un acantilado y cae a 30 m de la base. ¿Altura del acantilado?</p>
+      <div class="sol"><p>Horizontal: \(30=10\,t\Rightarrow t=3{,}0\ \mathrm s\). Vertical: \(h=\tfrac12 g t^2=\tfrac12(10)(3{,}0)^2=45\ \mathrm m\).</p>
+        <span class="ans">C) 45 m ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K24</span><span class="ej-src">Paper 1A · May 2025 TZ3 · Q2 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Desde el borde de un acantilado, P se lanza horizontalmente con rapidez \(v\) y Q se lanza verticalmente hacia arriba con la misma \(v\). Compara, para Q frente a P, el tiempo de caída y la rapidez de impacto.</p>
+      <div class="sol"><p><strong>Tiempo:</strong> Q sube y baja antes de pasar por el borde, así que tarda <em>más</em> que P. <strong>Rapidez:</strong> ambas parten de la misma altura con rapidez \(v\); por conservación de energía, \(v_\text{impacto}=\sqrt{v^2+2gh}\) es la <em>misma</em> para las dos.</p>
+        <span class="ans">C) tiempo mayor que \(t_P\) · rapidez igual a \(v_P\) ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K25</span><span class="ej-src">Paper 1A · May 2026 TZ3 · Q2 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Una piedra y una pelota se lanzan horizontalmente con la misma velocidad inicial. La resistencia del aire es despreciable para la piedra pero <em>no</em> para la pelota. ¿Cuál llega antes al suelo y cuál tiene mayor alcance?</p>
+      <div class="sol"><p>La resistencia del aire frena a la pelota en ambos ejes: reduce su velocidad horizontal (menor alcance) y su aceleración de caída (tarda más). La piedra, sin fricción, llega antes y llega más lejos.</p>
+        <span class="ans">A) llega antes: piedra · mayor alcance: piedra ✓</span></div>
+    </div>
+  </div>
+
+  <div class="ej">
+    <div class="ej-head"><span class="ej-tag" style="background:var(--amber)">K26</span><span class="ej-src">Paper 1A · May 2025 TZ2 · Q3 · plan nuevo</span></div>
+    <div class="ej-body"><span class="sepide">Enunciado</span>
+      <p>Trayectoria de una pelota (Q = punto más alto; \(a\) = aceleración vertical en Q; \(\theta\) = ángulo de impacto). Con resistencia del aire: I) Q es más bajo; II) \(a\) sigue igual; III) \(\theta\) aumenta. ¿Cuáles son correctas?</p>
+      <div class="sol"><p>I ✓ (la resistencia resta altura). II ✓ (en Q la velocidad es solo horizontal, así que la resistencia es horizontal y la aceleración <em>vertical</em> sigue siendo \(g\)). III ✓ (al perder más alcance que altura, la caída final es más empinada).</p>
+        <span class="ans">D) I, II y III ✓ — el punto fino es el II: en la cima no hay resistencia vertical.</span></div>
+    </div>
+  </div>
+
+  <div class="box beyond">
+    <span class="lbl">Qué va en el Módulo 2B (tipo 2)</span>
+    <p>Los ítems de cinemática del <strong>Paper 2</strong> (estructurados: analizar una gráfica real, obtener aceleración de una pendiente, proyectiles con varios apartados) se resolverán en el Módulo 2B, junto con los problemas de análisis de datos.</p>
+  </div>
+</section>
+
+<!-- PRACTICA -->
+<section id="practica">
+  <p class="sec-num">PARA TI · RESUELVE Y ENVÍA EN BLOQUE</p>
+  <h2>10 problemas propuestos (tipo 1, nivel ascendente)<span class="rule"></span></h2>
+  <p class="sec-intro">Cada uno es un subtipo distinto que <strong>sí puede caer</strong> (escalar/vector, SUVAT, reacción+frenado, tiro vertical, dos móviles, proyectil horizontal y en ángulo, cruce de río 2D); P9 añade la destreza de <strong>análisis de datos con incertidumbre</strong> (Módulo 1) y P10 es un proyectil-desde-acantilado al máximo nivel realista. Intenta cada uno y abre <strong>"Ver resolución"</strong>. \(g=10\ \mathrm{m\,s^{-2}}\).</p>
+
+  <div class="prob"><p class="pn">P1 · escalar vs vector</p><p>Un corredor recorre 100 m hacia el este en 12,5 s y regresa los mismos 100 m en 15,0 s. Calcula su rapidez media y su velocidad media para el trayecto completo. Explica por qué difieren.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Distancia total \(=200\) m; tiempo total \(=12{,}5+15{,}0=27{,}5\) s. <strong>Rapidez media</strong> \(=200/27{,}5=7{,}3\) m·s⁻¹.</p>
+      <p>Regresa al punto de partida ⇒ <strong>desplazamiento = 0</strong> ⇒ <strong>velocidad media = 0</strong>.</p>
+      <p>Difieren porque la rapidez usa la distancia (siempre crece) y la velocidad usa el desplazamiento (ida y vuelta se cancelan).</p>
+      <span class="ans">rapidez 7,3 m·s⁻¹ · velocidad 0.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P2 · SUVAT</p><p>Un auto acelera uniformemente de 10 m·s⁻¹ a 30 m·s⁻¹ recorriendo 100 m. Halla la aceleración y el tiempo empleado.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>\(v^2=u^2+2as\Rightarrow 30^2=10^2+2a(100)\Rightarrow 900=100+200a\Rightarrow a=4{,}0\) m·s⁻².</p>
+      <p>\(v=u+at\Rightarrow 30=10+4{,}0\,t\Rightarrow t=5{,}0\) s.</p>
+      <span class="ans">a = 4,0 m·s⁻² · t = 5,0 s.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P3 · tiempo de reacción + frenado</p><p>Un conductor viaja a 25 m·s⁻¹. Reacciona en 0,70 s y luego frena a 5,0 m·s⁻². Calcula la distancia total de detención (reacción + frenado).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Reacción (MRU): \(d_1=vt=25(0{,}70)=17{,}5\) m.</p>
+      <p>Frenado: \(0=v^2-2ad_2\Rightarrow d_2=\dfrac{25^2}{2(5{,}0)}=\dfrac{625}{10}=62{,}5\) m.</p>
+      <p>Total \(=17{,}5+62{,}5=80{,}0\) m.</p>
+      <span class="ans">80 m.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P4 · tiro vertical desde altura</p><p>Desde una azotea de 25 m se lanza una pelota verticalmente hacia arriba a 20 m·s⁻¹. Halla (a) la altura máxima sobre el suelo, (b) el tiempo total hasta tocar el suelo, (c) la rapidez de impacto.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Sobre la azotea sube \(\dfrac{u^2}{2g}=\dfrac{400}{20}=20\) m ⇒ altura máxima sobre el suelo \(=25+20=45\) m.</p>
+      <p>(b) Con arriba +, \(y=25+20t-5t^2=0\Rightarrow t^2-4t-5=0\Rightarrow (t-5)(t+1)=0\Rightarrow t=5{,}0\) s.</p>
+      <p>(c) \(v^2=u^2+2g(25)=400+500=900\Rightarrow v=30\) m·s⁻¹ (hacia abajo).</p>
+      <span class="ans">45 m · 5,0 s · 30 m·s⁻¹.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P5 · dos móviles (alcance)</p><p>Se suelta una piedra A desde el reposo. Un segundo después (1,0 s) se lanza una piedra B hacia abajo a 15 m·s⁻¹ desde el mismo punto. ¿A qué tiempo y a qué distancia del punto de lanzamiento B alcanza a A?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Con \(t\) medido desde que sueltan A (abajo +): \(y_A=5t^2\). B sale en \(t=1\): \(y_B=15(t-1)+5(t-1)^2\).</p>
+      <p>Igualar: \(5t^2=15(t-1)+5(t-1)^2=5t^2+5t-10\Rightarrow 0=5t-10\Rightarrow t=2{,}0\) s.</p>
+      <p>Posición: \(y_A=5(2{,}0)^2=20\) m.</p>
+      <span class="ans">a los 2,0 s (1,0 s tras lanzar B), 20 m bajo el punto.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P6 · proyectil horizontal</p><p>Una bola sale rodando horizontalmente del borde de una mesa de 1,25 m de alto a 3,0 m·s⁻¹. Halla el tiempo de vuelo, el alcance horizontal y la rapidez y el ángulo con que llega al suelo.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Vertical (\(u_y=0\)): \(1{,}25=5t^2\Rightarrow t=0{,}50\) s. Alcance: \(x=3{,}0(0{,}50)=1{,}5\) m.</p>
+      <p>\(v_y=gt=10(0{,}50)=5{,}0\) m·s⁻¹; \(v=\sqrt{3{,}0^2+5{,}0^2}=\sqrt{34}=5{,}8\) m·s⁻¹.</p>
+      <p>Ángulo bajo la horizontal: \(\tan\phi=\dfrac{5{,}0}{3{,}0}\Rightarrow\phi=59^\circ\).</p>
+      <span class="ans">0,50 s · 1,5 m · 5,8 m·s⁻¹ a 59° bajo la horizontal.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P7 · proyectil en ángulo</p><p>Un proyectil se lanza a 25 m·s⁻¹ formando 37° sobre la horizontal (usa \(\sin37^\circ=0{,}6\), \(\cos37^\circ=0{,}8\)). Calcula la altura máxima, el tiempo de vuelo y el alcance sobre terreno horizontal.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>\(u_x=25(0{,}8)=20\) m·s⁻¹; \(u_y=25(0{,}6)=15\) m·s⁻¹.</p>
+      <p>\(H=\dfrac{u_y^2}{2g}=\dfrac{225}{20}=11{,}25\) m. \(T=\dfrac{2u_y}{g}=\dfrac{30}{10}=3{,}0\) s. \(R=u_xT=20(3{,}0)=60\) m.</p>
+      <span class="ans">H = 11,25 m · T = 3,0 s · R = 60 m.</span>
+    </div></details>
+  </div>
+  <div class="prob"><p class="pn">P8 · cruce de río (2D)</p><p>Un bote apunta perpendicular a un río de 120 m de ancho con rapidez 4,0 m·s⁻¹ respecto al agua; la corriente es de 3,0 m·s⁻¹ río abajo. Halla la velocidad resultante (módulo y dirección), el tiempo de cruce y la deriva río abajo al llegar a la otra orilla.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Resultante (vectores perpendiculares): \(v=\sqrt{4{,}0^2+3{,}0^2}=5{,}0\) m·s⁻¹; dirección \(\tan\alpha=\dfrac{3{,}0}{4{,}0}\Rightarrow\alpha=37^\circ\) respecto a la perpendicular (río abajo).</p>
+      <p>Tiempo de cruce (solo la componente perpendicular): \(t=\dfrac{120}{4{,}0}=30\) s.</p>
+      <p>Deriva: \(=3{,}0(30)=90\) m río abajo.</p>
+      <span class="ans">5,0 m·s⁻¹ a 37° · 30 s · 90 m.</span>
+    </div></details>
+  </div>
+  <div class="prob jefe"><p class="pn">P9 · INTEGRADOR (con Módulo 1)</p><p>Un carrito baja una rampa. Se miden su velocidad en instantes sucesivos (cada valor con \(\Delta v=\pm0{,}2\ \mathrm{m\,s^{-1}}\), \(\Delta t\) despreciable):</p>
+  <table><tr><th>\(t\ (\mathrm s)\)</th><td>0,0</td><td>0,5</td><td>1,0</td><td>1,5</td><td>2,0</td></tr>
+  <tr><th>\(v\ (\mathrm{m\,s^{-1}})\)</th><td>0,4</td><td>1,3</td><td>2,1</td><td>3,0</td><td>3,8</td></tr></table>
+  <p>(a) Grafica \(v\) vs \(t\) con barras de error y halla la <strong>aceleración</strong> como la pendiente, con su incertidumbre (rectas de máx./mín. pendiente). (b) Estima el desplazamiento entre 0 y 2,0 s como el área bajo la recta. (c) ¿Qué revelaría un intercepto distinto de cero?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Pendiente (mejor recta) \(a=\dfrac{3{,}8-0{,}4}{2{,}0-0{,}0}=\dfrac{3{,}4}{2{,}0}=1{,}7\) m·s⁻². Rectas extremas por las barras (\(\pm0{,}2\)): máx \(=\dfrac{4{,}0-0{,}2}{2{,}0}=1{,}9\); mín \(=\dfrac{3{,}6-0{,}6}{2{,}0}=1{,}5\). \(\Delta a=\dfrac{1{,}9-1{,}5}{2}=0{,}2\).<br>\(a=(1{,}7\pm0{,}2)\) m·s⁻².</p>
+      <p>(b) Área bajo la recta (trapecio) \(=\dfrac{v_i+v_f}{2}\,t=\dfrac{0{,}4+3{,}8}{2}(2{,}0)=4{,}2\) m.</p>
+      <p>(c) El intercepto \(\approx0{,}4\) m·s⁻¹ ≠ 0 indica que el carrito <strong>ya se movía</strong> al empezar a cronometrar (velocidad inicial no nula).</p>
+      <span class="ans">a = (1,7 ± 0,2) m·s⁻² · Δs ≈ 4,2 m · intercepto = u inicial.</span>
+    </div></details>
+  </div>
+  <div class="prob jefe"><p class="pn">P10 · EXIGENTE (proyectil desde acantilado, nivel máximo realista)</p><p>Desde lo alto de un acantilado de 45 m sobre el mar se dispara un proyectil con 30 m·s⁻¹ a 40° sobre la horizontal (usa \(\cos40^\circ=0{,}766\), \(\sin40^\circ=0{,}643\)). (a) Halla la altura máxima sobre el mar. (b) El tiempo total hasta caer al mar. (c) El alcance horizontal desde la base del acantilado. (d) La velocidad (módulo y dirección) con que impacta. (e) La distancia horizontal recorrida cuando vuelve a pasar por la altura del acantilado.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Componentes: \(u_x=30(0{,}766)=23{,}0\); \(u_y=30(0{,}643)=19{,}3\) m·s⁻¹.</p>
+      <p>(a) Sobre el lanzamiento sube \(\dfrac{u_y^2}{2g}=\dfrac{19{,}3^2}{20}=18{,}6\) m ⇒ sobre el mar \(=45+18{,}6=63{,}6\) m.</p>
+      <p>(b) Con arriba +, el mar en \(y=-45\): \(-45=19{,}3t-5t^2\Rightarrow 5t^2-19{,}3t-45=0\Rightarrow t=\dfrac{19{,}3+\sqrt{19{,}3^2+900}}{10}=\dfrac{19{,}3+35{,}7}{10}=5{,}5\) s.</p>
+      <p>(c) \(R=u_x t=23{,}0(5{,}5)=126\) m.</p>
+      <p>(d) \(v_x=23{,}0\); \(v_y=19{,}3-10(5{,}5)=-35{,}7\). \(v=\sqrt{23{,}0^2+35{,}7^2}=\sqrt{1803}=42{,}5\) m·s⁻¹; ángulo \(\arctan\dfrac{35{,}7}{23{,}0}=57^\circ\) bajo la horizontal.</p>
+      <p>(e) Vuelve a la altura de lanzamiento en \(t=\dfrac{2u_y}{g}=\dfrac{38{,}6}{10}=3{,}86\) s ⇒ \(x=23{,}0(3{,}86)=88{,}8\) m.</p>
+      <span class="ans">63,6 m · 5,5 s · 126 m · 42,5 m·s⁻¹ a 57° · 88,8 m.</span>
+    </div></details>
+  </div>
+</section>
+
+<!-- MAS PROBLEMAS -->
+<section id="masproblemas">
+  <p class="sec-num">PRÁCTICA EXTRA · ESTILO PAST PAPER</p>
+  <h2>Más problemas · estilo past paper IB<span class="rule"></span></h2>
+  <p class="sec-intro">Seis problemas nuevos con la redacción y la estructura por apartados (a, b, c…) de un examen IB real. Cubren SUVAT, caída libre, proyectil horizontal, proyectil en ángulo, gráficas y movimiento relativo. Trabaja cada uno en papel antes de abrir <strong>«Ver resolución»</strong>. \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+
+  <div class="prob"><p class="pn">MP1 · SUVAT (frenado uniforme)</p><p>Un tren viaja en línea recta a \(40\ \mathrm{m\,s^{-1}}\) cuando el maquinista frena uniformemente hasta detenerse en \(25\ \mathrm s\).</p>
+    <p>(a) Calcula la aceleración del tren.<br>(b) Determina la distancia total recorrida durante el frenado.<br>(c) Halla la distancia que recorre durante el último segundo antes de detenerse.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) \(a=\dfrac{v-u}{t}=\dfrac{0-40}{25}=-1{,}6\ \mathrm{m\,s^{-2}}\) (una desaceleración de \(1{,}6\ \mathrm{m\,s^{-2}}\)).</p>
+      <p>(b) \(s=\Big(\dfrac{u+v}{2}\Big)t=\dfrac{40+0}{2}(25)=20\times25=500\ \mathrm m\). (Comprobación: \(v^2=u^2+2as\Rightarrow 0=1600-3{,}2s\Rightarrow s=500\) m.)</p>
+      <p>(c) Conviene «mirar la película al revés»: en el último segundo el tren parte del reposo (visto en reversa) con \(1{,}6\ \mathrm{m\,s^{-2}}\), luego recorre \(s=\tfrac12 a t^2=\tfrac12(1{,}6)(1)^2=0{,}8\ \mathrm m\). (Directo: en \(t=24\) s va a \(v=40-1{,}6(24)=1{,}6\ \mathrm{m\,s^{-1}}\); de 24 a 25 s: \(s=1{,}6(1)-\tfrac12(1{,}6)(1)^2=0{,}8\) m.)</p>
+      <span class="ans">a = −1,6 m·s⁻² · 500 m · 0,8 m en el último segundo.</span>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">MP2 · caída libre (último segundo)</p><p>Una piedra se deja caer desde el reposo desde lo alto de un edificio. Durante el <strong>último segundo</strong> de su caída recorre \(25\ \mathrm m\).</p>
+    <p>(a) Demuestra que el tiempo total de caída es \(3{,}0\ \mathrm s\).<br>(b) Calcula la altura del edificio.<br>(c) Halla la rapidez con que la piedra llega al suelo.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Sea \(T\) el tiempo total. Lo recorrido en el último segundo es (todo menos lo de antes de ese segundo): \(\tfrac12 gT^2-\tfrac12 g(T-1)^2=25\). Con \(g=10\): \(5\big[T^2-(T-1)^2\big]=25\Rightarrow 5(2T-1)=25\Rightarrow 2T-1=5\Rightarrow T=3{,}0\ \mathrm s\).</p>
+      <p>(b) \(h=\tfrac12 gT^2=\tfrac12(10)(3{,}0)^2=45\ \mathrm m\).</p>
+      <p>(c) \(v=gT=10(3{,}0)=30\ \mathrm{m\,s^{-1}}\).</p>
+      <span class="ans">T = 3,0 s · altura 45 m · impacto 30 m·s⁻¹.</span>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">MP3 · proyectil horizontal (lanzamiento desde avión)</p><p>Un avión vuela en horizontal a \(100\ \mathrm{m\,s^{-1}}\) a una altura constante de \(500\ \mathrm m\) y suelta un paquete de ayuda. Desprecia la resistencia del aire.</p>
+    <p>(a) Calcula el tiempo que tarda el paquete en llegar al suelo.<br>(b) Determina la distancia horizontal entre el punto de suelta y el punto de impacto.<br>(c) ¿A qué distancia horizontal del objetivo debe soltar el piloto el paquete para acertar?<br>(d) Halla la rapidez con que el paquete toca el suelo.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Solo cuenta el eje vertical (\(u_y=0\)): \(500=\tfrac12(10)t^2=5t^2\Rightarrow t^2=100\Rightarrow t=10\ \mathrm s\).</p>
+      <p>(b) Horizontal (MRU): \(x=u_x t=100(10)=1000\ \mathrm m\).</p>
+      <p>(c) El paquete recorre esos \(1000\ \mathrm m\) mientras cae, así que el piloto debe soltarlo <strong>1000 m antes</strong> de llegar sobre el objetivo.</p>
+      <p>(d) \(v_x=100\) (constante); \(v_y=gt=10(10)=100\ \mathrm{m\,s^{-1}}\). \(v=\sqrt{100^2+100^2}=\sqrt{20000}=141\ \mathrm{m\,s^{-1}}\) (a \(45^\circ\) bajo la horizontal).</p>
+      <span class="ans">10 s · 1000 m · soltar 1000 m antes · 141 m·s⁻¹.</span>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">MP4 · proyectil en ángulo (y la pregunta de los dos tiempos)</p><p>Una pelota se patea desde el suelo a \(20\ \mathrm{m\,s^{-1}}\) formando \(53^\circ\) con la horizontal. Usa \(\sin53^\circ=0{,}8\) y \(\cos53^\circ=0{,}6\).</p>
+    <p>(a) Halla la altura máxima que alcanza.<br>(b) Calcula el tiempo de vuelo sobre terreno horizontal.<br>(c) Determina el alcance horizontal.<br>(d) ¿En qué dos instantes está la pelota a \(9{,}6\ \mathrm m\) de altura? Explica por qué son dos.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>Componentes: \(u_x=20(0{,}6)=12\ \mathrm{m\,s^{-1}}\); \(u_y=20(0{,}8)=16\ \mathrm{m\,s^{-1}}\).</p>
+      <p>(a) \(H=\dfrac{u_y^2}{2g}=\dfrac{16^2}{20}=\dfrac{256}{20}=12{,}8\ \mathrm m\).</p>
+      <p>(b) \(T=\dfrac{2u_y}{g}=\dfrac{2(16)}{10}=3{,}2\ \mathrm s\).</p>
+      <p>(c) \(R=u_x T=12(3{,}2)=38{,}4\ \mathrm m\).</p>
+      <p>(d) \(y=u_y t-\tfrac12 g t^2=16t-5t^2=9{,}6\Rightarrow 5t^2-16t+9{,}6=0\Rightarrow t=\dfrac{16\pm\sqrt{16^2-4(5)(9{,}6)}}{10}=\dfrac{16\pm\sqrt{64}}{10}=\dfrac{16\pm8}{10}\). Luego \(t=0{,}8\ \mathrm s\) y \(t=2{,}4\ \mathrm s\): la pelota pasa por esa altura <strong>una vez subiendo y otra bajando</strong>.</p>
+      <span class="ans">H = 12,8 m · T = 3,2 s · R = 38,4 m · a 9,6 m en t = 0,8 s y 2,4 s.</span>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">MP5 · gráficas (v–t por tramos)</p><p>Un objeto se mueve en línea recta. Su gráfica velocidad–tiempo consta de tres tramos rectos: <em>(I)</em> de 0 a 4 s acelera desde el reposo hasta \(8\ \mathrm{m\,s^{-1}}\); <em>(II)</em> de 4 a 10 s mantiene \(8\ \mathrm{m\,s^{-1}}\) constantes; <em>(III)</em> de 10 a 14 s frena uniformemente hasta detenerse.</p>
+    <p>(a) Halla la aceleración en cada tramo.<br>(b) Determina el desplazamiento total usando el área bajo la gráfica.<br>(c) Calcula la aceleración media en los 14 s y explica el resultado.<br>(d) Halla la rapidez media del recorrido.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Pendiente de cada tramo: (I) \(a=\dfrac{8-0}{4}=+2{,}0\ \mathrm{m\,s^{-2}}\); (II) \(a=0\) (recta horizontal); (III) \(a=\dfrac{0-8}{4}=-2{,}0\ \mathrm{m\,s^{-2}}\).</p>
+      <p>(b) Área = triángulo + rectángulo + triángulo \(=\tfrac12(4)(8)+(6)(8)+\tfrac12(4)(8)=16+48+16=80\ \mathrm m\).</p>
+      <p>(c) \(\bar a=\dfrac{\Delta v}{\Delta t}=\dfrac{0-0}{14}=0\): empieza y termina en reposo, así que en promedio la velocidad no cambió, aunque <em>durante</em> el recorrido la aceleración no fue nula.</p>
+      <p>(d) Rapidez media \(=\dfrac{\text{distancia}}{\text{tiempo}}=\dfrac{80}{14}=5{,}7\ \mathrm{m\,s^{-1}}\) (la trayectoria es recta y sin retroceso, así que coincide con la velocidad media).</p>
+      <span class="ans">+2, 0, −2 m·s⁻² · 80 m · ā = 0 · rapidez media 5,7 m·s⁻¹.</span>
+    </div></details>
+  </div>
+
+  <div class="prob"><p class="pn">MP6 · movimiento relativo (dos trenes)</p><p>Dos trenes circulan por vías paralelas. El tren P se mueve hacia el este a \(25\ \mathrm{m\,s^{-1}}\) y el tren Q hacia el oeste a \(15\ \mathrm{m\,s^{-1}}\).</p>
+    <p>(a) Calcula la velocidad de Q relativa a P.<br>(b) En cierto instante están separados \(1{,}6\ \mathrm{km}\) y avanzan uno hacia el otro. ¿Cuánto tardan en cruzarse?<br>(c) El tren Q mide \(180\ \mathrm m\) de largo. ¿Durante cuánto tiempo ve un pasajero de P pasar el tren Q por su ventana?</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Tomo el este como positivo: \(v_P=+25\), \(v_Q=-15\). \(v_{Q/P}=v_Q-v_P=-15-25=-40\ \mathrm{m\,s^{-1}}\): es decir, \(40\ \mathrm{m\,s^{-1}}\) hacia el oeste (Q se aproxima a P a esa rapidez).</p>
+      <p>(b) Se acercan a la rapidez relativa de \(40\ \mathrm{m\,s^{-1}}\): \(t=\dfrac{d}{v_{\text{rel}}}=\dfrac{1600}{40}=40\ \mathrm s\).</p>
+      <p>(c) Para el pasajero de P, el tren Q de \(180\ \mathrm m\) desfila a \(40\ \mathrm{m\,s^{-1}}\): \(t=\dfrac{180}{40}=4{,}5\ \mathrm s\).</p>
+      <span class="ans">40 m·s⁻¹ al oeste · 40 s · 4,5 s.</span>
+    </div></details>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 2A · Cinemática (A.1).</strong> Alineado con la guía IB del proyecto y con integración al Módulo 1. Sigue el <strong>Módulo 2B</strong> (problemas tipo 2: cinemática en contexto, análisis de datos y proyectiles compuestos). Convención: \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación. Nota: las gráficas marcadas <span class="flag">▲</span> llegaron sin imagen; envíamelas como foto y completo la letra exacta en la revisión.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prueba 2 de Sociedad Digital: nivel 7 a fondo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#F6F7F4; --papel-2:#ECEEEA; --tinta:#172033; --grafito:#566072; --regla:#D5DAE1;
+  --azul:#2446A8; --rojo:#B83227; --rojo-suave:#FBE9E6;
+  --hl-contenido:rgba(255,222,70,.62); --hl-contexto:rgba(120,220,150,.55); --hl-concepto:rgba(196,160,255,.55);
+  --hl-juicio:rgba(255,160,120,.5);
+  --ok:#1F7A4A;
+  --serif:"Literata", Georgia, "Times New Roman", serif;
+  --sans:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --papel:#11151D; --papel-2:#191F2A; --tinta:#E4E7EC; --grafito:#A3ABB8; --regla:#2B3342;
+    --azul:#8FB0FF; --rojo:#FF8A7A; --rojo-suave:#2E1B1B;
+    --hl-contenido:rgba(255,210,0,.30); --hl-contexto:rgba(60,200,120,.28); --hl-concepto:rgba(160,110,255,.34);
+    --hl-juicio:rgba(255,120,80,.30); --ok:#6FD39C; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --papel:#11151D; --papel-2:#191F2A; --tinta:#E4E7EC; --grafito:#A3ABB8; --regla:#2B3342;
+  --azul:#8FB0FF; --rojo:#FF8A7A; --rojo-suave:#2E1B1B;
+  --hl-contenido:rgba(255,210,0,.30); --hl-contexto:rgba(60,200,120,.28); --hl-concepto:rgba(160,110,255,.34);
+  --hl-juicio:rgba(255,120,80,.30); --ok:#6FD39C; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px); scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--serif);font-size:1.0625rem;line-height:1.68;
+  font-optical-sizing:auto; -webkit-text-size-adjust:100%}
+a{color:var(--azul);text-underline-offset:.18em}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,label:focus-within{outline:3px solid var(--azul);outline-offset:2px;border-radius:3px}
+img{max-width:100%}
+
+.layout{display:grid;grid-template-columns:17.5rem minmax(0,1fr);min-height:100vh}
+nav.lateral{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:2rem 1.25rem 2rem 1.75rem;
+  border-right:1px solid var(--regla);font-family:var(--sans);font-size:.93rem}
+nav.lateral .marca{font-weight:800;font-stretch:80%;font-size:1.25rem;line-height:1.1;margin:0 0 1.5rem}
+nav.lateral .marca span{display:block;font-weight:500;font-stretch:100%;font-size:.85rem;color:var(--grafito);margin-top:.35rem}
+nav.lateral ol{list-style:none;margin:0;padding:0;counter-reset:m -1}
+nav.lateral li{counter-increment:m}
+nav.lateral li a{display:grid;grid-template-columns:1.9rem 1fr;gap:.2rem;padding:.42rem .5rem;border-radius:6px;color:var(--tinta);text-decoration:none;line-height:1.3}
+nav.lateral li a::before{content:counter(m);font-weight:700;color:var(--grafito);font-variant-numeric:tabular-nums}
+nav.lateral li a:hover{background:var(--papel-2)}
+nav.lateral li a.activo{background:var(--papel-2);font-weight:650}
+nav.lateral .herramientas{margin-top:1.75rem;padding-top:1.25rem;border-top:1px solid var(--regla);display:grid;gap:.6rem}
+.interruptor{display:flex;align-items:center;gap:.55rem;cursor:pointer;color:var(--tinta);font-size:.9rem}
+.interruptor input{width:1.05rem;height:1.05rem;accent-color:var(--azul)}
+button.tema{font:inherit;font-size:.88rem;background:none;border:1px solid var(--regla);color:var(--tinta);padding:.35rem .6rem;border-radius:6px;cursor:pointer;justify-self:start}
+
+.menu-movil{display:none}
+main{padding:3rem clamp(1.25rem,4vw,4rem) 6rem;max-width:62rem}
+.texto{max-width:44rem}
+
+/* Portada */
+.portada{padding:1rem 0 2.5rem;border-bottom:2px solid var(--tinta);margin-bottom:3rem}
+.portada h1{font-family:var(--sans);font-weight:800;font-stretch:78%;font-size:clamp(2.6rem,6.4vw,4.6rem);line-height:.98;letter-spacing:-.015em;margin:0 0 1.2rem;max-width:14ch}
+.portada p.bajada{font-size:1.2rem;line-height:1.55;max-width:40rem;margin:0 0 1.75rem;color:var(--tinta)}
+.pesos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--tinta);max-width:40rem;font-family:var(--sans)}
+.pesos div{padding:.8rem 1rem;border-right:1px solid var(--tinta)}
+.pesos div:last-child{border-right:0}
+.pesos b{display:block;font-size:2rem;font-weight:800;font-stretch:80%;line-height:1}
+.pesos span{display:block;font-size:.88rem;line-height:1.35;margin-top:.4rem;color:var(--grafito)}
+
+/* Secciones */
+section.modulo{padding-top:1rem;margin-bottom:4.5rem}
+.modulo > header{margin-bottom:1.5rem}
+.modulo > header .num{font-family:var(--sans);font-weight:700;color:var(--grafito);font-size:.95rem;margin:0 0 .2rem}
+h2{font-family:var(--sans);font-weight:800;font-stretch:82%;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1.05;margin:0;letter-spacing:-.01em}
+h3{font-family:var(--sans);font-weight:750;font-stretch:88%;font-size:1.4rem;line-height:1.2;margin:2.6rem 0 .7rem}
+h4{font-family:var(--sans);font-weight:700;font-size:1.08rem;line-height:1.3;margin:1.8rem 0 .5rem}
+p{margin:0 0 1rem}
+ul,ol{padding-left:1.3rem;margin:0 0 1rem}
+li{margin-bottom:.35rem}
+strong{font-weight:650}
+.nota{font-size:.95rem;color:var(--grafito)}
+
+/* Corchete de puntuación: el recurso visual de la guía */
+.pregunta-h{display:flex;align-items:baseline;gap:.75rem;flex-wrap:wrap}
+.pts{font-family:var(--sans);font-weight:800;font-stretch:80%;color:var(--rojo);font-size:1.5em;line-height:1;white-space:nowrap}
+
+/* Resaltadores (código de colores de las 3C) */
+.hl{padding:.05em .15em;border-radius:.2em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hc{background:var(--hl-contenido)} .hx{background:var(--hl-contexto)} .hk{background:var(--hl-concepto)} .hj{background:var(--hl-juicio)}
+.leyenda{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;font-family:var(--sans);font-size:.9rem;margin:0 0 1rem}
+
+/* Tablas */
+.tabla{overflow-x:auto;margin:0 0 1.5rem;border-top:2px solid var(--tinta)}
+table{border-collapse:collapse;width:100%;font-size:.95rem;line-height:1.5}
+th,td{text-align:left;vertical-align:top;padding:.65rem .75rem;border-bottom:1px solid var(--regla)}
+th{font-family:var(--sans);font-weight:700;font-size:.88rem;background:var(--papel-2)}
+td:first-child{font-weight:600}
+table.min td:first-child{white-space:nowrap}
+
+/* Bloques */
+.caja{border-left:4px solid var(--tinta);padding:.9rem 1.2rem;margin:0 0 1.5rem;background:var(--papel-2)}
+.caja.roja{border-color:var(--rojo);background:var(--rojo-suave)}
+.caja > :last-child{margin-bottom:0}
+.caja .t{font-family:var(--sans);font-weight:750;margin:0 0 .4rem}
+.modelo{border:1px solid var(--regla);border-top:3px solid var(--tinta);padding:1.1rem 1.3rem;margin:0 0 1.5rem;background:var(--papel)}
+.modelo .t{font-family:var(--sans);font-weight:750;margin:0 0 .6rem}
+.modelo p{margin-bottom:.8rem}
+.modelo .anot{font-family:var(--sans);font-size:.85rem;color:var(--grafito)}
+.plantilla{font-family:var(--serif);border:1px dashed var(--grafito);padding:1rem 1.2rem;margin:0 0 1.5rem;border-radius:4px}
+.plantilla p{margin:.3rem 0}
+.plantilla .hueco{border-bottom:1px solid var(--grafito);color:var(--grafito);font-style:italic}
+.cadena{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:0;margin:0 0 1.5rem;border:1px solid var(--tinta);font-family:var(--sans);font-size:.9rem}
+.cadena div{padding:.75rem .8rem;border-right:1px solid var(--tinta);line-height:1.35}
+.cadena div:last-child{border-right:0}
+.cadena b{display:block;font-size:1rem;margin-bottom:.25rem}
+
+/* Glosario */
+.buscador{position:sticky;top:0;z-index:5;background:var(--papel);padding:.75rem 0;margin-bottom:.5rem;border-bottom:1px solid var(--regla)}
+.buscador label{font-family:var(--sans);font-size:.9rem;font-weight:600;display:block;margin-bottom:.3rem}
+.buscador input{width:100%;max-width:30rem;font:inherit;font-size:1rem;padding:.55rem .75rem;border:1px solid var(--grafito);border-radius:6px;background:var(--papel);color:var(--tinta)}
+.buscador .conteo{font-family:var(--sans);font-size:.85rem;color:var(--grafito);margin-top:.3rem}
+details.area{border-top:1px solid var(--regla);padding:.2rem 0}
+details.area > summary{cursor:pointer;font-family:var(--sans);font-weight:750;font-size:1.12rem;padding:.8rem 0;list-style:none;display:flex;gap:.6rem;align-items:baseline}
+details.area > summary::-webkit-details-marker{display:none}
+details.area > summary::before{content:"+";font-weight:800;width:1rem;color:var(--grafito)}
+details.area[open] > summary::before{content:"\2212"}
+details.area > summary small{font-weight:500;color:var(--grafito);font-size:.88rem}
+dl.gl{margin:0 0 1.2rem}
+dl.gl dt{font-family:var(--sans);font-weight:700;margin-top:.85rem}
+dl.gl dd{margin:.15rem 0 0 0;padding-left:.9rem;border-left:2px solid var(--regla)}
+dl.gl dd .uso{display:block;font-size:.93rem;color:var(--grafito);margin-top:.25rem}
+.oculto{display:none !important}
+body.repaso dl.gl dd{filter:blur(5px);cursor:pointer;transition:filter .15s}
+body.repaso dl.gl dd.visto{filter:none}
+@media (prefers-reduced-motion:reduce){body.repaso dl.gl dd{transition:none}}
+
+/* Ejemplos */
+.ejemplo{border-top:1px solid var(--regla);padding:1rem 0 .4rem}
+.ejemplo h4{margin:0 0 .35rem}
+.etiquetas{display:flex;flex-wrap:wrap;gap:.35rem;margin:.2rem 0 .6rem;font-family:var(--sans);font-size:.8rem}
+.etiquetas span{padding:.1rem .45rem;border-radius:3px}
+
+/* Listas de control */
+.control{list-style:none;padding:0}
+.control li{margin:0;border-bottom:1px solid var(--regla)}
+.control label{display:flex;gap:.7rem;align-items:flex-start;padding:.55rem 0;cursor:pointer}
+.control input{margin-top:.35rem;width:1.1rem;height:1.1rem;flex:none;accent-color:var(--ok)}
+.control input:checked + span{color:var(--grafito);text-decoration:line-through;text-decoration-color:var(--grafito)}
+.progreso{font-family:var(--sans);font-size:.9rem;color:var(--grafito);margin:.5rem 0 1rem}
+.error{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border:1px solid var(--regla);margin:0 0 1rem}
+.error > div{padding:.8rem 1rem}
+.error > div:first-child{border-right:1px solid var(--regla);background:var(--rojo-suave)}
+.error .t{font-family:var(--sans);font-weight:700;font-size:.85rem;margin:0 0 .3rem}
+.error .t.mal{color:var(--rojo)} .error .t.bien{color:var(--ok)}
+.error p{margin:0;font-size:.97rem}
+
+footer.pie{border-top:2px solid var(--tinta);padding-top:1.2rem;font-family:var(--sans);font-size:.88rem;color:var(--grafito);max-width:44rem}
+
+@media (max-width:900px){
+  .layout{display:block}
+  nav.lateral{display:none}
+  .menu-movil{display:block;position:sticky;top:0;z-index:20;background:var(--papel);border-bottom:1px solid var(--regla);
+    padding:calc(env(safe-area-inset-top,0px) + .6rem) 1.25rem .6rem;font-family:var(--sans)}
+  .menu-movil summary{cursor:pointer;font-weight:750}
+  .menu-movil ol{margin:.6rem 0 .4rem;padding-left:1.4rem}
+  .menu-movil li{margin:.25rem 0}
+  .menu-movil a{color:var(--tinta)}
+  .menu-movil .herr{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin:.4rem 0}
+  main{padding-top:1.5rem}
+  .buscador{top:3rem}
+  .pesos{grid-template-columns:1fr}
+  .pesos div{border-right:0;border-bottom:1px solid var(--tinta)}
+  .pesos div:last-child{border-bottom:0}
+  .error{grid-template-columns:1fr}
+  .error > div:first-child{border-right:0;border-bottom:1px solid var(--regla)}
+}
+@media print{
+  nav.lateral,.menu-movil,.buscador,.herramientas{display:none !important}
+  .layout{display:block} details.area{display:block} details.area > *{display:block}
+  body.repaso dl.gl dd{filter:none}
+}
+</style>
+<style>
+.fuentes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:52rem;gap:0;border:1px solid var(--regla);margin:0 0 1.5rem;font-size:.95rem}
+.fuentes > div{padding:.8rem 1rem;border-right:1px solid var(--regla);border-bottom:1px solid var(--regla)}
+.fuentes .t{font-family:var(--sans);font-weight:750;margin:0 0 .3rem}
+.fuentes p{margin:0 0 .4rem}
+.banda{border-left:4px solid var(--regla);padding:.6rem 1rem;margin:0 0 1rem}
+.banda .t{font-family:var(--sans);font-weight:750;margin:0 0 .3rem}
+.banda.b1{border-color:#9AA3B1}.banda.b2{border-color:var(--azul)}.banda.b3{border-color:var(--ok)}
+.inventado{font-family:var(--sans);font-size:.85rem;color:var(--rojo);font-weight:650;margin:0 0 .6rem}
+@media (max-width:700px){.fuentes{grid-template-columns:1fr}}
+table.sub td:first-child{white-space:normal;min-width:8.5rem}
+body.repaso td.resp{filter:blur(5px);cursor:pointer}
+body.repaso td.resp.visto{filter:none}
+@media print{body.repaso td.resp{filter:none}}
+</style>
+</head>
+<body>
+<details class="menu-movil">
+  <summary>Módulos de la guía</summary>
+  <ol start="0">
+    <li><a href="#m0">Patrones de la prueba 2</a></li>
+    <li><a href="#m1">Leer y anotar fuentes</a></li>
+    <li><a href="#m2">Técnica avanzada por pregunta</a></li>
+    <li><a href="#m3">De la banda 4 a la 12</a></li>
+    <li><a href="#m4">Resolución: mayo 2024</a></li>
+    <li><a href="#m5">Resolución: noviembre 2024</a></li>
+    <li><a href="#m6">Resolución: mayo 2025</a></li>
+    <li><a href="#m7">Simulacro inédito resuelto</a></li>
+    <li><a href="#m8">Contenido por subsección</a></li>
+    <li><a href="#m9">Conceptos en la prueba 2</a></li>
+    <li><a href="#m10">Contextos por subsección</a></li>
+    <li><a href="#m11">Kits de conocimiento propio</a></li>
+    <li><a href="#m12">Autoevaluación y entrenamiento</a></li>
+  </ol>
+  <div class="herr">
+    <label class="interruptor"><input type="checkbox" class="toggle-repaso"> Modo repaso</label>
+    <button class="tema" type="button">Cambiar tema</button>
+  </div>
+</details>
+<div class="layout">
+<nav class="lateral" aria-label="Módulos">
+  <p class="marca">Prueba 2 a fondo<span>Sociedad Digital NM y NS, 24 puntos</span></p>
+  <ol>
+    <li><a href="#m0">Patrones de la prueba 2</a></li>
+    <li><a href="#m1">Leer y anotar fuentes</a></li>
+    <li><a href="#m2">Técnica avanzada por pregunta</a></li>
+    <li><a href="#m3">De la banda 4 a la 12</a></li>
+    <li><a href="#m4">Resolución: mayo 2024</a></li>
+    <li><a href="#m5">Resolución: noviembre 2024</a></li>
+    <li><a href="#m6">Resolución: mayo 2025</a></li>
+    <li><a href="#m7">Simulacro inédito resuelto</a></li>
+    <li><a href="#m8">Contenido por subsección</a></li>
+    <li><a href="#m9">Conceptos en la prueba 2</a></li>
+    <li><a href="#m10">Contextos por subsección</a></li>
+    <li><a href="#m11">Kits de conocimiento propio</a></li>
+    <li><a href="#m12">Autoevaluación y entrenamiento</a></li>
+  </ol>
+  <div class="herramientas">
+    <label class="interruptor"><input type="checkbox" class="toggle-repaso"> Modo repaso: ocultar respuestas de las tablas de contenido</label>
+    <button class="tema" type="button">Cambiar tema claro/oscuro</button>
+  </div>
+</nav>
+<main>
+<header class="portada">
+  <h1>Prueba 2: el 7 a fondo</h1>
+  <p class="bajada">Segunda guía, dedicada solo a la prueba 2. Analiza los patrones de todas las convocatorias oficiales de tu carpeta, resuelve cada una pregunta por pregunta, incluye un simulacro inédito y da consejos concretos para cada subsección de contenido y de contexto del programa. Complementa a la <a href="https://claude.ai/artifact/KMjBoLAqaSrxrJG1ii11uS">guía general “Ruta al 7”</a>, donde está resuelta la prueba de noviembre de 2025.</p>
+  <div class="pesos" role="list">
+    <div role="listitem"><b>75 min</b><span>Cuatro preguntas obligatorias sobre cuatro fuentes</span></div>
+    <div role="listitem"><b>24 pts</b><span>2 + 4 + 6 + 12; el 75 % se corrige por bandas</span></div>
+    <div role="listitem"><b>30 %</b><span>De la nota final en el NM (20 % en el NS)</span></div>
+  </div>
+</header>
+
+<section class="modulo" id="m0">
+<header><p class="num">Módulo 0</p><h2>Patrones de la prueba 2</h2></header>
+<div class="texto">
+<p>Las cinco convocatorias de tu carpeta siguen una arquitectura casi idéntica. Conocerla te permite anticipar qué hará cada fuente antes de leerla.</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Convocatoria</th><th>Sistema digital</th><th>Fuentes</th><th>P1 [2]</th><th>P2 [4]</th><th>P3 [6] C frente a D</th><th>P4 [12]</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2024 (TZ1 y TZ2)</td><td>Imágenes de vista de calles (Google Street View)</td><td>A: tecnología del vehículo (cámara 360°, LiDAR, sensores, IA). B: mapa de cobertura. C: policía localiza a una prófuga. D: delincuentes eligen casas.</td><td>Identificar dos características del GPS</td><td>Sugerir dos razones de la cobertura desigual</td><td>Efectos y repercusiones para la población</td><td>Discutir oportunidades y dilemas</td></tr>
+<tr><td>Noviembre 2024</td><td>Drones del Gobierno</td><td>A: mapa de leyes sobre drones en África. B: infografía del reparto. C: red sanitaria de drones. D: policía contra incendios provocados.</td><td>Indicar la ley de dos países</td><td>Explicar dos características que permiten el reparto</td><td>Efectos y repercusiones para la ciudadanía</td><td>¿En qué medida los beneficios superan las preocupaciones?</td></tr>
+<tr><td>Mayo 2025 (TZ2 y TZ3)</td><td>Modelo de trabajo híbrido en una agencia</td><td>Contexto: modelo 3-2-2. A: imagen de oficina en casa. B: encuesta (software no aprobado o mensajería instantánea). C: cuatro testimonios. D: reglas de la empresa.</td><td>Dos formas de proteger datos / dos prácticas ergonómicas</td><td>(a) sugerir una razón, (b) sugerir un impacto</td><td>Oportunidades y dilemas para los empleados</td><td>Discutir efectos y repercusiones para la empresa</td></tr>
+<tr><td>Noviembre 2025</td><td>Botiquín inteligente con IdC</td><td>A: diagrama del espejo y sensores. B: esquema de flujo de datos. C: anuncio. D: reseña.</td><td>Dispositivo de entrada y de salida</td><td>Explicar dos dificultades para compartir datos</td><td>Impactos en privacidad y seguridad</td><td>Discutir ventajas y desventajas para el asesoramiento sanitario</td></tr>
+</tbody></table></div>
+<div class="texto">
+<h3>Siete regularidades que puedes explotar</h3>
+<ol>
+<li><strong>La Fuente A es técnica.</strong> Explica cómo funciona el sistema (diagrama, infografía, imagen). La pregunta 1 sale casi siempre de ella y premia vocabulario de contenido: sensores, dispositivos de entrada y salida, seguridad de datos, GPS.</li>
+<li><strong>La Fuente B suele ser un dato visual</strong>: mapa, encuesta, gráfico circular o diagrama de flujo. La pregunta 2 pide interpretarla y <em>razonar más allá</em> de ella (“sugiera”, “explique”). Tu conocimiento de contenido es lo que suma el segundo punto de cada razón.</li>
+<li><strong>Las Fuentes C y D se contraponen</strong>: uso positivo frente a uso delictivo, anuncio frente a reseña, testimonios frente a normas, salud frente a vigilancia. La pregunta 3 siempre las compara.</li>
+<li><strong>La pregunta 3 siempre tiene dos dimensiones</strong> (efectos y repercusiones; oportunidades y dilemas; privacidad y seguridad) y un actor (población, ciudadanía, empleados, usuario).</li>
+<li><strong>La pregunta 4 siempre pide fuentes A–D y conocimientos propios</strong>, con un término de OE3 (“discuta”, “¿en qué medida…?”) y un foco específico (para la empresa, para el asesoramiento sanitario).</li>
+<li><strong>El sistema siempre es concreto y cotidiano</strong>: un dispositivo, una aplicación, un modelo de trabajo. Nunca es abstracto. Por eso los contenidos más rentables son 3.1 Datos, 3.4 Redes, 3.7 Robots y 3.6 IA, y los contextos de salud, económico y político.</li>
+<li><strong>Los esquemas terminan con una lista de palabras clave</strong> que recompensan: privacidad, seguridad, fiabilidad, confianza, acceso, brecha digital, regulación, transparencia, anonimato, representación, perfiles, agregación de datos, poder, espacio, sistemas, valores y ética, cambio, identidad.</li>
+</ol>
+<h3>Qué sistemas podrían salir</h3>
+<p>Con esta lógica, los candidatos más probables son sistemas concretos con datos personales y varias partes interesadas: asistentes o tutores de IA, reconocimiento facial, cámaras y timbres inteligentes, aplicaciones de reparto y economía de plataformas, pagos digitales o criptomonedas, telemedicina y ponibles, realidad virtual o aumentada, robots de cuidado, vehículos autónomos, videojuegos y deportes electrónicos, desinformación y deepfakes, residuos electrónicos o agricultura de precisión. El módulo 11 tiene un kit de conocimiento propio para cada uno.</p>
+</div>
+</section>
+
+<section class="modulo" id="m1">
+<header><p class="num">Módulo 1</p><h2>Leer y anotar fuentes</h2></header>
+<div class="texto">
+<p>La guía oficial describe tres facetas superpuestas para abordar las afirmaciones y perspectivas de una fuente. Son las mismas que usas en el proyecto de indagación y, en la prueba 2, son la materia prima de las preguntas 3 y 4.</p>
+</div>
+<div class="cadena">
+<div><b>Origen y propósito</b>Quién la creó (aunque la autoría esté oculta), de dónde procede y para qué. Revela sesgo, valor y limitaciones.</div>
+<div><b>Significado y métodos</b>Ideas principales y técnicas usadas para sostenerlas: palabras, imágenes, datos, gráficos, diseño.</div>
+<div><b>Corroboración y uso</b>Cómo se compara con otras explicaciones del mismo tema y cómo ha sido difundida. Indica fiabilidad y validez.</div>
+</div>
+
+<div class="texto">
+<h3>Cómo leer cada tipo de fuente</h3>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Tipo</th><th>Qué extraer</th><th>Frase de valor o limitación lista para usar</th></tr></thead>
+<tbody>
+<tr><td>Diagrama técnico o infografía</td><td>Componentes (entradas, procesos, salidas), flujo de datos, dónde se almacena y quién accede. Cada flecha es un punto de fallo o de riesgo.</td><td>“Muestra cómo funciona el sistema, pero no sus fallos ni quién controla los datos.”</td></tr>
+<tr><td>Mapa</td><td>Leyenda, año, zonas con y sin cobertura o con distintas leyes; contrastes entre regiones.</td><td>“Evidencia la desigualdad espacial, pero no explica sus causas; eso exige conocimiento propio.”</td></tr>
+<tr><td>Encuesta o gráfico</td><td>Cifra más alta y más baja, proporción relevante para la pregunta, quién respondió y cuántos.</td><td>“Son datos primarios de la propia empresa: útiles, pero la muestra y las autodeclaraciones limitan su fiabilidad.”</td></tr>
+<tr><td>Anuncio</td><td>Funciones prometidas, lenguaje persuasivo, lo que omite (riesgos, costos ocultos).</td><td>“Al ser publicidad, destaca beneficios y omite riesgos para vender.”</td></tr>
+<tr><td>Reseña</td><td>Ventajas y desventajas percibidas por usuarios, valoración global.</td><td>“Aporta la experiencia del usuario, aunque puede reflejar casos particulares.”</td></tr>
+<tr><td>Testimonios</td><td>Quién habla (rol), qué gana y qué pierde, contradicciones entre testimonios o con otras fuentes.</td><td>“Son perspectivas individuales, valiosas pero no representativas.”</td></tr>
+<tr><td>Normas o políticas</td><td>Obligaciones, responsabilidades, lo que queda sin regular, tensiones con la práctica real.</td><td>“Muestra la intención de la organización, no si las reglas se cumplen.”</td></tr>
+<tr><td>Noticia o caso</td><td>Actores, hechos, fecha, lugar, consecuencia; si es un caso aislado o una tendencia.</td><td>“Un caso concreto ilustra el riesgo, pero no prueba su frecuencia.”</td></tr>
+<tr><td>Imagen o fotografía</td><td>Qué muestra y qué deja fuera; contexto (lugar, hora, personas).</td><td>“Ilustra una situación, pero puede estar seleccionada o ser idealizada.”</td></tr>
+</tbody></table></div>
+
+<div class="texto">
+<h3>Sistema de anotación en el margen</h3>
+<ul>
+<li><strong>+</strong> oportunidad, ventaja, efecto positivo.</li>
+<li><strong>−</strong> riesgo, dilema, efecto negativo.</li>
+<li><strong>T</strong> término técnico que puedes explicar mejor que la fuente.</li>
+<li><strong>@</strong> parte interesada afectada.</li>
+<li><strong>≈ / ≠</strong> junto a una idea de C o D que coincide o choca con la otra fuente. Esta es tu pregunta 3 ya planificada.</li>
+<li><strong>¿?</strong> lo que la fuente omite. Las omisiones son contrastes y material de evaluación.</li>
+<li>Una palabra de concepto en el margen (poder, espacio, sistemas…) donde veas la lente.</li>
+</ul>
+
+<h3>La matriz de síntesis: el plan de la pregunta 4 en 3 minutos</h3>
+<p>Dibuja una tabla pequeña: tres filas (tus tres temas) y columnas A, B, C, D, conocimiento propio y juicio. Rellena con dos o tres palabras por celda. Una fila con al menos dos fuentes y un conocimiento propio es un párrafo de banda alta; una fila con una sola fuente es una alerta.</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Tema (drones, nov. 2024)</th><th>A</th><th>B</th><th>C</th><th>D</th><th>Conocimiento propio</th><th>Juicio</th></tr></thead>
+<tbody>
+<tr><td>Acceso y rapidez</td><td>—</td><td>60 m, ruta directa</td><td>vacunas, zonas remotas</td><td>vistas aéreas, zonas peligrosas</td><td>Zipline en Ruanda</td><td>Beneficio alto en salud rural</td></tr>
+<tr><td>Regulación</td><td>leyes desiguales</td><td>límite 2 kg, altura</td><td>espacio aéreo creado por el Gobierno</td><td>—</td><td>línea de visión, registro</td><td>Condición necesaria</td></tr>
+<tr><td>Privacidad y vigilancia</td><td>prohibiciones por privacidad</td><td>—</td><td>poca gente grabada</td><td>grabación en directo</td><td>desviación de la finalidad</td><td>Pesa más en uso policial urbano</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="modulo" id="m2">
+<header><p class="num">Módulo 2</p><h2>Técnica avanzada por pregunta</h2></header>
+<div class="texto">
+<h3 class="pregunta-h"><span>Pregunta 1</span><span class="pts">[2]</span></h3>
+<p>Tres variantes han aparecido: <strong>identificar desde un diagrama o imagen</strong> (características del GPS, formas de proteger datos, prácticas ergonómicas, dispositivos de entrada y salida), <strong>indicar desde un mapa</strong> (leyes de dos países) y <strong>identificar desde un texto</strong>. En las tres, el esquema acepta una lista amplia de respuestas razonables, incluso algunas que la fuente solo sugiere.</p>
+<ul>
+<li><strong>Lee la restricción del enunciado</strong> dos veces: “necesario para el reconocimiento facial”, “cuando trabajan desde casa”. Una respuesta verdadera pero fuera de la restricción no puntúa.</li>
+<li><strong>Elige elementos de categorías distintas</strong>: si piden dos formas de proteger datos, da una de red (VPN) y una de autenticación (doble factor), no dos variantes de contraseña.</li>
+<li><strong>Escribe el término técnico con un complemento mínimo</strong>: “Usar una VPN para conectarse a la red de la empresa” es más seguro que “VPN” a secas, y no te cuesta tiempo.</li>
+<li>Si la fuente es una <strong>imagen sin texto</strong> (la oficina en casa de 2025), traduce lo que ves a conceptos del curso: pantalla a la altura de los ojos → práctica ergonómica; cerradura de la puerta → seguridad física del equipo.</li>
+</ul>
+
+<h3 class="pregunta-h"><span>Pregunta 2</span><span class="pts">[4]</span></h3>
+<p>Variantes: “explique dos características…”, “sugiera dos razones…”, o dividida en (a) “sugiera una razón” y (b) “sugiera un impacto”. En todos los casos: <strong>1 punto por identificar y 1 por desarrollar</strong> (por qué o cómo). Para no quedarte en blanco, usa esta rejilla de categorías y elige dos de filas distintas:</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Categoría</th><th>Preguntas que generan razones</th><th>Ejemplo (cobertura desigual de Street View)</th></tr></thead>
+<tbody>
+<tr><td>Técnica</td><td>¿Qué infraestructura, componente o capacidad falta o permite algo?</td><td>Sin carreteras transitables, el vehículo con cámara 360° no puede circular.</td></tr>
+<tr><td>Económica</td><td>¿Quién paga? ¿Es rentable?</td><td>Zonas con más usuarios y comercios generan más ingresos por publicidad.</td></tr>
+<tr><td>Legal o política</td><td>¿Qué leyes lo permiten o lo prohíben?</td><td>Algunos gobiernos restringen las fotografías por privacidad o seguridad nacional.</td></tr>
+<tr><td>Humana o social</td><td>¿Qué hábitos, habilidades o preferencias influyen?</td><td>Rechazo cultural a ser fotografiado.</td></tr>
+<tr><td>Geográfica o ambiental</td><td>¿Qué terreno, clima o distancia interviene?</td><td>Montañas, selva o desierto dificultan el acceso.</td></tr>
+<tr><td>Organizativa</td><td>¿Qué normas internas, soporte o recursos hay?</td><td>El departamento de TI tarda en aprobar programas.</td></tr>
+</tbody></table></div>
+<div class="texto">
+<p>El desarrollo debe terminar en el <strong>actor de la pregunta</strong>. “Porque es más fácil de usar” es identificación; “…por lo que el empleado termina antes sus diseños sin esperar la aprobación de TI” es desarrollo.</p>
+
+<h3 class="pregunta-h"><span>Pregunta 3</span><span class="pts">[6]</span></h3>
+<p>Lo difícil es encontrar <strong>contrastes</strong> cuando las fuentes parecen hablar de cosas distintas. Estas siete técnicas los generan siempre:</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Técnica</th><th>Cómo funciona</th><th>Ejemplo real de los esquemas</th></tr></thead>
+<tbody>
+<tr><td>Por uso</td><td>El mismo sistema sirve a actores con intenciones opuestas.</td><td>Street View: la policía encuentra a una prófuga (C); los delincuentes eligen casas (D).</td></tr>
+<tr><td>Por momento</td><td>Una medida ocurre antes y otra después.</td><td>Rostros difuminados antes de publicar (C) frente a casas difuminadas a petición después de publicar (D).</td></tr>
+<tr><td>Por énfasis</td><td>Ambas tratan el tema, pero una destaca el beneficio y otra el riesgo.</td><td>Cifrado en la nube (anuncio) frente a demasiadas personas con acceso (reseña).</td></tr>
+<tr><td>Por omisión</td><td>Una fuente calla lo que la otra dice.</td><td>La fuente de drones sanitarios no menciona la privacidad; la de drones policiales sí.</td></tr>
+<tr><td>Por actor</td><td>Beneficia a unos y perjudica a otros.</td><td>El director ahorra un 25 % de oficina (C) mientras el empleado asume la responsabilidad del equipo (D).</td></tr>
+<tr><td>Por escala</td><td>Individual frente a comunitario, local frente a global.</td><td>Un vecino grabado frente a una comunidad que recibe vacunas.</td></tr>
+<tr><td>Por origen y propósito</td><td>El tipo de fuente explica su sesgo.</td><td>Testimonios personales (C) frente a normas corporativas (D).</td></tr>
+</tbody></table></div>
+<div class="texto">
+<p>Y recuerda la precisión del esquema de mayo de 2025 para la banda 5–6: describe <strong>qué</strong> pasa, más al menos dos de <strong>quién</strong>, <strong>dónde</strong> y <strong>cuándo</strong>. Con “los empleados con hijos (quién), en casa (dónde), los días de teletrabajo (cuándo)” cumples de sobra.</p>
+<p><strong>Extensión y forma.</strong> Tres párrafos breves por ejes, o dos si son muy desarrollados. No hace falta introducción ni conclusión; sí una frase final que resuma la diferencia principal si te sobra un minuto.</p>
+
+<h3 class="pregunta-h"><span>Pregunta 4</span><span class="pts">[12]</span></h3>
+<p>El término de instrucción y el foco determinan la forma de la tesis. Esta tabla cubre las variantes aparecidas y las posibles:</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Enunciado</th><th>Cómo organizar</th><th>Tesis modelo</th></tr></thead>
+<tbody>
+<tr><td>Discuta las ventajas y desventajas de X para Y</td><td>Temas; en cada uno, ventaja y su límite. Juicio sobre cuál pesa más para Y.</td><td>“X aporta A y B a Y, pero su valor depende de C.”</td></tr>
+<tr><td>Discuta los efectos y repercusiones para X</td><td>Efectos (ya ocurren) y repercusiones (oportunidades y riesgos futuros), por dimensión de X: finanzas, seguridad, personas.</td><td>“A corto plazo X gana en…, pero asume riesgos en… que condicionan su éxito.”</td></tr>
+<tr><td>Discuta las oportunidades y dilemas de X</td><td>Cada párrafo, una oportunidad que abre un dilema (doble uso, valores en conflicto).</td><td>“Cada oportunidad de X crea un dilema equivalente; la cuestión es quién decide cómo se resuelve.”</td></tr>
+<tr><td>¿En qué medida está de acuerdo en que los beneficios superan las preocupaciones?</td><td>Grado explícito en la introducción y en la conclusión; separar escenarios si el grado cambia.</td><td>“En gran medida en el caso A, pero solo parcialmente en el caso B, porque…”</td></tr>
+<tr><td>Evalúe X</td><td>Fortalezas y limitaciones, y un juicio sobre su peso relativo.</td><td>“X es eficaz para…, pero su principal limitación es…”</td></tr>
+<tr><td>Examine / Justifique / Recomiende</td><td>Supuestos e interrelaciones / razones y pruebas / plan de acción con actor y motivo.</td><td>“X debería…, porque… Para ello, [actor] debe…”</td></tr>
+</tbody></table></div>
+<div class="texto">
+<h4>Mapa de partes interesadas</h4>
+<p>Antes de escribir, lista en el margen quién gana y quién pierde. La banda alta exige comprender a fondo el foco: en mayo de 2025 el esquema aceptaba directores, personal técnico y empleados como partes interesadas de la empresa, pero no a los hijos ni a los clientes. Si el enunciado dice “para MMDP”, los hijos de Sam solo cuentan en la medida en que afectan a la empresa (seguridad de sus datos).</p>
+<h4>Cuánto conocimiento propio</h4>
+<p>Mínimo dos elementos, idealmente uno por párrafo, de tipos distintos: un ejemplo real paralelo, una ley o regulación, un término técnico que las fuentes no explican, un dato, o la perspectiva de una parte interesada que las fuentes ignoran. El conocimiento propio debe hacer algo en el argumento: confirmar, matizar o contradecir lo que dicen las fuentes.</p>
+<h4>La conclusión que da puntos</h4>
+<p>Tres movimientos en tres o cuatro frases: respuesta directa al enunciado con grado; para quién es más cierto y para quién menos; la condición de la que depende. Nada nuevo.</p>
+</div>
+</section>
+
+<section class="modulo" id="m3">
+<header><p class="num">Módulo 3</p><h2>De la banda 4 a la 12: el mismo párrafo</h2></header>
+<div class="texto">
+<p>La mejor forma de entender las bandas es ver un mismo argumento escrito a tres niveles. Pregunta: <em>¿En qué medida el uso de drones por un Gobierno en la atención sanitaria y en la prevención de incendios provocados tiene más importancia que las preocupaciones?</em> (noviembre de 2024). Tema del párrafo: privacidad.</p>
+<div class="banda b1"><p class="t">Banda 4–6</p><p>Los drones de la policía pueden afectar a la privacidad porque graban vídeo, como dice la Fuente D. Esto es una preocupación para los ciudadanos porque no quieren ser grabados.</p></div>
+<p class="nota">Por qué se queda aquí: una sola fuente, sin conocimiento propio, sin explicar el mecanismo, y el juicio es una generalización (“no quieren ser grabados”).</p>
+<div class="banda b2"><p class="t">Banda 7–9</p><p>Una preocupación importante es la privacidad. La Fuente D muestra que los drones policiales captan vistas aéreas e incidentes en directo, lo que implica grabar también a vecinos sin relación con el incendio. Además, según la Fuente A, las leyes sobre drones cambian mucho entre países. Aunque la grabación ayuda a la investigación, algunos ciudadanos podrían sentirse vigilados.</p></div>
+<p class="nota">Por qué no llega a 10: usa dos fuentes pero en fila (“además”), no las sintetiza; el juicio es tibio; no hay conocimiento propio.</p>
+<div class="banda b3"><p class="t">Banda 10–12</p><p>La preocupación más seria es la vigilancia, porque el mismo sistema que protege también observa. La Fuente D indica que los drones graban en directo durante las intervenciones, y la Fuente A muestra que las leyes de privacidad sobre drones van desde la prohibición total hasta la ausencia de legislación; en conjunto, esto significa que la protección de un vecino grabado depende del país donde vive, no de la tecnología. Si esas imágenes se almacenan y se cruzan con otras bases de datos, como ocurre con la videovigilancia con reconocimiento facial, un dispositivo pensado para investigar incendios podría convertirse en una herramienta de vigilancia general sin debate público, un caso de desviación de la finalidad. Por eso esta preocupación pesa poco en la entrega de vacunas a zonas remotas de la Fuente C, donde apenas se graba a personas, pero mucho en el uso policial urbano, que solo sería aceptable con reglas claras de conservación y acceso a las imágenes.</p></div>
+<p class="nota">Qué cambió: frase temática con tesis; síntesis explícita de A y D (“en conjunto, esto significa”); conocimiento propio que extiende el argumento (reconocimiento facial, desviación de la finalidad); conceptos implícitos (poder, espacio, valores y ética); juicio diferenciado por escenario y con condición.</p>
+
+<h3>Las cinco mejoras que suben una banda</h3>
+<ol>
+<li><strong>De “además” a “en conjunto”</strong>: cambia la adición de fuentes por su combinación.</li>
+<li><strong>Del qué al cómo</strong>: explica el mecanismo técnico (grabación en directo, almacenamiento, cruce de datos).</li>
+<li><strong>De “los ciudadanos” a un actor preciso</strong>: vecinos sin relación con el incendio, comunidades remotas.</li>
+<li><strong>Del ejemplo añadido al ejemplo que razona</strong>: el conocimiento propio lleva el argumento más lejos que las fuentes.</li>
+<li><strong>Del “es malo” al “pesa más cuando…”</strong>: juicio con grado, destinatario y condición.</li>
+</ol>
+</div>
+</section>
+
+<section class="modulo" id="m4">
+<header><p class="num">Módulo 4</p><h2>Resolución: mayo 2024, imágenes de vista de calles</h2></header>
+<div class="texto">
+<p><strong>Mapa 3C antes de escribir.</strong> Contenidos: 3.1 (metadatos, geolocalización), 3.4 (GPS, nube), 3.5 (imágenes interactivas), 3.6 (IA que difumina). Contextos: político (delito, vigilancia, leyes), ambiental (mapas y SIG, 4.3C), cultural (turismo), social. Conceptos: espacio (cobertura, lugares), poder (quién fotografía a quién), identidad y valores y ética (privacidad, consentimiento).</p>
+
+<h3 class="pregunta-h"><span>P1. Identifique dos características del GPS (Fuente A)</span><span class="pts">[2]</span></h3>
+<div class="modelo">
+<p>1. Usa una red de satélites que emiten continuamente señales de radio con una marca de tiempo.</p>
+<p>2. Un receptor calcula su posición (latitud, longitud y altitud) por trilateración, midiendo cuánto tardan en llegar las señales de varios satélites.</p>
+<p class="anot">El esquema aceptaba también: requiere un receptor, determina la ubicación en cualquier parte del mundo, alta precisión.</p>
+</div>
+
+<h3 class="pregunta-h"><span>P2. Sugiera dos razones por las que algunas partes del mundo tienen más cobertura (Fuente B)</span><span class="pts">[4]</span></h3>
+<div class="modelo">
+<p><strong>1. Rentabilidad comercial.</strong> El mapa muestra cobertura casi completa en regiones con mucha población y alto poder adquisitivo, como Norteamérica y Europa. Allí hay más usuarios y más negocios que pagan por aparecer en los mapas, así que a la empresa le compensa el alto costo de recorrer las calles con vehículos equipados con cámaras de 360° y LiDAR.</p>
+<p><strong>2. Restricciones legales y políticas.</strong> Grandes zonas de África y Asia aparecen sin cobertura en parte porque algunos gobiernos restringen la toma de imágenes por privacidad o seguridad nacional. Sin permiso, la empresa no puede operar aunque quiera, por lo que esas regiones quedan fuera del servicio.</p>
+<p class="anot">Dos categorías distintas (económica y legal). También valían: infraestructura vial, terreno difícil, acceso a Internet de los posibles usuarios, estabilidad política.</p>
+</div>
+
+<h3 class="pregunta-h"><span>P3. Compare y contraste lo que C y D revelan sobre los efectos y repercusiones para la población</span><span class="pts">[6]</span></h3>
+<div class="modelo">
+<p><strong>Seguridad y delito.</strong> Ambas fuentes muestran que las imágenes de vista de calles pueden usarse para localizar a personas o lugares concretos. Sin embargo, mientras en la Fuente C la policía las usa para encontrar en Polonia a una prófuga, lo que protege a la población, en la Fuente D son los delincuentes quienes las usan para elegir barrios ricos y casas fáciles de robar. Esto implica que la misma herramienta aumenta la seguridad o el riesgo de los residentes según quién la utilice.</p>
+<p><strong>Privacidad y difuminado.</strong> Las dos fuentes presentan el difuminado como medida de privacidad y muestran sus límites. En la Fuente C, el rostro de la mujer estaba difuminado automáticamente antes de la publicación, pero la policía la reconoció igualmente por el contexto de la imagen, que además tenía marca de tiempo. En cambio, en la Fuente D el difuminado de viviendas se hace después, a petición del propietario, y puede atraer la atención de los delincuentes. Así, para los transeúntes el riesgo es ser identificados pese a la protección; para los propietarios, que la protección misma señale su casa.</p>
+<p><strong>Quién controla.</strong> En la Fuente C la decisión de proteger es automática y de la empresa; en la Fuente D recae en el ciudadano, que debe descubrir la imagen y solicitar el difuminado. Esto revela un modelo de consentimiento por defecto en el que la carga de proteger la privacidad pasa a la población.</p>
+<p class="anot">Banda 5–6: efectos (localización, identificación) y repercusiones (oportunidad de seguridad, riesgo de robo), semejanzas y diferencias, C y D en cada párrafo, actores concretos (policía, transeúntes, propietarios), momento (antes y después de publicar).</p>
+</div>
+
+<h3 class="pregunta-h"><span>P4. Discuta las oportunidades y dilemas del uso de aplicaciones de vista de calles</span><span class="pts">[12]</span></h3>
+<div class="modelo">
+<p>Las aplicaciones de vista de calles combinan cámaras de 360°, escáneres LiDAR, sensores de posición y procesamiento con IA para crear panorámicas interactivas y geolocalizadas de calles de todo el mundo. Cada oportunidad que ofrecen crea un dilema equivalente, porque la misma visibilidad que ayuda a unos expone a otros; su balance depende de quién accede a las imágenes y de quién decide qué se muestra.</p>
+<p><strong>La primera oportunidad es el acceso al espacio, pero ese acceso está repartido de forma desigual.</strong> Según la Fuente A, las imágenes se emparejan con ubicaciones exactas, lo que permite planificar rutas, ver un negocio antes de ir o explorar lugares lejanos, un uso educativo que juegos como GeoGuessr han popularizado. Sin embargo, la Fuente B muestra que la cobertura se concentra en regiones ricas; en conjunto, esto significa que la representación digital del mundo reproduce las desigualdades económicas, y las comunidades sin cobertura quedan invisibles para turistas, inversores y servicios. Esta brecha espacial importa especialmente cuando gobiernos y empresas usan estas imágenes para decidir dónde invertir.</p>
+<p><strong>La segunda oportunidad es la seguridad, que choca con un problema de doble uso.</strong> La Fuente C muestra cómo la policía localizó a una prófuga gracias a una imagen con marca de tiempo, mientras que la Fuente D describe a delincuentes que identifican casas vulnerables o coches con objetos de valor. La tecnología es neutral en sí misma, pero su efecto depende del actor: las imágenes funcionan como una herramienta de vigilancia a disposición de cualquiera con conexión. Este dilema pesa más en barrios residenciales, donde el beneficio policial es ocasional y el riesgo de robo, cotidiano.</p>
+<p><strong>El dilema más profundo es el consentimiento.</strong> La Fuente A indica que la IA difumina automáticamente rostros y matrículas, pero la Fuente C demuestra que una persona puede ser reconocida por su silueta, su ropa y el lugar, y la Fuente D muestra que las viviendas solo se difuminan si el propietario lo pide. Es un modelo de exclusión voluntaria: la empresa fotografía por defecto y el ciudadano debe defenderse después. Su historial refuerza la desconfianza: en 2010 se supo que los vehículos de Street View habían recogido datos de redes wifi no cifradas, y ese mismo año cientos de miles de hogares alemanes solicitaron difuminar sus casas. Desde la perspectiva del poder, una empresa privada decide cómo se representa el espacio público de países enteros, con leyes que varían en cada jurisdicción.</p>
+<p>En conclusión, las aplicaciones de vista de calles ofrecen oportunidades reales de navegación, educación y seguridad, pero sus dilemas de privacidad y de representación desigual son estructurales, no fallos puntuales. Sus beneficios superan a sus riesgos para usuarios y empresas de zonas bien cubiertas, y mucho menos para los residentes fotografiados sin consentimiento; el equilibrio mejoraría con difuminado por defecto de viviendas y control independiente de la calidad del difuminado por IA.</p>
+<p class="anot">Por qué es banda alta: tesis de doble filo adaptada a “oportunidades y dilemas”; las cuatro fuentes combinadas; tres conocimientos propios (GeoGuessr, recogida de datos wifi en 2010, solicitudes de difuminado en Alemania); conceptos como explicación (espacio, poder, valores y ética); juicio por actor y con condición.</p>
+</div>
+</div>
+</section>
+
+<section class="modulo" id="m5">
+<header><p class="num">Módulo 5</p><h2>Resolución: noviembre 2024, drones del Gobierno</h2></header>
+<div class="texto">
+<p><strong>Mapa 3C.</strong> Contenidos: 3.7 (drones: sensores, autonomía, leyes desiguales), 3.1 (captura de imágenes), 3.4 (control remoto, transmisión en vivo). Contextos: salud (4.4A), político (4.6B órganos de gobierno, 4.6D leyes y vigilancia), ambiental (huella de carbono, espacio aéreo), económico (costos). Conceptos: poder (el Gobierno controla el espacio aéreo y los datos), espacio (acceso remoto, fronteras legales), sistemas (fiabilidad), valores y ética (privacidad).</p>
+
+<h3 class="pregunta-h"><span>P1. Indique las leyes sobre drones en (a) Argelia y (b) Namibia</span><span class="pts">[2]</span></h3>
+<div class="modelo"><p>(a) Prohibición total. (b) Se requiere línea de alcance visual.</p><p class="anot">“Indicar” no pide explicación. Lee bien la leyenda del mapa.</p></div>
+
+<h3 class="pregunta-h"><span>P2. Explique dos características de los drones que les permiten entregar paquetes (Fuente B)</span><span class="pts">[4]</span></h3>
+<div class="modelo">
+<p><strong>1. Navegación por GPS.</strong> El receptor GPS de a bordo determina la posición del dron y la compara con la dirección de entrega, de modo que el sistema puede volar de forma autónoma a 60 m de altura por una ruta directa hasta la propiedad correcta.</p>
+<p><strong>2. Sensores de altitud y distancia.</strong> Sensores como el LiDAR o el ultrasonido miden la distancia al suelo, lo que permite descender con precisión hasta 15 m y bajar el paquete con una cuerda que se suelta al tocar el suelo, sin que el dron aterrice cerca de personas u obstáculos.</p>
+<p class="anot">Característica técnica + cómo funciona + para qué sirve en el reparto. También valían: acelerómetros y giroscopios para la estabilidad, magnetómetro para el rumbo, cámaras, computadora de a bordo.</p>
+</div>
+
+<h3 class="pregunta-h"><span>P3. Compare y contraste lo que C y D revelan sobre los efectos y repercusiones para la ciudadanía</span><span class="pts">[6]</span></h3>
+<div class="modelo">
+<p><strong>Acceso a lugares difíciles.</strong> Tanto la Fuente C como la D muestran que los drones llegan a lugares de acceso difícil o peligroso: comunidades remotas de Sudáfrica que reciben vacunas y lugares de incendios provocados en el Reino Unido que se observan desde el aire. En ambos casos se trata de iniciativas públicas que protegen vidas, aunque financiadas con dinero de los contribuyentes.</p>
+<p><strong>Qué transportan o captan.</strong> Sin embargo, mientras los drones de la Fuente C transportan objetos físicos (medicamentos y muestras para análisis), los de la Fuente D captan imágenes, incluso en directo. Esto significa que en C la ciudadanía recibe un servicio sanitario más rápido, mientras que en D se convierte en objeto de observación, lo que abre riesgos de vigilancia para vecinos y transeúntes.</p>
+<p><strong>Momento y privacidad.</strong> La Fuente C describe un uso preventivo y planificado, ampliado durante la pandemia de COVID-19; la Fuente D, un uso reactivo durante y después de los incidentes. La Fuente D implica además cuestiones legales sobre la privacidad de lo grabado, que la Fuente C no plantea porque sus drones operan en zonas poco pobladas. Por tanto, el beneficio de C es amplio y de bajo riesgo, y el de D es más focalizado y más controvertido.</p>
+</div>
+
+<h3 class="pregunta-h"><span>P4. ¿En qué medida los beneficios superan las preocupaciones?</span><span class="pts">[12]</span></h3>
+<div class="modelo">
+<p>Los drones son tecnologías autónomas que combinan GPS, sensores y una computadora de a bordo para volar y actuar con cierto grado de independencia. Su uso gubernamental tiene más importancia que las preocupaciones en gran medida en la atención sanitaria, pero solo parcialmente en la prevención de incendios provocados, porque allí la capacidad de grabar crea riesgos de vigilancia que exigen una regulación que todavía es desigual.</p>
+<p><strong>El beneficio central es la rapidez del acceso a lugares aislados.</strong> La Fuente B muestra que el dron vuela a 60 m por una ruta directa, sin tráfico, y la Fuente C que la red sudafricana lleva vacunas y trae muestras a hospitales centrales; en conjunto, esto reduce el tiempo entre diagnóstico y tratamiento en comunidades que por carretera tardarían horas. La experiencia de Zipline en Ruanda, que reparte sangre por dron desde 2016, confirma que el modelo funciona a escala nacional. Este beneficio es decisivo para la salud rural, donde un retraso puede costar vidas.</p>
+<p><strong>Sin embargo, el sistema depende de un marco legal y técnico frágil.</strong> La Fuente A muestra que las leyes varían desde la prohibición total hasta la ausencia de legislación, y la Fuente B revela límites operativos, como una carga máxima de 2 kg. Como todo sistema interdependiente, un fallo en un elemento (un sensor, la batería, el viento o un hackeo del enlace de control) interrumpe el servicio o provoca la caída del dron sobre personas o bienes. Estas limitaciones no anulan el beneficio sanitario, pero sí condicionan su escala: un Gobierno solo puede prometer una red fiable si regula el espacio aéreo, como hace el de la Fuente C.</p>
+<p><strong>La preocupación de más peso es la vigilancia en el uso policial.</strong> La Fuente D indica que los drones graban vistas aéreas e incidentes en directo, y junto con la variedad de leyes de la Fuente A, esto significa que la protección de las personas grabadas depende del país. El poder de observar desde el aire es asimétrico: la ciudadanía no sabe cuándo la graban, cuánto tiempo se conservan las imágenes ni con qué otras bases de datos se cruzan. En guerras recientes, como la de Ucrania, los drones han demostrado su capacidad de vigilancia y de ataque, lo que alimenta la desconfianza pública. Este riesgo es bajo en zonas remotas, pero alto en ciudades.</p>
+<p>En conclusión, los beneficios superan claramente a las preocupaciones en la atención sanitaria, donde el dron transporta bienes y apenas registra a personas. En la prevención de incendios provocados, los beneficios solo se imponen si el Gobierno limita la grabación al lugar del incidente, fija plazos de conservación y controla el acceso a las imágenes. La tecnología es la misma; lo que cambia la balanza es qué datos capta y quién los controla.</p>
+<p class="anot">Grado explícito diferenciado por escenario, que es lo que pide “¿en qué medida…?”; fuentes combinadas en cada párrafo; conocimiento propio (Zipline, guerra de Ucrania); conceptos de sistemas, poder y espacio; conclusión con condiciones.</p>
+</div>
+</div>
+</section>
+
+<section class="modulo" id="m6">
+<header><p class="num">Módulo 6</p><h2>Resolución: mayo 2025, trabajo híbrido</h2></header>
+<div class="texto">
+<p><strong>Mapa 3C.</strong> Contenidos: 3.4 (VPN, cortafuegos, autenticación, mensajería instantánea, videoconferencia), 3.3 (software aprobado y no aprobado, malware, actualizaciones), 3.1 (seguridad y almacenamiento de datos). Contextos: económico (4.2A empresas, 4.2B teletrabajo y prácticas laborales), salud (4.4B ergonomía, 4.4C salud mental), social (4.7C familias). Conceptos: cambio (digitalización organizacional, 1.1G), poder (control del empleador, vigilancia), espacio (el hogar como oficina), sistemas (el eslabón humano), valores y ética (confianza, responsabilidad).</p>
+<p>Hubo dos versiones (TZ2 y TZ3) con distintas preguntas 1 y 2 y las mismas preguntas 3 y 4.</p>
+
+<h3 class="pregunta-h"><span>P1 (TZ2). Identifique dos formas de mantener seguros los datos al trabajar desde casa</span><span class="pts">[2]</span></h3>
+<div class="modelo"><p>1. Conectarse a la red de la empresa mediante una VPN cifrada. 2. Activar la autenticación de doble factor en el equipo y las cuentas de trabajo.</p><p class="anot">Otras válidas: no permitir que familiares usen el equipo, cortafuegos, actualizar el software, copias de seguridad, evitar redes wifi públicas, desconfiar del phishing.</p></div>
+<h3 class="pregunta-h"><span>P1 (TZ3). Identifique dos prácticas ergonómicas</span><span class="pts">[2]</span></h3>
+<div class="modelo"><p>1. Colocar el monitor a la altura de los ojos. 2. Usar una silla ajustable con apoyo lumbar.</p><p class="anot">Otras: pausas regulares, iluminación adecuada, teclado y ratón a una altura cómoda, escritorio regulable. No valía “postura relajada”.</p></div>
+
+<h3 class="pregunta-h"><span>P2 (TZ2). (a) Sugiera una razón para usar software no aprobado; (b) sugiera un impacto para la empresa</span><span class="pts">[2+2]</span></h3>
+<div class="modelo">
+<p>(a) El empleado ya domina ese programa, por ejemplo su editor de fotos preferido, así que trabaja más rápido y con mejor calidad que con una herramienta aprobada que tendría que aprender.</p>
+<p>(b) El software no aprobado puede tener vulnerabilidades o malware que el departamento de TI no controla, lo que abre una vía para filtraciones de datos de clientes y expone a la empresa a pérdidas económicas y daño reputacional.</p>
+</div>
+<h3 class="pregunta-h"><span>P2 (TZ3). (a) Sugiera una razón para usar mensajería instantánea; (b) sugiera un impacto negativo</span><span class="pts">[2+2]</span></h3>
+<div class="modelo">
+<p>(a) Permite comunicarse en tiempo real desde cualquier dispositivo, por lo que los problemas se resuelven en minutos en lugar de esperar la respuesta a un correo.</p>
+<p>(b) Si los mensajes circulan por aplicaciones personales, no quedan almacenados en los servidores de la empresa, por lo que se pierden decisiones e información que el resto del equipo necesitará y se escapan del control de seguridad.</p>
+</div>
+
+<h3 class="pregunta-h"><span>P3. Compare y contraste C y D sobre oportunidades y dilemas para los empleados</span><span class="pts">[6]</span></h3>
+<div class="modelo">
+<p><strong>Flexibilidad y horario.</strong> Tanto la Fuente C como la D presentan la flexibilidad como una oportunidad: Sam puede cuidar de sus hijos y evitar el trayecto, y las reglas permiten fijar el propio horario. Sin embargo, mientras Ash celebra que trabaja con menos interrupciones, admite que a veces trabaja hasta las 23:00 y se pierde la reunión de las 10:00, que la Fuente D declara obligatoria. Para los empleados con horarios tardíos, los días en casa, la flexibilidad prometida choca con una obligación fija, lo que convierte la oportunidad en un dilema entre autonomía y cumplimiento.</p>
+<p><strong>Seguridad y responsabilidad.</strong> La Fuente D exige responsabilizarse del equipo y seguir las reglas de seguridad de datos. En contraste, Sam, en la Fuente C, deja que sus hijos usen el ordenador de trabajo para los deberes. Esto implica que, en hogares con niños, el empleado queda expuesto a ser culpado por una filtración o una avería que la empresa le hace asumir; la confianza que Ash valora trae consigo una responsabilidad difícil de cumplir en casa.</p>
+<p><strong>Espacio y bienestar.</strong> La Fuente D pide un espacio de trabajo con orientaciones ergonómicas, mientras que la Fuente C describe un hogar que es a la vez oficina, guardería y lugar de tareas domésticas. Ash afirma que el modelo es bueno para su bienestar, pero su jornada sin límites y la desconexión que Alex asocia al trabajo en casa sugieren que la frontera entre vida laboral y personal se difumina. No todos los empleados tienen el espacio o la situación familiar para aprovechar la oportunidad por igual.</p>
+</div>
+
+<h3 class="pregunta-h"><span>P4. Discuta los efectos y repercusiones para MMDP de adoptar un modelo híbrido</span><span class="pts">[12]</span></h3>
+<div class="modelo">
+<p>El modelo híbrido 3–2–2 es un caso de digitalización organizacional: MMDP usa redes, dispositivos y plataformas de comunicación para redistribuir el trabajo entre la oficina y el hogar. Para la empresa, sus efectos inmediatos son económicos y de productividad, pero sus repercusiones a medio plazo dependen de algo que controla solo en parte: la seguridad de los datos y la cohesión de equipos que ya no comparten el mismo espacio.</p>
+<p><strong>El efecto más visible es el ahorro y la mejora de la productividad individual.</strong> Rowan, en la Fuente C, afirma que la organización por días ha permitido reducir el espacio de oficina al menos un 25 %, y Ash avanza más porque tiene menos interrupciones. En conjunto, MMDP gasta menos en infraestructura y obtiene más trabajo concentrado. No obstante, la Fuente D obliga a asistir a la reunión diaria de las 10:00 y Ash reconoce que a veces se la pierde; la productividad individual puede ganar a costa de la coordinación del equipo. Este efecto es claramente positivo para tareas creativas individuales, habituales en publicidad, y menos para campañas que exigen colaboración constante.</p>
+<p><strong>La repercusión más arriesgada es la seguridad de los datos, porque el perímetro de la empresa se traslada a cada hogar.</strong> La Fuente D exige seguir las reglas de seguridad, pero la Fuente C muestra que Sam presta el ordenador de trabajo a sus hijos, y la Fuente B revela el uso de mensajería o software fuera del control de TI (la llamada TI en la sombra). Cada dispositivo doméstico, red wifi o aplicación personal es un punto de entrada que el departamento de TI no ve. El caso de Samsung en 2023, cuando empleados pegaron código confidencial en ChatGPT y la empresa restringió después el uso de IA generativa, muestra lo fácil que es una filtración accidental. Como MMDP maneja datos de clientes, una sola filtración podría costar contratos, por lo que esta repercusión pesa más que el ahorro de la oficina.</p>
+<p><strong>La tercera repercusión afecta a las personas y, a través de ellas, a la empresa.</strong> Alex valora que las charlas presenciales refuerzan al equipo, y las reglas de la Fuente D sobre ergonomía y espacio propio muestran que MMDP asume obligaciones de salud laboral fuera de su control directo (Fuente A). Si Ash trabaja hasta las 23:00, el riesgo de agotamiento se convierte en rotación de personal; por eso leyes como la de teletrabajo del Perú (Ley 31572) o la francesa de 2017 reconocen el derecho a la desconexión digital. Además, la empresa podría caer en la tentación de vigilar a distancia con software de monitoreo, lo que desplazaría el poder hacia la dirección y erosionaría la confianza que Ash y Sam valoran.</p>
+<p>En conclusión, adoptar el modelo híbrido ha sido positivo para MMDP en costos y productividad individual, pero sus repercusiones de seguridad y de cohesión son las que decidirán su éxito. Resulta beneficioso siempre que la empresa acompañe la flexibilidad con infraestructura segura (VPN, dispositivos exclusivos para el trabajo, software aprobado) y reglas que protejan la desconexión; sin ellas, el ahorro de hoy puede convertirse en una filtración o en pérdida de talento mañana.</p>
+<p class="anot">Distingue efectos (ahorro, productividad) de repercusiones (riesgos futuros), siempre desde la empresa; sintetiza B, C y D en cada párrafo y usa A; conocimiento propio de tipos distintos (Samsung, TI en la sombra, derecho a la desconexión, software de monitoreo); juicio condicionado.</p>
+</div>
+</div>
+</section>
+
+<section class="modulo" id="m7">
+<header><p class="num">Módulo 7</p><h2>Simulacro inédito resuelto: un tutor de IA en colegios públicos</h2></header>
+<div class="texto">
+<p class="inventado">Fuentes, datos y preguntas inventados para esta guía siguiendo el formato de la prueba 2. No son materiales del IB ni datos reales.</p>
+<p><strong>Información de contexto.</strong> Un ministerio de educación ha implantado “TutorIA”, un asistente de IA generativa, en colegios públicos de secundaria de todo el país.</p>
+</div>
+<div class="fuentes">
+<div><p class="t">Fuente A. Cómo funciona TutorIA (infografía)</p><p>1. El estudiante inicia sesión con su correo institucional desde un celular o computadora con Internet. 2. Escribe o dicta su pregunta. 3. Un modelo de lenguaje alojado en la nube genera la respuesta. 4. Un filtro de contenido bloquea temas inapropiados. 5. La conversación se guarda 12 meses y el docente ve un resumen en su panel.</p></div>
+<div><p class="t">Fuente B. Uso tras un semestre (encuesta del ministerio)</p><p>Estudiantes que usan TutorIA al menos tres veces por semana: urbanos, 68 %; rurales, 21 %.</p><p>Motivo principal de no uso en zonas rurales: sin conexión estable, 54 %; dispositivo compartido en casa, 30 %; no sabe usarlo, 16 %.</p></div>
+<div><p class="t">Fuente C. Nota de prensa del ministerio</p><p>“TutorIA pone un profesor particular en el bolsillo de cada estudiante, disponible a cualquier hora. En el piloto, los estudiantes que lo usaron mejoraron un 12 % en matemáticas. Además, libera tiempo docente al responder dudas repetitivas.”</p></div>
+<div><p class="t">Fuente D. Blog de una docente de secundaria</p><p>“Algunos estudiantes ya no piensan: copian la respuesta. Otras veces TutorIA explica mal un problema con total seguridad. ¿Quién ve lo que escriben los menores durante un año? Aun así, a quienes les cuesta preguntar en clase les ayuda a practicar sin miedo.”</p></div>
+</div>
+<div class="texto">
+<p><strong>Preguntas.</strong> 1. Haciendo referencia a la Fuente A, identifique dos tipos de datos que TutorIA obtiene de los estudiantes. [2] 2. Haciendo referencia a la Fuente B, explique dos razones de la diferencia de uso entre estudiantes urbanos y rurales. [4] 3. Compare y contraste lo que las Fuentes C y D revelan sobre las oportunidades y dilemas de TutorIA para los estudiantes. [6] 4. Haciendo referencia a las Fuentes A–D y a sus propios conocimientos, ¿en qué medida TutorIA mejora la educación en los colegios públicos? [12]</p>
+
+<h3 class="pregunta-h"><span>Respuesta 1</span><span class="pts">[2]</span></h3>
+<div class="modelo"><p>1. Datos de identificación (el correo institucional con el que inicia sesión). 2. El contenido de sus preguntas y conversaciones, en texto o voz.</p><p class="anot">También: metadatos de uso (frecuencia, hora) visibles en el panel del docente.</p></div>
+
+<h3 class="pregunta-h"><span>Respuesta 2</span><span class="pts">[4]</span></h3>
+<div class="modelo">
+<p><strong>1. Falta de conectividad.</strong> El 54 % de los estudiantes rurales que no usan TutorIA señala la falta de conexión estable. Como el modelo de lenguaje funciona en la nube (Fuente A), cada pregunta exige enviar y recibir datos por Internet; sin cobertura o con poco ancho de banda, la herramienta simplemente no responde.</p>
+<p><strong>2. Acceso compartido a los dispositivos.</strong> El 30 % comparte el dispositivo en casa, de modo que el estudiante solo puede usar TutorIA cuando el celular familiar está libre, normalmente por poco tiempo; así no llega a usarlo varias veces por semana.</p>
+</div>
+
+<h3 class="pregunta-h"><span>Respuesta 3</span><span class="pts">[6]</span></h3>
+<div class="modelo">
+<p><strong>Aprendizaje.</strong> Ambas fuentes reconocen que TutorIA puede ayudar a aprender: la Fuente C cita una mejora del 12 % en matemáticas y la Fuente D admite que ayuda a practicar a quienes temen preguntar en clase. Sin embargo, mientras la Fuente C presenta al asistente como un “profesor particular”, la Fuente D advierte que algunos estudiantes copian las respuestas sin pensar. Para los estudiantes menos motivados, en las tareas en casa, la misma disponibilidad inmediata que ofrece la oportunidad puede sustituir el esfuerzo que el aprendizaje requiere.</p>
+<p><strong>Fiabilidad.</strong> La Fuente C no menciona ningún error, en coherencia con su propósito de promoción institucional. En contraste, la Fuente D señala que TutorIA a veces explica mal con total seguridad, es decir, que genera alucinaciones. Esto implica que un estudiante que estudia solo, sin un docente al lado, puede memorizar un procedimiento erróneo sin saberlo.</p>
+<p><strong>Privacidad.</strong> La Fuente C destaca que la herramienta libera tiempo docente, mientras que la Fuente D pregunta quién ve durante un año lo que escriben los menores. Para los estudiantes, que son menores de edad, la oportunidad de consultar en privado dudas que les avergüenzan se convierte en un dilema si esas conversaciones quedan almacenadas y accesibles.</p>
+</div>
+
+<h3 class="pregunta-h"><span>Respuesta 4</span><span class="pts">[12]</span></h3>
+<div class="modelo">
+<p>TutorIA es un sistema de IA de dominio específico basado en un modelo de lenguaje en la nube que genera respuestas a partir de patrones aprendidos de grandes volúmenes de texto. Mejora la educación de los colegios públicos solo en parte: es un apoyo eficaz para practicar donde hay conectividad, pero su diseño en la nube amplía la brecha entre estudiantes urbanos y rurales, y su falta de fiabilidad y de protección de los datos de menores exige supervisión docente.</p>
+<p><strong>Como herramienta de práctica, TutorIA tiene un beneficio real, aunque su eficacia depende del uso.</strong> La Fuente C informa de una mejora del 12 % en matemáticas y la Fuente D confirma que ayuda a estudiantes tímidos; en conjunto, sugieren que la retroalimentación inmediata y sin juicio favorece a quienes no preguntan en clase. Sin embargo, el dato proviene de un piloto difundido por el propio ministerio, sin información sobre la muestra ni el grupo de comparación, y la Fuente D advierte que algunos estudiantes copian. Un estudio con estudiantes de secundaria de Turquía (Bastani y colaboradores, 2024) encontró algo parecido: el acceso libre a un chatbot mejoró los ejercicios de práctica pero empeoró los resultados en el examen, mientras que una versión que daba pistas en lugar de soluciones evitaba ese daño. El beneficio es mayor en ejercicios de práctica y menor en tareas evaluadas, donde tienta a sustituir el razonamiento.</p>
+<p><strong>El principal límite es que el sistema reproduce la brecha digital.</strong> Según la Fuente A, el uso requiere Internet y un dispositivo, y la Fuente B muestra que solo el 21 % de los estudiantes rurales lo usa con regularidad, frente al 68 % de los urbanos, sobre todo por falta de conexión. Así, un recurso pensado para igualar oportunidades beneficia más a quien ya tenía más, como ocurrió con Aprendo en Casa en 2020, cuando la educación a distancia tuvo que apoyarse en la radio y la televisión para llegar a zonas sin Internet. Desde la perspectiva del espacio, la calidad de la educación pasa a depender de la cobertura del lugar donde vive el estudiante. Una versión que funcione sin conexión, instalada en el propio dispositivo, cambiaría este balance.</p>
+<p><strong>La fiabilidad y la privacidad condicionan la confianza en el sistema.</strong> La Fuente D describe respuestas erróneas presentadas con seguridad, un fallo conocido de la IA generativa: en 2023 un abogado de Nueva York presentó ante un tribunal casos judiciales inventados por ChatGPT. Además, la Fuente A indica que las conversaciones se guardan 12 meses y que los docentes ven resúmenes, lo que convierte dudas íntimas de menores en datos personales almacenados en servidores de terceros. En el Perú, la Ley 29733 exige consentimiento y finalidad clara, y en 2023 la autoridad italiana de protección de datos bloqueó temporalmente ChatGPT, entre otros motivos, por la falta de verificación de edad. Estos riesgos pesan especialmente porque los usuarios son menores y el ministerio tiene poder para imponer la herramienta sin que las familias puedan negociar sus condiciones.</p>
+<p>En conclusión, TutorIA mejora la educación en una medida limitada: aporta práctica personalizada y alivia a los docentes en contextos urbanos conectados, pero no mejora, e incluso puede empeorar, la equidad del sistema público. Su contribución sería mucho mayor si funcionara sin conexión, redujera el tiempo de conservación de los datos y se integrara en clase como apoyo guiado por el docente, no como sustituto.</p>
+<p class="anot">Grado explícito (“solo en parte”, “en una medida limitada”); evaluación de la propia fuente (dato del ministerio sin muestra); cifras de la Fuente B usadas con precisión; conocimiento propio variado (Aprendo en Casa, caso del abogado en 2023, Ley 29733, bloqueo en Italia); conceptos de espacio, poder y valores y ética; recomendación final concreta.</p>
+</div>
+</div>
+</section>
+
+<section class="modulo" id="m8">
+<header><p class="num">Módulo 8</p><h2>Contenido por subsección (1.1 y 3.1–3.7)</h2></header>
+<div class="texto">
+<p>Para cada área de indagación prescrita: cómo suele aparecer en una prueba 2, qué escribir para puntuar y qué concepto conviene activar. La columna “Qué escribir” se oculta en el modo repaso: intenta responderla antes de tocar la celda. Los códigos (3.1G, 3.4C…) son los de la guía oficial; usarlos en tus notas de estudio te ayuda a ver que cada fuente toca varias subsecciones a la vez.</p>
+</div>
+
+<details class="area" open><summary>1.1 ¿Qué es la sociedad digital? <small>marco de la introducción</small></summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Área</th><th>Cómo aparece en la prueba 2</th><th>Qué escribir para puntuar</th><th>Lente</th></tr></thead>
+<tbody>
+<tr><td>1.1A Nombres</td><td>Nunca como pregunta; sirve para enmarcar la introducción de la P4.</td><td class="resp">Una frase que sitúe el sistema: “un ejemplo de la computación ubicua propia de la sociedad red”.</td><td>Cambio</td></tr>
+<tr><td>1.1B Acceso desigual</td><td>Mapas de cobertura (Street View), encuestas por zona, costos y conectividad.</td><td class="resp">Distingue brecha de acceso, de uso y de resultados; nombra el grupo excluido y cita la cifra o la zona de la fuente.</td><td>Espacio, poder</td></tr>
+<tr><td>1.1C Hitos</td><td>Contexto histórico en fuentes sobre evolución.</td><td class="resp">Relaciona el sistema con el hito que lo hizo posible (móvil y nube → IdC doméstico).</td><td>Cambio</td></tr>
+<tr><td>1.1D Binario</td><td>Improbable en las preguntas; útil para explicar almacenamiento y tamaño de archivos.</td><td class="resp">Más resolución o más muestras → más bits → más almacenamiento y ancho de banda.</td><td>Sistemas</td></tr>
+<tr><td>1.1E Analógico y digital</td><td>Sensores que miden magnitudes continuas (ritmo cardíaco, distancia).</td><td class="resp">El sensor convierte una señal continua en valores discretos; la precisión depende del muestreo, lo que afecta a la fiabilidad del dato.</td><td>Sistemas</td></tr>
+<tr><td>1.1F Digitalización de datos</td><td>Archivos, historias clínicas, patrimonio digitalizado.</td><td class="resp">Beneficio de acceso y conservación frente a riesgos de obsolescencia de formatos y exposición de datos antes privados.</td><td>Cambio, valores</td></tr>
+<tr><td>1.1G Digitalización organizacional</td><td>Empresas o instituciones que rediseñan su funcionamiento (trabajo híbrido, ministerio con un tutor de IA).</td><td class="resp">Nombra el cambio estructural: nuevos procesos, nuevos riesgos (el perímetro de seguridad se desplaza) y nuevas relaciones de poder.</td><td>Cambio, poder</td></tr>
+</tbody></table></div></details>
+
+<details class="area"><summary>3.1 Datos <small>el contenido más rentable de la prueba 2</small></summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Área</th><th>Cómo aparece</th><th>Qué escribir para puntuar</th><th>Lente</th></tr></thead>
+<tbody>
+<tr><td>3.1A Datos, información, conocimiento, sabiduría</td><td>Dispositivos que convierten mediciones en consejos o decisiones.</td><td class="resp">Separa el dato (85 ppm) de la información (puntuación) y del conocimiento (diagnóstico); la IA automatiza los primeros niveles, no la sabiduría clínica o humana.</td><td>Sistemas, valores</td></tr>
+<tr><td>3.1B Tipos de datos</td><td>P1: “identifique dos tipos de datos que obtiene…”.</td><td class="resp">Nombra el tipo con precisión: biométricos, de ubicación, médicos, de comportamiento, metadatos (la marca de tiempo de una foto es un metadato).</td><td>Identidad</td></tr>
+<tr><td>3.1C Usos</td><td>Seguimiento, patrones, predicción.</td><td class="resp">Uso → beneficio → para quién: “detectar patrones de ritmo cardíaco permite avisar al médico antes de una crisis”.</td><td>Cambio</td></tr>
+<tr><td>3.1D Ciclo de vida</td><td>Diagramas de flujo de datos (dispositivo → nube → hospital).</td><td class="resp">Localiza el riesgo en una etapa: captura (cámaras que graban de más), almacenamiento (nube), acceso (quién ve), conservación (cuánto tiempo), reutilización (para otros fines).</td><td>Sistemas, valores</td></tr>
+<tr><td>3.1E Obtención y organización</td><td>Encuestas de la propia organización, bases de datos.</td><td class="resp">Evalúa la fuente de datos: primaria, autodeclarada, muestra desconocida; valor y limitación.</td><td>Valores</td></tr>
+<tr><td>3.1F Representación</td><td>Gráficos circulares, mapas, tablas.</td><td class="resp">Cita la cifra exacta con su unidad, compara dos valores y di qué no muestra el gráfico (causas, año, tamaño de la muestra).</td><td>Espacio</td></tr>
+<tr><td>3.1G Seguridad de datos</td><td>P1 frecuente: “dos formas de mantener seguros los datos”.</td><td class="resp">Cifrado, enmascaramiento, borrado seguro, cadena de bloques; y en red: VPN, doble factor, cortafuegos, actualizaciones, copias de seguridad. Elige de categorías distintas.</td><td>Sistemas</td></tr>
+<tr><td>3.1H Macrodatos y análisis</td><td>Muchos usuarios o sensores, predicciones, perfiles.</td><td class="resp">Usa las 4 V con sentido: “la velocidad del dato en tiempo real permite alertas, pero la veracidad depende de la calidad del sensor”.</td><td>Poder</td></tr>
+<tr><td>3.1I Dilemas</td><td>El corazón de las preguntas 3 y 4.</td><td class="resp">Nombra el dilema exacto (sesgo, fiabilidad, integridad, propiedad, control, acceso, privacidad, anonimato, vigilancia, información personal identificable) y vincúlalo al foco de la pregunta.</td><td>Poder, valores, identidad</td></tr>
+</tbody></table></div></details>
+
+<details class="area"><summary>3.2 Algoritmos <small>casi siempre implícitos en las fuentes</small></summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Área</th><th>Cómo aparece</th><th>Qué escribir para puntuar</th><th>Lente</th></tr></thead>
+<tbody>
+<tr><td>3.2A Características</td><td>Rara vez explícito; útil al explicar decisiones automáticas.</td><td class="resp">Si el sistema decide solo, su algoritmo debe tener entradas y salidas bien definidas; si las entradas son ambiguas (mala iluminación), la salida falla.</td><td>Sistemas</td></tr>
+<tr><td>3.2B Componentes</td><td>Reglas del tipo “si… entonces…” en dispositivos (avisar al médico si…).</td><td class="resp">Identifica el condicional: “si la puntuación baja de un umbral, se envía una alerta”; el umbral lo decide un humano.</td><td>Valores, poder</td></tr>
+<tr><td>3.2C Representación</td><td>Infografías de pasos numerados (reparto con dron) que son en realidad algoritmos.</td><td class="resp">Reconoce la secuencia y señala el paso crítico donde puede fallar.</td><td>Sistemas</td></tr>
+<tr><td>3.2D Usos</td><td>Rutas óptimas, filtrado de contenido, priorización, clasificación, recomendación.</td><td class="resp">Nombra el uso con el verbo técnico (filtrar, priorizar, clasificar) y su efecto en el usuario.</td><td>Poder</td></tr>
+<tr><td>3.2E Dilemas</td><td>Decisiones automáticas sobre personas; dependencia de consejos automáticos.</td><td class="resp">Sesgo y equidad, responsabilidad, transparencia, caja negra, desgaste del juicio humano (confiar en la puntuación sin consultar al médico).</td><td>Poder, valores</td></tr>
+</tbody></table></div></details>
+
+<details class="area"><summary>3.3 Computadoras <small>hardware para la P1, software para la P2(b)</small></summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Área</th><th>Cómo aparece</th><th>Qué escribir para puntuar</th><th>Lente</th></tr></thead>
+<tbody>
+<tr><td>3.3A Tipos</td><td>Dispositivos inteligentes, ponibles, integrados.</td><td class="resp">Clasifica el dispositivo: “una computadora integrada en un objeto cotidiano”; conecta con la computación ubicua.</td><td>Cambio</td></tr>
+<tr><td>3.3B Componentes</td><td>P1: dispositivos de entrada y salida, sensores (cámaras, LiDAR, escáneres 3D); interfaces (espejo, pantalla táctil); malware y software no aprobado.</td><td class="resp">Entrada = capta datos del entorno; salida = los presenta o actúa. Para el software: sistema operativo, aplicaciones, malware (tipos) y por qué las actualizaciones importan.</td><td>Sistemas</td></tr>
+<tr><td>3.3C Programación</td><td>Software a medida, actualizaciones de firmware.</td><td class="resp">Software desactualizado = vulnerabilidades conocidas sin corregir, como las que explotó WannaCry.</td><td>Sistemas</td></tr>
+<tr><td>3.3D Evolución</td><td>Miniaturización que hace posibles dispositivos baratos.</td><td class="resp">Ley de Moore → más sensores a menor costo → más datos → más riesgos; y obsolescencia rápida → residuos electrónicos.</td><td>Cambio, espacio</td></tr>
+</tbody></table></div></details>
+
+<details class="area"><summary>3.4 Redes informáticas e Internet <small>casi toda P2 depende de una red</small></summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Área</th><th>Cómo aparece</th><th>Qué escribir para puntuar</th><th>Lente</th></tr></thead>
+<tbody>
+<tr><td>3.4A Tipos</td><td>Wifi doméstico, nube, Bluetooth en ponibles, redes móviles.</td><td class="resp">Nombra el tipo y su consecuencia: “la dependencia de la nube hace que sin conexión el servicio se detenga”.</td><td>Sistemas, espacio</td></tr>
+<tr><td>3.4B Componentes</td><td>Router y módem en casa, servidores de la empresa.</td><td class="resp">Un router doméstico con contraseña por defecto es un punto débil del perímetro.</td><td>Sistemas</td></tr>
+<tr><td>3.4C Características</td><td>P2 de nov. 2025 (interoperabilidad); P1 de mayo 2025 (seguridad).</td><td class="resp">Estándares e interoperabilidad; identificación, autenticación, cifrado, cortafuegos, VPN, capas de seguridad; ancho de banda, latencia y compresión; infraestructura troncal.</td><td>Sistemas</td></tr>
+<tr><td>3.4D Proveedores y servicios</td><td>Mensajería instantánea, videoconferencia, alojamiento en la nube.</td><td class="resp">Servicio → beneficio (tiempo real) → riesgo (datos fuera del servidor de la empresa, dependencia de un proveedor externo).</td><td>Poder</td></tr>
+<tr><td>3.4E La Web</td><td>Solicitudes en línea (difuminar una casa), aplicaciones web.</td><td class="resp">Distingue Internet (infraestructura) de la Web (servicio de páginas); útil para precisar vocabulario.</td><td>Sistemas</td></tr>
+<tr><td>3.4F Evolución</td><td>IdC, computación ubicua, plataformas sociales.</td><td class="resp">Sitúa el dispositivo en la tendencia del IdC: más objetos conectados, más superficie de ataque, más datos cotidianos.</td><td>Cambio</td></tr>
+<tr><td>3.4G Dilemas</td><td>Privacidad, vigilancia, robo de identidad, phishing, ransomware, derecho al olvido.</td><td class="resp">La solicitud de difuminado de Street View funciona como un derecho al olvido; el teletrabajo multiplica la ingeniería social. Nombra el delito exacto.</td><td>Valores, identidad</td></tr>
+</tbody></table></div></details>
+
+<details class="area"><summary>3.5 Medios digitales <small>imágenes, contenido generado y autenticidad</small></summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Área</th><th>Cómo aparece</th><th>Qué escribir para puntuar</th><th>Lente</th></tr></thead>
+<tbody>
+<tr><td>3.5A Tipos</td><td>Imágenes panorámicas, vídeo en directo, contenido generado por usuarios, medios sintéticos.</td><td class="resp">Clasifica el medio y su efecto: el vídeo en directo de un dron es un medio digital que puede difundirse o almacenarse sin control.</td><td>Expresión</td></tr>
+<tr><td>3.5B Características</td><td>Difusión rápida, almacenamiento, interactividad, contenido no lineal.</td><td class="resp">La interactividad (explorar una calle) crea valor; la difusión rápida convierte un error de privacidad en un daño masivo.</td><td>Espacio</td></tr>
+<tr><td>3.5C Inmersivos</td><td>Turismo virtual, formación con realidad virtual, filtros de RA.</td><td class="resp">Distingue RA, RV y RM; valor educativo frente a aislamiento, mareo o recopilación de datos biométricos (movimiento ocular).</td><td>Espacio, identidad</td></tr>
+<tr><td>3.5D Dilemas</td><td>Autenticidad, derechos sobre imágenes, imágenes obsoletas, censura y moderación.</td><td class="resp">¿De quién es la imagen de mi casa? ¿Qué pasa si la imagen está desactualizada? ¿Quién decide qué se muestra y qué se difumina?</td><td>Poder, valores</td></tr>
+</tbody></table></div></details>
+
+<details class="area"><summary>3.6 Inteligencia artificial <small>casi siempre dentro del sistema, aunque la fuente no la nombre</small></summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Área</th><th>Cómo aparece</th><th>Qué escribir para puntuar</th><th>Lente</th></tr></thead>
+<tbody>
+<tr><td>3.6A Tipos</td><td>Todo sistema de la prueba es IA estrecha.</td><td class="resp">Califícala: “IA de dominio específico”; útil para desmontar promesas publicitarias de “inteligencia”.</td><td>Cambio</td></tr>
+<tr><td>3.6B Aprendizaje automático</td><td>Reconocimiento facial (cerradura, estrés), análisis de imágenes (difuminado), PLN (chatbots).</td><td class="resp">Explica que aprende de datos de entrenamiento; si esos datos no representan a todos, falla más con ciertos grupos (tonos de piel, acentos).</td><td>Identidad, poder</td></tr>
+<tr><td>3.6C Redes neuronales</td><td>Detección de patrones complejos en salud o imagen.</td><td class="resp">Modelan relaciones no lineales y generalizan, pero son cajas negras difíciles de explicar al usuario.</td><td>Valores</td></tr>
+<tr><td>3.6D Evolución</td><td>Promesas exageradas en anuncios.</td><td class="resp">Contrasta el discurso comercial con los límites reales; los inviernos de la IA muestran el costo de las expectativas infladas.</td><td>Cambio</td></tr>
+<tr><td>3.6E Dilemas</td><td>Sesgo, responsabilidad, transparencia, leyes desiguales, automatización.</td><td class="resp">Pregunta siempre quién responde si la IA se equivoca; los oxímetros de pulso han mostrado menor precisión en pieles oscuras (la FDA emitió una alerta en 2021), un ejemplo de sesgo de diseño con impacto en la salud.</td><td>Poder, valores</td></tr>
+</tbody></table></div></details>
+
+<details class="area"><summary>3.7 Robots y tecnologías autónomas <small>drones, vehículos, IdC, asistentes</small></summary>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Área</th><th>Cómo aparece</th><th>Qué escribir para puntuar</th><th>Lente</th></tr></thead>
+<tbody>
+<tr><td>3.7A Tipos</td><td>Drones, vehículos autónomos, robots de servicio, asistentes virtuales, IdC.</td><td class="resp">Clasifica y justifica: “es una tecnología autónoma porque percibe, decide y actúa sin control humano constante”.</td><td>Sistemas</td></tr>
+<tr><td>3.7B Características</td><td>P2 de nov. 2024: “explique dos características que permiten…”.</td><td class="resp">Fórmula: característica (percepción sensorial, razonamiento, movimiento, autonomía) + componente concreto (LiDAR, GPS, visión artificial) + para qué sirve en la tarea.</td><td>Sistemas</td></tr>
+<tr><td>3.7C Evolución</td><td>Del uso industrial a la interacción cotidiana con personas.</td><td class="resp">Cuanto más se acercan a espacios humanos, más importan la seguridad y la aceptación social.</td><td>Cambio, espacio</td></tr>
+<tr><td>3.7D Dilemas</td><td>Mapas de leyes, accidentes, empleo, aceptación.</td><td class="resp">Leyes desiguales (Fuente A de 2024), complejidad del entorno (viento, obstáculos), responsabilidad en accidentes, reemplazo de trabajadores, antropomorfismo en robots sociales.</td><td>Poder, valores</td></tr>
+</tbody></table></div></details>
+</section>
+
+<section class="modulo" id="m9">
+<header><p class="num">Módulo 9</p><h2>Conceptos en la prueba 2</h2></header>
+<div class="texto">
+<p>En la prueba 2 los conceptos no se “aplican” desde fuera: se detectan en las fuentes. Cada concepto tiene señales textuales que lo delatan. Cuando veas la señal, anota el concepto en el margen y conviértelo en una explicación en la pregunta 4. Los esquemas de 2024 y 2025 incluyen tablas de 3C que muestran exactamente cómo los examinadores esperan verlos.</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Concepto</th><th>Señales en las fuentes</th><th>Movimiento analítico</th><th>Cómo lo formularon los esquemas</th><th>Frase lista</th></tr></thead>
+<tbody>
+<tr><td>Cambio</td><td>“nuevo”, “ha adoptado”, “desde 2007 se ha ampliado”, “cuando llegó la pandemia”</td><td>Qué era antes, qué es ahora, quién se adaptó y quién no; continuidad o ruptura.</td><td>“Nuevos enfoques de la asistencia sanitaria y la prevención de la delincuencia” (drones).</td><td>“No es solo un cambio de herramienta, sino de quién hace el trabajo y dónde.”</td></tr>
+<tr><td>Expresión</td><td>imágenes publicadas, mensajería, contenido de usuarios, representación</td><td>Quién puede mostrarse o comunicarse y cómo el medio lo condiciona.</td><td>Lenguaje informal y emojis en la mensajería instantánea como problema de claridad (2025).</td><td>“El medio condiciona el mensaje: la inmediatez sacrifica el matiz.”</td></tr>
+<tr><td>Identidad</td><td>rostros, datos biométricos, perfiles, difuminado, “reconocerla”</td><td>Cómo el sistema identifica, clasifica o representa a las personas, y si pueden controlar esa representación.</td><td>“Identidad: representación” (drones); identificación pese al difuminado (Street View).</td><td>“El sistema decide qué se ve de una persona, no la persona.”</td></tr>
+<tr><td>Poder</td><td>Gobierno, policía, empresa, leyes, “acceso”, “control”, reglas, directores</td><td>Quién decide, quién observa a quién, quién asume los riesgos y quién los beneficios.</td><td>“Poder: regulación, leyes, influencia, acceso y uso de datos o drones.”</td><td>“La relación es asimétrica: … observa, … es observado.”</td></tr>
+<tr><td>Espacio</td><td>mapas, cobertura, zonas remotas, hogar, oficina, espacio aéreo, fronteras</td><td>Dónde se concentran beneficios y costes; qué lugares quedan fuera; cómo cambia el uso del espacio.</td><td>“Espacio: fronteras físicas, restricciones geográficas, acceso” (drones).</td><td>“El hogar se convierte en oficina, y sus riesgos en riesgos de la empresa.”</td></tr>
+<tr><td>Sistemas</td><td>diagramas de flujo, “se conecta con”, nube, dependencias, fallos</td><td>Qué elementos son interdependientes, qué pasa si uno falla, qué consecuencias no intencionadas surgen.</td><td>“Sistemas: fiabilidad (conexiones interdependientes), precisión.”</td><td>“Basta que falle un eslabón, el wifi, para que falle todo el servicio.”</td></tr>
+<tr><td>Valores y ética</td><td>privacidad, seguridad, permiso, “responsabilícese”, confianza, reglas</td><td>Qué valores chocan, quién es responsable, qué es legal pero cuestionable.</td><td>“Valores y ética: privacidad, seguridad, diseño (sesgo), toma de decisiones.”</td><td>“Que sea legal no resuelve si es justo para…”</td></tr>
+</tbody></table></div>
+<div class="texto">
+<h3>Palabras clave de los esquemas</h3>
+<p>Estas palabras aparecen al final de los esquemas de calificación como lo que se espera ver integrado: privacidad, seguridad, anonimato, transparencia, fiabilidad, confianza, precisión, acceso, brecha digital, representación, perspectiva, regulación, perfiles, agregación de datos, analítica, conexiones, redes, datos, inteligencia artificial, responsabilidad, valoración. Si al terminar tu pregunta 4 no has usado al menos seis de forma natural, te falta precisión.</p>
+<h3>Cuántos conceptos usar</h3>
+<p>Dos o tres, bien desarrollados. El esquema no da puntos por enumerar conceptos; los da por que el análisis revele una perspectiva conceptual. Poder y valores y ética casi siempre encajan; el tercero depende del sistema: espacio para mapas, drones y brechas; sistemas para IdC y redes; identidad para biometría y perfiles; cambio para modelos de trabajo y nuevos servicios.</p>
+</div>
+</section>
+
+<section class="modulo" id="m10">
+<header><p class="num">Módulo 10</p><h2>Contextos por subsección</h2></header>
+<div class="texto">
+<p>Cada área de contexto con el tipo de escenario que puede aparecer, las partes interesadas que debes nombrar y un conocimiento propio que encaja. La tercera columna se oculta en el modo repaso.</p>
+</div>
+<div class="tabla"><table class="sub">
+<thead><tr><th>Área</th><th>Escenario probable en la prueba 2</th><th>Partes interesadas y conocimiento propio</th></tr></thead>
+<tbody>
+<tr><td>4.1A Artes y cultura popular</td><td>Plataformas de streaming, arte con IA, influencers.</td><td class="resp">Creadores, plataformas, audiencias. Derechos de autor frente a IA generativa; algoritmos de recomendación que concentran la visibilidad.</td></tr>
+<tr><td>4.1B Hogar, ocio y turismo</td><td>Hogar inteligente, videojuegos, plataformas de alquiler, turismo virtual.</td><td class="resp">Familias, turistas, vecinos. Botnet Mirai (2016) con dispositivos IdC domésticos; efectos de los alquileres de corta estancia en los barrios.</td></tr>
+<tr><td>4.1C Legado y costumbres</td><td>Digitalización de patrimonio, museos virtuales.</td><td class="resp">Comunidades de origen, museos. Quién controla la representación digital del patrimonio de una comunidad.</td></tr>
+<tr><td>4.1D Subculturas</td><td>Foros, comunidades gamer, culturas juveniles.</td><td class="resp">Jóvenes, moderadores. Pertenencia frente a radicalización y ciberacoso.</td></tr>
+<tr><td>4.2A Empresas</td><td>Adopción de tecnología por una empresa (el caso MMDP).</td><td class="resp">Dirección, TI, empleados, clientes. TI en la sombra; filtración de Samsung a ChatGPT (2023).</td></tr>
+<tr><td>4.2B Empleo y trabajo</td><td>Teletrabajo, economía de plataformas, automatización.</td><td class="resp">Trabajadores, plataformas, sindicatos. Ley Rider (España, 2021); Ley 31572 de teletrabajo con derecho a la desconexión (Perú).</td></tr>
+<tr><td>4.2C Bienes, servicios y divisas</td><td>Comercio electrónico, pagos móviles, criptomonedas, marketing dirigido.</td><td class="resp">Consumidores, comercios, bancos. Yape; M-Pesa en Kenia; bitcóin como moneda de curso legal en El Salvador (2021).</td></tr>
+<tr><td>4.2D Globalización</td><td>Deslocalización de servicios digitales, cadenas de suministro.</td><td class="resp">Trabajadores de distintos países. Moderadores de contenido subcontratados; minerales para dispositivos.</td></tr>
+<tr><td>4.3A Recursos y ecosistemas</td><td>Monitoreo satelital, sensores ambientales, consumo de centros de datos.</td><td class="resp">Comunidades locales, ONG, Estado. Monitoreo de minería ilegal en Madre de Dios con Sentinel-2; consumo de agua y energía de la IA.</td></tr>
+<tr><td>4.3B Contaminación y residuos</td><td>Residuos electrónicos, obsolescencia programada.</td><td class="resp">Consumidores, fabricantes, recicladores informales. 62 millones de toneladas de residuos electrónicos en 2022.</td></tr>
+<tr><td>4.3C Ciudades e infraestructuras</td><td>Ciudades inteligentes, GPS, SIG, transporte (el caso Street View).</td><td class="resp">Ciudadanía, municipios, empresas de mapas. Mapa de calor de Strava que reveló bases militares (2018).</td></tr>
+<tr><td>4.3D Agricultura</td><td>Agricultura de precisión, drones de fumigación.</td><td class="resp">Pequeños y grandes productores. Brecha entre quien puede pagar sensores y quien no.</td></tr>
+<tr><td>4.4A Medicina y salud</td><td>Telemedicina, dispositivos de seguimiento (el caso del botiquín), diagnóstico con IA.</td><td class="resp">Pacientes, médicos, aseguradoras. Detección de arritmias en relojes; filtración de 23andMe (2023).</td></tr>
+<tr><td>4.4B Cuerpo humano</td><td>Exoesqueletos, implantes, accesibilidad, ergonomía (el caso MMDP).</td><td class="resp">Personas con discapacidad, empleados. Diseño accesible; responsabilidad del empleador por la ergonomía en casa.</td></tr>
+<tr><td>4.4C Salud mental</td><td>Redes sociales, videojuegos, hiperconexión laboral.</td><td class="resp">Adolescentes, trabajadores. Documentos internos de Facebook sobre Instagram y adolescentes (2021); derecho a la desconexión.</td></tr>
+<tr><td>4.5A Aprendizaje y educación</td><td>Tutores de IA, plataformas de clases virtuales, dispositivos escolares.</td><td class="resp">Estudiantes, docentes, familias, ministerio. Aprendo en Casa (2020); estudio de Bastani (2024) sobre chatbots y aprendizaje.</td></tr>
+<tr><td>4.5B Innovación científica</td><td>IA en la investigación, ciencia abierta.</td><td class="resp">Investigadores, financiadores. AlphaFold y el Nobel de Química de 2024.</td></tr>
+<tr><td>4.6A Procesos políticos</td><td>Campañas en redes, desinformación, voto electrónico.</td><td class="resp">Votantes, partidos, plataformas. Cambridge Analytica; robollamada con la voz de Biden (2024).</td></tr>
+<tr><td>4.6B Órganos de gobierno</td><td>Servicios públicos digitales, redes de drones del Gobierno.</td><td class="resp">Ciudadanía, administración. Estonia y X-Road; Aadhaar en India y los riesgos de exclusión.</td></tr>
+<tr><td>4.6C Conflictos y guerra</td><td>Drones militares, ciberataques, desinformación bélica.</td><td class="resp">Civiles, ejércitos. Uso masivo de drones en la guerra de Ucrania.</td></tr>
+<tr><td>4.6D Leyes y vigilancia</td><td>Policía con drones o imágenes, leyes de privacidad (casos de 2024).</td><td class="resp">Policía, ciudadanía, jueces. RGPD, Ley 29733, Ley de IA de la UE.</td></tr>
+<tr><td>4.7A Identidad social</td><td>Sistemas que clasifican por edad, género, etnia o capacidad.</td><td class="resp">Grupos afectados por sesgos. Gender Shades (2018).</td></tr>
+<tr><td>4.7B Clase social</td><td>Acceso desigual por ingresos (costo del dispositivo, conectividad).</td><td class="resp">Hogares de bajos ingresos. Precio del dispositivo más costo de la conexión como barrera.</td></tr>
+<tr><td>4.7C Familias y relaciones</td><td>Dispositivos compartidos, trabajo en casa con hijos, control parental.</td><td class="resp">Padres, hijos. El caso de Sam (2025): el equipo de trabajo usado por los hijos.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="modulo" id="m11">
+<header><p class="num">Módulo 11</p><h2>Kits de conocimiento propio por tema</h2></header>
+<div class="texto">
+<p>Para cada sistema probable: dos ejemplos reales, una norma, términos técnicos que las fuentes rara vez explican y los ángulos conceptuales. Con un kit puedes escribir los tres párrafos de la pregunta 4 aunque el tema sea nuevo. Prepara en fichas los que más te cuesten.</p>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Tema</th><th>Ejemplos reales</th><th>Norma</th><th>Términos técnicos</th><th>Ángulos</th></tr></thead>
+<tbody>
+<tr><td>Hogar inteligente e IdC</td><td>Botnet Mirai (2016) con cámaras y routers inseguros; multa de la FTC (2023) a Ring por el acceso de empleados a vídeos de clientes.</td><td>RGPD, Ley 29733</td><td>Firmware, interoperabilidad, contraseña por defecto, cifrado, superficie de ataque</td><td>Sistemas, valores, espacio (hogar)</td></tr>
+<tr><td>Salud digital y ponibles</td><td>Detección de arritmias en relojes y falsos positivos; menor precisión de oxímetros en pieles oscuras; filtración de 23andMe (2023).</td><td>Protección reforzada de datos de salud</td><td>Sensor, biometría, telemedicina, dato sensible, falso positivo</td><td>Valores, identidad, espacio (acceso rural)</td></tr>
+<tr><td>Drones y robots autónomos</td><td>Zipline en Ruanda (desde 2016); vehículo de Uber en Tempe (2018); drones en la guerra de Ucrania.</td><td>Registro, altura y línea de visión según cada país</td><td>LiDAR, GPS, visión artificial, autonomía, actuador</td><td>Poder, espacio, sistemas</td></tr>
+<tr><td>Mapas, GPS y geolocalización</td><td>Recogida de datos wifi por Street View (2010); mapa de calor de Strava que reveló bases militares (2018).</td><td>Derecho al olvido</td><td>Trilateración, metadatos de ubicación, SIG, agregación</td><td>Espacio, poder, identidad</td></tr>
+<tr><td>Trabajo remoto e híbrido</td><td>Samsung y ChatGPT (2023); intrusiones en videollamadas en 2020; software de monitoreo de empleados.</td><td>Ley 31572 de teletrabajo (Perú); derecho a la desconexión (Francia, 2017)</td><td>VPN, TI en la sombra, doble factor, phishing, nube</td><td>Cambio, poder, espacio</td></tr>
+<tr><td>Redes sociales y algoritmos</td><td>Myanmar y Facebook (ONU, 2018); documentos internos de Facebook sobre Instagram y adolescentes (2021).</td><td>Ley de Servicios Digitales de la UE</td><td>Algoritmo de recomendación, burbuja de filtro, moderación, caja negra</td><td>Poder, expresión, identidad</td></tr>
+<tr><td>IA generativa y educación</td><td>Abogado que citó casos inventados por ChatGPT (EE. UU., 2023); bloqueo temporal de ChatGPT en Italia (2023); estudio de Bastani (2024).</td><td>Ley de IA de la UE; Ley 31814 (Perú)</td><td>Modelo de lenguaje, alucinación, datos de entrenamiento, sesgo</td><td>Cambio, valores, poder</td></tr>
+<tr><td>Reconocimiento facial y vigilancia</td><td>Clearview AI; detención errónea de Robert Williams (2020); Gender Shades (2018).</td><td>Ley de IA de la UE (identificación biométrica en tiempo real)</td><td>Plantilla facial, umbral, falso positivo, base de comparación</td><td>Poder, identidad, espacio</td></tr>
+<tr><td>Comercio y pagos digitales</td><td>Yape; M-Pesa en Kenia (2007); fraudes por ingeniería social con billeteras digitales.</td><td>Protección al consumidor</td><td>Autenticación, token, sociedad sin efectivo, marketing dirigido</td><td>Cambio, poder, clase social</td></tr>
+<tr><td>Cadena de bloques y criptomonedas</td><td>El Salvador y el bitcóin (2021); colapso de FTX (2022); Ethereum y la prueba de participación (2022).</td><td>Regulación financiera desigual</td><td>Registro distribuido, hash, consenso, prueba de trabajo</td><td>Poder, cambio, ambiente</td></tr>
+<tr><td>Medios sintéticos y desinformación</td><td>Estafa con deepfake a Arup (2024); robollamada con la voz de Biden (2024).</td><td>Etiquetado de contenido sintético en la Ley de IA de la UE</td><td>Deepfake, aprendizaje profundo, verificación, procedencia</td><td>Expresión, valores, poder</td></tr>
+<tr><td>Robots sociales y de cuidado</td><td>Sophia (2017); robots terapéuticos como la foca Paro en residencias.</td><td>Debate sobre la personalidad electrónica</td><td>Antropomorfismo, valle inquietante, robot social</td><td>Identidad, valores</td></tr>
+<tr><td>Ambiente y tecnología</td><td>62 Mt de residuos electrónicos (2022); monitoreo satelital de la minería ilegal en Madre de Dios.</td><td>Responsabilidad extendida del productor</td><td>Obsolescencia programada, tecnología verde, teledetección</td><td>Espacio, poder, cambio</td></tr>
+<tr><td>Gobierno digital</td><td>Estonia y X-Road; Aadhaar en India; servicios digitales del Estado peruano.</td><td>Protección de datos y firma digital</td><td>Identidad digital, interoperabilidad, autenticación</td><td>Poder, sistemas, espacio</td></tr>
+</tbody></table></div>
+<div class="texto">
+<div class="caja"><p class="t">Cómo introducir el conocimiento propio sin que parezca pegado</p>
+<ul>
+<li><strong>Para confirmar</strong>: “Esto no es un caso aislado: en 2018…”</li>
+<li><strong>Para matizar</strong>: “Sin embargo, la experiencia de… muestra que este beneficio depende de…”</li>
+<li><strong>Para contradecir la fuente</strong>: “Aunque la Fuente C lo presenta como seguro, casos como… demuestran que…”</li>
+<li><strong>Para añadir una perspectiva ignorada</strong>: “Las fuentes no consideran a…, que…”</li>
+<li><strong>Para introducir una norma</strong>: “Leyes como… exigen…, lo que implica que…”</li>
+</ul></div>
+</div>
+</section>
+
+<section class="modulo" id="m12">
+<header><p class="num">Módulo 12</p><h2>Autoevaluación y entrenamiento</h2></header>
+<div class="texto">
+<h3>Rúbrica rápida para corregirte la pregunta 4</h3>
+</div>
+<div class="tabla"><table>
+<thead><tr><th>Criterio</th><th>0</th><th>1</th><th>2</th></tr></thead>
+<tbody>
+<tr><td>Foco</td><td>Responde a otra pregunta</td><td>Foco general</td><td>Actor y foco del enunciado en cada frase temática</td></tr>
+<tr><td>Fuentes</td><td>Sin fuentes o una por una</td><td>Varias, a veces combinadas</td><td>Combinadas en cada párrafo, con origen o limitación cuando importa</td></tr>
+<tr><td>Conocimiento propio</td><td>Ninguno</td><td>Mencionado</td><td>Dos o más, explicados y que hacen avanzar el argumento</td></tr>
+<tr><td>Terminología</td><td>Cotidiana</td><td>Presente pero suelta</td><td>Integrada en explicaciones causales</td></tr>
+<tr><td>Conceptos</td><td>Ausentes</td><td>Nombrados</td><td>Usados como explicación (quién controla, qué valores chocan)</td></tr>
+<tr><td>Juicio</td><td>Ninguno o “depende”</td><td>Solo al final</td><td>En cada párrafo y en la conclusión, con grado y condición</td></tr>
+</tbody></table></div>
+<div class="texto">
+<p>Suma sobre 12 como orientación: 11–12 se parece a la banda 10–12; 8–10, a la 7–9; menos de 8, a la 4–6. No sustituye a las bandas oficiales, pero te dice exactamente qué mejorar.</p>
+
+<h3>Plan de entrenamiento de dos semanas solo para la prueba 2</h3>
+<ol>
+<li><strong>Día 1.</strong> Lee los módulos 0 y 1. Anota las fuentes de mayo 2024 con el sistema de códigos sin escribir respuestas.</li>
+<li><strong>Día 2.</strong> Preguntas 1 y 2 de las cinco convocatorias en 30 minutos seguidos; corrígelas con los esquemas.</li>
+<li><strong>Día 3.</strong> Pregunta 3 de mayo 2024 y de noviembre 2024, 15 minutos cada una; compáralas con los módulos 4 y 5.</li>
+<li><strong>Día 4.</strong> Estudia el módulo 3 y reescribe uno de tus párrafos hasta la banda 10–12.</li>
+<li><strong>Día 5.</strong> Pregunta 4 de mayo 2025 en 35 minutos con matriz de síntesis; corrígela con la rúbrica.</li>
+<li><strong>Días 6 y 7.</strong> Módulo 8 en modo repaso: responde en voz alta la columna oculta de cada subsección.</li>
+<li><strong>Día 8.</strong> Simulacro del módulo 7 completo en 75 minutos, sin mirar las respuestas.</li>
+<li><strong>Día 9.</strong> Módulos 9 y 10. Elige cinco kits del módulo 11 y memorízalos en fichas.</li>
+<li><strong>Día 10.</strong> Prueba de noviembre 2025 completa en 75 minutos; compárala con la guía general.</li>
+<li><strong>Días 11 y 12.</strong> Inventa dos pruebas 2 con temas del módulo 11: busca cuatro fuentes breves en noticias y escribe las cuatro preguntas siguiendo los patrones del módulo 0. Resuelve la de tu compañero o compañera.</li>
+<li><strong>Días 13 y 14.</strong> Repaso ligero: rúbrica, lista final y tus peores párrafos reescritos.</li>
+</ol>
+
+<h3>Lista final de la prueba 2</h3>
+<ul class="control" data-grupo="p2final">
+<li><label><input type="checkbox"><span>Leí las cuatro preguntas antes que las fuentes y anoté cada fuente con códigos, origen y propósito.</span></label></li>
+<li><label><input type="checkbox"><span>P1: exactamente los elementos pedidos, de categorías distintas, cumpliendo la restricción del enunciado.</span></label></li>
+<li><label><input type="checkbox"><span>P2: dos razones de categorías distintas, cada una con desarrollo que termina en el actor.</span></label></li>
+<li><label><input type="checkbox"><span>P3: las dos dimensiones, semejanzas y diferencias, C y D en cada párrafo, qué + quién + dónde o cuándo.</span></label></li>
+<li><label><input type="checkbox"><span>P4: matriz de síntesis hecha, tesis con grado, tres párrafos P-E-A-S-E y conclusión con condición.</span></label></li>
+<li><label><input type="checkbox"><span>P4: al menos dos conocimientos propios de tipos distintos, explicados.</span></label></li>
+<li><label><input type="checkbox"><span>P4: al menos seis palabras clave de los esquemas integradas en el razonamiento.</span></label></li>
+</ul>
+<p class="progreso" data-progreso="p2final"></p>
+</div>
+<footer class="pie">
+<p>Fuentes: Guía de Sociedad Digital (IB, 2025); cuadernillos de preguntas, cuadernillos de fuentes y esquemas de calificación de la prueba 2 de mayo 2024 (TZ1, TZ2), noviembre 2024, mayo 2025 (TZ2, TZ3) y noviembre 2025. Las respuestas modelo, la rúbrica rápida y el simulacro del módulo 7 (con sus fuentes y datos) son de elaboración propia y no son materiales oficiales del IB.</p>
+</footer>
+</section>
+</main>
+</div>
+<script>
+(function(){
+  var raiz=document.documentElement;
+  function guardar(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function leer(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  var t=leer('sd2-tema'); if(t==='light'||t==='dark'){raiz.setAttribute('data-theme',t)}
+  document.querySelectorAll('button.tema').forEach(function(b){
+    b.addEventListener('click',function(){
+      var a=raiz.getAttribute('data-theme');
+      if(!a){a=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+      var n=a==='dark'?'light':'dark'; raiz.setAttribute('data-theme',n); guardar('sd2-tema',n);
+    });
+  });
+  var toggles=document.querySelectorAll('.toggle-repaso');
+  function aplicar(on){
+    document.body.classList.toggle('repaso',on);
+    toggles.forEach(function(x){x.checked=on});
+    if(!on){document.querySelectorAll('td.resp.visto').forEach(function(d){d.classList.remove('visto')})}
+    guardar('sd2-repaso',on?'1':'0');
+  }
+  toggles.forEach(function(x){x.addEventListener('change',function(){aplicar(x.checked)})});
+  if(leer('sd2-repaso')==='1'){aplicar(true)}
+  document.querySelectorAll('td.resp').forEach(function(d){
+    d.setAttribute('tabindex','0');
+    function ver(){if(document.body.classList.contains('repaso')){d.classList.toggle('visto')}}
+    d.addEventListener('click',ver);
+    d.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();ver()}});
+  });
+  document.querySelectorAll('ul.control').forEach(function(ul){
+    var g=ul.getAttribute('data-grupo'), cajas=ul.querySelectorAll('input[type=checkbox]');
+    var p=document.querySelector('[data-progreso="'+g+'"]');
+    var est=[]; try{est=JSON.parse(leer('sd2-lista-'+g)||'[]')}catch(e){est=[]}
+    function pintar(){var c=0;cajas.forEach(function(x){if(x.checked)c++}); if(p){p.textContent=c+' de '+cajas.length+' comprobados'}}
+    cajas.forEach(function(x,i){
+      x.checked=!!est[i];
+      x.addEventListener('change',function(){var v=[];cajas.forEach(function(y){v.push(y.checked)});guardar('sd2-lista-'+g,JSON.stringify(v));pintar()});
+    });
+    pintar();
+  });
+  var enlaces=document.querySelectorAll('nav.lateral li a'), secciones=document.querySelectorAll('section.modulo');
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(ents){
+      ents.forEach(function(e){if(e.isIntersecting){enlaces.forEach(function(a){a.classList.toggle('activo',a.getAttribute('href')==='#'+e.target.id)})}});
+    },{rootMargin:'-20% 0px -70% 0px'});
+    secciones.forEach(function(s){obs.observe(s)});
+  }
+  document.querySelectorAll('.menu-movil a').forEach(function(a){a.addEventListener('click',function(){a.closest('details').open=false})});
+})();
+</script>
+</body>
+</html>

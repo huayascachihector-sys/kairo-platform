@@ -1,0 +1,672 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 4 · Combinatoria y binomio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 4</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t1">1.1 Principios de conteo</a>
+  <a class="sub" href="#t2">1.2 Permutaciones</a>
+  <a class="sub" href="#t3">1.3 Combinaciones</a>
+  <a class="sub" href="#t4">1.4 Binomio con n natural</a>
+  <a class="sub" href="#t5">1.5 Binomio con exponente racional</a>
+  <a class="sub" href="#t6">1.6 Identidades combinatorias</a>
+  <a class="sub" href="#t7">1.7 Conteo y probabilidad</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos resueltos</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 4 de 17</p>
+  <h1>Combinatoria y teorema del binomio</h1>
+  <p class="formula">\( {}^nP_r=\dfrac{n!}{(n-r)!} \qquad \binom nr=\dfrac{n!}{r!\,(n-r)!} \qquad (a+b)^n=\sum_{r=0}^{n}\binom nr a^{n-r}b^r \)</p>
+  <p>Todo lo necesario para las preguntas de conteo y binomio de la Prueba 1 sin calculadora, al nivel de la banda 7. Los problemas extra integran los Módulos 1–3. Las soluciones están plegadas: intenta primero.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">Aparece en las 7 pruebas: casi siempre como una pregunta de 5–8 puntos en la Sección A. En este módulo se resuelven 41 puntos de examen. Es de los temas más rentables: preguntas cortas, métodos cerrados y pocas maneras de equivocarse si se domina el conteo por complemento.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2021 TZ1</td><td>9</td><td>8</td><td>Colocar objetos con restricciones: complemento y adyacencia en una cuadrícula</td></tr>
+<tr><td>Mayo 2021 TZ2</td><td>3</td><td>5</td><td>Coeficiente dado en \((x+k)^7\): hallar \(k\)</td></tr>
+<tr><td>Noviembre 2021</td><td>9</td><td>7</td><td>Binomio con exponentes \(-\tfrac12\) y \(\tfrac12\); igualar coeficientes; validez</td></tr>
+<tr><td>Mayo 2022 TZ1</td><td>6</td><td>5</td><td>Término independiente en \(\left(8x^3-\frac1{2x}\right)^n\): todos los \(n\)</td></tr>
+<tr><td>Mayo 2022 TZ2</td><td>5</td><td>7</td><td>Coeficientes de \((x+1)^7\); términos en PA</td></tr>
+<tr><td>Noviembre 2022</td><td>11(a)</td><td>4</td><td>Códigos con y sin repetición</td></tr>
+<tr><td>Mayo 2026 TZ2</td><td>6</td><td>5</td><td>Comité con dos personas que no pueden ir juntas</td></tr>
+</tbody></table></div>
+<p>Mayo 2026 P11 usa el binomio con exponente negativo para aproximar un área; está resuelta en el Módulo 14 (integración).</p>
+
+<h3>Cómo lo pregunta el IB: patrones de tus 7 pruebas</h3>
+<ol>
+<li><b>Coeficiente conocido, parámetro desconocido.</b> Término general, igualar y resolver. Suelen salir dos valores (\(k=\pm\sqrt3\)).</li>
+<li><b>Término independiente para todo \(n\).</b> Hay que expresar la condición como «\(n\) múltiplo de 4», no como una lista finita.</li>
+<li><b>Exponente fraccionario o negativo.</b> Desarrollar dos binomios, restar, igualar coeficientes con el enunciado y dar la condición de validez.</li>
+<li><b>Conteo con restricción.</b> Casi siempre se resuelve con total menos casos prohibidos. Al markscheme le basta que la resta se vea en palabras.</li>
+<li><b>Binomio + sucesiones.</b> Términos del desarrollo que forman una PA (mayo 2022 TZ2).</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA 06 (2026)</td><td>Factorial, combinaciones, triángulo de Pascal y suma de filas, término general, término central, término constante, coeficiente con parámetro</td><td>F1–F5 y secciones 1.3–1.4</td></tr>
+<tr><td>DMpA 12 (2026)</td><td>Lo anterior más el binomio con exponentes negativos y fraccionarios</td><td>F6–F8 y sección 1.5</td></tr>
+</tbody></table></div>
+<p>Las fichas casi no traen conteo con restricciones (permutaciones, «no juntos», complemento), y el examen lo pregunta en 3 de 7 pruebas. La sección 1.1–1.3 lo cubre completo, y los ejemplos F9 y F10 cubren tipos sin ítem en las fichas.</p>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA NS</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Principios de multiplicación, adición y complemento</td><td>1.1</td><td>Alto</td></tr>
+<tr><td>Permutaciones: restricciones, posiciones fijas, objetos repetidos, disposiciones circulares</td><td>1.2</td><td>Alto</td></tr>
+<tr><td>Combinaciones, selección con condiciones («al menos») y ecuaciones con \(\binom nr\)</td><td>1.3</td><td>Alto</td></tr>
+<tr><td>Teorema del binomio con \(n\in\mathbb N\), \(\binom nr\), Pascal</td><td>1.4</td><td>Alto</td></tr>
+<tr><td>Binomio con exponente fraccionario o negativo, validez, aproximaciones</td><td>1.5</td><td>Alto</td></tr>
+<tr><td>Identidades con coeficientes binomiales (sumas de filas, Pascal)</td><td>1.6</td><td>Medio (Sección B)</td></tr>
+<tr><td>Probabilidad con conteo: casos favorables entre posibles</td><td>1.7</td><td>Medio (enlace con el Módulo 10)</td></tr>
+<tr><td>Otros tipos de pregunta: coeficiente con un factor extra, hallar \(n\) por una razón de coeficientes, aproximar potencias decimales, bloques por materias, grupos con etiqueta, conteo geométrico, producto de dos series, identidades con Pascal</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+<tr><td>Inclusión–exclusión con tres conjuntos, estrellas y barras, trinomios, método del cociente, Vandermonde general (fuera del programa)</td><td>Cajas moradas</td><td>Solo como herramienta</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1 a 1.7 cubren todo lo evaluable del tema. Cada concepto clave trae ejemplos de nivel de examen y un recuadro «Para practicar». La sección 6 reúne los tipos de pregunta del IB que no salieron en tus 7 pruebas. Lo que va más allá del programa está solo en las cajas moradas, y ningún ejemplo ni problema extra lo necesita. El techo es la investigación I1, tipo Prueba 3.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Va de los principios de conteo al binomio con exponente racional. Cada concepto trae un ejemplo resuelto y, los esenciales, un recuadro «Para practicar». Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Principios de conteo</h3>
+<ul>
+<li><b>Multiplicación:</b> si una tarea se hace en etapas sucesivas con \(m\) y \(n\) opciones, hay \(mn\) maneras.</li>
+<li><b>Adición:</b> si los casos son excluyentes (uno u otro, nunca ambos), se suman.</li>
+<li><b>Complemento:</b> casos que cumplen = total − casos que no cumplen. Es la herramienta más usada para «no juntos», «al menos uno» o «no en la misma».</li>
+<li><b>Factorial:</b> \(n!=n(n-1)\cdots2\cdot1\), con \(0!=1\). Además \(n!=n\,(n-1)!\).</li>
+</ul>
+<h4>Guía para elegir la fórmula</h4>
+<div class="tbl"><table>
+<thead><tr><th>Elegir \(r\) de \(n\)</th><th>Se permite repetir</th><th>No se permite repetir</th></tr></thead>
+<tbody>
+<tr><td>Importa el orden</td><td>\(n^r\) (códigos, colocar en cajas)</td><td>\({}^nP_r=\dfrac{n!}{(n-r)!}\) (filas, puestos distintos)</td></tr>
+<tr><td>No importa el orden</td><td>\(\binom{n+r-1}{r}\) (más allá del IB)</td><td>\(\binom nr\) (comités, subconjuntos)</td></tr>
+</tbody></table></div>
+<p>Cuando hay restricciones, se decide primero qué se coloca antes (lo restringido) y si conviene el complemento.</p>
+
+<div class="ex"><p class="et">Ejemplo 1.1. Complemento</p>
+<p>¿Cuántos códigos de 4 dígitos (del 0 al 9, se permite empezar con 0) tienen al menos un dígito repetido?</p>
+<p>Total: \(10^4\). Sin repetición: \(10\cdot9\cdot8\cdot7=5040\). Con alguna repetición: \(10\,000-5040=4960\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.2. Números pares con cifras distintas</p>
+<p>¿Cuántos números de 4 cifras distintas son pares?</p>
+<p>Por casos según la última cifra, porque el 0 no puede ir delante. Si termina en 0: \(9\cdot8\cdot7=504\). Si termina en 2, 4, 6 u 8: 4 opciones al final, 8 para la primera (ni 0 ni la última), 8 y 7 para las centrales: \(4\cdot8\cdot8\cdot7=1792\). Total: 2296.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>¿Cuántos números de 3 cifras distintas son impares?</li><li>Una matrícula tiene 3 letras (de 26) seguidas de 3 dígitos. ¿Cuántas tienen al menos una letra repetida?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Última: 5 impares; primera: 8 (ni 0 ni la última); central: 8. Total \(5\cdot8\cdot8=320\).</li><li>\((26^3-26\cdot25\cdot24)\cdot10^3=1976\cdot1000=1\,976\,000\).</li></ol></div></details></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB: inclusión–exclusión</p><p>Para contar lo que cumple al menos una de tres condiciones \(A,B,C\):</p>
+\[ |A\cup B\cup C|=|A|+|B|+|C|-|A\cap B|-|A\cap C|-|B\cap C|+|A\cap B\cap C| \]
+<p>Con dos conjuntos, esto se usó en el Módulo 1 para sumar enteros no divisibles por 3 ni por 5.</p></div>
+
+<h3 id="t2">1.2 Permutaciones</h3>
+<p>Una <b>permutación</b> es una ordenación: el orden importa.</p>
+\[ n \text{ objetos distintos en fila: } n!,\qquad r \text{ de } n \text{ en fila: } {}^nP_r=\frac{n!}{(n-r)!},\qquad \text{con repetidos: } \frac{n!}{a!\,b!\cdots} \]
+<ul>
+<li><b>Juntos:</b> se tratan como un bloque; después se multiplica por los órdenes internos del bloque.</li>
+<li><b>No juntos:</b> se resta el caso «juntos» del total, o se usa el <b>método de huecos</b>: se colocan primero los demás y los restringidos van en los huecos entre ellos.</li>
+<li><b>Posición fija:</b> se coloca primero lo restringido y luego lo libre.</li>
+<li><b>En círculo</b> (sin orientación privilegiada): \((n-1)!\), porque las rotaciones son iguales.</li>
+</ul>
+
+<div class="ex"><p class="et">Ejemplo 1.3. Dos métodos, mismo resultado</p>
+<p>¿De cuántas formas se sientan 7 personas en fila si A y B no pueden estar juntos?</p>
+<p>Complemento: \(7!-2\cdot6!=5040-1440=3600\). Huecos: los otros 5 se ordenan (\(5!\)) y dejan 6 huecos para A y B: \(5!\cdot{}^6P_2=120\cdot30=3600\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.4. Letras repetidas</p>
+<p>¿Cuántas ordenaciones de BANANA hay? ¿En cuántas las dos N no están juntas?</p>
+<p>Total: \(\dfrac{6!}{3!\,2!}=60\). Con NN como bloque: B, A, A, A, [NN] da \(\dfrac{5!}{3!}=20\). No juntas: \(60-20=40\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.5. Posiciones fijas</p>
+<p>¿Cuántas ordenaciones de las letras de ECUADOR empiezan y terminan en vocal?</p>
+<p>Siete letras distintas, 4 vocales (E, U, A, O). Primero los extremos: \(4\cdot3=12\). Después las 5 letras restantes en el centro: \(5!=120\). Total: 1440.</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.6. Mesa redonda</p>
+<p>8 personas se sientan alrededor de una mesa redonda (solo importa quién está al lado de quién). ¿En cuántas disposiciones A y B no están juntos?</p>
+<p>Total: \((8-1)!=5040\). Con A y B como bloque: 7 unidades en círculo, \(6!\), por 2 órdenes: 1440. No juntos: \(5040-1440=3600\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>¿Cuántas ordenaciones distintas tiene PARALELO?</li><li>6 personas en fila: A debe ir en un extremo y B no puede estar a su lado. ¿Cuántas filas hay?</li><li>5 personas en una mesa redonda, con A y B juntos. ¿Cuántas disposiciones hay?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>8 letras con A y L dobles: \(\dfrac{8!}{2!\,2!}=10\,080\).</li><li>A: 2 extremos; B: 4 lugares no contiguos a A; resto: \(4!\). Total \(2\cdot4\cdot24=192\).</li><li>Bloque AB + 3 personas en círculo: \(3!\cdot2=12\).</li></ol></div></details></div>
+
+<h3 id="t3">1.3 Combinaciones</h3>
+<p>Una <b>combinación</b> es una selección: el orden no importa.</p>
+\[ \binom nr={}^nC_r=\frac{n!}{r!\,(n-r)!}=\frac{{}^nP_r}{r!},\qquad \binom nr=\binom n{n-r} \]
+<ul>
+<li>«Elegir y luego ordenar»: \(\binom nr\cdot r!={}^nP_r\).</li>
+<li>«Al menos \(k\)»: suma de casos exactos, o total menos los casos con menos de \(k\).</li>
+<li>Selecciones de grupos distintos: se multiplica (\(\binom53\binom42\) para 3 de 5 y 2 de 4).</li>
+<li>Un conjunto de \(n\) elementos tiene \(2^n\) subconjuntos.</li>
+</ul>
+
+<div class="ex"><p class="et">Ejemplo 1.7. «Al menos» por dos vías</p>
+<p>Un comité de 4 se elige entre 6 hombres y 5 mujeres, con al menos 2 mujeres. ¿Cuántos hay?</p>
+<p>Directo: \(\binom52\binom62+\binom53\binom61+\binom54=150+60+5=215\).</p>
+<p>Complemento: \(\binom{11}4-\binom64-\binom51\binom63=330-15-100=215\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.8. Ecuaciones con combinatorios</p>
+<p>(a) Resuelve \(\binom n3=2\binom n2\). (b) Resuelve \({}^nP_2=56\).</p>
+<p>(a) \(\dfrac{n(n-1)(n-2)}{6}=n(n-1)\). Como \(n\ge3\), se divide por \(n(n-1)\ne0\): \(n-2=6\), así que \(n=8\).</p>
+<p>(b) \(n(n-1)=56\Rightarrow n^2-n-56=0\Rightarrow(n-8)(n+7)=0\). Como \(n\) es natural, \(n=8\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Comité de 5 entre 7 hombres y 4 mujeres, con al menos 3 mujeres. ¿Cuántos hay?</li><li>Resuelve \(\binom n2=45\).</li><li>¿Cuántos subconjuntos de \(\{1,2,\dots,10\}\) contienen el 1 pero no el 2?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\binom43\binom72+\binom44\binom71=84+7=91\).</li><li>\(n(n-1)=90\Rightarrow n=10\) (descarta \(-9\)).</li><li>Los otros 8 elementos son libres: \(2^8=256\).</li></ol></div></details></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Estrellas y barras:</b> el número de soluciones de \(x_1+\dots+x_k=n\) con enteros \(x_i\ge0\) es \(\binom{n+k-1}{k-1}\).</li>
+<li><b>Repartir en grupos sin nombre:</b> 6 personas en 3 parejas: \(\dfrac{6!}{(2!)^3\,3!}=15\). Se divide por \(3!\) porque las parejas no tienen etiqueta.</li>
+</ul></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2026, P6)</p><p>Comité de 3 docentes de 5 y 2 estudiantes de 4, con dos estudiantes concretos que no pueden ir juntos. \(\binom53\) va multiplicado por \(\binom42-1\). El markscheme acepta tres formas equivalentes; todas dan 50.</p></div>
+
+<h3 id="t4">1.4 Teorema del binomio con \(n\) natural</h3>
+\[ (a+b)^n=\sum_{r=0}^{n}\binom nr a^{n-r}b^{r},\qquad T_{r+1}=\binom nr a^{n-r}b^{r} \]
+<ul>
+<li>Hay \(n+1\) términos. Los coeficientes son la fila \(n\) del triángulo de Pascal.</li>
+<li><b>Término en \(x^k\):</b> escribe la potencia de \(x\) del término general en función de \(r\), iguálala a \(k\) y despeja \(r\). Si \(r\) no es entero entre 0 y \(n\), ese término no existe.</li>
+<li><b>Término central:</b> si \(n\) es par, es \(T_{n/2+1}\).</li>
+<li><b>Suma de coeficientes:</b> es el valor del desarrollo en \(x=1\).</li>
+<li><b>Producto por otro factor:</b> el coeficiente de \(x^k\) en \((p+qx)(1+x)^n\) es \(p\binom nk+q\binom n{k-1}\).</li>
+</ul>
+
+<div class="ex"><p class="et">Ejemplo 1.9. Término independiente</p>
+<p>Halla el término independiente de \(\left(2x^2-\dfrac1x\right)^9\).</p>
+<p>\(T_{r+1}=\binom9r(2x^2)^{9-r}\left(-\tfrac1x\right)^r=\binom9r2^{9-r}(-1)^r\,x^{18-3r}\). Potencia 0: \(r=6\). Término: \(\binom96\cdot2^3=84\cdot8=672\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.10. Producto de un factor por un binomio</p>
+<p>Halla el coeficiente de \(x^3\) en \((1+2x)(1-x)^6\).</p>
+<p>En \((1-x)^6\): coeficiente de \(x^3\) es \(-\binom63=-20\) y el de \(x^2\) es \(\binom62=15\). Resultado: \(1\cdot(-20)+2\cdot15=10\).</p></div>
+
+<div class="ex"><p class="et">Ejemplo 1.11. Producto de dos binomios</p>
+<p>Halla el coeficiente de \(x^2\) en \((1+x)^5(1-2x)^4\).</p>
+<p>Primeros términos: \((1+x)^5=1+5x+10x^2+\dots\) y \((1-2x)^4=1-8x+24x^2+\dots\) Las parejas cuyas potencias suman 2 son \((0,2),(1,1),(2,0)\): \(24-40+10=-6\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el coeficiente de \(x^4\) en \((3-2x)^6\).</li><li>Halla el término independiente de \(\left(x-\dfrac2{x^2}\right)^9\).</li><li>Halla el coeficiente de \(x^2\) en \((1+x)^4(2-x)^3\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\binom64\,3^2(-2)^4=15\cdot9\cdot16=2160\).</li><li>Potencia \(9-3r=0\Rightarrow r=3\): \(\binom93(-2)^3=-672\).</li><li>\((1+4x+6x^2)(8-12x+6x^2)\): \(6-48+48=6\).</li></ol></div></details></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB: trinomios</p><p>Para \((1+x+x^2)^4\), agrupa como \(\big(1+(x+x^2)\big)^4\) y aplica el binomio. El coeficiente de \(x^2\) sale de \(\binom41(x+x^2)\), que aporta 4, y de \(\binom42(x+x^2)^2\), que aporta 6. Total: 10.</p></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ1, P6)</p><p>«Determine todos los valores de \(n\)» exige una respuesta general: \(n=4k\), \(k\in\mathbb Z^+\). El markscheme no acepta «\(n=4,8,12\)» como lista cerrada.</p></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB: el mayor coeficiente</p><p>Para hallar el mayor coeficiente de un desarrollo, estudia el cociente \(\dfrac{T_{r+1}}{T_r}\). Los coeficientes crecen mientras el cociente es mayor que 1. El mayor está en el primer \(r\) donde el cociente pasa a ser menor o igual que 1 (ejemplo F1).</p></div>
+
+<h3 id="t5">1.5 Binomio con exponente fraccionario o negativo</h3>
+<p>Para \(n\in\mathbb Q\) no natural, el desarrollo es infinito y solo es válido si \(|x|\lt1\):</p>
+\[ (1+x)^n=1+nx+\frac{n(n-1)}{2!}x^2+\frac{n(n-1)(n-2)}{3!}x^3+\cdots,\qquad |x|\lt1 \]
+<p>Para \((a+bx)^n\), primero se saca \(a\) como factor: \(a^n\left(1+\tfrac bax\right)^n\), válido si \(|x|\lt\left|\tfrac ab\right|\).</p>
+<p><b>Aproximaciones:</b> se elige \(x\) pequeño para que la serie converja rápido. Ejemplo: \(\sqrt{26}=5\left(1+\tfrac1{25}\right)^{1/2}\approx5\left(1+\tfrac1{50}-\tfrac1{5000}\right)=5{,}099\).</p>
+
+<div class="ex"><p class="et">Ejemplo 1.12. Sacar factor antes de desarrollar</p>
+<p>Desarrolla \((4-x)^{-1/2}\) hasta \(x^2\) e indica la validez.</p>
+<p>\((4-x)^{-1/2}=\tfrac12\left(1-\tfrac x4\right)^{-1/2}\). Con \(u=-\tfrac x4\): \(1-\tfrac12u+\tfrac38u^2=1+\tfrac x8+\tfrac{3x^2}{128}\).</p>
+<p>Resultado: \(\tfrac12+\tfrac{x}{16}+\tfrac{3x^2}{256}\), válido si \(|x|\lt4\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.13. Término general con exponente negativo</p>
+<p>(a) Muestra que el coeficiente de \(x^n\) en \((1-x)^{-2}\) es \(n+1\). (b) Halla el coeficiente de \(x^n\) en \(\frac{1+2x}{(1-x)^2}\) e indica la validez.</p>
+<p>(a) \(\binom{-2}{n}(-1)^n=\frac{(-2)(-3)\cdots(-n-1)}{n!}(-1)^n=\frac{(n+1)!}{n!}=n+1\).</p>
+<p>(b) \((1+2x)\sum(n+1)x^n\): el coeficiente de \(x^n\) es \((n+1)+2n=3n+1\), para \(|x|\lt1\). Así la serie es \(1+4x+7x^2+10x^3+\cdots\)</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Desarrolla \((1+3x)^{-1/3}\) hasta \(x^2\) e indica la validez.</li><li>Desarrolla \((8+x)^{1/3}\) hasta \(x^2\) e indica la validez.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(1-x+2x^2\), válido si \(|x|\lt\tfrac13\).</li><li>\(2\left(1+\tfrac x8\right)^{1/3}=2+\tfrac x{12}-\tfrac{x^2}{288}\), válido si \(|x|\lt8\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.14. Elegir \(x\) para aproximar una raíz</p>
+<p>Usa \(\sqrt{1-x}\) con \(x=\frac1{49}\) para aproximar \(\sqrt3\).</p>
+<p>\(\sqrt{1-\frac1{49}}=\frac{\sqrt{48}}7=\frac{4\sqrt3}7\), así que \(\sqrt3=\frac74\sqrt{1-x}\). Con \(\sqrt{1-x}=1-\frac x2-\frac{x^2}8-\frac{x^3}{16}-\cdots\) y \(x=\frac1{49}\), válido porque \(|x|\lt1\), con tres términos: \(\sqrt3\approx\frac74\left(1-\frac1{98}-\frac1{19\,208}\right)=\frac{19\,011}{10\,976}\approx1{,}732052\) (el valor real es \(1{,}732051\)). Cuanto menor es \(x\), más rápido converge: por eso se busca un cuadrado perfecto cercano (49 junto a 48).</p></div>
+
+<div class="box ib"><p class="bt">Así lo pregunta el IB (noviembre 2021, P9)</p><p>Dos binomios con exponentes \(-\tfrac12\) y \(\tfrac12\) se restan y se igualan coeficientes con el enunciado. La validez de toda la expresión es la <b>más restrictiva</b> de las dos: \(|ax|\lt1\) y \(|x|\lt1\).</p></div>
+
+<h3 id="t6">1.6 Identidades combinatorias</h3>
+\[ \binom nr+\binom n{r+1}=\binom{n+1}{r+1},\qquad \sum_{r=0}^{n}\binom nr=2^n,\qquad \sum_{r=0}^{n}(-1)^r\binom nr=0,\qquad r\binom nr=n\binom{n-1}{r-1} \]
+<p>Se prueban sustituyendo \(x\) en \((1+x)^n\) (\(x=1\) y \(x=-1\)), con la fórmula del factorial, o con un argumento de conteo (contar lo mismo de dos maneras).</p>
+
+<div class="ex"><p class="et">Ejemplo 1.15. Sustituir para sumar</p>
+<p>Muestra que \(\displaystyle\sum_{r=0}^{n}\binom nr2^r=3^n\).</p>
+<p>Es el desarrollo de \((1+x)^n\) en \(x=2\): \((1+2)^n=3^n\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.16. Derivar para obtener una identidad</p>
+<p>Demuestra que \(\sum_{r=0}^nr\binom nr=n2^{n-1}\).</p>
+<p>Derivando \((1+x)^n=\sum\binom nrx^r\): \(n(1+x)^{n-1}=\sum r\binom nrx^{r-1}\). Con \(x=1\) queda el resultado. Interpretación: elegir un comité de cualquier tamaño con un presidente se cuenta como \(n\) presidentes por \(2^{n-1}\) subconjuntos del resto.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Muestra que \(\displaystyle\sum_{r=0}^{n}\binom nr(-2)^r=(-1)^n\).</li><li>Calcula \(\displaystyle\sum_{r=0}^{10}\binom{10}r3^r\) como potencia.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Es \((1+x)^n\) en \(x=-2\): \((-1)^n\).</li><li>\((1+3)^{10}=4^{10}=2^{20}\).</li></ol></div></details></div>
+
+<div class="box beyond"><p class="bt">Más allá del IB: Vandermonde</p><p>\(\displaystyle\sum_{r=0}^{k}\binom mr\binom n{k-r}=\binom{m+n}{k}\): se obtiene comparando el coeficiente de \(x^k\) en \((1+x)^m(1+x)^n=(1+x)^{m+n}\). Con \(m=n=k\), da \(\sum\binom nr^2=\binom{2n}{n}\) (problema E9).</p></div>
+
+<h3 id="t7">1.7 Conteo aplicado a la probabilidad</h3>
+<p>Si todos los resultados son igualmente probables, \(P(A)=\frac{\text{casos favorables}}{\text{casos posibles}}\), y los dos números se cuentan con las técnicas de este módulo. La regla de oro: <b>cuenta el numerador y el denominador con el mismo modelo</b>. Si el denominador cuenta ordenaciones, el numerador también; si cuenta subconjuntos, también.</p>
+<div class="ex"><p class="et">Ejemplo 1.17. Un comité con al menos una mujer</p>
+<p>Se elige al azar un comité de 3 personas entre 5 hombres y 4 mujeres. Halla la probabilidad de que haya al menos una mujer.</p>
+<p>Casos posibles: \(\binom93=84\). Complemento, solo hombres: \(\binom53=10\). Entonces \(P=1-\frac{10}{84}=\frac{37}{42}\). El orden no importa en ninguna de las dos cuentas.</p></div>
+<div class="ex"><p class="et">Ejemplo 1.18. Las tres A juntas en BANANA</p>
+<p>Se ordenan al azar las letras de BANANA. Halla la probabilidad de que las tres A queden juntas.</p>
+<p>Ordenaciones distinguibles: \(\frac{6!}{3!\,2!}=60\). Con las A pegadas en un bloque, hay que ordenar el bloque, B y las dos N: \(\frac{4!}{2!}=12\). Por tanto \(P=\frac{12}{60}=\frac15\). Las dos cuentas tratan las letras repetidas igual, así que el cociente es válido.</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Se ordenan al azar las letras de MATE. Halla la probabilidad de que las dos vocales queden juntas.</li><li>Se elige al azar un comité de 3 entre 6 chicos y 4 chicas. Halla la probabilidad de que tenga exactamente 2 chicas.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\dfrac{3!\cdot2}{4!}=\dfrac12\).</li><li>\(\dfrac{\binom42\binom61}{\binom{10}3}=\dfrac{36}{120}=\dfrac3{10}\).</li></ol></div></details></div>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Factorial</td><td>\(n!=n(n-1)\cdots1\), con \(0!=1\).</td></tr>
+<tr><td>Permutación</td><td>Ordenación de objetos: el orden importa.</td></tr>
+<tr><td>Combinación</td><td>Selección de objetos: el orden no importa.</td></tr>
+<tr><td>Coeficiente binomial</td><td>\(\binom nr\): número de subconjuntos de \(r\) elementos de un conjunto de \(n\).</td></tr>
+<tr><td>Término general</td><td>\(T_{r+1}=\binom nr a^{n-r}b^r\); es el término número \(r+1\), no el \(r\).</td></tr>
+<tr><td>Término independiente</td><td>Término del desarrollo en el que la potencia de \(x\) es 0.</td></tr>
+<tr><td>Coeficiente</td><td>El número que multiplica a la potencia de \(x\), con su signo.</td></tr>
+<tr><td>Validez del desarrollo</td><td>Intervalo de \(x\) en el que la serie infinita converge al valor de la expresión.</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Halle el número de maneras</td><td>Un número final con el razonamiento visible (M1 por el método).</td><td>Dar el número sin la estructura: sin M1 no hay FT.</td></tr>
+<tr><td>Determine todos los valores de \(n\)</td><td>Una condición general, como \(n=4k\).</td><td>Una lista finita.</td></tr>
+<tr><td>Halle el coeficiente</td><td>El número con su signo, sin \(x\).</td><td>Dar el término completo (con \(x^k\)), o perder el signo.</td></tr>
+<tr><td>Indique la restricción de \(x\)</td><td>La desigualdad más restrictiva, por ejemplo \(|x|\lt1\).</td><td>Dar solo la condición de uno de los binomios.</td></tr>
+<tr><td>Muestre que \(b=21\)</td><td>Término general o fila de Pascal, con el cálculo visible.</td><td>Escribir solo «\(\binom72=21\)» sin decir de dónde sale.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>El término corrido.</b> \(T_{r+1}\) usa \(\binom nr\): el quinto término tiene \(r=4\).</li>
+<li><b>El coeficiente sin signo.</b> En \((a-b)^n\) el término lleva \((-1)^r\), y en \(\left(-\tfrac1{2x}\right)^r\) el \(\tfrac1{2^r}\) también entra en el coeficiente.</li>
+<li><b>La potencia olvidada.</b> En \((3x)^{n-r}\) el 3 también se eleva: \(3^{n-r}x^{n-r}\).</li>
+<li><b>El \(\pm\) perdido.</b> De \(21k^2=63\) salen \(k=\pm\sqrt3\), no solo el positivo.</li>
+<li><b>La lista cerrada.</b> «Todos los \(n\)» exige una forma general, como \(n=4k\).</li>
+<li><b>Sacar factor sin elevarlo.</b> \((4-x)^{-1/2}=4^{-1/2}\left(1-\tfrac x4\right)^{-1/2}\): el \(4^{-1/2}=\tfrac12\) va fuera.</li>
+<li><b>La validez de un solo binomio.</b> En una suma de desarrollos, la validez es la intersección de las condiciones.</li>
+<li><b>Orden o no orden.</b> Pregúntate si intercambiar dos elegidos cambia el resultado. Si cambia, es permutación; si no, combinación.</li>
+<li><b>El bloque sin orden interno.</b> Al tratar A y B como bloque, multiplica por \(2!\).</li>
+<li><b>El doble conteo en «al menos».</b> «Uno fijo y luego cualquiera» cuenta varias veces el mismo grupo. Usa el complemento o casos exactos.</li>
+<li><b>La solución x = 0.</b> Al dividir por potencias de \(x\), recuerda si el enunciado dice \(x\neq0\). Dar \(x=0\) como solución quita la A1 final (mayo 2022 TZ2).</li>
+<li><b>El n imposible.</b> En ecuaciones con \(\binom nr\) o \({}^nP_r\), \(n\) es natural y \(n\ge r\): descarta las raíces negativas o menores que \(r\).</li>
+<li><b>El círculo contado como fila.</b> En una mesa redonda las rotaciones son la misma disposición: \((n-1)!\), no \(n!\).</li>
+<li><b>La cuadrícula mal contada.</b> Cuenta los pares adyacentes con cuidado: en una cuadrícula de 3×2 hay 7, no 6.</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">F1–F8 parten de ítems de las fichas DMpA 06 y 12, ampliados hasta la Sección B. F9 y F10 cubren tipos de conteo que el examen pregunta y las fichas no traen. Ninguno repite un tipo de la sección 5.</p>
+
+<div class="ex"><p class="et">F1. Término central y el mayor coeficiente <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 06, «término del medio de \((2-3y)^6\)», ampliado con una parte guiada.</p>
+<p>(a) Halla el término central de \((2-3y)^6\). (b) En \((1+2x)^{10}\), sea \(c_r\) el coeficiente de \(x^r\). Muestra que \(\dfrac{c_r}{c_{r-1}}=\dfrac{2(11-r)}{r}\) y deduce que \(c_7\) es el mayor coeficiente.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Con \(n=6\), el central es \(T_4=\binom63\,2^3(-3y)^3=20\cdot8\cdot(-27)y^3=-4320y^3\).</p>
+<p>(b) \(c_r=\binom{10}r2^r\). \(\dfrac{c_{r}}{c_{r-1}}=\dfrac{2(11-r)}{r}\ge1\iff 22\ge3r\iff r\le7\). Crecen hasta \(r=7\) y luego decrecen.</p>
+<p><span class="lbl">Resultado.</span> \(c_7=\binom{10}{7}2^7=120\cdot128=15\,360\), en el término de \(x^7\). Comprobación: \(c_6=13\,440\), \(c_8=11\,520\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Qué potencias existen en un desarrollo <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 06, «dado \(\left(x^2-\frac1x\right)^{50}\), encuentre el coeficiente…», ampliado.</p>
+<p>Para \(\left(x^2-\dfrac1x\right)^{50}\): (a) halla el coeficiente de \(x^{10}\); (b) muestra que no hay término independiente; (c) ¿cuántos términos tienen potencia positiva de \(x\)?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>\(T_{r+1}=\binom{50}r(x^2)^{50-r}\left(-\tfrac1x\right)^r=(-1)^r\binom{50}r\,x^{100-3r}\).</p>
+<p>(a) \(100-3r=10\Rightarrow r=30\): coeficiente \(\binom{50}{30}=\binom{50}{20}\) (positivo, porque \(r\) es par).</p>
+<p>(b) \(100-3r=0\) da \(r=\tfrac{100}3\), que no es entero.</p>
+<p>(c) \(100-3r\gt0\iff r\le33\): son 34 términos (\(r=0,\dots,33\)).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. Dos coeficientes dados, dos incógnitas <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 06, «el coeficiente del término… es 6048, halle \(k\)», generalizado a \(n\) y \(k\) desconocidos.</p>
+<p>En \((1+kx)^n\), los coeficientes de \(x\) y de \(x^2\) son 12 y 60. (a) Halla \(n\) y \(k\). (b) Halla el término con el mayor coeficiente.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(nk=12\) y \(\tfrac{n(n-1)}2k^2=60\). Dividiendo la segunda entre la primera: \(\tfrac{(n-1)k}{2}=5\Rightarrow nk-k=10\Rightarrow k=2,\ n=6\).</p>
+<p>(b) Los coeficientes \(\binom6r2^r\) son \(1,12,60,160,240,192,64\): el mayor es \(240x^4\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Sumas en una fila de Pascal <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 06, actividad 2 («halle la suma de la fila 16»), ampliada.</p>
+<p>(a) Muestra que la suma de los \(\binom{16}r\) con \(r\) par es \(2^{15}\). (b) Muestra que \(r\binom nr=n\binom{n-1}{r-1}\) y deduce \(\displaystyle\sum_{r=0}^{n}r\binom nr=n\,2^{n-1}\). (c) Calcula \(\sum_{r=0}^{16}r\binom{16}r\) como potencia de 2.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Con \(x=1\) y \(x=-1\) en \((1+x)^{16}\): pares + impares \(=2^{16}\) y pares − impares \(=0\). Así, pares \(=2^{15}\).</p>
+<p>(b) \(r\cdot\dfrac{n!}{r!(n-r)!}=n\cdot\dfrac{(n-1)!}{(r-1)!(n-r)!}\). Sumando: \(n\sum_{r=1}^{n}\binom{n-1}{r-1}=n\,2^{n-1}\).</p>
+<p>(c) \(16\cdot2^{15}=2^{19}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. Elegir y luego ordenar con restricciones <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 06, situación inicial («5 polos, elegir 3 para exhibir»), ampliada.</p>
+<p>Una tienda tiene 5 polos y 4 pantalones, todos distintos. Se eligen 3 polos y 2 pantalones y se exhiben en fila. (a) ¿De cuántas formas, si los polos van juntos? (b) ¿Y si los dos pantalones no pueden quedar juntos?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Selección: \(\binom53\binom42=60\).</p>
+<p>(a) Bloque de polos + 2 pantalones = 3 unidades: \(3!\), por \(3!\) dentro del bloque. Total: \(60\cdot36=2160\).</p>
+<p>(b) Ordenaciones de los 5 con los pantalones separados: \(5!-2\cdot4!=72\). Total: \(60\cdot72=4320\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Raíz cúbica sin calculadora <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 12, «escriba los 4 primeros términos de \((1+x)^{1/3}\)», ampliado.</p>
+<p>(a) Desarrolla \((1+x)^{1/3}\) hasta \(x^3\) e indica la validez. (b) Escribiendo \(9=8\left(1+\tfrac18\right)\) y usando tres términos, aproxima \(\sqrt[3]9\) por una fracción.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(1+\tfrac x3-\tfrac{x^2}{9}+\tfrac{5x^3}{81}\), válido si \(|x|\lt1\).</p>
+<p>(b) \(\sqrt[3]9=2\left(1+\tfrac18\right)^{1/3}\approx2\left(1+\tfrac1{24}-\tfrac1{576}\right)=2\cdot\tfrac{599}{576}=\tfrac{599}{288}\) (\(\approx2{,}0799\); el valor real es \(2{,}0801\)).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. Exponente negativo y una serie del Módulo 1 <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p class="src">DMpA 12, binomio con exponente negativo, ampliado.</p>
+<p>(a) Muestra que \((2-x)^{-2}=\displaystyle\sum_{r=0}^{\infty}\frac{r+1}{2^{r+2}}x^r\) e indica la validez. (b) Deduce el valor de \(\displaystyle\sum_{r=0}^{\infty}\frac{r+1}{2^r}\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \((2-x)^{-2}=\tfrac14\left(1-\tfrac x2\right)^{-2}\). El coeficiente de \(u^r\) en \((1-u)^{-2}\) es \(\dfrac{(-2)(-3)\cdots(-2-r+1)}{r!}(-1)^r=r+1\). Así el coeficiente es \(\dfrac{r+1}{4\cdot2^r}\), válido si \(|x|\lt2\).</p>
+<p>(b) Con \(x=1\): \(1=\sum\frac{r+1}{2^{r+2}}\), así que \(\sum\frac{r+1}{2^r}=4\). Coincide con el Módulo 1: \(\sum\frac{k}{2^k}=2\) más \(\sum\frac1{2^k}=2\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. Fracciones parciales y coeficiente general <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p class="src">DMpA 12 combinada con las fracciones parciales del Módulo 1.</p>
+<p>\(f(x)=\dfrac{3}{(1-x)(1+2x)}\). (a) Escribe \(f\) en fracciones parciales. (b) Halla el coeficiente de \(x^r\) en el desarrollo de \(f\) y su validez. (c) Halla el menor \(r\) con coeficiente mayor que 1000 en valor absoluto.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(f(x)=\dfrac1{1-x}+\dfrac2{1+2x}\).</p>
+<p>(b) \(\sum x^r+2\sum(-2x)^r\): coeficiente \(1+2(-2)^r\). Validez: \(|x|\lt1\) y \(|x|\lt\tfrac12\), es decir \(|x|\lt\tfrac12\).</p>
+<p>(c) \(r=8\): \(1+512=513\). \(r=9\): \(1-1024=-1023\). El menor es \(r=9\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. Números con restricciones por casos <span class="lvl">Sección A alta</span></p>
+<p class="src">Tipo de examen sin ítem equivalente en las fichas.</p>
+<p>¿Cuántos números de 4 cifras distintas son pares y mayores que 5000?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p><span class="lbl">Estrategia.</span> La primera cifra (5–9) y la última (par) interactúan: se separa según la paridad de la primera.</p>
+<p>Primera cifra par (6 u 8): 2 opciones; última par distinta de ella: 4; centrales: \(8\cdot7=56\). Da 448.</p>
+<p>Primera cifra impar (5, 7 o 9): 3; última par: 5; centrales: 56. Da 840.</p>
+<p><span class="lbl">Resultado.</span> 1288.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. Caminos en una cuadrícula <span class="lvl">Sección B</span></p>
+<p class="src">Tipo de examen sin ítem equivalente en las fichas (conteo con \(\binom nr\)).</p>
+<p>Se va de \((0,0)\) a \((5,3)\) con pasos de una unidad a la derecha o hacia arriba. (a) ¿Cuántos caminos hay? (b) ¿Cuántos evitan el punto \((2,1)\)? (c) ¿Cuántos evitan \((2,1)\) y \((4,2)\)?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) Se elige cuáles 3 de los 8 pasos son hacia arriba: \(\binom83=56\).</p>
+<p>(b) Por \((2,1)\): \(\binom31\binom52=30\). Lo evitan \(56-30=26\).</p>
+<p>(c) Por \((4,2)\): \(\binom62\binom21=30\). Por ambos: \(\binom31\binom31\binom21=18\). Por alguno: \(30+30-18=42\). Evitan los dos: \(56-42=14\).</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son todas las preguntas de combinatoria y binomio de tus 7 pruebas que no dependen de temas posteriores. Las marcas siguen el markscheme oficial, salvo en mayo 2021 TZ2, cuyo markscheme no está en tus archivos: ahí están reconstruidas y se indica. Resuélvelas en tiempo de examen, a 1,1 minutos por punto.</p>
+
+<div class="ex"><p class="et">X1. Noviembre 2022, pregunta 11(a) <span class="lvl">4 puntos</span></p>
+<p>Un código de tres cifras \(abc\) usa valores de \(\{1,2,3,4,5\}\). Halla cuántos códigos hay (i) si se pueden repetir valores; (ii) si no se repite ninguno.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(i) \(5^3\) <span class="m">(A1)</span> \(=125\) <span class="m">A1</span></p>
+<p class="step">(ii) \(5\times4\times3\) <span class="m">(A1)</span> \(=60\) <span class="m">A1</span></p>
+<p>La parte (b) de esta pregunta está en el Módulo 2.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Mayo 2021 TZ2, pregunta 3 <span class="lvl">5 puntos</span></p>
+<p>En el desarrollo de \((x+k)^7\), \(k\in\mathbb R\), el coeficiente de \(x^5\) es 63. Halla los valores posibles de \(k\).</p>
+<details><summary>Ver solución con marcas (reconstruidas)</summary><div class="inner">
+<p class="step">Término en \(x^5\): \(\binom72x^5k^2\) <span class="m">(M1)</span>; coeficiente \(21k^2\) <span class="m">A1</span></p>
+<p class="step">\(21k^2=63\) <span class="m">M1</span> \(\Rightarrow k^2=3\) <span class="m">A1</span> \(\Rightarrow k=\pm\sqrt3\) <span class="m">A1</span></p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> Dar solo \(k=\sqrt3\): el enunciado dice «valores posibles».</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Mayo 2026 TZ2, pregunta 6 <span class="lvl">5 puntos</span></p>
+<p>Un comité de 3 docentes y 2 estudiantes se elige entre 5 docentes y 4 estudiantes. Dos estudiantes concretos no pueden estar juntos. ¿Cuántos comités hay?</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">Usar combinaciones <span class="m">(M1)</span>; \(\binom53\) <span class="m">(A1)</span></p>
+<p class="step">\(\binom53\left[\binom42-1\right]\) <span class="m">(A1)</span> \(=10\times5\) <span class="m">(A1)</span></p>
+<p class="step">\(=50\) <span class="m">A1</span></p>
+<p><span class="lbl">Otras formas aceptadas.</span> Casos: ninguno de los dos, \(\binom53\binom22=10\), más uno de ellos, \(\binom53\binom21\binom21=40\). O total menos prohibidos: \(60-10\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X4. Mayo 2022 TZ1, pregunta 6 <span class="lvl">5 puntos</span></p>
+<p>Para \(\left(8x^3-\dfrac1{2x}\right)^n\), \(n\in\mathbb Z^+\), determina todos los \(n\) para los que el desarrollo tiene término independiente no nulo.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">Término general: \(\binom nr(8x^3)^{n-r}\left(-\tfrac1{2x}\right)^r\) <span class="m">(M1)</span></p>
+<p class="step">Potencia de \(x\): \(3(n-r)-r=0\) <span class="m">(M1)</span> \(\Rightarrow3n=4r\) <span class="m">A1</span></p>
+<p class="step">\(r\) debe ser múltiplo de 3 (o se ve un \(n\) correcto) <span class="m">(A1)</span></p>
+<p class="step">\(n=4k,\ k\in\mathbb Z^+\) <span class="m">A1</span></p>
+<p><span class="lbl">Nota.</span> El coeficiente \(\binom nr8^{n-r}\left(-\tfrac12\right)^r\) nunca es 0, así que «no nulo» no añade condiciones.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X5. Mayo 2022 TZ2, pregunta 5 <span class="lvl">7 puntos</span></p>
+<p>\((x+1)^7=x^7+ax^6+bx^5+35x^4+\dots+1\), con \(x\ne0\). (a) Muestra que \(b=21\). (b) El tercer término es la media del segundo y el cuarto. Halla los valores posibles de \(x\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(b=\binom72\) <span class="m">(M1)</span> \(=\dfrac{7\cdot6}{2!}\) <span class="m">A1</span> \(=21\) <span class="m">AG</span></p>
+<p class="step">(b) \(a=7\) <span class="m">(A1)</span>. \(2\cdot21x^5=7x^6+35x^4\) <span class="m">A1</span></p>
+<p class="step">Dividir por \(7x^4\ne0\): \(x^2-6x+5=0\) <span class="m">A1</span>; resolver <span class="m">(M1)</span></p>
+<p class="step">\(x=1\) o \(x=5\) <span class="m">A1</span></p>
+<p><span class="lbl">Dónde se pierde puntaje.</span> Incluir \(x=0\) quita la A1 final.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X6. Noviembre 2021, pregunta 9 <span class="lvl">7 puntos</span></p>
+<p>El desarrollo de \(\dfrac1{\sqrt{1+ax}}-\sqrt{1-x}\), \(a\in\mathbb Q,\ a\neq0\), hasta \(x^2\) es \(4bx+bx^2\), con \(b\in\mathbb Q\). (a) Halla \(a\) y \(b\). (b) Indica la restricción sobre \(x\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Exponente fraccionario negativo <span class="m">(M1)</span>: \((1+ax)^{-1/2}=1-\tfrac a2x+\tfrac{3a^2}{8}x^2\) <span class="m">A1</span></p>
+<p class="step">\((1-x)^{1/2}=1-\tfrac x2-\tfrac{x^2}8\) <span class="m">A1</span></p>
+<p class="step">Igualar coeficientes <span class="m">(M1)</span>: \(x\): \(\tfrac{1-a}{2}=4b\); \(x^2\): \(\tfrac{3a^2+1}{8}=b\)</p>
+<p class="step">Resolver el sistema <span class="m">(M1)</span>: \(1-a=3a^2+1\Rightarrow a=-\tfrac13\) (porque \(a\ne0\)), \(b=\tfrac16\) <span class="m">A1</span></p>
+<p class="step">(b) \(|ax|\lt1\Rightarrow|x|\lt3\) y \(|x|\lt1\): \(|x|\lt1\) <span class="m">A1</span></p>
+</div></details></div>
+
+<div class="ex"><p class="et">X7. Mayo 2021 TZ1, pregunta 9 <span class="lvl">8 puntos</span></p>
+<p>Seis corrales en una cuadrícula de 3 filas por 2 columnas; cinco ovejas (A, B, C, D, E). A y B se pelean. (a) Si cada corral admite a las cinco, ¿de cuántas formas se colocan si A y B no van en el mismo corral? (b) Si cada corral admite solo una, ¿de cuántas formas se colocan si A y B no quedan en corrales con un lado común?</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Total \(6^5\) <span class="m">(A1)</span>; con A y B juntos \(6^4\) <span class="m">(A1)</span>; restar <span class="m">(M1)</span></p>
+<p class="step">\(6^5-6^4=5\cdot6^4=6480\) <span class="m">A1</span></p>
+<p class="step">(b) Total \(^6P_5=720\) <span class="m">(A1)</span>. Pares de corrales adyacentes: 3 horizontales + 4 verticales = 7. Con A y B adyacentes: \(7\cdot2\cdot4!=336\) <span class="m">(A1)</span></p>
+<p class="step">Restar <span class="m">(M1)</span>: \(720-336=384\) <span class="m">A1</span></p>
+<p><span class="lbl">Método alternativo aceptado.</span> Casos según A. En una esquina (4 corrales), B tiene 3 opciones; en un corral del medio (2), B tiene 2. Así \((4\cdot3+2\cdot2)\cdot4!=16\cdot24=384\).</p>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Estos tipos de pregunta no salieron en tus 7 pruebas, pero el IB los pone en otras convocatorias de la Prueba 1 (algunos vienen de la Prueba 2 y aquí se resuelven a mano). Junto con la teoría y las secciones 4 y 5, cubren todo el programa de conteo y binomio. Cada tipo trae cómo reconocerlo, el método, un ejemplo resuelto y ejercicios para practicar.</p>
+<h3 id="ty1">T1. Coeficiente con un factor extra y un parámetro</h3>
+<p><b>Qué reconocer:</b> «en el desarrollo de \((1+ax)(1-2x)^5\) el coeficiente de \(x^2\) es 0; halla \(a\)». <b>Método:</b> el coeficiente de \(x^k\) en \((p+qx)(\dots)^n\) suma dos aportes: \(p\cdot[x^k]+q\cdot[x^{k-1}]\). Iguala al dato.</p>
+<div class="ex"><p class="et">Ejemplo T1. <span class="lvl">Tipo IB</span></p>
+<p>El coeficiente de \(x^2\) en \((1+ax)(1-2x)^5\) es 0. Halla \(a\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>En \((1-2x)^5\): \([x^1]=-10\), \([x^2]=\binom52\cdot4=40\). Entonces \(40+a(-10)=0\Rightarrow a=4\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el coeficiente de \(x^3\) en \((2-x)(1+x)^6\).</li><li>El coeficiente de \(x\) en \((a+x)(1+2x)^4\) es 17. Halla \(a\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(2\cdot20-15=25\).</li><li>\(a\cdot8+1=17\Rightarrow a=2\).</li></ol></div></details></div>
+<h3 id="ty2">T2. Hallar \(n\) con una razón entre coeficientes</h3>
+<p><b>Qué reconocer:</b> «en \(\left(1+\tfrac x2\right)^n\), el coeficiente de \(x^2\) es el triple del de \(x\)». <b>Método:</b> escribe ambos coeficientes en función de \(n\), iguala y simplifica dividiendo por \(n\ne0\). Comprueba que \(n\) es natural.</p>
+<div class="ex"><p class="et">Ejemplo T2. <span class="lvl">Tipo IB</span></p>
+<p>En \(\left(1+\tfrac x2\right)^n\), el coeficiente de \(x^2\) es el triple del de \(x\). Halla \(n\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\binom n2\tfrac14=3\cdot\tfrac n2\Rightarrow\tfrac{n-1}{8}=\tfrac32\Rightarrow n=13\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>En \((1+kx)^8\), el coeficiente de \(x^2\) es 7 veces el de \(x\). Halla \(k\).</li><li>En \((2+x)^n\), los coeficientes de \(x\) y \(x^2\) son iguales. Halla \(n\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(28k^2=56k\Rightarrow k=2\).</li><li>\(n2^{n-1}=\binom n2 2^{n-2}\Rightarrow 2=\tfrac{n-1}2\Rightarrow n=5\).</li></ol></div></details></div>
+<h3 id="ty3">T3. Aproximar una potencia decimal</h3>
+<p><b>Qué reconocer:</b> «usa los tres primeros términos para hallar \(0{,}99^5\)» o «\((1{,}02)^8\) a tres cifras decimales». <b>Método:</b> escribe el número como \((1+x)^n\) con \(x\) pequeño y suma los primeros términos; cada término es mucho menor que el anterior.</p>
+<div class="ex"><p class="et">Ejemplo T3. <span class="lvl">Sección A</span></p>
+<p>Usa el desarrollo de \((1-x)^5\) para hallar \(0{,}99^5\) con cuatro decimales.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\((1-x)^5=1-5x+10x^2-10x^3+\dots\) Con \(x=0{,}01\): \(1-0{,}05+0{,}001-0{,}00001=0{,}95099\approx0{,}9510\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla \(1{,}02^8\) con tres decimales.</li><li>Usa \((2+x)^6\) con \(x=0{,}01\) para hallar \(2{,}01^6\) con dos decimales.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(1+0{,}16+28(0{,}0004)+56(0{,}000008)=1{,}1716\ldots\approx1{,}172\).</li><li>\(64+192(0{,}01)+240(0{,}0001)=65{,}944\approx65{,}94\).</li></ol></div></details></div>
+<h3 id="ty4">T4. Bloques: objetos agrupados por tipos</h3>
+<p><b>Qué reconocer:</b> «los libros de la misma materia deben ir juntos» o «los chicos juntos y las chicas juntas». <b>Método:</b> ordena primero los bloques entre sí y después multiplica por el orden interno de cada bloque.</p>
+<div class="ex"><p class="et">Ejemplo T4. <span class="lvl">Sección A</span></p>
+<p>En un estante hay 3 libros de Matemáticas, 4 de Física y 2 de Química, todos distintos. ¿De cuántas formas se colocan si los de cada materia van juntos?</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Bloques: \(3!\). Dentro: \(3!\,4!\,2!\). Total \(6\cdot6\cdot24\cdot2=1728\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>4 chicos y 3 chicas en fila, con todas las chicas juntas. ¿Cuántas filas hay?</li><li>Con los mismos 7, ¿cuántas filas alternan chico–chica?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(5!\cdot3!=720\).</li><li>Debe ser C, c, C, c, C, c, C: \(4!\cdot3!=144\).</li></ol></div></details></div>
+<h3 id="ty5">T5. Repartir en grupos con etiqueta</h3>
+<p><b>Qué reconocer:</b> «9 personas se reparten en tres habitaciones de 4, 3 y 2 camas». <b>Método:</b> elige sucesivamente los miembros de cada grupo: \(\binom94\binom53\binom22\). Si los grupos tuvieran el mismo tamaño y no tuvieran nombre, habría que dividir (caja morada de 1.3).</p>
+<div class="ex"><p class="et">Ejemplo T5. <span class="lvl">Tipo IB</span></p>
+<p>¿De cuántas formas se reparten 9 personas en habitaciones de 4, 3 y 2 camas? ¿Y si A y B deben dormir en la misma habitación?</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\binom94\binom53=126\cdot10=1260\).</p><p>A y B juntos en la de 4: \(\binom72\binom53=210\); en la de 3: \(\binom71\binom64=105\); en la de 2: \(\binom74=35\). Total 350.</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>10 alumnos se dividen en un equipo A de 6 y un equipo B de 4. ¿De cuántas formas? ¿En cuántas los dos capitanes quedan en equipos distintos?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\binom{10}6=210\). Capitán 1 en A y capitán 2 en B: los otros 5 de A salen de 8, \(\binom85=56\); y al revés, otros 56. Total 112.</li></ol></div></details></div>
+<h3 id="ty6">T6. Conteo geométrico</h3>
+<p><b>Qué reconocer:</b> diagonales de un polígono, triángulos o rectas determinados por puntos. <b>Método:</b> cuenta subconjuntos (\(\binom n2\) segmentos, \(\binom n3\) triángulos) y resta los casos que no sirven (lados, puntos alineados).</p>
+<div class="ex"><p class="et">Ejemplo T6. <span class="lvl">Tipo IB</span></p>
+<p>(a) Un polígono convexo tiene 35 diagonales. ¿Cuántos lados tiene? (b) Hay 5 puntos en una recta y 4 en otra paralela. ¿Cuántos triángulos tienen sus vértices en esos puntos?</p>
+<details><summary>Ver solución</summary><div class="inner"><p>(a) \(\binom n2-n=\tfrac{n(n-3)}2=35\Rightarrow n=10\).</p><p>(b) Dos de una recta y uno de la otra: \(\binom52\cdot4+\binom42\cdot5=40+30=70\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>¿Cuántas diagonales tiene un dodecágono?</li><li>En una circunferencia hay 8 puntos. ¿Cuántos cuadriláteros tienen sus vértices en ellos?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\tfrac{12\cdot9}{2}=54\).</li><li>\(\binom84=70\).</li></ol></div></details></div>
+<h3 id="ty7">T7. Producto de dos desarrollos infinitos</h3>
+<p><b>Qué reconocer:</b> «halla los tres primeros términos de \(\dfrac{\sqrt{1+4x}}{1-x}\) e indica la validez». <b>Método:</b> desarrolla cada factor por separado, multiplica hasta la potencia pedida y toma como validez la condición más restrictiva.</p>
+<div class="ex"><p class="et">Ejemplo T7. <span class="lvl">Sección B</span></p>
+<p>Halla el desarrollo de \(\dfrac{\sqrt{1+4x}}{1-x}\) hasta \(x^2\) e indica la validez.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\sqrt{1+4x}=1+2x-2x^2\) y \((1-x)^{-1}=1+x+x^2\).</p><p>Producto: \(1+3x+(1+2-2)x^2=1+3x+x^2\). Validez: \(|x|\lt\tfrac14\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Halla el desarrollo de \(\dfrac{1+x}{\sqrt{1-2x}}\) hasta \(x^2\) y su validez.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\((1+x)\left(1+x+\tfrac32x^2\right)=1+2x+\tfrac52x^2\), con \(|x|\lt\tfrac12\).</li></ol></div></details></div>
+<h3 id="ty8">T8. «Muestra que» con la regla de Pascal</h3>
+<p><b>Qué reconocer:</b> una suma de varios combinatorios que hay que reducir a uno solo. <b>Método:</b> agrupa de dos en dos y aplica \(\binom nr+\binom n{r+1}=\binom{n+1}{r+1}\) tantas veces como haga falta; o desarrolla con factoriales.</p>
+<div class="ex"><p class="et">Ejemplo T8. <span class="lvl">Sección A alta</span></p>
+<p>Muestra que \(\binom nr+2\binom n{r+1}+\binom n{r+2}=\binom{n+2}{r+2}\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>Separa \(2\binom n{r+1}\) en dos: \(\left[\binom nr+\binom n{r+1}\right]+\left[\binom n{r+1}+\binom n{r+2}\right]=\binom{n+1}{r+1}+\binom{n+1}{r+2}=\binom{n+2}{r+2}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Muestra con factoriales que \(\binom nr=\dfrac nr\binom{n-1}{r-1}\).</li><li>Simplifica \(\binom{10}{4}+\binom{10}{5}+\binom{11}{6}\) a un solo combinatorio.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\dfrac nr\cdot\dfrac{(n-1)!}{(r-1)!(n-r)!}=\dfrac{n!}{r!(n-r)!}\).</li><li>\(\binom{11}5+\binom{11}6=\binom{12}6\).</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo de los Módulos 1–4. Integran progresiones y series (Módulo 1), polinomios (Módulo 2) y funciones (Módulo 3). El 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la Sección B. Al final, I1 es una investigación tipo Prueba 3 de NS. Cada uno trae una pista y la respuesta final plegadas.</p>
+
+<div class="ex"><p class="et">E1. Coeficientes consecutivos en razón 1 : 2 : 3 <span class="lvl">Sección B</span></p>
+<p>En \((1+x)^n\), tres coeficientes consecutivos \(\binom n{r-1},\binom nr,\binom n{r+1}\) están en razón \(1:2:3\). Halla \(n\) y \(r\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(\dfrac{\binom nr}{\binom n{r-1}}=\dfrac{n-r+1}{r}\). Plantea los dos cocientes.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(n=14,\ r=5\): los coeficientes son 1001, 2002 y 3003.</p></div></details></div>
+
+<div class="ex"><p class="et">E2. Sumas de binomiales divididos por r + 1 <span class="lvl">Sección B</span></p>
+<p>(a) Muestra que \(\dfrac1{r+1}\binom nr=\dfrac1{n+1}\binom{n+1}{r+1}\). (b) Deduce \(\displaystyle\sum_{r=0}^{n}\frac{1}{r+1}\binom nr\). (c) Deduce \(\displaystyle\sum_{r=0}^{n}\frac{(-1)^r}{r+1}\binom nr\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Usa factoriales en (a). En (b) y (c), la suma de la fila \(n+1\) sin su primer término, y la suma alternada.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(\dfrac{2^{n+1}-1}{n+1}\). (c) \(\dfrac1{n+1}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Contar funciones <span class="lvl">Sección B, integra Módulo 3</span></p>
+<p>Sea \(A=\{1,2,3,4,5\}\) y \(B=\{1,2,3\}\). (a) ¿Cuántas funciones \(f:A\to B\) hay? (b) ¿Cuántas son sobreyectivas (usan los tres valores)? (c) ¿Cuántas funciones estrictamente crecientes \(g:\{1,2,3\}\to\{1,\dots,7\}\) hay? ¿Y cuántas inyectivas?</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Por casos según cuántos elementos de \(A\) van a cada valor: reparto \((3,1,1)\) o \((2,2,1)\). (c) Una función creciente queda determinada por su conjunto imagen.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) 243. (b) \((3,1,1)\): \(3\cdot\binom53\cdot2=60\); \((2,2,1)\): \(3\cdot5\cdot\binom42=90\). Total 150. (c) 35 crecientes; 210 inyectivas.</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Un binomio negativo que cuenta soluciones <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>(a) Usando \((1-x)^{-1}=\sum x^k\), justifica que el coeficiente de \(x^n\) en \((1-x)^{-3}\) cuenta las soluciones de \(a+b+c=n\) con \(a,b,c\) enteros \(\ge0\). (b) Con el binomio, muestra que ese coeficiente es \(\binom{n+2}{2}\). (c) ¿Cuántas soluciones tiene \(a+b+c=10\) con \(a,b,c\ge1\)?</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \((1-x)^{-3}=(\sum x^a)(\sum x^b)(\sum x^c)\). (c) Pon \(a=a'+1\), y lo mismo con \(b\) y \(c\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(\dfrac{(-3)(-4)\cdots(-2-n)}{n!}(-1)^n=\dfrac{(n+2)!}{2\,n!}=\binom{n+2}2\). (c) \(\binom92=36\).</p></div></details></div>
+
+<div class="ex"><p class="et">E5. Término independiente con parámetro logarítmico <span class="lvl">Sección A alta, integra Módulo 1</span></p>
+<p>El término independiente de \(\left(x^2+\dfrac kx\right)^6\) es 240. (a) Halla \(k\). (b) Si \(k=\log_2a\), halla \(a\). (c) Halla el coeficiente de \(x^3\) para cada \(k\).</p>
+<details><summary>Pista</summary><div class="inner"><p>La potencia de \(x\) es \(12-3r\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(15k^4=240\Rightarrow k=\pm2\). (b) \(a=4\) o \(a=\tfrac14\). (c) \(20k^3=\pm160\).</p></div></details></div>
+
+<div class="ex"><p class="et">E6. Siete decimales de √2 a mano <span class="lvl">Sección B</span></p>
+<p>(a) Desarrolla \((1-2x)^{-1/2}\) hasta \(x^3\) e indica la validez. (b) Muestra que con \(x=\tfrac1{100}\) la expresión vale \(\tfrac{5\sqrt2}{7}\). (c) Deduce una aproximación de \(\sqrt2\) y compárala con \(1{,}41421356\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(1-\tfrac2{100}=\tfrac{49}{50}\), y \(\sqrt{50}=5\sqrt2\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(1+x+\tfrac32x^2+\tfrac52x^3\), válido si \(|x|\lt\tfrac12\). (c) \(\sqrt2\approx\tfrac75(1{,}0101525)=1{,}4142135\): coinciden 7 decimales.</p></div></details></div>
+
+<div class="ex"><p class="et">E7. Cuando la restricción importa menos del 10 % <span class="lvl">Sección A alta, integra Módulo 2</span></p>
+<p>(a) Muestra que hay \((n-2)(n-1)!\) formas de sentar a \(n\) personas en fila con A y B separados. (b) Halla \(n\) si ese número es 3600. (c) Halla el menor \(n\) para el que las filas con A y B juntos son menos del 10 % del total.</p>
+<details><summary>Pista</summary><div class="inner"><p>(c) La proporción de filas con A y B juntos es \(\dfrac{2(n-1)!}{n!}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(n=7\). (c) \(\tfrac2n\lt\tfrac1{10}\Rightarrow n=21\).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Tríos en progresión aritmética <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>(a) ¿Cuántos subconjuntos de 3 elementos de \(\{1,2,\dots,20\}\) forman una PA? (b) ¿Qué fracción de todos los subconjuntos de 3 elementos es?</p>
+<details><summary>Pista</summary><div class="inner"><p>Fija la diferencia \(d\): el primer término \(a\) cumple \(a+2d\le20\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\sum_{d=1}^{9}(20-2d)=90\). (b) \(\tfrac{90}{1140}=\tfrac3{38}\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. Vandermonde, caminos y cotas <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>(a) Comparando el coeficiente de \(x^n\) en \((1+x)^n(1+x)^n\), muestra que \(\displaystyle\sum_{r=0}^{n}\binom nr^2=\binom{2n}n\). (b) Interprétalo como caminos en cuadrícula de \((0,0)\) a \((n,n)\) y compruébalo con \(n=5\). (c) Muestra que \(\dfrac{4^n}{2n+1}\le\binom{2n}{n}\lt4^n\) para \(n\ge1\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Todo camino cruza la diagonal \(x+y=n\) en un único punto \((r,n-r)\). (c) \(\binom{2n}n\) es el mayor de los \(2n+1\) términos cuya suma es \(4^n\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(1+25+100+100+25+1=252=\binom{10}5\). (c) Como el mayor de \(2n+1\) sumandos que suman \(4^n\) vale al menos el promedio, \(\binom{2n}n\ge\tfrac{4^n}{2n+1}\). Y es menor que \(4^n\) porque hay otros términos positivos.</p></div></details></div>
+
+<div class="ex"><p class="et">E10. Coeficientes en PA y un producto que se simplifica <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>(a) En \((1+x)^n\), los coeficientes de \(x\), \(x^2\) y \(x^3\) están en PA. Muestra que \(n^2-9n+14=0\) y halla \(n\), justificando el valor que descartas. (b) Con ese \(n\), muestra que \((1+x)^n(1-x)^n=(1-x^2)^n\) y halla en ese producto los coeficientes de \(x^3\) y de \(x^4\). (c) Deduce el valor de \(\displaystyle\sum_{r=0}^{4}(-1)^r\binom7r\binom7{4-r}\). (d) Generaliza: muestra que \(\displaystyle\sum_{r=0}^{2k}(-1)^r\binom nr\binom n{2k-r}=(-1)^k\binom nk\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(a) \(2\binom n2=\binom n1+\binom n3\); divide por \(n\). (c) El coeficiente de \(x^4\) en \((1+x)^7(1-x)^7\) se obtiene multiplicando los dos desarrollos. (d) Compara el coeficiente de \(x^{2k}\) de las dos formas.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(n=7\); \(n=2\) se descarta porque no hay término en \(x^3\). (b) \((1-x^2)^7\) solo tiene potencias pares: coeficiente de \(x^3\) igual a 0; de \(x^4\), \(\binom72=21\). (c) 21. (d) En \((1-x^2)^n\), el coeficiente de \(x^{2k}\) es \(\binom nk(-1)^k\).</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. El palo de hockey en el triángulo de Pascal <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>Si sumas los números de una diagonal del triángulo de Pascal, el resultado aparece justo debajo, desviado un lugar, como la pala de un palo de hockey. Vas a conjeturarlo, demostrarlo y usarlo para obtener las fórmulas de \(\sum k^2\) y \(\sum k^3\).</p>
+<ol type="a"><li>Calcula \(\displaystyle\sum_{k=1}^{n}\binom k1\) y \(\displaystyle\sum_{k=2}^{m}\binom k2\) para \(m=2,3,4,5,6\). Compara con \(\binom{n+1}{2}\) y con \(\binom{m+1}{3}\), y conjetura una fórmula para \(\displaystyle\sum_{k=r}^{n}\binom kr\).</li><li>Usando \(\binom{k+1}{r+1}-\binom k{r+1}=\binom kr\) (regla de Pascal), demuestra tu conjetura con una suma telescópica.</li><li>Da un argumento de conteo: al elegir \(r+1\) números de \(\{1,2,\dots,n+1\}\), clasifica según el mayor elegido.</li><li>Muestra que \(k^2=2\binom k2+\binom k1\) y deduce \(\displaystyle\sum_{k=1}^{n}k^2=\frac{n(n+1)(2n+1)}{6}\).</li><li>Halla \(a,b,c\) con \(k^3=a\binom k3+b\binom k2+c\binom k1\) para todo \(k\), y deduce que \(\displaystyle\sum_{k=1}^{n}k^3=\left(\frac{n(n+1)}{2}\right)^2\).</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>Las sumas parciales de \(\binom k2\) son \(1,4,10,20,35\).</li><li>Suma la identidad desde \(k=r\) hasta \(n\): casi todo se cancela, y \(\binom r{r+1}=0\).</li><li>Si el mayor es \(k+1\), los otros \(r\) se eligen entre \(\{1,\dots,k\}\).</li><li>Desarrolla \(2\cdot\frac{k(k-1)}2+k\). Aplica el resultado de (b) con \(r=2\) y \(r=1\).</li><li>Da a \(k\) los valores 1, 2 y 3 para obtener \(c\), \(b\) y \(a\).</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>\(\sum\binom k1=\tfrac{n(n+1)}2=\binom{n+1}2\); las sumas de \(\binom k2\) coinciden con \(\binom{m+1}3\). Conjetura: \(\displaystyle\sum_{k=r}^{n}\binom kr=\binom{n+1}{r+1}\).</li><li>\(\sum_{k=r}^{n}\left[\binom{k+1}{r+1}-\binom k{r+1}\right]=\binom{n+1}{r+1}-\binom r{r+1}=\binom{n+1}{r+1}\).</li><li>Hay \(\binom kr\) elecciones con mayor \(k+1\); sumando para \(k=r,\dots,n\) se cuentan todas, que son \(\binom{n+1}{r+1}\).</li><li>\(\sum k^2=2\binom{n+1}3+\binom{n+1}2=\frac{(n+1)n(n-1)}{3}+\frac{(n+1)n}{2}=\frac{n(n+1)(2n+1)}6\).</li><li>\(c=1\), \(b=6\), \(a=6\). Entonces \(\sum k^3=6\binom{n+1}4+6\binom{n+1}3+\binom{n+1}2\), que simplifica a \(\left(\tfrac{n(n+1)}2\right)^2\).</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 5, demostración (directa, por contradicción, contraejemplo e inducción).</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

@@ -1,0 +1,438 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 2B · Cinemática Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+window.MathJax = { tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}, svg:{fontCache:'global'} };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--grid:#E4E9E2;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.mono{font-family:"Space Grotesk",system-ui,sans-serif}
+.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:18ch}
+.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:60ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}
+.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}
+@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}
+section{margin-bottom:56px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}
+h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:30px 0 6px;font-weight:600}
+h4{font-family:"Space Grotesk";font-size:14px;letter-spacing:.02em;color:var(--teal-deep);margin:18px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}
+ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:14px 0;overflow-x:auto}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.pb{border:1px solid var(--line);border-radius:6px;margin:26px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#EFF4F2,#FFFFFF);border-bottom:1px solid var(--line);padding:14px 20px}
+.pb-head .code{font-family:"IBM Plex Mono";font-size:11px;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px;letter-spacing:.05em}
+.pb-head h3{margin:8px 0 0;font-size:19px}
+.pb-body{padding:6px 20px 18px}
+.enun{background:#F4F6F4;border-left:3px solid var(--ink-soft);padding:10px 16px;margin:14px 0;font-size:16.5px}
+.part{margin:16px 0 4px;font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep)}
+.pide{display:inline-block;font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:1px 7px;margin-right:8px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:5px 11px;display:inline-block;margin-top:6px}
+details.rev{margin-top:12px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:12px 16px;border-top:1px solid var(--line)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px;margin:12px 0;text-align:center}
+.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:6px}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}td.l,th.l{text-align:left}
+.prob{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:4px;padding:14px 18px;margin:14px 0}
+.prob .pn{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.06em}
+.jefe{border-left:3px solid var(--hl);background:var(--hl-soft)}.jefe .pn{color:var(--hl)}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> A.1 CINEMÁTICA <span>//</span> MÓDULO 2B · TIPO 2 (PAPER 2)</p>
+  <h1>Cinemática en <em>respuesta larga</em></h1>
+  <p class="lede">Problemas estructurados estilo Paper 2: varias partes, gráficas a mano alzada, "muestre que", definiciones y cálculo con unidades. Toda la ficha resuelta paso a paso, más problemas extra para ti.</p>
+  <div class="stats">
+    <div class="stat"><b>5/5</b><span>ficha resuelta</span></div>
+    <div class="stat"><b>5</b><span>problemas extra</span></div>
+    <div class="stat"><b>Paper 2</b><span>formato respuesta larga</span></div>
+    <div class="stat"><b>3</b><span>Paper 2 oficiales resueltos</span></div>
+    <div class="stat"><b>g = 10</b><span>m·s⁻² salvo indicación</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#estrategia">0 · Cómo se resuelve un tipo 2</a>
+  <a href="#p1">1 · Cohete (M00)</a>
+  <a href="#p2">2 · Piedra en acantilado (M02)</a>
+  <a href="#p3">3 · Pelota de tenis (M19)</a>
+  <a href="#p4">4 · Pozo de Fiona (M13)</a>
+  <a href="#p5">5 · Bola en aceite (M09)</a>
+  <a href="#examenes">★ Banco Paper 2 · 2022–26</a>
+  <a href="#extra">Problemas extrapara ti</a>
+</nav>
+
+<main>
+<!-- rev 2026-10-28 2b · banco paper2 cinematica (3) v2 -->
+
+<!-- ESTRATEGIA -->
+<section id="estrategia">
+  <p class="sec-num">SECCIÓN 00 · TEORÍA NECESARIA PARA TIPO 2</p>
+  <h2>Cómo se ataca un problema de respuesta larga<span class="rule"></span></h2>
+  <p class="sec-intro">El tipo 2 no pide más teoría que el tipo 1: pide <strong>método ordenado</strong>. Casi todo sale de las cuatro ecuaciones SUVAT aplicadas por <em>fases</em>, más saber leer los términos de mando.</p>
+
+  <div class="box key"><span class="lbl">Rutina de 4 pasos (para cada apartado)</span>
+    <ol>
+      <li><strong>Qué te pide</strong> y con qué dato: identifica la incógnita y el término de mando.</li>
+      <li><strong>Qué ecuación / estrategia</strong>: elige la SUVAT que no incluye la variable que ni tienes ni buscas, o descompón en fases / componentes.</li>
+      <li><strong>Cómo</strong>: sustituye con signos y unidades; muestra el paso intermedio (el IB puntúa el procedimiento).</li>
+      <li><strong>Resultado</strong>: número + unidad, con cifras significativas coherentes.</li>
+    </ol>
+  </div>
+
+  <div class="box def"><span class="lbl">Términos de mando del IB</span>
+    <p><strong>State / Escriba:</strong> respuesta breve sin justificar. <strong>Calculate / Calcule:</strong> número con procedimiento. <strong>Determine:</strong> igual, pero puede requerir varios pasos. <strong>Show that / Muestre que:</strong> te dan el resultado; debes llegar a él con más cifras de las dadas. <strong>Sketch / Bosqueje:</strong> gráfica a mano alzada con forma y rasgos correctos (no valores). <strong>Comment / Distinguish / Explain:</strong> respuesta en prosa; define y relaciona.</p>
+  </div>
+
+  <div class="box trap"><span class="lbl">Errores que cuestan marcas en tipo 2</span>
+    <ul>
+      <li>No marcar \(t_1,t_2,t_3\) ni cruces por cero en las gráficas a mano alzada.</li>
+      <li>Olvidar que el objeto <strong>hereda velocidad</strong> o cambiar de fase sin actualizar \(u\).</li>
+      <li>En "muestre que", redondear antes de tiempo: usa más cifras y llega al valor dado.</li>
+      <li>Perder el signo de \(g\) al pasar de subida a bajada.</li>
+      <li>Dar el número sin unidad o con cifras significativas incoherentes.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- P1 -->
+<section id="p1" class="pb">
+  <div class="pb-head"><span class="code">FICHA 1 · M00/430/S(2)</span><h3>Cohete de fuegos artificiales</h3></div>
+  <div class="pb-body">
+    <div class="enun">Un cohete se dispara verticalmente desde el suelo. Acelera uniformemente desde el reposo a <strong>8,0 m·s⁻²</strong> durante <strong>5,0 s</strong>; entonces se agota el combustible. Ignora la resistencia del aire; en los cálculos \(g=10\ \mathrm{m\,s^{-2}}\).</div>
+
+    <p class="part">(a)(i) <span class="pide">bosqueje</span> Gráfica velocidad–tiempo desde que sale del suelo hasta que vuelve, marcando \(t_1\) (fin del combustible), \(t_2\) (altura máxima) y \(t_3\) (llega al suelo).</p>
+    <p><em>Cómo:</em> dos rectas. Fase 1 (motor): pendiente \(+8\), de \(v=0\) a \(v=+40\) en \(t_1=5{,}0\) s. Fase 2 (solo gravedad): pendiente \(-10\) constante; cruza \(v=0\) en \(t_2\) (cima) y sigue a valores negativos hasta el suelo en \(t_3\).</p>
+    <figure class="fig">
+      <svg viewBox="0 0 460 240" width="440" xmlns="http://www.w3.org/2000/svg" aria-label="v-t del cohete">
+        <line x1="45" y1="120" x2="450" y2="120" stroke="var(--ink)" stroke-width="1.3"/>
+        <line x1="45" y1="20" x2="45" y2="220" stroke="var(--ink)" stroke-width="1.3"/>
+        <text x="30" y="26" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">v</text>
+        <text x="452" y="115" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">t</text>
+        <!-- phase 1: (45,120)->(160,40) ; phase 2 slope -10 to (340,120) then to (450,190) -->
+        <polyline points="45,120 160,40 340,120 450,190" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+        <polygon points="45,120 160,40 340,120" fill="var(--teal)" opacity="0.10"/>
+        <polygon points="340,120 450,120 450,190" fill="var(--warn)" opacity="0.12"/>
+        <g stroke="var(--ink-soft)" stroke-dasharray="3 3" stroke-width="1"><line x1="160" y1="40" x2="160" y2="120"/></g>
+        <g font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">
+          <text x="150" y="136">t₁</text><text x="332" y="136">t₂</text><text x="440" y="210">t₃</text>
+          <text x="120" y="36">40</text>
+        </g>
+        <text x="80" y="80" font-family="Space Grotesk" font-size="10" fill="var(--teal-deep)">área = subida</text>
+        <text x="360" y="160" font-family="Space Grotesk" font-size="10" fill="var(--warn)">área = bajada</text>
+      </svg>
+      <figcaption>Recta +8 hasta t₁=5 s (v=40); luego recta −10 hasta el suelo. t₂=9 s, t₃=15 s.</figcaption>
+    </figure>
+
+    <p class="part">(a)(ii) <span class="pide">comente</span> el área bajo el gráfico.</p>
+    <p>El área es el desplazamiento. El área <em>positiva</em> (de 0 a \(t_2\)) es la altura que sube; el área <em>negativa</em> (de \(t_2\) a \(t_3\)) es la bajada. Como vuelve al suelo, ambas áreas son iguales en magnitud y el <strong>área neta (con signo) es cero</strong>.</p>
+
+    <p class="part">(b)(i) <span class="pide">calcule</span> la velocidad al agotarse el combustible.</p>
+    <p><em>Ecuación:</em> \(v=u+at\) con \(u=0\), \(a=8{,}0\), \(t=5{,}0\).</p>
+    <p>\(v=0+8{,}0(5{,}0)=40\). <span class="ans">v = 40 m·s⁻¹ (hacia arriba)</span></p>
+
+    <p class="part">(b)(ii) <span class="pide">calcule</span> la altura al agotarse el combustible.</p>
+    <p><em>Ecuación:</em> \(s=ut+\tfrac12 at^2=0+\tfrac12(8{,}0)(5{,}0)^2=100\). <span class="ans">h₁ = 100 m</span></p>
+
+    <p class="part">(b)(iii) <span class="pide">calcule</span> la altura máxima.</p>
+    <p><em>Fase 2</em> (sube frenando con \(g\)): \(v^2=u^2-2g\,h_2\Rightarrow 0=40^2-2(10)h_2\Rightarrow h_2=\dfrac{1600}{20}=80\).</p>
+    <p>\(H=h_1+h_2=100+80\). <span class="ans">H = 180 m</span></p>
+
+    <p class="part">(b)(iv) <span class="pide">calcule</span> el tiempo hasta la altura máxima.</p>
+    <p>Fase 2: \(0=40-10\,t\Rightarrow t=4{,}0\) s tras el apagado. Total \(=5{,}0+4{,}0\). <span class="ans">t₂ = 9,0 s</span></p>
+
+    <p class="part">(b)(v) <span class="pide">calcule</span> el tiempo de caída desde la cima al suelo.</p>
+    <p>Desde el reposo en \(H=180\): \(180=\tfrac12(10)t^2\Rightarrow t^2=36\Rightarrow t=6{,}0\). <span class="ans">t = 6,0 s (⇒ t₃ = 15,0 s)</span></p>
+  </div>
+</section>
+
+<!-- P2 -->
+<section id="p2" class="pb">
+  <div class="pb-head"><span class="code">FICHA 2 · M02/430/S(2)S</span><h3>Piedra lanzada desde un acantilado</h3></div>
+  <div class="pb-body">
+    <div class="enun">Una niña lanza una piedra hacia arriba con <strong>12 m·s⁻¹</strong> desde <strong>30,0 m</strong> sobre el nivel del mar. \(g=10\), sin resistencia. Tomo "arriba +", origen en la mano.</div>
+
+    <p class="part">(a) <span class="pide">determine</span> la altura máxima medida desde el mar.</p>
+    <p><em>Ecuación:</em> subida sobre la mano \(=\dfrac{u^2}{2g}=\dfrac{12^2}{2(10)}=7{,}2\) m. Sobre el mar: \(30{,}0+7{,}2\). <span class="ans">H = 37,2 m</span></p>
+
+    <p class="part">(b) <span class="pide">determine</span> el tiempo hasta tocar el mar.</p>
+    <p><em>Ecuación:</em> \(y=ut-\tfrac12gt^2\), con el mar en \(y=-30{,}0\):</p>
+    <p>\(-30{,}0=12t-5t^2\Rightarrow 5t^2-12t-30=0\).</p>
+    <p>\(t=\dfrac{12+\sqrt{12^2+4(5)(30)}}{2(5)}=\dfrac{12+\sqrt{744}}{10}=\dfrac{12+27{,}3}{10}\). <span class="ans">t = 3,9 s</span> (se descarta la raíz negativa).</p>
+
+    <p class="part">(c) <span class="pide">bosqueje</span> la gráfica v–t hasta justo antes de tocar el mar.</p>
+    <p>Recta que parte en \(+12\), pendiente \(-10\); cruza \(v=0\) en \(t=1{,}2\) s (cima) y baja hasta \(v=12-10(3{,}9)\approx-27\) m·s⁻¹ (rapidez de impacto ≈ 27 m·s⁻¹).</p>
+    <figure class="fig">
+      <svg viewBox="0 0 420 200" width="400" xmlns="http://www.w3.org/2000/svg" aria-label="v-t piedra">
+        <line x1="45" y1="70" x2="410" y2="70" stroke="var(--ink)" stroke-width="1.3"/>
+        <line x1="45" y1="20" x2="45" y2="190" stroke="var(--ink)" stroke-width="1.3"/>
+        <text x="30" y="26" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">v</text>
+        <text x="412" y="66" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">t</text>
+        <line x1="45" y1="35" x2="360" y2="175" stroke="var(--teal)" stroke-width="2.5"/>
+        <g font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">
+          <text x="24" y="39">+12</text><text x="150" y="64">1,2</text><text x="360" y="190">−27</text>
+        </g>
+        <circle cx="152" cy="70" r="2.5" fill="var(--warn)"/>
+      </svg>
+      <figcaption>Recta descendente: cruza cero en la cima y continúa a valores negativos (caída).</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- P3 -->
+<section id="p3" class="pb">
+  <div class="pb-head"><span class="code">FICHA 3 · M19/4/PHYSI/SP2</span><h3>Pelota de tenis (proyectil sobre la red)</h3></div>
+  <div class="pb-body">
+    <div class="enun">La pelota sale a <strong>64 m·s⁻¹</strong> formando <strong>7,00°</strong> sobre la horizontal desde P. Datos: altura de P = 2,80 m; distancia a la red = 11,9 m; altura de la red = 0,910 m. (\(g=10\); con \(g=9{,}81\) del papel real los números casi no cambian.)</div>
+
+    <p><em>Componentes:</em> \(u_x=64\cos7^\circ=63{,}5\ \mathrm{m\,s^{-1}}\); \(u_y=64\sin7^\circ=7{,}80\ \mathrm{m\,s^{-1}}\) (hacia arriba).</p>
+
+    <p class="part">(b)(i) <span class="pide">calcule</span> el tiempo en llegar a la red.</p>
+    <p>Horizontal es MRU: \(t=\dfrac{x}{u_x}=\dfrac{11{,}9}{63{,}5}=0{,}187\). <span class="ans">t = 0,19 s</span></p>
+
+    <p class="part">(b)(ii) <span class="pide">muestre que</span> la pelota pasa por encima de la red.</p>
+    <p>Altura en \(t=0{,}187\) s: \(y=2{,}80+u_y t-\tfrac12 g t^2=2{,}80+7{,}80(0{,}187)-5(0{,}187)^2\).</p>
+    <p>\(y=2{,}80+1{,}46-0{,}17=4{,}09\) m. Como \(4{,}09>0{,}910\), <strong>pasa por encima</strong> (con ~3,2 m de margen). ∎</p>
+
+    <p class="part">(b)(iii) <span class="pide">determine</span> la rapidez al golpear el suelo.</p>
+    <p><em>Vía energía</em> (más rápida): la caída neta desde P al suelo es 2,80 m, así que \(v^2=u^2+2g\,h_P=64^2+2(10)(2{,}80)=4096+56=4152\).</p>
+    <p>\(v=\sqrt{4152}\). <span class="ans">v ≈ 64 m·s⁻¹</span></p>
+    <p style="font-size:14px;color:var(--ink-soft)">Comprobación cinemática: \(0=2{,}80+7{,}80t-5t^2\Rightarrow t=1{,}86\) s; \(v_y=7{,}80-10(1{,}86)=-10{,}8\); \(v=\sqrt{63{,}5^2+10{,}8^2}=64{,}4\) m·s⁻¹.</p>
+  </div>
+</section>
+
+<!-- P4 -->
+<section id="p4" class="pb">
+  <div class="pb-head"><span class="code">FICHA 4 · M13/4/PHYSI/SP2</span><h3>Piedra en el pozo de Fiona</h3></div>
+  <div class="pb-body">
+    <div class="enun">Fiona deja caer una piedra desde el reposo a un pozo y oye el impacto <strong>1,6 s</strong> después (se desprecia el tiempo del sonido). \(g=10\).</div>
+
+    <p class="part">(a)(i) <span class="pide">estime</span> la distancia mano–agua.</p>
+    <p>\(s=\tfrac12 g t^2=\tfrac12(10)(1{,}6)^2=\tfrac12(10)(2{,}56)=12{,}8\). <span class="ans">s ≈ 13 m</span></p>
+
+    <p class="part">(a)(ii) <span class="pide">determine</span> la velocidad de impacto.</p>
+    <p>\(v=u+gt=0+10(1{,}6)=16\) (o \(v=\sqrt{2gs}=\sqrt{2(10)(12{,}8)}=16\)). <span class="ans">v = 16 m·s⁻¹ hacia abajo</span></p>
+
+    <p class="part">(b) <span class="pide">bosqueje</span> v–t desde \(t=0\) hasta justo antes de \(t_2\) (fondo).</p>
+    <p>Tres tramos: (1) en el aire, recta creciente \(0\to16\) (pendiente \(g\)) hasta \(t_1\); (2) al entrar al agua, la rapidez <strong>cae rápido</strong> hasta una velocidad terminal menor y constante; (3) se mantiene hasta detenerse en el fondo (\(v\to0\) en \(t_2\)).</p>
+    <figure class="fig">
+      <svg viewBox="0 0 440 190" width="410" xmlns="http://www.w3.org/2000/svg" aria-label="v-t pozo">
+        <line x1="45" y1="160" x2="430" y2="160" stroke="var(--ink)" stroke-width="1.3"/>
+        <line x1="45" y1="20" x2="45" y2="160" stroke="var(--ink)" stroke-width="1.3"/>
+        <text x="30" y="26" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">v</text>
+        <text x="432" y="156" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">t</text>
+        <polyline points="45,160 175,40 210,110 360,110 380,160" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+        <g stroke="var(--ink-soft)" stroke-dasharray="3 3" stroke-width="1"><line x1="175" y1="40" x2="175" y2="160"/><line x1="380" y1="20" x2="380" y2="160"/></g>
+        <g font-family="IBM Plex Mono" font-size="10" fill="var(--ink)"><text x="168" y="174">t₁</text><text x="372" y="174">t₂</text></g>
+      </svg>
+      <figcaption>Aire (recta ↑) → entrada al agua (caída brusca a terminal) → constante → 0 en el fondo.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- P5 -->
+<section id="p5" class="pb">
+  <div class="pb-head"><span class="code">FICHA 5 · M09/4/PHYSI/SP2</span><h3>Bola de acero que cae en aceite</h3></div>
+  <div class="pb-body">
+    <div class="enun">Una bola de acero se suelta desde el reposo en un tubo con aceite; su gráfica v–t tiende a una velocidad terminal.</div>
+
+    <p class="part">(a) <span class="pide">distinga</span> entre rapidez media y rapidez instantánea.</p>
+    <p><strong>Rapidez media</strong> = distancia total ÷ tiempo total en un intervalo. <strong>Rapidez instantánea</strong> = rapidez en un instante (límite \(\Delta t\to0\); en la gráfica, la pendiente de la tangente / el valor del punto). La primera resume un intervalo; la segunda describe un instante.</p>
+
+    <p class="part">(b) <span class="pide">explique</span> cómo usar la gráfica para hallar la rapidez media entre \(t=0\) y \(t_1\).</p>
+    <p>El <strong>área bajo la curva</strong> v–t entre \(0\) y \(t_1\) es la distancia recorrida. Entonces la rapidez media es esa área dividida entre \(t_1\): \(\ \bar v=\dfrac{\text{área}(0\to t_1)}{t_1}\). (Se estima el área contando cuadrados de la cuadrícula.)</p>
+  </div>
+</section>
+
+<!-- EXAMENES -->
+<section id="examenes">
+  <p class="sec-num">BANCO DE EXÁMENES · PAPER 2 (RESPUESTA LARGA) · 2022–2026</p>
+  <h2>Preguntas oficiales de Paper 2, resueltas<span class="rule"></span></h2>
+  <p class="sec-intro">Preguntas de cinemática que aparecieron como <strong>problema estructurado de Paper 2</strong> del IB en este rango, con la resolución paso a paso y la <strong>respuesta oficial del markscheme</strong>. Así ves el formato real: apartados (a), (b)…, "muestre que", y marcas por paso. \(g=9{,}8\ \mathrm{m\,s^{-2}}\) salvo indicación.</p>
+
+  <div class="box key">
+    <span class="lbl">Cómo puntúa el Paper 2</span>
+    <p>Cada apartado vale marcas independientes: se premia el <em>método</em> (sustitución correcta) aunque el número final falle, y hay <strong>ECF</strong> (error arrastrado) — si usas mal un resultado de (a) en (b), (b) aún puntúa si el procedimiento es correcto. En "muestre que…" debes llegar al valor dado con <strong>más cifras</strong> que las pedidas para probar que no lo copiaste.</p>
+  </div>
+
+  <!-- P2-1 -->
+  <section class="pb">
+    <div class="pb-head"><span class="code">PAPER 2 · May 2024 TZ1 · Q2</span><h3>Pelota lanzada hacia una pared (proyectil)</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una pelota se lanza hacia una pared. Se suelta desde un punto a <strong>1,8 m</strong> del suelo y a <strong>8,0 m</strong> de la pared, con velocidad inicial a <strong>48°</strong> sobre la horizontal. La resistencia del aire es despreciable. P es un punto de la trayectoria.</div>
+      <p class="part">(a) <span class="pide">dibuje</span> en el diagrama una flecha para (i) la velocidad de la pelota en P (rótulo v); (ii) la aceleración en P (rótulo a).</p>
+      <p><em>Resolución:</em> (i) la velocidad es siempre <strong>tangente</strong> a la parábola, apuntando hacia adelante y hacia arriba en P (antes de la cima). (ii) la aceleración es \(g\) <strong>vertical hacia abajo</strong> en todo punto (único agente: la gravedad).</p>
+      <span class="ans">v tangente a la curva; a vertical hacia abajo ✓</span>
+
+      <p class="part">(b) La pelota tarda <strong>1,3 s</strong> en llegar a la pared; su rapidez inicial es <strong>9,2 m·s⁻¹</strong>. <span class="pide">determine</span> la altura sobre el suelo a la que golpea la pared. [3]</p>
+      <p><em>Resolución:</em> componente vertical inicial \(u_y=9{,}2\sin48°=6{,}8\ \mathrm{m\,s^{-1}}\). La altura ganada es \(y=u_y t-\tfrac12 g t^2=6{,}8(1{,}3)-\tfrac12(9{,}8)(1{,}3)^2=8{,}9-8{,}3=0{,}6\ \mathrm m\). Sumando la altura de lanzamiento: \(h=1{,}8+0{,}6=2{,}4\ \mathrm m\).</p>
+      <span class="ans">h = 2,4 m ✓ (markscheme; da [2] a quien olvida sumar los 1,8 m)</span>
+      <p style="font-size:14px;color:var(--ink-soft)">Trampa oficial: muchos reportan 0,6 m (altura ganada) sin sumar la altura inicial de 1,8 m.</p>
+    </div>
+  </section>
+
+  <!-- P2-2 -->
+  <section class="pb">
+    <div class="pb-head"><span class="code">PAPER 2 · May 2024 TZ2 · Q1</span><h3>Caída desde 28 m y velocidad terminal</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una pelota de masa <strong>2,7 g</strong> se suelta desde el reposo a <strong>28 m</strong> sobre el suelo.</div>
+      <p class="part">(a) <span class="pide">muestre</span> que, sin resistencia del aire, impacta a unos <strong>23 m·s⁻¹</strong>. [1]</p>
+      <p><em>Resolución:</em> \(v=\sqrt{2gh}=\sqrt{2(9{,}81)(28)}=\sqrt{549}=23{,}4\ \mathrm{m\,s^{-1}}\). (También por energía: \(mgh=\tfrac12mv^2\).)</p>
+      <span class="ans">v = 23,4 m·s⁻¹ ✓ — en "muestre que", escribe 3 c.s. para probarlo.</span>
+
+      <p class="part">(b)(i) Una fuerza de resistencia cumple \(F=kv^2\). <span class="pide">determine</span> la unidad de \(k\) en unidades fundamentales. [2]</p>
+      <p><em>Resolución:</em> \(k=\dfrac{F}{v^2}=\dfrac{\mathrm{kg\,m\,s^{-2}}}{(\mathrm{m\,s^{-1}})^2}=\dfrac{\mathrm{kg\,m\,s^{-2}}}{\mathrm{m^2\,s^{-2}}}=\mathrm{kg\,m^{-1}}\).</p>
+      <span class="ans">[k] = kg m⁻¹ ✓</span>
+
+      <p class="part">(b)(ii) <span class="pide">describa</span> cómo la pelota alcanza la velocidad terminal. [2]</p>
+      <p><em>Resolución:</em> al aumentar la rapidez crece el arrastre \(kv^2\); mientras el arrastre es menor que el peso hay fuerza neta hacia abajo y sigue acelerando, pero cada vez menos. Cuando el <strong>arrastre iguala al peso</strong> (\(kv^2=mg\)), la fuerza neta es cero, la aceleración es cero y la rapidez se mantiene constante: velocidad terminal.</p>
+      <span class="ans">arrastre ↑ con v hasta igualar el peso ⇒ fuerza neta 0 ⇒ v constante ✓</span>
+    </div>
+  </section>
+
+  <!-- P2-3 -->
+  <section class="pb">
+    <div class="pb-head"><span class="code">PAPER 2 · Nov 2022 · Q1</span><h3>Gota de lluvia: de caída libre a velocidad constante</h3></div>
+    <div class="pb-body">
+      <div class="enun">Una gota de lluvia cae verticalmente desde el reposo. La gráfica rapidez–tiempo arranca con pendiente grande y se aplana hasta una recta horizontal.</div>
+      <p class="part">(a) <span class="pide">indique</span> la aceleración inicial de la gota. [1]</p>
+      <p><em>Resolución:</em> al partir del reposo la rapidez es cero, así que el arrastre es cero y la única fuerza es el peso: \(a=g=9{,}8\ \mathrm{m\,s^{-2}}\) (hacia abajo). Es la pendiente inicial de la gráfica.</p>
+      <span class="ans">a = 9,8 m·s⁻² (= g) ✓</span>
+
+      <p class="part">(b) <span class="pide">explique</span>, con referencia a las fuerzas verticales, cómo la gota alcanza una rapidez constante. [3]</p>
+      <p><em>Resolución (3 marcas = 3 ideas):</em> (1) el <strong>peso es constante</strong> hacia abajo; (2) la <strong>fuerza de arrastre aumenta</strong> con la rapidez, hacia arriba; (3) cuando arrastre = peso la <strong>fuerza neta es cero</strong>, la aceleración es cero y la rapidez deja de cambiar (constante = terminal).</p>
+      <span class="ans">peso constante · arrastre crece con v · se igualan ⇒ neta 0 ⇒ v constante ✓</span>
+      <p style="font-size:14px;color:var(--ink-soft)">Clave de redacción IB: nombrar <em>las dos fuerzas</em>, decir que el arrastre <em>crece con la rapidez</em>, y concluir <em>fuerza neta cero</em>. Una idea = una marca.</p>
+    </div>
+  </section>
+
+  <div class="box key">
+    <span class="lbl">Más Paper 2 de cinemática</span>
+    <p>El salto en paracaídas desde 39 km (<strong>May 2026 TZ2 Q7</strong>) combina cinemática con fuerzas y energía; lo trabajamos en el Módulo 5B. Las gráficas \(v\)–\(t\) y el análisis de datos con incertidumbre (pendiente máx/mín) ya están en la sección de método de arriba.</p>
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <p class="sec-num">PARA TI · RESUELVE ESTILO PAPER 2 Y ENVÍA EN BLOQUE</p>
+  <h2>5 problemas extra de tipo 2<span class="rule"></span></h2>
+  <p class="sec-intro">Mismo formato de respuesta larga, de igual nivel o mayor; cubren los subtipos que la ficha no agota (tiro desde altura, proyectil en ángulo, movimiento por fases con gráfica, persecución de dos cuerpos, y medición con incertidumbre). Intenta cada uno y abre <strong>"Ver resolución"</strong>. \(g=10\ \mathrm{m\,s^{-2}}\) salvo indicación. El último integra el Módulo 1 y supera el nivel IB.</p>
+
+  <div class="prob"><p class="pn">E1 · caída/tiro vertical</p>
+  <p>Desde la azotea de un edificio de 45 m se lanza una pelota verticalmente hacia arriba a 20 m·s⁻¹.</p>
+  <p>(a) Bosqueje la gráfica v–t desde el lanzamiento hasta tocar el suelo, marcando el instante de altura máxima y el de impacto. (b) Calcule la altura máxima sobre el suelo. (c) Determine el tiempo total hasta tocar el suelo. (d) Calcule la rapidez de impacto. (e) Comente qué representa cada área de su gráfica.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Recta desde \(+20\), pendiente \(-10\): cruza \(v=0\) en \(t=2{,}0\) s (altura máxima) y sigue a negativos hasta el impacto en \(t\approx5{,}6\) s.</p>
+      <p>(b) Sube sobre la azotea \(\dfrac{u^2}{2g}=\dfrac{400}{20}=20\) m ⇒ altura máxima \(=45+20=65\) m.</p>
+      <p>(c) Con arriba +: \(45+20t-5t^2=0\Rightarrow t^2-4t-9=0\Rightarrow t=\dfrac{4+\sqrt{52}}{2}=5{,}6\) s.</p>
+      <p>(d) \(v^2=u^2+2g(45)=400+900=1300\Rightarrow v=36\) m·s⁻¹.</p>
+      <p>(e) El área positiva (0→2,0 s) = subida (20 m); el área negativa (2,0→5,6 s) = bajada (65 m); el área neta con signo = −45 m (desplazamiento final: 45 m bajo el lanzamiento).</p>
+      <span class="ans">65 m · 5,6 s · 36 m·s⁻¹.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E2 · proyectil con ángulo</p>
+  <p>Una piedra se lanza desde el suelo a 15 m·s⁻¹ formando 53° con la horizontal (usa \(\sin53^\circ=0{,}8\), \(\cos53^\circ=0{,}6\)).</p>
+  <p>(a) Halle las componentes de la velocidad inicial. (b) Determine la altura máxima. (c) Calcule el tiempo de vuelo. (d) Determine el alcance horizontal. (e) Halle la velocidad (módulo y dirección) en \(t=1{,}0\) s.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) \(u_x=15(0{,}6)=9{,}0\); \(u_y=15(0{,}8)=12{,}0\) m·s⁻¹.</p>
+      <p>(b) \(H=\dfrac{u_y^2}{2g}=\dfrac{144}{20}=7{,}2\) m.</p>
+      <p>(c) \(T=\dfrac{2u_y}{g}=\dfrac{24}{10}=2{,}4\) s.</p>
+      <p>(d) \(R=u_xT=9{,}0(2{,}4)=21{,}6\) m.</p>
+      <p>(e) En \(t=1{,}0\): \(v_x=9{,}0\), \(v_y=12-10=2{,}0\). \(v=\sqrt{9{,}0^2+2{,}0^2}=\sqrt{85}=9{,}2\) m·s⁻¹, a \(\arctan(2/9)=13^\circ\) sobre la horizontal.</p>
+      <span class="ans">H=7,2 m · T=2,4 s · R=21,6 m · v(1 s)=9,2 m·s⁻¹ a 13°.</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E3 · movimiento por fases (gráfica)</p>
+  <p>Un tren parte del reposo y acelera uniformemente a 0,50 m·s⁻² durante 40 s; luego viaja a velocidad constante 60 s; finalmente frena uniformemente hasta detenerse en 20 s.</p>
+  <p>(a) Bosqueje la gráfica v–t del recorrido. (b) Calcule la velocidad máxima. (c) Determine la distancia total (usa áreas). (d) Halle la velocidad media de todo el recorrido. (e) Calcule la magnitud de la desaceleración final.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Trapecio: sube recta 0→20 (0 a 40 s), meseta 20 (40 a 100 s), baja recta 20→0 (100 a 120 s).</p>
+      <p>(b) \(v_{max}=at=0{,}50(40)=20\) m·s⁻¹.</p>
+      <p>(c) Áreas: triángulo \(\tfrac12(40)(20)=400\); rectángulo \(20(60)=1200\); triángulo \(\tfrac12(20)(20)=200\). Total \(=1800\) m.</p>
+      <p>(d) \(\bar v=\dfrac{1800}{120}=15\) m·s⁻¹.</p>
+      <p>(e) \(a=\dfrac{20}{20}=1{,}0\) m·s⁻² (magnitud de la desaceleración).</p>
+      <span class="ans">20 m·s⁻¹ · 1800 m · 15 m·s⁻¹ · 1,0 m·s⁻².</span>
+    </div></details></div>
+
+  <div class="prob"><p class="pn">E4 · persecución (dos cuerpos)</p>
+  <p>Un bus arranca del reposo con aceleración 1,5 m·s⁻². En el mismo instante, una persona situada 12 m detrás del bus corre a 6,0 m·s⁻¹ constante para alcanzarlo.</p>
+  <p>(a) Plantee las ecuaciones de posición de ambos y determine si la persona alcanza el bus. (b) Si lo alcanza, halle el instante y la posición del encuentro. (c) Interprete el número de soluciones que obtiene (¿qué significa físicamente?). (d) Calcule la rapidez del bus en el instante del encuentro.</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) Tomando el bus en \(x=0\) y la persona en \(x=-12\): \(x_{bus}=\tfrac12(1{,}5)t^2=0{,}75t^2\); \(x_{pers}=-12+6{,}0t\). Encuentro: \(-12+6t=0{,}75t^2\Rightarrow 0{,}75t^2-6t+12=0\Rightarrow t^2-8t+16=0\Rightarrow (t-4)^2=0\).</p>
+      <p>(b) \(t=4{,}0\) s; posición \(x=0{,}75(16)=12\) m delante del punto de arranque del bus.</p>
+      <p>(c) Raíz <strong>doble</strong>: la persona alcanza el bus justo en un instante (lo roza). Si corriera un poco más lento, nunca lo alcanzaría.</p>
+      <p>(d) \(v_{bus}=1{,}5(4{,}0)=6{,}0\) m·s⁻¹ — igual a la de la persona; por eso es tangente (misma rapidez en el encuentro).</p>
+      <span class="ans">Lo alcanza en t=4,0 s, a 12 m; raíz doble; v_bus=6,0 m·s⁻¹.</span>
+    </div></details></div>
+
+  <div class="prob jefe"><p class="pn">E5 · PROBLEMA JEFE (tipo 2 + Módulo 1, supera al IB)</p>
+  <p>Para medir la rapidez de salida de una bola, se la lanza <strong>horizontalmente</strong> desde una mesa y se registran el alcance \(R=(1{,}28\pm0{,}03)\ \mathrm m\) y la altura de caída \(h=(0{,}80\pm0{,}02)\ \mathrm m\). Usa \(g=9{,}81\ \mathrm{m\,s^{-2}}\).</p>
+  <p>(a) A partir de \(h=\tfrac12 g t^2\), determine el tiempo de vuelo \(t\) y su incertidumbre. (b) Determine la rapidez inicial \(u=R/t\) con su incertidumbre porcentual y absoluta. (c) Indique qué medición (\(R\) o \(h\)) domina la incertidumbre de \(u\) y por qué. (d) Explique una fuente de error <em>sistemático</em> en este montaje y cómo afectaría a \(u\).</p>
+    <details class="rev"><summary></summary><div class="rev-inner">
+      <p>(a) \(t=\sqrt{\dfrac{2h}{g}}=\sqrt{\dfrac{1{,}60}{9{,}81}}=0{,}404\) s. Como \(t\propto h^{1/2}\): \(\dfrac{\Delta t}{t}=\tfrac12\dfrac{\Delta h}{h}=\tfrac12\dfrac{0{,}02}{0{,}80}=0{,}0125\Rightarrow\Delta t=0{,}005\) s. \(t=(0{,}404\pm0{,}005)\) s.</p>
+      <p>(b) \(u=\dfrac{R}{t}=\dfrac{1{,}28}{0{,}404}=3{,}17\) m·s⁻¹. \(\dfrac{\Delta u}{u}=\dfrac{\Delta R}{R}+\dfrac{\Delta t}{t}=\dfrac{0{,}03}{1{,}28}+0{,}0125=0{,}0234+0{,}0125=0{,}036\) (3,6%). \(\Delta u=0{,}11\). \(u=(3{,}17\pm0{,}11)\) m·s⁻¹.</p>
+      <p>(c) Domina \(R\): aporta 2,3% frente a 1,25% de \(h\) (el ½ del exponente reduce el efecto de \(h\)). Conviene medir mejor el alcance.</p>
+      <p>(d) Sistemático: medir \(R\) desde el borde equivocado, la mesa no horizontal (lanzamiento no puramente horizontal) o la resistencia del aire, que acorta \(R\) y haría <strong>subestimar</strong> \(u\) de forma consistente.</p>
+      <span class="ans">t=(0,404±0,005) s · u=(3,17±0,11) m·s⁻¹ (±3,6%); domina R.</span>
+    </div></details></div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Módulo 2B · Cinemática Tipo 2 (Paper 2).</strong> Ficha completa resuelta (cohete, acantilado, tenis, pozo, aceite) con "qué pide → ecuación → cómo → resultado". Sigue el <strong>Módulo 3A</strong> (Dinámica: teoría + tipo 1), que reutilizará cinemática y las gráficas. Convención: \(g=10\ \mathrm{m\,s^{-2}}\) salvo que el problema indique otro valor.</p>
+</footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>

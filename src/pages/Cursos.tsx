@@ -5,6 +5,7 @@ import {
   Play, BarChart3, CheckCircle2, Sparkles, FunctionSquare, Grid3x3, Rocket,
   FlaskConical, Code2, Globe, Microscope
 } from 'lucide-react';
+import CursosPremiumSection from '@/components/cursos/CursosPremiumSection';
 
 const subjectIcons: Record<string, any> = {
   matematicas: FunctionSquare,
@@ -196,6 +197,9 @@ export default function Cursos() {
             </span>
           </div>
         </motion.div>
+
+        {/* Cursos Premium IB (HTMLs subidos a public/cursos-premium/) */}
+        <CursosPremiumSection />
 
         {/* Filters */}
         <motion.div

@@ -1,0 +1,2391 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Módulo 11 · Variables aleatorias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+<style>
+:root{
+  --paper:#F4F6F9; --sheet:#FFFFFF; --ink:#18223A; --soft:#4A5470; --rule:#D5DBE6;
+  --ib:#0E6E6A; --ib-bg:#E3F2F0; --beyond:#5A3D9A; --beyond-bg:#EEE9F8;
+  --trap:#A2530A; --trap-bg:#FBEFE2; --mark:#1F4FBF; --ex-bg:#F7F9FC;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+    --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+    --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121724; --sheet:#1A2132; --ink:#E4E8F2; --soft:#A8B1C7; --rule:#2F3850;
+  --ib:#5FD0C6; --ib-bg:#15302F; --beyond:#B9A2F0; --beyond-bg:#272040;
+  --trap:#F0A860; --trap-bg:#33251A; --mark:#8FB0FF; --ex-bg:#1E2638;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto;gap:40px;padding:0 24px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding:32px 0;
+  font-family:"Inter Tight",system-ui,sans-serif;font-size:14px}
+nav.toc a{display:block;color:var(--soft);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--ib)}
+nav.toc a.sub{padding-left:24px;font-size:13px}
+nav.toc .nt{font-weight:700;color:var(--ink);margin:0 0 10px 12px;font-size:15px}
+main{background:var(--sheet);padding:48px 56px 80px;margin:24px 0;border:1px solid var(--rule);border-radius:6px;min-width:0}
+header.hero{border-bottom:3px double var(--rule);padding-bottom:28px;margin-bottom:12px}
+.kicker{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ib);font-weight:600;font-size:15px;margin:0}
+h1{font-family:"Inter Tight",system-ui,sans-serif;font-size:44px;line-height:1.08;margin:8px 0 14px;letter-spacing:-0.02em}
+.hero .formula{font-size:22px;color:var(--soft);margin:6px 0 18px}
+.hero p{max-width:66ch;margin:0}
+h2{font-family:"Inter Tight",system-ui,sans-serif;font-size:30px;margin:64px 0 8px;letter-spacing:-0.01em;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-family:"Inter Tight",system-ui,sans-serif;font-size:22px;margin:40px 0 8px}
+h4{font-family:"Inter Tight",system-ui,sans-serif;font-size:17px;margin:24px 0 6px}
+p,li{max-width:72ch}
+.lead{font-size:19px;color:var(--soft)}
+a{color:var(--mark)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:"Inter Tight",system-ui,sans-serif;font-size:14px;color:var(--soft);font-weight:600}
+.box{border-left:4px solid;padding:12px 18px;margin:20px 0;border-radius:0 6px 6px 0}
+.box > .bt{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;font-size:15px;margin:0 0 4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.ib{border-color:var(--ib);background:var(--ib-bg)} .ib > .bt{color:var(--ib)}
+.beyond{border-color:var(--beyond);background:var(--beyond-bg)} .beyond > .bt{color:var(--beyond)}
+.trapbox{border-color:var(--trap);background:var(--trap-bg)} .trapbox > .bt{color:var(--trap)}
+.ex{background:var(--ex-bg);border:1px solid var(--rule);border-radius:6px;padding:14px 20px;margin:18px 0}
+.ex > .et{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;margin:0 0 6px}
+.src{font-style:italic;color:var(--soft);font-size:15px;margin:-2px 0 8px}
+.step{margin:6px 0}
+.lbl{font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--soft)}
+.m{font-family:"Inter Tight",system-ui,sans-serif;font-weight:700;color:var(--mark);font-size:14px;white-space:nowrap;margin-left:6px}
+details{border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--sheet)}
+details > summary{cursor:pointer;padding:10px 16px;font-family:"Inter Tight",system-ui,sans-serif;font-weight:600;color:var(--mark)}
+details[open] > summary{border-bottom:1px solid var(--rule)}
+details > .inner{padding:8px 18px 14px}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.trap-list b{color:var(--trap);font-family:"Inter Tight",system-ui,sans-serif}
+.lvl{display:inline-block;font-family:"Inter Tight",system-ui,sans-serif;font-size:13px;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;margin-left:8px;color:var(--soft);vertical-align:middle}
+.lvl.boss{border-color:var(--beyond);color:var(--beyond)}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:4px 0}
+img{max-width:100%}
+@media (max-width: 900px){
+  .wrap{grid-template-columns:1fr;padding:0}
+  nav.toc{display:none}
+  main{margin:0;border-radius:0;border-left:0;border-right:0;padding:28px 18px 60px}
+  h1{font-size:32px}
+  body{font-size:17px}
+}
+.practica{border-left:4px solid var(--mark)} .practica ol{margin:6px 0 4px;padding-left:22px} .practica > .et{color:var(--mark)}
+.inv{border-left:4px solid var(--beyond)} .inv ol{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <div class="nt">Módulo 11</div>
+  <a href="#mapa">0. Mapa y evaluación</a>
+  <a href="#teoria">1. Teoría completa</a>
+  <a class="sub" href="#t1">1.1 Variables discretas</a>
+  <a class="sub" href="#t2">1.2 Transformaciones y juegos justos</a>
+  <a class="sub" href="#t3">1.3 Distribución binomial</a>
+  <a class="sub" href="#t4">1.4 Variables continuas</a>
+  <a class="sub" href="#t5">1.5 Distribución y cuantiles</a>
+  <a class="sub" href="#t6">1.6 Distribución normal</a>
+  <a class="sub" href="#t7">1.7 Combinar distribuciones</a>
+  <a class="sub" href="#t8">1.8 Más allá del IB</a>
+  <a href="#glosario">2. Glosario</a>
+  <a href="#trampas">3. Trampas de Prueba 1</a>
+  <a href="#fichas">4. Ejemplos resueltos</a>
+  <a href="#examenes">5. Preguntas de examen</a>
+  <a href="#tipos">6. Otros tipos de pregunta del IB</a>
+  <a href="#extra">7. Problemas extra</a>
+</nav>
+<main>
+<header class="hero">
+  <p class="kicker">Matemáticas AA NS, Prueba 1. Módulo 11 de 17</p>
+  <h1>Variables aleatorias: discretas, binomial, continuas y normal</h1>
+  <p class="formula">\( \mathrm E(X)=\sum xP(X=x) \qquad \mathrm{Var}(X)=\mathrm E(X^2)-\mu^2 \qquad X\sim B(n,p):\ \mu=np,\ \sigma^2=np(1-p) \qquad \int f=1 \)</p>
+  <p>Todo lo necesario para las preguntas de variables aleatorias de la Prueba 1 sin calculadora, al nivel de la banda 7. Aquí suelen salir preguntas largas de la Sección B que mezclan probabilidad, álgebra y razonamiento. Los problemas extra integran los Módulos 1–10.</p>
+</header>
+<section id="mapa">
+<h2>0. Mapa del tema y evaluación</h2>
+<p class="lead">Las variables aleatorias aparecen en 3 de tus 7 pruebas y suman 38 puntos en este módulo, con dos preguntas de 16 puntos en la Sección B. Casi todo es discreto: tablas con parámetros, esperanza, rangos posibles y juegos. La normal aparece en la Prueba 1 solo a través de su simetría.</p>
+
+<h3>Preguntas de examen de este módulo</h3>
+<div class="tbl"><table>
+<thead><tr><th>Prueba</th><th>Pregunta</th><th>Puntos</th><th>Qué evalúa</th></tr></thead>
+<tbody>
+<tr><td>Mayo 2022 TZ2</td><td>8</td><td>6</td><td>Mediana de una variable continua triangular, con parámetros</td></tr>
+<tr><td>Mayo 2021 TZ1</td><td>10</td><td>16</td><td>Dados cargados: parámetros, \(\mathrm E(X)\), rango posible de \(\mathrm E(Y)\), juego con \(P(A\lt B)=\tfrac12\)</td></tr>
+<tr><td>Mayo 2022 TZ2</td><td>10</td><td>16</td><td>Parámetros desde \(\mathrm E(X)\); probabilidad de ganar; dados con caras distintas y la misma distribución de la suma</td></tr>
+</tbody></table></div>
+<p>Mayo 2022 TZ1 P7 (densidad \(\tfrac{k}{\sqrt{4-3x^2}}\)) necesita integrar con arcsin: se resuelve en el Módulo 14.</p>
+
+<h3>Cómo lo pregunta el IB: patrones de tus pruebas</h3>
+<ol>
+<li><b>Tabla con parámetros:</b> la suma igual a 1 y la esperanza dada forman un sistema lineal.</li>
+<li><b>Rangos posibles:</b> cada probabilidad está en \([0,1]\), lo que acota los parámetros y, con ellos, \(\mathrm E(Y)\).</li>
+<li><b>Juego entre dos variables:</b> se listan los pares favorables y se suman sus probabilidades.</li>
+<li><b>Continua con geometría:</b> el área bajo \(f\) es probabilidad. La mediana deja área \(\tfrac12\) a cada lado; primero hay que decidir en qué tramo está.</li>
+</ol>
+
+<h3>Qué aportan las fichas DMpA</h3>
+<div class="tbl"><table>
+<thead><tr><th>Ficha</th><th>Contenido</th><th>Uso aquí</th></tr></thead>
+<tbody>
+<tr><td>DMpA 13 (2026)</td><td>Variables discretas, \(\mathrm E(X)\), constante \(k\), juegos (IB NM 2015 y 2017)</td><td>F1–F3</td></tr>
+<tr><td>DMpA 14 (2026)</td><td>Binomial: media, desviación, \(n\) mínimo, condicionada a «al menos una»</td><td>F4–F6</td></tr>
+<tr><td>DMpA 17 (2026)</td><td>Normal: simetría, \(\mu\) y \(\sigma\) desde probabilidades, comparación de dos normales</td><td>F7, F8</td></tr>
+<tr><td>DMpA 18 (2026)</td><td>Variables continuas: \(k\), probabilidades, media, varianza, mediana; tiempo entre llegadas</td><td>F9, F10</td></tr>
+</tbody></table></div>
+<p>Muchos ítems de estas fichas son de Prueba 2 (con calculadora). Aquí se reformulan para resolverse con fracciones exactas, simetría o valores \(z\) dados.</p>
+
+<h3>¿La teoría alcanza para la banda 7? Cobertura del programa</h3>
+<div class="tbl"><table>
+<thead><tr><th>Contenido del programa AA</th><th>Sección</th><th>Peso en Prueba 1</th></tr></thead>
+<tbody>
+<tr><td>Variables discretas: distribución, esperanza, varianza, juegos justos</td><td>1.1–1.2</td><td>Alto</td></tr>
+<tr><td>\(\mathrm E(aX+b)\) y \(\mathrm{Var}(aX+b)\) (NS)</td><td>1.2</td><td>Medio</td></tr>
+<tr><td>Distribución binomial: probabilidades, media, varianza, \(n\) mínimo</td><td>1.3</td><td>Medio</td></tr>
+<tr><td>Variables continuas (NS): densidad, probabilidades, moda, mediana, media, varianza</td><td>1.4</td><td>Medio</td></tr>
+<tr><td>Función de distribución, cuartiles, \(\mathrm E(g(X))\) (NS)</td><td>1.5</td><td>Medio</td></tr>
+<tr><td>Distribución normal: propiedades, simetría, tipificación</td><td>1.6</td><td>Bajo (sobre todo Prueba 2)</td></tr>
+<tr><td>Combinar modelos: densidad o normal seguida de binomial; pares de variables</td><td>1.7</td><td>Alto en Sección B</td></tr>
+<tr><td>Suma de variables independientes, Chebyshev, Poisson (fuera del programa)</td><td>1.8</td><td>Solo como herramienta</td></tr>
+<tr><td>Otros tipos de pregunta: binomial con media/varianza, «al menos uno» y moda, variable discreta por fórmula, valor esperado de un juego, densidad a trozos, \(\mathrm E(g(X))\), normal con dos probabilidades, cuantil normal</td><td>Sección 6</td><td>Medio (no salieron en tus 7 pruebas, pero sí en otras)</td></tr>
+</tbody></table></div>
+<div class="box ib"><p class="bt">Veredicto</p><p>Las secciones 1.1–1.7 cubren todas las variables aleatorias del programa, con un ejemplo por concepto, un recuadro «Para practicar» en cada uno y la combinación de modelos que exige la Sección B. La sección 6 reúne los tipos de pregunta del IB que no salieron en tus 7 pruebas pero que pueden venir. Las cajas «Más allá» añaden la distribución geométrica, la linealidad de la esperanza con indicadores y las funciones generadoras con polinomios; ningún problema extra las necesita. El techo es la investigación I1, tipo Prueba 3. Las integrales de este módulo son de potencias y exponenciales; las técnicas más avanzadas están en el Módulo 14.</p></div>
+</section>
+<section id="teoria">
+<h2>1. Teoría completa</h2>
+<p class="lead">Va de las tablas discretas a la distribución normal. Cada concepto trae un ejemplo resuelto con valores exactos y, los esenciales, un recuadro «Para practicar». Las cajas verdes muestran cómo lo pregunta el IB; las moradas, herramientas que van más allá del programa.</p>
+
+<h3 id="t1">1.1 Variables aleatorias discretas</h3>
+<p>Una variable discreta toma valores \(x_i\) con probabilidades \(p_i\), donde \(0\le p_i\le1\) y \(\sum p_i=1\).</p>
+\[ \mu=\mathrm E(X)=\sum x_ip_i,\qquad \mathrm E(g(X))=\sum g(x_i)p_i,\qquad \mathrm{Var}(X)=\mathrm E(X^2)-\mu^2,\qquad \sigma=\sqrt{\mathrm{Var}(X)} \]
+<p>\(\mathrm E(X)\) es la media a largo plazo, no necesariamente un valor posible. La moda es el valor más probable.</p>
+<div class="ex"><p class="et">Ejemplo 1.1. Tabla con dos parámetros</p>
+<p>\(X\) toma los valores 0, 1, 2, 3 con probabilidades \(0{,}1,\ a,\ b,\ 0{,}2\), y \(\mathrm E(X)=1{,}7\). Halla \(a,b\) y \(\mathrm{Var}(X)\).</p>
+<p>\(a+b=0{,}7\) y \(a+2b+0{,}6=1{,}7\). Así \(b=0{,}4\) y \(a=0{,}3\). \(\mathrm E(X^2)=0{,}3+1{,}6+1{,}8=3{,}7\), y \(\mathrm{Var}=3{,}7-2{,}89=0{,}81\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(X\) toma los valores 1, 2, 3 con probabilidades \(a,\ 0{,}5,\ b\) y \(\mathrm E(X)=2{,}1\). Halla \(a\) y \(b\).</li><li>Para esa \(X\), halla \(\mathrm{Var}(X)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(a+b=0{,}5\) y \(a+3b=1{,}1\): \(b=0{,}3\), \(a=0{,}2\).</li><li>\(\mathrm E(X^2)=0{,}2+2+2{,}7=4{,}9\); \(\mathrm{Var}=4{,}9-4{,}41=0{,}49\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.2. Distribución dada por una fórmula</p>
+<p>\(P(X=x)=k(x^2+1)\) para \(x=1,2,3\). Halla \(k\), la moda, \(\mathrm E(X)\) y \(\mathrm{Var}(X)\).</p>
+<p>\(k(2+5+10)=1\), así que \(k=\frac1{17}\). La moda es 3 (la probabilidad mayor, \(\frac{10}{17}\)). \(\mathrm E(X)=\frac{2+10+30}{17}=\frac{42}{17}\) y \(\mathrm E(X^2)=\frac{2+20+90}{17}=\frac{112}{17}\). Por tanto \(\mathrm{Var}(X)=\frac{112}{17}-\frac{1764}{289}=\frac{140}{289}\).</p>
+<p><b>Comprobación:</b> la varianza nunca es negativa. Si te sale negativa, has restado mal o usado \(\mathrm E(X)^2\) en lugar de \(\mathrm E(X^2)\).</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ2, P10(a))</p><p>«Muestre que \(p=0{,}4\) y \(q=0{,}2\)», sabiendo que \(\mathrm E(X)=2\). El markscheme da (M1) A1 por la suma igual a 1 (\(p+q=0{,}6\)), (M1) A1 por la ecuación de la esperanza (\(p+3q=1\)) y A1 por resolver el sistema antes del AG. Sustituir los valores dados y comprobar que funcionan no demuestra nada: no vale como «muestre que».</p></div>
+
+<h3 id="t2">1.2 Transformaciones lineales y juegos justos</h3>
+\[ \mathrm E(aX+b)=a\mathrm E(X)+b,\qquad \mathrm{Var}(aX+b)=a^2\mathrm{Var}(X) \]
+<p>Un juego es <b>justo</b> si la ganancia esperada es 0. Si \(G\) es la ganancia neta (premio menos el precio de jugar), el juego es justo cuando \(\mathrm E(G)=0\).</p>
+<div class="ex"><p class="et">Ejemplo 1.3. Precio justo</p>
+<p>Se paga \(c\) por lanzar una moneda dos veces y se reciben 5 por cada cara. ¿Cuánto debe valer \(c\) para que el juego sea justo?</p>
+<p>El número de caras tiene esperanza 1, así que el premio esperado es 5 y el juego es justo si \(c=5\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.4. Transformar media y varianza</p>
+<p>\(\mathrm E(X)=3\) y \(\mathrm{Var}(X)=4\). Para \(Y=5-2X\), halla \(\mathrm E(Y)\), \(\mathrm{Var}(Y)\), la desviación típica de \(Y\) y \(\mathrm E(X^2)\).</p>
+<p>\(\mathrm E(Y)=5-2\cdot3=-1\). \(\mathrm{Var}(Y)=(-2)^2\cdot4=16\), así que \(\sigma_Y=4\): el signo menos no reduce la dispersión y el 5 no la cambia. Además, \(\mathrm E(X^2)=\mathrm{Var}(X)+\mathrm E(X)^2=4+9=13\).</p></div>
+
+<h3 id="t3">1.3 Distribución binomial</h3>
+<p>\(X\sim B(n,p)\) cuenta los éxitos en \(n\) ensayos <b>independientes</b>, con dos resultados y probabilidad de éxito \(p\) constante.</p>
+\[ P(X=r)=\binom nr p^r(1-p)^{n-r},\qquad \mathrm E(X)=np,\qquad \mathrm{Var}(X)=np(1-p) \]
+<ul>
+<li>«Al menos uno»: \(1-(1-p)^n\).</li>
+<li>Para hallar el menor \(n\) con \(P(X\ge1)\gt k\): \((1-p)^n\lt1-k\). Toma logaritmos y recuerda que \(\ln(1-p)\lt0\) invierte la desigualdad.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.5. Probabilidad binomial exacta</p>
+<p>\(X\sim B\left(4,\tfrac14\right)\). Halla \(P(X=2)\), \(P(X\ge1)\) y la desviación típica.</p>
+<p>\(P(X=2)=6\cdot\tfrac1{16}\cdot\tfrac9{16}=\tfrac{27}{128}\). \(P(X\ge1)=1-\left(\tfrac34\right)^4=\tfrac{175}{256}\). \(\sigma=\sqrt{4\cdot\tfrac14\cdot\tfrac34}=\tfrac{\sqrt3}2\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 326.88 235.187875" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 235.187875 
+L 326.88 235.187875 
+L 326.88 -0 
+L 0 -0 
+L 0 235.187875 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 195.696 
+L 319.68 195.696 
+L 319.68 7.2 
+L 7.2 7.2 
+L 7.2 195.696 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 21.403636 195.696 
+L 58.456601 195.696 
+L 58.456601 81.001168 
+L 21.403636 81.001168 
+z
+" clip-path="url(#p3c8af23909)" style="fill: #0e6e6a; opacity: 0.75"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 83.158577 195.696 
+L 120.211542 195.696 
+L 120.211542 42.769558 
+L 83.158577 42.769558 
+z
+" clip-path="url(#p3c8af23909)" style="fill: #0e6e6a; opacity: 0.75"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 144.913518 195.696 
+L 181.966482 195.696 
+L 181.966482 119.232779 
+L 144.913518 119.232779 
+z
+" clip-path="url(#p3c8af23909)" style="fill: #a2530a; opacity: 0.75"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 206.668458 195.696 
+L 243.721423 195.696 
+L 243.721423 178.704173 
+L 206.668458 178.704173 
+z
+" clip-path="url(#p3c8af23909)" style="fill: #0e6e6a; opacity: 0.75"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 268.423399 195.696 
+L 305.476364 195.696 
+L 305.476364 194.280014 
+L 268.423399 194.280014 
+z
+" clip-path="url(#p3c8af23909)" style="fill: #0e6e6a; opacity: 0.75"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mbdc6c0e010" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mbdc6c0e010" x="39.930119" y="195.696" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="39.930119" y="211.054281" transform="rotate(-0 39.930119 211.054281)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mbdc6c0e010" x="101.685059" y="195.696" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="101.685059" y="211.054281" transform="rotate(-0 101.685059 211.054281)">1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mbdc6c0e010" x="163.44" y="195.696" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="163.44" y="211.054281" transform="rotate(-0 163.44 211.054281)">2</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mbdc6c0e010" x="225.194941" y="195.696" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="225.194941" y="211.054281" transform="rotate(-0 225.194941 211.054281)">3</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mbdc6c0e010" x="286.949881" y="195.696" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="286.949881" y="211.054281" transform="rotate(-0 286.949881 211.054281)">4</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="163.44" y="225.700219" transform="rotate(-0 163.44 225.700219)">número de éxitos</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_6">
+    <path d="M 101.685059 195.696 
+L 101.685059 7.2 
+" clip-path="url(#p3c8af23909)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.2"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 7.2 195.696 
+L 319.68 195.696 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="20.168538" y="76.651261" transform="rotate(-0 20.168538 76.651261)">81/256</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="81.923478" y="38.41965" transform="rotate(-0 81.923478 38.41965)">108/256</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="143.678419" y="114.882871" transform="rotate(-0 143.678419 114.882871)">54/256</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="205.43336" y="174.354265" transform="rotate(-0 205.43336 174.354265)">12/256</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="267.1883" y="189.930107" transform="rotate(-0 267.1883 189.930107)">1/256</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="123.299289" y="25.324615" transform="rotate(-0 123.299289 25.324615)">media np = 1</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3c8af23909">
+   <rect x="7.2" y="7.2" width="312.48" height="188.496"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.5: \(B\left(4,\frac14\right)\). La barra de 2 éxitos es \(\frac{54}{256}=\frac{27}{128}\), y \(P(X\ge1)\) es todo menos la primera barra: \(1-\frac{81}{256}=\frac{175}{256}\). Con \(p\lt\frac12\) la distribución se inclina a la izquierda.</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(X\sim B\left(5,\tfrac12\right)\). Halla \(P(X=3)\) y \(P(X\ge1)\).</li><li>\(X\sim B\left(6,\tfrac13\right)\). Halla la media y la desviación típica.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(P(X=3)=\binom53\tfrac1{32}=\tfrac{10}{32}=\tfrac5{16}\); \(P(X\ge1)=1-\tfrac1{32}=\tfrac{31}{32}\).</li><li>\(\mu=2\); \(\sigma=\sqrt{6\cdot\tfrac13\cdot\tfrac23}=\sqrt{\tfrac43}=\tfrac2{\sqrt3}\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.6. El menor número de ensayos</p>
+<p>Una moneda justa se lanza \(n\) veces. Halla el menor \(n\) con \(P(\text{al menos una cara})\gt0{,}95\).</p>
+<p>\(1-\left(\frac12\right)^n\gt0{,}95\iff\left(\frac12\right)^n\lt0{,}05=\frac1{20}\iff2^n\gt20\). Como \(2^4=16\) y \(2^5=32\), el menor valor es \(n=5\). Con logaritmos: \(n\gt\frac{\ln20}{\ln2}\approx4{,}32\). En la Prueba 1 conviene comparar potencias cuando los números lo permiten.</p></div>
+
+<h3 id="t4">1.4 Variables aleatorias continuas (NS)</h3>
+<p>Una función de densidad \(f\) cumple \(f(x)\ge0\) y \(\int f(x)\,dx=1\) sobre su dominio. Entonces:</p>
+\[ P(a\lt X\lt b)=\int_a^bf(x)\,dx,\qquad \mathrm E(X)=\int xf(x)\,dx,\qquad \mathrm{Var}(X)=\int x^2f(x)\,dx-\mu^2 \]
+<ul>
+<li>\(P(X=a)=0\), así que \(\lt\) y \(\le\) dan lo mismo.</li>
+<li><b>Mediana</b> \(m\): \(\int_{-\infty}^{m}f=\tfrac12\). <b>Moda</b>: donde \(f\) alcanza su máximo.</li>
+<li>Si \(f\) es simétrica respecto a \(x=c\), la media y la mediana valen \(c\).</li>
+<li>Con densidades formadas por segmentos rectos, las probabilidades son áreas de triángulos y trapecios, sin integrar.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.7. Densidad lineal</p>
+<p>\(f(x)=kx\) en \([0,2]\). Halla \(k\), \(P(X\lt1)\) y la mediana.</p>
+<p>\(\int_0^2kx\,dx=2k=1\), así que \(k=\tfrac12\). \(P(X\lt1)=\tfrac14\) (área del triángulo pequeño). Mediana: \(\tfrac{m^2}4=\tfrac12\), así que \(m=\sqrt2\).</p>
+<p>Media: \(\int_0^2\tfrac{x^2}2\,dx=\tfrac43\). Varianza: \(\int_0^2\tfrac{x^3}2\,dx-\left(\tfrac43\right)^2=2-\tfrac{16}9=\tfrac29\). Moda: 2, donde \(f\) es máxima.</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 351.373438 231.629937" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 231.629937 
+L 351.373438 231.629937 
+L 351.373438 0 
+L 0 0 
+L 0 231.629937 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 31.693437 206.784 
+L 344.173437 206.784 
+L 344.173437 7.2 
+L 31.693437 7.2 
+L 31.693437 206.784 
+z
+" style="fill: none"/>
+   </g>
+   <g id="FillBetweenPolyCollection_1">
+    <defs>
+     <path id="m35479d92ff" d="M 45.897074 -24.845938 
+L 45.897074 -24.845938 
+L 47.926061 -25.986359 
+L 49.955049 -27.126781 
+L 51.984036 -28.267203 
+L 54.013023 -29.407625 
+L 56.042011 -30.548047 
+L 58.070998 -31.688468 
+L 60.099986 -32.82889 
+L 62.128973 -33.969312 
+L 64.15796 -35.109734 
+L 66.186948 -36.250156 
+L 68.215935 -37.390577 
+L 70.244923 -38.530999 
+L 72.27391 -39.671421 
+L 74.302897 -40.811843 
+L 76.331885 -41.952265 
+L 78.360872 -43.092687 
+L 80.38986 -44.233108 
+L 82.418847 -45.37353 
+L 84.447834 -46.513952 
+L 86.476822 -47.654374 
+L 88.505809 -48.794796 
+L 90.534796 -49.935217 
+L 92.563784 -51.075639 
+L 94.592771 -52.216061 
+L 96.621759 -53.356483 
+L 98.650746 -54.496905 
+L 100.679733 -55.637327 
+L 102.708721 -56.777748 
+L 104.737708 -57.91817 
+L 106.766696 -59.058592 
+L 108.795683 -60.199014 
+L 110.82467 -61.339436 
+L 112.853658 -62.479857 
+L 114.882645 -63.620279 
+L 116.911633 -64.760701 
+L 118.94062 -65.901123 
+L 120.969607 -67.041545 
+L 122.998595 -68.181967 
+L 125.027582 -69.322388 
+L 127.05657 -70.46281 
+L 129.085557 -71.603232 
+L 131.114544 -72.743654 
+L 133.143532 -73.884076 
+L 135.172519 -75.024497 
+L 137.201507 -76.164919 
+L 139.230494 -77.305341 
+L 141.259481 -78.445763 
+L 143.288469 -79.586185 
+L 145.317456 -80.726607 
+L 147.346443 -81.867028 
+L 149.375431 -83.00745 
+L 151.404418 -84.147872 
+L 153.433406 -85.288294 
+L 155.462393 -86.428716 
+L 157.49138 -87.569137 
+L 159.520368 -88.709559 
+L 161.549355 -89.849981 
+L 163.578343 -90.990403 
+L 165.60733 -92.130825 
+L 167.636317 -93.271247 
+L 169.665305 -94.411668 
+L 171.694292 -95.55209 
+L 173.72328 -96.692512 
+L 175.752267 -97.832934 
+L 177.781254 -98.973356 
+L 179.810242 -100.113777 
+L 181.839229 -101.254199 
+L 183.868217 -102.394621 
+L 185.897204 -103.535043 
+L 187.926191 -104.675465 
+L 189.955179 -105.815886 
+L 191.984166 -106.956308 
+L 194.013153 -108.09673 
+L 196.042141 -109.237152 
+L 198.071128 -110.377574 
+L 200.100116 -111.517996 
+L 202.129103 -112.658417 
+L 204.15809 -113.798839 
+L 206.187078 -114.939261 
+L 208.216065 -116.079683 
+L 210.245053 -117.220105 
+L 212.27404 -118.360526 
+L 214.303027 -119.500948 
+L 216.332015 -120.64137 
+L 218.361002 -121.781792 
+L 220.38999 -122.922214 
+L 222.418977 -124.062636 
+L 224.447964 -125.203057 
+L 226.476952 -126.343479 
+L 228.505939 -127.483901 
+L 230.534927 -128.624323 
+L 232.563914 -129.764745 
+L 234.592901 -130.905166 
+L 236.621889 -132.045588 
+L 238.650876 -133.18601 
+L 240.679863 -134.326432 
+L 242.708851 -135.466854 
+L 244.737838 -136.607276 
+L 246.766826 -137.747697 
+L 246.766826 -24.845938 
+L 246.766826 -24.845938 
+L 244.737838 -24.845938 
+L 242.708851 -24.845938 
+L 240.679863 -24.845938 
+L 238.650876 -24.845938 
+L 236.621889 -24.845938 
+L 234.592901 -24.845938 
+L 232.563914 -24.845938 
+L 230.534927 -24.845938 
+L 228.505939 -24.845938 
+L 226.476952 -24.845938 
+L 224.447964 -24.845938 
+L 222.418977 -24.845938 
+L 220.38999 -24.845938 
+L 218.361002 -24.845938 
+L 216.332015 -24.845938 
+L 214.303027 -24.845938 
+L 212.27404 -24.845938 
+L 210.245053 -24.845938 
+L 208.216065 -24.845938 
+L 206.187078 -24.845938 
+L 204.15809 -24.845938 
+L 202.129103 -24.845938 
+L 200.100116 -24.845938 
+L 198.071128 -24.845938 
+L 196.042141 -24.845938 
+L 194.013153 -24.845938 
+L 191.984166 -24.845938 
+L 189.955179 -24.845938 
+L 187.926191 -24.845938 
+L 185.897204 -24.845938 
+L 183.868217 -24.845938 
+L 181.839229 -24.845938 
+L 179.810242 -24.845938 
+L 177.781254 -24.845938 
+L 175.752267 -24.845938 
+L 173.72328 -24.845938 
+L 171.694292 -24.845938 
+L 169.665305 -24.845938 
+L 167.636317 -24.845938 
+L 165.60733 -24.845938 
+L 163.578343 -24.845938 
+L 161.549355 -24.845938 
+L 159.520368 -24.845938 
+L 157.49138 -24.845938 
+L 155.462393 -24.845938 
+L 153.433406 -24.845938 
+L 151.404418 -24.845938 
+L 149.375431 -24.845938 
+L 147.346443 -24.845938 
+L 145.317456 -24.845938 
+L 143.288469 -24.845938 
+L 141.259481 -24.845938 
+L 139.230494 -24.845938 
+L 137.201507 -24.845938 
+L 135.172519 -24.845938 
+L 133.143532 -24.845938 
+L 131.114544 -24.845938 
+L 129.085557 -24.845938 
+L 127.05657 -24.845938 
+L 125.027582 -24.845938 
+L 122.998595 -24.845938 
+L 120.969607 -24.845938 
+L 118.94062 -24.845938 
+L 116.911633 -24.845938 
+L 114.882645 -24.845938 
+L 112.853658 -24.845938 
+L 110.82467 -24.845938 
+L 108.795683 -24.845938 
+L 106.766696 -24.845938 
+L 104.737708 -24.845938 
+L 102.708721 -24.845938 
+L 100.679733 -24.845938 
+L 98.650746 -24.845938 
+L 96.621759 -24.845938 
+L 94.592771 -24.845938 
+L 92.563784 -24.845938 
+L 90.534796 -24.845938 
+L 88.505809 -24.845938 
+L 86.476822 -24.845938 
+L 84.447834 -24.845938 
+L 82.418847 -24.845938 
+L 80.38986 -24.845938 
+L 78.360872 -24.845938 
+L 76.331885 -24.845938 
+L 74.302897 -24.845938 
+L 72.27391 -24.845938 
+L 70.244923 -24.845938 
+L 68.215935 -24.845938 
+L 66.186948 -24.845938 
+L 64.15796 -24.845938 
+L 62.128973 -24.845938 
+L 60.099986 -24.845938 
+L 58.070998 -24.845938 
+L 56.042011 -24.845938 
+L 54.013023 -24.845938 
+L 51.984036 -24.845938 
+L 49.955049 -24.845938 
+L 47.926061 -24.845938 
+L 45.897074 -24.845938 
+z
+" style="stroke: #a2530a; stroke-opacity: 0.35"/>
+    </defs>
+    <g clip-path="url(#pa879c6ef18)">
+     <use xlink:href="#m35479d92ff" x="0" y="231.629937" style="fill: #a2530a; fill-opacity: 0.35; stroke: #a2530a; stroke-opacity: 0.35"/>
+    </g>
+   </g>
+   <g id="FillBetweenPolyCollection_2">
+    <defs>
+     <path id="mefc543f71e" d="M 45.897074 -24.845938 
+L 45.897074 -24.845938 
+L 48.795775 -26.475195 
+L 51.694476 -28.104452 
+L 54.593178 -29.733709 
+L 57.491879 -31.362966 
+L 60.39058 -32.992223 
+L 63.289282 -34.62148 
+L 66.187983 -36.250737 
+L 69.086684 -37.879995 
+L 71.985386 -39.509252 
+L 74.884087 -41.138509 
+L 77.782788 -42.767766 
+L 80.681489 -44.397023 
+L 83.580191 -46.02628 
+L 86.478892 -47.655538 
+L 89.377593 -49.284795 
+L 92.276295 -50.914052 
+L 95.174996 -52.543309 
+L 98.073697 -54.172566 
+L 100.972399 -55.801823 
+L 103.8711 -57.43108 
+L 106.769801 -59.060338 
+L 109.668502 -60.689595 
+L 112.567204 -62.318852 
+L 115.465905 -63.948109 
+L 118.364606 -65.577366 
+L 121.263308 -67.206623 
+L 124.162009 -68.83588 
+L 127.06071 -70.465137 
+L 129.959412 -72.094395 
+L 132.858113 -73.723652 
+L 135.756814 -75.352909 
+L 138.655515 -76.982166 
+L 141.554217 -78.611423 
+L 144.452918 -80.24068 
+L 147.351619 -81.869937 
+L 150.250321 -83.499195 
+L 153.149022 -85.128452 
+L 156.047723 -86.757709 
+L 158.946425 -88.386966 
+L 161.845126 -90.016223 
+L 164.743827 -91.64548 
+L 167.642528 -93.274738 
+L 170.54123 -94.903995 
+L 173.439931 -96.533252 
+L 176.338632 -98.162509 
+L 179.237334 -99.791766 
+L 182.136035 -101.421023 
+L 185.034736 -103.05028 
+L 187.933437 -104.679538 
+L 187.933437 -24.845938 
+L 187.933437 -24.845938 
+L 185.034736 -24.845938 
+L 182.136035 -24.845938 
+L 179.237334 -24.845938 
+L 176.338632 -24.845938 
+L 173.439931 -24.845938 
+L 170.54123 -24.845938 
+L 167.642528 -24.845938 
+L 164.743827 -24.845938 
+L 161.845126 -24.845938 
+L 158.946425 -24.845938 
+L 156.047723 -24.845938 
+L 153.149022 -24.845938 
+L 150.250321 -24.845938 
+L 147.351619 -24.845938 
+L 144.452918 -24.845938 
+L 141.554217 -24.845938 
+L 138.655515 -24.845938 
+L 135.756814 -24.845938 
+L 132.858113 -24.845938 
+L 129.959412 -24.845938 
+L 127.06071 -24.845938 
+L 124.162009 -24.845938 
+L 121.263308 -24.845938 
+L 118.364606 -24.845938 
+L 115.465905 -24.845938 
+L 112.567204 -24.845938 
+L 109.668502 -24.845938 
+L 106.769801 -24.845938 
+L 103.8711 -24.845938 
+L 100.972399 -24.845938 
+L 98.073697 -24.845938 
+L 95.174996 -24.845938 
+L 92.276295 -24.845938 
+L 89.377593 -24.845938 
+L 86.478892 -24.845938 
+L 83.580191 -24.845938 
+L 80.681489 -24.845938 
+L 77.782788 -24.845938 
+L 74.884087 -24.845938 
+L 71.985386 -24.845938 
+L 69.086684 -24.845938 
+L 66.187983 -24.845938 
+L 63.289282 -24.845938 
+L 60.39058 -24.845938 
+L 57.491879 -24.845938 
+L 54.593178 -24.845938 
+L 51.694476 -24.845938 
+L 48.795775 -24.845938 
+L 45.897074 -24.845938 
+z
+" style="stroke: #5a3d9a; stroke-opacity: 0.35"/>
+    </defs>
+    <g clip-path="url(#pa879c6ef18)">
+     <use xlink:href="#mefc543f71e" x="0" y="231.629937" style="fill: #5a3d9a; fill-opacity: 0.35; stroke: #5a3d9a; stroke-opacity: 0.35"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m3debf3d237" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m3debf3d237" x="45.897074" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="45.897074" y="222.142281" transform="rotate(-0 45.897074 222.142281)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m3debf3d237" x="187.933437" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="187.933437" y="222.142281" transform="rotate(-0 187.933437 222.142281)">1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m3debf3d237" x="329.969801" y="206.784" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="329.969801" y="222.142281" transform="rotate(-0 329.969801 222.142281)">2</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <defs>
+       <path id="mc256ff2ba1" d="M 0 0 
+L -3.5 0 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mc256ff2ba1" x="31.693437" y="126.9504" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="24.693437" y="131.129541" transform="rotate(-0 24.693437 131.129541)">0,5</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mc256ff2ba1" x="31.693437" y="47.1168" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="24.693437" y="51.295941" transform="rotate(-0 24.693437 51.295941)">1</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_6">
+    <path d="M 45.897074 206.784 
+L 48.766495 205.1712 
+L 51.635917 203.5584 
+L 54.505338 201.9456 
+L 57.37476 200.3328 
+L 60.244181 198.72 
+L 63.113603 197.1072 
+L 65.983024 195.4944 
+L 68.852446 193.8816 
+L 71.721867 192.2688 
+L 74.591289 190.656 
+L 77.46071 189.0432 
+L 80.330132 187.4304 
+L 83.199553 185.8176 
+L 86.068975 184.2048 
+L 88.938396 182.592 
+L 91.807818 180.9792 
+L 94.677239 179.3664 
+L 97.546661 177.7536 
+L 100.416082 176.1408 
+L 103.285504 174.528 
+L 106.154925 172.9152 
+L 109.024347 171.3024 
+L 111.893768 169.6896 
+L 114.76319 168.0768 
+L 117.632611 166.464 
+L 120.502033 164.8512 
+L 123.371454 163.2384 
+L 126.240876 161.6256 
+L 129.110297 160.0128 
+L 131.979718 158.4 
+L 134.84914 156.7872 
+L 137.718561 155.1744 
+L 140.587983 153.5616 
+L 143.457404 151.9488 
+L 146.326826 150.336 
+L 149.196247 148.7232 
+L 152.065669 147.1104 
+L 154.93509 145.4976 
+L 157.804512 143.8848 
+L 160.673933 142.272 
+L 163.543355 140.6592 
+L 166.412776 139.0464 
+L 169.282198 137.4336 
+L 172.151619 135.8208 
+L 175.021041 134.208 
+L 177.890462 132.5952 
+L 180.759884 130.9824 
+L 183.629305 129.3696 
+L 186.498727 127.7568 
+L 189.368148 126.144 
+L 192.23757 124.5312 
+L 195.106991 122.9184 
+L 197.976413 121.3056 
+L 200.845834 119.6928 
+L 203.715256 118.08 
+L 206.584677 116.4672 
+L 209.454099 114.8544 
+L 212.32352 113.2416 
+L 215.192942 111.6288 
+L 218.062363 110.016 
+L 220.931785 108.4032 
+L 223.801206 106.7904 
+L 226.670628 105.1776 
+L 229.540049 103.5648 
+L 232.409471 101.952 
+L 235.278892 100.3392 
+L 238.148314 98.7264 
+L 241.017735 97.1136 
+L 243.887157 95.5008 
+L 246.756578 93.888 
+L 249.625999 92.2752 
+L 252.495421 90.6624 
+L 255.364842 89.0496 
+L 258.234264 87.4368 
+L 261.103685 85.824 
+L 263.973107 84.2112 
+L 266.842528 82.5984 
+L 269.71195 80.9856 
+L 272.581371 79.3728 
+L 275.450793 77.76 
+L 278.320214 76.1472 
+L 281.189636 74.5344 
+L 284.059057 72.9216 
+L 286.928479 71.3088 
+L 289.7979 69.696 
+L 292.667322 68.0832 
+L 295.536743 66.4704 
+L 298.406165 64.8576 
+L 301.275586 63.2448 
+L 304.145008 61.632 
+L 307.014429 60.0192 
+L 309.883851 58.4064 
+L 312.753272 56.7936 
+L 315.622694 55.1808 
+L 318.492115 53.568 
+L 321.361537 51.9552 
+L 324.230958 50.3424 
+L 327.10038 48.7296 
+L 329.969801 47.1168 
+" clip-path="url(#pa879c6ef18)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 329.969801 206.784 
+L 329.969801 47.1168 
+" clip-path="url(#pa879c6ef18)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #0e6e6a"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 246.766826 206.784 
+L 246.766826 7.2 
+" clip-path="url(#pa879c6ef18)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #a2530a; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 235.278892 206.784 
+L 235.278892 7.2 
+" clip-path="url(#pa879c6ef18)" style="fill: none; stroke-dasharray: 1.2,1.98; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.2"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 31.693437 206.784 
+L 31.693437 7.2 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 31.693437 206.784 
+L 344.173437 206.784 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #5a3d9a" x="187.933437" y="69.470208" transform="rotate(-0 187.933437 69.470208)">media 4/3</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="251.027917" y="82.243584" transform="rotate(-0 251.027917 82.243584)">√2</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_10">
+     <path d="M 40.243437 19.643516 
+L 49.743437 19.643516 
+L 59.243437 19.643516 
+" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="66.843437" y="22.968516" transform="rotate(-0 66.843437 22.968516)">f(x) = x/2, 0 ≤ x ≤ 2</text>
+    </g>
+    <g id="patch_5">
+     <path d="M 40.243437 36.912734 
+L 59.243437 36.912734 
+L 59.243437 30.262734 
+L 40.243437 30.262734 
+z
+" style="fill: #a2530a; fill-opacity: 0.35; stroke: #a2530a; stroke-opacity: 0.35; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="66.843437" y="36.912734" transform="rotate(-0 66.843437 36.912734)">área 1/2 hasta la mediana √2</text>
+    </g>
+    <g id="patch_6">
+     <path d="M 40.243437 50.856953 
+L 59.243437 50.856953 
+L 59.243437 44.206953 
+L 40.243437 44.206953 
+z
+" style="fill: #5a3d9a; fill-opacity: 0.35; stroke: #5a3d9a; stroke-opacity: 0.35; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="66.843437" y="50.856953" transform="rotate(-0 66.843437 50.856953)">P(X &lt; 1) = 1/4</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa879c6ef18">
+   <rect x="31.693437" y="7.2" width="312.48" height="199.584"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.7: la densidad \(f(x)=\frac x2\) en \([0,2]\). La mediana \(\sqrt2\) parte el área en dos mitades; la media, \(\frac43\), queda a su izquierda porque la cola está a la izquierda.</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(f(x)=kx\) en \([0,3]\). Halla \(k\), \(P(X\lt2)\) y la mediana.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\tfrac92k=1\Rightarrow k=\tfrac29\). \(P(X\lt2)=\tfrac{4}{9}\). Mediana: \(\tfrac{m^2}9=\tfrac12\Rightarrow m=\tfrac3{\sqrt2}=\tfrac{3\sqrt2}2\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.8. La mediana en el segundo tramo</p>
+<p>\(f(x)=\frac x2\) en \([0,1]\) y \(f(x)=\frac{4-x}6\) en \([1,4]\) (un triángulo de base \([0,4]\) y vértice en \((1,\frac12)\)). Halla la mediana.</p>
+<p>El primer tramo tiene área \(\frac12\cdot1\cdot\frac12=\frac14\lt\frac12\): la mediana está en el segundo. Trabajando desde la derecha, el triángulo de \(m\) a 4 tiene área \(\frac12(4-m)\cdot\frac{4-m}6=\frac{(4-m)^2}{12}=\frac12\). Así \((4-m)^2=6\) y \(m=4-\sqrt6\) (el signo \(+\) queda fuera de \([1,4]\)).</p>
+<p>Es la situación contraria a la de mayo 2022 TZ2 P8: allí la condición sobre \(c\) colocaba la mediana en el primer tramo.</p></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2022 TZ2, P8)</p><p>En la densidad triangular, la condición \(c\ge\tfrac{a+b}2\) garantiza que la mediana está en el primer tramo. Si pones la mediana en el segundo tramo, pierdes casi toda la pregunta: el markscheme lo trata explícitamente.</p></div>
+
+<h3 id="t5">1.5 Función de distribución, cuantiles y \(\mathrm E(g(X))\)</h3>
+<p>La <b>función de distribución</b> de una variable continua es \(F(x)=P(X\le x)=\int_{-\infty}^xf(t)\,dt\). Es creciente, va de 0 a 1, y \(F'(x)=f(x)\).</p>
+<ul>
+<li><b>Cuantiles:</b> la mediana cumple \(F(m)=\frac12\); los cuartiles, \(F(Q_1)=\frac14\) y \(F(Q_3)=\frac34\). El rango intercuartílico es \(Q_3-Q_1\).</li>
+<li><b>Esperanza de una función:</b> \(\mathrm E(g(X))=\int g(x)f(x)\,dx\). En general \(\mathrm E\!\left(\frac1X\right)\ne\frac1{\mathrm E(X)}\) y \(\mathrm E(X^2)\ne\mathrm E(X)^2\).</li>
+<li><b>Probabilidades con \(F\):</b> \(P(a\lt X\le b)=F(b)-F(a)\), sin volver a integrar.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.9. Cuartiles y una esperanza que no se invierte</p>
+<p>\(f(x)=\frac38x^2\) en \([0,2]\). Halla \(F\), la mediana, el rango intercuartílico, \(\mathrm E(X)\), \(\mathrm{Var}(X)\) y \(\mathrm E\!\left(\frac1X\right)\).</p>
+<p>\(F(x)=\frac{x^3}8\) en \([0,2]\). Entonces \(m=\sqrt[3]4\), \(Q_1=\sqrt[3]2\), \(Q_3=\sqrt[3]6\), y el rango intercuartílico es \(\sqrt[3]6-\sqrt[3]2\).</p>
+<p>\(\mathrm E(X)=\int_0^2\frac38x^3dx=\frac32\) y \(\mathrm E(X^2)=\int_0^2\frac38x^4dx=\frac{12}5\), así que \(\mathrm{Var}(X)=\frac{12}5-\frac94=\frac3{20}\). Además \(\mathrm E\!\left(\frac1X\right)=\int_0^2\frac38x\,dx=\frac34\), que no es \(\frac1{3/2}=\frac23\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(f(x)=\tfrac38x^2\) en \([0,2]\). Halla \(\mathrm E(X)\) y \(\mathrm E\!\left(\tfrac1X\right)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\mathrm E(X)=\int_0^2\tfrac38x^3\,dx=\tfrac32\); \(\mathrm E\!\left(\tfrac1X\right)=\int_0^2\tfrac38x\,dx=\tfrac34\neq\tfrac23\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.10. Densidad cuadrática y su función de distribución</p>
+<p>\(f(x)=k(4-x^2)\) en \([0,2]\). Halla \(k\), \(F(x)\), \(P(X\lt1)\) y la moda.</p>
+<p>\(k\int_0^2(4-x^2)dx=\frac{16}3k=1\), así que \(k=\frac3{16}\). \(F(x)=\frac3{16}\left(4x-\frac{x^3}3\right)\) y \(P(X\lt1)=F(1)=\frac{11}{16}\). La moda es 0, donde \(f\) es máxima: la masa se concentra a la izquierda.</p></div>
+
+<h3 id="t6">1.6 Distribución normal</h3>
+<p>\(X\sim N(\mu,\sigma^2)\): curva de campana simétrica respecto a \(\mu\), donde media = mediana = moda. Unos \(\tfrac23\) de los datos están en \(\mu\pm\sigma\), el 95 % en \(\mu\pm2\sigma\) y el 99,7 % en \(\mu\pm3\sigma\).</p>
+<ul>
+<li><b>Tipificar:</b> \(Z=\dfrac{X-\mu}{\sigma}\sim N(0,1)\).</li>
+<li><b>Simetría:</b> \(P(X\lt\mu-a)=P(X\gt\mu+a)\) y \(P(X\lt\mu)=\tfrac12\).</li>
+<li>En la Prueba 1 se razona con la simetría o con valores \(z\) dados. Las probabilidades concretas se calculan en la Prueba 2.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.11. Simetría</p>
+<p>\(X\sim N(50,\sigma^2)\) y \(P(X\lt42)=0{,}15\). Halla \(P(42\lt X\lt58)\) y \(P(X\gt58\mid X\gt50)\).</p>
+<p>Por simetría, \(P(X\gt58)=0{,}15\). Así \(P(42\lt X\lt58)=0{,}7\) y \(P(X\gt58\mid X\gt50)=\tfrac{0{,}15}{0{,}5}=0{,}3\).</p></div>
+<figure style="margin:20px 0;color:var(--ink);max-width:640px"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 371.52 220.541937" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 220.541937 
+L 371.52 220.541937 
+L 371.52 -0 
+L 0 -0 
+L 0 220.541937 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 195.696 
+L 364.32 195.696 
+L 364.32 7.2 
+L 7.2 7.2 
+L 7.2 195.696 
+z
+" style="fill: none"/>
+   </g>
+   <g id="FillBetweenPolyCollection_1">
+    <defs>
+     <path id="ma183320c82" d="M 23.432727 -33.413938 
+L 23.432727 -33.471425 
+L 24.246398 -33.476213 
+L 25.060068 -33.481373 
+L 25.873739 -33.486931 
+L 26.687409 -33.492915 
+L 27.50108 -33.499355 
+L 28.314751 -33.506283 
+L 29.128421 -33.513733 
+L 29.942092 -33.521741 
+L 30.755762 -33.530345 
+L 31.569433 -33.539585 
+L 32.383103 -33.549503 
+L 33.196774 -33.560146 
+L 34.010444 -33.571561 
+L 34.824115 -33.583799 
+L 35.637785 -33.596913 
+L 36.451456 -33.610961 
+L 37.265126 -33.626002 
+L 38.078797 -33.6421 
+L 38.892468 -33.65932 
+L 39.706138 -33.677735 
+L 40.519809 -33.697417 
+L 41.333479 -33.718445 
+L 42.14715 -33.740902 
+L 42.96082 -33.764874 
+L 43.774491 -33.790452 
+L 44.588161 -33.817732 
+L 45.401832 -33.846815 
+L 46.215502 -33.877805 
+L 47.029173 -33.910814 
+L 47.842843 -33.945959 
+L 48.656514 -33.98336 
+L 49.470185 -34.023146 
+L 50.283855 -34.065449 
+L 51.097526 -34.11041 
+L 51.911196 -34.158175 
+L 52.724867 -34.208896 
+L 53.538537 -34.262732 
+L 54.352208 -34.319849 
+L 55.165878 -34.380422 
+L 55.979549 -34.44463 
+L 56.793219 -34.512662 
+L 57.60689 -34.584714 
+L 58.42056 -34.66099 
+L 59.234231 -34.741701 
+L 60.047902 -34.827067 
+L 60.861572 -34.917318 
+L 61.675243 -35.012689 
+L 62.488913 -35.113428 
+L 63.302584 -35.219787 
+L 64.116254 -35.332033 
+L 64.929925 -35.450435 
+L 65.743595 -35.575278 
+L 66.557266 -35.706852 
+L 67.370936 -35.845458 
+L 68.184607 -35.991407 
+L 68.998278 -36.145017 
+L 69.811948 -36.30662 
+L 70.625619 -36.476553 
+L 71.439289 -36.655166 
+L 72.25296 -36.842817 
+L 73.06663 -37.039873 
+L 73.880301 -37.246714 
+L 74.693971 -37.463725 
+L 75.507642 -37.691304 
+L 76.321312 -37.929856 
+L 77.134983 -38.179795 
+L 77.948653 -38.441547 
+L 78.762324 -38.715542 
+L 79.575995 -39.002223 
+L 80.389665 -39.302038 
+L 81.203336 -39.615445 
+L 82.017006 -39.942909 
+L 82.830677 -40.284901 
+L 83.644347 -40.641901 
+L 84.458018 -41.014394 
+L 85.271688 -41.402871 
+L 86.085359 -41.807828 
+L 86.899029 -42.229768 
+L 87.7127 -42.669197 
+L 88.52637 -43.126624 
+L 89.340041 -43.602561 
+L 90.153712 -44.097525 
+L 90.967382 -44.612031 
+L 91.781053 -45.146598 
+L 92.594723 -45.701742 
+L 93.408394 -46.277982 
+L 94.222064 -46.875831 
+L 95.035735 -47.495803 
+L 95.849405 -48.138406 
+L 96.663076 -48.804146 
+L 97.476746 -49.49352 
+L 98.290417 -50.207021 
+L 99.104087 -50.945134 
+L 99.917758 -51.708333 
+L 100.731429 -52.497083 
+L 101.545099 -53.31184 
+L 102.35877 -54.153043 
+L 103.17244 -55.021121 
+L 103.986111 -55.916487 
+L 104.799781 -56.839536 
+L 105.613452 -57.790646 
+L 106.427122 -58.770177 
+L 107.240793 -59.778468 
+L 108.054463 -60.815836 
+L 108.868134 -61.882574 
+L 109.681805 -62.978952 
+L 110.495475 -64.105213 
+L 111.309146 -65.261572 
+L 112.122816 -66.448217 
+L 112.936487 -67.665304 
+L 113.750157 -68.912959 
+L 114.563828 -70.191274 
+L 115.377498 -71.500307 
+L 116.191169 -72.84008 
+L 117.004839 -74.210578 
+L 117.81851 -75.61175 
+L 118.63218 -77.043502 
+L 119.445851 -78.505702 
+L 120.259522 -79.998175 
+L 121.073192 -81.520703 
+L 121.886863 -83.073026 
+L 122.700533 -84.654836 
+L 123.514204 -86.265781 
+L 124.327874 -87.905461 
+L 125.141545 -89.57343 
+L 125.955215 -91.269192 
+L 126.768886 -92.992203 
+L 127.582556 -94.741868 
+L 128.396227 -96.517543 
+L 129.209897 -98.318533 
+L 130.023568 -100.144093 
+L 130.837239 -101.993424 
+L 131.650909 -103.86568 
+L 132.46458 -105.759959 
+L 133.27825 -107.675312 
+L 134.091921 -109.610735 
+L 134.905591 -111.565176 
+L 135.719262 -113.537532 
+L 136.532932 -115.526649 
+L 137.346603 -117.531324 
+L 138.160273 -119.550307 
+L 138.973944 -121.582297 
+L 139.787614 -123.62595 
+L 140.601285 -125.679874 
+L 141.414956 -127.742632 
+L 142.228626 -129.812746 
+L 143.042297 -131.888694 
+L 143.042297 -33.413938 
+L 143.042297 -33.413938 
+L 142.228626 -33.413938 
+L 141.414956 -33.413938 
+L 140.601285 -33.413938 
+L 139.787614 -33.413938 
+L 138.973944 -33.413938 
+L 138.160273 -33.413938 
+L 137.346603 -33.413938 
+L 136.532932 -33.413938 
+L 135.719262 -33.413938 
+L 134.905591 -33.413938 
+L 134.091921 -33.413938 
+L 133.27825 -33.413938 
+L 132.46458 -33.413938 
+L 131.650909 -33.413938 
+L 130.837239 -33.413938 
+L 130.023568 -33.413938 
+L 129.209897 -33.413938 
+L 128.396227 -33.413938 
+L 127.582556 -33.413938 
+L 126.768886 -33.413938 
+L 125.955215 -33.413938 
+L 125.141545 -33.413938 
+L 124.327874 -33.413938 
+L 123.514204 -33.413938 
+L 122.700533 -33.413938 
+L 121.886863 -33.413938 
+L 121.073192 -33.413938 
+L 120.259522 -33.413938 
+L 119.445851 -33.413938 
+L 118.63218 -33.413938 
+L 117.81851 -33.413938 
+L 117.004839 -33.413938 
+L 116.191169 -33.413938 
+L 115.377498 -33.413938 
+L 114.563828 -33.413938 
+L 113.750157 -33.413938 
+L 112.936487 -33.413938 
+L 112.122816 -33.413938 
+L 111.309146 -33.413938 
+L 110.495475 -33.413938 
+L 109.681805 -33.413938 
+L 108.868134 -33.413938 
+L 108.054463 -33.413938 
+L 107.240793 -33.413938 
+L 106.427122 -33.413938 
+L 105.613452 -33.413938 
+L 104.799781 -33.413938 
+L 103.986111 -33.413938 
+L 103.17244 -33.413938 
+L 102.35877 -33.413938 
+L 101.545099 -33.413938 
+L 100.731429 -33.413938 
+L 99.917758 -33.413938 
+L 99.104087 -33.413938 
+L 98.290417 -33.413938 
+L 97.476746 -33.413938 
+L 96.663076 -33.413938 
+L 95.849405 -33.413938 
+L 95.035735 -33.413938 
+L 94.222064 -33.413938 
+L 93.408394 -33.413938 
+L 92.594723 -33.413938 
+L 91.781053 -33.413938 
+L 90.967382 -33.413938 
+L 90.153712 -33.413938 
+L 89.340041 -33.413938 
+L 88.52637 -33.413938 
+L 87.7127 -33.413938 
+L 86.899029 -33.413938 
+L 86.085359 -33.413938 
+L 85.271688 -33.413938 
+L 84.458018 -33.413938 
+L 83.644347 -33.413938 
+L 82.830677 -33.413938 
+L 82.017006 -33.413938 
+L 81.203336 -33.413938 
+L 80.389665 -33.413938 
+L 79.575995 -33.413938 
+L 78.762324 -33.413938 
+L 77.948653 -33.413938 
+L 77.134983 -33.413938 
+L 76.321312 -33.413938 
+L 75.507642 -33.413938 
+L 74.693971 -33.413938 
+L 73.880301 -33.413938 
+L 73.06663 -33.413938 
+L 72.25296 -33.413938 
+L 71.439289 -33.413938 
+L 70.625619 -33.413938 
+L 69.811948 -33.413938 
+L 68.998278 -33.413938 
+L 68.184607 -33.413938 
+L 67.370936 -33.413938 
+L 66.557266 -33.413938 
+L 65.743595 -33.413938 
+L 64.929925 -33.413938 
+L 64.116254 -33.413938 
+L 63.302584 -33.413938 
+L 62.488913 -33.413938 
+L 61.675243 -33.413938 
+L 60.861572 -33.413938 
+L 60.047902 -33.413938 
+L 59.234231 -33.413938 
+L 58.42056 -33.413938 
+L 57.60689 -33.413938 
+L 56.793219 -33.413938 
+L 55.979549 -33.413938 
+L 55.165878 -33.413938 
+L 54.352208 -33.413938 
+L 53.538537 -33.413938 
+L 52.724867 -33.413938 
+L 51.911196 -33.413938 
+L 51.097526 -33.413938 
+L 50.283855 -33.413938 
+L 49.470185 -33.413938 
+L 48.656514 -33.413938 
+L 47.842843 -33.413938 
+L 47.029173 -33.413938 
+L 46.215502 -33.413938 
+L 45.401832 -33.413938 
+L 44.588161 -33.413938 
+L 43.774491 -33.413938 
+L 42.96082 -33.413938 
+L 42.14715 -33.413938 
+L 41.333479 -33.413938 
+L 40.519809 -33.413938 
+L 39.706138 -33.413938 
+L 38.892468 -33.413938 
+L 38.078797 -33.413938 
+L 37.265126 -33.413938 
+L 36.451456 -33.413938 
+L 35.637785 -33.413938 
+L 34.824115 -33.413938 
+L 34.010444 -33.413938 
+L 33.196774 -33.413938 
+L 32.383103 -33.413938 
+L 31.569433 -33.413938 
+L 30.755762 -33.413938 
+L 29.942092 -33.413938 
+L 29.128421 -33.413938 
+L 28.314751 -33.413938 
+L 27.50108 -33.413938 
+L 26.687409 -33.413938 
+L 25.873739 -33.413938 
+L 25.060068 -33.413938 
+L 24.246398 -33.413938 
+L 23.432727 -33.413938 
+z
+" style="stroke: #a2530a; stroke-opacity: 0.35"/>
+    </defs>
+    <g clip-path="url(#p7af9c9a52c)">
+     <use xlink:href="#ma183320c82" x="0" y="220.541937" style="fill: #a2530a; fill-opacity: 0.35; stroke: #a2530a; stroke-opacity: 0.35"/>
+    </g>
+   </g>
+   <g id="FillBetweenPolyCollection_2">
+    <defs>
+     <path id="m9742e9c435" d="M 228.477703 -33.413938 
+L 228.477703 -131.888694 
+L 229.291374 -129.812746 
+L 230.105044 -127.742632 
+L 230.918715 -125.679874 
+L 231.732386 -123.62595 
+L 232.546056 -121.582297 
+L 233.359727 -119.550307 
+L 234.173397 -117.531324 
+L 234.987068 -115.526649 
+L 235.800738 -113.537532 
+L 236.614409 -111.565176 
+L 237.428079 -109.610735 
+L 238.24175 -107.675312 
+L 239.05542 -105.759959 
+L 239.869091 -103.86568 
+L 240.682761 -101.993424 
+L 241.496432 -100.144093 
+L 242.310103 -98.318533 
+L 243.123773 -96.517543 
+L 243.937444 -94.741868 
+L 244.751114 -92.992203 
+L 245.564785 -91.269192 
+L 246.378455 -89.57343 
+L 247.192126 -87.905461 
+L 248.005796 -86.265781 
+L 248.819467 -84.654836 
+L 249.633137 -83.073026 
+L 250.446808 -81.520703 
+L 251.260478 -79.998175 
+L 252.074149 -78.505702 
+L 252.88782 -77.043502 
+L 253.70149 -75.61175 
+L 254.515161 -74.210578 
+L 255.328831 -72.84008 
+L 256.142502 -71.500307 
+L 256.956172 -70.191274 
+L 257.769843 -68.912959 
+L 258.583513 -67.665304 
+L 259.397184 -66.448217 
+L 260.210854 -65.261572 
+L 261.024525 -64.105213 
+L 261.838195 -62.978952 
+L 262.651866 -61.882574 
+L 263.465537 -60.815836 
+L 264.279207 -59.778468 
+L 265.092878 -58.770177 
+L 265.906548 -57.790646 
+L 266.720219 -56.839536 
+L 267.533889 -55.916487 
+L 268.34756 -55.021121 
+L 269.16123 -54.153043 
+L 269.974901 -53.31184 
+L 270.788571 -52.497083 
+L 271.602242 -51.708333 
+L 272.415913 -50.945134 
+L 273.229583 -50.207021 
+L 274.043254 -49.49352 
+L 274.856924 -48.804146 
+L 275.670595 -48.138406 
+L 276.484265 -47.495803 
+L 277.297936 -46.875831 
+L 278.111606 -46.277982 
+L 278.925277 -45.701742 
+L 279.738947 -45.146598 
+L 280.552618 -44.612031 
+L 281.366288 -44.097525 
+L 282.179959 -43.602561 
+L 282.99363 -43.126624 
+L 283.8073 -42.669197 
+L 284.620971 -42.229768 
+L 285.434641 -41.807828 
+L 286.248312 -41.402871 
+L 287.061982 -41.014394 
+L 287.875653 -40.641901 
+L 288.689323 -40.284901 
+L 289.502994 -39.942909 
+L 290.316664 -39.615445 
+L 291.130335 -39.302038 
+L 291.944005 -39.002223 
+L 292.757676 -38.715542 
+L 293.571347 -38.441547 
+L 294.385017 -38.179795 
+L 295.198688 -37.929856 
+L 296.012358 -37.691304 
+L 296.826029 -37.463725 
+L 297.639699 -37.246714 
+L 298.45337 -37.039873 
+L 299.26704 -36.842817 
+L 300.080711 -36.655166 
+L 300.894381 -36.476553 
+L 301.708052 -36.30662 
+L 302.521722 -36.145017 
+L 303.335393 -35.991407 
+L 304.149064 -35.845458 
+L 304.962734 -35.706852 
+L 305.776405 -35.575278 
+L 306.590075 -35.450435 
+L 307.403746 -35.332033 
+L 308.217416 -35.219787 
+L 309.031087 -35.113428 
+L 309.844757 -35.012689 
+L 310.658428 -34.917318 
+L 311.472098 -34.827067 
+L 312.285769 -34.741701 
+L 313.09944 -34.66099 
+L 313.91311 -34.584714 
+L 314.726781 -34.512662 
+L 315.540451 -34.44463 
+L 316.354122 -34.380422 
+L 317.167792 -34.319849 
+L 317.981463 -34.262732 
+L 318.795133 -34.208896 
+L 319.608804 -34.158175 
+L 320.422474 -34.11041 
+L 321.236145 -34.065449 
+L 322.049815 -34.023146 
+L 322.863486 -33.98336 
+L 323.677157 -33.945959 
+L 324.490827 -33.910814 
+L 325.304498 -33.877805 
+L 326.118168 -33.846815 
+L 326.931839 -33.817732 
+L 327.745509 -33.790452 
+L 328.55918 -33.764874 
+L 329.37285 -33.740902 
+L 330.186521 -33.718445 
+L 331.000191 -33.697417 
+L 331.813862 -33.677735 
+L 332.627532 -33.65932 
+L 333.441203 -33.6421 
+L 334.254874 -33.626002 
+L 335.068544 -33.610961 
+L 335.882215 -33.596913 
+L 336.695885 -33.583799 
+L 337.509556 -33.571561 
+L 338.323226 -33.560146 
+L 339.136897 -33.549503 
+L 339.950567 -33.539585 
+L 340.764238 -33.530345 
+L 341.577908 -33.521741 
+L 342.391579 -33.513733 
+L 343.205249 -33.506283 
+L 344.01892 -33.499355 
+L 344.832591 -33.492915 
+L 345.646261 -33.486931 
+L 346.459932 -33.481373 
+L 347.273602 -33.476213 
+L 348.087273 -33.471425 
+L 348.087273 -33.413938 
+L 348.087273 -33.413938 
+L 347.273602 -33.413938 
+L 346.459932 -33.413938 
+L 345.646261 -33.413938 
+L 344.832591 -33.413938 
+L 344.01892 -33.413938 
+L 343.205249 -33.413938 
+L 342.391579 -33.413938 
+L 341.577908 -33.413938 
+L 340.764238 -33.413938 
+L 339.950567 -33.413938 
+L 339.136897 -33.413938 
+L 338.323226 -33.413938 
+L 337.509556 -33.413938 
+L 336.695885 -33.413938 
+L 335.882215 -33.413938 
+L 335.068544 -33.413938 
+L 334.254874 -33.413938 
+L 333.441203 -33.413938 
+L 332.627532 -33.413938 
+L 331.813862 -33.413938 
+L 331.000191 -33.413938 
+L 330.186521 -33.413938 
+L 329.37285 -33.413938 
+L 328.55918 -33.413938 
+L 327.745509 -33.413938 
+L 326.931839 -33.413938 
+L 326.118168 -33.413938 
+L 325.304498 -33.413938 
+L 324.490827 -33.413938 
+L 323.677157 -33.413938 
+L 322.863486 -33.413938 
+L 322.049815 -33.413938 
+L 321.236145 -33.413938 
+L 320.422474 -33.413938 
+L 319.608804 -33.413938 
+L 318.795133 -33.413938 
+L 317.981463 -33.413938 
+L 317.167792 -33.413938 
+L 316.354122 -33.413938 
+L 315.540451 -33.413938 
+L 314.726781 -33.413938 
+L 313.91311 -33.413938 
+L 313.09944 -33.413938 
+L 312.285769 -33.413938 
+L 311.472098 -33.413938 
+L 310.658428 -33.413938 
+L 309.844757 -33.413938 
+L 309.031087 -33.413938 
+L 308.217416 -33.413938 
+L 307.403746 -33.413938 
+L 306.590075 -33.413938 
+L 305.776405 -33.413938 
+L 304.962734 -33.413938 
+L 304.149064 -33.413938 
+L 303.335393 -33.413938 
+L 302.521722 -33.413938 
+L 301.708052 -33.413938 
+L 300.894381 -33.413938 
+L 300.080711 -33.413938 
+L 299.26704 -33.413938 
+L 298.45337 -33.413938 
+L 297.639699 -33.413938 
+L 296.826029 -33.413938 
+L 296.012358 -33.413938 
+L 295.198688 -33.413938 
+L 294.385017 -33.413938 
+L 293.571347 -33.413938 
+L 292.757676 -33.413938 
+L 291.944005 -33.413938 
+L 291.130335 -33.413938 
+L 290.316664 -33.413938 
+L 289.502994 -33.413938 
+L 288.689323 -33.413938 
+L 287.875653 -33.413938 
+L 287.061982 -33.413938 
+L 286.248312 -33.413938 
+L 285.434641 -33.413938 
+L 284.620971 -33.413938 
+L 283.8073 -33.413938 
+L 282.99363 -33.413938 
+L 282.179959 -33.413938 
+L 281.366288 -33.413938 
+L 280.552618 -33.413938 
+L 279.738947 -33.413938 
+L 278.925277 -33.413938 
+L 278.111606 -33.413938 
+L 277.297936 -33.413938 
+L 276.484265 -33.413938 
+L 275.670595 -33.413938 
+L 274.856924 -33.413938 
+L 274.043254 -33.413938 
+L 273.229583 -33.413938 
+L 272.415913 -33.413938 
+L 271.602242 -33.413938 
+L 270.788571 -33.413938 
+L 269.974901 -33.413938 
+L 269.16123 -33.413938 
+L 268.34756 -33.413938 
+L 267.533889 -33.413938 
+L 266.720219 -33.413938 
+L 265.906548 -33.413938 
+L 265.092878 -33.413938 
+L 264.279207 -33.413938 
+L 263.465537 -33.413938 
+L 262.651866 -33.413938 
+L 261.838195 -33.413938 
+L 261.024525 -33.413938 
+L 260.210854 -33.413938 
+L 259.397184 -33.413938 
+L 258.583513 -33.413938 
+L 257.769843 -33.413938 
+L 256.956172 -33.413938 
+L 256.142502 -33.413938 
+L 255.328831 -33.413938 
+L 254.515161 -33.413938 
+L 253.70149 -33.413938 
+L 252.88782 -33.413938 
+L 252.074149 -33.413938 
+L 251.260478 -33.413938 
+L 250.446808 -33.413938 
+L 249.633137 -33.413938 
+L 248.819467 -33.413938 
+L 248.005796 -33.413938 
+L 247.192126 -33.413938 
+L 246.378455 -33.413938 
+L 245.564785 -33.413938 
+L 244.751114 -33.413938 
+L 243.937444 -33.413938 
+L 243.123773 -33.413938 
+L 242.310103 -33.413938 
+L 241.496432 -33.413938 
+L 240.682761 -33.413938 
+L 239.869091 -33.413938 
+L 239.05542 -33.413938 
+L 238.24175 -33.413938 
+L 237.428079 -33.413938 
+L 236.614409 -33.413938 
+L 235.800738 -33.413938 
+L 234.987068 -33.413938 
+L 234.173397 -33.413938 
+L 233.359727 -33.413938 
+L 232.546056 -33.413938 
+L 231.732386 -33.413938 
+L 230.918715 -33.413938 
+L 230.105044 -33.413938 
+L 229.291374 -33.413938 
+L 228.477703 -33.413938 
+z
+" style="stroke: #a2530a; stroke-opacity: 0.35"/>
+    </defs>
+    <g clip-path="url(#p7af9c9a52c)">
+     <use xlink:href="#m9742e9c435" x="0" y="220.541937" style="fill: #a2530a; fill-opacity: 0.35; stroke: #a2530a; stroke-opacity: 0.35"/>
+    </g>
+   </g>
+   <g id="FillBetweenPolyCollection_3">
+    <defs>
+     <path id="m9d6360bd0b" d="M 143.855967 -33.413938 
+L 143.855967 -133.968916 
+L 144.669638 -136.051812 
+L 145.483308 -138.135746 
+L 146.296979 -140.219046 
+L 147.110649 -142.300009 
+L 147.92432 -144.3769 
+L 148.73799 -146.447956 
+L 149.551661 -148.511387 
+L 150.365332 -150.565381 
+L 151.179002 -152.608104 
+L 151.992673 -154.637702 
+L 152.806343 -156.652306 
+L 153.620014 -158.650035 
+L 154.433684 -160.628996 
+L 155.247355 -162.58729 
+L 156.061025 -164.52301 
+L 156.874696 -166.434253 
+L 157.688366 -168.319113 
+L 158.502037 -170.175691 
+L 159.315707 -172.002094 
+L 160.129378 -173.796442 
+L 160.943049 -175.556868 
+L 161.756719 -177.281523 
+L 162.57039 -178.968578 
+L 163.38406 -180.616227 
+L 164.197731 -182.222694 
+L 165.011401 -183.786229 
+L 165.825072 -185.305118 
+L 166.638742 -186.777684 
+L 167.452413 -188.202288 
+L 168.266083 -189.577333 
+L 169.079754 -190.90127 
+L 169.893424 -192.172596 
+L 170.707095 -193.38986 
+L 171.520766 -194.551666 
+L 172.334436 -195.656673 
+L 173.148107 -196.703602 
+L 173.961777 -197.691231 
+L 174.775448 -198.618408 
+L 175.589118 -199.484043 
+L 176.402789 -200.287115 
+L 177.216459 -201.026676 
+L 178.03013 -201.701848 
+L 178.8438 -202.311828 
+L 179.657471 -202.855888 
+L 180.471141 -203.333379 
+L 181.284812 -203.743727 
+L 182.098483 -204.08644 
+L 182.912153 -204.361108 
+L 183.725824 -204.567398 
+L 184.539494 -204.705063 
+L 185.353165 -204.773937 
+L 186.166835 -204.773937 
+L 186.980506 -204.705063 
+L 187.794176 -204.567398 
+L 188.607847 -204.361108 
+L 189.421517 -204.08644 
+L 190.235188 -203.743727 
+L 191.048859 -203.333379 
+L 191.862529 -202.855888 
+L 192.6762 -202.311828 
+L 193.48987 -201.701848 
+L 194.303541 -201.026676 
+L 195.117211 -200.287115 
+L 195.930882 -199.484043 
+L 196.744552 -198.618408 
+L 197.558223 -197.691231 
+L 198.371893 -196.703602 
+L 199.185564 -195.656673 
+L 199.999234 -194.551666 
+L 200.812905 -193.38986 
+L 201.626576 -192.172596 
+L 202.440246 -190.90127 
+L 203.253917 -189.577333 
+L 204.067587 -188.202288 
+L 204.881258 -186.777684 
+L 205.694928 -185.305118 
+L 206.508599 -183.786229 
+L 207.322269 -182.222694 
+L 208.13594 -180.616227 
+L 208.94961 -178.968578 
+L 209.763281 -177.281523 
+L 210.576951 -175.556868 
+L 211.390622 -173.796442 
+L 212.204293 -172.002094 
+L 213.017963 -170.175691 
+L 213.831634 -168.319113 
+L 214.645304 -166.434253 
+L 215.458975 -164.52301 
+L 216.272645 -162.58729 
+L 217.086316 -160.628996 
+L 217.899986 -158.650035 
+L 218.713657 -156.652306 
+L 219.527327 -154.637702 
+L 220.340998 -152.608104 
+L 221.154668 -150.565381 
+L 221.968339 -148.511387 
+L 222.78201 -146.447956 
+L 223.59568 -144.3769 
+L 224.409351 -142.300009 
+L 225.223021 -140.219046 
+L 226.036692 -138.135746 
+L 226.850362 -136.051812 
+L 227.664033 -133.968916 
+L 227.664033 -33.413938 
+L 227.664033 -33.413938 
+L 226.850362 -33.413938 
+L 226.036692 -33.413938 
+L 225.223021 -33.413938 
+L 224.409351 -33.413938 
+L 223.59568 -33.413938 
+L 222.78201 -33.413938 
+L 221.968339 -33.413938 
+L 221.154668 -33.413938 
+L 220.340998 -33.413938 
+L 219.527327 -33.413938 
+L 218.713657 -33.413938 
+L 217.899986 -33.413938 
+L 217.086316 -33.413938 
+L 216.272645 -33.413938 
+L 215.458975 -33.413938 
+L 214.645304 -33.413938 
+L 213.831634 -33.413938 
+L 213.017963 -33.413938 
+L 212.204293 -33.413938 
+L 211.390622 -33.413938 
+L 210.576951 -33.413938 
+L 209.763281 -33.413938 
+L 208.94961 -33.413938 
+L 208.13594 -33.413938 
+L 207.322269 -33.413938 
+L 206.508599 -33.413938 
+L 205.694928 -33.413938 
+L 204.881258 -33.413938 
+L 204.067587 -33.413938 
+L 203.253917 -33.413938 
+L 202.440246 -33.413938 
+L 201.626576 -33.413938 
+L 200.812905 -33.413938 
+L 199.999234 -33.413938 
+L 199.185564 -33.413938 
+L 198.371893 -33.413938 
+L 197.558223 -33.413938 
+L 196.744552 -33.413938 
+L 195.930882 -33.413938 
+L 195.117211 -33.413938 
+L 194.303541 -33.413938 
+L 193.48987 -33.413938 
+L 192.6762 -33.413938 
+L 191.862529 -33.413938 
+L 191.048859 -33.413938 
+L 190.235188 -33.413938 
+L 189.421517 -33.413938 
+L 188.607847 -33.413938 
+L 187.794176 -33.413938 
+L 186.980506 -33.413938 
+L 186.166835 -33.413938 
+L 185.353165 -33.413938 
+L 184.539494 -33.413938 
+L 183.725824 -33.413938 
+L 182.912153 -33.413938 
+L 182.098483 -33.413938 
+L 181.284812 -33.413938 
+L 180.471141 -33.413938 
+L 179.657471 -33.413938 
+L 178.8438 -33.413938 
+L 178.03013 -33.413938 
+L 177.216459 -33.413938 
+L 176.402789 -33.413938 
+L 175.589118 -33.413938 
+L 174.775448 -33.413938 
+L 173.961777 -33.413938 
+L 173.148107 -33.413938 
+L 172.334436 -33.413938 
+L 171.520766 -33.413938 
+L 170.707095 -33.413938 
+L 169.893424 -33.413938 
+L 169.079754 -33.413938 
+L 168.266083 -33.413938 
+L 167.452413 -33.413938 
+L 166.638742 -33.413938 
+L 165.825072 -33.413938 
+L 165.011401 -33.413938 
+L 164.197731 -33.413938 
+L 163.38406 -33.413938 
+L 162.57039 -33.413938 
+L 161.756719 -33.413938 
+L 160.943049 -33.413938 
+L 160.129378 -33.413938 
+L 159.315707 -33.413938 
+L 158.502037 -33.413938 
+L 157.688366 -33.413938 
+L 156.874696 -33.413938 
+L 156.061025 -33.413938 
+L 155.247355 -33.413938 
+L 154.433684 -33.413938 
+L 153.620014 -33.413938 
+L 152.806343 -33.413938 
+L 151.992673 -33.413938 
+L 151.179002 -33.413938 
+L 150.365332 -33.413938 
+L 149.551661 -33.413938 
+L 148.73799 -33.413938 
+L 147.92432 -33.413938 
+L 147.110649 -33.413938 
+L 146.296979 -33.413938 
+L 145.483308 -33.413938 
+L 144.669638 -33.413938 
+L 143.855967 -33.413938 
+z
+" style="stroke: #0e6e6a; stroke-opacity: 0.15"/>
+    </defs>
+    <g clip-path="url(#p7af9c9a52c)">
+     <use xlink:href="#m9d6360bd0b" x="0" y="220.541937" style="fill: #0e6e6a; fill-opacity: 0.15; stroke: #0e6e6a; stroke-opacity: 0.15"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mc2edeab4dd" d="M 0 0 
+L 0 3.5 
+" style="stroke: currentColor; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mc2edeab4dd" x="143.701004" y="195.696" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="143.701004" y="211.054281" transform="rotate(-0 143.701004 211.054281)">42</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mc2edeab4dd" x="185.76" y="195.696" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="185.76" y="211.054281" transform="rotate(-0 185.76 211.054281)">50</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mc2edeab4dd" x="227.818996" y="195.696" style="stroke: currentColor; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="227.818996" y="211.054281" transform="rotate(-0 227.818996 211.054281)">58</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_4">
+    <path d="M 23.432727 187.070512 
+L 39.706138 186.864203 
+L 49.470185 186.518792 
+L 56.793219 186.029275 
+L 62.488913 185.42851 
+L 67.370936 184.696479 
+L 71.439289 183.886772 
+L 75.507642 182.850633 
+L 78.762324 181.826395 
+L 82.017006 180.599028 
+L 85.271688 179.139067 
+L 88.52637 177.415314 
+L 91.781053 175.39534 
+L 95.035735 173.046135 
+L 98.290417 170.334916 
+L 100.731429 168.044854 
+L 103.17244 165.520816 
+L 105.613452 162.751292 
+L 108.868134 158.659364 
+L 112.122816 154.093721 
+L 115.377498 149.041631 
+L 118.63218 143.498436 
+L 121.886863 137.468912 
+L 125.141545 130.968507 
+L 128.396227 124.024395 
+L 132.46458 114.781978 
+L 137.346603 103.010613 
+L 143.855967 86.573021 
+L 152.806343 63.889631 
+L 156.874696 54.107684 
+L 160.129378 46.745495 
+L 163.38406 39.92571 
+L 165.825072 35.236819 
+L 168.266083 30.964604 
+L 170.707095 27.152077 
+L 173.148107 23.838336 
+L 174.775448 21.923529 
+L 176.402789 20.254822 
+L 178.03013 18.840089 
+L 179.657471 17.686049 
+L 181.284812 16.798211 
+L 182.912153 16.18083 
+L 184.539494 15.836874 
+L 186.166835 15.768 
+L 187.794176 15.974539 
+L 189.421517 16.455497 
+L 191.048859 17.208559 
+L 192.6762 18.230109 
+L 194.303541 19.515261 
+L 195.930882 21.057895 
+L 197.558223 22.850706 
+L 199.185564 24.885264 
+L 201.626576 28.369342 
+L 204.067587 32.33965 
+L 206.508599 36.755709 
+L 208.94961 41.57336 
+L 212.204293 48.539843 
+L 215.458975 56.018927 
+L 219.527327 65.904236 
+L 226.036692 82.406192 
+L 234.173397 103.010613 
+L 239.05542 114.781978 
+L 243.123773 124.024395 
+L 247.192126 132.636476 
+L 250.446808 139.021234 
+L 253.70149 144.930188 
+L 256.956172 150.350663 
+L 260.210854 155.280366 
+L 263.465537 159.726102 
+L 266.720219 163.702402 
+L 269.974901 167.230098 
+L 273.229583 170.334916 
+L 276.484265 173.046135 
+L 279.738947 175.39534 
+L 282.99363 177.415314 
+L 286.248312 179.139067 
+L 289.502994 180.599028 
+L 292.757676 181.826395 
+L 296.012358 182.850633 
+L 300.080711 183.886772 
+L 304.149064 184.696479 
+L 309.031087 185.42851 
+L 314.726781 186.029275 
+L 321.236145 186.476488 
+L 329.37285 186.801035 
+L 340.764238 187.011593 
+L 348.087273 187.070512 
+L 348.087273 187.070512 
+" clip-path="url(#p7af9c9a52c)" style="fill: none; stroke: #0e6e6a; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 185.76 195.696 
+L 185.76 7.2 
+" clip-path="url(#p7af9c9a52c)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.2"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 7.2 195.696 
+L 364.32 195.696 
+" style="fill: none; stroke: currentColor; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="112.156756" y="167.233408" transform="rotate(-0 112.156756 167.233408)">0,15</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #a2530a" x="240.962433" y="167.233408" transform="rotate(-0 240.962433 167.233408)">0,15</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0e6e6a" x="167.359189" y="127.444223" transform="rotate(-0 167.359189 127.444223)">0,7</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_4">
+     <path d="M 215.582656 22.968516 
+L 234.582656 22.968516 
+L 234.582656 16.318516 
+L 215.582656 16.318516 
+z
+" style="fill: #a2530a; fill-opacity: 0.35; stroke: #a2530a; stroke-opacity: 0.35; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="242.182656" y="22.968516" transform="rotate(-0 242.182656 22.968516)">0,15</text>
+    </g>
+    <g id="patch_5">
+     <path d="M 215.582656 36.912734 
+L 234.582656 36.912734 
+L 234.582656 30.262734 
+L 215.582656 30.262734 
+z
+" style="fill: #0e6e6a; fill-opacity: 0.15; stroke: #0e6e6a; stroke-opacity: 0.15; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="242.182656" y="36.912734" transform="rotate(-0 242.182656 36.912734)">0,7</text>
+    </g>
+    <g id="line2d_6">
+     <path d="M 215.582656 47.911953 
+L 225.082656 47.911953 
+L 234.582656 47.911953 
+" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #5a3d9a; stroke-width: 1.2"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="242.182656" y="51.236953" transform="rotate(-0 242.182656 51.236953)">μ = 50 (eje de simetría)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p7af9c9a52c">
+   <rect x="7.2" y="7.2" width="357.12" height="188.496"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption class="src">Figura: Ejemplo 1.11: \(42\) y \(58\) están a la misma distancia de \(\mu=50\), así que las dos colas tienen la misma área, 0,15, y el centro vale \(1-2(0{,}15)=0{,}7\).</figcaption></figure>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(X\sim N(20,\sigma^2)\) con \(P(X\lt14)=0{,}2\). Halla \(P(14\lt X\lt26)\) y \(P(X\gt26)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>Por simetría \(P(X\gt26)=0{,}2\); \(P(14\lt X\lt26)=1-0{,}4=0{,}6\).</li></ol></div></details></div>
+<div class="ex"><p class="et">Ejemplo 1.12. Tipificar y transformar una normal</p>
+<p>\(X\sim N(10,\,2^2)\) y se sabe que \(P(Z\lt1)=0{,}8413\). Halla \(P(8\lt X\lt12)\) y la distribución de \(Y=3X-5\).</p>
+<p>\(P(8\lt X\lt12)=P(-1\lt Z\lt1)=2(0{,}8413)-1=0{,}6826\). Una transformación lineal de una normal es normal: \(Y\sim N(3\cdot10-5,\ 3^2\cdot4)=N(25,\,6^2)\). La probabilidad de estar a menos de una desviación de la media es la misma para \(X\) y para \(Y\).</p></div>
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Distribución geométrica:</b> el número de ensayos hasta el primer éxito cumple \(P(X=k)=(1-p)^{k-1}p\) y \(\mathrm E(X)=\tfrac1p\) (problema E1).</li>
+<li><b>Linealidad con indicadores:</b> \(\mathrm E(X_1+\dots+X_n)=\sum\mathrm E(X_i)\) aunque las variables no sean independientes (problema E8).</li>
+</ul></div>
+
+<h3 id="t7">1.7 Combinar distribuciones</h3>
+<p>Muchas preguntas de Sección B encadenan dos modelos. Primero una distribución da una probabilidad \(p\) para un solo objeto. Después, si se repite con independencia, el número de éxitos es \(B(n,p)\).</p>
+<ul>
+<li><b>Continua y luego binomial:</b> \(p=P(X\lt a)\) se calcula con la densidad, y después se cuentan éxitos entre \(n\) observaciones.</li>
+<li><b>Normal y luego binomial:</b> la simetría da probabilidades exactas como \(P(X\gt\mu)=\frac12\).</li>
+<li><b>Dos variables discretas:</b> \(P(X\lt Y)\) se obtiene listando los pares favorables, con \(P(X=i,Y=j)=P(X=i)P(Y=j)\) si son independientes.</li>
+</ul>
+<div class="ex"><p class="et">Ejemplo 1.13. Densidad y luego binomial</p>
+<p>Con la densidad \(f(x)=\frac x2\) en \([0,2]\), se toman 3 observaciones independientes. Halla la probabilidad de que al menos una sea menor que 1.</p>
+<p>\(p=P(X\lt1)=\frac14\) (Ejemplo 1.7). El número de observaciones menores que 1 es \(B\left(3,\frac14\right)\), así que la probabilidad es \(1-\left(\frac34\right)^3=\frac{37}{64}\).</p></div>
+<div class="ex"><p class="et">Ejemplo 1.14. Normal y luego binomial</p>
+<p>Los pesos de unas piezas siguen \(N(\mu,\sigma^2)\). Se eligen 4 al azar. Halla la probabilidad de que exactamente 3 pesen más que la media.</p>
+<p>Por simetría, \(p=\frac12\), y el número de piezas es \(B\left(4,\frac12\right)\): \(\binom43\left(\frac12\right)^4=\frac14\). No hacen falta ni \(\mu\) ni \(\sigma\).</p></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>El 10% de los artículos son defectuosos. Se toman 4 al azar. Halla la probabilidad de que exactamente 1 sea defectuoso.</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\binom41(0{,}1)(0{,}9)^3=4\cdot0{,}1\cdot0{,}729=0{,}2916\).</li></ol></div></details></div>
+<div class="box ib"><p class="bt">Así lo pregunta el IB (mayo 2021 TZ1, P10(e))</p><p>Dos dados distintos y \(P(\text{Agnes}\lt\text{Barbara})=\frac12\). El markscheme da (M1) por identificar los pares \((1,2),(1,3),(1,4),(2,3),(2,4),(3,4)\), (A1) por \(3pq+3pr\) y M1 por sustituir \(r=1-3q\) antes de resolver. Olvidar un par cuesta tres marcas seguidas, así que conviene ordenar los pares por el valor del primer dado.</p></div>
+
+<h3 id="t8">1.8 Más allá del IB: sumas de variables y cotas</h3>
+<p>Si \(X\) e \(Y\) son <b>independientes</b>, \(\mathrm E(X+Y)=\mathrm E(X)+\mathrm E(Y)\) y además \(\mathrm{Var}(X+Y)=\mathrm{Var}(X)+\mathrm{Var}(Y)\). La primera igualdad vale siempre; la segunda necesita la independencia. Por eso una binomial \(B(n,p)\), que es la suma de \(n\) ensayos de varianza \(p(1-p)\), tiene varianza \(np(1-p)\).</p>
+<div class="ex"><p class="et">Ejemplo 1.15. La suma de dos dados</p>
+<p>Un dado tiene \(\mathrm E=\frac72\) y \(\mathrm E(X^2)=\frac{91}6\), así que \(\mathrm{Var}=\frac{91}6-\frac{49}4=\frac{35}{12}\). Para la suma de dos dados: \(\mathrm E=7\) y \(\mathrm{Var}=\frac{35}6\), sin construir la tabla de 36 casos.</p></div>
+<div class="box beyond"><p class="bt">Más allá del IB</p>
+<ul>
+<li><b>Desigualdad de Chebyshev:</b> para cualquier distribución, \(P(|X-\mu|\ge k\sigma)\le\frac1{k^2}\). La normal es mucho más concentrada: con \(k=2\), Chebyshev garantiza a lo sumo 25 % fuera, y la normal deja solo un 5 %.</li>
+<li><b>Poisson como límite de la binomial:</b> si \(n\to\infty\) con \(np=\lambda\) fijo, \(\binom nrp^r(1-p)^{n-r}\to\frac{e^{-\lambda}\lambda^r}{r!}\). Es el modelo de sucesos raros (llamadas, desintegraciones).</li>
+</ul></div>
+</section>
+<section id="glosario">
+<h2>2. Glosario</h2>
+<h3>Definiciones de examen</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Definición precisa</th></tr></thead>
+<tbody>
+<tr><td>Variable aleatoria</td><td>Función que asigna un número a cada resultado de un experimento.</td></tr>
+<tr><td>Distribución de probabilidad</td><td>Lista de valores con sus probabilidades, que suman 1.</td></tr>
+<tr><td>Esperanza \(\mathrm E(X)\)</td><td>Media teórica: \(\sum xP(X=x)\) o \(\int xf(x)\,dx\).</td></tr>
+<tr><td>Varianza</td><td>\(\mathrm E\big((X-\mu)^2\big)=\mathrm E(X^2)-\mu^2\).</td></tr>
+<tr><td>Juego justo</td><td>Aquel en el que la ganancia esperada es 0.</td></tr>
+<tr><td>Ensayo de Bernoulli</td><td>Experimento con dos resultados (éxito o fracaso).</td></tr>
+<tr><td>Función de densidad</td><td>\(f\ge0\) con área total 1; las áreas bajo \(f\) son probabilidades.</td></tr>
+<tr><td>Mediana (continua)</td><td>Valor \(m\) con \(P(X\le m)=\tfrac12\).</td></tr>
+<tr><td>Tipificación</td><td>Transformación \(Z=\tfrac{X-\mu}\sigma\) que lleva a \(N(0,1)\).</td></tr>
+</tbody></table></div>
+
+<h3>Términos de instrucción frecuentes en este tema</h3>
+<div class="tbl"><table>
+<thead><tr><th>Término</th><th>Qué exige aquí</th><th>Cómo se pierde la marca</th></tr></thead>
+<tbody>
+<tr><td>Indique el rango de valores posibles</td><td>Una desigualdad doble con los extremos correctos.</td><td>Dar solo una cota, o valores sueltos.</td></tr>
+<tr><td>Proporcione evidencia</td><td>Una lista del espacio muestral o una probabilidad que lo demuestre.</td><td>Dar el valor sin justificación: A0A0.</td></tr>
+<tr><td>Halle una expresión en función de…</td><td>Una fórmula simplificada; descartar signos imposibles con una razón.</td><td>No justificar la raíz elegida.</td></tr>
+<tr><td>Interprete \(\mathrm E(Z)\)</td><td>Una frase en contexto: la ganancia media por partida a largo plazo.</td><td>Repetir el número sin contexto.</td></tr>
+</tbody></table></div>
+<p>La lectura de marcas (M1, A1, R1, AG, FT) está explicada en el Módulo 1.</p>
+</section>
+
+<section id="trampas">
+<h2>3. Trampas de la Prueba 1</h2>
+<ul class="trap-list">
+<li><b>La varianza como \(\mathrm E(X^2)\).</b> Falta restar \(\mu^2\).</li>
+<li><b>\(\mathrm{Var}(aX+b)\) con \(a\) sin cuadrado.</b> Es \(a^2\mathrm{Var}(X)\), y la \(b\) desaparece.</li>
+<li><b>Probabilidades imposibles.</b> Cada \(p_i\) está en \([0,1]\): úsalo para acotar parámetros o descartar soluciones.</li>
+<li><b>La binomial sin independencia.</b> Sin reposición y con pocos objetos, no es binomial.</li>
+<li><b>«Al menos» con el complemento mal hecho.</b> \(P(X\ge1)=1-P(X=0)\), no \(1-P(X=1)\).</li>
+<li><b>La desigualdad volteada con logaritmos.</b> \(\ln(0{,}8)\lt0\): al dividir, se invierte el sentido.</li>
+<li><b>La mediana en el tramo equivocado.</b> Comprueba primero el área acumulada en el cambio de tramo.</li>
+<li><b>La raíz negativa en la mediana.</b> \(m-a=\pm\sqrt{\cdots}\): se descarta el signo que deja \(m\) fuera del dominio.</li>
+<li><b>La densidad por encima de 1.</b> \(f(x)\) puede valer más de 1; lo que no puede superar 1 es el área.</li>
+<li><b>La normal sin simetría.</b> En la Prueba 1, busca siempre el valor simétrico respecto a \(\mu\).</li>
+<li><b>Pares favorables incompletos.</b> En juegos con dos dados, lista todos los pares y no dupliques el orden cuando las variables son distintas.</li>
+</ul>
+</section>
+<section id="fichas">
+<h2>4. Ejemplos resueltos, a nivel de examen</h2>
+<p class="lead">Parten de ítems de DMpA 13, 14, 17 y 18. Los de calculadora se reformulan para resolverse con valores exactos, simetría o \(z\) dados. Cuando la ficha no da los números completos, se usan valores propios y se indica. Ninguno repite un tipo de la sección 5.</p>
+
+<div class="ex"><p class="et">F1. Diferencia de dos dados y un juego <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 13 («la variable D es la diferencia entre la puntuación mayor y la menor»), ampliada.</p>
+<p>Se lanzan dos dados justos; \(D\) es la diferencia absoluta. (a) Halla la distribución de \(D\). (b) Halla \(\mathrm E(D)\) y \(\mathrm{Var}(D)\). (c) Se pagan 2 soles por jugar y se ganan \(D\) soles. ¿Es justo el juego?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(P(D=0,1,2,3,4,5)=\tfrac{6}{36},\tfrac{10}{36},\tfrac8{36},\tfrac6{36},\tfrac4{36},\tfrac2{36}\).</p>
+<p>(b) \(\mathrm E(D)=\tfrac{70}{36}=\tfrac{35}{18}\). \(\mathrm E(D^2)=\tfrac{210}{36}=\tfrac{35}6\), así que \(\mathrm{Var}=\tfrac{35}6-\tfrac{1225}{324}=\tfrac{665}{324}\).</p>
+<p>(c) La ganancia esperada es \(\tfrac{35}{18}-2=-\tfrac1{18}\): no es justo, favorece a la casa.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F2. Constante, momentos y transformación <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 13 («determine el valor de \(k\)… calcule \(\mathrm E(X)\)»), con valores propios.</p>
+<p>\(P(X=x)=k(x^2+1)\) para \(x=0,1,2,3\). Halla (a) \(k\); (b) \(\mathrm E(X)\) y \(\mathrm{Var}(X)\); (c) \(\mathrm E(3X-1)\) y \(\mathrm{Var}(3X-1)\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(k(1+2+5+10)=1\Rightarrow k=\tfrac1{18}\).</p>
+<p>(b) \(\mathrm E(X)=\tfrac{0+2+10+30}{18}=\tfrac73\). \(\mathrm E(X^2)=\tfrac{112}{18}=\tfrac{56}9\), así que \(\mathrm{Var}=\tfrac{56}9-\tfrac{49}9=\tfrac79\).</p>
+<p>(c) \(\mathrm E=6\) y \(\mathrm{Var}=9\cdot\tfrac79=7\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F3. Diseñar un juego justo <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 13 (IB Prueba 2, noviembre 2015: «determine \(\mathrm E(Z)\) e interprete»), con valores propios.</p>
+<p>Se lanza un dado: con 6 se ganan 5 soles; con 4 o 5, 1 sol; con 1, 2 o 3 se pierden 2 soles. (a) Halla \(\mathrm E(G)\) e interprétala. (b) ¿Cuánto debería perderse con 1, 2 o 3 para que el juego fuera justo?</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\tfrac56+\tfrac26-\tfrac66=\tfrac16\): a largo plazo, el jugador gana en promedio \(\tfrac16\) de sol por partida.</p>
+<p>(b) \(\tfrac56+\tfrac26-\tfrac36L=0\Rightarrow L=\tfrac73\) soles.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F4. Parámetros de una binomial desde sus momentos <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 14, ejemplo 8 («media 10 y \(p=0{,}4\), halle \(n\)») y ejercicio de «media 7,8».</p>
+<p>(a) \(X\sim B(n;0{,}4)\) tiene media 10. Halla \(n\) y \(\mathrm{Var}(X)\). (b) \(Y\sim B(n,p)\) tiene media 7,8 y varianza 5,46. Halla \(n\) y \(p\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(0{,}4n=10\Rightarrow n=25\), y \(\mathrm{Var}=25\cdot0{,}4\cdot0{,}6=6\).</p>
+<p>(b) \(1-p=\tfrac{5{,}46}{7{,}8}=0{,}7\), así que \(p=0{,}3\) y \(n=\tfrac{7{,}8}{0{,}3}=26\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F5. Tamaño de muestra con logaritmos <span class="lvl">Sección A alta, integra Módulo 1</span></p>
+<p class="src">DMpA 14, ejercicios 04 y 05.</p>
+<p>(a) \(X\sim B(n;0{,}2)\) y \(P(X\ge1)\gt0{,}75\). Halla el menor \(n\). Usa \(\ln2\approx0{,}693\) y \(\ln0{,}8\approx-0{,}223\). (b) El 1 % de los fusibles están averiados. Halla la mayor muestra para la que \(P(\text{ninguno averiado})\gt0{,}95\). Usa \(\ln0{,}95\approx-0{,}0513\) y \(\ln0{,}99\approx-0{,}01005\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(0{,}8^n\lt0{,}25\Rightarrow n\gt\tfrac{2\ln2}{0{,}223}\approx6{,}2\), así que \(n=7\).</p>
+<p>(b) \(0{,}99^n\gt0{,}95\Rightarrow n\lt\tfrac{0{,}0513}{0{,}01005}\approx5{,}1\), así que \(n=5\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F6. Binomial exacta condicionada <span class="lvl">Sección B, integra Módulo 10</span></p>
+<p class="src">DMpA 14 (\(X\sim B(6,\tfrac13)\) y la pregunta IB de las lámparas «sabiendo que hay al menos una…»).</p>
+<p>\(X\sim B\left(6,\tfrac13\right)\). Halla (a) \(P(X=2)\); (b) \(P(X\le1)\); (c) \(P(X=2\mid X\ge1)\); (d) \(\mathrm E(X)\) y \(\mathrm{Var}(X)\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(15\cdot\tfrac19\cdot\tfrac{16}{81}=\tfrac{80}{243}\). (b) \(\tfrac{64+192}{729}=\tfrac{256}{729}\).</p>
+<p>(c) \(\dfrac{240/729}{1-64/729}=\dfrac{240}{665}=\dfrac{48}{133}\). (d) \(2\) y \(\tfrac43\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F7. Dos normales con la misma probabilidad de cola <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 17, ítem 12 («halle \(b\) de modo que \(P(X\gt b)=P(Y\lt b)\)»), con valores propios.</p>
+<p>\(X\sim N(10,2^2)\) e \(Y\sim N(25,3^2)\). Halla \(b\) con \(P(X\gt b)=P(Y\lt b)\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>Tipificando: \(P\left(Z\gt\tfrac{b-10}2\right)=P\left(Z\lt\tfrac{b-25}3\right)\). Por simetría de \(Z\), \(\tfrac{b-10}2=\tfrac{25-b}3\), así que \(3b-30=50-2b\) y \(b=16\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F8. Media y desviación desde dos probabilidades <span class="lvl">Sección A alta</span></p>
+<p class="src">DMpA 17, ítem 10 («halle el valor de \(\mu\) y el valor de \(\sigma\)»), con valores \(z\) dados.</p>
+<p>\(P(X\lt12)=0{,}1587\) y \(P(X\gt20)=0{,}0228\). Se sabe que \(P(Z\lt-1)=0{,}1587\) y \(P(Z\gt2)=0{,}0228\). (a) Halla \(\mu\) y \(\sigma\). (b) Halla \(P(12\lt X\lt20)\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\mu-\sigma=12\) y \(\mu+2\sigma=20\), así que \(\sigma=\tfrac83\) y \(\mu=\tfrac{44}3\).</p>
+<p>(b) \(1-0{,}1587-0{,}0228=0{,}8185\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F9. Densidad cuadrática completa <span class="lvl">Sección B</span></p>
+<p class="src">DMpA 18, ítems 5 y 6 («demuestre que \(a=\dots\); halle \(\mathrm E\), Var y mediana»), con valores propios.</p>
+<p>\(f(x)=kx(2-x)\) en \([0,2]\). Halla (a) \(k\); (b) la media, la mediana y la moda; (c) \(\mathrm{Var}(X)\); (d) \(P\left(X\lt\tfrac12\right)\).</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(k\left(4-\tfrac83\right)=1\Rightarrow k=\tfrac34\).</p>
+<p>(b) \(f\) es simétrica respecto a \(x=1\) y tiene su máximo allí: media, mediana y moda valen 1.</p>
+<p>(c) \(\mathrm E(X^2)=\tfrac34\int_0^2(2x^3-x^4)\,dx=\tfrac34\left(8-\tfrac{32}5\right)=\tfrac65\), así que \(\mathrm{Var}=\tfrac15\).</p>
+<p>(d) \(\tfrac34\left[x^2-\tfrac{x^3}3\right]_0^{1/2}=\tfrac34\cdot\tfrac5{24}=\tfrac5{32}\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">F10. Tiempo de espera exponencial <span class="lvl">Sección B, integra Módulos 1 y 3</span></p>
+<p class="src">DMpA 18 («la probabilidad de que hasta el próximo paquete pase un tiempo mayor que \(t\)…»), ampliada.</p>
+<p>\(T\) tiene densidad \(f(t)=\lambda e^{-\lambda t}\), \(t\ge0\). (a) Muestra que \(\int_0^\infty f=1\) y que \(P(T\gt t)=e^{-\lambda t}\). (b) Halla la mediana. (c) Muestra que \(P(T\gt s+t\mid T\gt s)=P(T\gt t)\) y explica qué significa.</p>
+<details><summary>Ver solución</summary><div class="inner">
+<p>(a) \(\left[-e^{-\lambda t}\right]_0^\infty=1\), y \(\int_t^\infty f=e^{-\lambda t}\).</p>
+<p>(b) \(e^{-\lambda m}=\tfrac12\Rightarrow m=\tfrac{\ln2}\lambda\).</p>
+<p>(c) \(\tfrac{e^{-\lambda(s+t)}}{e^{-\lambda s}}=e^{-\lambda t}\): lo ya esperado no cambia lo que falta esperar. No tiene memoria.</p>
+</div></details></div>
+</section>
+<section id="examenes">
+<h2>5. Preguntas de examen resueltas</h2>
+<p class="lead">Son las 3 preguntas de este módulo en tus pruebas, con las marcas del markscheme oficial. Resuélvelas en tiempo de examen, a 1,1 minutos por punto: una de 16 puntos lleva unos 18 minutos.</p>
+
+<div class="ex"><p class="et">X1. Mayo 2022 TZ2, pregunta 8 <span class="lvl">6 puntos</span></p>
+<p>\(f(x)=\dfrac{2(x-a)}{(b-a)(c-a)}\) para \(a\le x\le c\), y \(\dfrac{2(b-x)}{(b-a)(b-c)}\) para \(c\lt x\le b\) (un triángulo de base \([a,b]\) con vértice en \(x=c\)). Sabiendo que \(c\ge\tfrac{a+b}2\), halla la mediana de \(X\) en función de \(a,b,c\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">Como \(c\ge\tfrac{a+b}2\), la mediana \(m\) está en \([a,c]\). Área del triángulo de \(a\) a \(m\) <span class="m">M1</span>: base \(m-a\) <span class="m">(A1)</span>, altura \(\dfrac{2(m-a)}{(b-a)(c-a)}\)</p>
+<p class="step">Área \(=\dfrac{(m-a)^2}{(b-a)(c-a)}\) <span class="m">A1</span>. Igualar a \(\tfrac12\) <span class="m">M1</span>: \((m-a)^2=\dfrac{(b-a)(c-a)}2\)</p>
+<p class="step">\(m-a=\pm\sqrt{\dfrac{(b-a)(c-a)}2}\) <span class="m">(A1)</span>. Como \(m\gt a\), se toma el signo positivo: \(m=a+\sqrt{\dfrac{(b-a)(c-a)}2}\) <span class="m">A1</span></p>
+<p><span class="lbl">Por qué no hace falta integrar.</span> La densidad es lineal a trozos: las probabilidades son áreas de triángulos. Integrar también vale, pero cuesta más.</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X2. Mayo 2021 TZ1, pregunta 10 <span class="lvl">16 puntos</span></p>
+<p>Dado A: \(P(X=1,2,3,4)=p,p,p,\tfrac12p\). Dado B: \(P(Y=1,2,3,4)=q,q,q,r\). (a) Halla \(p\). (b) Halla \(\mathrm E(X)\). (c) (i) Indica el rango posible de \(r\). (ii) Halla el rango posible de \(q\). (d) Halla el rango posible de \(\mathrm E(Y)\). (e) Agnes lanza A y Barbara lanza B. La probabilidad de que la puntuación de Agnes sea menor que la de Barbara es \(\tfrac12\). Halla \(\mathrm E(Y)\).</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) \(3p+\tfrac12p=1\) <span class="m">(M1)</span> \(\Rightarrow p=\tfrac27\) <span class="m">A1</span></p>
+<p class="step">(b) \(p(1+2+3)+4\cdot\tfrac p2=8p\) <span class="m">(M1)</span> \(=\tfrac{16}7\) <span class="m">A1</span></p>
+<p class="step">(c)(i) \(0\le r\le1\) <span class="m">A1</span>. (ii) \(r=1-3q\) <span class="m">(M1)</span> \(\Rightarrow0\le q\le\tfrac13\) <span class="m">A1</span></p>
+<p class="step">(d) \(\mathrm E(Y)=6q+4r=4-6q\) <span class="m">(A1)</span>; un extremo correcto <span class="m">A1</span>; \(2\le\mathrm E(Y)\le4\) <span class="m">A1</span></p>
+<p class="step">(e) Pares con \(X\lt Y\): \((1,2),(1,3),(1,4),(2,3),(2,4),(3,4)\) <span class="m">(M1)</span>. \(P=3pq+3pr=\tfrac67(q+r)\) <span class="m">(A1)</span></p>
+<p class="step">Con \(r=1-3q\): \(\tfrac67(1-2q)=\tfrac12\) <span class="m">M1</span> \(\Rightarrow q=\tfrac5{24}\), \(r=\tfrac38\) <span class="m">A1A1</span></p>
+<p class="step">\(\mathrm E(Y)=4-6\cdot\tfrac5{24}=\tfrac{11}4\) <span class="m">A1</span></p>
+<p><span class="lbl">Comprobación del conteo.</span> \(X=1\) con \(Y=2,3,4\): \(p(2q+r)\). \(X=2\) con \(Y=3,4\): \(p(q+r)\). \(X=3\) con \(Y=4\): \(pr\). Suma: \(3pq+3pr\).</p>
+</div></details></div>
+
+<div class="ex"><p class="et">X3. Mayo 2022 TZ2, pregunta 10 <span class="lvl">16 puntos</span></p>
+<p>\(P(X=1,2,3,4)=p,\ 0{,}3,\ q,\ 0{,}1\), con \(\mathrm E(X)=2\). (a) Muestra que \(p=0{,}4\) y \(q=0{,}2\). (b) Halla \(P(X\gt2)\). (c) Nicky lleva 4 puntos tras tres lanzamientos y le quedan dos; gana si llega a 10 o más. Halla la probabilidad de que gane. (d) Dos dados rojos, con caras \(1,2,2,3\) y \(1,a,a,b\) (\(a\lt b\), enteros positivos), dan la misma distribución de la suma que dos dados normales de 4 caras. Determina \(b\). (e) Halla \(a\) y justifícalo.</p>
+<details><summary>Ver solución con marcas</summary><div class="inner">
+<p class="step">(a) Suma 1 <span class="m">(M1)</span>: \(p+q=0{,}6\) <span class="m">A1</span>. Esperanza <span class="m">(M1)</span>: \(p+0{,}6+3q+0{,}4=2\Rightarrow p+3q=1\) <span class="m">A1</span>. Resolver: \(2q=0{,}4\) <span class="m">A1</span> <span class="m">AG</span></p>
+<p class="step">(b) \(0{,}2+0{,}1=0{,}3\) <span class="m">(M1)A1</span></p>
+<p class="step">(c) Necesita 6, 7 u 8 en dos lanzamientos <span class="m">(M1)</span>. \(P(6)=2(0{,}3)(0{,}1)+0{,}2^2=0{,}1\) <span class="m">A1</span>; \(P(7)=2(0{,}2)(0{,}1)=0{,}04\) <span class="m">A1</span>; \(P(8)=0{,}01\) <span class="m">A1</span>. Total \(0{,}15\) <span class="m">A1</span></p>
+<p class="step">(d) La suma máxima es 8: \(3+b=8\) <span class="m">(M1)</span>, así que \(b=5\) <span class="m">A1</span></p>
+<p class="step">(e) \(P(S=5)=\tfrac4{16}\), pero con los dados rojos 5 solo se obtiene como \(2+a\) (dos formas por cada 2 y por cada \(a\)), así que \(a+2=5\) <span class="m">A1</span>. Por lo tanto \(a=3\) <span class="m">A1</span></p>
+<p><span class="lbl">Idea clave.</span> Esto se explica con polinomios: \((x+2x^2+x^3)(x+2x^3+x^5)=(x+x^2+x^3+x^4)^2\) (problema E9).</p>
+</div></details></div>
+</section>
+<section id="tipos">
+<h2>6. Otros tipos de pregunta del IB</h2>
+<p class="lead">Estos tipos de pregunta no salieron en tus 7 pruebas, pero el IB los pone en otras convocatorias (algunos vienen de la Prueba 2 y aquí se resuelven con fracciones exactas, simetría o valores \(z\) dados). Junto con la teoría y las secciones 4 y 5, cubren todas las variables aleatorias del programa NS. Cada tipo trae cómo reconocerlo, el método, un ejemplo resuelto y ejercicios para practicar.</p>
+<h3 id="ty1">T1. Binomial: hallar \(n\) o \(p\) desde la media y la varianza</h3>
+<p><b>Qué reconocer:</b> te dan \(\mathrm E(X)\) y \(\mathrm{Var}(X)\) de una binomial y piden \(n\) y \(p\). <b>Método:</b> divide: \(\dfrac{\mathrm{Var}}{\mathrm E}=\dfrac{np(1-p)}{np}=1-p\). De ahí sale \(p\), y luego \(n=\dfrac{\mathrm E}{p}\).</p>
+<div class="ex"><p class="et">Ejemplo T1. <span class="lvl">Tipo IB</span></p>
+<p>\(X\sim B(n,p)\) con \(\mathrm E(X)=3\) y \(\mathrm{Var}(X)=2{,}4\). Halla \(n\) y \(p\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(1-p=\tfrac{2{,}4}3=0{,}8\Rightarrow p=0{,}2\); \(n=\tfrac3{0{,}2}=15\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(X\sim B(n,p)\) con \(\mathrm E(X)=8\) y \(\mathrm{Var}(X)=1{,}6\). Halla \(n\) y \(p\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(1-p=\tfrac{1{,}6}8=0{,}2\Rightarrow p=0{,}8\); \(n=\tfrac8{0{,}8}=10\).</li></ol></div></details></div>
+<h3 id="ty2">T2. Binomial: «al menos uno», moda y una probabilidad</h3>
+<p><b>Qué reconocer:</b> una binomial pequeña y piden \(P(X=k)\), \(P(X\ge1)\) o el valor más probable. <b>Método:</b> usa \(P(X=k)=\binom nk p^k(1-p)^{n-k}\) y \(P(X\ge1)=1-(1-p)^n\). La moda es la \(k\) con mayor probabilidad.</p>
+<div class="ex"><p class="et">Ejemplo T2. <span class="lvl">Tipo IB</span></p>
+<p>\(X\sim B\left(5,\tfrac13\right)\). Halla \(P(X=2)\) y \(P(X\ge1)\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(P(X=2)=\binom52\left(\tfrac13\right)^2\left(\tfrac23\right)^3=10\cdot\tfrac19\cdot\tfrac8{27}=\tfrac{80}{243}\).</p><p>\(P(X\ge1)=1-\left(\tfrac23\right)^5=\tfrac{211}{243}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(X\sim B\left(4,\tfrac12\right)\). Halla \(P(X=2)\) y \(P(X\ge1)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(P(X=2)=\binom42\tfrac1{16}=\tfrac6{16}=\tfrac38\); \(P(X\ge1)=1-\tfrac1{16}=\tfrac{15}{16}\).</li></ol></div></details></div>
+<h3 id="ty3">T3. Variable discreta dada por una fórmula</h3>
+<p><b>Qué reconocer:</b> \(P(X=x)=k\,g(x)\) para unos valores de \(x\) y piden \(k\), \(\mathrm E(X)\) o \(\mathrm{Var}(X)\). <b>Método:</b> halla \(k\) con \(\sum P=1\). Después \(\mathrm E(X)=\sum xP\) y \(\mathrm{Var}=\mathrm E(X^2)-\mathrm E(X)^2\).</p>
+<div class="ex"><p class="et">Ejemplo T3. <span class="lvl">Sección A alta</span></p>
+<p>\(P(X=x)=kx\) para \(x=1,2,3,4\). Halla \(k\), \(\mathrm E(X)\) y \(\mathrm{Var}(X)\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(k(1+2+3+4)=1\Rightarrow k=\tfrac1{10}\). \(\mathrm E(X)=\tfrac{1+4+9+16}{10}=3\); \(\mathrm E(X^2)=\tfrac{1+8+27+64}{10}=10\), así que \(\mathrm{Var}=10-9=1\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(P(X=x)=k(5-x)\) para \(x=1,2,3,4\). Halla \(k\) y \(\mathrm E(X)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(k(4+3+2+1)=1\Rightarrow k=\tfrac1{10}\); \(\mathrm E(X)=\tfrac{4+6+6+4}{10}=2\).</li></ol></div></details></div>
+<h3 id="ty4">T4. Valor esperado de un juego</h3>
+<p><b>Qué reconocer:</b> un juego con premios y un precio por jugar; piden la ganancia esperada o el precio justo. <b>Método:</b> calcula \(\mathrm E(\text{premio})=\sum(\text{premio})P\) y resta el precio. El juego es justo cuando la ganancia esperada es 0.</p>
+<div class="ex"><p class="et">Ejemplo T4. <span class="lvl">Tipo IB</span></p>
+<p>Se paga 2 por lanzar un dado; se ganan 5 si sale un 6 y nada en otro caso. Halla la ganancia esperada. ¿Es justo?</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\mathrm E(\text{premio})=5\cdot\tfrac16=\tfrac56\); ganancia \(\tfrac56-2=-\tfrac76\). No es justo (favorece a la banca).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>¿Qué precio haría justo el juego anterior?</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>El precio justo iguala el premio esperado: \(\tfrac56\).</li></ol></div></details></div>
+<h3 id="ty5">T5. Densidad continua definida a trozos</h3>
+<p><b>Qué reconocer:</b> una densidad por tramos y piden \(k\), una probabilidad o la mediana. <b>Método:</b> impón \(\int f=1\) sobre todo el dominio; una probabilidad es el área sobre el intervalo; la mediana deja área \(\tfrac12\).</p>
+<div class="ex"><p class="et">Ejemplo T5. <span class="lvl">Sección A alta</span></p>
+<p>\(f(x)=k(1+x)\) en \([0,2]\). Halla \(k\), \(P(X\lt1)\) y la mediana.</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(k\int_0^2(1+x)\,dx=4k=1\Rightarrow k=\tfrac14\). \(P(X\lt1)=\tfrac14\left(1+\tfrac12\right)=\tfrac38\).</p><p>Mediana: \(\tfrac14\left(m+\tfrac{m^2}2\right)=\tfrac12\Rightarrow m^2+2m-4=0\Rightarrow m=-1+\sqrt5\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(f(x)=kx^2\) en \([0,3]\). Halla \(k\) y \(P(X\gt2)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(k\cdot9=1\Rightarrow k=\tfrac19\); \(P(X\gt2)=\tfrac1{27}(27-8)=\tfrac{19}{27}\).</li></ol></div></details></div>
+<h3 id="ty6">T6. Esperanza de una función de \(X\)</h3>
+<p><b>Qué reconocer:</b> piden \(\mathrm E(X^2)\), \(\mathrm E\!\left(\tfrac1X\right)\) o la media de otra función, para una variable continua. <b>Método:</b> usa \(\mathrm E(g(X))=\int g(x)f(x)\,dx\). No es \(g(\mathrm E(X))\).</p>
+<div class="ex"><p class="et">Ejemplo T6. <span class="lvl">Sección A</span></p>
+<p>\(f(x)=2x\) en \([0,1]\). Halla \(\mathrm E(X)\), \(\mathrm E(X^2)\) y \(\mathrm{Var}(X)\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(\mathrm E(X)=\int_0^1 2x^2\,dx=\tfrac23\); \(\mathrm E(X^2)=\int_0^1 2x^3\,dx=\tfrac12\); \(\mathrm{Var}=\tfrac12-\tfrac49=\tfrac1{18}\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Con \(f(x)=2x\) en \([0,1]\), halla \(\mathrm E\!\left(\tfrac1X\right)\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(\int_0^1\tfrac1x\cdot2x\,dx=\int_0^1 2\,dx=2\).</li></ol></div></details></div>
+<h3 id="ty7">T7. Normal: hallar \(\mu\) y \(\sigma\) desde dos probabilidades</h3>
+<p><b>Qué reconocer:</b> te dan dos probabilidades (o percentiles) con sus valores \(z\) y piden \(\mu\) y \(\sigma\). <b>Método:</b> escribe \(z=\dfrac{x-\mu}{\sigma}\) para cada dato; queda un sistema lineal en \(\mu\) y \(\sigma\).</p>
+<div class="ex"><p class="et">Ejemplo T7. <span class="lvl">Sección B</span></p>
+<p>\(X\sim N(\mu,\sigma^2)\). Se sabe que \(x=40\) tiene \(z=-1\) y \(x=55\) tiene \(z=1{,}5\). Halla \(\mu\) y \(\sigma\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(40-\mu=-\sigma\) y \(55-\mu=1{,}5\sigma\). Restando: \(15=2{,}5\sigma\Rightarrow\sigma=6\), \(\mu=46\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>Si \(x=20\) tiene \(z=-2\) y \(x=35\) tiene \(z=1\), halla \(\mu\) y \(\sigma\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(35-20=3\sigma\Rightarrow\sigma=5\); \(\mu=20+2\cdot5=30\).</li></ol></div></details></div>
+<h3 id="ty8">T8. Normal: hallar un valor a partir de un cuantil</h3>
+<p><b>Qué reconocer:</b> piden el valor \(x\) tal que \(P(X\lt x)\) es un número dado, con el valor \(z\) proporcionado. <b>Método:</b> despeja \(x=\mu+z\sigma\) con el \(z\) del cuantil.</p>
+<div class="ex"><p class="et">Ejemplo T8. <span class="lvl">Tipo IB</span></p>
+<p>\(X\sim N(100,15^2)\). Si \(P(X\lt x)=0{,}9\) corresponde a \(z=1{,}28\), halla \(x\).</p>
+<details><summary>Ver solución</summary><div class="inner"><p>\(x=100+1{,}28\cdot15=119{,}2\).</p></div></details></div>
+<div class="ex practica"><p class="et">Para practicar <span class="lvl">mismo tipo, nivel de examen</span></p><ol><li>\(X\sim N(50,10^2)\). Si \(P(X\gt x)=0{,}975\) corresponde a \(z=-1{,}96\), halla \(x\).</li></ol><details><summary>Respuestas</summary><div class="inner"><ol><li>\(x=50-1{,}96\cdot10=30{,}4\).</li></ol></div></details></div>
+</section>
+<section id="extra">
+<h2>7. Problemas extra</h2>
+<p class="lead">Son 10 problemas nuevos al nivel de las preguntas más difíciles de la Prueba 1. Todos usan solo contenido del programa, y ninguno repite un tipo de los Módulos 1–11. Integran series (Módulo 1), polinomios (Módulo 2), funciones (Módulo 3), combinatoria (Módulo 4), sistemas (Módulo 9) y probabilidad (Módulo 10). El 9 y el 10 son problemas jefe, del nivel máximo que pone el IB en la Sección B. Al final, I1 es una investigación tipo Prueba 3 de NS. Cada uno trae una pista y la respuesta final plegadas.</p>
+
+<div class="ex"><p class="et">E1. La distribución geométrica <span class="lvl">Sección B, integra Módulo 1</span></p>
+<p>\(X\) es el número de lanzamientos hasta el primer 6. (a) Muestra que \(P(X=k)=\left(\tfrac56\right)^{k-1}\tfrac16\) y que la suma es 1. (b) Usando \(\sum_{k\ge1}kx^{k-1}=\tfrac1{(1-x)^2}\), muestra que \(\mathrm E(X)=6\). (c) Halla \(P(X\gt k)\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(c) «No salió 6 en los primeros \(k\)».</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(\tfrac16\cdot\tfrac1{(1/6)^2}=6\). (c) \(\left(\tfrac56\right)^k\).</p></div></details></div>
+
+<div class="ex"><p class="et">E2. Probar la media de la binomial <span class="lvl">Sección B, integra Módulo 4</span></p>
+<p>(a) Usando el binomio de Newton, muestra que \(\sum_{r=0}^{n}P(X=r)=1\) si \(X\sim B(n,p)\). (b) Usando \(r\binom nr=n\binom{n-1}{r-1}\), muestra que \(\mathrm E(X)=np\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(b) Saca \(np\) como factor; lo que queda es la suma de las probabilidades de \(B(n-1,p)\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \((p+(1-p))^n=1\). (b) \(np\sum\binom{n-1}{r-1}p^{r-1}(1-p)^{n-r}=np\cdot1\).</p></div></details></div>
+
+<div class="ex"><p class="et">E3. Reconstruir una distribución con un sistema <span class="lvl">Sección A alta, integra Módulo 9</span></p>
+<p>\(X\) toma los valores 1, 2, 3 con probabilidades \(a,b,c\). Si \(\mathrm E(X)=2{,}2\) y \(\mathrm{Var}(X)=0{,}56\), halla \(a,b,c\).</p>
+<details><summary>Pista</summary><div class="inner"><p>\(\mathrm E(X^2)=0{,}56+2{,}2^2=5{,}4\). Resuelve el sistema 3×3.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(a=0{,}2,\ b=0{,}4,\ c=0{,}4\).</p></div></details></div>
+
+<div class="ex"><p class="et">E4. Una densidad trigonométrica <span class="lvl">Sección B, integra Módulo 8</span></p>
+<p>\(f(x)=k\sin x\) en \([0,\pi]\). Halla (a) \(k\); (b) \(P\left(X\lt\tfrac\pi3\right)\); (c) la mediana y la media; (d) el cuartil inferior.</p>
+<details><summary>Pista</summary><div class="inner"><p>\(\int\sin x\,dx=-\cos x\). La densidad es simétrica respecto a \(\tfrac\pi2\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(\tfrac12\). (b) \(\tfrac12\left(1-\tfrac12\right)=\tfrac14\). (c) Ambas \(\tfrac\pi2\). (d) \(\tfrac\pi3\), por (b).</p></div></details></div>
+
+<div class="ex"><p class="et">E5. La normal con probabilidad condicionada <span class="lvl">Sección A alta, integra Módulo 10</span></p>
+<p>\(X\sim N(\mu,\sigma^2)\) con \(P(X\lt50)=P(X\gt70)=0{,}2\). Halla (a) \(\mu\); (b) \(P(50\lt X\lt70)\); (c) \(P(X\lt70\mid X\gt50)\); (d) \(P(X\gt60\mid50\lt X\lt70)\).</p>
+<details><summary>Pista</summary><div class="inner"><p>Las colas iguales sitúan \(\mu\) en el punto medio.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) 60. (b) 0,6. (c) \(\tfrac{0{,}6}{0{,}8}=0{,}75\). (d) \(\tfrac12\), por simetría.</p></div></details></div>
+
+<div class="ex"><p class="et">E6. Retrasos: binomial condicionada <span class="lvl">Sección A alta, integra Módulo 10</span></p>
+<p>Cada día hay retraso con probabilidad \(\tfrac15\), de forma independiente. En 5 días, y sabiendo que hubo al menos un retraso, halla la probabilidad de que hubiera exactamente uno.</p>
+<details><summary>Pista</summary><div class="inner"><p>\(\dfrac{P(X=1)}{1-P(X=0)}\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>\(\dfrac{256/625}{2101/3125}=\dfrac{1280}{2101}\approx0{,}61\).</p></div></details></div>
+
+<div class="ex"><p class="et">E7. Moda, mediana y media ordenadas <span class="lvl">Sección A alta, integra Módulo 2</span></p>
+<p>\(f(x)=\tfrac x8\) en \([0,4]\). Halla la moda, la mediana y la media, y ordénalas. ¿Qué indica ese orden sobre la asimetría?</p>
+<details><summary>Pista</summary><div class="inner"><p>Mediana: \(\tfrac{m^2}{16}=\tfrac12\). Media: \(\int_0^4\tfrac{x^2}8\,dx\).</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>Moda 4, mediana \(2\sqrt2\approx2{,}83\), media \(\tfrac83\approx2{,}67\). Media < mediana < moda: asimetría negativa (cola a la izquierda).</p></div></details></div>
+
+<div class="ex"><p class="et">E8. Esperanza con indicadores <span class="lvl">Sección B, integra Módulo 4</span></p>
+<p>(a) En una permutación al azar de \(1,\dots,n\), halla el número esperado de números que quedan en su posición. (b) En 10 lanzamientos de moneda, halla el número esperado de pares de caras consecutivas (por ejemplo, CCC tiene dos pares).</p>
+<details><summary>Pista</summary><div class="inner"><p>Escribe el total como suma de indicadores \(I_k\in\{0,1\}\); \(\mathrm E(I_k)\) es la probabilidad de cada suceso.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(a) \(n\cdot\tfrac1n=1\), para todo \(n\). (b) \(9\cdot\tfrac14=\tfrac94\).</p></div></details></div>
+
+<div class="ex"><p class="et">E9. Dados con caras distintas y la misma suma <span class="lvl boss">Problema jefe, nivel máximo IB, integra Módulo 2</span></p>
+<p>A un dado de caras \(c_1,\dots,c_k\) le asociamos el polinomio \(x^{c_1}+\dots+x^{c_k}\). (a) Explica por qué el polinomio de la suma de dos dados es el producto de sus polinomios. (b) Verifica mayo 2022 TZ2 P10: \((x+2x^2+x^3)(x+2x^3+x^5)=(x+x^2+x^3+x^4)^2\). (c) Los dados de Sicherman, \(1,2,2,3,3,4\) y \(1,3,4,5,6,8\), dan la misma distribución de la suma que dos dados normales. Justifícalo con la factorización \(x+\dots+x^6=x(1+x)(1+x+x^2)(1-x+x^2)\).</p>
+<details><summary>Pista</summary><div class="inner"><p>(c) Reparte de otra manera los factores de \(\big(x(1+x)(1+x+x^2)(1-x+x^2)\big)^2\). Cada dado debe llevar un factor \(x\) (cara mínima 1) y valer 6 en \(x=1\), y sus coeficientes deben ser no negativos.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(c) El cuadrado de \(x(1+x)(1+x+x^2)(1-x+x^2)\) se reparte así. Primer dado: \(x(1+x)(1+x+x^2)=x+2x^2+2x^3+x^4\), es decir caras \(1,2,2,3,3,4\). Segundo dado: \(x(1+x)(1+x+x^2)(1-x+x^2)^2=x+x^3+x^4+x^5+x^6+x^8\), es decir caras \(1,3,4,5,6,8\). El producto es el mismo polinomio que el de dos dados normales.</p></div></details></div>
+
+<div class="ex"><p class="et">E10. El coleccionista de cromos <span class="lvl boss">Problema jefe, nivel máximo IB</span></p>
+<p>Se lanza un dado hasta haber visto las 6 caras. (a) Explica por qué, una vez vistas \(k\) caras, el número de lanzamientos hasta ver una nueva es geométrico con \(p=\tfrac{6-k}6\). (b) Deduce que el número esperado de lanzamientos es \(6\left(1+\tfrac12+\dots+\tfrac16\right)\) y calcúlalo.</p>
+<details><summary>Pista</summary><div class="inner"><p>Usa E1 (\(\mathrm E=\tfrac1p\)) y la linealidad de la esperanza.</p></div></details>
+<details><summary>Respuesta final</summary><div class="inner"><p>(b) \(\tfrac66+\tfrac65+\tfrac64+\tfrac63+\tfrac62+\tfrac61=\tfrac{147}{10}=14{,}7\).</p></div></details></div>
+
+<div class="ex inv" id="i1"><p class="et">I1. La distribución del máximo de variables uniformes <span class="lvl boss">Investigación tipo Prueba 3</span></p>
+<p>Eliges \(n\) números al azar, cada uno uniforme en \([0,1]\) e independiente. ¿Cómo se comporta el mayor de ellos? Vas a hallar su densidad, su media, y ver qué pasa cuando \(n\) crece.</p>
+<ol type="a"><li>Sea \(M\) el máximo de dos números \(X_1,X_2\) uniformes en \([0,1]\). Explica por qué \(P(M\le m)=P(X_1\le m)\,P(X_2\le m)=m^2\), y deduce la densidad de \(M\).</li><li>Halla \(\mathrm E(M)\) y la mediana de \(M\) para \(n=2\).</li><li>Generaliza: para \(n\) variables, \(F_M(m)=m^n\). Halla la densidad y prueba que \(\mathrm E(M)=\dfrac n{n+1}\).</li><li>Halla también \(\mathrm E(m\text{í}n)\) para \(n\) variables, usando \(P(\text{mín}\gt m)=(1-m)^n\).</li><li>¿A qué tienden \(\mathrm E(M)\) y \(\mathrm E(\text{mín})\) cuando \(n\to\infty\)? Interprétalo.</li></ol>
+<details><summary>Pistas</summary><div class="inner"><ol type="a"><li>El máximo es \(\le m\) exactamente cuando los dos lo son; son independientes.</li><li>Deriva \(F\) para la densidad; la mediana cumple \(m^2=\tfrac12\).</li><li>\(f_M(m)=nm^{n-1}\); integra \(\int_0^1 m\cdot nm^{n-1}\,dm\).</li><li>\(F_{\text{mín}}(m)=1-(1-m)^n\), así que \(f=n(1-m)^{n-1}\).</li><li>Compara \(\tfrac n{n+1}\) y \(\tfrac1{n+1}\) con 1 y 0.</li></ol></div></details>
+<details><summary>Respuestas</summary><div class="inner"><ol type="a"><li>\(F_M(m)=m^2\Rightarrow f_M(m)=2m\) en \([0,1]\).</li><li>\(\mathrm E(M)=\int_0^1 2m^2\,dm=\tfrac23\); mediana \(\tfrac1{\sqrt2}=\tfrac{\sqrt2}2\).</li><li>\(f_M(m)=nm^{n-1}\); \(\mathrm E(M)=\int_0^1 nm^n\,dm=\dfrac n{n+1}\).</li><li>\(\mathrm E(\text{mín})=\int_0^1 nm(1-m)^{n-1}\,dm=\dfrac1{n+1}\).</li><li>\(\mathrm E(M)\to1\) y \(\mathrm E(\text{mín})\to0\): con muchos puntos, el mayor se pega a 1 y el menor a 0.</li></ol></div></details></div>
+
+<p style="margin-top:48px;color:var(--soft)">Siguiente: Módulo 12, derivación.</p>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+</body></html>

@@ -1,0 +1,656 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 16B · Electricidad II · Tipo 2 · Física IB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+<style>
+:root{--paper:#F6F7F4;--paper-2:#FFFFFF;--ink:#16222B;--ink-soft:#43525C;--line:#D7DDD6;--teal:#1F6E7C;--teal-deep:#134B55;--amber:#C77B23;--amber-soft:#F6ECDB;--warn:#A8402C;--warn-soft:#F4E4DF;--hl:#6E4C86;--hl-soft:#EDE6F2;--ok:#2E7D5B;--ok-soft:#E3F0EA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif}.mono,.tag{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}@media(max-width:900px){.grid{grid-template-columns:1fr;gap:0}}
+.hero{position:relative;color:#EAF1EE;background:linear-gradient(180deg,rgba(19,75,85,0),rgba(11,45,52,.35)),var(--teal-deep);overflow:hidden;border-bottom:3px solid var(--amber)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.30;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 100% at 78% 8%,#000 0%,transparent 70%)}
+.hero-inner{position:relative;padding:60px 0 52px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;color:#8FD0C7;margin:0 0 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}.kicker span{color:#B7D8D1}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0;font-weight:600;letter-spacing:-.02em;color:#FCFEFD;max-width:20ch}.hero h1 em{font-style:normal;color:#F0B96B}
+.lede{font-size:clamp(17px,2.2vw,21px);max-width:62ch;margin:20px 0 0;color:#CFE0DB;line-height:1.5}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.stat{padding:18px 30px 18px 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.stat:last-child{border-right:none}
+.stat b{font-family:"Space Grotesk";font-size:28px;font-weight:600;color:#FCFEFD;display:block;line-height:1}
+.stat span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#9CC8C0;text-transform:uppercase}
+.toc{position:sticky;top:24px;font-family:"Space Grotesk";font-size:14px}
+.toc .t-lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px}
+.toc a{display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.3}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}@media(max-width:900px){.toc{display:none}}
+main{padding:60px 0 40px}section{margin-bottom:54px;scroll-margin-top:20px}
+.sec-num{font-family:"IBM Plex Mono";font-size:12px;color:var(--teal);letter-spacing:.1em}
+h2{font-size:clamp(23px,3.6vw,32px);line-height:1.1;margin:6px 0 8px;font-weight:600;letter-spacing:-.015em}h2 .rule{display:block;width:52px;height:3px;background:var(--amber);margin-top:14px}
+.sec-intro{color:var(--ink-soft);max-width:66ch;font-size:18px}
+h3{font-size:21px;margin:28px 0 6px;font-weight:600}h4{font-family:"Space Grotesk";font-size:14px;color:var(--teal-deep);margin:16px 0 6px;font-weight:600}
+p{margin:.55em 0}a{color:var(--teal)}ul,ol{margin:.5em 0;padding-left:1.3em}li{margin:.3em 0}strong{font-weight:600}
+.eq{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:6px 18px;margin:14px 0;overflow-x:auto}
+.eqname{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--teal);letter-spacing:.06em;display:block;margin-top:4px}
+.box{border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:18px 0;background:var(--paper-2)}
+.box .lbl{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px}
+.def{background:var(--amber-soft);border:1px solid #E6D2AE}.def .lbl{color:var(--amber)}
+.beyond{background:var(--hl-soft);border:1px solid #D9CBE4}.beyond .lbl{color:var(--hl)}
+.trap{background:var(--warn-soft);border:1px solid #E6C6BC}.trap .lbl{color:var(--warn)}
+.key{background:var(--ok-soft);border:1px solid #C4DECF}.key .lbl{color:var(--ok)}
+.pb{border:1px solid var(--line);border-radius:5px;margin:22px 0;background:var(--paper-2);overflow:hidden}
+.pb-head{background:linear-gradient(180deg,#F0F5F3,#FFFFFF);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.code{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.08em;color:#fff;background:var(--teal-deep);padding:2px 8px;border-radius:3px}
+.pb-head h3{margin:0;font-size:19px}
+.pb-body{padding:16px 20px 20px}
+.apt{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);letter-spacing:.04em;margin-top:12px}
+.ans{font-family:"Space Grotesk";font-weight:600;color:var(--teal-deep);background:#EAF3F0;border-radius:4px;padding:6px 12px;display:inline-block;margin-top:8px}
+.flag{color:var(--warn);font-weight:600}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;font-family:"Space Grotesk"}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}th{background:#EEF3F1;font-weight:600;color:var(--teal-deep)}td.l,th.l{text-align:left}
+.jefe .pb-head{background:linear-gradient(180deg,#EDE6F2,#FFF)}.jefe .code{background:var(--hl)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:5px;padding:16px;margin:16px 0;text-align:center}
+.fig svg{max-width:100%;height:auto}.fig figcaption{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-soft);margin-top:8px}
+details.rev{margin-top:14px;border:1px solid var(--line);border-radius:4px;background:#F0F5F3;overflow:hidden}
+details.rev>summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;color:var(--teal-deep);padding:10px 14px;background:#E7F0ED;user-select:none}
+details.rev>summary::-webkit-details-marker{display:none}
+details.rev>summary::before{content:"▸  VER RESOLUCIÓN (apartado por apartado)";color:var(--amber)}
+details.rev[open]>summary::before{content:"▾  OCULTAR RESOLUCIÓN";color:var(--amber)}
+details.rev>summary:hover{background:#DCEAE5}
+details.rev .rev-inner{padding:14px 16px;border-top:1px solid var(--line)}
+.step{margin:10px 0;padding-left:12px;border-left:2px solid var(--line)}
+.step b{font-family:"Space Grotesk";color:var(--teal-deep)}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<!-- rev 2026-10-31 16b · banco paper2 circuitos (3) oficiales 2022-26 -->
+<header class="hero"><div class="wrap hero-inner">
+  <p class="kicker">FÍSICA IB · NM <span>//</span> CIRCUITOS ELÉCTRICOS <span>//</span> MÓDULO 16B · TIPO 2 (PAPER 2)</p>
+  <h1>Electricidad II <em>de respuesta larga</em></h1>
+  <p class="lede">Problemas Paper 2 de circuitos: redes serie/paralelo, fem y resistencia interna \(\varepsilon=I(R+r)\), resistividad, divisor de tensión, gráficas I–V de componentes no óhmicos y potencia. La ficha oficial, resuelta apartado por apartado, más 5 integradores con incertidumbre realista.</p>
+  <div class="stats">
+    <div class="stat"><b>3</b><span>Paper 2 oficiales 22–26</span></div>
+    <div class="stat"><b>5 + 5</b><span>ficha · integradores</span></div>
+    <div class="stat"><b>oculta</b><span>resolución en toggle</span></div>
+    <div class="stat"><b>ρ_Cu</b><span>1,7×10⁻⁸ Ω·m</span></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="grid">
+<nav class="toc">
+  <p class="t-lbl">Contenido</p>
+  <a href="#s0">0 · Método para Tipo 2</a>
+  <a href="#p1">P1 · Prueba de circuito (4R) ▲</a>
+  <a href="#p2">P2 · Resistividad + fem/r</a>
+  <a href="#p3">P3 · Máxima potencia</a>
+  <a href="#p4">P4 · Cable multifilar</a>
+  <a href="#p5">P5 · Resistencia interna</a>
+  <a href="#examenes">★ Banco Paper 2 · 2022–26</a>
+  <a href="#extra">Integradores</a>
+  <a href="#practica2">Práctica extra · Paper 2</a>
+</nav>
+
+<main>
+
+<section id="s0">
+  <p class="sec-num">SECCIÓN 00</p>
+  <h2>Método para problemas Tipo 2 (circuitos)<span class="rule"></span></h2>
+  <p class="sec-intro">El Paper 2 encadena apartados que valen puntos por separado. En circuitos casi todo sale de reducir la red, aplicar la ley de la malla con resistencia interna y leer bien las gráficas.</p>
+  <div class="box key"><span class="lbl">Los 5 gestos</span>
+    <ol>
+      <li><strong>Reduce la red.</strong> Serie: \(R=R_1+R_2+\dots\) (misma corriente). Paralelo: \(\frac{1}{R}=\frac{1}{R_1}+\frac{1}{R_2}+\dots\) (misma tensión); para dos, \(R=\frac{R_1R_2}{R_1+R_2}\), siempre <em>menor</em> que la más pequeña. Redibuja hasta dejar un solo resistor.</li>
+      <li><strong>Malla con pila real.</strong> La fem se reparte entre la carga y la resistencia interna: \(\varepsilon=I(R+r)\). La <em>tensión en bornes</em> (lo que mide el voltímetro) es \(V=\varepsilon-Ir=IR\). La "tensión perdida" \(Ir\) sube con la corriente.</li>
+      <li><strong>Divisor de tensión.</strong> En serie, cada resistor se lleva una fracción de la tensión: \(V_1=V\dfrac{R_1}{R_1+R_2}\). Es la base de termistores/LDR como sensores: al cambiar una resistencia, cambia la salida.</li>
+      <li><strong>Gráficas I–V y no óhmicos.</strong> La resistencia en un punto es \(R=\dfrac{V}{I}\) (<em>no</em> la pendiente). En un filamento \(R\) crece con \(V\) porque se calienta: la curva se "acuesta". Óhmico = recta por el origen.</li>
+      <li><strong>Potencia, unidades e incertidumbre.</strong> \(P=VI=I^2R=\dfrac{V^2}{R}\). kΩ = 10³ Ω, mA = 10⁻³ A, mm al cuadrado en el área. Si hay datos con error, <strong>propaga</strong> (sumas de relativas; el exponente multiplica la relativa).</li>
+    </ol>
+  </div>
+  <div class="box def"><span class="lbl">Caja de fórmulas</span>
+    <p>\(V=IR\) · \(R=\rho\dfrac{L}{A}\) (con \(A=\pi r^2\)) · \(\varepsilon=I(R+r)\) · \(V=\varepsilon-Ir\) · divisor \(V_1=V\dfrac{R_1}{R_1+R_2}\) · \(P=VI=I^2R=\dfrac{V^2}{R}\) · (más allá) máxima potencia al exterior cuando \(R_{ext}=r\); \(Q=mc\Delta T\Rightarrow P=mc\dfrac{\Delta T}{\Delta t}\). Dato: \(\rho_{Cu}=1{,}7\times10^{-8}\) Ω·m.</p>
+  </div>
+</section>
+
+<!-- P1 -->
+<section id="p1">
+  <div class="pb"><div class="pb-head"><span class="code">FICHA · P1</span><h3>Prueba de un circuito con cuatro resistencias iguales <span class="flag">▲</span></h3></div>
+    <div class="pb-body">
+      <p>Cuatro resistencias idénticas \(R_A,R_B,R_C,R_D\) de \(10\) kΩ cada una. Un voltímetro de gran resistencia se conecta entre los bornes X e Y y se aplica \(6\) V entre los extremos de \(R_A\). Una resistencia puede fallar en <em>circuito abierto</em> (\(R=\infty\)) o en <em>cortocircuito</em> (\(R=0\)).</p>
+      <p class="flag">▲ La figura del circuito se perdió en el PDF original. Sin la topología exacta (qué resistencias quedan en serie/paralelo y dónde caen X e Y) no se pueden fijar los valores numéricos; abajo se da el <em>método</em> y la lectura bajo el montaje típico de este clásico IB (puente/divisor simétrico de cuatro brazos iguales), claramente marcada como dependiente de confirmar la figura.</p>
+      <p class="apt">(a)(i) Lectura del voltímetro si todo funciona bien. [2] <span class="flag">▲</span></p>
+      <p class="apt">(a)(ii) Lectura si \(R_B\) o \(R_D\) queda en cortocircuito. [1] <span class="flag">▲</span></p>
+      <p class="apt">(a)(iii) Cómo distinguir, usando solo el voltímetro, cuál de las dos se cortocircuitó. [2]</p>
+      <p class="apt">(b) Un fallo que produzca lectura de 6 V entre X e Y. [1] <span class="flag">▲</span></p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>Método general (sirva cual sea la figura).</b> (1) Reduce la red con todas las resistencias sanas y halla el potencial en X y en Y respecto de un mismo nodo de referencia. (2) La lectura es \(V_{XY}=V_X-V_Y\). (3) Un <em>cortocircuito</em> fuerza a \(0\) la caída en ese resistor (sus dos extremos quedan al mismo potencial); un <em>circuito abierto</em> corta esa rama (corriente \(0\) por ella) y traslada toda la caída a la parte que sí conduce. Recalcula los potenciales con esa modificación.</div>
+        <div class="step"><b>(a)(i) <span class="flag">▲ típico.</span></b> En el montaje simétrico habitual (los cuatro brazos iguales forman un puente equilibrado, con X e Y como nodos medios equivalentes), X e Y quedan al <em>mismo</em> potencial, de modo que <span class="ans">V ≈ 0 V (puente equilibrado)</span>. Si en tu figura X e Y son en cambio los extremos de un divisor \(R_B\!-\!R_C\) sobre \(R_A\), la lectura sería la mitad de 6 V, es decir 3 V. <em>Confirma la topología con el diagrama antes de dar el número.</em></div>
+        <div class="step"><b>(a)(ii) <span class="flag">▲ típico.</span></b> Un corto en \(R_B\) (o, por simetría, en \(R_D\)) desequilibra el puente: el nodo que compartía esa resistencia salta al potencial del extremo al que queda unido, y la lectura pasa a ser una fracción no nula de 6 V (típicamente \(\approx 3\) V en el puente simétrico). Que un corto en \(R_B\) <em>o</em> en \(R_D\) dé la misma lectura es justo la pista de que ambas ocupan posiciones simétricas. <em>El valor exacto depende de la figura.</em></div>
+        <div class="step"><b>(a)(iii) (sin depender de la figura).</b> Reconecta el voltímetro para medir la d.d.p. <em>a través de \(R_B\) y luego a través de \(R_D\)</em> por separado. Una resistencia en cortocircuito tiene \(R=0\), así que <strong>no cae tensión en ella</strong>: la que lea \(0\) V es la cortocircuitada; la sana mostrará su caída normal. <span class="ans">La resistencia que da 0 V al medirla directamente es la que se cortocircuitó.</span></div>
+        <div class="step"><b>(b) <span class="flag">▲ típico.</span></b> El voltímetro marcará los \(6\) V completos cuando sus bornes X–Y queden conectados directamente a los dos extremos de la fuente (toda la d.d.p. aparece entre X e Y). Eso ocurre con una combinación de fallos que ponga X al \(+6\) V y Y al \(0\) V: p. ej. una rama <strong>abierta</strong> que obligue a toda la corriente/tensión a pasar por el camino del voltímetro, o un <strong>corto</strong> que una X al borne positivo mientras Y sigue en el negativo. Identifica en tu figura qué único fallo logra ese puenteo. <em>Requiere la figura para nombrar la resistencia concreta.</em></div>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<!-- P2 -->
+<section id="p2">
+  <div class="pb"><div class="pb-head"><span class="code">FICHA · P2</span><h3>Resistividad, calentamiento y limitar la corriente (integra fem/r)</h3></div>
+    <div class="pb-body">
+      <p>Una resistencia de \(1{,}5\) Ω está hecha de alambre de cobre de radio \(0{,}18\) mm. \(\rho_{Cu}=1{,}7\times10^{-8}\) Ω·m.</p>
+      <p class="apt">(a) Determina la longitud del alambre. [2]</p>
+      <p class="apt">(b)(i) El fabricante garantiza ±10% de 1,5 Ω si la potencia disipada no supera 1,0 W. Sugiere por qué \(R\) podría pasar de \(1{,}65\) Ω si se supera 1,0 W. [2]</p>
+      <p class="apt">(b)(ii) Muestra que, para \(P=1{,}0\) W, la corriente en la resistencia de 1,5 Ω es \(0{,}82\) A. [1]</p>
+      <p class="apt">(b)(iii) La resistencia de 1,5 Ω está en serie con una resistencia variable \(R\) y una batería de fem \(6{,}0\) V y resistencia interna \(1{,}8\) Ω. Estima \(R\) para limitar la corriente a \(0{,}82\) A. [3]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> De \(R=\rho\dfrac{L}{A}\Rightarrow L=\dfrac{RA}{\rho}\), con \(A=\pi r^2=\pi(0{,}18\times10^{-3})^2=1{,}02\times10^{-7}\) m².<br>
+        \(L=\dfrac{(1{,}5)(1{,}02\times10^{-7})}{1{,}7\times10^{-8}}=\dfrac{1{,}53\times10^{-7}}{1{,}7\times10^{-8}}=8{,}98\) m.<br>
+        <span class="ans">L ≈ 9,0 m.</span></div>
+        <div class="step"><b>(b)(i)</b> Si \(P>1{,}0\) W la resistencia se calienta más. En un metal, al subir la temperatura los iones de la red vibran con mayor amplitud y <strong>dispersan más</strong> a los electrones de conducción: la resistividad \(\rho\) aumenta con \(T\). Como \(R=\rho L/A\), un \(\rho\) mayor eleva \(R\), que puede superar 1,65 Ω (+10%).</div>
+        <div class="step"><b>(b)(ii)</b> \(P=I^2R\Rightarrow I=\sqrt{\dfrac{P}{R}}=\sqrt{\dfrac{1{,}0}{1{,}5}}=\sqrt{0{,}667}=0{,}816\) A.<br>
+        <span class="ans">I ≈ 0,82 A. ✓</span></div>
+        <div class="step"><b>(b)(iii)</b> En serie, la fem alimenta tres resistencias: \(R\), \(1{,}5\) Ω y la interna \(1{,}8\) Ω.<br>
+        \(\varepsilon=I(R+1{,}5+1{,}8)\Rightarrow 6{,}0=0{,}82\,(R+3{,}3)\Rightarrow R+3{,}3=\dfrac{6{,}0}{0{,}82}=7{,}32\).<br>
+        \(R=7{,}32-3{,}3=4{,}02\) Ω.<br>
+        <span class="ans">R ≈ 4,0 Ω.</span></div>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<!-- P3 -->
+<section id="p3">
+  <div class="pb"><div class="pb-head"><span class="code">FICHA · P3</span><h3>Corrientes, aislantes y transferencia de máxima potencia</h3></div>
+    <div class="pb-body">
+      <p>Una resistencia de \(24\) Ω es un cable conductor de diámetro \(0{,}30\) mm y \(\rho=1{,}7\times10^{-8}\) Ω·m.</p>
+      <p class="apt">(d)(i) Calcula la longitud del cable. [2]</p>
+      <p class="apt">(d)(ii) Dibuja cómo varía la resistencia frente al diámetro (longitud constante); está dado el punto para 0,30 mm. [2]</p>
+      <p class="apt">(e) Se recubre el resistor con un aislante. Explica las diferencias entre las propiedades eléctricas del aislante y las del cable. [3]</p>
+      <p>Después, una fuente de fem \(12\) V y resistencia interna \(11\) Ω alimenta al resistor de \(24\) Ω <em>en paralelo</em> con un reóstato \(R\). Se entrega máxima potencia al exterior cuando \(R_{ext}=r\).</p>
+      <p class="apt">(f)(i) Halla el valor de \(R\) para máxima potencia al circuito externo. [3]</p>
+      <p class="apt">(f)(ii) Calcula la lectura del voltímetro para ese \(R\). [2]</p>
+      <p class="apt">(f)(iii) Calcula la potencia total disipada cuando se entrega la máxima potencia al exterior. [3]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(d)(i)</b> \(r=0{,}15\) mm \(\Rightarrow A=\pi r^2=\pi(0{,}15\times10^{-3})^2=7{,}07\times10^{-8}\) m².<br>
+        \(L=\dfrac{RA}{\rho}=\dfrac{(24)(7{,}07\times10^{-8})}{1{,}7\times10^{-8}}=\dfrac{1{,}70\times10^{-6}}{1{,}7\times10^{-8}}=99{,}8\) m.<br>
+        <span class="ans">L ≈ 100 m.</span></div>
+        <div class="step"><b>(d)(ii)</b> Con \(L\) constante, \(R=\dfrac{\rho L}{A}=\dfrac{\rho L}{\pi (d/2)^2}=\dfrac{4\rho L}{\pi d^2}\Rightarrow R\propto \dfrac{1}{d^2}\). Curva <em>decreciente</em>, muy inclinada para \(d\) pequeño y que se aplana al crecer \(d\) (no una recta), pasando por el punto dado (0,30 mm; 24 Ω).
+          <div class="fig">
+            <svg viewBox="0 0 400 210" role="img" aria-label="Resistencia frente a diámetro: curva 1/d²">
+              <line x1="60" y1="185" x2="370" y2="185" stroke="#43525C" stroke-width="1.2"/>
+              <line x1="60" y1="185" x2="60" y2="25" stroke="#43525C" stroke-width="1.2"/>
+              <text x="215" y="205" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#43525C">diámetro d (mm)</text>
+              <text x="20" y="105" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#43525C" transform="rotate(-90 20 105)">R (Ω)</text>
+              <path d="M 95 40 Q 140 150 200 168 T 350 180" fill="none" stroke="#1F6E7C" stroke-width="1.8"/>
+              <circle cx="150" cy="120" r="3.8" fill="#C77B23"/>
+              <line x1="60" y1="120" x2="150" y2="120" stroke="#C77B23" stroke-width="0.8" stroke-dasharray="3 3"/>
+              <line x1="150" y1="185" x2="150" y2="120" stroke="#C77B23" stroke-width="0.8" stroke-dasharray="3 3"/>
+              <text x="53" y="124" font-family="IBM Plex Mono" font-size="10" text-anchor="end" fill="#C77B23">24</text>
+              <text x="150" y="197" font-family="IBM Plex Mono" font-size="10" text-anchor="middle" fill="#C77B23">0,30</text>
+            </svg>
+            <figcaption>R ∝ 1/d² : al duplicar d, R cae a la cuarta parte. Dato marcado: (0,30 mm, 24 Ω).</figcaption>
+          </div></div>
+        <div class="step"><b>(e)</b> El <strong>cobre</strong> es conductor: tiene un "mar" de electrones de valencia <em>deslocalizados</em> (libres), que ante un campo derivan y forman corriente; su resistividad es muy baja (\(\sim10^{-8}\) Ω·m). El <strong>aislante</strong> casi no tiene portadores libres: sus electrones están <em>ligados</em> a los átomos (banda prohibida grande), así que bajo el mismo campo apenas se mueven; su resistividad es enorme (\(\sim10^{12}\)–\(10^{16}\) Ω·m). Por eso la corriente circula por el cable y no por el recubrimiento.</div>
+        <div class="step"><b>(f)(i)</b> Máxima potencia al exterior cuando el paralelo \(24\,\|\,R\) iguala a \(r=11\) Ω:<br>
+        \(\dfrac{24R}{24+R}=11\Rightarrow 24R=11(24+R)=264+11R\Rightarrow 13R=264\Rightarrow R=20{,}3\) Ω.<br>
+        <span class="ans">R ≈ 20 Ω.</span></div>
+        <div class="step"><b>(f)(ii)</b> Con \(R_{ext}=r=11\) Ω, el voltímetro (en bornes del exterior) lee la tensión en bornes:<br>
+        \(V=\varepsilon\dfrac{R_{ext}}{R_{ext}+r}=12\cdot\dfrac{11}{11+11}=6{,}0\) V. (La fem se reparte por igual al ser \(R_{ext}=r\).)<br>
+        <span class="ans">V = 6,0 V.</span></div>
+        <div class="step"><b>(f)(iii)</b> Corriente total: \(I=\dfrac{\varepsilon}{R_{ext}+r}=\dfrac{12}{22}=0{,}545\) A.<br>
+        Potencia total = \(\varepsilon I=12\times0{,}545=6{,}5\) W (de ella, la mitad, 3,3 W, se pierde dentro de la fuente, lo que confirma la baja eficiencia del acople de máxima potencia).<br>
+        <span class="ans">P_total ≈ 6,5 W.</span></div>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<!-- P4 -->
+<section id="p4">
+  <div class="pb"><div class="pb-head"><span class="code">FICHA · P4</span><h3>Cable multifilar de cobre (integra calorimetría)</h3></div>
+    <div class="pb-body">
+      <p>Un cable transfiere energía de un generador a una carga. Consta de \(32\) hilos de cobre en paralelo, cada uno de \(35\) km de longitud y resistencia \(64\) Ω. \(\rho_{Cu}=1{,}7\times10^{-8}\) Ω·m.</p>
+      <p class="apt">(a) Con los hilos y el aislante en un campo eléctrico, discute (portadores de carga) por qué la corriente es significativa solo en los hilos de cobre. [3]</p>
+      <p class="apt">(b)(i) Calcula el radio de cada hilo. [2]</p>
+      <p class="apt">(b)(ii) Con una corriente de 730 A en el cable, muestra que la potencia perdida en 1 m de cable es ≈ 30 W. [2]</p>
+      <p class="apt">(b)(iii) Al establecerse la corriente, el ritmo inicial de subida de temperatura es \(35\) mK·s⁻¹ y \(c_{Cu}=390\) J·kg⁻¹·K⁻¹. Determina la masa de 1 m de cable. [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> En el cobre (conductor) hay muchísimos electrones de conducción <em>libres</em> (deslocalizados): el campo los acelera y derivan, dando una corriente apreciable. En el aislante los electrones están <em>fuertemente ligados</em> a sus átomos (no hay portadores libres), así que el mismo campo apenas produce movimiento de carga: su corriente es despreciable. Por eso casi toda la corriente va por los hilos de cobre.</div>
+        <div class="step"><b>(b)(i)</b> Por hilo: \(A=\dfrac{\rho L}{R}=\dfrac{(1{,}7\times10^{-8})(35000)}{64}=\dfrac{5{,}95\times10^{-4}}{64}=9{,}30\times10^{-6}\) m².<br>
+        \(r=\sqrt{\dfrac{A}{\pi}}=\sqrt{\dfrac{9{,}30\times10^{-6}}{\pi}}=\sqrt{2{,}96\times10^{-6}}=1{,}72\times10^{-3}\) m.<br>
+        <span class="ans">r ≈ 1,7 mm.</span></div>
+        <div class="step"><b>(b)(ii)</b> Resistencia de 1 m de un hilo: \(\dfrac{64}{35000}=1{,}83\times10^{-3}\) Ω. Los 32 hilos en paralelo dan, por metro de cable: \(R_{m}=\dfrac{1{,}83\times10^{-3}}{32}=5{,}71\times10^{-5}\) Ω·m⁻¹.<br>
+        \(P/\text{m}=I^2R_m=(730)^2(5{,}71\times10^{-5})=532900\times5{,}71\times10^{-5}=30{,}5\) W.<br>
+        <span class="ans">P ≈ 30 W por metro. ✓</span><br>
+        <em>(Comprobación por hilo:</em> \(I_{hilo}=730/32=22{,}8\) A; \(P_{hilo}/\text{m}=22{,}8^2\times1{,}83\times10^{-3}=0{,}952\) W; \(\times32=30{,}5\) W.<em>)</em></div>
+        <div class="step"><b>(b)(iii)</b> Esa potencia calienta el metro de cable: \(P=mc\dfrac{\Delta T}{\Delta t}\Rightarrow m=\dfrac{P}{c\,(\Delta T/\Delta t)}=\dfrac{30{,}5}{(390)(0{,}035)}=\dfrac{30{,}5}{13{,}65}=2{,}23\) kg.<br>
+        <span class="ans">m ≈ 2,2 kg por metro.</span></div>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<!-- P5 -->
+<section id="p5">
+  <div class="pb"><div class="pb-head"><span class="code">FICHA · P5</span><h3>Fem y resistencia interna de una celda</h3></div>
+    <div class="pb-body">
+      <p>Un circuito determina la resistencia interna y la fem de una celda (celda + reóstato + amperímetro ideal + voltímetro ideal). Con el reóstato en \(1{,}5\) Ω: cuando la celda convierte \(7{,}2\) mJ de energía, se mueven \(5{,}8\) mC de carga por todo el circuito; la d.d.p. en el reóstato es \(0{,}55\) V.</p>
+      <p class="apt">(a) Define fuerza electromotriz (fem). [1]</p>
+      <p class="apt">(b)(i) Dibuja/ubica el amperímetro y el voltímetro en el circuito. [1] <span class="flag">▲</span></p>
+      <p class="apt">(b)(ii) Demuestra que la fem de la celda es \(1{,}25\) V. [1]</p>
+      <p class="apt">(b)(iii) Determina la resistencia interna de la celda. [2]</p>
+      <p class="apt">(b)(iv) Calcula la energía disipada por segundo en el reóstato. [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> La fem es la <strong>energía que la fuente entrega (convierte de otra forma a eléctrica) por unidad de carga</strong> que la atraviesa: \(\varepsilon=\dfrac{W}{q}\) (en J·C⁻¹ = V). Es el trabajo por culombio que impulsa la carga por todo el circuito.</div>
+        <div class="step"><b>(b)(i) <span class="flag">▲</span></b> (figura no incluida en el PDF) El <strong>amperímetro</strong> va <em>en serie</em> con la celda y el reóstato (por él pasa toda la corriente del circuito); el <strong>voltímetro</strong> va <em>en paralelo</em> con el reóstato (mide su d.d.p., los 0,55 V). Siendo ideales, el amperímetro no cae tensión y el voltímetro no deriva corriente.</div>
+        <div class="step"><b>(b)(ii)</b> \(\varepsilon=\dfrac{W}{q}=\dfrac{7{,}2\times10^{-3}}{5{,}8\times10^{-3}}=1{,}24\) V, que redondea a <span class="ans">≈ 1,25 V.</span> <em>(El cociente exacto es 1,24 V; coincide con 1,25 V dentro del redondeo a 3 c.s. — ver incidencias.)</em></div>
+        <div class="step"><b>(b)(iii)</b> Corriente: \(I=\dfrac{V_R}{R}=\dfrac{0{,}55}{1{,}5}=0{,}367\) A. La tensión perdida en la interna es \(\varepsilon-V_R=1{,}25-0{,}55=0{,}70\) V.<br>
+        \(r=\dfrac{\varepsilon-V_R}{I}=\dfrac{0{,}70}{0{,}367}=1{,}9\) Ω.<br>
+        <span class="ans">r ≈ 1,9 Ω.</span></div>
+        <div class="step"><b>(b)(iv)</b> Potencia en el reóstato: \(P=\dfrac{V_R^{\,2}}{R}=\dfrac{(0{,}55)^2}{1{,}5}=\dfrac{0{,}3025}{1{,}5}=0{,}20\) W (o \(P=V_RI=0{,}55\times0{,}367\)).<br>
+        <span class="ans">0,20 J por segundo (0,20 W).</span></div>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<!-- BANCO PAPER 2 OFICIALES -->
+<section id="examenes">
+  <p class="sec-num">SECCIÓN ★ · BANCO DE EXÁMENES OFICIALES · PAPER 2 (2022–2026)</p>
+  <h2>Paper 2 oficiales de circuitos<span class="rule"></span></h2>
+  <p class="sec-intro">Tres preguntas reales del banco 2022–2026: divisor de tensión con termístor, comparación de potencia en serie y en paralelo, y resistencia interna de una celda. Reescritas, resueltas apartado por apartado y <strong>verificadas contra el esquema oficial</strong>.</p>
+
+  <div class="pb"><div class="pb-head"><span class="code">May 2026 · TZ3 · SP2 · Q1 · PLAN NUEVO</span><h3>Divisor de tensión con termístor</h3></div>
+    <div class="pb-body">
+      <p>Una batería de f.e.m. \(12\) V y resistencia interna despreciable alimenta un resistor \(R_1=180\ \Omega\) en serie con la combinación en paralelo de \(R_2=240\ \Omega\) y un termístor. Un voltímetro ideal a través de la combinación en paralelo marca \(3{,}0\) V.</p>
+      <figure class="fig"><svg viewBox="0 0 320 120" width="300" xmlns="http://www.w3.org/2000/svg" aria-label="divisor con termistor">
+        <line x1="20" y1="20" x2="120" y2="20" stroke="var(--ink)"/><rect x="120" y="13" width="40" height="14" fill="#fff" stroke="var(--ink)"/><text x="140" y="10" font-family="IBM Plex Mono" font-size="9" text-anchor="middle" fill="var(--ink-soft)">180Ω</text>
+        <line x1="160" y1="20" x2="240" y2="20" stroke="var(--ink)"/>
+        <line x1="240" y1="20" x2="240" y2="40" stroke="var(--ink)"/><line x1="240" y1="40" x2="200" y2="40" stroke="var(--ink)"/><line x1="240" y1="40" x2="280" y2="40" stroke="var(--ink)"/>
+        <rect x="185" y="48" width="30" height="12" fill="#fff" stroke="var(--ink)"/><text x="200" y="74" font-family="IBM Plex Mono" font-size="8" text-anchor="middle" fill="var(--ink-soft)">240Ω</text>
+        <rect x="265" y="48" width="30" height="12" fill="#EDE6F2" stroke="var(--hl)"/><text x="280" y="74" font-family="IBM Plex Mono" font-size="8" text-anchor="middle" fill="var(--hl)">term.</text>
+        <line x1="200" y1="60" x2="200" y2="95" stroke="var(--ink)"/><line x1="280" y1="60" x2="280" y2="95" stroke="var(--ink)"/><line x1="20" y1="20" x2="20" y2="95" stroke="var(--ink)"/><line x1="20" y1="95" x2="280" y2="95" stroke="var(--ink)"/>
+        <text x="12" y="60" font-family="IBM Plex Mono" font-size="10" fill="var(--teal-deep)">12V</text>
+      </svg><figcaption>180 Ω en serie con (240 Ω ∥ termístor); el voltímetro marca 3,0 V en el paralelo.</figcaption></figure>
+      <p class="apt">(a)(i) Muestre que la corriente de la batería es \(50\) mA. [2]</p>
+      <p class="apt">(a)(ii) Determine la resistencia del termístor. [2]</p>
+      <p class="apt">(b) La temperatura aumenta. Explique el efecto sobre la lectura del voltímetro. [3]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)(i)</b> Toda la corriente de la batería pasa por \(R_1\). La tensión en \(R_1\) es \(12-3{,}0=9{,}0\) V, así que \(I=\dfrac{V}{R_1}=\dfrac{9{,}0}{180}=0{,}050\) A = 50 mA. ∎</div>
+        <div class="step"><b>(a)(ii)</b> La corriente de \(50\) mA se reparte en el paralelo. Por el \(240\ \Omega\): \(I_{240}=\dfrac{3{,}0}{240}=0{,}0125\) A. Por el termístor: \(0{,}050-0{,}0125=0{,}0375\) A. Resistencia: \(R_{term}=\dfrac{3{,}0}{0{,}0375}=80\ \Omega\). <span class="ans">R_termístor = 80 Ω</span></div>
+        <div class="step"><b>(b)</b> Al subir la temperatura, la resistencia del termístor <strong>disminuye</strong>, así que la resistencia de la <strong>combinación en paralelo baja</strong>; la corriente del circuito <strong>aumenta</strong>, la caída en \(R_1\) crece y, por tanto, la tensión en el paralelo (lo que marca el voltímetro) <strong>disminuye</strong>. ∎</div>
+        <div class="step" style="border-left-color:var(--ok)"><b>Verificado</b> · Physics_paper_2_TZ3_SL_markscheme (2226–4733M, TZ3): (a)(i) 9,0/180=0,050 A · (a)(ii) I_240=0,0125, I_term=0,0375, R=80 Ω · (b) R paralelo baja → I sube → pd en R₁ sube → lectura baja.</div>
+      </div></details>
+    </div>
+  </div>
+
+  <div class="pb"><div class="pb-head"><span class="code">Nov 2024 · SP2 · Q4 · PLAN NUEVO</span><h3>Potencia en serie y en paralelo</h3></div>
+    <div class="pb-body">
+      <p>Dos resistores X e Y (de resistencia constante) se conectan a una celda de f.e.m. \(E\) con resistencia interna despreciable. La potencia disipada en X es mayor que en Y.</p>
+      <p class="apt">(a) En <strong>serie</strong>: indique y explique cómo es \(R_X\) comparada con \(R_Y\). [2]</p>
+      <p class="apt">(b) Ahora X e Y se conectan en <strong>paralelo</strong> a la misma celda: indique y explique cuál disipa más potencia. [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> En serie la <strong>corriente es la misma</strong> por ambos, y \(P=I^{2}R\). Como \(P_X>P_Y\) con igual \(I\), debe ser \(R_X>R_Y\): <strong>X tiene mayor resistencia</strong>.</div>
+        <div class="step"><b>(b)</b> En paralelo la <strong>tensión es la misma</strong> en ambos, y \(P=\dfrac{V^{2}}{R}\). A igual \(V\), disipa más el de <em>menor</em> resistencia; como \(R_Y<R_X\), <strong>Y disipa más potencia</strong>. (Se invierte respecto a la serie.) ∎</div>
+        <div class="step" style="border-left-color:var(--ok)"><b>Verificado</b> · Physics_paper_2__SL_markscheme_1 (8824–9594M, Nov 2024): (a) misma I, P=I²R → X mayor R · (b) misma V, P=V²/R → Y (menor R) mayor potencia.</div>
+      </div></details>
+    </div>
+  </div>
+
+  <div class="pb"><div class="pb-head"><span class="code">May 2024 · TZ1 · SP2 · Q5 · PLAN NUEVO</span><h3>Resistencia interna de una celda</h3></div>
+    <div class="pb-body">
+      <p>Un resistor de \(50{,}0\ \Omega\) se conecta a una celda de f.e.m. \(3{,}00\) V (voltímetro y amperímetro ideales). La corriente es \(59{,}0\) mA.</p>
+      <p class="apt">(a) Calcule la resistencia interna de la celda. [2]</p>
+      <p class="apt">(b) Se conecta otro resistor \(R\) en paralelo con el de \(50{,}0\ \Omega\). Explique el efecto sobre (i) la lectura del amperímetro y (ii) la tensión en los bornes. [4]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> \(\varepsilon=I(R+r)\Rightarrow R+r=\dfrac{\varepsilon}{I}=\dfrac{3{,}00}{0{,}0590}=50{,}85\ \Omega\); \(r=50{,}85-50{,}0=0{,}85\ \Omega\). <span class="ans">r ≈ 0,85 Ω</span></div>
+        <div class="step"><b>(b)(i)</b> Al añadir \(R\) en paralelo, la <strong>resistencia externa disminuye</strong>; por \(I=\dfrac{\varepsilon}{R_{ext}+r}\), la <strong>corriente total aumenta</strong> (sube la lectura del amperímetro).</div>
+        <div class="step"><b>(b)(ii)</b> La tensión en los bornes es \(V=\varepsilon-Ir\); al aumentar \(I\), la caída interna \(Ir\) crece y la <strong>tensión en los bornes disminuye</strong>. ∎</div>
+        <div class="step" style="border-left-color:var(--ok)"><b>Verificado</b> · Physics_paper_2__TZ1_SL_markscheme_3 (2224–6705M, May 2024 TZ1): (a) R+r=3,00/0,059=50,85 → r=0,85 Ω · (b)(i) R_ext baja → I sube · (b)(ii) V=ε−Ir → baja.</div>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <p class="sec-num">5 INTEGRADORES · NIVEL IB Y UN PASO MÁS</p>
+  <h2>Problemas que combinan módulos<span class="rule"></span></h2>
+  <p class="sec-intro">Integran circuitos con energía/potencia, reducción de redes, sensores (termistor), componentes no óhmicos con gráfica I–V, y medición con incertidumbre. Intenta antes de abrir la resolución.</p>
+
+  <!-- E1 -->
+  <div class="pb"><div class="pb-head"><span class="code">INTEGRADOR · E1</span><h3>Pila real: tensión en bornes, potencia y eficiencia</h3></div>
+    <div class="pb-body">
+      <p>Una batería de fem \(9{,}0\) V y resistencia interna \(0{,}50\) Ω alimenta un resistor externo de \(4{,}0\) Ω.</p>
+      <p class="apt">(a) Halla la corriente. (b) La tensión en bornes. (c) La potencia entregada al resistor externo. (d) La potencia disipada dentro de la pila. (e) La eficiencia de la transferencia.</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> \(I=\dfrac{\varepsilon}{R+r}=\dfrac{9{,}0}{4{,}0+0{,}50}=\dfrac{9{,}0}{4{,}5}=2{,}0\) A. <span class="ans">I = 2,0 A.</span></div>
+        <div class="step"><b>(b)</b> \(V=\varepsilon-Ir=9{,}0-(2{,}0)(0{,}50)=8{,}0\) V (= \(IR=2{,}0\times4{,}0\)). <span class="ans">V = 8,0 V.</span></div>
+        <div class="step"><b>(c)</b> \(P_{ext}=I^2R=(2{,}0)^2(4{,}0)=16\) W. <span class="ans">16 W.</span></div>
+        <div class="step"><b>(d)</b> \(P_{int}=I^2r=(2{,}0)^2(0{,}50)=2{,}0\) W. <span class="ans">2,0 W.</span></div>
+        <div class="step"><b>(e)</b> \(\eta=\dfrac{P_{ext}}{P_{total}}=\dfrac{16}{16+2{,}0}=\dfrac{16}{18}=0{,}89\). <span class="ans">≈ 89 %.</span> (Alta porque \(R\gg r\); baja a 50 % cuando \(R=r\), el caso de máxima potencia.)</div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- E2 -->
+  <div class="pb"><div class="pb-head"><span class="code">INTEGRADOR · E2</span><h3>Red combinada con pila real</h3></div>
+    <div class="pb-body">
+      <p>Fem \(12\) V, resistencia interna \(2{,}0\) Ω. En el exterior: \(R_1=2{,}0\) Ω en serie con el paralelo de \(R_2=6{,}0\) Ω y \(R_3=12\) Ω.</p>
+      <p class="apt">(a) Resistencia externa total. (b) Corriente que da la pila. (c) Tensión en bornes. (d) Corriente en \(R_2\) y en \(R_3\). (e) Potencia entregada por la pila.</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> Paralelo: \(R_{23}=\dfrac{(6{,}0)(12)}{6{,}0+12}=\dfrac{72}{18}=4{,}0\) Ω. Externa: \(R_{ext}=R_1+R_{23}=2{,}0+4{,}0=6{,}0\) Ω. <span class="ans">6,0 Ω.</span></div>
+        <div class="step"><b>(b)</b> \(I=\dfrac{\varepsilon}{R_{ext}+r}=\dfrac{12}{6{,}0+2{,}0}=1{,}5\) A. <span class="ans">1,5 A.</span></div>
+        <div class="step"><b>(c)</b> \(V=\varepsilon-Ir=12-(1{,}5)(2{,}0)=9{,}0\) V. <span class="ans">9,0 V.</span></div>
+        <div class="step"><b>(d)</b> Tensión en el paralelo: \(V_{23}=I\,R_{23}=(1{,}5)(4{,}0)=6{,}0\) V.<br>
+        \(I_2=\dfrac{6{,}0}{6{,}0}=1{,}0\) A; \(I_3=\dfrac{6{,}0}{12}=0{,}50\) A (suman 1,5 A ✓).<br>
+        <span class="ans">I₂ = 1,0 A ; I₃ = 0,50 A.</span></div>
+        <div class="step"><b>(e)</b> \(P=\varepsilon I=12\times1{,}5=18\) W. <span class="ans">18 W.</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- E3 -->
+  <div class="pb"><div class="pb-head"><span class="code">INTEGRADOR · E3</span><h3>Divisor de tensión con termistor (sensor de temperatura)</h3></div>
+    <div class="pb-body">
+      <p>Un divisor con alimentación de \(12\) V (fuente ideal): un resistor fijo \(R=2{,}0\) kΩ en serie con un termistor NTC. La salida \(V_{out}\) se toma en bornes del resistor fijo. La resistencia del termistor es \(4{,}0\) kΩ a \(20\) °C y baja a \(1{,}0\) kΩ al calentarse.</p>
+      <p class="apt">(a) \(V_{out}\) a 20 °C. (b) \(V_{out}\) cuando el termistor está a 1,0 kΩ. (c) Explica cómo sirve de sensor y en qué sentido cambia la salida al subir la temperatura.</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> Divisor: \(V_{out}=V\dfrac{R}{R+R_{th}}=12\cdot\dfrac{2{,}0}{2{,}0+4{,}0}=12\cdot\dfrac{2}{6}=4{,}0\) V. <span class="ans">4,0 V.</span></div>
+        <div class="step"><b>(b)</b> \(V_{out}=12\cdot\dfrac{2{,}0}{2{,}0+1{,}0}=12\cdot\dfrac{2}{3}=8{,}0\) V. <span class="ans">8,0 V.</span></div>
+        <div class="step"><b>(c)</b> En un termistor NTC \(R_{th}\) <em>disminuye</em> al subir la temperatura. Entonces el denominador baja y \(V_{out}\) (en el resistor fijo) <strong>aumenta</strong> (de 4,0 V a 8,0 V). Esa tensión creciente puede alimentar la entrada de un circuito de control o comparador: así el divisor convierte un cambio de temperatura en un cambio de voltaje medible.</div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- E4 -->
+  <div class="pb"><div class="pb-head"><span class="code">INTEGRADOR · E4</span><h3>Componente no óhmico: lámpara de filamento con gráfica I–V</h3></div>
+    <div class="pb-body">
+      <p>La característica I–V de una lámpara de filamento pasa por los puntos de la tabla.</p>
+      <table>
+        <tr><th>V (V)</th><th>0</th><th>2,0</th><th>4,0</th><th>6,0</th><th>8,0</th></tr>
+        <tr><td>I (A)</td><td>0</td><td>0,40</td><td>0,60</td><td>0,72</td><td>0,80</td></tr>
+      </table>
+      <div class="fig">
+        <svg viewBox="0 0 400 220" role="img" aria-label="Característica I–V de una lámpara de filamento">
+          <line x1="55" y1="190" x2="375" y2="190" stroke="#43525C" stroke-width="1.2"/>
+          <line x1="55" y1="190" x2="55" y2="25" stroke="#43525C" stroke-width="1.2"/>
+          <text x="215" y="210" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#43525C">V (V)</text>
+          <text x="18" y="108" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#43525C" transform="rotate(-90 18 108)">I (A)</text>
+          <!-- puntos: V 0..8 -> x 55..355 (37.5/V); I 0..0.8 -> y 190..40 (187.5/A) -->
+          <path d="M 55 190 Q 110 120 130 112 Q 205 83 280 68 Q 320 62 355 55" fill="none" stroke="#1F6E7C" stroke-width="1.8"/>
+          <circle cx="130" cy="115" r="3.5" fill="#C77B23"/>
+          <circle cx="205" cy="78" r="3.5" fill="#C77B23"/>
+          <circle cx="280" cy="55" r="3.5" fill="#C77B23"/>
+          <circle cx="355" cy="40" r="3.5" fill="#C77B23"/>
+          <text x="128" y="105" font-family="IBM Plex Mono" font-size="9" fill="#C77B23">2;0,40</text>
+          <text x="355" y="34" font-family="IBM Plex Mono" font-size="9" text-anchor="end" fill="#C77B23">8;0,80</text>
+        </svg>
+        <figcaption>La curva se "acuesta": a más tensión, menos pendiente → la resistencia crece. No óhmico.</figcaption>
+      </div>
+      <p class="apt">(a) Halla la resistencia de la lámpara a \(V=2{,}0\) V y a \(V=8{,}0\) V, y comenta. (b) Explica, en términos del filamento, por qué cambia \(R\). (c) Potencia de la lámpara a \(8{,}0\) V. (d) La lámpara se conecta en serie con un resistor fijo \(R_s\) y una batería ideal de \(12\) V, y funciona a \(8{,}0\) V (0,80 A). Halla \(R_s\).</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> La resistencia en un punto es \(R=V/I\) (no la pendiente):<br>
+        a 2,0 V: \(R=\dfrac{2{,}0}{0{,}40}=5{,}0\) Ω. A 8,0 V: \(R=\dfrac{8{,}0}{0{,}80}=10\) Ω.<br>
+        <span class="ans">R: 5,0 Ω → 10 Ω.</span> La resistencia <em>se duplica</em>: es no óhmica (R no constante).</div>
+        <div class="step"><b>(b)</b> Al subir la corriente, el filamento se calienta mucho; en el metal, al aumentar \(T\), los iones vibran más y dispersan más a los electrones, de modo que la resistividad —y por tanto \(R\)— aumenta. Por eso la curva I–V se dobla (menor pendiente a mayor V).</div>
+        <div class="step"><b>(c)</b> \(P=VI=8{,}0\times0{,}80=6{,}4\) W. <span class="ans">6,4 W.</span></div>
+        <div class="step"><b>(d)</b> En serie, la misma corriente (0,80 A) pasa por \(R_s\). La tensión en \(R_s\) es \(12-8{,}0=4{,}0\) V.<br>
+        \(R_s=\dfrac{4{,}0}{0{,}80}=5{,}0\) Ω.<br>
+        <span class="ans">R_s = 5,0 Ω.</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- E5 -->
+  <div class="pb jefe"><div class="pb-head"><span class="code">PROBLEMA JEFE · E5</span><h3>Medir fem y resistencia interna con una gráfica V–I (con incertidumbre)</h3></div>
+    <div class="pb-body">
+      <p>Para hallar la fem y la resistencia interna de una pila mides la tensión en bornes \(V\) al variar la corriente \(I\) con un reóstato:</p>
+      <table>
+        <tr><th>I (A)</th><th>0,10</th><th>0,20</th><th>0,30</th><th>0,40</th><th>0,50</th></tr>
+        <tr><td>V (V)</td><td>1,45</td><td>1,40</td><td>1,35</td><td>1,30</td><td>1,25</td></tr>
+      </table>
+      <div class="fig">
+        <svg viewBox="0 0 400 220" role="img" aria-label="Gráfica de V frente a I: recta de pendiente negativa">
+          <line x1="60" y1="190" x2="375" y2="190" stroke="#43525C" stroke-width="1.2"/>
+          <line x1="60" y1="190" x2="60" y2="25" stroke="#43525C" stroke-width="1.2"/>
+          <text x="215" y="210" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#43525C">I (A)</text>
+          <text x="20" y="108" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#43525C" transform="rotate(-90 20 108)">V (V)</text>
+          <!-- recta de I=0 (x=60, V=1.50 -> y top) a I=0.6 -->
+          <line x1="60" y1="45" x2="360" y2="135" stroke="#6E4C86" stroke-width="1.7"/>
+          <circle cx="110" cy="60" r="3.3" fill="#C77B23"/>
+          <circle cx="160" cy="75" r="3.3" fill="#C77B23"/>
+          <circle cx="210" cy="90" r="3.3" fill="#C77B23"/>
+          <circle cx="260" cy="105" r="3.3" fill="#C77B23"/>
+          <circle cx="310" cy="120" r="3.3" fill="#C77B23"/>
+          <circle cx="60" cy="45" r="3.3" fill="none" stroke="#6E4C86" stroke-width="1.4"/>
+          <text x="66" y="40" font-family="IBM Plex Mono" font-size="9" fill="#6E4C86">ε = ordenada (I=0)</text>
+          <text x="250" y="150" font-family="IBM Plex Mono" font-size="9" fill="#6E4C86">pendiente = −r</text>
+        </svg>
+        <figcaption>V = ε − I·r : recta de ordenada en el origen ε y pendiente −r.</figcaption>
+      </div>
+      <p class="apt">(a) Explica por qué la gráfica V vs I es una recta e identifica qué significan su ordenada en el origen y su pendiente. [2]</p>
+      <p class="apt">(b) Con la gráfica, determina la fem y la resistencia interna. [3]</p>
+      <p class="apt">(c) El análisis da pendiente \((0{,}50\pm0{,}03)\) Ω y ordenada \((1{,}50\pm0{,}02)\) V. Expresa fem y \(r\) con su incertidumbre. [3]</p>
+      <p class="apt">(d) Comenta una medida que convendría mejorar. [1]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> La ley de la malla con pila real es \(V=\varepsilon-Ir\), de la forma \(y=c+mx\) con \(y=V\), \(x=I\). La <strong>ordenada en el origen</strong> (\(I=0\)) es la <strong>fem \(\varepsilon\)</strong> (tensión en circuito abierto) y la <strong>pendiente</strong> es \(-r\) (negativa porque la tensión en bornes cae al aumentar la corriente).</div>
+        <div class="step"><b>(b)</b> Pendiente \(=\dfrac{1{,}25-1{,}45}{0{,}50-0{,}10}=\dfrac{-0{,}20}{0{,}40}=-0{,}50\) V·A⁻¹ \(\Rightarrow r=0{,}50\) Ω. Prolongando a \(I=0\): \(\varepsilon=1{,}50\) V.<br>
+        <span class="ans">ε = 1,50 V ; r = 0,50 Ω.</span></div>
+        <div class="step"><b>(c)</b> La fem es la ordenada: <span class="ans">ε = (1,50 ± 0,02) V</span> (±1,3 %). La resistencia interna es \(|{\text{pendiente}}|\): <span class="ans">r = (0,50 ± 0,03) Ω</span> (incertidumbre relativa \(0{,}03/0{,}50=6\%\)).</div>
+        <div class="step"><b>(d)</b> El error mayor está en \(r\) (6 %), que sale de la pendiente. Conviene <strong>ampliar el rango de corrientes</strong> (incluir valores más altos, bajando el reóstato) y tomar más puntos repetidos para fijar mejor la recta; también usar un voltímetro de mayor resolución reduce la dispersión de los \(V\) y, con ello, la incertidumbre de la pendiente.</div>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<!-- PRÁCTICA EXTRA PAPER 2 -->
+<section id="practica2">
+  <p class="sec-num">PRÁCTICA EXTRA · 6 PROBLEMAS NUEVOS</p>
+  <h2>Práctica extra · Paper 2 (todo tipo)<span class="rule"></span></h2>
+  <p class="sec-intro">Seis problemas nuevos, multi-apartado y con "muestre que", que cubren exactamente los tipos que caen en Electricidad II: resistividad, redes combinadas, potencia y energía (kWh), fem/resistencia interna por gráfica V–I, divisor con sensor y componente no óhmico más el efecto de carga del voltímetro. Resuélvelos antes de abrir la resolución.</p>
+
+  <!-- N1 -->
+  <div class="pb"><div class="pb-head"><span class="code">PRÁCTICA · N1</span><h3>Resistividad de un alambre y reconexión en paralelo</h3></div>
+    <div class="pb-body">
+      <p>Un alambre de nicromo de resistividad \(\rho=1{,}1\times10^{-6}\) Ω·m tiene longitud \(2{,}0\) m y diámetro \(0{,}40\) mm.</p>
+      <p class="apt">(a) Muestre que la resistencia del alambre es \(\approx 17{,}5\) Ω. [2]</p>
+      <p class="apt">(b) El alambre se conecta a una fuente ideal de \(6{,}0\) V. Calcule la potencia disipada. [2]</p>
+      <p class="apt">(c) El alambre se corta en dos mitades iguales que se conectan en paralelo entre sí. Determine la nueva resistencia y la nueva potencia con los mismos \(6{,}0\) V. [3]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> \(A=\pi r^2=\pi(0{,}20\times10^{-3})^2=1{,}257\times10^{-7}\) m².<br>
+        \(R=\rho\dfrac{L}{A}=\dfrac{(1{,}1\times10^{-6})(2{,}0)}{1{,}257\times10^{-7}}=\dfrac{2{,}2\times10^{-6}}{1{,}257\times10^{-7}}=17{,}5\) Ω. <span class="ans">R ≈ 17,5 Ω. ✓</span></div>
+        <div class="step"><b>(b)</b> \(P=\dfrac{V^2}{R}=\dfrac{(6{,}0)^2}{17{,}5}=\dfrac{36}{17{,}5}=2{,}06\) W. <span class="ans">P ≈ 2,1 W.</span></div>
+        <div class="step"><b>(c)</b> Cada mitad tiene longitud \(1{,}0\) m y la mitad de la resistencia: \(R_{1/2}=8{,}75\) Ω. Dos en paralelo: \(R'=\dfrac{8{,}75}{2}=4{,}375\) Ω. <span class="ans">R' ≈ 4,4 Ω.</span><br>
+        \(P'=\dfrac{(6{,}0)^2}{4{,}375}=8{,}2\) W. <span class="ans">P' ≈ 8,2 W (4× la original).</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- N2 -->
+  <div class="pb"><div class="pb-head"><span class="code">PRÁCTICA · N2</span><h3>Red combinada con fuente ideal</h3></div>
+    <div class="pb-body">
+      <p>Una fuente ideal de \(12\) V alimenta \(R_3=4{,}0\) Ω en serie con el paralelo de \(R_1=6{,}0\) Ω y \(R_2=3{,}0\) Ω.</p>
+      <figure class="fig">
+        <svg viewBox="0 0 420 215" role="img" aria-label="Circuito: R3 en serie con R1 en paralelo con R2">
+          <line x1="40" y1="45" x2="150" y2="45" stroke="#16222B" stroke-width="1.6"/>
+          <rect x="150" y="36" width="60" height="18" fill="none" stroke="#1F6E7C" stroke-width="1.6"/>
+          <line x1="210" y1="45" x2="360" y2="45" stroke="#16222B" stroke-width="1.6"/>
+          <line x1="40" y1="185" x2="360" y2="185" stroke="#16222B" stroke-width="1.6"/>
+          <line x1="40" y1="45" x2="40" y2="100" stroke="#16222B" stroke-width="1.6"/>
+          <line x1="40" y1="118" x2="40" y2="185" stroke="#16222B" stroke-width="1.6"/>
+          <line x1="20" y1="100" x2="60" y2="100" stroke="#16222B" stroke-width="2"/>
+          <line x1="32" y1="118" x2="48" y2="118" stroke="#16222B" stroke-width="2"/>
+          <line x1="300" y1="45" x2="300" y2="90" stroke="#16222B" stroke-width="1.6"/>
+          <rect x="291" y="90" width="18" height="50" fill="none" stroke="#1F6E7C" stroke-width="1.6"/>
+          <line x1="300" y1="140" x2="300" y2="185" stroke="#16222B" stroke-width="1.6"/>
+          <line x1="360" y1="45" x2="360" y2="90" stroke="#16222B" stroke-width="1.6"/>
+          <rect x="351" y="90" width="18" height="50" fill="none" stroke="#1F6E7C" stroke-width="1.6"/>
+          <line x1="360" y1="140" x2="360" y2="185" stroke="#16222B" stroke-width="1.6"/>
+          <text x="180" y="30" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#134B55">R₃=4,0Ω</text>
+          <text x="286" y="118" font-family="IBM Plex Mono" font-size="11" text-anchor="end" fill="#134B55">R₁=6,0Ω</text>
+          <text x="374" y="118" font-family="IBM Plex Mono" font-size="11" fill="#134B55">R₂=3,0Ω</text>
+          <text x="68" y="114" font-family="IBM Plex Mono" font-size="11" fill="#134B55">ε=12V</text>
+        </svg>
+        <figcaption>R₃ en serie con el nodo paralelo R₁∥R₂.</figcaption>
+      </figure>
+      <p class="apt">(a) Muestre que la resistencia total del circuito es \(6{,}0\) Ω. [2]</p>
+      <p class="apt">(b) Calcule la corriente que entrega la fuente. [1]</p>
+      <p class="apt">(c) Determine la d.d.p. en \(R_3\) y en el paralelo. [2]</p>
+      <p class="apt">(d) Determine la corriente en \(R_1\) y en \(R_2\). [2]</p>
+      <p class="apt">(e) Calcule la potencia total entregada. [1]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> Paralelo: \(R_{12}=\dfrac{(6{,}0)(3{,}0)}{6{,}0+3{,}0}=\dfrac{18}{9}=2{,}0\) Ω. Total: \(R=R_3+R_{12}=4{,}0+2{,}0=6{,}0\) Ω. <span class="ans">R = 6,0 Ω. ✓</span></div>
+        <div class="step"><b>(b)</b> \(I=\dfrac{\varepsilon}{R}=\dfrac{12}{6{,}0}=2{,}0\) A. <span class="ans">2,0 A.</span></div>
+        <div class="step"><b>(c)</b> \(V_{R_3}=IR_3=(2{,}0)(4{,}0)=8{,}0\) V; \(V_{par}=IR_{12}=(2{,}0)(2{,}0)=4{,}0\) V (suman 12 ✓). <span class="ans">8,0 V y 4,0 V.</span></div>
+        <div class="step"><b>(d)</b> Misma d.d.p. 4,0 V en el paralelo: \(I_1=\dfrac{4{,}0}{6{,}0}=0{,}67\) A; \(I_2=\dfrac{4{,}0}{3{,}0}=1{,}3\) A (suman 2,0 A ✓). <span class="ans">I₁ ≈ 0,67 A ; I₂ ≈ 1,3 A.</span></div>
+        <div class="step"><b>(e)</b> \(P=\varepsilon I=12\times2{,}0=24\) W. <span class="ans">24 W.</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- N3 -->
+  <div class="pb"><div class="pb-head"><span class="code">PRÁCTICA · N3</span><h3>Potencia, energía y costo (kWh)</h3></div>
+    <div class="pb-body">
+      <p>Una terma eléctrica indica \(2400\) W cuando funciona a \(240\) V.</p>
+      <p class="apt">(a) Muestre que la corriente de funcionamiento es \(10\) A. [1]</p>
+      <p class="apt">(b) Determine la resistencia del elemento calefactor. [2]</p>
+      <p class="apt">(c) Se usa \(2{,}5\) h cada día durante \(30\) días. Calcule la energía en kWh y el costo a S/ 0,50 por kWh. [3]</p>
+      <p class="apt">(d) Si la red cae a \(220\) V y la resistencia no cambia, estime la nueva potencia. [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> \(P=VI\Rightarrow I=\dfrac{P}{V}=\dfrac{2400}{240}=10\) A. <span class="ans">10 A. ✓</span></div>
+        <div class="step"><b>(b)</b> \(R=\dfrac{V}{I}=\dfrac{240}{10}=24\) Ω (o \(R=\dfrac{V^2}{P}=\dfrac{240^2}{2400}=24\) Ω). <span class="ans">24 Ω.</span></div>
+        <div class="step"><b>(c)</b> \(E=P\,t=2{,}4\text{ kW}\times(2{,}5\times30)\text{ h}=2{,}4\times75=180\) kWh.<br>
+        Costo \(=180\times0{,}50=\) S/ 90. <span class="ans">180 kWh ; S/ 90.</span></div>
+        <div class="step"><b>(d)</b> \(P=\dfrac{V^2}{R}=\dfrac{220^2}{24}=\dfrac{48400}{24}=2017\) W. <span class="ans">P ≈ 2,0 kW (baja ~16 %).</span> La potencia cae con el cuadrado de la tensión.</div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- N4 -->
+  <div class="pb"><div class="pb-head"><span class="code">PRÁCTICA · N4</span><h3>Fem y resistencia interna desde una gráfica V–I</h3></div>
+    <div class="pb-body">
+      <p>Al variar la corriente de una pila se mide su tensión en bornes \(V\). La recta pasa por los puntos \((I=1{,}0\text{ A},\,V=11{,}0\text{ V})\) y \((I=3{,}0\text{ A},\,V=9{,}0\text{ V})\).</p>
+      <figure class="fig">
+        <svg viewBox="0 0 400 220" role="img" aria-label="Gráfica V frente a I de una pila real">
+          <line x1="60" y1="190" x2="375" y2="190" stroke="#43525C" stroke-width="1.2"/>
+          <line x1="60" y1="190" x2="60" y2="25" stroke="#43525C" stroke-width="1.2"/>
+          <text x="215" y="210" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#43525C">I (A)</text>
+          <text x="20" y="108" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#43525C" transform="rotate(-90 20 108)">V (V)</text>
+          <line x1="60" y1="30" x2="360" y2="83" stroke="#6E4C86" stroke-width="1.7"/>
+          <circle cx="135" cy="43" r="3.3" fill="#C77B23"/>
+          <circle cx="285" cy="70" r="3.3" fill="#C77B23"/>
+          <circle cx="60" cy="30" r="3.3" fill="none" stroke="#6E4C86" stroke-width="1.4"/>
+          <text x="66" y="26" font-family="IBM Plex Mono" font-size="9" fill="#6E4C86">ε (I=0)</text>
+          <text x="245" y="58" font-family="IBM Plex Mono" font-size="9" fill="#6E4C86">pendiente=−r</text>
+          <text x="128" y="38" font-family="IBM Plex Mono" font-size="9" fill="#C77B23">1,0;11,0</text>
+          <text x="292" y="66" font-family="IBM Plex Mono" font-size="9" fill="#C77B23">3,0;9,0</text>
+        </svg>
+        <figcaption>V = ε − I·r : ordenada = ε, pendiente = −r.</figcaption>
+      </figure>
+      <p class="apt">(a) Explique por qué la gráfica es recta y muestre que \(\varepsilon=12\) V y \(r=1{,}0\) Ω. [3]</p>
+      <p class="apt">(b) Calcule la corriente de cortocircuito de la pila. [2]</p>
+      <p class="apt">(c) Determine la resistencia externa cuando \(I=3{,}0\) A. [1]</p>
+      <p class="apt">(d) Calcule la potencia entregada al exterior y la disipada dentro de la pila a \(I=3{,}0\) A. [2]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> \(V=\varepsilon-Ir\) es \(y=c+mx\): por eso es recta. Pendiente \(=\dfrac{9{,}0-11{,}0}{3{,}0-1{,}0}=\dfrac{-2{,}0}{2{,}0}=-1{,}0\) V·A⁻¹ \(\Rightarrow r=1{,}0\) Ω. Ordenada: \(\varepsilon=V+Ir=11{,}0+(1{,}0)(1{,}0)=12\) V (comprueba: \(12-3{,}0\times1{,}0=9{,}0\) ✓). <span class="ans">ε = 12 V ; r = 1,0 Ω. ✓</span></div>
+        <div class="step"><b>(b)</b> Cortocircuito: \(R=0\Rightarrow I_{cc}=\dfrac{\varepsilon}{r}=\dfrac{12}{1{,}0}=12\) A. <span class="ans">12 A.</span></div>
+        <div class="step"><b>(c)</b> \(R=\dfrac{V}{I}=\dfrac{9{,}0}{3{,}0}=3{,}0\) Ω. <span class="ans">3,0 Ω.</span></div>
+        <div class="step"><b>(d)</b> \(P_{ext}=VI=9{,}0\times3{,}0=27\) W; \(P_{int}=I^2r=(3{,}0)^2(1{,}0)=9{,}0\) W (total \(\varepsilon I=36\) W ✓). <span class="ans">27 W al exterior ; 9,0 W internos.</span></div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- N5 -->
+  <div class="pb"><div class="pb-head"><span class="code">PRÁCTICA · N5</span><h3>Divisor de tensión con LDR (sensor de luz)</h3></div>
+    <div class="pb-body">
+      <p>Un divisor con fuente ideal de \(12\) V tiene un resistor fijo \(R=5{,}0\) kΩ en serie con una LDR; la salida \(V_{out}\) se toma en bornes de la LDR. La LDR vale \(10\) kΩ en oscuridad y \(2{,}0\) kΩ con luz intensa.</p>
+      <figure class="fig">
+        <svg viewBox="0 0 340 215" role="img" aria-label="Divisor de tensión con LDR">
+          <line x1="40" y1="40" x2="40" y2="95" stroke="#16222B" stroke-width="1.6"/>
+          <line x1="40" y1="113" x2="40" y2="190" stroke="#16222B" stroke-width="1.6"/>
+          <line x1="22" y1="95" x2="58" y2="95" stroke="#16222B" stroke-width="2"/>
+          <line x1="32" y1="113" x2="48" y2="113" stroke="#16222B" stroke-width="2"/>
+          <text x="66" y="108" font-family="IBM Plex Mono" font-size="11" fill="#134B55">12V</text>
+          <line x1="40" y1="40" x2="210" y2="40" stroke="#16222B" stroke-width="1.6"/>
+          <line x1="40" y1="190" x2="210" y2="190" stroke="#16222B" stroke-width="1.6"/>
+          <line x1="210" y1="40" x2="210" y2="70" stroke="#16222B" stroke-width="1.6"/>
+          <rect x="201" y="70" width="18" height="44" fill="none" stroke="#1F6E7C" stroke-width="1.6"/>
+          <line x1="210" y1="114" x2="210" y2="128" stroke="#16222B" stroke-width="1.6"/>
+          <rect x="201" y="128" width="18" height="44" fill="none" stroke="#C77B23" stroke-width="1.6"/>
+          <line x1="210" y1="172" x2="210" y2="190" stroke="#16222B" stroke-width="1.6"/>
+          <line x1="236" y1="138" x2="222" y2="147" stroke="#C77B23" stroke-width="1.1" marker-end="url(#arn5)"/>
+          <line x1="242" y1="151" x2="228" y2="160" stroke="#C77B23" stroke-width="1.1" marker-end="url(#arn5)"/>
+          <line x1="210" y1="121" x2="298" y2="121" stroke="#16222B" stroke-width="1.6"/>
+          <circle cx="210" cy="121" r="2.5" fill="#16222B"/>
+          <text x="302" y="125" font-family="IBM Plex Mono" font-size="10" fill="#134B55">V_out</text>
+          <text x="228" y="96" font-family="IBM Plex Mono" font-size="10" fill="#134B55">R=5,0kΩ</text>
+          <text x="250" y="178" font-family="IBM Plex Mono" font-size="10" fill="#C77B23">LDR</text>
+          <defs><marker id="arn5" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#C77B23"/></marker></defs>
+        </svg>
+        <figcaption>V_out en bornes de la LDR; las flechas indican la luz incidente.</figcaption>
+      </figure>
+      <p class="apt">(a) Calcule \(V_{out}\) en oscuridad. [2]</p>
+      <p class="apt">(b) Calcule \(V_{out}\) con luz intensa. [1]</p>
+      <p class="apt">(c) Explique cómo funciona como sensor y en qué sentido cambia la salida al aumentar la luz. [3]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> Divisor sobre la LDR: \(V_{out}=V\dfrac{R_{LDR}}{R+R_{LDR}}=12\cdot\dfrac{10}{5{,}0+10}=12\cdot\dfrac{10}{15}=8{,}0\) V. <span class="ans">8,0 V.</span></div>
+        <div class="step"><b>(b)</b> \(V_{out}=12\cdot\dfrac{2{,}0}{5{,}0+2{,}0}=12\cdot\dfrac{2}{7}=3{,}4\) V. <span class="ans">≈ 3,4 V.</span></div>
+        <div class="step"><b>(c)</b> Al aumentar la luz, la resistencia de la LDR <em>disminuye</em>; como la salida se toma en bornes de la LDR, su fracción de la tensión baja y \(V_{out}\) <strong>disminuye</strong> (de 8,0 V a 3,4 V). Esa tensión variable puede entrar a un comparador para, por ejemplo, encender una luminaria al oscurecer (salida alta en oscuridad).</div>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- N6 -->
+  <div class="pb jefe"><div class="pb-head"><span class="code">PRÁCTICA · N6</span><h3>Diodo no óhmico (gráfica I–V) y efecto de carga del voltímetro</h3></div>
+    <div class="pb-body">
+      <p>La característica I–V de un diodo semiconductor pasa por estos puntos:</p>
+      <table>
+        <tr><th>V (V)</th><th>0,20</th><th>0,40</th><th>0,60</th><th>0,70</th><th>0,80</th></tr>
+        <tr><td>I (mA)</td><td>0</td><td>1,0</td><td>10</td><td>30</td><td>70</td></tr>
+      </table>
+      <figure class="fig">
+        <svg viewBox="0 0 400 220" role="img" aria-label="Característica I–V de un diodo">
+          <line x1="60" y1="190" x2="375" y2="190" stroke="#43525C" stroke-width="1.2"/>
+          <line x1="60" y1="190" x2="60" y2="25" stroke="#43525C" stroke-width="1.2"/>
+          <text x="215" y="210" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#43525C">V (V)</text>
+          <text x="18" y="108" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="#43525C" transform="rotate(-90 18 108)">I (mA)</text>
+          <path d="M 60 190 L 210 188 Q 270 185 285 167 Q 310 140 322 121 Q 345 80 360 30" fill="none" stroke="#1F6E7C" stroke-width="1.8"/>
+          <circle cx="285" cy="167" r="3.3" fill="#C77B23"/>
+          <circle cx="322" cy="121" r="3.3" fill="#C77B23"/>
+          <circle cx="360" cy="30" r="3.3" fill="#C77B23"/>
+          <text x="283" y="160" font-family="IBM Plex Mono" font-size="9" text-anchor="end" fill="#C77B23">0,6;10</text>
+          <text x="360" y="24" font-family="IBM Plex Mono" font-size="9" text-anchor="end" fill="#C77B23">0,8;70</text>
+        </svg>
+        <figcaption>Corriente despreciable hasta ≈0,6 V y luego crecimiento brusco: no óhmico.</figcaption>
+      </figure>
+      <p class="apt">(a) Explique por qué el diodo no es óhmico. [2]</p>
+      <p class="apt">(b) Determine la resistencia a \(0{,}70\) V y a \(0{,}80\) V, y comente. [3]</p>
+      <p class="apt">(c) En otro montaje, un divisor con fuente ideal de \(9{,}0\) V tiene dos resistores iguales de \(100\) kΩ en serie. Un voltímetro de resistencia \(100\) kΩ se conecta en bornes del resistor inferior. Muestre que la lectura es \(3{,}0\) V, compárela con el valor verdadero y explique el efecto de carga. [4]</p>
+      <details class="rev"><summary></summary><div class="rev-inner">
+        <div class="step"><b>(a)</b> Un componente óhmico cumple \(V\propto I\) (R constante, recta por el origen). Aquí la curva es casi plana hasta \(\approx0{,}6\) V y luego sube con fuerte pendiente: la razón \(V/I\) <em>no</em> es constante, por lo que \(R\) depende de \(V\) y el diodo es no óhmico (además conduce apreciablemente solo por encima del voltaje de umbral).</div>
+        <div class="step"><b>(b)</b> \(R=\dfrac{V}{I}\): a \(0{,}70\) V, \(R=\dfrac{0{,}70}{30\times10^{-3}}=23\) Ω; a \(0{,}80\) V, \(R=\dfrac{0{,}80}{70\times10^{-3}}=11{,}4\) Ω. <span class="ans">≈ 23 Ω → ≈ 11 Ω.</span> La resistencia <em>disminuye</em> al aumentar la tensión (al revés que un filamento).</div>
+        <div class="step"><b>(c)</b> Valor verdadero (sin voltímetro): dos iguales en serie reparten por igual, \(V_{inf}=\dfrac{9{,}0}{2}=4{,}5\) V. Con el voltímetro de \(100\) kΩ en paralelo al inferior: \(100\,\|\,100=\dfrac{100\times100}{200}=50\) kΩ. Nuevo divisor \(100\) kΩ y \(50\) kΩ:<br>
+        \(V_{lect}=9{,}0\cdot\dfrac{50}{100+50}=9{,}0\cdot\dfrac{50}{150}=3{,}0\) V. <span class="ans">Lee 3,0 V (verdadero 4,5 V). ✓</span><br>
+        El voltímetro real tiene resistencia finita y <strong>deriva corriente</strong>, reduciendo la resistencia efectiva de esa rama y, con ella, la tensión medida: es el <em>efecto de carga</em>. Un voltímetro ideal (resistencia infinita) no cargaría el circuito y leería 4,5 V.</div>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  Módulo 16B · Electricidad II · Tipo 2 (Paper 2) · ficha oficial resuelta + 5 integradores · \(\rho_{Cu}=1{,}7\times10^{-8}\) Ω·m · \(\varepsilon=I(R+r)\).<br>
+  ▲ = apartado con figura/circuito perdido en el PDF: se da el método y el montaje típico, sin inventar valores. Sigue con el <strong>Módulo 17</strong>.
+</div></footer>
+
+</main>
+</div></div>
+</body>
+</html>
+
+</body></html>
