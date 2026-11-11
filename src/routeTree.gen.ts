@@ -9,32 +9,27 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as PlataformaNeuroRouteImport } from './routes/plataforma-neuro'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ApiGenerarVideoRouteImport } from './routes/api/generar-video'
-import { Route as ApiExtractQuestionsRouteImport } from './routes/api/extract-questions'
-import { Route as ApiChatEnglishRouteImport } from './routes/api/chat-english'
+import { Route as PlataformaNeuroRouteImport } from './routes/plataforma-neuro'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ApiChatEnglishRouteImport } from './routes/api/chat-english'
+import { Route as ApiExtractQuestionsRouteImport } from './routes/api/extract-questions'
+import { Route as ApiGenerarVideoRouteImport } from './routes/api/generar-video'
 import { Route as ApiGenerarVideoActionJobIdRouteImport } from './routes/api/generar-video.$action.$jobId'
 
-const PlataformaNeuroRoute = PlataformaNeuroRouteImport.update({
-  id: '/plataforma-neuro',
-  path: '/plataforma-neuro',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiGenerarVideoRoute = ApiGenerarVideoRouteImport.update({
-  id: '/api/generar-video',
-  path: '/api/generar-video',
+const PlataformaNeuroRoute = PlataformaNeuroRouteImport.update({
+  id: '/plataforma-neuro',
+  path: '/plataforma-neuro',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiExtractQuestionsRoute = ApiExtractQuestionsRouteImport.update({
-  id: '/api/extract-questions',
-  path: '/api/extract-questions',
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiChatEnglishRoute = ApiChatEnglishRouteImport.update({
@@ -42,9 +37,14 @@ const ApiChatEnglishRoute = ApiChatEnglishRouteImport.update({
   path: '/api/chat-english',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiChatRoute = ApiChatRouteImport.update({
-  id: '/api/chat',
-  path: '/api/chat',
+const ApiExtractQuestionsRoute = ApiExtractQuestionsRouteImport.update({
+  id: '/api/extract-questions',
+  path: '/api/extract-questions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiGenerarVideoRoute = ApiGenerarVideoRouteImport.update({
+  id: '/api/generar-video',
+  path: '/api/generar-video',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiGenerarVideoActionJobIdRoute =
@@ -123,13 +123,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/plataforma-neuro': {
-      id: '/plataforma-neuro'
-      path: '/plataforma-neuro'
-      fullPath: '/plataforma-neuro'
-      preLoaderRoute: typeof PlataformaNeuroRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -137,18 +130,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/generar-video': {
-      id: '/api/generar-video'
-      path: '/api/generar-video'
-      fullPath: '/api/generar-video'
-      preLoaderRoute: typeof ApiGenerarVideoRouteImport
+    '/plataforma-neuro': {
+      id: '/plataforma-neuro'
+      path: '/plataforma-neuro'
+      fullPath: '/plataforma-neuro'
+      preLoaderRoute: typeof PlataformaNeuroRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/extract-questions': {
-      id: '/api/extract-questions'
-      path: '/api/extract-questions'
-      fullPath: '/api/extract-questions'
-      preLoaderRoute: typeof ApiExtractQuestionsRouteImport
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/chat-english': {
@@ -158,11 +151,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatEnglishRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/chat': {
-      id: '/api/chat'
-      path: '/api/chat'
-      fullPath: '/api/chat'
-      preLoaderRoute: typeof ApiChatRouteImport
+    '/api/extract-questions': {
+      id: '/api/extract-questions'
+      path: '/api/extract-questions'
+      fullPath: '/api/extract-questions'
+      preLoaderRoute: typeof ApiExtractQuestionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/generar-video': {
+      id: '/api/generar-video'
+      path: '/api/generar-video'
+      fullPath: '/api/generar-video'
+      preLoaderRoute: typeof ApiGenerarVideoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/generar-video/$action/$jobId': {

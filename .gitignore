@@ -53,3 +53,6 @@ generador_videos/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+.vercel
+.env*
